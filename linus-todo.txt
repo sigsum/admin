@@ -9,9 +9,9 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
-   - try returning the broken SSD
-   - jeans
+   . try returning the broken SSD
    - tor AS awareness
+   X jeans
    o [fri] time report
    D book hotel BER
    D prizes for calling SE-DE
