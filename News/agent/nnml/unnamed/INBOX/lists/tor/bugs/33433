@@ -1,0 +1,103 @@
+Return-Path: <tor-bugs-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Tue, 16 Oct 2012 04:42:21 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id E960B11755; Tue, 16 Oct 2012 04:42:20 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id 7EFD61156E
+	for <linus@nordberg.se>; Tue, 16 Oct 2012 04:42:19 +0200 (CEST)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 334822463D;
+	Tue, 16 Oct 2012 02:42:18 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 1B85424637
+	for <tor-bugs@lists.torproject.org>;
+	Tue, 16 Oct 2012 02:42:14 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id qCgL5Cz5vwN5 for <tor-bugs@lists.torproject.org>;
+	Tue, 16 Oct 2012 02:42:14 +0000 (UTC)
+Received: from jepsonii.torproject.org (jepsonii.torproject.org
+	[IPv6:2620:0:6b0:b:1a1a:0:26e5:4808])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/jepsonii.torproject.org",
+	Issuer "auto-ca.torproject.org" (verified OK))
+	by eugeni.torproject.org (Postfix) with ESMTPS id 0B1412460B
+	for <tor-bugs@lists.torproject.org>;
+	Tue, 16 Oct 2012 02:42:14 +0000 (UTC)
+Received: from jepsonii.torproject.org (unknown [IPv6:::1])
+	by jepsonii.torproject.org (Postfix) with ESMTP id EA8DE2057F;
+	Tue, 16 Oct 2012 02:42:11 +0000 (UTC)
+MIME-Version: 1.0
+From: "Tor Bug Tracker & Wiki" <torproject-admin@torproject.org>
+X-Trac-Version: 0.11.7
+Precedence: bulk
+Auto-Submitted: auto-generated
+X-Mailer: Trac 0.11.7, by Edgewall Software
+X-Trac-Project: Tor Bug Tracker & Wiki
+Date: Tue, 16 Oct 2012 02:42:11 -0000
+X-URL: https://trac.torproject.org/
+X-Trac-Ticket-URL: https://trac.torproject.org/projects/tor/ticket/7066#comment:1
+Message-ID: <056.d3ddcdb61b97cebc05330afd585fa0b2@torproject.org>
+References: <047.7c4ae0404bb584ff06f028dc983da16f@torproject.org>
+X-Trac-Ticket-ID: 7066
+In-Reply-To: <047.7c4ae0404bb584ff06f028dc983da16f@torproject.org>
+To: undisclosed-recipients:;
+Subject: Re: [tor-bugs] #7066 [Tor]: Guard disablement by path-bias detector
+ must be disabled or removed
+X-BeenThere: tor-bugs@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Reply-To: tor-assistants@torproject.org
+List-Id: "auto: Tor bug tracker status mails" <tor-bugs.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=unsubscribe>
+List-Archive: <http://lists.torproject.org/pipermail/tor-bugs>
+List-Post: <mailto:tor-bugs@lists.torproject.org>
+List-Help: <mailto:tor-bugs-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: tor-bugs-bounces@lists.torproject.org
+Errors-To: tor-bugs-bounces@lists.torproject.org
+
+#7066: Guard disablement by path-bias detector must be disabled or removed
+------------------------+---------------------------------------------------
+ Reporter:  rransom     |          Owner:                    
+     Type:  defect      |         Status:  new               
+ Priority:  blocker     |      Milestone:  Tor: 0.2.3.x-final
+Component:  Tor         |        Version:                    
+ Keywords:  tor-client  |         Parent:                    
+   Points:              |   Actualpoints:                    
+------------------------+---------------------------------------------------
+
+Comment(by mikeperry):
+
+ As part of Proposal 209, I suggested we remove the ability of 0.2.3.x
+ clients from disabling Guards entirely and promote the logline to warn
+ (and also add an intermediate warn), so we have visibility for when the
+ condition will hit without anything happening.
+
+ However, if this bug is instead about ways that rogue consensus parameters
+ can harm the Tor network, we should create a parent ticket or retitle it.
+ There are probably quite a few of them.. That's why we moved to the
+ "median-of-three-or-nothing" strategy, IIRC.
+
+-- 
+Ticket URL: <https://trac.torproject.org/projects/tor/ticket/7066#comment:1>
+Tor Bug Tracker & Wiki <https://trac.torproject.org/>
+The Tor Project: anonymity online
+_______________________________________________
+tor-bugs mailing list
+tor-bugs@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs

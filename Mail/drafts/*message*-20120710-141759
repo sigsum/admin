@@ -1,0 +1,24 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: Andrew Lewman <andrew@torproject.org>
+Subject: Contract 12Q3
+Date: Tue, 10 Jul 2012 14:22:29 +0200
+Message-ID: <yszipdv3iwq.fsf@nordberg.se>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+cc: Karsten Loesing <karsten@torproject.org> 
+--text follows this line--
+Hi Andrew,
+
+Suggested contract for 12Q3:
+
+Items:
+- #4564 Enable clients to talk to non-bridge relays via IPv6
+
+Time and cost:
+Time is estimated to 4w, i.e. 160h.
+This should cost $21.6k but let me check that.
+
+
+Timeline:
+- Code ready for review 2012-09-01.
+- Deployed 2012-09-14.
+- External deadline 2012-09-30.

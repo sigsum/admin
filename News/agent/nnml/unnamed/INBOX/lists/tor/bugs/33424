@@ -1,0 +1,102 @@
+Return-Path: <tor-bugs-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 15 Oct 2012 22:13:57 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 2AF3011755; Mon, 15 Oct 2012 22:13:57 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id 6642F1156E
+	for <linus@nordberg.se>; Mon, 15 Oct 2012 22:13:55 +0200 (CEST)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 9F35B24602;
+	Mon, 15 Oct 2012 20:13:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 539BC24518
+	for <tor-bugs@lists.torproject.org>;
+	Mon, 15 Oct 2012 20:13:50 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id kTfOudlw9xbT for <tor-bugs@lists.torproject.org>;
+	Mon, 15 Oct 2012 20:13:50 +0000 (UTC)
+Received: from jepsonii.torproject.org (jepsonii.torproject.org
+	[IPv6:2620:0:6b0:b:1a1a:0:26e5:4808])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/jepsonii.torproject.org",
+	Issuer "auto-ca.torproject.org" (verified OK))
+	by eugeni.torproject.org (Postfix) with ESMTPS id 439072356A
+	for <tor-bugs@lists.torproject.org>;
+	Mon, 15 Oct 2012 20:13:50 +0000 (UTC)
+Received: from jepsonii.torproject.org (unknown [IPv6:::1])
+	by jepsonii.torproject.org (Postfix) with ESMTP id B6C4220CD2;
+	Mon, 15 Oct 2012 20:13:47 +0000 (UTC)
+MIME-Version: 1.0
+From: "Tor Bug Tracker & Wiki" <torproject-admin@torproject.org>
+X-Trac-Version: 0.11.7
+Precedence: bulk
+Auto-Submitted: auto-generated
+X-Mailer: Trac 0.11.7, by Edgewall Software
+X-Trac-Project: Tor Bug Tracker & Wiki
+Date: Mon, 15 Oct 2012 20:13:47 -0000
+X-URL: https://trac.torproject.org/
+X-Trac-Ticket-URL: https://trac.torproject.org/projects/tor/ticket/7078#comment:12
+Message-ID: <056.382addade90017a1d57fb0a6a7cef1cf@torproject.org>
+References: <047.ab97ec434d8aa0e695b9756d1ef7ec01@torproject.org>
+X-Trac-Ticket-ID: 7078
+In-Reply-To: <047.ab97ec434d8aa0e695b9756d1ef7ec01@torproject.org>
+To: undisclosed-recipients:;
+Subject: Re: [tor-bugs] #7078 [TorBrowserButton]: Torbutton 1.4.6.2/3 causes
+ Firefox 16 to crash
+X-BeenThere: tor-bugs@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Reply-To: tor-assistants@torproject.org
+List-Id: "auto: Tor bug tracker status mails" <tor-bugs.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=unsubscribe>
+List-Archive: <http://lists.torproject.org/pipermail/tor-bugs>
+List-Post: <mailto:tor-bugs@lists.torproject.org>
+List-Help: <mailto:tor-bugs-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: tor-bugs-bounces@lists.torproject.org
+Errors-To: tor-bugs-bounces@lists.torproject.org
+
+#7078: Torbutton 1.4.6.2/3 causes Firefox 16 to crash
+-----------------------------------------+----------------------------------
+ Reporter:  victorj                      |          Owner:  mikeperry
+     Type:  defect                       |         Status:  new      
+ Priority:  critical                     |      Milestone:           
+Component:  TorBrowserButton             |        Version:           
+ Keywords:  MikePerry201210, tbb-rebase  |         Parent:           
+   Points:                               |   Actualpoints:           
+-----------------------------------------+----------------------------------
+
+Comment(by proper):
+
+ Replying to [comment:4 anonymous6748]:
+ > Perhaps there should be a version of the Tor Browser that doesn't
+ include Tor.
+
+ It exists. Just needs a one line change in the startup bash script. You
+ can use the Tor Browser (Bundle) without Tor/Vidalia. I documented it:
+
+ https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/WebBrowsers
+
+-- 
+Ticket URL: <https://trac.torproject.org/projects/tor/ticket/7078#comment:12>
+Tor Bug Tracker & Wiki <https://trac.torproject.org/>
+The Tor Project: anonymity online
+_______________________________________________
+tor-bugs mailing list
+tor-bugs@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs

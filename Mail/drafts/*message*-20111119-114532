@@ -1,0 +1,18 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: Martin Matuska <mm@FreeBSD.org>
+Subject: FreeBSD ports and libevent-2.0.16-stable
+Date: Sat, 19 Nov 2011 11:52:42 +0100
+Message-ID: <yszd3coqt8l.fsf@nordberg.se>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+--text follows this line--
+Hi,
+
+I experience problem with security/tor-devel when BUFFEREVENTS is on
+which I think has to do with libevent, now at 2.0.13 in ports.  I also
+think that it's fixed in later versions of libevent.
+
+libevent-2.0.16-stable was released yesterday.  Are you the right person
+to ask for libevent-2.0.16 in ports?
+
+Thanks,
+Linus

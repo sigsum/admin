@@ -1,0 +1,97 @@
+Return-Path: <root@amnesia.dfri.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:15:57 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 8B9191152A; Mon, 29 Apr 2013 03:15:57 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id BF9521173F
+	for <linus@nordberg.se>; Mon, 29 Apr 2013 03:15:08 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id 7F51A1F32E02; Mon, 29 Apr 2013 03:15:04 +0200 (CEST)
+Delivered-To: beredskap@dfri.net
+Received: from amnesia.dfri.se (amnesia.dfri.se [IPv6:2001:67c:289c::30])
+	by mail.dfri.se (Postfix) with ESMTP id 63B741F32C9C
+	for <beredskap@dfri.net>; Mon, 29 Apr 2013 03:15:04 +0200 (CEST)
+Received: from amnesia.dfri.se (localhost [127.0.0.1])
+	by amnesia.dfri.se (8.14.5/8.14.5) with ESMTP id r3T1F4nk029560
+	for <root@amnesia.dfri.se>; Mon, 29 Apr 2013 03:15:04 +0200 (CEST)
+	(envelope-from root@amnesia.dfri.se)
+Received: (from root@localhost)
+	by amnesia.dfri.se (8.14.5/8.14.5/Submit) id r3T1F40e029557
+	for root; Mon, 29 Apr 2013 03:15:04 +0200 (CEST)
+	(envelope-from root)
+Date: Mon, 29 Apr 2013 03:15:04 +0200 (CEST)
+From: Charlie Root <root@amnesia.dfri.se>
+Message-Id: <201304290115.r3T1F40e029557@amnesia.dfri.se>
+To: root@amnesia.dfri.se
+Subject: amnesia.dfri.se daily run output
+
+
+Removing stale files from /var/preserve:
+
+Cleaning out old system announcements:
+
+Removing stale files from /var/rwho:
+
+Backup passwd and group files:
+
+Verifying group file syntax:
+/etc/group is fine
+
+Backing up mail aliases:
+
+Backing up package db directory:
+
+Disk status:
+Filesystem        Size    Used   Avail Capacity  Mounted on
+/dev/mirror/p2      4G    470M    3.2G    13%    /
+devfs             1.0k    1.0k      0B   100%    /dev
+/dev/mirror/p4      2G     60M    1.8G     3%    /tmp
+/dev/mirror/p5     19G    158M     18G     1%    /home
+/dev/mirror/p6     19G    4.8G     13G    26%    /usr
+/dev/mirror/p7    9.9G    1.4G    7.6G    16%    /var
+/dev/mirror/p8    394G     16G    346G     5%    /var/jails
+/packages           4G    470M    3.2G    13%    /var/jails/mesh/packages
+devfs             1.0k    1.0k      0B   100%    /var/jails/mesh/dev
+
+Network interface status:
+Name    Mtu Network       Address              Ipkts Ierrs Idrop    Opkts Oerrs  Coll Drop
+em0    1500 <Link#1>      00:25:90:57:6f:33 142795380304 492969     0 106000191178     0     0 86438 
+em0    1500 fe80::225:90f fe80::225:90ff:fe       12     -     -       43     -     -    - 
+em0    1500 amnesia.dfri. 2001:67c:289c::30   462564     -     -   553436     -     -    - 
+em0    1500 171.25.193.20 tor-exit0-readme  124566551279     -     -        0     -     -    - 
+em0    1500 tor-exit0-rea 2001:67c:289c::20  4316210     -     -  6658208     -     -    - 
+em0    1500 171.25.193.0/ amnesia             243798     -     - 118131690083     -     -    - 
+usbus     0 <Link#2>                               0     0     0        0     0     0    0 
+em1*   1500 <Link#3>      00:25:90:57:6f:32        0     0     0        0     0     0    0 
+usbus     0 <Link#4>                               0     0     0        0     0     0    0 
+lo0   16384 <Link#5>                           16200     0     0    16200     0     0    0 
+lo0   16384 localhost     ::1                      8     -     -        8     -     -    - 
+lo0   16384 fe80::1%lo0   fe80::1                  0     -     -        0     -     -    - 
+lo0   16384 your-net      localhost             9407     -     -    16192     -     -    - 
+
+Local system status:
+ 3:01AM  up 64 days, 12:59, 0 users, load averages: 0.54, 0.56, 0.51
+
+Mail in local queue:
+/var/spool/mqueue is empty
+		Total requests: 0
+
+Mail in submit queue:
+/var/spool/clientmqueue is empty
+		Total requests: 0
+
+Security check:
+    (output mailed separately)
+
+Checking for rejected mail hosts:
+
+Checking for denied zone transfers (AXFR and IXFR):
+
+-- End of daily output --

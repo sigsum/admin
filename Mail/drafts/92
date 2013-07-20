@@ -1,0 +1,77 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 62444)
+References: <877glxd4ui.fsf@nordberg.se>
+	<a303e049a2d7cc1e550b2ba8966f1548@blipp.com>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-02
+To: <hanna@blipp.com>
+cc: dfri@dfri.se 
+Subject: Re: "Varför DFRI kör Tor-relän"
+From: Linus Nordberg <linus@nordberg.se>
+Date: Wed, 27 Feb 2013 16:20:12 +0100
+--text follows this line--
+Hanna Larsson <hanna@blipp.com> wrote
+Wed, 27 Feb 2013 12:08:59 +0100:
+
+| Hejsan, nu har jag ändrat om lite. Språket är inte perfekt, men jag
+| tycker strukturen är bra.
+| Hanna
+
+Hej, toppen.
+
+Lade till dfri@ i cc för fler ögon.
+
+Några kommentarer i texten nedan. Generellt så borde vi vara konsekventa
+med termerna "relä" och "nod". Relä är det bättre IMO. Samma med
+"driver" och "driftar".
+
+
+| DFRI driver i första hand Tor-relän för att visa att det går. Genom
+| att visa att det vare sig är svårt eller särskilt besvärligt att bidra
+| till Tor-nätet hoppas vi att fler föreningar, företag och
+| privatpersoner kommer att göra det.
+| 
+| Brist på teknisk kunskap, och oro för eventuella konsekvenser, är två
+| stora anledningar till att många som funderar på att driva Tor-relän
+| inte gör det.
+
+Bra.
+
+
+| Att förmedla andras information är i sig inte olagligt, och att drifta
+| en xx-nod som bara skyfflar trafiken vidare är helt
+| oproblematiskt. Däremot skulle det i teorin kunna hända att den som
+| driftar ett exit-relä misstänks för att själv vara upphov till
+| trafiken. Det får många att oroa sig för rättsliga påföljder, eller
+| att internetleverantören ska stänga ner internetuppkopplingen.
+
+"helt oproblematiskt" låter lite väl bra tycker jag. Det _borde_ inte
+vara problematiskt ur ett _juridiskt_ perspektiv.
+
+
+| DFRI:s uppfattning är att svensk polis idag vet ganska väl vad Tor är
+| och hur det fungerar, vilket minskar risken för att personer som
+| driftar Tor-exits blir misstänkliggjorda. (internetleverantörerna då?
+| Har de stängt ner nån?)
+
+
+
+
+| DFRI har drivit Tor-exit i xxx år utan problem. Flera av våra
+| medlemmar har också gjort det privat.
+| 
+| Om bromsklossen är brist på teknisk kunskap kan DFRI hjälpa till genom
+| att publicera instruktioner och dela med oss av egna erfarenheter. Du
+| är välkommen att kontakta oss >>
+| 
+| Så gör vi
+| DFRI har alla Tor-relän placerade i Sverige och använder bara svenska
+| bredbandslevarantörer. Nätet driver vi själva, på IP-adresser ur egna
+| nätblock. Det är definitivt inte det billigaste sättet att förmedla
+| Tor-trafik. Att hyra så kallade VPS:er, virtuella datorer, i till
+| exempel USA, ger betydligt fler bittar per krona. Men DFRI:s mål är
+| inte att förmedla så mycket bandbredd som möjligt, utan att visa att
+| det går att driva Tor-trafik.
+| 
+| Genom att förlägga allt till Sverige råder det heller inga tvivel om
+| var DFRI hör hemma juridiskt, för den händelse vi skulle anses göra
+| något olagligt. Det gör det också möjligt för oss att visa att Sverige
+| har en lagstiftning som tillåter drift av anonymiseringstjänster.

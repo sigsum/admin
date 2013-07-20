@@ -1,0 +1,116 @@
+Return-Path: <tor-assistants-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 04 Feb 2013 04:27:21 +0100
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id A2F0F11756; Mon,  4 Feb 2013 04:27:20 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.8 required=4.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,HTML_MESSAGE,T_DKIM_INVALID,T_RP_MATCHES_RCVD autolearn=no
+	version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id E85001152F
+	for <linus@nordberg.se>; Mon,  4 Feb 2013 04:27:18 +0100 (CET)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 7A5AA26905;
+	Mon,  4 Feb 2013 03:27:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id D0FD8224BF
+	for <tor-assistants@lists.torproject.org>;
+	Mon,  4 Feb 2013 03:27:12 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id yX2FTb7NlAeN for <tor-assistants@lists.torproject.org>;
+	Mon,  4 Feb 2013 03:27:12 +0000 (UTC)
+Received: from mail-wi0-f181.google.com (mail-wi0-f181.google.com
+	[209.85.212.181]) (using TLSv1 with cipher RC4-SHA (128/128 bits))
+	(Client CN "smtp.gmail.com",
+	Issuer "Google Internet Authority" (not verified))
+	by eugeni.torproject.org (Postfix) with ESMTPS id 89B3E20BC7
+	for <tor-assistants@torproject.org>;
+	Mon,  4 Feb 2013 03:27:09 +0000 (UTC)
+Received: by mail-wi0-f181.google.com with SMTP id hm6so1134338wib.14
+	for <tor-assistants@torproject.org>;
+	Sun, 03 Feb 2013 19:27:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:x-received:date:message-id:subject:from:to
+	:content-type; bh=rvCG2x0jxEujKf4gvm90hQM7whQemKIMSKT9+Lzjhc8=;
+	b=QRjT7+ScRU1XehbiqybgSKWvm5i840gSBxcUMiwp/cE+sy5yub7I5tKM6wfR5RmRxj
+	EJPdHlwf8FTZUBua3eoHZcriM0jsC25cF4YID9uxgnWlWEe+YfhuMzGj33kQhlV/0M5k
+	5AQZLwYQKJHgxZHAMDO3CG5LLaAfx/dABukdRw8u65i94b+6c8OyFU6tmToztZvDMLNW
+	/SHrVpfAtNOKdhwkphxHXTq9VbiZiUGNckHTuPqLD4LILg8sAefeB2EaiLT7rtaK04h0
+	DvxacfKbRn9cB+/TJIlHOTePX3UMKXpesj6RsqoBg+ZHDMd3OCHdHmNHIzw//N/YqZYs
+	7LLQ==
+MIME-Version: 1.0
+X-Received: by 10.180.95.166 with SMTP id dl6mr7919585wib.9.1359948426403;
+	Sun, 03 Feb 2013 19:27:06 -0800 (PST)
+Received: by 10.216.53.197 with HTTP; Sun, 3 Feb 2013 19:27:06 -0800 (PST)
+Date: Sun, 3 Feb 2013 22:27:06 -0500
+Message-ID: <CA+CjK1qKg9c14ZMbhy7jLTWFj-3ytHQotwz_EHWtRZ8Ar4unPg@mail.gmail.com>
+From: Larissa MacFarquhar <larissa.macfarquhar@gmail.com>
+To: tor-assistants@torproject.org
+Subject: [tor-assistants] New Yorker magazine trying to contact Jacob
+	Appelbaum
+X-BeenThere: tor-assistants@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: "General support and information list to reach Tor developers and
+	researchers." <tor-assistants.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=unsubscribe>
+List-Post: <mailto:tor-assistants@lists.torproject.org>
+List-Help: <mailto:tor-assistants-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=subscribe>
+Content-Type: multipart/mixed; boundary="===============7363439263777617358=="
+Sender: tor-assistants-bounces@lists.torproject.org
+Errors-To: tor-assistants-bounces@lists.torproject.org
+
+--===============7363439263777617358==
+Content-Type: multipart/alternative; boundary=f46d04428998de5d6e04d4ddaabe
+
+--f46d04428998de5d6e04d4ddaabe
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm a writer at The New Yorker, and I'm trying to get in touch with Jacob
+Appelbaum to interview him for a long piece I'm writing about Aaron Swartz.
+I would be very grateful if you could pass on this message to him, or let
+me know how best to reach him.
+
+Thank you.
+
+Sincerely,
+
+Larissa MacFarquhar
+
+--f46d04428998de5d6e04d4ddaabe
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<br><div>I&#39;m a writer at The New Yorker, and I&#39;m trying to get in t=
+ouch with Jacob Appelbaum to interview him for a long piece I&#39;m writing=
+ about Aaron Swartz. I would be very grateful if you could pass on this mes=
+sage to him, or let me know how best to reach him.=A0</div>
+<div><br></div><div>Thank you.=A0</div><div><br></div><div>Sincerely,=A0</d=
+iv><div><br></div><div>Larissa MacFarquhar</div>
+
+--f46d04428998de5d6e04d4ddaabe--
+
+--===============7363439263777617358==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+tor-assistants mailing list
+tor-assistants@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants
+
+--===============7363439263777617358==--

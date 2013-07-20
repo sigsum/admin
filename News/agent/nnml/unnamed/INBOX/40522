@@ -1,0 +1,129 @@
+Return-Path: <Paul.Dekkers@surfnet.nl>
+Received: from borei.nordu.net ([193.10.252.27])
+	by kerio.nordu.net
+	(using TLSv1/SSLv3 with cipher AES256-SHA (256 bits))
+	for linus@kerio.nordu.net;
+	Fri, 13 Apr 2012 15:17:04 +0200
+Received: from e-mailfilter02.sunet.se (e-mailfilter02.sunet.se [192.36.171.202])
+	by borei.nordu.net (8.14.3/8.14.3) with ESMTP id q3DDH0sw012383
+	for <linus@nordu.net>; Fri, 13 Apr 2012 15:17:03 +0200 (CEST)
+X-DKIM: Sendmail DKIM Filter v2.7.2 borei.nordu.net q3DDH0sw012383
+Received: from out21-ams.mf.surf.net (out21-ams.mf.surf.net [145.0.1.21])
+	by e-mailfilter02.sunet.se (8.14.3/8.14.3/Debian-9.4) with ESMTP id q3DDGuYq007087
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)
+	for <linus@nordu.net>; Fri, 13 Apr 2012 15:17:00 +0200
+Received: from teletubbie.het.net.je (teletubbie.het.net.je [192.87.110.29])
+	by outgoing1-ams.mf.surf.net (8.14.3/8.14.3/Debian-5+lenny1) with ESMTP id q3DDGpLX014646
+	for <linus@nordu.net>; Fri, 13 Apr 2012 15:16:51 +0200
+Received: from [2001:610:508:109:e52b:daf:25ef:e576] (helo=dhcp-96.surfnet.nl)
+	by teletubbie.het.net.je with esmtpsa (TLSv1:CAMELLIA256-SHA:256)
+	(Exim 4.76 (FreeBSD))
+	(envelope-from <Paul.Dekkers@surfnet.nl>)
+	id 1SIgL9-000KPt-EV
+	for linus@nordu.net; Fri, 13 Apr 2012 15:15:03 +0200
+Message-ID: <4F88274E.3020009@surfnet.nl>
+Date: Fri, 13 Apr 2012 15:17:02 +0200
+From: Paul Dekkers <Paul.Dekkers@surfnet.nl>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:10.0.2) Gecko/20120216 Thunderbird/10.0.2
+MIME-Version: 1.0
+To: Linus Nordberg <linus@nordu.net>
+Subject: Re: return packets from different IP with multihome/alias/secondary
+ IP
+References: <4F8819D1.60907@surfnet.nl> <ysz4nsnu7oq.fsf@nordberg.se>
+In-Reply-To: <ysz4nsnu7oq.fsf@nordberg.se>
+X-Enigmail-Version: 1.4
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-Antivirus: no malware found
+X-Bayes-Prob: 0.0001 (Score 0, tokens from: @@RPTN, linus@nordu.net)
+X-Spam-Score: -0.10 () [Tag at 5.10] RBL(rp-good:-0.1)
+X-CanIt-Geo: ip=145.0.1.21; country=NL; region=09; city=Utrecht; latitude=52.0938; longitude=5.1191; http://maps.google.com/maps?q=52.0938,5.1191&z=6
+X-CanItPRO-Stream: nordu-net:linus@nordu.net (inherits from nordu-net:default,base:default)
+X-Canit-Stats-ID: 0aGVpgV03 - 28a49a1a14c3 - 20120413
+X-Scanned-By: MIMEDefang 2.63 on 193.10.252.27
+X-Scanned-By: CanIt (www . roaringpenguin . com) on 192.36.171.202
+X-Scanned-By: CanIt (www . roaringpenguin . com)
+X-Antispam-Training-Forget: https://mailfilter.nordu.net/canit/b.php?i=0aGVpgV03&m=28a49a1a14c3&t=20120413&c=f
+X-Antispam-Training-Nonspam: https://mailfilter.nordu.net/canit/b.php?i=0aGVpgV03&m=28a49a1a14c3&t=20120413&c=n
+X-Antispam-Training-Spam: https://mailfilter.nordu.net/canit/b.php?i=0aGVpgV03&m=28a49a1a14c3&t=20120413&c=s
+X-Greylist: Sender DNS name whitelisted, not delayed by milter-greylist-4.0.1 (borei.nordu.net [193.10.252.27]); Fri, 13 Apr 2012 15:17:04 +0200 (CEST)
+
+On 13-04-12 14:39, Linus Nordberg wrote:
+> Paul Dekkers <Paul.Dekkers@surfnet.nl> wrote
+> Fri, 13 Apr 2012 14:19:29 +0200:
+> 
+> | If I send a request to an alias/secondary IP, the results come from the
+> | primary IP:
+> | 
+> | 14:14:12.480724 IP 192.87.110.51.56615 > 192.87.19.123.1812: RADIUS,
+> | Access Request (1), id: 0x85 length: 130
+> | 14:14:12.520383 IP 192.87.19.122.1812 > 192.87.110.51.56615: RADIUS,
+> | Access Accept (2), id: 0x85 length: 20
+> | 
+> | The .123 is an address assigned by VRRP, and .122 is the primary address
+> | on this machine.
+> 
+> "This machine" is running radsecproxy binding to udp/1812?
+
+Yes,
+
+> | With VRRP for HA like situations, you might not want to bind to a
+> | specific address, but listen to all, and *reply* from the address the
+> | request came in from. (At least that's what FreeRADIUS does for instance.)
+> 
+> I think I'll need a radsecproxy config file in order to understand this
+> example and be able to reproduce it.
+
+It's very easy, just have an alias on your interface:
+
+root@lab122:~/radsecproxy# ip addr list eth0
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state
+UNKNOWN qlen 1000
+    link/ether 00:0c:29:b8:e7:90 brd ff:ff:ff:ff:ff:ff
+    inet 192.87.19.122/25 brd 192.87.19.127 scope global eth0
+    inet 192.87.19.123/32 scope global eth0
+    inet6 2001:610:508:19:20c:29ff:feb8:e790/64 scope global dynamic
+       valid_lft 2591899sec preferred_lft 604699sec
+    inet6 fe80::20c:29ff:feb8:e790/64 scope link
+       valid_lft forever preferred_lft forever
+
+The config itself can be as easy as this:
+
+LogLevel                5
+LogDestination          x-syslog:///LOG_LOCAL0
+
+LoopPrevention         On
+
+client default {
+        host 0.0.0.0/0
+        type     udp
+        secret   testing123
+}
+
+
+and anything else (simple server, realm) to reply to this packet.
+
+> Are you on Linux?  Linux has some weird notion of what source address to
+> use for packets going out on an interface with multiple addresses IIRC.
+
+Ok, I didn't check FreeBSD indeed.
+
+> | Do you think that's easy to repair, or do you think it's a feature? :-)
+> 
+> I have no idea yet.
+> 
+> 
+> | (At least radsecproxy doesn't accept results from a different IP itself.)
+> 
+> What do you mean?
+
+Well, if a radsecproxy server-part is sending out a request to
+192.87.19.122 and getting an answer back from 192.87.19.123 it ignores it.
+
+> Also, taking this to the list will raise the chances of someone with
+> experience in running radsecproxy can explain this.  I'm not such a
+> person, unfortunately.
+
+Ok, I can do that,
+
+Paul

@@ -1,0 +1,208 @@
+Return-Path: <root@modermodemet.adb-centralen.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 28 Apr 2013 03:07:15 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 222AB11536; Sun, 28 Apr 2013 03:07:15 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from modermodemet.adb-centralen.se (modermodemet.adb-centralen.se [193.10.5.101])
+	by smtp.nordberg.se (Postfix) with ESMTP id 680CC116B8
+	for <linus@nordberg.se>; Sun, 28 Apr 2013 03:07:10 +0200 (CEST)
+Received: by modermodemet.adb-centralen.se (Postfix)
+	id BD150291; Sun, 28 Apr 2013 03:07:10 +0200 (CEST)
+Delivered-To: root@modermodemet.adb-centralen.se
+Received: by modermodemet.adb-centralen.se (Postfix, from userid 0)
+	id BAE2D290; Sun, 28 Apr 2013 03:07:10 +0200 (CEST)
+To: root@modermodemet.adb-centralen.se
+Subject: modermodemet.adb-centralen.se daily run output
+Message-Id: <20130428010710.BAE2D290@modermodemet.adb-centralen.se>
+Date: Sun, 28 Apr 2013 03:07:10 +0200 (CEST)
+From: root@modermodemet.adb-centralen.se (Charlie Root)
+
+
+Removing stale files from /var/preserve:
+
+Cleaning out old system announcements:
+
+Removing stale files from /var/rwho:
+
+Removing stale entries from sendmail host status cache:
+mailwrapper: no mapping in /etc/mail/mailer.conf
+
+Backup passwd and group files:
+
+Verifying group file syntax:
+/etc/group is fine
+
+Backing up mail aliases:
+
+Backing up package db directory:
+
+Disk status:
+Filesystem                        Size    Used   Avail Capacity  Mounted on
+zroot                             183G    851M    182G     0%    /
+devfs                             1.0k    1.0k      0B   100%    /dev
+zroot/tmp                         182G     33M    182G     0%    /tmp
+zroot/tmp/var                     182G     23k    182G     0%    /tmp/var
+zroot/tmp/var/run                 182G     45k    182G     0%    /tmp/var/run
+zroot/u                           183G    636M    182G     0%    /u
+zroot/usr                         188G    5.4G    182G     3%    /usr
+zroot/usr/home                    244G     61G    182G    25%    /usr/home
+zroot/usr/ports                   183G    280M    182G     0%    /usr/ports
+zroot/usr/ports/distfiles         183G    206M    182G     0%    /usr/ports/distfiles
+zroot/usr/ports/packages          182G     93M    182G     0%    /usr/ports/packages
+zroot/usr/src.orig                183G    307M    182G     0%    /usr/src.orig
+zroot/var                         182G    2.2M    182G     0%    /var
+zroot/var/crash                   182G     22k    182G     0%    /var/crash
+zroot/var/db                      182G    126M    182G     0%    /var/db
+zroot/var/db/pkg                  182G    2.9M    182G     0%    /var/db/pkg
+zroot/var/empty                   182G     21k    182G     0%    /var/empty
+zroot/var/log                     182G     16M    182G     0%    /var/log
+zroot/var/mail                    182G    1.7M    182G     0%    /var/mail
+zroot/var/run                     182G     56k    182G     0%    /var/run
+zroot/var/tmp                     182G    1.7M    182G     0%    /var/tmp
+zroot/jail                        183G    748M    182G     0%    /jail
+zroot/jail/ln                     182G     32k    182G     0%    /jail/ln
+/jail/base                        183G    748M    182G     0%    /jail/ln/accept
+zroot/jail/ln/accept/etc          9.9M    1.7M    8.2M    17%    /jail/ln/accept/etc
+zroot/jail/ln/accept/root           1M     35k    965k     4%    /jail/ln/accept/root
+zroot/jail/ln/accept/tmp            2G     36k      2G     0%    /jail/ln/accept/tmp
+zroot/jail/ln/accept/var            1G     59M    956M     6%    /jail/ln/accept/var
+zroot/jail/ln/accept/usr-local    4.6G    611M    4.0G    13%    /jail/ln/accept/usr/local
+zroot/jail/ln/accept/home          10G     33k     10G     0%    /jail/ln/accept/home
+/jail/base                        183G    748M    182G     0%    /jail/ln/test
+zroot/jail/ln/test/etc             10M    1.5M    8.6M    14%    /jail/ln/test/etc
+zroot/jail/ln/test/root           1.0M     32k    991k     3%    /jail/ln/test/root
+zroot/jail/ln/test/tmp            2.0G     26k      2G     0%    /jail/ln/test/tmp
+zroot/jail/ln/test/var            1.0G     27M    996M     3%    /jail/ln/test/var
+zroot/jail/ln/test/usr-local      5.0G     21k      5G     0%    /jail/ln/test/usr/local
+zroot/jail/ln/test/home            10G     21k     10G     0%    /jail/ln/test/home
+/jail/base                        183G    748M    182G     0%    /jail/ln/proj
+zroot/jail/ln/proj/etc            9.9M    1.7M    8.2M    17%    /jail/ln/proj/etc
+zroot/jail/ln/proj/root           938k    582k    356k    62%    /jail/ln/proj/root
+zroot/jail/ln/proj/tmp              2G    116M    1.9G     6%    /jail/ln/proj/tmp
+zroot/jail/ln/proj/var            874M    177M    697M    20%    /jail/ln/proj/var
+zroot/jail/ln/proj/usr-local      4.4G    1.3G    3.1G    30%    /jail/ln/proj/usr/local
+zroot/jail/ln/proj/home            10G    6.7G    3.3G    67%    /jail/ln/proj/home
+/jail/base                        183G    748M    182G     0%    /jail/ln/dfri
+zroot/jail/ln/dfri/etc             10M    1.7M    8.3M    17%    /jail/ln/dfri/etc
+zroot/jail/ln/dfri/root           1.0M     55k    969k     5%    /jail/ln/dfri/root
+zroot/jail/ln/dfri/tmp            2.0G    141k      2G     0%    /jail/ln/dfri/tmp
+zroot/jail/ln/dfri/var            1.0G     95M    928M     9%    /jail/ln/dfri/var
+zroot/jail/ln/dfri/usr-local      5.0G    806M    4.2G    16%    /jail/ln/dfri/usr/local
+zroot/jail/ln/dfri/home            10G    364M    9.7G     4%    /jail/ln/dfri/home
+/jail/base                        183G    748M    182G     0%    /jail/ln/ln
+zroot/jail/ln/ln/etc               10M    1.5M    8.5M    15%    /jail/ln/ln/etc
+zroot/jail/ln/ln/root             1.0M     39k    984k     4%    /jail/ln/ln/root
+zroot/jail/ln/ln/tmp              2.0G     40k      2G     0%    /jail/ln/ln/tmp
+zroot/jail/ln/ln/var              1.0G    9.1M      1G     1%    /jail/ln/ln/var
+zroot/jail/ln/ln/usr-local        5.0G    1.0G      4G    20%    /jail/ln/ln/usr/local
+zroot/jail/ln/ln/home              10G     35k     10G     0%    /jail/ln/ln/home
+/jail/base                        183G    748M    182G     0%    /jail/ln/mail
+zroot/jail/ln/mail/etc             10M    1.5M    8.6M    14%    /jail/ln/mail/etc
+zroot/jail/ln/mail/root           1.0M     24k    999k     2%    /jail/ln/mail/root
+zroot/jail/ln/mail/tmp            2.0G     21k      2G     0%    /jail/ln/mail/tmp
+zroot/jail/ln/mail/var            1.0G    129k      1G     0%    /jail/ln/mail/var
+zroot/jail/ln/mail/usr-local      5.0G     21k      5G     0%    /jail/ln/mail/usr/local
+zroot/jail/ln/mail/home            10G     21k     10G     0%    /jail/ln/mail/home
+zroot/jail/jn                     182G     23k    182G     0%    /jail/jn
+/jail/base                        183G    748M    182G     0%    /jail/jn/j0
+zroot/jail/jn/j0/etc              9.4M    2.1M    7.2M    23%    /jail/jn/j0/etc
+zroot/jail/jn/j0/root             968k     69k    899k     7%    /jail/jn/j0/root
+zroot/jail/jn/j0/tmp                2G     54k      2G     0%    /jail/jn/j0/tmp
+zroot/jail/jn/j0/var              934M    383M    551M    41%    /jail/jn/j0/var
+zroot/jail/jn/j0/usr-local        4.7G    753M      4G    16%    /jail/jn/j0/usr/local
+zroot/jail/jn/j0/home              10G    521k     10G     0%    /jail/jn/j0/home
+devfs                             1.0k    1.0k      0B   100%    /jail/ln/accept/dev
+devfs                             1.0k    1.0k      0B   100%    /jail/jn/j0/dev
+devfs                             1.0k    1.0k      0B   100%    /jail/ln/dfri/dev
+devfs                             1.0k    1.0k      0B   100%    /jail/ln/proj/dev
+/jail/base                        183G    748M    182G     0%    /jail/ln/brk
+zroot/jail/ln/brk/etc              10M    1.5M    8.5M    15%    /jail/ln/brk/etc
+zroot/jail/ln/brk/root            1.0M     28k    995k     3%    /jail/ln/brk/root
+zroot/jail/ln/brk/tmp             2.0G     69k      2G     0%    /jail/ln/brk/tmp
+zroot/jail/ln/brk/var             1.0G     17M      1G     2%    /jail/ln/brk/var
+zroot/jail/ln/brk/usr-local       5.0G    239M    4.8G     5%    /jail/ln/brk/usr/local
+zroot/jail/ln/brk/home             10G     34k     10G     0%    /jail/ln/brk/home
+devfs                             1.0k    1.0k      0B   100%    /jail/ln/brk/dev
+/jail/base                        183G    748M    182G     0%    /jail/jbn/fcntl
+zroot/jail/jbn/fcntl/etc           10M    1.5M    8.6M    15%    /jail/jbn/fcntl/etc
+zroot/jail/jbn/fcntl/root         1.0M     27k    996k     3%    /jail/jbn/fcntl/root
+zroot/jail/jbn/fcntl/tmp          2.0G     34k      2G     0%    /jail/jbn/fcntl/tmp
+zroot/jail/jbn/fcntl/var          1.0G    1.1M      1G     0%    /jail/jbn/fcntl/var
+zroot/jail/jbn/fcntl/usr-local    5.0G    132M    4.9G     3%    /jail/jbn/fcntl/usr/local
+zroot/jail/jbn/fcntl/home          10G     33k     10G     0%    /jail/jbn/fcntl/home
+devfs                             1.0k    1.0k      0B   100%    /jail/jbn/fcntl/dev
+/jail/base                        183G    748M    182G     0%    /jail/ln/dup2
+zroot/jail/ln/dup2/etc             10M    1.7M    8.3M    17%    /jail/ln/dup2/etc
+zroot/jail/ln/dup2/root           1.0M     32k    992k     3%    /jail/ln/dup2/root
+zroot/jail/ln/dup2/tmp            2.0G     34k      2G     0%    /jail/ln/dup2/tmp
+zroot/jail/ln/dup2/var            1.0G     11M      1G     1%    /jail/ln/dup2/var
+zroot/jail/ln/dup2/usr-local      5.0G    258M    4.8G     5%    /jail/ln/dup2/usr/local
+zroot/jail/ln/dup2/home            10G     21k     10G     0%    /jail/ln/dup2/home
+devfs                             1.0k    1.0k      0B   100%    /jail/ln/dup2/dev
+/jail/base                        183G    748M    182G     0%    /jail/ln/execve
+zroot/jail/ln/execve/etc           10M    1.6M    8.4M    16%    /jail/ln/execve/etc
+zroot/jail/ln/execve/root         1.0M     27k    997k     3%    /jail/ln/execve/root
+zroot/jail/ln/execve/tmp          2.0G     36k      2G     0%    /jail/ln/execve/tmp
+zroot/jail/ln/execve/var           30G    871M     29G     3%    /jail/ln/execve/var
+zroot/jail/ln/execve/usr-local    5.0G    212M    4.8G     4%    /jail/ln/execve/usr/local
+zroot/jail/ln/execve/home          10G     21k     10G     0%    /jail/ln/execve/home
+devfs                             1.0k    1.0k      0B   100%    /jail/ln/execve/dev
+devfs                             1.0k    1.0k      0B   100%    /jail/ln/ln/dev
+
+Network interface status:
+Name    Mtu Network       Address              Ipkts Ierrs Idrop    Opkts Oerrs  Coll Drop
+usbus     0 <Link#1>                               0     0     0        0     0     0    0 
+em0    1500 <Link#2>      00:25:90:30:70:02 40264873350   130     0 31617597532     0     0 11257 
+em0    1500 193.10.5.0    modermodemet      833513809     -     - 37630645669     -     -    - 
+em0    1500 fe80::225:90f fe80::225:90ff:fe    81777     -     -   108972     -     -    - 
+em0    1500 modermodemet. 2001:6b0:8::101      51801     -     -    24281     -     -    - 
+em0    1500 193.10.5.85/3 accept            17220981     -     -        0     -     -    - 
+em0    1500 accept.adb-ce 2001:6b0:8::85      682366     -     -   772994     -     -    - 
+em0    1500 193.10.5.107/ 193.10.5.107      39122083622     -     -        0     -     -    - 
+em0    1500 in-use        2001:6b0:8::107    7192245     -     -  7439425     -     -    - 
+em0    1500 193.10.5.112/ admin.dfri.se      4495426     -     -        0     -     -    - 
+em0    1500 len.dfri.se   2001:6b0:8::112     163003     -     -    75899     -     -    - 
+em0    1500 193.10.5.108/ proj              199646496     -     -        0     -     -    - 
+em0    1500 proj.adb-cent 2001:6b0:8::108    4036017     -     -  6863266     -     -    - 
+em0    1500 193.10.5.111/ mail                400652     -     -        0     -     -    - 
+em0    1500 mail.adb-cent 2001:6b0:8::111     136915     -     -    24841     -     -    - 
+em0    1500 193.10.5.90/3 fcntl                36380     -     -        0     -     -    - 
+em0    1500 fcntl.adb-cen 2001:6b0:8::90       36372     -     -    14275     -     -    - 
+em0    1500 193.10.5.98/3 dup2                 38205     -     -        0     -     -    - 
+em0    1500 dup2.adb-cent 2001:6b0:8::98       82478     -     -    18081     -     -    - 
+em0    1500 193.10.5.89/3 execve             1659601     -     -        0     -     -    - 
+em0    1500 execve.adb-ce 2001:6b0:8::89      863529     -     -   714662     -     -    - 
+em0    1500 193.10.5.84/3 193.10.5.84        2939754     -     -        0     -     -    - 
+em1    1500 <Link#3>      00:25:90:30:70:03  2151180     0     0   232237     0     0    0 
+em1    1500 10.3.3.0      10.3.3.2            204128     -     -   223940     -     -    - 
+em1    1500 fe80::225:90f fe80::225:90ff:fe        0     -     -        2     -     -    - 
+usbus     0 <Link#4>                               0     0     0        0     0     0    0 
+lo0   16384 <Link#5>                         4762929     0     0  4762941     0     0    0 
+lo0   16384 your-net      localhost            13291     -     -  4762943     -     -    - 
+lo0   16384 localhost     ::1                      0     -     -   287209     -     -    - 
+lo0   16384 fe80::1%lo0   fe80::1                  0     -     -        0     -     -    - 
+pflog 33152 <Link#6>                               0     0     0 18057956     0     0    0 
+
+Local system status:
+ 3:01AM  up 218 days, 14:58, 1 user, load averages: 0.37, 0.20, 0.17
+
+Mail in local queue:
+Mail queue is empty
+
+Mail in submit queue:
+Mail queue is empty
+
+Security check:
+    (output mailed separately)
+
+Checking for rejected mail hosts:
+
+Checking for denied zone transfers (AXFR and IXFR):
+
+-- End of daily output --

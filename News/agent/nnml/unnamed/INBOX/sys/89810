@@ -1,0 +1,50 @@
+Return-Path: <root@salsa.sunet.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 28 Apr 2013 03:15:33 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id ECBA611756; Sun, 28 Apr 2013 03:15:33 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from salsa.sunet.se (salsa.sunet.se [130.242.60.20])
+	by smtp.nordberg.se (Postfix) with ESMTP id D1A8211536
+	for <linus@nordberg.se>; Sun, 28 Apr 2013 03:15:30 +0200 (CEST)
+Received: by salsa.sunet.se (Postfix)
+	id EEBBF15070; Sun, 28 Apr 2013 03:15:31 +0200 (CEST)
+Delivered-To: root@salsa.sunet.se
+Received: by salsa.sunet.se (Postfix, from userid 0)
+	id CF63615073; Sun, 28 Apr 2013 03:15:31 +0200 (CEST)
+To: root@salsa.sunet.se
+Subject: salsa.sunet.se daily output for Sun Apr 28 03:15:00 CEST 2013
+Message-Id: <20130428011531.CF63615073@salsa.sunet.se>
+Date: Sun, 28 Apr 2013 03:15:00 +0200 (CEST)
+From: root@salsa.sunet.se (Charlie Root)
+
+
+Uptime:  3:15AM up 98 days, 22:36, 0 users, load averages: 0.77, 2.64, 2.55
+
+Possible core dumps:
+/usr/home/bwscanner/torflow/NetworkScanners/BwAuthority/python2.6.20121105.core
+
+Checking subsystem status:
+
+disks:
+Filesystem        Size       Used      Avail %Cap    iUsed   iAvail %iCap Mount
+/dev/xbd0a        194M        27M       158M  14%      732    48866   1% /
+tmpfs             1.4M       356K       1.0M  25%     2190      626  77% /dev
+/dev/xbd0e        1.0G        40M       918M   4%     1504   127518   1% /var
+/dev/xbd0f        7.7G       3.1G       4.2G  43%   208550   799576  20% /usr
+tmpfs             512M        16K       512M   0%        6   524285   0% /tmp
+ptyfs             1.0K       1.0K         0B 100%      896      128  87% /dev/pts
+
+
+
+network:
+Name            Ipkts  Ierrs        Opkts  Oerrs  Colls
+xennet0     817934411      0    573990589      0      0
+lo0         487141453      0    487141453      0      0
+
+

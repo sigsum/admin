@@ -1,0 +1,29 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 67704)
+References: <20130706062008.GJ61092@turing.lan.9999.se>
+	<8738rcj5r3.fsf@nordberg.se>
+	<20130719073037.GF61092@turing.lan.9999.se>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-07
+To: Johan Nilsson <jn@9999.se>
+Cc: noc@dfri.net
+Subject: Re: Pingdom larm
+From: Linus Nordberg <linus@nordberg.se>
+Date: Fri, 19 Jul 2013 10:08:59 +0200
+--text follows this line--
+Johan Nilsson <jn@9999.se> wrote
+Fri, 19 Jul 2013 09:30:37 +0200:
+
+| On Thu, Jul 18, 2013 at 04:35:12PM +0200, Linus Nordberg wrote:
+| > | Någon som är sugen på att sätta upp egna kontroller?
+| > 
+| > Typ Nagios?
+| 
+| Ja typ. Nagios är väl standarden. En bra sak med Pingdom förutom att
+| vara snabb att komma igång med som jag inte vet ifall det kan göras
+| (lätt?) med Nagios är att de vid problem gör en till kontroll från
+| ytterligare en mätpunkt innan de larmar. 
+| Det tar bort mycket av problemet med att larm skickas när det bara
+| är fel på nätet/burken varifrån mätningen görs.
+
+Vi skulle kunna svarva vår egen superenkla testrigg i form av ett
+shellscript som pingar, kör curl och gnutls-cli och köra det på några
+olika burkar på internets (nordunet, sentor, romab, fler?).

@@ -1,0 +1,129 @@
+Return-Path: <prvs=16002a6843=christian@wirth.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 10 Sep 2012 10:37:42 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id C7A7A116B7; Mon, 10 Sep 2012 10:37:41 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_FRT_CONTACT
+	autolearn=ham version=3.3.0
+Received: from octans.se (mailbox.octans.se [78.108.54.3])
+	(using TLSv1 with cipher RC4-MD5 (128/128 bits))
+	(Client CN "mailbox.octans.se", Issuer "Equifax" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id 55620116B7
+	for <linus@nordberg.se>; Mon, 10 Sep 2012 10:37:39 +0200 (CEST)
+X-MDAV-Result: clean
+X-MDAV-Processed: octans.se, Mon, 10 Sep 2012 10:37:39 +0200
+Received: from destiny.et2605.com ([194.48.213.10])
+	by octans.se (octans.se [127.0.0.1])
+	(Cipher TLSv1:RC4-MD5:128) (MDaemon PRO v13.0.0)
+	with ESMTP id md50004677958.msg
+	for <linus@nordberg.se>; Mon, 10 Sep 2012 10:37:38 +0200
+X-MDRemoteIP: 194.48.213.10
+X-Return-Path: prvs=16002a6843=christian@wirth.se
+X-Envelope-From: christian@wirth.se
+X-MDaemon-Deliver-To: linus@nordberg.se
+Received: from localhost (eternity@localhost [127.0.0.1])
+	by destiny.et2605.com (8.14.1/8.14.2) with ESMTP id q8A8bdrW017059
+	for <linus@nordberg.se>; Mon, 10 Sep 2012 10:37:39 +0200
+Date: Mon, 10 Sep 2012 10:37:39 +0200 (CEST)
+From: Christian Wirth <christian@wirth.se>
+To: Linus Nordberg <linus@nordberg.se>
+Subject: Re: Transit i bromma!
+In-Reply-To: <yszharagxb0.fsf@nordberg.se>
+Message-ID: <Pine.LNX.4.64.1209101012320.16916@qrfgval.rg2605.pbz>
+References: <ysz627sh2jz.fsf@nordberg.se> <Pine.LNX.4.64.1209061140260.12067@qrfgval.rg2605.pbz>
+ <ysztxvah032.fsf@nordberg.se> <WC20120907060548.48008A@octans.se>
+ <yszharagxb0.fsf@nordberg.se>
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="818023125-1290315703-1347266259=:16916"
+
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--818023125-1290315703-1347266259=:16916
+Content-Type: TEXT/PLAIN; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+
+>
+> Ouuuuh. :-(
+>
+> Dealen med Atrato =E4r l=E5ngsiktig. Jag har bra kontakter d=E4r och dom
+> verkar seri=F6st intresserade av att st=F6dja v=E5r sak. Men 30k =E4r
+> vansinne.
+>
+> Jag pratade med Frank (NORDUnet) om Atrato och att TB bjuder p=E5
+> transport mm. Frank =E4r tajt med de som grundade och driver Atrato och
+> tror att TB skulle kunna f=E5 en bra deal p=E5 transit fr=E5n Atrato. Vil=
+l du
+> att jag skall unders=F6ka det? D=E5 skulle ni ju vilja ha en patch till d=
+om
+> iaf och det skulle inte bli f=F6r DFRI man tog en kostnad som inte g=E5r =
+att
+> r=E4kna hem igen. Iofs vet jag inte om ni vill ansluta i TC Bromma. De
+> finns p=E5 tv=E5 andra st=E4llen i Stockholm, Kista (Interxion) =E4r ett =
+av dem.
+>
+
+Tror inte det =E4r n=E5gon framkomlig v=E4g i n=E4rtid eftersom vi =E4r upp=
+l=E5sta i=20
+avtal med nuvarande leverant=F6rer =E5tminstone in i Q2 2013. Hmm. Det var=
+=20
+lite synd att vi fick ihop allt utan att g=F6ra n=E5gra f=F6r=E4ndringar p=
+=E5 TC.
+G=F6r man =E4nd=E5 f=F6r=E4ndringar brukar de vara mer ben=E4gna att bjuda =
+p=E5 patchar=20
+och liknande. L=E5t mig klura n=E5gra dagar...
+
+> | Yes. Men d=E5 l=E5ter det som att vi skulle f=F6rs=F6ka f=E5 upp en DFR=
+I-switch
+> | p=E5 KN7 och lyfta kopplingen mot Portlane, TB, STHIX och SOLIX till de=
+n, s=E5
+> | att det =E4r klart n=E4r det blir klart med flyttdatum f=F6r SUNET-fibe=
+rn. N=E4r
+> | vi vet flyttdatum beh=F6ver vi ju d=E5 bara synka med Liderofolket s=E5=
+ att ena
+> | fibern blir Sunet-Solix och andra fibern patchas vidare i ena fibern mo=
+t
+> | oss, och den fibern =E4r ju d=E5 redan p=E5 plats.
+> |
+> | L=E5ter det som en plan? SOLIX =E4r ju inte i drift =E4nnu p=E5 KN7 s=
+=E5 jag
+> | antar att en flytt ligger minst en m=E5nad bort i tiden, men vi kan v=
+=E4l
+> | b=F6rja rota lite i det under september?
+>
+> Om du kan undvara en S3900 s=E5 vore det toppen!
+>
+> Fint med n=E5gon som b=E5de planerar och st=E4ller upp med h=E5rdvara _oc=
+h_
+> hands'n'feet. :-)
+>
+> Allvarligt talat s=E5 =E4r det du g=F6r ov=E4rderligt f=F6r DFRI. Jag =E4=
+r v=E4ldigt
+> glad att du g=F6r s=E5 mycket bra jobb f=F6r oss.
+
+S3900:an sitter p=E5 plats nu, jag ska fixa upp en kanal till din switch p=
+=E5=20
+KN1 n=E4sta g=E5ng jag passerar, s=E5 kan vi flytta =F6ver lite trafik osv =
+efter=20
+det. Har Sunet n=E5gon plan p=E5 n=E4r de t=E4nker flytta sin fiber?
+
+Provat att preffa trafik =E4n? Ripe? Lunch? Eller var du stallad med jobb=
+=20
+=E4nnu?
+
+Det =E4r kul att kunna bidra p=E5 n=E5got s=E4tt, och just nu n=E4r vi sj=
+=E4lva g=F6r s=E5=20
+mycket jobb iom flytten =E4r det marginellt extrajobb att dra n=E5gra extra=
+=20
+tr=E5dar :-)
+
+/Christian
+
+
+
+--818023125-1290315703-1347266259=:16916--
+

@@ -1,0 +1,98 @@
+Return-Path: <tor-assistants-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 05 Mar 2012 19:55:07 +0100
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 8931E116F4; Mon,  5 Mar 2012 19:55:07 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id C592D116BD
+	for <linus@nordberg.se>; Mon,  5 Mar 2012 19:55:05 +0100 (CET)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id A8E0423E67;
+	Mon,  5 Mar 2012 18:55:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 1534D23BAA
+	for <tor-assistants@lists.torproject.org>;
+	Mon,  5 Mar 2012 18:55:01 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id D0Fxf-X8+yV1 for <tor-assistants@lists.torproject.org>;
+	Mon,  5 Mar 2012 18:55:01 +0000 (UTC)
+Received: from moria.seul.org (moria.csail.mit.edu [128.31.0.34])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "moria.mit.edu", Issuer "moria.mit.edu" (not verified))
+	by eugeni.torproject.org (Postfix) with ESMTPS id F1B56223DF
+	for <tor-assistants@torproject.org>;
+	Mon,  5 Mar 2012 18:55:00 +0000 (UTC)
+Received: by moria.seul.org (Postfix, from userid 1002)
+	id 84D711051483E; Mon,  5 Mar 2012 13:54:57 -0500 (EST)
+Date: Mon, 5 Mar 2012 13:54:57 -0500
+From: Roger Dingledine <arma@mit.edu>
+To: madelinejenglund@hushmail.com
+Message-ID: <20120305185457.GL2570@moria.seul.org>
+References: <20120305140805.62B3814DBD8@smtp.hushmail.com>
+	<20120305120942.5e820f61@kilik>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20120305120942.5e820f61@kilik>
+User-Agent: Mutt/1.5.20 (2009-06-14)
+Cc: tor-assistants@torproject.org
+Subject: Re: [tor-assistants] abusive spam mail
+X-BeenThere: tor-assistants@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: "General support and information list to reach Tor developers and
+	researchers." <tor-assistants.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=unsubscribe>
+List-Post: <mailto:tor-assistants@lists.torproject.org>
+List-Help: <mailto:tor-assistants-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: tor-assistants-bounces@lists.torproject.org
+Errors-To: tor-assistants-bounces@lists.torproject.org
+
+On Mon, Mar 05, 2012 at 12:09:42PM -0500, Andrew Lewman wrote:
+> In summary, I think the answer is to treat the email in question as
+> spam.
+> 
+> madelinejenglund@hushmail.com wrote:
+> > Recently I received an abusive spam email asking me for credit card
+> > information. The email included some html code, which I include
+> > hereunder.
+> > 
+> > I suspect one of the Swedish Tor relays to be involved.
+> > 
+> > The mail was originating from 95.143.193.103 and a lookup in the
+> > available relays in Sweden gave me :
+> > 
+> > SwedishBikiniTeam (Online)
+> > Location: Sweden
+> > IP Address: 95.143.193.145
+> > Platform: Tor 0.2.3.10-alpha (git-1fbce83f8c56d9c6) on Linux x86_64
+> > 
+> > This IP is very near the one sending the abusive mail, probably
+> > containing a virus
+
+You didn't send the mail headers, but my first thought is actually that
+this has nothing to do with that Tor relay. The 95.143.193.0/24 subnet
+is full of dedicated hosting boxes. Perhaps one of them (not the one
+running the Tor relay) got compromised and is being used to send spam?
+
+--Roger
+
+_______________________________________________
+tor-assistants mailing list
+tor-assistants@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants

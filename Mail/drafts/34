@@ -1,0 +1,30 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 51741)
+References: <20120403083040.GE25099@torproject.org>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2012-04
+To: Mike Perry <mikeperry@torproject.org>
+Cc: dir-auth@lists.torproject.org,  tor-assistants@torproject.org
+Subject: Re: [tor-assistants] ides to relocate and become turtles
+From: Linus Nordberg <linus@nordberg.se>
+Date: Tue, 03 Apr 2012 13:11:16 +0200
+--text follows this line--
+Mike Perry <mikeperry@torproject.org> wrote
+Tue, 3 Apr 2012 01:30:40 -0700:
+
+| I will be writing up my thoughts on addressing this adversary in a
+| tor-relays post, possibly followed by a blog post. Because of my beliefs
+| wrt consensus security, my recommendations will be focused around
+| defining best practices that provide the best bang for the buck for
+| normal relay operators, as opposed to dirauth operators. But I hope to
+| include recommendations that dirauth operators will find useful, too.
+
+I'm looking forward to reading that.  I've recently spent a considerable
+amount of time thinking of and implementing host and network security
+for maatuska (plus fighting all the rl and cyber daemons you could ever
+dream of and then some).
+
+My choice of operating system (FreeBSD) might make many of my specific
+findings less valuable to the masses but the recently started analysis
+of what kind of network traffic my directory authority attracts and
+produces (!) is probably something all of the authority operators and
+possibly a larger community will find useful and food for thought.
+Before I cry wolf over that

@@ -1,0 +1,645 @@
+X-From-Line: root@tool Wed Sep 19 08:40:12 2012
+Return-path: <root@tool>
+Envelope-to: root@tool
+Delivery-date: Wed, 19 Sep 2012 08:40:12 +0200
+Received: from root by tool with local (Exim 4.72)
+	(envelope-from <root@tool>)
+	id 1TEDxE-00046j-4S
+	for root@tool; Wed, 19 Sep 2012 08:40:12 +0200
+Date: Wed, 19 Sep 2012 08:40:12 +0200
+X-Gnus-Mail-Source: file:/var/mail/linus
+Message-Id: <E1TEDxE-00046j-4S@tool>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Subject: apt-listchanges: news for tool
+To: root@tool
+From: root <root@tool>
+Lines: 625
+Xref: tool mail.misc:2
+
+eglibc (2.13-25) unstable; urgency=medium
+
+  Starting with the eglibc package version 2.13-5, the libraries are 
+  shipped in the multiarch directory /lib/<triplet> instead of the more
+  traditional /lib, where <triplet> is the multiarch triplet and can be
+  retrieved with 'dpkg-architecture -qDEB_HOST_MULTIARCH'. Similarly the
+  includes are now shipped in /usr/include/<triplet> instead of the more
+  traditional /usr/include.
+  
+  The toolchain in Debian has been updated to cope with that, and most
+  build systems should be unaffected. If you are using a non-Debian 
+  toolchain to build your software and it is not able to cope with 
+  multiarch, you might try to pass the following options to your 
+  compiler:
+
+    -B/usr/lib/<triplet> -I/usr/include/<triplet>
+  
+  Alternatively if the build system makes hard to pass the above options,
+  you might try to set the LIBRARY_PATH and CPATH environment variables:                                                                                                                                                          
+    LIBRARY_PATH=/usr/lib/<triplet>
+    CPATH=/usr/include/<triplet>
+    export LIBRARY_PATH CPATH
+
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 09 Jan 2012 12:47:16 +0100 
+
+eglibc (2.13-7) unstable; urgency=low
+
+  Starting with version 2.13, eglibc provides an SSSE3 optimized version 
+  of memcpy() on the amd64 architecture. This version might copy memory 
+  backward in some conditions, which causes issues if the source and 
+  destination overlap. memmove() should be used in such cases, but some 
+  programs still wrongly use memcpy().
+
+  For this reason, on the amd64 architecture the Debian package provides 
+  two wrappers which can be use to workaround and/or debug the issue:
+  - /usr/lib/x86_64-linux-gnu/libc/memcpy-preload.so simply replace all 
+    calls to memcpy() by a call to memmove()
+  - /usr/lib/x86_64-linux-gnu/libc/memcpy-syslog-preload.so does the same,
+    but in addition logs (with rate limit) the issue to syslog, so that it 
+    can be detected and fixed.
+
+  To use these wrapper on a single binary, the easiest way is to use the
+  LD_PRELOAD environment variable:
+  - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libc/memcpy-preload.so /path/to/binary
+  - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libc/memcpy-syslog-preload.so /path/to/binary
+
+  For system-wide usage, it is possible to add the path of one of the 
+  wrapper to /etc/ld.so.preload.
+
+  For more details about the issue, please see:
+    http://bugs.debian.org/625521
+    http://sourceware.org/bugzilla/show_bug.cgi?id=12518
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 11 Jun 2011 18:02:52 +0200
+
+apt (0.8.11) unstable; urgency=low
+
+  * apt-get install pkg/experimental will now not only switch the
+    candidate of package pkg to the version from the release experimental
+    but also of all dependencies of pkg if the current candidate can't
+    satisfy a versioned dependency.
+
+ -- David Kalnischkies <kalnischkies@gmail.com>  Fri, 03 Dec 2010 14:09:12 +0100
+
+bogofilter (1.2.2-3) unstable; urgency=low
+
+  * If this is a new installation, or if you are upgrading from a
+    version prior to 0.93.0-1, you should have no problems.
+    If you are using the BDB backend with transactions enabled (they're
+    disabled by default), you must manually clean-up your transaction logs
+    before it will function again.
+  - To do so, first make sure you have the db4.X-util package
+    installed, the precise version depending on the Debian release
+    you upgrade from:
+        * lenny (bogofilter 1.1.7-1): db4.6-util
+        * squeeze (bogofilter 1.2.2-2): db4.8-util
+        * unstable (bogofilter 1.2.2-2): db4.8-util
+  - Then (substitute 4.8 below for the version of your release):
+        1. Stop invocation of bogofilter
+        2. db4.8_recover -h ~/.bogofilter
+        3. rm ~/.bogofilter/lockfi*
+        4. cd ~/.bogofilter && rm $(db4.8_archive -h .)
+        5. Resume invocation of bogofilter
+  - Repeat this upgrade procedure for each relevant bogofilter
+    wordlist database, substituting the directory name for
+    "~/.bogofilter".
+  * Alternately, if you don't want to upgrade your database, you
+    may move or delete it and rebuild your wordlist from scratch.
+
+ -- Serafeim Zanikolas <sez@debian.org>  Sat, 09 Apr 2011 21:04:24 +0200
+
+ca-certificates (20120212) unstable; urgency=low
+
+  Update mozilla/certdata.txt to version 1.81
+    Certificates added (+) and removed (-):
+    + "Security Communication RootCA2"
+    + "EC-ACC"
+    + "Hellenic Academic and Research Institutions RootCA 2011"
+    - "Verisign Class 2 Public Primary Certification Authority"
+    - "Verisign Class 4 Public Primary Certification Authority - G2"
+    - "TC TrustCenter, Germany, Class 2 CA"
+    - "TC TrustCenter, Germany, Class 3 CA"
+
+ -- Michael Shuler <michael@pbandjelly.org>  Sun, 12 Feb 2012 15:12:59 -0600
+
+ca-certificates (20111211) unstable; urgency=low
+
+  Remove French Government IGC/A CA certificates. The RSA certificate is
+    included in the Mozilla bundle and the DSA certificate is not in use.
+  Remove expired signet.pl CAs.
+  Remove expired brasil.gov.br CA.
+
+ -- Michael Shuler <michael@pbandjelly.org>  Sun, 11 Dec 2011 19:05:32 -0600
+
+ca-certificates (20111025) unstable; urgency=low
+
+  Update mozilla/certdata.txt to latest (NSS branch version 1.64.2.13)
+    Certificates added (+) and removed (-):
+    + "AffirmTrust Commercial"
+    + "AffirmTrust Networking"
+    + "AffirmTrust Premium"
+    + "AffirmTrust Premium ECC"
+    + "A-Trust-nQual-03"
+    + "Certinomis - Autorité Racine"
+    + "Certum Trusted Network CA"
+    + "Go Daddy Root Certificate Authority - G2"
+    + "Root CA Generalitat Valenciana"
+    + "Starfield Root Certificate Authority - G2"
+    + "Starfield Services Root Certificate Authority - G2"
+    + "TWCA Root Certification Authority"
+    - "AOL Time Warner Root Certification Authority 1"
+    - "AOL Time Warner Root Certification Authority 2"
+    - "DigiNotar Root CA"
+    - "Entrust.net Global Secure Personal CA"
+    - "Entrust.net Global Secure Server CA"
+    - "Entrust.net Secure Personal CA"
+    - "IPS Chained CAs root"
+    - "IPS CLASE1 root"
+    - "IPS CLASE3 root"
+    - "IPS CLASEA1 root"
+    - "IPS CLASEA3 root"
+    - "IPS Timestamping root"
+    - "Thawte Personal Freemail CA"
+    - "Thawte Time Stamping CA"
+  Update CAcert-Class 3-Subroot-certificate  Closes: #630232
+
+ -- Michael Shuler <michael@pbandjelly.org>  Sun, 23 Oct 2011 23:16:57 -0500
+
+ca-certificates-java (20110425) unstable; urgency=low
+
+  The package will add a prefix 'debian:' to the aliases in the keystore from
+  now on. Old entries will be removed during the update but other local
+  changes will be kept. A backup of the old keystore can be found in
+  /etc/ssl/certs/java/cacerts.dpkg-old.
+
+ -- Torsten Werner <twerner@debian.org>  Mon, 25 Apr 2011 15:18:22 +0200
+
+cron (3.0pl1-119) unstable; urgency=low
+
+    The semantics of the -L option of the cron daemon have changed: from
+    now on, the value will be interpreted as a bitmask of various log
+    selectors, with "1" (log only the start of jobs) being the new default.
+
+    Additionally, since -117 (NEWS entry was overlooked), the LSBNAMES
+    variable in /etc/default/cron was merged with the EXTRA_OPTS variable
+    as it was redundant.
+
+ -- Christian Kastner <debian@kvr.at>  Sun, 07 Aug 2011 21:13:19 +0200
+
+cyrus-sasl2 (2.1.25.dfsg1-5) unstable; urgency=low
+
+  * Configuration of SQL engine backends have changed from database
+    specific configuration (e.g. 'mysql') to generic 'sql' auxprop
+    plugin.
+  
+    You will need to change your configuration f.e. from:
+  
+        auxprop_plugin: mysql
+  
+    to
+  
+        auxprop_plugin: sql
+        sql_engine: mysql
+  
+    Also the SQL query (if used) needs to have '%u' replaced with '%u@%r'
+    because now user and realm is provided separately.
+
+ -- Ondřej Surý <ondrej@debian.org>  Mon, 06 Aug 2012 13:12:22 +0200
+
+gconf (3.2.3-2) unstable; urgency=low
+
+  GConf 3.x introduces important internal changes that allow it to drop
+  obsolete ORBit libraries in favour of a new D-Bus interface.
+
+  While the GConf API remains compatible, after a system running gconfd
+  2.32 is upgraded to 3.2, newly launched applications will be unable to
+  talk to the old daemon, and will fail to load their configuration.
+
+  Simply restarting your X session will be enough to load the new gconfd
+  and restore the affected functionality.
+
+ -- Jordi Mallach <jordi@debian.org>  Thu, 23 Feb 2012 17:57:58 +0100
+
+hamster-applet (2.91.3+git20110714.9aefd7-1) experimental; urgency=low
+
+  * Starting from this version, hamster is no longer a GNOME panel 
+    applet, but a standalone application. You can run it from the menus, 
+    and it will use the notification area to remain one click away.
+
+ -- Josselin Mouette <joss@debian.org>  Fri, 19 Aug 2011 20:44:02 +0200
+
+ifupdown (0.7~rc1+experimental) experimental; urgency=low
+
+    The --all option to ifup and ifquery can now be combined with the
+    --allow option to act on all interfaces of a specific class (still
+    defaulting to the class 'auto'). If you have custom hook scripts, you
+    may need to update them. See interfaces(5) for details.
+
+ -- Andrew O. Shadura <bugzilla@tut.by>  Tue, 17 Apr 2012 01:05:42 +0200
+
+imagemagick (8:6.6.9.7-3) unstable; urgency=low
+  
+  Please note that imagemagick version 6.6.9.7 has moved its global 
+  configuration files from /usr/share/imagemagick to /etc/ImageMagick, 
+  following the FHS. See the package imagemagick-doc or 
+  http://www.imagemagick.org/script/resources.php for more information 
+  on configuring ImageMagick.
+  .
+  This will lose any changes you may have made to these files, 
+  in the extremely unlikely case that you have customized them (doing so 
+  was not officially supported by either upstream or Debian versions 
+  before 6.6.9).
+
+ -- Bastien Roucariès <roucaries.bastien+debian@gmail.com>  Sun, 01 May 2011 13:43:12 +0200
+
+libhtml-tree-perl (5.00-1) unstable; urgency=low
+
+  [THINGS THAT MAY BREAK YOUR CODE OR TESTS]
+  * Use weak references to avoid memory leaks
+    See "Weak References" in HTML::Element for details.
+  * new_from_file now dies if the file cannot be opened.  $! records
+    the specific problem.  (Previously, you got a tree with a few
+    implicit elements.)
+  * Some methods normally returning a scalar could return the empty
+    list in certain circumstances.  This has been corrected.  The
+    affected methods are: address, deobjectify_text, detach, is_inside,
+    & pindex.
+  * deprecate the Version sub/method.  Use the VERSION method instead.
+
+ -- gregor herrmann <gregoa@debian.org>  Fri, 15 Jun 2012 14:50:32 +0200
+
+libreoffice (1:3.5.2-2) unstable; urgency=low
+
+  * The script provider for python (which was in python-uno before) has been
+    split out into libreoffice-script-provider-python as it's the same in both
+    variants and python-uno should contain just the module anyway.  
+
+    If you relied on python-uno for the script provider, install the new
+    package in addition.
+
+ -- Rene Engelhard <rene@debian.org>  Sat, 07 Apr 2012 14:30:41 +0200
+
+linux-base (3) unstable; urgency=low
+
+  * Some HP Smart Array controllers are now handled by the new 'hpsa'
+    driver, rather than the 'cciss' driver.
+
+    While the cciss driver presented disk device names beginning with
+    'cciss/', hpsa makes disk arrays appear as ordinary SCSI disks and
+    presents device names beginning with 'sd'.  In a system that already
+    has other SCSI or SCSI-like devices, names may change unpredictably.
+
+    During the upgrade from earlier versions, you will be prompted to
+    update configuration files which refer to device names that may
+    change.  You can choose to do this yourself or to follow an automatic
+    upgrade process.  All changed configuration files are backed up with
+    a suffix of '.old' (or '^old' in one case).
+
+ -- Ben Hutchings <ben@decadent.org.uk>  Wed, 16 Mar 2011 13:19:34 +0000
+
+lirc (0.9.0~pre1-1) unstable; urgency=low
+
+    lirc_cmdir has been dropped upstream in favour of a userspace module 
+    (commandir). lirc_ene0100, lirc_imon, lirc_mceusb/ lirc_mceusb2 and
+    lirc_streamzap have been ported to the new RC_CORE input subsystem, which
+    requires different configuration methods and "ir-keytable" for keytable 
+    upload.
+
+    lirc-modules-source has been superseded by kernel >= 2.6.37, which has
+    merged lirc under staging. Conversion of traditional lirc modules to the
+    new RC_CORE subsystem is still ongoing and may require config adaptions for
+    newly ported modules.
+
+    The kernel/ userspace ABI between staging lirc modules in the upstream
+    kernel and those provided by previous lirc-modules-source packages is not
+    compatible, only >= 0.9~ userspace and staging kernel modules from 
+    >= 2.6.37 can cooperate.
+
+    lirc-svga (smode2) has been dropped in favour of lirc-x (xmode2) or mode2
+    from the main lirc binary.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 15 Feb 2011 20:34:31 +0100
+
+logrotate (3.8.0-1) experimental; urgency=low
+
+  Please note that this update changes the behaviour of logrotate:
+
+  Logrotate now skips directories which are world writable or writable 
+  by group which is not "root" unless the (new) "su" directive is used.
+
+ -- Paul Martin <pm@debian.org>  Sun, 28 Aug 2011 19:16:36 +0100
+
+lsb (4.1+Debian1) unstable; urgency=low
+
+  This version implements a new "Fancy output" in the form of "[....] "
+  blocks prepended to the daemon status messages:
+
+  Before:
+     Starting/stopping long daemon name: daemond daemon2d
+  After:
+     [....] Starting/stopping long daemon name: daemond daemon2d
+
+  This block will become either a green [ ok ], a yellow [warn]
+  or a red [FAIL] depending on the daemon exit status.
+
+  The "Fancy output" can be disabled by setting the FANCYTTY variable to 0
+  in the /etc/lsb-base-logging.sh configuration file.
+
+ -- Didier Raboud <odyx@debian.org>  Thu, 19 Apr 2012 11:25:01 +0200
+
+mono (2.10.1-1) experimental; urgency=low
+
+  * Mono 2.10
+    + SGen Precise Stack Scanning
+    + Enhanced SIMD with new methods for Vector data type conversions and
+      swapping elements in vectors
+    + ASP.NET MVC 3.0 (not included, only supported)
+    + The C# Interactive Shell can now be used as shebang:
+      #!/usr/bin/csharp
+  * Complete Announcement of Mono 2.10 (vs Mono 2.8):
+    http://www.mono-project.com/Release_Notes_Mono_2.10
+
+  * Mono 2.8
+    + SGen Garbage Collector
+    + .NET 4.0 runtime
+    + C# 4.0 compiler
+    + ASP.NET 4.0
+    + Managed Extensibility Framework (MEF)
+    + System.Data.Services.Client (OData)
+    + glib was replaced with eglib
+    + Removed .NET 1.1 runtime
+    + Removed libraries:
+      - ByteFX.Data
+      - FirebirdSql.Data.Firebird
+      - Microsoft.JScript
+      - Microsoft.Vsa
+      - Mono.Data
+      - Mono.Data.SqliteClient
+      - Mono.Data.SybaseClient
+      - Mono.Data.TdsClient
+      - Mono.GetOptions
+  * Complete Announcement of Mono 2.8 (vs Mono 2.6):
+    http://www.mono-project.com/Release_Notes_Mono_2.8
+
+  * Mono 2.6.7
+    + ASP.NET MVC 2.0
+  * Complete Announcement of Mono 2.6.7 (vs Mono 2.6):
+    http://www.mono-project.com/Release_Notes_Mono_2.6.7
+
+  * Mono 2.6
+    + Soft debugger
+    + Co-routine framework Mono.Tasklets
+    + Auto-completion for the csharp shell
+    + LINQ to SQL
+    + Enhanced XBuild
+    + Mono.Simd for AMD64
+    + Verifier and Sandbox (used by Moonlight)
+    + Debugging support for GDB
+  * Complete Announcement of Mono 2.6 (vs Mono 2.4):
+    http://www.mono-project.com/Release_Notes_Mono_2.6
+
+ -- Mirco Bauer <meebey@debian.org>  Tue, 15 Mar 2011 21:21:51 +0100
+
+mutt (1.5.21-2) experimental; urgency=low
+  mailto-mutt has been replaced by a wrapper as per #576313, because mutt is now
+  able to handle the mailto: urls; additionally it will also do some checks on
+  attachments and it will allow us to be as close to upstream as possible
+
+ -- Antonio Radici <antonio@dyne.org>  Sat, 01 Jan 2011 12:56:29 +0000
+
+pam (1.1.2-1) unstable; urgency=low
+
+  * Name of option for minimum Unix password length has changed
+
+    The Debian-specific 'min=n' option to pam_unix for specifying minimum
+    lengths for new passwords has been replaced by a new upstream option
+    called 'minlen=n'.  If you are using 'min=n' in
+    /etc/pam.d/common-password, this will be migrated to the new option name
+    for you on upgrade.  If you have configured pam_unix password changing
+    elsewhere on your system, such as in a PAM profile under
+    /usr/share/pam-configs or in other files in /etc/pam.d, you will need to
+    update them by hand for this change.
+
+ -- Steve Langasek <vorlon@debian.org>  Tue, 31 Aug 2010 23:09:30 -0700
+
+patch (2.6.1-1) unstable; urgency=low
+
+  The options -U --unified-reject-files and --global-reject-file have now been
+  removed.
+
+ -- Christoph Berg <myon@debian.org>  Sun, 06 Feb 2011 20:17:11 +0100
+
+pcmciautils (018-1) unstable; urgency=low
+
+  /etc/init.d/pcmciautils is now gone and pcmciautils will no longer
+  load any driver modules.
+  
+  If you need to load a driver module which is not automatically loaded
+  (e.g. i82365 if you lack PNP), then please add it to /etc/modules.
+
+ -- Per Olofsson <pelle@debian.org>  Mon, 25 Apr 2011 21:40:14 +0200
+
+procps (1:3.3.1-1) unstable; urgency=low
+
+  * top has a new rcfile format from 3.3.1 which is not backwards compatible
+    from a rcfile save from a pre-3.3.1 top.
+
+ -- Craig Small <csmall@debian.org>  Mon, 23 Jan 2012 22:26:16 +1100
+
+python-mechanize (1:0.2.5-2) unstable; urgency=low
+
+    Since mechanize 0.2.0, ClientForm has been merged into mechanize. You
+    can update source code based on ClientForm by replacing any occurrence
+    of ClientForm by mechanize in your source code, and ensure any use of
+    the module logging logger named "ClientForm" is updated to use the new
+    logger name "mechanize.forms".
+
+ -- Arnaud Fontaine <arnau@debian.org>  Fri, 09 Mar 2012 14:49:26 +0900
+
+rsyslog (5.8.1-1) unstable; urgency=low
+
+  The way rsyslog processes SIGHUP has changed. It no longer does a reload
+  of its configuration, but simply closes all open files, which is a much more
+  lightweight operation.
+  To apply a changed configuration, rsyslogd needs to be restarted now.
+  As a consequence, the reload action has been dropped from the init script.
+
+  A new action called "rotate" was added to the init script, which signals
+  rsyslogd to close all open files. This new action is used in the rsyslog
+  logrotate configuration file.
+
+  For more information, see:
+  http://www.rsyslog.com/doc/v4compatibility.html
+  http://www.rsyslog.com/doc/v5compatibility.html
+
+ -- Michael Biebl <biebl@debian.org>  Mon, 30 May 2011 18:26:51 +0200
+
+samba (2:3.6.5-2) unstable; urgency=low
+
+    NSS modules have been split out from libpam-winbind to
+    libnss-winbind.
+    
+    If Recommends: installs are disabled on your system you may need
+    to manually install the libnss-winbind package after upgrading
+    from former versions of winbind (for instance from squeeze) or
+    from former versions of libpam-winbind.
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 07 May 2012 22:16:32 +0200
+
+samba (2:3.5.11~dfsg-3) unstable; urgency=low
+
+    PAM modules and NSS modules have been split out from the winbind
+    package into libpam-winbind.
+    
+    If Recommends: installs are disabled on your system you may need
+    to manually install the libpam-winbind package after upgrading
+    from former versions of winbind (for instance from squeeze)
+
+ -- Steve Langasek <vorlon@debian.org>  Fri, 21 Oct 2011 20:00:13 +0000
+
+sane-backends (1.0.22-1) unstable; urgency=low
+
+  Starting with this version, sane-backends requires the /dev filesystem to
+  support ACLs in order to manage the permissions on scanner devices.
+
+  This change was made to provide better support for multi-function (MFP)
+  devices.
+
+  No action is required on standard Debian systems for this to work; however,
+  if you have an unusual setup or use a custom kernel, make sure ACLs are
+  available on /dev on your system.
+
+ -- Julien BLACHE <jblache@debian.org>  Thu, 02 Jun 2011 14:57:53 +0200
+
+sgml-base (1.26+nmu2) unstable; urgency=low
+
+  Starting with this release the SGML super catalog /etc/sgml/catalog will be
+  replaced with a symbolic link to /var/lib/sgml-base/supercatalog. The latter
+  file can be regenerated from the contents of the /etc/sgml directory including
+  all files ending in .cat using the new update-catalog --update-super option.
+  This call will be (dpkg) triggered by packages placing files in /etc/sgml. The
+  transition to this way of handling the super catalog will loose user changes to
+  /etc/sgml/catalog. Further overwriting of user changes will happen until all
+  packages using dh_installcatalogs are built with a fixed version of debhelper.
+  Sorry for the inconvenience.
+
+ -- Helmut Grohne <helmut@subdivi.de>  Mon, 30 Apr 2012 16:37:01 +0200
+
+sudo (1.8.2-1) unstable; urgency=low
+
+  The sudo package is no longer configured using --with-secure-path.
+  Instead, the provided sudoers file now contains a line declaring
+  'Defaults secure_path=' with the same path content that was previously
+  hard-coded in the binary.  A consequence of this change is that if you
+  do not have such a definition in sudoers, the PATH searched for commands
+  by sudo may be empty.
+
+  Using explicit paths for each command you want to run with sudo will work
+  well enough to allow the sudoers file to be updated with a suitable entry
+  if one is not already present and you choose to not accept the updated
+  version provided by the package.
+  
+ -- Bdale Garbee <bdale@gag.com>  Wed, 24 Aug 2011 13:33:11 -0600
+
+sysv-rc (2.88dsf-28) unstable; urgency=low
+
+  Dependency based boot ordering is now required.
+
+  Most systems will already be using dependency based boot ordering.
+  This includes all squeeze and later releases, unless you have taken
+  deliberate action to disable it.  Installations upgraded from etch,
+  lenny or earlier releases will have enabled dependency based booting
+  when upgrading to squeeze and later releases.  However, it was
+  previously possible to opt out of migrating to dependency based
+  booting and retain static boot ordering.  This is no longer the case.
+
+  If your system is still using static boot ordering, migrating to
+  dependency based boot ordering will be performed when sysv-rc is
+  configured.
+
+  If you have custom init scripts, or old init scripts without LSB
+  headers, please ensure that these have the correct dependency
+  information in an LSB header so that they will be run at the correct
+  point in the boot sequence.  By default, they tend to be ordered
+  last, but before scripts requiring $all such as rc.local, but the
+  ordering is not guaranteed.
+
+ -- Roger Leigh <rleigh@debian.org>  Tue, 26 Jun 2012 23:13:28 +0100
+
+telepathy-mission-control-5 (1:5.12.0-2) unstable; urgency=low
+
+  This version of Mission Control will automatically migrate Windows
+  Live Messenger accounts (also known as .NET Messenger, MSN Messenger etc.)
+  from telepathy-butterfly to telepathy-haze when it starts up. To trigger
+  this migration, ensure that telepathy-haze is installed, log out
+  from your desktop session, and log back in.
+
+  This has been done to support newer Telepathy interfaces required
+  by Empathy 3.4, which are not present in telepathy-butterfly.
+
+ -- Simon McVittie <smcv@debian.org>  Wed, 09 May 2012 11:23:41 +0100
+
+transmission (2.10-1) experimental; urgency=low
+  
+  As of 2.10 all binaries have been renamed to a more homogeneous 
+  format, indicative of the UI type:
+    - transmission      -> transmission-gtk 
+    - transmissioncli   -> transmission-cli
+    - qtr               -> transmission-qt
+
+ -- Leo Costela <costela@debian.org>  Wed, 13 Oct 2010 22:34:00 +0200
+
+usb-modeswitch-data (20110227-1) unstable; urgency=low
+
+  usb-modeswitch from its 1.1.7 version searches for its hardware switching
+  database in a tarball (/usr/share/usb_modeswitch/configPack.tar.gz) first.
+  Hence usb-modeswitch-data now only ships this tarball instead of the raw
+  database files under /etc/usb_modeswitch.d .
+
+  If you had modified some of these database files, they have been kept in
+  place and will override the entries from the tarball, see the README.Debian.
+
+ -- Didier Raboud <odyx@debian.org>  Wed, 16 Mar 2011 14:09:43 +0100
+
+vim (2:7.3.154+hg~74503f6ee649-1) unstable; urgency=low
+
+  The vim-lesstif package has been removed in favor of the new vim-athena
+  package.  The intent behind both packages is to provide a lighter-weight GUI
+  package as well as one that allows using XFLD fonts.  The Athena toolkit,
+  however,  has broader usage and reduces divergences with downstream
+  distributions.
+
+ -- James Vega <jamessan@debian.org>  Sun, 27 Feb 2011 12:45:40 -0500
+
+xdg-utils (1.0.2+cvs20100307-3) unstable; urgency=low
+
+  * xdg-email now honors the $MAILER variable when deciding which mail
+    user agent to use. Remember to wrap it in a terminal window if you're
+    using a text-based mailer. For example:
+
+    MAILER="xterm -e mutt"
+
+    You can also list multiple mailers separated by colons, in which case
+    xdg-email will try each one in order until one of them succeeds.
+
+ -- Per Olofsson <pelle@debian.org>  Mon, 25 Oct 2010 10:23:18 +0200
+
+xserver-xorg-video-nouveau (1:0.0.16+git20120529+ace77b6-1) experimental; urgency=low
+
+  Fermi cards (GeForce 4xx/5xx series) now require a recent Linux kernel
+  for acceleration: either a Debian Kernel 3.2.0-3-$arch version 3.2.23-1
+  and newer, or 3.4 and newer.  On older kernels they will only run
+  unaccelerated.  Older NVidia cards are not affected.
+
+ -- Sven Joachim <svenjoac@gmx.de>  Wed, 25 Jul 2012 17:17:53 +0200
+
+xserver-xorg-video-nouveau (1:0.0.16+git20100518+4b8f1a0-1) experimental; urgency=low
+
+  This version of xserver-xorg-video-nouveau is linked against a newer
+  libdrm-nouveau which breaks the ABI and is not compatible with kernels
+  <= 2.6.33.  You need to upgrade the kernel to 2.6.34-rc1 or newer.
+
+ -- Sven Joachim <svenjoac@gmx.de>  Sat, 22 May 2010 10:22:42 +0200
+
+

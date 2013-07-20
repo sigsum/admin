@@ -1,0 +1,99 @@
+Return-Path: <tor-assistants-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Fri, 09 Mar 2012 21:09:40 +0100
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id E3374116F4; Fri,  9 Mar 2012 21:09:39 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.8 required=4.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,T_DKIM_INVALID,T_RP_MATCHES_RCVD autolearn=no version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id 6E5B81152A
+	for <linus@nordberg.se>; Fri,  9 Mar 2012 21:09:38 +0100 (CET)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 56E0E2062D;
+	Fri,  9 Mar 2012 20:09:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 04E0E2059C
+	for <tor-assistants@lists.torproject.org>;
+	Fri,  9 Mar 2012 20:09:35 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id cdJy97EjyjJM for <tor-assistants@lists.torproject.org>;
+	Fri,  9 Mar 2012 20:09:34 +0000 (UTC)
+Received: from mail-vx0-f175.google.com (mail-vx0-f175.google.com
+	[209.85.220.175]) (using TLSv1 with cipher RC4-SHA (128/128 bits))
+	(Client CN "smtp.gmail.com",
+	Issuer "Google Internet Authority" (not verified))
+	by eugeni.torproject.org (Postfix) with ESMTPS id D4BE62050A
+	for <tor-assistants@torproject.org>;
+	Fri,  9 Mar 2012 20:09:34 +0000 (UTC)
+Received: by vcbfl13 with SMTP id fl13so2363271vcb.34
+	for <tor-assistants@torproject.org>;
+	Fri, 09 Mar 2012 12:09:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=wPPzGRlQR0nzCfwcY36buj0blY9Kmul6pMk2qOIbiIM=;
+	b=lYhAxD7D90oQknHmv251hBPqVPx9IjXvwgij/UqjEh7yZHQiXZ5QGyAv3d8M5QwDBL
+	TQU7YCPRd85+tUR02zuqOP8YtVyOc4MxOJpprCP/YnyPfHHN57ZYlzDGp/Ogg11Rf/J3
+	dq2SFQnkr4rBAZaxBS8b7ipcGy0QXgxpTj/s2tKlkPPhdEmjaatzpTlqRXrU41lQpqID
+	CiGWszC2T7Hnyyz59WpT5HmcyqywT4qJaGyK7c3+77FAJl2ArWourrlyS8zLe4m8IONG
+	bmpPISNHKSgvUcUu1PmglVLKwjazbd1tFqpqLIdhM1PuXF94h01ptsMvLEAwCFnAhblW
+	/DWw==
+MIME-Version: 1.0
+Received: by 10.52.27.69 with SMTP id r5mr5716954vdg.129.1331323772206; Fri,
+	09 Mar 2012 12:09:32 -0800 (PST)
+Received: by 10.220.5.9 with HTTP; Fri, 9 Mar 2012 12:09:32 -0800 (PST)
+In-Reply-To: <1S4xW3-000Nib-Gl@internal.tormail.net>
+References: <1S4xW3-000Nib-Gl@internal.tormail.net>
+Date: Fri, 9 Mar 2012 20:09:32 +0000
+Message-ID: <CAMtFrUFyPPWYsU_Kv2QgUoFqyrPgmXktGJ6tozALTg6JJMOxbQ@mail.gmail.com>
+From: "Runa A. Sandvik" <runa.sandvik@gmail.com>
+To: holymoley2012@tormail.net
+Cc: tor-assistants@torproject.org
+Subject: Re: [tor-assistants] Tor and socks5
+X-BeenThere: tor-assistants@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: "General support and information list to reach Tor developers and
+	researchers." <tor-assistants.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=unsubscribe>
+List-Post: <mailto:tor-assistants@lists.torproject.org>
+List-Help: <mailto:tor-assistants-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: tor-assistants-bounces@lists.torproject.org
+Errors-To: tor-assistants-bounces@lists.torproject.org
+
+On Tue, Mar 6, 2012 at 4:45 PM,  <holymoley2012@tormail.net> wrote:
+> Hi there I'm having trouble setting up TOR so that I have a Geo-specific
+> socks5 i.p address, how do I chain a socks5 at the end so the target
+> server thinks I'm in a location of my choosing, I have read "configuring
+> TOR to use a proxy and followed the guidelines but each time I try I get a
+> timeout trying to connect to the TOR network, also I'm not sure if this is
+> chaining the socks5 at my end or the target server end, please can you
+> help.
+>
+> I would be grateful if you could let me know if I need any extra
+> software/programs (preferably free alternatives)
+>
+> I am running vista32
+
+Please see https://www.torproject.org/docs/faq.html.en#ChooseEntryExit
+
+-- 
+Runa A. Sandvik
+_______________________________________________
+tor-assistants mailing list
+tor-assistants@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants

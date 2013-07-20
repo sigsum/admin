@@ -1,0 +1,8 @@
+retain bcc cc date from subject to
+set append ask autoprint 
+set EDITOR=vi
+set folder=Mail
+set indentprefix="> "
+set PAGER=more
+set VISUAL=vi
+source ~/.mail_aliases

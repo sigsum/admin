@@ -1,0 +1,1039 @@
+-*- org -*-
+
+* sort me
+** ntp
+ntpdc -c peers
+
+Servrar i knutpunkter:
+ntp1-gbg.netnod.se och ntp2-gbg.netnod.se
+ntp1-sth.netnod.se och ntp2-sth.netnod.se
+** quotes
+'There are 10 kinds of people - those that understand binary,
+and those that don't '
+
+"We're sysadmins. To us, data is a protocol-overhead."
+* --------------------------------------------------------
+* ^H / backspace / del / emacs
+** stty
+jonas@dio ~==>stty
+speed 38400 baud; line = 0;
+erase = ^H; stop = <undef>;
+
+Satt stty erase ^? ist och då funkade. Vette fan vad det är som sätter om
+det där men jag hojjar in det i .bashrc så länge så får jag försöka hitta
+på vart det sätts nånstans sen.
+** .inputrc
+is the Readline init file
+** .telnetrc (on client)
+
+* bonet-adress
+as7-3-5.cy.s.bonet.se
+* xterm, X and keymapping
+Från Wingel:
+Jag har följande saker i min .Xresources:
+
+Det här gör så att xterm producerar "ESC n" istället för "n + 0x80"
+när man trycker Alt N:
+
+XTerm*EightBitInput:                    false
+XTerm*EightBitOutput:                   true
+
+Det här gör så att backspace producerar DEL:
+
+* emacs
+** convert DOS file
+M-x set-buffer-file-coding-system	unix
+or
+C-x RET f	unix
+** fortune cookies in sig
+Load /usr/local/share/emacs/VERSION/lisp/play/cookie1.el.
+
+(cookie-insert ".cookies")
+** cvs / Version Control
+C-x v v	   Commit
+C-x v =	   Diff current buffer with latest checked in version
+C-x v d	   VC Dired  (Takes forever in large trees.  Even local CVS does.)
+** bookmarks
+bookmark-set ('C-x r m')
+bookmark-bmenu-list ('C-x r l')
+** ChangeLog entry
+C-x 4 a
+** ;; Translate `C-h' to DEL.
+     (keyboard-translate ?\C-h ?\C-?)
+** dired talks ftp
+/ftp@ftp.sunet.se:/pub
+** typing breaks
+(type-break-mode)
+** token expansion
+`M-/'
+** debugging elisp
+) M-x debug-on-entry FUNC
+in *Backtrace* buffer:
+   d -- step through
+   c -- continue
+   e -- eval expr
+) M-x cancel-debug-on-entry   
+
+
+*VT100.Translations: #override \
+  <Key> BackSpace:              string(0x7f) \n\
+  <Key> Insert:                 string(0x1b) string("[2~") \n\
+  <Key> Delete:                 string(0x1b) string("[3~") \n\
+  <Key> Home:                   string(0x1b) string("[1~") \n\
+  <Key> End:                    string(0x1b) string("[4~") \n
+
+sen gör jag:
+
+    stty erase ^?
+* mailman
+FQDN=swox.com ./configure --prefix=/usr/local/mailman --with-mail-gid=mailman --with-cgi-gid=apache
+* bind
+dig @ns version.bind txt chaos
+* ISDN hemma
+54 52 32 08
+54 52 32 09
+* ebox
+Prata med EBL (bootjox) över seriesnöre
+cu -s38400
+
+Tryck `C-d' för att få prompt.
+
+Boota (quit EBL):
+>q console=ttyS0
+
+$ eboxenv
+
+$ config
+** access-servern: 10.1.0.101
+** ISDN
+isdnctrl verbose 0
+** Lon och eBox
+# /appl/lon/sens
+<press service pin "K">
+prints Neuron-ID
+
+Do /appl/lon/conf <Neuron-ID> <nodenumber>
+# /appl/lon/conf <Neuron-ID> 20
+
+Do /appl/lon/onoff <subnet> <nodenumber> <NV-index> <value>
+# /appl/lon/onoff 1 20 8 4		 ; on
+# /appl/lon/onoff 1 20 8 0		 ; off
+
+* Cendio-snubben
+Magnus Damm 070-754 09 33
+* Varvtalsreglerad fläkt
+king:~tege/misc/manuals/papst/s17gb.pdf
+http://www.elfa.se/elfa/produkter/se/20/2006849.htm
+* HP
+Uppsala "Astronomen" -- Bertil Pettersson , bertil.pettersson@astro.uu.se, 018-515 208
+                        Bo Tidé
+V2500, 16 processor
+
+Fredrik Söderblom
+* VNC
+** client
+king$ vncviewer luxemburg
+** server
+Regarding Display PLANAR vs. CHUNKY display mode.
+These setting work fine on luxemburg.swox.se:
+  Control Panel -> Display -> Settings 
+    Color palette: 256 Color
+    Desktop area: 1024 by 768 pixels
+    Font size: Small Fonts
+    -> Advanced Properties
+      S3 Trio3D/2X AGP
+      ...
+      Software version: 4.0
+      Current files: s3lc2x.drv,*vdd,*vflatd,s3lc2x.vxd,S3lc2x.dll
+      Refresh rate: Optimal
+* xbiff
+xbiff -volume -100 -update 5
+* dhclient
+...creates a route to `hostname` through gateway 'localhost' going to
+interface 'de0'.  this makes '$ ping `hostname`' fail with 
+
+Mar 29 10:09:37 zinn /kernel: arpresolve: can't allocate llinfo for 127.0.0.1rt
+Mar 29 10:09:43 zinn /kernel: arplookup 127.0.0.1 failed: could not allocate llinfo
+
+when i killed dhclient, removed the route and started dhclient again,
+the route pointed to interface 'lo0'.
+* vnode
+pseudo disk device
+see vnconfig(8)
+* ascii
+$ man ascii
+* network information gathering / retaliation 
+** netcat
+# nc -L -p 4711 >file
+** netbios
+set up a smb server that sends the client a "null challenge" (like on
+of these MSIE-explores did).  store the response (and have a
+dictionary precomputed with our challenge).
+* linux
+** passwd
+pwconv
+* fun/games
+** empire
+*** myxec
+drepper@ira.uka.de or drepper@cygnus.com
+* Reading man pages on bob.swox.se
+nroff -man /opt/SUNWspro/man/man1/cc.1 | less
+* autoconf links
+  http://www.gnu.org/software/autoconf/                         (home)
+  http://sourceware.cygnus.com/autoconf/                        (home)
+  http://www.airs.com/ian/configure/configure.ps                (tutorial)
+  http://www.st-andrews.ac.uk/~iam/docs/tutorial.html           (tutorial)
+  http://www.amath.washington.edu/~lf/tutorials/autoconf/       (tutorial)
+  http://nis-www.lanl.gov/~rosalia/mydocs/autoconf_tutorial.ps  (tutorial)  
+  http://www.murrayc.com/learning/linux/automake/automake.html  (tutorial)
+  http://www.cs.columbia.edu/~ezk/am-utils/am-utils.(ps|pdf)    (example)
+  http://www.cs.columbia.edu/~ezk/research/amu/autoconfiscating_amd.(html|ps)
+  http://www.syclus.com/cscene/CS2/CS2-10.html                  (mixed)
+  http://www.amazon.com/exec/obidos/ISBN=1565921127/murrayswebpages/ (book)  
+  http://www.gnu.org/software/libtool/                          (tool???)
+* audio
+** /usr/ports
+*** dap
+Checksum missmatch.
+*** gnomemedia
+Probably a beast.  Check out screenshots first.
+<http://www.gnome.org/applist/list-martin.phtml?catno=11>:
+   Audiotechque
+   WWW PIC   *
+   A multitrack audio editor/discombobulator. 0.1.4
+
+   Voodoo Tracker                                                     
+   WWW PIC Stable Sources 
+   Voodoo Tracker is a project that aims to harness and extend the power
+   of conventional trackers. Imagine a self contained digital studio;
+   complete and ready for your modern music needs. Additionally, in the
+   future Voodoo will provide an interface that is designed for live
+   performances: it will let you cross fade, sequence, and mix your
+   favorite mods in realtime. Voodoo Tracker will soo... 0.2.0
+
+   WaveForge
+   WWW PIC Stable Sources 
+   WaveForge is a free Sound Editor for X .it will be a free SoundForge
+   clone for Linux . It is released under the GNU General Public License
+   (GPL). 0.0.4
+*** kdemultimedia
+<http://www.kde.org/apphomepages.html>: 
+   KRecord A simple sound recorder. Short term goal: Recording and saving
+   of sound data. Sound editing functionality will be considered once the
+   basics are implemented.                        
+*** mxv
+Looks good!  Installed on king.  Try it on zinn.  
+
+1) It doesn't play well on a soundblaster card.  Looks like it's
+VoxWare only.
+
+2) Some iv (InterViews) bug (I think) makes some of the shortcut keys
+unusable.  For instance, backspace should stop playing.  The mouse is
+stuck while playing so I can't halt the play.
+*** nas
+Perfect!  One small problem: The sound is approx 0.4 seconds behind
+the graphics.
+*** rosegarden
+MIDI only?
+
+* printing long long
+printf ("%x%08x\n", (unsigned long) ((unsigned long long) x >> 32),
+                      (unsigned long) x) 
+* gpg / gnupg
+See /usr/local/share/doc/gnupg/.
+** From FAQ
+  Q: How do I transfer owner trust values from PGP to GnuPG?
+  A: There is a script in the tools directory to help you:
+     After you have imported the PGP keyring you can give this command:
+        $ lspgpot pgpkeyring | gpg --import-ownertrust
+
+ Q: Why is PGP 5.x not able to verify my messages?
+ A: PGP 5.x does not accept V4 signatures for data material but
+    OpenPGP requires generation of V4 signatures for all kind of
+    data.  Use the option "--force-v3-sigs" to generate V3 signatures
+    for data.
+* cd-fickorna
+mats flygare
+27 50 80
+
+Mitt emot östgötag. - Vid stalands möbler
+Emballagehuset, I-Bag
+Ingela
+640 12 55
+* perl
+** emacs mode
+cperl (tanka hem)
+** doc
+*** man
+perlfunc -- functions
+perlsyn -- syntax
+perlop -- operators
+perlre -- RE (see also `perlop')
+perlvar -- predefined vars
+perlrun -- how to build oneliners
+*** perldoc
+same as man
+** #!
+use `#! /some/where/perl -w'
+to enable warning
+** data types
+*** scalar
+$foo
+*** array
+@foo -- whole array
+$foo[42] -- element #42
+*** hash table
+%foo
+%foo = %bar
+$foo{'zap'}
+
+$a = "42"
+$b = 3 + $a
+** undefined var
+$a = undef;
+** functions
+old style: &foo();
+** special vars
+*** $_ and @_
+incoming parameters
+
+foo(47);       # calling foo()
+
+sub foo 
+{
+	print $_[0];	# print first parameter
+	return 68;	# if no return, last evaluated val is returned
+}
+** @ARGV and %ENV
+
+$ENV{'PATH'} = "/usr/bin";
+** REs
+$a = ($foo =~ /zap/);	# match one 'zap'
+           !~		# don't match 'zap'
+
+$a = ($foo =~ /zap/g);	# match more than one 'zap'; return number of matches?
+
+@a = ($foo =~ /zap/g);	# return match
+@a = ($foo =~ m&zap&g);	# return match (other delim)
+* msdos filesystem
+mformat(1) (from /usr/ports/emulators/mtools)
+* panther
+/usr/bin/oslevel -- print OS version
+* fetmule
+** search engines
+altavista.com		done
+infoseek.go.com		done
+yahoo.com		done
+yahho.se		?
+lycos.com
+excite.com
+thunderstone.com
+hotbot.com
+dejanews.com
+* gimp
+** indexed color format
+like GIF, XPM; convert to indexed (``Image'' menu) before saving.
+* www.romab.com
+ssh on port 32529
+* Fax
+** Receiving
+Incoming faxes are notified to faxadmin@swox.se and put in
+/var/spool/fax/incoming in G3 format.  
+
+Convert to postscript with
+
+$ g32pbm -s file | pnmtops -noturn -width 8.3 -height 11.7 >file.ps
+
+Use `-s' to g32pbm to stretch the fax horizontally, in case you get
+"normal resolution" faxes.
+
+Width and height 8.3x11.7 inches corresponds to paper size A4.
+** Sending
+$ faxspool phone-number file.{txt|g3}
+
+and
+
+# faxrunq
+to empty the spool queue.
+
+Detta konverterar en dvi-fil till Postscript med rätt upplösning:
+        dvips -Pdfaxhigh FILE.dvi -o FILE.ps
+
+To send a gif/jpg, convert to PBM with xv(1) or something.  Now, xv
+seem to save as PPN, so in order to get a g3 file, do
+$ ppmtopgm file.ppm | pgmtopbm | pbm2g3 >file.g3
+* OpenBSD
+** firewalling
+*** ipfstat(8) -- show filter and statistics
+Show rules, with 'hits' (-h) and numbers (-n)
+$ ipfstat -ihn
+
+Show flow state (``keep'')
+$ ipfstat -s
+*** ipf(8)
+Install rules in inactive list (-I), flushing the old ones (-Fa)
+$ ipf -I -Fa -f /etc/ipf.rules
+
+Swap active/inactive filter rules
+$ ipf -s
+* coding
+** cxref
+Cross reference of C files.
+** cflow
+Produces call graph.  Perfect!
+* pw till ako
+ab5a1on5gade
+* Barn
+** Barnomsorg
+Marianne Vinderstam på Maria Stadsdelsnämnd (tel. 508 12 000),
+semester, tillbaka 2 aug. Direktnummer 508 12 114.
+
+
+** BVC
+Kolla vilken.
+** Försäkringskassan
+Södermalm: 676 23 95
+** Babysim
+"Ankaret -- Aktiviteter för barn och föräldrar" 
+tel: 650 77 30, mob: 0708-89 22 39
+http://welcome.to/ankaret
+* Ordering books
+** www.bookpool.com
+password: enkoirov
+* ip phone
+speak_freely-6.1c.tar.gz
+fphone-freebsd.gz
+nautilus-1.5a.tar.gz: needs rsaref
+* throttling http server
+thttpd <http://www.acme.com/software/thttpd/>, where you can limit
+bandwidth usage on URL-match.
+* network monitors
+/usr/ports/net/argus
+ bpft
+ bro - detect intrusion (2.2.8: security)
+ ntop - network top (2.2.8)
+ trafshow (2.2.8)
+ ttt (2.2.8)
+* check
+/usr/ports/net
+nsling | dlint - lint DNS zones
+dnswalk
+queso - identify remote OS
+radio 
+Xnbc -- "simulating biological neural networks" [Brave GNU World #16]
+* laptop
+asapm(1) shows batery status.
+* macos / macintosh
+** HFS -- the filesystem used by MacOS
+xhfs -- nice file-manupilating utility
+netatalk -- talk appletalk
+hfsutils -- stuff
+* gsl
+If `configure' doesn't work, try `sh autogen.sh' to generate
+aclocal.m4.
+* PGP sign internic requests
+pgps -atu info@swox file.txt
+* addresses
+** linus
+Linus Nordberg
+Fatburs Kvarngata 16
+118 64  STOCKHOLM
+** Swox
+Swox AB
+Swedenborgsgatan 23
+118 27  STOCKHOLM
+* smtp
+** manual 
+telnet host 25
+helo foo
+mail from: allan
+rcpt to: address
+data
+(body) 
+.
+quit
+* setting up anonymous ftp
+/etc/inetd.conf:
+kerberized ftpd with '-a safe'
+
+add user ftp w/ home `/home/ftp' and no shell.  also add group ftp.
+
+# cd /home
+# mkdir ftp
+# chown root.ftp ftp
+# chmod 755 ftp
+# cd ftp
+# mkdir pub bin etc
+
+# cp -p /etc/master.passwd /etc/group etc/
+# $EDIT etc/master.passwd	[remove all but root, bin, and ftp]
+# $EDIT etc/group		[remove all but root, bin, and ftp]
+
+# pwd_mkdb -d etc etc/master.passwd
+# rm etc/master.passwd*
+
+# cp -p /bin/ls /usr/bin/compress /usr/bin/gzip /usr/local/bin/tar bin/
+# chown root.wheel bin/*
+# chmod 755 bin/*
+
+# echo 'Welcome to a computer.' >motd
+# chown root.wheel motd
+
+* setting up a new disk 
+Enable the device in kernel, for example (/sys/i386/config/FEDT)
+  device		sd1
+Format the disk
+  # scsiformat sd1
+Label the disk (tried to do this with command line stuff but failed
+      # disklabel -r -w sd1 auto
+      # disklabel -r -e sd1)
+Use /stand/sysinstall isntead.
+* sendmail
+makemap(8) 
+* fatburen
+server.fatburen.org
+* tcpdump / tcpshow
+tcpdump -s 1518 -lenx -i tun0 | tcpshow -cooked -data -pp
+* rc.local
+Seems like init (or whoever does this) doesn't like to start programs which are symbolic links (example `sshd' in sshd-1.2.26).
+* perl
+@_ -- contains the parameters passed to subroutine (see perlsub.1)
+my() -- declare private variables (see perlsub.1)
+* floppys
+dd if=infile of=/dev/fd0 obs=9k
+* profiling
+. $ gcc -pg (incl linking)
+. $ <program>
+. $ gprof <program> (in same dir)
+* bash
+** debugging
+$ export BASH_ENV=~linus/bin/debug_sh
+the file debug_sh contains the single line
+    set -x
+** hashing
+hash -r foo -- forget all remembered locations
+* M$ / windoze / windows 
+** word .doc
+try 
+MSWordView, catdoc, word2x
+* bash
+redirecting stderr to stdout and stdout to file:
+	    &>foo
+or, working even in sh (i think):
+	    >foo 2>&1
+* java
+** kaffe
+You'll miss suns classes.zip.  It's in /usr/ports/lang/jdk.  Or look
+in <ftp://ftp.nuxi.com/pub/FreeBSD/JDK>.
+
+CLASSPATH has to point at the .jar and/or .class *files*, not the
+directory they live in. makes me shiver. you could have ordinary
+directory names in it too, to find single .class files, i think.  example:
+ 
+CLASSPATH=/usr/local/share/kaffe/classes.zip:/usr/local/HotJava1.1.2/lib/classes.zip:/usr/local/HotJava1.1.2/lib; export CLASSPATH
+KAFFECLASSPATH=/usr/local/share/kaffe/Klasses.jar:/usr/local/share/kaffe/pizza.jar; export KAFFECLASSPATH
+
+I *think* that KAFFECLASSPATH should equal CLASSPATH.
+** HotJava
+Browser written in java.
+/u/tar-files/hjbNNN-generic.zip.
+
+problem starting
+
+  java.lang.ClassNotFoundException: sunw/hotjava/Main
+
+It's in /usr/local/HotJava1.1.2/lib/classes.zip.  Just make sure kaffe
+can find it: Add /usr/local/HotJava1.1.2/lib/classes.zip to your
+KAFFECLASSPATH (not (only?) your CLASSPATH).
+
+  java.lang.ClassNotFoundException: sun/misc/VMNotification
+
+Now I think we have to get ourselves a ``real'' classes.zip.  Done. (See kaffe above.)
+*** more problems
+fedt:linus% java -Dhotjava.home=/usr/local/HotJava1.1.2 -Djava.home=/usr/local/share/kaffe sunw.hotjava.Main
+[Starting HotJava]
+[Initializing globals]
+java.util.MissingResourceException: no bundles found
+        at java/lang/Throwable.<init>(30)
+        at java/lang/Exception.<init>(21)
+        at java/lang/RuntimeException.<init>(21)
+        at java/util/MissingResourceException.<init>(20)
+        at java/util/ResourceBundle.getBundle(80)
+        at java/util/ResourceBundle.getBundle(27)
+        at sunw/hotjava/misc/Globals.initProperties(303)
+        at sunw/hotjava/Main.main(79)
+java.lang.Exception: Failed to load localized properties:  java.util.MissingResourceException: no bundles found
+        at java/lang/Throwable.<init>(30)
+        at java/lang/Exception.<init>(21)
+        at sunw/hotjava/misc/Globals.initProperties(308)
+        at sunw/hotjava/Main.main(79)
+error: Failed to load localized properties:  java.util.MissingResourceException: no bundles found
+
+* ftp
+some ftp servers will tar and sometimes gzip for you if you
+	get dir.tar.gz
+or	
+	get dir.tar
+cool! especially for FreeBSD ports (ftp://ftp.freebsd.org/FreeBSD/ports).
+* books
+W. Richard Stevens: "Advanced Programming in the Unix Environment"
+* net
+** natd
+http://www.freebsd.org/cgi/man.cgi?natd
+* The music machine of choice (Simon)
+Sony, HCD-T1. (Cassette: TC-TX1)
+
+* audio / sound
+** MP3 encoding
+nice bladeenc -crc -delete -quit *.wav
+** gqmpeg
+Nice MP3 player.
+** raw audio data from CD is
+   176,389   bytes/second
+10,583,340   bytes/minute (10 MB/min)
+** tosha
+reads audio data from SCSI CD and writes it in "linear PCM format,
+headerless (raw), 44.1 kHz, signed 16 bit stereo". Use sox(1) to
+convert.  Update: At least tosha-0.6 has a `-f' switch for specifying
+output format, for example .wav.
+
+I've had problems on zinn:
+zinn:edwalls_blandning% tosha -f wav -t 25 -b 5
+Device: /dev/cd0c -- "PIONEER" "CD-ROM DR-U16S" "1.01"
+tosha: Warning: Overriding read size of 10 sectors.
+
+ track   playing  start    end     raw size  mp3 size   # of   track
+ number   time    sector  sector   in bytes  128 kbps  frames  type
+---------------------------------------------------------------------
+   25    5:38'17  319173  344539   59663184   5412461   12948  audio
+error sending CD-DA read command: Input/output error
+
+Log:
+Nov  9 13:20:49 zinn /kernel: (pass1:ncr0:0:6:0): Vendor Specific Command. CDB: d8 
+Nov  9 13:20:49 zinn /kernel: (pass1:ncr0:0:6:0): HARDWARE FAILURE info:53816 asc:9,1
+Nov  9 13:20:49 zinn /kernel: (pass1:ncr0:0:6:0): Tracking servo failure
+
+zinn:edwalls_blandning% ls -l track25.wav 
+-rw-r--r--  1 linus  linus  53778524 Nov  9 13:20 track25.wav
+
+FreeBSD zinn.swox.se 3.3-RELEASE FreeBSD 3.3-RELEASE #0: Fri Oct  1 12:05:50 CEST 1999     root@zinn.swox.se:/usr/src/sys/compile/CLIENT  i386
+** cdrecord
+*** to copy an audio CD
+Create the track*.pcm files with `tosha'.
+
+Convert .pcm to .wav:
+$ sox -t cdr f.pcm f.wav
+
+(Update: tosha can now create .wav files with the `-f wav' option.)
+Try a few ``dummy'' writes:
+``Old'' style:
+$ cdrecord -v -dummy speed=4 dev=5,0 -audio track*.wav
+New style
+$ cdrecord -v -dummy speed=4 dev=/dev/cd0c:0,5,0 -audio track*.wav
+
+Then remove the ``-dummy'' and go.
+
+You may need `-pad' if the .wav's are not multiples of 2352 bytes,
+like the fetmule/demo2 files.  Also, the new CDRW (YAMAHA CRW6416S) is
+capable of higher speed.  6 or 8?
+<http://www.hardware-one.com/reviews/ya6416/> says "6X write".  (Tried
+"speed=8" on a short 7-track record.  Sounds good.)
+
+# cdrecord -v -dummy speed=6 dev=/dev/cd0c:0,5,0 -audio -pad track*.wav
+
+** 8hz-mp3 -- mp3 encoder
+you need a .wav file (use sox)
+$ 8hz-mp3 f.wav f.mp3
+** encoder -- another mp3 encoder
+this one comes with source.  eats PCM-files.  nice.
+needs MPEGTABLES=/usr/local/share/mpeg/tables
+$ encode f.pcm f.mp3
+WARNING: Gave not good quality.
+** mpeg_musicin/musicout
+from the mpegaudio port.
+PCM file in.
+
+for f in *.pcm; do fn=`basename $f .pcm`; nice mpeg_musicin $f $fn.mp3 && rm $f; done
+** players
+xmpeg3 -- mp3 player
+mpg123 -- mp3 player (refered to in pcmplay man page)
+amp -- mp3 player
+gqmpeg -- mpg123 X frontend
+
+* images / pictures
+netpbm " is a toolkit for conversion of images between a variety of
+different formats"
+*** From posting on comp.unix.bsd.freebsd.misc:
+(Message-ID:   <6nd7c1$d34@newsops.execpc.com>)
+
+"Try using cdrecord (it's in the fbsd ports).  Works great for backups
+in conjunction with mkisofs.  I burn images of my filesystems directly
+to my cdr using something like
+
+  mkisofs -a -l -L -R <filesystem> | (sleep 300 ; cdrecord -v -)
+
+the sleep allows mkisofs to do all of the precomputes before the 
+burning begins.  In this way, I avoid having to make a temporary iso fs
+image.
+
+I have also usde cdrecord for making audio and raw data (i.e. not iso)
+CDs, with great success."
+
+
+* gcc
+`-H' prints which header files are used.
+`-E -dD' is usefull for finding out where things are really #defined
+`-v' outputs lots of stuff, for example hwo `as' and `ld' are invoked.
+** building
+`make LANGUAGES=c' to build only the C compiler.
+
+* Tele: Vidarekoppling vid upptaget
+Inkoppling: *67*<nr>#
+Urkoppling: #67#
+
+* ICQ
+ICQ# 11176793
+
+* to print a man page
+	man -t page >page.ps
+	lpr page.ps
+
+* tape backup / restore
+the script /root/makedump is used to make a full backup of pro.
+it does
+	for i in / /var /var/mail /home /usr /u 
+	  do
+	    dump 0afbu pro:/dev/nrst0 63 $i
+	  done
+
+to restore parts of a backup, do
+	restore ifbs /dev/nrst0 63 <#>
+	or
+	restore xfbs /dev/nrst0 63 <#> file ...
+where 
+	# is file number of multi-file dump tape, ex: 4 means /home
+
+sometimes restore says "This is not a dump tape". if so, do
+	  $ mt -f /dev/nrst0 rewind
+
+with the `x' flag, specified files are restored (into current dir).
+use `-r' for a ``pristine'' file system.  is this better than `-x'?
+if so, how?
+
+with the `i' flag, you get something shell-like, where you can `cd'
+and `ls' and stuff. note that you can not cd into a symlink. you have
+to go the "normal" way, and you don't get any clues what are links and
+what are ordinary files.
+
+add files to the "extraction list" using the `add' command.
+use `verbose' to get more info from ls and during the extraction progress.
+use `extract' to actually extract the files on the extraction list.
+
+you will be asked to specify "next volume". a volume is a tape.
+volumes are numbered from 1 and up. `restore' starts by creating the
+directory structure, then fills in with the actual files. it restores
+to current directory, as you would expect.  it takes a while. don't
+worry.
+
+noticed one thing, though; after waiting a *long* time (like half an
+hour or even more) i suspended the job and put it in background. then
+suddenly things started to pop up again. wonder...
+
+* keyboard, wireless
+battery lamp blinking: Mon Apr  6 17:30:24 CEST 1998
+fresh batteries: Tue Apr 21 19:47:41 CEST 1998 (probably not needed)
+
+blinking:	Thu May  7 11:01:40 METT 1998
+steady:		Mon May 11
+battery change: Wed May 27 09:26:45 CEST 1998 (after "y" became "[")
+
+
+* diff
+use -Npr, N for avoiding "only in foo" and p for trying to explain
+	things, r for recursive
+
+* named / BIND (now BIND 8)
+# /usr/local/sbin/named -t /jail/bind -u named	-- start
+
+# kill -HUP `cat /var/run/named.pid`	-- reload database
+# kill -INT `cat /var/run/named.pid`	-- dump database to /var/named/named_dump.db
+# kill -USR1 `cat /var/run/named.pid`	-- increase debugging level, data in /var/tmp/named.run
+# kill -USR2 `cat /var/run/named.pid`	-- turn of debugging
+# kill -WINCH `cat /var/run/named.pid`	-- toggle logging of incomming queries
+** build
+build with
+      cd /usr/ports/net/bind8
+      \make
+install with
+	cd work/src	
+	\make PREFIX=/jail/bind install
+set up /jail/bind with 
+    usr/lib/libc.so.X.X
+	    libutil.so.X.X
+start syslogd with '-l /jail/bind/dev/log' option.
+
+* squid
+start as
+	$/# (?) /usr/local/squid/bin/RunCache &
+	
+
+* Kerberos
+[This section is moved to ~tmg/sysadmin/kerberos-setup.
+(Fri Jul 31 1998 /linus)]
+
+* X11
+xdpyinfo -- gives info (really!)
+xset q -- gives X settings
+
+* FreeBSD
+** /etc/login.conf
+Neat way of specifying defaults like umask and such.
+** config and build new kernel
+cd /usr/src/sys/i386/conf
+export CFG=FILE
+$EDITOR $CFG
+/usr/sbin/config $CFG
+cd ../../compile/$CFG
+make depend
+make
+make install
+
+# new kernel in /kernel, old in /kernel.old
+** kernel debugging
+(From FreeBSD Handbook : Kernel Debugging : Debugging a Kernel Crash
+Dump with KGDB) 
+
+Set `dumpdev' in /etc/rc.conf.  Build kernel as
+      config -g FILE
+      <build>
+      cp kernel kernel.debug
+      strip -d kernel
+      <install>
+
+After a crash dump, go to /sys/compile/WHATEVER and run `kdgb' (or gdb
+-k):
+
+	symbol-file kernel.debug
+	exec-file /var/crash/kernel.0
+	core-file /var/crash/vmcore.0
+
+* truss
+seems like 'strace' on sun-solaris
+and ktrace on FreeBSD
+
+*computers at TMG
+exodus (k6)
+pro
+
+use pro:/root/sprid for file distribution cross TMG
+
+*phone numbers at TMG
+TMG	642 75 78
+linus	640 54 29
+fax	641 69 67
+modem	641 69 73
+
+* modem
+ppp
+dial {matte | decus}
+(clo) to close connection or it will time out after 10 min
+
+* cvs
+** Magic tags
+-r HEAD		most recent version in repo
+-r BASE		last checked out revision
+** Getting rid of sticky tags
+That is, going back to the main trunk.
+     $ cvs update -A
+** remote cvs repository
+set CVSROOT to puh:/home/cvsfiles (or use `cvs -d') and get yourself a
+kerberos ticket.  it uses `rsh'.
+** getting a previous version of a file
+When you want an older revision of a file, use ``update'' with `-r' to
+specify revision.  Use `-p' (to avoid setting a ``sticky tag'') and
+redirect output to a file. `-p' stands for ``pipe''.
+	cvs update -p -r 1.7 elfread.c >elfread-1.7.c
+** log -h
+to get tags only.
+
+* etags / TAGS
+Neat! Do a
+	$ find . -name '*.[chCH]' | etags -
+in a src directory to create a TAGS file in that dir.  Then when,
+while debugging for example, you run into some symbol that you would
+like to know where it is defined / declared, press M-. in emacs to
+visit the exact location of definition / declaration. Really good for
+these #defines that you don't find with gdb's 'ptype'.
+
+You can include TAGS files in other TAGS files by giving
+'--include=TAGS_FILE' to 'etag'.
+WARNING: This include stuff doesn't seem to work correctly.
+Use `M-x visit-tags-table' in emacs instead.
+** In emacs
+
+M-C-. finds a tag.
+
+Use `visit-tags-table' to add more TAGS files to the list. All files
+in the list will be searched. `select-tags-table' let you choose which
+one to use.
+** play
+morse.el
+
+* devel / toolchain
+** configure / autoconf
+autoconf -- generate configure from configure.in
+automake -- generate Makefile.in's from Makefil.am's.  Also includes aclocal.
+aclocal -- generate aclocal.m4.
+autoheader -- generate config.in from configure.in; this is where AC_DEFINE()
+	      in configure.in puts its definitions (when using automake?)
+
+configure -- generate, in build directory:
+	     Makefile from Makefile.in
+	     config.h from config.in
+	     more?
+** gdb
+*** maintenance print {symbols | msymbols | psymbols}
+nice
+*** debug with arguments
+(gdb) run args
+*** commands
+- display: print something every time execution stops
+- watchpoints: break on expression change (awatch EXPR)
+- conditions: set on breakpoints. `condition BNUM EXPR'.
+- ignore n count -- skip `count' breaks on breakpoint `n'
+- source FILE -- to read a command file
+*** examine arrays
+- p arr@5
+or, even for linked lists
+- set $i=0
+- p arr[$i++]
+- <RET>
+- <RET>
+*** convenient vars
+- set $foo="bar"
+- `$_' set by `x' or `p' to the last address examined
+- `$__'                         value of `$_'
+- `$_exitcode' is exit code when program terminates
+
+** ld (gld) -- GNU linker
+`ld -V' lists all supported emulations (like `m68kelf')
+** objdump
+`objdump -p' prints program headers of an ELF binary
+`objdump -d' disassembles
+`objdump -i' shows which object formats it knows about
+
+* gnus
+[moved to fluff]
+* IMAP
+http://www.extundo.com/gnus-imap/
+** cyrus IMAPd
+test on cyrus.andrew.cmu.edu, user `anonymous', pw own mail address.
+mailboxes with names starting with ``INBOX.'' can be created.
+(http://andrew2.andrew.cmu.edu/cyrus/cyrustest.html)
+*** setting up a server
+Unpack /u/tar-files/usr.ports.mail.cyrus-1.5.14.tar in
+/usr/ports/mail.  It includes some patches for Kerberos
+authentication.
+
+Read doc/install.
+
+4. make install has already decided that we want our configuration
+directory in /usr/local/etc/imap, so skip pt. 4.  Also, the imapd.conf
+file is in the same directory.  Check it.
+
+admins: linus.cyradm
+srvtab: /usr/local/etc/imap/srvtab
+
+Make sure that /usr/local/etc/imap/mailboxes is owned by curys and
+group=cyrus.
+
+Ignore the following points, since they've been done by make install:
+       7, 9
+
+10. says 
+        Make the "srvtab" file owned by the cyrus user: 
+
+Is that really wise?  Is any process running as cyrus ever going to
+read the srvtab?
+
+12. Run cyrus or kth-krb kpop daemon?  Trying cyrus.
+
+Configure postfix to deliver local mail to cyrus. (See
+/etc/postfix/main.cf and master.cf).
+
+Kerberos
+--------
+
+Create instance imap.host@REALM and put srvtab in
+/usr/local/etc/imap/srvtab.  Must be readable by `cyrus'.
+
+Creating a user
+---------------
+Create a cyrus mailbox.
+(On any host with cyradm:)
+$ kauth linus.cyradm
+$ cyradm bakunin
+> cm user.<name>
+
+Create a kerberos key.
+$ kadmin
+kadmin: ank <name>
+linus.admin@SWOX.SE's Password: 
+Maximum ticket lifetime?  (162)  [4+07:34:45]  
+Attributes?  [0x00]  
+Expiration date (enter yyyy-mm-dd) ?  [2001-06-20]  
+Password for <name>:
+Verifying password - Password for <name>:
+<name> added to database.
+
+That's all.  No local account is needed.
+** other clients
+list at
+http://andrew2.andrew.cmu.edu/cyrus/email/clients-protocol.html#imap .
+
+try pine (http://www.washington.edu/pine/).
+** pobox.se
+password, pw: fonoUnuPa
+
+) what imap server? cyrus.
+) how about kerberos? i need linus@ASTROGATOR.SE for it to work.
+pobox.se uses linus.mail@ASTROGATOR.SE for pw.
+*** problem
+**** GNUS funkar inte med SSL.
+Lyckas få igång s_client:
+4641  ??  Is     0:00.06 s_client -host majros.astrogator.se -port 443 -verify 0 -CApath ~/.ssl/certs (ssleay)
+**** Netscape (Communicator 4.04 FreeBSD) funkar med SSL, men inte bra i övrigt.
+**** Byta password med kpasswd funkar inte.
+puh:linus% klist
+Ticket file:    /tmp/tkt1548_2109924598
+Principal:      linus.mail@ASTROGATOR.SE
+
+  Issued           Expires          Principal
+Nov 19 09:23:08  Nov 19 19:23:08  krbtgt.ASTROGATOR.SE@ASTROGATOR.SE
+puh:linus% kpasswd -u linus.mail@ASTROGATOR.SE
+Old password for linus.mail@ASTROGATOR.SE:
+New Password for linus.mail@ASTROGATOR.SE:
+Verifying New Password for linus.mail@ASTROGATOR.SE:
+kpasswd in free(): warning: chunk is already free.
+kpasswd: Kerberos error: incorrect net address  attempting to change password.
+Password NOT changed.
+--
+krb-0.9.9 funkar inte bättre.
+
+Provade från alpha.decus.se och ändrade pw till `foo&bar', vilket
+funkade utmärkt.
+** Cyrus IMAPd on puh
+krb pw: allanTarKakan
+
+* printer
+lpc status Rlw
+lpq -PRlw
+lprm -PRlw
+
+* games / fun
+** go
+cgoban (fbsd package) -- go client/server(?)
+baduki (fbsd port), depends on gtk -- plays go and gives hints
+** xpilot
+server: 
+	$ xpilots -gravity -0.1 -noquitstartx - --bpp 8 &

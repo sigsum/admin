@@ -1,0 +1,94 @@
+Return-Path: <tor-assistants-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Thu, 08 Mar 2012 17:45:05 +0100
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 9AC20116F4; Thu,  8 Mar 2012 17:45:05 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id 1896E1156C
+	for <linus@nordberg.se>; Thu,  8 Mar 2012 17:45:03 +0100 (CET)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 52F6523B36;
+	Thu,  8 Mar 2012 16:45:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id AEA7F23B10
+	for <tor-assistants@lists.torproject.org>;
+	Thu,  8 Mar 2012 16:44:59 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id QwsDGCrWd8N4 for <tor-assistants@lists.torproject.org>;
+	Thu,  8 Mar 2012 16:44:59 +0000 (UTC)
+Received: from necrid.lewman.is (necrid.lewman.is [93.95.226.146])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "*.lewman.is", Issuer "*.lewman.is" (not verified))
+	by eugeni.torproject.org (Postfix) with ESMTPS id 7DD84207E7
+	for <tor-assistants@torproject.org>;
+	Thu,  8 Mar 2012 16:44:59 +0000 (UTC)
+Received: from necrid.lewman.is (localhost [127.0.0.1])
+	by necrid.lewman.is (Postfix) with ESMTP id A0F4C1EC0E1;
+	Thu,  8 Mar 2012 16:44:54 +0000 (UTC)
+Authentication-Results: lewman.is; 
+X-DKIM-Authentication-Results: none
+Received: from kilik (necrid.lewman.is [93.95.226.146])
+	(using TLSv1 with cipher DHE-RSA-AES128-SHA (128/128 bits))
+	(Client did not present a certificate)
+	by necrid.lewman.is (Postfix) with ESMTPSA;
+	Thu,  8 Mar 2012 16:44:54 +0000 (UTC)
+Date: Thu, 8 Mar 2012 11:44:52 -0500
+From: Andrew Lewman <andrew@torproject.is>
+To: Paul Architetto <vitoarc@mac.com>
+Message-ID: <20120308114452.6ae3121a@kilik>
+In-Reply-To: <766D25EE-FA14-4B00-813F-81D8C70D757E@mac.com>
+References: <766D25EE-FA14-4B00-813F-81D8C70D757E@mac.com>
+Organization: The Tor Project, Inc.
+X-Mailer: Claws Mail 3.8.0 (GTK+ 2.24.10; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Cc: tor-assistants@torproject.org
+Subject: Re: [tor-assistants] Google Searches
+X-BeenThere: tor-assistants@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: "General support and information list to reach Tor developers and
+	researchers." <tor-assistants.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=unsubscribe>
+List-Post: <mailto:tor-assistants@lists.torproject.org>
+List-Help: <mailto:tor-assistants-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: tor-assistants-bounces@lists.torproject.org
+Errors-To: tor-assistants-bounces@lists.torproject.org
+
+On Thu, 08 Mar 2012 09:42:40 -0500
+Paul Architetto <vitoarc@mac.com> wrote:
+
+> Google does not allow searches when using TOR. One is notified that  
+> there's "unusual traffic from your computer network" and prompted
+> to type in a verification box.  The problem is, no matter how many
+> times one verifies using the text box, one is not allowed to use the
+> Google search.   This is deceptive in my opinion.  Google states "to
+> see if it's really you sending requests and not a robot".  TOR users
+> are not robots!
+
+We're aware, we even have a FAQ answer on it,
+https://www.torproject.org/docs/faq.html.en#GoogleCaptcha
+
+-- 
+Andrew
+http://tpo.is/contact
+pgp 0x6B4D6475
+_______________________________________________
+tor-assistants mailing list
+tor-assistants@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants

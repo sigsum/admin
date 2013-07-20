@@ -1,0 +1,184 @@
+Return-Path: <Paul.Dekkers@surfnet.nl>
+Received: from borei.nordu.net ([193.10.252.27])
+	by kerio.nordu.net
+	(using TLSv1/SSLv3 with cipher AES256-SHA (256 bits))
+	for linus@kerio.nordu.net;
+	Fri, 13 Apr 2012 15:04:40 +0200
+Received: from e-mailfilter02.sunet.se (e-mailfilter02.sunet.se [192.36.171.202])
+	by borei.nordu.net (8.14.3/8.14.3) with ESMTP id q3DD4b8b014505
+	for <linus@nordu.net>; Fri, 13 Apr 2012 15:04:40 +0200 (CEST)
+X-DKIM: Sendmail DKIM Filter v2.7.2 borei.nordu.net q3DD4b8b014505
+Received: from out42-ams.mf.surf.net (out42-ams.mf.surf.net [145.0.1.42])
+	by e-mailfilter02.sunet.se (8.14.3/8.14.3/Debian-9.4) with ESMTP id q3DD4XG2006293
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)
+	for <linus@nordu.net>; Fri, 13 Apr 2012 15:04:37 +0200
+Received: from teletubbie.het.net.je (teletubbie.het.net.je [192.87.110.29])
+	by outgoing2-ams.mf.surf.net (8.14.3/8.14.3/Debian-5+lenny1) with ESMTP id q3DD4Xcb015202
+	for <linus@nordu.net>; Fri, 13 Apr 2012 15:04:33 +0200
+Received: from [2001:610:508:109:e52b:daf:25ef:e576] (helo=dhcp-96.surfnet.nl)
+	by teletubbie.het.net.je with esmtpsa (TLSv1:CAMELLIA256-SHA:256)
+	(Exim 4.76 (FreeBSD))
+	(envelope-from <Paul.Dekkers@surfnet.nl>)
+	id 1SIg9F-000KNV-9y
+	for linus@nordu.net; Fri, 13 Apr 2012 15:02:45 +0200
+Message-ID: <4F88246C.1010003@surfnet.nl>
+Date: Fri, 13 Apr 2012 15:04:44 +0200
+From: Paul Dekkers <Paul.Dekkers@surfnet.nl>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:10.0.2) Gecko/20120216 Thunderbird/10.0.2
+MIME-Version: 1.0
+To: Linus Nordberg <linus@nordu.net>
+Subject: Re: Testing of branch selectfamily
+References: <ysziph3uaea.fsf@nordberg.se> <4F88190F.8020907@surfnet.nl> <yszbomvu820.fsf@nordberg.se>
+In-Reply-To: <yszbomvu820.fsf@nordberg.se>
+X-Enigmail-Version: 1.4
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-Antivirus: no malware found
+X-Bayes-Prob: 0.0001 (Score 0, tokens from: @@RPTN, linus@nordu.net)
+X-Spam-Score: -0.10 () [Tag at 5.10] RBL(rp-good:-0.1)
+X-CanIt-Geo: ip=145.0.1.42; country=NL; region=09; city=Utrecht; latitude=52.0938; longitude=5.1191; http://maps.google.com/maps?q=52.0938,5.1191&z=6
+X-CanItPRO-Stream: nordu-net:linus@nordu.net (inherits from nordu-net:default,base:default)
+X-Canit-Stats-ID: 0aGVp4yUo - c0938fbec3fc - 20120413 (trained as not-spam)
+X-Scanned-By: MIMEDefang 2.63 on 193.10.252.27
+X-Scanned-By: CanIt (www . roaringpenguin . com) on 192.36.171.202
+X-Scanned-By: CanIt (www . roaringpenguin . com)
+X-Antispam-Training-Forget: https://mailfilter.nordu.net/canit/b.php?i=0aGVp4yUo&m=c0938fbec3fc&t=20120413&c=f
+X-Antispam-Training-Nonspam: https://mailfilter.nordu.net/canit/b.php?i=0aGVp4yUo&m=c0938fbec3fc&t=20120413&c=n
+X-Antispam-Training-Spam: https://mailfilter.nordu.net/canit/b.php?i=0aGVp4yUo&m=c0938fbec3fc&t=20120413&c=s
+X-Greylist: Sender DNS name whitelisted, not delayed by milter-greylist-4.0.1 (borei.nordu.net [193.10.252.27]); Fri, 13 Apr 2012 15:04:40 +0200 (CEST)
+
+Hi,
+
+I was just thinking: would it be interesting to have ipv4only | ipv6only
+as global function? Without setting it explicitly for every server {} or
+client {}, but still allowing to overwrite it?
+
+On 13-04-12 14:31, Linus Nordberg wrote:
+> Paul Dekkers <Paul.Dekkers@surfnet.nl> wrote
+> Fri, 13 Apr 2012 14:16:15 +0200:
+> 
+> | > Are you familiar with git and building radsecproxy?  If not, really
+> | > quick notes on how to get the code and build it below.  You'll need the
+> | > Auto* suite installed on your system.
+> | > 
+> | >   git clone -b selectfamily git://git.nordu.net/radsecproxy.git
+> | >   cd radsecproxy
+> | >   sh autogen.sh
+> | >   ./configure
+> | >   make
+> | > 
+> | > Let me know if anything needs clarification.
+> | 
+> | Well, thanks for that, I do it (git and autoconf) not very often, and
+> | copy-pasting it like this is definitely easier :-)
+> 
+> yw.
+> 
+> | BTW; on my Ubuntu 11.10 system, autogen.sh gave me:
+> | 
+> | root@lab122:~/radsecproxy# sh autogen.sh
+> | Can't exec "libtoolize": No such file or directory at
+> | /usr/bin/autoreconf line 196.
+> | Use of uninitialized value in pattern match (m//) at /usr/bin/autoreconf
+> | line 196.
+> 
+> libtoolize is part of libtool, one of the three parts of the
+> Auto*-suite.  Can you please check if you have libtool installed on your
+> system?
+
+Ah, indeed there was no libtool.
+
+> | OH, interesting, the 1.5 build assumed radsecproxy.conf in /etc but this
+> | git build takes it from /usr/local/etc
+> 
+> Hmm, that's a change in default behaviour which I should consider
+> fixing.  The change comes from
+> https://project.nordu.net/browse/RADSECPROXY-31 .  Thanks for reporting
+> this.
+
+Ok :-) wasn't even aware this was changed, thought it might be due to
+the way I built it,
+
+> | Ok, so ipv6only to yes or no didn't make a difference for me, in both
+> | cases IPv6 was used. Setting to IPv4only yes indeed fixates IPv4, and
+> | IPv4only set to no uses IPv6 again.
+> 
+> That's expected behaviour.
+> 
+> 
+> | So, the default behavior is still "whatever first came back from
+> | getaddrinfo()" right, which in this example was apparently IPv6? (This
+> | being very unpredictable, I still don't think is a feature! Making it
+> | predictable keeps 1.5 behavior/compatibility?)
+> 
+> I agree that it's not a feature.  I don't see how we can change this
+> without changing the behaviour, unpredictable or not.  I'd prefer to fix
+> this by resolving _all_ addresses for a given name but that's not
+> possible for 1.6.  The fix we're testing will make it possible for
+
+That's a much bigger job indeed. I don't even mind that much about
+radsecproxy not respecting TTL or using multiple A-records or anything:
+just the fact that at one point it might take the A-record, and the next
+the AAAA-record really bugs me. It's not even restart safe...
+
+Are results cached, or could it even be that for the client entry the
+v4-address is used, and for the server the v6 address is used?
+
+The problem is even bigger if the box doesn't do v6 (when it's even
+disabled in the kernel), and it gets the AAAA-records from getaddrinfo()
+- that's just wrong.
+
+Hmm, it's only used in 1 function, right? In resolvehostport()?
+
+> people to work around the bug.
+
+Hmm, so for 1.6 they'll need config changes, that will solve this
+indeed. (They could also fixate it with the IP-address I suppose, and
+certificateNameCheck off but that's definitely ugly in my opinion.)
+
+> | I tested failover also, like:
+> | 
+> | server etlr1.eduroam.org-4 {
+> |           host                  etlr1.eduroam.org
+> |           type                  tls
+> |           secret                radsec
+> |           statusserver          on
+> |           ipv4only              on
+> | }
+> | 
+> | server etlr1.eduroam.org-6 {
+> |           host                  etlr1.eduroam.org
+> |           type                  tls
+> |           secret                radsec
+> |           statusserver          on
+> |           ipv6only              on
+> | }
+> | 
+> | realm    * {
+> |               server           etlr1.eduroam.org-6
+> |               server           etlr1.eduroam.org-4
+> | }
+> | 
+> | That seems to work when IPv6 isn't available right from the start it
+> | uses IPv4, and when IPv6 becomes unavailable while running, it switches
+> | to the IPv4 server in about a minute or so.
+> 
+> Interesting.  We should share this with the list, now that we think it
+> works.  If you have time to do that, feel free to use any private mail
+> we've shared on this matter.
+
+Also that this version is in git for people to test? Or just
+demonstrating how it will work with the version in git?
+
+> | That's basically what you'd want for production IPv6 use, right. Without
+> | these two definitions, you still just get either v4 or v6, but never
+> | fallback. (To me it sounds OK to have two definitions. Except that
+> | random behavior... ;-))
+> | 
+> | Do you think it needs more testing? And on other platforms, like FreeBSD?
+> 
+> I've tested it on FreeBSD.  I think we're fine.  Thanks for testing.
+
+Ok,
+
+Paul

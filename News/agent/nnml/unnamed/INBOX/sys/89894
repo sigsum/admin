@@ -1,0 +1,162 @@
+Return-Path: <root@tex.dfri.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:34:01 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 5F84C11760; Mon, 29 Apr 2013 03:34:01 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id BA60011756
+	for <linus@nordberg.se>; Mon, 29 Apr 2013 03:33:52 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id 3DF9F1F32E02; Mon, 29 Apr 2013 03:33:53 +0200 (CEST)
+Delivered-To: beredskap@dfri.net
+Received: from tex.dfri.se (tex.dfri.se [171.25.193.10])
+	by mail.dfri.se (Postfix) with ESMTP id 3CAE61F32DD4
+	for <beredskap@dfri.net>; Mon, 29 Apr 2013 03:33:53 +0200 (CEST)
+Received: by tex.dfri.se (Postfix)
+	id 3B06178C23; Mon, 29 Apr 2013 03:33:53 +0200 (CEST)
+Delivered-To: root@tex.dfri.se
+Received: by tex.dfri.se (Postfix, from userid 0)
+	id 3841978C22; Mon, 29 Apr 2013 03:33:53 +0200 (CEST)
+To: root@tex.dfri.se
+Subject: tex.dfri.se daily run output
+Message-Id: <20130429013353.3841978C22@tex.dfri.se>
+Date: Mon, 29 Apr 2013 03:33:53 +0200 (CEST)
+From: root@tex.dfri.se (Charlie Root)
+
+
+Removing stale files from /var/preserve:
+
+Cleaning out old system announcements:
+
+Removing stale files from /var/rwho:
+
+Removing stale entries from sendmail host status cache:
+mailwrapper: no mapping in /etc/mail/mailer.conf
+
+Backup passwd and group files:
+
+Verifying group file syntax:
+/etc/group is fine
+
+Backing up mail aliases:
+
+Backing up package db directory:
+
+Disk status:
+Filesystem              Size    Used   Avail Capacity  Mounted on
+/dev/ad6s1a             989M    628M    281M    69%    /
+devfs                   1.0k    1.0k      0B   100%    /dev
+/dev/ad6s1e             989M    5.3M    904M     1%    /tmp
+/dev/ad6s1f             262G     20G    220G     8%    /usr
+/dev/ad6s1d             4.8G    796M    3.7G    18%    /var
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/build
+/usr/js/build           262G     20G    220G     8%    /usr/j/build/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/build/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/chat
+/usr/js/chat            262G     20G    220G     8%    /usr/j/chat/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/chat/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/len
+/usr/js/len             262G     20G    220G     8%    /usr/j/len/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/len/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/mail
+/usr/js/mail            262G     20G    220G     8%    /usr/j/mail/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/mail/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/mail2
+/usr/js/mail2           262G     20G    220G     8%    /usr/j/mail2/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/mail2/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/ns
+/usr/js/ns              262G     20G    220G     8%    /usr/j/ns/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/ns/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/rbldnsd
+/usr/js/rbldnsd         262G     20G    220G     8%    /usr/j/rbldnsd/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/rbldnsd/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/rekursiv1
+/usr/js/rekursiv1       262G     20G    220G     8%    /usr/j/rekursiv1/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/rekursiv1/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/retrograde
+/usr/js/retrograde      262G     20G    220G     8%    /usr/j/retrograde/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/retrograde/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/stats
+/usr/js/stats           262G     20G    220G     8%    /usr/j/stats/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/stats/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/x0
+/usr/js/x0              262G     20G    220G     8%    /usr/j/x0/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/x0/s/portbuild/usr/ports/packages
+/usr/j/mroot-fbsd9.0    262G     20G    220G     8%    /usr/j/spellbound
+/usr/js/spellbound      262G     20G    220G     8%    /usr/j/spellbound/s
+/usr/u/packages         262G     20G    220G     8%    /usr/j/spellbound/s/portbuild/usr/ports/packages
+devfs                   1.0k    1.0k      0B   100%    /usr/j/build/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/chat/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/len/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/mail/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/mail2/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/ns/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/rbldnsd/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/rekursiv1/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/retrograde/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/stats/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/x0/dev
+devfs                   1.0k    1.0k      0B   100%    /usr/j/spellbound/dev
+
+Last dump(s) done (Dump '>' file systems):
+  /dev/ad6s1a	(     /) Last dump: Level 2, Date Mon Apr 29 02:56
+  /dev/ad6s1d	(  /var) Last dump: Level 2, Date Sun Apr 28 05:05
+  /dev/ad6s1f	(  /usr) Last dump: Level 2, Date Sun Apr 28 02:59
+
+Network interface status:
+Name    Mtu Network       Address              Ipkts Ierrs Idrop    Opkts Oerrs  Coll
+bge0*  1500 <Link#1>      00:0a:e4:7f:c5:26        0     0     0        0     0     0
+bge1   1500 <Link#2>      00:0a:e4:7f:c5:27 18620985833 8234523     0 19430621003     0     0
+bge1   1500 171.25.193.0/ tex               173089540     -     - 19429540517     -     -
+bge1   1500 fe80::20a:e4f fe80::20a:e4ff:fe        6     -     -       21     -     -
+bge1   1500 tex.dfri.se   2001:67c:289c::10   358911     -     -   322301     -     -
+bge1   1500 171.25.193.13 build               204156     -     -        0     -     -
+bge1   1500 171.25.193.15 chat                 10613     -     -        0     -     -
+bge1   1500 171.25.193.19 len               20015518     -     -        0     -     -
+bge1   1500 171.25.193.17 mail                611289     -     -        0     -     -
+bge1   1500 mail.dfri.se  2001:67c:289c::17    81858     -     -    76863     -     -
+bge1   1500 171.25.193.18 mail2                 5812     -     -        0     -     -
+bge1   1500 171.25.193.11 ns                 2649771     -     -        0     -     -
+bge1   1500 171.25.193.16 171.25.193.16        46761     -     -        0     -     -
+bge1   1500 171.25.193.14 rekursiv1         281142881     -     -        0     -     -
+bge1   1500 171.25.193.22 retrograde          947146     -     -        0     -     -
+bge1   1500 retrograde.df 2001:67c:289c::22     1133     -     -      647     -     -
+bge1   1500 171.25.193.12 stats              8055624     -     -        0     -     -
+bge1   1500 171.25.193.21 tor-exit1-readme  17727715666     -     -        0     -     -
+bge1   1500 tor-exit1-rea 2001:67c:289c::21   525666     -     -   550748     -     -
+bge1   1500 171.25.193.23 171.25.193.23      6888461     -     -        0     -     -
+bge1   1500 2001:67c:289c 2001:67c:289c::23    53840     -     -        0     -     -
+usbus     0 <Link#3>                               0     0     0        0     0     0
+usbus     0 <Link#4>                               0     0     0        0     0     0
+usbus     0 <Link#5>                               0     0     0        0     0     0
+usbus     0 <Link#6>                               0     0     0        0     0     0
+usbus     0 <Link#7>                               0     0     0        0     0     0
+pflog 33152 <Link#8>                               0     0     0 221109347     0     0
+lo0   16384 <Link#9>                        32414168     0     0 32414181     0     0
+lo0   16384 localhost     ::1                   7338     -     -    66197     -     -
+lo0   16384 fe80::1%lo0   fe80::1                  0     -     -        0     -     -
+lo0   16384 your-net      localhost                8     -     - 32406843     -     -
+
+Local system status:
+ 3:01AM  up 61 days, 11:28, 5 users, load averages: 1.56, 1.32, 1.03
+
+Mail in local queue:
+Mail queue is empty
+
+Mail in submit queue:
+Mail queue is empty
+
+Security check:
+    (output mailed separately)
+
+Checking for rejected mail hosts:
+
+Checking for denied zone transfers (AXFR and IXFR):
+
+-- End of daily output --

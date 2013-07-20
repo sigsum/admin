@@ -1,0 +1,194 @@
+Return-Path: <root@modermodemet.adb-centralen.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:07:07 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 2235D11756; Mon, 29 Apr 2013 03:07:06 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from modermodemet.adb-centralen.se (modermodemet.adb-centralen.se [193.10.5.101])
+	by smtp.nordberg.se (Postfix) with ESMTP id 98A701152A
+	for <linus@nordberg.se>; Mon, 29 Apr 2013 03:06:53 +0200 (CEST)
+Received: by modermodemet.adb-centralen.se (Postfix)
+	id ED1ED2A5; Mon, 29 Apr 2013 03:07:06 +0200 (CEST)
+Delivered-To: root@modermodemet.adb-centralen.se
+Received: by modermodemet.adb-centralen.se (Postfix, from userid 0)
+	id D1A0C2A3; Mon, 29 Apr 2013 03:07:06 +0200 (CEST)
+To: root@modermodemet.adb-centralen.se
+Subject: modermodemet.adb-centralen.se security run output
+Message-Id: <20130429010706.D1A0C2A3@modermodemet.adb-centralen.se>
+Date: Mon, 29 Apr 2013 03:07:06 +0200 (CEST)
+From: root@modermodemet.adb-centralen.se (Charlie Root)
+
+
+Checking setuid files and devices:
+
+Checking for uids of 0:
+root 0
+toor 0
+
+Checking for passwordless accounts:
+
+Checking login.conf permissions:
+
+Checking for ports with mismatched checksums:
+
+modermodemet.adb-centralen.se pf denied packets:
++++ /tmp/security.cnzfYE7U	2013-04-29 03:05:40.293456022 +0200
++block drop in log all [ Evaluations: 13288526 Packets: 3711388 Bytes: 621146008 States: 0 ]
++block drop in log quick on ! lo inet from 127.0.0.0/8 to any [ Evaluations: 13288526 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! lo inet6 from ::1 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 127.0.0.1 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from ::1 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on lo0 inet6 from fe80::1 to any [ Evaluations: 2114002 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.0/24 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet6 from 2001:6b0:8::/64 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.85 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet6 from 2001:6b0:8::/64 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.107 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet6 from 2001:6b0:8::/64 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.112 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet6 from 2001:6b0:8::/64 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.108 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet6 from 2001:6b0:8::/64 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.111 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet6 from 2001:6b0:8::/64 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.90 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet6 from 2001:6b0:8::/64 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.98 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet6 from 2001:6b0:8::/64 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.89 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet6 from 2001:6b0:8::/64 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! em0 inet from 193.10.5.84 to any [ Evaluations: 412677 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.101 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on em0 inet6 from fe80::225:90ff:fe30:7002 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:6b0:8::101 to any [ Evaluations: 2526679 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.85 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:6b0:8::85 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.107 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:6b0:8::107 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.112 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:6b0:8::112 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.108 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:6b0:8::108 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.111 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:6b0:8::111 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.90 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:6b0:8::90 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.98 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:6b0:8::98 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.89 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:6b0:8::89 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 193.10.5.84 to any [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick from <blocked_tutti> to any [ Evaluations: 13288526 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick proto tcp from <blocked_ssh> to any port = ssh [ Evaluations: 7886978 Packets: 0 Bytes: 0 States: 0 ]
+
+modermodemet.adb-centralen.se login failures:
+
+modermodemet.adb-centralen.se refused connections:
+
+Downloading a current audit database:
+auditfile.tbz                                           86 kB  124 kBps
+New database installed.
+Database created: Mon Apr 29 03:05:00 CEST 2013
+
+portaudit for jails on modermodemet.adb-centralen.se - 9 problem(s) found.
+
+portaudit for jail: accept.adb-centralen.se (JID: 1)
+
+Affected package: perl-5.12.4_4
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+1 problem(s) found.
+
+portaudit for jail: brk.adb-centralen.se (JID: 5)
+
+Affected package: perl-5.14.2_2
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+1 problem(s) found.
+
+portaudit for jail: dup2.adb-centralen.se (JID: 7)
+
+Affected package: perl-5.14.2_2
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+1 problem(s) found.
+
+portaudit for jail: execve.adb-centralen.se (JID: 8)
+
+Affected package: perl-5.14.2_2
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+1 problem(s) found.
+
+portaudit for jail: fcntl.adb-centralen.se (JID: 6)
+
+Affected package: perl-5.14.2_2
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+Affected package: sudo-1.8.6.p3_1
+Type of problem: sudo -- Authentication bypass when clock is reset.
+Reference: http://portaudit.FreeBSD.org/764344fb-8214-11e2-9273-902b343deec9.html
+
+Affected package: sudo-1.8.6.p3_1
+Type of problem: sudo -- Potential bypass of tty_tickets constraints.
+Reference: http://portaudit.FreeBSD.org/82cfd919-8213-11e2-9273-902b343deec9.html
+
+2 problem(s) found.
+
+portaudit for jail: len.dfri.se (JID: 3)
+
+Affected package: sudo-1.8.4_2
+Type of problem: sudo -- Authentication bypass when clock is reset.
+Reference: http://portaudit.FreeBSD.org/764344fb-8214-11e2-9273-902b343deec9.html
+
+Affected package: sudo-1.8.4_2
+Type of problem: sudo -- Potential bypass of tty_tickets constraints.
+Reference: http://portaudit.FreeBSD.org/82cfd919-8213-11e2-9273-902b343deec9.html
+
+1 problem(s) found.
+
+portaudit for jail: ln.adb-centralen.se (JID: 9)
+
+Affected package: perl-5.12.4_4
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+1 problem(s) found.
+
+portaudit for jail: proj.adb-centralen.se (JID: 4)
+
+Affected package: sudo-1.8.4_2
+Type of problem: sudo -- Authentication bypass when clock is reset.
+Reference: http://portaudit.FreeBSD.org/764344fb-8214-11e2-9273-902b343deec9.html
+
+Affected package: sudo-1.8.4_2
+Type of problem: sudo -- Potential bypass of tty_tickets constraints.
+Reference: http://portaudit.FreeBSD.org/82cfd919-8213-11e2-9273-902b343deec9.html
+
+1 problem(s) found.
+
+Checking for a current audit database:
+
+Database created: Mon Apr 29 03:05:00 CEST 2013
+
+Checking for packages with security vulnerabilities:
+
+Affected package: perl-5.10.1_7
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+1 problem(s) in your installed packages found.
+
+You are advised to update or deinstall the affected package(s) immediately.
+
+-- End of security output --

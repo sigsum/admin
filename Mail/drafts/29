@@ -1,0 +1,23 @@
+X-Draft-From: ("nnimap+adbc:INBOX")
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2012-03
+To: 
+Subject: dirauth and dos mitigation
+From: Linus Nordberg <linus@nordberg.se>
+Date: Wed, 28 Mar 2012 11:01:09 +0200
+--text follows this line--
+Network trouble can result from DoS mitigation at or near the
+directory authorities.
+
+I've just recently realised how much crap maatuska receives.  A
+thousand dir port connections from a single address for example.
+
+I've now started limiting the number of TCP connections and TCP
+establishment rate from a single address.  The numbers are hard to get
+right, we don't want to hurt clients behind a NAT f.ex.  Right now,
+maatuska allows 600 new connections per minute from a single address
+and a maximum of 100 simultaneous connections.  Some 50-100 addresses
+get caught in that filter per day.
+
+I suspect that most if not all of the dirauths sit behind equipment
+doing something similar to this.  Ask your provider.  And please ask
+them how they treat the logs from that equipment.

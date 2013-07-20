@@ -1,0 +1,104 @@
+Return-Path: <root@tex.dfri.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:34:00 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id C586011761; Mon, 29 Apr 2013 03:34:00 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id D3C341173F
+	for <linus@nordberg.se>; Mon, 29 Apr 2013 03:33:51 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id CD6BD1F32DD3; Mon, 29 Apr 2013 03:33:52 +0200 (CEST)
+Delivered-To: beredskap@dfri.net
+Received: from tex.dfri.se (tex.dfri.se [171.25.193.10])
+	by mail.dfri.se (Postfix) with ESMTP id CBE121F32C9C
+	for <beredskap@dfri.net>; Mon, 29 Apr 2013 03:33:52 +0200 (CEST)
+Received: by tex.dfri.se (Postfix)
+	id C3C5378C20; Mon, 29 Apr 2013 03:33:52 +0200 (CEST)
+Delivered-To: root@tex.dfri.se
+Received: by tex.dfri.se (Postfix, from userid 0)
+	id BA3D278C1F; Mon, 29 Apr 2013 03:33:52 +0200 (CEST)
+To: root@tex.dfri.se
+Subject: tex.dfri.se security run output
+Message-Id: <20130429013352.BA3D278C1F@tex.dfri.se>
+Date: Mon, 29 Apr 2013 03:33:52 +0200 (CEST)
+From: root@tex.dfri.se (Charlie Root)
+
+
+Checking setuid files and devices:
+
+Checking negative group permissions:
+
+Checking for uids of 0:
+root 0
+toor 0
+
+Checking for passwordless accounts:
+
+Checking login.conf permissions:
+
+Checking for ports with mismatched checksums:
+
+tex.dfri.se pf denied packets:
++++ /tmp/security.ooNPQuJV	2013-04-29 03:22:03.000000000 +0200
++block drop in all label "Default deny in" [ Evaluations: 2087579 Packets: 1504122 Bytes: 73224194 States: 0 ]
++block drop in log quick on ! lo0 inet6 from ::1 to any label "antispoof" [ Evaluations: 2087579 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! lo0 inet from 127.0.0.0/8 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! bge1 inet from 171.25.193.0/26 to any label "antispoof" [ Evaluations: 1534206 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on ! bge1 inet6 from 2001:67c:289c::/64 to any label "antispoof" [ Evaluations: 175 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.10 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick on bge1 inet6 from fe80::20a:e4ff:fe7f:c527 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:67c:289c::10 to any label "antispoof" [ Evaluations: 175 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.13 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.15 to any label "antispoof" [ Evaluations: 1534206 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.19 to any label "antispoof" [ Evaluations: 1534206 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.17 to any label "antispoof" [ Evaluations: 1534206 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:67c:289c::17 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.18 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.11 to any label "antispoof" [ Evaluations: 1534206 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.16 to any label "antispoof" [ Evaluations: 1534206 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.14 to any label "antispoof" [ Evaluations: 1534206 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.22 to any label "antispoof" [ Evaluations: 1534206 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:67c:289c::22 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.12 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.21 to any label "antispoof" [ Evaluations: 1534206 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:67c:289c::21 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet from 171.25.193.23 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet6 from 2001:67c:289c::23 to any label "antispoof" [ Evaluations: 1534381 Packets: 0 Bytes: 0 States: 0 ]
+
+tex.dfri.se kernel log messages:
++++ /tmp/security.zeNmxvJ5	2013-04-29 03:22:03.000000000 +0200
++Limiting closed port RST response from 317 to 200 packets/sec
++Limiting closed port RST response from 252 to 200 packets/sec
++Limiting closed port RST response from 222 to 200 packets/sec
++Limiting closed port RST response from 317 to 200 packets/sec
++Limiting closed port RST response from 234 to 200 packets/sec
++Limiting closed port RST response from 341 to 200 packets/sec
++Limiting closed port RST response from 380 to 200 packets/sec
++Limiting closed port RST response from 307 to 200 packets/sec
++Limiting closed port RST response from 300 to 200 packets/sec
+
+tex.dfri.se login failures:
+
+tex.dfri.se refused connections:
+
+Downloading a current audit database:
+auditfile.tbz                                           86 kB  131 kBps
+New database installed.
+Database created: Mon Apr 29 03:20:00 CEST 2013
+
+
+Checking for a current audit database:
+
+Database created: Mon Apr 29 03:20:00 CEST 2013
+
+Checking for packages with security vulnerabilities:
+
+0 problem(s) in your installed packages found.
+
+-- End of security output --

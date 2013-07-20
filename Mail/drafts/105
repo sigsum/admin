@@ -1,0 +1,20 @@
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-03
+To: christian.christensen@im.uu.se 
+Subject: Ev. händelser i Armenien, Georgien och Ukraina
+From: Linus Nordberg <linus@nordberg.se>
+Date: Fri, 22 Mar 2013 15:48:03 +0100
+--text follows this line--
+Hej Christian!
+
+Apropå ditt intresse för Tor-statistik per land.
+
+Vi vet ännu inte om det här är en bugg i våra mätningar eller om det
+händer grejer. Håller på och undersöker.
+
+https://metrics.torproject.org/users.html?graph=direct-users&start=2013-03-01&end=2013-03-22&country=am&events=points#direct-users
+https://metrics.torproject.org/users.html?graph=direct-users&start=2013-03-01&end=2013-03-22&country=ge&events=points#direct-users
+https://metrics.torproject.org/users.html?graph=direct-users&start=2013-03-01&end=2013-03-22&country=ua&events=points#direct-users
+
+Graferna pekar på rejäla ökningar. Exempelvis Georgien som gick från
+drygt 100 användare den 14:e till nästan 1400 den 18:e. Eller Ukraina
+som hade ca 5000 användare den 10: och 22000 den 18:e.

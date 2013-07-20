@@ -1,0 +1,25 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: Nick Mathewson <nickm@torproject.org> 
+Subject: libevent-2.1.3-alpha failures on FreeBSD
+Date: Wed, 01 May 2013 16:22:24 +0200
+Message-ID: <87li7yeq5b.fsf@nordberg.se>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+--text follows this line--
+Hi Nick,
+
+Logs from running make check on two fbsd machines attached.
+
+I haven't looked into any of the tests. Please let me know which of
+these are not obvious failures and I'll debug it some and give you more
+input.
+
+(Today is not a computer day for me though so please don't hold off any
+release just because of this.)
+
+And oh, the fbsd-8 make check is taking forever to finish due to dns
+weirdnesses we've discussed before. Its output has been cut.
+
+<#part type="application/octet-stream" filename="~/p/libevent/libevent-2.1.3-alpha-on-FreeBSD-8.3-STABLE-#1" disposition=attachment>
+<#/part>
+<#part type="application/octet-stream" filename="~/p/libevent/libevent-2.1.3-alpha-on-FreeBSD-9.0-RELEASE-p3" disposition=attachment>
+<#/part>

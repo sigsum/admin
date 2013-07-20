@@ -1,0 +1,201 @@
+Return-Path: <root@rs1.dfri.net>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:09:39 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 23D9F1175F; Mon, 29 Apr 2013 03:09:39 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,TVD_SPACE_RATIO
+	autolearn=ham version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id 13658116C5
+	for <linus@nordberg.se>; Mon, 29 Apr 2013 03:09:25 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id 77FF91F32DD3; Mon, 29 Apr 2013 03:09:25 +0200 (CEST)
+Delivered-To: beredskap@dfri.net
+Received: from rs1.dfri.net (unknown [78.152.39.18])
+	by mail.dfri.se (Postfix) with ESMTP id 744CB1F32C9C
+	for <beredskap@dfri.net>; Mon, 29 Apr 2013 03:09:25 +0200 (CEST)
+Received: by rs1.dfri.net (Postfix)
+	id 738B622D92; Mon, 29 Apr 2013 03:09:25 +0200 (CEST)
+Delivered-To: root@rs1.dfri.net
+Received: by rs1.dfri.net (Postfix, from userid 0)
+	id 70E9722D8F; Mon, 29 Apr 2013 03:09:25 +0200 (CEST)
+From: root@rs1.dfri.net (Cron Daemon)
+To: root@rs1.dfri.net
+Subject: Cron <root@rs1> /usr/sbin/portsnap cron update
+X-Cron-Env: <SHELL=/bin/sh>
+X-Cron-Env: <PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <LOGNAME=root>
+X-Cron-Env: <USER=root>
+Message-Id: <20130429010925.70E9722D8F@rs1.dfri.net>
+Date: Mon, 29 Apr 2013 03:09:18 +0200 (CEST)
+
+Removing old files and directories... done.
+Extracting new files:
+/usr/ports/MOVED
+/usr/ports/Mk/bsd.gstreamer.mk
+/usr/ports/UPDATING
+/usr/ports/accessibility/gnome-speech/
+/usr/ports/archivers/Makefile
+/usr/ports/archivers/par/
+/usr/ports/cad/pcb/
+/usr/ports/comms/Makefile
+/usr/ports/comms/dabstick-radio/
+/usr/ports/comms/spandsp-devel/
+/usr/ports/databases/postgresql84-server/
+/usr/ports/databases/postgresql91-server/
+/usr/ports/databases/postgresql92-server/
+/usr/ports/databases/py-htsql-mysql/
+/usr/ports/databases/py-htsql-pgsql/
+/usr/ports/databases/py-htsql/
+/usr/ports/databases/py-redis/
+/usr/ports/databases/py-swift/
+/usr/ports/devel/Makefile
+/usr/ports/devel/R-cran-gdata/
+/usr/ports/devel/cross-gcc/
+/usr/ports/devel/guichan/
+/usr/ports/devel/py-pyflakes/
+/usr/ports/devel/py-rauth/
+/usr/ports/devel/py-tox/
+/usr/ports/dns/knot/
+/usr/ports/emulators/dynamips-community/
+/usr/ports/emulators/fmsx/
+/usr/ports/emulators/gngeo/
+/usr/ports/emulators/gxemul/
+/usr/ports/emulators/loemu/
+/usr/ports/emulators/pearpc/
+/usr/ports/emulators/snes9x-gtk/
+/usr/ports/emulators/snes9x/
+/usr/ports/emulators/xcpc/
+/usr/ports/emulators/yabause/
+/usr/ports/finance/kmymoney2/
+/usr/ports/games/3dpong/
+/usr/ports/games/abuse_sdl/
+/usr/ports/games/asteroid/
+/usr/ports/games/bubble-chains/
+/usr/ports/games/quake2max/
+/usr/ports/games/tmw/
+/usr/ports/graphics/pear-IO_SWF/
+/usr/ports/lang/squeak/
+/usr/ports/multimedia/Makefile
+/usr/ports/multimedia/gstreamer1-plugins-all/
+/usr/ports/multimedia/gstreamer1-plugins-core/
+/usr/ports/multimedia/gstreamer1-plugins-rtmp/
+/usr/ports/multimedia/gstreamer1-plugins/
+/usr/ports/net-im/libpurple/
+/usr/ports/net/cvsync/
+/usr/ports/net/netatalk3/
+/usr/ports/net/py-impacket/
+/usr/ports/net/py-pcapy/
+/usr/ports/net/tac_plus4/
+/usr/ports/net/ucarp/
+/usr/ports/net/wireshark/
+/usr/ports/ports-mgmt/portlint/
+/usr/ports/print/Makefile
+/usr/ports/print/apsfilter/
+/usr/ports/print/ghostscript8-nox11/
+/usr/ports/print/ghostscript8/
+/usr/ports/print/ghostscript9-agpl-nox11/
+/usr/ports/print/ghostscript9-agpl/
+/usr/ports/print/ghostscript9-nox11/
+/usr/ports/print/html2ps/
+/usr/ports/print/latex2slides/
+/usr/ports/print/yatex/
+/usr/ports/science/InsightToolkit/
+/usr/ports/science/dlpoly-classic/
+/usr/ports/science/gramps/
+/usr/ports/science/hdf5-18/
+/usr/ports/science/liblinear/
+/usr/ports/science/libsvm/
+/usr/ports/science/mbdyn/
+/usr/ports/science/netcdf/
+/usr/ports/science/netcdf4/
+/usr/ports/science/omnetpp/
+/usr/ports/science/paraview/
+/usr/ports/science/xmds/
+/usr/ports/security/amavisd-new/
+/usr/ports/security/clamsmtp/
+/usr/ports/security/dazuko/
+/usr/ports/security/dirmngr/
+/usr/ports/security/ftimes/
+/usr/ports/security/gnupg1/
+/usr/ports/security/heimdal/
+/usr/ports/security/ike/
+/usr/ports/security/john/
+/usr/ports/security/krb5-appl/
+/usr/ports/security/maia/
+/usr/ports/security/mailzu/
+/usr/ports/security/medusa/
+/usr/ports/security/metasploit/
+/usr/ports/security/oidentd/
+/usr/ports/security/openct/
+/usr/ports/security/osiris/
+/usr/ports/security/p5-Crypt-Twofish/
+/usr/ports/security/p5-openxpki/
+/usr/ports/security/pam_bsdbioapi/
+/usr/ports/security/pam_krb5-rh/
+/usr/ports/security/php-Auth_OpenID/
+/usr/ports/security/php-Auth_OpenID2/
+/usr/ports/security/py-oauthlib/
+/usr/ports/security/racoon2/
+/usr/ports/security/scamp/
+/usr/ports/security/scrypt/
+/usr/ports/security/shibboleth2-sp/
+/usr/ports/security/snort/
+/usr/ports/security/snortsam/
+/usr/ports/security/spybye/
+/usr/ports/security/suricata/
+/usr/ports/security/tripwire/
+/usr/ports/security/yapet/
+/usr/ports/sysutils/apachetop/
+/usr/ports/sysutils/apcupsd/
+/usr/ports/sysutils/avfs/
+/usr/ports/sysutils/backuppc/
+/usr/ports/sysutils/boxbackup-devel/
+/usr/ports/sysutils/env4801/
+/usr/ports/sysutils/flexbackup/
+/usr/ports/sysutils/heartbeat/
+/usr/ports/sysutils/hoz/
+/usr/ports/sysutils/htop/
+/usr/ports/sysutils/jx/
+/usr/ports/sysutils/kgtk/
+/usr/ports/sysutils/kkbswitch/
+/usr/ports/sysutils/lire/
+/usr/ports/sysutils/moreutils-parallel/
+/usr/ports/sysutils/msyslog/
+/usr/ports/sysutils/open/
+/usr/ports/sysutils/openipmi/
+/usr/ports/sysutils/pflogx/
+/usr/ports/sysutils/psmisc/
+/usr/ports/sysutils/pwsafe/
+/usr/ports/sysutils/radmind/
+/usr/ports/sysutils/samesame/
+/usr/ports/sysutils/screen/
+/usr/ports/sysutils/squashfs-tools/
+/usr/ports/sysutils/sysinfo/
+/usr/ports/sysutils/syslog-ng-devel/
+/usr/ports/sysutils/syslog-ng/
+/usr/ports/sysutils/sysupdate/
+/usr/ports/sysutils/torsmo/
+/usr/ports/sysutils/udfclient/
+/usr/ports/sysutils/usbhotkey/
+/usr/ports/sysutils/webjob/
+/usr/ports/sysutils/zisofs-tools/
+/usr/ports/textproc/db2latex/
+/usr/ports/textproc/docbook-500/
+/usr/ports/textproc/docbook-xsl/
+/usr/ports/textproc/docbook/
+/usr/ports/textproc/groff/
+/usr/ports/textproc/stardict2-dictd_mova/
+/usr/ports/textproc/stardict2-quick/
+/usr/ports/textproc/xmlroff/
+/usr/ports/www/Makefile
+/usr/ports/www/firefox-remote/
+/usr/ports/www/joomla31/
+/usr/ports/www/py-slumber/
+/usr/ports/www/rubygem-nanoc/
+Building new INDEX files... done.

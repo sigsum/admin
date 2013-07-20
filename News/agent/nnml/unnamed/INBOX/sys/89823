@@ -1,0 +1,117 @@
+Return-Path: <root@nordberg.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 28 Apr 2013 03:37:09 +0200
+X-Sieve: CMU Sieve 2.3
+Received: from banksy.nordberg.se (smtp.nordberg.se [193.10.5.87])
+	by smtp.nordberg.se (Postfix) with ESMTP id 9518311536
+	for <root@nordberg.se>; Sun, 28 Apr 2013 03:37:09 +0200 (CEST)
+Received: by banksy.nordberg.se (Postfix, from userid 0)
+	id 745201AE; Sun, 28 Apr 2013 03:37:09 +0200 (CEST)
+To: root@nordberg.se
+Subject: banksy.nordberg.se daily run output
+Message-Id: <20130428013709.745201AE@banksy.nordberg.se>
+Date: Sun, 28 Apr 2013 03:37:09 +0200 (CEST)
+From: root@nordberg.se (Charlie Root)
+
+
+Removing stale files from /var/preserve:
+
+Cleaning out old system announcements:
+
+Removing stale files from /var/rwho:
+
+Backup passwd and group files:
+
+Verifying group file syntax:
+/etc/group is fine
+
+Backing up mail aliases:
+
+Disk status:
+Filesystem                   1024-blocks     Used   Avail Capacity  Mounted on
+/dev/ad0s1a                       198126    64828  117448    36%    /
+devfs                                  1        1       0   100%    /dev
+/dev/ad1s1d                     10154158  4267224 5074602    46%    /usr
+/dev/ad1s1e                      1012974   187706  744232    20%    /var
+/dev/ad1s1h                     10169558  2036678 7319316    22%    /u
+/dev/ad1s1f                     22340430 19635554  917642    96%    /usr/jaildisks/ln
+/dev/ad1s1g                      3045006  1890880  910526    67%    /usr/jaildisks/ln/var
+/dev/ad1s2d                     10154158  3837430 5504396    41%    /usr/jaildisks/mr
+/dev/ad1s2e                      2026030  1165012  698936    63%    /usr/jaildisks/mr/var
+/dev/ad2a                       10154150  5507760 3834058    59%    /usr/jaildisks/ln/lnmail/usr/local/cyrus/spool
+/dev/md0                          507630       20  467000     0%    /tmp
+/usr/jails/basejail             10154158  4267224 5074602    46%    /usr/jaildisks/ln/lnweb/basejail
+/usr/jaildisks/ln/var/lnweb      3045006  1890880  910526    67%    /usr/jaildisks/ln/lnweb/var
+/u                              10169558  2036678 7319316    22%    /usr/jaildisks/ln/lnweb/u
+devfs                                  1        1       0   100%    /usr/jaildisks/ln/lnweb/dev
+fdescfs                                1        1       0   100%    /usr/jaildisks/ln/lnweb/dev/fd
+procfs                                 4        4       0   100%    /usr/jaildisks/ln/lnweb/proc
+/usr/jails/basejail             10154158  4267224 5074602    46%    /usr/jaildisks/ln/lnspam/basejail
+/usr/jaildisks/ln/var/lnspam     3045006  1890880  910526    67%    /usr/jaildisks/ln/lnspam/var
+/u                              10169558  2036678 7319316    22%    /usr/jaildisks/ln/lnspam/u
+devfs                                  1        1       0   100%    /usr/jaildisks/ln/lnspam/dev
+fdescfs                                1        1       0   100%    /usr/jaildisks/ln/lnspam/dev/fd
+procfs                                 4        4       0   100%    /usr/jaildisks/ln/lnspam/proc
+/usr/jails/basejail             10154158  4267224 5074602    46%    /usr/jaildisks/ln/lnmail/basejail
+/usr/jaildisks/ln/var/lnmail     3045006  1890880  910526    67%    /usr/jaildisks/ln/lnmail/var
+/u                              10169558  2036678 7319316    22%    /usr/jaildisks/ln/lnmail/u
+devfs                                  1        1       0   100%    /usr/jaildisks/ln/lnmail/dev
+fdescfs                                1        1       0   100%    /usr/jaildisks/ln/lnmail/dev/fd
+procfs                                 4        4       0   100%    /usr/jaildisks/ln/lnmail/proc
+/usr/jails/basejail             10154158  4267224 5074602    46%    /usr/jaildisks/ln/lnkrb/basejail
+/usr/jaildisks/ln/var/lnkrb      3045006  1890880  910526    67%    /usr/jaildisks/ln/lnkrb/var
+/u                              10169558  2036678 7319316    22%    /usr/jaildisks/ln/lnkrb/u
+devfs                                  1        1       0   100%    /usr/jaildisks/ln/lnkrb/dev
+fdescfs                                1        1       0   100%    /usr/jaildisks/ln/lnkrb/dev/fd
+procfs                                 4        4       0   100%    /usr/jaildisks/ln/lnkrb/proc
+/usr/jails/basejail             10154158  4267224 5074602    46%    /usr/jaildisks/ln/lndns/basejail
+/usr/jaildisks/ln/var/lndns      3045006  1890880  910526    67%    /usr/jaildisks/ln/lndns/var
+/u                              10169558  2036678 7319316    22%    /usr/jaildisks/ln/lndns/u
+devfs                                  1        1       0   100%    /usr/jaildisks/ln/lndns/var/named/dev
+devfs                                  1        1       0   100%    /usr/jaildisks/ln/lndns/dev
+fdescfs                                1        1       0   100%    /usr/jaildisks/ln/lndns/dev/fd
+procfs                                 4        4       0   100%    /usr/jaildisks/ln/lndns/proc
+/dev/ad0s1g                     11501436  6360908 4220414    60%    /usr/jaildisks/ln/lnmail/usr/local/cyrus/spool/user2
+
+Last dump(s) done (Dump '>' file systems):
+> /dev/ad0s1a	(     /) Last dump: Level 2, Date Sat Apr 27 01:50
+  /dev/ad1d	(      ) Last dump: Level 4, Date Sun Aug 23 01:10
+  /dev/ad1e	(      ) Last dump: Level 4, Date Sun Aug 23 01:10
+  /dev/ad1s1d	(  /usr) Last dump: Level 2, Date Sat Apr 27 01:50
+  /dev/ad1s1e	(  /var) Last dump: Level 2, Date Sat Apr 27 02:03
+  /dev/ad1s1f	(/usr/jaildisks/ln) Last dump: Level 2, Date Sat Apr 27 02:05
+  /dev/ad1s1g	(/usr/jaildisks/ln/var) Last dump: Level 2, Date Sat Apr 27 02:14
+  /dev/ad1s2d	(/usr/jaildisks/mr) Last dump: Level 2, Date Sat Apr 27 02:25
+  /dev/ad1s2e	(/usr/jaildisks/mr/var) Last dump: Level 2, Date Sat Apr 27 02:26
+  /dev/ad1s2f	(      ) Last dump: Level 1, Date Fri Dec  2 03:24
+  /dev/ad1s2g	(      ) Last dump: Level 1, Date Fri Dec  2 03:24
+> /dev/ad2a	(/usr/jaildisks/ln/lnmail/usr/local/cyrus/spool) Last dump: Level 0, Date Sat Apr  9 04:40
+
+Network interface status:
+Name    Mtu Network       Address              Ipkts Ierrs    Opkts Oerrs  Coll
+re0    1500 <Link#1>      00:16:3e:00:00:87 800417712     0 957847824     0 957757409
+re0    1500 193.10.5      banksy            232358639     - 957782693     -     -
+re0    1500 10.0.1/24     lnkrb               184234     -   185298     -     -
+re0    1500 10.0.1/24     lnmail            169389598     - 40790122     -     -
+re0    1500 10.0.1/24     lnspam            327482669     - 327337740     -     -
+re0    1500 10.0.1/24     lndns             354971206     - 18992680     -     -
+re0    1500 10.0.1/24     lnweb             18837114     -  4424919     -     -
+re0    1500 10.0.1/24     lntest                1993     -     1367     -     -
+re0    1500 10.0.2/24     iommi                12401     -     3757     -     -
+pflog 33160 <Link#2>                               0     0        0     0     0
+lo0   16384 <Link#3>                        391754955     0 391754955     0     0
+lo0   16384 your-net      localhost               16     -       16     -     -
+
+Local system status:
+ 3:02AM  up 329 days, 22:47, 0 users, load averages: 6.17, 1.72, 0.67
+
+Mail in local queue:
+Mail queue is empty
+
+Security check:
+    (output mailed separately)
+
+Checking for denied zone transfers (AXFR and IXFR):
+
+-- End of daily output --

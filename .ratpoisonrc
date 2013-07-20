@@ -1,0 +1,13 @@
+# ~/.ratpoisonrc
+#definekey top C-M-l exec xlock
+definekey top C-M-l exec ~/bin/xlock.sh
+definekey top C-M-x exec xterm
+
+definekey root C-i focus
+
+hsplit
+exec xterm
+focus
+exec xscreensaver -no-splash
+#exec gpg-agent emacs
+exec emacs

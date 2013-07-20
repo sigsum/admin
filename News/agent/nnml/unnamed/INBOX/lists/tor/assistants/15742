@@ -1,0 +1,132 @@
+Return-Path: <tor-assistants-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Wed, 07 Mar 2012 23:40:20 +0100
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 40587116F4; Wed,  7 Mar 2012 23:40:20 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.8 required=4.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,T_DKIM_INVALID,T_RP_MATCHES_RCVD autolearn=no version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id A1CBF11513
+	for <linus@nordberg.se>; Wed,  7 Mar 2012 23:40:18 +0100 (CET)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 77AE922429;
+	Wed,  7 Mar 2012 22:40:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 0C0E620A9B
+	for <tor-assistants@lists.torproject.org>;
+	Wed,  7 Mar 2012 22:40:13 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id 3kVPDIhddIIO for <tor-assistants@lists.torproject.org>;
+	Wed,  7 Mar 2012 22:40:12 +0000 (UTC)
+Received: from mail-iy0-f175.google.com (mail-iy0-f175.google.com
+	[209.85.210.175]) (using TLSv1 with cipher RC4-MD5 (128/128 bits))
+	(Client CN "smtp.gmail.com",
+	Issuer "Google Internet Authority" (not verified))
+	by eugeni.torproject.org (Postfix) with ESMTPS id E89F020A6A
+	for <tor-assistants@torproject.org>;
+	Wed,  7 Mar 2012 22:40:12 +0000 (UTC)
+Received: by iaag37 with SMTP id g37so11463281iaa.34
+	for <tor-assistants@torproject.org>;
+	Wed, 07 Mar 2012 14:40:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=OJBgYAVvlRBMPILadgMD2NNPCosXGPg8sAunK/1yMM4=;
+	b=d0nQzEQDjF7DxQRDYfcgAA9fNHKYxiB//AUk27fll5GrC5+qjLhCLupEKC+PyanPnU
+	ifGctj0++rFvO/JFksMSqAVCbDHjOgni3u7gjpo56tfDOwwG1MvsvY2bBxhHyP/NdJWn
+	sLJujpmWOYfM7i13Yc13yoUn1mg0Y9oDcGpnKeWZc7h5d4DC0vPo10Zwrp0QxZr0Hl0t
+	NbdrjCwP/ovZ513VTjM0UPRH5JkYj8NJP/lvu6oOeDXSz6pyajFockETHBSPO/WENmom
+	P8lLq5yDp5lpHZDe2TkXvzUuhLtUI+efp/Rnh+MTAKdGBjDrAPwusukNF9gcLp6QOIKk
+	CRng==
+MIME-Version: 1.0
+Received: by 10.50.157.138 with SMTP id wm10mr13239820igb.61.1331160010769;
+	Wed, 07 Mar 2012 14:40:10 -0800 (PST)
+Received: by 10.43.45.9 with HTTP; Wed, 7 Mar 2012 14:40:10 -0800 (PST)
+In-Reply-To: <CAGrGuddeA8GmUsTtdzizhzg-UsadnPL567s1jVC+wc3KYqXqUg@mail.gmail.com>
+References: <CAGrGuddeA8GmUsTtdzizhzg-UsadnPL567s1jVC+wc3KYqXqUg@mail.gmail.com>
+Date: Wed, 7 Mar 2012 22:40:10 +0000
+Message-ID: <CABqy+srHvZtPCk7VBvGsEy79WoPvcffcSjjErV8qYOt2b7p-EA@mail.gmail.com>
+From: Robert Ransom <rransom.8774@gmail.com>
+To: Lifestyle Manager <lifestylemanager.la@gmail.com>
+Cc: tor-assistants@torproject.org
+Subject: Re: [tor-assistants] Java Script Enabled? & HTTPS Everywhere SSL
+	Observatory?
+X-BeenThere: tor-assistants@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: "General support and information list to reach Tor developers and
+	researchers." <tor-assistants.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=unsubscribe>
+List-Post: <mailto:tor-assistants@lists.torproject.org>
+List-Help: <mailto:tor-assistants-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: tor-assistants-bounces@lists.torproject.org
+Errors-To: tor-assistants-bounces@lists.torproject.org
+
+On 2012-03-07, Lifestyle Manager <lifestylemanager.la@gmail.com> wrote:
+> Hello -- I recently installed the Tor Browser Bundle for Windows (my OS is
+> Windows XP).  When I started up TOR (Firefox came up), I  noticed that, by
+> default, JavaScript is checkmarked/enabled in FF.  Should I uncheck that
+> for more secure browsing?
+
+https://www.torproject.org/docs/faq#TBBJavaScriptEnabled
+https://www.torproject.org/docs/faq#TBBCanIBlockJS
+
+(The short answer: Disabling JavaScript might make you more secure,
+but it will make you less anonymous.)
+
+>  I seem to recall having read a long time ago
+> that JavaScript could 'leak' and unmask you.  I wasn't sure if that was
+> still the case with the TBB, or whether it's OK to leave JavaScript
+> checkmarked.
+
+Torbutton made JavaScript tolerably safe for users' anonymity.  The
+Tor Browser Bundle takes further steps to keep JavaScript from harming
+your anonymity.
+
+
+> Also, every time I log on to the TOR network, I get a pop-up window from
+> HTTPS Everywhere asking me if I want to participate in a SSL Observatory.
+> The message says something about protecting the browser from attack, and
+> involves sending this computer's certificates to an Observatory.
+
+The SSL Observatory add-on should not send information about your
+computer -- it is meant to only send the SSL 'certificates' sent by
+the websites which you connect to while browsing.  If that popup's
+text confused you, please file a bug report against 'HTTPS Everywhere'
+at https://trac.torproject.org/ ; you won't be the only person
+confused by it.
+
+The SSL Observatory feature is likely to improve its users' security
+against eavesdropping by certain attackers.  I do not know whether the
+SSL Observatory feature can be enabled while browsing through Tor, and
+I do not know what effects the SSL Observatory would have on its
+users' anonymity if it can be enabled in TBB.
+
+>  To date,
+> I have just closed down the popup, without responding.  Should I be doing
+> something differently?  Like saying 'yes' or 'no'?
+
+I personally click "No".
+
+That popup needs to be removed from the next TBB release.
+
+
+Robert Ransom
+_______________________________________________
+tor-assistants mailing list
+tor-assistants@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants

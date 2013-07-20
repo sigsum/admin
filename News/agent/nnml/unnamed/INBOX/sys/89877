@@ -1,0 +1,50 @@
+Return-Path: <root@nordberg.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:06:15 +0200
+X-Sieve: CMU Sieve 2.3
+Received: from lnweb.nordberg.se (lnwebmail [10.0.1.5])
+	by smtp.nordberg.se (Postfix) with ESMTP id C8C861152A
+	for <root@nordberg.se>; Mon, 29 Apr 2013 03:06:15 +0200 (CEST)
+Received: by lnweb.nordberg.se (Postfix, from userid 0)
+	id B2A23183; Mon, 29 Apr 2013 03:06:15 +0200 (CEST)
+To: root@nordberg.se
+Subject: lnweb.nordberg.se daily run output
+Message-Id: <20130429010615.B2A23183@lnweb.nordberg.se>
+Date: Mon, 29 Apr 2013 03:06:15 +0200 (CEST)
+From: root@nordberg.se (Charlie Root)
+
+
+Removing stale files from /var/preserve:
+
+Cleaning out old system announcements:
+
+Removing stale files from /var/rwho:
+
+Backup passwd and group files:
+
+Verifying group file syntax:
+/etc/group is fine
+
+Backing up mail aliases:
+
+Disk status:
+Filesystem  1024-blocks     Used  Avail Capacity  Mounted on
+/dev/ad1s1f    22340430 19642712 910484    96%    /
+
+fstab: /etc/fstab:0: No such file or directory
+  DUMP: Can't open /etc/fstab for dump table information: No such file or directory
+Last dump(s) done (Dump '>' file systems):
+
+Local system status:
+ 3:03AM  up 330 days, 22:48, 0 users, load averages: 6.76, 2.45, 1.42
+
+Mail in local queue:
+Mail queue is empty
+
+Security check:
+    (output mailed separately)
+
+Checking for denied zone transfers (AXFR and IXFR):
+
+-- End of daily output --

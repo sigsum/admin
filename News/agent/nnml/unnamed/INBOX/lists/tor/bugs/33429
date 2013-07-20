@@ -1,0 +1,102 @@
+Return-Path: <tor-bugs-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Tue, 16 Oct 2012 02:56:01 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 3ADDF1174C; Tue, 16 Oct 2012 02:56:01 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id 2539511755
+	for <linus@nordberg.se>; Tue, 16 Oct 2012 02:55:58 +0200 (CEST)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id F31BB24648;
+	Tue, 16 Oct 2012 00:55:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 8462F24648
+	for <tor-bugs@lists.torproject.org>;
+	Tue, 16 Oct 2012 00:55:53 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id 554FLqNwDnXM for <tor-bugs@lists.torproject.org>;
+	Tue, 16 Oct 2012 00:55:53 +0000 (UTC)
+Received: from jepsonii.torproject.org (jepsonii.torproject.org
+	[IPv6:2620:0:6b0:b:1a1a:0:26e5:4808])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/jepsonii.torproject.org",
+	Issuer "auto-ca.torproject.org" (verified OK))
+	by eugeni.torproject.org (Postfix) with ESMTPS id 727D024633
+	for <tor-bugs@lists.torproject.org>;
+	Tue, 16 Oct 2012 00:55:53 +0000 (UTC)
+Received: from jepsonii.torproject.org (unknown [IPv6:::1])
+	by jepsonii.torproject.org (Postfix) with ESMTP id A7DFB2361C;
+	Tue, 16 Oct 2012 00:55:50 +0000 (UTC)
+MIME-Version: 1.0
+From: "Tor Bug Tracker & Wiki" <torproject-admin@torproject.org>
+X-Trac-Version: 0.11.7
+Precedence: bulk
+Auto-Submitted: auto-generated
+X-Mailer: Trac 0.11.7, by Edgewall Software
+X-Trac-Project: Tor Bug Tracker & Wiki
+Date: Tue, 16 Oct 2012 00:55:50 -0000
+X-URL: https://trac.torproject.org/
+X-Trac-Ticket-URL: https://trac.torproject.org/projects/tor/ticket/6838#comment:5
+Message-ID: <054.ed5f69f58bfb370e35df18ab12b65e77@torproject.org>
+References: <045.d43de9c35c47a919fe1a9d6a0f054eb2@torproject.org>
+X-Trac-Ticket-ID: 6838
+In-Reply-To: <045.d43de9c35c47a919fe1a9d6a0f054eb2@torproject.org>
+To: undisclosed-recipients:;
+Subject: Re: [tor-bugs] #6838 [Tor]: Pull guard and bridge logic out of
+	circuitbuild.c
+X-BeenThere: tor-bugs@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Reply-To: tor-assistants@torproject.org
+List-Id: "auto: Tor bug tracker status mails" <tor-bugs.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=unsubscribe>
+List-Archive: <http://lists.torproject.org/pipermail/tor-bugs>
+List-Post: <mailto:tor-bugs@lists.torproject.org>
+List-Help: <mailto:tor-bugs-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: tor-bugs-bounces@lists.torproject.org
+Errors-To: tor-bugs-bounces@lists.torproject.org
+
+#6838: Pull guard and bridge logic out of circuitbuild.c
+-------------------------+--------------------------------------------------
+ Reporter:  nickm        |          Owner:                    
+     Type:  enhancement  |         Status:  needs_review      
+ Priority:  normal       |      Milestone:  Tor: 0.2.4.x-final
+Component:  Tor          |        Version:                    
+ Keywords:  tor-client   |         Parent:  #6837             
+   Points:               |   Actualpoints:                    
+-------------------------+--------------------------------------------------
+Changes (by nickm):
+
+  * status:  new => needs_review
+
+
+Comment:
+
+ I pulled a ~2000 line chunk of circuitbuild.c out into entrynodes.c in
+ branch "split_circuitbuild". Could use a review.
+
+ That branch also includes the split in #6839
+
+-- 
+Ticket URL: <https://trac.torproject.org/projects/tor/ticket/6838#comment:5>
+Tor Bug Tracker & Wiki <https://trac.torproject.org/>
+The Tor Project: anonymity online
+_______________________________________________
+tor-bugs mailing list
+tor-bugs@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs

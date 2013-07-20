@@ -1,0 +1,68 @@
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2012-05
+To: mail@sebastianhahn.net 
+Subject: 
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+I see 17 patches, some of which give silly conflicts like
+
+--8<---------------cut here---------------start------------->8---
+diff --cc src/or/transports.c
+index 07b9371,b8b2331..0000000
+--- a/src/or/transports.c
++++ b/src/or/transports.c
+@@@ -344,8 -344,8 +344,13 @@@ pt_configure_remaining_proxies(void
+                   mp->argv[0]);
+          proxy_prepare_for_restart(mp);
+        } else { /* it doesn't need to be restarted. */
+++<<<<<<< HEAD
+ +        log_info(LD_GENERAL, "Nothing changed for managed proxy '%s' after "
+ +                 "HUP: not restarting.", mp->argv[0]);
+++=======
++         log_info(LD_GENERAL, "Nothing changed for managed proxy '%s' after HUP: "
++                  "not restarting.", mp->argv[0]);
+++>>>>>>> Make transports.c logs a bit more helpful.
+        }
+  
+        continue;
+@@@ -457,7 -457,7 +462,11 @@@ configure_proxy(managed_proxy_t *mp
+        mp->conf_state = PT_PROTO_BROKEN;
+      } else { /* unknown stream status */
+        log_warn(LD_BUG, "Unknown stream status '%d' while configuring managed "
+++<<<<<<< HEAD
+ +               "proxy '%s'.", (int)r, mp->argv[0]);
+++=======
++                "proxy '%s'.", r, mp->argv[0]);
+++>>>>>>> Make transports.c logs a bit more helpful.
+      }
+  
+      /* if the proxy finished configuring, exit the loop. */
+@@@ -591,7 -591,7 +600,11 @@@ handle_finished_proxy(managed_proxy_t *
+    case PT_PROTO_COMPLETED:
+    default:
+      log_warn(LD_CONFIG, "Unexpected state '%d' of managed proxy '%s'.",
+++<<<<<<< HEAD
+ +             (int)mp->conf_state, mp->argv[0]);
+++=======
++              mp->conf_state, mp->argv[0]);
+++>>>>>>> Make transports.c logs a bit more helpful.
+      tor_assert(0);
+    }
+--8<---------------cut here---------------end--------------->8---
+  
+Trying to continue gives
+
+--8<---------------cut here---------------start------------->8---
+forty711:tor% git rebase --continue
+Applying: Make transports.c logs a bit more helpful.
+No changes - did you forget to use 'git add'?
+If there is nothing left to stage, chances are that something else
+already introduced the same changes; you might want to skip this patch.
+
+When you have resolved this problem run "git rebase --continue".
+If you would prefer to skip this patch, instead run "git rebase --skip".
+To check out the original branch and stop rebasing run "git rebase --abort".
+--8<---------------cut here---------------end--------------->8---
+
+So I --skip it.
+
+Repeat 

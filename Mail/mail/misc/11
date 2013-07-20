@@ -1,0 +1,40 @@
+X-From-Line: root@tool Sun Mar 24 19:14:15 2013
+Return-path: <root@tool>
+Envelope-to: root@tool
+Delivery-date: Sun, 24 Mar 2013 19:14:15 +0100
+Received: from root by tool with local (Exim 4.80)
+	(envelope-from <root@tool>)
+	id 1UJpQt-0002K9-Su
+	for root@tool; Sun, 24 Mar 2013 19:14:15 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Auto-Submitted: auto-generated
+Subject: apt-listchanges: news for tool
+To: root@tool
+X-Gnus-Mail-Source: file:/var/mail/linus
+Message-Id: <E1UJpQt-0002K9-Su@tool>
+From: root <root@tool>
+Date: Sun, 24 Mar 2013 19:14:15 +0100
+Lines: 19
+Xref: tool mail.misc:11
+
+lighttpd (1.4.31-4) unstable; urgency=high
+
+  The default Debian configuration file for PHP invoked from FastCGI was
+  vulnerable to local symlink attacks and race conditions when an attacker
+  manages to control the PHP socket file (/tmp/php.socket up to 1.4.31-3)
+  before the web server started. Possibly the web server could have been
+  tricked to use a forged PHP.
+
+  The problem lies in the configuration, thus this update will fix the problem
+  only if you did not modify the file /etc/lighttpd/conf-available/15-fastcgi-php.conf
+   If you did, dpkg will not overwrite your changes. Please make sure to set
+
+        "socket" => "/var/run/lighttpd/php.socket"
+
+  yourself in that case.
+
+ -- Arno Töll <arno@debian.org>  Thu, 14 Mar 2013 01:57:42 +0100
+
+

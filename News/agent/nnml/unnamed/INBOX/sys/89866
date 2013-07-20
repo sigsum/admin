@@ -1,0 +1,67 @@
+Return-Path: <root@dfri.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:02:43 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 408A11173F; Mon, 29 Apr 2013 03:02:43 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00 autolearn=ham
+	version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id F16931178B
+	for <linus@nordberg.se>; Mon, 29 Apr 2013 03:01:11 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id 0F3F71F32E3A; Mon, 29 Apr 2013 03:01:24 +0200 (CEST)
+Delivered-To: root@dfri.se
+Received: from robocop.dfri.se (static-213-115-204-4.sme.bredbandsbolaget.se [213.115.204.4])
+	by mail.dfri.se (Postfix) with ESMTP id 081C51F32E39
+	for <root@dfri.se>; Mon, 29 Apr 2013 03:01:24 +0200 (CEST)
+Received: by robocop.dfri.se (Postfix, from userid 0)
+	id 0275DB05FD; Mon, 29 Apr 2013 03:01:22 +0200 (CEST)
+To: root@dfri.se
+Subject: robocop.dfri.se security run output
+Message-Id: <20130429010123.0275DB05FD@robocop.dfri.se>
+Date: Mon, 29 Apr 2013 03:01:22 +0200 (CEST)
+From: root@dfri.se (Charlie Root)
+
+
+Checking setuid files and devices:
+
+Checking negative group permissions:
+
+Checking for uids of 0:
+root 0
+toor 0
+
+Checking for passwordless accounts:
+
+Checking login.conf permissions:
+
+Checking for ports with mismatched checksums:
+
+robocop.dfri.se pf denied packets:
++++ /tmp/security.nDuM3AbO	2013-04-29 03:01:19.000000000 +0200
++block drop in all label "default block" [ Evaluations: 462288 Packets: 452852 Bytes: 29711576 States: 0 ]
++block drop in quick on ! lo inet6 from ::1 to any label "antispoof" [ Evaluations: 462288 Packets: 0 Bytes: 0 States: 0 ]
++block drop in quick on ! lo inet from 127.0.0.0/8 to any label "antispoof" [ Evaluations: 459121 Packets: 0 Bytes: 0 States: 0 ]
++block drop in quick inet6 from ::1 to any label "antispoof" [ Evaluations: 459121 Packets: 0 Bytes: 0 States: 0 ]
++block drop in quick inet from 127.0.0.1 to any label "antispoof" [ Evaluations: 459121 Packets: 0 Bytes: 0 States: 0 ]
+
+robocop.dfri.se login failures:
+
+robocop.dfri.se refused connections:
+
+Checking for a current audit database:
+
+Downloading fresh database.
+auditfile.tbz                                           86 kB  126 kBps
+New database installed.
+Database created: Mon Apr 29 03:00:00 CEST 2013
+
+Checking for packages with security vulnerabilities:
+
+0 problem(s) in your installed packages found.
+
+-- End of security output --

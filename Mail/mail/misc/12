@@ -1,0 +1,41 @@
+X-From-Line: MAILER-DAEMON Wed May 08 10:13:08 2013
+Return-path: <>
+Envelope-to: linus@tool
+Delivery-date: Wed, 08 May 2013 10:13:08 +0200
+Received: from Debian-exim by tool with local (Exim 4.80)
+	id 1UZzUq-0001zw-Bn
+	for linus@tool; Wed, 08 May 2013 10:13:08 +0200
+X-Failed-Recipients: linus+btc@4711.se
+Auto-Submitted: auto-replied
+From: Mail Delivery System <Mailer-Daemon@tool>
+To: linus@tool
+Subject: Mail delivery failed: returning message to sender
+X-Gnus-Mail-Source: file:/var/mail/linus
+Message-Id: <E1UZzUq-0001zw-Bn@tool>
+Date: Wed, 08 May 2013 10:13:08 +0200
+Lines: 23
+Xref: tool mail.misc:12
+
+This message was created automatically by mail delivery software.
+
+A message that you sent could not be delivered to one or more of its
+recipients. This is a permanent error. The following address(es) failed:
+
+  linus+btc@4711.se
+    Mailing to remote domains not supported
+
+------ This is a copy of the message, including all the headers. ------
+
+Return-path: <linus@tool>
+Received: from linus by tool with local (Exim 4.80)
+	(envelope-from <linus@tool>)
+	id 1UZzUq-0001zs-8A
+	for linus+btc@4711.se; Wed, 08 May 2013 10:13:08 +0200
+To: linus+btc@4711.se
+Subject: bc bzz
+Message-Id: <E1UZzUq-0001zs-8A@tool>
+From: linus <linus@tool>
+Date: Wed, 08 May 2013 10:13:08 +0200
+
+kaka
+

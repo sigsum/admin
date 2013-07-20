@@ -1,0 +1,79 @@
+Return-Path: <root@tbd0.nordberg.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 28 Apr 2013 03:17:07 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id CD0F81173F; Sun, 28 Apr 2013 03:17:07 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from tbd0.nordberg.se (tbd0.nordberg.se [193.10.5.86])
+	by smtp.nordberg.se (Postfix) with ESMTP id 0CCAC11536
+	for <linus@nordberg.se>; Sun, 28 Apr 2013 03:17:05 +0200 (CEST)
+Received: by tbd0.nordberg.se (Postfix)
+	id 41C282A278; Sun, 28 Apr 2013 03:17:07 +0200 (CEST)
+Delivered-To: root@tbd0.nordberg.se
+Received: by tbd0.nordberg.se (Postfix, from userid 0)
+	id 323022A268; Sun, 28 Apr 2013 03:17:07 +0200 (CEST)
+To: root@tbd0.nordberg.se
+Subject: tbd0.nordberg.se daily insecurity output for Sun Apr 28 03:15:00 CEST 2013
+Message-Id: <20130428011707.323022A268@tbd0.nordberg.se>
+Date: Sun, 28 Apr 2013 03:17:07 +0200 (CEST)
+From: root@tbd0.nordberg.se (Charlie Root)
+
+
+Checking special files and directories.
+missing: ./etc/rc.d/xdm
+missing: ./etc/rc.d/xfs
+
+Running /etc/security.local:
+Package m4-1.4.12 has a insecure-file-permissions vulnerability, see http://secunia.com/advisories/38707/
+Package bash-4.0.10 has a buffer-overflow vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3410
+Package sudo-1.7.0 has a privilege-escalation vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0426
+Package sudo-1.7.0 has a arbitrary-command-execution vulnerability, see http://www.sudo.ws/sudo/alerts/sudoedit_escalate2.html
+Package sudo-1.7.0 has a command-injection vulnerability, see http://www.sudo.ws/sudo/alerts/secure_path.html
+Package sudo-1.7.0 has a local-security-bypass vulnerability, see http://secunia.com/advisories/41316/
+Package sudo-1.7.0 has a security-bypass vulnerability, see http://www.sudo.ws/sudo/alerts/runas_group_pw.html
+Package sudo-1.7.0 has a local-security-bypass vulnerability, see http://secunia.com/advisories/49219/
+Package sudo-1.7.0 has a local-security-bypass vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1776
+Package perl-5.10.0nb5 has a arbitrary-code-execution vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1168
+Package perl-5.10.0nb5 has a arbitrary-code-execution vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1447
+Package perl-5.10.0nb5 has a remote-security-bypass vulnerability, see http://secunia.com/advisories/43921/
+Package perl-5.10.0nb5 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0761
+Package perl-5.10.0nb5 has a remote-system-access vulnerability, see http://secunia.com/advisories/46172/
+Package perl-5.10.0nb5 has a remote-system-access vulnerability, see http://secunia.com/advisories/46299/
+Package perl-5.10.0nb5 has a arbitrary-code-execution vulnerability, see http://secunia.com/advisories/51498/
+Package perl-5.10.0nb5 has a denial-of-service vulnerability, see http://secunia.com/advisories/52472/
+Package python25-2.5.4nb3 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2089
+Package python25-2.5.4nb3 has a sensitive-information-exposure vulnerability, see http://secunia.com/advisories/43463/
+Package python25-2.5.4nb3 has a sensitive-information-disclosure vulnerability, see http://secunia.com/advisories/43831/
+Package python25-2.5.4nb3 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0845
+Package python25-2.5.4nb3 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1150
+Package expat-2.0.1nb1 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3560
+Package expat-2.0.1nb1 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0876
+Package expat-2.0.1nb1 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1147
+Package expat-2.0.1nb1 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1148
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://secunia.com/advisories/42395/
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1166
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-2901
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://secunia.com/advisories/46105/
+Package xenkernel33-3.3.1nb1 has a privilege-escalation vulnerability, see http://wiki.xen.org/wiki/Security_Announcements#XSA-7_64-bit_PV_guest_privilege_escalation_vulnerability
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://wiki.xen.org/wiki/Security_Announcements#XSA-8_guest_denial_of_service_on_syscall.2Fsysenter_exception_generation
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://wiki.xen.org/wiki/Security_Announcements#XSA-9_PV_guest_host_Denial_of_Service_.28AMD_erratum_.23121.29
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://lists.xen.org/archives/html/xen-devel/2012-07/msg01649.html
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://secunia.com/advisories/51200/
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://secunia.com/advisories/51397/
+Package xenkernel33-3.3.1nb1 has a denial-of-service vulnerability, see http://secunia.com/advisories/51881/
+Package xenkernel33-3.3.1nb1 has a privilege-escalation vulnerability, see http://secunia.com/advisories/52857/
+Package p5-Compress-Raw-Zlib-2.015nb1 has a denial-of-service vulnerability, see http://secunia.com/advisories/35422/
+Package p5-HTML-Parser-3.60 has a denial-of-service vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3627
+Package p5-IO-Socket-SSL-1.23 has a remote-security-bypass vulnerability, see http://secunia.com/advisories/35703/
+Package p5-IO-Socket-SSL-1.23 has a security-bypass vulnerability, see http://secunia.com/advisories/42508/
+Package p5-Digest-1.15nb1 has a remote-system-access vulnerability, see http://secunia.com/advisories/46279/
+Package p5-libwww-5.825 has a security-bypass vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-2253
+Package p5-libwww-5.825 has a ssl-cert-spoofing vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0633
+Package gtar-base-1.20 has a buffer-overflow vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0624
+Package xentools33-3.3.2nb1 has a multiple-vulnerabilities vulnerability, see http://secunia.com/advisories/44502/
+Package xentools33-3.3.2nb1 has a buffer-overflow vulnerability, see http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0029

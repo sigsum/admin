@@ -1,0 +1,44 @@
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2012-06
+To: 
+Subject: Failing tests on FreeBSD
+From: Linus Nordberg <linus@nordberg.se>
+Date: Sun, 10 Jun 2012 18:55:56 +0200
+--text follows this line--
+9.0-RELEASE amd64
+
+KQUEUE
+ test-eof: OKAY
+ test-weof: OKAY
+ test-time: OKAY
+ test-changelist: OKAY
+ regress: util/getaddrinfo:
+  FAIL regress_util.c:933: assert(ai)
+  [getaddrinfo FAILED]
+
+  FAIL regress_dns.c:543: assert(r[0].type == DNS_IPv4_A): 0 vs 1dns/search:
+  [search FAILED]
+
+  FAIL regress_dns.c:701: assert(r1.type == DNS_IPv4_A): 0 vs 1dns/retry:
+  [retry FAILED]
+
+  FAIL regress_dns.c:793: assert(r1.result == DNS_ERR_NONE): 67 vs 0dns/reissue:
+  [reissue FAILED]
+dns/inflight:
+  FAIL regress_testutils.c:154: Unexpected question: 'google.com'
+  FAIL regress_testutils.c:154: Unexpected question: 'google.com'
+  FAIL regress_testutils.c:154: Unexpected question: 'google.com'
+  FAIL regress_testutils.c:154: Unexpected question: 'google.com'
+  FAIL regress_testutils.c:154: Unexpected question: 'google.com'
+  FAIL regress_testutils.c:154: Unexpected question: 'google.com'
+  FAIL regress_dns.c:851: assert(r[i].type == DNS_IPv4_A): 0 vs 1
+  [inflight FAILED]
+
+  FAIL regress_dns.c:983: Got weird request for gooGLe.COM
+  FAIL regress_dns.c:983: Got weird request for gooGLe.COM
+  FAIL regress_dns.c:983: Got weird request for gooGLe.COM
+  FAIL regress_dns.c:983: Got weird request for goOglE.COM
+  FAIL regress_dns.c:983: Got weird request for goOglE.COM
+  FAIL regress_dns.c:983: Got weird request for goOglE.COM
+  FAIL regress_dns.c:983: Got weird request for GOoGLE.cOM
+  FAIL regress_dns.c:983: Got weird request for GOoGLE.cOM
+  FAIL regress_dns.c:983: Got weird request for GOoGLE.cOM

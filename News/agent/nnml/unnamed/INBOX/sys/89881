@@ -1,0 +1,82 @@
+Return-Path: <root@lethe.dfri.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:07:56 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 2F76D116C5; Mon, 29 Apr 2013 03:07:56 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id 2F9801174A
+	for <linus@nordberg.se>; Mon, 29 Apr 2013 03:07:37 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id B671B1F32E02; Mon, 29 Apr 2013 03:07:50 +0200 (CEST)
+Delivered-To: beredskap@dfri.net
+Received: from lethe.dfri.se (lethe.dfri.se [171.25.193.234])
+	by mail.dfri.se (Postfix) with ESMTP id AAA411F32DD4
+	for <beredskap@dfri.net>; Mon, 29 Apr 2013 03:07:50 +0200 (CEST)
+Received: by lethe.dfri.se (Postfix, from userid 0)
+	id 1AEA2ACB71B; Mon, 29 Apr 2013 03:13:01 +0200 (CEST)
+To: beredskap@dfri.net
+Subject: lethe.dfri.se daily run output
+Message-Id: <20130429011301.1AEA2ACB71B@lethe.dfri.se>
+Date: Mon, 29 Apr 2013 03:13:01 +0200 (CEST)
+From: root@lethe.dfri.se (root at lethe.dfri.se)
+
+
+Removing stale files from /var/preserve:
+
+Cleaning out old system announcements:
+
+Removing stale files from /var/rwho:
+
+Backup passwd and group files:
+
+Verifying group file syntax:
+/etc/group is fine
+
+Backing up mail aliases:
+
+Backing up package db directory:
+
+Disk status:
+Filesystem     Size    Used   Avail Capacity  Mounted on
+/dev/ada0p3    5.9G    646M    4.8G    12%    /
+devfs          1.0k    1.0k      0B   100%    /dev
+/dev/ada0p4      4G     43M    3.6G     1%    /tmp
+/dev/ada0p5     19G     32M     18G     0%    /home
+/dev/ada0p6     19G    5.6G     12G    31%    /usr
+/dev/ada0p7    396G    2.5G    362G     1%    /var
+devfs          1.0k    1.0k      0B   100%    /var/jail/memento/dev
+
+Last dump(s) done (Dump '>' file systems):
+
+Network interface status:
+Name    Mtu Network       Address              Ipkts Ierrs Idrop    Opkts Oerrs  Coll
+igb0*  1500 <Link#1>      00:25:90:29:88:4a        0     0     0        0     0     0
+igb1*  1500 <Link#2>      00:25:90:29:88:4b        0     0     0        0     0     0
+em0*   1500 <Link#3>      00:15:17:bb:04:6c        0     0     0        0     0     0
+em1    1500 <Link#4>      00:15:17:bb:04:6d 221217628743 84270     0 173585674155     0     0
+em1    1500 171.25.193.23 lethe               863464     -     - 209902696292     -     -
+em1    1500 fe80::215:17f fe80::215:17ff:fe        0     -     -        6     -     -
+em1    1500 171.25.193.23 tor-exit3-readme  92928792655     -     -        0     -     -
+lo0   16384 <Link#5>                            5934     0     0     5934     0     0
+lo0   16384 localhost     ::1                      0     -     -        6     -     -
+lo0   16384 fe80::1%lo0   fe80::1                  0     -     -        0     -     -
+lo0   16384 your-net      localhost                0     -     -     5934     -     -
+
+Local system status:
+ 3:01AM  up 192 days,  3:42, 0 users, load averages: 2.41, 2.35, 2.33
+
+Mail in local queue:
+Mail queue is empty
+
+Security check:
+    (output mailed separately)
+
+Checking for denied zone transfers (AXFR and IXFR):
+
+-- End of daily output --

@@ -1,0 +1,11 @@
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2012-03
+To: support@portlane.com 
+Subject: Nedtid p.g.a. Portlanes portbyte i SOL-IX
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Mar 14 19:24:16 rs0 bgpd[1334]: neighbor 80.67.1.9 (portlane-solix): sending notification: HoldTimer expired, unknown subcode 0
+Mar 14 19:24:16 rs0 bgpd[1334]: neighbor 80.67.1.9 (portlane-solix): state change Established -> Idle, reason: HoldTimer expired
+Mar 14 19:24:46 rs0 bgpd[1334]: neighbor 80.67.1.9 (portlane-solix): state change Idle -> Connect, reason: Start
+Mar 14 19:26:01 rs0 bgpd[1334]: neighbor 80.67.1.9 (portlane-solix): socket error: Operation timed out
+Mar 14 19:26:01 rs0 bgpd[1334]: neighbor 80.67.1.9 (portlane-solix): state change Connect -> Active, reason: Connection open failed
+Mar 14 19:29:16 rs0 bgpd[1334]: neighbor 80.67.1.9 (portlane-solix): socket error: Operation timed out

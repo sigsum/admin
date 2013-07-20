@@ -1,0 +1,46 @@
+X-From-Line: root@tool Mon Feb 04 14:50:17 2013
+Return-path: <root@tool>
+Envelope-to: root@tool
+Delivery-date: Mon, 04 Feb 2013 14:50:17 +0100
+Received: from root by tool with local (Exim 4.80)
+	(envelope-from <root@tool>)
+	id 1U2MR7-0004u6-Ea
+	for root@tool; Mon, 04 Feb 2013 14:50:17 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Auto-Submitted: auto-generated
+Subject: apt-listchanges: news for tool
+To: root@tool
+X-Gnus-Mail-Source: file:/var/mail/linus
+Message-Id: <E1U2MR7-0004u6-Ea@tool>
+From: root <root@tool>
+Date: Mon, 04 Feb 2013 14:50:17 +0100
+Lines: 25
+Xref: tool mail.misc:8
+
+ca-certificates (20130119) unstable; urgency=low
+
+  Update mozilla/certdata.txt to version 1.87
+    Certificates removed (-) (none added):
+    - "TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı"
+
+ -- Michael Shuler <michael@pbandjelly.org>  Sat, 19 Jan 2013 14:08:50 -0600
+
+ca-certificates (20121105) unstable; urgency=low
+
+  Update mozilla/certdata.txt to version 1.86
+    Certificates added (+) (none removed):
+    + "Actalis Authentication Root CA"
+    + "Trustis FPS Root CA"
+    + "StartCom Certification Authority" (renewal/rehash)
+    + "StartCom Certification Authority G2"
+    + "Buypass Class 2 Root CA"
+    + "Buypass Class 3 Root CA"
+    + "TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı"
+    + "T-TeleSec GlobalRoot Class 3"
+    + "EE Certification Centre Root CA"
+
+ -- Michael Shuler <michael@pbandjelly.org>  Mon, 05 Nov 2012 10:56:28 -0600
+
+

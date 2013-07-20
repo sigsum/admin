@@ -1,0 +1,86 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 57377)
+References: <DE920C47-714C-4E0F-BD08-734ED4BB17B0@nordu.net>
+	<506E1243.40500@NLnetLabs.nl>
+	<15A6303E-6C7B-496C-9373-A9F01B6EBB10@nordu.net>
+	<20121008102635.40a91350@shane-desktop>
+	<B9FC514D-2AC5-49C5-A667-71ED7A371EFD@nordu.net>
+	<yszobkafr85.fsf@nordberg.se> <20121010161547.6127f1ba@shane-desktop>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2012-10
+To: Shane Kerr <shane@isc.org>
+Cc: Benno Overeinder <benno@NLnetLabs.nl>,  Fredrik Pettai <pettai@nordu.net>
+Subject: Re: RIPE PC?
+From: Linus Nordberg <linus@torproject.org>
+Date: Wed, 10 Oct 2012 17:29:25 +0200
+--text follows this line--
+Shane Kerr <shane@isc.org> wrote
+Wed, 10 Oct 2012 16:15:47 +0200:
+
+| Linus,
+| 
+| On Wednesday, 2012-10-10 14:26:18 +0200, 
+| Linus Nordberg <linus@torproject.org> wrote:
+| > Fredrik Pettai <pettai@nordu.net> wrote
+| > Mon, 8 Oct 2012 12:29:24 +0200:
+| > 
+| > | Linus, you've said that you (or possibly someone else, Roger or
+| > Jake perhaps?) where thinking of present the Tor Project at a RIPE
+| > meeting. Here's an invite...
+| > 
+| > Fredrik, thanks for the introduction.
+| > 
+| > Benno, Shane, hi! I'm going to think of some extra network related
+| > topics wrt Tor and contact some people who should be the right ones to
+| > present. I'm thinking of topics like "Comparison of Tor Datagram
+| > Designs" [1], "IPv6 support in Tor" [2] and possibly something like
+| > "Censorhip circumvention" or similar. What do you think?
+| > 
+| > [1] http://www.cl.cam.ac.uk/~sjm217/papers/tor11datagramcomparison.pdf> [2]
+| > https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/IPv6
+| 
+| Interesting, I think both topics have some merit.
+| 
+| The paper on Tor datagram designs might be interesting for the
+| plenary, but probably the specific issues would need to be extracted
+| out and presented. Most attendees are operators and would be curious
+| how the current design is affecting them, and what changes would mean
+| to their networks. It might also be useful to present some of the topics
+| at the Open Source BoF which will happen at the meeting.
+
+
+
+What is an Open Source BoF? Present your favourite FOSS project? I can
+imagine that being a good place to hunt for volunteers, right?
+
+
+| As IPv6 co-chair I assure you that getting Tor working on IPv6 is of
+| much greater wide interest. ;) I'm also curious if the wider address
+| space is used at all, or if indeed it causes problems. If this topic is
+| not accepted by the PC, I think we can squeeze it into the IPv6 working
+| group. :)
+
+Great. That's what I've been working on myself for some time now so I
+should be able to at least give a description of its current status. Not
+sure that there's enough real-world experience to have a full talk on
+the topic yet, but that might change in time for the conference of
+course.
+
+The wider address space is not used in any specific ways by Tor itself,
+but the lack of scarcity might of course be a valuable property for
+playing whack-a-mole games with filtering. Nothing planned though.
+
+I've been parts of discussions using the large address space for
+encoding some information in addresses but nothing have crystallised
+from that. I bet a RIPE meeting would be a fun place to continue such
+discussions.
+
+
+| My suggestion is to pursue both topics and we can get them presented at
+| the plenary, BoF, or working group as appropriate.
+
+What about the third, something about network censorship circumvention
+and what Tor is doing in that area? I don't have a link for that right
+now, other than Rogers and Jakes much appreciated presentation at 28C3 [1].
+
+Typical plenary material IMO.
+
+[1] http://media.ccc.de/browse/congress/2011/28c3-4800-en-how_governments_have_tried_to_block_tor.html

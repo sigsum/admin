@@ -1,0 +1,312 @@
+X-Draft-From: ("nnimap+ndn:INBOX" 42793)
+References: <513F1D50.5020005@umk.pl> <87vc8ugwrz.fsf@nordberg.se>
+	<51419C81.9000301@umk.pl>
+	<2F60146F-5631-40C5-AE81-60039977FB08@dfn.de>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-03
+To: Ralf Paffrath <paffrath@dfn.de>
+Cc: Maja Wolniewicz <mgw@umk.pl>,  radsecproxy@uninett.no
+Subject: Re: radsecproxy failure
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Thu, 14 Mar 2013 17:14:59 +0100
+--text follows this line--
+Ralf Paffrath <paffrath@dfn.de> wrote
+Thu, 14 Mar 2013 12:47:38 +0100:
+
+| Hi Maja, Linus,
+| 
+| thx for your patch.
+| 
+| I encountered the second crash what Maja has described bellow.
+| Sometimes radsecproxy 1.6.2 and before crashed after tlsserverrd signals connection lost.
+| 
+| I have realised that it dies in radsecproxy.c in procedure removeclientrqs() line:
+
+Are you configuring with `--enable-experimental-dyndisc'?
+Are you using the dynamicLookupCommand config option?
+
+
+
+
+| .... 
+| pthread_mutex_lock(rqout->lock);
+| ....
+| 
+| When it sometimes crashed than there.
+| 
+| Further investigation has shown to me that for some reason 
+| rq->to->requests is NULL
+| 
+| My logs can proof this :
+| ....
+| ar 14 05:00:03 2013: freerq: end freerq
+| Mar 14 05:00:03 2013: Null Pointer rq->to->requests detected!
+| Mar 14 05:00:03 2013: freerq newid: 5
+| Mar 14 05:00:03 2013: freerq: called with refcount 1
+| Mar 14 05:00:03 2013: freerq: end freerq
+| Mar 14 05:00:03 2013: Null Pointer rq->to->requests detected!
+| Mar 14 05:00:03 2013: freerq newid: 6
+| Mar 14 05:00:03 2013: freerq: called with refcount 1
+| Mar 14 05:00:03 2013: freerq: end freerq
+| Mar 14 05:00:03 2013: Null Pointer rq->to->requests detected!
+| Mar 14 05:00:03 2013: freerq newid: 7
+| Mar 14 05:00:03 2013: freerq: called with refcount 1
+| Mar 14 05:00:03 2013: freerq: end freerq
+| Mar 14 05:00:03 2013: Null Pointer rq->to->requests detected!
+| Mar 14 05:00:03 2013: freerq newid: 8
+| Mar 14 05:00:03 2013: freerq: called with refcount 1
+| Mar 14 05:00:03 2013: freerq: end freerq
+| Mar 14 05:00:03 2013: Null Pointer rq->to->requests detected!
+| Mar 14 05:00:03 2013: freerq newid: 9
+| Mar 14 05:00:03 2013: freerq: called with refcount 1
+| Mar 14 05:00:03 2013: freerq: end freerq
+| Mar 14 05:00:03 2013: Null Pointer rq->to->requests detected!
+| Mar 14 05:00:03 2013: freerq newid: 10
+| ......
+| 
+| Best wishes
+|     Ralf
+| 
+| 
+| On Mar 14, 2013, at 10:46 AM, Maja Wolniewicz <mgw@umk.pl> wrote:
+| 
+| > 
+| > W dniu 14.03.2013 10:23, Linus Nordberg pisze:
+| >> Maja Wolniewicz <mgw@umk.pl>
+| >>  wrote
+| >> Tue, 12 Mar 2013 13:19:28 +0100:
+| >> 
+| >> | Hi,
+| >> | 
+| >> | After switching our radsecproxy server to TLS connections we experienced
+| >> | quite frequent server
+| >> | failures (two-tree times daily). Thanks to the monit which restarts
+| >> | server we lived with it (shame for me)
+| >> | Last week I started to find a reason of this problem and then I recalled
+| >> | a message from my colleague from PSNC about some patch they produced
+| >> | to prevent their server failures (under SUSE it could not survive 5
+| >> | minutes without this patch, it was a few radecproxy versions back).
+| >> | The reason of failures seems very straightforward. It is possible to
+| >> | write to a TLS connection with NULL first argument (client->ssl)!
+| >> 
+| >> Interesting. What happens? What version of OpenSSL is that? On what
+| >> platform? I seem to end up in write_to_null_handle(), using 1.0.1 and
+| >> 0.9.8 on Debian.
+| >> 
+| > Ubuntu 12.04.2 LTS
+| > openssl 1.0.1-4ubuntu5.7
+| > 
+| > there is one example of failing radsecproxy:
+| > Mar  6 08:11:36 leopon radsecproxy[21813]: got Access-Accept message with id 0
+| > Mar  6 08:11:36 leopon radsecproxy[21813]: freerq: called with refcount 1
+| > Mar  6 08:11:36 leopon radsecproxy[21813]: replyh: got status server response fr
+| > om LUBMAN2
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: accept failed
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: accept failed
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: accept failed
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: tlsservernew: getpeername failed, exiting
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: accept failed
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: accept failed
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: accept failed
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: accept failed
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: accept failed
+| > Mar  6 08:11:38 leopon radsecproxy[21813]: accept failed
+| > Mar  6 08:12:19 leopon radsecproxy[23338]: radsecproxy revision 1.6.2 starting
+| > Mar  6 08:12:19 leopon radsecproxy[23338]: resolvehostport: 158.75.1.25 -> 158.75.1.25
+| > 
+| > and another one:
+| > Mar  6 13:35:05 leopon radsecproxy[23338]: acclog: accounting-request from clien
+| > t etlr1 (192.87.106.34) with username: 165318@edu.p.lodz.pl
+| > Mar  6 13:35:05 leopon radsecproxy[23338]: respond: sending Accounting-Response 
+| > to etlr1 (192.87.106.34)
+| > Mar  6 13:35:05 leopon radsecproxy[23338]: signalling server writer
+| > Mar  6 13:35:05 leopon radsecproxy[23338]: freerq: called with refcount 3
+| > Mar  6 13:35:05 leopon radsecproxy[23338]: freerealm: called with refcount 4
+| > Mar  6 13:35:05 leopon radsecproxy[23338]: radtlsget: connection lost
+| > Mar  6 13:35:05 leopon radsecproxy[23338]: tlsserverrd: connection from 192.87.1
+| > 06.34 lost
+| > Mar  6 13:35:05 leopon radsecproxy[23338]: tlsserverrd: waiting for writer to en
+| > d
+| > Mar  6 13:35:05 leopon radsecproxy[23338]: freerq: called with refcount 2
+| > Mar  6 13:37:11 leopon radsecproxy[4437]: radsecproxy revision 1.6.2 starting
+| > 
+| > then I added only 
+| > if (!client->ssl) {
+| >                 debug(DBG_DBG, "MGW tlsserverwr: SSL error client is null!!");
+| > }
+| > before
+| > cnt = SSL_write(...)
+| > 
+| > and I got:
+| > 
+| > Mar  6 15:47:40 leopon radsecproxy[12211]: tlsserverrd: connection from 192.87.106.34 lost
+| > Mar  6 15:47:40 leopon radsecproxy[12211]: tlsserverrd: waiting for writer to end
+| > Mar  6 15:47:40 leopon radsecproxy[12211]: freerq: called with refcount 2
+| > Mar  6 15:47:40 leopon radsecproxy[12211]: MGW tlsserverwr: SSL error client is null!!
+| > Mar  6 15:49:41 leopon radsecproxy[16440]: radsecproxy revision 1.6.2 starting
+| > 
+| > I will try your patch and let you know how it works
+| > 
+| > Maja
+| >> 
+| >> 
+| >> | There is the condition before this write to check client->ssl and
+| >> | destroy thread when it is NULL, but it is  executed inside
+| >> | while (!list_first(replyq->entries)) {}
+| >> | When my sever failed always this loop was skipped.
+| >> | I attach the patch. I applied it five days ago and from this time we
+| >> | have no server failures
+| >> 
+| >> Thank you for the patch. Before applying it, I'd like to understand how
+| >> this can happen. 
+| >> 
+| >> --8<---------------cut here---------------start------------->8---
+| >> void *tlsserverwr(void *arg) {
+| >> /* ... */
+| >>     for (;;) {
+| >> 	pthread_mutex_lock(&replyq->mutex);
+| >> 	while (!list_first(replyq->entries)) {
+| >> 	    if (client->ssl) {
+| >> 		debug(DBG_DBG, "tlsserverwr: waiting for signal");
+| >> 		pthread_cond_wait(&replyq->cond, &replyq->mutex);
+| >> 		debug(DBG_DBG, "tlsserverwr: got signal");
+| >> 	    }
+| >> 	    if (!client->ssl) {
+| >> 		/* ssl might have changed while waiting */
+| >> 		pthread_mutex_unlock(&replyq->mutex);
+| >> 		debug(DBG_DBG, "tlsserverwr: exiting as requested");
+| >> 		ERR_remove_state(0);
+| >> 		pthread_exit(NULL);
+| >> 	    }
+| >> 	}
+| >> 	reply = (struct request *)list_shift(replyq->entries);
+| >> 	pthread_mutex_unlock(&replyq->mutex);
+| >> 	cnt = SSL_write(client->ssl, reply->replybuf, RADLEN(reply->replybuf));
+| >> 	if (cnt > 0)
+| >> 	    debug(DBG_DBG, "tlsserverwr: sent %d bytes, Radius packet of length %d to %s",
+| >> 		  cnt, RADLEN(reply->replybuf), addr2string(client->addr));
+| >> 	else
+| >> 	    while ((error = ERR_get_error()))
+| >> 		debug(DBG_ERR, "tlsserverwr: SSL: %s", ERR_error_string(error, NULL));
+| >> 	freerq(reply);
+| >>     }
+| >> }
+| >> --8<---------------cut here---------------end--------------->8---
+| >> 
+| >> In order to end up passing NULL as the first argument to SSL_write(),
+| >> client->ssl must be NULL while replyq->entries must contain at least one
+| >> entry when we enter the while loop.
+| >> 
+| >> It seems like the way we handle a write error (cnt <= 0) is to write a
+| >> debug message or three and just continue. This seems wrong to me. It'd
+| >> be very interesting to see debug log from a failing radsecproxy. Can you
+| >> do that? I.e. remove your patch, start radsecproxy with `-d 5', wait for
+| >> a server failure and send me (part of) the logs.
+| >> 
+| >> I'd also be interested in your feedback on the following patch
+| >> (untested), trying to add proper error handling to the write path. You
+| >> should be able to run this instead of your patch.
+| >> 
+| >> 
+| >> 
+| >> 
+| >> diff --git a/tls.c b/tls.c
+| >> index ac33bc9..1330719 100644
+| >> --- a/tls.c
+| >> +++ b/tls.c
+| >> @@ -12,6 +12,7 @@
+| >>  #ifdef SYS_SOLARIS9
+| >>  #include <fcntl.h>
+| >>  #endif
+| >> +#include <assert.h>
+| >>  #include <sys/time.h>
+| >>  #include <sys/types.h>
+| >>  #include <sys/select.h>
+| >> @@ -296,6 +297,7 @@ void *tlsserverwr(void *arg) {
+| >>      struct client *client = (struct client *)arg;
+| >>      struct gqueue *replyq;
+| >>      struct request *reply;
+| >> +    int ssl_eagain_flag;
+| >>  
+| >>      debug(DBG_DBG, "tlsserverwr: starting for %s", addr2string(client->addr));
+| >>      replyq = client->replyq;
+| >> @@ -317,13 +319,48 @@ void *tlsserverwr(void *arg) {
+| >>  	}
+| >>  	reply = (struct request *)list_shift(replyq->entries);
+| >>  	pthread_mutex_unlock(&replyq->mutex);
+| >> -	cnt = SSL_write(client->ssl, reply->replybuf, RADLEN(reply->replybuf));
+| >> -	if (cnt > 0)
+| >> -	    debug(DBG_DBG, "tlsserverwr: sent %d bytes, Radius packet of length %d to %s",
+| >> -		  cnt, RADLEN(reply->replybuf), addr2string(client->addr));
+| >> -	else
+| >> -	    while ((error = ERR_get_error()))
+| >> -		debug(DBG_ERR, "tlsserverwr: SSL: %s", ERR_error_string(error, NULL));
+| >> +        ssl_eagain_flag = 0;
+| >> +        do {
+| >> +            assert(client->ssl);
+| >> +            cnt = SSL_write(client->ssl, reply->replybuf,
+| >> +                            RADLEN(reply->replybuf));
+| >> +            if (cnt > 0) {
+| >> +                debug(DBG_DBG, "tlsserverwr: sent %d bytes, "
+| >> +                      "Radius packet of length %d to %s",
+| >> +                      cnt, RADLEN(reply->replybuf), addr2string(client->addr));
+| >> +            } else {
+| >> +                int ssl_err = SSL_get_error(client->ssl, cnt);
+| >> +                switch (ssl_err) {
+| >> +                case SSL_ERROR_WANT_WRITE:
+| >> +                case SSL_ERROR_WANT_READ:
+| >> +                    ssl_eagain_flag = 1;
+| >> +                    break;
+| >> +                case SSL_ERROR_ZERO_RETURN:
+| >> +                    /* Documentation (1.0.1e) says that this happens when
+| >> +                     * the connection was closed, only in SSL 3.0 or TLS
+| >> +                     * 1.0 as a result of a "closure alert". */
+| >> +                    SSL_free(client->ssl);
+| >> +                    client->ssl = NULL;
+| >> +                    ERR_remove_state(0);
+| >> +                    pthread_exit(NULL);
+| >> +                    break;
+| >> +                case SSL_ERROR_SYSCALL:
+| >> +                case SSL_ERROR_SSL:
+| >> +                    while ((error = ERR_get_error())) {
+| >> +                        debug(DBG_ERR, "%s: SSL err %d: %s", __FUNCTION__,
+| >> +                              ssl_err, ERR_error_string(error, NULL));
+| >> +                    }
+| >> +                    SSL_free(client->ssl);
+| >> +                    client->ssl = NULL;
+| >> +                    ERR_remove_state(0);
+| >> +                    pthread_exit(NULL);
+| >> +                    break;
+| >> +                default:
+| >> +                    debugx(ssl_err, DBG_ERR, "%s: unexpected SSL error: %d",
+| >> +                           __FUNCTION__, ssl_err);
+| >> +                }
+| >> +            }
+| >> +        } while (ssl_eagain_flag);
+| >>  	freerq(reply);
+| >>      }
+| >>  }
+| >> 
+| >> 
+| >> 
+| >> Thanks,
+| >> Linus
+| >> 
+| > 
+| > -- 
+| > Maja Gorecka-Wolniewicz          
+| > mgw@umk.pl
+| > 
+| > Uczelniane Centrum               Information & Communication
+| > Informatyczne                    Technology Centre
+| > Uniwersytet Mikolaja Kopernika   Nicolaus Copernicus University
+| > Coll. Maximum, pl. Rapackiego 1, 87-100 Torun, Poland
+| > tel.: +48 56-611-27-40 fax: +48 56-622-18-50 tel. kom.: +48-693032574
+| > 
+| 
+| --
+| Verein zur Förderung eines Deutschen Forschungsnetzes e.V.
+| Alexanderplatz 1, D - 10178 Berlin
+| Tel.: 030 88 42 99 23
+| Fax: 030 88 42 99 70
+| http://www.dfn.de

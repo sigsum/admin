@@ -1,0 +1,126 @@
+Return-Path: <tor-bugs-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Tue, 16 Oct 2012 04:24:55 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 6FE3211755; Tue, 16 Oct 2012 04:24:55 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id 6F3A01156E
+	for <linus@nordberg.se>; Tue, 16 Oct 2012 04:24:53 +0200 (CEST)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 7CF3324649;
+	Tue, 16 Oct 2012 02:24:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 57DD024648
+	for <tor-bugs@lists.torproject.org>;
+	Tue, 16 Oct 2012 02:24:47 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id w6cVNk7oUo2L for <tor-bugs@lists.torproject.org>;
+	Tue, 16 Oct 2012 02:24:47 +0000 (UTC)
+Received: from jepsonii.torproject.org (jepsonii.torproject.org
+	[IPv6:2620:0:6b0:b:1a1a:0:26e5:4808])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/jepsonii.torproject.org",
+	Issuer "auto-ca.torproject.org" (verified OK))
+	by eugeni.torproject.org (Postfix) with ESMTPS id 3E9F024625
+	for <tor-bugs@lists.torproject.org>;
+	Tue, 16 Oct 2012 02:24:47 +0000 (UTC)
+Received: from jepsonii.torproject.org (unknown [IPv6:::1])
+	by jepsonii.torproject.org (Postfix) with ESMTP id 9827C2057F;
+	Tue, 16 Oct 2012 02:24:44 +0000 (UTC)
+MIME-Version: 1.0
+From: "Tor Bug Tracker & Wiki" <torproject-admin@torproject.org>
+X-Trac-Version: 0.11.7
+Precedence: bulk
+Auto-Submitted: auto-generated
+X-Mailer: Trac 0.11.7, by Edgewall Software
+X-Trac-Project: Tor Bug Tracker & Wiki
+Date: Tue, 16 Oct 2012 02:24:44 -0000
+X-URL: https://trac.torproject.org/
+X-Trac-Ticket-URL: https://trac.torproject.org/projects/tor/ticket/7110#comment:1
+Message-ID: <052.5d46af23a1ae33aea1528433cedc1e6a@torproject.org>
+References: <043.40eb19360cf0692fca23361a7e6bd822@torproject.org>
+X-Trac-Ticket-ID: 7110
+In-Reply-To: <043.40eb19360cf0692fca23361a7e6bd822@torproject.org>
+To: undisclosed-recipients:;
+Subject: Re: [tor-bugs] #7110 [Flashproxy]: Do real parsing of boolean query
+ string parameters
+X-BeenThere: tor-bugs@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Reply-To: tor-assistants@torproject.org
+List-Id: "auto: Tor bug tracker status mails" <tor-bugs.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=unsubscribe>
+List-Archive: <http://lists.torproject.org/pipermail/tor-bugs>
+List-Post: <mailto:tor-bugs@lists.torproject.org>
+List-Help: <mailto:tor-bugs-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: tor-bugs-bounces@lists.torproject.org
+Errors-To: tor-bugs-bounces@lists.torproject.org
+
+#7110: Do real parsing of boolean query string parameters
+------------------------+---------------------------------------------------
+ Reporter:  dcf         |          Owner:  dcf
+     Type:  defect      |         Status:  new
+ Priority:  minor       |      Milestone:     
+Component:  Flashproxy  |        Version:     
+ Keywords:              |         Parent:     
+   Points:              |   Actualpoints:     
+------------------------+---------------------------------------------------
+
+Comment(by dcf):
+
+ Thank you for making these changes. It's easier if you attach patches
+ instead; use
+ {{{
+ git format-patch HEAD^
+ }}}
+ or something similar.
+
+ `get_query_string_param_boolean` should work the same way and have the
+ same signature as the other `get_query_string_param_*` functions. That is,
+ it shouldn't just take a single value; it should take a query string, a
+ parameter name, and a default value.
+
+ In other words, the test for the debug parameter should look something
+ like this:
+ {{{
+ var query = parse_query_string(window.location.search.substr(1));
+ var DEBUG = get_query_string_param_boolean(query, "debug", false);
+ if (DEBUG) {
+     ....
+ }
+ }}}
+
+ The `switch` you have written would be shorter (6 lines) and clearer as an
+ `if`-`else`.
+
+ `test_get_query_string_param_boolean` looks good, but the test cases
+ should use query strings to match the expected behavior of
+ `get_query_string_param_boolean` as described above.
+
+ There are some places in the patch that add blank lines; avoid making
+ these kinds of unrelated changes. Try `git checkout -p` to selectively
+ discard parts of your changes.
+
+-- 
+Ticket URL: <https://trac.torproject.org/projects/tor/ticket/7110#comment:1>
+Tor Bug Tracker & Wiki <https://trac.torproject.org/>
+The Tor Project: anonymity online
+_______________________________________________
+tor-bugs mailing list
+tor-bugs@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs

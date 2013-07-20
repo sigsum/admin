@@ -1,0 +1,168 @@
+Return-Path: <liberationtech-bounces@mailman.stanford.edu>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 22 Apr 2012 07:14:09 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 6421A116CA; Sun, 22 Apr 2012 07:14:09 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from smtp.stanford.edu (smtp3.Stanford.EDU [171.67.219.83])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client did not present a certificate)
+	by smtp.nordberg.se (Postfix) with ESMTPS id E6F671154D
+	for <linus@nordberg.se>; Sun, 22 Apr 2012 07:14:03 +0200 (CEST)
+Received: from smtp.stanford.edu (localhost.localdomain [127.0.0.1])
+	by localhost (Postfix) with SMTP id 070AF444537;
+	Sat, 21 Apr 2012 22:14:00 -0700 (PDT)
+Received: from mailman.stanford.edu (mailman.Stanford.EDU [171.67.216.245])
+	by smtp.stanford.edu (Postfix) with ESMTP id ABE4444444E;
+	Sat, 21 Apr 2012 22:13:46 -0700 (PDT)
+X-Original-To: liberationtech@lists.stanford.edu
+Delivered-To: liberationtech@lists.stanford.edu
+Received: from mailman.stanford.edu (localhost.localdomain [127.0.0.1])
+	by mailman.stanford.edu (Postfix) with SMTP id E6791200C5A
+	for <liberationtech@lists.stanford.edu>;
+	Sat, 21 Apr 2012 22:13:38 -0700 (PDT)
+Received: from mail.piratpartiet.se (mail.piratpartiet.se [194.14.56.227])
+	(using TLSv1 with cipher ADH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mailman.stanford.edu (Postfix) with ESMTPS id 2AF50200C51
+	for <liberationtech@lists.stanford.edu>;
+	Sat, 21 Apr 2012 22:13:37 -0700 (PDT)
+Received: from localhost (localhost [127.0.0.1])
+	by mail.piratpartiet.se (Postfix) with ESMTP id 654AF643E05;
+	Sun, 22 Apr 2012 07:13:20 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at mail.piratpartiet.se
+Received: from mail.piratpartiet.se ([127.0.0.1])
+	by localhost (mail.piratpartiet.se [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id Ab9am0EhXuuc; Sun, 22 Apr 2012 07:13:17 +0200 (CEST)
+Received: from [192.168.81.4] (h87-96-134-19.static.se.alltele.net
+	[87.96.134.19])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client did not present a certificate)
+	(Authenticated sender: rick@piratpartiet.se)
+	by mail.piratpartiet.se (Postfix) with ESMTPSA id 40BDC643DB3;
+	Sun, 22 Apr 2012 07:13:17 +0200 (CEST)
+Message-ID: <4F939376.9070109@piratpartiet.se>
+Date: Sun, 22 Apr 2012 07:13:26 +0200
+From: "Rick Falkvinge (Piratpartiet)" <rick.falkvinge@piratpartiet.se>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.2.28) Gecko/20120313 Thunderbird/3.1.20
+MIME-Version: 1.0
+To: James Losey <jameswlosey@gmail.com>, 
+ liberationtech@lists.stanford.edu
+References: <CADmQzWoRrdBoVw7kR0PSFZgJDQRuQePiX=TCQcz1AOzp6xjEow@mail.gmail.com>
+In-Reply-To: <CADmQzWoRrdBoVw7kR0PSFZgJDQRuQePiX=TCQcz1AOzp6xjEow@mail.gmail.com>
+X-Enigmail-Version: 1.1.2
+Subject: Re: [liberationtech] The first rule about censorship is we don't
+ talk	about censorship
+X-BeenThere: liberationtech@lists.stanford.edu
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: liberationtech <liberationtech.lists.stanford.edu>
+List-Unsubscribe: <https://mailman.stanford.edu/mailman/options/liberationtech>, 
+	<mailto:liberationtech-request@lists.stanford.edu?subject=unsubscribe>
+List-Archive: <https://mailman.stanford.edu/mailman/private/liberationtech>
+List-Post: <mailto:liberationtech@lists.stanford.edu>
+List-Help: <mailto:liberationtech-request@lists.stanford.edu?subject=help>
+List-Subscribe: <https://mailman.stanford.edu/mailman/listinfo/liberationtech>, 
+	<mailto:liberationtech-request@lists.stanford.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: liberationtech-bounces@lists.stanford.edu
+Errors-To: liberationtech-bounces@lists.stanford.edu
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+
+
+The same thing will happen with links to The Pirate Bay. You cannot talk
+about them on Facebook.
+
+Imagine 30 years ago, when we were on the phone and discussed something,
+if a voice had popped in and said "you have mentioned an inappropriate
+subject. Please refrain from inappropriate communications." We would
+have been horrified. It would have been seen as so dystopic, that if it
+had been written in a novel of fiction, it would have been discarded as
+just unrealistic.
+
+Well, we're there.
+
+Cheers,
+Rick
+
+
+On 04/19/2012 12:30 AM, James Losey wrote:
+> Hi All,
+> 
+> James Ball wrote an article for the Guardian
+> <http://www.guardian.co.uk/technology/2012/apr/18/richard-odwyer-extradition-piracy-charges>
+> about tvshack.net <http://tvshack.net> and noticed a curious thing: the
+> Facebook share button does not allow you to share the link to Facebook
+> because it includes the words "tvshack.net <http://tvshack.net>."
+> Although I was able to post the link itself to Face but took a
+> screenshot of the message saying that the article contains language that
+> is "spammy or
+> unsafe." http://jameslosey.com/post/21345118902/when-spam-filters-go-to-far 
+> 
+> Does anyone else have more examples of this? 
+> 
+> Best,
+> James
+> 
+> 
+> 
+> _______________________________________________
+> liberationtech mailing list
+> liberationtech@lists.stanford.edu
+> 
+> Should you need to change your subscription options, please go to:
+> 
+> https://mailman.stanford.edu/mailman/listinfo/liberationtech
+> 
+> If you would like to receive a daily digest, click "yes" (once you click above) next to "would you like to receive list mail batched in a daily digest?"
+> 
+> You will need the user name and password you receive from the list moderator in monthly reminders. You may ask for a reminder here: https://mailman.stanford.edu/mailman/listinfo/liberationtech
+> 
+> Should you need immediate assistance, please contact the list moderator.
+> 
+> Please don't forget to follow us on http://twitter.com/#!/Liberationtech
+
+- -- 
+Rick Falkvinge
+Founder of the first Pirate Party
+Piratpartiet SE
+
+@Falkvinge
++46708303600
+
+Blog, bio and press photos at http://falkvinge.net/photos-bio/
+
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iEYEARECAAYFAk+Tk3EACgkQ7pnTrWI4jx3cfQCfVA3TsjvjnUBpo93+SCZiJTUV
+lF4AoJ+vSMkRHBZ4M24DXqarjC0hjBtQ
+=WB/1
+-----END PGP SIGNATURE-----
+_______________________________________________
+liberationtech mailing list
+liberationtech@lists.stanford.edu
+
+Should you need to change your subscription options, please go to:
+
+https://mailman.stanford.edu/mailman/listinfo/liberationtech
+
+If you would like to receive a daily digest, click "yes" (once you click above) next to "would you like to receive list mail batched in a daily digest?"
+
+You will need the user name and password you receive from the list moderator in monthly reminders. You may ask for a reminder here: https://mailman.stanford.edu/mailman/listinfo/liberationtech
+
+Should you need immediate assistance, please contact the list moderator.
+
+Please don't forget to follow us on http://twitter.com/#!/Liberationtech

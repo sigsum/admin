@@ -1,0 +1,43 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: Leif Johansson <leifj@sunet.se>
+Cc: Randy Bush <randy@psg.com>,  Jean Lorchat <jean.lorchat@gmail.com>,  Lucy Lynch <lynch@isoc.org>,  Cristel Pelsser <cristel@iij.ad.jp>
+Subject: Re: tamias-004
+In-Reply-To: <515169DA.4010304@sunet.se> (Leif Johansson's message of "Tue, 26
+	Mar 2013 10:26:50 +0100")
+Organization: NORDUnet A/S
+References: <514F62DF.4080909@sunet.se> <m2a9ps5upx.wl%randy@psg.com>
+	<514F82DD.7050801@sunet.se>
+	<CABCrOFbVmLderfd5Vb0GaL+JVzdbaT2nmvwFJuf=ypXeDns5Sg@mail.gmail.com>
+	<515022F1.7000205@sunet.se> <87d2unsr2j.fsf@nordberg.se>
+	<CABCrOFbaAQ1C-koYFC7MpgUNDg9Q2Fi=_XYe7hx0v=QWOH+VOQ@mail.gmail.com>
+	<m21ub3ym78.wl%randy@psg.com> <51515432.9080003@sunet.se>
+	<m2ehf2y4j0.wl%randy@psg.com> <5151567C.1090407@sunet.se>
+	<m2d2umy2ne.wl%randy@psg.com> <515169DA.4010304@sunet.se>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+X-Draft-From: ("nnimap+ndn:INBOX" 42882)
+Date: Wed, 27 Mar 2013 08:22:33 -1000
+--text follows this line--
+Leif Johansson <leifj@sunet.se> wrote
+Tue, 26 Mar 2013 10:26:50 +0100:
+
+| On 03/26/2013 09:40 AM, Randy Bush wrote:
+| >> the tor network, being an overlay, makes NATs disappear if we manage
+| >> to address tamias nodes using tor network addresses (aka onions)
+| > if there is a tor exit behind the nats, yes
+
+Tor Hidden Services (HS) don't need exit relays.
+
+A client running a HS anonymously announces its identity together with a
+short list of relays it's picked as introduction points (and tells the
+introduction points about its service).
+
+A client which wants to connect to a given HS picks a Rendezvous Point
+(RP), connects to it (over Tor) and asks one of the HS's introduction
+points to tell the HS to connect there. If the HS wants to, it connects
+to the RP (over Tor) and traffic can be exchanged. Note that this is in
+effect a 5-hop circuit. Expect latency.
+
+
+| which would be true if you torify tamias
+
+No.

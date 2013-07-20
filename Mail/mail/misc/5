@@ -1,0 +1,21 @@
+X-From-Line: linus@tool Wed Dec 26 15:35:47 2012
+Return-path: <linus@tool>
+Envelope-to: root@tool
+Delivery-date: Wed, 26 Dec 2012 15:35:47 +0100
+Received: from linus by tool with local (Exim 4.80)
+	(envelope-from <linus@tool>)
+	id 1Tns5C-0006r5-8Y
+	for root@tool; Wed, 26 Dec 2012 15:35:46 +0100
+To: root@tool
+Auto-Submitted: auto-generated
+Subject: *** SECURITY information for tool ***
+From: linus <linus@tool>
+X-Gnus-Mail-Source: file:/var/mail/linus
+Message-Id: <E1Tns5C-0006r5-8Y@tool>
+Date: Wed, 26 Dec 2012 15:35:46 +0100
+Lines: 3
+Xref: tool mail.misc:5
+
+tool : Dec 26 15:35:44 : linus : 1 incorrect password attempt ; TTY=pts/0 ; PWD=/home/linus ; USER=root ; COMMAND=/bin/bash
+
+

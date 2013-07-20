@@ -1,0 +1,32 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 64569)
+References: <m2mwsu2ys9.fsf@rahvafeir.err.no> <877gjyqkse.fsf@nordberg.se>
+	<87ip3icild.fsf@xoog.err.no>
+	<1697002439.37041.1366478206405.JavaMail.root@redhat.com>
+	<m24nf0828v.fsf@rahvafeir.err.no>
+	<1366719167.28398.5.camel@localhost.localdomain>
+	<87y5c9e7hb.fsf@nordberg.se>
+	<1366721916.28398.12.camel@localhost.localdomain>
+	<87li89e68n.fsf@nordberg.se>
+	<1366723813.28398.13.camel@localhost.localdomain>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-05
+To: Nathaniel McCallum <npmccallum@redhat.com>
+Cc: Tollef Fog Heen <tfheen@err.no>
+Subject: Re: MIT Kerberos OTP plugin status?
+From: Linus Nordberg <linus@nordberg.se>
+Date: Wed, 08 May 2013 12:35:31 +0200
+--text follows this line--
+Nathaniel McCallum <npmccallum@redhat.com> wrote
+Tue, 23 Apr 2013 09:30:13 -0400:
+
+| On Tue, 2013-04-23 at 15:17 +0200, Linus Nordberg wrote:
+| > I'm currently working on a RadSec library which has basic client
+| > support. Server side is what's cooking.
+| 
+| Could you integrate this with our libkrad work?
+
+I would love a decent library for encoding and decoding RADIUS
+messages. MIT Kerberos is a pretty heavy dependency though.
+
+#include <krb5.h>
+#include <verto.h>
+#include <k5-int.h>

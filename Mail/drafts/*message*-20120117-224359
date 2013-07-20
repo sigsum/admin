@@ -1,0 +1,16 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: linus@nordberg.se 
+Subject: The end of emails with Tor relay flag changes
+bcc: moritz@torservers.net, jn@9999.se, lundberg@nordu.net,
+     erik.nihlen@gmail.com, erik@nordberg.se, jbn@klutt.se 
+Date: Tue, 17 Jan 2012 22:47:45 +0100
+Message-ID: <yszmx9mypa6.fsf@nordberg.se>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+--text follows this line--
+Hi,
+
+After an upgrade of the machine sending you cryptic emails with
+information of changes to flags on your relays this service has been
+discontinued.
+
+You can try https://weather.torproject.org/ .

@@ -1,0 +1,143 @@
+Return-Path: <liberationtech-bounces@mailman.stanford.edu>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sat, 21 Apr 2012 21:13:38 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 6059A1154D; Sat, 21 Apr 2012 21:13:38 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-2.6 required=4.0 tests=BAYES_00,RCVD_IN_DNSWL_LOW,
+	T_RP_MATCHES_RCVD autolearn=ham version=3.3.0
+Received: from smtp.stanford.edu (smtp1.Stanford.EDU [171.67.219.81])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client did not present a certificate)
+	by smtp.nordberg.se (Postfix) with ESMTPS id B76071154D
+	for <linus@nordberg.se>; Sat, 21 Apr 2012 21:13:31 +0200 (CEST)
+Received: from smtp.stanford.edu (localhost.localdomain [127.0.0.1])
+	by localhost (Postfix) with SMTP id CFE5D1054CB;
+	Sat, 21 Apr 2012 12:13:27 -0700 (PDT)
+Received: from mailman.stanford.edu (mailman.Stanford.EDU [171.67.216.245])
+	by smtp.stanford.edu (Postfix) with ESMTP id 3CFAC1054C5;
+	Sat, 21 Apr 2012 12:13:20 -0700 (PDT)
+X-Original-To: liberationtech@lists.stanford.edu
+Delivered-To: liberationtech@lists.stanford.edu
+Received: from mailman.stanford.edu (localhost.localdomain [127.0.0.1])
+	by mailman.stanford.edu (Postfix) with SMTP id 80C9A200C78
+	for <liberationtech@lists.stanford.edu>;
+	Sat, 21 Apr 2012 12:13:11 -0700 (PDT)
+Received: from core.nethemba.com (core.nethemba.com [77.78.111.81])
+	by mailman.stanford.edu (Postfix) with ESMTP id DEEE0200C51
+	for <liberationtech@lists.stanford.edu>;
+	Sat, 21 Apr 2012 12:13:10 -0700 (PDT)
+Received: by core.nethemba.com (Postfix, from userid 1000)
+	id BA56F10022060; Sat, 21 Apr 2012 21:07:00 +0200 (CEST)
+Date: Sat, 21 Apr 2012 21:07:00 +0200
+From: Pavol Luptak <wilder@trip.sk>
+To: James Losey <jameswlosey@gmail.com>
+Message-ID: <20120421190700.GA7970@core.nethemba.com>
+References: <CADmQzWoRrdBoVw7kR0PSFZgJDQRuQePiX=TCQcz1AOzp6xjEow@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <CADmQzWoRrdBoVw7kR0PSFZgJDQRuQePiX=TCQcz1AOzp6xjEow@mail.gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Liberation Technologies <liberationtech@lists.stanford.edu>
+Subject: Re: [liberationtech] The first rule about censorship is we don't
+ talk about censorship
+X-BeenThere: liberationtech@lists.stanford.edu
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: liberationtech <liberationtech.lists.stanford.edu>
+List-Unsubscribe: <https://mailman.stanford.edu/mailman/options/liberationtech>, 
+	<mailto:liberationtech-request@lists.stanford.edu?subject=unsubscribe>
+List-Archive: <https://mailman.stanford.edu/mailman/private/liberationtech>
+List-Post: <mailto:liberationtech@lists.stanford.edu>
+List-Help: <mailto:liberationtech-request@lists.stanford.edu?subject=help>
+List-Subscribe: <https://mailman.stanford.edu/mailman/listinfo/liberationtech>, 
+	<mailto:liberationtech-request@lists.stanford.edu?subject=subscribe>
+Content-Type: multipart/mixed; boundary="===============7777598667574635235=="
+Sender: liberationtech-bounces@lists.stanford.edu
+Errors-To: liberationtech-bounces@lists.stanford.edu
+
+
+--===============7777598667574635235==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="dDRMvlgZJXvWKvBx"
+Content-Disposition: inline
+
+
+--dDRMvlgZJXvWKvBx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Wed, Apr 18, 2012 at 06:30:52PM -0400, James Losey wrote:
+>    James Ball wrote an article for the Guardian about tvshack.net and not=
+iced
+>    a curious thing: the Facebook share button does not allow you to share=
+ the
+>    link to Facebook because it includes the words "tvshack.net." Although=
+ I
+>    was able to post the link itself to Face but took a screenshot of the
+>    message saying that the article contains language that is "spammy or
+>    unsafe." http://jameslosey.com/post/21345118902/when-spam-filters-go-t=
+o-far=20
+
+I have the similar problem few weeks ago with Facebook chat 'censorship'.
+
+When I sent through Facebook chat the following link to my Facebook friend:
+
+http://agorism.info/_media/a-lodging-of-wayfaring-men.pdf
+
+facebook returned the message:
+
+"some problem, this text cannot be sent"
+
+Mentioning this link at the Facebook status worked without problem, so only
+Facebook chat was affected. It was not my problem only, all my friends had =
+the
+same problem with sending this link using Facebook chat.=20
+Now it seems to work, anyway this behaviour was pretty strange.
+
+Pavol
+--=20
+_______________________________________________________________
+[wilder@trip.sk] [http://trip.sk/wilder/] [talker: ttt.sk 5678]
+
+--dDRMvlgZJXvWKvBx
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iF4EAREIAAYFAk+TBVQACgkQt5TWj+buImJB4gEAuULflDaKUn3/y3s0GpDTDFbc
+JsM/GxaKw8a43w+MN/sBANxprvpaE54AAxsKebo+CLgP1GEG0SYttH5k/9aDw+An
+=kHW1
+-----END PGP SIGNATURE-----
+
+--dDRMvlgZJXvWKvBx--
+
+--===============7777598667574635235==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+liberationtech mailing list
+liberationtech@lists.stanford.edu
+
+Should you need to change your subscription options, please go to:
+
+https://mailman.stanford.edu/mailman/listinfo/liberationtech
+
+If you would like to receive a daily digest, click "yes" (once you click above) next to "would you like to receive list mail batched in a daily digest?"
+
+You will need the user name and password you receive from the list moderator in monthly reminders. You may ask for a reminder here: https://mailman.stanford.edu/mailman/listinfo/liberationtech
+
+Should you need immediate assistance, please contact the list moderator.
+
+Please don't forget to follow us on http://twitter.com/#!/Liberationtech
+--===============7777598667574635235==--

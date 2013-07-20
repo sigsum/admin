@@ -1,0 +1,41 @@
+Return-Path: <root@rs0-1.dfri.net>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 28 Apr 2013 03:32:41 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 354CF11756; Sun, 28 Apr 2013 03:32:41 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id C7A80116B8
+	for <linus@nordberg.se>; Sun, 28 Apr 2013 03:32:30 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id B4ADA1F32DD3; Sun, 28 Apr 2013 03:32:31 +0200 (CEST)
+Delivered-To: beredskap@dfri.net
+Received: from rs0-1.dfri.net (rs0-1.dfri.net [IPv6:2001:67c:289c::1])
+	by mail.dfri.se (Postfix) with ESMTP id 97C0C1F32C9C
+	for <beredskap@dfri.net>; Sun, 28 Apr 2013 03:32:31 +0200 (CEST)
+Received: from rs0-1.dfri.net (localhost [127.0.0.1])
+	by rs0-1.dfri.net (8.14.5/8.14.5) with ESMTP id r3S1TUEm039240
+	for <root@rs0-1.dfri.net>; Sun, 28 Apr 2013 03:29:30 +0200 (CEST)
+	(envelope-from root@rs0-1.dfri.net)
+Received: (from root@localhost)
+	by rs0-1.dfri.net (8.14.5/8.14.5/Submit) id r3S1Q7Ii039235;
+	Sun, 28 Apr 2013 03:26:07 +0200 (CEST)
+	(envelope-from root)
+Date: Sun, 28 Apr 2013 03:26:07 +0200 (CEST)
+Message-Id: <201304280126.r3S1Q7Ii039235@rs0-1.dfri.net>
+From: root@rs0-1.dfri.net (Cron Daemon)
+To: root@rs0-1.dfri.net
+Subject: Cron <root@rs0-1> /root/rsync-away.sh
+X-Cron-Env: <SHELL=/bin/sh>
+X-Cron-Env: <PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <LOGNAME=root>
+X-Cron-Env: <USER=root>
+
+rsync: failed to set permissions on "/usr/home/buprs0/rs0-1/usr/local/bin/emacs-24.3": Inappropriate file type or format (79)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1052) [sender=3.0.9]

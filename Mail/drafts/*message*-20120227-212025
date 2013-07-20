@@ -1,0 +1,21 @@
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2012-02
+To: jbn@klutt.se, andreas@romab.com 
+cc: linus@nordberg.se
+cc: noc@dfri.net 
+Subject: Tisdagsjobbet med maatuska och annat DFRI
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+<#secure method=pgpmime mode=encrypt>
+- jbn och linus till kista runt 15:00
+- ses på TUG runt 16:00
+- ta ner rs0, sätt i mer minne, flytta till racket bredvid F&F, märk med :DFRI
+- ta upp rs0, kolla att peers kommer upp
+- ta ner tex, sätt i mer minne, flytta till racket bredvid F&F, märk med :DFRI
+- ta upp tex, kolla att jails kommer upp och fungerar
+- racka maatuska i F&F, byt adress till 171.25.193.9, anslut till DFRI:s
+  switch (port 23?)
+- ta ner jail ehlo @ tex
+- change DNS A ehlo.4711.se to 171.25.193.9, set PTR in reverse
+- ta upp maatuska, verifiera tor:
+  - orport: openssl s_client -connect 171.25.193.9:80
+  - dirport: fetch http://171.25.193.9:443/tor/status-vote/current/consensus.z

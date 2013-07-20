@@ -1,0 +1,95 @@
+Return-Path: <tor-bugs-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 15 Oct 2012 22:36:16 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 118EF11755; Mon, 15 Oct 2012 22:36:16 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id 9215D1156E
+	for <linus@nordberg.se>; Mon, 15 Oct 2012 22:36:14 +0200 (CEST)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 5DA9524639;
+	Mon, 15 Oct 2012 20:36:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id E099924638
+	for <tor-bugs@lists.torproject.org>;
+	Mon, 15 Oct 2012 20:36:10 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id Mx1kkJvaRaEA for <tor-bugs@lists.torproject.org>;
+	Mon, 15 Oct 2012 20:36:10 +0000 (UTC)
+Received: from jepsonii.torproject.org (jepsonii.torproject.org
+	[IPv6:2620:0:6b0:b:1a1a:0:26e5:4808])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/jepsonii.torproject.org",
+	Issuer "auto-ca.torproject.org" (verified OK))
+	by eugeni.torproject.org (Postfix) with ESMTPS id D074924518
+	for <tor-bugs@lists.torproject.org>;
+	Mon, 15 Oct 2012 20:36:10 +0000 (UTC)
+Received: from jepsonii.torproject.org (unknown [IPv6:::1])
+	by jepsonii.torproject.org (Postfix) with ESMTP id 3A93D2057F;
+	Mon, 15 Oct 2012 20:36:08 +0000 (UTC)
+MIME-Version: 1.0
+From: "Tor Bug Tracker & Wiki" <torproject-admin@torproject.org>
+X-Trac-Version: 0.11.7
+Precedence: bulk
+Auto-Submitted: auto-generated
+X-Mailer: Trac 0.11.7, by Edgewall Software
+X-Trac-Project: Tor Bug Tracker & Wiki
+Date: Mon, 15 Oct 2012 20:36:08 -0000
+X-URL: https://trac.torproject.org/
+X-Trac-Ticket-URL: https://trac.torproject.org/projects/tor/ticket/7119
+Message-ID: <048.fe19c75071315509e5801027b5a5bc61@torproject.org>
+X-Trac-Ticket-ID: 7119
+To: undisclosed-recipients:;
+Subject: [tor-bugs] #7119 [EFF-HTTPS Everywhere]: Microsoft Sysinternals
+ partially broken
+X-BeenThere: tor-bugs@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Reply-To: tor-assistants@torproject.org
+List-Id: "auto: Tor bug tracker status mails" <tor-bugs.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=unsubscribe>
+List-Archive: <http://lists.torproject.org/pipermail/tor-bugs>
+List-Post: <mailto:tor-bugs@lists.torproject.org>
+List-Help: <mailto:tor-bugs-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs>,
+	<mailto:tor-bugs-request@lists.torproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: tor-bugs-bounces@lists.torproject.org
+Errors-To: tor-bugs-bounces@lists.torproject.org
+
+#7119: Microsoft Sysinternals partially broken
+----------------------------------+-----------------------------------------
+ Reporter:  BSOD2600              |          Owner:  pde          
+     Type:  defect                |         Status:  new          
+ Priority:  normal                |      Milestone:               
+Component:  EFF-HTTPS Everywhere  |        Version:  HTTPS-E 3.0.0
+ Keywords:                        |         Parent:               
+   Points:                        |   Actualpoints:               
+----------------------------------+-----------------------------------------
+ The url: http://technet.microsoft.com/en-us/sysinternals using HTTPS
+ everywhere 3.0.1 on FF 16.0.1 is broken. Appears all the CSS content is
+ missing as only the raw text is displayed.  Once HTTPS rule for Microsoft
+ is disabled, the site content looks normal.
+
+ There is no HTTPS-E 3.0.1 to selection from the Version dropdown, FYI.
+
+-- 
+Ticket URL: <https://trac.torproject.org/projects/tor/ticket/7119>
+Tor Bug Tracker & Wiki <https://trac.torproject.org/>
+The Tor Project: anonymity online
+_______________________________________________
+tor-bugs mailing list
+tor-bugs@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-bugs

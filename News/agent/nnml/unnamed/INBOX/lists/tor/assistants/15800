@@ -1,0 +1,444 @@
+Return-Path: <tor-assistants-bounces@lists.torproject.org>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 11 Mar 2012 06:42:37 +0100
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id B02841153D; Sun, 11 Mar 2012 06:42:37 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,HTML_MESSAGE,
+	T_RP_MATCHES_RCVD autolearn=ham version=3.3.0
+Received: from eugeni.torproject.org (eugeni.torproject.org [38.229.72.13])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client CN "clientcerts/eugeni.torproject.org", Issuer "auto-ca.torproject.org" (not verified))
+	by smtp.nordberg.se (Postfix) with ESMTPS id E2F56116F4
+	for <linus@nordberg.se>; Sun, 11 Mar 2012 06:42:31 +0100 (CET)
+Received: from eugeni.torproject.org (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 09EA82405D;
+	Sun, 11 Mar 2012 05:42:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 42E4023A2B
+	for <tor-assistants@lists.torproject.org>;
+	Sun, 11 Mar 2012 05:42:27 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at eugeni.torproject.org
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id IwQxaUATkJwp for <tor-assistants@lists.torproject.org>;
+	Sun, 11 Mar 2012 05:42:27 +0000 (UTC)
+Received: from tarap.cc.columbia.edu (tarap.cc.columbia.edu [128.59.29.7])
+	by eugeni.torproject.org (Postfix) with ESMTP id 1C5A920B29
+	for <tor-assistants@torproject.org>;
+	Sun, 11 Mar 2012 05:42:26 +0000 (UTC)
+Received: from mail-we0-f175.google.com (mail-we0-f175.google.com
+	[74.125.82.175]) (user=sc2516 mech=PLAIN bits=0)
+	by tarap.cc.columbia.edu (8.14.4/8.14.3) with ESMTP id q2B5gNqb000627
+	(version=TLSv1/SSLv3 cipher=RC4-SHA bits=128 verify=NOT)
+	for <tor-assistants@torproject.org>;
+	Sun, 11 Mar 2012 00:42:24 -0500 (EST)
+Received: by wera1 with SMTP id a1so3105261wer.34
+	for <tor-assistants@torproject.org>;
+	Sat, 10 Mar 2012 21:42:23 -0800 (PST)
+Received: by 10.180.100.196 with SMTP id fa4mr9921535wib.0.1331444543184; Sat,
+	10 Mar 2012 21:42:23 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.180.107.162 with HTTP; Sat, 10 Mar 2012 21:42:03 -0800 (PST)
+In-Reply-To: <9A2A9BD5-1834-4DF8-8B1F-53701DB4DC07@cs.columbia.edu>
+References: <BANLkTimqxeN7F=LvC4btgmYGi3keuTHBpg@mail.gmail.com>
+	<20110506092015.GC15705@fscked.org>
+	<BANLkTinVEbHfRDpdOqdHAQVtr6CRXyBJqQ@mail.gmail.com>
+	<CAL2ZQOUKkfSjB0aMvxyjjb2gc0ABfX2kw8-YB5UuzBVW510wRQ@mail.gmail.com>
+	<CAL2ZQOWQg5Wi8vGmNhD4FoEQKuPr+NQFOuKqwKM9yGFC25RPiA@mail.gmail.com>
+	<CAL2ZQOVwg3+2Y+i35AgFoM-DSdxsTix_DAZgqvsV+Q225PiQEg@mail.gmail.com>
+	<CAL2ZQOXVVmRYD0hBE-X2hG4E1psTiHusTFE19-iAt-JyAPh7=Q@mail.gmail.com>
+	<CAL2ZQOVk9c-MiEffoqaWDMFCrd0kR6OvjeQp51B3S5zXojdd7w@mail.gmail.com>
+	<CAL2ZQOVD__9tfXBEwtX+SeqkRU0NyFU-6U2EHT0SaZX=Ehprxw@mail.gmail.com>
+	<CAL2ZQOXzzzV1XnNst026kdVpx18nF9AkYjTbeXC2jxCXDH_DyQ@mail.gmail.com>
+	<20120311041914.GZ2559@moria.seul.org>
+	<9A2A9BD5-1834-4DF8-8B1F-53701DB4DC07@cs.columbia.edu>
+From: Sambuddho Chakravarty <sc2516@columbia.edu>
+Date: Sun, 11 Mar 2012 00:42:03 -0500
+Message-ID: <CAL2ZQOVPjSpOe-D5UPuEYDV6K=gHace8np_fiGssp=PE=9ri1g@mail.gmail.com>
+To: "Angelos D. Keromytis" <angelos@cs.columbia.edu>
+X-CU-modified: BADURL IP 58.120.227.83 deactivated
+X-No-Spam-Score: Local
+X-Scanned-By: MIMEDefang 2.68 on 128.59.29.7
+Cc: tor-assistants@torproject.org
+Subject: Re: [tor-assistants] Reg : New malicious login attempts in our
+	decoy IMAP server
+X-BeenThere: tor-assistants@lists.torproject.org
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: "General support and information list to reach Tor developers and
+	researchers." <tor-assistants.lists.torproject.org>
+List-Unsubscribe: <https://lists.torproject.org/cgi-bin/mailman/options/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=unsubscribe>
+List-Post: <mailto:tor-assistants@lists.torproject.org>
+List-Help: <mailto:tor-assistants-request@lists.torproject.org?subject=help>
+List-Subscribe: <https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants>,
+	<mailto:tor-assistants-request@lists.torproject.org?subject=subscribe>
+Content-Type: multipart/mixed; boundary="===============5855456697273328453=="
+Sender: tor-assistants-bounces@lists.torproject.org
+Errors-To: tor-assistants-bounces@lists.torproject.org
+
+
+--===============5855456697273328453==
+Content-Type: multipart/alternative; boundary=f46d0444ee0b08dcf404baf1173a
+
+
+--f46d0444ee0b08dcf404baf1173a
+Content-Type: text/plain; charset=UTF-8
+Content-Disposition: inline
+
+Yes we have been using the same methodology of relying on IMAP/SMTP server
+logs to find out if there are more connection attempts on the server than
+those initiated by the client. We used the tor controller scripts of Mike
+to only add evidences of eavesdropping attempts. In the above cases we sent
+the control logs/mail logs to show when we normally used these exit nodes
+and whenever a decoy credential is replayed from a different exit/non-exit
+node/non-tor host.
+
+So to summarize, the approach is briefly as follows:
+
+1. To each exit node we expose a unique username/password going to our
+decoy server
+2. The client and server record the connection send and reception times
+3. If the number of connection attempts which the server records, involving
+any particular decoy credential, are more than those which the client
+ initiate, then such connection attempts are marked as suspicious; and then
+for those we go about extracting their respective mail logs, tor control
+logs etc. and report them to you.
+
+With respect to the above mentioned cases, we know the last connection
+attempts by our client is not after 11PM. The connection attempts you see
+for exit node: EveryLittleThing (which connected via spfTOR3) for January
+13, 2012 is ~ 3AM and the last connections recorded by our system on Jan
+12,2012 is between 6-7PM. Clearly there has been no attempt with those
+decoy credentials, by our system cannot, at the time time of the incident.
+Similar is the case of the exit node, RememberJobs.
+
+*
+*
+
+Thanks
+Sambuddho
+
+On Sun, Mar 11, 2012 at 12:02 AM, Angelos D. Keromytis <
+angelos@cs.columbia.edu> wrote:
+
+> We've always relied on the IMAP/SMTP server logs to confirm that the
+> credentials were received from the exit node that we expected. (I believe
+> that even in the cases we had discussed in the past, we sent you two
+> connection instances --- one from an exit node, representing our playing
+> the connection, and one from some IP which may or may not be that exit
+> node, representing the connect-back attempt by the eavesdropper). As you
+> said, a lot of miscommunication :)
+>
+> On Mar 10, 2012, at 11:19 PM, Roger Dingledine wrote:
+>
+> > On Fri, Feb 03, 2012 at 03:24:17AM -0500, Sambuddho Chakravarty wrote:
+> >> An incident was recorded by our system on jan 31, 2012
+> >>
+> >> Exit node : C9BE2C39CA4E6F120293C80D2CBE2BC34F3A1F30 66.165.177.139
+> >> connect back replay attempt : via a non Tor node in Canada
+> >
+> > Hi Sambuddho,
+> >
+> > Jake chatted more with Angelos at FC, and I think I have a better handle
+> > on your newer methodology here.
+> >
+> > The original methodology as I understand it was to do the scans,
+> > and then look through the Tor logs, the controller logs, and the imap
+> > logs and try to match up which exit relay saw the first login request,
+> > hoping you noticed when Tor decided to switch to another circuit. The
+> > updated approach is to basically ignore the Tor and controller logs,
+> > and say "the imap server saw a login from that IP, so clearly that was
+> > the exit relay that saw the credentials".
+> >
+> > Is there any more to it? Was this the case the whole time, or was there
+> > actually a methodology shift at some point? I remember at the beginning
+> > Mike pointed out several cases where your logs seemed to contradict
+> > your conclusions. There sure has been a lot of miscommunication on this
+> > topic. :(
+> >
+> > We've badexited the above relay. Please let us know when you notice new
+> > incidents, and we'll try to be more responsive.
+> >
+> >>> Incident 2:
+> >>>
+> >>> This is the third time we are observing eavesdropping by this
+> particular
+> >>> exit node
+> >>>
+> >>> Date : Jan 13, 2012 @ 00:59:48
+> >>> *Malicious exit node : SuperDuperLative
+> >>> C2B13FFA8ED72E5269A64C09705FD2AA39AF9F01 58.120.227.83*
+> >>> Connect back attempt/replay :Exit node Sweden
+> 505BD69565964F7B20D51A3FC4A4825BD93CA444
+> >>> / 557BF41C1CE1E1B48283B7E97630E42DED889A3D , 93.182.132.103  (Possibly
+> >>> two Tor instances on the same IP)
+> >
+> > Apparently 58.120.227.83 has been offline since 2012-01-23:
+> >
+> https://metrics.torproject.org/relay-search.html?search=58.120.227.83+2012-01
+> >
+> > But 93.174.93.82 is running a relay:
+> > https://metrics.torproject.org/relay-search.html?search=93.174.93.82
+> > and it has a weird line in its exit policy:
+> >
+> https://metrics.torproject.org/serverdesc?desc-id=44b45cc9139892f5142bd0afca9ef1687bc13b20
+> >
+> > I wonder what would cause this person to say "reject 58.120.227.83:22"
+> > in their exit policy.
+> >
+> >>>> Describing first here and the second one in a separate mail.
+> >>>>
+> >>>> Incident 1 :
+> >>>> Date : Jan 13, 2012 @ 00:59:36
+> >>>> *Malicious Exit node : EveryLittleThing
+> >>>> 25658A5DF26121F7DA21EDA6CCEF9B8D0AE8D79E 80.82.64.8*
+> >>>> Connect back attempt/replay :Exit node Switzerland (spfTOR3<
+> http://torstatus.blutmagie.de/router_detail.php?FP=ca1cf70f4e6af9172e6e743ac5f1e918ffe2b476
+> >
+> >>>> )
+> >
+> > And now here is that relay, with the same nickname but a different
+> > IP address!
+> >
+> > That's a huge exit. It would be a real shame to badexit it if we're
+> > wrong. Hm.
+> >
+> >>>>> Date: January 11, 2012 , 1:34 AM
+> >>>>> *Malicious Exit node : RememberJobs
+> >>>>> BC77196F4730442A96E36E1A13B3FF8DC14151EB 78.159.112.69*
+> >>>>> Connect back attempt/replay : Exit node in NL (TORy0)
+> >
+> > This one is still up and similarly huge.
+> >
+> > I wonder if we should work harder to make sure large exit relays have
+> > their ContactInfo set. I've for a long time wanted us to put more energy
+> > into building relationships with our large exit relays, but that's
+> > clearly easier said than done with the amount of work we all have to do.
+> >
+> >>>>>>> Exit node : MoscoVV
+> >>>>>>> Abuse date: Nov 5
+> >>>>>>> Connected via other exit nodes and one host in a network in Moscow,
+> >>>>>>> Russia
+> >
+> > There's a relay by that nickname up now too. This was quite a while
+> > ago though -- that's why I asked above about any methodology shifts.
+> >
+> > Thanks!
+> > --Roger
+> >
+> >
+>
+>
+>
+
+--f46d0444ee0b08dcf404baf1173a
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+<div dir=3D"ltr">Yes we have been using the same methodology of relying on =
+IMAP/SMTP server logs to find out if there are more connection attempts on =
+the server than those initiated by the client. We used the tor controller s=
+cripts of Mike to only add evidences of eavesdropping attempts. In the abov=
+e cases we sent the control logs/mail logs to show when we normally used th=
+ese exit nodes and whenever a decoy credential is replayed from a different=
+ exit/non-exit node/non-tor host.=C2=A0<div>
+
+<br></div><div>So to summarize, the approach is briefly as follows:</div><d=
+iv><br></div><div>1. To each exit node we expose a unique username/password=
+ going to our decoy server</div><div>2. The client and server record the co=
+nnection send and reception times</div>
+
+<div>3. If the number of connection attempts which the server records, invo=
+lving any particular decoy credential, are more than those which the client=
+ =C2=A0initiate, then such connection attempts are=C2=A0marked as suspiciou=
+s; and then for those we go about extracting their respective mail logs, to=
+r control logs etc. and report them to you.</div>
+
+<div><br></div><div>With respect to the above mentioned cases, we know the =
+last connection attempts by our client is not after 11PM. The connection at=
+tempts you see for exit node:=C2=A0<span style>EveryLittleThing (which conn=
+ected via=C2=A0</span><span style>spfTOR3) for January 13, 2012 is ~ 3AM an=
+d the last connections recorded by our system on Jan 12,2012 is between 6-7=
+PM. Clearly there has been no attempt with those decoy credentials, by our =
+system cannot, at the time time of the incident. Similar is the case of the=
+ exit node,=C2=A0</span><span style>RememberJobs.=C2=A0</span></div>
+
+<div><br></div><div><font color=3D"#222222" face=3D"arial, sans-serif"><b><=
+br></b></font></div><div><br></div><div>Thanks</div><div>Sambuddho=C2=A0</d=
+iv><div><br><div class=3D"gmail_quote">On Sun, Mar 11, 2012 at 12:02 AM, An=
+gelos D. Keromytis <span dir=3D"ltr">&lt;<a href=3D"mailto:angelos@cs.colum=
+bia.edu">angelos@cs.columbia.edu</a>&gt;</span> wrote:<br>
+
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">We&#39;ve always relied on the IMAP/SMTP ser=
+ver logs to confirm that the credentials were received from the exit node t=
+hat we expected. (I believe that even in the cases we had discussed in the =
+past, we sent you two connection instances --- one from an exit node, repre=
+senting our playing the connection, and one from some IP which may or may n=
+ot be that exit node, representing the connect-back attempt by the eavesdro=
+pper). As you said, a lot of miscommunication :)<br>
+
+
+<div class=3D"HOEnZb"><div class=3D"h5"><br>
+On Mar 10, 2012, at 11:19 PM, Roger Dingledine wrote:<br>
+<br>
+&gt; On Fri, Feb 03, 2012 at 03:24:17AM -0500, Sambuddho Chakravarty wrote:=
+<br>
+&gt;&gt; An incident was recorded by our system on jan 31, 2012<br>
+&gt;&gt;<br>
+&gt;&gt; Exit node : C9BE2C39CA4E6F120293C80D2CBE2BC34F3A1F30 66.165.177.13=
+9<br>
+&gt;&gt; connect back replay attempt : via a non Tor node in Canada<br>
+&gt;<br>
+&gt; Hi Sambuddho,<br>
+&gt;<br>
+&gt; Jake chatted more with Angelos at FC, and I think I have a better hand=
+le<br>
+&gt; on your newer methodology here.<br>
+&gt;<br>
+&gt; The original methodology as I understand it was to do the scans,<br>
+&gt; and then look through the Tor logs, the controller logs, and the imap<=
+br>
+&gt; logs and try to match up which exit relay saw the first login request,=
+<br>
+&gt; hoping you noticed when Tor decided to switch to another circuit. The<=
+br>
+&gt; updated approach is to basically ignore the Tor and controller logs,<b=
+r>
+&gt; and say &quot;the imap server saw a login from that IP, so clearly tha=
+t was<br>
+&gt; the exit relay that saw the credentials&quot;.<br>
+&gt;<br>
+&gt; Is there any more to it? Was this the case the whole time, or was ther=
+e<br>
+&gt; actually a methodology shift at some point? I remember at the beginnin=
+g<br>
+&gt; Mike pointed out several cases where your logs seemed to contradict<br>
+&gt; your conclusions. There sure has been a lot of miscommunication on thi=
+s<br>
+&gt; topic. :(<br>
+&gt;<br>
+&gt; We&#39;ve badexited the above relay. Please let us know when you notic=
+e new<br>
+&gt; incidents, and we&#39;ll try to be more responsive.<br>
+&gt;<br>
+&gt;&gt;&gt; Incident 2:<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; This is the third time we are observing eavesdropping by this =
+particular<br>
+&gt;&gt;&gt; exit node<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; Date : Jan 13, 2012 @ 00:59:48<br>
+&gt;&gt;&gt; *Malicious exit node : SuperDuperLative<br>
+&gt;&gt;&gt; C2B13FFA8ED72E5269A64C09705FD2AA39AF9F01 <a href=3D"tel:58.120=
+.227.83" value=3D"+15812022783">58.120.227.83</a>*<br>
+&gt;&gt;&gt; Connect back attempt/replay :Exit node Sweden 505BD69565964F7B=
+20D51A3FC4A4825BD93CA444<br>
+&gt;&gt;&gt; / 557BF41C1CE1E1B48283B7E97630E42DED889A3D , 93.182.132.103 =
+=C2=A0(Possibly<br>
+&gt;&gt;&gt; two Tor instances on the same IP)<br>
+&gt;<br>
+&gt; Apparently <a href=3D"tel:58.120.227.83" value=3D"+15812022783">58.120=
+.227.83</a> has been offline since 2012-01-23:<br>
+&gt; <a href=3D"https://metrics.torproject.org/relay-search.html?search=3D5=
+8.120.227.83+2012-01" target=3D"_blank">https://metrics.torproject.org/rela=
+y-search.html?search=3D58.120.227.83+2012-01</a><br>
+&gt;<br>
+&gt; But 93.174.93.82 is running a relay:<br>
+&gt; <a href=3D"https://metrics.torproject.org/relay-search.html?search=3D9=
+3.174.93.82" target=3D"_blank">https://metrics.torproject.org/relay-search.=
+html?search=3D93.174.93.82</a><br>
+&gt; and it has a weird line in its exit policy:<br>
+&gt; <a href=3D"https://metrics.torproject.org/serverdesc?desc-id=3D44b45cc=
+9139892f5142bd0afca9ef1687bc13b20" target=3D"_blank">https://metrics.torpro=
+ject.org/serverdesc?desc-id=3D44b45cc9139892f5142bd0afca9ef1687bc13b20</a><=
+br>
+
+
+&gt;<br>
+&gt; I wonder what would cause this person to say &quot;reject <!-- <a href=
+=3D"http://58.120.227.83:22" target=3D"_blank"> -->58.120.227.83:22<!-- </a=
+> -->&quot;<br>
+&gt; in their exit policy.<br>
+&gt;<br>
+&gt;&gt;&gt;&gt; Describing first here and the second one in a separate mai=
+l.<br>
+&gt;&gt;&gt;&gt;<br>
+&gt;&gt;&gt;&gt; Incident 1 :<br>
+&gt;&gt;&gt;&gt; Date : Jan 13, 2012 @ 00:59:36<br>
+&gt;&gt;&gt;&gt; *Malicious Exit node : EveryLittleThing<br>
+&gt;&gt;&gt;&gt; 25658A5DF26121F7DA21EDA6CCEF9B8D0AE8D79E 80.82.64.8*<br>
+&gt;&gt;&gt;&gt; Connect back attempt/replay :Exit node Switzerland (spfTOR=
+3&lt;<a href=3D"http://torstatus.blutmagie.de/router_detail.php?FP=3Dca1cf7=
+0f4e6af9172e6e743ac5f1e918ffe2b476" target=3D"_blank">http://torstatus.blut=
+magie.de/router_detail.php?FP=3Dca1cf70f4e6af9172e6e743ac5f1e918ffe2b476</a=
+>&gt;<br>
+
+
+&gt;&gt;&gt;&gt; )<br>
+&gt;<br>
+&gt; And now here is that relay, with the same nickname but a different<br>
+&gt; IP address!<br>
+&gt;<br>
+&gt; That&#39;s a huge exit. It would be a real shame to badexit it if we&#=
+39;re<br>
+&gt; wrong. Hm.<br>
+&gt;<br>
+&gt;&gt;&gt;&gt;&gt; Date: January 11, 2012 , 1:34 AM<br>
+&gt;&gt;&gt;&gt;&gt; *Malicious Exit node : RememberJobs<br>
+&gt;&gt;&gt;&gt;&gt; BC77196F4730442A96E36E1A13B3FF8DC14151EB <a href=3D"te=
+l:78.159.112.69" value=3D"+17815911269">78.159.112.69</a>*<br>
+&gt;&gt;&gt;&gt;&gt; Connect back attempt/replay : Exit node in NL (TORy0)<=
+br>
+&gt;<br>
+&gt; This one is still up and similarly huge.<br>
+&gt;<br>
+&gt; I wonder if we should work harder to make sure large exit relays have<=
+br>
+&gt; their ContactInfo set. I&#39;ve for a long time wanted us to put more =
+energy<br>
+&gt; into building relationships with our large exit relays, but that&#39;s=
+<br>
+&gt; clearly easier said than done with the amount of work we all have to d=
+o.<br>
+&gt;<br>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Exit node : MoscoVV<br>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Abuse date: Nov 5<br>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Connected via other exit nodes and one host in=
+ a network in Moscow,<br>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Russia<br>
+&gt;<br>
+&gt; There&#39;s a relay by that nickname up now too. This was quite a whil=
+e<br>
+&gt; ago though -- that&#39;s why I asked above about any methodology shift=
+s.<br>
+&gt;<br>
+&gt; Thanks!<br>
+&gt; --Roger<br>
+&gt;<br>
+&gt;<br>
+<br>
+<br>
+</div></div></blockquote></div><br></div></div>
+
+--f46d0444ee0b08dcf404baf1173a--
+
+--===============5855456697273328453==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+tor-assistants mailing list
+tor-assistants@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants
+
+--===============5855456697273328453==--

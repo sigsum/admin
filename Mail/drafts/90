@@ -1,0 +1,20 @@
+X-Draft-From: ("nnimap+adbc:INBOX")
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-02
+To: noc@dfri.net, martin@millnert.se 
+Subject: Föreslår inköp av NIC
+From: Linus Nordberg <linus@nordberg.se>
+Date: Tue, 26 Feb 2013 23:49:49 +0100
+--text follows this line--
+Hej NOC och Martin!
+
+Jag har som ni sett hållt på en del med att få rs0-1 att palla >50 kpps
+utan 'ierrs'. Det har gått ganska dåligt.
+
+Min teori är att vi har burstig trafik på interfacet mot transitar och
+IX:ar och att kärnan inte hinner plocka av all trafik från korten innan
+buffrarna där går fulla.
+
+Jag skall prova att sätta HZ=2000 (idag 1000) för att se om det hjälper
+något. Om inte så skulle jag vilja prova med ett separat NIC för 
+
+https://www.mullet.se/product.html?product_id=334641

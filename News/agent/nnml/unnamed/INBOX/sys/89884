@@ -1,0 +1,148 @@
+Return-Path: <root@rs0-1.dfri.net>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:10:22 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id B91F31152A; Mon, 29 Apr 2013 03:10:22 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id 1ED461174A
+	for <linus@nordberg.se>; Mon, 29 Apr 2013 03:09:53 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id F068A1F32E24; Mon, 29 Apr 2013 03:09:52 +0200 (CEST)
+Delivered-To: beredskap@dfri.net
+Received: from rs0-1.dfri.net (rs0-1.dfri.net [IPv6:2001:67c:289c::1])
+	by mail.dfri.se (Postfix) with ESMTP id C234F1F32E02
+	for <beredskap@dfri.net>; Mon, 29 Apr 2013 03:09:52 +0200 (CEST)
+Received: from rs0-1.dfri.net (localhost [127.0.0.1])
+	by rs0-1.dfri.net (8.14.5/8.14.5) with ESMTP id r3T16pwS003669
+	for <root@rs0-1.dfri.net>; Mon, 29 Apr 2013 03:06:51 +0200 (CEST)
+	(envelope-from root@rs0-1.dfri.net)
+Received: (from root@localhost)
+	by rs0-1.dfri.net (8.14.5/8.14.5/Submit) id r3T16p1l003666
+	for root; Mon, 29 Apr 2013 03:06:51 +0200 (CEST)
+	(envelope-from root)
+Date: Mon, 29 Apr 2013 03:06:51 +0200 (CEST)
+From: root at rs0 <root@rs0-1.dfri.net>
+Message-Id: <201304290106.r3T16p1l003666@rs0-1.dfri.net>
+To: root@rs0-1.dfri.net
+Subject: rs0-1.dfri.net daily run output
+
+
+Removing stale files from /var/preserve:
+
+Cleaning out old system announcements:
+
+Removing stale files from /var/rwho:
+
+Backup passwd and group files:
+
+Verifying group file syntax:
+/etc/group is fine
+
+Backing up mail aliases:
+
+Backing up package db directory:
+
+Disk status:
+Filesystem        Size    Used   Avail Capacity  Mounted on
+/dev/mirror/p2    3.9G    723M    2.9G    20%    /
+devfs             1.0k    1.0k      0B   100%    /dev
+/dev/mirror/p4      2G    111M    1.7G     6%    /tmp
+/dev/mirror/p5     19G    132M     17G     1%    /home
+/dev/mirror/p6     19G    8.1G    9.7G    45%    /usr
+/dev/mirror/p7    9.7G    428M    8.5G     5%    /var
+/dev/mirror/p8    388G     32M    357G     0%    /spare
+
+Checking status of gmirror(8) devices:
+     Name    Status  Components
+mirror/p1  COMPLETE  ada0p1 (ACTIVE)
+                     ada1p1 (ACTIVE)
+mirror/p2  COMPLETE  ada0p2 (ACTIVE)
+                     ada1p2 (ACTIVE)
+mirror/p3  COMPLETE  ada0p3 (ACTIVE)
+                     ada1p3 (ACTIVE)
+mirror/p4  COMPLETE  ada0p4 (ACTIVE)
+                     ada1p4 (ACTIVE)
+mirror/p5  COMPLETE  ada0p5 (ACTIVE)
+                     ada1p5 (ACTIVE)
+mirror/p6  COMPLETE  ada0p6 (ACTIVE)
+                     ada1p6 (ACTIVE)
+mirror/p7  COMPLETE  ada0p7 (ACTIVE)
+                     ada1p7 (ACTIVE)
+mirror/p8  COMPLETE  ada0p8 (ACTIVE)
+                     ada1p8 (ACTIVE)
+
+Network interface status:
+Name    Mtu Network       Address              Ipkts Ierrs Idrop    Opkts Oerrs  Coll Drop
+usbus     0 <Link#1>                               0     0     0        0     0     0    0 
+em0    4470 <Link#2>      00:25:90:7c:93:5a 218044305636 13598890     0 241478200813     0     0    0 
+em0    4470 fe80::225:90f fe80::225:90ff:fe        0     -     -        1     -     -    - 
+em1    1500 <Link#3>      00:25:90:7c:93:5b 245516585524 14431     0 219946497712     0     0    0 
+em1    1500 fe80::225:90f fe80::225:90ff:fe        0     -     -        2     -     -    - 
+em2    1500 <Link#4>      00:25:90:7c:93:5c 2253859970     0     0 3990386010     0     0    0 
+em2    1500 109.105.98.52 r1                  428750     -     -   544880     -     -    - 
+em2    1500 fe80::225:90f fe80::225:90ff:fe     8455     -     -    50354     -     -    - 
+em2    1500 r1.dfri.net   2001:948:2:d::2     605749     -     -   600448     -     -    - 
+em3*   1500 <Link#5>      00:25:90:7c:93:5d        0     0     0        0     0     0    0 
+usbus     0 <Link#6>                               0     0     0        0     0     0    0 
+lo0   16384 <Link#7>                           56479     0     0    56479     0     0    0 
+lo0   16384 your-net      localhost            56479     -     -    56479     -     -    - 
+lo0   16384 localhost     ::1                      0     -     -    34722     -     -    - 
+lo0   16384 fe80::1%lo0   fe80::1                  0     -     -        0     -     -    - 
+em0.9  1500 <Link#8>      00:25:90:7c:93:5a 3519730508     0     0 5792106289     0     0    0 
+em0.9  1500 193.110.13.0  sol-ix-sto-1500   19953154     -     -  2277422     -     -    - 
+em0.9  1500 fe80::225:90f fe80::225:90ff:fe   345150     -     -   615996     -     -    - 
+em0.9  1500 2001:7f8:21:9 2001:7f8:21:9::12  4184518     -     -  6586197     -     -    - 
+em0.1  4470 <Link#9>      00:25:90:7c:93:5a 5237322107     0     0 16141111801     0     0    0 
+em0.1  4470 193.110.12.0  sol-ix-sto-4470   33588047     -     -  5762280     -     -    - 
+em0.1  4470 fe80::225:90f fe80::225:90ff:fe    13109     -     -    12380     -     -    - 
+em0.1  4470 2001:7f8:21:1 2001:7f8:21:10::1  1809846     -     -  1917152     -     -    - 
+em0.2  1500 <Link#10>     00:25:90:7c:93:5a 5039334695     0     0 1157217430     0     0    0 
+em0.2  1500 192.121.80.0  as198093-ge-kn7.s  4617191     -     -  4529138     -     -    - 
+em0.2  1500 fe80::225:90f fe80::225:90ff:fe  1358711     -     -  1305613     -     -    - 
+em0.2  1500 as198093-ge-k 2001:7f8:3e:0:a50  6257797     -     -  2596907     -     -    - 
+em0.3  1500 <Link#11>     00:25:90:7c:93:5a     1420     0     0     2336     0     0    0 
+em0.3  1500 192.168.47.0  192.168.47.1          1416     -     -     2081     -     -    - 
+em0.3  1500 fe80::225:90f fe80::225:90ff:fe        0     -     -        1     -     -    - 
+em0.2  1500 <Link#12>     00:25:90:7c:93:5a 67427481825     0     0 58016843593     0     0    0 
+em0.2  1500 80.67.0.140/3 gi-1-3-dfri-demar   907700     -     -  2083873     -     -    - 
+em0.2  1500 fe80::225:90f fe80::225:90ff:fe        0     -     -        1     -     -    - 
+em0.2  1500 gi-1-3-dfri-d 2a00:1a28:1:3011:   669193     -     -   645331     -     -    - 
+em0.3  1500 <Link#13>     00:25:90:7c:93:5a 136813344699     0     0 160370954183     0     0    0 
+em0.3  1500 78.108.48.24/ vl-3019-dfri.link   868607     -     -  3136272     -     -    - 
+em0.3  1500 fe80::225:90f fe80::225:90ff:fe      142     -     -      317     -     -    - 
+em0.3  1500 2a00:1520:20: 2a00:1520:20:3::2   601863     -     -   542738     -     -    - 
+em1.1  1500 <Link#14>     00:25:90:7c:93:5b 163340811624     0     0 146574945725     0     0    0 
+em1.1  1500 171.25.193.0/ rs0-1              6937555     -     - 29931876     -     -    - 
+em1.1  1500 fe80::225:90f fe80::225:90ff:fe       99     -     -      106     -     -    - 
+em1.1  1500 rs0-1.dfri.ne 2001:67c:289c::1    958771     -     -   950249     -     -    - 
+em1.3  1500 <Link#15>     00:25:90:7c:93:5b 82175774027     0     0 73371550858     0     0    0 
+em1.3  1500 171.25.193.23 171.25.193.233       19534     -     -  6507233     -     -    - 
+em1.3  1500 fe80::225:90f fe80::225:90ff:fe        0     -     -        1     -     -    - 
+em1.3  1500 <Link#16>     00:25:90:7c:93:5b        0     0     0      569     0     0    0 
+em1.3  1500 171.25.193.25 sto0-sto1              780     -     -        0     -     -    - 
+
+Local system status:
+ 3:01AM  up 60 days, 14:44, 10 users, load averages: 1.77, 1.77, 1.75
+
+Mail in local queue:
+/var/spool/mqueue is empty
+		Total requests: 0
+
+Mail in submit queue:
+/var/spool/clientmqueue is empty
+		Total requests: 0
+
+Security check:
+    (output mailed separately)
+
+Checking for rejected mail hosts:
+
+Checking for denied zone transfers (AXFR and IXFR):
+
+-- End of daily output --

@@ -1,0 +1,50 @@
+Return-Path: <root@tbd0.nordberg.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 28 Apr 2013 03:17:13 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 34C2B1173F; Sun, 28 Apr 2013 03:17:13 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from tbd0.nordberg.se (tbd0.nordberg.se [193.10.5.86])
+	by smtp.nordberg.se (Postfix) with ESMTP id E24B311536
+	for <linus@nordberg.se>; Sun, 28 Apr 2013 03:17:11 +0200 (CEST)
+Received: by tbd0.nordberg.se (Postfix)
+	id 3F7DE2A03F; Sun, 28 Apr 2013 03:17:07 +0200 (CEST)
+Delivered-To: root@tbd0.nordberg.se
+Received: by tbd0.nordberg.se (Postfix, from userid 0)
+	id 379C22A235; Sun, 28 Apr 2013 03:17:07 +0200 (CEST)
+To: root@tbd0.nordberg.se
+Subject: tbd0.nordberg.se daily output for Sun Apr 28 03:15:00 CEST 2013
+Message-Id: <20130428011707.379C22A235@tbd0.nordberg.se>
+Date: Sun, 28 Apr 2013 03:15:00 +0200 (CEST)
+From: root@tbd0.nordberg.se (Charlie Root)
+
+
+Uptime:  3:15AM up 344 days, 18:20, 0 users, load averages: 0.04, 0.37, 0.30
+
+Checking subsystem status:
+
+disks:
+Filesystem        Size       Used      Avail %Cap    iUsed   iAvail %iCap Mount
+/dev/wd0a         242M        75M       155M  32%     2850    59356   4% /
+/dev/wd0f         2.0G        24M       1.8G   1%     1679   256367   0% /var
+/dev/wd0e         7.8G       5.9G       1.5G  79%   479289   545733  46% /usr
+/dev/raid1a       124G        86G        31G  73%       23 16260583   0% /domU
+ptyfs             1.0K       1.0K         0B 100%      896      128  87% /dev/pts
+tmpfs             512M        12K       512M   0%        6   524285   0% /tmp
+
+
+
+network:
+Name            Ipkts  Ierrs        Opkts  Oerrs  Colls
+wm0         870938851     34   1022318753      0      0
+lo0             43220      0        43220      0      0
+bridge0    1863531469      0   1877937657      0      0
+xvif6.0             0      0            0      0      0
+tap0        957856207      0    816757989      0      0
+
+

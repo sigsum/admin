@@ -1,0 +1,256 @@
+Return-Path: <root@nordberg.se>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:44:42 +0200
+X-Sieve: CMU Sieve 2.3
+Received: from banksy.nordberg.se (smtp.nordberg.se [193.10.5.87])
+	by smtp.nordberg.se (Postfix) with ESMTP id D3D641152A
+	for <root@nordberg.se>; Mon, 29 Apr 2013 03:44:41 +0200 (CEST)
+Received: by banksy.nordberg.se (Postfix, from userid 0)
+	id 762F11AE; Mon, 29 Apr 2013 03:44:40 +0200 (CEST)
+To: root@nordberg.se
+Subject: banksy.nordberg.se security run output
+Message-Id: <20130429014440.762F11AE@banksy.nordberg.se>
+Date: Mon, 29 Apr 2013 03:44:40 +0200 (CEST)
+From: root@nordberg.se (Charlie Root)
+
+
+Checking setuid files and devices:
+
+Checking for uids of 0:
+root 0
+toor 0
+
+Checking for passwordless accounts:
+
+banksy.nordberg.se pf denied packets:
++++ /tmp/security.Sty613OB	2013-04-29 03:18:00.000000000 +0200
++block drop log all [ Evaluations: 952751355 Packets: 2248314 Bytes: 315216229 States: 0 ]
++block drop in log on ! lo0 inet from 127.0.0.0/8 to any [ Evaluations: 952751355 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log on ! re0 inet from 193.10.5.0/24 to any [ Evaluations: 781551210 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log on ! re0 inet from 10.0.1.0/24 to any [ Evaluations: 388482722 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log on ! re0 inet from 10.0.1.0/24 to any [ Evaluations: 388460124 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log on ! re0 inet from 10.0.1.0/24 to any [ Evaluations: 388460124 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log on ! re0 inet from 10.0.1.0/24 to any [ Evaluations: 388460124 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log on ! re0 inet from 10.0.1.0/24 to any [ Evaluations: 388460124 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log on ! re0 inet from 10.0.1.0/24 to any [ Evaluations: 388460124 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log on ! re0 inet from 10.0.2.0/24 to any [ Evaluations: 388482722 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log inet from 193.10.5.87 to any [ Evaluations: 393068488 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log inet from 10.0.1.1 to any [ Evaluations: 393068488 Packets: 1 Bytes: 265 States: 0 ]
++block drop in log inet from 10.0.1.2 to any [ Evaluations: 393068488 Packets: 1 Bytes: 275 States: 0 ]
++block drop in log inet from 10.0.1.3 to any [ Evaluations: 393068488 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log inet from 10.0.1.4 to any [ Evaluations: 393068488 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log inet from 10.0.1.5 to any [ Evaluations: 393068488 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log inet from 10.0.1.6 to any [ Evaluations: 393068488 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log inet from 10.0.2.1 to any [ Evaluations: 393068488 Packets: 0 Bytes: 0 States: 0 ]
++block return-rst in on re0 proto tcp from any to <ext_addr> port = auth [ Evaluations: 4688549 Packets: 168 Bytes: 9876 States: 0 ]
++block drop in inet proto udp from 0.0.0.0 port = bootpc to 255.255.255.255 port = bootps [ Evaluations: 175683128 Packets: 49 Bytes: 18304 States: 0 ]
++block drop in log quick from <blocked_tutti> to any [ Evaluations: 4585766 Packets: 0 Bytes: 0 States: 0 ]
++block drop in log quick inet proto tcp from <blocked_smtp> to 10.0.1.2 port = smtp [ Evaluations: 4585766 Packets: 0 Bytes: 0 States: 0 ]
+
+banksy.nordberg.se kernel log messages:
++++ /tmp/security.rVMgKi2E	2013-04-29 03:18:05.000000000 +0200
++ad1: TIMEOUT - WRITE_DMA retrying (1 retry left) LBA=18073999
+
+banksy.nordberg.se login failures:
+
+banksy.nordberg.se refused connections:
+
+Downloading a current audit database:
+auditfile.tbz                                           86 kB  253 kBps
+New database installed.
+Database created: Mon Apr 29 03:15:00 CEST 2013
+
+portaudit for jails on banksy.nordberg.se - 20 problem(s) found.
+
+portaudit for jail: lnmail.nordberg.se (JID: 4)
+
+Affected package: clamav-0.94.2
+Type of problem: clamav -- multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/eb12ebee-b7af-11e1-b5e0-000c299b62e1.html
+
+Affected package: cyrus-imapd-2.3.11
+Type of problem: cyrus-imapd -- Potential buffer overflow in Sieve.
+Reference: http://portaudit.FreeBSD.org/012b495c-9d51-11de-8d20-001bd3385381.html
+
+Affected package: p5-HTML-Parser-3.56
+Type of problem: p5-HTML-Parser -- denial of service.
+Reference: http://portaudit.FreeBSD.org/68bda678-caab-11de-a97e-be89dfd1042e.html
+
+Affected package: p5-libwww-5.805
+Type of problem: p5-libwww -- possibility to remote servers to create file with a .(dot) character.
+Reference: http://portaudit.FreeBSD.org/3a7c5fc4-b50c-11df-977b-ecc31dd8ad06.html
+
+Affected package: perl-5.8.8_1
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+Affected package: perl-5.8.8_1
+Type of problem: perl -- Directory Permissions Race Condition.
+Reference: http://portaudit.FreeBSD.org/4a99d61c-f23a-11dd-9f55-0030843d3802.html
+
+Affected package: sudo-1.8.5.p1
+Type of problem: sudo -- Authentication bypass when clock is reset.
+Reference: http://portaudit.FreeBSD.org/764344fb-8214-11e2-9273-902b343deec9.html
+
+Affected package: sudo-1.8.5.p1
+Type of problem: sudo -- Potential bypass of tty_tickets constraints.
+Reference: http://portaudit.FreeBSD.org/82cfd919-8213-11e2-9273-902b343deec9.html
+
+6 problem(s) found.
+
+portaudit for jail: lnspam.nordberg.se (JID: 3)
+
+Affected package: ca_root_nss-3.13.4
+Type of problem: mozilla -- multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/a4ed6632-5aa9-11e2-8fcb-c8600054b392.html
+
+Affected package: clamav-0.97.4
+Type of problem: clamav -- multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/eb12ebee-b7af-11e1-b5e0-000c299b62e1.html
+
+Affected package: mysql-server-5.1.30
+Type of problem: mysql/mariadb/percona server -- multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/8c773d7f-6cbb-11e2-b242-c8600054b392.html
+
+Affected package: p5-libwww-5.834
+Type of problem: p5-libwww -- possibility to remote servers to create file with a .(dot) character.
+Reference: http://portaudit.FreeBSD.org/3a7c5fc4-b50c-11df-977b-ecc31dd8ad06.html
+
+Affected package: perl-5.8.9_7
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+5 problem(s) found.
+
+portaudit for jail: lnweb.nordberg.se (JID: 1)
+
+Affected package: apache-2.2.22_5
+Type of problem: Apache -- Insecure LD_LIBRARY_PATH handling.
+Reference: http://portaudit.FreeBSD.org/de2bc01f-dc44-11e1-9f4d-002354ed89bc.html
+
+Affected package: freetype2-2.3.9_1
+Type of problem: freetype -- Multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/1ae613c3-5728-11e2-9483-14dae938ec40.html
+
+Affected package: freetype2-2.3.9_1
+Type of problem: freetype -- multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/462e2d6c-8017-11e1-a571-bcaec565249c.html
+
+Affected package: freetype2-2.3.9_1
+Type of problem: freetype -- Some type 1 fonts handling vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/54075e39-04ac-11e1-a94e-bcaec565249c.html
+
+Affected package: freetype2-2.3.9_1
+Type of problem: freetype2 -- execute arbitrary code or cause denial of service.
+Reference: http://portaudit.FreeBSD.org/5d374b01-c3ee-11e0-8aa5-485d60cb5385.html
+
+Affected package: libxml2-2.7.8_1
+Type of problem: libxml2 -- cpu consumption Dos.
+Reference: http://portaudit.FreeBSD.org/843a4641-9816-11e2-9c51-080027019be0.html
+
+Affected package: libxml2-2.7.8_1
+Type of problem: libxml2 -- An off-by-one out-of-bounds write by XPointer.
+Reference: http://portaudit.FreeBSD.org/b8ae4659-a0da-11e1-a294-bcaec565249c.html
+
+Affected package: libxml2-2.7.8_1
+Type of problem: libxml2 -- heap buffer overflow.
+Reference: http://portaudit.FreeBSD.org/57f1a624-6197-11e1-b98c-bcaec565249c.html
+
+Affected package: perl-5.8.9_7
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+Affected package: php5-5.3.8
+Type of problem: php5 -- Multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/1d23109a-9005-11e2-9602-d43d7e0c7c02.html
+
+Affected package: php5-5.3.8
+Type of problem: php5 -- Denial of Service in php_date_parse_tzfile().
+Reference: http://portaudit.FreeBSD.org/9b2a5e88-02b8-11e2-92d1-000d601460a4.html
+
+Affected package: php5-5.3.8
+Type of problem: php5 -- header splitting attack via carriage-return character.
+Reference: http://portaudit.FreeBSD.org/918f38cd-f71e-11e1-8bd8-0022156e8794.html
+
+Affected package: php5-5.3.8
+Type of problem: php -- potential overflow in _php_stream_scandir.
+Reference: http://portaudit.FreeBSD.org/bdab0acd-d4cd-11e1-8a1c-14dae9ebcf89.html
+
+Affected package: php5-5.3.8
+Type of problem: php -- multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/59b68b1e-9c78-11e1-b5e0-000c299b62e1.html
+
+Affected package: php5-5.3.8
+Type of problem: php -- vulnerability in certain CGI-based setups.
+Reference: http://portaudit.FreeBSD.org/60de13d5-95f0-11e1-806a-001143cd36d8.html
+
+Affected package: php5-5.3.8
+Type of problem: php -- multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/2cde1892-913e-11e1-b44c-001fd0af1a4c.html
+
+Affected package: php5-5.3.8
+Type of problem: php -- multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/d3921810-3c80-11e1-97e8-00215c6a37bb.html
+
+Affected package: png-1.4.8
+Type of problem: png -- memory corruption/possible remote code execution.
+Reference: http://portaudit.FreeBSD.org/262b92fe-81c8-11e1-8899-001ec9578670.html
+
+Affected package: python26-2.6.7
+Type of problem: Python -- DoS via malformed XML-RPC / HTTP POST request.
+Reference: http://portaudit.FreeBSD.org/b4f8be9e-56b2-11e1-9fb7-003067b2972c.html
+
+Affected package: rsync-3.0.2_1
+Type of problem: rsync -- incremental recursion memory corruption vulnerability.
+Reference: http://portaudit.FreeBSD.org/9a777c23-b310-11e0-832d-00215c6a37bb.html
+
+Affected package: ruby+nopthreads-1.8.7.160_5,1
+Type of problem: Multiple implementations -- DoS via hash algorithm collision.
+Reference: http://portaudit.FreeBSD.org/91be81e7-3fea-11e1-afc7-2c4138874f7d.html
+
+9 problem(s) found.
+
+Checking for a current audit database:
+
+Database created: Mon Apr 29 03:15:00 CEST 2013
+
+Checking for packages with security vulnerabilities:
+
+Affected package: openvpn-2.1.4
+Type of problem: OpenVPN -- potential side-channel/timing attack when comparing HMACs.
+Reference: http://portaudit.FreeBSD.org/92f30415-9935-11e2-ad4c-080027ef73ec.html
+
+Affected package: perl-5.8.9_7
+Type of problem: perl -- denial of service via algorithmic complexity attack on hashing routines.
+Reference: http://portaudit.FreeBSD.org/68c1f75b-8824-11e2-9996-c48508086173.html
+
+Affected package: sudo-1.8.4_2
+Type of problem: sudo -- Authentication bypass when clock is reset.
+Reference: http://portaudit.FreeBSD.org/764344fb-8214-11e2-9273-902b343deec9.html
+
+Affected package: sudo-1.8.4_2
+Type of problem: sudo -- Potential bypass of tty_tickets constraints.
+Reference: http://portaudit.FreeBSD.org/82cfd919-8213-11e2-9273-902b343deec9.html
+
+Affected package: openssl-1.0.1_2
+Type of problem: OpenSSL -- TLS 1.1  1.2 denial of service.
+Reference: http://portaudit.FreeBSD.org/00b0d8cd-7097-11e2-98d9-003067c2616f.html
+
+Affected package: ca_root_nss-3.13.4
+Type of problem: mozilla -- multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/a4ed6632-5aa9-11e2-8fcb-c8600054b392.html
+
+Affected package: freetype2-2.4.9_1
+Type of problem: freetype -- Multiple vulnerabilities.
+Reference: http://portaudit.FreeBSD.org/1ae613c3-5728-11e2-9483-14dae938ec40.html
+
+Affected package: cyrus-sasl-2.1.22
+Type of problem: cyrus-sasl -- buffer overflow vulnerability.
+Reference: http://portaudit.FreeBSD.org/14ab174c-40ef-11de-9fd5-001bd3385381.html
+
+8 problem(s) in your installed packages found.
+
+You are advised to update or deinstall the affected package(s) immediately.
+
+-- End of security output --

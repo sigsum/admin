@@ -1,0 +1,122 @@
+Return-Path: <liberationtech-bounces@mailman.stanford.edu>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 22 Apr 2012 12:36:06 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id 7AA7D116CA; Sun, 22 Apr 2012 12:36:06 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-2.6 required=4.0 tests=BAYES_00,RCVD_IN_DNSWL_LOW,
+	T_RP_MATCHES_RCVD autolearn=ham version=3.3.0
+Received: from smtp.stanford.edu (smtp1.Stanford.EDU [171.67.219.81])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client did not present a certificate)
+	by smtp.nordberg.se (Postfix) with ESMTPS id C332711515
+	for <linus@nordberg.se>; Sun, 22 Apr 2012 12:36:02 +0200 (CEST)
+Received: from smtp.stanford.edu (localhost.localdomain [127.0.0.1])
+	by localhost (Postfix) with SMTP id 11896105E1E;
+	Sun, 22 Apr 2012 03:36:00 -0700 (PDT)
+Received: from mailman.stanford.edu (mailman.Stanford.EDU [171.67.216.245])
+	by smtp.stanford.edu (Postfix) with ESMTP id 62DD21061F8;
+	Sun, 22 Apr 2012 03:35:35 -0700 (PDT)
+X-Original-To: liberationtech@lists.stanford.edu
+Delivered-To: liberationtech@lists.stanford.edu
+Received: from mailman.stanford.edu (localhost.localdomain [127.0.0.1])
+	by mailman.stanford.edu (Postfix) with SMTP id 4AB092009DF
+	for <liberationtech@lists.stanford.edu>;
+	Sun, 22 Apr 2012 03:35:27 -0700 (PDT)
+Received: from mail-we0-f182.google.com (mail-we0-f182.google.com
+	[74.125.82.182]) (using TLSv1 with cipher RC4-SHA (128/128 bits))
+	(No client certificate requested)
+	by mailman.stanford.edu (Postfix) with ESMTPS id DACA4200935
+	for <liberationtech@lists.stanford.edu>;
+	Sun, 22 Apr 2012 03:35:25 -0700 (PDT)
+Received: by weyt57 with SMTP id t57so333570wey.27
+	for <liberationtech@lists.stanford.edu>;
+	Sun, 22 Apr 2012 03:35:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:subject
+	:references:in-reply-to:x-enigmail-version:content-type
+	:content-transfer-encoding:x-gm-message-state;
+	bh=ePqMIpjWNhtAO4fjAP3r1HjOONjs9xuWT/6CGPQAoT4=;
+	b=ndGWDZ/rucgJ4coRIOVsbV/bOCowoZQygD3iwF1odVjLWRYew8/0OAse64o8Ym/reX
+	cUK6yc2wHHcf60RN7tB6vGvpC57F4KafTnlPRExZtjrE9TbILkQobjKtrx73WAxnOD0e
+	Je+cPK9owT60yqhuNLLIvspvkr01HA1eyK99D9dJjKsB/LRMTQcIwuQloLCxZjZTurTN
+	DT4aab25EiGO/yG66/2+O/IEqX2PugohvhNQF28ZLSuzS20PB3b/yo9a+XmO0YyMWqml
+	UNS5BvbiOgLVwLFR43Cx8pwa/PM5aYCDF0W74XeNHWk0D32tYW/IbCY6wrl2XBk4u65A
+	kmKA==
+Received: by 10.216.135.141 with SMTP id u13mr7506103wei.79.1335090924110;
+	Sun, 22 Apr 2012 03:35:24 -0700 (PDT)
+Received: from sonyvaiop13.local (93-32-171-192.ip34.fastwebnet.it.
+	[93.32.171.192])
+	by mx.google.com with ESMTPS id ca3sm13426349wib.6.2012.04.22.03.35.22
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sun, 22 Apr 2012 03:35:23 -0700 (PDT)
+Message-ID: <4F93DEE8.1000902@infosecurity.ch>
+Date: Sun, 22 Apr 2012 12:35:20 +0200
+From: "Fabio Pietrosanti (naif)" <lists@infosecurity.ch>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+MIME-Version: 1.0
+To: liberationtech@lists.stanford.edu
+References: <CADmQzWoRrdBoVw7kR0PSFZgJDQRuQePiX=TCQcz1AOzp6xjEow@mail.gmail.com>
+	<4F939376.9070109@piratpartiet.se>
+In-Reply-To: <4F939376.9070109@piratpartiet.se>
+X-Enigmail-Version: 1.4
+X-Gm-Message-State: ALoCoQkAP/drBLiVCUVWyj85tKEVX/RYbYbWksXrbXj1HB8TkIp5XcLsrGnghTS03/EvTQ/RaDIa
+Subject: Re: [liberationtech] The first rule about censorship is we don't
+ talk about censorship
+X-BeenThere: liberationtech@lists.stanford.edu
+X-Mailman-Version: 2.1.13
+Precedence: list
+List-Id: liberationtech <liberationtech.lists.stanford.edu>
+List-Unsubscribe: <https://mailman.stanford.edu/mailman/options/liberationtech>, 
+	<mailto:liberationtech-request@lists.stanford.edu?subject=unsubscribe>
+List-Archive: <https://mailman.stanford.edu/mailman/private/liberationtech>
+List-Post: <mailto:liberationtech@lists.stanford.edu>
+List-Help: <mailto:liberationtech-request@lists.stanford.edu?subject=help>
+List-Subscribe: <https://mailman.stanford.edu/mailman/listinfo/liberationtech>, 
+	<mailto:liberationtech-request@lists.stanford.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: liberationtech-bounces@lists.stanford.edu
+Errors-To: liberationtech-bounces@lists.stanford.edu
+
+On 4/22/12 7:13 AM, Rick Falkvinge (Piratpartiet) wrote:
+> 
+> 
+> The same thing will happen with links to The Pirate Bay. You cannot talk
+> about them on Facebook.
+
+Are there someone indexing all censored elements on major information
+society search and social network providers?
+
+For example:
+- Which are all censored words and/or links on FB/G+ ?
+- Which are all/most censored word on Google Search/Bing/Yahoo search?
+
+Something that's clearly understandable by the "masses" that use such
+kind of tools could let "the masses" clearly perceive the censorship
+situation.
+
+An "awareness tool for the masses" about censorship in their "most known
+internet tools" does exists?
+
+-naif
+_______________________________________________
+liberationtech mailing list
+liberationtech@lists.stanford.edu
+
+Should you need to change your subscription options, please go to:
+
+https://mailman.stanford.edu/mailman/listinfo/liberationtech
+
+If you would like to receive a daily digest, click "yes" (once you click above) next to "would you like to receive list mail batched in a daily digest?"
+
+You will need the user name and password you receive from the list moderator in monthly reminders. You may ask for a reminder here: https://mailman.stanford.edu/mailman/listinfo/liberationtech
+
+Should you need immediate assistance, please contact the list moderator.
+
+Please don't forget to follow us on http://twitter.com/#!/Liberationtech

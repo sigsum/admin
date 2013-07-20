@@ -1,0 +1,91 @@
+Return-Path: <root@rs0-1.dfri.net>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Mon, 29 Apr 2013 03:10:22 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id D27BB1152A; Mon, 29 Apr 2013 03:10:21 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,T_RP_MATCHES_RCVD
+	autolearn=ham version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id DB784116C1
+	for <linus@nordberg.se>; Mon, 29 Apr 2013 03:09:52 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id D4FBD1F32E22; Mon, 29 Apr 2013 03:09:52 +0200 (CEST)
+Delivered-To: beredskap@dfri.net
+Received: from rs0-1.dfri.net (rs0-1.dfri.net [IPv6:2001:67c:289c::1])
+	by mail.dfri.se (Postfix) with ESMTP id B712A1F32DD4
+	for <beredskap@dfri.net>; Mon, 29 Apr 2013 03:09:52 +0200 (CEST)
+Received: from rs0-1.dfri.net (localhost [127.0.0.1])
+	by rs0-1.dfri.net (8.14.5/8.14.5) with ESMTP id r3T16pem003658
+	for <root@rs0-1.dfri.net>; Mon, 29 Apr 2013 03:06:51 +0200 (CEST)
+	(envelope-from root@rs0-1.dfri.net)
+Received: (from root@localhost)
+	by rs0-1.dfri.net (8.14.5/8.14.5/Submit) id r3T16pxf003613
+	for root; Mon, 29 Apr 2013 03:06:51 +0200 (CEST)
+	(envelope-from root)
+Date: Mon, 29 Apr 2013 03:06:51 +0200 (CEST)
+From: root at rs0 <root@rs0-1.dfri.net>
+Message-Id: <201304290106.r3T16pxf003613@rs0-1.dfri.net>
+To: root@rs0-1.dfri.net
+Subject: rs0-1.dfri.net security run output
+
+
+Checking setuid files and devices:
+
+Checking negative group permissions:
+
+Checking for uids of 0:
+root 0
+toor 0
+
+Checking for passwordless accounts:
+
+Checking login.conf permissions:
+
+Checking for ports with mismatched checksums:
+
+rs0-1.dfri.net kernel log messages:
++++ /tmp/security.3pGx2JEs	2013-04-29 03:06:50.000000000 +0200
++em0: promiscuous mode enabled
++em0.9: promiscuous mode enabled
++em0: promiscuous mode disabled
++em0.9: promiscuous mode disabled
++em0: promiscuous mode enabled
++em0.9: promiscuous mode enabled
++em0: promiscuous mode disabled
++em0.9: promiscuous mode disabled
++em0: promiscuous mode enabled
++em0.9: promiscuous mode enabled
++em0: promiscuous mode disabled
++em0.9: promiscuous mode disabled
++em0: promiscuous mode enabled
++em0.10: promiscuous mode enabled
++em0: promiscuous mode disabled
++em0.10: promiscuous mode disabled
++em0: promiscuous mode enabled
++em0.10: promiscuous mode enabled
++em0: promiscuous mode disabled
++em0.10: promiscuous mode disabled
++em0: promiscuous mode enabled
++em0: promiscuous mode disabled
++em0: promiscuous mode enabled
++em0.10: promiscuous mode enabled
++em0: promiscuous mode disabled
++em0.10: promiscuous mode disabled
+
+rs0-1.dfri.net login failures:
+
+rs0-1.dfri.net refused connections:
+
+Checking for a current audit database:
+
+Database created: Sun Apr 28 03:10:00 CEST 2013
+
+Checking for packages with security vulnerabilities:
+
+0 problem(s) in your installed packages found.
+
+-- End of security output --

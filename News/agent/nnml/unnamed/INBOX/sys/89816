@@ -1,0 +1,354 @@
+Return-Path: <root@rs1.dfri.net>
+Received: from smtp.nordberg.se ([unix socket])
+	 by imap.nordberg.se (Cyrus v2.3.11) with LMTPA;
+	 Sun, 28 Apr 2013 03:22:07 +0200
+X-Sieve: CMU Sieve 2.3
+Received: by smtp.nordberg.se (Postfix, from userid 58)
+	id D15E911536; Sun, 28 Apr 2013 03:22:07 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00 autolearn=ham
+	version=3.3.0
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	by smtp.nordberg.se (Postfix) with ESMTP id 48550116B8
+	for <linus@nordberg.se>; Sun, 28 Apr 2013 03:22:02 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id EC9F31F32DD3; Sun, 28 Apr 2013 03:22:02 +0200 (CEST)
+Delivered-To: beredskap@dfri.net
+Received: from rs1.dfri.net (unknown [78.152.39.18])
+	by mail.dfri.se (Postfix) with ESMTP id C51961F32C9C
+	for <beredskap@dfri.net>; Sun, 28 Apr 2013 03:22:02 +0200 (CEST)
+Received: by rs1.dfri.net (Postfix)
+	id 3682622D92; Sun, 28 Apr 2013 03:22:02 +0200 (CEST)
+Delivered-To: root@rs1.dfri.net
+Received: by rs1.dfri.net (Postfix, from userid 0)
+	id 33DC022D8F; Sun, 28 Apr 2013 03:22:02 +0200 (CEST)
+From: root@rs1.dfri.net (Cron Daemon)
+To: root@rs1.dfri.net
+Subject: Cron <root@rs1> /usr/sbin/portsnap cron update
+X-Cron-Env: <SHELL=/bin/sh>
+X-Cron-Env: <PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <LOGNAME=root>
+X-Cron-Env: <USER=root>
+Message-Id: <20130428012202.33DC022D8F@rs1.dfri.net>
+Date: Sun, 28 Apr 2013 03:21:53 +0200 (CEST)
+
+Removing old files and directories... done.
+Extracting new files:
+/usr/ports/KNOBS
+/usr/ports/MOVED
+/usr/ports/Mk/bsd.gstreamer.mk
+/usr/ports/Mk/bsd.port.mk
+/usr/ports/UPDATING
+/usr/ports/archivers/liborange/
+/usr/ports/astro/viking/
+/usr/ports/audio/Makefile
+/usr/ports/audio/gstreamer1-plugins-a52dec/
+/usr/ports/audio/gstreamer1-plugins-amrnb/
+/usr/ports/audio/gstreamer1-plugins-amrwbdec/
+/usr/ports/audio/gstreamer1-plugins-cdparanoia/
+/usr/ports/audio/gstreamer1-plugins-celt/
+/usr/ports/audio/gstreamer1-plugins-faac/
+/usr/ports/audio/gstreamer1-plugins-faad/
+/usr/ports/audio/gstreamer1-plugins-flac/
+/usr/ports/audio/gstreamer1-plugins-flite/
+/usr/ports/audio/gstreamer1-plugins-gme/
+/usr/ports/audio/gstreamer1-plugins-gsm/
+/usr/ports/audio/gstreamer1-plugins-jack/
+/usr/ports/audio/gstreamer1-plugins-lame/
+/usr/ports/audio/gstreamer1-plugins-mad/
+/usr/ports/audio/gstreamer1-plugins-modplug/
+/usr/ports/audio/gstreamer1-plugins-ogg/
+/usr/ports/audio/gstreamer1-plugins-opus/
+/usr/ports/audio/gstreamer1-plugins-shout2/
+/usr/ports/audio/gstreamer1-plugins-sidplay/
+/usr/ports/audio/gstreamer1-plugins-soundtouch/
+/usr/ports/audio/gstreamer1-plugins-speex/
+/usr/ports/audio/gstreamer1-plugins-taglib/
+/usr/ports/audio/gstreamer1-plugins-twolame/
+/usr/ports/audio/gstreamer1-plugins-vorbis/
+/usr/ports/audio/gstreamer1-plugins-wavpack/
+/usr/ports/cad/sweethome3d/
+/usr/ports/chinese/cconv/
+/usr/ports/comms/Makefile
+/usr/ports/comms/efax-gtk/
+/usr/ports/comms/gstreamer1-plugins-spandsp/
+/usr/ports/comms/minicom/
+/usr/ports/comms/obexapp/
+/usr/ports/comms/scmxx/
+/usr/ports/converters/libiconv/
+/usr/ports/converters/p5-Encode/
+/usr/ports/devel/Makefile
+/usr/ports/devel/cross-binutils/
+/usr/ports/devel/gstreamer1-plugins-soup/
+/usr/ports/emulators/wine-devel/
+/usr/ports/ftp/Makefile
+/usr/ports/ftp/gstreamer1-plugins-curl/
+/usr/ports/ftp/p5-File-Fetch/
+/usr/ports/games/knights-kde4/
+/usr/ports/graphics/Makefile
+/usr/ports/graphics/gstreamer-plugins-gdkpixbuf/
+/usr/ports/graphics/gstreamer-plugins-libvisual/
+/usr/ports/graphics/gstreamer1-plugins-aalib/
+/usr/ports/graphics/gstreamer1-plugins-cairo/
+/usr/ports/graphics/gstreamer1-plugins-gdkpixbuf/
+/usr/ports/graphics/gstreamer1-plugins-jpeg/
+/usr/ports/graphics/gstreamer1-plugins-libcaca/
+/usr/ports/graphics/gstreamer1-plugins-libvisual/
+/usr/ports/graphics/gstreamer1-plugins-opencv/
+/usr/ports/graphics/gstreamer1-plugins-png/
+/usr/ports/graphics/gstreamer1-plugins-zbar/
+/usr/ports/graphics/jpeg2ps/
+/usr/ports/lang/fpc/
+/usr/ports/lang/gcc-aux/
+/usr/ports/lang/ghc/
+/usr/ports/lang/gnat-aux/
+/usr/ports/lang/php5/
+/usr/ports/lang/php52/
+/usr/ports/lang/php53/
+/usr/ports/mail/opensmtpd/
+/usr/ports/mail/svnmailer/
+/usr/ports/multimedia/Makefile
+/usr/ports/multimedia/avidemux2/
+/usr/ports/multimedia/gstreamer-plugins-all/
+/usr/ports/multimedia/gstreamer-plugins/
+/usr/ports/multimedia/gstreamer1-libav/
+/usr/ports/multimedia/gstreamer1-plugins-all/
+/usr/ports/multimedia/gstreamer1-plugins-assrender/
+/usr/ports/multimedia/gstreamer1-plugins-bad/
+/usr/ports/multimedia/gstreamer1-plugins-core/
+/usr/ports/multimedia/gstreamer1-plugins-dts/
+/usr/ports/multimedia/gstreamer1-plugins-dv/
+/usr/ports/multimedia/gstreamer1-plugins-dvdread/
+/usr/ports/multimedia/gstreamer1-plugins-good/
+/usr/ports/multimedia/gstreamer1-plugins-mpeg2dec/
+/usr/ports/multimedia/gstreamer1-plugins-mpeg2enc/
+/usr/ports/multimedia/gstreamer1-plugins-resindvd/
+/usr/ports/multimedia/gstreamer1-plugins-schroedinger/
+/usr/ports/multimedia/gstreamer1-plugins-theora/
+/usr/ports/multimedia/gstreamer1-plugins-ugly/
+/usr/ports/multimedia/gstreamer1-plugins-v4l2/
+/usr/ports/multimedia/gstreamer1-plugins-vpx/
+/usr/ports/multimedia/gstreamer1-plugins-x264/
+/usr/ports/multimedia/gstreamer1-plugins/
+/usr/ports/multimedia/gstreamer1/
+/usr/ports/multimedia/mplayer/
+/usr/ports/net/Makefile
+/usr/ports/net/gstreamer1-plugins-libmms/
+/usr/ports/net/py-urllib3/
+/usr/ports/news/newsstar/
+/usr/ports/news/slrn/
+/usr/ports/news/tin/
+/usr/ports/palm/pilot-link/
+/usr/ports/palm/synce-hal/
+/usr/ports/palm/synce-librapi2/
+/usr/ports/palm/synce-librra/
+/usr/ports/palm/synce-libsynce/
+/usr/ports/palm/synce-vdccm/
+/usr/ports/polish/ekg2/
+/usr/ports/polish/kadu/
+/usr/ports/polish/qnapi/
+/usr/ports/ports-mgmt/gnome-packagekit/
+/usr/ports/ports-mgmt/packagekit/
+/usr/ports/print/Makefile
+/usr/ports/print/a2ps/
+/usr/ports/print/apsfilter/
+/usr/ports/print/c2ps/
+/usr/ports/print/cups-base/
+/usr/ports/print/fontforge/
+/usr/ports/print/foomatic-filters/
+/usr/ports/print/ghostscript8/
+/usr/ports/print/ghostscript9/
+/usr/ports/print/gv/
+/usr/ports/print/lprps/
+/usr/ports/print/openprinting/
+/usr/ports/print/pdftk/
+/usr/ports/print/py-cups/
+/usr/ports/print/wprint/
+/usr/ports/print/xfce4-print/
+/usr/ports/russian/mueller-dic/
+/usr/ports/science/afni/
+/usr/ports/science/ecs/
+/usr/ports/science/linsmith/
+/usr/ports/science/massxpert/
+/usr/ports/science/meep/
+/usr/ports/science/ncs/
+/usr/ports/security/bsp_upektfmess/
+/usr/ports/security/clamav-devel/
+/usr/ports/security/clamav/
+/usr/ports/security/dirmngr/
+/usr/ports/security/gnupg/
+/usr/ports/security/gnupg1/
+/usr/ports/security/gnutls-devel/
+/usr/ports/security/gnutls/
+/usr/ports/security/ipsec-tools/
+/usr/ports/security/libgpg-error/
+/usr/ports/security/libprelude/
+/usr/ports/security/libpreludedb/
+/usr/ports/security/openvas-libnasl/
+/usr/ports/security/pam_krb5-rh/
+/usr/ports/security/pinentry/
+/usr/ports/security/prelude-lml/
+/usr/ports/security/prelude-manager/
+/usr/ports/security/rifiuti2/
+/usr/ports/security/scamp/
+/usr/ports/security/scanhill/
+/usr/ports/security/shishi/
+/usr/ports/security/sssd/
+/usr/ports/security/tpm-tools/
+/usr/ports/security/trousers/
+/usr/ports/security/truecrypt/
+/usr/ports/security/vuxml/
+/usr/ports/shells/bash-devel/
+/usr/ports/shells/bash/
+/usr/ports/shells/fish/
+/usr/ports/shells/tcsh_nls/
+/usr/ports/shells/zsh/
+/usr/ports/sysutils/LPRngTool/
+/usr/ports/sysutils/Makefile
+/usr/ports/sysutils/afflib/
+/usr/ports/sysutils/apt/
+/usr/ports/sysutils/archivemount/
+/usr/ports/sysutils/cdrkit/
+/usr/ports/sysutils/cdrtools-devel/
+/usr/ports/sysutils/cdrtools/
+/usr/ports/sysutils/conky/
+/usr/ports/sysutils/dc3dd/
+/usr/ports/sysutils/fusefs-exfat/
+/usr/ports/sysutils/fusefs-fur/
+/usr/ports/sysutils/fusefs-fusexmp_fh/
+/usr/ports/sysutils/fusefs-libs/
+/usr/ports/sysutils/fusefs-ntfs/
+/usr/ports/sysutils/geomgui/
+/usr/ports/sysutils/gsmartcontrol/
+/usr/ports/sysutils/gstreamer1-plugins-cdio/
+/usr/ports/sysutils/gtk-imonc/
+/usr/ports/sysutils/jfbterm/
+/usr/ports/sysutils/kiconvtool/
+/usr/ports/sysutils/ldapvi/
+/usr/ports/sysutils/libcdio/
+/usr/ports/sysutils/lxinput/
+/usr/ports/sysutils/lxtask/
+/usr/ports/sysutils/lxterminal/
+/usr/ports/sysutils/munin-common/
+/usr/ports/sysutils/munin-node/
+/usr/ports/sysutils/nitrogen/
+/usr/ports/sysutils/pfstat/
+/usr/ports/sysutils/quicksynergy/
+/usr/ports/sysutils/shmcat/
+/usr/ports/sysutils/unieject/
+/usr/ports/sysutils/xorriso/
+/usr/ports/textproc/aspell/
+/usr/ports/textproc/clucene/
+/usr/ports/textproc/ctpp2/
+/usr/ports/textproc/docbook2X/
+/usr/ports/textproc/estraier/
+/usr/ports/textproc/exempi/
+/usr/ports/textproc/flex/
+/usr/ports/textproc/freexl/
+/usr/ports/textproc/gsed/
+/usr/ports/textproc/hunspell/
+/usr/ports/textproc/hyperestraier/
+/usr/ports/textproc/intltool/
+/usr/ports/textproc/kmflcomp/
+/usr/ports/textproc/liblrdf/
+/usr/ports/textproc/libparsifal/
+/usr/ports/textproc/libxml2/
+/usr/ports/textproc/mifluz/
+/usr/ports/textproc/odt2txt/
+/usr/ports/textproc/opensp/
+/usr/ports/textproc/p5-Text-Unaccent/
+/usr/ports/textproc/p5-XML-Sablotron/
+/usr/ports/textproc/p5-XML-TinyXML/
+/usr/ports/textproc/refdb/
+/usr/ports/textproc/ruby-libxml/
+/usr/ports/textproc/ruby-sablot/
+/usr/ports/textproc/sablotron/
+/usr/ports/textproc/scim-kmfl-imengine/
+/usr/ports/textproc/scim-openvanilla/
+/usr/ports/textproc/scim/
+/usr/ports/textproc/sdcv/
+/usr/ports/textproc/simplexml/
+/usr/ports/textproc/skim/
+/usr/ports/textproc/sphinxsearch-devel/
+/usr/ports/textproc/sphinxsearch/
+/usr/ports/textproc/uim-el/
+/usr/ports/textproc/uim-qt4/
+/usr/ports/textproc/uim/
+/usr/ports/textproc/unrtf/
+/usr/ports/textproc/wv2/
+/usr/ports/textproc/xalan-c/
+/usr/ports/textproc/xerces-c2-devel/
+/usr/ports/textproc/xerces-c2/
+/usr/ports/textproc/xmlppm/
+/usr/ports/textproc/xmlstarlet/
+/usr/ports/textproc/zorba/
+/usr/ports/www/anyterm/
+/usr/ports/www/apache22/
+/usr/ports/www/apache24/
+/usr/ports/www/awffull/
+/usr/ports/www/cadaver/
+/usr/ports/www/cas/
+/usr/ports/www/dansguardian-devel/
+/usr/ports/www/dansguardian/
+/usr/ports/www/dillo-i18n/
+/usr/ports/www/elinks/
+/usr/ports/www/flood/
+/usr/ports/www/gatling/
+/usr/ports/www/htmlcxx/
+/usr/ports/www/httest/
+/usr/ports/www/httrack/
+/usr/ports/www/joomla25/
+/usr/ports/www/lynx-current/
+/usr/ports/www/lynx/
+/usr/ports/www/mod_encoding/
+/usr/ports/www/py-gunicorn/
+/usr/ports/www/rsstool/
+/usr/ports/www/sarg/
+/usr/ports/www/tntnet/
+/usr/ports/www/trafficserver/
+/usr/ports/www/webalizer/
+/usr/ports/www/xapian-omega/
+/usr/ports/www/xapian-omega10/
+/usr/ports/x11-clocks/cairo-clock/
+/usr/ports/x11-themes/lxde-icon-theme/
+/usr/ports/x11-toolkits/Makefile
+/usr/ports/x11-toolkits/gstreamer1-plugins-pango/
+/usr/ports/x11-toolkits/gtkglext/
+/usr/ports/x11-toolkits/open-motif/
+/usr/ports/x11-toolkits/p5-Prima/
+/usr/ports/x11-toolkits/ruby-wx/
+/usr/ports/x11-toolkits/scintilla/
+/usr/ports/x11-toolkits/termit/
+/usr/ports/x11-toolkits/wxgtk26/
+/usr/ports/x11-toolkits/wxgtk28/
+/usr/ports/x11-toolkits/wxgtk29/
+/usr/ports/x11-wm/afterstep-stable/
+/usr/ports/x11-wm/awesome/
+/usr/ports/x11-wm/awesome2/
+/usr/ports/x11-wm/blackbox/
+/usr/ports/x11-wm/e16/
+/usr/ports/x11-wm/enlightenment/
+/usr/ports/x11-wm/fluxbox/
+/usr/ports/x11-wm/fvwm2/
+/usr/ports/x11-wm/i3/
+/usr/ports/x11-wm/lxsession/
+/usr/ports/x11-wm/pekwm/
+/usr/ports/x11-wm/wmii/
+/usr/ports/x11-wm/xfce4-session/
+/usr/ports/x11/Makefile
+/usr/ports/x11/eterm/
+/usr/ports/x11/florence/
+/usr/ports/x11/gdkxft/
+/usr/ports/x11/ggiterm/
+/usr/ports/x11/gstreamer1-plugins-x/
+/usr/ports/x11/gstreamer1-plugins-ximagesrc/
+/usr/ports/x11/i3lock/
+/usr/ports/x11/kde4-workspace/
+/usr/ports/x11/trayer/
+/usr/ports/x11/x3270/
+/usr/ports/x11/xfree86_xkb_xml/
+/usr/ports/x11/xkeyboard-config/
+/usr/ports/x11/xnee/
+Building new INDEX files... done.
