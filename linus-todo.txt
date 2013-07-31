@@ -9,12 +9,9 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
-   . try returning the broken SSD
-   - tor AS awareness
-   X jeans
    o [fri] time report
-   D book hotel BER
-   D prizes for calling SE-DE
+   o book hotel BER
+   o prizes for calling SE-DE
    o renew maatuska key
    o try returning the jake jacket
 ** Dev
@@ -32,6 +29,8 @@ Legend                                                (emacs -*-org-*- mode)
    o move sto0-sto1 to its own i/f
 * Soon
 ** Misc
+   - jeans
+   . try returning the broken SSD
    - split https://portal.nordu.net/display/nordunetops/Tor in two
    - register eurobonus, EBB609964226
    - review #6939, #6026, #8475
@@ -54,6 +53,7 @@ Legend                                                (emacs -*-org-*- mode)
    - read counting-daily-bridge-users-2012-10-24.pdf
    - check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** Dev
+   - tor AS awareness
    - report 2 pmacct crashes
    . #4847 -- relays w/o ipv4 or port
    . investigate libevent dns test failures on freebsd
