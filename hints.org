@@ -934,6 +934,10 @@ And https://lakridstrollet.regexp.se/iha/ejabberd/2013.02.13_runa.png
 (Thu May 02 14:51:17 +0200 2013) iha@adb-centralen.se: 05-02 14:49:22  Received error packet [service-unavailable] from <csxninja@gmail.com/87DB5E3C>
 (Sat May 18 21:18:38 +0200 2013) iha@adb-centralen.se: 05-18 17:29:33  Received error packet [service-unavailable] from <fsoderblom@gmail.com/AdiumE328D9D7>
 (Fri Jun 07 08:30:40 +0200 2013) iha@adb-centralen.se: 06-06 21:52:29  Received error packet [service-unavailable] from <bcdugga@gmail.com/1B0EA6976>
+(Sun Aug 18 19:35:26 +0200 2013) iha@adb-centralen.se: 08-13 17:37:13  Received error packet [service-unavailable] from <lerra82@gmail.com/3FA0CEC4>
+(Sun Aug 18 19:35:26 +0200 2013) iha@adb-centralen.se: 08-13 17:37:13  Received error packet [service-unavailable] from <stackebil@gmail.com/AdiumAD2F61E3>
+(Sun Aug 18 19:35:26 +0200 2013) iha@adb-centralen.se: [16:48:42] Received error packet [service-unavailable] from <tko.dude@gmail.com/Adium117D97D0>
+
 ejabberd version: We're running 2.1.11.
 http://logs.jabber.org/2010/9/29/jdev.html indicates that we should google for the mcabber error msg
 * maatuska IP
@@ -27287,11 +27291,18 @@ tfn 0771-550000
 kundnr 60720308
 uppsagt till 2012-04-30
 * macchanger
+** view MAC
 Thu Jul 21 11:39:12 CEST 2011
 root@42:~# macchanger -s eth2
 Current MAC: f0:de:f1:20:8d:4e (unknown)
 root@42:~# macchanger -s wlan0
 Current MAC: 00:23:14:0a:f7:24 (unknown)
+** permanent on debian
+sudo cat > /etc/network/if-pre-up.d/macchanger <<EOF
+#! /bin/sh
+/usr/bin/macchanger -e "$IFACE"
+EOF
+sudo chmod +x /etc/network/if-pre-up.d/macchanger
 * miredo /teredo
 update-rc.d miredo disable
 update-rc.d miredo enable
@@ -28396,9 +28407,14 @@ Nanne Grönvall
 bacula, rsnapshot, amanda?
 Liman says "backuppc".
 *** debian without gnome
+- ctrl -> caps key mapping
+  xmodmap ~/.xmodmap
 - key rate
   # after every boot or suspend/resume
   xset r on; xset r rate 255 128
+- lock screen
+  # Requires 'xscreensaver -no-splash &' at X startup
+  /usr/bin/xscreensaver-command -lock
 - mount usb stick
   see tool:/root/mount-stick.sh, which boils down to
     cryptsetup luksOpen /dev/$1 $2
@@ -28406,11 +28422,11 @@ Liman says "backuppc".
   and
     umount /dev/mapper/$1
     cryptsetup luksClose $1
-- lock screen
-  # Requires 'xscreensaver -no-splash &' at X startup
-  /usr/bin/xscreensaver-command -lock
-- ctrl -> caps key mapping
-  xmodmap ~/.xmodmap
+- mount file-backed filesystem
+  losetup /dev/loop0 file.img
+  mount-stick.sh loop0
+  # use, unmount
+  losetup -d /dev/loop0
 - suspend
   pm-suspend
 - controlling NetworkManager (esp. chosing SSID)
@@ -29833,3 +29849,4 @@ modprobe nbd max_part=63
 qemu-nbd -c /dev/nbd0 image.img
 mount /dev/nbd0p1 /mnt/image
 
+* add ca cert in debian

@@ -321,6 +321,7 @@ alias lasse                     "Lasse Øverlier <lasse@overlier.no>"
 alias launchpad                 new@bugs.launchpad.net
 alias leif			leifj@nordu.net
 alias leif.nixon		"Leif Nixon <nixon@nsc.liu.se>"
+alias leif.ryge                 "Leif Ryge <leif@synthesize.us>"
 alias leif.sunet		"Leif Johansson <leifj@it.su.se>"
 alias lena			"Lena Hellström Nordberg <lena@nordberg.se>"
 alias lena.magnusson		lena.magnusson@tuben12.se
@@ -336,8 +337,10 @@ alias linus.ndn			linus@nordu.net
 alias linus.tor			linus@torproject.org
 alias linus.tpo                 linus.tor
 alias lise              	lise.bergh@nordberg.se
+alias liss                      liss.gmail
 alias liss.arb          	liss.garberg@ki.se
-alias liss              	liss.garberg@glocalnet.net
+alias liss.glocalnet           	liss.garberg@glocalnet.net
+alias liss.gmail                lissgarberg@gmail.com
 alias listan                    listan@lists.dfri.se
 alias liva			liv.ungermark@sr.se
 alias lobber			lobber@segate.sunet.se
@@ -447,6 +450,7 @@ alias pawal			"Patrik Wallstrom <pawal@blipp.com>"
 alias peers                     noc@sunet.se, noc@nordu.net, noc@riksnet.se, noc@portlane.com
 alias pelle	 		"Per Nihlen <per@nordu.net>"
 alias pelle.priv                per@nihlen.org
+alias pepijn                    pepijn@leheux.com
 alias perixon			perixon@perixon.nu
 alias per.nsc			"Per Lundqvist <perl@nsc.liu.se>"
 alias peter.norin               peter@xpd.se

@@ -1,3 +1,8 @@
+tbb https://archive.torproject.org/tor-package-archive/torbrowser/
+tor http://sebastianhahn.net/stuff/fefe-blog-post
+tls ca http://www.certificate-transparency.org/
+tor FH swedish https://computersweden.idg.se/2.2683/1.516915/barnporrharva-sanker-halva-tor
+FH FBI tor http://www.wired.com/threatlevel/2013/08/freedom-hosting
 x60 https://www.blocket.se/stockholm/Lenovo_X60_i_absolut_toppskick_46718129.htm
 gsm http://events.ccc.de/congress/2010/Fahrplan/attachments/1783_101228.27C3.GSM-Sniffing.Nohl_Munaut.pdf
 munich travel http://www.reidsguides.com/destinations/europe/germany/bavaria/munich/planning/around-tickets.html
@@ -162,7 +167,7 @@ geolocation http://www.caida.org/projects/cybersecurity/geolocation/bib/
 http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-ipv6-assigned-latest
 http://www.holisticonline.com/hol_neurolinguistic.htm
 lg https://www.nordu.net/connectivity/looking-glass/lg.cgi
-lg http://stats.sunet.se/looking-glass/lg.cgi
+sunet lg http://stats.sunet.se/looking-glass/lg.cgi
 ipv6 http://www.sixxs.net/tools/grh/dfp/
 openssl doc http://www.openssl.org/docs/
 dfri 2012 https://www.dfri.se/dfri/work-in-progress/dfri-2012/
