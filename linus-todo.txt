@@ -9,29 +9,24 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
-   . try returning the broken SSD
-   - tor AS awareness
-   X jeans
-   o [fri] time report
-   D book hotel BER
-   D prizes for calling SE-DE
-   o renew maatuska key
-   o try returning the jake jacket
+   - tor contract proposal sent to andrew
+   . broken SSD returned
+   - tor AS awareness studied
+   - jeans köpta
 ** Dev
    - tor #6027 moved forward some
    - libradsec example server replying to a radius message
    - libradsec python binding embryo commited
    - radsecproxy-1.6.3 released
-   o radsecproxy proxy-state bug filed
-   o tor #8533 closed
 ** Sysadm
    - * automatic backup of mm; rsync?
-   o change resolver on the ndn win system
 ** DFRI
-   o bring up sto1
-   o move sto0-sto1 to its own i/f
 * Soon
 ** Misc
+   - read up on andrews favourite ways of running a company
+     http://wiki.lewman.is/snippets/ge_Printer_Friendly
+     http://firstround.com/article/How-Medium-is-building-a-new-kind-of-company-with-no-managers
+     http://falkvinge.net/2013/07/19/book-launch-swarmwise-the-tactical-manual-to-changing-the-world/
    - split https://portal.nordu.net/display/nordunetops/Tor in two
    - register eurobonus, EBB609964226
    - review #6939, #6026, #8475
