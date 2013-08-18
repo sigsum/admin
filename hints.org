@@ -1,3 +1,8 @@
+* add a CA cert in debian
+sudo sh -c "echo nordberg.se/nordberg-ca.crt >> /etc/ca-certificates.conf"
+sudo mkdir /usr/share/ca-certificates/nordberg.se
+sudo cp nordberg-ca.crt /usr/share/ca-certificates/nordberg.se/
+sudo update-ca-certificates
 * golang
 ** gotour
 export GOPATH=$HOME/usr/go
@@ -2527,6 +2532,9 @@ _xmpp-server._tcp.frobbit.se. 900 IN	SRV	0 0 5269 jabber.frobbit.se.
 
 ** xmpp-client (agl)
 [moved to ~/p/xmpp-client/xmpp-client.org]
+
+Really quickly, how to build xmpp-client:
+FIXME
 
 Really quickly, to connect over Tor:
 	"UseTor": true,
