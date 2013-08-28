@@ -9,27 +9,39 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
-   - . ndn travel reports and expenses done
-   - - flights ARN-KAS 2013-08-29 morning, KAS-ARN 2013-08-30 afternoon booked
-   - - radsecproxy rewrite discussed with miro
    - - problem description hashed out with jake, for perpass@
-   - - presentation w/ pic sent to marcin
    - - pmacct; talked to frank
+   - - lopez RADIUS fragment draft reviewed for abfab
+   - - phw's email abt research something
    - - 4711 phone abb canceled
-   - - tor status report for july sent
    - - Dino (LISP guy) replied to -- compare HS with HIP (RFC5201)?
    - - tor contract proposal sent to andrew
    - . broken SSD returned
    - - crypto for kids at 30c3; brain dumped
    - - jeans; bought
+   - - hjelmvik replied to
+   - X tor status report for july sent
+   - o bio w/ pic sent to marcin
+   - o sub ct@terena.org
+   - o ndn travel reports and expenses done
+   - o phw's gpg key
+   - o flights ARN-KAS 2013-08-29 morning, KAS-ARN 2013-08-30 afternoon booked
+   - o radsecproxy rewrite discussed with miro
 ** Dev
-   - - tor #6027 moved forward some
    - - radsecproxy-1.6.3 released
+   - - tor #6027 moved forward some
+   - o radsecproxy patch from fabian; tested, replied to
 ** Sysadm
    - * automatic backup of mm; rsync?
+   - o mm new kernel
+   - o ehlo new kernel
 ** DFRI
-   - - x0 (@tex) updated
+   - - TU report; start writing the IPv6 parts
+   - - abuse handling policy written
+   - - the snowden letter tweeted
+     http://www.article19.org/resources.php/resource/37194/en/letter-to-obama-to-stop-the-prosecution-of-snowden
    - - email service privacy policy discussions kicked off
+   - X x0 (@tex) updated
 * Soon (within a month)
 ** Misc
    - - https://tools.ietf.org/html/rfc6962 read
@@ -158,4 +170,4 @@ Legend                                                (emacs -*-org-*- mode)
 - Jul 28-03, Berlin, IETF 87
 - Aug 29-30, Kastrup, ndn all hands
 - Sep 28-02, Berlin, Circumvention Tech Summit IV http://openitp.org/openitp/circumvention-tech-summit.html
-- Nov 21-21, Lund, SIDC
+- Nov 21-21, Lund, SIDC http://www.luii.lu.se/education/sidc2013/
