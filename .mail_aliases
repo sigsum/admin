@@ -6,11 +6,12 @@ alias aaron.martin              "Aaron Martin <a.k.martin@lse.ac.uk>"
 alias aaron.martin.ec           Aaron.MARTIN@ec.europa.eu
 alias adam                      "Adam Lynn <lynna@rfa.org>"
 alias adbc-sys			system@mail.nordberg.se
-alias adbc-users-all   		adbc-users-dns, adbc-users-jail, adbc-users-mail, adbc-users-jabber
+alias adbc-users-all   		adbc-users-dns, adbc-users-jail, adbc-users-mail, adbc-users-jabber, adbc-users-mail2
 alias adbc-users-dns		iha, jl, bjorn.fahller, tege, staffan, rodrigo
 alias adbc-users-jabber		iha, lai, rom, ep, lena, erik.n, cadar.gmail, daniel, pelle, tobbe, juni, larka, simon, hesse, al, peter.norin, froo, grtrd, jajo, jbn, jn, christian
-alias adbc-users-jail		jonas.gudmundsson
+alias adbc-users-jail		jonas.gudmundsson, jn
 alias adbc-users-mail		erik.n, lise, fabbe, fia, fredrik, lena, marianne, micke, molgan, simon, sofia, larka, juni, jn
+alias adbc-users-mail2          jbn
 alias ade			adrian.bolero
 alias admin	   		admin@nordu.net
 alias adrian.bolero		adrian.bellini@bolero.se
@@ -227,6 +228,7 @@ alias jacqueline		"Jacqueline Brown <jbrown@nordu.net>"
 alias jajo			jan@johannesson.com
 alias jake			"Jacob Appelbaum <jacob@appelbaum.net>"
 alias jakob			"Jakob Schlyter <jakob@kirei.se>"
+alias jaltman                   jaltman@secure-endpoints.com
 alias james                     "James Losey <losey@newamerica.net>"
 alias jang.debattsidan		jan.garefelt@debattsidan.se
 alias jang                      jan@garefelt.se
@@ -387,6 +389,9 @@ alias martin.fredriksson	tokmartin
 alias martin.johansson  	martinhugojohansson@gmail.com
 alias martin.tailf		martin.bjorklund
 alias mats.westin		cadar
+alias matt                      matt.pagan
+alias matt.pagan                matt@pagan.io
+alias matt.gmail                matthew.a.pagan@gmail.com
 alias matthijs.bof              "Matthijs van Bergen <m.vanbergen@ictrecht.nl>"
 alias matthijs                  matthijs.bof
 alias mattias.koks		mattiaskoks@gmx.net
@@ -495,7 +500,9 @@ alias rransom			"Robert Ransom <rransom.8774@gmail.com>"
 alias rsp			radsecproxy
 alias runa			"Runa Sandvik <runa.sandvik@gmail.com>"
 alias rydekull                  "Alexander Rydekull <rydekull@gmail.com>"
+alias ryge                      leif.ryge
 alias rysiek                    "Michał 'rysiek' Woźniak <rysiek@fwioo.pl>"
+alias sakjur                    "Emil Tullstedt <sakjur@gmail.com>"
 alias salu			salu@nordu.net
 alias sam			"Sam Hartman <hartmans@painless-security.com>"
 alias samuel                    "Samuel Härgestam <samuel.hargestam@gmail.com>"
@@ -536,11 +543,13 @@ alias stefan.helm		stefan.helm@gmail.com
 alias stefan.lidero             stefan.backstrom@lidero.net
 alias stefan.listrom 		"Stefan Listrom <stefan@nordu.net>"
 alias stefan.petersen           "Stefan Petersen <spe@ciellt.se>"
+alias stefan.solpanel           stefan@kruse.nu
 alias stefan.winter		stefan.winter@restena.lu
 alias stephen			"Stephen Borrill <sborrill@precedence.co.uk>"
 alias sthix                     sthix.tech
 alias sthix.tech                tech-l@sthix.net
 alias stig			stig@venaas.com
+alias stuge                     "Peter Stuge <peter@stuge.se>"
 alias styrelse                  styrelse@dfri.se
 alias sumit			"Sumit Bose <sbose@redhat.com>"
 alias susanne.lager		lagersusanne@yahoo.com
