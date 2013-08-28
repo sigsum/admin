@@ -336,6 +336,7 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - xpra -- screen for X11
 - ncdu -- ncurses disk utility
 - getent -- get entries from NSS libraries (name service)
+- gobby -- p2p live editing
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -679,6 +680,23 @@ sudo python_select python25
 sudo launchctl load -w /Library/LaunchDaemons/org.macports.Privoxy.plist
 *** polipo
 sudo launchctl load -w /Library/LaunchDaemons/org.macports.Polipo.plist
+** tormac.sunet.se
+*** user doe
+<2013-08-21 Wed>
+**** ~doe/.bash_history
+ps ax
+cd /private/etc/
+ls
+less sshd_config 
+cd
+sudo -i
+/Volumes/fooo/n ; exit;
+ps ax
+ps ax
+less sshd_config 
+ps ax | grep sshd
+ps ax | grep sshd
+sudo -i
 * Hosts @ NORDUnet and SUNET
 ** XEN dom0's
 NORDUnet has ohio (ORE) and typhoon (TUG).
@@ -1115,7 +1133,8 @@ Needs non-free firmware though: apt-get install firmware-iwlwifi
 Might want to turn of 5GHz: echo "options iwlwifi 11n_disable=1" > /etc/modprobe.d/iwlwifi.conf
 * Virtualization with qemu-kvm / libvirt
 ** active vm's on tool
-- debian0 (root/r00tm3)
+- test (debian0) (root/r00tm3)
+- debian1 (root/r00tm3harder)
 ** starting a virtual network
 $ sudo virsh net-start default
 Network default started
@@ -1139,7 +1158,7 @@ $ sudo virsh start test
 root@tool:/u/vm# truncate --size=6G /u/vm/debian0-2.img
 root@tool:/u/vm# virsh attach-disk test /u/vm/debian0-2.img vdb
 Disk attached successfully
-root@tool:/u/vm# virsh domblklist test
+root@tool:/u/vm# virsh domblklist test   # list domain blocks
 Target     Source
 ------------------------------------------------
 vda        /u/vm/test.img
@@ -1243,6 +1262,10 @@ total 0
 lrwxrwxrwx 1 root root 10 Jun  3 15:49 3fe8b7c3-a22f-456a-bd6b-bab9c6174e22 -> ../../vda1
 lrwxrwxrwx 1 root root 10 Jun  3 15:49 7f67e6ef-ff5c-4514-85fd-0a912bb468a6 -> ../../vda5
 
+** mounting a qcow2
+modprobe nbd max_part=63
+qemu-nbd -c /dev/nbd0 image.img
+mount /dev/nbd0p1 /mnt/image
 * mgv.nordberg.se
 ** kernel crash <2010-02-09 Tue>
 Feb  9 13:35:08 mgv kernel: Fatal trap 12: page fault while in kernel mode
@@ -1945,6 +1968,8 @@ have the proper name (foo.<number>).
 ** people
 andrea pgp @tpo      0x419113d9d0cfbda5 7895 9f53 c6d1 2afd 6344 af6d 35f3 6ffa cbec ca80
 andrea pgp sign this 0x419113d9d0cfbda5 3611 95a4 0740 ed1b 7ea5 df7e 4191 13d9 d0cf bda5
+** caff
+supposedly good for handling pgp signing
 * wiki
 - ikiwiki is supposed to be nice.  Uploading text files (markdown!)
   using git f.ex.
@@ -29095,7 +29120,6 @@ discreet, they don't limit anything
 lpq -al
 lpstat -l
 lp -i <job#> -H restart
-
 * email
 ** losing flags
 <2013-06-11 Tue> early morning
@@ -29806,16 +29830,6 @@ Apr  4 11:05:46 lnmail saslauthd[1857]: do_auth         : auth failure: [user=li
 Apr  4 11:05:48 lnmail saslauthd[1853]: do_auth         : auth failure: [user=linus] [service=smtp] [realm=nordberg.se] [mech=kerberos5] [reason=krb5_verify_user_opt failed]
 Apr  4 11:05:51 lnmail saslauthd[1856]: do_auth         : auth failure: [user=linus] [service=smtp] [realm=nordberg.se] [mech=kerberos5] [reason=krb5_verify_user_opt failed]
 
-* Lärkas födelsedag 2013
-erik & lise: 0
-liss: 0
-simon: 3
-aron: 0
-albina: 4
-fredde: 3
-sofia: 0
-marianne: 0
-linus & grtrd: 2
 * Carbon X1
 alex: 14,4 kSEK
 * interesting plot
@@ -29851,10 +29865,6 @@ c7/x1Dwq0EWrn3TUT9+hm2l2XeCZa/W3a6Xo8/cxre/GREVzPEetEmNuWoXrgfhK
 ** key rate
 xset r on
 xset r rate 255 128
-* qemu / kvm
-** mounting a qcow2
-modprobe nbd max_part=63
-qemu-nbd -c /dev/nbd0 image.img
-mount /dev/nbd0p1 /mnt/image
-
 * add ca cert in debian
+* tool segfaults
+Aug 19 21:12:11 tool kernel: [88441.448643] colord-sane[432]: segfault at 35 ip 00007f65bb996a57 sp 00007f65bb980c90 error 4 in libdbus-1.so.3.7.2[7f65bb982000+44000]

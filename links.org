@@ -1,3 +1,91 @@
+readme snowden people:anneramberg http://www.advokatsamfundet.se/Advokaten/Tidningsnummer/2013/Nr-6-2013-Argang-79/Om-vikten-av-Snowden/
+gsw logica https://www.idg.se/2.1085/1.519916/sa-var-forsta-dagen-i-hovratten-for-svartholm-warg
+fra surveillance sweden bahnhof http://basedinsweden.se/
+people:gunillacarlsson http://electronicintifada.net/blogs/rana-baker/yes-we-are-funding-occupation-swedish-minister-glibly-tells-gaza-youth
+readme security militarism http://ofog.org/homeland-security
+kid hug fish funny pic http://www.kulfoto.com/funny-pictures/50789/kid-and-a-fish
+sweden spying ib politics http://www.dn.se/nyheter/sverige/svenska-folket-har-ratt-att-fa-veta/
+security eu directive http://www.bna.com/member-states-reportedly-n17179874317/
+security eu directive http://www.enisa.europa.eu/media/news-items/new-eu-cybersecurity-strategy-directive-announced
+leap https://leap.se/en/hard-problems
+bluecoat https://bto.bluecoat.com/support/technicalbriefs
+readme crypto rc4 tls http://bristolcrypto.blogspot.se/2013/08/why-does-web-still-run-on-rc4.html
+google nsa http://thestringer.com.au/google-and-the-nsa-whos-holding-the-shit-bag-now/#.UhiWbazLdDh
+readme press leak obama wl http://www.newyorker.com/talk/comment/2013/09/02/130902taco_talk_coll?currentPage=all&mobify=0
+readme tor law russia http://www.theregister.co.uk/2013/08/23/russia_pushes_tor_ban/?utm_source=buffer&utm_campaign=Buffer&utm_content=buffer0ae45&utm_medium=twitter
+readme silkroad tor hs http://www.forbes.com/sites/andygreenberg/2013/08/14/an-interview-with-a-digital-drug-lord-the-silk-roads-dread-pirate-roberts-qa/
+readme ddc people:schneier https://www.schneier.com/blog/archives/2006/01/countering_trus.html
+email security https://perot.me/encrypt-specific-incoming-emails-using-dovecot-and-sieve
+debian distributed security https://lists.debian.org/debian-devel/2013/08/msg00497.html
+browser privacy https://isc.sans.edu/forums/diary/Psst+Your+Browser+Knows+All+Your+Secrets+/16415
+readme ssid wifi privacy http://blog.rootshell.be/2012/01/12/show-me-your-ssids-ill-tell-who-you-are/
+snowden swedish people:mlowdi http://bloggar.computersweden.idg.se/natpolitik/2013/08/23/det-har-om-snowden-ja/
+linux rng security crypto http://secworks.se/2013/08/ny-analys-av-slumptalsgeneratorn-i-linux/
+encrypted email security https://secure.dslreports.com/forum/r26270484-Brainstorm-PGP-encrypted-Maildir
+maildir http://cr.yp.to/proto/maildir.html
+gsw people:jake https://www.idg.se/2.1085/1.519515/kandishackare-vittnar-om-intranget-mot-nordea
+email http://moblog.wiredwings.com/archives/20100501/Remove-IPs-from-Outgoing-Mail-Postfix-SMTP.html
+floss law https://www.softwarefreedom.org/resources/2012/ManagingCopyrightInformation.html
+ssid privacy http://blog.rootshell.be/2012/01/12/show-me-your-ssids-ill-tell-who-you-are/
+crypto sweden police LEA https://sverigesradio.se/sida/artikel.aspx?programid=1646&artikel=5619458
+email encryption security https://grepular.com/Automatically_Encrypting_all_Incoming_Email
+tor sida swedish https://sverigesradio.se/sida/artikel.aspx?programid=106&artikel=5625473
+email tool https://github.com/sjmurdoch/getmail
+moxie privacy http://www.wired.com/opinion/2013/06/why-i-have-nothing-to-hide-is-the-wrong-way-to-think-about-surveillance
+tbb chrome tor https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs
+distributed key generation dkg http://uwspace.uwaterloo.ca/bitstream/10012/5285/1/Thesis.pdf
+rng p2p http://www14.in.tum.de/personen/scheideler/papers/OPODIS-116b.pdf
+rms funny birth baby http://www.art.net/~hopkins/Don/text/rms-vs-doctor.html
+dane tls TLSA RFC6698
+snowden http://www.independent.co.uk/news/uk/politics/exclusive-uks-secret-mideast-internet-surveillance-base-is-revealed-in-edward-snowden-leaks-8781082.html
+miranda snowden poitras schneier http://www.theatlantic.com/international/archive/2013/08/the-real-terrifying-reason-why-british-authorities-detained-david-miranda/278952/
+tunneling https://github.com/stealth/fraud-bridge
+music raspi https://gitorious.org/avtobiff/syntverkstad/blobs/master/README.md
+music circuitbending DIY http://www.nyaperspektiv.se/news/?p=1259
+readme snowden prism people:susanlandau http://www.computer.org/cms/Computer.org/ComputingNow/pdfs/MakingSenseFromSnowden-IEEESecurityAndPrivacy.pdf
+manning https://medium.com/medium-long/b695860cb6d6
+TCG TPM windows8 nsa backdoor security http://investmentwatchblog.com/leaked-german-government-warns-key-entities-not-to-use-windows-8-links-the-nsa/
+http://minicall.se/
+tls rc4 http://bristolcrypto.blogspot.se/2013/08/why-does-web-still-run-on-rc4.html
+rc4 crypto http://www.isg.rhul.ac.uk/tls/biases.pdf
+surveillance nsa http://online.wsj.com/article/SB10001424127887324108204579025222244858490.html
+wl people:manning http://gregmitchellwriter.blogspot.com/2013/06/as-debate-continues-what-manning.html
+sidc people:marcin http://www.luii.lu.se/education/sidc2013/
+acta http://www.edri.org/acta-archive
+swedish seppukupledge https://m3.idg.se/2.1022/1.518527/-for-me-the-internet-is-over
+surveillance http://online.wsj.com/article_email/SB10001424127887324108204579022874091732470-lMyQjAxMTAzMDIwMDEyNDAyWj.html
+factoring rsa http://crypto.2013.rump.cr.yp.to/55e2988c4ed3c9f635c9a4c3f52fa0b1.pdf
+readme privacy http://ritter.vg/blog-deanonymizing_amm.html
+readme lenovo hw backdoor http://www.afr.com/p/technology/spy_agencies_ban_lenovo_pcs_on_security_HVgcKTHp4bIA4ulCPqC7SL
+NSA docs collection http://www.aclu.org/nsa-documents-released-public-june-2013
+deterministic build https://wiki.debian.org/ReproducibleBuilds
+deterministic build https://mailman.stanford.edu/pipermail/liberationtech/2013-June/009257.html
+xkeyscore swedish http://www.svd.se/opinion/brannpunkt/svenska-politiker-bor-bryta-tystnaden-om-avlyssningsskandalen_8401740.svd
+ddc people:wheeler http://lambda-the-ultimate.org/node/1184
+ddc http://www.dwheeler.com/trusting-trust/
+otp http://linotp.org/news.html
+backup https://leastauthority.com/product_s4/
+browser privacy https://www.nsslabs.com/reports/2013-browser-security-comparative-analysis-privacy-0
+openvpn security network http://openvpn.net/index.php/open-source/documentation/security-overview.html
+tor performance network http://freehaven.net/~arma/tor-performance-outline.txt
+chrome plugin privacy https://github.com/Xodarap/Paranoid-Browsing
+smtp tor hs https://github.com/globaleaks/Tor2web-3.0/issues/81
+swedish police encryption http://www.journalisten.se/nyheter/polisutspel-om-kryptering-oroar
+stanford security otp http://techcrunch.com/2013/07/25/stanford-university-hacked
+email security encryption https://lwn.net/Articles/464137/
+gsm modem http://gnokii.org/
+tls certificate https://github.com/kirei/catt
+tls certificate sk https://www.schneier.com/blog/archives/2011/12/the_effs_sovere.html
+tls certificate sk https://www.eff.org/sovereign-keys
+management http://wiki.lewman.is/snippets/ge_Printer_Friendly
+management http://firstround.com/article/How-Medium-is-building-a-new-kind-of-company-with-no-managers
+management http://falkvinge.net/2013/07/19/book-launch-swarmwise-the-tactical-manual-to-changing-the-world/
+readme ietf perpass https://www.ietf.org/mail-archive/web/perpass/current/msg00033.html
+tls padding privacy https://www.ietf.org/proceedings/87/slides/slides-87-tls-3.pdf
+readme tor silkroad http://www.forbes.com/sites/andygreenberg/2013/08/14/meet-the-dread-pirate-roberts-the-man-behind-booming-black-market-drug-website-silk-road/
+readme tor hs http://rt.com/politics/russia-tor-anonymizer-ban-571/
+readme tls oob https://datatracker.ietf.org/doc/draft-ietf-tls-oob-pubkey/
+privacy http://fp7-prism.eu/
 tbb https://archive.torproject.org/tor-package-archive/torbrowser/
 tor http://sebastianhahn.net/stuff/fefe-blog-post
 tls ca http://www.certificate-transparency.org/
@@ -7,8 +95,8 @@ x60 https://www.blocket.se/stockholm/Lenovo_X60_i_absolut_toppskick_46718129.htm
 gsm http://events.ccc.de/congress/2010/Fahrplan/attachments/1783_101228.27C3.GSM-Sniffing.Nohl_Munaut.pdf
 munich travel http://www.reidsguides.com/destinations/europe/germany/bavaria/munich/planning/around-tickets.html
 israel eu http://www.dn.se/ekonomi/eu-kan-stoppa-affarer-med-foretag-pa-ockuperad-mark/
-intel amt http://www.uberwall.org/bin/download/download/102/lacon12_intel_amt.pdf
-intel amt http://web.it.kth.se/~maguire/DEGREE-PROJECT-REPORTS/100402-Vassilios_Ververis-with-cover.pdf
+intel amt security hw http://www.uberwall.org/bin/download/download/102/lacon12_intel_amt.pdf
+intel amt security hw qhttp://web.it.kth.se/~maguire/DEGREE-PROJECT-REPORTS/100402-Vassilios_Ververis-with-cover.pdf
 swedish spy ksi lundin http://www.expressen.se/nyheter/verklighetens-hamilton-dod/
 snowden germany nsa http://www.svd.se/kultur/natet-omvarderas-efter-nsa-skandalen_8348710.svd
 snowden swedish http://www.svd.se/kultur/snowden-ar-ingen-frihetshjalte_8355790.svd
@@ -114,7 +202,7 @@ tor china gfw https://trac.torproject.org/projects/tor/wiki/doc/OONI/censorshipw
 tor cryptoparty people:linus https://www.youtube.com/watch?v=gnkazegk89M
 debian vm http://wiki.debian.org/KVM
 sweden law https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5551858
-sweden law http://www.regeringen.se/sb/d/16874/a/218101 
+sweden law sou http://www.regeringen.se/sb/d/16874/a/218101
 creeper http://www.svt.se/nyheter/regionalt/vastnytt/porrsurf-trots-forbud
 windows sploit security ccc http://mirror.fem-net.de/CCC/29C3/mp4-h264-HQ/29c3-5417-en-cve_2011_3402_analysis_h264.mp4.torrent
 fra tdv http://www.fra.se/snabblankar/nyheterochpress/nyhetsarkiv/nyheter/faktaomtdv.203.html
@@ -910,7 +998,7 @@ http://www.hogstadomstolen.se/Om-Sveriges-Domstolar/Pressrum/Nyheter-och-pressme
 https://www.nordu.net/resources/ipprototest.js ipv6 javascript
 http://www.internetgovernance.org/2012/06/07/threat-analysis-of-wcit-part-2-telecommunications-vs-internet/ internetgovernance
 https://trac.torproject.org/projects/tor/wiki/doc/DebianDreamPlug torouter dreamplug
-https://www.eff.org/deeplinks/2011/11/sovereign-keys-proposal-make-https-and-email-more-secure sovereignkeys
+https://www.eff.org/deeplinks/2011/11/sovereign-keys-proposal-make-https-and-email-more-secure sovereignkeys tls certificate
 http://events.ccc.de/congress/2011/Fahrplan/events/4798.en.html sovereignkeys
 https://tools.ietf.org/html/draft-tbray-http-legally-restricted-status-00 censorship ietf standard
 http://freedomboxblog.nl/mitm-for-tor/ tor
