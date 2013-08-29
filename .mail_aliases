@@ -332,6 +332,7 @@ alias limpan			limpan@gvb.nu
 alias linda                     "Linda Sandberg <linda@copylinda.se>"
 alias linda.gmail               "Linda Sandberg <copylinda@gmail.com>"
 alias linus			linus@nordberg.se
+alias linus.larsson             linus@linuslarsson.se
 alias linus.ndn			linus@nordu.net
 alias linus.tor			linus@torproject.org
 alias linus.tpo                 linus.tor
@@ -453,6 +454,7 @@ alias peter.norin               peter@xpd.se
 alias peter.oholm.arb		Peter.Oholm@civilrightsdefenders.org
 alias peter.oholm.priv 		oholmproduktion@gmail.com
 alias peter.oholm.riseup	poholm@riseup.net
+alias peter.stuge               peter@stuge.se
 alias peter                     peter.oholm.arb
 alias peter.xpd                 peter.norin
 alias pettai	 		pettai@nordu.net
@@ -537,6 +539,7 @@ alias stephen			"Stephen Borrill <sborrill@precedence.co.uk>"
 alias sthix                     sthix.tech
 alias sthix.tech                tech-l@sthix.net
 alias stig			stig@venaas.com
+alias stuge			peter.stuge
 alias styrelse                  styrelse@dfri.se
 alias sumit			"Sumit Bose <sbose@redhat.com>"
 alias susanne.lager		lagersusanne@yahoo.com
@@ -588,8 +591,7 @@ alias wendy			"Wendy Seltzer <wendy@seltzer.org>"
 alias wictorin                  Torbjorn.Wictorin@cert.sunet.se
 alias wingel            	"Christer Weinigel <christer@weinigel.se>"
 alias winter                    stefan.winter
-alias xenia.freitags		xenia@freitagsrunde.org
-alias xenia			xenia@gnumonks.org
+alias xenia                     xenia@freitagsrunde.org
 alias yair			"Yair Yarom <irush@cs.huji.ac.il>"
 alias ylan			ylan@ylan.nu
 alias yosh			"Johan Marklund <yosh@yosh.se>"
