@@ -29,6 +29,10 @@ Legend                                                (emacs -*-org-*- mode)
    o move sto0-sto1 to its own i/f
 * Soon
 ** Misc
+   - review lopez draft on fragmentation
+   - review https://www.ietf.org/id/draft-iab-filtering-considerations-03.txt
+     https://www.ietf.org/mail-archive/web/architecture-discuss/current/msg01182.html
+   - review https://tools.ietf.org/html/draft-tschofenig-hourglass-00
    - jeans
    . try returning the broken SSD
    - split https://portal.nordu.net/display/nordunetops/Tor in two
@@ -111,6 +115,7 @@ Legend                                                (emacs -*-org-*- mode)
    - read draft-laurie-pki-sunlight-07.txt
 * Eventually
 ** Misc
+   - describe tor HS as a comparison with "dino's LISP extensions"
    - set up selinux (file:///usr/share/doc/debian-handbook/html/sect.selinux.html)
      - contain mcabber
      - contain tbb
@@ -122,6 +127,8 @@ Legend                                                (emacs -*-org-*- mode)
    - email kelly about music
 ** Dev
    - build tlsdate on *BSD
+   - libradsec: add server failover
+   - libradsec: think about ephemeral keys
 ** Sysadm
    - try out fail2ban
    - find out whether to shut down gv99c or not
