@@ -1,3 +1,23 @@
+media howto https://gist.github.com/adulau/6209099
+privacy debian floss http://blog.martin-graesslin.com/blog/2013/08/floss-after-prism-privacy-by-default/
+privacy debian floss http://blog.martin-graesslin.com/blog/2013/08/floss-after-prism-anonymity-by-default/
+snowden http://www.theguardian.com/technology/2013/jul/28/edward-snowden-death-of-internet
+snowden sweden http://www.sydsvenskan.se/opinion/inpass/anette-novak/ge-snowden-asyl-i-sverige/
+hackermadness us law https://www.eff.org/deeplinks/2013/07/bradley-manning-was-punished-more-merely-because-his-leaks-involved-computer
+privacy https://datatracker.ietf.org/doc/draft-dessez-homenet-googleplus-interconnect/
+security http://webpki.org/
+privacy ietf http://tools.ietf.org/html/draft-tschofenig-hourglass-00
+https://tools.ietf.org/agenda/87/
+tor topology https://trac.torproject.org/projects/tor/ticket/3678
+pkix security readme https://datatracker.ietf.org/doc/draft-miller-posh/?include_text=1
+privacy https://tools.ietf.org/html/draft-dessez-homenet-googleplus-interconnect-01
+textsecure otr https://whispersystems.org/blog/simplifying-otr-deniability/
+tails roadmap https://labs.riseup.net/code/projects/tails/roadmap
+gpg pgp ecc http://charon.persephoneslair.org/~andrea/private/gnupg-2.0.20-ecc/
+gpg pgp security sidechannel http://eprint.iacr.org/2013/448
+gnuk usb token http://www.gniibe.org/oitoite/presentation/fosdem-2012/gnuk-fosdem-20120204.html
+ipv6 https://en.wikipedia.org/wiki/6LoWPAN
+berlin wifi http://www.visitberlin.de/en/article/w-lan-for-all-public-wi-fi-berlin
 x60 https://www.blocket.se/stockholm/Lenovo_X60_i_absolut_toppskick_46718129.htm
 gsm http://events.ccc.de/congress/2010/Fahrplan/attachments/1783_101228.27C3.GSM-Sniffing.Nohl_Munaut.pdf
 munich travel http://www.reidsguides.com/destinations/europe/germany/bavaria/munich/planning/around-tickets.html
