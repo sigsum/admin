@@ -585,6 +585,8 @@ git merge-base
 Together with git describe:
 git describe --contains --all `git merge-base <branch> origin/master`
 ** Failing cert verification for remote https
+fatal: unable to access <url>: SSL certificate problem: unable to get local issuer certificate
+
 From GIT-CONFIG(1): Set http.sslCAInfo or http.sslCAPath.
 Or use an environment variable:
 GIT_SSL_CAINFO=/usr/local/share/certs/ca-root-nss.crt git fetch
@@ -829,6 +831,8 @@ bluesnake.snakedesert.se:/var/storage/media/music (1024 d3:44:27:e9:7a:3c:b3:07:
 05. Japandroids - The House That Heaven Built
 17. Chairlift - I Belong In Your Arms
 18. Nicki Minaj - Beez In The Trap (feat. 2 Chainz)
+23. Dirty Projectors - Dance For You
+25. Grimes - Genesis
 33. Danny Brown - Grown Up
 37. Killer Mike - Reagan
 41. El-P - The Full Retard
@@ -28441,7 +28445,9 @@ bacula, rsnapshot, amanda?
 Liman says "backuppc".
 *** debian without gnome
 - ctrl -> caps key mapping
-  xmodmap ~/.xmodmap
+  setxkbmap -option caps:ctrl_modifier
+  (to restore, do setxkbmap -option '' -option caps:capslock)
+  (old buggy way: xmodmap ~/.xmodmap)
 - key rate
   # after every boot or suspend/resume
   xset r on; xset r rate 255 128
@@ -28466,6 +28472,8 @@ Liman says "backuppc".
   nmcli con up id <SSID>
   nmcli dev wifi list
   nmcli nm wifi off
+- battery status
+  acpi -b
 ** FreeBSD
 *** UFS
 Use dump/restore.
@@ -28741,10 +28749,16 @@ perf (linux only?) -- https://perf.wiki.kernel.org/index.php/Main_Page
 ** backing up wallet
 bitcoind backupwallet ~/ostick/wallet.tool.1
 
-** bitcoind
+** bitcoind (https://github.com/bitcoin/bitcoin.git)
 https://en.bitcoin.it/wiki/Accounts_explained
 https://en.bitcoin.it/wiki/API_reference_(JSON-RPC)
 https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list
+*** building
+NOTE: FreeBSD has a port net-p2p/bitcoin.
+
+sh autogen.sh
+./configure --without-qt
+make
 *** bitcoind help
 addmultisigaddress <nrequired> <'["key","key"]'> [account]
 addnode <node> <add|remove|onetry>
@@ -29868,3 +29882,44 @@ xset r rate 255 128
 * add ca cert in debian
 * tool segfaults
 Aug 19 21:12:11 tool kernel: [88441.448643] colord-sane[432]: segfault at 35 ip 00007f65bb996a57 sp 00007f65bb980c90 error 4 in libdbus-1.so.3.7.2[7f65bb982000+44000]
+* politics
+** anarchism
+* otr fp
+osman nokdok@jabber.ccc.de d636464e fa7a720 27c20111 703ce5a1 ff0534a0
+jake old not used ioerrror@jabber.ccc.de: 067508ccc60422e58544e2cd9b4d1d0fa0a1be23
+
+* Crypto Explorers!
+** Abstract
+[[gnus:nnimap%2Badbc:INBOX#F1A58D9C-D004-4CDC-B107-8640BB7EB616@newamerica.net][Email from James Losey: Re: Encrypted]]
+Crypto Explorers: Secure communication for the next generation
+
+Secure communications is more than understanding what tools are
+available but incorporationg encryption into a daily practice. But
+while recent efforts have been focused at popularising the use of
+encryption among curious adults or stressing the need with
+professionals such as journalists we propose a new focus for the long
+term adoption of secure communication: youth.
+
+Crypto Explorers is an innovative approach to addressing this
+opportunity. Incorporating the concept of leveling up in video games
+and scouting initiatives, Crypto Explorers structures knowledge
+sharing around levels of understanding of the risks, using tools for
+securing communications, and sharing tools with friends and peer
+communities. Spread across a series of key-levels the goals of Crypto
+Explorers is to have participants walk away with practice skills for
+using secure communicants, understand how to evaluate potential risks
+and the value of one tool over another, and engage their peers on also
+adopting similar practices.
+
+Youth offer a compelling demographic as a focus for increasing for use
+of encryption for everyday privacy and communication. Not only are
+youth adept at adopting new technologies and naturally curious, they
+are already avid internet users. The Pew Internet and American Life
+projects finds that Internet adoption is highest with the 12-17 age
+category at 95%, and nearly one in four are using a smart
+phone. Additionally, through a survey conducted by the Berkman
+Center’s Youth and Media Project, Pew also reports concern parents
+have over their children’s privacy online. While yesterday's youth
+might have experimented with submission crypto and other code games
+the prevalence of smart phones provides a new opportunity to teach
+youth lifelong skills for secure communications.

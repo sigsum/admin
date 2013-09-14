@@ -9,17 +9,25 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
+   - - point tor people (what list?) to hannes post on [[http://www.tschofenig.priv.at/wp/%3Fp%3D993][privacy discussions at ietf 87]] and
+     [[https://www.ietf.org/blog/2013/09/security-and-pervasive-monitoring/][the IETF mission statement]]
+   - - https://tools.ietf.org/html/rfc6962 (CT) read
+   - - https://tools.ietf.org/html/rfc6973 (privacy considerations) read
+   - - ietf87 report sent to josva
+   - - draft-trammell-perpass-ppa commented on
+     https://www.ietf.org/id/draft-trammell-perpass-ppa-00.txt
+   - - eurobonus registered (EBB609964226)
+   - - goals for IETF involvement sent to Josva
    - - problem description hashed out with jake, for perpass@
-   - - pmacct; talked to frank
    - - lopez RADIUS fragment draft reviewed for abfab
    - - phw's email abt research something
    - - 4711 phone abb canceled
-   - - Dino (LISP guy) replied to -- compare HS with HIP (RFC5201)?
    - - tor contract proposal sent to andrew
    - . broken SSD returned
-   - - crypto for kids at 30c3; brain dumped
    - - jeans; bought
    - - hjelmvik replied to
+   - o crypto for kids at 30c3; brain dumped
+   - o pmacct; talked to frank
    - X tor status report for july sent
    - o bio w/ pic sent to marcin
    - o sub ct@terena.org
@@ -27,9 +35,10 @@ Legend                                                (emacs -*-org-*- mode)
    - o phw's gpg key
    - o flights ARN-KAS 2013-08-29 morning, KAS-ARN 2013-08-30 afternoon booked
    - o radsecproxy rewrite discussed with miro
+   - o Dino (LISP guy) replied to -- compare HS with HIP (RFC5201)?
 ** Dev
-   - - radsecproxy-1.6.3 released
    - - tor #6027 moved forward some
+   - o radsecproxy-1.6.3 released
    - o radsecproxy patch from fabian; tested, replied to
 ** Sysadm
    - * automatic backup of mm; rsync?
@@ -40,11 +49,12 @@ Legend                                                (emacs -*-org-*- mode)
    - - abuse handling policy written
    - - the snowden letter tweeted
      http://www.article19.org/resources.php/resource/37194/en/letter-to-obama-to-stop-the-prosecution-of-snowden
-   - - email service privacy policy discussions kicked off
+   - o email service privacy policy discussions kicked off
    - X x0 (@tex) updated
 * Soon (within a month)
 ** Misc
-   - - https://tools.ietf.org/html/rfc6962 read
+   - - roy arends replied to
+       [[gnus:nnimap%2Bndn:INBOX#64E17104-7687-43AC-A7BC-6E790243426F@dnss.ec][Email from Roy Arends: Fwd: About encrypting DNS traf]]
    - - tahoe-lafs / tamias on tor HS investigated
    - - feedback to kyle on practical cryptography in go sent
    - - tor AS awareness studied
@@ -52,13 +62,11 @@ Legend                                                (emacs -*-org-*- mode)
    - - ephemeral keys for RADSEC; discussion started
    - - chime in on paul wouters "mta on localhost" idea?
      https://www.ietf.org/mail-archive/web/perpass/current/msg00022.html
-   - - mark contacted for lunch
    - - read up on andrews favourite ways of running a company
      http://wiki.lewman.is/snippets/ge_Printer_Friendly
      http://firstround.com/article/How-Medium-is-building-a-new-kind-of-company-with-no-managers
      http://falkvinge.net/2013/07/19/book-launch-swarmwise-the-tactical-manual-to-changing-the-world/
    - - split https://portal.nordu.net/display/nordunetops/Tor in two
-   - - register eurobonus, EBB609964226
    - - review #6939, #6026, #8475
    - - look at #8380
    - - get back to kupo/w03 about rhnet saying that nordunet as
@@ -77,10 +85,11 @@ Legend                                                (emacs -*-org-*- mode)
    - - read https://www.iis.se/docs/20120828-remissvar-trafikdatalagring-SE.pdf
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
+   - o mark contacted for lunch
 ** Dev
    - - libradsec example server replying to a radius message
    - - libradsec python binding embryo commited
-   - report 2 pmacct crashes
+   - - 2 pmacct crashes reported
    . #4847 -- relays w/o ipv4 or port
    . investigate libevent dns test failures on freebsd
      o why are jails different from non jails?
@@ -170,4 +179,5 @@ Legend                                                (emacs -*-org-*- mode)
 - Jul 28-03, Berlin, IETF 87
 - Aug 29-30, Kastrup, ndn all hands
 - Sep 28-02, Berlin, Circumvention Tech Summit IV http://openitp.org/openitp/circumvention-tech-summit.html
+- Nov 01-10, Vancouver, IETF 88
 - Nov 21-21, Lund, SIDC http://www.luii.lu.se/education/sidc2013/
