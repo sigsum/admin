@@ -2,8 +2,8 @@
 #definekey top C-M-l exec xlock
 definekey top C-M-l exec ~/bin/xlock.sh
 definekey top C-M-x exec xterm
-definekey top C-M-s exec ~/bin/keyboardmap.sh se
-definekey top C-M-u exec ~/bin/keyboardmap.sh us
+definekey top C-M-u exec ~/bin/keyboardmap.sh se
+definekey top C-M-i exec ~/bin/keyboardmap.sh us
 
 definekey root C-i focus
 
