@@ -9,23 +9,31 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
+   - - WPS at home disabled (1)
+   - - [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (2)
+   - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
+   - - obfsproxy's upgraded (tor.ndn, more?) (2)
+   - . eurobonus registered (EBB609964226)
+     - kids registered and sent manual pdf (2)
    - - point tor people (what list?) to hannes post on [[http://www.tschofenig.priv.at/wp/%3Fp%3D993][privacy discussions at ietf 87]] and
-     [[https://www.ietf.org/blog/2013/09/security-and-pervasive-monitoring/][the IETF mission statement]]
-   - - https://tools.ietf.org/html/rfc6962 (CT) read
-   - - https://tools.ietf.org/html/rfc6973 (privacy considerations) read
-   - - ietf87 report sent to josva
-   - - draft-trammell-perpass-ppa commented on
-     https://www.ietf.org/id/draft-trammell-perpass-ppa-00.txt
-   - - eurobonus registered (EBB609964226)
-   - - goals for IETF involvement sent to Josva
-   - - problem description hashed out with jake, for perpass@
-   - - lopez RADIUS fragment draft reviewed for abfab
-   - - phw's email abt research something
-   - - 4711 phone abb canceled
-   - - tor contract proposal sent to andrew
-   - . broken SSD returned
-   - - jeans; bought
-   - - hjelmvik replied to
+     [[https://www.ietf.org/blog/2013/09/security-and-pervasive-monitoring/][the IETF mission statement]] (1)
+   - . https://tools.ietf.org/html/rfc6962 (CT) read, finish (1)
+   - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
+   - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
+   - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
+   - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt][draft-trammell-perpass-ppa]] commented (2)
+   - - ietf87 report sent to josva (1)
+   - - goals for IETF involvement sent to Josva (1)
+   - - lopez RADIUS fragment draft reviewed for abfab (2)
+   - - phw's email abt research something read (1)
+   - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
+   - . broken SSD returned (1)
+   - - jeans; bought (?)
+   - - hjelmvik replied to (1)
+   - D problem description hashed out with [somebody], for perpass@
+     maybe also a concrete thing or two suggested?
+   - o https://tools.ietf.org/html/rfc6973 (privacy considerations) read
+   - o tor contract proposal sent to andrew
    - o crypto for kids at 30c3; brain dumped
    - o pmacct; talked to frank
    - X tor status report for july sent
@@ -37,18 +45,48 @@ Legend                                                (emacs -*-org-*- mode)
    - o radsecproxy rewrite discussed with miro
    - o Dino (LISP guy) replied to -- compare HS with HIP (RFC5201)?
 ** Dev
+   - * #9206 closed
+     - generating router-stability determines Guard flags (3)
+     - Node() takes flag-hints, at least FH_Guard (2)
+   - - shadow #166 closed
+   - - shadow #113 closed
+   - - shadow #111 closed
+   - - shadow #114 closed
    - - tor #6027 moved forward some
    - o radsecproxy-1.6.3 released
    - o radsecproxy patch from fabian; tested, replied to
 ** Sysadm
-   - * automatic backup of mm; rsync?
+   - - bwauth on salsa upgraded to what #9771 fixed (1)
+   - - tor on siv upgraded to 0.2.5 (1)
+     - pkgsrc on siv upgraded, for libevent2 (2)
+   - . move all services from banksy to mm -- ports don't seem to work well!
+     . krb
+       o install another kdc
+       - copy users from old kdc (1)
+     * lnspam (email filtering; clamav + spamd) replaced with new jail
+     - mail
+       o set up an imapd in new jail on mm and let jbn run there
+         (needs new kerberos jail too)
+       - new mta set up with spam and virus filtering (brk)
+       - no mail loops on brk when delivering to imap (execve)
+       - users moved from lnmail
+     - new dns jail
+       - jail setup and verified (lseek)
+       - ip address moved to new jail
+     * web -- apache-2.2.22_5 is vulnerable, php5-5.3.8 too; imp
+       connects to 'lnmail' over SSL
+       (/usr/local/www/horde/ipm/config/servers.php) so change to
+       'imap.adb-centralen.se'; imp uses local postfix to send mail
+       ('relayhost' in postfix/main.cf); connects to mysql at lnspam
+   - * automatic backup of mm; rsync with double-sshd from tight laptop?
    - o mm new kernel
    - o ehlo new kernel
 ** DFRI
-   - - TU report; start writing the IPv6 parts
    - - abuse handling policy written
-   - - the snowden letter tweeted
+   - X the snowden letter tweeted
      http://www.article19.org/resources.php/resource/37194/en/letter-to-obama-to-stop-the-prosecution-of-snowden
+   - o listan@ welcome email and footers; add a "this list is public" message
+   - o TU report; start writing the IPv6 parts
    - o email service privacy policy discussions kicked off
    - X x0 (@tex) updated
 * Soon (within a month)
@@ -58,7 +96,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - tahoe-lafs / tamias on tor HS investigated
    - - feedback to kyle on practical cryptography in go sent
    - - tor AS awareness studied
-   - - hannes hourglass draft reviewed
    - - ephemeral keys for RADSEC; discussion started
    - - chime in on paul wouters "mta on localhost" idea?
      https://www.ietf.org/mail-archive/web/perpass/current/msg00022.html
@@ -80,8 +117,7 @@ Legend                                                (emacs -*-org-*- mode)
      o follow up on jq email
      - follow up discussions with maria
    - - read Clayton "Failures in a Hybrid Content Blocking System" ~/p/tor/doc/cleanfeed.pdf
-   - - submit the Czeck C&D letter to chillingeffects.org
-   - - disable WPS at home
+   - - the Czeck C&D letter submitted to chillingeffects.org
    - - read https://www.iis.se/docs/20120828-remissvar-trafikdatalagring-SE.pdf
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
@@ -89,7 +125,7 @@ Legend                                                (emacs -*-org-*- mode)
 ** Dev
    - - libradsec example server replying to a radius message
    - - libradsec python binding embryo commited
-   - - 2 pmacct crashes reported
+   - - 2 pmacct crashes reproduced and reported
    . #4847 -- relays w/o ipv4 or port
    . investigate libevent dns test failures on freebsd
      o why are jails different from non jails?
@@ -110,34 +146,16 @@ Legend                                                (emacs -*-org-*- mode)
    - . set up torouter on an ipv6 addr at ndn
    - - write a proposal for the ASN tickets
 ** Sysadm
-   . move all services from banksy to mm -- ports don't seem to work well!
-     * lnspam -- email filtering, clamav + spamd; set up ssh tunnel
-       to new jail (port 783) on lnmail and change '-d lnspam' to '-d
-       localhost' in /usr/local/src/mail-filter.sh; same for
-       spam-edu.sh
-     * web -- apache-2.2.22_5 is vulnerable, php5-5.3.8 too; imp
-       connects to 'lnmail' over SSL
-       (/usr/local/www/horde/ipm/config/servers.php) so change to
-       'imap.adb-centralen.se'; imp uses local postfix to send mail
-       ('relayhost' in postfix/main.cf); connects to mysql at lnspam
-     . krb
-       o install another kdc
-       - merge users from old kdc to new
-     - mail
-       o set up an imapd in new jail on mm and let jbn run there
-         (needs new kerberos jail too)
-     - dns (move ip addr to new jail)
    - mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
-   - reinstall debian 6.0 aka "squeeze" on T410s or replacement
+   - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
+   o reinstall debian 6.0 aka "squeeze" on T410s or replacement
      o make "meta" work in shell
-     - move files from forty711 -- including ~dfrinoc/
+     o move files from forty711 -- including ~dfrinoc/
      o get wireless going
      o set up basic iptables
-     - get ff running in a VM
-   - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
+     o get ff running in a VM
 ** DFRI
-   - 
    - DNSSEC
    - read and comment on http://rys.io/en/94.txt
    - announce second ipv6 net (DFRI-DNS) in TC
