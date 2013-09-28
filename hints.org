@@ -967,6 +967,43 @@ And https://lakridstrollet.regexp.se/iha/ejabberd/2013.02.13_runa.png
 
 ejabberd version: We're running 2.1.11.
 http://logs.jabber.org/2010/9/29/jdev.html indicates that we should google for the mcabber error msg
+
+** Looking at code
+origin  https://github.com/processone/ejabberd.git (fetch)
+
+HEAD is at
+commit 453e249de30b925320f798ad1248d7d1a62b157b
+Author: Badlop <badlop@process-one.net>
+Date:   Thu Apr 26 16:04:16 2012 +0200
+
+tool:src% date; pwd; egrep -n SERVICE_UNAVAILABLE *.?rl     
+Wed Sep 18 09:56:03 CEST 2013
+/u/src/ejabberd/src
+ejabberd_c2s.erl:1369:                                  Packet, ?ERR_SERVICE_UNAVAILABLE),
+ejabberd_c2s.erl:2189:                            sub_el = [?ERR_SERVICE_UNAVAILABLE]},
+ejabberd_s2s.erl:309:                       Packet, ?ERR_SERVICE_UNAVAILABLE),
+ejabberd_sm.erl:128:    Err = jlib:make_error_reply(Packet, ?ERR_SERVICE_UNAVAILABLE),
+ejabberd_sm.erl:501:                                      Packet, ?ERR_SERVICE_UNAVAILABLE),
+ejabberd_sm.erl:587:                                Packet, ?ERR_SERVICE_UNAVAILABLE),
+ejabberd_sm.erl:716:                        Packet, ?ERR_SERVICE_UNAVAILABLE),
+jlib.hrl:141:-define(ERR_SERVICE_UNAVAILABLE,
+jlib.hrl:197:-define(ERRT_SERVICE_UNAVAILABLE(Lang, Text),
+mod_configure.erl:1321:    {error, ?ERR_SERVICE_UNAVAILABLE}.
+mod_configure.erl:1728:    {error, ?ERR_SERVICE_UNAVAILABLE}.
+mod_configure.erl:1868:    {error, ?ERR_SERVICE_UNAVAILABLE}.
+mod_configure.erl:1896:    {error, ?ERR_SERVICE_UNAVAILABLE}.
+mod_disco.erl:295:                    IQ#iq{type = error, sub_el = [SubEl, ?ERR_SERVICE_UNAVAILABLE]}
+mod_disco.erl:374:                    IQ#iq{type = error, sub_el = [SubEl, ?ERR_SERVICE_UNAVAILABLE]}
+mod_last.erl:164:                   IQ#iq{type = error, sub_el = [SubEl, ?ERR_SERVICE_UNAVAILABLE]};
+mod_last_odbc.erl:160:              IQ#iq{type = error, sub_el = [SubEl, ?ERR_SERVICE_UNAVAILABLE]};
+mod_vcard.erl:319:          Err = jlib:make_error_reply(Packet, ?ERR_SERVICE_UNAVAILABLE),
+mod_vcard.erl:432:                                              ?ERR_SERVICE_UNAVAILABLE),
+mod_vcard_ldap.erl:416:     Err = jlib:make_error_reply(Packet, ?ERR_SERVICE_UNAVAILABLE),
+mod_vcard_ldap.erl:528:                                         ?ERR_SERVICE_UNAVAILABLE),
+mod_vcard_odbc.erl:156:                           sub_el = [SubEl, ?ERR_SERVICE_UNAVAILABLE]};
+mod_vcard_odbc.erl:297:     Err = jlib:make_error_reply(Packet, ?ERR_SERVICE_UNAVAILABLE),
+mod_vcard_odbc.erl:408:                                         ?ERR_SERVICE_UNAVAILABLE),
+
 * maatuska IP
 193.11.3.226
 * Kundnummer
@@ -1135,6 +1172,12 @@ booked at 2010-02-08
 Kernel module iwlwifi supports the Intel 6200AGN chipset in Lenovo T140s.
 Needs non-free firmware though: apt-get install firmware-iwlwifi
 Might want to turn of 5GHz: echo "options iwlwifi 11n_disable=1" > /etc/modprobe.d/iwlwifi.conf
+** startup, autostart
+- /etc/init.d
+- /etc/X11/xinit/xinitrc -> /etc/X11/Xsession -> /etc/X11/Xsession.d
+- /etc/gdm3/Init/Default
+- /etc/dbus-1/system.d/gdm.conf
+- /etc/xdg/autostart
 * Virtualization with qemu-kvm / libvirt
 ** active vm's on tool
 - test (debian0) (root/r00tm3)
@@ -28444,6 +28487,20 @@ Nanne Grönvall
 bacula, rsnapshot, amanda?
 Liman says "backuppc".
 *** debian without gnome
+- to make ratpoison an option in the gdm3 start screen, add a file in
+  /urs/share/xsessions
+sudo cat >> /usr/share/xsessions/ratpoison <<EOF
+[Desktop Entry]
+Name=rp
+Comment=ratpoison
+Exec=ratpoison
+TryExec=ratpoison
+Icon=
+Type=Application
+EOF
+- make sure ssh-agent is started (and session-dbus is not) by editing
+  /etc/X11/Xsession.options
+
 - ctrl -> caps key mapping
   setxkbmap -option caps:ctrl_modifier
   (to restore, do setxkbmap -option '' -option caps:capslock)
@@ -29923,3 +29980,99 @@ have over their children’s privacy online. While yesterday's youth
 might have experimented with submission crypto and other code games
 the prevalence of smart phones provides a new opportunity to teach
 youth lifelong skills for secure communications.
+* lisp
+** lisp and lärka
+- [[gnus:nnimap%2Badbc:INBOX.sent-mail.2013-09#87eh8vswew.fsf@nordberg.se][Email to larka@nordberg.se: SLIME]]
+* sr p1 konflikt <2013-09-21 Sat>
+https://sverigesradio.se/sida/gruppsida.aspx?programid=1300&grupp=9035&artikel=5651570
+
+i studion kajsa bodlind
+js = johan sigholm
+ck = christopher kullenberg
+sm = sasha meinrath
+xx = en person fr gbg hackerspace
+aa = amelia andersdotter
+ff = fredrik federlay
+
+
+fmip
+sgsi -- swedish government secure intranet https://sv.wikipedia.org/wiki/SGSI http://www.tutus.se/cases/sgsi.html
+
+js: usa började bygga upp sitt cyber command för ca fem år sedan,
+pengar från dod, 5k personer
+
+js: <suck> det är känt att sverige har samarbete med olika länder
+
+js: svårt att bedöma uppgifterna, problematiskt pga
+informationsassymetri -- man vet inte och då är det svårt att
+kritisera
+
+sasha meinrath (OTI) tror att vi kommer att få privacy-lagar
+
+js: ang infosäk, utbildning viktigare än kablar till europa
+
+js: lita på matten, öppna standarder är fortf ganska säkra
+
+ck: alternativt FB kan inte vara FB eftersom affärsmodellen kräver
+"övervakning"
+
+rep anja salberg på vegagatan, gbg hackerspace
+
+xx: politiker tar beslut om saker dom inte förstår
+
+ff: den svenska signalspaningslagen håller inte måttet, PP behövs
+
+ck: låt hackerspaces skriva läroplanen så att man lär sig kryptering
+istf officepaketet
+* gpg smart card
+yubikey neo
+pcscd
+libccid
+"rousseu is weird"
+add device(s) to [[gnus:nnimap%2Badbc:INBOX#1379932938.21667.1.camel@xor][libccid_Info.plist]]
+* sas ebb
+- lärka
+  eld@4711.se
+  lerkruka2 / eeghail9
+  EBB619206543
+- juni
+  juni@4711.se / ooyied8y
+  EBB619206626
+* fcgi and lighttpd
+tool:src% pwd
+~/src
+tool:src% cat fcgi-test.c
+#include <fcgi_stdio.h>
+#include <stdlib.h>
+
+int
+main (int argc, char *argv[])
+{ 
+  while (FCGI_Accept () >= 0)
+    { 
+      printf ("Content-type: text/html\r\n"
+              "\r\n"
+              "<title>foo</title>"
+              "<h2>Hello!</h2>"
+              "Hi.");
+    }
+
+  return 0;
+}
+tool:src% make fcgi-test
+cc -Wall -g -o fcgi-test -lfcgi fcgi-test.c
+
+tool:src% egrep modules /etc/lighttpd/conf-enabled/10-fastcgi.conf
+server.modules += ( "mod_fastcgi" )
+tool:src% egrep fastcgi -A 1 /etc/lighttpd/lighttpd.conf
+fastcgi.server = ("/fcgi/" => (("socket" => "/var/www/ln5/fcgisock",
+                                "check-local" => "disable")))
+
+tool:src% ls -ld /var/www/ln5/
+drwxrwxr-x 2 root linus 4096 Sep 25 23:04 /var/www/ln5//
+
+tool:src% spawn-fcgi -s /var/www/ln5/fcgisock -M 0666 -- /home/linus/src/fcgi-test
+spawn-fcgi: child spawned successfully: PID: 12660
+
+tool:src% curl http://localhost/fcgi/
+<title>foo</title><h2>Hello!</h2>Hi.tool:src% 
