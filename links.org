@@ -1,3 +1,102 @@
+service jabber survey security https://xnyhps.nl/~thijs/xmppoke-frontend/result.php?domain=jabber.ccc.de&type=server
+readme nsa backdoor prng http://www.wired.com/threatlevel/2013/09/nsa-backdoor/3/
+finfisher https://www.f-secure.com/weblog/archives/00002601.html
+epic bbg nsa tor foia https://epic.org/2013/09/epic-foia-request-reveals-no-e.html
+bittorent utp ledbat http://openaccess.city.ac.uk/1967/1/cyberc12-florian-paper%20pdf.pdf
+gsw https://torrentfreak.com/pirate-bay-founder-hacking-sentence-slashed-in-half-on-appeal-130925/
+nsa spying india http://www.thehindu.com/news/international/world/nsa-planted-bugs-at-indian-missions-in-dc-un/article5164944.ece
+network protocol http://blog.chromium.org/2013/06/experimenting-with-quic.html
+deterministic build debian https://wiki.debian.org/ReproducibleBuilds
+elf security asm http://www.muppetlabs.com/~breadbox/software/tiny/teensy.html
+rtld unpacking virus security http://uninformed.org/?v=6&a=3&t=txt
+readme cobbler rtld security elf usenix https://www.usenix.org/system/files/conference/woot13/woot13-shapiro.pdf
+tor relay https://blog.torproject.org/blog/lifecycle-of-a-new-relay
+web fstcgi http://www.fastcgi.com/devkit/doc/fcgi-spec.html
+swedish law integrity people:schultz http://www.dn.se/debatt/integritetsskyddet-maste-starkas-i-svensk-lagstiftning/
+swedish law sou http://www.advokatsamfundet.se/Documents/Advokatsamfundet_sv/Remissvar/440586_20130920155655.pdf
+swedish law di sou http://www.datainspektionen.se/Documents/remissvar/2013-09-25-konvention-it-brottslighet.pdf
+gsw people:jake swedish law https://www.idg.se/2.1085/1.521050/kandishackaren-ger-polisen-underkant
+tor pgp keys https://www.torproject.org/docs/signing-keys.html.en
+jap early anonymity backdoor https://lists.torproject.org/pipermail/tor-dev/2003-August/000234.html
+tor ml archive early https://lists.torproject.org/pipermail/tor-dev/2002-June/
+kerberos apache web http://modauthkerb.sourceforge.net/
+ibis mix privacy https://ibis.uwaterloo.ca/
+tor https://blog.torproject.org/blog/tor-nsa-gchq-and-quick-ant-speculation#comment-35282
+tos http://cryptostorm.is/tos.html
+iphone security http://www.zdnet.com/researchers-reveal-how-to-hack-an-iphone-in-60-seconds-7000018822/
+deterministic build fedora https://github.com/kholia/ReproducibleBuilds
+radsecproxy doc https://confluence.terena.org/display/H2eduroam/radsecproxy-flr
+tbb https://people.torproject.org/~linus/downloads/tbb-3.0alpha4-build1/3.0-alpha-4/
+readme security kernel.org http://arstechnica.com/security/2013/09/who-rooted-kernel-org-servers-two-years-ago-how-did-it-happen-and-why/
+readme tor malware http://oweng.myweb.port.ac.uk/fbi-tor-malware-analysis/
+fores dr sweden http://fores.se/digitala-rattigheter/fra-nsa-och-snowden-vad-hander-egentligen-seminarium-24-september
+book http://www.rifters.com/real/shorts.htm
+readme copyright school http://www.wired.com/threatlevel/2013/09/mpaa-school-propaganda
+lisp machine hw http://www.andromeda.com/people/ddyer/lisp/
+tor exit traceroute https://bitbucket.org/anupam_das/traceroute-from-tor-relays/overview
+swedish police illegal register http://www.dn.se/nyheter/sverige/over-tusen-barn-med-i-olaglig-kartlaggning/
+chrome tbb tor https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs
+roger tor funding nsa bbg https://blog.torproject.org/blog/tor-nsa-gchq-and-quick-ant-speculation#comment-35041
+swedish http://www.tutus.se/cases/sgsi.html
+stasi pics http://www.theverge.com/2013/9/18/4743994/top-secret-images-from-the-stasi-archives 
+isp gchq ownage http://www.spiegel.de/international/europe/british-spy-agency-gchq-hacked-belgian-telecoms-firm-a-923406.html
+nsa belgium http://www.spiegel.de/international/europe/british-spy-agency-gchq-hacked-belgian-telecoms-firm-a-923406.html
+readme barretbrown http://www.dailydot.com/opinion/barrett-brown-private-intelligence-industry/
+funny ca tls http://lolroot.ca/
+tbb security slider https://trac.torproject.org/projects/tor/ticket/9387
+tor bbg https://blog.torproject.org/blog/turning-funding-more-exit-relays
+tor bbg foia http://www.dailydot.com/politics/epic-lawsuit-us-government-tor/
+funny remissvar http://whenyouworkatregeringskansliet.tumblr.com/post/61108119011/when-the-remissvar-on-your-reformforslag-is
+readme nsa http://dissenter.firedoglake.com/2013/09/19/nsa-sends-letter-to-its-extended-family-to-reassure-them-that-they-will-weather-this-storm
+port forwarding router tor http://portforward.com/
+seattle cloud anticensorship http://www.popsci.com/science/article/2013-09/justin-cappos
+dfri gmane listan http://dir.gmane.org/gmane.org.user-groups.dfri
+deterministic build http://securityblog.redhat.com/2013/09/18/reproducible-builds-for-fedora/
+tor fh fbi malware security http://www.wired.com/threatlevel/2013/09/freedom-hosting-fbi/all/1
+sweden law sou http://bahnhof.se/filestorage/userfiles/file/Remissvar2013-09-18.pdf
+linux kernel bootloader UEFI http://www.kroah.com/log/blog/2013/09/02/booting-a-self-signed-linux-kernel/
+tor metrics users https://metrics.torproject.org/users.html#userstats
+tor metrics users https://metrics.torproject.org/users.html#direct-users
+tor metrics users https://trac.torproject.org/projects/tor/wiki/doc/MetricsUserStatsQAndA
+nsa people:gilmore http://www.metzdowd.com/pipermail/cryptography/2013-September/017228.html
+ssl ie6 http://www.ie6countdown.com/
+ssl tls status https://www.ssllabs.com/ssltest/analyze.html?d=dfri.se
+service internet privacy http://per-cloud.com/
+article paper surveillance list http://library.queensu.ca/ojs/index.php/surveillance-and-society/announcement/view/78
+crypto js http://kjur.github.io/jsrsasign/
+crypto js https://github.com/digitalbazaar/forge
+crypto js https://www.pidder.com/pidcrypt
+crypto js pgp http://openpgpjs.org/
+crypto js rsa https://crypto.stanford.edu/sjcl/
+eff fisa people:johnyoung http://cryptome.org/2013/09/nsa-fisa-business-records.htm
+smash the state pic https://gs1.wac.edgecastcdn.net/8019B6/data.tumblr.com/259c277cb6ca0b3ab9a664ecd896c229/tumblr_mex08633Ru1qb2blko1_400.jpg
+ietf perpass https://down.dsg.cs.tcd.ie/misc/perpass.txt
+ttrss http://tt-rss.org/redmine/projects/tt-rss/wiki
+crypto backdoor https://threatpost.com/uk-cryptographers-call-for-outing-of-deliberately-weakened-protocols-products/102301
+google pentagon fuel price discount http://blogs.wsj.com/corporate-intelligence/2013/09/13/google-execs-have-developed-a-taste-for-pacific-islands/
+mongodb doc reference http://docs.mongodb.org/manual/reference/
+privacy sweden edu http://www.datainspektionen.se/press/nyheter/2013/skola-maste-sluta-anvanda-molntjanst/
+tor metrics bw https://metrics.torproject.org/network.html#dirbytes
+tor metrics clients https://metrics.torproject.org/users.html#direct-users
+tor tickets keytheft https://trac.torproject.org/projects/tor/query?keywords=~key-theft
+tor raccoon timing correlation attack http://archives.seul.org/or/dev/Sep-2008/msg00016.html
+wifi london privacy tracking http://www.theregister.co.uk/2013/08/12/spy_bins_scrapped_from_london_streets/
+wifi london privacy tracking http://www.wired.co.uk/news/archive/2013-08/09/recycling-bins-are-watching-you
+internet isp liability http://www.article19.org/data/files/Intermediaries_ENGLISH.pdf
+mongodb mapreduce http://docs.mongodb.org/ecosystem/use-cases/hierarchical-aggregation/
+readme ca ct tor http://detector.io/DetecTor.html
+ads web porn http://blog.eat24hours.com/how-to-advertise-on-a-porn-website/
+dns check http://dnscheck.pingdom.com/?domain=dfri.se
+dns check http://dnscheck.iis.se/
+tor http://www.wired.co.uk/news/archive/2013-09/13/digital-economy-task-force
+eu people:jake http://register.consilium.europa.eu/pdf/en/13/st13/st13547.en13.pdf
+rpi raspi tor dfri https://www.dfri.se/projekt/tor/rpi/
+pp sweden http://www.dn.se/nyheter/varlden/fra-harva-far-pp-att-andas-varluft/
+freebsd ports http://forums.freebsd.org/showthread.php?t=38859
+http://www.wired.com/threatlevel/2013/09/freedom-hosting-fbi
+https://www.schneier.com/blog/archives/2013/09/the_tsa_is_lega.html#c1714103
+lea cp http://servicetoamericamedals.org/SAM/finalists/hsm/mackinnon.shtml
+nsa backdoor nist http://arstechnica.com/security/2013/09/government-standards-agency-strongly-suggests-dropping-its-own-encryption-standard/
 trojan backdoor hw http://people.umass.edu/gbecker/BeckerChes13.pdf
 http://www.article19.org/resources.php/resource/37224/en/
 http://www.edri.org/edri_free
@@ -137,7 +236,7 @@ readme ddc people:schneier https://www.schneier.com/blog/archives/2006/01/counte
 email security https://perot.me/encrypt-specific-incoming-emails-using-dovecot-and-sieve
 debian distributed security https://lists.debian.org/debian-devel/2013/08/msg00497.html
 browser privacy https://isc.sans.edu/forums/diary/Psst+Your+Browser+Knows+All+Your+Secrets+/16415
-readme ssid wifi privacy http://blog.rootshell.be/2012/01/12/show-me-your-ssids-ill-tell-who-you-are/
+ssid wifi privacy http://blog.rootshell.be/2012/01/12/show-me-your-ssids-ill-tell-who-you-are/
 snowden swedish people:mlowdi http://bloggar.computersweden.idg.se/natpolitik/2013/08/23/det-har-om-snowden-ja/
 linux rng security crypto http://secworks.se/2013/08/ny-analys-av-slumptalsgeneratorn-i-linux/
 encrypted email security https://secure.dslreports.com/forum/r26270484-Brainstorm-PGP-encrypted-Maildir
@@ -151,7 +250,6 @@ email encryption security https://grepular.com/Automatically_Encrypting_all_Inco
 tor sida swedish https://sverigesradio.se/sida/artikel.aspx?programid=106&artikel=5625473
 email tool https://github.com/sjmurdoch/getmail
 moxie privacy http://www.wired.com/opinion/2013/06/why-i-have-nothing-to-hide-is-the-wrong-way-to-think-about-surveillance
-tbb chrome tor https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs
 distributed key generation dkg http://uwspace.uwaterloo.ca/bitstream/10012/5285/1/Thesis.pdf
 rng p2p http://www14.in.tum.de/personen/scheideler/papers/OPODIS-116b.pdf
 rms funny birth baby http://www.art.net/~hopkins/Don/text/rms-vs-doctor.html
@@ -159,7 +257,7 @@ dane tls TLSA RFC6698
 snowden http://www.independent.co.uk/news/uk/politics/exclusive-uks-secret-mideast-internet-surveillance-base-is-revealed-in-edward-snowden-leaks-8781082.html
 miranda snowden poitras schneier http://www.theatlantic.com/international/archive/2013/08/the-real-terrifying-reason-why-british-authorities-detained-david-miranda/278952/
 tunneling https://github.com/stealth/fraud-bridge
-music raspi https://gitorious.org/avtobiff/syntverkstad/blobs/master/README.md
+music rpi https://gitorious.org/avtobiff/syntverkstad/blobs/master/README.md
 music circuitbending DIY http://www.nyaperspektiv.se/news/?p=1259
 readme snowden prism people:susanlandau http://www.computer.org/cms/Computer.org/ComputingNow/pdfs/MakingSenseFromSnowden-IEEESecurityAndPrivacy.pdf
 manning https://medium.com/medium-long/b695860cb6d6
@@ -647,7 +745,6 @@ tor tool http://svn.noreply.org/svn/weaselutils/trunk/tor-exit-ssl-check
 macchanger https://help.ubuntu.com/community/AnonymizingNetworkMACAddresses
 ipv dv sweden swedish http://mobil.svd.se/c.jsp?cid=25967591&rssId=25966211&item=http%3a%2f%2fwww.svd.se%2f%3fservice%3dmobile%26amp%3barticleId%3d7908240%26amp%3bnew%3dtrue
 tor blocking eu http://ameliaandersdotter.eu/2013/02/11/hur-man-gor-det-lattare-att-paverka-eu-del-i/
-dfri gmane listan http://dir.gmane.org/gmane.org.user-groups.dfri
 glibc getaddrbyname https://bugs.launchpad.net/ubuntu/+source/eglibc/+bug/1057526
 glibc getaddrbyname https://fedoraproject.org/wiki/Features/FixNetworkNameResolution
 privacy google http://www.theregister.co.uk/2013/02/08/google_says_there_is_nothing_to_fear_about_information_collection/
@@ -1246,7 +1343,6 @@ http://www.daten-speicherung.de/index.php/eu-commission-gives-up-blocking-tor-an
 http://www.hackerbus.eu/blog/2012/03/27/so-what-about-cybercrime-in-switzerland.html people:moritz tor cybercrime
 http://www.manageengine.com/products/netflow/help/advanced-security-analytics-module/problem-class-catalog.html ddos
 http://expiretable.fnord.se/ pf security
-http://portforward.com/ port forwarding
 https://www.torproject.org/projects/tordnsel.html.en tor
 https://svt.se/2.22620/1.2750004/polisen_direktivet_forsvarar_brottsbekampning police dld
 http://farad.se/article.php?rowId=259 dld people:nilsweidstam
