@@ -1,1093 +1,1361 @@
+
+`C-c C-x C-i' for starting a clock.
+`C-c C-x C-i' for stopping the clock.
+`C-c C-x C-d' for showing times.
+`C-c C-y' for updating time on line.
+
+* week 39
+** radsecproxy
+   CLOCK: [2013-09-24 Tue 21:11]--[2013-09-24 Tue 21:33] =>  0:22
+   docu; https://confluence.terena.org/display/H2eduroam/radsecproxy-flr
+** ietf
+   CLOCK: [2013-09-24 Tue 13:19]--[2013-09-24 Tue 13:29] =>  0:10
+** tflows
+   CLOCK: [2013-09-24 Tue 14:48]--[2013-09-24 Tue 15:34] =>  0:46
+   CLOCK: [2013-09-23 Mon 14:03]--[2013-09-23 Mon 14:18] =>  0:15
+** tor
+   CLOCK: [2013-09-27 Fri 16:30]--[2013-09-27 Fri 17:00] =>  0:30
+   CLOCK: [2013-09-27 Fri 15:15]--[2013-09-27 Fri 15:32] =>  0:17
+   CLOCK: [2013-09-27 Fri 15:03]--[2013-09-27 Fri 15:14] =>  0:11
+   CLOCK: [2013-09-27 Fri 10:45]--[2013-09-27 Fri 12:00] =>  1:15
+   CLOCK: [2013-09-27 Fri 09:52]--[2013-09-27 Fri 10:31] =>  0:39
+   CLOCK: [2013-09-26 Thu 14:49]--[2013-09-26 Thu 15:22] =>  0:33
+   CLOCK: [2013-09-26 Thu 13:31]--[2013-09-26 Thu 13:59] =>  0:28
+   CLOCK: [2013-09-26 Thu 12:48]--[2013-09-26 Thu 13:19] =>  0:31
+   CLOCK: [2013-09-26 Thu 12:38]--[2013-09-26 Thu 12:41] =>  0:03
+   guard flags in shadow
+   CLOCK: [2013-09-26 Thu 09:28]--[2013-09-26 Thu 11:57] =>  2:29
+   CLOCK: [2013-09-25 Wed 15:03]--[2013-09-25 Wed 15:54] =>  0:51
+   CLOCK: [2013-09-25 Wed 13:47]--[2013-09-25 Wed 14:45] =>  0:58
+   CLOCK: [2013-09-25 Wed 11:43]--[2013-09-25 Wed 13:05] =>  1:22
+   CLOCK: [2013-09-25 Wed 09:43]--[2013-09-25 Wed 10:13] =>  0:30
+   getting shadow running
+   CLOCK: [2013-09-24 Tue 17:08]--[2013-09-24 Tue 17:30] =>  0:22
+   #9206
+   CLOCK: [2013-09-24 Tue 13:31]--[2013-09-24 Tue 13:58] =>  0:27
+   TBB
+   CLOCK: [2013-09-24 Tue 12:32]--[2013-09-24 Tue 12:59] =>  0:27
+   CLOCK: [2013-09-24 Tue 09:12]--[2013-09-24 Tue 09:41] =>  0:29
+   TBB, irc, email
+   CLOCK: [2013-09-23 Mon 23:54]--[2013-09-24 Tue 00:15] =>  0:21
+   build TBB
+   CLOCK: [2013-09-23 Mon 19:47]--[2013-09-23 Mon 20:12] =>  0:25
+   CLOCK: [2013-09-23 Mon 15:53]--[2013-09-23 Mon 16:18] =>  0:25
+   CLOCK: [2013-09-23 Mon 14:58]--[2013-09-23 Mon 15:36] =>  0:38
+   CLOCK: [2013-09-23 Mon 13:34]--[2013-09-23 Mon 14:03] =>  0:29
+   CLOCK: [2013-09-23 Mon 12:47]--[2013-09-23 Mon 13:15] =>  0:28
+   CLOCK: [2013-09-23 Mon 11:00]--[2013-09-23 Mon 11:11] =>  0:11
+   #9206
+** ndnsec   
+   CLOCK: [2013-09-27 Fri 14:20]--[2013-09-27 Fri 14:51] =>  0:31
+   looking
+   CLOCK: [2013-09-27 Fri 12:13]--[2013-09-27 Fri 13:30] =>  1:17
+   discussing
+** ndn
+   CLOCK: [2013-09-24 Tue 15:42]--[2013-09-24 Tue 15:55] =>  0:13
+   administrativa
+   CLOCK: [2013-09-24 Tue 10:13]--[2013-09-24 Tue 10:52] =>  0:39
+   time reporting, time planning
+   CLOCK: [2013-09-23 Mon 10:10]--[2013-09-23 Mon 10:58] =>  0:48
+   time reporting, time planning
+* week 38
+** ct
+   CLOCK: [2013-09-17 Tue 16:30]--[2013-09-17 Tue 16:58] =>  0:28
+   reading rfc6962
+** krb-otp
+   CLOCK: [2013-09-17 Tue 11:53]--[2013-09-17 Tue 12:51] =>  0:58
+   FAST-OTP discussions with lha.
+** ietf
+   CLOCK: [2013-09-17 Tue 16:14]--[2013-09-17 Tue 16:30] =>  0:16
+   CLOCK: [2013-09-17 Tue 13:38]--[2013-09-17 Tue 13:48] =>  0:10
+   CLOCK: [2013-09-16 Mon 14:55]--[2013-09-16 Mon 15:29] =>  0:34
+** sunet
+   CLOCK: [2013-09-17 Tue 19:53]--[2013-09-17 Tue 20:30] =>  0:37
+   torperf (siv)
+   CLOCK: [2013-09-17 Tue 15:28]--[2013-09-17 Tue 16:00] =>  0:32
+   CLOCK: [2013-09-17 Tue 14:59]--[2013-09-17 Tue 15:11] =>  0:12
+   bwauth
+   CLOCK: [2013-09-16 Mon 13:17]--[2013-09-16 Mon 15:02] =>  1:45
+   tor; config relay
+   CLOCK: [2013-09-16 Mon 12:39]--[2013-09-16 Mon 13:07] =>  0:28
+   tor; discussions with pelle
+** tflows
+   CLOCK: [2013-09-20 Fri 14:45]--[2013-09-20 Fri 14:55] =>  0:10
+   CLOCK: [2013-09-20 Fri 13:19]--[2013-09-20 Fri 13:48] =>  0:29
+   CLOCK: [2013-09-20 Fri 12:42]--[2013-09-20 Fri 13:09] =>  0:27
+   CLOCK: [2013-09-20 Fri 11:55]--[2013-09-20 Fri 12:42] =>  0:47
+   database
+   CLOCK: [2013-09-19 Thu 15:13]--[2013-09-19 Thu 15:54] =>  0:41
+   CLOCK: [2013-09-19 Thu 13:35]--[2013-09-19 Thu 14:15] =>  0:40
+   fix dates
+   CLOCK: [2013-09-19 Thu 12:45]--[2013-09-19 Thu 13:01] =>  0:16
+   verify data
+   CLOCK: [2013-09-16 Mon 21:16]--[2013-09-16 Mon 21:45] =>  0:29
+   CLOCK: [2013-09-16 Mon 15:29]--[2013-09-16 Mon 17:15] =>  1:46
+   aggregate
+** ndn
+   CLOCK: [2013-09-20 Fri 13:09]--[2013-09-20 Fri 13:19] =>  0:10
+   weekly dev
+   CLOCK: [2013-09-16 Mon 12:28]--[2013-09-16 Mon 13:07] =>  0:39
+   all hands prism
+   CLOCK: [2013-09-16 Mon 11:58]--[2013-09-16 Mon 12:28] =>  0:30
+   time reporting, travel claims
+** tor
+   CLOCK: [2013-09-21 Sat 01:53]--[2013-09-21 Sat 01:57] =>  0:04
+   CLOCK: [2013-09-20 Fri 16:29]--[2013-09-20 Fri 16:54] =>  0:25
+   CLOCK: [2013-09-20 Fri 14:55]--[2013-09-20 Fri 15:33] =>  0:38
+   #9206
+   CLOCK: [2013-09-20 Fri 11:00]--[2013-09-20 Fri 11:11] =>  0:11
+   catchup
+   CLOCK: [2013-09-19 Thu 16:12]--[2013-09-19 Thu 17:10] =>  0:58
+   CLOCK: [2013-09-19 Thu 14:20]--[2013-09-19 Thu 14:41] =>  0:21
+   CLOCK: [2013-09-19 Thu 13:04]--[2013-09-19 Thu 13:29] =>  0:25
+   #9206
+   CLOCK: [2013-09-19 Thu 12:32]--[2013-09-19 Thu 12:45] =>  0:13
+   email, irc
+   CLOCK: [2013-09-18 Wed 20:28]--[2013-09-18 Wed 21:22] =>  0:54
+   #9206
+   CLOCK: [2013-09-18 Wed 16:00]--[2013-09-18 Wed 16:13] =>  0:13
+   CLOCK: [2013-09-18 Wed 12:31]--[2013-09-18 Wed 13:02] =>  0:31
+   catch up; email irc
+   CLOCK: [2013-09-17 Tue 20:30]--[2013-09-17 Tue 21:42] =>  1:12
+   CLOCK: [2013-09-17 Tue 18:34]--[2013-09-17 Tue 19:10] =>  0:36
+   shadow
+   CLOCK: [2013-09-17 Tue 13:51]--[2013-09-17 Tue 14:58] =>  1:07
+   irc, email
+   CLOCK: [2013-09-17 Tue 12:59]--[2013-09-17 Tue 13:36] =>  0:37
+   shadow/scallion work project mgmt
+   CLOCK: [2013-09-17 Tue 08:44]--[2013-09-17 Tue 09:43] =>  0:59
+   catch up
+   CLOCK: [2013-09-16 Mon 11:53]--[2013-09-16 Mon 11:58] =>  0:05
+   email, irc
+** dfri
+   CLOCK: [2013-09-20 Fri 15:37]--[2013-09-20 Fri 16:19] =>  0:42
+   sou 2013:39
+   CLOCK: [2013-09-20 Fri 11:29]--[2013-09-20 Fri 11:40] =>  0:11
+   cryptoparty; ml admin
+   CLOCK: [2013-09-19 Thu 12:27]--[2013-09-19 Thu 12:32] =>  0:05
+   CLOCK: [2013-09-19 Thu 09:51]--[2013-09-19 Thu 10:44] =>  0:53
+   sysadm; mailing list
+   CLOCK: [2013-09-16 Mon 10:24]--[2013-09-16 Mon 11:06] =>  0:42
+   sysadm; mailing lists
+* week 37
+** ndn internal
+   CLOCK: [2013-09-13 Fri 13:00]--[2013-09-13 Fri 13:24] =>  0:24
+   weekly dev mtg
+** jra3t2
+   CLOCK: [2013-09-13 Fri 09:50]--[2013-09-13 Fri 10:58] =>  1:08
+   meeting
+** sunet
+   CLOCK: [2013-09-14 Sat 18:13]--[2013-09-14 Sat 18:37] =>  0:24
+   tor; sysadmin
+   CLOCK: [2013-09-12 Thu 14:40]--[2013-09-12 Thu 15:13] =>  0:33
+   tor; policy discussions
+** private
+   CLOCK: [2013-09-14 Sat 18:41]--[2013-09-14 Sat 18:55] =>  0:14
+   xmpp-client; bug testing
+   CLOCK: [2013-09-13 Fri 13:59]--[2013-09-13 Fri 14:20] =>  0:21
+   sysadm; ehlo fbsd update
+   CLOCK: [2013-09-12 Thu 16:43]--[2013-09-12 Thu 17:11] =>  0:28
+   CLOCK: [2013-09-12 Thu 08:45]--[2013-09-12 Thu 08:55] =>  0:10
+   sysadm
+** tor
+   CLOCK: [2013-09-13 Fri 13:24]--[2013-09-13 Fri 13:56] =>  0:32
+   #9709
+   CLOCK: [2013-09-12 Thu 15:13]--[2013-09-12 Thu 15:37] =>  0:24
+   irc, email
+   CLOCK: [2013-09-12 Thu 13:20]--[2013-09-12 Thu 13:37] =>  0:17
+   CLOCK: [2013-09-12 Thu 11:38]--[2013-09-12 Thu 11:43] =>  0:05
+   danish press and HS
+   CLOCK: [2013-09-12 Thu 07:42]--[2013-09-12 Thu 07:58] =>  0:16
+   CLOCK: [2013-09-12 Thu 06:43]--[2013-09-12 Thu 07:12] =>  0:29
+   email
+** ietf  
+   CLOCK: [2013-09-15 Sun 13:55]--[2013-09-15 Sun 14:09] =>  0:14
+   CLOCK: [2013-09-15 Sun 01:14]--[2013-09-15 Sun 01:33] =>  0:19
+   CLOCK: [2013-09-13 Fri 11:02]--[2013-09-13 Fri 11:06] =>  0:04
+   CLOCK: [2013-09-13 Fri 09:25]--[2013-09-13 Fri 09:37] =>  0:12
+   CLOCK: [2013-09-12 Thu 20:31]--[2013-09-12 Thu 20:58] =>  0:27
+   CLOCK: [2013-09-12 Thu 13:43]--[2013-09-12 Thu 13:50] =>  0:07
+   CLOCK: [2013-09-12 Thu 08:13]--[2013-09-12 Thu 08:43] =>  0:30
+   CLOCK: [2013-09-11 Wed 23:30]--[2013-09-11 Wed 23:45] =>  0:15
+   email
+** dfri
+   CLOCK: [2013-09-14 Sat 23:24]--[2013-09-15 Sun 00:05] =>  0:41
+   CLOCK: [2013-09-14 Sat 23:00]--[2013-09-14 Sat 23:13] =>  0:13
+   tu-rapport
+   CLOCK: [2013-09-14 Sat 22:26]--[2013-09-14 Sat 22:50] =>  0:24
+   sysadm; looking for lost traffic
+   CLOCK: [2013-09-14 Sat 22:12]--[2013-09-14 Sat 22:26] =>  0:14
+   tu-rapport
+   CLOCK: [2013-09-13 Fri 08:35]--[2013-09-13 Fri 09:25] =>  0:50
+   reading
+   CLOCK: [2013-09-12 Thu 16:22]--[2013-09-12 Thu 16:43] =>  0:21
+   sysadm; freebsd update
+   CLOCK: [2013-09-12 Thu 08:55]--[2013-09-12 Thu 08:58] =>  0:03
+   sysadm; daily
+   CLOCK: [2013-09-12 Thu 07:58]--[2013-09-12 Thu 08:45] =>  0:47
+   email
+   CLOCK: [2013-09-11 Wed 23:02]--[2013-09-11 Wed 23:30] =>  0:28
+   sysadm; update freebsd
+** tflows
+   CLOCK: [2013-09-13 Fri 14:50]--[2013-09-13 Fri 16:47] =>  1:57
+   CLOCK: [2013-09-13 Fri 12:18]--[2013-09-13 Fri 13:00] =>  0:42
+   CLOCK: [2013-09-13 Fri 00:54]--[2013-09-13 Fri 01:09] =>  0:15
+   CLOCK: [2013-09-13 Fri 00:39]--[2013-09-13 Fri 00:45] =>  0:06
+   CLOCK: [2013-09-12 Thu 23:18]--[2013-09-13 Fri 00:26] =>  1:08
+   CLOCK: [2013-09-12 Thu 20:58]--[2013-09-12 Thu 22:19] =>  1:21
+   CLOCK: [2013-09-12 Thu 17:14]--[2013-09-12 Thu 17:42] =>  0:28
+   CLOCK: [2013-09-12 Thu 13:50]--[2013-09-12 Thu 16:22] =>  2:32
+   CLOCK: [2013-09-12 Thu 10:38]--[2013-09-12 Thu 11:38] =>  1:00
+   CLOCK: [2013-09-12 Thu 09:44]--[2013-09-12 Thu 09:55] =>  0:11
+   CLOCK: [2013-09-11 Wed 20:00]--[2013-09-11 Wed 20:21] =>  0:21
+   mapreduce
+
+** <2013-09-11 Wed>
+   --:-- ietf [15m]
+   09:05 crypto explorers [30m]
+   10:00 tor; email, irc and reading rogers draft post on the lifecycle of a new relay [1h]
+   13:35 tor [10m]
+   13:45 dfri [10m]
+   13:55 tflows [40m]
+   14:50 ietf [20m]
+   15:10 sif14 [10m]
+   16:00 email, irc [5m]
+   16:05 dfri; sysadm [10m]
+   16:15 30c3 [25m]
+   16:40 tflows [50m]
+   17:30 mail; 30c3, ietf, tor [10m]
+   --:-- tflows [20m]
+
+** <2013-09-10 Tue>
+   06:40 tor; email [1h10m]
+   08:45 email [5m]
+   08:50 ietf [1h]
+   10:15 ietf [25m]
+   10:40 security; studies, ec [15m]
+   10:55 tflows; db aggregation [25m]
+   12:30 tflows [1h]
+   13:50 tor [10m]
+   14:15 tflows [25m]
+   14:45 tflows [15m]
+   15:20 tflows [30m]
+   16:05 tflows [35m]
+
+** <2013-09-09 Mon>
+   --:-- pmacct; talk to johan abt presentation [15m]
+   14:50 pmacct; presentation layer [35m]
+   15:25 tor [5m]
+   15:40 ietf [25m]
+   16:30 pmacct [30m]
+   17:00 tor; eu blocking [10m]
+   17:20 dfri; ACTA docs [10m]
+   17:30 tor [15m]
+   17:45 ietf [25m]
+   18:10 sunet; tor, new machine [5m]
+* week 36 (sep 2--8)
+  fri 09:10 radsecproxy; uninett crash
+  <email sent to radsecproxy ml> end
+  10:30 20m -"-
+  13:00 ndn weekly
+* week 34 (20013-08-19--25)
+misc
+* week 32 & 33
+vacation
+* week 31
+ietf berlin
+* week 30
+tor summer dev mtg
 * week 29
-- radsecproxy; bug
+  - radsecproxy; bug
 
-<2013-07-15 Mon>
-15:00 tor; reviewing #8949 and more [3h]
+    <2013-07-15 Mon>
+    15:00 tor; reviewing #8949 and more [3h]
 * week 28
-2013-07-08--14 vacation
+  2013-07-08--14 vacation
 * week 27
-2013-07-01--07 vacation
+  2013-07-01--07 vacation
 * week 26
-<2013-06-30 Sun>
-15:30 tor; #8533 [1h]
+  <2013-06-30 Sun>
+  15:30 tor; #8533 [1h]
 
-<2013-06-29 Sat>
-14:30 tor; shadow deliv [45m]
+  <2013-06-29 Sat>
+  14:30 tor; shadow deliv [45m]
 
-<2013-06-24 Mon>
-15: tor; #8533 testing docu [10m]
+  <2013-06-24 Mon>
+  15: tor; #8533 testing docu [10m]
 * week 25
-<2013-06-20 Thu>
-tor; juggling [1h]
+  <2013-06-20 Thu>
+  tor; juggling [1h]
 
-tor 1h -> tor 1
-<2013-06-19 Wed>
-11:45 tor; #8533 testing docu [10m]
+  tor 1h -> tor 1
+  <2013-06-19 Wed>
+  11:45 tor; #8533 testing docu [10m]
 
-tor 10m -> 0
-<2013-06-18 Tue>
-11:15 tor; #8531 docu and porting [3h]
-16:10 tor; juggle tickets and stuff [30m]
+  tor 10m -> 0
+  <2013-06-18 Tue>
+  11:15 tor; #8531 docu and porting [3h]
+  16:10 tor; juggle tickets and stuff [30m]
 
-tor 3h30m -> tor 4
-<2013-06-17 Mon>
-09:55 tor; #6027 [10m]
-12:10 tor; #6027 [1h]
-15:35 tor; #6027 [10m]
-15:50 tor; #6027 [20m]
-16:30 tor; #6027 [1h30m]
-21:40 tor; email [20m]
-00:05 tor; #6027 [1h15m]
+  tor 3h30m -> tor 4
+  <2013-06-17 Mon>
+  09:55 tor; #6027 [10m]
+  12:10 tor; #6027 [1h]
+  15:35 tor; #6027 [10m]
+  15:50 tor; #6027 [20m]
+  16:30 tor; #6027 [1h30m]
+  21:40 tor; email [20m]
+  00:05 tor; #6027 [1h15m]
 
-tor 4h45m -> tor 5
+  tor 4h45m -> tor 5
 * week 24
-<2013-06-16 Sun>
-13:15 tor; #6027 [1h30m]
-18:00 tor; #6027 [2h]
+  <2013-06-16 Sun>
+  13:15 tor; #6027 [1h30m]
+  18:00 tor; #6027 [2h]
 
-tor 3h30m -> tor 3
-<2013-06-14 Fri>
-00:00 tor; tbb gitian [20m]
-10:00 tor; catchup [1h]
-12:25 tor; tbb gitian [20m]
-13:00 ndn meeting [30m]
-13:30 tor; tbb and #8531 [1h]
-15:00 tor; tbb and #8532 [40m]
-15:40 pmacct [30m]
+  tor 3h30m -> tor 3
+  <2013-06-14 Fri>
+  00:00 tor; tbb gitian [20m]
+  10:00 tor; catchup [1h]
+  12:25 tor; tbb gitian [20m]
+  13:00 ndn meeting [30m]
+  13:30 tor; tbb and #8531 [1h]
+  15:00 tor; tbb and #8532 [40m]
+  15:40 pmacct [30m]
 
 
-tor 3h20m -> tor 4
-pmacct 30m -> 0
-<2013-06-13 Thu>
-13:00 tor; tbb gitian [30m]
-15:00 tor; make test-network #8530 [1h40m]
+  tor 3h20m -> tor 4
+  pmacct 30m -> 0
+  <2013-06-13 Thu>
+  13:00 tor; tbb gitian [30m]
+  15:00 tor; make test-network #8530 [1h40m]
 
-tor 2h10m -> tor 2
-<2013-06-12 Wed>
-09:30 tor; chutney #8531 [45m]
-13:00 tor; chutney #8531 [1h15m]
-15:20 tor; chutney #8531 [2h15m]
-22:30 tor; tbb gitian build [30m]
+  tor 2h10m -> tor 2
+  <2013-06-12 Wed>
+  09:30 tor; chutney #8531 [45m]
+  13:00 tor; chutney #8531 [1h15m]
+  15:20 tor; chutney #8531 [2h15m]
+  22:30 tor; tbb gitian build [30m]
 
-tor 4h45m -> tor 5
-<2013-06-11 Tue>
-08:20 tor; chutney #8531; async tcp server+client w/ socks support [1h45]
-14:00 tor; email, planning [1h]
-15:15 tor; chutney #8531; async server+client [1h]
-16:45 tor; chutney #8531 [2h15m]
-20:10 tor; chutney #8531 [1h20m]
-22:10 tor; chutney #8531 [2h]
+  tor 4h45m -> tor 5
+  <2013-06-11 Tue>
+  08:20 tor; chutney #8531; async tcp server+client w/ socks support [1h45]
+  14:00 tor; email, planning [1h]
+  15:15 tor; chutney #8531; async server+client [1h]
+  16:45 tor; chutney #8531 [2h15m]
+  20:10 tor; chutney #8531 [1h20m]
+  22:10 tor; chutney #8531 [2h]
 
-tor 9h20m -> tor 10
-<2013-06-10 Mon>
-13:20 tor; catchup [30m]
-13:50 tor; chutney #8531 [4h]
-21:40 tor; chutney #8531 [1h]
-22:40 tor; chutney #8532 [30m]
+  tor 9h20m -> tor 10
+  <2013-06-10 Mon>
+  13:20 tor; catchup [30m]
+  13:50 tor; chutney #8531 [4h]
+  21:40 tor; chutney #8531 [1h]
+  22:40 tor; chutney #8532 [30m]
 
-tor 6h -> tor 6
+  tor 6h -> tor 6
 * week 23
-<2013-06-08 Sat>
-14:00 tor; chutney [1h35m]
+  <2013-06-08 Sat>
+  14:00 tor; chutney [1h35m]
 
-tor 1h35m
-<2013-06-07 Fri>
-09:00 tor; chutney [4h]
-13:00 lunch / tor; talking to SR UR [1h30m]
-14:35 tor; chutney [2h25m]
-22:15 tor; builting tbb, gitian style [2h15m]
+  tor 1h35m
+  <2013-06-07 Fri>
+  09:00 tor; chutney [4h]
+  13:00 lunch / tor; talking to SR UR [1h30m]
+  14:35 tor; chutney [2h25m]
+  22:15 tor; builting tbb, gitian style [2h15m]
 
-tor 10h10m
-<2013-06-06 Thu>
-14:45 tor; chutney [3h]
-tor; chutney [1h]
+  tor 10h10m
+  <2013-06-06 Thu>
+  14:45 tor; chutney [3h]
+  tor; chutney [1h]
 
-tor 4h
-<2013-06-05 Wed>
-09:30 tor; catchup [1h]
-10:30 tor; chutney [1h20m]
-12:00 tor; voice, sip, webrtc with oej [2h]
-14:00 tor; catchup [30m]
-14:30 dfri; acta docs [30m]
-15:00 tor; chutney [2h30m]
+  tor 4h
+  <2013-06-05 Wed>
+  09:30 tor; catchup [1h]
+  10:30 tor; chutney [1h20m]
+  12:00 tor; voice, sip, webrtc with oej [2h]
+  14:00 tor; catchup [30m]
+  14:30 dfri; acta docs [30m]
+  15:00 tor; chutney [2h30m]
 
-tor 7h20m
-<2013-06-04 Tue>
-tor; build tbb [4h]
-tor; chutney [1h]
+  tor 7h20m
+  <2013-06-04 Tue>
+  tor; build tbb [4h]
+  tor; chutney [1h]
 
-tor 5h
-<2013-06-03 Mon>
-tor; build tbb [4h]
+  tor 5h
+  <2013-06-03 Mon>
+  tor; build tbb [4h]
 
-tor 4h
+  tor 4h
 * week 22
-<2013-05-29 Wed>
-15:00 pmacct [2h30m]
+  <2013-05-29 Wed>
+  15:00 pmacct [2h30m]
 
-<2013-05-28 Tue>
-radsecproxy [30m]
-12:55 radsecproxy; crl bug [1h35m]
+  <2013-05-28 Tue>
+  radsecproxy [30m]
+  12:55 radsecproxy; crl bug [1h35m]
 
-radsecproxy 2h5m
-<2013-05-27 Mon>
-radsecproxy; crl bug [1h]
+  radsecproxy 2h5m
+  <2013-05-27 Mon>
+  radsecproxy; crl bug [1h]
 
-radsecproxy 1h
+  radsecproxy 1h
 * week 21
-<2013-05-23 Thu>
-sif 13
-09:10 radsecproxy; crl bug [1h]
+  <2013-05-23 Thu>
+  sif 13
+  09:10 radsecproxy; crl bug [1h]
 
-radsecproxy 1h -> jra3t1 1
-<2013-05-22 Wed>
-sif13
+  radsecproxy 1h -> jra3t1 1
+  <2013-05-22 Wed>
+  sif13
 
-<2013-05-21 Tue>
-sif dev summit
-radsecproxy; crl bug [30m]
-10:35 libradsec; moonshot integration [30m]
+  <2013-05-21 Tue>
+  sif dev summit
+  radsecproxy; crl bug [30m]
+  10:35 libradsec; moonshot integration [30m]
 
-radsecproxy 30m -> jra3t1 1
-libradsec 30m -> 0
-<2013-05-20 Mon>
-sif dev summit
-08:00 radsecproxy; crl bug [1h]
-09:40 radsecproxy; crl bug [1h]
+  radsecproxy 30m -> jra3t1 1
+  libradsec 30m -> 0
+  <2013-05-20 Mon>
+  sif dev summit
+  08:00 radsecproxy; crl bug [1h]
+  09:40 radsecproxy; crl bug [1h]
 
-radsecproxy 2h -> jra3t1 2
+  radsecproxy 2h -> jra3t1 2
 * week 20
-<2013-05-18 Sat>
-18:50 libradsec; moonshot [15m]
-19:05 radsecproxy; crl bug [50m]
+  <2013-05-18 Sat>
+  18:50 libradsec; moonshot [15m]
+  19:05 radsecproxy; crl bug [50m]
 
-libradsec 15m -> 0
-radsecproxy 50m -> jra3t1 1
-<2013-05-17 Fri>
-10:15 libradsec; moonshot integration [1h]
-12:15 libradsec [45m]
-13:00 ndn; weekly meeting
-13:30 libradsec; message authenticator verification [30m]
-14:40 radsecproxy; bug [10m]
-15:30 libradsec; moonshot integration [1h]
+  libradsec 15m -> 0
+  radsecproxy 50m -> jra3t1 1
+  <2013-05-17 Fri>
+  10:15 libradsec; moonshot integration [1h]
+  12:15 libradsec [45m]
+  13:00 ndn; weekly meeting
+  13:30 libradsec; message authenticator verification [30m]
+  14:40 radsecproxy; bug [10m]
+  15:30 libradsec; moonshot integration [1h]
 
-libradsec 3h15m -> jra3t1 4
-radsecproxy 10m -> 0
-<2013-05-16 Thu>
-12:20 libradsec; moonshot integration [15m]
-13:15 libradsec; moonshot integration [1h]
-14:15 libradsec [30m]
-15:50 libradsec [1h]
+  libradsec 3h15m -> jra3t1 4
+  radsecproxy 10m -> 0
+  <2013-05-16 Thu>
+  12:20 libradsec; moonshot integration [15m]
+  13:15 libradsec; moonshot integration [1h]
+  14:15 libradsec [30m]
+  15:50 libradsec [1h]
 
-libradsec 2h45m -> jra3t1 3
-<2013-05-15 Wed>
-09:00 libradsec [1h25m]
-10:35 libradsec [25m]
-11:25 libradsec [1h15m]
-14:10 libradsec [1h40m]
-17:45 libradsec [1h30m]
-22:00 libradsec; moonshot integration [1h15]
+  libradsec 2h45m -> jra3t1 3
+  <2013-05-15 Wed>
+  09:00 libradsec [1h25m]
+  10:35 libradsec [25m]
+  11:25 libradsec [1h15m]
+  14:10 libradsec [1h40m]
+  17:45 libradsec [1h30m]
+  22:00 libradsec; moonshot integration [1h15]
 
-libradsec 7h35m -> jra3t1 8
-<2013-05-14 Tue>
-12:20 libradsec [1h30m]
-14:50 libradsec [1h40m]
-16:55 libradsec [25m]
-18:15 libradsec [40m]
+  libradsec 7h35m -> jra3t1 8
+  <2013-05-14 Tue>
+  12:20 libradsec [1h30m]
+  14:50 libradsec [1h40m]
+  16:55 libradsec [25m]
+  18:15 libradsec [40m]
 
-libradsec 5h25m -> jra3t1 6
-<2013-05-13 Mon>
-13:20 libradsec [55m]
-14:15 -
-0 libradsec [30m]
+  libradsec 5h25m -> jra3t1 6
+  <2013-05-13 Mon>
+  13:20 libradsec [55m]
+  14:15 -
+  0 libradsec [30m]
 
-libradsec 1h25m -> jra3t1 2
+  libradsec 1h25m -> jra3t1 2
 * week 19
-<2013-05-10 Fri>
-17:50 libradsec [35m]
-18:25 end
+  <2013-05-10 Fri>
+  17:50 libradsec [35m]
+  18:25 end
 
-libradsec 35m -> jra3t1 1
-<2013-05-09 Thu>
-08:00 ndn; security, nginx [30m]
-08:30 libradsec [30m]
-09:20 libradsec [30m]
+  libradsec 35m -> jra3t1 1
+  <2013-05-09 Thu>
+  08:00 ndn; security, nginx [30m]
+  08:30 libradsec [30m]
+  09:20 libradsec [30m]
 
-libradsec 1h -> jra3t1 1
-<2013-05-08 Wed>
-07:30 libradsec; radius [1h]
-10:25 libradsec; radius [1h20m]
-12:30 libradsec; radius [5h]
-20:10 libradsec; bug fixes in radius + testing [20m]
-21:00 libradsec; release engineering [2h10m]
+  libradsec 1h -> jra3t1 1
+  <2013-05-08 Wed>
+  07:30 libradsec; radius [1h]
+  10:25 libradsec; radius [1h20m]
+  12:30 libradsec; radius [5h]
+  20:10 libradsec; bug fixes in radius + testing [20m]
+  21:00 libradsec; release engineering [2h10m]
 
-libradsec 9h50m -> jra3t1 10
-<2013-05-07 Tue>
-10:00 libradsec; moonshot [15m]
-10:30 libradsec [1h]
-12:05 libradsec [20m]
-12:35 libradsec [1h30m]
-14:05 dfri [25m]
-14:30 libradsec [1h50m]
+  libradsec 9h50m -> jra3t1 10
+  <2013-05-07 Tue>
+  10:00 libradsec; moonshot [15m]
+  10:30 libradsec [1h]
+  12:05 libradsec [20m]
+  12:35 libradsec [1h30m]
+  14:05 dfri [25m]
+  14:30 libradsec [1h50m]
 
-libradsec 4h55m -> jra3t1 5
-<2013-05-06 Mon>
-09:15 ndn admin [30m]
-11:00 libradsec; testing framework [50m]
-13:25 libradsec; testing [1h20m]
-14:45 libradsec; moonshot integration [1h45m]
-16:35 libradsec; new testing framework [45m]
-20:00 libradsec; testing [30m]
+  libradsec 4h55m -> jra3t1 5
+  <2013-05-06 Mon>
+  09:15 ndn admin [30m]
+  11:00 libradsec; testing framework [50m]
+  13:25 libradsec; testing [1h20m]
+  14:45 libradsec; moonshot integration [1h45m]
+  16:35 libradsec; new testing framework [45m]
+  20:00 libradsec; testing [30m]
 
-libradsec 5h10m -> jra3t1 6
+  libradsec 5h10m -> jra3t1 6
 * week 18
-<2013-05-03 Fri>
-11:05 libradsec [10m]
-12:20 libradsec [2h15m]
+  <2013-05-03 Fri>
+  11:05 libradsec [10m]
+  12:20 libradsec [2h15m]
 
-libradsec 2h25m -> jra3t1 4
-<2013-05-02 Thu>
-14:30 libradsec [45m]
-15:35 libradsec [1h10m]
-16:45 libradsec; test tools (extending gnutls-cli-debug) [2h]
-18:45 tor ndn sysadm [25m]
-19:10 dfri [20m]
-- libradsec; test tools (extending gnutls-cli-debug) [30m]
+  libradsec 2h25m -> jra3t1 4
+  <2013-05-02 Thu>
+  14:30 libradsec [45m]
+  15:35 libradsec [1h10m]
+  16:45 libradsec; test tools (extending gnutls-cli-debug) [2h]
+  18:45 tor ndn sysadm [25m]
+  19:10 dfri [20m]
+  - libradsec; test tools (extending gnutls-cli-debug) [30m]
 
-libradsec 5h25m -> jra3t1 6
-<2013-04-30 Tue>
-16:05 libradsec [1h30m]
+    libradsec 5h25m -> jra3t1 6
+    <2013-04-30 Tue>
+    16:05 libradsec [1h30m]
 
-libradsec 1h30m -> jra3t1 2
-<2013-04-29 Mon>
-10:40 libradsec [35m]
-14:40 libradsec [35m]
-15:30 libradsec [30m]
-17:00 libradsec [30m]
-17:30 nginx security [30m]
+    libradsec 1h30m -> jra3t1 2
+    <2013-04-29 Mon>
+    10:40 libradsec [35m]
+    14:40 libradsec [35m]
+    15:30 libradsec [30m]
+    17:00 libradsec [30m]
+    17:30 nginx security [30m]
 
-libradsec 2h10m -> jra3t1 3
-security 30m -> 0
+    libradsec 2h10m -> jra3t1 3
+    security 30m -> 0
 * week 17
-<2013-04-26 Fri>
-12:30 libradsec [30m]
-16:50 libradsec [40m]
+  <2013-04-26 Fri>
+  12:30 libradsec [30m]
+  16:50 libradsec [40m]
 
-libradsec 1h10m -> jra3t1 2
-<2013-04-24 Wed>
-jra3t1 1
+  libradsec 1h10m -> jra3t1 2
+  <2013-04-24 Wed>
+  jra3t1 1
 
-<2013-04-23 Tue>
-08:45 dfri; sysadm [30m]
-10:00 radsecproxy; bug and fixes [2h]
-15:20 libradsec [2h]
+  <2013-04-23 Tue>
+  08:45 dfri; sysadm [30m]
+  10:00 radsecproxy; bug and fixes [2h]
+  15:20 libradsec [2h]
 
-jra3t1 4
-<2013-04-22 Mon>
-15:35 libradsec [1h]
+  jra3t1 4
+  <2013-04-22 Mon>
+  15:35 libradsec [1h]
 
-jra3t1 1
+  jra3t1 1
 * week 16
-<2013-04-19 Fri>
-12:40 libradsec [1h20m]
+  <2013-04-19 Fri>
+  12:40 libradsec [1h20m]
 
-jra3t1 2
-<2013-04-18 Thu>
-16:20 libradsec [1h15m]
+  jra3t1 2
+  <2013-04-18 Thu>
+  16:20 libradsec [1h15m]
 
-jra3t1 2
-<2013-04-16 Tue>
-11:00 libradsec [20m]
-12:50 libradsec [25m]
-14:05 libradsec [55m]
-15:55 libradsec [30m]
-17:00 libradsec [10m]
+  jra3t1 2
+  <2013-04-16 Tue>
+  11:00 libradsec [20m]
+  12:50 libradsec [25m]
+  14:05 libradsec [55m]
+  15:55 libradsec [30m]
+  17:00 libradsec [10m]
 
-libradsec 2h20m -> jra3t1 3
-<2013-04-14 Mon>
-radsecproxy [1h]
+  libradsec 2h20m -> jra3t1 3
+  <2013-04-14 Mon>
+  radsecproxy [1h]
 
-jra3t1 1
+  jra3t1 1
 * week 15
-fri ndn internal
-mon-thu vacation
+  fri ndn internal
+  mon-thu vacation
 * week 14
-tue-fri vacation
-mon easter holiday
+  tue-fri vacation
+  mon easter holiday
 * week 13
-fri easter holiday
-thu vacation 4
-tue-wed vacation 8
+  fri easter holiday
+  thu vacation 4
+  tue-wed vacation 8
 
-<2013-03-25 Mon>
-8h nordunet
+  <2013-03-25 Mon>
+  8h nordunet
 * week 12
-<2013-03-22 Fri>
-08:20 mail, irc
-09:40 ndn; admin
-11:40 lunch
-12:40 misc
-13:00 ndn; meeting
+  <2013-03-22 Fri>
+  08:20 mail, irc
+  09:40 ndn; admin
+  11:40 lunch
+  12:40 misc
+  13:00 ndn; meeting
 
-mon-thu tor dev boston
+  mon-thu tor dev boston
 * week 11
-<2013-03-15 Fri>
-08:15 radsecproxy; bug [1h45m]
-10:00 ndn; sec audit
-10:30 radsecproxy [15m]
-10:45 ndn; travel preparation
-11:15 lunch
-11:50 radsecproxy [20m]
-12:10 -
-12:55 radsecproxy [5hm]
-13:00 ndn; meeting
-13:30 radsecproxy [2h15m]
-15:45 ndn; admin
-16:05 radsecproxy [1h]
+  <2013-03-15 Fri>
+  08:15 radsecproxy; bug [1h45m]
+  10:00 ndn; sec audit
+  10:30 radsecproxy [15m]
+  10:45 ndn; travel preparation
+  11:15 lunch
+  11:50 radsecproxy [20m]
+  12:10 -
+  12:55 radsecproxy [5hm]
+  13:00 ndn; meeting
+  13:30 radsecproxy [2h15m]
+  15:45 ndn; admin
+  16:05 radsecproxy [1h]
 
-radsecproxy 5h40m -> 6
+  radsecproxy 5h40m -> 6
 
-<2013-03-14 Thu>
-08:15 email, irc [20m]
-08:35 radsecproxy; maja bug [1h50m]
-10:35 pmacct; discussions [25m]
-11:00 radsecproxy [15m]
-12:00 radsecproxy [1h]
-13:40 radsecproxy [1h10m]
-14:50 dfri; google big tent [3h]
+  <2013-03-14 Thu>
+  08:15 email, irc [20m]
+  08:35 radsecproxy; maja bug [1h50m]
+  10:35 pmacct; discussions [25m]
+  11:00 radsecproxy [15m]
+  12:00 radsecproxy [1h]
+  13:40 radsecproxy [1h10m]
+  14:50 dfri; google big tent [3h]
 
-radsecproxy 4h15m -> 5
-pmacct 25m -> 0
+  radsecproxy 4h15m -> 5
+  pmacct 25m -> 0
 
-<2013-03-13 Wed>
-08:20 irc, email [2h50m]
-12:10 irc, email [20m]
-12:30 radsecproxy; bug from maja [10m]
-12:40 - set up more obfsproxies [1h]
-13:40 dfri; communicate [1h10m]
-14:50 radsecproxy [20m]
-15:10 misc stuff :( [1h40m]
+  <2013-03-13 Wed>
+  08:20 irc, email [2h50m]
+  12:10 irc, email [20m]
+  12:30 radsecproxy; bug from maja [10m]
+  12:40 - set up more obfsproxies [1h]
+  13:40 dfri; communicate [1h10m]
+  14:50 radsecproxy [20m]
+  15:10 misc stuff :( [1h40m]
 
-radsecproxy 30m -> 1
+  radsecproxy 30m -> 1
 
-<2013-03-12 Tue>
-08:15 email, irc
-08:35 tor; prepare oktavilla presentation [45m]
-09:40 pmacct [35m]
-10:15 ndn; discussions [15m]
-10:40 pmacct; discuss with frank [20m]
-11:00 ndn; sec audit meeting [30m]
-12:00 tor; oktavilla talk [3h30m]
-16:15 ndn [15m]
-16:30 tor/dfri/privacy [1h30m]
-18:15 radsecproxy; bug from maja [15m]
+  <2013-03-12 Tue>
+  08:15 email, irc
+  08:35 tor; prepare oktavilla presentation [45m]
+  09:40 pmacct [35m]
+  10:15 ndn; discussions [15m]
+  10:40 pmacct; discuss with frank [20m]
+  11:00 ndn; sec audit meeting [30m]
+  12:00 tor; oktavilla talk [3h30m]
+  16:15 ndn [15m]
+  16:30 tor/dfri/privacy [1h30m]
+  18:15 radsecproxy; bug from maja [15m]
 
-pmacct 55m -> 0
-radsecproxy 15m -> 1
+  pmacct 55m -> 0
+  radsecproxy 15m -> 1
 
-<2013-03-11 Mon>
-08:05 email, irc [1h40m]
-09:45 ndn; admin [1h]
-10:45 dfri; peering [15m]
-11:00 - [20m]
-11:20 pmacct [40m]
-12:00 ndn; identity -- moz browserid [10m]
-13:05 libradsec; standards [40m]
-14:00 pmacct [3h]
+  <2013-03-11 Mon>
+  08:05 email, irc [1h40m]
+  09:45 ndn; admin [1h]
+  10:45 dfri; peering [15m]
+  11:00 - [20m]
+  11:20 pmacct [40m]
+  12:00 ndn; identity -- moz browserid [10m]
+  13:05 libradsec; standards [40m]
+  14:00 pmacct [3h]
 
-pmacct 3h40m -> 0
-libradsec 40m -> 1
+  pmacct 3h40m -> 0
+  libradsec 40m -> 1
 * week 10
-<2013-03-09 Sat>
-11:25 dfri; förb. årsmöte [50m]
+  <2013-03-09 Sat>
+  11:25 dfri; förb. årsmöte [50m]
 
-<2013-03-08 Fri>
-10:30 ndn; security audit [50m]
-12:00 ndn; security audit [4h]
+  <2013-03-08 Fri>
+  10:30 ndn; security audit [50m]
+  12:00 ndn; security audit [4h]
 
-ndn sec audit 4h50m -> 0
+  ndn sec audit 4h50m -> 0
 
-<2013-03-07 Thu>
-09:55 ndn; security audit [1h40m]
-14:50 ndn; security audit [1h40m]
-16:50 ndn; tor sysadm [30m]
-19:30 ndn; security audit [2h20m]
+  <2013-03-07 Thu>
+  09:55 ndn; security audit [1h40m]
+  14:50 ndn; security audit [1h40m]
+  16:50 ndn; tor sysadm [30m]
+  19:30 ndn; security audit [2h20m]
 
-ndn sec audit 5h40m -> 0
-ndn tor 30m -> 0
+  ndn sec audit 5h40m -> 0
+  ndn tor 30m -> 0
 
-<2013-03-06 Wed>
-09:00 irc, email [1h10m]
-10:10 pmacct [2h15m]
-12:55 ndn; security audit [5h5m]
+  <2013-03-06 Wed>
+  09:00 irc, email [1h10m]
+  10:10 pmacct [2h15m]
+  12:55 ndn; security audit [5h5m]
 
-pmacct 2h15m -> 0
-ndn sec audit 5h5m -> 0
+  pmacct 2h15m -> 0
+  ndn sec audit 5h5m -> 0
 
-<2013-03-05 Tue>
-09:15 ndn; security audit discussions [1h25m]
-10:40 irc, mail [15m]
-11:50 ndn; security audit [30m]
-15:15 mail, irc [25m]
-15:40 ndn; sec audit [10m]
-15:50 dfri; switch config [40m]
-16:30 ndn; sec audit [20m]
-16:50 pmacct; python+mongo [1h30m]
-21:50 dfri; GA preparation [40m]
+  <2013-03-05 Tue>
+  09:15 ndn; security audit discussions [1h25m]
+  10:40 irc, mail [15m]
+  11:50 ndn; security audit [30m]
+  15:15 mail, irc [25m]
+  15:40 ndn; sec audit [10m]
+  15:50 dfri; switch config [40m]
+  16:30 ndn; sec audit [20m]
+  16:50 pmacct; python+mongo [1h30m]
+  21:50 dfri; GA preparation [40m]
 
-ndn sec audit 2h25m -> 0
-pmacct 1h30m -> 0
+  ndn sec audit 2h25m -> 0
+  pmacct 1h30m -> 0
 
-<2013-03-04 Mon>
-11:15 ndn; admin [1h]
-13:30 pmacct [30m]
-14:15 ndn; josva [45m]
-15:15 ndn; dev sysadmin: upgrade vm's [1h15m]
-16:35 dfri; sysadm [20m]
-16:55 pmacct; d3js [35m]
+  <2013-03-04 Mon>
+  11:15 ndn; admin [1h]
+  13:30 pmacct [30m]
+  14:15 ndn; josva [45m]
+  15:15 ndn; dev sysadmin: upgrade vm's [1h15m]
+  16:35 dfri; sysadm [20m]
+  16:55 pmacct; d3js [35m]
 
-pmacct 1h5m -> 0
+  pmacct 1h5m -> 0
 * week 9
-<2013-03-01 Fri>
-09:20 sunet; tor sysadm [30m]
-09:50 mail, irc [20m]
-10:10 tor; hunt down a bad exit [1h5m]
-11:15 mail, irc [15m]
-11:30 dfri; infobrev -> blog [25m]
-11:55 dfri; sysadm, daily [25m]
-13:05 dfri; email [20m]
-13:25 irc catchup [15m]
-13:40 libradsec [1h10m]
+  <2013-03-01 Fri>
+  09:20 sunet; tor sysadm [30m]
+  09:50 mail, irc [20m]
+  10:10 tor; hunt down a bad exit [1h5m]
+  11:15 mail, irc [15m]
+  11:30 dfri; infobrev -> blog [25m]
+  11:55 dfri; sysadm, daily [25m]
+  13:05 dfri; email [20m]
+  13:25 irc catchup [15m]
+  13:40 libradsec [1h10m]
 
-libradsec 1h10m -> jra3t1 2
-sunet 30m -> sunet 1
+  libradsec 1h10m -> jra3t1 2
+  sunet 30m -> sunet 1
 
-<2013-02-28 Thu>
-09:00 sunet; talking tor with maria [35m]
-09:35 email, irc [25m]
-10:00 sunet; tor [1h15m]
-11:45 dfri; sysadmin: mesh no bufferspace available [1h10m]
-13:35 dfri; acta paper, journalist [10m]
-13:45 libradsec [55m]
-14:40 dfri; sysadm [10m]
-15:00 ndn; admin [10m]
-15:10 sunet; tor [1h30m]
-16:40 dfri; edri GA and more [20m]
-17:00 libradsec [50m]
-17:50 dfri; protocol and ACTA [35m]
-20:40 dfri; ACTA papers [50m]
+  <2013-02-28 Thu>
+  09:00 sunet; talking tor with maria [35m]
+  09:35 email, irc [25m]
+  10:00 sunet; tor [1h15m]
+  11:45 dfri; sysadmin: mesh no bufferspace available [1h10m]
+  13:35 dfri; acta paper, journalist [10m]
+  13:45 libradsec [55m]
+  14:40 dfri; sysadm [10m]
+  15:00 ndn; admin [10m]
+  15:10 sunet; tor [1h30m]
+  16:40 dfri; edri GA and more [20m]
+  17:00 libradsec [50m]
+  17:50 dfri; protocol and ACTA [35m]
+  20:40 dfri; ACTA papers [50m]
 
-sunet 3h20m -> sunet 4
-libradsec 1h45m -> jra3t1 2
-ndn 10m -> 0
+  sunet 3h20m -> sunet 4
+  libradsec 1h45m -> jra3t1 2
+  ndn 10m -> 0
 
-<2013-02-27 Wed>
-11:00 dfri; rs0-1 dropping packets [40m]
-11:40 dfri; RIPE admin + sysadmin [1h]
-13:40 dfri; sysadm [25m]
-14:05 sunet; tor [45m]
-14:50 dfri; rs0-1 [1h30m]
-15:20 dfri; nyhetsbrev, tor-varför-text [30m]
-16:50 libradsec [1h10m]
-18:00 dfri; letters to eu [35m]
-22:10 dfri; eu blocking tor, email, irc [1h10m]
+  <2013-02-27 Wed>
+  11:00 dfri; rs0-1 dropping packets [40m]
+  11:40 dfri; RIPE admin + sysadmin [1h]
+  13:40 dfri; sysadm [25m]
+  14:05 sunet; tor [45m]
+  14:50 dfri; rs0-1 [1h30m]
+  15:20 dfri; nyhetsbrev, tor-varför-text [30m]
+  16:50 libradsec [1h10m]
+  18:00 dfri; letters to eu [35m]
+  22:10 dfri; eu blocking tor, email, irc [1h10m]
 
-libradsec 1h10m -> jra3t1 2
-sunet 45m -> sunet 1
+  libradsec 1h10m -> jra3t1 2
+  sunet 45m -> sunet 1
 
-<2013-02-26 Tue>
-11:35 libradsec [20m]
-14:00 libradsec [45m]
+  <2013-02-26 Tue>
+  11:35 libradsec [20m]
+  14:00 libradsec [45m]
 
-libradsec 1h5m -> jra3t1 2
+  libradsec 1h5m -> jra3t1 2
 
-<2013-02-25 Mon>
-10:20 - [1h20m]
-11:40 ndn; admin [10m]
-11:50 - [50m]
-12:40 lunch
-13:25 dfri [1h35m]
-15:00 libradsec [2h15m]
-17:15 -
+  <2013-02-25 Mon>
+  10:20 - [1h20m]
+  11:40 ndn; admin [10m]
+  11:50 - [50m]
+  12:40 lunch
+  13:25 dfri [1h35m]
+  15:00 libradsec [2h15m]
+  17:15 -
 
-libradsec 2h15m -> jra3t1 3
+  libradsec 2h15m -> jra3t1 3
 * week 8
-<2013-02-22 Fri>
-10:15 pmacct; look into graphing [45m]
-12:40 ndn; tor stats [1h45m]
+  <2013-02-22 Fri>
+  10:15 pmacct; look into graphing [45m]
+  12:40 ndn; tor stats [1h45m]
 
-pmacct 45m -> 0
-<2013-02-21 Thu>
-09:10 ndn; tor sysadm [25m]
-15:15 pmacct [30m]
-16:15 pmacct [40m]
+  pmacct 45m -> 0
+  <2013-02-21 Thu>
+  09:10 ndn; tor sysadm [25m]
+  15:15 pmacct [30m]
+  16:15 pmacct [40m]
 
-pmacct 1h10m -> 0
-<2013-02-20 Wed>
-10:20 pmacct [1h]
-11:20 dfri; cryptoparty [25m]
-13:15 pmacct [30m]
-14:35 pmacct [35m]
-17:25 pmacct [50m]
+  pmacct 1h10m -> 0
+  <2013-02-20 Wed>
+  10:20 pmacct [1h]
+  11:20 dfri; cryptoparty [25m]
+  13:15 pmacct [30m]
+  14:35 pmacct [35m]
+  17:25 pmacct [50m]
 
-pmacct 2h55m -> 0
-<2013-02-19 Tue>
-08:15 libradsec [1h]
-09:15 tor; read [20m]
-09:35 libradsec [15m]
-09:50 dfri [10m]
-10:35 libradsec [40m]
-13:00 libradsec [1h15m]
-14:15 ndn; pettai and radsec logs [30m]
-14:50 libradsec [2h20m]
+  pmacct 2h55m -> 0
+  <2013-02-19 Tue>
+  08:15 libradsec [1h]
+  09:15 tor; read [20m]
+  09:35 libradsec [15m]
+  09:50 dfri [10m]
+  10:35 libradsec [40m]
+  13:00 libradsec [1h15m]
+  14:15 ndn; pettai and radsec logs [30m]
+  14:50 libradsec [2h20m]
 
-tor 20m -> 0
-ndn 30m -> 0
-libradsec 5h40m -> jra3t1 6
-<2013-02-18 Mon>
-08:25 libradsec; standards [20m]
-09:55 libradsec; standards [15m]
-10:10 libradsec; API design [30m]
-10:40 ndn; sysadm [30m]
-11:10 ndn; admin [5m]
-12:45 ndn; admin [45m]
-14:25 libradsec; API [45m]
-16:05 libradsec; API [1h10m]
-17:40 libradsec; API [35m]
+  tor 20m -> 0
+  ndn 30m -> 0
+  libradsec 5h40m -> jra3t1 6
+  <2013-02-18 Mon>
+  08:25 libradsec; standards [20m]
+  09:55 libradsec; standards [15m]
+  10:10 libradsec; API design [30m]
+  10:40 ndn; sysadm [30m]
+  11:10 ndn; admin [5m]
+  12:45 ndn; admin [45m]
+  14:25 libradsec; API [45m]
+  16:05 libradsec; API [1h10m]
+  17:40 libradsec; API [35m]
 
-ndn 1h20m -> 0
-libradsec 3h35m -> jra3t1 4
+  ndn 1h20m -> 0
+  libradsec 3h35m -> jra3t1 4
 * week 7
-<2013-02-15 Fri>
-ndn; tor sysadmin [3h]
-libradsec [15m]
-18:00 libradsec [35m]
+  <2013-02-15 Fri>
+  ndn; tor sysadmin [3h]
+  libradsec [15m]
+  18:00 libradsec [35m]
 
-jra3t1 1
-ndn tor 3h -> SUNET 3
-<2013-02-14 Thu>
-09:30-11:00 irc & email [1h30m]
-11:00 sunet; tor sysadmin [1h]
-14:50 libradsec [2h]
+  jra3t1 1
+  ndn tor 3h -> SUNET 3
+  <2013-02-14 Thu>
+  09:30-11:00 irc & email [1h30m]
+  11:00 sunet; tor sysadmin [1h]
+  14:50 libradsec [2h]
 
-libradsec 2h -> jra3t1 2
-sunet tor 1h -> SUNET 1
-<2013-02-13 Wed>
-sec-heads
+  libradsec 2h -> jra3t1 2
+  sunet tor 1h -> SUNET 1
+  <2013-02-13 Wed>
+  sec-heads
 
-<2013-02-12 Tue>
-sec-heads
+  <2013-02-12 Tue>
+  sec-heads
 
-<2013-02-11 Mon>
-10:10 irc & mail [40m]
-10:50 ndn; admin [40m]
-12:40 pmacct; helping michiel [10m]
-12:50 -
-13:20 libradsec; config [1h40m]
-15:00 -
-15:25 libradsec; test server [30m]
-15:55 -
-16:10 libradsec; test server [40m]
-16:50 - 
+  <2013-02-11 Mon>
+  10:10 irc & mail [40m]
+  10:50 ndn; admin [40m]
+  12:40 pmacct; helping michiel [10m]
+  12:50 -
+  13:20 libradsec; config [1h40m]
+  15:00 -
+  15:25 libradsec; test server [30m]
+  15:55 -
+  16:10 libradsec; test server [40m]
+  16:50 - 
 
-libradsec 2h50m -> jra3t1 3
+  libradsec 2h50m -> jra3t1 3
 * week 6
-<2013-02-08 Fri>
-ndn; all hands
-libradsec; API discussions with htj
+  <2013-02-08 Fri>
+  ndn; all hands
+  libradsec; API discussions with htj
 
-jra3t1 2
-<2013-02-07 Thu>
-ndn; all hands
-<2013-02-06 Wed>
-09:45 tor; read [35m]
-10:20 - [3h25m]
-13:45 libradsec [1h20m]
-15:05 tor; support [25m]
-16:55 libradsec [20m]
+  jra3t1 2
+  <2013-02-07 Thu>
+  ndn; all hands
+  <2013-02-06 Wed>
+  09:45 tor; read [35m]
+  10:20 - [3h25m]
+  13:45 libradsec [1h20m]
+  15:05 tor; support [25m]
+  16:55 libradsec [20m]
 
-tor 50m -> tor 1
-libradsec 1h40m -> jra3t1 2
-<2013-02-05 Tue>
-08:20 ndn; admin [10m]
-08:30 tor; catchup [15m]
-08:45 - [20m]
-09:05 irc bouncer [55m]
-10:00 irc; catchup [30m]
-10:30 - [30m]
-11:00 libradsec; standards [30m]
-11:30 lunch [1h]
-12:30 libradsec; standards [15m]
-12:45 libradsec; config [1h]
-13:45 - [20m]
-14:05 libradsec; config [30m]
-14:35 -
-15:10 libradsec; config [40m]
-15:50 tor; RS_ENTRY_LEN [30m]
+  tor 50m -> tor 1
+  libradsec 1h40m -> jra3t1 2
+  <2013-02-05 Tue>
+  08:20 ndn; admin [10m]
+  08:30 tor; catchup [15m]
+  08:45 - [20m]
+  09:05 irc bouncer [55m]
+  10:00 irc; catchup [30m]
+  10:30 - [30m]
+  11:00 libradsec; standards [30m]
+  11:30 lunch [1h]
+  12:30 libradsec; standards [15m]
+  12:45 libradsec; config [1h]
+  13:45 - [20m]
+  14:05 libradsec; config [30m]
+  14:35 -
+  15:10 libradsec; config [40m]
+  15:50 tor; RS_ENTRY_LEN [30m]
 
-libradsec 2h55m -> jra3t1 3
-tor 45m -> tor 1
-<2013-02-04 Mon>
-08:10 email irc catchup [25m]
-08:35 tor sybil attack [50m]
-09:25 read stuff [1h]
-10:25 dfri sysadm [5m]
-10:30 ndn dns dos [20m]
-10:50 libradsec; standards [20m]
-12:55 libradsec; server configuration [1h35m]
-14:30 radsecproxy; tls security [40m]
-17:10 radsecproxy; tls security [55m]
+  libradsec 2h55m -> jra3t1 3
+  tor 45m -> tor 1
+  <2013-02-04 Mon>
+  08:10 email irc catchup [25m]
+  08:35 tor sybil attack [50m]
+  09:25 read stuff [1h]
+  10:25 dfri sysadm [5m]
+  10:30 ndn dns dos [20m]
+  10:50 libradsec; standards [20m]
+  12:55 libradsec; server configuration [1h35m]
+  14:30 radsecproxy; tls security [40m]
+  17:10 radsecproxy; tls security [55m]
 
-tor 50m -> tor 1
-libradsec 1h55m -> jra3t1 2
-radsecproxy 1h35m -> jra3t1 2
+  tor 50m -> tor 1
+  libradsec 1h55m -> jra3t1 2
+  radsecproxy 1h35m -> jra3t1 2
 * week 5
 ** <2013-02-01 Fri>
-10:10 mail + irc catchup [30m]
-10:40 dfri sysadm [1h]
-xxxxx adbc sysadm [5m]
-12:00 ndn admin; airplane tickets [10m]
-12:10 radsecproxy [40m]
-13:55 radsecproxy [40m]
-14:40 tor; torperf [10m]
+   10:10 mail + irc catchup [30m]
+   10:40 dfri sysadm [1h]
+   xxxxx adbc sysadm [5m]
+   12:00 ndn admin; airplane tickets [10m]
+   12:10 radsecproxy [40m]
+   13:55 radsecproxy [40m]
+   14:40 tor; torperf [10m]
 
-radsecproxy 1h20m -> jra3t1 2
-tor 10m -> 0
+   radsecproxy 1h20m -> jra3t1 2
+   tor 10m -> 0
 ** <2013-01-31 Thu>
-10:10 email + irc
-11:20 lunch
-13:30 tor irc catchup [10m]
+   10:10 email + irc
+   11:20 lunch
+   13:30 tor irc catchup [10m]
 
-tor 10m -> 0
+   tor 10m -> 0
 ** <2013-01-30 Wed>
-08:40 email + irc [55m]
-09:35 dfri; sysadm [20m]
-11:30 libradsec; API discussions with bagder [2h]
+   08:40 email + irc [55m]
+   09:35 dfri; sysadm [20m]
+   11:30 libradsec; API discussions with bagder [2h]
 
-libradsec 2h -> jra3t1 2
+   libradsec 2h -> jra3t1 2
 ** <2013-01-29 Tue>
-10:05 email, irc
-12:30 lunch
-15:25 libradsec; server API [20m]
-15:45 - [20m]
-16:05 libradsec [1h]
+   10:05 email, irc
+   12:30 lunch
+   15:25 libradsec; server API [20m]
+   15:45 - [20m]
+   16:05 libradsec [1h]
 
-libradsec 1h20m -> jra3t1 2
+   libradsec 1h20m -> jra3t1 2
 ** <2013-01-28 Mon>
-10:00 irc + mail catch up [40m]
-10:40 dfri mail + irc [40m]
-11:20 - [20m]
-11:40 radsecproxy bug hunting uninett [1h]
-12:40 ndn admin [10m]
-12:50 lunch [50m]
-13:40 dfri [5m]
-13:45 ndn [15m]
-14:00 tor email [20m]
-14:20 - [1h]
-15:20 libradsec [2h]
-17:20 - [40m]
-18:00 libradsec [30m]
+   10:00 irc + mail catch up [40m]
+   10:40 dfri mail + irc [40m]
+   11:20 - [20m]
+   11:40 radsecproxy bug hunting uninett [1h]
+   12:40 ndn admin [10m]
+   12:50 lunch [50m]
+   13:40 dfri [5m]
+   13:45 ndn [15m]
+   14:00 tor email [20m]
+   14:20 - [1h]
+   15:20 libradsec [2h]
+   17:20 - [40m]
+   18:00 libradsec [30m]
 
-tor 20m -> tor 1
-radsecproxy 1h -> jra3t1 1
-libradsec 2h30m -> jra3t1 3
+   tor 20m -> tor 1
+   radsecproxy 1h -> jra3t1 1
+   libradsec 2h30m -> jra3t1 3
 * week 4 
 ** <2013-01-25 Fri>
-09:30 libradsec [30m]
-10:00 -
-10:20 radsecproxy; support (he) [1h10m]
-11:30 -
-11:40 lunch
-13:00 -
-13:05 adbc+dfri; sysadm
-13:30 radsecproxy; reproducing uninett server failover failure [1h]
-14:30 - 
-14:35 radsecproxy [30m]
-15:05 -
-15:30 radsecproxy [1h]
-16:30 -
+   09:30 libradsec [30m]
+   10:00 -
+   10:20 radsecproxy; support (he) [1h10m]
+   11:30 -
+   11:40 lunch
+   13:00 -
+   13:05 adbc+dfri; sysadm
+   13:30 radsecproxy; reproducing uninett server failover failure [1h]
+   14:30 - 
+   14:35 radsecproxy [30m]
+   15:05 -
+   15:30 radsecproxy [1h]
+   16:30 -
 
-libradsec 30m -> jra3t1 1
-radsecproxy 3h40m -> jra3t1 4
+   libradsec 30m -> jra3t1 1
+   radsecproxy 3h40m -> jra3t1 4
 ** <2013-01-24 Thu>
-08:15 libradsec; user-dispatch [20m]
-08:35 dfri; membership reminder [40m]
-09:15 irc + email catchup [10m]
-09:25 libradsec; user-dispatch [30m]
-09:55 sunet; discuss tor with pelle [30m]
-10:25 - [20m]
-10:45 dfri; sysadm [20m]
-11:05 libradsec; rename packet->message [1h40m]
-12:45 - [10m]
-12:55 lunch [30m]
-13:25 ndn eudroam read up [10m]
-13:35 libradsec [55m]
-14:30 - [30m]
-15:00 libradsec; merge, releng [20m]
-15:20 tor irc op [25m]
-15:45 -
-16:05 libradsec; psk [30m]
-16:35 irc
-16:45 libradsec; psk [45m]
+   08:15 libradsec; user-dispatch [20m]
+   08:35 dfri; membership reminder [40m]
+   09:15 irc + email catchup [10m]
+   09:25 libradsec; user-dispatch [30m]
+   09:55 sunet; discuss tor with pelle [30m]
+   10:25 - [20m]
+   10:45 dfri; sysadm [20m]
+   11:05 libradsec; rename packet->message [1h40m]
+   12:45 - [10m]
+   12:55 lunch [30m]
+   13:25 ndn eudroam read up [10m]
+   13:35 libradsec [55m]
+   14:30 - [30m]
+   15:00 libradsec; merge, releng [20m]
+   15:20 tor irc op [25m]
+   15:45 -
+   16:05 libradsec; psk [30m]
+   16:35 irc
+   16:45 libradsec; psk [45m]
 
-sunet 1
-libradsec 5h -> jra3t1 5
+   sunet 1
+   libradsec 5h -> jra3t1 5
 ** <2013-01-23 Wed>
-07:55 mail + irc [40m]
-08:35 tor; ipv6 reachability [15m]
-08:50 torperf; karstens perfd [1h]
-09:50 - [35m]
-10:25 libradsec [15m]
-10:40 - [15m]
-10:55 libradsec; design [25m]
-11:20 - [50m]
-12:10 libradsec; user-dispatch [1h]
-13:10 lunch, phone
-15:30 libradsec; ssl and user-dispatch [10m]
-15:40 dfri; edri [10m]
-15:50 libradsec; user-dispatch [55m]
-16:45 dfri; EU commission issue about blocking Tor [10m]
-16:55 - [30m]
-17:25 libradsec; user-dispatch [1h5m]
+   07:55 mail + irc [40m]
+   08:35 tor; ipv6 reachability [15m]
+   08:50 torperf; karstens perfd [1h]
+   09:50 - [35m]
+   10:25 libradsec [15m]
+   10:40 - [15m]
+   10:55 libradsec; design [25m]
+   11:20 - [50m]
+   12:10 libradsec; user-dispatch [1h]
+   13:10 lunch, phone
+   15:30 libradsec; ssl and user-dispatch [10m]
+   15:40 dfri; edri [10m]
+   15:50 libradsec; user-dispatch [55m]
+   16:45 dfri; EU commission issue about blocking Tor [10m]
+   16:55 - [30m]
+   17:25 libradsec; user-dispatch [1h5m]
 
-tor + torperf 1h15m --> tor 2
-libradsec 3h50m --> jra3t1 4
+   tor + torperf 1h15m --> tor 2
+   libradsec 3h50m --> jra3t1 4
 ** <2013-01-22 Tue>
-08:15 tor becoming a LIR [45m]
-09:00 email+irc, xmpp-client bug report, torperf + twisted-socks, #torservers [1h20m]
-10:20 - [5m]
-10:25 libradsec; clean up top dir, build issues [1h15m]
-11:40 lunch [1h15m]
-12:55 mail; private [5m]
-13:00 mail; tor-dev, cryptoparty-sthlm [30m]
-13:30 libradsec; build stuff re md5 [50m]
-14:20 ndn admin [15m]
-14:35 - [20m]
-14:55 ndn time reporting [5m]
-15:00 priv; email, read [30m]
-15:30 libradsec; on-your-own mode [1h]
-16:30 - [20m]
-16:50 libradsec [20m]
+   08:15 tor becoming a LIR [45m]
+   09:00 email+irc, xmpp-client bug report, torperf + twisted-socks, #torservers [1h20m]
+   10:20 - [5m]
+   10:25 libradsec; clean up top dir, build issues [1h15m]
+   11:40 lunch [1h15m]
+   12:55 mail; private [5m]
+   13:00 mail; tor-dev, cryptoparty-sthlm [30m]
+   13:30 libradsec; build stuff re md5 [50m]
+   14:20 ndn admin [15m]
+   14:35 - [20m]
+   14:55 ndn time reporting [5m]
+   15:00 priv; email, read [30m]
+   15:30 libradsec; on-your-own mode [1h]
+   16:30 - [20m]
+   16:50 libradsec [20m]
 
-libradsec 3h25m -> jra3t1 4
+   libradsec 3h25m -> jra3t1 4
 ** <2013-01-21 Mon>
-10:20 libradsec [1h10m]
+   10:20 libradsec [1h10m]
 
-jra3t1 2
+   jra3t1 2
 * new style
 ** <2013-01-18 Fri>
-pmacct 4h -> 0
+   pmacct 4h -> 0
 ** <2013-01-17 Thu>
 
-pmacct 4h -> 0
-libradsec 30m -> jra3t1 1h
+   pmacct 4h -> 0
+   libradsec 30m -> jra3t1 1h
 ** <2013-01-16 Wed>
-11:55 pmacct [1h25]
-15:30 libradsec [15m]
-16:15 pmacct [45m]
+   11:55 pmacct [1h25]
+   15:30 libradsec [15m]
+   16:15 pmacct [45m]
 
-pmacct 2h10m -> 0
-jra3t1 1h
+   pmacct 2h10m -> 0
+   jra3t1 1h
 ** <2013-01-15 Tue>
-15:00 pmacct [1h30m]
-17:00 pmacct [50m]
+   15:00 pmacct [1h30m]
+   17:00 pmacct [50m]
 
-pmacct 2h20m -> 0
+   pmacct 2h20m -> 0
 ** v.3 <2013-01-14 Mon>
-10:45 ndn register time [15m]
+   10:45 ndn register time [15m]
 
-pmacct 2h -> 0
+   pmacct 2h -> 0
 ** <2013-01-13 Sun>
-17:00 pmacct
+   17:00 pmacct
 
-pmacct 1h15m -> 0h
+   pmacct 1h15m -> 0h
 ** v.2 <2013-01-07 Mon>
-10:30 tor comm [40m]
-11:10 - [5m]
-11:15 tor reading up [1h20m]
-12:35 tor ipv6 testing exits [50m]
-13:25 lunch [1h15m]
-14:40 tor ipv6 testing exits [1h50m]
-16:30 - [15m]
-16:45 ndn trip report [15m]
+   10:30 tor comm [40m]
+   11:10 - [5m]
+   11:15 tor reading up [1h20m]
+   12:35 tor ipv6 testing exits [50m]
+   13:25 lunch [1h15m]
+   14:40 tor ipv6 testing exits [1h50m]
+   16:30 - [15m]
+   16:45 ndn trip report [15m]
 
-tor 4h40m -> 5
+   tor 4h40m -> 5
 ** <2013-01-04 Fri>
-1h tor; obfsproxy operation 
+   1h tor; obfsproxy operation 
 ** <2013-01-03 Thu>
-1h tor; readup
+   1h tor; readup
 ** v.1 <2013-01-02 Wed>
-sicko
+   sicko
 ** christmas and 29c3
-2012-12-27--28: conf (29c3)
+   2012-12-27--28: conf (29c3)
 ** <2012-12-21 Fri>
-vab
+   vab
 ** <2012-12-20 Thu>
-sicko
+   sicko
 ** <2012-12-19 Wed>
-08:10 discuss programming models with ft
-08:30 tor catch up
-09:10 -
-10:15 adbc sysadm
-10:25 libradsec licensing, test, commit [1h]
-11:25 lunch [50m]
-12:15 libradsec [20m]
-12:35 dfri switch config [25m]
-13:00 radsecproxy [45m]
-13:45 pmacct [50m]
-14:35 radsecproxy [30m]
-15:05 pmacct mongodb [15m]
-15:20 radsecproxy [1h]
+   08:10 discuss programming models with ft
+   08:30 tor catch up
+   09:10 -
+   10:15 adbc sysadm
+   10:25 libradsec licensing, test, commit [1h]
+   11:25 lunch [50m]
+   12:15 libradsec [20m]
+   12:35 dfri switch config [25m]
+   13:00 radsecproxy [45m]
+   13:45 pmacct [50m]
+   14:35 radsecproxy [30m]
+   15:05 pmacct mongodb [15m]
+   15:20 radsecproxy [1h]
 
-jra3t1 3h35m -> 4
-pmacct 1h5m -> 0
+   jra3t1 3h35m -> 4
+   pmacct 1h5m -> 0
 ** <2012-12-18 Tue>
-08:15 misc catchup and comm [1h30m]
-09:45 tor irc catchup [25m]
-10:10 comm [15m]
-10:25 tor irc catchup [15m]
-10:40 - [10m]
-10:50 email [10m]
-11:00 discuss, email [1h15m]
-12:15 lunch [45m]
-13:00 dfri sysadm
-13:05 libradsec new-client-lib [1h45m]
-14:50 - [10m]
-15:00 learning go [1h40m]
-16:40 - [20m]
-17:00 eob
+   08:15 misc catchup and comm [1h30m]
+   09:45 tor irc catchup [25m]
+   10:10 comm [15m]
+   10:25 tor irc catchup [15m]
+   10:40 - [10m]
+   10:50 email [10m]
+   11:00 discuss, email [1h15m]
+   12:15 lunch [45m]
+   13:00 dfri sysadm
+   13:05 libradsec new-client-lib [1h45m]
+   14:50 - [10m]
+   15:00 learning go [1h40m]
+   16:40 - [20m]
+   17:00 eob
 
-jra3t1 1h45m -> 2
+   jra3t1 1h45m -> 2
 ** <2012-12-17 Mon>
-08:15 ndn time reporting [10m]
-08:25 - [1h35m]
-10:00 tor catch up [45m]
-10:45 - [10m]
-10:55 pmacct looking into writing plugins [20m]
-11:15 lunch [40m]
-11:55 pmacct [1h50m]
-13:45 libradsec get it to build with new client code [45m]
-14:30 - [25m]
-14:55 dfri email sus [20m]
-15:15 libradsec [1h15m]
-16:30 - 
+   08:15 ndn time reporting [10m]
+   08:25 - [1h35m]
+   10:00 tor catch up [45m]
+   10:45 - [10m]
+   10:55 pmacct looking into writing plugins [20m]
+   11:15 lunch [40m]
+   11:55 pmacct [1h50m]
+   13:45 libradsec get it to build with new client code [45m]
+   14:30 - [25m]
+   14:55 dfri email sus [20m]
+   15:15 libradsec [1h15m]
+   16:30 - 
 
-pmacct 2h10m -> 0
-jra3t1 2h -> 2
+   pmacct 2h10m -> 0
+   jra3t1 2h -> 2
 ** <2012-12-14 Fri>
-08:20 tor read up [20m]
-08:40 pmacct set up vm [20m]
-09:00 - [20m]
-09:20 pmacct set up pm-acct [10m]
-09:30 krb-otp discussions with pettai [20m]
-09:50 pmacct set up pm-acct [1h30m]
-11:20 lunch
-13:00 dev meeting [20m]
-13:20 - [40m]
-14:00 pmacct set up pm-acct [2h30m]
-16:30 phone
+   08:20 tor read up [20m]
+   08:40 pmacct set up vm [20m]
+   09:00 - [20m]
+   09:20 pmacct set up pm-acct [10m]
+   09:30 krb-otp discussions with pettai [20m]
+   09:50 pmacct set up pm-acct [1h30m]
+   11:20 lunch
+   13:00 dev meeting [20m]
+   13:20 - [40m]
+   14:00 pmacct set up pm-acct [2h30m]
+   16:30 phone
 
-tor 20m -> 0.5
-pmacct 4h30m -> 0 
+   tor 20m -> 0.5
+   pmacct 4h30m -> 0 
 ** <2012-12-13 Thu>
-07:55 catch up email irc [45m]
-08:40 - [10m]
-08:50 catch up email irc [20m]
-09:10 adbc sysadmin [1h40m]
-10:50 lunch [1h10m]
-12:00 misc jabber and jbn disc [55m]
-12:55 libradsec libevent read up [20m]
-13:15 libradsec libevent design discussions [35m]
-13:50 twitter [10m]
-14:00 libradsec libevent design [20m]
-14:20 - [25m]
-14:45 libradsec libevent [10m]
-14:55 dfri TU report [20m]
-15:15 reading stuff [1h]
-16:15 libradsec libevent comm [20m]
-16:35 adbc sysadm [5m]
-16:40 eob
+   07:55 catch up email irc [45m]
+   08:40 - [10m]
+   08:50 catch up email irc [20m]
+   09:10 adbc sysadmin [1h40m]
+   10:50 lunch [1h10m]
+   12:00 misc jabber and jbn disc [55m]
+   12:55 libradsec libevent read up [20m]
+   13:15 libradsec libevent design discussions [35m]
+   13:50 twitter [10m]
+   14:00 libradsec libevent design [20m]
+   14:20 - [25m]
+   14:45 libradsec libevent [10m]
+   14:55 dfri TU report [20m]
+   15:15 reading stuff [1h]
+   16:15 libradsec libevent comm [20m]
+   16:35 adbc sysadm [5m]
+   16:40 eob
 
-jra3t1 1h45m -> 2
+   jra3t1 1h45m -> 2
 ** <2012-12-12 Wed>
-08:45 tor reading [5m]
-08:50 adbc sysadm [5m]
-08:55 libradsec libevent [25m]
-09:20 irc readup [20m]
-09:40 libradsec [25m]
-10:05 - [10m]
-10:15 tor comm [15m]
-10:30 - [5m]
-10:35 reading [5m]
-10:45 libradsec  [25m]
-11:10 lunch [55m]
-12:05 email, catch up [20m]
-12:25 - [15m]
-12:40 libradsec libevent [40m]
-13:20 -
-13:25 libradsec libevent [30m]
-13:55 - [15m]
-14:10 tor read up [5m]
-14:15 libradsec libevent [15m]
-14:30 -
-14:40 libradsec libevent [50m]
-15:50 -
+   08:45 tor reading [5m]
+   08:50 adbc sysadm [5m]
+   08:55 libradsec libevent [25m]
+   09:20 irc readup [20m]
+   09:40 libradsec [25m]
+   10:05 - [10m]
+   10:15 tor comm [15m]
+   10:30 - [5m]
+   10:35 reading [5m]
+   10:45 libradsec  [25m]
+   11:10 lunch [55m]
+   12:05 email, catch up [20m]
+   12:25 - [15m]
+   12:40 libradsec libevent [40m]
+   13:20 -
+   13:25 libradsec libevent [30m]
+   13:55 - [15m]
+   14:10 tor read up [5m]
+   14:15 libradsec libevent [15m]
+   14:30 -
+   14:40 libradsec libevent [50m]
+   15:50 -
 
 
-tor 0.5
-jra3t1 3.5
+   tor 0.5
+   jra3t1 3.5
 ** <2012-12-11 Tue>
-08:50 tor catch up irc email [45m]
-09:35 twitter, web [40m]
-10:15 tor reading [15m]
-10:30 - [10m]
-10:40 tor reading [30m]
+   08:50 tor catch up irc email [45m]
+   09:35 twitter, web [40m]
+   10:15 tor reading [15m]
+   10:30 - [10m]
+   10:40 tor reading [30m]
 
-tor 1.5
+   tor 1.5
 ** <2012-12-07 Fri>
-10:40 email irc catchup [20m]
-11:00 - [2h]
-13:00 email [30m]
-13:30 - [10m]
-13:40 ndn admin [20m]
+   10:40 email irc catchup [20m]
+   11:00 - [2h]
+   13:00 email [30m]
+   13:30 - [10m]
+   13:40 ndn admin [20m]
 ** <2012-12-06 Thu>
-Brussels, EDRi.
+   Brussels, EDRi.
 ** <2012-12-05 Wed>
-Brussels, conf w/ panel.
+   Brussels, conf w/ panel.
 ** <2012-12-04 Tue>
-10:00 irc, email [20m]
-10:20 sec-c-coding [25m]
-10:45 dfri; planning [5m]
-10:50 -
-11:10 sysadmin laptop; travel preparation, backup [2h]
-13:10 lunch
-15:30 dfri; communication [?]
+   10:00 irc, email [20m]
+   10:20 sec-c-coding [25m]
+   10:45 dfri; planning [5m]
+   10:50 -
+   11:10 sysadmin laptop; travel preparation, backup [2h]
+   13:10 lunch
+   15:30 dfri; communication [?]
 ** <2012-12-03 Mon>
-09:40 dfri; cryptoparty planning [15m]
-09:55 dfri; abuse, sysadm [25m]
-10:30 ndn; sysadm laptop [10m]
-10:40 tor; irc & mail catchup [10m]
-10:50 libradsec; libevent and udp [15m]
-11:05 dfri; email cryptoparty [25m]
-11:30 email; priv [5m]
-11:35 - [5m]
-11:40 ndn; time report [20m]
-12:00 tor; irc [tor 15m]
-12:15 dfri; cryptoparty planning [15m]
-12:30 sec-c-coding [10m]
-12:30 twitter [10m]
-12:40 lunch [1h30m]
-14:10 irc [5m]
-14:15 book hotel for 29c3 [30m]
-14:45 mail [5m]
-14:50 sysadm laptop [10m]
-15:00 - [10m]
-15:10 irc / view .SE seminar on security for journalists [15m]
-15:25 tor #4847 [tor 45m]
-16:10 tor readup and reporting [tor 15m]
-16:25 sysadm laptop; looking into xmpp-client [15m]
-16:40 tor readup and reporting [tor 55m]
-17:35 ndn board report [15m]
-17:50 -
-20:30 auditing mcabber & loudmouth [1h15m]
+   09:40 dfri; cryptoparty planning [15m]
+   09:55 dfri; abuse, sysadm [25m]
+   10:30 ndn; sysadm laptop [10m]
+   10:40 tor; irc & mail catchup [10m]
+   10:50 libradsec; libevent and udp [15m]
+   11:05 dfri; email cryptoparty [25m]
+   11:30 email; priv [5m]
+   11:35 - [5m]
+   11:40 ndn; time report [20m]
+   12:00 tor; irc [tor 15m]
+   12:15 dfri; cryptoparty planning [15m]
+   12:30 sec-c-coding [10m]
+   12:30 twitter [10m]
+   12:40 lunch [1h30m]
+   14:10 irc [5m]
+   14:15 book hotel for 29c3 [30m]
+   14:45 mail [5m]
+   14:50 sysadm laptop [10m]
+   15:00 - [10m]
+   15:10 irc / view .SE seminar on security for journalists [15m]
+   15:25 tor #4847 [tor 45m]
+   16:10 tor readup and reporting [tor 15m]
+   16:25 sysadm laptop; looking into xmpp-client [15m]
+   16:40 tor readup and reporting [tor 55m]
+   17:35 ndn board report [15m]
+   17:50 -
+   20:30 auditing mcabber & loudmouth [1h15m]
 
-tor 2h20m -> 3
-libradsec 15m -> 1
+   tor 2h20m -> 3
+   libradsec 15m -> 1
 ** <2012-12-01 Sat>
-15:45 dfri; prepare for Bloggers for democracy [1h15m]
+   15:45 dfri; prepare for Bloggers for democracy [1h15m]
 ** <2012-11-30 Fri>
-08:10 mail, irc [25m]
-08:35 tor support; LittleBohemian in #tor-dev [tor 25m]
-09:00 - [10m]
-09:10 tor #4847 [tor 45m]
-09:55 - [10m]
-10:05 dfri mail; geko on austrian exit raid [30m]
-10:35 tor [tor 45m]
-11:20 - [5m]
-11:25 sec-c-coding [10m]
-11:35 twitter [10m]
-11:45 lunch [1h15m]
-13:00 ndn weekly meeting [15m]
-13:15 phone call; rom [30m]
-13:45 tor [tor 1h]
-14:45 mail [10m]
-15:55 - [20m]
-15:15 tor [tor 50m]
+   08:10 mail, irc [25m]
+   08:35 tor support; LittleBohemian in #tor-dev [tor 25m]
+   09:00 - [10m]
+   09:10 tor #4847 [tor 45m]
+   09:55 - [10m]
+   10:05 dfri mail; geko on austrian exit raid [30m]
+   10:35 tor [tor 45m]
+   11:20 - [5m]
+   11:25 sec-c-coding [10m]
+   11:35 twitter [10m]
+   11:45 lunch [1h15m]
+   13:00 ndn weekly meeting [15m]
+   13:15 phone call; rom [30m]
+   13:45 tor [tor 1h]
+   14:45 mail [10m]
+   15:55 - [20m]
+   15:15 tor [tor 50m]
 
-tor: 3
+   tor: 3
 ** <2012-11-29 Thu>
-07:45 irc, mail catchup [20m]
-08:05 dfri; TB contract [5m]
-08:10 - [30m]
-08:40 tor; #4847 [tor 30m]
-09:10 secure-c-coding [10m]
-09:20 dfri; chat abt journalist event at .se [20m]
-09:40 - [1h]
-10:40 tor [tor 30m]
-11:10 email and irc [5m]
-11:15 - [5m]
-11:20 tor [tor 30m]
-11:50 - [10m]
-12:00 tor [tor 35m]
-12:35 - [5m]
-12:40 dfri; abuse handling [20m]
-13:00 tor [tor 25m]
-13:25 - [1h45m]
-15:10 dfri; mail [20m]
-15:30 sysadm; laptop -- gnus [5m]
-15:35 private email [5m]
-15:40 tor [tor 1h15m]
-16:55 email, irc; tor [10m]
-17:05 dfri; william, the raided exit oper [20m]
-17:25 tor [tor 55m]
-?    radsecproxy; the .ca guy [radsecproxy 15m]
-21:50 dfri; sysadm -- security upgrades [20m]
-22:30 adbc; sysadm [25m]
+   07:45 irc, mail catchup [20m]
+   08:05 dfri; TB contract [5m]
+   08:10 - [30m]
+   08:40 tor; #4847 [tor 30m]
+   09:10 secure-c-coding [10m]
+   09:20 dfri; chat abt journalist event at .se [20m]
+   09:40 - [1h]
+   10:40 tor [tor 30m]
+   11:10 email and irc [5m]
+   11:15 - [5m]
+   11:20 tor [tor 30m]
+   11:50 - [10m]
+   12:00 tor [tor 35m]
+   12:35 - [5m]
+   12:40 dfri; abuse handling [20m]
+   13:00 tor [tor 25m]
+   13:25 - [1h45m]
+   15:10 dfri; mail [20m]
+   15:30 sysadm; laptop -- gnus [5m]
+   15:35 private email [5m]
+   15:40 tor [tor 1h15m]
+   16:55 email, irc; tor [10m]
+   17:05 dfri; william, the raided exit oper [20m]
+   17:25 tor [tor 55m]
+   ?    radsecproxy; the .ca guy [radsecproxy 15m]
+   21:50 dfri; sysadm -- security upgrades [20m]
+   22:30 adbc; sysadm [25m]
 
-tor: 5
+   tor: 5
 ** <2012-11-28 Wed>
-07:45 irc, mail catchup
-08:20 dfri sysadm
-09:00 prepare tor brussels talk
-09:15 -
-09:20 secure-c-coding [ndn 0:40]
-10:00 -
-10:15 ndn communication -- email, business cardss [ndn 0:05]
-10:20 tor #4847 [tor 0:35]
-10:55 -
-11:55 dfri journo contact; email sus, chat with geko about GPF; read and think about PrivacyBox
-13:00 libevent chat; pgp support
-13:10 -
-14:15 tor read; tor-dev@ [tor 0:15]
-14:30 -
-14:35 tor #4847 [tor 1:30]
-15:55 dfri; TB contract
-16:20 -
+   07:45 irc, mail catchup
+   08:20 dfri sysadm
+   09:00 prepare tor brussels talk
+   09:15 -
+   09:20 secure-c-coding [ndn 0:40]
+   10:00 -
+   10:15 ndn communication -- email, business cardss [ndn 0:05]
+   10:20 tor #4847 [tor 0:35]
+   10:55 -
+   11:55 dfri journo contact; email sus, chat with geko about GPF; read and think about PrivacyBox
+   13:00 libevent chat; pgp support
+   13:10 -
+   14:15 tor read; tor-dev@ [tor 0:15]
+   14:30 -
+   14:35 tor #4847 [tor 1:30]
+   15:55 dfri; TB contract
+   16:20 -
 
-tor: 2.5
+   tor: 2.5
 ** <2012-11-27 Tue>
-08:30 dfri sysadm -- balance PL transit (get outgoing down); upgrade tor on x0.tor (DFRI1) [dfri 50m]
-09:20 sec c coding -- ARR01-C [ndn 0:45]
-10:05 irc catch up [30m]
-10:35 email some [ndn 0:05]
-10:40 tor relay with v6 orport only (#4847) [tor 0:30]
-11:10 chat with jbn; adb-centralen authentication [15m]
-11:25 tor vuln CVE-2012-5573 [tor 0:05]
-11:30 lunch [1h25m]
-12:55 email [ndn 0:05]
-13:00 laptop sysadm: locale [ndn 0:10]
-13:10 reading irc [10m]
-13:20 ndnkdf benchmark [ndn 0:20]
-13:40 tor #4847 [tor 0:35]
-14:15 laptop sysadmin: ntp [ndn: 0:05]
-14:20 - [15m]
-14:35 tor #4847 [tor 0:45]
-15:20 - [25m]
-15:45 tor communication -- reading email, chatting [tor 0:25]
-16:10 tor #4847 [tor 0:50]
-17:00 tor comm [tor 0:05]
+   08:30 dfri sysadm -- balance PL transit (get outgoing down); upgrade tor on x0.tor (DFRI1) [dfri 50m]
+   09:20 sec c coding -- ARR01-C [ndn 0:45]
+   10:05 irc catch up [30m]
+   10:35 email some [ndn 0:05]
+   10:40 tor relay with v6 orport only (#4847) [tor 0:30]
+   11:10 chat with jbn; adb-centralen authentication [15m]
+   11:25 tor vuln CVE-2012-5573 [tor 0:05]
+   11:30 lunch [1h25m]
+   12:55 email [ndn 0:05]
+   13:00 laptop sysadm: locale [ndn 0:10]
+   13:10 reading irc [10m]
+   13:20 ndnkdf benchmark [ndn 0:20]
+   13:40 tor #4847 [tor 0:35]
+   14:15 laptop sysadmin: ntp [ndn: 0:05]
+   14:20 - [15m]
+   14:35 tor #4847 [tor 0:45]
+   15:20 - [25m]
+   15:45 tor communication -- reading email, chatting [tor 0:25]
+   16:10 tor #4847 [tor 0:50]
+   17:00 tor comm [tor 0:05]
 
-tor: 3
+   tor: 3
 * week 48 (11-26--12-02)
 ** tor
    CLOCK: [2012-11-26 Mon 15:00]--[2012-11-26 Mon 15:30] =>  0:30
@@ -1168,9 +1436,9 @@ tor: 3
    CLOCK: [2012-10-30 Tue 11:07]--[2012-10-30 Tue 12:07] =>  1:00
    license handling
 ** traffic measurement
-- meeting with friedrich, frank and pelle
-- four use cases identified, pelle will write user stories
-- we'll hopefully come up with a design
+   - meeting with friedrich, frank and pelle
+   - four use cases identified, pelle will write user stories
+   - we'll hopefully come up with a design
 * week 43 (10-22--28)
 ** tor
 *** ipv6
@@ -1217,9 +1485,9 @@ tor: 3
     CLOCK: [2012-10-12 Fri 10:11]--[2012-10-12 Fri 11:36] =>  1:25
     #5053
 
-mon-tue: vacation
+    mon-tue: vacation
 * week 40 (10-01--07)
-wed-fri: vacation
+  wed-fri: vacation
 ** tor
 *** internal
     CLOCK: [2012-10-02 Tue 13:46]--[2012-10-02 Tue 15:00] =>  0:25
@@ -1597,7 +1865,7 @@ wed-fri: vacation
     CLOCK: [2012-08-21 Tue 17:15]--[2012-08-21 Tue 17:31] =>  0:16
     reading, catching up
 * week 33 (08-13--19)
-Back at TUG.
+  Back at TUG.
 ** tor
 *** internal
     CLOCK: [2012-08-16 Thu 11:18]--[2012-08-16 Thu 11:42] =>  0:24
@@ -1659,15 +1927,15 @@ Back at TUG.
 ** radsecproxy
    CLOCK: [2012-08-13 Mon 09:30]--[2012-08-13 Mon 10:17] =>  0:47
 * week 32 (08-06--12)
-Vacation.
+  Vacation.
 * week 31 (07-30--08-05)
-Vacation.
+  Vacation.
 * week 30 (07-23--29)
-Vacation.
+  Vacation.
 * week 29 (07-16--22) Lisbon + TUG
-fri TUG.
-thu Home.
-mon-wed Lisbon.
+  fri TUG.
+  thu Home.
+  mon-wed Lisbon.
 *** admin
     CLOCK: [2012-07-19 Thu 23:31]--[2012-07-19 Thu 23:39] =>  0:08
 *** chutney
@@ -1692,8 +1960,8 @@ mon-wed Lisbon.
     CLOCK: [2012-07-16 Mon 17:52]--[2012-07-16 Mon 19:08] =>  1:16
     CLOCK: [2012-07-16 Mon 16:30]--[2012-07-16 Mon 17:43] =>  1:13
 * week 28 (07-09--15) PETS
-PETS in Vigo.
-Hotel Bahia de Vigo internet: 144h from 2012-07-10 10:31: u/pw=eru6bn6g/ivanii68
+  PETS in Vigo.
+  Hotel Bahia de Vigo internet: 144h from 2012-07-10 10:31: u/pw=eru6bn6g/ivanii68
 ** tor
 *** administration
     CLOCK: [2012-07-13 Fri 10:30]--[2012-07-13 Fri 11:30] =>  1:00
@@ -1719,9 +1987,9 @@ Hotel Bahia de Vigo internet: 144h from 2012-07-10 10:31: u/pw=eru6bn6g/ivanii68
 *** DA's voting on a lines
     CLOCK: [2012-07-15 Sun 15:48]--[2012-07-15 Sun 17:00] =>  1:12
 * week 27 (07-02--08) Tor dev mtg
-Tor summer dev mtg in Florence.
+  Tor summer dev mtg in Florence.
 * week 26 (06-25--07-01) Vacation
-2h tor
+  2h tor
 * week 25 (06-18--24) Vacation
 * week 24 (2012-06-11--17)
 ** tor
@@ -1817,7 +2085,7 @@ Tor summer dev mtg in Florence.
     CLOCK: [2012-05-22 Tue 12:01]--[2012-05-22 Tue 12:16] =>  0:15
     CLOCK: [2012-05-22 Tue 10:32]--[2012-05-22 Tue 11:04] =>  0:32
 *** travel + talks
-8h thu may 24
+    8h thu may 24
 *** presentations
     CLOCK: [2012-05-23 Wed 16:25]--[2012-05-23 Wed 22:00] =>  5:35
     CLOCK: [2012-05-23 Wed 13:45]--[2012-05-23 Wed 16:00] =>  2:15
@@ -1859,7 +2127,7 @@ Tor summer dev mtg in Florence.
 ** radsecproxy (sa3-t2)
 *** openssl issue
     CLOCK: [2012-05-11 Fri 11:08]--[2012-05-11 Fri 11:24] =>  0:16
-https://www.openssl.org/news/secadv_20120510.txt
+    https://www.openssl.org/news/secadv_20120510.txt
 ** nordunet
 *** tor sysadm
     CLOCK: [2012-05-11 Fri 11:26]--[2012-05-11 Fri 12:20] =>  0:54
@@ -2107,438 +2375,438 @@ https://www.openssl.org/news/secadv_20120510.txt
     CLOCK: [2012-04-02 Mon 09:20]--[2012-04-02 Mon 10:06] =>  0:46
     CLOCK: [2012-04-02 Mon 08:15]--[2012-04-02 Mon 08:32] =>  0:17
 * week 13 (2012-03-26--04-01)
-fri: tor 2 + 1500-
-thu: tor 8.5
-wed: tor 6.75
-tue: tor 3.25
-mon: tor (register 1 hour from sunday) + 7.5
+  fri: tor 2 + 1500-
+  thu: tor 8.5
+  wed: tor 6.75
+  tue: tor 3.25
+  mon: tor (register 1 hour from sunday) + 7.5
 * week 12 (2012-03-19--25)
-sun: tor: 3 (+ 1 hour registered mon 26th)
-fri: tor: 2
-thu: tor: 4 (p:ii)
-thu: tor-ndn: 1
-wed: tor: 1.5
-wed: tor-ndn: 2 operations
-tue: tor-ndn: 2 operations
-tue: tor: 2 hacking
-mon: tor: 6
+  sun: tor: 3 (+ 1 hour registered mon 26th)
+  fri: tor: 2
+  thu: tor: 4 (p:ii)
+  thu: tor-ndn: 1
+  wed: tor: 1.5
+  wed: tor-ndn: 2 operations
+  tue: tor-ndn: 2 operations
+  tue: tor: 2 hacking
+  mon: tor: 6
 * week 11 (2012-03-12--18)
-fri: -
-thu: tor: 3 (p:iiii) hacking + 1.5 operations
-wed: tor: 4 (p:iii)
-tue: tor: 4.5 (p:ii)
-mon: tor: 6
+  fri: -
+  thu: tor: 3 (p:iiii) hacking + 1.5 operations
+  wed: tor: 4 (p:iii)
+  tue: tor: 4.5 (p:ii)
+  mon: tor: 6
 * week 10 (2012-03-05--11)
-sun: 4 tor
-sat: 2 tor
-fri: 2 tor
-thu: 2 tor
-mon-wed: vacation
+  sun: 4 tor
+  sat: 2 tor
+  fri: 2 tor
+  thu: 2 tor
+  mon-wed: vacation
 * week 9 (2012-02-27--03-04)
-wed-fri: vacation
-- tue: 
-- mon: 
+  wed-fri: vacation
+  - tue: 
+  - mon: 
 * week 8 (2012-02-20--26)
-- sun:
-- sat: 
-- fri: tor
-- thu: tor
-- wed: tor
-- tue: tor
-- mon: tor
+  - sun:
+  - sat: 
+  - fri: tor
+  - thu: tor
+  - wed: tor
+  - tue: tor
+  - mon: tor
 * week 7 (2012-02-13--19)
-- sun:
-- [X] sun: 2 radsecproxy (dynserv bug)
-- sat: 
-- fri: travelling for tor winter dev
-- [X] fri: 2 radsecproxy (dynserv bug)
-- [X] thu: 1 radsecproxy (dynserv bug)
-- thu: netnod meeting
-- wed: 2 tor+ipv6
-- tue: 2 tor+ipv6
-- mon: 1 adbc sysadm; 6 tor ipv6 + obfsproxy; 1 talking foss with am. embassy; 0.5 tor admin
+  - sun:
+  - [X] sun: 2 radsecproxy (dynserv bug)
+  - sat: 
+  - fri: travelling for tor winter dev
+  - [X] fri: 2 radsecproxy (dynserv bug)
+  - [X] thu: 1 radsecproxy (dynserv bug)
+  - thu: netnod meeting
+  - wed: 2 tor+ipv6
+  - tue: 2 tor+ipv6
+  - mon: 1 adbc sysadm; 6 tor ipv6 + obfsproxy; 1 talking foss with am. embassy; 0.5 tor admin
 * week 6 (2012-02-06--12)
-- fri: sunet tor: 4
-- fri: tor operations dfri + ndn obfs
-- thu: ui seminar
-- wed: jra3t2: 2 moonshot meeting
-- tue: jra3t2: 2 moonshot psk
-- mon: ?
+  - fri: sunet tor: 4
+  - fri: tor operations dfri + ndn obfs
+  - thu: ui seminar
+  - wed: jra3t2: 2 moonshot meeting
+  - tue: jra3t2: 2 moonshot psk
+  - mon: ?
 * week 5 (2012-01-30--02-05)
-- fri: moonshot: 4 cert verification
-- thu: tor: 4
-- wed: moonshot: 3.5 cert verification
-- wed: radsecproxy: 2 bugs
-- tue: moonshot: 4.5 tls-psk 
-- mon: moonshot: 4 tls-psk
+  - fri: moonshot: 4 cert verification
+  - thu: tor: 4
+  - wed: moonshot: 3.5 cert verification
+  - wed: radsecproxy: 2 bugs
+  - tue: moonshot: 4.5 tls-psk 
+  - mon: moonshot: 4 tls-psk
 * week 4 (2012-01-23--29)
-- fri: moonshot: 2 tls-psk
-- thu: moonshot: 2 tls-psk
-- wed: moonshot: 2 fix + 2 tls-psk
-- tue: tor: 4 slide prep
-- mon: ?
+  - fri: moonshot: 2 tls-psk
+  - thu: moonshot: 2 tls-psk
+  - wed: moonshot: 2 fix + 2 tls-psk
+  - tue: tor: 4 slide prep
+  - mon: ?
 * week 3 (2012-01-16--22)
-- fri: some tls-psk
-- thu: ?
-- wed: ?
-- tue: ?
-- mon: sick
+  - fri: some tls-psk
+  - thu: ?
+  - wed: ?
+  - tue: ?
+  - mon: sick
 * week 2 (2012-01-09--15)
-thu, fri: sec-heads
-- [ ] mon: 
+  thu, fri: sec-heads
+  - [ ] mon: 
 * week 1 (2012-01-02--08)
-- [X] thu: radsecproxy: 1 (f-ticks) (from week 51 2011)
-- [X] wed: moonshot 4
-- [X] tue: sunet-tor: 2
-- [X] tue: seminar: 5 (DANE @ .SE)
-- [X] mon: vacation: 8 (not reported as vacation -- conference was intense)
+  - [X] thu: radsecproxy: 1 (f-ticks) (from week 51 2011)
+  - [X] wed: moonshot 4
+  - [X] tue: sunet-tor: 2
+  - [X] tue: seminar: 5 (DANE @ .SE)
+  - [X] mon: vacation: 8 (not reported as vacation -- conference was intense)
 * mellandagarna
-- [X] conference 28C3
+  - [X] conference 28C3
 * week 51 (2011-12-19--25)
-- [X] thu: radsecproxy: 1 f-ticks  (reported week 1 2012)
-- [X] thu: tor-ipv6: 1 support
-- [X] tue: krb-otp: 1 report
+  - [X] thu: radsecproxy: 1 f-ticks  (reported week 1 2012)
+  - [X] thu: tor-ipv6: 1 support
+  - [X] tue: krb-otp: 1 report
 * week 50 (2011-12-12--18)
-- [X] tue: radsecproxy: 2
+  - [X] tue: radsecproxy: 2
 * week 49 (2011-12-05--11)
-- [X] mon: krb-otp: 3 ASN.1 issues
-- [X] mon: moonshot: 2 build issues
+  - [X] mon: krb-otp: 3 ASN.1 issues
+  - [X] mon: moonshot: 2 build issues
 * week 48 (2011-11-28--12-04) [TOR (was Moonshot)]
-- [X] thu: tor-ipv6: 1 clean up
-- [X] wed: tor-ipv6: 6 releng (i.e. git wrestling) 1 (cleanup)
-- [X] tue: tor-ipv6: 6.25 testing, releng
-- [X] mon: tor-ipv6: 7.5 code
+  - [X] thu: tor-ipv6: 1 clean up
+  - [X] wed: tor-ipv6: 6 releng (i.e. git wrestling) 1 (cleanup)
+  - [X] tue: tor-ipv6: 6.25 testing, releng
+  - [X] mon: tor-ipv6: 7.5 code
 * week 47 (2011-11-21--27) [TOR (was KRB-OTP)]
-- [X] thu: tor-ipv6: 5.75
-- [X] wed: tor-ipv6: 9 (3 troubleshooting + 1.25 planning + 4.75)
-- [X] tue: tor-misc: 1
-- [X] tue: tor-ipv6: 6.25 (4.25 hacking + 2 planning)
-- [X] mon: radsecproxy: 0.5 patch
-- [X] mon: tor-ipv6: 7
+  - [X] thu: tor-ipv6: 5.75
+  - [X] wed: tor-ipv6: 9 (3 troubleshooting + 1.25 planning + 4.75)
+  - [X] tue: tor-misc: 1
+  - [X] tue: tor-ipv6: 6.25 (4.25 hacking + 2 planning)
+  - [X] mon: radsecproxy: 0.5 patch
+  - [X] mon: tor-ipv6: 7
 * week 46 (2011-11-14--20) [TOR]
-- [X] sun: tor-ipv6: 0.5
-- [X] sat: tor-misc: 1.5
-- [X] sat: tor-ipv6: 7.5
-- [X] fri: tor-misc: 1
-- [X] fri: tor-ipv6: 11.25 unbreak after prop186_hacking, remove prefer_ipv6()
-- [X] thu: tor-ipv6: 6.25 routerinfo_t->address
-- [X] wed: tor-misc: 1
-- [X] wed: tor-ipv6: 6.25 ?
-- [X] tue: tor-ipv6: 6.5 digging through code for fixing "the multiple addr problem"
-- [X] mon: tor-ipv6: 6 refactoring bug3786
+  - [X] sun: tor-ipv6: 0.5
+  - [X] sat: tor-misc: 1.5
+  - [X] sat: tor-ipv6: 7.5
+  - [X] fri: tor-misc: 1
+  - [X] fri: tor-ipv6: 11.25 unbreak after prop186_hacking, remove prefer_ipv6()
+  - [X] thu: tor-ipv6: 6.25 routerinfo_t->address
+  - [X] wed: tor-misc: 1
+  - [X] wed: tor-ipv6: 6.25 ?
+  - [X] tue: tor-ipv6: 6.5 digging through code for fixing "the multiple addr problem"
+  - [X] mon: tor-ipv6: 6 refactoring bug3786
 * week 45 (2011-11-07--13) [TOR]
-- The Tor stuff was digging through code and get client/bridge working
-  over IPv6 (fbsd->linux).
+  - The Tor stuff was digging through code and get client/bridge working
+    over IPv6 (fbsd->linux).
 
-- [X] fri: krb-otp: 1
-- [X] fri: tor-ipv6: 3
-- [X] thu: tor-ipv6: 3
-- [X] wed: tor-ipv6: 10
-- [X] tue: tor-ipv6: 6 ipv6 (1 nixon-china)
-- [X] mon: tor-ipv6: 8.25 ipv6 (1 nixon-china)
+  - [X] fri: krb-otp: 1
+  - [X] fri: tor-ipv6: 3
+  - [X] thu: tor-ipv6: 3
+  - [X] wed: tor-ipv6: 10
+  - [X] tue: tor-ipv6: 6 ipv6 (1 nixon-china)
+  - [X] mon: tor-ipv6: 8.25 ipv6 (1 nixon-china)
 * week 44 (2011-10-31--11-06) [TOR]
-- Tor for SUNET: setting up the bw scanner.
-- Tor IPv6: Digging through code to get client/bridge over IPv6
-  working.
+  - Tor for SUNET: setting up the bw scanner.
+  - Tor IPv6: Digging through code to get client/bridge over IPv6
+    working.
 
-- [X] fri: tor-ipv6: 4
-- [X] thu: tor-ipv6: 8
-- [X] wed: tor-ipv6: 6
-- [X] tue: tor-ipv6: 8
-- [X] mon: tor-ipv6: 8
-- [X] mon: tor-sunet: 4
+  - [X] fri: tor-ipv6: 4
+  - [X] thu: tor-ipv6: 8
+  - [X] wed: tor-ipv6: 6
+  - [X] tue: tor-ipv6: 8
+  - [X] mon: tor-ipv6: 8
+  - [X] mon: tor-sunet: 4
 * week 43 (2011-10-24--30) [KRB-OTP/travel]
-- [X] sun: tor-sunet: 2
-- [X] sat: tor-sunet: 4
-- [X] fri: krb-otp: 8
-- [X] thu: krb-otp: 8
-- [X] wed: krb-otp: 8
-- [X] tue: krb-otp: 8
-- [X] mon: moonshot: 8
+  - [X] sun: tor-sunet: 2
+  - [X] sat: tor-sunet: 4
+  - [X] fri: krb-otp: 8
+  - [X] thu: krb-otp: 8
+  - [X] wed: krb-otp: 8
+  - [X] tue: krb-otp: 8
+  - [X] mon: moonshot: 8
 * week 42 (2011-10-17--23) [KRB-OTP/TOR]
-- [X] sun: moonshot: 0.5
-- [X] sun: tor-ipv6: 8
-- [X] sat: tor-ipv6: 4
-- [X] fri: krb-otp: 8
-- [X] thu: krb-otp: 8
-- [X] wed: krb-otp: 8
+  - [X] sun: moonshot: 0.5
+  - [X] sun: tor-ipv6: 8
+  - [X] sat: tor-ipv6: 4
+  - [X] fri: krb-otp: 8
+  - [X] thu: krb-otp: 8
+  - [X] wed: krb-otp: 8
 * week 41 (2011-10-10--16) [KRB-OTP]
-- [X] fri: krb-otp: 7
-- [X] thu: krb-otp: 8.75
-- [X] wed: krb-otp: 5.5
-- [X] tue: radsecproxy: 1
-- [X] tue: tor: 4.25
-- [X] tue: krb-otp: 2
-- [X] mon: krb-otp: 8.25
+  - [X] fri: krb-otp: 7
+  - [X] thu: krb-otp: 8.75
+  - [X] wed: krb-otp: 5.5
+  - [X] tue: radsecproxy: 1
+  - [X] tue: tor: 4.25
+  - [X] tue: krb-otp: 2
+  - [X] mon: krb-otp: 8.25
 * week 40 (2011-10-03--09) [KRB-OTP]
-- [X] sat: krb-otp: 1
-- [X] sat: radsecproxy: 2
-- [X] fri: radsecproxy: 1
-- [X] wed: krb-otp: 4
-- [X] wed: radsecproxy: 0.5
-- [X] wed: moonshot: 0.5
-- [X] tue: radsecproxy: 0.5
-- [X] tue: krb-otp: 1
-- [X] mon: radsecproxy: 1.5
+  - [X] sat: krb-otp: 1
+  - [X] sat: radsecproxy: 2
+  - [X] fri: radsecproxy: 1
+  - [X] wed: krb-otp: 4
+  - [X] wed: radsecproxy: 0.5
+  - [X] wed: moonshot: 0.5
+  - [X] tue: radsecproxy: 0.5
+  - [X] tue: krb-otp: 1
+  - [X] mon: radsecproxy: 1.5
 * week 39 (2011-09-26--10-02) [RADSECPROXY]
-- [X] sun: radsecproxy 1
-- [X] sat: radsecproxy 1
-- [X] fri: radsecproxy: 1.5
-- [X] thu: radsecproxy: 6
-- [X] wed: radsecproxy: 2.5
-- [X] tue: radsecproxy: 5.5
-- [X] mon: radsecproxy: 2
-- [X] mon: krb-otp: 1
-- [X] mon: sunet-tor: 2
+  - [X] sun: radsecproxy 1
+  - [X] sat: radsecproxy 1
+  - [X] fri: radsecproxy: 1.5
+  - [X] thu: radsecproxy: 6
+  - [X] wed: radsecproxy: 2.5
+  - [X] tue: radsecproxy: 5.5
+  - [X] mon: radsecproxy: 2
+  - [X] mon: krb-otp: 1
+  - [X] mon: sunet-tor: 2
 * week 38 (2011-09-19--25)
-- [X] sun: sunet-tor: 2
-- [X] fri: krb-otp: 3
-- [X] thu: krb-otp: 2
-- [X] thu: moonshot: 1
-- [X] wed: moonshot: 1
-- [X] wed: krb-otp: 2
-- [X] tue: krb-otp: 4
-- [X] mon: krb-otp: 0.5 (correspondence and planning) + 0.5 (report)
-- [X] mon: radsecproxy: 1
-- [X] mon: sunet-tor: 0.5
+  - [X] sun: sunet-tor: 2
+  - [X] fri: krb-otp: 3
+  - [X] thu: krb-otp: 2
+  - [X] thu: moonshot: 1
+  - [X] wed: moonshot: 1
+  - [X] wed: krb-otp: 2
+  - [X] tue: krb-otp: 4
+  - [X] mon: krb-otp: 0.5 (correspondence and planning) + 0.5 (report)
+  - [X] mon: radsecproxy: 1
+  - [X] mon: sunet-tor: 0.5
 * week 37 [vacation]
-Vacation.
+  Vacation.
 * week 36 [vacation]
-Vacation.
+  Vacation.
 
 * week 35 (2011-08-29--09-04)
-- [ ] fri: 4
-- [ ] thu: 3
-- [ ] wed: krb-otp: 0.75 build-system, 3 documentation, 0.5 devel
-- [ ] tue: krb-otp: 3.5 tests; 3.5 merge irush
-- [ ] mon: krb-otp: 4 http server for tests
+  - [ ] fri: 4
+  - [ ] thu: 3
+  - [ ] wed: krb-otp: 0.75 build-system, 3 documentation, 0.5 devel
+  - [ ] tue: krb-otp: 3.5 tests; 3.5 merge irush
+  - [ ] mon: krb-otp: 4 http server for tests
 * week 34 (2011-08-22--28)
-- [ ] sun: krb-otp: 2
-- [X] fri: krb-otp: 3
-- [X] thu: krb-otp: 4.5
-- [X] wed: krb-otp: 3
-- [X] tue: krb-otp: 2
-- [X] mon: krb-otp: 2
+  - [ ] sun: krb-otp: 2
+  - [X] fri: krb-otp: 3
+  - [X] thu: krb-otp: 4.5
+  - [X] wed: krb-otp: 3
+  - [X] tue: krb-otp: 2
+  - [X] mon: krb-otp: 2
 * week 33 (2011-08-15--21)
-- [X] sun: krb-otp: 4
-- [X] sat: krb-otp: 4
-- [X] fri: krb-otp: 4
-- [X] thu: krb-otp: 4
-- [X] wed: krb-otp: 8
-- tue: ?
-- mon: ?
+  - [X] sun: krb-otp: 4
+  - [X] sat: krb-otp: 4
+  - [X] fri: krb-otp: 4
+  - [X] thu: krb-otp: 4
+  - [X] wed: krb-otp: 8
+  - tue: ?
+  - mon: ?
 * week 32
-Vacation.
+  Vacation.
 * week 31
-Vacation.
+  Vacation.
 * week 30 (2011-07-25--31)
-Canada for Tor.
+  Canada for Tor.
 * week 29 (2011-07-18--24)
-- [X] fri: krb-otp: 4
-- [X] thu: radsecproxy release 1.4.3: 2
-- [X] wed: krb-otp reading heimdal: 8
-- wed: tor ipv6: 1
-- [X] tue: radsecproxy: 4
-- [X] tue: krb-otp: 1
-- [X] mon: krb-otp: 4
-- [X] mon: radsecproxy: 4
-- [X] mon: moonshot: 1
+  - [X] fri: krb-otp: 4
+  - [X] thu: radsecproxy release 1.4.3: 2
+  - [X] wed: krb-otp reading heimdal: 8
+  - wed: tor ipv6: 1
+  - [X] tue: radsecproxy: 4
+  - [X] tue: krb-otp: 1
+  - [X] mon: krb-otp: 4
+  - [X] mon: radsecproxy: 4
+  - [X] mon: moonshot: 1
 * week 28 (2011-07-11--17)
-- [X] sun: krb-otp: 5
-- [X] sun: moonshot: 1
-- [X] fri: krb-otp: heimdal: 5.5
-- [X] thu: radsecproxy bug fixing: 1
-- [X] thu: moonshot libradsec PSK: 1
-- [X] wed: radsecproxy bug fixing: 4 (actually mostly from week 26)
-tue: ?
-mon: ?
+  - [X] sun: krb-otp: 5
+  - [X] sun: moonshot: 1
+  - [X] fri: krb-otp: heimdal: 5.5
+  - [X] thu: radsecproxy bug fixing: 1
+  - [X] thu: moonshot libradsec PSK: 1
+  - [X] wed: radsecproxy bug fixing: 4 (actually mostly from week 26)
+        tue: ?
+        mon: ?
 * week 27 (2011-07-04--10)
-semester
+  semester
 * week 26 (2011-06-27--07-03)
-semester
+  semester
 * week 25 (2011-06-20--26)
-- fri: midsommarafton
-- [X] thu: krb-otp: 4
-- [X] wed: krb-otp: 6
-- [X] tue: krb-otp: 2
-- [X] mon: krb-otp: 2
+  - fri: midsommarafton
+  - [X] thu: krb-otp: 4
+  - [X] wed: krb-otp: 6
+  - [X] tue: krb-otp: 2
+  - [X] mon: krb-otp: 2
 * week 24 (2011-06-13--19)
-- [X] krb-otp: 16 (actually done week 26)
-fri: ?
-tor: travel
-ons: all hands kbh
-tue: ?
-mon: ?
+  - [X] krb-otp: 16 (actually done week 26)
+        fri: ?
+        tor: travel
+        ons: all hands kbh
+        tue: ?
+        mon: ?
 * week 23 (2011-06-06--12)
-ndn conf
+  ndn conf
 * week 22 (2011-05-30--06-05)
-- [X] krb-otp: 20
+  - [X] krb-otp: 20
 * week 21 (2011-05-23--29)
-- [X] krb-otp: 20
+  - [X] krb-otp: 20
 * week 20 (2011-05-16--22)
-- [X] krb-otp: 20
+  - [X] krb-otp: 20
 * week 19 (2011-05-09--15)
-- [X] krb-otp: 20
+  - [X] krb-otp: 20
 * week 18 (2011-05-02--08)
-- [X] fri: krb-otp: 4
-- [X] thu: krb-otp: 4
-- [X] wed: krb-otp: 2
-- [X] tue: krb-otp: 5.5
-- [X] mon: krb-otp: 3
+  - [X] fri: krb-otp: 4
+  - [X] thu: krb-otp: 4
+  - [X] wed: krb-otp: 2
+  - [X] tue: krb-otp: 5.5
+  - [X] mon: krb-otp: 3
 * week 17 (2011-04-25--05-01)
-- [X] krb-otp: 16
-- wed: dev all hands in cph
-- tue: sick
-- mon: free
+  - [X] krb-otp: 16
+  - wed: dev all hands in cph
+  - tue: sick
+  - mon: free
 * week 16 (2011-04-18--24)
-- fri: free
-- [X] thu: krb-otp: 2.5
-- [X] wed: radsecproxy: 2.5
-- [X] wed: krb-otp: 3
-- [X] tue: krb-otp: 4
-- [X] mon: krb-otp: 2
+  - fri: free
+  - [X] thu: krb-otp: 2.5
+  - [X] wed: radsecproxy: 2.5
+  - [X] wed: krb-otp: 3
+  - [X] tue: krb-otp: 4
+  - [X] mon: krb-otp: 2
 * week 15 (2011-04-11--17)
-- [X] fri: krb-otp: 8
-- [X] thu: krb-otp: 8
-- wed: 0
-- tue: 0
-- mon: 0
+  - [X] fri: krb-otp: 8
+  - [X] thu: krb-otp: 8
+  - wed: 0
+  - tue: 0
+  - mon: 0
 * week 14 (2011-04-04--10)
-- [X] fri: krb-otp: 4
-- [X] thu: krb-otp: 4 OATH
-- [X] wed: krb-otp: 4
+  - [X] fri: krb-otp: 4
+  - [X] thu: krb-otp: 4 OATH
+  - [X] wed: krb-otp: 4
 * week 13 (2011-03-28--04-03)
-ietf week
+  ietf week
 * week 12 (2011-03-21--27)
-- [X] fri: moonshot: 8
-- [X] thu: moonshot: 8
-wed: krb-otp: 2, adm: 2, travel: 4
+  - [X] fri: moonshot: 8
+  - [X] thu: moonshot: 8
+        wed: krb-otp: 2, adm: 2, travel: 4
 ** <2011-03-22 Tue>
-- [X] krb-otp 6
-KRB5_TRACE=./tracefile kinit molgan
+   - [X] krb-otp 6
+         KRB5_TRACE=./tracefile kinit molgan
 ** <2011-03-21 Mon>
-- [X] mon: moonshot: 5 dictionary configuration
-- [X] mon: krb-otp: 2 fumbling
+   - [X] mon: moonshot: 5 dictionary configuration
+   - [X] mon: krb-otp: 2 fumbling
 * week 11 (2011-03-14--20)
-- [X] krb-otp: 20
-- [X] moonshot: 10
+  - [X] krb-otp: 20
+  - [X] moonshot: 10
 * week 10 (2011-03-07--13)
-- [X] sun: moonshot: 2
-- [X] sat: moonshot: 6
-- [X] fri: moonshot: 8
-- [X] thu: moonshot: 1; 
-- [ ] thu: tor: 6
-- [X] wed: moonshot: 8
-- [ ] wed: tor: 2
-- [X] tue: moonshot: 8
-- [X] mon: moonshot: 4
+  - [X] sun: moonshot: 2
+  - [X] sat: moonshot: 6
+  - [X] fri: moonshot: 8
+  - [X] thu: moonshot: 1; 
+  - [ ] thu: tor: 6
+  - [X] wed: moonshot: 8
+  - [ ] wed: tor: 2
+  - [X] tue: moonshot: 8
+  - [X] mon: moonshot: 4
 * week 9 (2011-02-28--03-06)
-- [X] fri: moonshot: 4
-- [X] thu: moonshot: 6
-- [X] wed: moonshot: 4+3
-- [X] tue: moonshot: 7
-- [X] mon: moonshot: 5
+  - [X] fri: moonshot: 4
+  - [X] thu: moonshot: 6
+  - [X] wed: moonshot: 4+3
+  - [X] tue: moonshot: 7
+  - [X] mon: moonshot: 5
 * week 8 (2011-02-21--27)
-- [X] fri: moonshot: 4 event revamping
-- [X] tor: moonshot: 8 code stability and repo corruption salvation
-- [X] wed: moonshot: 2 timeouts, alt. server, memory leaks
-- [X] tue: moonshot: 7.5 timeouts, alt. server, memory leaks
-- [X] mon: krb-otp: 4 specification
-- [X] mon: moonshot: 1 planning
+  - [X] fri: moonshot: 4 event revamping
+  - [X] tor: moonshot: 8 code stability and repo corruption salvation
+  - [X] wed: moonshot: 2 timeouts, alt. server, memory leaks
+  - [X] tue: moonshot: 7.5 timeouts, alt. server, memory leaks
+  - [X] mon: krb-otp: 4 specification
+  - [X] mon: moonshot: 1 planning
 * week 7 (2011-02-14--20)
-- [X] sun: moonshot: 2 tls cert check and more
-- [X] sat: moonshot: 6 robustness
-- [X] fri: moonshot: 2; radsecproxy: 2 security support
-- [X] thu: moonshot: 2 hacking; radsecproxy: 6 security support
-- [X] wed: moonshot: 2 hacking
-- [X] tue: moonshot: 3; radsecproxy: 1 security support
-- [X] mon: 4
+  - [X] sun: moonshot: 2 tls cert check and more
+  - [X] sat: moonshot: 6 robustness
+  - [X] fri: moonshot: 2; radsecproxy: 2 security support
+  - [X] thu: moonshot: 2 hacking; radsecproxy: 6 security support
+  - [X] wed: moonshot: 2 hacking
+  - [X] tue: moonshot: 3; radsecproxy: 1 security support
+  - [X] mon: 4
 * week 6 (2011-02-07--13)
-- [X] fri: krb-otp: 2 web page and correspondance
-- [X] thu: krb-otp: 3 "standard studies"
-- [X] wed: krb-otp: 4 design
-- [X] tue: moonshot: 2 planning
-- [X] tue: krb-otp: 1 design
-- [X] mon: krb-otp: 1.75 Heimdal readup, 3.5 MIT project proposal
+  - [X] fri: krb-otp: 2 web page and correspondance
+  - [X] thu: krb-otp: 3 "standard studies"
+  - [X] wed: krb-otp: 4 design
+  - [X] tue: moonshot: 2 planning
+  - [X] tue: krb-otp: 1 design
+  - [X] mon: krb-otp: 1.75 Heimdal readup, 3.5 MIT project proposal
 * week 5 (2011-01-31--02-06)
-- [X] fri: moonshot: 3 robustness
-- [X] thu: krb-otp: 1 yubikey readup
-- [X] thu: moonshot: 2 robustness, 1 licensing
-- [X] wed: moonshot: 3.5 robustness
-- [X] tue: moonshot: 1 licensing, 3 robustness
-- [X] mon: moonshot: 0.5 planning, 2 licensing; tor: 1 bw auth support.
+  - [X] fri: moonshot: 3 robustness
+  - [X] thu: krb-otp: 1 yubikey readup
+  - [X] thu: moonshot: 2 robustness, 1 licensing
+  - [X] wed: moonshot: 3.5 robustness
+  - [X] tue: moonshot: 1 licensing, 3 robustness
+  - [X] mon: moonshot: 0.5 planning, 2 licensing; tor: 1 bw auth support.
 * week 4 (2011-01-24--30)
-- [ ] sat: tor: 1: torperf support (sw upgrade).
-- [X] fri: krb-otp: 2.5: Beating up the installation, enabling trace.
-- [X] thu: krb-otp: 5: OTP plugin client, KDC setup.
-- [X] wed: krb-otp: 4.5: Plugin skeleton; moonshot: 0.25: Library design.
-- [X] tue: krb-otp: 2.5: Reading up on specs; 1.5: Digging through code.
-- [X] mon: krb-otp: 7: Setup of infrastructure, reading up on lists.
+  - [ ] sat: tor: 1: torperf support (sw upgrade).
+  - [X] fri: krb-otp: 2.5: Beating up the installation, enabling trace.
+  - [X] thu: krb-otp: 5: OTP plugin client, KDC setup.
+  - [X] wed: krb-otp: 4.5: Plugin skeleton; moonshot: 0.25: Library design.
+  - [X] tue: krb-otp: 2.5: Reading up on specs; 1.5: Digging through code.
+  - [X] mon: krb-otp: 7: Setup of infrastructure, reading up on lists.
 * week 3 (2011-01-17--23)
-- [X] moonshot: 40h
+  - [X] moonshot: 40h
 * week 2 (2011-01-10--16)
-- [X] moonshot: 12h
-- [X] krb-otp: 12h
+  - [X] moonshot: 12h
+  - [X] krb-otp: 12h
 * week 1 (2011-01-03--09)
-fre 6/1: klämdag
-tor 6/1: röd dag
-ons 5/1: komp 4h
-ti 4/1: semester 8h
-må 3/1: semester 8h
+  fre 6/1: klämdag
+  tor 6/1: röd dag
+  ons 5/1: komp 4h
+  ti 4/1: semester 8h
+  må 3/1: semester 8h
 * week 52 (2010-12-27--2011-01-02)
-semester/ledig
+  semester/ledig
 * week 51 (2010-12-20--26)
 * week 50 (2010-12-13--19)
 * week 49 (2010-12-06--12)
 * week 48 (2010-12-01--05)
 * week 48 (2010-11-29--30)
-- [ ] lobber: 16h
+  - [ ] lobber: 16h
 * week 47 (2010-11-22)
-- [ ] lobber: 40h
+  - [ ] lobber: 40h
 * week 46 (2010-11-15)
-- [ ] lobber: 35h
-- [X] moonshot: 5h
+  - [ ] lobber: 35h
+  - [X] moonshot: 5h
 * week 45 (2010-11-08--11-14)
-- [X] moonshot: 12h
-- [ ] lobber: 8h
+  - [X] moonshot: 12h
+  - [ ] lobber: 8h
 * week 44 (2010-11-01--11-07)
 * week 43
-- [X] moonshot: 4h
-- [ ] lobber: 8h
+  - [X] moonshot: 4h
+  - [ ] lobber: 8h
 * week 42
-- [X] mantychore: 20h
-- [X] moonshot: 8h
+  - [X] mantychore: 20h
+  - [X] moonshot: 8h
 * week 41
-- [ ] lobber: 8h
-- [X] moonshot: 8h
+  - [ ] lobber: 8h
+  - [X] moonshot: 8h
 * week 40 (2010-10-04)
-- [ ] lobber: 4h
-- [X] moonshot: 8h
-- [X] mantychore: 2h
+  - [ ] lobber: 4h
+  - [X] moonshot: 8h
+  - [X] mantychore: 2h
 * week 39 (2010-09-27)
-- [X] moonshot: 6h
-- [X] moonshot: 24h
+  - [X] moonshot: 6h
+  - [X] moonshot: 24h
 * week 38 (2010-09-20)
-- [X] moonshot: 30h
+  - [X] moonshot: 30h
 * week 37 (2010-09-13)
-- [X] moonshot: 30h
+  - [X] moonshot: 30h
 * week 36 (2010-09-06)
-- [ ] lobber: 15h
+  - [ ] lobber: 15h
 * week 35
-- [X] moonshot (libradsecproxy): 8h (2010-09-01)
-- [ ] lobber: 4h
+  - [X] moonshot (libradsecproxy): 8h (2010-09-01)
+  - [ ] lobber: 4h
 * week 34 (<2010-08-23 Mon>)
-- [X] moonshot (reading up; api design): 24h
+  - [X] moonshot (reading up; api design): 24h
 * week 33 (<2010-08-16 Mon>
-- [X] krb-otp (reading up): 20
+  - [X] krb-otp (reading up): 20
 * week 32
-- [X] lobber: 10
+  - [X] lobber: 10
 * week 31
-Vacation.
+  Vacation.
 * week 30
-Vacation.
+  Vacation.
 * week 29
-Tor in Berlin.
+  Tor in Berlin.
 * week 28
 * week 27
   :CLOCK:
@@ -2549,14 +2817,14 @@ Tor in Berlin.
   :END:
   - [X] lobber: 3.5
 
-Rest: Vacation.
+        Rest: Vacation.
 * week 26
 ** <2010-07-04 Sun>
    CLOCK: [2010-07-04 Sun 12:36]--[2010-07-04 Sun 13:30] =>  0:54
    lobberdev-45
    - [X] lobber: 1
 ** <2010-07-02 Fri>
-Vacation.
+   Vacation.
 ** <2010-07-01 Thu>
    :CLOCK:
    CLOCK: [2010-07-01 Thu 10:30]--[2010-07-01 Thu 16:30] =>  6:00
@@ -2583,9 +2851,9 @@ Vacation.
    - [X] krb-otp: 2
 * week 25
 ** <2010-06-24 Thu>
-VAB
+   VAB
 ** <2010-06-23 Wed>
-VAB
+   VAB
 ** <2010-06-22 Tue>
    :CLOCK:
    CLOCK: [2010-06-22 Tue 14:48]--[2010-06-22 Tue 17:51] =>  3:03
@@ -2594,20 +2862,20 @@ VAB
    misc
    :END:
 ** <2010-06-21 Mon>
-  :CLOCK:
-  CLOCK: [2010-06-21 Mon 15:04]--[2010-06-21 Mon 15:51] =>  0:47
-  lobber
-  CLOCK: [2010-06-21 Mon 14:04]--[2010-06-21 Mon 15:04] =>  1:00
-  krb-otp
-  CLOCK: [2010-06-21 Mon 11:00]--[2010-06-21 Mon 12:13] =>  1:13
-  :END:
+   :CLOCK:
+   CLOCK: [2010-06-21 Mon 15:04]--[2010-06-21 Mon 15:51] =>  0:47
+   lobber
+   CLOCK: [2010-06-21 Mon 14:04]--[2010-06-21 Mon 15:04] =>  1:00
+   krb-otp
+   CLOCK: [2010-06-21 Mon 11:00]--[2010-06-21 Mon 12:13] =>  1:13
+   :END:
 * week 24
 ** <2010-06-18 Fri>
-?
+   ?
 ** <2010-06-17 Thu>
-?
+   ?
 ** <2010-06-16 Wed>
-?
+   ?
 ** <2010-06-14 Mon>
    CLOCK: [2010-06-14 Mon 09:40]--[2010-06-14 Mon 16:29] =>  6:49
 * week 23
@@ -3025,11 +3293,11 @@ VAB
    - [X] lobber: 0.5
    - [X] tor: 0.5
 ** <2010-04-07 Wed>
-vacation: 8
+   vacation: 8
 ** <2010-04-06 Tue>
-vacation: 8
+   vacation: 8
 ** <2010-04-05 Mon>
-Holiday.
+   Holiday.
 * week 13
 ** <2010-03-31 Wed>
    :CLOCK:
@@ -3050,18 +3318,18 @@ Holiday.
    CLOCK: [2010-03-30 Tue 09:10]--[2010-03-30 Tue 11:00] =>  1:50
    - [X] radsecproxy: 5.5
 ** <2010-03-29 Mon>
-  :CLOCK:
-  CLOCK: [2010-03-29 Mon 15:28]--[2010-03-29 Mon 16:01] =>  0:33
-  radsecproxy (bug reports)
-  CLOCK: [2010-03-29 Mon 14:55]--[2010-03-29 Mon 15:28] =>  0:33
-  CLOCK: [2010-03-29 Mon 13:16]--[2010-03-29 Mon 14:55] =>  1:39
-  misc
-  CLOCK: [2010-03-29 Mon 11:50]--[2010-03-29 Mon 13:16] =>  1:26
-  jra2t1 video conference
-  CLOCK: [2010-03-29 Mon 08:48]--[2010-03-29 Mon 11:50] =>  3:32
-  misc
-  :END:
-  - [X] jra2t1 meeting: 1.5
+   :CLOCK:
+   CLOCK: [2010-03-29 Mon 15:28]--[2010-03-29 Mon 16:01] =>  0:33
+   radsecproxy (bug reports)
+   CLOCK: [2010-03-29 Mon 14:55]--[2010-03-29 Mon 15:28] =>  0:33
+   CLOCK: [2010-03-29 Mon 13:16]--[2010-03-29 Mon 14:55] =>  1:39
+   misc
+   CLOCK: [2010-03-29 Mon 11:50]--[2010-03-29 Mon 13:16] =>  1:26
+   jra2t1 video conference
+   CLOCK: [2010-03-29 Mon 08:48]--[2010-03-29 Mon 11:50] =>  3:32
+   misc
+   :END:
+   - [X] jra2t1 meeting: 1.5
   - [X] radsecproxy: 0.5
 * week 12
 ** <2010-03-26 Fri>
@@ -3128,7 +3396,7 @@ Holiday.
    :END:
    - [X] radsecproxy: 2
 * week 11
-Full week of Juniper course (AJNR).
+  Full week of Juniper course (AJNR).
 ** <2010-03-17 Wed>
    - [X] radsecproxy: 1
 ** <2010-03-16 Tue>
@@ -3147,81 +3415,81 @@ Full week of Juniper course (AJNR).
    - [X] lobber (opentracker): 2.25
    - [X] radsecproxy: 0.5
 ** <2010-03-10 Wed> 
-- [X] jra2t1 meeting: 1; jra2t1: 2
-- [X] lobber: 1
+   - [X] jra2t1 meeting: 1; jra2t1: 2
+   - [X] lobber: 1
 ** <2010-03-09 Tue> 
-- [X] lobber: 2.5
+   - [X] lobber: 2.5
 ** <2010-03-08 Mon>
-- [X]  tor: 4;
-- ndn time report: 1
-- [X] radsecproxy: 0.75
+   - [X]  tor: 4;
+   - ndn time report: 1
+   - [X] radsecproxy: 0.75
 * week 9
-<2010-03-07 Sun> 
-- [X] [[https://project.nordu.net/browse/SUNETOPS-325][tor sysadm]]: 1h
-<2010-03-05 Fri> 
-- [X] lobber: 6h
-<2010-03-04 Thu> 
-- [X] lobber: 5.5h
-<2010-03-03 Wed> 
-- [X] lobber: 7h
-<2010-03-02 Tue> 
-- [X] lobber: 14h
-<2010-03-01 Mon> 
-- [X] lobber: 8h
+  <2010-03-07 Sun> 
+  - [X] [[https://project.nordu.net/browse/SUNETOPS-325][tor sysadm]]: 1h
+        <2010-03-05 Fri> 
+  - [X] lobber: 6h
+        <2010-03-04 Thu> 
+  - [X] lobber: 5.5h
+        <2010-03-03 Wed> 
+  - [X] lobber: 7h
+        <2010-03-02 Tue> 
+  - [X] lobber: 14h
+        <2010-03-01 Mon> 
+  - [X] lobber: 8h
 * week 8
-<2010-02-28 Sun> 
-- [X] lobber api: 1h
-<2010-02-26 Fri>
-- [X] [[https://project.nordu.net/browse/GNENDUSER-113][radsecproxy]]: 1h (svn setup)
-- [X] lobber: 6h
-<2010-02-25 Thu> 
-- [X] lobber: 8h
-<2010-02-24 Wed> [[https://project.nordu.net/browse/GNENDUSER-113][radsecproxy]]:
-- [X] 4h (set up solaris box and make patch for build problem); 
-- [X] lobber: 4h
-<2010-02-23 Tue>
-- [X] lobber: 4h
-<2010-02-22 Mon>
-- [X] lobber: 4h
+  <2010-02-28 Sun> 
+  - [X] lobber api: 1h
+        <2010-02-26 Fri>
+  - [X] [[https://project.nordu.net/browse/GNENDUSER-113][radsecproxy]]: 1h (svn setup)
+  - [X] lobber: 6h
+        <2010-02-25 Thu> 
+  - [X] lobber: 8h
+        <2010-02-24 Wed> [[https://project.nordu.net/browse/GNENDUSER-113][radsecproxy]]:
+  - [X] 4h (set up solaris box and make patch for build problem); 
+  - [X] lobber: 4h
+        <2010-02-23 Tue>
+  - [X] lobber: 4h
+        <2010-02-22 Mon>
+  - [X] lobber: 4h
 * week 7
-<2010-02-19 Fri>
-- [X] lobber: 20h
+  <2010-02-19 Fri>
+  - [X] lobber: 20h
 * week 6
-<2010-02-10 Wed> 
-- [X] lobber: 0.5h
+  <2010-02-10 Wed> 
+  - [X] lobber: 0.5h
 * week 5
-<2010-02-01 Mon> 
-- [X] lobber: 2h
-<2010-02-02 Tue> 
-- [X] lobber: 2h
-<2010-02-03 Wed> 
-- [X] lobber: 4h
+  <2010-02-01 Mon> 
+  - [X] lobber: 2h
+        <2010-02-02 Tue> 
+  - [X] lobber: 2h
+        <2010-02-03 Wed> 
+  - [X] lobber: 4h
 * week 4
-<2010-01-28 Thu> 
-- [X] lobber: 6h
-- IPD meeting: 1h
+  <2010-01-28 Thu> 
+  - [X] lobber: 6h
+  - IPD meeting: 1h
 * week 3
-<2010-01-22 Fri> [[https://project.nordu.net/browse/SUNETOPS-259][Eduroam stats]]: 1h [r]
-<2010-01-19 Tue> Sysadmin, torscan.sunet.se: 3h [r]
+  <2010-01-22 Fri> [[https://project.nordu.net/browse/SUNETOPS-259][Eduroam stats]]: 1h [r]
+  <2010-01-19 Tue> Sysadmin, torscan.sunet.se: 3h [r]
 * week 2
-<2010-01-15 Fri> VAB: 8h
+  <2010-01-15 Fri> VAB: 8h
 * week 1
-<2010-01-05 Tue> Vacation: 4h
-<2010-01-04 Mon> Vacation: 8h
+  <2010-01-05 Tue> Vacation: 4h
+  <2010-01-04 Mon> Vacation: 8h
 * 2009
 ** week 53
-<2009-12-30 Wed> 8 Vacation
-<2009-12-29 Tue> 8 Vacation
-<2009-12-28 Mon> 8 Vacation
+   <2009-12-30 Wed> 8 Vacation
+   <2009-12-29 Tue> 8 Vacation
+   <2009-12-28 Mon> 8 Vacation
 ** week 52
-<2009-12-23 Wed> 8 Vacation
+   <2009-12-23 Wed> 8 Vacation
 
 ** lobber
-  :CLOCK:
-  CLOCK: [2009-12-17 Thu 16:30]--[2009-12-17 Thu 18:00] =>  1:30
-  CLOCK: [2009-12-17 Thu 12:00]--[2009-12-17 Thu 14:30] =>  4:30
-  CLOCK: [2009-12-17 Thu 10:11]--[2009-12-17 Thu 11:30] =>  1:19
-  :END:
+   :CLOCK:
+   CLOCK: [2009-12-17 Thu 16:30]--[2009-12-17 Thu 18:00] =>  1:30
+   CLOCK: [2009-12-17 Thu 12:00]--[2009-12-17 Thu 14:30] =>  4:30
+   CLOCK: [2009-12-17 Thu 10:11]--[2009-12-17 Thu 11:30] =>  1:19
+   :END:
 ** jra2t1
    :CLOCK:
    CLOCK: [2010-01-13 Wed 10:00]--[2010-01-13 Wed 11:30] =>  1:30

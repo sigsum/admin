@@ -61,7 +61,7 @@ LC_MEASUREMENT=$LC_CTYPE; export LC_MEASUREMENT
 #function dmalloc { eval `command dmalloc -b $*`; }
 
 #alias ehlo='ssh -L 8080:127.0.0.1:8080 -i ~/ustick/.ssh/keys/e -p 7000 localhost'
-alias ehlo-root='ssh -i ~/.ssh/keys/e -p 4700 root@localhost'
+alias ehlo-root='ssh -i ~/.ssh/keys/e2 -p 4700 root@localhost'
 alias ext='sockstat -46'
 #alias ext='netstat -n --inet --inet6 | egrep ESTABLISH'
 alias grep='grep -E'
