@@ -1,3 +1,20 @@
+http://www.theguardian.com/world/2013/sep/30/nsa-files-edward-snowden-gchq-whistleblower
+otr storage https://github.com/guardianproject/keysync
+deterministic reproducible builds https://wiki.debian.org/ReproducibleBuilds/Rebuild20130907
+phone https://guardianproject.info/apps/ostel/
+foss people:rms http://www.wired.com/opinion/2013/09/why-free-software-is-more-important-now-than-ever-before/
+tor censorship circumvention https://svn.torproject.org/svn/projects/articles/circumvention-features.html#1
+tbb tor ff https://gitweb.torproject.org/tor-launcher.git/blob/HEAD:/src/components/tl-process.js
+anonymity mil lps http://www.spi.dod.mil/lipose.htm
+tor ipv6 roadmap https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/IPv6
+ascii <3 http://cdn.arwrath.com/1/123807.jpg
+fra surveillance http://www.dn.se/debatt/fra-lagen-medfor-massiv-kartlaggning-av-oskyldiga/
+nsa surveillance http://www.nytimes.com/2013/09/29/us/nsa-examines-social-networks-of-us-citizens.html?pagewanted=all&_r=0#h26
+eu nsa people:caspar http://cryptome.org/2013/09/eu-nsa-prism-fisa.pdf
+xmpp tls https://blog.thijsalkema.de/blog/2013/08/26/the-state-of-tls-on-xmpp-1/
+tor hs xmpp https://blog.thijsalkema.de/blog/2013/06/11/xmpp-federation-over-tor-hidden-services/
+nsa spying us politics https://www.techdirt.com/articles/20130927/13562624678/dianne-feinstein-accidentally-confirms-that-nsa-tapped-internet-backbone.shtml
+publishing http://mediagoblin.org/
 media howto https://gist.github.com/adulau/6209099
 privacy debian floss http://blog.martin-graesslin.com/blog/2013/08/floss-after-prism-privacy-by-default/
 privacy debian floss http://blog.martin-graesslin.com/blog/2013/08/floss-after-prism-anonymity-by-default/
@@ -830,7 +847,6 @@ http://hack.org/mc/projects/btns/ mc better-than-nothing
 https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorG tor ipv6
 http://www.teliasonera.com/en/newsroom/news/2012/ceo-provides-cr-action-programme-update/ telia hr
 https://sni.velox.ch/ sni web
-https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/IPv6
 https://www.ietf.org/id/draft-barnes-blocking-considerations-01.txt ietf censorship
 http://jjoifrct3fipkchp.onion/ lbw
 https://xkcd.com/320/ yourmom sleep funny webcomic

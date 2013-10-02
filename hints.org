@@ -5,12 +5,12 @@ go get code.google.com/p/go-tour/gotour
 ~/usr/go/bin/gotour
 ** build and install go programs
 export GOPATH=$HOME/usr/go
+[todo]
 ** (Sat Dec 08 16:54:27 +0100 2012) ioerrror@jabber.ccc.de: so i like: gobook.pdf 20121125-go-kindle.pdf ExpressivenessOfGo.pdf and soon i will read Network programming with Go.pdf
 http://www.golang-book.com/assets/pdf/gobook.pdf
 http://www.miek.nl/files/go/20121208-go.pdf
 http://golang.org/doc/ExpressivenessOfGo.pdf
 http://jan.newmarch.name/go/
-
 * pond
 ** try it out
 (Sat Dec 08 17:04:52 +0100 2012) ioerrror@jabber.ccc.de: keyex with me?
@@ -30160,3 +30160,110 @@ linus larsson
 - missar att det är 5,5 år sedan
 - farligt att lagra allt men "nsa är kanske bäst i världen på
   it-säkerhet"
+* openitp cts iv in berlin
+** https://wiki.openitp.org/
+linus/quadahfu
+** diary
+- day 0 (sat sep 28)
+  - food, mingling
+- day 1 (sun), gunner's in the house
+  - icebreaking warm up
+  - break out: works, !works, to do
+  - speed geeking
+  - break out: malware
+    - quinn, kyrah, gustaf, ella, morgan, sam (cbase), pascal, brian,
+      two or three more ppl
+    - quinn leading, suggesting looking at how the human body handles
+      stuff, suggesting putting ids'es, which i objected against and
+      had push back from quinn and ella, a bit confrontational; quinn:
+      should we ban you from running wireshark on your computer too?
+      i: how would you secure those devices? let's do other things for
+      detection, like "situational awareness", putting hashes of
+      binaries in append-only notaries
+- day 2 (mon)
+  - break out: standards organistations
+    - lee (ostel.co, guardian project), drwhax, christian
+      (torservers), duy, carlos
+      - who's active in ietf, past and now; grab all the public data,
+        put it in a db and categorize affiliation, look at links
+        between individuals and links over time
+- day 3 (tue)
+  - anonymity, what does it mean?
+    - ana, spanish?, researcher; brian dougan; susan, american,
+    journalistic connections somehow;
+    - use "link to" or "linkability" for posing questions about
+      systems claiming to be anonymous
+  - ella saitta wonders if i think it'd be useful if she went to
+    ietf88, i said yes
+** trip report
+Trip report, OpenITP Circumvention Tech Summit IV, Berlin Sep 29-Oct 1
+
+Some hundred individuals gathered at hotel Ramada in Berlin Sunday
+morning at 09:00 to sort out what was to be done within the field of
+circumvention technology. This was the fourth of these meetings held
+by OpenITP.
+
+I had not before met most of the people in the room but there were
+surprisingly many of which I knew or knew about. The whole thing was
+led by the infamous Gunner, an extremely energetic American with tons
+of meetings like this under his belt. I've been gunner ed before at Tor
+dev meetings and know that he's good.
+
+After some ice breaking exercises we broke up in smaller groups, 3-15
+people depending on interest, where we spent approximately an hour
+discussing one topic. Report backs in the full group afterwards.
+
+I was in a session about malware and how we should detect it and
+defend against it. Background for this is that the Syrian government,
+amongst others, is known to target so called dissidents with malware
+in order to own their computers. The session was led by Quinn Norton
+[spel?] and the  outcome of the session included [fixme].
+
+The second day, Monday, included a session led by Lee [fixme]
+regarding standards organisations, most notably IETF. How are
+standards made and who are the players taking part? There was some
+discussion about the value of having people from the circumvention
+tech community being part of standardisation. One of the outcomes of
+the session was that it'd be interesting to know which companies and
+organisations are part of the progress. This information might be
+useful for funding people from this community to go to IETF meetings,
+in an attempt to balance the supposed [slagged] towards commercial
+and governmental interests.
+
+Third day was a half day where I joined a session on the language used
+when describing anonymity services. A common problem is that the word
+"anonymity" means so many different things. Ana [fixme] leading the
+session presented a quick rundown of the academic definitions of
+linkability, observability and [fixme] based on the work of [fixme]
+and [fixme]. The group decided to try to encourage providers of
+circumvention and anonymity services to use the term linkability
+
+
+All in all I think that this trip was not worth the time, mid
+Saturday to late Wednesday including travel.
+
+* tor 
+** sponsorf sep/oct -13
+[[gnus:nnimap%2Badbc:INBOX.sent-mail.2013-09#87fvsuvd8q.fsf@nordberg.se][Email from Linus Nordberg: Re: Proposed contract for Tor ]]
+| Already done:
+| - [Tor #8530] Add a make target which bootstraps a local testing network
+|   and results in PASS or FAIL
+| - [Tor #8531] Extend Chutney to be able to verify that we can send and
+|   retrieve traffic
+| - [Tor #8532] Make TestingTorNetwork produce consensuses quicker
+| - [Tor #8533] Improve instructions for how to run a testing Tor network
+| 
+| Due October 31:
+| - [Tor #9206] 'Guard' flags only assigned to first nodes started in a
+|   private Tor network
+| - [Shadow #113] Bridges and a bridge authority in Scallion
+| - [Shadow #114] Add support for running more than one Tor version in the
+|   same simulation
+| - [Shadow #111] Create a Debian package for Shadow
+
+#8530, #8531, #8532 and #8533, the non-shadow tickets, are done
+#9206 is in progress, with lots of options
+shadow issues 113, 114 and 111 are not yet started, except that i do have a working shadow/scallion
+re #9206, i'd like to ask what people here think -- should we do all or some of the following
+i) "fake history" ($datadir/state or v3BandwidthsFile)
+ii) "brute force" (dir auth torrc config option or new server descriptor line "gimmeflags")
