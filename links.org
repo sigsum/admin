@@ -4,6 +4,43 @@ surveillance userbehaviour germany german https://www.vorratsdatenspeicherung.de
 fra cfr http://centrumforrattvisa.se/wp-content/uploads/files/Statements%20of%20facts.pdf
 fra cfr http://centrumforrattvisa.se/blog/2011/03/31/centrum-for-rattvisa-tar-fra-lagen-till-europadomstolen/
 fra cfr http://centrumforrattvisa.se/blog/2012/09/03/regeringen-vill-stoppa-europadomstolens-provning-av-fra-lagen/
+http://www.theguardian.com/world/2013/sep/30/nsa-files-edward-snowden-gchq-whistleblower
+otr storage https://github.com/guardianproject/keysync
+deterministic reproducible builds https://wiki.debian.org/ReproducibleBuilds/Rebuild20130907
+phone https://guardianproject.info/apps/ostel/
+foss people:rms http://www.wired.com/opinion/2013/09/why-free-software-is-more-important-now-than-ever-before/
+tor censorship circumvention https://svn.torproject.org/svn/projects/articles/circumvention-features.html#1
+tbb tor ff https://gitweb.torproject.org/tor-launcher.git/blob/HEAD:/src/components/tl-process.js
+anonymity mil lps http://www.spi.dod.mil/lipose.htm
+tor ipv6 roadmap https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/IPv6
+ascii <3 http://cdn.arwrath.com/1/123807.jpg
+fra surveillance http://www.dn.se/debatt/fra-lagen-medfor-massiv-kartlaggning-av-oskyldiga/
+nsa surveillance http://www.nytimes.com/2013/09/29/us/nsa-examines-social-networks-of-us-citizens.html?pagewanted=all&_r=0#h26
+eu nsa people:caspar http://cryptome.org/2013/09/eu-nsa-prism-fisa.pdf
+xmpp tls https://blog.thijsalkema.de/blog/2013/08/26/the-state-of-tls-on-xmpp-1/
+tor hs xmpp https://blog.thijsalkema.de/blog/2013/06/11/xmpp-federation-over-tor-hidden-services/
+nsa spying us politics https://www.techdirt.com/articles/20130927/13562624678/dianne-feinstein-accidentally-confirms-that-nsa-tapped-internet-backbone.shtml
+publishing http://mediagoblin.org/
+media howto https://gist.github.com/adulau/6209099
+privacy debian floss http://blog.martin-graesslin.com/blog/2013/08/floss-after-prism-privacy-by-default/
+privacy debian floss http://blog.martin-graesslin.com/blog/2013/08/floss-after-prism-anonymity-by-default/
+snowden http://www.theguardian.com/technology/2013/jul/28/edward-snowden-death-of-internet
+snowden sweden http://www.sydsvenskan.se/opinion/inpass/anette-novak/ge-snowden-asyl-i-sverige/
+hackermadness us law https://www.eff.org/deeplinks/2013/07/bradley-manning-was-punished-more-merely-because-his-leaks-involved-computer
+privacy https://datatracker.ietf.org/doc/draft-dessez-homenet-googleplus-interconnect/
+security http://webpki.org/
+privacy ietf http://tools.ietf.org/html/draft-tschofenig-hourglass-00
+https://tools.ietf.org/agenda/87/
+tor topology https://trac.torproject.org/projects/tor/ticket/3678
+pkix security readme https://datatracker.ietf.org/doc/draft-miller-posh/?include_text=1
+privacy https://tools.ietf.org/html/draft-dessez-homenet-googleplus-interconnect-01
+textsecure otr https://whispersystems.org/blog/simplifying-otr-deniability/
+tails roadmap https://labs.riseup.net/code/projects/tails/roadmap
+gpg pgp ecc http://charon.persephoneslair.org/~andrea/private/gnupg-2.0.20-ecc/
+gpg pgp security sidechannel http://eprint.iacr.org/2013/448
+gnuk usb token http://www.gniibe.org/oitoite/presentation/fosdem-2012/gnuk-fosdem-20120204.html
+ipv6 https://en.wikipedia.org/wiki/6LoWPAN
+berlin wifi http://www.visitberlin.de/en/article/w-lan-for-all-public-wi-fi-berlin
 service jabber survey security https://xnyhps.nl/~thijs/xmppoke-frontend/result.php?domain=jabber.ccc.de&type=server
 readme nsa backdoor prng http://www.wired.com/threatlevel/2013/09/nsa-backdoor/3/
 finfisher https://www.f-secure.com/weblog/archives/00002601.html
@@ -1126,7 +1163,6 @@ http://hack.org/mc/projects/btns/ mc better-than-nothing
 https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorG tor ipv6
 http://www.teliasonera.com/en/newsroom/news/2012/ceo-provides-cr-action-programme-update/ telia hr
 https://sni.velox.ch/ sni web
-https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/IPv6
 https://www.ietf.org/id/draft-barnes-blocking-considerations-01.txt ietf censorship
 http://jjoifrct3fipkchp.onion/ lbw
 https://xkcd.com/320/ yourmom sleep funny webcomic

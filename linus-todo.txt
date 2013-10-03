@@ -165,6 +165,7 @@ Legend                                                (emacs -*-org-*- mode)
    o reply to james "crypto & youth"
 * Eventually
 ** Misc
+   - describe tor HS as a comparison with "dino's LISP extensions"
    - set up selinux (file:///usr/share/doc/debian-handbook/html/sect.selinux.html)
      - contain mcabber
      - contain tbb
@@ -176,6 +177,8 @@ Legend                                                (emacs -*-org-*- mode)
    - email kelly about music
 ** Dev
    - build tlsdate on *BSD
+   - libradsec: add server failover
+   - libradsec: think about ephemeral keys
 ** Sysadm
    - try out fail2ban
    - find out whether to shut down gv99c or not

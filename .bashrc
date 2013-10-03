@@ -43,7 +43,7 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-EDITOR=emacs; export EDITOR
+EDITOR=vi; export EDITOR
 PAGER=less; export PAGER
 FTP_PASSIVE_MODE=1; export FTP_PASSIVE_MODE
 export GOPATH=$HOME/usr/go

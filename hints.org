@@ -1,8 +1,3 @@
-* add a CA cert in debian
-sudo sh -c "echo nordberg.se/nordberg-ca.crt >> /etc/ca-certificates.conf"
-sudo mkdir /usr/share/ca-certificates/nordberg.se
-sudo cp nordberg-ca.crt /usr/share/ca-certificates/nordberg.se/
-sudo update-ca-certificates
 * golang
 ** gotour
 export GOPATH=$HOME/usr/go
@@ -10,12 +5,12 @@ go get code.google.com/p/go-tour/gotour
 ~/usr/go/bin/gotour
 ** build and install go programs
 export GOPATH=$HOME/usr/go
+[todo]
 ** (Sat Dec 08 16:54:27 +0100 2012) ioerrror@jabber.ccc.de: so i like: gobook.pdf 20121125-go-kindle.pdf ExpressivenessOfGo.pdf and soon i will read Network programming with Go.pdf
 http://www.golang-book.com/assets/pdf/gobook.pdf
 http://www.miek.nl/files/go/20121208-go.pdf
 http://golang.org/doc/ExpressivenessOfGo.pdf
 http://jan.newmarch.name/go/
-
 * pond
 ** try it out
 (Sat Dec 08 17:04:52 +0100 2012) ioerrror@jabber.ccc.de: keyex with me?
@@ -1172,6 +1167,36 @@ booked at 2010-02-08
 Kernel module iwlwifi supports the Intel 6200AGN chipset in Lenovo T140s.
 Needs non-free firmware though: apt-get install firmware-iwlwifi
 Might want to turn of 5GHz: echo "options iwlwifi 11n_disable=1" > /etc/modprobe.d/iwlwifi.conf
+** ratpoison
+- key rate
+  # after every boot or suspend/resume
+  xset r on; xset r rate 255 128
+- mount usb stick
+  see tool:/root/mount-stick.sh, which boils down to
+    cryptsetup luksOpen /dev/$1 $2
+    mount /dev/mapper/$2 ~linus/$2
+  and
+    umount /dev/mapper/$1
+    cryptsetup luksClose $1
+- lock screen
+  # Requires 'xscreensaver -no-splash &' at X startup
+  /usr/bin/xscreensaver-command -lock
+- ctrl -> caps key mapping
+  xmodmap ~/.xmodmap
+- suspend
+  pm-suspend
+- controlling NetworkManager (esp. chosing SSID)
+  nmcli con up id <SSID>
+  nmcli dev wifi list
+  nmcli nm wifi off
+
+** adding a CA cert
+sudo sh -c "echo nordberg.se/nordberg-ca.crt >> /etc/ca-certificates.conf"
+sudo mkdir /usr/share/ca-certificates/nordberg.se
+sudo cp nordberg-ca.crt /usr/share/ca-certificates/nordberg.se/
+sudo update-ca-certificates
+** suspending
+sudo echo mem > /sys/power/state
 ** startup, autostart
 - /etc/init.d
 - /etc/X11/xinit/xinitrc -> /etc/X11/Xsession -> /etc/X11/Xsession.d
@@ -29936,6 +29961,440 @@ c7/x1Dwq0EWrn3TUT9+hm2l2XeCZa/W3a6Xo8/cxre/GREVzPEetEmNuWoXrgfhK
 ** key rate
 xset r on
 xset r rate 255 128
+xvfb, x11 virtual framebuffer, a server without video memory
+x11vnc, create a vnc server out of an x server
+* qemu / kvm
+** mounting a qcow2
+modprobe nbd max_part=63
+qemu-nbd -c /dev/nbd0 image.img
+mount /dev/nbd0p1 /mnt/image
+
+* gsm
+** 3 in germany
+None of the following networks give me service in munich since july 25:
+t-mobile, e-plus, vodafone.de, o2-de
+* coreboot
+** building
+apt-get install build-essential ncurses-dev 
+** flashing
+http://www.coreboot.org/Lenovo_x60x
+
+*** web page content
+     Patch flashrom to use RES1 SPI identification and spi_chip_write_1 for your flash chip, as well as change the flash chip model id to fit the RES1 command.
+
+        Alternatively, you can copy the existing definition first as it is done in this patch. Choose either method: apply the patch in the link, or do the patch yourself, as per instruction below. 
+
+        Find the definition of your flash chip in flashrom's flashchips.c
+        Change the .probe field to probe_spi_res1
+        Change the .model_id field to the RES1 ID given in the datasheet of the flash chip
+        Change the .write field to spi_chip_write_1 
+    Run flashrom -p internal -r factory.bin
+
+        This step is IMPORTANT since the factory BIOS in your machine is tied to your particular system board (or "planar" in IBM FRU terms) with a unique ID not present in factory BIOS updates. 
+
+    Run dd if=coreboot.rom of=top64k.bin bs=1 skip=$[$(stat -c %s coreboot.rom) - 0x10000] count=64k
+    Run dd if=coreboot.rom bs=1 skip=$[$(stat -c %s coreboot.rom) - 0x20000] count=64k | hexdump
+
+        Verify that the complete range is filled with ff bytes before proceeding! The above command must output: 
+        0000000 ffff ffff ffff ffff ffff ffff ffff ffff 
+        * 
+        0010000 
+        If this is not the case, the coreboot image needs to be rebuilt with the second-to-last 64kbyte block unused. 
+
+    Run dd if=top64k.bin of=coreboot.rom bs=1 seek=$[$(stat -c %s coreboot.rom) - 0x20000] count=64k conv=notrunc
+    Run bucts 1
+7.  Run flashrom -p internal -w coreboot.rom
+
+        This will be slow, it will output errors for addresses 0x0 and 0x1f0000 when working with a 2 Mbyte flash chip, and it will say "FAILED!" at the end, see Peter's mail before you panic. 
+
+8.    Power cycle the machine (i.e. a cold boot, not just a reboot), now starting with coreboot
+9.    Revert all changes made to flashrom (maybe backup the binary for later experiments)
+10.   Run flashrom -p internal -w coreboot.rom.
+
+        This will successfully overwrite the entire flash chip, including the last 64k that were write protected with the factory BIOS. 
+
+11.   Run bucts 0 
+*** doing stuff
+probe_spi_res1: id 0x14
+
+apt-get install libpci-dev
+
+flashrom/flashrom -p internal -r factory.bin -V
+look for RES1 [and some stuff] ==> 0x14 in our case
+
+vi flashchips.c
+
+# change .model_id like this
+                .vendor         = "ST",
+                .name           = "M25P16.RES",
+                .bustype        = BUS_SPI,
+                .manufacture_id = ST_ID,
+                .model_id       = 0x14,
+                .total_size     = 2048,
+                .page_size      = 256,
+                .tested         = TEST_UNTESTED,
+                .probe          = probe_spi_res1,
+                .probe_timing   = TIMING_ZERO,
+		.block_erasers  =
+
+
+flashrom/flashrom -p internal -r factory.bin   
+root@amnesia:/home/amnesia/Persistent/coreboot/src/flashrom# ./flashrom -p internal -r factory.bin
+flashrom v0.9.6.1-runknown on Linux 3.9-1-686-pae (i686)
+flashrom is free software, get the source code at http://www.flashrom.org
+
+Calibrating delay loop... OK.
+Found chipset "Intel ICH7M". Enabling flash write... WARNING: SPI Configuration Lockdown activated.
+OK.
+Found ST flash chip "M25P16.RES" (2048 kB, SPI) at physical address 0xffe00000.
+===
+This flash part has status UNTESTED for operations: PROBE READ ERASE WRITE
+The test status of this chip may have been updated in the latest development
+version of flashrom. If you are running the latest development version,
+please email a report to flashrom@flashrom.org if any of the above operations
+work correctly for you with this flash part. Please include the flashrom
+output with the additional -V option for all operations you tested (-V, -Vr,
+-VE, -Vw), and mention which mainboard or programmer you tested.
+Please mention your board in the subject line. Thanks for your help!
+Reading flash... done.
+
+mv factory.bin /home/amnesia/Persistent/
+
+root@amnesia:/home/amnesia/Persistent/coreboot/src/bucts# ./bucts 1
+bucts utility version '4'
+Using LPC bridge 8086:27b9 at 0000:1f.00
+Current BUC.TS=0 - 128kb address range 0xFFFE0000-0xFFFFFFFF is untranslated
+Updated BUC.TS=1 - 64kb address ranges at 0xFFFE0000 and 0xFFFF0000 are swapped
+
+root@amnesia:/home/amnesia/Persistent/coreboot# src/flashrom/flashrom -p internal -w coreboot-x60-july18-morning.rom 
+flashrom v0.9.6.1-runknown on Linux 3.9-1-686-pae (i686)
+flashrom is free software, get the source code at http://www.flashrom.org
+
+Calibrating delay loop... OK.
+Found chipset "Intel ICH7M". Enabling flash write... WARNING: SPI Configuration Lockdown activated.
+OK.
+Found ST flash chip "M25P16.RES" (2048 kB, SPI) at physical address 0xffe00000.
+===
+This flash part has status UNTESTED for operations: PROBE READ ERASE WRITE
+The test status of this chip may have been updated in the latest development
+version of flashrom. If you are running the latest development version,
+please email a report to flashrom@flashrom.org if any of the above operations
+work correctly for you with this flash part. Please include the flashrom
+output with the additional -V option for all operations you tested (-V, -Vr,
+-VE, -Vw), and mention which mainboard or programmer you tested.
+Please mention your board in the subject line. Thanks for your help!
+Reading old flash chip contents... done.
+Erasing and writing flash chip... Transaction error!
+spi_block_erase_d8 failed during command execution at address 0x1f0000
+Reading current flash chip contents... done. spi_chip_erase_c7 failed during command execution
+FAILED!
+Uh oh. Erase/write failed. Checking if anything changed.
+Your flash chip is in an unknown state.
+Get help on IRC at chat.freenode.net (channel #flashrom) or
+mail flashrom@flashrom.org with the subject "FAILED: <your board name>"!
+-------------------------------------------------------------------------------
+DO NOT REBOOT OR POWEROFF!
+root@amnesia:/home/amnesia/Persistent/coreboot# 
+
+hard reboot
+
+root@amnesia:/home/amnesia/Persistent/coreboot# src/flashrom/flashrom -p internal -w coreboot-x60-july18-morning.rom -c MX25L1605D/MX25L1608D
+flashrom v0.9.6.1-runknown on Linux 3.9-1-686-pae (i686)
+flashrom is free software, get the source code at http://www.flashrom.org
+
+Calibrating delay loop... OK.
+coreboot table found at 0xbf7ee000.
+Found chipset "Intel ICH7M". Enabling flash write... OK.
+Found Macronix flash chip "MX25L1605D/MX25L1608D" (2048 kB, SPI) at physical address 0xffe00000.
+Reading old flash chip contents... done.
+Erasing and writing flash chip... Erase/write done.
+Verifying flash... VERIFIED.
+root@amnesia:/home/amnesia/Persistent/coreboot# 
+
+** done
+root@amnesia:/home/amnesia/Persistent/coreboot# src/coreboot/util/nvramtool/nvramtool -a
+boot_option = Fallback
+last_boot = Fallback
+baud_rate = 115200
+debug_level = Spew
+hyper_threading = Enable
+nmi = Enable
+boot_devices = ''
+boot_default = 0x40
+cmos_defaults_loaded = Yes
+lpt = Enable
+volume = 0x41
+tft_brightness = 0xa0
+first_battery = Secondary
+bluetooth = Disable
+** notes
+bios-extract will pull apart factory.bin files
+* berlin
+** digitale gesellschaft, july 29
+https://digitalegesellschaft.de/2013/07/1-groser-bnd-spaziergang-am-29-7-um-19-uhr/
+Chausseestraße 96
+Chausseestraße / Ecke Wöhlertstraße
+U6 Schwartzkopffstr
+** becketts kopf
+Pappelallee 64
+U2 Schönhauser Alle
+** peter
+spittelmarkt
+* x60
+pipet kan tas bort om man i boot loadern lägger till kernel-kommandot idle=halt
+* tails
+** wireless usb stick not working
+Jul 31 07:22:34 localhost dhclient: bound to 130.129.23.208 -- renewal in 9917 seconds.
+Jul 31 07:22:35 localhost NetworkManager[6755]: <info> (wlan2): writing resolv.conf to /sbin/resolvconf
+Jul 31 07:22:35 localhost NetworkManager[6755]: <info> (wlan2): device state change: 7 -> 8 (reason 0)
+Jul 31 07:22:35 localhost NetworkManager[6755]: <info> (wlan2): writing resolv.conf to /sbin/resolvconf
+Jul 31 07:22:35 localhost NetworkManager[6755]: <info> Policy set 'Auto ietf' (wlan2) as default for IPv4 routing and DNS.
+Jul 31 07:22:35 localhost NetworkManager[6755]: <info> Activation (wlan2) successful, device activated.
+Jul 31 07:22:35 localhost NetworkManager[6755]: <info> Activation (wlan2) Stage 5 of 5 (IP Configure Commit) complete.
+Jul 31 07:22:41 localhost tails-additional-software[15812]: Warning: additional packages not activated, exiting
+* tamias
+- blocks contain the public key of the owner
+- fullscape (spelling?) (part of twisted) -- broker, for rpc, in
+  python; "tahoe wants to get rid of this and make it work on https
+  but this is long term"; no ipv6 support
+- fullscape addresses nodes like
+  pb://<hash-of-pubkey>@<list of ipv4-addr:port, comma separated>/<object>
+  hash is probably sha1
+  object is something like 'introducer'
+- xmpp: jean.lorchat@gmail.com jean@jit.si
+* XKEYSCORE
+** presentationen
+- presentationen
+  - är en informations/sälj-presentation om ett NSA-program som kallas
+    XKeyscore
+  - säger att global insamling av internettrafik sker
+  - är hemligstämplad med "the five eyes" -- usa, england, kanada,
+    australien och nya zeeland" -- som mottagare
+- både passiva och aktiva attacker
+- lyssnar på 150 ställen och lagrar allt, s.k. "full take" -- metadata
+  och innehåll
+- tre dygns lagring, indexerat på metadata
+- exempel på saker man kan söka efter i databasen: epost-adresser,
+  telefonnummer, inloggningar, filnamn, vänlistor, dator-fingerprint
+  (s. 12), url:ar (i.e. vad folk googlar på), referer header (var folk
+  kommer ifrån)
+- exempel på saker man kan hitta: ngn använder krypto, ngn pratar ett
+  språk som inte är vanligt i det området, ngn söker efter "skumma
+  grejer", alla krypterade word-dokument från Iran, all användning av
+  PGP i Iran
+- exempel på fler saker: "visa mig alla VPN-uppkopplingsförsök i land
+  X så att jag kan dekryptera dom och upptäcka alla användare" (s. 17)
+- metadata lagras typiskt i 30 dagar
+- man har ett dokument och kan spåra vem som skrev det och var
+- "visa mig alla excell-blad från Irak som innehåller en MAC-adress"
+- "visa mig alla maskiner i land X som vi kan ta kontroll över med
+  hjälp av sårbarheter i koden"
+  
+- "DNI exploitation system/analytic framework" (DNI == digital network
+  intelligence)
+
+- letar efter anomalier -- användning av krypto
+- TURMOIL/TURBULENCE är andra program som verkar gå mindre på djupet
+- Marina verkar vara ett program för att göra [PSC] i efterhand
+- Pinwale och Trafficthief är två andra relaterade program
+
+- obs daterat feb 2008, för 5,5 år sedan
+
+- TAO -- tailored attack overview ?
+
+- MDR -- massive data R
+
+** guardian-artikeln
+http://www.theguardian.com/world/2013/jul/31/nsa-top-secret-program-online-data
+- XKeychat är en databas och söksystem som ger användaren möjlighet
+  att söka i enorma databaser med mejl, chat och browsing-historik för
+  miljontals användare
+- ? man kan söka genom metadata och innehåll utan att ha t.ex. en
+  epost-adress ("selector")
+- 2007: 850 miljarder "call events", 150 miljarder "internet records",
+  1-2 miljarder nya entrys per dag
+
+
+** andra artiklar
+http://www.svd.se/nyheter/utrikes/nsa-overvakar-all-nataktivitet_8388740.svd
+
+http://www.svd.se/naringsliv/nyheter/varlden/avlyssning-hotar-frihandelsavtal_8314174.svd
+TTIP hotat, 25% av intrången kommer från USA, 10% från Asien
+
+http://www.svd.se/naringsliv/digitalt/sa-kan-storebror-folja-dina-spar_8270288.svd
+PRISM
+
+http://www.svd.se/naringsliv/nyheter/varlden/darfor-struntar-wall-street-i-spionskandalen_8264608.svd
+dom 9 lider ingen ekonomisk skada av avslöjandena
+
+http://www.dn.se/nyheter/varlden/usa-sponsrar-brittisk-signalspaning/
+USA har finansierat GCHQ med ca 1 miljard SEK under de senaste tre åren
+
+http://www.svd.se/opinion/brannpunkt/nu-skarps-synen-pa-lackor_8389614.svd
+Funcke om läckor.
+
+http://www.spiegel.de/international/world/new-nsa-leaks-describe-total-surveillance-system-xkeyscore-a-914244.html
+BND kan använda XKS säger hemliga dokument. BND menar att dom bara
+testar programmet och inte har tillgång till databasen.
+
+http://www.spiegel.de/international/world/german-intelligence-worked-closely-with-nsa-on-data-surveillance-a-912355.html
+
+http://www.nyteknik.se/nyheter/it_telekom/allmant/article3033210.ece
+FRA-läcka, äkta?
+
+https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5605784
+https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5596881
+.de hjälpte .us
+
+** kort beksrivning plus åtgärder
+- en databas med avlyssnad internettrafik
+- inhämtning verkar ske på 150 ställen runt jorden, lagringstid ca 3
+  dygn (trafikdata en månad)
+- plus sökmotor -- google -- indexerad på saker som epost-adresser,
+  telefonnummer, filnamn, FB/twitter-vänner och mer
+- kan hitta information utan s.k. "strong selector", dvs ett
+  sökkriterium som en epost-adress, t.ex. vem använder ett språk som
+  är ovanligt i den regionen, vem krypterar sin trafik
+- flera sökmöjligheter: maskiner i land X som har sårbarheter vi kan
+  utnyttja för att bryta oss in i dom
+
+- möjliga tekniska skydd
+  - mer krypterad trafik så att den inte sticker ut
+  - behöver kortlivade kryptonycklar så att man i efterhand inte kan
+    dekryptera all trafik
+
+** frågor
+- Gör FRA också så här? Det finns ingen prick i Sverige i dokumentet,
+  finns det nu? Svensk lag tillåter sedan 2009 FRA att lyssna vid
+  gränsen. TDV (tekniskt detekterings- och varningssystem) är under
+  uppbyggnad.
+- Har FRA tillgång till XKeyscore? Programvara? Databas? BND uppges ha
+  det, BND bekräftar tillgång till programvara (källa: Der Spiegel)
+- Skickar Sverige inhämtat data till det här systemet?
+- Tar Sverige emot information från det här systemet?
+- Är data från TDV tänkt att användas för något liknande detta?
+
+- Bryter FRA mot några lagar om dom lämnar ut data till det här
+  programmet? MK: Nej.
+
+- bara http?
+** p1 morgon fre 2/8 08:15
+linus larsson
+- missar att det är 5,5 år sedan
+- farligt att lagra allt men "nsa är kanske bäst i världen på
+  it-säkerhet"
+* openitp cts iv in berlin
+** https://wiki.openitp.org/
+linus/quadahfu
+** diary
+- day 0 (sat sep 28)
+  - food, mingling
+- day 1 (sun), gunner's in the house
+  - icebreaking warm up
+  - break out: works, !works, to do
+  - speed geeking
+  - break out: malware
+    - quinn, kyrah, gustaf, ella, morgan, sam (cbase), pascal, brian,
+      two or three more ppl
+    - quinn leading, suggesting looking at how the human body handles
+      stuff, suggesting putting ids'es, which i objected against and
+      had push back from quinn and ella, a bit confrontational; quinn:
+      should we ban you from running wireshark on your computer too?
+      i: how would you secure those devices? let's do other things for
+      detection, like "situational awareness", putting hashes of
+      binaries in append-only notaries
+- day 2 (mon)
+  - break out: standards organistations
+    - lee (ostel.co, guardian project), drwhax, christian
+      (torservers), duy, carlos
+      - who's active in ietf, past and now; grab all the public data,
+        put it in a db and categorize affiliation, look at links
+        between individuals and links over time
+- day 3 (tue)
+  - anonymity, what does it mean?
+    - ana, spanish?, researcher; brian dougan; susan, american,
+    journalistic connections somehow;
+    - use "link to" or "linkability" for posing questions about
+      systems claiming to be anonymous
+  - ella saitta wonders if i think it'd be useful if she went to
+    ietf88, i said yes
+** trip report
+Trip report, OpenITP Circumvention Tech Summit IV, Berlin Sep 29-Oct 1
+
+About one hundred individuals gathered at hotel Ramada in Berlin
+Sunday morning at 09:00 to sort out what is to be done in the field of
+circumvention technology. This was the fourth CTS held by OpenITP.
+
+I had not before met most of the people in the room but there were
+surprisingly many of which I knew or knew about. The whole thing was
+led by the infamous Gunner [link], an extremely energetic American who
+does this for a living. I've been gunnered before at Tor dev meetings
+and know that he's good.
+
+After some ice breaking exercises we broke up in smaller groups, 3-15
+people depending on interest, where we spent approximately an hour
+discussing one topic. Report backs to the full group
+afterwards. Follows a few highlights of sessions I was in.
+
+The first day, I was in a session about malware and specifically how
+we should detect that a computer has been infected and how to handle
+it from there. Background for this is that the Syrian government,
+amongst others, is known to have targeted so called dissidents with
+malware in order to own their computers. The session was led by Quinn
+Norton [spel?] and the outcome of the session included [fixme] and the
+wish to make "blue team" a bit more appreciated -- today it's the red
+team members who gets all the copulating.
+
+The second day, Monday, included a session led by Lee [fixme]
+regarding standards organisations, most notably IETF. How are
+standards being made and who are the players taking part? There was
+some discussion about the value of having people from the
+circumvention tech community taking part in standardisation. One of
+the outcomes of the session was that it'd be interesting to know which
+companies and organisations are active in the field. This information
+might be useful for funding people from this community to go to IETF
+meetings, in an attempt to balance the supposed over representation of
+commercial and governmental interests.
+
+Third day was a half day. I joined a session on the language used when
+describing anonymity services. A common problem is that the word
+"anonymity" means so many different things. Ana [more?] leading the
+session presented a quick rundown of the academic definitions of
+linkability, observability and [fixme] based on the work of [fixme]
+and [fixme]. The group decided to try to encourage both users of and
+providers of circumvention and anonymity services to try to describe
+the anonymity properties of systems in terms of who and what is linked
+to what by this or that observer. The session was made a bit more
+concrete when we applied this on Tor. Not many people understand Tor.
+
+All in all I'm afraid that this trip was not worth the time, mid
+Saturday to late Wednesday including travel.
+
+* tor 
+** sponsorf sep/oct -13
+[[gnus:nnimap%2Badbc:INBOX.sent-mail.2013-09#87fvsuvd8q.fsf@nordberg.se][Email from Linus Nordberg: Re: Proposed contract for Tor ]]
+| Already done:
+| - [Tor #8530] Add a make target which bootstraps a local testing network
+|   and results in PASS or FAIL
+| - [Tor #8531] Extend Chutney to be able to verify that we can send and
+|   retrieve traffic
+| - [Tor #8532] Make TestingTorNetwork produce consensuses quicker
+| - [Tor #8533] Improve instructions for how to run a testing Tor network
+| 
+| Due October 31:
+| - [Tor #9206] 'Guard' flags only assigned to first nodes started in a
+|   private Tor network
+| - [Shadow #113] Bridges and a bridge authority in Scallion
+| - [Shadow #114] Add support for running more than one Tor version in the
+|   same simulation
+| - [Shadow #111] Create a Debian package for Shadow
+
+#8530, #8531, #8532 and #8533, the non-shadow tickets, are done
+#9206 is in progress, with lots of options
+shadow issues 113, 114 and 111 are not yet started, except that i do have a working shadow/scallion
+re #9206, i'd like to ask what people here think -- should we do all or some of the following
+i) "fake history" ($datadir/state or v3BandwidthsFile)
+ii) "brute force" (dir auth torrc config option or new server descriptor line "gimmeflags")
 * add ca cert in debian
 * tool segfaults
 Aug 19 21:12:11 tool kernel: [88441.448643] colord-sane[432]: segfault at 35 ip 00007f65bb996a57 sp 00007f65bb980c90 error 4 in libdbus-1.so.3.7.2[7f65bb982000+44000]
