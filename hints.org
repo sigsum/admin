@@ -30321,48 +30321,53 @@ linus/quadahfu
 ** trip report
 Trip report, OpenITP Circumvention Tech Summit IV, Berlin Sep 29-Oct 1
 
-Some hundred individuals gathered at hotel Ramada in Berlin Sunday
-morning at 09:00 to sort out what was to be done within the field of
-circumvention technology. This was the fourth of these meetings held
-by OpenITP.
+About one hundred individuals gathered at hotel Ramada in Berlin
+Sunday morning at 09:00 to sort out what is to be done in the field of
+circumvention technology. This was the fourth CTS held by OpenITP.
 
 I had not before met most of the people in the room but there were
 surprisingly many of which I knew or knew about. The whole thing was
-led by the infamous Gunner, an extremely energetic American with tons
-of meetings like this under his belt. I've been gunner ed before at Tor
-dev meetings and know that he's good.
+led by the infamous Gunner [link], an extremely energetic American who
+does this for a living. I've been gunnered before at Tor dev meetings
+and know that he's good.
 
 After some ice breaking exercises we broke up in smaller groups, 3-15
 people depending on interest, where we spent approximately an hour
-discussing one topic. Report backs in the full group afterwards.
+discussing one topic. Report backs to the full group
+afterwards. Follows a few highlights of sessions I was in.
 
-I was in a session about malware and how we should detect it and
-defend against it. Background for this is that the Syrian government,
-amongst others, is known to target so called dissidents with malware
-in order to own their computers. The session was led by Quinn Norton
-[spel?] and the  outcome of the session included [fixme].
+The first day, I was in a session about malware and specifically how
+we should detect that a computer has been infected and how to handle
+it from there. Background for this is that the Syrian government,
+amongst others, is known to have targeted so called dissidents with
+malware in order to own their computers. The session was led by Quinn
+Norton [spel?] and the outcome of the session included [fixme] and the
+wish to make "blue team" a bit more appreciated -- today it's the red
+team members who gets all the copulating.
 
 The second day, Monday, included a session led by Lee [fixme]
 regarding standards organisations, most notably IETF. How are
-standards made and who are the players taking part? There was some
-discussion about the value of having people from the circumvention
-tech community being part of standardisation. One of the outcomes of
-the session was that it'd be interesting to know which companies and
-organisations are part of the progress. This information might be
-useful for funding people from this community to go to IETF meetings,
-in an attempt to balance the supposed [slagged] towards commercial
-and governmental interests.
+standards being made and who are the players taking part? There was
+some discussion about the value of having people from the
+circumvention tech community taking part in standardisation. One of
+the outcomes of the session was that it'd be interesting to know which
+companies and organisations are active in the field. This information
+might be useful for funding people from this community to go to IETF
+meetings, in an attempt to balance the supposed over representation of
+commercial and governmental interests.
 
-Third day was a half day where I joined a session on the language used
-when describing anonymity services. A common problem is that the word
-"anonymity" means so many different things. Ana [fixme] leading the
+Third day was a half day. I joined a session on the language used when
+describing anonymity services. A common problem is that the word
+"anonymity" means so many different things. Ana [more?] leading the
 session presented a quick rundown of the academic definitions of
 linkability, observability and [fixme] based on the work of [fixme]
-and [fixme]. The group decided to try to encourage providers of
-circumvention and anonymity services to use the term linkability
+and [fixme]. The group decided to try to encourage both users of and
+providers of circumvention and anonymity services to try to describe
+the anonymity properties of systems in terms of who and what is linked
+to what by this or that observer. The session was made a bit more
+concrete when we applied this on Tor. Not many people understand Tor.
 
-
-All in all I think that this trip was not worth the time, mid
+All in all I'm afraid that this trip was not worth the time, mid
 Saturday to late Wednesday including travel.
 
 * tor 
