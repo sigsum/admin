@@ -1,3 +1,9 @@
+tor sr lae http://arstechnica.com/security/2013/10/silk-road-mastermind-unmasked-by-rookie-goofs-complaint-alleges/
+surveillance userbehaviour germany http://www.kreativrauschen.com/blog/2008/06/04/data-retention-effectively-changes-the-behavior-of-citizens-in-germany/
+surveillance userbehaviour germany german https://www.vorratsdatenspeicherung.de/images/forsa_2008-06-03.pdf
+fra cfr http://centrumforrattvisa.se/wp-content/uploads/files/Statements%20of%20facts.pdf
+fra cfr http://centrumforrattvisa.se/blog/2011/03/31/centrum-for-rattvisa-tar-fra-lagen-till-europadomstolen/
+fra cfr http://centrumforrattvisa.se/blog/2012/09/03/regeringen-vill-stoppa-europadomstolens-provning-av-fra-lagen/
 service jabber survey security https://xnyhps.nl/~thijs/xmppoke-frontend/result.php?domain=jabber.ccc.de&type=server
 readme nsa backdoor prng http://www.wired.com/threatlevel/2013/09/nsa-backdoor/3/
 finfisher https://www.f-secure.com/weblog/archives/00002601.html
@@ -156,7 +162,7 @@ surveillance sweden http://www.dn.se/nyheter/sverige/usa-kan-overvaka-riksdagens
 fra people:campbell http://www.dn.se/nyheter/politik/avslojandet-om-sverige-ord-for-ord/
 fra snowden swedish http://mobil.dn.se/nyheter/sverige/ewa-stenberg-byteshandeln-ett-problem-for-demokratin/
 fra people:campbell http://www.dn.se/nyheter/varlden/del-av-materialet-som-brittiska-regeringen-vill-stoppa/
-ofra http://mobil.dn.se/nyheter/politik/expert-sverige-har-handerna-i-nsas-syltburk/
+fra http://mobil.dn.se/nyheter/politik/expert-sverige-har-handerna-i-nsas-syltburk/
 nsa surveillance brazil mexico swedish http://mobil.dn.se/nyheter/varlden/obama-spionanklagelser-ska-utredas/
 readme nsa surveillance http://www.infowars.com/internet-architects-plan-counter-attack-on-nsa-snooping/
 tor research people:aaron http://www.ohmygodel.com/publications/usersrouted-ccs13.pdf

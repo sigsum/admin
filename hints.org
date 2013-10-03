@@ -30076,3 +30076,34 @@ spawn-fcgi: child spawned successfully: PID: 12660
 
 tool:src% curl http://localhost/fcgi/
 <title>foo</title><h2>Hello!</h2>Hi.tool:src% 
+* saving tflows
+  /home/linus/p/tflows:
+  total used in directory 104 available 109300116
+  drwxr-xr-x  6 linus linus  4096 Sep 28 10:17 .
+  drwxr-xr-x 15 linus linus  4096 Sep 13 14:41 ..
+  drwxr-xr-x  7 linus linus  4096 Sep 28 10:17 .git
+* -rw-r--r--  1 linus linus    82 Sep 11 14:15 Makefile
+  drwxr-xr-x  6 linus linus  4096 Sep 16 17:02 src
+  -rw-r--r--  1 linus linus 17267 Sep 16 21:41 tflows.html
+* -rw-r--r--  1 linus linus 57222 Sep 19 14:19 tflows.org
+  drwxr-xr-x  2 linus linus  4096 Mar  4  2013 web
+
+  /home/linus/p/tflows/src:
+  total used in directory 139328 available 109300060
+  drwxr-xr-x 6 linus linus      4096 Sep 16 17:02 .
+  drwxr-xr-x 6 linus linus      4096 Sep 28 10:17 ..
+  -rw-r--r-- 1 linus linus      4746 May 29 17:16 data2.csv
+  -rw-r--r-- 1 linus linus     69755 May 29 17:49 data.csv
+  -rw-r--r-- 1 linus linus    159004 May 29 17:47 lost-flows-10d.pdf
+  -rw-r--r-- 1 linus linus     38827 May 29 17:49 lost-flows-2d.pdf
+  -rw-r--r-- 1 linus linus 142209024 May 29 17:08 lost-flows.data
+  -rwxr-xr-x 1 linus linus      1783 May 29 17:44 lost-flows.py
+  drwxr-xr-x 2 linus linus      4096 Mar 12  2013 ndnvis
+  -rw-r--r-- 1 linus linus       395 May 29 17:46 plot-lost-flows.R
+  drwxr-xr-x 4 linus linus      4096 Oct 10  2012 sierra.nordu.net
+  drwxr-xr-x 4 linus linus      4096 Sep 20 14:53 tflows
+
+  /home/linus/p/tflows/web:
+  total used in directory 8 available 109300060
+  drwxr-xr-x 2 linus linus 4096 Mar  4  2013 .
+  drwxr-xr-x 6 linus linus 4096 Sep 28 10:17 ..
