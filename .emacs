@@ -380,7 +380,7 @@
  '(imap-ssl-program (quote ("openssl s_client -quiet -tls1 -connect %s:%p" "openssl s_client -quiet -ssl3 -connect %s:%p")))
  '(indent-tabs-mode nil)
  '(ispell-program-name "aspell")
- '(jabber-account-list (quote (("linus@nordberg.se/around" (:disabled . t) (:password . "Da7ooN8oo2ai") (:network-server . "jabber.adb-centralen.se") (:port . 5223) (:connection-type . ssl)) ("linus@nordu.net/around" (:password . "vo0aquei3uSoe5th") (:network-server . "jabber.nordu.net") (:port . 5223) (:connection-type . ssl)))))
+ '(jabber-account-list (quote (("linus@nordu.net/around" (:password . "vo0aquei3uSoe5th") (:network-server . "jabber.nordu.net") (:port . 5223) (:connection-type . ssl)))))
  '(jabber-activity-banned (quote ("twitter")))
  '(jabber-activity-make-strings (quote jabber-activity-make-strings-shorten))
  '(jabber-alert-message-hooks (quote (jabber-message-scroll)))
