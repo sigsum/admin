@@ -1,3 +1,215 @@
+readme ietf88 https://www.ietf.org/blog/2013/10/welcome-to-ietf-88/
+readme ietf88 https://www.ietf.org/blog/2013/10/plenary-on-internet-hardening/
+readme nsa snowden http://www.washingtonpost.com/world/national-security/nsa-infiltrates-links-to-yahoo-google-data-centers-worldwide-snowden-documents-say/2013/10/30/e51d661e-4166-11e3-8b74-d89d714ca4dd_story.html
+security sploit apache php http://www.exploit-db.com/exploits/29290/
+tor exit policy https://trac.torproject.org/projects/tor/wiki/doc/ReducedExitPolicy
+eu dpr safeharbor us eu http://www.spiegel.de/international/world/german-politician-wants-to-end-safe-harbor-agreement-with-us-a-930703.html
+surveillance merkel oped http://www.svd.se/kultur/understrecket/amerikansk-avlyssning-forvanar-inte_8670158.svd
+telia surveillance georgia https://sverigesradio.se/sida/artikel.aspx?programid=1650&artikel=5689232
+nsa swedish https://www.svd.se/nyheter/utrikes/europa-hjalptensa-spionera_8670298.svd
+ietf perpass http://down.dsg.cs.tcd.ie/misc/perpass.txt
+ietf88 perpass http://down.dsg.cs.tcd.ie/misc/perpass-sessions.txt
+tool security http://mitmproxy.org/
+tor traceroute http://web.engr.illinois.edu/~das17/tor-traceroute_v1.html
+security wifi http://www.bbc.co.uk/news/blogs-news-from-elsewhere-24707337
+xmpp jabber android http://www.xabber.com/
+readme ecc crypto http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/
+people:marcin https://upload.wikimedia.org/wikipedia/commons/6/62/Citadellet_Landskrona.JPG
+readme eu fra surveillance http://www.europarl.europa.eu/RegData/etudes/etudes/join/2013/493032/IPOL-LIBE_ET%282013%29493032_EN.pdf
+tahoe tor HS http://etg4ersbwhmvoywb.onion/uri/URI:DIR2-RO:j7flrry23hfiix55xdakehvayy:pn7wdmukxulpwxc3khdwqcmahdusgvfljjt4gx5oe4z35cyxngga/Latest/index.html
+readme occupy people:quinnnorton http://www.wired.com/threatlevel/2012/02/occupy-dc-eviction/
+people:marcin http://sidc2013.com/
+tls xmpp crypto https://github.com/stpeter/manifesto
+readme http://huitema.net/papers/draft-huitema-perpass-analthreat-00.txt
+readme surveillance nsa germany http://www.spiegel.de/international/germany/cover-story-how-nsa-spied-on-merkel-cell-phone-from-berlin-embassy-a-930205.html
+phone http://developer.sonymobile.com/downloads/documentation/sony-ericsson-at-commands-online-reference/
+gsm terminal https://www.elfa.se/elfa3~se_sv/elfa/init.do?item=10-492-34&toc=0&q=10-492-34
+bios malware https://plus.google.com/103470457057356043365/posts/9fyh5R9v2Ga
+bios malware https://kabelmast.wordpress.com/2013/10/23/badbios-and-lotsa-paranoia-plus-fireworks/
+clipper https://w2.eff.org/Privacy/Key_escrow/Clipper/denning_clipper.summary
+blog tschofenig http://www.tschofenig.priv.at/
+tinfoil http://boingboing.net/2012/10/01/tinfoil-hats-actually-amplify.html
+ecc crypto http://safecurves.cr.yp.to/
+readme btc http://conferences.sigcomm.org/imc/2013/papers/imc182-meiklejohnA.pdf
+readme ddc https://lwn.net/Articles/555936/
+readme fra http://www.dagensjuridik.se/2012/09/i-denna-svenska-domstol-ar-malens
+privacy gait http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.110.9741&rep=rep1&type=pdf
+http://www.electrokit.com/
+https://getlantern.org/
+google censorhip blocking tool https://uproxy.org/
+foi integrity swedish surveillance http://www.foi.se/Global/Press%20och%20nyheter/Fokus_Samhallssakerhet.pdf
+code http://www.meetup.com/The-Classical-Code-Reading-Group-of-Stockholm/events/142991942/
+food http://stockholmfoodtrucks.nu/
+blocking filtering http://www.cs.kau.se/philwint/censorbib/
+RAM encryption tor http://www.heraldonline.com/2013/10/23/5331713/privatecore-demonstrates-industrys.html
+nsa surveillance http://www.reuters.com/article/2013/10/23/us-germany-usa-spying-idUSBRE99M0Y720131023
+cryptocat https://github.com/cryptocat/cryptocat/issues/507
+filtering swedish https://www.iis.se/lar-dig-mer/guider/sokes-en-teknisk-losning-pa-ondskans-problem/vad-ar-det-onda-som-ska-bort/5/#Norge
+nsa wiretapping france germany surveillance http://www.nytimes.com/2013/10/24/world/europe/united-states-intelligence-official-disputes-spying-report-in-french-newspaper.html
+people:rpw thinkpad embedded security https://www.youtube.com/watch?v=tmZ4yXuDSNc
+readme nsa surveillance http://www.theatlantic.com/politics/archive/2013/10/why-the-nsas-defense-of-mass-data-collection-makes-no-sense/280715/
+funny pic cat bored https://i.chzbgr.com/completestore/2011/12/17/7a98ec80-8eb5-4fa8-82b0-02dd8661398d.jpg
+surveillance swedish denmark nsa business spying http://t.co/nuJw9ZzJxG
+surveillance swedish http://www.dn.se/kultur-noje/kulturdebatt/darfor-ar-ingen-oskyldig-i-overvakningssamhallet/
+surveillance people:soghoian http://files.dubfire.net/csoghoian-dissertation-final-8-1-2012.pdf
+internet policy regulation dataretention dr http://www.edri.org/files/EDRI_selfreg_final_20110124.pdf
+security rootkit embedded arm trustzone https://www.hackinparis.com/sites/hackinparis.com/files/Slidesthomasroth.pdf
+ipmi bmc drac people:danfarmer http://fish2.com/ipmi/itrain-gz.pdf
+ssl tls keys factoring people:nadia https://freedom-to-tinker.com/blog/nadiah/new-research-theres-no-need-panic-over-factorable-keys-just-mind-your-ps-and-qs/
+i2p http://wilfredwordpress.nfshost.com/?p=21
+i2p papers http://www.i2p2.de/papers.html
+i2p attack http://www.irongeek.com/downloads/Identifying%20the%20true%20IP%20of%20I2P%20service%20hosts.pdf
+i2p attack http://wwwcip.informatik.uni-erlangen.de/~spjsschl/i2p.pdf
+dfri hs http://dfriawqocxecq52e.onion/
+metasearch https://github.com/asciimoo/searx
+google tool censorship surveillance http://www.dn.se/ekonomi/google-lanserar-ny-teknik-mot-overvakning/
+reveng devel http://bap.ece.cmu.edu/
+pgp wot http://www.lysator.liu.se/~jc/wotsap/search.html
+pgp wot http://pgp.cs.uu.nl/doc/top_50.html
+gpg mlm mailinglist http://schleuder2.nadir.org/
+snowden nsa france http://www.theguardian.com/world/2013/oct/21/snowden-leaks-france-us-envoy-nsa-surveillance
+crypto nsa journalism people:sus http://journalisten.se/nyheter/det-lonar-sig-fortfarande-att-kryptera
+book spying humint http://www.bokus.com/bok/9780873649025/running-a-ring-of-spies/
+ebook book https://libgen.info/
+readme security https://github.com/SUNET/eduid-docs/blob/master/sunet-kmp.mkd
+nsa france surveillance http://www.thelocal.fr/20131021/us-snooped-on-70-million-phone-calls-in-france
+crypto conf http://realworldcrypto.wordpress.com
+latex math http://latex2html5.com/
+nt samba people:linus http://www.cs.miami.edu/~burt/learning/Csc524.031/workbook/cifsntdomain.txt
+acta tafta people:linus http://www.edri.org/edrigram/number11.5/total-transparency-acta-tafta
+gdpr http://www.laquadrature.net/en/the-european-parliament-must-protect-our-right-to-privacy
+gdpr https://ameliaandersdotter.eu/2013/10/21/stora-svagheter-i-parlamentets-forslag-till-dataskyddsforordning
+gdpr http://www.weidenholzer.eu/wp-content/uploads/2013/10/EUDATAP_allcompromises.pdf
+readme gdpr swedish http://www.svd.se/nyheter/utrikes/vem-ska-aga-makten-over-dig-pa-natet_8211028.svd
+GDPR http://ec.europa.eu/justice/data-protection/document/review2012/com_2012_11_en.pdf
+foia tor https://www.muckrock.com/foi/list/user-sarahcortes/?page=1&per_page=50
+gdpr swedish https://www.idg.se/2.1085/1.528402/reding-far-draghjalp-av-snowden
+readme internet design architecture security http://conferences.sigcomm.org/sigcomm/2002/papers/tussle.pdf
+readme perpass draft https://tools.ietf.org/html/draft-hardie-perpass-touchstone-00
+readme surveillance uk us nsa qchq http://www.slate.com/articles/technology/future_tense/2013/10/martin_scheinin_u_s_u_k_surveillance_programs_violate_iccpr.html
+readme intgov people:neelie people:caspar http://ec.europa.eu/commission_2010-2014/kroes/en/comment/4553
+gdpr http://www.theinquirer.net/inquirer/news/2301299/civil-rights-groups-press-european-parliament-on-privacy-protection
+gdpr surveillance nsa prism people:caspar http://www.europarl.europa.eu/meetdocs/2009_2014/documents/libe/dv/briefingnote_/briefingnote_en.pdf
+caspar jake schneier surveillance nsa prism conference http://www.theguardian.com/world/2013/sep/30/privacy-and-surveillance-jacob-applebaum-caspar-bowden-and-more-speak-in-switzerland
+bitcoin tor swedish http://www.svd.se/naringsliv/nyheter/varlden/virtuella-valutor-vardefulla-for-kriminella_8627322.svd
+eudatap gdpr http://euobserver.com/justice/121817
+scouting hr people:marcin http://cybernormer.se/scouter-kopplar-internet-till-manskliga-rattigheter/
+readme surveillance russia http://www.svd.se/nyheter/inrikes/prism-pa-steroider-overvakar-vinter-os_8590180.svd
+reveng backdoor router http://www.devttys0.com/2013/10/from-china-with-love/
+bahnhof privacy http://bahnhof.se/filestorage/userfiles/bahnhof_free_speech_policy.pdf
+tor bridgefinder https://lists.torproject.org/pipermail/tor-dev/2012-March/003392.html
+readme browser fingerprinting https://lwn.net/SubscriberLink/570534/8c75027b1e676330/
+eu nsa http://www.di.se/artiklar/2013/10/18/nsa-debatt-i-eu-parlamentet/
+sploit security https://grsecurity.net/~spender/exploits/
+pts http://www.pts.se/upload/Rapporter/Internet/lagring-uppgifter-eu-direktiv-int-utblick-pts-er-11-01.pdf
+swedish law http://www.advokatsamfundet.se/Documents/Advokatsamfundet_sv/Cirkul%C3%A4r/Cirkul%C3%A4r%2018%202011%20IT-tj%C3%A4nster%20vid%20advokatverksamhet.pdf
+swedish law sou2013:39 http://www.nyteknik.se/nyheter/it_telekom/allmant/article3778395.ece
+funny http://longestjokeintheworld.com/
+crypto people:preneel http://homes.esat.kuleuven.be/~preneel/
+readme srp password tls https://en.wikipedia.org/wiki/TLS-SRP
+ietf process https://datatracker.ietf.org/nomcom/2013/expertise/
+email tls msmd https://datatracker.ietf.org/doc/draft-wchuang-msmd/
+reproducible builds tails https://labs.riseup.net/code/issues/5926
+kickstarter bikes cars http://www.kickstarter.com/projects/fredrik-gertten/bikes-vs-cars-we-are-many
+terena https://tnc2014.terena.org/web/participate/guidelines
+readme briar https://fulpool.org/btp.pdf
+briar http://briar.sourceforge.net/protocol-spec.html
+law operator http://ostran.se/NYHETER/Kalmar/Kraevde-halv-miljon-foer-hjaelp-med-utredning
+readme tls android http://op-co.de/blog/posts/android_ssl_downgrade/
+ipv6 security ietf itu https://datatracker.ietf.org/documents/LIAISON/liaison-2013-05-07-itu-t-sg-17-sec-lso-on-the-itu-t-recommendation-itu-t-x1037-technical-security-guideline-on-deploying-ipv6-to-ietf-security-are-attachment-1.pdf
+tor metrics https://metrics.torproject.org/network.html#dirbytes
+surveillance debate hillaryclinton http://www.theguardian.com/world/2013/oct/11/hillary-clinton-spying
+gchq snowden libya http://www.theguardian.com/uk-news/2013/oct/13/gchq-accused-monitoring-privileged-emails-lawyer-client-libya
+lea cybercrime tor sr http://www.bbc.co.uk/news/technology-24495029
+bios security http://stewin.org/slides/44con_2013-dedicated_hw_malware-stewin_bystrov.pdf
+seccomp security linux http://outflux.net/teach-seccomp
+http://www.independent.co.uk/news/uk/politics/exclusive-uks-secret-mideast-internet-surveillance-base-is-revealed-in-edward-snowden-leaks-8781082.html
+surveillance journalism oversight accountability chillingeffect https://www.cpj.org/reports/2013/10/obama-and-the-press-us-leaks-surveillance-post-911.php
+surveillance journalism oversight accountability chillingeffect http://towcenter.org/blog/the-effects-of-mass-surveillance-on-journalism/
+nsa usa funny pic http://i.imgur.com/4BtLipY.gif
+fra sweden campbell http://www.dn.se/nyheter/sverige/sverige-samarbetade-med-usa-om-fra-lagen/
+search vuln http://www.shodanhq.com/
+reveng dlink backdoor http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor/
+identity security https://github.com/infinity0/idsec
+golang http://golang.org/doc/go1.1
+internet service leap https://bitmask.net/
+icann internet governence igov https://www.icann.org/en/news/announcements/announcement-07oct13-en.htm
+tor reproducible deterministic builds https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise
+tor reproducible deterministic builds https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details
+readme people:isis bridgedb pgp https://blog.patternsinthevoid.net/index.html
+eff tor snowden http://www.washingtonpost.com/business/technology/try-as-it-might-anti-surveillance-group-cant-avoid-washington/2013/10/11/2e14c0a0-2142-11e3-b73c-aab60bf735d0_story.html?wpmk=MK0000200
+tor search http://venturebeat.com/2013/10/10/torsearch-launches-to-be-the-google-of-the-hidden-internet/
+tor hs search http://kbhpodhnfxl3clb4.onion/
+hash sha3 faq http://www.larc.usp.br/~pbarreto/CrippledSHA3FAQ.html
+tls channelid https://tools.ietf.org/html/draft-balfanz-tls-channelid-00
+crd http://www.expressen.se/ekonomi/vd-miljonar-pa-postkodlotteriet/
+persona pseudonymity http://www.metro.se/veronika/vem-ar-veronika/EVHmja!rG6zxASRk5eCY/
+journalism sources integrity http://hackwat.ch/
+readme snowden moglen talk http://snowdenandthefuture.info/PartI.html
+tor sr nsa http://www.forbes.com/sites/kashmirhill/2013/10/08/did-the-nsa-help-with-the-silk-road-investigation/
+funny hierarchy people:rbush http://www.cafepress.com/mf/83334709/nonhierarchic-tee_tshirt?shop=RandyBush
+verilog http://www.forrestheller.com/verilog/
+tails mac https://mailman.boum.org/pipermail/tails-dev/2013-October/003835.html
+bios security http://www.mitre.org/capabilities/cybersecurity/overview/cybersecurity-blog/copernicus-question-your-assumptions-about
+bios security https://sites.google.com/site/pinczakko/pinczakko-s-guide-to-ami-bios-reverse-engineering-1
+tor attack racoon https://lists.torproject.org/pipermail/tor-dev/2012-March/003347.html
+tor attack racoon http://archives.seul.org/or/dev/Sep-2008/msg00016.html
+otp krb mit kdc doc http://web.mit.edu/~kerberos/krb5-devel/doc/admin/otp.html
+tls browser https://briansmith.org/browser-ciphersuites-01.html
+shaddow scallion https://github.com/shadow/shadow/wiki/Using-the-scallion-plug-in#generating-your-own-tor-network
+tor thanks https://blog.torproject.org/comment/reply/758/36078
+dns tool http://dnsviz.net/
+dns tool http://dns.squish.net/
+ietf chair nsa ehttps://en.wikipedia.org/wiki/Russ_Housley
+internet governance w3c dnt ietf grassroot gni http://www.digitalnewsasia.com/insights/web-consortiums-failures-show-limits-of-self-regulation
+readme wot https://lists.riseup.net/www/arc/monkeysphere/2013-09/msg00009.html
+censorship tor gfc http://www.cs.kau.se/philwint/static/gfc/
+encrypted fs https://code.google.com/p/cryptsetup/wiki/FrequentlyAskedQuestions
+truecrypt http://grugq.tumblr.com/post/60464139008/alternative-truecrypt-implementations
+truecrypt https://www.privacy-cd.org/downloads/truecrypt_7.0a-analysis-en.pdf
+eudatap http://henrikalexandersson.blogspot.fr/2013/10/veckans-overvakningsskandal.html
+eudatap http://euobserver.com/justice/121695
+funny you-keep-using-that-word dpr http://i2.kym-cdn.com/entries/icons/original/000/010/692/19789999.jpg
+privacy pics encryption http://cryptagr.am/
+ietf88 https://datatracker.ietf.org/meeting/88/agenda.html
+ui separation im maybe http://git.savannah.gnu.org/gitweb/?p=weechat.git;a=summary
+ui separation im maybe http://dev.weechat.org/
+readme police subversion http://www.reddit.com/r/HackBloc/comments/1nl0xf/paper_review_subversion_of_social_movements_by
+tor nsa readme people:tjr http://ritter.vg/blog-tor-nsa-slide-decks.html
+tor nsa cookie http://arstechnica.com/security/2013/10/how-the-nsa-might-use-hotmail-or-yahoo-cookies-to-identify-tor-users/
+email service https://mykolab.com/
+tor nsa http://ritter.vg/blog-tor-nsa-slide-decks.html
+tor nsa people:schneier https://www.schneier.com/blog/archives/2013/10/how_the_nsa_att.html
+tor nsa http://news.cnet.com/8301-13578_3-57606133-38/nsa-sought-to-unmask-users-of-net-privacy-tool-tor-says-report/
+sw communication protocol http://www.open-mpi.org/
+tor news https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews
+nsa tor danish http://nyhederne.tv2.dk/article.php/id-71936317:nsa-fors%C3%B8ger-at-bryde-det-anonyme-net.html
+nsa mathematicians http://mathbabe.org/2012/08/25/nsa-mathematicians/
+http://www.theguardian.com/commentisfree/2013/oct/04/german-intelligency-service-nsa-internet-laws
+tor map https://tormap.void.gr/
+readme tor nsa http://www.washingtonpost.com/blogs/the-switch/wp/2013/10/04/everything-you-need-to-know-about-the-nsa-and-tor-in-one-faq/
+tor nsa http://www.washingtonpost.com/world/national-security/secret-nsa-documents-show-campaign-against-tor-encrypted-network/2013/10/04/610f08b6-2d05-11e3-8ade-a1f23cda135e_story.html
+tor nsa http://www.washingtonpost.com/world/national-security/talk-by-roger-dingledine-of-torprojectorg-at-the-nsa/2013/10/04/cdd15234-2d1d-11e3-8ade-a1f23cda135e_story.html
+dfripi tor image https://www.dfri.se/files/dfri-pi-current.img
+privacy people:jake http://www.vice.com/en_uk/read/jacob-appelbaums-utopia-is-not-quite-what-you-imagined-it-to-be-like
+tor snowden top http://www.theguardian.com/world/2013/oct/04/nsa-gchq-attack-tor-network-encryption
+https://blog.torproject.org/blog/yes-we-know-about-guardian-article
+http://www.theguardian.com/world/2013/oct/04/nsa-gchq-attack-tor-network-encryption
+http://thecable.foreignpolicy.com/posts/2013/10/04/not_even_the_nsa_can_crack_the_state_departments_online_anonymity_tool
+http://media.encrypted.cc/files/nsa/
+http://www.theguardian.com/commentisfree/2013/oct/04/nsa-attacks-internet-bruce-schneier
+http://www.theguardian.com/world/interactive/2013/oct/04/tor-stinks-nsa-presentation-document
+http://www.theguardian.com/world/2013/oct/04/tor-attacks-nsa-users-online-anonymity
+http://apps.washingtonpost.com/g/page/world/gchq-report-on-mullenize-program-to-stain-anonymous-electronic-traffic/502/
+https://s3.amazonaws.com/s3.documentcloud.org/documents/801761/ces-summer-2006-tor-paper-28redacted-29.txt
+anonymity terminology http://freehaven.net/anonbib/date.html#terminology
+cts anonymity terminology https://wiki.openitp.org/cts:4:ana_what_is_anonymity
+privacy eu https://wcd.coe.int/ViewDoc.jsp?Ref=CM/Rec%282010%2913
+snowden guardian ioerror smari jamesball tor http://blog.foreignpolicy.com/posts/2013/10/03/a_wikileaks_family_feud_erupts_on_twitter
+readme nsa gchq http://www.theguardian.com/world/2013/oct/03/edward-snowden-files-john-lanchester
+readme nsa people:schneier http://www.technologyreview.com/news/519336/bruce-schneier-nsa-spying-is-making-us-less-safe/
+integrity sweden http://sverigeskonsumenter.se/blaslampan
+tor git https://trac.torproject.org/projects/tor/wiki/org/operations/Infrastructure/git.torproject.org
 tor sr lae http://arstechnica.com/security/2013/10/silk-road-mastermind-unmasked-by-rookie-goofs-complaint-alleges/
 surveillance userbehaviour germany http://www.kreativrauschen.com/blog/2008/06/04/data-retention-effectively-changes-the-behavior-of-citizens-in-germany/
 surveillance userbehaviour germany german https://www.vorratsdatenspeicherung.de/images/forsa_2008-06-03.pdf
@@ -49,7 +261,7 @@ bittorent utp ledbat http://openaccess.city.ac.uk/1967/1/cyberc12-florian-paper%
 gsw https://torrentfreak.com/pirate-bay-founder-hacking-sentence-slashed-in-half-on-appeal-130925/
 nsa spying india http://www.thehindu.com/news/international/world/nsa-planted-bugs-at-indian-missions-in-dc-un/article5164944.ece
 network protocol http://blog.chromium.org/2013/06/experimenting-with-quic.html
-deterministic build debian https://wiki.debian.org/ReproducibleBuilds
+deterministic reproducible build debian https://wiki.debian.org/ReproducibleBuilds
 elf security asm http://www.muppetlabs.com/~breadbox/software/tiny/teensy.html
 rtld unpacking virus security http://uninformed.org/?v=6&a=3&t=txt
 readme cobbler rtld security elf usenix https://www.usenix.org/system/files/conference/woot13/woot13-shapiro.pdf
@@ -67,7 +279,7 @@ ibis mix privacy https://ibis.uwaterloo.ca/
 tor https://blog.torproject.org/blog/tor-nsa-gchq-and-quick-ant-speculation#comment-35282
 tos http://cryptostorm.is/tos.html
 iphone security http://www.zdnet.com/researchers-reveal-how-to-hack-an-iphone-in-60-seconds-7000018822/
-deterministic build fedora https://github.com/kholia/ReproducibleBuilds
+deterministic reproducible build fedora https://github.com/kholia/ReproducibleBuilds
 radsecproxy doc https://confluence.terena.org/display/H2eduroam/radsecproxy-flr
 tbb https://people.torproject.org/~linus/downloads/tbb-3.0alpha4-build1/3.0-alpha-4/
 readme security kernel.org http://arstechnica.com/security/2013/09/who-rooted-kernel-org-servers-two-years-ago-how-did-it-happen-and-why/
@@ -94,7 +306,7 @@ readme nsa http://dissenter.firedoglake.com/2013/09/19/nsa-sends-letter-to-its-e
 port forwarding router tor http://portforward.com/
 seattle cloud anticensorship http://www.popsci.com/science/article/2013-09/justin-cappos
 dfri gmane listan http://dir.gmane.org/gmane.org.user-groups.dfri
-deterministic build http://securityblog.redhat.com/2013/09/18/reproducible-builds-for-fedora/
+deterministic reproducible build http://securityblog.redhat.com/2013/09/18/reproducible-builds-for-fedora/
 tor fh fbi malware security http://www.wired.com/threatlevel/2013/09/freedom-hosting-fbi/all/1
 sweden law sou http://bahnhof.se/filestorage/userfiles/file/Remissvar2013-09-18.pdf
 linux kernel bootloader UEFI http://www.kroah.com/log/blog/2013/09/02/booting-a-self-signed-linux-kernel/
@@ -140,7 +352,7 @@ http://www.wired.com/threatlevel/2013/09/freedom-hosting-fbi
 https://www.schneier.com/blog/archives/2013/09/the_tsa_is_lega.html#c1714103
 lea cp http://servicetoamericamedals.org/SAM/finalists/hsm/mackinnon.shtml
 nsa backdoor nist http://arstechnica.com/security/2013/09/government-standards-agency-strongly-suggests-dropping-its-own-encryption-standard/
-trojan backdoor hw http://people.umass.edu/gbecker/BeckerChes13.pdf
+trojan backdoor hw dope http://people.umass.edu/gbecker/BeckerChes13.pdf
 http://www.article19.org/resources.php/resource/37224/en/
 http://www.edri.org/edri_free
 nsa tafta people:malmström https://sverigesradio.se/sida/gruppsida.aspx?programid=3304&grupp=6240&artikel=5644512
@@ -318,8 +530,7 @@ factoring rsa http://crypto.2013.rump.cr.yp.to/55e2988c4ed3c9f635c9a4c3f52fa0b1.
 readme privacy http://ritter.vg/blog-deanonymizing_amm.html
 readme lenovo hw backdoor http://www.afr.com/p/technology/spy_agencies_ban_lenovo_pcs_on_security_HVgcKTHp4bIA4ulCPqC7SL
 NSA docs collection http://www.aclu.org/nsa-documents-released-public-june-2013
-deterministic build https://wiki.debian.org/ReproducibleBuilds
-deterministic build https://mailman.stanford.edu/pipermail/liberationtech/2013-June/009257.html
+deterministic reproducible build https://mailman.stanford.edu/pipermail/liberationtech/2013-June/009257.html
 xkeyscore swedish http://www.svd.se/opinion/brannpunkt/svenska-politiker-bor-bryta-tystnaden-om-avlyssningsskandalen_8401740.svd
 ddc people:wheeler http://lambda-the-ultimate.org/node/1184
 ddc http://www.dwheeler.com/trusting-trust/
@@ -438,7 +649,7 @@ tor people:snowden https://image.guim.co.uk/sys-images/Guardian/Pix/pictures/201
 topthinkers people:roger people:nickm people:syverson http://www.foreignpolicy.com/articles/2012/11/26/the_fp_100_global_thinkers?page=0,48
 tor ios iphone ipad http://www.ijailbreak.com/cydia/mobile-tor-cydia-tweak-ios/
 meathook http://zenarchery.com/full-text-of-the-grim-meathook-future-thing/
-readme gdpr dataprot http://www.privacysurgeon.org/blog/incision/eu-council-deals-killer-blow-to-privacy-reforms/
+readme gdpr dataprot eudatap http://www.privacysurgeon.org/blog/incision/eu-council-deals-killer-blow-to-privacy-reforms/
 prism http://www.guardian.co.uk/world/2013/jun/06/us-tech-giants-nsa-data
 readme surveillance privacy tor http://www.theverge.com/2013/5/16/4336994/metadata-matters-how-phone-records-and-obsolete-laws-harm-privacy
 readme prism swedish http://www.svd.se/kultur/massovervakningen-ar-var-nya-vardag_8245826.svd?fromMobile=true
@@ -448,7 +659,7 @@ tor http://www.salon.com/2013/06/07/why_privacy_tools_are_a_joke/singleton/
 prism cyberwar us http://www.guardian.co.uk/world/2013/jun/07/obama-china-targets-cyber-overseas
 logging anonymity http://blog.gerhards.net/2013/04/log-anonymization-with-rsyslog.html
 tor chrome browser https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs
-eu dataprot http://lobbyplag.eu/lp
+eu dataprot eudatap http://lobbyplag.eu/lp
 tor https://trac.torproject.org/projects/tor/timeline
 twitter encoding unicode https://blogs.oracle.com/ksplice/resource/legacy/lehman.txt
 webrtc tor flashproxy http://blog.printf.net/articles/2013/05/17/webrtc-without-a-signaling-server/
@@ -473,7 +684,7 @@ wl gb politics extradition people:assange http://www.guardian.co.uk/media/2010/d
 routing lg http://lg.he.net/
 routing lg atrato http://lg.as5580.net/
 security 0day http://users.ece.cmu.edu/~tdumitra/public_documents/bilge12_zero_day.pdf
-eu dataprot http://erikjosefsson.eu/sites/default/files/EP-DP-rules.png
+eu dataprot eudatap http://erikjosefsson.eu/sites/default/files/EP-DP-rules.png
 dns dnssec http://josefsson.org/walker/
 raspberry debian http://www.raspbian.org/
 sw-dev testing mocking http://locklessinc.com/articles/mocking/
@@ -540,7 +751,6 @@ moonshot http://www.project-moonshot.org/devwiki/
 readme sexism racism language satire http://www.cs.virginia.edu/~evans/cs655/readings/purity.html
 dfri press http://www.mynewsdesk.com/se/pressroom/dfri
 irc bouncer http://wiki.znc.in/ZNC
-pgp http://www.lysator.liu.se/~jc/wotsap/search.html
 readme censorship https://ooni.torproject.org/tab-tab-come-in-bypassing-internet-blocking-to-categorize-dpi-devices.html
 radius fticks radiator https://github.com/stockholmuniversity/radiator-fticks-anonymizer
 raspberry freebsd http://kernelnomicon.org/?p=275
@@ -617,7 +827,7 @@ greece indymedia pic https://pbs.twimg.com/media/BIm-4YxCQAAcclB.jpg:large
 tdv fra sweden http://www.nyteknik.se/nyheter/it_telekom/internet/article3682379.ece
 ddos http://wiki.deflect.ca/wiki/Main_Page
 privacy tools http://equalit.ie/
-eu dataprot cepis http://www.dataprotectioneu.eu/
+eu dataprot eudatap cepis http://www.dataprotectioneu.eu/
 services http://www.allabolag.se/
 china tor blocking https://twitter.com/felixonmars/status/325567723444764672
 internet metrics http://www.tunnelbroker.net/usage/tunnels_by_country.php
@@ -625,13 +835,13 @@ tor japan abuse http://www.bbc.co.uk/news/technology-22248692
 glasses http://visionforall.org/
 routing service https://www.team-cymru.org/Services/ip-to-asn.html#dns
 otp krb http://freeipa.org/page/V3/OTP
-eu ccc dataprot http://mirror.fem-net.de/CCC/29C3/mp4-h264-HQ/29c3-5274-en-grand_eu_data_protection_reform_h264.mp4
+eu ccc dataprot eudatap http://mirror.fem-net.de/CCC/29C3/mp4-h264-HQ/29c3-5274-en-grand_eu_data_protection_reform_h264.mp4
 tor hs oftc http://37lnq2veifl4kar7.onion
 procrastination http://www.svd.se/nyheter/idagsidan/psykologi/korta-pass-bast-for-uppskjutare_1650317.svd
 bitcoin chart http://bitcoincharts.com/charts/mtgoxUSD#permalinkbox
 tor japan police banning http://mainichi.jp/english/english/newsselect/news/20130418p2a00m0na013000c.html
 tor bridges media http://arstechnica.com/information-technology/2013/04/tor-calls-for-help-as-its-supply-of-bridges-falters/
-eu dataprot http://protectmydata.eu/
+eu dataprot eudatap http://protectmydata.eu/
 tor munin sysadm http://munin-monitoring.org/wiki/PluginCat
 tor nagios sysadm http://anonscm.debian.org/gitweb/?p=users/lunar/check_tor.git
 people:schneier privacy https://www.schneier.com/essay-109.html
@@ -915,7 +1125,7 @@ cuteanimal http://animalstalkinginallcaps.tumblr.com/
 cuteanimal http://cuteoverload.com/
 thandy http://google-opensource.blogspot.com/2009/03/thandy-secure-update-for-tor.html?_escaped_fragment_=
 panopticism surveillance internet analysis http://thenewinquiry.com/essays/under-our-skins/
-dataprot eu http://dataskydd.net/
+eudatap eu http://dataskydd.net/
 wifi ap poe http://www.ubnt.com/unifi
 censorship http://www.cs.kau.se/philwint/censorbib/
 swedish remiss http://www.government.se/sb/d/242/a/3652
@@ -1229,7 +1439,6 @@ https://lwn.net/SubscriberLink/506337/3d706dab3084e471/ cyberoam security ssl to
 https://en.wikipedia.org/wiki/El_Ma%C3%B1ana_%28Nuevo_Laredo%29 mexico drugcartel
 http://www.svd.se/nyheter/stockholm/hojd-sl-avgift-avskracker-resenarer_7339122.svd sl
 http://enhanced-cooperation.org/RFA/1 internet policy standards ietf readme
-http://www.cs.kau.se/philwint/static/gfc/ tor gfc censorship
 http://jon.oberheide.org/0trace/ security network trace
 http://stupid.domain.name/node/1573 sweden internet surveillance
 http://www.voyporoporto.com/ vigo porto bus
@@ -1507,7 +1716,7 @@ https://code.google.com/p/mediggo/ people:filiol
 https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorG#Phase1:December312011 tor ipv6
 http://events.ccc.de/congress/2011/Fahrplan/day_2011-12-27.en.html 28c3
 http://www.independent.co.uk/opinion/commentators/fisk/robert-fisk-bankers-are-the-dictators-of-the-west-6275084.html readme people:robertfisk
-http://www.h-online.com/open/news/item/Tor-experiments-with-IPv6-1397242.html tor ipv6 news
+tor ipv6 news http://www.h-online.com/open/news/item/Tor-experiments-with-IPv6-1397242.html
 http://www.urbanrail.net/eu/de/b/berlin-map.htm berlin map ubahn
 https://www.noisebridge.net/wiki/M.A.I.D maid security
 http://pastebin.com/YaDuReZ3 anonymous
