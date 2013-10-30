@@ -18,7 +18,7 @@
 ;; being wrong.
 
 ;; Login info
-(setq nnimap-authinfo-file "~/.priv/nnimap-authinfo" )
+;(setq nnimap-authinfo-file "~/.priv/nnimap-authinfo" )
 
 ;; Flyspell.
 (add-hook 'message-mode-hook

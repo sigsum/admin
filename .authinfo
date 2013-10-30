@@ -1,0 +1,4 @@
+machine smtp.nordberg.se login linus port 587 password ohL0gime
+machine imap.adb-centralen.se login linus password ohL0gime
+machine kerio.nordu.net port 587 login linus@nordu.net password vo0aquei3uSoe5th
+machine kerio.nordu.net login linus port 993 password vo0aquei3uSoe5th
