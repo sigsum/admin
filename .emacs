@@ -338,7 +338,7 @@
  '(erc-join-buffer (quote window-noselect))
  '(erc-keywords (quote ("dfri")))
  '(erc-netsplit-mode t)
- '(erc-notify-list nil)
+ '(erc-notify-list nil t)
  '(erc-pals (quote ("arma" "nickm")))
  '(erc-prompt-for-channel-key nil)
  '(erc-server-reconnect-timeout 10)
