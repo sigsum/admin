@@ -37,15 +37,11 @@
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
 
-;; There's something missing in magit from git as of 2009-01-29:
-;(defun invisible-p (ignore) (lambda nil))
-(setq load-path (cons "/u/src/magit" load-path))
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
 ;; Fun.
-(autoload 'lpmud "lpmud" "Run LP-MUD in Emacs" t)
-
+;(autoload 'lpmud "lpmud" "Run LP-MUD in Emacs" t)
 ;; Twitter stuff.
 ;(load-file "~/.twitter.el")
 
@@ -137,11 +133,6 @@
 ;(add-to-list 'exec-path "/usr/local/lib/erlang/bin" t)
 ;(require 'erlang-start)
 
-;; Info
-(require 'info)
-(setq Info-default-directory-list 
-      (cons "~/usr/gnus/texi" Info-default-directory-list))
-
 ;; BBDB
 ;(require 'bbdb)
 ;(bbdb-initialize)
@@ -152,8 +143,8 @@
 ;  (setq ido-create-new-buffer 'always))
 
 ;; Python mode (fbsd: lang/python-mode.el, debian: python-mode)
-(autoload 'python-mode "python-mode" "Mode for editing Python source files")
-(add-to-list 'auto-mode-alist '("\\.py" . python-mode))
+;(autoload 'python-mode "python-mode" "Mode for editing Python source files")
+;(add-to-list 'auto-mode-alist '("\\.py" . python-mode))
 
 ;; ses -- simple emacs spreadsheet
 ;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/ses")
@@ -242,7 +233,6 @@
       (and cur (not (eq cur '*skip*))
 	   (push cur result)))
     result))
-
 
 ;; Update Nov 2011: Moved to EasyPG (epg), see also "Mime Security" (config)
 ;; mailcrypt for PGP/GnuPG.  (See .gnus too.)
@@ -470,15 +460,16 @@
 ; '(erc-default-coding-system (quote (iso-8859-1 . undecided)))
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(calendar-today ((t (:box (:line-width 1 :color "grey75") :underline t))))
  '(diary ((((class color) (background light)) (:foreground "red"))))
  '(erc-keyword-face ((t (:foreground "dark green" :weight bold))))
  '(erc-pal-face ((t (:foreground "blue" :weight bold))))
  '(twit-message-face ((default (:height 0.9 :family "helv")) (nil nil))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Some keybindings
 ;; M-C-g 
@@ -601,7 +592,7 @@
 
 ;; w3m
 ; (add-to-list 'load-path "~/usr/share/emacs/site-lisp/w3m")
-(require 'w3m-load)
+;tmp;(require 'w3m-load)
 
 ;(require 'octet)
 ;(octet-mime-setup)
