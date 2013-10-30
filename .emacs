@@ -310,14 +310,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizations
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list (quote ("~/usr/share/info")))
  '(add-log-keep-changes-together t)
  '(browse-url-browser-function (quote w3m))
- '(calendar-date-display-form (quote ((format "%s-%s-%s" year month day))))
+ '(calendar-date-style (quote iso))
  '(calendar-today-visible-hook (quote (calendar-mark-today)))
  '(calendar-view-diary-initially-flag t)
  '(calendar-week-start-day 1)

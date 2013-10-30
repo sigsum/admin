@@ -1,73 +1,72 @@
-%%(diary-anniversary 4 2 1987) Runa
-%%(diary-anniversary 10 2 2013) Erinn
-%%(diary-anniversary 22 3 1979) Aron
-%%(diary-anniversary 1 4 1983) Jake
-%%(diary-anniversary 9 4 1969) Ilja
-%%(diary-anniversary 9 4 2008) Julian
-%%(diary-anniversary 10 4 2012) Fia & Fredde
-%%(diary-anniversary 18 4 1989) Xenia
-%%(diary-anniversary 18 4 1933) Elsie
-%%(diary-anniversary 22 4 2012) Roger
-%%(diary-anniversary 26 4 1999) Etta
-%%(diary-anniversary 10 5 1945) Erik
-%%(diary-anniversary 26 5 1983) Andreas
-%%(diary-anniversary 29 6 1973) Johan Ruterhagen
-%%(diary-anniversary 2 7 1999) Lärka
-%%(diary-anniversary 30 8 1977) Nick Mathewson
-%%(diary-anniversary 3 9 2002) Nicks first Tor commit
-%%(diary-anniversary 8 10 2003) tor https://lists.torproject.org/pipermail/tor-dev/2003-October/002185.html
-%%(diary-anniversary 15 10 2012) Lise
-%%(diary-anniversary 25 10 1944) Liss
-%%(diary-anniversary 3 11 1971) Simon
-%%(diary-anniversary 25 11 1965) Lena
-%%(diary-anniversary 29 11 1972) Sarah
+%%(diary-anniversary 1987 2 4) Runa
+%%(diary-anniversary 2013 2 10) Erinn
+%%(diary-anniversary 1979 3 22) Aron
+%%(diary-anniversary 1983 4 1) Jake
+%%(diary-anniversary 1969 4 9) Ilja
+%%(diary-anniversary 2008 4 9) Julian
+%%(diary-anniversary 2012 4 10) Fia & Fredde
+%%(diary-anniversary 1989 4 18) Xenia
+%%(diary-anniversary 1933 4 18) Elsie
+%%(diary-anniversary 2012 4 22) Roger
+%%(diary-anniversary 1999 4 26) Etta
+%%(diary-anniversary 1945 5 10) Erik
+%%(diary-anniversary 1983 5 26) Andreas
+%%(diary-anniversary 1973 6 29) Johan Ruterhagen
+%%(diary-anniversary 1999 7 2) Lärka
+%%(diary-anniversary 1977 8 30) Nick Mathewson
+%%(diary-anniversary 2002 9 3) Nicks first Tor commit
+%%(diary-anniversary 2003 10 8) tor https://lists.torproject.org/pipermail/tor-dev/2003-October/002185.html
+%%(diary-anniversary 2012 10 15) Lise
+%%(diary-anniversary 1944 10 25) Liss
+%%(diary-anniversary 1971 11 3) Simon
+%%(diary-anniversary 1965 11 25) Lena
+%%(diary-anniversary 1972 11 29) Sarah
 2011-12-7 09:00-15:30 NORDUnet all hands @ CPH
 2011-12-7 16:00-22:00 NORDUnet all hands @ CPH
 2011-12-14 Julbord Ulriksdals Wärdshus
 2011-12-16 Lukas!
-%%(diary-block 6 12 2011 8 12 2011) Annika i Sthlm.
+%%(diary-block 2011 12 6 2011 12 8) Annika i Sthlm.
 2011-11-29 16:00 Utv.samtal Juni
 2011-12-19 DFRI 19:00
 2011-12-8 18:00-19:30 Moderna Muséet, CRD-panel, http://www.modernamuseet.se/sv/Stockholm/Program/Killing-the-Chickens-to-Scare-the-Monkeys/
-&%%(diary-block 25 11 2011 1 12 2011) Linus
-&%%(diary-block 2 12 2011 7 12 2011) Lena
-&%%(diary-block 8 12 2011 15 12 2011) Linus
-&%%(diary-block 16 12 2011 29 12 2011) Lena
-&%%(diary-block 30 12 2011 12 1 2012) Linus
-&%%(diary-block 13 1 2012 19 1 2012) Lena
-&%%(diary-block 20 1 2012 26 1 2012) Linus
+&%%(diary-block 2011 11 25 2011 12 1) Linus
+&%%(diary-block 2011 12 2 2011 12 7) Lena
+&%%(diary-block 2011 12 8 2011 12 15) Linus
+&%%(diary-block 2011 12 16 2011 12 29) Lena
+&%%(diary-block 2011 12 30 2012 1 12) Linus
+&%%(diary-block 2012 1 13 2012 1 19) Lena
+&%%(diary-block 2012 1 20 2012 1 26) Linus
 2011-12-18 Förjul hos E&L
 2011-12-11 13:00 Pepparkakor i Täby
 2011-12-17 Middag med SuLa och Ilja?
 2011-12-20 Pyssel i Jakan.
 2011-12-2 Fredagsöl @ TUG.
-%%(diary-block 12 1 2012 13 1 2012) sec-heads
+%%(diary-block 2012 1 12 2012 1 13) sec-heads
 2011-12-13 Ture med hem -- pizza!
 2011-12-9 11:20 Hand- och fotkirurgikliniken, Storängsv. 10 (Elisabeth Hagert)
 2011-12-12 Per fyller år!
 2012-1-12 Scouterna börjar.
 2012-1-30 18:30-20:30 DFRI
 2012-1-25 16:00-18:00 FOSS Sthlm
-%%(diary-block 18 4 2012 19 4 2012) SIFF12 https://www.iis.se/evenemang/siff12
-%%(diary-block 16 4 2012 20 4 2012) RIPE 64 Ljubljana
-%%(diary-block 20 2 2012 22 2 2012) tor winter dev
-&%%(diary-cyclic 7 13 1 2012) 13:00-14:00 NORDUnet weekly
-&%%(diary-block 27 1 2012 2 2 2012) Lena
-&%%(diary-block 3 2 2012 9 2 2012) Linus
-&%%(diary-block 10 2 2012 16 2 2012) Lena
-&%%(diary-block 17 2 2012 23 2 2012) Lena (Linus)
-&%%(diary-block 24 2 2012 1 3 2012) Linus (Lena)
-&%%(diary-block 2 3 2012 8 3 2012) Linus
-&%%(diary-block 9 3 2012 15 3 2012) Lena
-&%%(diary-block 16 3 2012 22 3 2012) Linus
-&%%(diary-block 23 3 2012 29 3 2012) Lena
-&%%(diary-block 30 3 2012 3 4 2012) Linus
-&%%(diary-block 4 4 2012 13 4 2012) Lena
+%%(diary-block 2012 4 18 2012 4 19) SIFF12 https://www.iis.se/evenemang/siff12
+%%(diary-block 2012 4 16 2012 4 20) RIPE 64 Ljubljana
+%%(diary-block 2012 2 20 2012 2 22) tor winter dev
+&%%(diary-block 2012 1 27 2012 2 2) Lena
+&%%(diary-block 2012 2 3 2012 2 9) Linus
+&%%(diary-block 2012 2 10 2012 2 16) Lena
+&%%(diary-block 2012 2 17 2012 2 23) Lena (Linus)
+&%%(diary-block 2012 2 24 2012 3 1) Linus (Lena)
+&%%(diary-block 2012 3 2 2012 3 8) Linus
+&%%(diary-block 2012 3 9 2012 3 15) Lena
+&%%(diary-block 2012 3 16 2012 3 22) Linus
+&%%(diary-block 2012 3 23 2012 3 29) Lena
+&%%(diary-block 2012 3 30 2012 4 3) Linus
+&%%(diary-block 2012 4 4 2012 4 13) Lena
 2012-1-16 14:00-16:00 1-on-1 @ TUG
 2012-1-22 13:00 Julgransplundring Marianne
 2012-1-31 11:30 Tandläkaren
-%%(diary-block 27 1 2012 29 1 2012) Malmö
-%%(diary-block 15 4 2012 19 4 2012) Eurocrypt 2012
+%%(diary-block 2012 1 27 2012 1 29) Malmö
+%%(diary-block 2012 4 15 2012 4 19) Eurocrypt 2012
 2012-1-25 Lunch Dennis
 2012-4-13 Ohlson release
 2012-2-11 Fabbe & Fia kalas
@@ -76,14 +75,14 @@
 2012-2-1 11:00 Lunch fl, örtagården
 2012-2-9 13:30-15:30 UI sem
 2012-2-4 17:00 Grogg&Balett
-%%(diary-block 4 2 2012 5 2 2012) FOSDEM, Brussels
+%%(diary-block 2012 2 4 2012 2 5) FOSDEM, Brussels
 2012-2-14 Ta hand om Julian på kvällen
 2012-5-24 IT-forensiska dagen, Pintér
 2012-2-8 14:45-17:00 Moonshot meeting 4
-&%%(diary-block 25 2 2012 4 3 2012) Sportlov
+&%%(diary-block 2012 2 25 2012 3 4) Sportlov
 2012-2-2 17:00-22:00 Hackjunta @ NDN
 2012-3-7 17:00-20:00 ISOC-SE @ .SE
-%%(diary-block 16 2 2012 17 2 2012) Netnod vårmöte.
+%%(diary-block 2012 2 16 2012 2 17) Netnod vårmöte.
 2012-2-16 11:45 Checka in 2MJ9T3
 2012-3-16 17:30-22:00 DFRI årsmöte
 2012-2-5 14:00-16:00 Juni disco
@@ -113,13 +112,13 @@
 2012-2-28 DFRI styrelsemöte
 2012-3-31 Till Täby
 2012-3-14 Lunch m tg.
-&%%(diary-block 14 4 2012 19 4 2012) Linus
-&%%(diary-block 20 4 2012 26 4 2012) Lena
-&%%(diary-block 27 4 2012 3 5 2012) Linus
-&%%(diary-block 4 5 2012 10 5 2012) Lena
-&%%(diary-block 11 5 2012 17 5 2012) Linus
-&%%(diary-block 18 5 2012 24 5 2012) Lena
-&%%(diary-block 25 5 2012 31 5 2012) Linus
+&%%(diary-block 2012 4 14 2012 4 19) Linus
+&%%(diary-block 2012 4 20 2012 4 26) Lena
+&%%(diary-block 2012 4 27 2012 5 3) Linus
+&%%(diary-block 2012 5 4 2012 5 10) Lena
+&%%(diary-block 2012 5 11 2012 5 17) Linus
+&%%(diary-block 2012 5 18 2012 5 24) Lena
+&%%(diary-block 2012 5 25 2012 5 31) Linus
 2012-3-15 09:30-12:00 Lärkas skola, NO (C25, C35 el C33)
 2012-3-28 12:00-14:00 salary negotiations @ TUG
 2012-3-21 11:25 tg @ sibiriens
@@ -128,11 +127,11 @@
 2012-3-27 17:00 Tord @ VR HQ (Åkers Runö)
 2012-4-12 SEC-T vårpub http://www.sec-t.org/2012/SpringPub.html http://www.doodle.com/t9uztuaimpzuki2s
 2012-4-10 18:30 DFRI
-%%(diary-block 14 6 2012 15 6 2012) EuroDIG
+%%(diary-block 2012 6 14 2012 6 15) EuroDIG
 2012-5-9 Runa Tor talk in Trondheim
-%%(diary-block 7 5 2012 9 5 2012) Oslo Freedom Forum
+%%(diary-block 2012 5 7 2012 5 9) Oslo Freedom Forum
 2012-5-9 10:30-11:30 UI: USA och Iran: Angrepp, avskräckning eller avspänning?
-%%(diary-block 13 4 2012 19 4 2012) Andrew in town
+%%(diary-block 2012 4 13 2012 4 19) Andrew in town
 2012-4-10 11:00-12:00 Kerberos VC @ NORDUnet (MCU: 61403, pin 1403)
 2012-4-5 Fredagsöl @ TUG.
 2012-4-10 17:00 Sofia 30
@@ -140,8 +139,8 @@
 2012-4-12 18:00-20:00 Planning in #tor-dev.
 2012-4-8 Påskmiddag hos pappa La
 2012-4-21 Fredde!
-%%(diary-block 4 5 2012 6 5 2012) Malmö?
-%%(diary-block 30 6 2012 7 7 2012) Tor dev Italien (July 2-6, Florence)
+%%(diary-block 2012 5 4 2012 5 6) Malmö?
+%%(diary-block 2012 6 30 2012 7 7) Tor dev Italien (July 2-6, Florence)
 2013-10-3 maatuska directory signing key expires in a week
 2012-4-20 PowerOfAdhocracy II
 2012-4-25 Lunch Christensen.
@@ -151,12 +150,12 @@
 2012-4-24 18:00 Simon
 2012-4-24 11:00-12:00 radio1
 2012-5-24 12:10-13:00 Tor på IT-forensiska dagen
-&%%(diary-block 1 6 2012 15 6 2012) Lena sem med barnen
-&%%(diary-block 16 6 2012 1 7 2012) Linus sem med barnen
-&%%(diary-block 2 7 2012 22 7 2012) Lena sem med barnen
-&%%(diary-block 22 7 2012 12 8 2012) Linus sem med barnen
-&%%(diary-block 22 7 2012 2 8 2012) Lärka scoutläger
-%%(diary-block 11 7 2012 13 7 2012) PETS Vigo Spain
+&%%(diary-block 2012 6 1 2012 6 15) Lena sem med barnen
+&%%(diary-block 2012 6 16 2012 7 1) Linus sem med barnen
+&%%(diary-block 2012 7 2 2012 7 22) Lena sem med barnen
+&%%(diary-block 2012 7 22 2012 8 12) Linus sem med barnen
+&%%(diary-block 2012 7 22 2012 8 2) Lärka scoutläger
+%%(diary-block 2012 7 11 2012 7 13) PETS Vigo Spain
 2012-4-24 16:30-17:00 Utv.samtal Lärka
 2012-5-9 09:45-10:15 Juni utv.samtal.
 2012-4-26 17:30-19:00 ISOC-SE stämma @ .SE
@@ -173,7 +172,7 @@
 2012-6-16 22:00 Slick @ Kägelbanan
 2012-5-15 16:00-19:00 Öppet hus GV
 2012-5-29 Kurs Hjärt- och lungräddning @ TUG
-%%(diary-block 17 8 2012 19 8 2012) Hackerspace weekend @ Tekniska
+%%(diary-block 2012 8 17 2012 8 19) Hackerspace weekend @ Tekniska
 2012-6-5 18:30 Vårkonsert Lärka Medborgarhuset/Vår Teater/Kulturskolan
 2012-6-6 10:00 NOC-möte
 2012-6-13 Juni Avslutning
@@ -186,13 +185,13 @@
 2012-9-20 NORDUnet conf Oslo.
 2012-5-29 11:25 Lunch Christian
 2012-6-1 16:00 Fredagsöl!
-%%(diary-block 29 7 2012 3 8 2012) IETF 84
+%%(diary-block 2012 7 29 2012 8 3) IETF 84
 2012-6-8 Barnen hos mig!
 2012-6-7 15:30 KN1
 2012-6-12 prel: lunch TG
 2012-10-13 torservers.net annual in Dresden
 2012-7-1 FSCONS proposal deadline
-%%(diary-block 9 11 2012 11 11 2012) FSCONS
+%%(diary-block 2012 11 9 2012 11 11) FSCONS
 2012-6-24 FSCONS proposal deadline in 1 week
 2012-6-11 10:00 S:t Göran
 2012-6-13 Lärka avslutning
@@ -202,15 +201,15 @@
 2012-8-14 18:30-20:00 DFRI #5
 2012-7-25 DFRI 1 år
 2012-8-17 20:00 G+S+E @ färgis
-%%(diary-block 4 10 2012 11 10 2012) Lisbon (+1 ngn dag)
-&%%(diary-block 12 8 2012 24 8 2012) Lena
-&%%(diary-block 24 8 2012 31 8 2012) Linus
-&%%(diary-block 31 8 2012 7 9 2012) Lena
-&%%(diary-block 7 9 2012 14 9 2012) Linus
-&%%(diary-block 14 9 2012 21 9 2012) Lena
-&%%(diary-block 21 9 2012 3 10 2012) Linus
-&%%(diary-block 3 10 2012 12 10 2012) Lena
-&%%(diary-block 12 10 2012 19 10 2012) Linus
+%%(diary-block 2012 10 4 2012 10 11) Lisbon (+1 ngn dag)
+&%%(diary-block 2012 8 12 2012 8 24) Lena
+&%%(diary-block 2012 8 24 2012 8 31) Linus
+&%%(diary-block 2012 8 31 2012 9 7) Lena
+&%%(diary-block 2012 9 7 2012 9 14) Linus
+&%%(diary-block 2012 9 14 2012 9 21) Lena
+&%%(diary-block 2012 9 21 2012 10 3) Linus
+&%%(diary-block 2012 10 3 2012 10 12) Lena
+&%%(diary-block 2012 10 12 2012 10 19) Linus
 2012-9-1 IPv6 relays ready for Nick review
 2012-9-7 Tor 0.2.4.x release
 2012-9-12 Tonga deployed with IPv6
@@ -228,7 +227,7 @@
 2012-9-3 Josva @ TUG
 2012-8-30 19:30 sno tillbaka iphonen fr juni
 2012-9-27 cryptoparty amsterdam http://www.cryptoparty.org/wiki/Amsterdam
-%%(diary-block 24 9 2012 28 9 2012) RIPE 65, Amsterdam
+%%(diary-block 2012 9 24 2012 9 28) RIPE 65, Amsterdam
 2012-9-15 DFRI sysadm
 2012-10-27 14:00 Täby
 2012-9-22 JBN & Emelie?
@@ -242,21 +241,21 @@
 2012-9-20 18:00 TG
 2012-9-27 12:00 Lunch med Simon, Slurren
 2012-11-2 Höstlov
-%%(diary-block 9 3 2013 16 3 2013) Lena bortrest (Portugal)
+%%(diary-block 2013 3 9 2013 3 16) Lena bortrest (Portugal)
 2012-10-23 18:30-20:00 DFRI
 2012-10-12 Lunch tege @ indier på Sturegatan nästan ända uppe vid Valhallavägen
 2012-10-15 Lunch azm
 2012-10-30 Tjejerna till gbg
 2012-10-24 08:00 Juni utv.samtal
-%%(diary-block 22 10 2012 24 10 2012) Internetdagarna
+%%(diary-block 2012 10 22 2012 10 24) Internetdagarna
 2012-10-16 Lunch Dennis
 2012-11-6 16:00-16:30 Lärka utv.samtal 
 2012-12-5 EU panel
-%%(diary-block 5 12 2012 6 12 2012) Brussels for EU panel
+%%(diary-block 2012 12 5 2012 12 6) Brussels for EU panel
 2012-10-22 19:00 Lukas @ Monks Sveav.
 2012-10-25 11:30 Lunch Christian
 2012-11-7 JBN och en runda
-%%(diary-block 9 11 2012 11 11 2012) Flät
+%%(diary-block 2012 11 9 2012 11 11) Flät
 2012-12-15 Lill-jul @ E&L
 2012-11-7 17:00-19:00 ISOC-SE extra årsmöte
 2012-10-31 11:30 Lunch m Christian
@@ -283,62 +282,62 @@
 2012-11-28 18:00 måla
 2012-12-10 16:00-18:00 DFRI & americans
 2013-2-16 Cryptoparty Sthlm
-%%(diary-block 12 2 2013 13 2 2013) sec-heads lkpg
+%%(diary-block 2013 2 12 2013 2 13) sec-heads lkpg
 2013-5-22 cert imap.nordberg.se expires
 2013-11-28 cert adb-centralen.se expires
 2014-6-5 Mail.Nordberg CA cert expires
 2014-5-22 Mail.Nordberg CA cert expires in two weeks
 2012-12-21 11:20 Avslutningsfika Lärka + Juni
 2013-2-11 [tentative] pre sec-heads in lkpg
-%%(diary-block 7 2 2013 8 2 2013) All hands, prolly in DK
+%%(diary-block 2013 2 7 2013 2 8) All hands, prolly in DK
 2012-12-10 tor info to kelley
-%%(diary-block 2 3 2013 3 3 2013) EDRi GA
-%%(diary-block 2 2 2013 3 2 2013) FOSDEM in Brussels
-%%(diary-block 28 7 2013 2 8 2013) IETF 87 Berlin
+%%(diary-block 2013 3 2 2013 3 3) EDRi GA
+%%(diary-block 2013 2 2 2013 2 3) FOSDEM in Brussels
+%%(diary-block 2013 7 28 2013 8 2) IETF 87 Berlin
 2013-1-18 Tor "boffel" at BoF, Amsterdam
-%%(diary-block 17 1 2013 18 1 2013) Smari in town http://www.konstnarligaforskarskolan.se/wordpress/?p=3112
+%%(diary-block 2013 1 17 2013 1 18) Smari in town http://www.konstnarligaforskarskolan.se/wordpress/?p=3112
 2013-1-29 17:00 ISOC-SE om öppet internet (@.SE)
 2013-3-4 EDRi 10 years
 2013-1-28 18:30-20:00 DFRI
 2013-1-3 11:30 lunch christian
-%%(diary-block 13 5 2013 17 5 2013) RIPE Dublin
+%%(diary-block 2013 5 13 2013 5 17) RIPE Dublin
 2013-1-10 Lunch cryptoparty reggevhummus Ringvägen 145
 2013-3-24 Hackjunta -- free your phone
 2013-1-9 Middag Ilja mfl
 2013-1-15 13:30 Tandläkaren
 2013-1-8 12:00 Lunch Lena
 2013-1-11 12:00 Lunch Christian
-&%%(diary-block 15 2 2013 21 2 2013) andrew in sthlm
+&%%(diary-block 2013 2 15 2013 2 21) andrew in sthlm
 2013-2-20 16:00 Rebecca Gomperts
 2013-1-16 Ventilationskoll hemma
-%%(diary-block 9 5 2013 12 5 2013) Birdie 23, Uppsala
+%%(diary-block 2013 5 9 2013 5 12) Birdie 23, Uppsala
 2013-1-15 12:00 Lunch Staffan Jonson @ .SE
 2014-1-10 x509 mail.adb-centralen.se expires
 2013-2-6 bowling m mamma!
 2013-1-29 19:00 Teater
-%%(diary-block 15 2 2013 17 2 2013) [Lärka] övernatting scouterna
-%%(diary-block 9 5 2013 12 5 2013) [Lärka] Paddelhajk
-&%%(diary-block 4 2 2013 10 2 2013) Skotta
+%%(diary-block 2013 2 15 2013 2 17) [Lärka] övernatting scouterna
+%%(diary-block 2013 5 9 2013 5 12) [Lärka] Paddelhajk
+&%%(diary-block 2013 2 4 2013 2 10) Skotta
 2013-1-20 13:00 johan ruter
 2013-2-14 19:15-20:30 F-möte scouterna
 2013-1-30 DFRI NOC @TUG
 2013-1-22 11:55 Lunch Andreas @ spanska på sveav
 2013-1-30 11:30 Lunch Daniel Stenberg, Kista
 2013-1-25 12:00 Lunch tg @ sibiriens soppkök
-%%(diary-block 21 7 2013 26 7 2013) tor summer dev, TU Munich
-%%(diary-block 10 7 2013 12 7 2013) PETS Bloomington Indiana
-&%%(diary-block 1 2 2013 4 2 2013) Sofia Lord i Sthlm
-&%%(diary-block 19 10 2012 26 10 2012) Lena
-&%%(diary-block 26 10 2012 2 11 2012) Linus
-&%%(diary-block 2 11 2012 9 11 2012) Lena
+%%(diary-block 2013 7 21 2013 7 26) tor summer dev, TU Munich
+%%(diary-block 2013 7 10 2013 7 12) PETS Bloomington Indiana
+&%%(diary-block 2013 2 1 2013 2 4) Sofia Lord i Sthlm
+&%%(diary-block 2012 10 19 2012 10 26) Lena
+&%%(diary-block 2012 10 26 2012 11 2) Linus
+&%%(diary-block 2012 11 2 2012 11 9) Lena
 2013-2-3 Sofia Lord på middag
 %%(diary-block 29 3 2013 7 4 2013) Påsklov
 2013-2-4 Juni skridskor
 2013-2-13 Juni skridskor
 2013-3-28 Skärtorsdag
 2013-2-4 Peter @home, lite Tor-kurs
-%%(diary-block 18 3 2013 19 3 2013) tor winter dev
-%%(diary-block 22 5 2013 23 5 2013) SIFF 13
+%%(diary-block 2013 3 18 2013 3 19) tor winter dev
+%%(diary-block 2013 5 22 2013 5 23) SIFF 13
 2013-2-2 Juni sover hos Ture
 2013-3-9 14:00-16:00 DFRI årsmöte
 2013-2-25 18:30-20:00 DFRI
@@ -347,14 +346,14 @@
 2013-2-23 12:00-21:00 DFRI sysadm
 2013-2-6 15:45 [Juni] Utv.samtal
 2013-3-14 [Lärka] 18:00-19:30 F-möte, B31
-%%(diary-block 31 7 2013 4 8 2013) OHM2013, Amsterdam
+%%(diary-block 2013 7 31 2013 8 4) OHM2013, Amsterdam
 2013-2-12 17:00-20:00 TB planjobb
 2013-2-9 Fixa hos grtrd
 2013-3-2 12:00 Flytta med Simon
 2013-8-6 07:58 (UTC) maatuska dir auth certificate expires
 2013-2-14 13:30-14:30 Tandläkaren
-%%(diary-block 6 4 2013 11 4 2013) Luke Howard i Sthlm
-%%(diary-block 16 3 2013 21 3 2013) Boston
+%%(diary-block 2013 4 6 2013 4 11) Luke Howard i Sthlm
+%%(diary-block 2013 3 16 2013 3 21) Boston
 2013-3-16 13:35-18:40 ARN-KEF-BOS
 2013-3-20 21:35-11:30 BOS-KEF-ARN
 2013-2-12 07:51 STHLM-LKPG
@@ -371,16 +370,16 @@
 2013-2-21 Anmäl till Stokab http://www.stokab.se/templates/Form.aspx?id=1276
 2013-5-23 Teater med E&L?
 2013-3-12 11:30 Tor på Oktavilla
-&%%(diary-block 4 3 2013 8 3 2013) Vasa Real åhörarvecka
+&%%(diary-block 2013 3 4 2013 3 8) Vasa Real åhörarvecka
 2013-3-13 Liss hälsar på hemma
 2013-2-21 11:30 Mandira, Apelbergsg. 36
 2013-2-26 Middag E&L?
-%%(diary-block 4 3 2013 5 3 2013) Netnod
+%%(diary-block 2013 3 4 2013 3 5) Netnod
 2013-5-25 17:00 Andreas kalas @ Algatan 13 (Näckrosen)
 2013-3-11 Register for SIF13 http://delegia.com/app/attendee/new_registration.asp?ProjectId=3446&reglineNo=2&ReglineId=15617&ReglinePageNo=1&edit=off&clear=yes
 2013-3-1 Fredagsöl TUG
 2013-3-11 @DPforumSwe träffas någonstans
-%%(diary-block 3 6 2013 6 6 2013) TERENA networking, Maastricht, http://tnc2013.terena.org/
+%%(diary-block 2013 6 3 2013 6 6) TERENA networking, Maastricht, http://tnc2013.terena.org/
 2013-3-6 18:30 middag med John mfl
 2013-3-7 12:00 Lunch Aleksander Mojsiejuk, Drottningg./Fredsg.
 2013-4-12 17:00-19:00 DFRI styrelsemöte
@@ -390,17 +389,17 @@
 2013-5-21 19:00 Dinner City Hall, SIF13
 2013-5-22 Dinner SIF13
 2013-3-15 10:00-10:30 ndn sec audit VC
-%%(diary-block 13 5 2013 14 5 2013) Oslo freedom forum
+%%(diary-block 2013 5 13 2013 5 14) Oslo freedom forum
 2013-4-18 Fira Elsie hos Lena
 2013-5-15 RSVP ehj 50th hansson_johanna@yahoo.se, olofaxe@icloud.com
-%%(diary-block 29 7 2013 9 8 2013) Lärka scoutläger
+%%(diary-block 2013 7 29 2013 8 9) Lärka scoutläger
 2013-4-28 12:00 Free your Android! Virkesvägen 19.
 2013-4-18 17:00 T-SEC spring at Södra Bar (RSVP pub2013@sec-t.org)
 2013-4-13 14:00 Julian femårskalas!
 2013-5-31 09:00-11:30 FOI "seminarium om säkerhetspolitik i informationssamhället"
 2013-4-24 17:00-19:30 ISOC-SE årsmöte @.SE
 2013-4-20 OSA ISOC-SE årsmöte http://www.isoc.se/index.php?option=com_proforms&jid=5&cid=-1&Itemid=105
-%%(diary-block 17 9 2013 18 9 2013) ndn tech workshop @ cph
+%%(diary-block 2013 9 17 2013 9 18) ndn tech workshop @ cph
 2013-4-18 13:00 Synundersökning
 2013-4-25 Registrera eurobonus http://www.sas.se/Misc/My-Profile-Container/Mina-EuroBonus-sidor/efterregistrera-poang/?wt.ac=mina-sidor_eurobonus_mina-eb-sidor-efterregistrera
 2013-5-13 prel: dfri sm
@@ -417,7 +416,7 @@
 2013-4-30 12:00 Lunch med Andreas
 2013-8-24 Erik 50-årsfest i Norrland
 2013-5-17 TAFTA mtg Brussels http://trade.ec.europa.eu/civilsoc/meetdetails.cfm?meet=11406
-%%(diary-block 20 5 2013 24 5 2013) Jake in Sthlm
+%%(diary-block 2013 5 20 2013 5 24) Jake in Sthlm
 2013-5-13 18:00-21:30 Första hjälpen till psykisk hälsa ungdom, VR D34
 2013-5-20 18:00-21:30 Första hjälpen till psykisk hälsa ungdom, VR D34
 2013-5-27 18:00-21:30 Första hjälpen till psykisk hälsa ungdom, VR D34
@@ -437,33 +436,32 @@
 2013-5-17 12:00 Meddela Elin PP om e-id-panelen
 2013-5-14 16:00-18:00 Pugwash @ Linnésalen på KVA, Lilla Frescativägen 4 i Stockholm.
 2013-5-21 16:00-18:00 Canadian Embassy, Citzenlab ppl, book
-&%%(diary-block 9 7 2013 19 7 2013) tails summer dev mtg
-&%%(diary-block 9 11 2012 16 11 2012) B
-&%%(diary-block 23 11 2012 30 11 2012) B
-&%%(diary-block 7 12 2012 21 12 2012) B
-&%%(diary-block 4 1 2013 11 1 2013) B
-&%%(diary-block 18 1 2013 25 1 2013) B
-&%%(diary-block 1 2 2013 8 2 2013) B
-&%%(diary-block 15 2 2013 22 2 2013) B
-&%%(diary-block 8 3 2013 17 3 2013) B
-&%%(diary-block 25 3 2013 12 4 2013) B
-&%%(diary-block 19 4 2013 26 4 2013) B
-&%%(diary-block 3 5 2013 10 5 2013) B
-&%%(diary-block 17 5 2013 24 5 2013) B
-&%%(diary-block 31 5 2013 6 6 2013) B
-&%%(diary-block 13 6 2013 19 6 2013) B
-&%%(diary-block 30 6 2013 14 7 2013) B (sem)
-&%%(diary-block 5 8 2013 18 8 2013) B (sem)
-&%%(diary-block 26 8 2013 9 8 2013) B
-&%%(diary-block 6 9 2013 12 9 2013) B
-&%%(diary-block 20 9 2013 26 9 2013) B
-&%%(diary-block 4 10 2013 10 10 2013) B
-&%%(diary-block 18 10 2013 24 10 2013) B
-&%%(diary-block 1 11 2013 7 11 2013) B
-&%%(diary-block 15 11 2013 21 11 2013) B
-&%%(diary-block 29 11 2013 6 12 2013) B
-&%%(diary-block 13 12 2013 19 12 2013) B
-&%%(diary-block 27 12 2013 2 1 2014) B
+&%%(diary-block 2013 7 9 2013 7 19) tails summer dev mtg
+&%%(diary-block 2012 11 9 2012 11 16) B
+&%%(diary-block 2012 11 23 2012 11 30) B
+&%%(diary-block 2012 12 7 2012 12 21) B
+&%%(diary-block 2013 1 4 2013 1 11) B
+&%%(diary-block 2013 1 18 2013 1 25) B
+&%%(diary-block 2013 2 1 2013 2 8) B
+&%%(diary-block 2013 2 15 2013 2 22) B
+&%%(diary-block 2013 3 8 2013 3 17) B
+&%%(diary-block 2013 3 25 2013 4 12) B
+&%%(diary-block 2013 4 19 2013 4 26) B
+&%%(diary-block 2013 5 3 2013 5 10) B
+&%%(diary-block 2013 5 17 2013 5 24) B
+&%%(diary-block 2013 5 31 2013 6 6) B
+&%%(diary-block 2013 6 13 2013 6 19) B
+&%%(diary-block 2013 6 30 2013 7 14) B (sem)
+&%%(diary-block 2013 8 5 2013 8 18) B (sem)
+&%%(diary-block 2013 8 26 2013 8 9) B
+&%%(diary-block 2013 9 6 2013 9 12) B
+&%%(diary-block 2013 9 20 2013 9 26) B
+&%%(diary-block 2013 10 4 2013 10 10) B
+&%%(diary-block 2013 10 18 2013 10 24) B
+&%%(diary-block 2013 11 11 2013 11 22) B
+&%%(diary-block 2013 11 29 2013 12 6) B
+&%%(diary-block 2013 12 13 2013 12 19) B
+&%%(diary-block 2013 12 27 2014 1 2) B
 2013-8-20 Upprop skolan
 2013-6-19 Barnen till Tjörn
 2013-6-12 Avslutning i skolan
@@ -492,7 +490,6 @@
 2013-6-17 12:00 Tyst minut för Hans
 2013-6-19 12:00 Koreana, Jonathan RSF
 2013-6-26 14:00-16:00 Hans Wallberg minnesstund @ IVA, Grev Tureg. 16
-2013-11-21 Tor-kurs, SIDC Lund
 2013-7-5 10:00-11:30 PP sem @ Almedalen (eudatap, prism)
 2013-7-5 FSCONS proposal deadline
 2013-6-28 In a week: FSCONS proposal deadline
@@ -509,17 +506,12 @@
 %%(diary-block 16 7 2014 18 7 2014) PETS 2014, Amsterdam
 2013-8-19 Fyll på DFRI-telefonen
 %%(diary-block 25 11 2013 26 11 2013) Internetdagarna
-&%%(diary-block 4 10 2013 10 10 2013) B
-&%%(diary-block 18 10 2013 24 10 2013) B
-&%%(diary-block 11 11 2013 22 11 2013) B
-%%(diary-block 2 11 2013 9 11 2013) IETF 88
 2013-9-30 Freedom not Fear, Brussels
 2013-9-28 Travel -> Berlin
 2013-8-31 Kräftor i Täby
 2013-9-1 Grill hos aep
 2013-8-29 07:30 ARN-CPH
 2013-8-30 13:05 CPH-ARN
-2013-10-26 [prel] kryptoparty
 2013-9-19 18:30-20:30 DFRI styrelsemöte
 2013-8-27 Lunch w/ Mark @ HM
 2013-9-4 Gluster Community http://www.meetup.com/Gluster/Stockholm-SE/986242/
@@ -554,8 +546,36 @@
 2013-10-17 18:30 DFRI
 2013-9-23 16:35 [Juni] Utv.samtal
 2013-10-25 Kratt?
-2013-10-10 14:00-17:00 Michael Medow?
 2013-10-4 Fredagsöl @ TUG
 2013-9-30 20:00-21:00 SponsorF in #tor-dev
 %%(diary-block 27 12 2013 30 12 2013) 30C3
 2013-10-25 11:30-15:00 ndn dev
+2013-12-12 ndn julbord
+%%(diary-block 19 5 2014 22 5 2014) TERENA, Dublin
+2013-10-25 Lämna barn på tåg, 15:14
+2013-12-4 18:30 DFRI Kista?
+2013-10-29 15:00 Cryptoparty i konsthall C
+2013-10-27 http://www.ogaora.se/2013/09/26/boka-in-sondagen-27-oktober-pa-armemuseum/
+%%(diary-block 13 1 2014 15 1 2014) https://realworldcrypto.wordpress.com/
+2013-11-22 09:00-12:00 http://www.opensourcesweden.se/2929
+2013-10-24 17:30-19:00 http://adbj.se/wordpress/events/vem-overvakar-storebror-ett-seminarium-om-myndigheten-som-ska-sakerstalla-integritetsskyddet-vid-fras-signalspaning
+2013-10-25 18:00 Täby
+2013-11-2 11:50-12:50 ARN-LHR
+2013-11-2 14:25-17:25 LHR-YVR
+2013-11-8 18:15-11:50 YVR-LHR
+2013-11-9 13:50-17:20 LHR-ARN
+2013-11-1 10:00-11:10 ARN-CPH
+2013-11-1 15:20-16:35 CPH-ARN
+2014-05-2 Juni ledig fr skolan -- studiedag, typ
+2014-06-11 Avslutning i skolan
+2013-10-30 19:00 crypto-hw
+2013-12-26 15:55-17:25 ARN-HAM
+2013-12-31 13:50-15:20 HAM-ARN
+2013-11-21 Tor-kurs, SIDC Karlskrona
+&%%(diary-cyclic 7 2013 11 08) 13:00-14:00 NORDUnet weekly
+%%(diary-block 2013 10 29 2013 11 03) 
+2013-11-21 18:00-21:00 Cryptoparty 2013 I
+2013-11-28 18:00-21:00 Cryptoparty 2013 II
+2013-12-05 18:00-21:00 Cryptoparty 2013 III
+2013-11-07 12:00 cryptohw lunch
+2013-11-05 16:10-18:40 https://datatracker.ietf.org/meeting/88/agenda/tls/
