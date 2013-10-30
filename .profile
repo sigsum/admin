@@ -17,3 +17,5 @@ if [ -n "$BASH_VERSION" ]; then
 	. "$HOME/.bashrc"
     fi
 fi
+
+PATH=$HOME/usr/bin:$PATH; export PATH
