@@ -16,12 +16,20 @@
 ;(setq load-path (cons "/usr/share/emacs/site-lisp/gnus" load-path))
 
 (add-to-list 'load-path "~/lisp")
-(add-to-list 'load-path "/usr/share/emacs23/site-lisp/golang-mode")
+;(add-to-list 'load-path "/usr/share/emacs23/site-lisp/golang-mode")
 ;(require 'gnus-load)
 
 (load-file "~/src/sikrit.el")
+
+;; Do this early -- other requirements might depend on it.
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
 (require 'tls)
 (require 'jabber)
+;(load "jabber-autoloads")
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
 ;; another smime.el (from site-lisp/semi/?) is loaded.
