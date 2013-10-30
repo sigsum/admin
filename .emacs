@@ -452,7 +452,7 @@
  '(w3m-default-save-directory "~/")
  '(w3m-file-coding-system (quote w3m-iso-latin-1))
  '(w3m-file-name-coding-system (quote w3m-iso-latin-1))
- '(w3m-home-page "https://duckduckgo.com/html")
+ '(w3m-home-page "about:blank")
  '(w3m-keep-arrived-urls 1500)
  '(w3m-keep-cache-size 900)
  '(w3m-no-proxy-domains (quote ("localhost")))
