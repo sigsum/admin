@@ -1905,7 +1905,6 @@ S3: 13; S4: 10; S5: 8; S6: 2; S7: 50; S8: 2; S9: 6; S10: 14; S11: 95;
 +CLIP: 0; +COLP: 0; +CLIR: 0; ^PORTSEL: 0; ^CPIN: ��������,��������;
 ^ATRECORD: 0; ^FREQLOCK: 10526428,12584928
 
- 
 * mcabber
 C-q (17) roster unread_next
 
@@ -2651,7 +2650,7 @@ struct addrinfo
     This example is using a 100MB partition made with "Disk Utility 2.32.1".
 **** Short version
      time badblocks -vswt random /dev/sdb1 # -c 10240
-     cryptsetup luksFormat /dev/sdb1
+     cryptsetup --use-random luksFormat /dev/sdb1
      cryptsetup luksOpen /dev/sdb1 kaka
      mkfs.ext4 /dev/mapper/kaka
      cryptsetup luksClose /dev/mapper/kaka
@@ -2667,7 +2666,7 @@ struct addrinfo
      user    0m0.220s
      sys     0m0.040s
 
-     root@42:~# cryptsetup luksFormat /dev/sdb1
+     root@42:~# cryptsetup --use-random luksFormat /dev/sdb1
 
      WARNING!
      ========
@@ -31571,3 +31570,201 @@ former.
 - [X] "The thing with tyranny is that, if you don't try to fight it when it starts, it very quickly gets too strong for you." C. Murray
 - [X] "If you achieve a voice that will be heard, you should use it to speak up for the voiceless and oppressed." C. Murray
 - [ ] "If you possess any power or authority, you must strive to use it to help and to empower the powerless." C. Murray
+* images
+** mm.adb-centralen.se
+SHA1 (.priv/img) = 706ed9d23d4cdf0309dee44fa9e9dc41eea1b1b9
+SHA256 (.priv/sdb1.img) = 3d7d8c2866a0bc11c39a7f283e4a39bb8ad03517d6fff490d5464a332eedb273
+* email
+** tor-internal <2013-11-01 Fri>
+Subject: Open crypto hardware project
+
+tl;dr Does Tor want to be part of an open hardware for crypto project?
+
+Some IETF and ISOC people are trying to figure out how to get a
+project going resulting in a "open-source hardware and software crypto
+engine platform". The scope is totally unset at this point. There will
+be some kind of announcement during the IETF88 week in Vancouver,
+starting Monday.
+
+People driving this are Randy Bush, Stephen Farrell, Lucy Lynch and
+Leif Johansson. They try hard to make others in their communities
+understand that this has to be done bottom-up rather than top-down,
+i.e. this can not be run by any ones favourite organisation.
+
+One community that this group needs input from and hopes for help from
+is Tor. Do we want to be involved? I can see a wide variety of answers
+to this, including "Absolutely!", "If they wanna drop us some dough
+sure we'll take it." and "No way!".
+
+I'm involved in this (with my NORDUnet hat on) because I believe that
+development of trustworthy hardware is crucial and I'd like to
+contribute to something that has potential to reach lots of people. I
+worry equally much that the project gets taken over by a handful of
+people influenced by dark forces (including personal gain) and that
+the project limits itself to some for me uninteresting piece of
+hierarchical equipment and standards (*cough* RPKI *cough*).
+
+
+Here's an early draft of a statment and some notes circulating in a
+small group, please take these texts with a pinch of salt (and don't
+share, obviously):
+
+--------------------
+Hardware Open-Source Crypto  (HOSC) 
+[[Better name needed]]
+
+Recent revelations have called into question the integrity
+of some of the implementations of basic cryptographic
+functions and devices used to secure communications on the
+Internet.  There are questions about some algorithms but
+more particularly about implementations of algorithms in
+software and hardware. The Internet community can and must
+deal with these implementation issues. 
+
+We therefore are embarking on the development of an
+open-source hardware cryptographic engine that meets the
+needs of high assurance Internet infrastructure systems
+that use cryptography. The Hardware Open-Source Crypto
+(HOSC) engine must be of general use to the broad Internet
+community, covering the cryptographic needs for
+applications such as secure email, web, DNS, PKIs, etc. 
+
+For example, some key IETF protocols such as DNSSEC have a
+need for a root key handling system in which the entire
+Internet community can have confidence in the systems that
+handle the DNSSEC root key. A system for that was developed
+to ensure a high level of assurance that the private key
+could not be abused without the collusion of a number of
+trusted members of the community.  In the case of the RPKI,
+there will be a similar need, though we are now operating
+in an environment that requires far more scrutiny of the
+operational environment as well as the cryptographic
+hardware.  (Note that this is just one application, though
+one that by itself could justify the development of HOSC.)
+
+The HOSC project solicits functional, performance and
+assurance requirements from a wide range of organizations
+and will focus on the classic low level cryptographic
+functions and primitives.  It is hoped that a group of
+interested organizations will offer funding for
+development, and that the IETF, academic cryptographers and
+the Internet and open-source communities more generally
+will provide advice and open and thorough review of
+specifications and will contribute expertise to the
+development of HOSC.
+
+[[To enable the initial stages of the project to get
+started, Initial funding of XXX for YYY has been committed
+by ISOC.]]
+
+The intent is that the resulting open-source hardware
+cryptographic engine can be built by anyone with the
+relevant skills and modest resources using widely available
+components, public hardware specifications and open-source
+firmware and software. It may be that some existing
+open-source hardware and software are suited for HOSC, or
+it may be that new board designs are needed, or both.
+
+The initial work will be to further scope the overall
+project and to create a set of requirements which we intend
+to document in an Internet RFC that can form one
+significant input on which the open-source activity can
+build. An initial draft for that is at [[I-D-00]]
+
+For more information visit: https://[[domain]]
+
+The initial team who have commited to devote effort to make
+HOSC a reality include:
+--------------------
+
+--------------------
+open crypto hardware - technical project pieces
+
+Recent revelations have called into question the integrity of some of
+the implementations of basic cryptographic functions and devices used
+to secure communications on the Internet.  There are serious questions
+about algorithms and about implementations of those algorithms in
+software and particularly hardware.
+
+The algorithmic issues are in the domain of the heavy math cryptography
+folk.  But we can must also deal with the implementation issues.  We
+therefore are embarking on development of an open-source hardware
+cryptographic engine that meets the needs of high assurance Internet
+infrastructure systems that use cryptography.  The open-source hardware
+cryptographic engine must be of general use to the broad Internet
+community, covering needs such as secure email, web, DNS, PKIs, etc.
+
+The project solicits functional requirements from a wide range of
+organizations.  It will focus on the classic low level cryptographic
+functions and primitives, and not get drawn into the complexity of
+protocol layers caused by the lack of a coherent architecture.
+
+It is hoped that a group of interested organizations will offer funding
+for development, and that the IACR and public sector cryptographers will
+provide algorithmic advice and wide and open review.
+
+The intent is that the resulting open-source hardware cryptographic
+engine can be built by anyone from public hardware specifications and
+open-source firmware.  Anyone can then operate it without fees of any
+kind.
+
+requirements needed from diverse communities
+  o ietf
+  o tor
+  o open hardware projects/communities
+  o [ lucy/leif help! ]
+
+algorithms, code, and test suites needed from the crypto community
+
+there are multiple layers
+  o a simple verifiable hardware crypto engine
+  o one or three prototype systems in which to plug it to demonstrate
+    usability
+    - pc board for servers, incl hierarchies from hell servers
+    - raspberry pi or whatever
+    - usb key for laptops
+
+  o demo application ideas
+    - rpki/dnssec signing
+    - transport vpns
+    - routers and tcp/ao
+    - email
+    - federations, identity systems, SSO etc, password stretching & hmac:ing
+    - pgp and ssh keys on a stick
+    - high quality entropy randomness
+    - a communications terminal doing one thing well, like jabber w/o X11
+
+talents (yes, we all have our favorite friends)
+  o hardware
+  o fpga, verilog, ...
+  o formal description and verification (but these folk can sink
+    massive time, so need to be focused)
+  o interface to chip and board folk
+  o pks wrappers
+  o apps integration
+  o testing, testing, testing
+  o tech pubs/docco
+
+short range tactics
+  o stephen and lucy help get isoc and ietf oriented
+  o lucy, leif, linus find other potential players
+  o leif and randy organize a tech party in s'holm some time in
+    the two weeks after ietf
+  o hope team formation starts to come out of s'holm meeting
+
+how about we try to open the doors (in van) with the following players
+on the 'board'
+  o the ietf
+  o something from the iacr/crypto community
+  o sunet
+  o nlnet labs (and russ will like that)
+  o isoc
+
+money
+  o feed talent
+  o transport & comms
+  o misc tools and hardware
+  o hardware lab and fpga equipment
+  o services such as storage
+  o run through nordunet/sunet
+--------------------

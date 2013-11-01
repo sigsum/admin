@@ -1,5 +1,21 @@
+crypto http://competitions.cr.yp.to/caesar.html
+readme crypto enisa eu https://www.enisa.europa.eu/activities/identity-and-trust/library/deliverables/algorithms-key-sizes-and-parameters-report/at_download/fullReport
+ecc djb http://safecurves.cr.yp.to/
+sweden china security http://www.svt.se/nyheter/sverige/kina-huvudmisstankt-for-hacker-attack-mot-regeringskansliet
+tor crime https://www.informationweek.com/security/attacks/dutch-banking-malware-gang-busted-bitcoi/240163193
+security vuln http://www.gnutls.org/security.html#GNUTLS-SA-2013-3GNUTLS-SA-2013-3
+http://www.stopdigitalarms.eu/
+https://www.eff.org/Directive-Attacks-against-Computer-Systems
+nsa https://www.idg.se/2.1085/1.531276/nsa-har-raddat-tusentals-liv---ar-det-inte-vart-nagot
+ietf88 https://www.ietf.org/proceedings/88/agenda/agenda-88-irtfopen
+pastebin hs http://lw4ipk5choakk5ze.onion
+i2p tail bitflip https://mailman.boum.org/pipermail/tails-dev/2012-October/001829.html
+readme nsa google yahoo snowden https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5690548
+readme nsa google yahoo snowden http://www.dn.se/nyheter/varlden/nsa-tar-sig-in-hos-paven-och-natjattar/
+readme nsa google yahoo snowden http://www.svd.se/nyheter/utrikes/nsa-tar-sig-in-hos-google-och-yahoo_8675358.svd
+ietf perpass http://down.dsg.cs.tcd.ie/misc/perpass-sessions.txt
 readme ietf88 https://www.ietf.org/blog/2013/10/welcome-to-ietf-88/
-readme ietf88 https://www.ietf.org/blog/2013/10/plenary-on-internet-hardening/
+ietf88 plenary https://www.ietf.org/blog/2013/10/plenary-on-internet-hardening/
 readme nsa snowden http://www.washingtonpost.com/world/national-security/nsa-infiltrates-links-to-yahoo-google-data-centers-worldwide-snowden-documents-say/2013/10/30/e51d661e-4166-11e3-8b74-d89d714ca4dd_story.html
 security sploit apache php http://www.exploit-db.com/exploits/29290/
 tor exit policy https://trac.torproject.org/projects/tor/wiki/doc/ReducedExitPolicy
@@ -533,7 +549,7 @@ NSA docs collection http://www.aclu.org/nsa-documents-released-public-june-2013
 deterministic reproducible build https://mailman.stanford.edu/pipermail/liberationtech/2013-June/009257.html
 xkeyscore swedish http://www.svd.se/opinion/brannpunkt/svenska-politiker-bor-bryta-tystnaden-om-avlyssningsskandalen_8401740.svd
 ddc people:wheeler http://lambda-the-ultimate.org/node/1184
-ddc http://www.dwheeler.com/trusting-trust/
+ddc people:wheeler http://www.dwheeler.com/trusting-trust/
 otp http://linotp.org/news.html
 backup https://leastauthority.com/product_s4/
 browser privacy https://www.nsslabs.com/reports/2013-browser-security-comparative-analysis-privacy-0

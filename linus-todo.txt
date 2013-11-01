@@ -9,13 +9,13 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
+   - - [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (2)
    - - phw's email abt research something read (1)
    - . openitp thing report sent to josva (1)
    - - ietf87 report sent to josva (1)
    - - goals for IETF involvement sent to Josva (1)
    - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits
    - - WPS at home disabled (1)
-   - - [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (2)
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
    - - obfsproxy's upgraded (tor.ndn, more?) (2)
    - . https://tools.ietf.org/html/rfc6962 (CT) read, finish (1)
@@ -26,6 +26,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
    - . broken SSD returned (1)
    - - jeans; bought (?)
+   - o push p/mysticalhw, p/mapietf
    - o [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt][draft-trammell-perpass-ppa]] commented (2)
    - o http://huitema.net/papers/draft-huitema-perpass-analthreat-00.txt read
    - o aaron's traceroute started on fresh jail (on amnesia?)
