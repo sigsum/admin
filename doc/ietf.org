@@ -1,0 +1,474 @@
+* I-D its-all-about-linkability
+
+As long as we're sending packets around with the same src IP addr
+field being used for a whole lot of different things, these different
+things are linkable and if any information at any destination is
+linkable to you, you're linked to everything you've done using that
+src addr.
+
+The same goes for other [entities] linked to your person, like the
+fingerprint of your web browser and [more examples].
+
+[scope?]
+
+- spatial and temporal linkability?
+  - temporal, examples
+    - src ip; send email using a given ip addr and email addr, later
+      use another ip addr but the same email addr;
+      person <-> src ip <-> email addr
+
+    - browser fp; browser visiting one site and later another site -- 
+  - spatial, examples
+    - [todo]
+
+** [[gnus:nnimap%2Badbc:INBOX#52360EED.6060102@cs.tcd.ie][email w/ stephen]]
+> * I-D its-all-about-linkability
+> 
+> As long as we're sending packets around with the same src IP addr
+> field being used for a whole lot of different things, these different
+> things are linkable and if any information at any destination is
+> linkable to you, you're linked to everything you've done using that
+> src addr.
+
+Yup. And as long as you need an answer, you're stuck with that.
+(Modulo changing your source address, but with BCP38 networks
+doing uRPF, you're limited in what you can do, and your MAC
+addr will also give things away to those nearby.)
+
+> 
+> The same goes for other [entities] linked to your person, like the
+> fingerprint of your web browser and [more examples].
+
+Yup.
+
+I think it'd get tricky to define some good goals here - clearly
+most people do not want full unlinkability. One could argue that
+most people's activities ought be less linkable though. Hard to
+draw a good line there.
+
+> --8<---------------cut here---------------end--------------->8---
+> 
+> I also have this thing buzzing at the back of my head saying "spatial
+> and temporal linkability" but I don't know yet how to explain
+> it. Temporal is pretty easy, example:
+> 
+>     - src ip; send email using a given ip addr and email addr, later
+>       use another ip addr but the same email addr;
+>       person <-> src ip <-> email addr
+> 
+> But spatial is probably not the right word for what I'm trying to
+> express, but it's about linking your separate devices to your person.
+
+I get what you mean. Maybe its two things: topological and
+cross-layer (or cross-application) linkages?
+
+Topological linkage for example would include when TB sends out
+packets with the src addr from my home lan when I reboot in work
+the next day.
+
+Cross-layer would be when the same MAC is used with different
+src IPs, or when the different src IPs are used to access my
+very own web server host via SSH.
+
+Cross-application might be different or not, but would include
+things like the netflix competition correlation.
+
+> Are these terms that are in use in the IETF? Could they be useful? 
+
+No and yes.
+
+> Is
+> this anything that I should try to bring up somehow? 
+
+Sure. I think in the first instance it'd be good to do that in
+terms of extending rfc 6973 if you think that makes sense.
+
+> I'm a bit at loss
+> and entering this arena at the wrong level seems to be a good way of
+> being shot down hard. I wouldn't want that, not because of a hurt ego
+> (heh, being stupid is part of the game) but rather to avoid burning my
+> name with people who I would like to be able to speak to in Vancouver.
+
+You'll be there? Great. Any idea if other Tor folk will also?
+
+Cheers,
+S.
+
+> Thanks for any comments on this. They don't have to be too structured,
+> a quick comment from a veteran would be helpful.
+> 
+* I-D blocking-on-the-internet
+* problem statement
+- secure hardware
+- firmware
+- software
+- linkability
+  - over time
+  - with FOO?
+- fingerprintability (== linkability?)
+
+* involving tor ppl
+** TODO to: nick, tor-ass
+
+https://down.dsg.cs.tcd.ie/misc/perpass.txt
+
+topic: Let's remove gmt_unix_time from TLS
+owner: ??
+wg: TLS
+thread: https://www.ietf.org/mail-archive/web/perpass/current/msg00168.html
+synopsis: reasonable change, no barrier, good for Tor
+draft: n/a
+
+* notes
+ben laurie on [[https://www.ietf.org/mail-archive/web/perpass/current/msg00322.html][perpass@]]: "The CFRG is chaired by David McGrew(mcgrew@cisco.com) and Kevin Igoe (kmigoe@nsa.gov)." http://irtf.org/cfrg
+* emails with nick on tor-ass@
+** From: Linus Nordberg <linus@torproject.org>
+Subject: Re: [tor-assistants] IETF in Vancouver is going to be about privacy
+To: Nick Mathewson <nickm@freehaven.net>
+Cc: Tor Assistants <tor-assistants@lists.torproject.org>, Jacob Appelbaum <jacob@appelbaum.net>
+Date: Tue, 10 Sep 2013 09:34:46 +0200 (7 weeks, 3 days, 9 hours ago)
+X-Boundary: ____________________________________________________________________________________________________________________
+
+Nick Mathewson <nickm@freehaven.net> wrote
+Mon, 9 Sep 2013 19:41:20 -0400:
+
+| > 1. How can Tor people help IETF to help us all? Do we want to get our
+| > view on things and our knowledge about anonymity into RFC documents, for
+| > reference and copying into other documents?
+| 
+| I think that getting people to realize that privacy in technology is
+| mainly a matter of linkability is the key insight.
+
+Good point. I'll keep that in mind.
+
+
+| I think that there are a number of ways that people have been
+| reasoning about security in designs that are not correct; I'll need to
+| think more about that.  Perhaps it will turn into a blog post, but
+| it's likely to be a contentious and flamebaity enough blog post that
+| I'd almost want to start a personal blog for the purpose.
+
+Reading that blog would alone help me frame discussions on lists and in
+Vancouver. How can I help you get this started?
+
+
+| I'll try to think of some more stuff.
+| 
+| > 2. How can IETF help Tor? Do we want some attention on our protocols,
+| > design choices or maybe something else?
+| 
+| We need better options than TLS.
+
+Did we start working on a design for TLS-minus-the-warts yet? Should we
+bring such a thing to the IETF or would that be creating more trouble
+than it would solve? Could it be used as a way of putting pressure on
+the TLS wg, given they care at all about what protocol Tor uses? I guess
+probably not.
+
+Did we enumerate all things problematic with TLS somewhere? The
+protocol, not any particular implementation. In Berlin I overheard Jake
+discuss some of our current issues with ekr, who was not expressing
+immediate disgust in any of the suggestions ("superencrypt" to avoid
+fingerprinting, an argument for adopting Salsa20 and at least one more
+thing that I have forgotten).
+
+
+| Somebody should do something about the RNG problem. Unfortunately, the
+| most problematic platforms (windows, phones) probably wouldn't listen.
+
+A list of all the major PRNG implementations with solid technical
+arguments would maybe be something that the IETF could adopt. That could
+make a difference.
+
+I think that the RNG issue is going to become even more important when
+we start pushing towards more ephemeral keys.
+
+
+| Cryptography-related working groups need to stop sucking up to NIST
+| standards only. It seems as if this is the year that
+| curve25519/salsa20/poly1305 finally gets standardized for TLS, but
+| it's far from certain, and it's only the tip of the iceberg.
+
+What are the alternatives? You mentioned ECRYPT in a post to
+or-talk@. Could various ECRYPT II reports be used more than they are
+today?
+
+
+| >  I've heard that it might be
+| > premature to try standardising Tor right now. Is that still the case?
+| 
+| Having seen the kind of silliness that sometimes pervades the TLS
+| working group, I would hate for the Tor protocol to be subject to such
+| ridiculousness.  Also, I'd hate to split the ecosystem into those
+| protocols implementing "OpenTor" or "RFCxyzTor" and those implementing
+| the latest Tor standard.  Perhaps I misunderstand how these things
+| work, though, and there's a way for us to get the benefits without the
+| risks.
+
+I agree and I'd like to find out. I've talked to at least two
+experienced IETFers who say they want to help Tor. They are Hannes
+Tschofenig and Stephen Farrell, both on the perpass@ list. Would you be
+willing to try figuring this out with their help? Please let me know if
+you'd like an introduction in a non-public thread.
+_______________________________________________
+tor-assistants mailing list
+tor-assistants@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants
+
+
+
+--------------------------------------------------------------------------------
+
+** From: Linus Nordberg <linus@torproject.org>
+Subject: Re: IETF standardizing onion routing
+To: Paul Syverson <syverson@itd.nrl.navy.mil>
+Cc: tor-assistants@torproject.org
+Date: Wed, 09 Oct 2013 23:17:17 +0200 (3 weeks, 1 day, 19 hours ago)
+Reply-To: tor-assistants@lists.torproject.org
+X-Boundary: ____________________________________________________________________________________________________________________
+
+Paul Syverson <syverson@itd.nrl.navy.mil> wrote
+Thu, 24 Mar 2011 10:36:04 -0400:
+
+| On Thu, Mar 24, 2011 at 06:07:08AM -0700, Robert Ransom wrote:
+| > On Thu, 24 Mar 2011 13:20:01 +0100
+| > Linus Nordberg <linus@torproject.org> wrote:
+| > 
+| > > andrew@torproject.org wrote
+| > > Thu, 24 Mar 2011 08:01:08 -0400:
+| > > 
+| > > | On Fri, Mar 18, 2011 at 01:16:14PM -0700, blibbet@gmail.com wrote 0.8K bytes in 26 lines about:
+| > > | : 1) new IETF anonyminity list (in addition to their privacy list),
+| > > | : and 2) IETF considering ontino routing standardization.
+| > > | 
+| > > | How can we help #2?  I both fear and am encouraged at such an effort.
+| > > 
+| > > Meto.
+| > > 
+| > > I'm currently sitting next to Hannes Tschofenig, on of the authors of
+| > > draft-hansen-privacy-terminology and also present at the Boston meeting
+| > > Nick went to.  We're now at a developer meeting in Prague precluding the
+| > > IETF 80 meeting starting Monday.  As I understand it, he's heavily
+| > > involved in the intersection between privacy and IETF.
+| > > 
+| > > Should I use this opportunity to try to make things happen in this area?
+| > 
+| > How could having the IETF take control over the protocols used in Tor
+| > possibly benefit The Tor Project?
+| > 
+| 
+| The real question is if they are likely to go forward on anonymity protocol
+| standards anyway. If they are and come out with standards that some people
+| are going to follow, then I assume Tor wants to be part of that rather
+| than get into splits between the de facto standard and the official
+| standard. (Can you say "Diffie Hellman parameter"?)
+| It sounds like they are at least exploring going forward before bothering
+| to get the Tor Project Inc. (or other relevant folks).
+| 
+| Note for those who won't know or recall: Back in the days of the Freedom
+| network, ZKS kicked off an IRTF group that included some people from
+| the IAB and with lots of drafts (not in that sense) written up by jbash.
+| It faded with Freedom. If this does go forward, it may be worth
+| reusing lots of that. (Or not Tor design was at most nascent at that
+| point. And the world has changed in other ways.)
+| Also its eventual demise may or may not also be a source of lessons.
+
+Hi,
+
+Picking up a thread from 1,5 years ago.
+
+The world has changed even more now. Jake made a pretty huge impression
+on some of the oldies in the IETF community in Berlin this summer. I'd
+like to try to follow up at IETF88 in Vancouver, November 3-8, but I'm
+not sure how this should be done and if I can do it all by myself. I
+welcome more people to join and/or provide some ideas or even material
+here.
+
+I have a couple of questions in an email to this list from Sep 10
+too. Anyone want to take a shot at them?
+
+Also, Nick, did you ever write that blog post?
+
+
+
+--------------------------------------------------------------------------------
+** From: Linus Nordberg <linus@torproject.org>
+To: Nick Mathewson <nickm@freehaven.net>
+Cc: Tor Assistants <tor-assistants@torproject.org>
+Subject: Re: [tor-assistants] IETF standardizing onion routing
+References: <4D83BD8E.4010600@gmail.com>
+	<20110324120108.GB3529@necrid.lewman.is> <87k4foaexa.fsf@nordberg.se>
+	<20110324060708.32f87187@gmail.com>
+	<20110324143604.GA87594@buridan.fw5540.net>
+	<87wqlmta8y.fsf@nordberg.se>
+	<CAKDKvuzGvptgEWSgGr2vZkhbBcdAGuLeW2goJgGz3ed2RFzFMw@mail.gmail.com>
+	<CAKDKvuw5nDwEAXAF7n8Y=knvC-JbJ0Fx9pZx7WD6GNVBLMCb7w@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.assistants" 24909)
+Reply-To: tor-assistants@lists.torproject.org
+Date: Thu, 10 Oct 2013 18:52:24 +0200
+In-Reply-To: <CAKDKvuw5nDwEAXAF7n8Y=knvC-JbJ0Fx9pZx7WD6GNVBLMCb7w@mail.gmail.com>
+	(Nick Mathewson's message of "Thu, 10 Oct 2013 11:51:59 -0400")
+Message-ID: <871u3toypj.fsf@nordberg.se>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Boundary: ____________________________________________________________________________________________________________________
+
+Nick Mathewson <nickm@freehaven.net> wrote
+Thu, 10 Oct 2013 11:51:59 -0400:
+
+| On Thu, Oct 10, 2013 at 11:39 AM, Nick Mathewson <nickm@freehaven.net> wrote:
+| > On Wed, Oct 9, 2013 at 5:17 PM, Linus Nordberg <linus@torproject.org> wrote:
+| >  [...]
+| >>
+| >> Picking up a thread from 1,5 years ago.
+| >>
+| >> The world has changed even more now. Jake made a pretty huge impression
+| >> on some of the oldies in the IETF community in Berlin this summer. I'd
+| >> like to try to follow up at IETF88 in Vancouver, November 3-8, but I'm
+| >> not sure how this should be done and if I can do it all by myself. I
+| >> welcome more people to join and/or provide some ideas or even material
+| >> here.
+| >
+| > I still wouldn't object to having Tor be in Informational RFC,
+| > although I also don't see much benefit to it.  (Being a standards
+| > track RFC would be completely wrong.)
+| >
+| > My experience with the IETF over the last several months (mostly)
+| > lurking on the some mailing lists has been that standards -- even
+| > informational standards -- get used as an excuse for not improving
+| > things just as often as they get used as a reason to do things
+| > properly.  I would hate to have anybody implement RFC-Tor in a time
+| > when torspec-Tor had diverged.
+| >
+| > I'm not immune to counterargument here, but watching the sausage get
+| > made has turned my stomach a bit.
+| 
+| On the other hand, I _would_ love to have our specs come up to
+| RFC-level quality.  And the ego boost would be pleasant.  And I'm not
+| convinced that I'm necessarily right about my fear that a Tor RFC
+| would represent a protocol fork.  So maybe what I should do is
+| converse with people who want to help work on such a thing.
+
+I think this is the right thing, but only if you (or a substantial set
+of Roger Dingledines or Paul Syversons) do too.
+
+The SAAG chairs Stephen Farrell <stephen.farrell@cs.tcd.ie> and Sean
+Turner <turners@ieca.com> are the one I think that you should start
+talking to. They have multiple times offered to help with all the IETF
+specific nitty-gritty of writing drafts.
+
+
+| Or maybe I should just start rewriting our specs in my Copious Spare Time.
+
+I should have time to help with that, if you think that would be of help.
+
+
+| >> I have a couple of questions in an email to this list from Sep 10
+| >> too. Anyone want to take a shot at them?
+| >
+| > I'll have a quick look if I can find it.
+| 
+| Ah. Apparently I'm the person who *did* answer the other time.
+
+You answered the first email, yes. Thanks.
+
+The follow up questions are in Message-ID: <87y575t9ih.fsf@nordberg.se>
+(sorry for messing up with the threads in my email from yesterday). 
+
+A quick summary of my questions:
+
+1. Is there a design for an option to TLS and should we bring such a
+thing to the IETF?
+
+2. Do we have a list of all things problematic with TLS?
+
+3. Do we have a list of major PRNG implementations with comments on
+their security?
+
+4. What are the alternatives to NIST standards? Something from ECRYPT II?
+
+5. Shall I put you or some other Tor people in touch with Stephen
+Farrell, Sean Turner or Hannes Tschofenig? They want to help us.
+
+--------------------------------------------------------------------------------
+
+* talking to nick <2013-11-01 Fri>
+** standardizing onion routing
+- fear is that ppl start implementing after RFC and not current
+  protocol, which is evolving
+- AP: bring seasoned ietf:er and nick together. stephen and nick sunday?
+  ap linus: start email thread today
+** tls AP's
+- encrypt as much of the handshake as possible, encrypt record types
+- encrypt-then-MAC as an AEAD mode
+- minimize necessary observable differences between TLS implementations
+- make gmt_unix_time go away (or problematic or deprecated or something)
+- [No new ciphers or suites should get added unless the proponent can                                         
+  point to constant-time implementations of those things on several                                              
+  platforms.]
+- encrypt TLS record boundaries
+- [needs no action] Support the ciphers I like (agl likes them too and pushes them already)
+*** chat log
+<ln5> nickm: ok, found the older email (Tue, 10 Sep 2013 09:34:46 +0200). listing things from there:
+<ln5> Did we start working on a design for TLS-minus-the-warts yet? Should we
+<ln5> bring such a thing to the IETF or would that be creating more trouble
+<ln5> than it would solve?
+<ln5> and related: Did we enumerate all things problematic with TLS somewhere?                                         
+      The protocol, not any particular implementation. 
+<nickm> I think we should be involved in TLS1.3
+<ln5> nickm: and then some things that were discussed in berlin, with ioerror:                                         
+      ""superencrypt" to avoid
+<ln5> fingerprinting, an argument for adopting Salsa20 and at least one more
+<ln5> thing that I have forgotten"
+<nickm> ln5: I think that a revised laundry list would be a fine thing.  There                                         
+        are a bunch of items.  Some of them , I've heard that people already                                           
+        want to have in TLS 1.3:                                        [17:56]
+<ln5> nickm: sounds plausible. i'm not a person with a deep knowledge of tls                                           
+      though. i can bring up issues though, and try to argue.
+<nickm> For example, encrypt as much of the handshake as possible. Encrypt                                             
+        record types. Support the ciphers I like (agl is already pushing for                                           
+        this, since he likes them too).                                 [17:57]
+<nickm> ln5: more TLS laundry list items: encrypt-then-MAC as an AEAD mode.
+<Yawning> agl's latest proposal is poly1305 + chacha right?
+<nickm> Yawning: yes, and I believe he also likes curve25519
+<nickm> ln5: minimize necessary observable differences between TLS                                                     
+        implementations.
+<Yawning> why poly over the sha-3 finalists?                            [18:03]
+<nickm> faster.
+<Yawning> (not neccecarily keacc)
+<nickm> polynomial MACs are faster than cryptographic digest-based MACs.                                               
+<nickm> They have limitations, which is why you only use them in some                                                  
+        environments, but for this one they work fine
+<Yawning> all the polynoimal macs have a "god help you if you reuse the iv"                                            
+          property right?
+<Yawning> (not that it's uncommon or problematic for tls)               [18:05]
+<nickm> Right. AFAIK, every system that has an IV has the "you can't reuse it"                                         
+        property.                                                       [18:06]
+<nickm> ln5: Oh, and of course I want gmt_unix_time to go away.         [18:07]
+<nickm> ln5: or at least for it to be marked as problematic and deprecated or                                          
+        something                                                       [18:08]
+<nickm> Wishlist: encrypt packet boundaries. :)
+
+<nickm> ln5: oh, here's another TLS item.  People should admit it when they                                            
+        are adding things that are hard to implement in constant time in pure                                          
+        C.  No new ciphers or suites should get added unless the proponent can                                         
+        point to constant-time implementations of those things on several                                              
+        platforms.                                                      [18:18]
+
+<ln5> nickm: "encrypt packet boundaries"? what is that?
+<nickm> err, make that "encrypt TLS record boundaries".  Basically, right now                                          
+        in TLS it's clear what the record sizes are.  This makes some content                                          
+        fingerprinting attacks a little easier to run.                  [18:21]
+
+<Yawning> (are there any block cipers that aren't a nightmare to implement in                                          
+          constant time?)
+<nickm> Yawning: Most (All?) of the SHA3 finalists (yes I know you asked for                                           
+        block ciphers) were easy to do in constant time IIRC.
+<nickm> Yawning: Similarly for many (most? all?) of the stream ciphers in the                                          
+        eSTREAM portfolio.                                              [18:23]
+<Yawning> there's known ways to take either stream ciphers or hash functions                                           
+          and get block ciphers so yeah                                 [18:24]
+<Yawning> (there's nothing horrifically broken about BEAR/LION/LIONESS right?                                          
+          apart from 'slow')                                            [18:27]
+<nickm> BEAR and LION are problematic.  LIONESS isn't.                  [18:29]
