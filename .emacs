@@ -16,12 +16,20 @@
 ;(setq load-path (cons "/usr/share/emacs/site-lisp/gnus" load-path))
 
 (add-to-list 'load-path "~/lisp")
-(add-to-list 'load-path "/usr/share/emacs23/site-lisp/golang-mode")
+;(add-to-list 'load-path "/usr/share/emacs23/site-lisp/golang-mode")
 ;(require 'gnus-load)
 
 (load-file "~/src/sikrit.el")
+
+;; Do this early -- other requirements might depend on it.
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
 (require 'tls)
 (require 'jabber)
+;(load "jabber-autoloads")
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
 ;; another smime.el (from site-lisp/semi/?) is loaded.
@@ -29,15 +37,11 @@
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
 
-;; There's something missing in magit from git as of 2009-01-29:
-;(defun invisible-p (ignore) (lambda nil))
-(setq load-path (cons "/u/src/magit" load-path))
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
 ;; Fun.
-(autoload 'lpmud "lpmud" "Run LP-MUD in Emacs" t)
-
+;(autoload 'lpmud "lpmud" "Run LP-MUD in Emacs" t)
 ;; Twitter stuff.
 ;(load-file "~/.twitter.el")
 
@@ -129,11 +133,6 @@
 ;(add-to-list 'exec-path "/usr/local/lib/erlang/bin" t)
 ;(require 'erlang-start)
 
-;; Info
-(require 'info)
-(setq Info-default-directory-list 
-      (cons "~/usr/gnus/texi" Info-default-directory-list))
-
 ;; BBDB
 ;(require 'bbdb)
 ;(bbdb-initialize)
@@ -144,8 +143,8 @@
 ;  (setq ido-create-new-buffer 'always))
 
 ;; Python mode (fbsd: lang/python-mode.el, debian: python-mode)
-(autoload 'python-mode "python-mode" "Mode for editing Python source files")
-(add-to-list 'auto-mode-alist '("\\.py" . python-mode))
+;(autoload 'python-mode "python-mode" "Mode for editing Python source files")
+;(add-to-list 'auto-mode-alist '("\\.py" . python-mode))
 
 ;; ses -- simple emacs spreadsheet
 ;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/ses")
@@ -235,7 +234,6 @@
 	   (push cur result)))
     result))
 
-
 ;; Update Nov 2011: Moved to EasyPG (epg), see also "Mime Security" (config)
 ;; mailcrypt for PGP/GnuPG.  (See .gnus too.)
 ;; -----------------------
@@ -312,14 +310,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizations
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list (quote ("~/usr/share/info")))
  '(add-log-keep-changes-together t)
  '(browse-url-browser-function (quote w3m))
- '(calendar-date-display-form (quote ((format "%s-%s-%s" year month day))))
+ '(calendar-date-style (quote iso))
  '(calendar-today-visible-hook (quote (calendar-mark-today)))
  '(calendar-view-diary-initially-flag t)
  '(calendar-week-start-day 1)
@@ -340,7 +338,7 @@
  '(erc-join-buffer (quote window-noselect))
  '(erc-keywords (quote ("dfri")))
  '(erc-netsplit-mode t)
- '(erc-notify-list nil)
+ '(erc-notify-list nil t)
  '(erc-pals (quote ("arma" "nickm")))
  '(erc-prompt-for-channel-key nil)
  '(erc-server-reconnect-timeout 10)
@@ -380,7 +378,7 @@
  '(imap-ssl-program (quote ("openssl s_client -quiet -tls1 -connect %s:%p" "openssl s_client -quiet -ssl3 -connect %s:%p")))
  '(indent-tabs-mode nil)
  '(ispell-program-name "aspell")
- '(jabber-account-list (quote (("linus@nordberg.se/around" (:disabled . t) (:password . "Da7ooN8oo2ai") (:network-server . "jabber.adb-centralen.se") (:port . 5223) (:connection-type . ssl)) ("linus@nordu.net/around" (:password . "vo0aquei3uSoe5th") (:network-server . "jabber.nordu.net") (:port . 5223) (:connection-type . ssl)))))
+ '(jabber-account-list (quote (("linus@nordu.net/around" (:password . "vo0aquei3uSoe5th") (:network-server . "jabber.nordu.net") (:connection-type . starttls)))))
  '(jabber-activity-banned (quote ("twitter")))
  '(jabber-activity-make-strings (quote jabber-activity-make-strings-shorten))
  '(jabber-alert-message-hooks (quote (jabber-message-scroll)))
@@ -388,6 +386,7 @@
  '(jabber-backlog-number 100)
  '(jabber-chatstates-confirm nil)
  '(jabber-info-message-alist (quote ((browse . "Browse request completed"))))
+ '(jabber-invalid-certificate-servers (quote ("nordu.net")))
  '(jabber-mode-line-mode t)
  '(jabber-roster-line-format " %c %-25n %u %-8s  %S")
  '(jabber-show-offline-contacts nil)
@@ -434,7 +433,10 @@
  '(smime-CA-directory "~/ssl/CAs")
  '(smime-certificate-directory "/home/linus/ssl/certs/")
  '(smime-keys nil)
+ '(smtpmail-debug-info nil)
+ '(smtpmail-debug-verb nil)
  '(smtpmail-local-domain "nordberg.se")
+ '(smtpmail-stream-type (quote starttls))
  '(starttls-extra-arguments nil)
  '(starttls-gnutls-program "gnutls-cli")
  '(starttls-use-gnutls t)
@@ -450,7 +452,7 @@
  '(w3m-default-save-directory "~/")
  '(w3m-file-coding-system (quote w3m-iso-latin-1))
  '(w3m-file-name-coding-system (quote w3m-iso-latin-1))
- '(w3m-home-page "https://duckduckgo.com/html")
+ '(w3m-home-page "about:blank")
  '(w3m-keep-arrived-urls 1500)
  '(w3m-keep-cache-size 900)
  '(w3m-no-proxy-domains (quote ("localhost")))
@@ -462,15 +464,16 @@
 ; '(erc-default-coding-system (quote (iso-8859-1 . undecided)))
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(calendar-today ((t (:box (:line-width 1 :color "grey75") :underline t))))
  '(diary ((((class color) (background light)) (:foreground "red"))))
  '(erc-keyword-face ((t (:foreground "dark green" :weight bold))))
  '(erc-pal-face ((t (:foreground "blue" :weight bold))))
  '(twit-message-face ((default (:height 0.9 :family "helv")) (nil nil))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Some keybindings
 ;; M-C-g 
@@ -593,7 +596,7 @@
 
 ;; w3m
 ; (add-to-list 'load-path "~/usr/share/emacs/site-lisp/w3m")
-(require 'w3m-load)
+;tmp;(require 'w3m-load)
 
 ;(require 'octet)
 ;(octet-mime-setup)

@@ -7,6 +7,7 @@ definekey top C-M-i exec ~/bin/keyboardmap.sh us
 
 definekey root C-i focus
 
+exec redshift -l 59:18
 hsplit
 exec xterm
 focus

@@ -9,29 +9,31 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
-   - - WPS at home disabled (1)
    - - [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (2)
+   - - phw's email abt research something read (1)
+   - . openitp thing report sent to josva (1)
+   - - ietf87 report sent to josva (1)
+   - - goals for IETF involvement sent to Josva (1)
+   - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits
+   - - WPS at home disabled (1)
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
    - - obfsproxy's upgraded (tor.ndn, more?) (2)
-   - . eurobonus registered (EBB609964226)
-     - kids registered and sent manual pdf (2)
-   - - point tor people (what list?) to hannes post on [[http://www.tschofenig.priv.at/wp/%3Fp%3D993][privacy discussions at ietf 87]] and
-     [[https://www.ietf.org/blog/2013/09/security-and-pervasive-monitoring/][the IETF mission statement]] (1)
    - . https://tools.ietf.org/html/rfc6962 (CT) read, finish (1)
    - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
-   - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt][draft-trammell-perpass-ppa]] commented (2)
-   - - ietf87 report sent to josva (1)
-   - - goals for IETF involvement sent to Josva (1)
    - - lopez RADIUS fragment draft reviewed for abfab (2)
-   - - phw's email abt research something read (1)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
    - . broken SSD returned (1)
    - - jeans; bought (?)
-   - - hjelmvik replied to (1)
-   - D problem description hashed out with [somebody], for perpass@
-     maybe also a concrete thing or two suggested?
+   - o push p/mysticalhw, p/mapietf
+   - o [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt][draft-trammell-perpass-ppa]] commented (2)
+   - o http://huitema.net/papers/draft-huitema-perpass-analthreat-00.txt read
+   - o aaron's traceroute started on fresh jail (on amnesia?)
+   - o eurobonus registered (EBB609964226)
+     o kids registered
+   - o point tor people (what list?) to hannes post on [[http://www.tschofenig.priv.at/wp/%3Fp%3D993][privacy discussions at ietf 87]] and
+     [[https://www.ietf.org/blog/2013/09/security-and-pervasive-monitoring/][the IETF mission statement]] (1)
    - o https://tools.ietf.org/html/rfc6973 (privacy considerations) read
    - o tor contract proposal sent to andrew
    - o crypto for kids at 30c3; brain dumped
@@ -44,6 +46,9 @@ Legend                                                (emacs -*-org-*- mode)
    - o flights ARN-KAS 2013-08-29 morning, KAS-ARN 2013-08-30 afternoon booked
    - o radsecproxy rewrite discussed with miro
    - o Dino (LISP guy) replied to -- compare HS with HIP (RFC5201)?
+   - X hjelmvik replied to (1)
+   - D problem description hashed out with [somebody], for perpass@
+     maybe also a concrete thing or two suggested?
 ** Dev
    - * #9206 closed
      - generating router-stability determines Guard flags (3)
@@ -146,6 +151,18 @@ Legend                                                (emacs -*-org-*- mode)
    - . set up torouter on an ipv6 addr at ndn
    - - write a proposal for the ASN tickets
 ** Sysadm
+   - dataless travel figured out
+     - carry x60 w/o any drive, no usb sticks or other storage
+     - carry a yubikey
+     - ssh on (fresh) HS (in fresh jail) with pw access using sha256
+       of a memorable phrase
+     - HS has
+       - image of a tails system with persistent storage containing
+       what's needed for a week of work (no keys though)
+       - travel-stick image with otr key and selected ssh keys
+     - BEFORE LEAVING VERIFY ACCESS TO
+       - mm.adbc
+
    - mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
    - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats

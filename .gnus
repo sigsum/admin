@@ -18,7 +18,7 @@
 ;; being wrong.
 
 ;; Login info
-(setq nnimap-authinfo-file "~/.priv/nnimap-authinfo" )
+;(setq nnimap-authinfo-file "~/.priv/nnimap-authinfo" )
 
 ;; Flyspell.
 (add-hook 'message-mode-hook
@@ -108,49 +108,44 @@
 	 ("From" "Linus Nordberg <linus@nordberg.se>")
 	 (eval
 	  (setq smtpmail-smtp-server "smtp.nordberg.se"
-		smtpmail-smtp-service 587)
-	  (set (make-local-variable 'message-sendmail-envelope-from)
-	       "linus@nordberg.se")))
+                smtpmail-smtp-service 587
+                smtpmail-smtp-user "linus")
+	  (set (make-local-variable 'message-sendmail-envelope-from) "linus@nordberg.se")))
 	("lists.tor.assistants"
 	 ("Reply-To" "tor-assistants@lists.torproject.org")
 	 ("From" "Linus Nordberg <linus@torproject.org>"))
 	("lists.tor.internal" ("Reply-To" "tor-internal@lists.torproject.org"))
         ("lists.tor..*" ("From" "Linus Nordberg <linus@torproject.org>"))
-	("lists.pmacct..*"
+	("lists.pmacct"
 	 ("From" "Linus Nordberg <linus+pmacct@nordberg.se>")
 	 (organization "NORDUnet A/S"))
 	("ndn:\\|gmane.comp.encryption.kerberos"
 	 (organization "NORDUnet A/S")
 	 ("From" "Linus Nordberg <linus@nordu.net>")
-	 (eval
-	  (setq smtpmail-smtp-server "smtp.nordu.net"
-		smtpmail-smtp-service 587)
-	  (set (make-local-variable 'message-sendmail-envelope-from)
-	       "linus@nordu.net")))))
+	 (eval (setq smtpmail-smtp-server "kerio.nordu.net"
+                     smtpmail-smtp-service 587
+                     smtpmail-auth-supported '(plain login)
+                     smtpmail-smtp-user "linus@nordu.net")
+               (set (make-local-variable 'message-sendmail-envelope-from)
+                    "linus@nordu.net")))))
 
-(setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-starttls-credentials '(("smtp.nordberg.se" 587 nil nil))
-      ;; '(("smtp.nordberg.se" 587 "~/.priv/maatuska.nordberg.se.key" "~/.priv/maatuska.nordberg.se.pem"))
-      smtpmail-auth-credentials '(("smtp.nordu.net" 587 "linus" "tothuh6A")
-                                  ("smtp.nordberg.se" 587 "linus" "ohL0gime"))
-      ;;i'd like to use nnimap-authinfo-file instead
-      smtpmail-debug-info nil
-      )
+(setq message-send-mail-function 'smtpmail-send-it)
 
 ;; Archiving
 (setq gnus-message-archive-group
       '(lambda (group)
-	 "Return name of mailbox to store archive copy in.  Use GROUP, default to ADB-Centralen."
+	 "Return name of mailbox to store archive copy in.  Use GROUP, default to one at ADB-Centralen."
 	 (if (and nil message-news-p)	;disabled for now
 	     "misc-news"
 	   (format "%s:INBOX.sent-mail.%s"
 		   (car (split-string
 			 (if (or (string= group "")
 				 (compare-strings group nil (length "nntp") "nntp" nil nil))
-			     "nnimap+adb-centralen"
+			     "nnimap+adbc"
 			   group)
 			 (make-string 1 ?:)))
 		   (format-time-string "%Y-%m" (current-time))))))
+
 ;; Drafts
 ;(setq nndraft-directory (concat nnml-directory 
 (setq nndraft-directory nnml-directory)
