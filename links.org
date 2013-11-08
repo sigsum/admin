@@ -1,3 +1,62 @@
+mafialeaks globaleaks tor http://mashable.com/2013/11/07/mafialeaks/
+mafialeaks globaleaks tor http://www.theguardian.com/media/2013/nov/08/mafialeaks-promises-whistleblowers-safety-from-family-tor
+nothintohide privcy https://jumpingqi.wordpress.com/2010/07/01/privacy-and-bindweed/
+readme us surveillance law https://www.eff.org/deeplinks/2013/10/three-leaks-three-weeks-and-what-weve-learned-about-governments-other-spying
+readme hypponen http://www.youtube.com/watch?v=lHj7jgQpnBM
+ietf surveillance http://www.economist.com/news/science-and-technology/21589383-stung-revelations-ubiquitous-surveillance-and-compromised-software
+readme eudatap http://europa.eu/rapid/press-release_MEMO-13-898_en.htm
+fra surveillance 2008 http://www.expressen.se/kultur/silence-fiction/
+ietf https://tools.ietf.org/dailydose/
+cryptech http://doodle.com/9f4f3ghk265rrmun
+readme internetarchive fire http://www.theverge.com/2013/11/7/5076166/the-internet-archive-seeks-donations-after-fire-destroys-equipment
+silkroad tor http://pastebin.com/1EvB1HSV
+readme surveillance sweden http://www.svt.se/nyheter/sverige/svenskarna-inte-radda-for-natovervakning
+readme surveillance sweden http://mobil.dn.se/nyheter/sverige/emanuel-karlsten-obegripligt-att-vi-sa-totalt-knabojer-for-usa/
+readme marcin surveillance http://blogg.svt.se/debatt/2013/11/07/svenskar-er-avlyssningslattja-gor-mig-orolig/?utm_content=buffer3cd81&utm_source=buffer&utm_medium=twitter&utm_campaign=Buffer
+readme tor fingerprinting https://blog.torproject.org/blog/critique-website-traffic-fingerprinting-attacks
+readme isp police drd its27 http://www.nyteknik.se/nyheter/it_telekom/allmant/article3784822.ece
+readme bildt https://sverigesradio.se/sida/artikel.aspx?artikel=4828448&programid=3718
+readme persona https://www.idg.se/2.1085/1.532370/han-skapade-en-helt-ny-person--for-att-slippa-bli-overvakad/
+lavabit https://news.ycombinator.com/item?id=6691214
+ietf surveillance schneier https://www.youtube.com/watch?v=oV71hhEpQ20#!
+ietf surveillance schneier http://www.technologyreview.com/view/521306/time-for-internet-engineers-to-fight-back-against-the-surveillance-internet/
+snowden nsa google surveillance http://www.washingtonpost.com/world/national-security/nsa-infiltrates-links-to-yahoo-google-data-centers-worldwide-snowden-documents-say/2013/10/30/e51d661e-4166-11e3-8b74-d89d714ca4dd_story.html
+readme ecc crypto http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/
+ostel telephony security https://guardianproject.info/wiki/OSTN
+radme dpi http://www.christopher-parsons.com/the-politics-of-deep-packet-inspection-what-drives-surveillance-by-internet-service-providers/
+cryptech http://cryptech.is/
+cryptech people:farrell http://www.ietf.org/proceedings/88/slides/slides-88-iab-techplenary-8.ppt
+ietf88 materials https://datatracker.ietf.org/meeting/88/materials.html
+surveillance law people:bildt http://www.nytimes.com/2013/11/06/opinion/the-internet-and-the-rule-of-law.html
+lavabit moxie http://www.thoughtcrime.org/blog/lavabit-critique/
+readme fra snowden http://www.idg.se/2.1085/1.531891/myndigheter-daliga-pa-insiderhot
+hw security backdoors http://www.businessinsider.com/sergei-skorobogatov-defends-backdoor-claims-2012-5
+hw security http://www.cl.cam.ac.uk/~sps32/
+badbios http://www.rootwyrm.com/2013/11/the-badbios-analysis-is-wrong/
+readme badbios http://blog.erratasec.com/2013/10/badbios-features-explained.html
+x509 verification http://www.gnutls.org/manual/gnutls.html#Certificate-authentication
+funny pic http://img.gawkerassets.com/img/18nusmm76vtyogif/avt-large.gif
+security c programming http://c-faq.com/misc/sd26.html
+security c programming gcc http://gcc.gnu.org/bugzilla/show_bug.cgi?id=30475
+snowden nsa people:wolodarski http://www.dn.se/ledare/signerat/peter-wolodarski-snowden-gor-den-amerikanska-demokratin-starkare/
+fra gchq nsa http://www.dn.se/nyheter/varlden/sverige-knyts-till-brittisk-underrattelsetjanst/
+fra nsa gchq https://annerambergs.wordpress.com/2013/11/03/darfor-ar-advokatsamfundet-intresserat-av-usas-massavlyssning-fras-verksamhet-och-regeringens-passivitet-i-fragan/
+prng mt vuln https://spideroak.com/blog/20121205114003-exploit-information-leaks-in-random-numbers-from-python-ruby-and-php
+nsa fra bildt http://www.annatroberg.se/2013/11/05/carl-bildt-slirar-och-slinter-sig-genom-svds-fragor-om-massovervakning/
+nsa surveillance http://www.washingtonpost.com/blogs/the-switch/wp/2013/11/04/how-we-know-the-nsa-had-access-to-internal-google-and-yahoo-cloud-data/?tid=sm_fb
+security sweden medical https://mrpoyz.wordpress.com/2013/11/05/sjuk-informationssakerhet/
+tor ietf http://www.internetsociety.org/articles/ietf-privacy-update
+tor http://thecable.foreignpolicy.com/posts/2013/10/04/not_even_the_nsa_can_crack_the_state_departments_online_anonymity_tool
+tor crime http://content.time.com/time/magazine/article/0,9171,2156271,00.html
+bitcoin http://hackingdistributed.com/2013/11/04/bitcoin-is-broken/
+people:hartmans http://hartmans.livejournal.com/90754.html
+encrypt-then-mac etm https://www.iacr.org/archive/crypto2001/21390309.pdf
+networking internet book http://docwiki.cisco.com/wiki/Main_Page
+ssh mitm http://www.gremwell.com/ssh-mitm-public-key-authentication
+readme identity bitcoin ca credential anonymity http://www.theregister.co.uk/2013/11/03/crypto_boffins_propose_getting_rid_of_cas/
+tor transport network http://www.cypherpunks.ca/~iang/pubs/pctcp-ccs.pdf
+surveillance bildt http://www.corren.se/sverige/bildt-far-mothugg-pa-twitter-om-fra-6605088-artikel.aspx
+readme surveillance bildt https://carlbildt.wordpress.com/2013/11/03/fragor-och-svar-om-s-k-avlyssning/
 crypto http://competitions.cr.yp.to/caesar.html
 readme crypto enisa eu https://www.enisa.europa.eu/activities/identity-and-trust/library/deliverables/algorithms-key-sizes-and-parameters-report/at_download/fullReport
 ecc djb http://safecurves.cr.yp.to/
@@ -10,11 +69,10 @@ nsa https://www.idg.se/2.1085/1.531276/nsa-har-raddat-tusentals-liv---ar-det-int
 ietf88 https://www.ietf.org/proceedings/88/agenda/agenda-88-irtfopen
 pastebin hs http://lw4ipk5choakk5ze.onion
 i2p tail bitflip https://mailman.boum.org/pipermail/tails-dev/2012-October/001829.html
-readme nsa google yahoo snowden https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5690548
-readme nsa google yahoo snowden http://www.dn.se/nyheter/varlden/nsa-tar-sig-in-hos-paven-och-natjattar/
-readme nsa google yahoo snowden http://www.svd.se/nyheter/utrikes/nsa-tar-sig-in-hos-google-och-yahoo_8675358.svd
+nsa google yahoo snowden https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5690548
+nsa google yahoo snowden http://www.dn.se/nyheter/varlden/nsa-tar-sig-in-hos-paven-och-natjattar/
+nsa google yahoo snowden http://www.svd.se/nyheter/utrikes/nsa-tar-sig-in-hos-google-och-yahoo_8675358.svd
 ietf perpass http://down.dsg.cs.tcd.ie/misc/perpass-sessions.txt
-readme ietf88 https://www.ietf.org/blog/2013/10/welcome-to-ietf-88/
 ietf88 plenary https://www.ietf.org/blog/2013/10/plenary-on-internet-hardening/
 readme nsa snowden http://www.washingtonpost.com/world/national-security/nsa-infiltrates-links-to-yahoo-google-data-centers-worldwide-snowden-documents-say/2013/10/30/e51d661e-4166-11e3-8b74-d89d714ca4dd_story.html
 security sploit apache php http://www.exploit-db.com/exploits/29290/
@@ -176,7 +234,7 @@ shaddow scallion https://github.com/shadow/shadow/wiki/Using-the-scallion-plug-i
 tor thanks https://blog.torproject.org/comment/reply/758/36078
 dns tool http://dnsviz.net/
 dns tool http://dns.squish.net/
-ietf chair nsa ehttps://en.wikipedia.org/wiki/Russ_Housley
+ietf chair https://en.wikipedia.org/wiki/Russ_Housley
 internet governance w3c dnt ietf grassroot gni http://www.digitalnewsasia.com/insights/web-consortiums-failures-show-limits-of-self-regulation
 readme wot https://lists.riseup.net/www/arc/monkeysphere/2013-09/msg00009.html
 censorship tor gfc http://www.cs.kau.se/philwint/static/gfc/

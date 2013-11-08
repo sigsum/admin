@@ -2176,7 +2176,12 @@ primary (mcabber): 5A31FB5E 3A66941B F3ED9A8E 181B5CC4 0AD417C1
 to verify fp in mcabber:
 /otr fingerprint . <fingerprint>
 
-jake 067508ccc60422e58544e2cd9b4d1d0fa0a1be23
+
+xmpp-client <2013-11-08 Fri>:
+ * (4:14AM) Your OTR fingerprint is 5a31fb5e3a66941bf3ed9a8e181b5cc40ad417c1
+
+ioerrror@jabber.ccc.de 067508ccc60422e58544e2cd9b4d1d0fa0a1be23
+pawal@iis.se c9fade83b9dd9d5e0dd5b6c656454407e49754ee
 ** emacs-otr
 *** <2011-12-28 Wed>
 Playing with ~/lisp/otr.el and http://mnemonikk.org/emacs-otr (0f58a558).
@@ -2711,7 +2716,7 @@ struct addrinfo
        offset:  0 sectors
        size:    7827584 sectors
        mode:    read/write
-*** cryptesetup luksFromat (do use)
+*** cryptesetup luksFormat (do use)
     This example is using a 100MB partition made with "Disk Utility 2.32.1".
 **** Short version
      time badblocks -vswt random /dev/sdb1 # -c 10240
@@ -31525,6 +31530,11 @@ Wrote /home/linus/News/drafts/drafts/2
       smtpmail-auth-credentials '(("kerio.nordu.net" 587 "linus@nordu.net" "<pw>")
                                   ("smtp.nordberg.se" 587 "linus" "<pw>"))
       ;;i'd like to use nnimap-authinfo-file instead
+** connecting over the net
+- The meat is in [[file:~/usr/src/emacs-24.3/lisp/net/network-stream.el::(defun%20open-network-stream%20(name%20buffer%20host%20service%20&rest%20parameters)][open-network-stream]] (we come there from
+  [[file:~/usr/src/emacs-24.3/lisp/gnus/nnimap.el::(defun%20nnimap-open-connection-1%20(buffer)][nnimap-open-connection-1]]).
+- gnutls handling is found in [[file:~/usr/src/emacs-24.3/lisp/net/gnutls.el::(cl-defun%20gnutls-negotiate][gnutls-negotiate]] which "calls out" to
+  [[file:~/usr/src/emacs-24.3/src/gnutls.c::DEFUN%20("gnutls-boot",%20Fgnutls_boot,%20Sgnutls_boot,%203,%203,%200,][gnutls-boot()]].
 * jake on privacy and power
 http://2013.elevate.at/festival/ueber-das-festival/newsmagazin/detail/news/jacob-appelbaum-elevate-open-everything/
 
@@ -31631,7 +31641,8 @@ And there could not be a better example of the twin concepts of
 privacy and liberty than a man denied the latter for exposing the
 former.
 
-* murder in sammarkand, craig murray
+* books
+** murder in sammarkand, craig murray
 - [X] "The thing with tyranny is that, if you don't try to fight it when it starts, it very quickly gets too strong for you." C. Murray
 - [X] "If you achieve a voice that will be heard, you should use it to speak up for the voiceless and oppressed." C. Murray
 - [ ] "If you possess any power or authority, you must strive to use it to help and to empower the powerless." C. Murray

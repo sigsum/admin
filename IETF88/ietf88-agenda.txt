@@ -1,0 +1,288 @@
+
+
+                    Agenda of the 88th IETF Meeting                     
+
+                           November 3-8, 2013                           
+                    Updated 2013-11-02 08:58:18 PDT                     
+
+   IETF agendas are subject to change, up to and during the meeting.    
+
+
+
+SATURDAY, November 2, 2013
+0930-1800  Code Sprint - Dover/Tennyson
+
+
+SUNDAY, November 3, 2013
+1000-1200  IEPG Meeting - Regency B
+1100-1900  IETF Registration - Balmoral
+1300-1450  Introduction to Real-Time Applications and Infrastructure Development  - Georgia B
+1300-1450  Newcomers' Orientation - Regency B
+1500-1650  IAOC Overview Session - Regency A
+1500-1650  IETF Tools Training - Georgia B
+1500-1650  Wireless links; Properties, Challenges, Solutions, and Implications - Regency B
+1600-1700  Newcomers' Meet and Greet (open to Newcomers and WG chairs only) - Grouse/Seymour/Stanley
+1700-1900  Welcome Reception - Regency C/D
+
+
+MONDAY, November 4, 2013
+0800-0900  Continental Breakfast - Regency Foyer/Plaza Foyer
+0800-1800  IETF Registration - Balmoral
+0900-1130  Morning Session I
+Georgia B       	APP 	appsawg     	Applications Area Working Group WG - Combined with APPAREA
+Regency D       	INT 	6man        	IPv6 Maintenance WG
+Plaza C         	OPS 	netconf     	Network Configuration WG
+Plaza A         	RAI 	ecrit       	Emergency Context Resolution with Internet Technologies WG
+Regency B       	RAI 	mmusic      	Multiparty Multimedia Session Control WG
+Georgia A       	RTG 	bfd         	Bidirectional Forwarding Detection WG
+Regency C       	RTG 	nvo3        	Network Virtualization Overlays WG
+Regency A       	TSV 	tcpm        	TCP Maintenance and Minor Extensions WG
+
+1130-1300  Break
+1300-1430  Afternoon Session I
+Regency D       	GEN 	igovupdate  	Internet Governance Update BOF
+Plaza A         	OPS 	radext      	RADIUS EXTensions WG
+Georgia A       	RAI 	siprec      	SIP Recording WG
+Plaza C         	RTG 	forces      	Forwarding and Control Element Separation WG
+Georgia B       	RTG 	rtgwg       	Routing Area Working Group WG
+Regency B       	SEC 	dice        	DTLS In Constrained Environments WG
+
+1430-1450  Beverage Break - Regency Foyer/Plaza Foyer
+1450-1720  Afternoon Session II
+Georgia B       	APP 	core        	Constrained RESTful Environments WG
+Regency C       	INT 	intarea     	Internet Area Working Group WG
+Georgia A       	IRTF	ncrg        	Network Complexity Research Group 
+Plaza A         	OPS 	mboned      	MBONE Deployment WG
+Regency D       	RAI 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Regency B       	RTG 	spring      	Source Packet Routing in Networking WG
+Regency A       	SEC 	ipsecme     	IP Security Maintenance and Extensions WG
+Plaza C         	SEC 	oauth       	Web Authorization Protocol WG
+
+1720-1740  Beverage and Snack Break - Regency Foyer/Plaza Foyer
+1740-1940  Afternoon Session III
+Regency A       	APP 	httpbis     	Hypertext Transfer Protocol Bis WG
+Plaza A         	INT 	netext      	Network-Based Mobility Extensions WG
+Regency D       	OPS 	v6ops       	IPv6 Operations WG
+Plaza C         	RAI 	insipid     	INtermediary-safe SIP session ID WG
+Regency C       	RTG 	rtgarea     	Routing Area Open Meeting 
+Regency B       	SEC 	sacm        	Security Automation and Continuous Monitoring WG
+Georgia B       	TSV 	alto        	Application-Layer Traffic Optimization WG
+Georgia A       	TSV 	mptcp       	Multipath TCP WG
+
+
+
+TUESDAY, November 5, 2013
+0800-0900  Continental Breakfast - Regency Foyer/Plaza Foyer
+0800-1800  IETF Registration - Balmoral
+0900-1130  Morning Session I
+Georgia A       	APP 	httpbis     	Hypertext Transfer Protocol Bis WG
+Plaza C         	INT 	dhc         	Dynamic Host Configuration WG
+Regency D       	IRTF	sdnrg       	Software Defined Networking Research Group 
+Georgia B       	OPS 	opsawg      	Operations and Management Area Working Group WG - Combined with OPSAREA
+Regency A       	RAI 	clue        	ControLling mUltiple streams for tElepresence WG
+Regency C       	RTG 	mpls        	Multiprotocol Label Switching WG
+Regency B       	RTG 	sidr        	Secure Inter-Domain Routing WG
+Plaza A         	TSV 	nfsv4       	Network File System Version 4 WG
+
+1130-1300  Break
+1300-1400  Afternoon Session I
+Plaza A         	APP 	json        	JavaScript Object Notation WG
+Regency B       	INT 	geonet      	Internet-wide Geo-Networking BOF
+Regency A       	OPS 	grow        	Global Routing Operations WG
+Regency D       	RAI 	stir        	Secure Telephone Identity Revisited WG
+Plaza C         	RAI 	stox        	SIP-TO-XMPP WG - CANCELED
+Georgia A       	RTG 	isis        	IS-IS for IP Internets WG
+Regency C       	RTG 	pwe3        	Pseudowire Emulation Edge to Edge WG
+Georgia B       	TSV 	aqm         	Active Queue Management and Packet Scheduling WG
+
+1400-1420  Beverage Break - Regency Foyer/Plaza Foyer
+1420-1550  Afternoon Session II
+Plaza A         	APP 	paws        	Protocol to Access WS database WG
+Georgia B       	INT 	6tisch      	IPv6 over the TSCH mode of IEEE 802.15.4e WG
+Georgia A       	INT 	ntp         	Network Time Protocol WG - Combined with TICTOC
+Georgia A       	INT 	tictoc      	Timing over IP Connection and Transfer of Clock WG - Combined with NTP
+Regency D       	IRTF	irtfopen    	IRTF Open Meeting 
+Regency C       	OPS 	dnsop       	Domain Name System Operations WG
+Regency A       	RAI 	avtext      	Audio/Video Transport Extensions WG
+Plaza C         	RTG 	karp        	Keying and Authentication for Routing Protocols WG
+Regency B       	TSV 	tsvwg       	Transport Area Working Group WG
+
+1550-1610  Beverage and Snack Break - Regency Foyer/Plaza Foyer
+1610-1840  Afternoon Session III
+Regency A       	INT 	6lo         	IPv6 over Networks of Resource-constrained Nodes WG
+Georgia B       	INT 	softwire    	Softwires WG
+Regency B       	IRTF	iccrg       	Internet Congestion Control Research Group 
+Plaza A         	OPS 	eman        	Energy Management WG
+Regency C       	RAI 	dispatch    	Dispatch WG
+Regency D       	RTG 	i2rs        	Interface to the Routing System WG
+Georgia A       	SEC 	tls         	Transport Layer Security WG
+Plaza C         	TSV 	ppsp        	Peer to Peer Streaming Protocol WG
+
+
+
+WEDNESDAY, November 6, 2013
+0800-0900  Continental Breakfast - Regency Foyer/Plaza Foyer
+0800-1700  IETF Registration - Balmoral
+0900-1130  Technical Plenary - Regency A/B/C/D
+
+   Live video streaming of the Technical Plenary will be available at http://www.ietf.org/live/. 
+   
+   The live text transcription will be at http://www.ietf.org/live/text.html. 
+   
+   
+   1.  IAB Chair Report
+   2.  IRTF Chair Report
+   3.  RSE and RSOC Chair Report
+   4.  Technical Topic: Internet Hardening
+   
+       New reports of large-scale Internet traffic monitoring appear almost
+       every day.  We were all aware that targeted interception was taking
+       place, but the scale and scope in the recent reports is surprising.
+       Such scale was not envisaged during the design of many Internet
+       protocols; the threat is quite different than expected.  Now, the
+       Internet community must consider the consequences.
+   
+       While details of these attack techniques remain largely unknown, we
+       can talk about possible ways to harden the Internet in light of
+       pervasive Internet monitoring.  We can take a closer look at our
+       protocols and the security properties that they provide.
+   
+       A panel will summarize recent discussions and suggest potential IETF
+       actions to make large-scale monitoring more difficult.
+   
+       a.  Introduction (Bruce Schneier)
+   
+           What we know and what we do not know.
+   
+       b.  Earlier IETF Debates (Brian Carpenter)
+   
+           The IETF has several cornerstone documents about Internet
+           security and privacy, including RFCs 1984, 3365, 2804, and 6973.
+   
+       c.  Potential IETF Activities (Stephen Farrell)
+   
+           Summary of the discussion on the perpass mailing list.
+   
+   5.  Open Mic
+
+1130-1300  Break
+1300-1530  Afternoon Session I
+Plaza C         	INT 	lwig        	Light-Weight Implementation Guidance WG
+Regency A       	IRTF	icnrg       	Information-Centric Networking  - Moved FROM Thursday Morning Session I 0900-1130
+Georgia A       	OPS 	lmap        	Large-Scale Measurement of Broadband Performance WG
+Regency C       	OPS 	v6ops       	IPv6 Operations WG
+Regency B       	RTG 	pce         	Path Computation Element WG
+Regency D       	SEC 	perpass     	Handling Pervasive Monitoring in the IETF  BOF
+Georgia B       	TSV 	rmcat       	RTP Media Congestion Avoidance Techniques WG
+
+1530-1550  Beverage Break - Regency Foyer/Plaza Foyer
+1550-1650  Afternoon Session II
+Plaza A         	APP 	precis      	Preparation and Comparison of Internationalized Strings WG
+Plaza C         	INT 	trill       	Transparent Interconnection of Lots of Links WG
+Georgia A       	OPS 	netmod      	NETCONF Data Modeling Language WG
+Regency D       	OPS 	opsec       	Operational Security Capabilities for IP Network Infrastructure WG
+Georgia B       	RAI 	stir        	Secure Telephone Identity Revisited WG
+Regency C       	RTG 	mpls        	Multiprotocol Label Switching WG
+Regency B       	TSV 	mptcp       	Multipath TCP WG
+
+1650-1720  Afternoon Session III
+Plaza A         	APP 	precis      	Preparation and Comparison of Internationalized Strings WG
+Plaza C         	INT 	trill       	Transparent Interconnection of Lots of Links WG
+Georgia A       	OPS 	netmod      	NETCONF Data Modeling Language WG
+Georgia B       	RAI 	stir        	Secure Telephone Identity Revisited WG
+
+1720-1740  Beverage and Snack Break - Regency Foyer/Plaza Foyer
+1740-1940  IETF Operations and Administration Plenary - Regency A/B/C/D
+
+   1. Welcome
+   2. Host presentation
+   3. Reporting
+      - IETF Chair
+      - IAOC Chair and IAD
+      - IETF Trust Chair
+      - NomCom Chair
+   4. IAOC Open Mic
+   5. IESG Open Mic
+
+
+
+THURSDAY, November 7, 2013
+0800-0900  Continental Breakfast - Regency Foyer/Plaza Foyer
+0800-1700  IETF Registration - Balmoral
+0900-1130  Morning Session I
+Regency D       	INT 	homenet     	Home Networking WG
+Plaza C         	INT 	lisp        	Locator/ID Separation Protocol WG
+Plaza A         	OPS 	dime        	Diameter Maintenance and Extensions WG
+Regency B       	RAI 	mmusic      	Multiparty Multimedia Session Control WG - Moved FROM Wednesday Afternoon Session I 1300-1530
+Regency A       	RTG 	ccamp       	Common Control and Measurement Plane WG
+Georgia B       	RTG 	l3vpn       	Layer 3 Virtual Private Networks WG
+Georgia A       	SEC 	jose        	Javascript Object Signing and Encryption WG
+Regency C       	TSV 	tsvarea     	Transport Area Open Meeting 
+
+1130-1300  Break
+1300-1500  Afternoon Session I
+Georgia B       	INT 	mif         	Multiple Interfaces WG
+Plaza C         	IRTF	nwcrg       	Proposed Network Coding Research Group 
+Regency C       	RAI 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Plaza A         	RTG 	manet       	Mobile Ad-hoc Networks WG
+Georgia A       	RTG 	ospf        	Open Shortest Path First IGP WG
+Regency D       	SEC 	saag        	Security Area Open Meeting 
+Regency A       	TSV 	ippm        	IP Performance Metrics WG
+Regency B       	TSV 	storm       	STORage Maintenance WG
+
+1500-1520  Beverage and Snack Break - Regency Foyer/Plaza Foyer
+1520-1720  Afternoon Session II
+Regency B       	APP 	core        	Constrained RESTful Environments WG
+Plaza C         	APP 	weirds      	Web Extensible Internet Registration Data Service WG
+Georgia B       	INT 	sunset4     	Sunsetting IPv4 WG
+Regency A       	OPS 	wpkops      	Web PKI OPS WG
+Regency C       	RAI 	avtcore     	Audio/Video Transport Core Maintenance WG
+Regency D       	RTG 	sfc         	Service Function Chaining BOF
+Plaza A         	SEC 	kitten      	Common Authentication Technology Next Generation WG
+Georgia A       	TSV 	cdni        	Content Delivery Networks Interconnection WG
+
+1730-1830  Afternoon Session III
+Regency B       	GEN 	rfcform     	RFC Format Design Team Update BOF
+Georgia A       	OPS 	ipfix       	IP Flow Information Export WG
+Regency A       	RAI 	geopriv     	Geographic Location/Privacy WG
+Plaza C         	RAI 	xrblock     	Metric Blocks for use with RTCP's Extended Report Framework WG
+Georgia B       	RTG 	ccamp       	Common Control and Measurement Plane WG
+Plaza A         	SEC 	abfab       	Application Bridging for Federated Access Beyond web WG
+
+1900-2100  Bits-N-Bites - Regency D/E/F
+
+
+FRIDAY, November 8, 2013
+0800-0900  Continental Breakfast - Regency Foyer/Plaza Foyer
+0800-1100  IETF Registration - Balmoral
+0900-1100  Morning Session I
+Georgia A       	INT 	dmm         	Distributed Mobility Management WG
+Plaza C         	INT 	pcp         	Port Control Protocol WG
+Plaza A         	IRTF	nmrg        	Network Management Research Group 
+Regency A       	RAI 	xmpp        	Extensible Messaging and Presence Protocol WG
+Regency C       	RTG 	idr         	Inter-Domain Routing WG
+Georgia B       	SEC 	httpauth    	Hypertext Transfer Protocol Authentication WG
+Regency B       	TSV 	tsvwg       	Transport Area Working Group WG
+
+1100-1120  Beverage and Snack Break - Regency Foyer/Plaza Foyer
+1120-1220  Afternoon Session I
+Georgia A       	APP 	scim        	System for Cross-domain Identity Management WG
+Regency D       	INT 	dnssd       	Extensions for Scalable DNS Service Discovery  WG
+Plaza A         	OPS 	bmwg        	Benchmarking Methodology WG
+Georgia B       	RAI 	clue        	ControLling mUltiple streams for tElepresence WG
+Regency C       	RTG 	l2vpn       	Layer 2 Virtual Private Networks WG
+Regency A       	RTG 	pim         	Protocol Independent Multicast WG
+
+1230-1330  Afternoon Session II
+Georgia A       	APP 	scim        	System for Cross-domain Identity Management WG
+Regency D       	INT 	dnssd       	Extensions for Scalable DNS Service Discovery  WG
+Plaza C         	IRTF	nmrg        	Network Management Research Group 
+Plaza A         	OPS 	bmwg        	Benchmarking Methodology WG
+Georgia B       	RAI 	clue        	ControLling mUltiple streams for tElepresence WG
+Regency C       	RTG 	l2vpn       	Layer 2 Virtual Private Networks WG
+Regency A       	RTG 	pim         	Protocol Independent Multicast WG
+Regency B       	TSV 	aqm         	Active Queue Management and Packet Scheduling WG
+
+
+====================================================================
+

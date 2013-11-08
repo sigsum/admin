@@ -1,0 +1,304 @@
+
+
+
+                    Agenda of the 87th IETF Meeting                     
+
+                         July 28-August 2, 2013                         
+                    Updated 2013-07-17 09:33:22 PDT                     
+
+   IETF agendas are subject to change, up to and during the meeting.    
+
+
+
+SATURDAY, July 27, 2013
+0930-1800  Code Sprint - Koepenick 1/2
+
+
+SUNDAY, July 28, 2013
+1100-1900  IETF Registration - Potsdam Foyer
+1000-1200  IEPG Meeting - Bellevue
+1300-1450  Newcomers' Orientation - Potsdam 3
+1300-1450  Tools for Creating I-Ds and RFCs - Bellevue
+1300-1450  IAOC Overview Session - Potsdam 1
+1500-1650  Multipath TCP - Potsdam 3
+1500-1650  Applying IP Flow Information Export (IPFIX) to Network Measurement and Management - Bellevue
+1600-1700  Newcomers' Meet and Greet (open to Newcomers and WG chairs only) - Hugos South
+1700-1900  Welcome Reception - Pavillion
+
+
+MONDAY, July 29, 2013
+0800-1800  IETF Registration - Potsdam Foyer
+0800-0900  Beverage Break - Potsdam Foyer and Wintergarten
+0900-1130  Morning Session I
+Charlottenburg 2/3  	APP 	appsawg     	Applications Area Working Group WG - Combined with APPAREA
+Potsdam 1       	INT 	homenet     	Home Networking WG
+Potsdam 3       	IRTF	sdnrg       	Software Defined Networking Research Group 
+Schoeneberg 1/2  	OPS 	eman        	Energy Management WG - 0900-1000
+Schoeneberg 1/2  	OPS 	ipfix       	IP Flow Information Export WG - 1000-1130
+Charlottenburg 1  	OPS 	opsec       	Operational Security Capabilities for IP Network Infrastructure WG
+Tiergarten 1/2  	RAI 	clue        	ControLling mUltiple streams for tElepresence WG
+Bellevue        	RTG 	l2vpn       	Layer 2 Virtual Private Networks WG
+Potsdam 2       	TSV 	tsvwg       	Transport Area Working Group WG
+
+1130-1300  Break
+1300-1500  Afternoon Session I
+Potsdam 3       	APP 	core        	Constrained RESTful Environments WG
+Bellevue        	IRTF	ncrg        	Network Complexity Research Group 
+Tiergarten 1/2  	RAI 	ecrit       	Emergency Context Resolution with Internet Technologies WG
+Potsdam 1       	RTG 	status      	Stacked Tunnels for Source Routing BOF
+Charlottenburg 1  	TSV 	behave      	Behavior Engineering for Hindrance Avoidance WG
+Charlottenburg 2/3  	TSV 	conex       	Congestion Exposure WG
+
+1500-1510  Beverage Break - Potsdam Foyer and Wintergarten
+1510-1610  Afternoon Session II
+Charlottenburg 1  	APP 	paws        	Protocol to Access WS database WG
+Potsdam 2       	APP 	websec      	Web Security WG
+Potsdam 3       	GEN 	iprbis      	Proposed Update IPR Policy BOF
+Bellevue        	INT 	6man        	IPv6 Maintenance WG
+Tiergarten 1/2  	IRTF	cfrg        	Crypto Forum Research Group 
+Schoeneberg 1/2  	RAI 	xrblock     	Metric Blocks for use with RTCP's Extended Report Framework WG
+Potsdam 1       	RTG 	nsc         	Network Service Chaining BOF
+Charlottenburg 2/3  	TSV 	tsvwg       	Transport Area Working Group WG
+
+1620-1720  Afternoon Session III
+Charlottenburg 1  	APP 	paws        	Protocol to Access WS database WG
+Bellevue        	INT 	6man        	IPv6 Maintenance WG
+Tiergarten 1/2  	IRTF	iccrg       	Internet Congestion Control Research Group 
+Charlottenburg 2/3  	SEC 	posh        	PKIX over Secure HTTP BOF
+Potsdam 2       	TSV 	alto        	Application-Layer Traffic Optimization WG
+
+1720-1740  Beverage and Snack Break - Potsdam Foyer and Wintergarten
+1740-1940  Technical Plenary - Potsdam 1/3
+
+   1.  IAB Chair Report
+   2.  IRTF Chair Report
+   3.  RSE and RSOC Chair Report
+   4.  Technical Topic: Opus Codec
+   
+       The OPUS codec, defined in RFC 6716, can scale from low bit-rate
+       narrowband speech to very high quality stereo music, making it
+       suitable for a wide range of audio applications.  This session
+       covers the past and future of Opus as well as the lessons
+       learned that could apply to future IETF work.  
+   
+       a. Introduction
+       b. Overview of Opus
+       c. Testing
+       d. History of Opus in the IETF
+       e. Opus Deployment Panel
+       f. Future Work
+   
+   5.  Open Mic
+   
+   
+   Reference:
+   http://trac.tools.ietf.org/group/iab/trac/wiki/IETF-87
+
+
+
+TUESDAY, July 30, 2013
+0800-1800  IETF Registration - Potsdam Foyer
+0800-0900  Beverage Break - Potsdam Foyer and Wintergarten
+0900-1130  Morning Session I
+Bellevue        	INT 	softwire    	Softwires WG
+Charlottenburg 1  	INT 	tictoc      	Timing over IP Connection and Transfer of Clock WG - Joint Session with NTP
+Potsdam 3       	IRTF	irtfopen    	IRTF Open Meeting 
+Potsdam 2       	OPS 	lmap        	Large-Scale Measurement of Broadband Performance WG
+Potsdam 1       	RAI 	stir        	Secure Telephone Identity Revisited BOF
+Charlottenburg 2/3  	RTG 	l3vpn       	Layer 3 Virtual Private Networks WG
+Schoeneberg 1/2  	SEC 	emu         	EAP Method Update WG - 0900-1000
+Schoeneberg 1/2  	SEC 	ipsecme     	IP Security Maintenance and Extensions WG - 1000-1130
+Tiergarten 1/2  	TSV 	tcpm        	TCP Maintenance and Minor Extensions WG
+
+1130-1300  Break
+1300-1500  Afternoon Session I
+Tiergarten 1/2  	INT 	netext      	Network-Based Mobility Extensions WG
+Charlottenburg 1  	INT 	pcp         	Port Control Protocol WG
+Schoeneberg 1/2  	IRTF	nmrg        	Network Management Research Group 
+Potsdam 1       	OPS 	v6ops       	IPv6 Operations WG
+Bellevue        	RAI 	mmusic      	Multiparty Multimedia Session Control WG
+Potsdam 3       	RTG 	rtgarea     	Routing Area Open Meeting 
+Charlottenburg 2/3  	SEC 	jose        	Javascript Object Signing and Encryption WG
+Potsdam 2       	TSV 	mptcp       	Multipath TCP WG
+
+1500-1520  Beverage and Snack Break - Potsdam Foyer and Wintergarten
+1520-1650  Afternoon Session II
+Potsdam 1       	APP 	dmarc       	Domain-based Message Authentication, Reporting & Conformance BOF
+Bellevue        	INT 	6tsch       	Deterministic IPv6 over IEEE802.15.4e Timeslotted Channel Hopping  BOF
+Schoeneberg 1/2  	IRTF	nmrg        	Network Management Research Group 
+Charlottenburg 1  	OPS 	bmwg        	Benchmarking Methodology WG
+Charlottenburg 2/3  	RAI 	siprec      	SIP Recording WG
+Potsdam 2       	RTG 	forces      	Forwarding and Control Element Separation WG
+Tiergarten 1/2  	SEC 	abfab       	Application Bridging for Federated Access Beyond web WG
+Potsdam 3       	TSV 	cdni        	Content Delivery Networks Interconnection WG
+
+1700-1830  Afternoon Session III
+Charlottenburg 2/3  	INT 	trill       	Transparent Interconnection of Lots of Links WG
+Bellevue        	OPS 	grow        	Global Routing Operations WG
+Charlottenburg 1  	OPS 	mboned      	MBONE Deployment WG
+Schoeneberg 1/2  	OPS 	radext      	RADIUS EXTensions WG
+Potsdam 2       	RAI 	avtext      	Audio/Video Transport Extensions WG
+Potsdam 3       	RTG 	ccamp       	Common Control and Measurement Plane WG
+Tiergarten 1/2  	SEC 	mile        	Managed Incident Lightweight Exchange WG
+Potsdam 1       	TSV 	aqm         	Active Queue Management and Packet Scheduling BOF
+
+
+
+WEDNESDAY, July 31, 2013
+0800-1700  IETF Registration - Potsdam Foyer
+0800-0900  Beverage Break - Potsdam Foyer and Wintergarten
+0900-1130  Morning Session I
+Potsdam 3       	INT 	dnssdext    	DNS-SD Extensions BOF
+Charlottenburg 2/3  	IRTF	icnrg       	Information-Centric Networking 
+Charlottenburg 1  	IRTF	nwcrg       	Proposed Network Coding Research Group 
+Bellevue        	RAI 	avtcore     	Audio/Video Transport Core Maintenance WG
+Potsdam 1       	RTG 	mpls        	Multiprotocol Label Switching WG
+Tiergarten 1/2  	SEC 	oauth       	Web Authorization Protocol WG
+Potsdam 2       	TSV 	ippm        	IP Performance Metrics WG
+Schoeneberg 1/2  	TSV 	nfsv4       	Network File System Version 4 WG
+
+1130-1300  Break
+1300-1500  Afternoon Session I
+Potsdam 3       	INT 	lwig        	Light-Weight Implementation Guidance WG
+Schoeneberg 1/2  	INT 	pcp         	Port Control Protocol WG
+Tiergarten 1/2  	IRTF	iccrg       	Internet Congestion Control Research Group 
+Bellevue        	OPS 	opsawg      	Operations and Management Area Working Group WG - Combined with OPSAREA
+Charlottenburg 2/3  	RAI 	mmusic      	Multiparty Multimedia Session Control WG
+Potsdam 1       	RTG 	ccamp       	Common Control and Measurement Plane WG
+Charlottenburg 1  	RTG 	karp        	Keying and Authentication for Routing Protocols WG
+Potsdam 2       	SEC 	httpauth    	Hypertext Transfer Protocol Authentication WG
+
+1500-1510  Beverage Break - Potsdam Foyer and Wintergarten
+1510-1610  Afternoon Session II
+Potsdam 2       	APP 	httpbis     	Hypertext Transfer Protocol Bis WG
+Bellevue        	INT 	sunset4     	Sunsetting IPv4 WG
+Charlottenburg 1  	OPS 	netconf     	Network Configuration WG
+Charlottenburg 2/3  	RAI 	clue        	ControLling mUltiple streams for tElepresence WG
+Tiergarten 1/2  	RTG 	pce         	Path Computation Element WG
+Potsdam 1       	RTG 	sidr        	Secure Inter-Domain Routing WG
+Potsdam 3       	SEC 	dice        	DTLS In Constrained Environments BOF
+Schoeneberg 1/2  	TSV 	ppsp        	Peer to Peer Streaming Protocol WG
+
+1620-1720  Afternoon Session III
+Potsdam 2       	APP 	httpbis     	Hypertext Transfer Protocol Bis WG
+Bellevue        	INT 	dhc         	Dynamic Host Configuration WG - Joint Session with SUNSET4
+Bellevue        	INT 	sunset4     	Sunsetting IPv4 WG - Joint Session with DHC
+Charlottenburg 1  	OPS 	netconf     	Network Configuration WG
+Tiergarten 1/2  	RTG 	pce         	Path Computation Element WG
+Schoeneberg 1/2  	TSV 	ppsp        	Peer to Peer Streaming Protocol WG
+
+1720-1740  Beverage and Snack Break - Potsdam Foyer and Wintergarten
+1740-2010  IETF Operations and Administration Plenary - Potsdam 1/3
+
+   1. Welcome
+   2. Introducing the sponsors
+   3. Reporting
+      - IETF Chair
+      - IAOC Chair and IAD
+      - IETF Trust Chair
+      - 2012 NomCom Chair
+      - 2013 NomCom Chair
+      - Diversity team
+   4. Postel Award
+   5. Recognition
+   6. IAOC Open Mic
+   7. IESG Open Mic
+
+
+
+THURSDAY, August 1, 2013
+0800-1700  IETF Registration - Potsdam Foyer
+0800-0900  Beverage Break - Potsdam Foyer and Wintergarten
+0900-1020  Morning Session I
+Potsdam 2       	APP 	json        	JavaScript Object Notation WG
+Tiergarten 1/2  	INT 	dhc         	Dynamic Host Configuration WG
+Charlottenburg 1  	INT 	dmm         	Distributed Mobility Management WG
+Schoeneberg 1/2  	IRTF	dtnrg       	Delay-Tolerant Networking Research Group 
+Bellevue        	RAI 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Potsdam 3       	RTG 	nvo3        	Network Virtualization Overlays WG
+Potsdam 1       	TSV 	tsvarea     	Transport Area Open Meeting 
+
+1030-1130  Morning Session II
+Potsdam 2       	APP 	weirds      	Web Extensible Internet Registration Data Service WG
+Tiergarten 1/2  	INT 	dhc         	Dynamic Host Configuration WG
+Charlottenburg 1  	INT 	dmm         	Distributed Mobility Management WG
+Schoeneberg 1/2  	IRTF	dtnrg       	Delay-Tolerant Networking Research Group 
+Bellevue        	RAI 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Potsdam 3       	RTG 	nvo3        	Network Virtualization Overlays WG
+Potsdam 1       	TSV 	tsvarea     	Transport Area Open Meeting 
+
+1130-1300  Break
+1300-1500  Afternoon Session I
+Bellevue        	APP 	core        	Constrained RESTful Environments WG
+Potsdam 2       	INT 	mif         	Multiple Interfaces WG
+Tiergarten 1/2  	RAI 	p2psip      	Peer-to-Peer Session Initiation Protocol WG
+Potsdam 3       	RTG 	i2rs        	Interface to the Routing System WG
+Charlottenburg 1  	RTG 	pim         	Protocol Independent Multicast WG
+Potsdam 1       	SEC 	saag        	Security Area Open Meeting 
+Charlottenburg 2/3  	TSV 	rmcat       	RTP Media Congestion Avoidance Techniques WG
+
+1500-1520  Beverage and Snack Break - Potsdam Foyer and Wintergarten
+1520-1650  Afternoon Session II
+Potsdam 2       	INT 	multimob    	Multicast Mobility WG
+Bellevue        	OPS 	dnsop       	Domain Name System Operations WG
+Charlottenburg 1  	RAI 	insipid     	INtermediary-safe SIP session ID WG
+Potsdam 1       	RTG 	idr         	Inter-Domain Routing WG
+Tiergarten 1/2  	RTG 	manet       	Mobile Ad-hoc Networks WG
+Charlottenburg 2/3  	RTG 	ospf        	Open Shortest Path First IGP WG
+Schoeneberg 1/2  	SEC 	kitten      	Common Authentication Technology Next Generation WG
+Potsdam 3       	TSV 	tcmtf       	Tunneling Compressed Multiplexed Traffic Flows BOF
+
+1700-1830  Afternoon Session III
+Schoeneberg 1/2  	APP 	scim        	System for Cross-domain Identity Management WG
+Bellevue        	INT 	6lo         	IPv6 over networks of resource-constrained nodes BOF
+Tiergarten 1/2  	OPS 	netmod      	NETCONF Data Modeling Language WG
+Charlottenburg 1  	RAI 	stox        	SIP-TO-XMPP WG
+Charlottenburg 2/3  	RTG 	isis        	IS-IS for IP Internets WG
+Potsdam 3       	RTG 	pwe3        	Pseudowire Emulation Edge to Edge WG
+Potsdam 1       	SEC 	dane        	DNS-based Authentication of Named Entities WG
+Potsdam 2       	TSV 	cdni        	Content Delivery Networks Interconnection WG
+
+1900-2100  Bits-N-Bites - Pavillion
+
+
+FRIDAY, August 2, 2013
+0800-1100  IETF Registration - Potsdam Foyer
+0800-0900  Beverage Break - Potsdam Foyer and Wintergarten
+0900-1100  Morning Session I
+Bellevue        	APP 	httpbis     	Hypertext Transfer Protocol Bis WG
+Schoeneberg 1/2  	APP 	precis      	Preparation and Comparison of Internationalized Strings WG
+Potsdam 1       	OPS 	v6ops       	IPv6 Operations WG
+Potsdam 3       	RTG 	mpls        	Multiprotocol Label Switching WG
+Charlottenburg 1  	SEC 	tls         	Transport Layer Security WG
+
+1100-1120  Beverage and Snack Break - Potsdam Foyer and Wintergarten
+1120-1220  Afternoon Session I
+Charlottenburg 1  	APP 	urnbis      	Uniform Resource Names, Revised WG
+Potsdam 3       	INT 	intarea     	Internet Area Working Group WG
+Schoeneberg 1/2  	OPS 	dime        	Diameter Maintenance and Extensions WG
+Potsdam 1       	RAI 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Potsdam 2       	RTG 	rtgwg       	Routing Area Working Group WG
+Charlottenburg 2/3  	RTG 	sidr        	Secure Inter-Domain Routing WG
+Tiergarten 1/2  	SEC 	sacm        	Security Automation and Continuous Monitoring WG
+
+1230-1330  Afternoon Session II
+Potsdam 3       	INT 	intarea     	Internet Area Working Group WG
+Schoeneberg 1/2  	OPS 	dime        	Diameter Maintenance and Extensions WG
+Potsdam 1       	RAI 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Potsdam 2       	RTG 	rtgwg       	Routing Area Working Group WG
+Charlottenburg 2/3  	RTG 	sidr        	Secure Inter-Domain Routing WG
+Tiergarten 1/2  	SEC 	sacm        	Security Automation and Continuous Monitoring WG
+
+
+====================================================================
+AREA DIRECTORS
+
+APP  Applications Area   Pete Resnick/QTI, a Qualcomm company & Barry Leiba/Huawei Technologies
+GEN  General Area        Jari Arkko/Ericsson
+INT  Internet Area       Brian Haberman/Johns Hopkins University & Ted Lemon/Nominum, Inc.
+OPS  Operations and Man  Benoit Claise/Cisco & Joel Jaeggli/University of Oregon
+RAI  Real-time Applicat  Gonzalo Camarillo/Ericsson & Richard Barnes/BBN
+RTG  Routing Area        Stewart Bryant/Cisco Systems & Adrian Farrel/Juniper Networks
+SEC  Security Area       Stephen Farrell/Trinity College Dublin & Sean Turner/International Electronic Communication Analysts
+TSV  Transport Area      Martin Stiemerling/NEC & Spencer Dawkins/
+

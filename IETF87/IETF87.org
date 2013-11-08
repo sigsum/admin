@@ -1,0 +1,25 @@
+* my agenda
+- sun 1700-1900 reception
+- mon 1000-1130 Schoeneberg 1/2  	OPS 	ipfix       	IP Flow Information Export WG
+- mon 1500-1610 Potsdam 2       	APP 	websec      	Web Security WG
+- mon 1510-1610 Tiergarten 1/2  	IRTF	cfrg        	Crypto Forum Research Group 
+- mon 1620-1720 Charlottenburg 2/3  	SEC 	posh        	PKIX over Secure HTTP BOF
+- tue 0900-1130 Charlottenburg 1  	INT 	tictoc      	Timing over IP Connection and Transfer of Clock WG - Joint Session with NTP
+- tue 1700-1830 Schoeneberg 1/2  	OPS 	radext      	RADIUS EXTensions WG
+- wed 1300-1500 Charlottenburg 1  	RTG 	karp        	Keying and Authentication for Routing Protocols WG
+- thu 0900-1020 Schoeneberg 1/2  	IRTF	dtnrg       	Delay-Tolerant Networking Research Group 
+- thu 1030-1130 Schoeneberg 1/2  	IRTF	dtnrg       	Delay-Tolerant Networking Research Group 
+- thu 1520-1650 Schoeneberg 1/2  	SEC 	kitten      	Common Authentication Technology Next Generation WG
+- thu 1700-1830 Bellevue        	INT 	6lo         	IPv6 over networks of resource-constrained nodes BOF
+- fri 0900-1100 Charlottenburg 1  	SEC 	tls         	Transport Layer Security WG
+
+* venue
+https://www.ietf.org/meeting/87/hotel.html
+Budapester str. 2
+S-bahn Zoologischer Garten
+U-bahn Kurfürstendamm or Augsburger str
+* hotel
+Hampton by Hilton
+Uhlandstr. 188
++49-30-4050270
+online booking: corp. id 0041604
