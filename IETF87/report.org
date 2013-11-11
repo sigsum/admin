@@ -1,0 +1,22 @@
+Trip report IETF87 (Berlin 2013-07-28--08-02)
+
+This IETF was more hallway track and ad-hoc meetings than ordinary
+working group sessions for me. Highlights during the week included
+
+- informal meeting regarding [[http://policyreview.info/articles/news/ietf-%25E2%2580%2593-berlin-meeting-did-not-overlook-mass-surveillance/186][mass surveillance]], coinciding with the
+  publishing of [[http://www.theguardian.com/world/2013/jul/31/nsa-top-secret-program-online-data][XKEYSCORE]]
+
+- jacob appelbaum and i [[https://www.ietf.org/proceedings/87/slides/slides-87-saag-5.pdf][presenting tor]] at SAAG
+
+- discussing [[http://www.tschofenig.priv.at/wp/?p%3D993][tor and the ietf]] and what they can bring to each other
+  with hannes tschofenig and stephen farrell, among others
+
+- planning libradsec for moonshot with josh howlett, sam hartman,
+  stefan winter, rhys smith
+
+- discussing ephemeral keys in abfab with sam hartman
+
+- radext (OPS) about DTLS, NAI normalisation, dynamic discovery and
+  fragmentation
+
+- meeting with numerous others, mostly on tor and/or security
