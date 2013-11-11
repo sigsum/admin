@@ -4,6 +4,8 @@
 `C-c C-x C-d' for showing times.
 `C-c C-y' for updating time on line.
 
+* week 45
+IETF88 Vancouver.
 * week 44
 ** tor
    CLOCK: [2013-10-29 Tue 21:45]--[2013-10-29 Tue 22:14] =>  0:29
