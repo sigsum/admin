@@ -19,8 +19,6 @@
 ;(add-to-list 'load-path "/usr/share/emacs23/site-lisp/golang-mode")
 ;(require 'gnus-load)
 
-(load-file "~/src/sikrit.el")
-
 ;; Do this early -- other requirements might depend on it.
 (require 'package)
 (add-to-list 'package-archives
@@ -28,8 +26,8 @@
 (package-initialize)
 
 (require 'tls)
-(require 'jabber)
-;(load "jabber-autoloads")
+;(require 'jabber)
+(require 'appt)                         ;calendar needs this
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
 ;; another smime.el (from site-lisp/semi/?) is loaded.
@@ -37,7 +35,7 @@
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
 
-(require 'magit)
+;(require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
 ;; Fun.
@@ -298,7 +296,7 @@
 ;(diary 1)
 
 ;; erc
-(load-file "~/.emacs.erc.el")
+;(load-file "~/.emacs.erc.el")
 (setq erc-email-userid "linus"
       erc-nick '("ln5")
       erc-quit-reason-various-alist '(("zippy" erc-quit-reason-zippy)
@@ -317,7 +315,6 @@
  '(Info-additional-directory-list (quote ("~/usr/share/info")))
  '(add-log-keep-changes-together t)
  '(browse-url-browser-function (quote w3m))
- '(calendar-date-style (quote iso))
  '(calendar-today-visible-hook (quote (calendar-mark-today)))
  '(calendar-view-diary-initially-flag t)
  '(calendar-week-start-day 1)
@@ -369,6 +366,7 @@
  '(gnus-treat-x-pgp-sig (quote head))
  '(gnus-use-full-window nil)
  '(gnus-user-agent (quote (gnus)))
+ '(gnutls-trustfiles (quote ("/etc/ssl/certs/ca-certificates.crt" "/etc/pki/tls/certs/ca-bundle.crt" "/etc/ssl/ca-bundle.pem" "/usr/ssl/certs/ca-bundle.crt" "/home/amnesia/Persistent/linus/nordber-ca.crt")))
  '(grep-command "grep -nH -Ed skip -e ")
  '(ido-case-fold t)
  '(ido-create-new-buffer (quote always))
@@ -415,7 +413,7 @@
  '(mml2015-cache-passphrase t)
  '(mml2015-encrypt-to-self t)
  '(mml2015-passphrase-cache-expiry 60)
- '(mml2015-signers (quote ("0x23291265")))
+ '(mml2015-signers (quote ("0x46AE8F0E")))
  '(nnimap-dont-close nil)
  '(nnimap-split-download-body nil)
  '(nnmail-extra-headers (quote (Keywords To Newsgroups Cc)))
@@ -447,7 +445,7 @@
  '(twit-user-image-dir "~/usr/share/images/twitter")
  '(twitter-username "ln4711")
  '(user-full-name "Linus Nordberg")
- '(w3m-command-arguments (quote ("-o" "use_proxy=0" "-o" "http_proxy=http://127.0.0.1:8118/" "-o" "https_proxy=http://127.0.0.1:8118/" "-o" "ftp_proxy=http://127.0.0.1:8118/")))
+ '(w3m-command-arguments (quote ("-o" "use_proxy=1" "-o" "http_proxy=http://127.0.0.1:9050/" "-o" "https_proxy=http://127.0.0.1:9050/" "-o" "ftp_proxy=http://127.0.0.1:9050/")))
  '(w3m-default-save-directory "~/")
  '(w3m-file-coding-system (quote w3m-iso-latin-1))
  '(w3m-file-name-coding-system (quote w3m-iso-latin-1))
@@ -595,7 +593,6 @@
 
 ;; w3m
 ; (add-to-list 'load-path "~/usr/share/emacs/site-lisp/w3m")
-;tmp;(require 'w3m-load)
 
 ;(require 'octet)
 ;(octet-mime-setup)
@@ -711,6 +708,12 @@
 ;(load "preview-latex.el" nil t t)
 
 (put 'narrow-to-page 'disabled nil)
+
+;; Set calendar-date-style outside custom-set-variables -- it gets
+;; overwritten with 'european _somewhere_, I wish I knew where.
+;; FIXME: This can probably move up again, now that we've removed the
+;; stupid european-calendar-style entry. Update: Maybe. Still have trouble.
+(calendar-set-date-style 'iso)
 
 ;; don't activate the debugger automagically when errors are
 ;; encountered

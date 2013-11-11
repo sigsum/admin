@@ -9,16 +9,22 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
-   - - [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (2)
-   - - phw's email abt research something read (1)
+   - - WPS (at home wlan router) disabled (1)
    - . openitp thing report sent to josva (1)
    - - ietf87 report sent to josva (1)
+   - - ietf88 report sent to josva (2)
+   - - phw's email abt research something read (1)
+   - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (2)
+   - - paul wouters dnssec related drafts grokked and put into context of dnssec in tor
+       [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
+   - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
+   - - sam poked abt his ephemeral keys in abfab idea (1)
+   - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt][otr-fp-in-dns draft]] read and tested
+   - - put [[file:~/Persistent/u/ietf/in-notes/rfc4255.txt][ssh fp in dns]]
    - - goals for IETF involvement sent to Josva (1)
-   - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits
-   - - WPS at home disabled (1)
+   - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
    - - obfsproxy's upgraded (tor.ndn, more?) (2)
-   - . https://tools.ietf.org/html/rfc6962 (CT) read, finish (1)
    - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
@@ -26,6 +32,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
    - . broken SSD returned (1)
    - - jeans; bought (?)
+   - o https://tools.ietf.org/html/rfc6962 (CT) read (1)
    - o push p/mysticalhw, p/mapietf
    - o [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt][draft-trammell-perpass-ppa]] commented (2)
    - o http://huitema.net/papers/draft-huitema-perpass-analthreat-00.txt read
@@ -50,20 +57,21 @@ Legend                                                (emacs -*-org-*- mode)
    - D problem description hashed out with [somebody], for perpass@
      maybe also a concrete thing or two suggested?
 ** Dev
-   - * #9206 closed
+   - - shadow #111 closed
+   - . shadow #114 closed
+   - - tor #6027 moved forward some
+   - o #9206 closed
      - generating router-stability determines Guard flags (3)
      - Node() takes flag-hints, at least FH_Guard (2)
-   - - shadow #166 closed
-   - - shadow #113 closed
-   - - shadow #111 closed
-   - - shadow #114 closed
-   - - tor #6027 moved forward some
+   - o shadow #166 closed
+   - o shadow #113 closed
    - o radsecproxy-1.6.3 released
    - o radsecproxy patch from fabian; tested, replied to
 ** Sysadm
    - o bwauth on salsa upgraded to what #9771 fixed (1)
    - - tor on siv upgraded to 0.2.5 (1)
      - pkgsrc on siv upgraded, for libevent2 (2)
+   - - tor on siv upgraded to 0.2.5 (1)
    - . move all services from banksy to mm -- ports don't seem to work well!
      . krb
        o install another kdc
@@ -96,12 +104,9 @@ Legend                                                (emacs -*-org-*- mode)
    - X x0 (@tex) updated
 * Soon (within a month)
 ** Misc
-   - - roy arends replied to
-       [[gnus:nnimap%2Bndn:INBOX#64E17104-7687-43AC-A7BC-6E790243426F@dnss.ec][Email from Roy Arends: Fwd: About encrypting DNS traf]]
    - - tahoe-lafs / tamias on tor HS investigated
    - - feedback to kyle on practical cryptography in go sent
    - - tor AS awareness studied
-   - - ephemeral keys for RADSEC; discussion started
    - - chime in on paul wouters "mta on localhost" idea?
      https://www.ietf.org/mail-archive/web/perpass/current/msg00022.html
    - - read up on andrews favourite ways of running a company
@@ -126,6 +131,9 @@ Legend                                                (emacs -*-org-*- mode)
    - - read https://www.iis.se/docs/20120828-remissvar-trafikdatalagring-SE.pdf
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
+   - X ephemeral keys for RADSEC; discussion started; update: abfab, not radsec
+   - X roy arends replied to
+       [[gnus:nnimap%2Bndn:INBOX#64E17104-7687-43AC-A7BC-6E790243426F@dnss.ec][Email from Roy Arends: Fwd: About encrypting DNS traf]]
    - o mark contacted for lunch
 ** Dev
    - - libradsec example server replying to a radius message

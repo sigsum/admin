@@ -1,3 +1,68 @@
+* tails 0.21
+** need a newer ssh?
+Package: openssh-client
+Source: openssh
+Version: 1:6.0p1-4
+
+samnesia@amnesia:~$ ssh -V
+OpenSSH_5.5p1 Debian-6+squeeze4, OpenSSL 0.9.8o 01 Jun 2010
+
+Seems like we need 5.7 http://www.openssh.com/txt/release-5.7
+
+Installing the package from wheezy is problematic:
+ libc6-dev : Breaks: gcc-4.4 (< 4.4.6-4) but 4.4.5-8 is to be installed
+I think this means that we're about to get new libc. I don't want that.
+
+Solved this by building 6.3p1 from source, installed in ~/usr/bin/.
+** cannot authenticate packages
+usr/bin/tails-init.sh 
+The following NEW packages will be installed:
+  emacs emacs23 emacs23-bin-common emacs23-common emacsen-common gnutls-bin
+  libgd2-noxpm libm17n-0 libotf0 libutempter0 magit xbitmaps xterm
+0 upgraded, 13 newly installed, 0 to remove and 1 not upgraded.
+Need to get 23.4 MB of archives.
+After this operation, 78.4 MB of additional disk space will be used.
+WARNING: The following packages cannot be authenticated!
+  emacsen-common libgd2-noxpm libotf0 libm17n-0 libutempter0 magit xbitmaps
+  xterm
+E: There are problems and -y was used without --force-yes
+The following NEW packages will be installed:
+  golang-doc golang-go golang-go-linux-386 golang-src libjs-jquery
+0 upgraded, 5 newly installed, 0 to remove and 986 not upgraded.
+Need to get 17.3 MB of archives.
+After this operation, 99.3 MB of additional disk space will be used.
+WARNING: The following packages cannot be authenticated!
+  golang-src golang-go-linux-386 golang-go libjs-jquery golang-doc
+E: There are problems and -y was used without --force-yes
+The following NEW packages will be installed:
+  aspell aspell-en aspell-sv xscreensaver xscreensaver-data
+0 upgraded, 5 newly installed, 0 to remove and 1 not upgraded.
+Need to get 1,884 kB of archives.
+After this operation, 5,423 kB of additional disk space will be used.
+WARNING: The following packages cannot be authenticated!
+  aspell aspell-en aspell-sv xscreensaver-data xscreensaver
+E: There are problems and -y was used without --force-yes
+The following NEW packages will be installed:
+  autoconf automake build-essential dpkg-dev g++ g++-4.4 gcc gcc-4.4
+  libc-dev-bin libc6-dev libssl-dev libstdc++6-4.4-dev libtool linux-libc-dev
+  make zlib1g-dev
+0 upgraded, 16 newly installed, 0 to remove and 1 not upgraded.
+Need to get 20.8 MB of archives.
+After this operation, 64.2 MB of additional disk space will be used.
+WARNING: The following packages cannot be authenticated!
+  autoconf automake libc-dev-bin libc6-dev gcc-4.4 gcc libstdc++6-4.4-dev
+  g++-4.4 g++ make dpkg-dev build-essential zlib1g-dev libtool
+E: There are problems and -y was used without --force-yes
+
+Solved this by installing from the network. Now it seems like we have
+all the package files in two places. This is strange:
+
+/live/persistence/TailsData_unlocked/apt/cache on /var/cache/apt/archives type none (rw,bind)
+/live/persistence/TailsData_unlocked/apt/lists on /var/lib/apt/lists type none (rw,bind)
+
+but /var/cache/apt/archives has 41 debs while it also has the
+directory 'cache' with 73 debs. This might be the ones from old stick,
+I guess.
 * golang
 ** gotour
 export GOPATH=$HOME/usr/go
@@ -2111,7 +2176,12 @@ primary (mcabber): 5A31FB5E 3A66941B F3ED9A8E 181B5CC4 0AD417C1
 to verify fp in mcabber:
 /otr fingerprint . <fingerprint>
 
-jake 067508ccc60422e58544e2cd9b4d1d0fa0a1be23
+
+xmpp-client <2013-11-08 Fri>:
+ * (4:14AM) Your OTR fingerprint is 5a31fb5e3a66941bf3ed9a8e181b5cc40ad417c1
+
+ioerrror@jabber.ccc.de 067508ccc60422e58544e2cd9b4d1d0fa0a1be23
+pawal@iis.se c9fade83b9dd9d5e0dd5b6c656454407e49754ee
 ** emacs-otr
 *** <2011-12-28 Wed>
 Playing with ~/lisp/otr.el and http://mnemonikk.org/emacs-otr (0f58a558).
@@ -2646,7 +2716,7 @@ struct addrinfo
        offset:  0 sectors
        size:    7827584 sectors
        mode:    read/write
-*** cryptesetup luksFromat (do use)
+*** cryptesetup luksFormat (do use)
     This example is using a 100MB partition made with "Disk Utility 2.32.1".
 **** Short version
      time badblocks -vswt random /dev/sdb1 # -c 10240
@@ -31460,6 +31530,11 @@ Wrote /home/linus/News/drafts/drafts/2
       smtpmail-auth-credentials '(("kerio.nordu.net" 587 "linus@nordu.net" "<pw>")
                                   ("smtp.nordberg.se" 587 "linus" "<pw>"))
       ;;i'd like to use nnimap-authinfo-file instead
+** connecting over the net
+- The meat is in [[file:~/usr/src/emacs-24.3/lisp/net/network-stream.el::(defun%20open-network-stream%20(name%20buffer%20host%20service%20&rest%20parameters)][open-network-stream]] (we come there from
+  [[file:~/usr/src/emacs-24.3/lisp/gnus/nnimap.el::(defun%20nnimap-open-connection-1%20(buffer)][nnimap-open-connection-1]]).
+- gnutls handling is found in [[file:~/usr/src/emacs-24.3/lisp/net/gnutls.el::(cl-defun%20gnutls-negotiate][gnutls-negotiate]] which "calls out" to
+  [[file:~/usr/src/emacs-24.3/src/gnutls.c::DEFUN%20("gnutls-boot",%20Fgnutls_boot,%20Sgnutls_boot,%203,%203,%200,][gnutls-boot()]].
 * jake on privacy and power
 http://2013.elevate.at/festival/ueber-das-festival/newsmagazin/detail/news/jacob-appelbaum-elevate-open-everything/
 
@@ -31566,7 +31641,8 @@ And there could not be a better example of the twin concepts of
 privacy and liberty than a man denied the latter for exposing the
 former.
 
-* murder in sammarkand, craig murray
+* books
+** murder in sammarkand, craig murray
 - [X] "The thing with tyranny is that, if you don't try to fight it when it starts, it very quickly gets too strong for you." C. Murray
 - [X] "If you achieve a voice that will be heard, you should use it to speak up for the voiceless and oppressed." C. Murray
 - [ ] "If you possess any power or authority, you must strive to use it to help and to empower the powerless." C. Murray

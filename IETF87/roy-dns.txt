@@ -1,0 +1,134 @@
+X-Gnus-Coding-System: -*- coding: utf-8; -*-
+
+From: Patrik Wallström <pawal@blipp.com>
+Subject: Fwd: About encrypting DNS traffic
+To: Linus Nordberg <linus@nordberg.se>
+Date: Tue, 5 Nov 2013 15:32:46 -0800 (1 day, 1 hour, 27 minutes ago)
+
+[[PGP Signed Part:No public key for DBFFE2D7B76249F2 created at 2013-11-05T23:32:46+0000 using RSA]]
+Hänger du med på middag i morgon?
+
+Begin forwarded message:
+
+> From: Ondřej Surý <ondrej.sury@nic.cz>
+> Subject: Re: About encrypting DNS traffic
+> Date: November 5, 2013 3:06:48 PM PST
+> To: Patrik Wallstrom <pawal@blipp.com>, Roy Arends <roy@dnss.ec>
+> 
+> Hi Patrik & Roy,
+> 
+> would a today or tomorrow diner suit you to discuss this in more detail?
+> 
+> I like the proposal up to the part that say "be backwards compatible" part.
+> 
+> I don't think we need to be backward compatible.  I even don't think
+> you need a signaling.  It might be a better approach to simply
+> required all slave servers to be compatible before you deploy and
+> publish _enc record.
+> 
+> I would also propose to make ECDSA mandatory and default, that might
+> save us from the problem with public cryptography on the server.
+> 
+> BTW Do you have any idea what's the current status of patents on
+> ECDSA?  I know that it was a problem for some Linux distros to
+> enable ECDSA in OpenSSL before.
+> 
+> Ondrej
+> 
+> On 9. 8. 2013, at 5:02, Patrik Wallström <pawal@blipp.com> wrote:
+> 
+>> Hi Ondrej,
+>> 
+>> This is a start at least.
+>> 
+>> Begin forwarded message:
+>> 
+>>> From: Roy Arends <roy@dnss.ec>
+>>> Subject: About encrypting DNS traffic
+>>> Date: July 31, 2013 6:51:11 PM GMT+02:00
+>>> To: Patrik Wallstr√∂m <pawal@blipp.com>, jacob@torproject.org
+>>> 
+>>> Hi both,
+>>> 
+>>> Thinking about the idea to encrypt query/response traffic between
+>>> a resolver and an authoritative server, there are some limits we
+>>> need to consider…
+>>> 
+>>> One obvious caveat is the amount of information that can be
+>>> derived from the so-called meta data: Our name servers are
+>>> responsible for serving back NS records for anything under UK,
+>>> hence the mere fact that we get a query reveals that something is
+>>> looking for information under UK. A subsequent query from the same
+>>> resolver then going to, say bbc.co.uk name servers implies that
+>>> the resolver wants information from the bbc.co.uk zone. So far the
+>>> limitations.
+>>> 
+>>> If those are acceptable (I can imagine a set of centralised,
+>>> dedicated TOR-resolvers that resolve on behalf of their users),
+>>> then I can envision the following:
+>>> 
+>>> An initial query ask the UK name servers for a DNSKEY (a public
+>>> key) for the sole purpose of encrypting a subsequent query. This
+>>> DNSKEY can be cached for future purposes. A DNSKEY is normally
+>>> used for DNSSEC, however, there can be other uses for this key as
+>>> well. In order not to confuse validators where they might use the
+>>> encryption DNSKEY to validate DNSSEC data, I propose to use a
+>>> dedicated label, and subtype the DNSKEY. For instance _enc.co.uk
+>>> DNSKEY bladiblah.
+>>> 
+>>> The second query asks the UK name servers for an arbitrary DNS
+>>> record in the UK zone (not the actual intended query), and
+>>> encrypts the actual query+type (in DNS wireformat), plus a shared
+>>> session key, using the previously queried DNSKEY. It sends the
+>>> encrypted blob to the UK name servers using an EDNS Option. The
+>>> server subsequently decrypts the blob, looks up the proper
+>>> information, encrypts it using the session key, and returns that
+>>> encrypted blob using again an EDNS option.
+>>> 
+>>> The response can now be decrypted using the session key.
+>>> 
+>>> The reason of using a session key is to avoid a public key
+>>> encryption session on the authoritative server.
+>>> The reason of using an arbitrary DNS record is to be 'backwards
+>>> compatible'. It might be that the server has not implemented this,
+>>> and those servers will simply ignore the EDNS-option and return
+>>> the actual arbitrary response to the arbitrary query. This should
+>>> be used as an oracle by the resolver to determine if the server
+>>> has implemented this methodology.
+>>> 
+>>> Regardless of the double query, the authoritative server does not
+>>> have to keep any state between subsequent queries.
+>>> 
+>>> An initial idea, now dismissed is to simply hash the query. Since
+>>> the authoritative server can in theory build a mapping between the
+>>> names and their hashed equivalent, it can do a reverse lookup on
+>>> the hash and get the original name in order to build a
+>>> response. That would simply not be enough, as a simple table can
+>>> be build by any third party. Salting does not help as it requires
+>>> the database to be indexed beforehand with every possible salt…
+>>> 
+>>> It would love to avoid the authoritative servers doing the public
+>>> key decryption, but that just seems unfeasible… it would require a
+>>> shared key between every possible resolver and the authoritative
+>>> server, which does not scale.
+>>> 
+>>> I also would love to avoid a double query, but caching this DNSKEY
+>>> would actually help things a lot.
+>>> 
+>>> Let me know if this makes sense
+>>> 
+>>> Roy
+>>> 
+>> 
+> 
+> --
+> Ondřej Surý -- Chief Science Officer
+> -------------------------------------------
+> CZ.NIC, z.s.p.o.    --    Laboratoře CZ.NIC
+> Americka 23, 120 00 Praha 2, Czech Republic
+> mailto:ondrej.sury@nic.cz    http://nic.cz/> tel:+420.222745110       fax:+420.222745112
+> -------------------------------------------
+> 
+
+[[End of PGP Signed Part]]
+

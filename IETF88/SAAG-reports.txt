@@ -1,0 +1,101 @@
+X-Gnus-Coding-System: -*- coding: utf-8; -*-
+
+From: Karen O'Donoghue <odonoghue@isoc.org>
+Subject: JOSE WG summary - IETF 88
+Newsgroups: gmane.ietf.saag
+To: saag@ietf.org
+Date: Thu, 07 Nov 2013 11:10:04 -0800 (6 hours, 45 minutes, 46 seconds ago)
+Organization: ISOC
+Reply-To: odonoghue@isoc.org
+
+The JOSE WG met on Thursday 7 November 2013 at 0900 PST.
+
+The JOSE WG has been focused entirely on resolving issues in the issue
+tracker for the four core specification (JWA, JWS, JWE, JWK). Previous
+to this IETF, there have been four virtual interim meetings and a
+series of meetings between the editor and the wg co-chairs to address
+open issues. This has resulted in most of the remaining open issues
+having proposed resolutions that are either awaiting implementation or
+verification. Today's meeting focused on identifying resolutions for
+all the remaining open issues. The editor plans two updates between
+now and the end of the year that will close all remaining open
+issues. A virtual interim is tentatively planned for 13 January to
+review the document set and prepare for WGLC. In addition, a plan for
+the cook book document was discussed and an initial draft of that
+document is expected in January as well.
+
+
+
+From: "Joseph Salowey (jsalowey)" <jsalowey@cisco.com>
+Subject: TLS working group report
+Newsgroups: gmane.ietf.saag
+To: "saag@ietf.org" <saag@ietf.org>
+Date: Thu, 7 Nov 2013 19:18:07 +0000 (6 hours, 38 minutes ago)
+
+TLS met on Tuesday Afternoon.  The raw public key draft has completed
+IETF last call.  The cached info draft will be reviewed by the DICE
+working group.  The ALPN draft is under discussion due to issues with
+some servers dropping clientHellos of particular sizes.  TLS-PWD will
+be heading to working group last call.  The room voiced support for
+adopting the TLS BCP draft, but a new revision will be necessary
+before working group adoption.  We discussed several approaches to
+migrate to encrypt then mac for CBC mode, more discussion on the list
+is necessary to determine the approach.  We had a presentation on
+ChaCha20 based cipher suites and there was general support for it in
+the room.  We discussed different protocol flows to reduce the round
+trips for the TLS 1.3 handshake and to initia
+ te encryption earlier in the TLS 1.3 handshake.  
+
+From: "Joseph Salowey (jsalowey)" <jsalowey@cisco.com>
+Subject: EMU working group summary
+Newsgroups: gmane.ietf.saag
+To: "saag@ietf.org" <saag@ietf.org>
+Date: Thu, 7 Nov 2013 19:23:35 +0000 (6 hours, 32 minutes, 37 seconds ago)
+
+THe EMU working group did not meet at IETF-88.  The mutual crypto
+binding draft was published as RFC 7029.  The TEAP draft is working
+its way through IESG review.
+
+From: Yoav Nir <ynir@checkpoint.com>
+Subject: HTTP-Auth working group report
+Newsgroups: gmane.ietf.saag
+To: IETF Security Area Advisory Group <saag@ietf.org>
+Date: Thu, 7 Nov 2013 19:36:17 +0000 (6 hours, 19 minutes, 57 seconds ago)
+
+The HTTP-Auth working group will meet Friday morning at 9:00 AM
+
+The plan is to discuss the HOBA and Rest-Auth documents, as well as
+commonalities among all proposals.
+
+We will also report of the interim meeting that dealt with
+MutualAuth. Other documents are progressing, but we try to discuss
+only a few per meeting, so as to have a more useful discussion.
+
+Matt & Yoav
+
+From: Dorothy Gellert <dgellert@silverspringnet.com>
+Subject: Dice WG report
+Newsgroups: gmane.ietf.saag
+To: "saag@ietf.org" <saag@ietf.org>
+Date: Thu, 7 Nov 2013 21:25:27 +0000 (4 hours, 30 minutes, 59 seconds ago)
+
+Dice met for the first time as a WG on Monday afternoon.  The DTLS
+profile draft was presented and a call for Volunteers for
+authors/Editor was made as the previous authors were unable to
+continue the work.  Klaus Hartke presented the dice practical issues
+draft as input to the profile draft.  The Multicast draft was
+presented, a number of comments were discussed including the limited
+scope of using DTLS for multicast, crypto agility for regional plug
+ins, detecting replay attacks.  Given updates to the current draft, a
+hum was taken by the WG to progress this draft to WG status.  This
+decision will be confirmed on the WG list.
+
+Dorothy Gellert
+E dgellert@silverspringnet.com<mailto:dgellert@silverspringnet.com>
+O +1 650 839 4378
+C +1 650 556-5994
+
+
+
+
+

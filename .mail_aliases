@@ -110,7 +110,7 @@ alias chulu                     "Henrik Chulu <chulu@frikultur.dk>"
 alias cissi			cissi@astrogator.se
 alias cryptoparty               cryptoparty@lists.dfri.se
 alias damian                    "Damian Johnson <atagar@torproject.org>"
-alias dan                       dan.rfa
+alias dan.frost                 "Dan Frost <danfrost@cisco.com>"
 alias daniel                    "Daniel Melin <daniel@viskar.nu>"
 alias daniel.old                daniel@benissimo.se
 alias daniel.fulgubbe		"Daniel Melin <fulgubbe@gmail.com>"
@@ -340,10 +340,11 @@ alias lars.z                    lars.zettervall@stockholm.se
 alias lasse                     "Lasse Øverlier <lasse@overlier.no>"
 alias launchpad                 new@bugs.launchpad.net
 alias lee                       "Lee Azzarello <lee@guardianproject.info>"
-alias leif			leifj@nordu.net
+alias leif                      leif.sunet
+alias leif.ndn			leifj@nordu.net
 alias leif.nixon		"Leif Nixon <nixon@nsc.liu.se>"
 alias leif.ryge                 "Leif Ryge <leif@synthesize.us>"
-alias leif.sunet		"Leif Johansson <leifj@it.su.se>"
+alias leif.sunet		"Leif Johansson <leifj@sunet.se>"
 alias lena			"Lena Hellström Nordberg <lena@nordberg.se>"
 alias lena.magnusson		lena.magnusson@tuben12.se
 alias lennart.bonnevier		"Lennart Bonnevier <lennart.bonnevier@iis.se>"
@@ -475,8 +476,9 @@ alias palle			palle.torsson@gmail.com
 alias pappa.la                  lars.kleberg
 alias par.blomberg              "Pär Blomberg <percoo@gmail.com>"
 alias patrik			patrik@nordu.net
+alias paul.wouters              paul@nohats.ca
 alias paul.dekkers              "Paul Dekkers <Paul.Dekkers@surfnet.nl>"
-alias paul			"Paul Syverson <syverson@itd.nrl.navy.mil>"
+alias paul.syverson		"Paul Syverson <syverson@itd.nrl.navy.mil>"
 alias pavle			"Pavle Vuletic <pavle.vuletic@rcub.bg.ac.rs>"
 alias pawal.iis                 "Patrik Wallstrom <patrik.wallstrom@iis.se>"
 alias pawal			"Patrik Wallstrom <pawal@blipp.com>"
