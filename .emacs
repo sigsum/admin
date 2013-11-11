@@ -346,7 +346,6 @@
  '(erc-track-exclude nil)
  '(erc-track-exclude-types (quote ("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE" "333" "353")))
  '(erc-track-shorten-aggressively t)
- '(european-calendar-style t)
  '(global-font-lock-mode t nil (font-lock))
  '(gnus-agent-go-online t)
  '(gnus-agent-handle-level 2)
