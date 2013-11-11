@@ -61,7 +61,7 @@ Legend                                                (emacs -*-org-*- mode)
    - o radsecproxy-1.6.3 released
    - o radsecproxy patch from fabian; tested, replied to
 ** Sysadm
-   - - bwauth on salsa upgraded to what #9771 fixed (1)
+   - o bwauth on salsa upgraded to what #9771 fixed (1)
    - - tor on siv upgraded to 0.2.5 (1)
      - pkgsrc on siv upgraded, for libevent2 (2)
    - . move all services from banksy to mm -- ports don't seem to work well!
