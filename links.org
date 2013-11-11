@@ -1,3 +1,9 @@
+php security http://php.net/archive/2013.php#id2013-10-24-2
+skruffy pic http://i.imgur.com/EyJa36r.jpg?1
+nsa people:russhousley https://www.networkworld.com/news/2007/073007-ietf-qa.html
+nsa people:russhousley http://www.centr.org/system/files/agenda/attachment/centr-report-ietf86-20130325.pdf
+acta http://acta.ffii.org/?p=1956
+redme badbios https://threatpost.com/dragos-ruiu-on-the-badbios-saga/102823
 crypto http://competitions.cr.yp.to/caesar.html
 readme crypto enisa eu https://www.enisa.europa.eu/activities/identity-and-trust/library/deliverables/algorithms-key-sizes-and-parameters-report/at_download/fullReport
 ecc djb http://safecurves.cr.yp.to/
