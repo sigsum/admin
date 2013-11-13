@@ -9,9 +9,9 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
+   - - Intervju Elina tyskling <e.tyskling@live.se> 4670-9690250, tor el. fre
    - - WPS (at home wlan router) disabled (1)
-   - . openitp thing report sent to josva (1)
-   - - ietf87 report sent to josva (1)
+   - o ietf87 report sent to josva (1)
    - - ietf88 report sent to josva (2)
    - - phw's email abt research something read (1)
    - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (2)
@@ -32,6 +32,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
    - . broken SSD returned (1)
    - - jeans; bought (?)
+   - o openitp thing report sent to josva (1)
    - o https://tools.ietf.org/html/rfc6962 (CT) read (1)
    - o push p/mysticalhw, p/mapietf
    - o [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt][draft-trammell-perpass-ppa]] commented (2)
@@ -69,9 +70,9 @@ Legend                                                (emacs -*-org-*- mode)
    - o radsecproxy patch from fabian; tested, replied to
 ** Sysadm
    - o bwauth on salsa upgraded to what #9771 fixed (1)
+   - - pkgsrc on siv upgraded, for libevent2 (2)
    - - tor on siv upgraded to 0.2.5 (1)
-     - pkgsrc on siv upgraded, for libevent2 (2)
-   - - tor on siv upgraded to 0.2.5 (1)
+
    - . move all services from banksy to mm -- ports don't seem to work well!
      . krb
        o install another kdc
@@ -96,6 +97,7 @@ Legend                                                (emacs -*-org-*- mode)
    - o ehlo new kernel
 ** DFRI
    - - abuse handling policy written
+   - - email policy written
    - X the snowden letter tweeted
      http://www.article19.org/resources.php/resource/37194/en/letter-to-obama-to-stop-the-prosecution-of-snowden
    - o listan@ welcome email and footers; add a "this list is public" message
