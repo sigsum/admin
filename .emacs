@@ -413,7 +413,7 @@
  '(mml2015-cache-passphrase t)
  '(mml2015-encrypt-to-self t)
  '(mml2015-passphrase-cache-expiry 60)
- '(mml2015-signers (quote ("0x46AE8F0E")))
+ '(mml2015-signers (quote ("0x23291265")))
  '(nnimap-dont-close nil)
  '(nnimap-split-download-body nil)
  '(nnmail-extra-headers (quote (Keywords To Newsgroups Cc)))
