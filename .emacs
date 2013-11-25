@@ -26,7 +26,7 @@
 (package-initialize)
 
 (require 'tls)
-;(require 'jabber)
+(require 'jabber)
 (require 'appt)                         ;calendar needs this
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
