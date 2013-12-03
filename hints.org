@@ -998,9 +998,9 @@ This is stupid, but the key is supposed to be concatenated with the
 certificate:
 
 cd /usr/local/etc/ejabberd
-cat jabber.nordberg.se.crt > jabber.nordberg.se.pem
-cat jabber.nordberg.se.key >> jabber.nordberg.se.pem
-su ejabberd -c "ejabberdctl --node ejabberd@lntest restart"
+cat jabber.adb-centralen.se.crt > jabber.adb-centralen.se.pem
+cat jabber.adb-centralen.se.key >> jabber.adb-centralen.se.pem
+su ejabberd -c "ejabberdctl restart"
 ** leaking info between users?
 (Wed Jan 16 17:27:05 +0100 2013) iha@adb-centralen.se: Du, det här dök upp i min logg:
 (Wed Jan 16 17:27:06 +0100 2013) iha@adb-centralen.se: 1-16 17:11:46  Received error packet [service-unavailable] from <csxninja@gmail.com/D0521BAD>
@@ -1243,7 +1243,7 @@ confirmation number: 7501JJX
 booked at 2010-02-08
 * Debian
 - update-rc.d(8) -- fiddle with startup of services
-- apt-get install apt-file
+- apt-get install package
 ** wifi
 Kernel module iwlwifi supports the Intel 6200AGN chipset in Lenovo T140s.
 Needs non-free firmware though: apt-get install firmware-iwlwifi
@@ -1284,10 +1284,37 @@ sudo echo mem > /sys/power/state
 - /etc/gdm3/Init/Default
 - /etc/dbus-1/system.d/gdm.conf
 - /etc/xdg/autostart
+** making a package
+- http://www.debian.org/doc/manuals/maint-guide/start.en.html
+- sudo apt-get install build-essential debhelper dh-make fakeroot
+- debhelper(7) with dh_make for creating a new package from scratch
+- DEVSCRIPTS(1) and [[file:/usr/share/doc/devscripts/README.gz::README%20for%20Debian%20devscripts%20package][README for Debian devscripts package]] for
+  maintenance of existing packages
+- dh-make; $EDIT debian/control debian/rules
+- dpkg-buildpackage
+- debuild ?
+
+** chosing which version of a package to install
+- debian releases as of <2013-12-02 Mon>: 
+  - stable: wheezy, 7.2 2013-10-12 (7.0 2013-05-04)
+  - testing: jessie
+  - unstable: sid (development)
+- APT_PREFERENCES(5)
+- apt-cache policy PACKAGE
+- apt-get install -t testing PACKAGE
+
 * Virtualization with qemu-kvm / libvirt
-** active vm's on tool
+** vm's on tool
+Active
 - test (debian0) (root/r00tm3)
 - debian1 (root/r00tm3harder)
+- debian2 (root/r00tm33v3nharder, linus/Mae3fiicae~p)
+
+Inactive
+- jessie-fresh is a fresh install of debian testing (jessie) as of <2013-12-02 Mon>
+  it is a clone of debian2 (root/r00tm33v3nharder, linus/Mae3fiicae~p) after
+  installation and dist-upgrade to jessie
+- fsck is a minimal debian used for fsck:ing vm images
 ** starting a virtual network
 $ sudo virsh net-start default
 Network default started
@@ -1304,7 +1331,7 @@ $ sudo virsh net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              inactive   no
-$ sudo virt-install --connect qemu:///system --virt-type kvm --name test --ram 2048 --disk path=/u/vm/test.img,size=2 --graphics vnc --cdrom /u/iso/debian-7.0.0-amd64-DVD-1.iso --os-variant=debianwheezy
+$ sudo virt-install --connect qemu:///system --virt-type kvm --name debian1 --ram 2048 --disk path=/u/vm/debian1-0.img,size=2 --graphics vnc --cdrom /u/iso/debian-7.0.0-amd64-DVD-1.iso --os-variant=debianwheezy
 # then install an os, reboot the vm, then shut it down
 $ sudo virsh start test
 ** adding a disk
@@ -1419,6 +1446,10 @@ lrwxrwxrwx 1 root root 10 Jun  3 15:49 7f67e6ef-ff5c-4514-85fd-0a912bb468a6 -> .
 modprobe nbd max_part=63
 qemu-nbd -c /dev/nbd0 image.img
 mount /dev/nbd0p1 /mnt/image
+** removing (deleting) a vm
+"virsh undefine <name>" will remove a vm from "virsh list --all" and
+you can create a vm with that name again. Note that it does not remove
+the image file created by virt-install.
 * mgv.nordberg.se
 ** kernel crash <2010-02-09 Tue>
 Feb  9 13:35:08 mgv kernel: Fatal trap 12: page fault while in kernel mode
@@ -2703,84 +2734,70 @@ struct addrinfo
 ** packages
    sudo apt-get install cryptsetup
 ** usb disk
-*** cryptsetup create (don't use)
-    1. Insert stick.
-    2. umount /dev/sdb1
-    3. cryptsetup create foo /dev/sdb1  # kaka
+This example is using a 100MB partition made with "Disk Utility 2.32.1".
+*** Short version
+    time badblocks -vswt random /dev/sdb1 # -c 10240
+    cryptsetup --use-random luksFormat /dev/sdb1
+    cryptsetup luksOpen /dev/sdb1 kaka
+    mkfs.ext4 /dev/mapper/kaka
+    cryptsetup luksClose /dev/mapper/kaka
+*** With output
+    root@42:~# time badblocks -c 10240 -vswt random /dev/sdb1
+    Checking for bad blocks in read-write mode
+    From block 0 to 96068
+    Testing with random pattern: done                                
+    Reading and comparing: done                                
+    Pass completed, 0 bad blocks found.
 
-       root@maatuska:~# cryptsetup status foo
-       /dev/mapper/foo is active:
-       cipher:  aes-cbc-plain
-       keysize: 256 bits
-       device:  /dev/sdb1
-       offset:  0 sectors
-       size:    7827584 sectors
-       mode:    read/write
-*** cryptesetup luksFormat (do use)
-    This example is using a 100MB partition made with "Disk Utility 2.32.1".
-**** Short version
-     time badblocks -vswt random /dev/sdb1 # -c 10240
-     cryptsetup --use-random luksFormat /dev/sdb1
-     cryptsetup luksOpen /dev/sdb1 kaka
-     mkfs.ext4 /dev/mapper/kaka
-     cryptsetup luksClose /dev/mapper/kaka
-**** With output
-     root@42:~# time badblocks -c 10240 -vswt random /dev/sdb1
-     Checking for bad blocks in read-write mode
-     From block 0 to 96068
-     Testing with random pattern: done                                
-     Reading and comparing: done                                
-     Pass completed, 0 bad blocks found.
+    real    0m24.436s
+    user    0m0.220s
+    sys     0m0.040s
 
-     real    0m24.436s
-     user    0m0.220s
-     sys     0m0.040s
+    root@42:~# cryptsetup --use-random luksFormat /dev/sdb1
 
-     root@42:~# cryptsetup --use-random luksFormat /dev/sdb1
+    WARNING!
+    ========
+    This will overwrite data on /dev/sdb1 irrevocably.
 
-     WARNING!
-     ========
-     This will overwrite data on /dev/sdb1 irrevocably.
+    Are you sure? (Type uppercase yes): YES
+    Enter LUKS passphrase: 
+    Verify passphrase: 
 
-     Are you sure? (Type uppercase yes): YES
-     Enter LUKS passphrase: 
-     Verify passphrase: 
+    root@42:~# cryptsetup luksOpen /dev/sdb1 kaka
+    Enter passphrase for /dev/sdb1: 
 
-     root@42:~# cryptsetup luksOpen /dev/sdb1 kaka
-     Enter passphrase for /dev/sdb1: 
+    root@42:~# cryptsetup status kaka
+    /dev/mapper/kaka is active:
+    cipher:  aes-cbc-essiv:sha256
+    keysize: 256 bits
+    device:  /dev/sdb1
+    offset:  2056 sectors
+    size:    190082 sectors
+    mode:    read/write
 
-     root@42:~# cryptsetup status kaka
-     /dev/mapper/kaka is active:
-     cipher:  aes-cbc-essiv:sha256
-     keysize: 256 bits
-     device:  /dev/sdb1
-     offset:  2056 sectors
-     size:    190082 sectors
-     mode:    read/write
+    root@42:~# mkfs.ext4 /dev/mapper/kaka
+    mke2fs 1.41.14 (22-Dec-2010)
+    Filesystem label=
+    OS type: Linux
+    Block size=1024 (log=0)
+    Fragment size=1024 (log=0)
+    Stride=0 blocks, Stripe width=0 blocks
+    23808 inodes, 95040 blocks
+    4752 blocks (5.00%) reserved for the super user
+    First data block=1
+    Maximum filesystem blocks=67371008
+    12 block groups
+    8192 blocks per group, 8192 fragments per group
+    1984 inodes per group
+    Superblock backups stored on blocks: 
+    8193, 24577, 40961, 57345, 73729
 
-     root@42:~# mkfs.ext4 /dev/mapper/kaka
-     mke2fs 1.41.14 (22-Dec-2010)
-     Filesystem label=
-     OS type: Linux
-     Block size=1024 (log=0)
-     Fragment size=1024 (log=0)
-     Stride=0 blocks, Stripe width=0 blocks
-     23808 inodes, 95040 blocks
-     4752 blocks (5.00%) reserved for the super user
-     First data block=1
-     Maximum filesystem blocks=67371008
-     12 block groups
-     8192 blocks per group, 8192 fragments per group
-     1984 inodes per group
-     Superblock backups stored on blocks: 
-     8193, 24577, 40961, 57345, 73729
+    Writing inode tables: done                            
+    Creating journal (4096 blocks): done
+    Writing superblocks and filesystem accounting information: done
 
-     Writing inode tables: done                            
-     Creating journal (4096 blocks): done
-     Writing superblocks and filesystem accounting information: done
-
-     This filesystem will be automatically checked every 35 mounts or
-     180 days, whichever comes first.  Use tune2fs -c or -i to override.
+    This filesystem will be automatically checked every 35 mounts or
+    180 days, whichever comes first.  Use tune2fs -c or -i to override.
 ** home directory
    Based on http://polishlinux.org/howtos/encrypted-home-partition-in-linux/
 
@@ -27707,6 +27724,10 @@ http://frapedia.se/wiki/FRA-anl%C3%A4ggningar
 08-30 18:26 <== ut pluppar det ett score för varje CA och så plockar man 
                 några per policy
 08-30 18:28 <== du kan regga din egan CA på siten
+** new adb-centralen.se CA
+<trams> ln5: namedContraints=*.adb-centralen.se,basicContraints: ca=true, subca=false, sha1
+<trams> elelr sha256
+<trams> beror på hur mycket du bryr dig om xp
 * Internet in Portugal
 In terms of Internet access over cell phone providers, we are very well
 served. The best coverage is provided by a company called TMN, and they
@@ -28687,12 +28708,18 @@ Feb 23 12:17:09 forty711 dhclient[2596]: rejecting bogus offer.
 
 * home network
 ** AP Linksys Wireless-G / WAP54G
+Device name: Ro9il4ua
+Firmware version: 3.05
+Local MAC: 00:21:29:EB:A3:30
+Wireless MAC: 00:21:29:EB:A3:30
+
 After factory reset (hold reset button for 30 seconds)
 - ip address: 192.168.1.245
 - user: <blank>
 - password: admin
 
 My settings
+- user: <blank>
 - password: ska11eper (default: admin)
 - ssid: blahonga
 - security: wpa2 (AES)
@@ -29286,6 +29313,21 @@ a9ce7fd818d6ddcbbdda81e952bb03e111c29ec38c9aded6e3ebfd1fb70f6c5c
   http://sx.dyne.org/
   https://github.com/leif/sx
   cheat sheet http://i.imgur.com/8R0cfuw.png
+** laundry scheme by andrea <2013-11-15 Fri>
+speaking of bitcoin's anonymity properties, i've just devised a nice scheme to defeat things like
+http://www.forbes.com/sites/kashmirhill/2013/11/13/sanitizing-bitcoin-coin-validation/                        
+given a trusted counterparty with enough hashing power for solo mining
+since miners can operate anonymously - through a hidden service even                                          
+- and there's no way to link subsequent blocks from the same miner...                                         
+you construct a transaction with zero outputs and the bitcoins to be                                          
+laundered as inputs, and give it to the chosen miner rather than                                              
+broadcasting it for any miner to pick up
+then the miner can just include it in a block and claim the bitcoins                                          
+as a transaction fee
+and subsequently pay it back from mining profits on a future block,                                           
+to different addresses in randomized amounts, etc.
+the only way they could defeat that is if they treat all mining                                               
+profits as 'dirty'
 * data protection in EU
 ** amelia 2013-04-18
 <teirdes> ln5: schelleken har fel eftersom han inte tar i beaktande
@@ -30390,7 +30432,32 @@ U2 Schönhauser Alle
 ** peter
 spittelmarkt
 * x60
-pipet kan tas bort om man i boot loadern lägger till kernel-kommandot idle=halt
+- pipet kan tas bort om man i boot loadern lägger till kernel-kommandot idle=halt
+** hints from aagbsn <2013-11-21 Thu>
+<aagbsn> x60 people with the SST25VF016B                                [16:49]
+<aagbsn> We want to set 0xBC                                            [16:50]
+<aagbsn> BPL AAI BP3 BP2  BP1 BP0 WEL BUSY
+<aagbsn> 1     0   1   1    1   1   0    0
+<aagbsn> super ghetto hax is to edit flashrom src as follows:
+<aagbsn> (in cli_classic.c)                                             [16:52]
+<aagbsn> add #include "chipdrivers.h", and replace/comment line 520 (ret |=                                            
+         doit(fill_f... ) with spi_write_status_register(fill_flash, 0xBC);                                            
+                                                                        [16:53]
+<aagbsn> verify with flashrom -p internal -V -r whatever.out and look for                                              
+         "Chip status register: Block Protect Write Disable (BPL) is set"                                              
+                                                                        [16:54]
+<aagbsn> (as well as block protect 3,2,1,0)                             [16:55]
+<aagbsn> oddly my output shows Chip status register: Block Protect 3 (BP3) is                                          
+         not set                                                        [16:56]
+<aagbsn> (oh, obviously you'll need to pass some valid command to get that hax                                         
+         to run)                                                        [16:57]
+<aagbsn> (sure enough, my status register shows 0x9C, rather than 0xBC. Would                                          
+         be curious if anyone else notices that oddity)                 [17:08]
+<aagbsn> flashrom (vanilla) output claims: "Resulting block protection : all"                                          
+                                                                        [17:13]
+<aagbsn> (if someone else with an x60 wants to try, perhaps write 0x3C then                                            
+         0xBC and see if that works. just a guess)                      [17:34]
+
 * tails
 ** wireless usb stick not working
 Jul 31 07:22:34 localhost dhclient: bound to 130.129.23.208 -- renewal in 9917 seconds.
@@ -30462,7 +30529,6 @@ http://www.theguardian.com/world/2013/jul/31/nsa-top-secret-program-online-data
   epost-adress ("selector")
 - 2007: 850 miljarder "call events", 150 miljarder "internet records",
   1-2 miljarder nya entrys per dag
-
 
 ** andra artiklar
 http://www.svd.se/nyheter/utrikes/nsa-overvakar-all-nataktivitet_8388740.svd
@@ -30748,7 +30814,7 @@ add device(s) to [[gnus:nnimap%2Badbc:INBOX#1379932938.21667.1.camel@xor][libcci
 - juni
   juni@4711.se / ooyied8y
   EBB619206626
-* fcgi and lighttpd
+* lighttpd and fcgi
 tool:src% pwd
 ~/src
 tool:src% cat fcgi-test.c
@@ -31505,7 +31571,7 @@ Can't select group (no such directory): drafts..~
 nndraft:drafts..~ error: Can't select group (no such directory): drafts..~
 nndraft-update-unread-articles: Wrong type argument: numberp, nil
 
-- removing ~/.gnus, everything's fine
+- removing ~/.newsrc.eld, everything's fine (??? really?)
 Wrote /home/linus/News/drafts/drafts/2
 ** smtpmail
 - ~/.authinfo: machine kerio.nordu.net port 587 login linus@nordu.net
@@ -31844,3 +31910,22 @@ money
   o services such as storage
   o run through nordunet/sunet
 --------------------
+* public ledger
+** wiretapped on putting committments in the bitcoin blockchain
+i found out recently it is actually cheap to put committments in the blockchain
+using the homomorphic property of ecc keys
+you take some thing you want to commit to, maybe a document or a merkle tree root 
+and use the hash of it as a private key
+you can combine keypairs to make new keys
+with most ecc schemes
+any 256bit number is a valid private key
+you can add two public keys together and get a new public key
+and add their private keys to get the new private key
+so, say p1=pub(s1)
+p2=pub(s2)
+p1+p2 == pub(s1+s2)
+so, say s2 is the hash of the thing you're comitting to
+p1 is known
+you can send money to p3 (=p1+p2)
+and anyone can confirm s2 is part of it
+(you publish p1 and s2)
