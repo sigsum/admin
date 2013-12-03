@@ -21,6 +21,7 @@
 %%(diary-anniversary 1971 11 3) Simon
 %%(diary-anniversary 1965 11 25) Lena
 %%(diary-anniversary 1972 11 29) Sarah
+%%(diary-anniversary 1900 12 6) aagbsn
 2011-12-7 09:00-15:30 NORDUnet all hands @ CPH
 2011-12-7 16:00-22:00 NORDUnet all hands @ CPH
 2011-12-14 Julbord Ulriksdals Wärdshus
@@ -550,7 +551,7 @@
 2013-9-30 20:00-21:00 SponsorF in #tor-dev
 %%(diary-block 27 12 2013 30 12 2013) 30C3
 2013-10-25 11:30-15:00 ndn dev
-2013-12-12 ndn julbord
+2013-12-12 19:30 ndn julbord @ http://www.jarntorgspumpen.se
 %%(diary-block 19 5 2014 22 5 2014) TERENA, Dublin
 2013-10-25 Lämna barn på tåg, 15:14
 2013-12-4 18:30 DFRI Kista?
@@ -593,3 +594,24 @@
 %%(diary-block 2015 07 19 2015 07 24) IETF93 Prague
 %%(diary-block 2015 11 01 2015 11 06) IETF94 Yokohama
 2013-11-18 17:00-19:00 TA3M @ Scandic Bromma Hotel
+2013-11-14 12:00 Lunch Micke
+%%(diary-block 2013 12 05 2013 12 06) cryptech
+%%(diary-block 2014 07 16 2014 07 18) PETS14 Amsterdam
+2013-11-29 Lunch tege
+2014-11-07 Lots of certs expiring in about a week
+2014-11-16 Certifikat som expirerar: jabber.adb-centralen.se, smtp.nordberg.se, imap.nordberg.se, adb-centralen.se
+2013-11-20 11:00 Lunch "bosse lindquist, svt", cafe 60
+2013-11-25 Kolla att 30c3-biljetten blivit betald
+%%(diary-block 2014 06 30 2014 07 06) Tor dev
+2013-11-27 13:00-14:00 Petter Salminen @ TUG
+2013-12-14 11:00 Lill-Jul hos E&L (eller 14:00 utan bakning)
+2013-11-22 18:00 PT mtg #tor-dev
+2013-11-26 11:30 lunch johan non solo
+2014-05-23 jabber.adb-centralen.se (from cacert.org) expires
+2014-05-16 jabber.adb-centralen.se (from cacert.org) expires in a week
+2013-12-27 Tor relay meeting, hall 13
+2014-04-22 15:00-16:30 Seminarium integritet, Tor, UU (Uppsala Learning Lab (ULL))
+2013-12-20 10:00 [juni] avslutning
+%%(diary-block 2014 02 28 2014 03 01) STRINT http://www.w3.org/2014/strint/
+2013-12-16 17:00 [juni] gradering
+2013-12-04 16:00 [lärka] Synundersökning

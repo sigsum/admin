@@ -284,3 +284,20 @@ libradsec 5h -> jra3t1 5
 
 
 
+
+* tor
+  CLOCK: [2013-11-29 Fri 16:02]--[2013-11-29 Fri 17:42] =>  1:40
+  CLOCK: [2013-11-29 Fri 13:46]--[2013-11-29 Fri 14:36] =>  0:50
+  CLOCK: [2013-11-28 Thu 17:09]--[2013-11-28 Thu 17:30] =>  0:21
+  shadow 111 - debian package
+  CLOCK: [2013-11-27 Wed 17:11]--[2013-11-27 Wed 17:34] =>  0:23
+  CLOCK: [2013-11-27 Wed 16:39]--[2013-11-27 Wed 17:09] =>  0:30
+  CLOCK: [2013-11-27 Wed 11:34]--[2013-11-27 Wed 12:14] =>  0:40
+  CLOCK: [2013-11-27 Wed 11:12]--[2013-11-27 Wed 11:33] =>  0:21
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2013-12-02 Mon 08:33
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_OLPATH: week 48
+  :ARCHIVE_CATEGORY: diary
+  :END:
+  shadow 114 - mixed network
