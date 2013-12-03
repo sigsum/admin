@@ -116,6 +116,7 @@
 	 ("From" "Linus Nordberg <linus@torproject.org>"))
 	("lists.tor.internal" ("Reply-To" "tor-internal@lists.torproject.org"))
         ("lists.tor..*" ("From" "Linus Nordberg <linus@torproject.org>"))
+        ("lists.tor.\\(relays\\|talk\\)" ("From" "Linus Nordberg <linus@nordberg.se>"))
 	("lists.pmacct"
 	 ("From" "Linus Nordberg <linus+pmacct@nordberg.se>")
 	 (organization "NORDUnet A/S"))
