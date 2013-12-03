@@ -248,6 +248,7 @@ alias jang.debattsidan		jan.garefelt@debattsidan.se
 alias jang                      jan@garefelt.se
 alias janne                     jan.rapp
 alias jan.rapp                  jan_rapp@hotmail.com
+alias jari                      "Jari Arkko <jari.arkko@piuha.net>"
 alias jas			simon@josefsson.org
 alias jbn			jbn@klutt.se
 alias jbn.ndn			johan.berggren
@@ -590,7 +591,7 @@ alias sofia             	sofia@nordberg.se
 alias solix                     kontakt@sol-ix.net
 alias spacedump			anders.olausson
 alias sparvnastet               sparvnastet@lists.riseup.net
-alias spe                       stefan.ptersen
+alias spe                       stefan.petersen
 alias staffan.jonson            "Staffan Jonson <staffan.jonson@iis.se>"
 alias staffan.ulfberg          	staffan@ulfberg.se
 alias stefan.helm		stefan.helm@gmail.com
@@ -656,7 +657,9 @@ alias vidar                     "Vidar Bergan <vidar@stomneverkstader.se>"
 alias wallberg			"Hans Wallberg <hans.wallberg@umdac.umu.se>"
 alias weasel                    "Peter Palfrader <peter@palfrader.org>"
 alias wendy			"Wendy Seltzer <wendy@seltzer.org>"
-alias wictorin                  Torbjorn.Wictorin@cert.sunet.se
+alias wictorin                  wictorin.its
+alias wictorin.its              Torbjorn.Wictorin@its.uu.se
+alias wictorin.cert             Torbjorn.Wictorin@cert.sunet.se
 alias wingel            	"Christer Weinigel <christer@weinigel.se>"
 alias winter                    stefan.winter
 alias xenia                     xenia@freitagsrunde.org
