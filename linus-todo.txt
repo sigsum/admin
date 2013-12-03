@@ -9,17 +9,20 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Misc
-   - - Intervju Elina tyskling <e.tyskling@live.se> 4670-9690250, tor el. fre
-   - - WPS (at home wlan router) disabled (1)
-   - - ietf88 report sent to josva (2)
-   - - phw's email abt research something read (1)
-   - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (2)
-   - - paul wouters dnssec related drafts grokked and put into context of dnssec in tor
+   - . peters flights and hotel canceled
+   - o ietf88 travel reported in TEM [wed]
+   - o tor sidc slides done [wed]
+   - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
+   - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
+   - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
+   - - "moritz task" on perpass@ grabbed. maybe.
+   - - post to tor-dev@: paul wouters dnssec related drafts grokked and put into
+       context of dnssec in tor
        [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
    - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
    - - sam poked abt his ephemeral keys in abfab idea (1)
    - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt][otr-fp-in-dns draft]] read and tested
-   - - put [[file:~/Persistent/u/ietf/in-notes/rfc4255.txt][ssh fp in dns]]
+   - o Intervju Elina tyskling <e.tyskling@live.se> 4670-9690250, tor el. fre
    - - goals for IETF involvement sent to Josva (1)
    - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
@@ -31,18 +34,33 @@ Legend                                                (emacs -*-org-*- mode)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
    - . broken SSD returned (1)
    - - jeans; bought (?)
+   - o x-job suggestions emailed to alin (fri)
+   - D WPS (at home wlan router) disabled (1)
+   - o ietf88 report sent to josva (2)
+   - X phw's email abt research something read (1)
 ** Dev
+   - - radsecproxy should not seed PRNG with current time
+   - o [[https://trac.torproject.org/projects/tor/ticket/9729#comment:16][#9729]] reviewed [tue]
+   - - tor prop 220 reviewed
+   - - #9093 reviewed
+   - - #8897 reviewed
+   - - #9663 reviewed
    - - shadow #111 closed
    - . shadow #114 closed
    - - tor #6027 moved forward some
+   - o libradsec [[file:p/radsecproxy/tr/2013-11-08-udp-retransmit/udp-retransmit.org::*From:%20Alejandro%20Perez%20Mendez%20<alex@UM.ES][udp-retransmit]] fixed
+   - X [[https://trac.torproject.org/projects/tor/ticket/6753][#6753 (chutney needs to set AlternateBridgeAuthority too)]] closed
 ** Sysadm
+   - - HS for xmpp @ adb-centralen.se working
+   - o ejabberd upgraded to use openssl from ports (1.0.1)
+   - - dnssec for nordberg.se, adb-centralen.se
+   - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
    - - pkgsrc on siv upgraded, for libevent2 (2)
    - - tor on siv upgraded to 0.2.5 (1)
-
    - . move all services from banksy to mm -- ports don't seem to work well!
      . krb
        o install another kdc
-       - copy users from old kdc (1)
+       - web service for setting pw in new kdc running (was: copy users from old kdc)
      * lnspam (email filtering; clamav + spamd) replaced with new jail
      - mail
        o set up an imapd in new jail on mm and let jbn run there
@@ -60,10 +78,15 @@ Legend                                                (emacs -*-org-*- mode)
        ('relayhost' in postfix/main.cf); connects to mysql at lnspam
    - * automatic backup of mm; rsync with double-sshd from tight laptop?
 ** DFRI
+   - - flashproxy on www.dfri.se
+   - - ipv6 exit policy
+   - - remove old netblock from exit policy
+   - - exit relay policy updated w/o old netblock and w/ ipv6 restrictions
    - - abuse handling policy written
-   - - email policy written
+   - D email policy written
 * Soon (within a month)
 ** Misc
+   - - fixa kopia av bauer-tavlan, http://crimson.se/
    - - tahoe-lafs / tamias on tor HS investigated
    - - feedback to kyle on practical cryptography in go sent
    - - tor AS awareness studied
@@ -87,7 +110,6 @@ Legend                                                (emacs -*-org-*- mode)
      o follow up on jq email
      - follow up discussions with maria
    - - read Clayton "Failures in a Hybrid Content Blocking System" ~/p/tor/doc/cleanfeed.pdf
-   - - the Czeck C&D letter submitted to chillingeffects.org
    - - read https://www.iis.se/docs/20120828-remissvar-trafikdatalagring-SE.pdf
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
@@ -103,7 +125,6 @@ Legend                                                (emacs -*-org-*- mode)
    . write test cases for voting on "a" lines
    - - read 210-faster-headless-consensus-bootstrap.txt
    - - read and comment on #6414 from an IPv6 perspective
-   - - radsecproxy should not seed PRNG with current time
    - - bridge stats for clients still borken in 0.2.4.4? hivia doesn't
      seem to still have empty "bridge-ips"
    - - comment on prop 208, read prop 205
@@ -137,25 +158,26 @@ Legend                                                (emacs -*-org-*- mode)
      o set up basic iptables
      o get ff running in a VM
 ** DFRI
-   - DNSSEC
-   - read and comment on http://rys.io/en/94.txt
-   - announce second ipv6 net (DFRI-DNS) in TC
-   - read "Hemlig teleavlyssning, hemlig teleövervakning och hemlig kameraövervakning.pdf"
-   - update TorExitGuideLines with swedish details https://trac.torproject.org/projects/tor/wiki/doc/TorExitGuidelines
-   - read draft-laurie-pki-sunlight-07.txt
-   o reply to james "crypto & youth"
+   - - the Czeck C&D letter submitted to chillingeffects.org
+   - - DNSSEC
+   - - read and comment on http://rys.io/en/94.txt
+   - - announce second ipv6 net (DFRI-DNS) in TC
+   - - read "Hemlig teleavlyssning, hemlig teleövervakning och hemlig kameraövervakning.pdf"
+   - - update TorExitGuideLines with swedish details https://trac.torproject.org/projects/tor/wiki/doc/TorExitGuidelines
+   - - read draft-laurie-pki-sunlight-07.txt
+   o - reply to james "crypto & youth"
 * Eventually
 ** Misc
    - describe tor HS as a comparison with "dino's LISP extensions"
    - set up selinux (file:///usr/share/doc/debian-handbook/html/sect.selinux.html)
-     - contain mcabber
+     - contain xmpp-client
      - contain tbb
    - ask for my "log list" from swedish health care
    - investigate the idea with selling a "tld zone escrow service";
      find the ICANN requirements
    - contact Jens Orback, Palmecentret re DFRI
    - read "Shining light in dark places" and "LASTor"
-   - email kelly about music
+   - email kelly with music
 ** Dev
    - build tlsdate on *BSD
    - libradsec: add server failover
@@ -167,8 +189,9 @@ Legend                                                (emacs -*-org-*- mode)
    - investigate the possibility for peering with AS22822
      (LLNW/limelight), providing routing for cogent (->cymru->tpo)
 ** DFRI
-   - setup flashproxy at dfri.se?
+   - setup flashproxy at dfri.se
 * Travel
+2013
 - Feb 07-08, Kastrup, ndn all hands
 - Feb 12-13, Linköping, sec-heads
 - Mar 16-21, Boston, tor dev meeting
@@ -183,3 +206,10 @@ Legend                                                (emacs -*-org-*- mode)
 - Sep 28-02, Berlin, Circumvention Tech Summit IV http://openitp.org/openitp/circumvention-tech-summit.html
 - Nov 01-10, Vancouver, IETF 88
 - Nov 21-21, Lund, SIDC http://www.luii.lu.se/education/sidc2013/
+- Dec 26-31, Hamburg, 30C3
+2014
+- Mar 01-07, London, IETF89
+- Jun 28-06, Tor summer dev
+- Jul 15-19, Amsterdam, PETS14
+- Jul 19-26, Toronto, IETF90
+- Nov 07-16, Honolulu, IETF91
