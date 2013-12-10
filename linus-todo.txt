@@ -8,49 +8,36 @@ Legend                                                (emacs -*-org-*- mode)
         X Abandoned
 
 * RSN (within a week)
-** Misc
-   - . peters flights and hotel canceled
-   - o ietf88 travel reported in TEM [wed]
-   - o tor sidc slides done [wed]
-   - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
-   - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
-   - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
-   - - "moritz task" on perpass@ grabbed. maybe.
+** Dev
+   - - shadow #111 closed
+   - . shadow #114 closed
    - - post to tor-dev@: paul wouters dnssec related drafts grokked and put into
        context of dnssec in tor
        [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
-   - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
-   - - sam poked abt his ephemeral keys in abfab idea (1)
-   - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt][otr-fp-in-dns draft]] read and tested
-   - o Intervju Elina tyskling <e.tyskling@live.se> 4670-9690250, tor el. fre
-   - - goals for IETF involvement sent to Josva (1)
-   - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
-   - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
-   - - obfsproxy's upgraded (tor.ndn, more?) (2)
-   - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
-   - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
-   - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
-   - - lopez RADIUS fragment draft reviewed for abfab (2)
-   - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
-   - . broken SSD returned (1)
-   - - jeans; bought (?)
-   - o x-job suggestions emailed to alin (fri)
-   - D WPS (at home wlan router) disabled (1)
-   - o ietf88 report sent to josva (2)
-   - X phw's email abt research something read (1)
-** Dev
    - - radsecproxy should not seed PRNG with current time
-   - o [[https://trac.torproject.org/projects/tor/ticket/9729#comment:16][#9729]] reviewed [tue]
    - - tor prop 220 reviewed
    - - #9093 reviewed
    - - #8897 reviewed
    - - #9663 reviewed
-   - - shadow #111 closed
-   - . shadow #114 closed
    - - tor #6027 moved forward some
+   - o [[https://trac.torproject.org/projects/tor/ticket/9729#comment:16][#9729]] reviewed [tue]
    - o libradsec [[file:p/radsecproxy/tr/2013-11-08-udp-retransmit/udp-retransmit.org::*From:%20Alejandro%20Perez%20Mendez%20<alex@UM.ES][udp-retransmit]] fixed
    - X [[https://trac.torproject.org/projects/tor/ticket/6753][#6753 (chutney needs to set AlternateBridgeAuthority too)]] closed
+** IETF
+   - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
+   - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
+   - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
+   - - lopez RADIUS fragment draft reviewed for abfab (2)
+   - - goals for IETF involvement sent to Josva (1)
+   - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
+   - - sam poked abt his ephemeral keys in abfab idea (1)
+   - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
+   - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
+   - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
+   - - "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09 too.
 ** Sysadm
+   - - obfsproxy's upgraded (tor.ndn, more?) (2)
+   - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt][otr-fp-in-dns draft]] read and tested
    - - HS for xmpp @ adb-centralen.se working
    - o ejabberd upgraded to use openssl from ports (1.0.1)
    - - dnssec for nordberg.se, adb-centralen.se
@@ -78,13 +65,50 @@ Legend                                                (emacs -*-org-*- mode)
        ('relayhost' in postfix/main.cf); connects to mysql at lnspam
    - * automatic backup of mm; rsync with double-sshd from tight laptop?
 ** DFRI
+   - - 
    - - flashproxy on www.dfri.se
-   - - ipv6 exit policy
    - - remove old netblock from exit policy
    - - exit relay policy updated w/o old netblock and w/ ipv6 restrictions
    - - abuse handling policy written
    - D email policy written
+** Misc
+   - o jakob@kirei.se 7b6b 7819 39e5 067b c48b ef03 52ee 4645 1b13 f78c signed
+   - o peters flights and hotel canceled
+   - o ietf88 travel reported in TEM [wed]
+   - o tor sidc slides done [wed]
+   - o Intervju Elina Tyskling <e.tyskling@live.se> 4670-9690250, tor el. fre
+   - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
+   - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
+   - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
+   - . broken SSD returned (1)
+   - - jeans; bought (?)
+   - o x-job suggestions emailed to alin (fri)
+   - D WPS (at home wlan router) disabled (1)
+   - o ietf88 report sent to josva (2)
+   - X phw's email abt research something read (1)
 * Soon (within a month)
+** Dev
+   - - libradsec example server replying to a radius message
+   - - libradsec python binding embryo commited
+   - - 2 pmacct crashes reproduced and reported
+   . #4847 -- relays w/o ipv4 or port
+   . investigate libevent dns test failures on freebsd
+     o why are jails different from non jails?
+       o there's no i/f with 127.0.0.1 -- how does that affect things?
+     - is it the tests only or is tor affected too?
+   . write test cases for voting on "a" lines
+   - - read 210-faster-headless-consensus-bootstrap.txt
+   - - read and comment on #6414 from an IPv6 perspective
+   - - bridge stats for clients still borken in 0.2.4.4? hivia doesn't
+     seem to still have empty "bridge-ips"
+   - - comment on prop 208, read prop 205
+   - - investigate schlyters idea of client caching of dnssec query results;
+     refs: 205-local-dnscache.txt, "Re: [tor-dev] DNS(SEC) draft update"
+   - - #6027 and friends -- dir auths on ipv6
+   - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
+   - - testing network bug? Jul 19 18:34:48.000 [warn] ISO time "1931-08-09 10:19:16" was nonsensical
+   - . set up torouter on an ipv6 addr at ndn
+   - - write a proposal for the ASN tickets
 ** Misc
    - - fixa kopia av bauer-tavlan, http://crimson.se/
    - - tahoe-lafs / tamias on tor HS investigated
@@ -113,28 +137,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - read https://www.iis.se/docs/20120828-remissvar-trafikdatalagring-SE.pdf
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
-** Dev
-   - - libradsec example server replying to a radius message
-   - - libradsec python binding embryo commited
-   - - 2 pmacct crashes reproduced and reported
-   . #4847 -- relays w/o ipv4 or port
-   . investigate libevent dns test failures on freebsd
-     o why are jails different from non jails?
-       o there's no i/f with 127.0.0.1 -- how does that affect things?
-     - is it the tests only or is tor affected too?
-   . write test cases for voting on "a" lines
-   - - read 210-faster-headless-consensus-bootstrap.txt
-   - - read and comment on #6414 from an IPv6 perspective
-   - - bridge stats for clients still borken in 0.2.4.4? hivia doesn't
-     seem to still have empty "bridge-ips"
-   - - comment on prop 208, read prop 205
-   - - investigate schlyters idea of client caching of dnssec query results;
-     refs: 205-local-dnscache.txt, "Re: [tor-dev] DNS(SEC) draft update"
-   - - #6027 and friends -- dir auths on ipv6
-   - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
-   - - testing network bug? Jul 19 18:34:48.000 [warn] ISO time "1931-08-09 10:19:16" was nonsensical
-   - . set up torouter on an ipv6 addr at ndn
-   - - write a proposal for the ASN tickets
 ** Sysadm
    - dataless travel figured out
      - carry x60 w/o any drive, no usb sticks or other storage
@@ -167,6 +169,10 @@ Legend                                                (emacs -*-org-*- mode)
    - - read draft-laurie-pki-sunlight-07.txt
    o - reply to james "crypto & youth"
 * Eventually
+** Dev
+   - build tlsdate on *BSD
+   - libradsec: add server failover
+   - libradsec: think about ephemeral keys
 ** Misc
    - describe tor HS as a comparison with "dino's LISP extensions"
    - set up selinux (file:///usr/share/doc/debian-handbook/html/sect.selinux.html)
@@ -178,10 +184,6 @@ Legend                                                (emacs -*-org-*- mode)
    - contact Jens Orback, Palmecentret re DFRI
    - read "Shining light in dark places" and "LASTor"
    - email kelly with music
-** Dev
-   - build tlsdate on *BSD
-   - libradsec: add server failover
-   - libradsec: think about ephemeral keys
 ** Sysadm
    - try out fail2ban
    - find out whether to shut down gv99c or not
@@ -208,8 +210,9 @@ Legend                                                (emacs -*-org-*- mode)
 - Nov 21-21, Lund, SIDC http://www.luii.lu.se/education/sidc2013/
 - Dec 26-31, Hamburg, 30C3
 2014
-- Mar 01-07, London, IETF89
-- Jun 28-06, Tor summer dev
+- Feb 15-22, Reykyavik?, Tor winter dev
+- Mar 02-07, London, IETF89
+- Jun 28-06, Paris, Tor summer dev
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
 - Nov 07-16, Honolulu, IETF91
