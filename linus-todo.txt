@@ -12,10 +12,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - libradsec ssl init protecting against race
    - . shadow #111 closed
    - . shadow #114 closed
-   - X #9093 reviewed
-   - o [[https://trac.torproject.org/projects/tor/ticket/9729#comment:16][#9729]] reviewed [tue]
-   - o libradsec [[file:p/radsecproxy/tr/2013-11-08-udp-retransmit/udp-retransmit.org::*From:%20Alejandro%20Perez%20Mendez%20<alex@UM.ES][udp-retransmit]] fixed
-   - X [[https://trac.torproject.org/projects/tor/ticket/6753][#6753 (chutney needs to set AlternateBridgeAuthority too)]] closed
 ** IETF
    - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
    - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
@@ -24,7 +20,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - lopez RADIUS fragment draft reviewed for abfab (2)
    - - goals for IETF involvement sent to Josva (1)
    - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
-   - X sam poked abt his ephemeral keys in abfab idea (1)
    - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
    - - "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09 too.
@@ -32,7 +27,6 @@ Legend                                                (emacs -*-org-*- mode)
    - . obfsproxy's upgraded (tor.ndn, more?)
      https://www.torproject.org/projects/obfsproxy-debian-instructions.html.en#instructions (2)
    - - HS for xmpp @ adb-centralen.se working
-   - o ejabberd upgraded to use openssl from ports (1.0.1)
    - - dnssec for nordberg.se, adb-centralen.se
    - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
    - - pkgsrc on siv upgraded, for libevent2 (2)
@@ -47,20 +41,12 @@ Legend                                                (emacs -*-org-*- mode)
    - D email policy written
 ** Misc
    - - PGP and OTR fingerprints on paper
-   - o jakob@kirei.se 7b6b 7819 39e5 067b c48b ef03 52ee 4645 1b13 f78c signed
-   - o peters flights and hotel canceled
-   - o ietf88 travel reported in TEM [wed]
-   - o tor sidc slides done [wed]
-   - o Intervju Elina Tyskling <e.tyskling@live.se> 4670-9690250, tor el. fre
    - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
    - . broken SSD returned (1)
    - - jeans; bought (?)
-   - o x-job suggestions emailed to alin (fri)
-   - D WPS (at home wlan router) disabled (1)
-   - o ietf88 report sent to josva (2)
-   - X phw's email abt research something read (1)
+   - - WPS (at home wlan router) disabled (1)
 * Soon (within a month)
 ** Dev
    - - tor prop 220 reviewed
