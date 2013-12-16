@@ -9,60 +9,34 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - - shadow #111 closed
+   - - libradsec ssl init protecting against race
+   - . shadow #111 closed
    - . shadow #114 closed
-   - - post to tor-dev@: paul wouters dnssec related drafts grokked and put into
-       context of dnssec in tor
-       [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
-   - - radsecproxy should not seed PRNG with current time
-   - - tor prop 220 reviewed
-   - - #9093 reviewed
-   - - #8897 reviewed
-   - - #9663 reviewed
-   - - tor #6027 moved forward some
+   - X #9093 reviewed
    - o [[https://trac.torproject.org/projects/tor/ticket/9729#comment:16][#9729]] reviewed [tue]
    - o libradsec [[file:p/radsecproxy/tr/2013-11-08-udp-retransmit/udp-retransmit.org::*From:%20Alejandro%20Perez%20Mendez%20<alex@UM.ES][udp-retransmit]] fixed
    - X [[https://trac.torproject.org/projects/tor/ticket/6753][#6753 (chutney needs to set AlternateBridgeAuthority too)]] closed
 ** IETF
+   - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
    - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
    - - lopez RADIUS fragment draft reviewed for abfab (2)
    - - goals for IETF involvement sent to Josva (1)
    - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
-   - - sam poked abt his ephemeral keys in abfab idea (1)
+   - X sam poked abt his ephemeral keys in abfab idea (1)
    - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
-   - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
    - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
    - - "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09 too.
 ** Sysadm
-   - - obfsproxy's upgraded (tor.ndn, more?) (2)
-   - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt][otr-fp-in-dns draft]] read and tested
+   - . obfsproxy's upgraded (tor.ndn, more?)
+     https://www.torproject.org/projects/obfsproxy-debian-instructions.html.en#instructions (2)
    - - HS for xmpp @ adb-centralen.se working
    - o ejabberd upgraded to use openssl from ports (1.0.1)
    - - dnssec for nordberg.se, adb-centralen.se
    - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
    - - pkgsrc on siv upgraded, for libevent2 (2)
    - - tor on siv upgraded to 0.2.5 (1)
-   - . move all services from banksy to mm -- ports don't seem to work well!
-     . krb
-       o install another kdc
-       - web service for setting pw in new kdc running (was: copy users from old kdc)
-     * lnspam (email filtering; clamav + spamd) replaced with new jail
-     - mail
-       o set up an imapd in new jail on mm and let jbn run there
-         (needs new kerberos jail too)
-       - new mta set up with spam and virus filtering (brk)
-       - no mail loops on brk when delivering to imap (execve)
-       - users moved from lnmail
-     - new dns jail
-       - jail setup and verified (lseek)
-       - ip address moved to new jail
-     * web -- apache-2.2.22_5 is vulnerable, php5-5.3.8 too; imp
-       connects to 'lnmail' over SSL
-       (/usr/local/www/horde/ipm/config/servers.php) so change to
-       'imap.adb-centralen.se'; imp uses local postfix to send mail
-       ('relayhost' in postfix/main.cf); connects to mysql at lnspam
    - * automatic backup of mm; rsync with double-sshd from tight laptop?
 ** DFRI
    - - 
@@ -72,6 +46,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - abuse handling policy written
    - D email policy written
 ** Misc
+   - - PGP and OTR fingerprints on paper
    - o jakob@kirei.se 7b6b 7819 39e5 067b c48b ef03 52ee 4645 1b13 f78c signed
    - o peters flights and hotel canceled
    - o ietf88 travel reported in TEM [wed]
@@ -88,6 +63,15 @@ Legend                                                (emacs -*-org-*- mode)
    - X phw's email abt research something read (1)
 * Soon (within a month)
 ** Dev
+   - - tor prop 220 reviewed
+   - - radsecproxy seeding PRNG properly
+   - - post to tor-dev@: paul wouters dnssec related drafts grokked and put into
+       context of dnssec in tor
+       [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
+   - - tor #6027 moved forward some
+   - - CT design paper
+   - - #9663 reviewed
+   - - #8897 reviewed
    - - libradsec example server replying to a radius message
    - - libradsec python binding embryo commited
    - - 2 pmacct crashes reproduced and reported
@@ -138,6 +122,27 @@ Legend                                                (emacs -*-org-*- mode)
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** Sysadm
+   - . move all services from banksy to mm -- ports don't seem to work well!
+     . krb
+       o install another kdc
+       - web service for setting pw in new kdc running (was: copy users from old kdc)
+     * lnspam (email filtering; clamav + spamd) replaced with new jail
+     - mail
+       o set up an imapd in new jail on mm and let jbn run there
+         (needs new kerberos jail too)
+       - new mta set up with spam and virus filtering (brk)
+       - no mail loops on brk when delivering to imap (execve)
+       - users moved from lnmail
+     - new dns jail
+       - jail setup and verified (lseek)
+       - ip address moved to new jail
+     * web -- apache-2.2.22_5 is vulnerable, php5-5.3.8 too; imp
+       connects to 'lnmail' over SSL
+       (/usr/local/www/horde/ipm/config/servers.php) so change to
+       'imap.adb-centralen.se'; imp uses local postfix to send mail
+       ('relayhost' in postfix/main.cf); connects to mysql at lnspam
+   - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt][otr-fp-in-dns draft]] read and tested
+   - - document fbsd security tricks and publish
    - dataless travel figured out
      - carry x60 w/o any drive, no usb sticks or other storage
      - carry a yubikey
