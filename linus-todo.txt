@@ -9,44 +9,21 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - - libradsec ssl init protecting against race
+   - . libradsec ssl init protecting against race
    - . shadow #111 closed
    - . shadow #114 closed
+   - - tflows collecting data
+   - - first list of "public ledger" research and development
 ** IETF
    - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
-   - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
-   - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
-   - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
-   - - lopez RADIUS fragment draft reviewed for abfab (2)
-   - - goals for IETF involvement sent to Josva (1)
-   - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
-   - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
-   - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
-   - - "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09 too.
+   - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09 too.
 ** Sysadm
    - . obfsproxy's upgraded (tor.ndn, more?)
      https://www.torproject.org/projects/obfsproxy-debian-instructions.html.en#instructions (2)
-   - - HS for xmpp @ adb-centralen.se working
-   - - dnssec for nordberg.se, adb-centralen.se
-   - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
-   - - pkgsrc on siv upgraded, for libevent2 (2)
-   - - tor on siv upgraded to 0.2.5 (1)
-   - * automatic backup of mm; rsync with double-sshd from tight laptop?
+   - . new SUNET relay running
 ** DFRI
-   - - 
-   - - flashproxy on www.dfri.se
-   - - remove old netblock from exit policy
-   - - exit relay policy updated w/o old netblock and w/ ipv6 restrictions
-   - - abuse handling policy written
-   - D email policy written
 ** Misc
    - - PGP and OTR fingerprints on paper
-   - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
-   - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
-   - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
-   - . broken SSD returned (1)
-   - - jeans; bought (?)
-   - - WPS (at home wlan router) disabled (1)
 * Soon (within a month)
 ** Dev
    - - tor prop 220 reviewed
@@ -80,7 +57,13 @@ Legend                                                (emacs -*-org-*- mode)
    - . set up torouter on an ipv6 addr at ndn
    - - write a proposal for the ASN tickets
 ** Misc
-   - - fixa kopia av bauer-tavlan, http://crimson.se/
+   - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
+   - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
+   - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
+   - . broken SSD returned (1)
+   - - jeans; bought (?)
+   - - WPS (at home wlan router) disabled (1)
+   - - kopia av bauer-tavlan, http://crimson.se/
    - - tahoe-lafs / tamias on tor HS investigated
    - - feedback to kyle on practical cryptography in go sent
    - - tor AS awareness studied
@@ -108,6 +91,12 @@ Legend                                                (emacs -*-org-*- mode)
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** Sysadm
+   - - HS for xmpp @ adb-centralen.se working
+   - - dnssec for nordberg.se, adb-centralen.se
+   - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
+   - - pkgsrc on siv upgraded, for libevent2 (2)
+   - - tor on siv upgraded to 0.2.5 (1)
+   - * automatic backup of mm; rsync with double-sshd from tight laptop?
    - . move all services from banksy to mm -- ports don't seem to work well!
      . krb
        o install another kdc
@@ -151,6 +140,12 @@ Legend                                                (emacs -*-org-*- mode)
      o set up basic iptables
      o get ff running in a VM
 ** DFRI
+   - - abuse handling policy written
+   - - leap.se running in a linux vm
+   - - leap.se running in a freebsd jail
+   - - flashproxy on www.dfri.se (4)
+   - - exit relay policy updated w/o old netblock and w/ ipv6 restrictions (1)
+   - D email policy written
    - - the Czeck C&D letter submitted to chillingeffects.org
    - - DNSSEC
    - - read and comment on http://rys.io/en/94.txt
@@ -159,6 +154,15 @@ Legend                                                (emacs -*-org-*- mode)
    - - update TorExitGuideLines with swedish details https://trac.torproject.org/projects/tor/wiki/doc/TorExitGuidelines
    - - read draft-laurie-pki-sunlight-07.txt
    o - reply to james "crypto & youth"
+** IETF
+   - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
+   - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
+   - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
+   - - lopez RADIUS fragment draft reviewed for abfab (2)
+   - - goals for IETF involvement sent to Josva (1)
+   - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
+   - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
+   - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
 * Eventually
 ** Dev
    - build tlsdate on *BSD
