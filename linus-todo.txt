@@ -21,9 +21,6 @@ Legend                                                (emacs -*-org-*- mode)
 ** Sysadm
    - tails with basic stuff in persistant storage
      - emacs gnus go xmpp-client
-   - o obfsproxy's upgraded (tor.ndn, more?)
-     https://www.torproject.org/projects/obfsproxy-debian-instructions.html.en#instructions (2)
-   - o new SUNET relay running
 ** DFRI
 ** Misc
    - - PGP and OTR fingerprints on paper
