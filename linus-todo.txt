@@ -12,20 +12,25 @@ Legend                                                (emacs -*-org-*- mode)
    - . libradsec ssl init protecting against race
    - . shadow #111 closed
    - . shadow #114 closed
+   - - more RAM in tflows machine 
    - - tflows collecting data
    - - first list of "public ledger" research and development
 ** IETF
    - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
    - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09 too.
 ** Sysadm
-   - . obfsproxy's upgraded (tor.ndn, more?)
+   - tails with basic stuff in persistant storage
+     - emacs gnus go xmpp-client
+   - o obfsproxy's upgraded (tor.ndn, more?)
      https://www.torproject.org/projects/obfsproxy-debian-instructions.html.en#instructions (2)
-   - . new SUNET relay running
+   - o new SUNET relay running
 ** DFRI
 ** Misc
    - - PGP and OTR fingerprints on paper
 * Soon (within a month)
 ** Dev
+   - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
+   - - ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
    - - tor prop 220 reviewed
    - - radsecproxy seeding PRNG properly
    - - post to tor-dev@: paul wouters dnssec related drafts grokked and put into
@@ -207,6 +212,7 @@ Legend                                                (emacs -*-org-*- mode)
 2014
 - Feb 15-22, Reykyavik?, Tor winter dev
 - Mar 02-07, London, IETF89
+? Mar 25-28, Zurich, European AFS and Kerberos Conference
 - Jun 28-06, Paris, Tor summer dev
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
