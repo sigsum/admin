@@ -9,26 +9,31 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - . libradsec ssl init protecting against race
+   - o libradsec ssl init protecting against race
+   - o bug report from make check on fbsd8.4 sent to nick
+   - X bug report from make check on fbsd9.2 sent to nick
+   - o more RAM in tflows machine 
    - . shadow #111 closed
    - . shadow #114 closed
-   - - more RAM in tflows machine 
    - - tflows collecting data
+   - - tor prop 220 reviewed
    - - first list of "public ledger" research and development
 ** IETF
-   - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
-   - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09 too.
+   - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09.
 ** Sysadm
-   - tails with basic stuff in persistant storage
-     - emacs gnus go xmpp-client
+   - - temporary pgp key created and signed
+   - - tails with basic stuff in persistant storage
+     - emacs gnus golang xmpp-client pond
+   - - travel stick generated
 ** DFRI
 ** Misc
-   - - PGP and OTR fingerprints on paper
+   - - clean desk!
+   - o travel reports
+   - o PGP and OTR fingerprints on paper
 * Soon (within a month)
 ** Dev
    - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
    - - ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
-   - - tor prop 220 reviewed
    - - radsecproxy seeding PRNG properly
    - - post to tor-dev@: paul wouters dnssec related drafts grokked and put into
        context of dnssec in tor
@@ -157,6 +162,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - read draft-laurie-pki-sunlight-07.txt
    o - reply to james "crypto & youth"
 ** IETF
+   - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
    - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
