@@ -9,10 +9,6 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - o libradsec ssl init protecting against race
-   - o bug report from make check on fbsd8.4 sent to nick
-   - X bug report from make check on fbsd9.2 sent to nick
-   - o more RAM in tflows machine 
    - . shadow #111 closed
    - . shadow #114 closed
    - - tflows collecting data
@@ -28,8 +24,6 @@ Legend                                                (emacs -*-org-*- mode)
 ** DFRI
 ** Misc
    - - clean desk!
-   - o travel reports
-   - o PGP and OTR fingerprints on paper
 * Soon (within a month)
 ** Dev
    - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
