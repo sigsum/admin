@@ -1,20 +1,127 @@
-http://blog.svd.se/ledarbloggen/2013/11/19/matningsmattat-om-overvakning/
-http://www.ottawasun.com/2013/11/06/gangs-doing-business-online
-http://tmda.net/
-http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/
-http://www.theguardian.com/technology/2013/nov/16/anonymous-fbi
-http://www.nytimes.com/2013/11/15/us/cia-collecting-data-on-international-money-transfers-officials-say.html
-https://search.wikileaks.org/gifiles/
-https://search.wikileaks.org/gifiles/?relid=615#searchresult
-http://www.forbes.com/sites/kashmirhill/2013/11/13/sanitizing-bitcoin-coin-validation/
-http://www.ip-watch.org/2013/11/13/wikileaks-release-of-tpp-chapter-on-ip-blows-open-secret-trade-negotiation
-http://www.wired.com/opinion/2013/11/this-is-how-the-internet-backbone-has-been-turned-into-a-weapon/
-http://www.faz.net/aktuell/feuilleton/debatten/the-internet-ideology-why-we-are-allowed-to-hate-silicon-valley-12658406.html
-http://arstechnica.com/tech-policy/2013/11/supporters-publish-supposed-foreign-target-list-that-fbi-ordered-hammond-to-hack/
-http://dissenter.firedoglake.com/2013/11/15/jeremy-hammond-the-need-to-promote-respect-for-the-rule-of-law
-http://nakedsecurity.sophos.com/2013/08/05/freedom-hosting-arrest-and-takedown-linked-to-tor-privacy-compromise/
-http://bigstory.ap.org/article/china-claims-victory-scrubbing-internet
-
+quotes people:abbey http://www.abbeyweb.net/quotes.htx
+tor ml lists https://trac.torproject.org/projects/tor/wiki/doc/emailLists
+rsa nsa http://www.reuters.com/article/2013/12/20/us-usa-security-rsa-idUSBRE9BJ1C220131220
+luks cbc http://www.jakoblell.com/blog/2013/12/22/practical-malleability-attack-against-cbc-encrypted-luks-partitions/
+prng backdoor openssl http://nakedsecurity.sophos.com/2013/12/22/the-openssl-software-bug-that-saves-you-from-surveillance/
+spread ideas http://www.sciencedaily.com/releases/2011/07/110725190044.htm
+pond https://pond.imperialviolet.org/
+egypt http://www.economist.com/blogs/pomegranate/2013/12/clampdown-egypt
+readme nsa http://mobile.nytimes.com/2013/12/22/opinion/sunday/bad-times-for-big-brother.html
+readme tor bestpractice http://security.stackexchange.com/questions/43369/best-practices-for-tor-use-in-light-of-released-nsa-slides/43485#43485
+freebsd ports testing http://redports.org/
+copyright book pp http://1010gateway.com/ppstuff/TCfCR_SWE_links.pdf
+names https://en.wikipedia.org/wiki/List_of_culture_ships
+tor exits https://metrics.torproject.org/fast-exits.html
+ietf nsa https://news.ycombinator.com/item?id=6942145
+x509 ca ssl tls http://conferences.sigcomm.org/imc/2013/papers/imc257-durumericAemb.pdf
+rsa nsa http://www.reuters.com/article/2013/12/20/us-usa-security-rsa-idUSBRE9BJ1C220131220
+tor proposals https://lists.torproject.org/pipermail/tor-dev/2013-December/005957.html
+tor proposals https://lists.torproject.org/pipermail/tor-dev/2013-November/005797.html
+ndn admin https://services.ibistic.net/
+readme privacy http://www.cs.berkeley.edu/~dawnsong/papers/stream-search.pdf
+readme prng http://secworks.se/2013/12/publika-entropikallor-och-behovet-av-av-bra-slumptalsgeneratorer/
+readme security people:moxie http://thoughtcrime.org/blog/telegram-crypto-challenge/
+tls mitm devel http://www.charlesproxy.com/
+security portknocking https://lwn.net/SubscriberLink/577164/d72651f660eac5b4/
+readme cyberwar http://kkrva.se/kampen-pa-och-om-internet-hobbes-i-skuggorna/
+security routing people:amelia https://ameliaandersdotter.eu/2013/12/19/det-pagar-ett-krig-i-routrarna-och-switcharna
+R ggplot http://stackoverflow.com/questions/5226807/multiple-graphs-in-one-canvas-using-ggplot2
+rng intel sandybridge http://www.slideshare.net/daniel_bilar/intel-trng-report20120312?utm_source=ss&utm_medium=upload&utm_campaign=quick-view
+sidechannel pgp http://lists.gnupg.org/pipermail/gnupg-devel/2013-December/028102.html
+sidechannel pgp rsa http://www.cs.tau.ac.il/~tromer/acoustic/
+http://www.ssnf.org/Nyheter/Nyhetslistning/Efter-kritiken-Stadsnaten-sager-nej-till-automatisk-overvakning/
+nsa fra english http://www.thelocal.se/20131212/swedens-surveillance-carried-out-on-us-terms
+radsecproxy eduroam docu https://confluence.terena.org/display/H2eduroam/How+to+deploy+eduroam+at+national+level#Howtodeployeduroamatnationallevel-radsecproxy
+privacy teenagers list http://www.makeuseof.com/tag/teenagers-guide-to-online-privacy-weekly-facebook-tips/
+readme wl http://www.rjgallagher.co.uk/2013/08/wikileaks-fbi-spy-siggi-thordarson-assange-iceland-denmark.html
+readme sweden quantum cookies https://medium.com/p/bb8816e88d86
+readme fra people:sigholm http://www.nyteknik.se/asikter/debatt/article3793078.ece
+raft voting consensus https://github.com/andrewjstone/rafter
+readme surveillance https://www.eff.org/deeplinks/2013/12/increasing-anti-surveillance-momentum-and-necessary-and-proportionate-principles
+readme ggreenwald snowden http://www.rollingstone.com/politics/news/snowden-and-greenwald-the-men-who-leaked-the-secrets-20131204#ixzz2mpRBKGkJ
+tls gchq flyingpig http://koen.io/2013/12/flying-pig-gchq-tls-ssl-knowledge-base/
+https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5735453
+http://www.goteborgdaily.se/news/sapo-pressures-phone-operators-for-client-data
+http://www.annatroberg.se/2013/12/17/sapo-vs-bahnhof-vagar-man-dromma-om-framtiden/
+https://computersweden.idg.se/2.2683/1.539584/sapo-pressar-operatorer
+http://www.svd.se/nyheter/inrikes/sapo-pressar-mobiloperatorer_8830372.svd
+http://www.sydsvenskan.se/kultur--nojen/rent-mjol-i-fel-pase/
+readme iis tpb https://www.iis.se/blogg/domannamn-varken-foremal-eller-brottsverktyg/
+readme tor nsa cookie http://arstechnica.com/security/2013/10/how-the-nsa-might-use-hotmail-or-yahoo-cookies-to-identify-tor-users/
+sapo bahnhof https://sverigesradio.se/sida/avsnitt/297667?programid=4540
+nsa facebook tor http://www.dailymail.co.uk/news/article-2347047/Former-Facebook-security-chief-working-NSA.html
+30c3 ccc wiki https://events.ccc.de/congress/2013/wiki/Main_Page
+drones http://www.stopkillerrobots.org/
+readme power http://press-pubs.uchicago.edu/founders/documents/v1ch10s14.html
+tor vuln guards people:rpw https://trac.torproject.org/projects/tor/ticket/8244
+security programming race racing https://en.wikipedia.org/wiki/Time_of_check_to_time_of_use
+openssl docu https://en.wikibooks.org/wiki/OpenSSL
+cryptoparty stockholm video https://media.torproject.org/video/2013-02-16-cryptoparty-stockholm/
+fra oversight http://www.fra.se/omfra/myndighetenfra/tillstandkontrollochgranskning.86.html
+readme wassenaar http://www.skatingonstilts.com/skating-on-stilts/2013/12/new-controls-on-surveillance-and-hacking-tools.html
+people:jake nsa https://twitter.com/omertene/status/411563153219407872
+fra people:ramberg http://www.svd.se/opinion/brannpunkt/fra-domarens-besked-ar-inte-lugnande_8819936.svd
+readme drd http://www.infosecurity-magazine.com/view/36115/the-eu-data-retention-directive-will-almost-certainly-be-struck-down/#.Uqr6-JgqlcA.twitter
+rbl https://wiki.lewman.is/snippets/rbl-bad
+readme nazi ibm http://gizmodo.com/5812025/how-ibm-technology-jump-started-the-holocaust
+readme drd http://malte-spitz.de/wp-content/uploads/2013/12/CP130157EN.pdf
+readme freebsd rng http://arstechnica.com/security/2013/12/we-cannot-trust-intel-and-vias-chip-based-crypto-freebsd-developers-say/
+tweet:dfri_se nsa fra http://www.svd.se/nyheter/inrikes/nsa-ber-fra-om-spraklig-hjalp_8820066.svd
+gmail privacy http://www.wired.com/business/2013/12/gmail-spying-explained
+surveillance sweden usa fra nsa http://www.svd.se/nyheter/utrikes/nordberg-sverige-aktiv-part-i-usas-politik_8819676.svd?fromMobile=true
+drd http://www.mynewsdesk.com/se/centerpartiet/pressreleases/fredrick-federley-ser-vi-slutet-foer-datalagringsdirektivet-940520
+readme drd http://www.europeanvoice.com/article/2013/december/advocate-general-says-data-retention-rules-breach-fundamental-rights/79078.aspx
+http://www.nyteknik.se/nyheter/it_telekom/allmant/article3793470.ece
+fra finland http://www.svd.se/nyheter/utrikes/finland-kringgar-svensk-datakontroll_8815452.svd
+readme nsa fra sweden http://www.nrk.no/fordypning/--sverige-driver-hemmelig-hacking-1.11410123
+readme nsa fra sweden http://www.dagensarena.se/innehall/fra-begar-dataintrang-bryter-mot-lagen/
+cookie ad tracking nsa google apps geolocation flashlight http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/nsa-uses-google-cookies-to-pinpoint-targets-for-hacking/
+android app http://www.ftc.gov/news-events/press-releases/2013/12/android-flashlight-app-developer-settles-ftc-charges-it-deceived
+nsa ad cookie http://blogg.dn.se/teknikbloggen/2013/12/11/vet-annonsen-vem-du-ar-vet-nsa-det-ocksa/
+fra nsa sweden http://www.metro.se/nyheter/fra-deltar-i-usas-dataintrangsystem/Hdzmlk!TFYQch@A5vCOjlpYzrWsSQ/
+fra nsa sweden http://www.svd.se/nyheter/inrikes/nya-uppgifter-om-nara-samarbete-mellan-fra-och-nsa_8812256.svd
+fra nsa sweden http://www.dn.se/nyheter/sverige/fra-hackade-datorer-at-nsa/
+wireless wlan http://wireless.kernel.org
+wireless wlan http://en.wikipedia.org/wiki/Comparison_of_open-source_wireless_drivers
+tor hosting https://trac.torproject.org/projects/tor/wiki/org/projects/2013InfrastructureUpgrade
+vuln https://xerocrypt.wordpress.com/
+ug snowden nsa fra http://www.svt.se/ug/read-all-articles-in-english
+anonymity sweden http://www.svd.se/nyheter/idagsidan/folk-kan-saga-vad-som-helst-pa-natet_8800562.svd
+anonymity sweden http://www.svd.se/nyheter/idagsidan/jag-skulle-aldrig-ha-varit-otrogen-om-inte-natet-fanns_8807308.svd
+depression comics http://hyperboleandahalf.blogspot.se/2011/10/adventures-in-depression.html
+depression comics http://hyperboleandahalf.blogspot.se/2013/05/depression-part-two.html
+readme bitcoin http://www.michaelnielsen.org/ddi/how-the-bitcoin-protocol-actually-works/
+wa http://www.wassenaar.org/controllists/2013/WA-LIST%20(13)%201/WA-LIST%20(13)%201.pdf
+wassenaar wa http://kryptera.se/it-sakerhetsmjukvara-nu-under-exportkontroll/
+irc chanop doc http://www.irchelp.org/irchelp/changuide.html
+sd anonymity http://www.expressen.se/nyheter/expressen-avslojar/flera-politiker-skriver-anonymt-pa-hatsajter/
+sd anonymity http://www.expressen.se/nyheter/expressen-avslojar/namn-pa-anonyma-anvandare-knackta/
+readme surveillance sweden georgia http://www.eurasianet.org/node/67850
+readme surveillance research http://www.harvardlawreview.org/symposium/papers2012/richards.pdf
+nsa tracking phone http://m.washingtonpost.com/world/national-security/nsa-tracking-cellphone-locations-worldwide-snowden-documents-show/2013/12/04/5492873a-5cf2-11e3-bc56-c6ca94801fac_story.html
+readme bildt netfreedom http://www.regeringen.se/sb/d/7417/a/230194
+fra http://www.svd.se/nyheter/inrikes/bytesaffar-med-usa-raddade-liv_8804492.svd
+ecc http://ed25519.cr.yp.to/
+x509 tls CA https://blog.torproject.org/blog/life-without-ca
+readme tor lea http://scitechconnect.elsevier.com/tor-law-enforcements-foe-friend/
+crypto rsa1024 http://tau.ac.il/~tromer/phd-dissertation/
+crypto rsa1024 http://news.cnet.com/8301-13578_3-57591560-38/facebooks-outmoded-web-crypto-opens-door-to-nsa-spying/
+readme crypto rsa1024 http://blog.cryptographyengineering.com/2013/12/how-does-nsa-break-ssl.html
+malware pwnage police fbi http://www.washingtonpost.com/business/technology/fbis-search-for-mo-suspect-in-bomb-threats-highlights-use-of-malware-for-surveillance/2013/12/06/352ba174-5397-11e3-9e2c-e1d01116fd98_story.html
+readme http://www.foreignaffairs.com/articles/140155/henry-farrell-and-martha-finnemore/the-end-of-hypocrisy
+X11 http://wayland.freedesktop.org/
+tails 0.22 tbb webrtc vulnerability bug https://github.com/freedomofpress/securedrop/issues/196
+readme crypto https://bettercrypto.org/static/applied-crypto-hardening.pdf
+crypto group https://bettercrypto.org/
+cloud privacy dataprot http://www.hldataprotection.com/files/2013/05/A-Sober-Look-at-National-Security-Access-to-Data-in-the-Cloud.pdf
+ireland privacy dataprot http://www.edri.org/edrigram/number11.1/irish-eu-council-presidency-privacy
+cloud swedish https://www.idg.se/2.1085/1.536794/molnlagring-inom-eu-inget-skydd-mot-overvakning
+tor press https://trac.torproject.org/projects/tor/wiki/TorArticles
+perens privacy https://www.ietf.org/mail-archive/web/perpass/current/msg01158.html
+linux distro https://trisquel.info/
+x60 http://shop.gluglug.org.uk/product/ibm-lenovo-thinkpad-x60-w-coreboot-wo-extras/
+gmt_unix_time tls people:nickm http://www.wangafu.net/~nickm/volatile/draft-00-v0/draft-mathewson-no-gmtunixtime-00.txt
+snowden swedish catch-22 people:josephheller https://hd.se/kultur/2013/06/29/edward-snowden-och-moment-22/
 30c3 fahrplan https://events.ccc.de/congress/2013/Fahrplan/schedule.html
 css pic funny https://lh4.googleusercontent.com/-qeaPTdWSgXo/UVVuFe80bvI/AAAAAAAARoY/AVmXx4RZmME/w640-h480-no/Q3cUg29.gif
 twn https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews
@@ -418,7 +525,6 @@ ui separation im maybe http://git.savannah.gnu.org/gitweb/?p=weechat.git;a=summa
 ui separation im maybe http://dev.weechat.org/
 readme police subversion http://www.reddit.com/r/HackBloc/comments/1nl0xf/paper_review_subversion_of_social_movements_by
 tor nsa readme people:tjr http://ritter.vg/blog-tor-nsa-slide-decks.html
-tor nsa cookie http://arstechnica.com/security/2013/10/how-the-nsa-might-use-hotmail-or-yahoo-cookies-to-identify-tor-users/
 email service https://mykolab.com/
 tor nsa http://ritter.vg/blog-tor-nsa-slide-decks.html
 tor nsa http://news.cnet.com/8301-13578_3-57606133-38/nsa-sought-to-unmask-users-of-net-privacy-tool-tor-says-report/
@@ -2116,3 +2222,23 @@ https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=4677488 kadaffi 
 http://blog.gerv.net/2011/09/diginotar-compromise/ diginotar ca ssl tls
 http://www.svd.se/opinion/brannpunkt/kansliga-uppgifter-skyddas-inte_6440326.svd swe privacy medicin
 http://nakedsecurity.sophos.com/2011/09/05/ssl-certificate-debacle-includes-cia-mi6-mossad-and-tor/?utm_source=twitter&utm_medium=chetwisniewski&utm_campaign=naked%2Bsecurity ca diginotar tor spies
+
+* Nov+Dec 2013
+http://blog.svd.se/ledarbloggen/2013/11/19/matningsmattat-om-overvakning/
+http://www.ottawasun.com/2013/11/06/gangs-doing-business-online
+http://tmda.net/
+http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/
+http://www.theguardian.com/technology/2013/nov/16/anonymous-fbi
+http://www.nytimes.com/2013/11/15/us/cia-collecting-data-on-international-money-transfers-officials-say.html
+https://search.wikileaks.org/gifiles/
+https://search.wikileaks.org/gifiles/?relid=615#searchresult
+http://www.forbes.com/sites/kashmirhill/2013/11/13/sanitizing-bitcoin-coin-validation/
+http://www.ip-watch.org/2013/11/13/wikileaks-release-of-tpp-chapter-on-ip-blows-open-secret-trade-negotiation
+http://www.wired.com/opinion/2013/11/this-is-how-the-internet-backbone-has-been-turned-into-a-weapon/
+http://www.faz.net/aktuell/feuilleton/debatten/the-internet-ideology-why-we-are-allowed-to-hate-silicon-valley-12658406.html
+http://arstechnica.com/tech-policy/2013/11/supporters-publish-supposed-foreign-target-list-that-fbi-ordered-hammond-to-hack/
+http://dissenter.firedoglake.com/2013/11/15/jeremy-hammond-the-need-to-promote-respect-for-the-rule-of-law
+http://nakedsecurity.sophos.com/2013/08/05/freedom-hosting-arrest-and-takedown-linked-to-tor-privacy-compromise/
+http://bigstory.ap.org/article/china-claims-victory-scrubbing-internet
+http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/18/research-shows-how-macbook-webcams-can-spy-on-their-users-without-warning/
+http://www.washingtonpost.com/world/national-security/nsa-shouldnt-keep-phone-database-review-board-recommends/2013/12/18/f44fe7c0-67fd-11e3-a0b9-249bbb34602c_story.html
