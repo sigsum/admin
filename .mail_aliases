@@ -17,6 +17,7 @@ alias admin	   		admin@nordu.net
 alias adrian.bolero		adrian.bellini@bolero.se
 alias aep                       "Alberto Escudero-Pascual <aep@it46.se>"
 alias afrodite			"Afrodite Sevasti <sevasti@grnet.gr>"
+alias agl                       agl@imperialviolet.org
 alias ahnberg                   mattias@ahnberg.pp.se
 alias aikido                    info@vanadis-aikido.se
 alias ako			"Anna-Karin Karlsson <snesnok@yahoo.com>"
@@ -51,6 +52,7 @@ alias andrew			"Andrew Lewman <andrew@torproject.org>"
 alias andrew.is                 "Andrew Lewman <andrew@lewman.is>"
 alias andy                      "Andy Isaacson <adi@hexapodia.org>"
 alias anna                      anna_mansson@yahoo.se
+alias anna-linda                "Anna Linda Hultström <annalindahultstrom@gmail.com>"
 alias anne			anne@nordu.net
 alias annika			"annika mattsson <annika99999@hotmail.com>"
 alias anselm                    "Anselm Helbig <anselm.helbig@gmx.de>"
@@ -144,6 +146,7 @@ alias einar.scouterna           einar
 alias ekonomi                   ekonomi@dfri.se
 alias elisabeth			"Elisabeth Nilsson <elisabeth.nilsson@iis.se>"
 alias elof                      elof@sentor.se
+alias emilia                    "Emilia Kasper <ekasper@google.com>"
 alias emil.isberg               emil@pyttemjuk.se
 alias ep.broken			erikp@djingis.se
 alias ep			ep@egrc.se
@@ -154,10 +157,12 @@ alias erik.n	 		erik@nordberg.se
 alias erik.nihlen		erik.nihlen.priv
 alias erik.nihlen.priv		erik.nihlen@gmail.com
 alias erik.svensson             "Erik Svensson <erik.svensson@stockholm.se>"
+alias erika                     "Erika EAX Lygdman <erika@eaxbreakparty.se>"
 alias erinn			helix
 alias eva.eff                   eva@eff.org
 alias eva.frobbit		eva@frobbit.se
 alias eva.stiber                "Eva Stiber <eva.stiber@stockholm.se>"
+alias ewa                       ewa_bjorkeson@hotmail.com
 alias fabbe             	fabbe@hbernstone.se
 alias faidon                    "Faidon Liambotis <paravoid@debian.org>"
 alias fia               	fia@hbernstone.se
@@ -304,6 +309,7 @@ alias juhani			juhani@eduix.fi
 alias julie			juliesm@live.no
 alias julius                    julius.saaf@stockholm.se
 alias juni			juni@nordberg.se
+alias juni.aikido               anna-linda
 alias juni.gitarr               lars.z
 alias juni.skolan               erik.svensson
 alias jwalck                    "Jonatan Walck <jonatan@walck.se>"
@@ -416,6 +422,7 @@ alias mark.klamberg.gmail       markklamberg@gmail.com
 alias mark.klamberg             "Mark Klamberg <Mark.Klamberg@juridicum.su.se>"
 alias mark.levy                 marklevy@post.com
 alias mark                      mark.levy
+alias markus.n                  "Markus Naarttijärvi <Markus.Naarttijarvi@jus.umu.se>"
 alias marten			marten@beatbutchers.se
 alias martin.bjorklund		mbj@tail-f.com
 alias martin.fredriksson	tokmartin
@@ -445,6 +452,7 @@ alias mlowdi                    martin@motpoler.se
 alias molgan			molgan@mail.nordberg.se
 alias monika                    monika@ermert.de
 alias moonshot			moonshot-community@jiscmail.ac.uk
+alias moonshot-dev              MOONSHOT-DEV@JISCMAIL.AC.UK
 alias mordur			mordur@mordur.is
 alias moritz			moritz@torservers.net
 alias mullet                    "Martin Nilsson <martin@mullet.se>"
@@ -459,6 +467,7 @@ alias nathan                    "Nathan Freitas <nathan@freitas.net>"
 alias nick.mit			nickm@alum.mit.edu
 alias nick			nick.tor
 alias nick.tor			"Nick Mathewson <nickm@torproject.org>"
+alias nico                      nico@cryptonector.com
 alias niklas                    "Niklas Johansson <raphexion@gmail.com>"
 alias nil			ct@duckduckgo.com
 alias nils                      "Nils Agnesson <nils.agnesson@piratpartiet.se>"
@@ -535,7 +544,7 @@ alias richard                   "Richard Binning <anok4u2b4u@gmail.com>"
 alias rickard.ostman		"Rickard Östman <rickard.ostman@bahnhof.net>"
 alias ripe			auto-dbm
 alias robin                     "Robin Fomin <robin.fomin@stockholm.se>"
-alias rob.austein               sra@hactrn.net
+alias rob.austein               "Rob Austein <sra@hactrn.net>"
 alias rob.jansen                 rob.jansen.edu
 alias rob.jansen.edu            "Rob Jansen <jansen@cs.umn.edu>"
 alias rob.jansen.mil            "Rob Jansen <rob.g.jansen@nrl.navy.mil>"
@@ -632,6 +641,7 @@ alias tor-ass			tor-assistants@lists.torproject.org
 alias tor-dev			tor-dev@lists.torproject.org
 alias tord.gmail                "Tord Lundström <tord.lundstrom@gmail.com>"
 alias tor-dirauth               dir-auth@lists.torproject.org
+alias tor-rt                    help@rt.torproject.org
 alias tord.short                t@virtualroad.org
 alias tord                      tord.lundstrom@virtualroad.org
 alias tor-helpdesk              help@rt.torproject.org
