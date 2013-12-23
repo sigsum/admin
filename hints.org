@@ -77,7 +77,7 @@ http://www.miek.nl/files/go/20121208-go.pdf
 http://golang.org/doc/ExpressivenessOfGo.pdf
 http://jan.newmarch.name/go/
 * pond
-** try it out
+** try it out in 2012
 (Sat Dec 08 17:04:52 +0100 2012) ioerrror@jabber.ccc.de: keyex with me?
 
 (Sat Dec 08 17:04:55 +0100 2012) ioerrror@jabber.ccc.de: -----BEGIN POND KEY EXCHANGE-----
@@ -115,6 +115,13 @@ http://jan.newmarch.name/go/
 (Sat Dec 08 17:07:00 +0100 2012) ioerrror@jabber.ccc.de: alias pond-client="/home/io/Documents/code/misc/go/bin/client --state-file=/home/io/.pond"
 
 (Sat Dec 08 17:07:01 +0100 2012) ioerrror@jabber.ccc.de: export POND=experimental
+** running it in 2013
+PONDCLI=1 ~/usr/go/bin/client
+
+State file is in ~/.config/pond .
+** forums
+#OPEntropicTravel @ OFTC
+github
 * #sec-c-coding
 ** the cert c secure coding standard
 https://www.securecoding.cert.org/confluence/display/seccode/CERT+C+Secure+Coding+Standard
@@ -859,9 +866,10 @@ M-x auto-revert-tail-mode
 ** debugging
 M-x debug-on-entry
 ** building
-on debian <2013-10-26 Sat>
+On debian <2013-10-26 Sat>.
 sudo apt-get install xorg-dev libjpeg8-dev libgif-dev libpng12-dev libtiff4-dev
 ./configure --prefix=$HOME/usr && make all install
+NOTE: cut'n'paste buffer doesn't allways play nicely
 ** rfcview
 curl -A '' -x socks4a://localhost:9050/ http://www.neilvandyke.org/rfcview/rfcview.el > ~/usr/share/emacs/site-lisp/rfcview.el
 ** jabber.el
@@ -2059,7 +2067,16 @@ Getting starttls to work can be tricky. Remember that
 - you need gnutls-cli(1) in path and starttls-extra-arguments set to
   '("--tofu") unless gnutls-cli is happy with you server cert (test
   with gnutls-cli -s -p PORT HOST, type 'STARTTLS' and press C-d)
-
+*** mail servers
+(nnimap "adbc"
+        (nnimap-address "imap.nordberg.se")
+        (nnimap-server-port 993)
+        (nnimap-stream tls))
+(nnimap "ndn"
+        (nnimap-address "kerio.nordu.net")
+        (nnimap-server-port 993)
+        (nnimap-authenticator login)
+        (nnimap-stream tls))
 * Wireless
 ** USB stick CNet (Iljas)
 Jun 11 22:05:36 maatuska kernel: [295358.659673] usbcore: registered new interface driver rt2500usb
@@ -2194,12 +2211,14 @@ dcraw -- convert NEF (which is TIFF) to PPM
 denef -- doesn't handle D90 NEF's, it seems
 
 Example, 1600 pixels wide:
-
-** c
+** c ?
 ~/Photos/2010/06/25/img_0070.jpg
 ~/Photos/2010/06/25/img_0075.jpg
 ~/Photos/2010/06/25/img_0079.jpg
 ~/Photos/2010/06/30/img_0137.jpg
+** copying off of SD cards <2013-12-22 Sun>
+sudo mount /dev/sdb1 /mnt
+cd ~/pics && rsync -av /mnt/DCIM/ s110/
 * OTR
 ** fingerprints
 primary (mcabber): 5A31FB5E 3A66941B F3ED9A8E 181B5CC4 0AD417C1
@@ -2737,11 +2756,11 @@ struct addrinfo
 This example is using a 100MB partition made with "Disk Utility 2.32.1".
 *** Short version
     time badblocks -vswt random /dev/sdb1 # -c 10240
-    cryptsetup --use-random luksFormat /dev/sdb1
+    cryptsetup --use-random luksFormat --cipher aes-xts-plain64 /dev/sdb1
     cryptsetup luksOpen /dev/sdb1 kaka
     mkfs.ext4 /dev/mapper/kaka
     cryptsetup luksClose /dev/mapper/kaka
-*** With output
+*** With output NOTE: outdated -- uses aes-cbc!
     root@42:~# time badblocks -c 10240 -vswt random /dev/sdb1
     Checking for bad blocks in read-write mode
     From block 0 to 96068
@@ -2753,7 +2772,7 @@ This example is using a 100MB partition made with "Disk Utility 2.32.1".
     user    0m0.220s
     sys     0m0.040s
 
-    root@42:~# cryptsetup --use-random luksFormat /dev/sdb1
+    root@42:~# cryptsetup --use-random luksFormat --cipher aes-xts-plain64 /dev/sdb1
 
     WARNING!
     ========
@@ -2884,6 +2903,49 @@ This example is using a 100MB partition made with "Disk Utility 2.32.1".
    Except they didn't ask first.
 ** the mediocre programmer
 ** how to start doing the right things
+** "if only i had worked on free software"
+** Rätten till anonymitet
+
+Expressen publicerade nyligen en del av Researchgruppens arbete med
+att koppla samman namn med pseudonymer på rasist-sajter som
+Avpixlat. Vissa skribenter på sajterna viade sig vara etablerade
+Sverigedemokrater.
+
+Frågan är, har SD-politiker samma rätt till anonymitet som alla andra?
+
+Ingen har /oinskränkt/ rätt till anonymitet. Alla har dock rätt att
+uttrycka sig inom ramarna för yttrandefriheten [utan att riskera hot
+och trackasserier?] och rätt till [ett privatliv].
+
+
+Rätten till [ett privatliv] regleras i [grundlagen, var?],
+[EU-konstitutionen] och [FN-stadgan]. Yttrandefriheten inskränks av
+ett antal lagar som t.ex. hets mot folkgrupp och förtal
+[korrekt?].
+
+
+Man kan vara för yttrandefrihet och samtidigt glädjas åt att affischer
+med rasisiska budskap rivs ner på stan. Jag vet för jag är nämligen
+sådan själv.
+
+Man kan fråga sig själv om man skulle ha publicerat namnen bakom
+pseudonymerna på rasist-forumen om man hade haft chansen. Jag vet
+inte hur jag hade gjort. Att avslöja 
+
+- källkritik
+- transparens vs. privacy -- offentlig vs. privat person
+
+
+** jag håller på med ett experiment
+- jag håller på med ett experiment
+- är inte det lite jobbigt?
+- mycket
+
+Mitt första experiment med att leva utan mobiltelefon började för
+några år sedan och varade ca sju månader. Den gången använde jag
+mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
+
+
 * anagram
   fresh secularism, fissural schemer, miss researchful
   primtal köttfärs, maskfrätt pilört
@@ -28949,6 +29011,27 @@ bad. publishing a PDF when ASCII would work is the same bad.
 there are things that are hard or even impossible to do without
 requiring the client to execute javascript. that's fine. rendering
 plain text is not one of them though.
+** other notes <2013-12-11 Wed>
+Javascript seems to be an important part of how ad networks are tracking
+web users. By disabling execution of Javascript the risk of having a
+profile built should be lower.
+
+The browser is probably the major attack vector into a personal computer
+today. It's a monster when it comes to the amount of code it
+carries. All code has bugs and some of those are exploitable. Cutting
+out parsing and execution of a whole language lowers the complexity.
+
+Downloading and executing code from whomever site owners decide are
+needed increases the risk of running code that has been tampered with
+for attacking the user. The user has no way of selecting whom to
+trust. This is made worse by the quick pace at which web software is
+developed (the chance of the code have being looked at is low) and the
+fact that a few pieces of code is used in so many places (jquery would
+be a sweet target for some malicious code).
+
+There are others that are more about the software freedoms as expressed
+by GNU but I won't go into those here.
+
 * the athens affair
 http://spectrum.ieee.org/telecom/security/the-athens-affair
 
@@ -30907,8 +30990,8 @@ salt
 fin olivolja
 2 klickar majonnäs
 * pengar hawai
-jun: +67 - keps och tshirt
-lärka +75 - tröja och muffinhatt
+jun: $67 minus keps och tshirt
+lärka $75 minus tröja och muffinhatt
 * bios
 ** infected bios <2013-10-11 Fri>
 $ curl -v -O -x socks5h://localhost:9050/ http://offensive.io/bios.tar.bz                                      * About to connect() to proxy localhost port 9050 (#0)
@@ -31604,7 +31687,7 @@ Wrote /home/linus/News/drafts/drafts/2
 * jake on privacy and power
 http://2013.elevate.at/festival/ueber-das-festival/newsmagazin/detail/news/jacob-appelbaum-elevate-open-everything/
 
-(JS only, so here's the text.)
+(Javascript only, so here's the text.)
 
 Jacob Appelbaum
 Jacob Appelbaum: Elevate Open Everything?
@@ -31929,3 +32012,37 @@ p1 is known
 you can send money to p3 (=p1+p2)
 and anyone can confirm s2 is part of it
 (you publish p1 and s2)
+* unposted emails
+** JS
+Date: 2044-12-13
+
+Dear [cpt] Sigholm!
+
+I'm sending you this electronic message after finding your "email"
+sent to a non-public so called email list called sec-heads@ decades
+ago. I found this message in a collection of old storage media that I
+found in my fathers archives that he left to me.
+
+I hope that this message reach you safely. After all, the internet
+from back in the day of course is long gone and I'm not sure that
+these old techniques still are able to carry messages like these,
+taken into account the amount of filtering and detection systems we
+have succesfully installed.
+
+My hope is that your wisdom can cast some light over the history of
+how we came here. You seem to have played a pivotal role in the
+development of electronic communication and storage during the crucial
+years from about mid 2014 to the end of that decade.
+
+My understanding is that the 2021 [small town] agreement was the
+turning point and that everything after that is more or less [fixme].
+
+using my fathers old "email address"
+
+was this before or after They broke into the TDV system you built?
+
+
+... and i know that this may cost me dearly: to me you'll allways be
+Cpt Sigholm, a hero who tried your best but was being played by higher
+powers
+
