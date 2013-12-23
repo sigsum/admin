@@ -1,5 +1,4 @@
 # ~/.ratpoisonrc
-#definekey top C-M-l exec xlock
 definekey top C-M-l exec ~/bin/xlock.sh
 definekey top C-M-x exec xterm
 definekey top C-M-u exec ~/bin/keyboardmap.sh se
