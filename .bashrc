@@ -66,6 +66,7 @@ alias ext='sockstat -46'
 #alias ext='netstat -n --inet --inet6 | egrep ESTABLISH'
 alias grep='grep -E'
 alias ls='ls -F'
+alias pond='$GOPATH/bin/client -cli=true -state-file=$HOME/tstick/.config/pond'
 alias pwd="pwd | sed s,^$HOME,~,"
 alias screenshot='xwd | xwdtopnm | pnmtopng'
 #alias ssh-agent='ssh-agent -s | grep -v ^echo | tee ~/ssh-agent.sh; . ~/ssh-agent.sh'
