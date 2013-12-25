@@ -104,7 +104,7 @@
 ;; Posting styles
 ;; Use (signature-file "~/.signature") for whole file.
 (setq gnus-posting-styles
-      '((".*" (organization nil) ;("^nnimap\\+adb-centralen" (organization nil)
+      '((".*" (organization nil) ;("^nnimap\\+adbc" (organization nil)
 	 ("From" "Linus Nordberg <linus@nordberg.se>")
 	 (eval
 	  (setq smtpmail-smtp-server "smtp.nordberg.se"
