@@ -10,20 +10,27 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
    - . shadow #111 closed
-   - . shadow #114 closed
+   - X shadow #114 closed
+   - - shadow #114 decided lost case and reported as such
    - - tflows collecting data
    - - tor prop 220 reviewed
    - - first list of "public ledger" research and development
 ** IETF
    - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09.
 ** Sysadm
+   - . tails with basic stuff in persistant storage
+     - emacs
+     - gnus
+     - golang
+     - xmpp-client, tested!
+     - pond, tested!
+   - - travel stick generated (using aes-xts-plain64)
+     - merge passphrase-travel into passphrase10 and copy from the
+       latter into a fresh version of the former
    - - temporary pgp key created and signed
-   - - tails with basic stuff in persistant storage
-     - emacs gnus golang xmpp-client pond
-   - - travel stick generated
 ** DFRI
 ** Misc
-   - - clean desk!
+   - o clean desk!
 * Soon (within a month)
 ** Dev
    - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
