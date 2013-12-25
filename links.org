@@ -1,3 +1,5 @@
+readme snowden people:moglen http://snowdenandthefuture.info/
+bt censorship http://www.newstatesman.com/politics/2013/12/camerons-internet-filter-goes-far-beyond-porn-and-was-always-plan
 quotes people:abbey http://www.abbeyweb.net/quotes.htx
 tor ml lists https://trac.torproject.org/projects/tor/wiki/doc/emailLists
 rsa nsa http://www.reuters.com/article/2013/12/20/us-usa-security-rsa-idUSBRE9BJ1C220131220
