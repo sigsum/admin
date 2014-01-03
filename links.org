@@ -1,3 +1,37 @@
+dos freebsd http://silverwraith.com/papers/freebsd-ddos.php
+nsa https://en.wikipedia.org/wiki/Global_surveillance_disclosure
+bochs emulator https://defuse.ca/bochs-hacking-guide.htm
+readme nsa qfire http://www.spiegel.de/fotostrecke/qfire-die-vorwaertsverteidigng-der-nsa-fotostrecke-105358.html
+nsa http://www.spiegel.de/fotostrecke/nsa-dokumente-so-uebernimmt-der-geheimdienst-fremde-rechner-fotostrecke-105329-2.html
+people:jake 30c3 slides http://cryptome.org/2013/12/appelbaum-30c3.pdf
+30c3 video https://media.ccc.de/browse/congress/2013/
+nsa ant catalogue https://en.wikipedia.org/wiki/NSA_ANT_catalog
+nsa ant catalogue https://leaksource.wordpress.com/2013/12/30/nsas-ant-division-catalog-of-exploits-for-nearly-every-major-software-hardware-firmware/
+rouge-ca security rpki ssl tls ca http://www.win.tue.nl/hashclash/rogue-ca/
+readme ietf uta https://www.networkworld.com/news/2013/121713-mass-surveillance-prompts-ietf-work-277009.html
+snowden times http://www.nytimes.com/2014/01/02/opinion/edward-snowden-whistle-blower.html
+readme bildt http://snelhest.janssons.org/2014/01/vi-inleder-2014-med-mera-nysprak.html
+readme nsa http://www.techworld.com.au/article/535016/security_industry_found_its_dream_enemy_2013_--_new_technical_challenges_too/
+nsa http://cryptome.org/2014/01/nsa-codenames.htm
+snowden http://www.nytimes.com/2014/01/02/opinion/edward-snowden-whistle-blower.html
+readme nsa people:ggreenwald http://www.democracynow.org/2013/12/30/glenn_greenwald_the_nsa_can_literally 
+linux hw https://www.olimex.com/
+linux hw https://www.olimex.com/
+nsa 30c3 nsa:ant nsa:deitybounce nsa:arkstream nsa:godsurge nsa:bluxbabbitt nsa:ironchef nsa:wagonbeld http://cryptome.org/2013/12/nsa-ant-server.pdf
+readme nsa spiegel 30c3 http://www.spiegel.de/international/world/a-941262.html
+jake 30c3 https://www.youtube.com/watch?v=b0w36GAyZIA
+readme nsa http://www.spiegel.de/international/world/catalog-reveals-nsa-has-back-doors-for-numerous-devices-a-940994.html 
+readme nsa http://www.theguardian.com/world/2013/dec/29/der-spiegel-nsa-hacking-unit-tao
+readme eu http://www.copywrongs.eu/
+30c3 ccc video https://events.ccc.de/congress/2013/wiki/Static:Documentation
+30c3 ccc video https://events.ccc.de/congress/2013/wiki/Streams
+readme nsa tao snowden http://www.spiegel.de/international/world/the-nsa-uses-powerful-toolbox-in-effort-to-spy-on-global-networks-a-940969.html
+tor bug dns https://trac.torproject.org/projects/tor/ticket/4734
+tor https://media.torproject.org/video/30C3_-_5423_-_en_-_saal_1_-_201312272030_-_the_tor_network_-_jacob_-_arma_concat_.mp4
+gsm phone people:karstennohl http://gsmmap.org/
+tor torservers status https://enn.lu/status/
+tails https://labs.riseup.net/code/projects/tails/issues?set_filter=1&tracker_id=1
+tweet:dfri_se dld http://www.svd.se/opinion/brannpunkt/datalagringsdirektivet-maste-rivas-upp_8851124.svd
 readme snowden people:moglen http://snowdenandthefuture.info/
 bt censorship http://www.newstatesman.com/politics/2013/12/camerons-internet-filter-goes-far-beyond-porn-and-was-always-plan
 quotes people:abbey http://www.abbeyweb.net/quotes.htx
