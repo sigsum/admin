@@ -18,21 +18,23 @@ Legend                                                (emacs -*-org-*- mode)
 ** IETF
    - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09.
 ** Sysadm
-   - . tails with basic stuff in persistant storage
+   - o tails with basic stuff in persistant storage
      - emacs
      - gnus
      - golang
      - xmpp-client, tested!
      - pond, tested!
-   - - travel stick generated (using aes-xts-plain64)
+   - o travel stick generated (using aes-xts-plain64)
      - merge passphrase-travel into passphrase10 and copy from the
        latter into a fresh version of the former
-   - - temporary pgp key created and signed
+   - X temporary pgp key created and signed
 ** DFRI
 ** Misc
    - o clean desk!
 * Soon (within a month)
 ** Dev
+   - - have tor-gencert take a command line argument for expiration time,
+       and change the default to 6 months
    - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
    - - ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
    - - radsecproxy seeding PRNG properly
@@ -46,12 +48,12 @@ Legend                                                (emacs -*-org-*- mode)
    - - libradsec example server replying to a radius message
    - - libradsec python binding embryo commited
    - - 2 pmacct crashes reproduced and reported
-   . #4847 -- relays w/o ipv4 or port
-   . investigate libevent dns test failures on freebsd
+   - . #4847 -- relays w/o ipv4 or port
+   - . investigate libevent dns test failures on freebsd
      o why are jails different from non jails?
        o there's no i/f with 127.0.0.1 -- how does that affect things?
      - is it the tests only or is tor affected too?
-   . write test cases for voting on "a" lines
+   - . write test cases for voting on "a" lines
    - - read 210-faster-headless-consensus-bootstrap.txt
    - - read and comment on #6414 from an IPv6 perspective
    - - bridge stats for clients still borken in 0.2.4.4? hivia doesn't
