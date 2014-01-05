@@ -219,7 +219,9 @@ Legend                                                (emacs -*-org-*- mode)
 - Feb 15-22, Reykyavik?, Tor winter dev
 - Mar 02-07, London, IETF89
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
+? May 11-17, Warsaw, RIPE68
 - Jun 28-06, Paris, Tor summer dev
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
+? Aug 19-23, San Diego, USENIX Security
 - Nov 07-16, Honolulu, IETF91
