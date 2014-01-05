@@ -1,3 +1,14 @@
+crypto howto list practical https://bettercrypto.org/static/applied-crypto-hardening.pdf
+sweden transparency http://www.dn.se/nyheter/sverige/identitetsstolder-utmanar-den-svenska-modellen/
+ripe fees https://www.ripe.net/lir-services/member-support/become-a-member/membership-fees
+tor https://trac.torproject.org/projects/tor/wiki/org/meetings/2014WinterDevMeeting
+readme 30c3 annie http://t.co/wdFtaA7SjR
+readme surveillance http://www.academicsagainstsurveillance.net/
+readme isp dfri video http://media.ccc.de/browse/congress/2013/30C3_-_5391_-_en_-_saal_6_-_201312291130_-_y_u_no_isp_taking_back_the_net_-_taziden.html
+readme isp dfri http://www.ffdn.org/en/article/2014-01-03/federating-do-it-yourself-isps-around-world
+nsa list https://mailman.stanford.edu/pipermail/liberationtech/2014-January/012498.html
+surveillance swedish http://www.dn.se/nyheter/nyheter-hem/emanuel-karlsten-om-fra-pastar-att-de-foljer-lagen-sa-ar-allt-ok
+readme formal-languages http://homotopytypetheory.org/book/
 dos freebsd http://silverwraith.com/papers/freebsd-ddos.php
 nsa https://en.wikipedia.org/wiki/Global_surveillance_disclosure
 bochs emulator https://defuse.ca/bochs-hacking-guide.htm
@@ -31,7 +42,7 @@ tor https://media.torproject.org/video/30C3_-_5423_-_en_-_saal_1_-_201312272030_
 gsm phone people:karstennohl http://gsmmap.org/
 tor torservers status https://enn.lu/status/
 tails https://labs.riseup.net/code/projects/tails/issues?set_filter=1&tracker_id=1
-tweet:dfri_se dld http://www.svd.se/opinion/brannpunkt/datalagringsdirektivet-maste-rivas-upp_8851124.svd
+dld sweden http://www.svd.se/opinion/brannpunkt/datalagringsdirektivet-maste-rivas-upp_8851124.svd
 readme snowden people:moglen http://snowdenandthefuture.info/
 bt censorship http://www.newstatesman.com/politics/2013/12/camerons-internet-filter-goes-far-beyond-porn-and-was-always-plan
 quotes people:abbey http://www.abbeyweb.net/quotes.htx
@@ -147,7 +158,6 @@ malware pwnage police fbi http://www.washingtonpost.com/business/technology/fbis
 readme http://www.foreignaffairs.com/articles/140155/henry-farrell-and-martha-finnemore/the-end-of-hypocrisy
 X11 http://wayland.freedesktop.org/
 tails 0.22 tbb webrtc vulnerability bug https://github.com/freedomofpress/securedrop/issues/196
-readme crypto https://bettercrypto.org/static/applied-crypto-hardening.pdf
 crypto group https://bettercrypto.org/
 cloud privacy dataprot http://www.hldataprotection.com/files/2013/05/A-Sober-Look-at-National-Security-Access-to-Data-in-the-Cloud.pdf
 ireland privacy dataprot http://www.edri.org/edrigram/number11.1/irish-eu-council-presidency-privacy
