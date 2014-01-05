@@ -10,27 +10,15 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
    - . shadow #111 closed
-   - X shadow #114 closed
    - - shadow #114 decided lost case and reported as such
    - - tflows collecting data
    - - tor prop 220 reviewed
-   - - first list of "public ledger" research and development
+   - X first list of "public ledger" research and development
 ** IETF
-   - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09.
 ** Sysadm
-   - o tails with basic stuff in persistant storage
-     - emacs
-     - gnus
-     - golang
-     - xmpp-client, tested!
-     - pond, tested!
-   - o travel stick generated (using aes-xts-plain64)
-     - merge passphrase-travel into passphrase10 and copy from the
-       latter into a fresh version of the former
-   - X temporary pgp key created and signed
 ** DFRI
+   - setup flashproxy at dfri.se
 ** Misc
-   - o clean desk!
 * Soon (within a month)
 ** Dev
    - - have tor-gencert take a command line argument for expiration time,
@@ -143,19 +131,13 @@ Legend                                                (emacs -*-org-*- mode)
    - mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
    - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
-   o reinstall debian 6.0 aka "squeeze" on T410s or replacement
-     o make "meta" work in shell
-     o move files from forty711 -- including ~dfrinoc/
-     o get wireless going
-     o set up basic iptables
-     o get ff running in a VM
 ** DFRI
    - - abuse handling policy written
    - - leap.se running in a linux vm
    - - leap.se running in a freebsd jail
    - - flashproxy on www.dfri.se (4)
    - - exit relay policy updated w/o old netblock and w/ ipv6 restrictions (1)
-   - D email policy written
+   - - email policy written
    - - the Czeck C&D letter submitted to chillingeffects.org
    - - DNSSEC
    - - read and comment on http://rys.io/en/94.txt
@@ -165,6 +147,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - read draft-laurie-pki-sunlight-07.txt
    o - reply to james "crypto & youth"
 ** IETF
+   - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09.
    - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
    - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
@@ -197,7 +180,6 @@ Legend                                                (emacs -*-org-*- mode)
    - investigate the possibility for peering with AS22822
      (LLNW/limelight), providing routing for cogent (->cymru->tpo)
 ** DFRI
-   - setup flashproxy at dfri.se
 * Travel
 2013
 - Feb 07-08, Kastrup, ndn all hands
