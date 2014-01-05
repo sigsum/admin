@@ -504,7 +504,6 @@
 2013-7-16 11:30 Lunch Ola Bini Ki Mama
 %%(diary-block 29 8 2013 30 8 2013) All hands NDN (09:00-16:00)
 2013-7-17 11:30 Lunch JN @ Hötorget, med switch
-%%(diary-block 16 7 2014 18 7 2014) PETS 2014, Amsterdam
 2013-8-19 Fyll på DFRI-telefonen
 %%(diary-block 25 11 2013 26 11 2013) Internetdagarna
 2013-9-30 Freedom not Fear, Brussels
@@ -552,12 +551,11 @@
 %%(diary-block 27 12 2013 30 12 2013) 30C3
 2013-10-25 11:30-15:00 ndn dev
 2013-12-12 19:30 ndn julbord @ http://www.jarntorgspumpen.se
-%%(diary-block 19 5 2014 22 5 2014) TERENA, Dublin
 2013-10-25 Lämna barn på tåg, 15:14
 2013-12-4 18:30 DFRI Kista?
 2013-10-29 15:00 Cryptoparty i konsthall C
 2013-10-27 http://www.ogaora.se/2013/09/26/boka-in-sondagen-27-oktober-pa-armemuseum/
-%%(diary-block 13 1 2014 15 1 2014) https://realworldcrypto.wordpress.com/
+%%(diary-block 2014 01 13 2014 01 15) https://realworldcrypto.wordpress.com/
 2013-11-22 09:00-12:00 http://www.opensourcesweden.se/2929
 2013-10-24 17:30-19:00 http://adbj.se/wordpress/events/vem-overvakar-storebror-ett-seminarium-om-myndigheten-som-ska-sakerstalla-integritetsskyddet-vid-fras-signalspaning
 2013-10-25 18:00 Täby
@@ -574,7 +572,6 @@
 2013-12-31 13:50-15:20 HAM-ARN
 2013-11-21 Tor-kurs, SIDC Karlskrona
 &%%(diary-cyclic 7 2013 11 08) 13:00-14:00 NORDUnet weekly
-%%(diary-block 2013 10 29 2013 11 03) 
 2013-11-21 18:00-21:00 Cryptoparty 2013 I
 2013-11-28 18:00-21:00 Cryptoparty 2013 II
 2013-12-05 18:00-21:00 Cryptoparty 2013 III
@@ -622,13 +619,12 @@
 2013-12-27 15:00 https://events.ccc.de/congress/2013/wiki/Session:Tor_Relay_Operators_Meetup
 2013-12-12 11:30 http://fores.se/seminarie/vem-har-din-data-seminarium-1212/
 2013-12-28 15:00 DFRI
-%%(diary-block 2014 02 17 2014 02 22) [prel] tor winter dev
-2014-01-06 Book Hilton London Metropole for march 2-7
+%%(diary-block 2014 02 16 2014 02 22) [prel] tor winter dev
+2014-01-07 Book Hilton London Metropole for march 2-7
 2014-02-06 All hands
 2014-09-24 TechWorld/IDG "Next Generation Threats" (Espionage, surveillance and the art of protecting your VIP:s)
 2014-01-21 [lärka] piano startar
 2014-01-21 [juni] gitarr startar
-2014-01-29 13:00 PGP keysigning party, email timhaga@ebene6.org with public key
 2013-12-17 16:30 Julklappshandling
 %%(diary-block 2014 03 26 2014 03 28) European AFS and Kerberos Conference @ CERN
 2013-12-19 11:30 Bosse @ Koreana
@@ -642,3 +638,10 @@
 2014-01-08 ask mike to move to a 2048 bits key
 2014-01-05 follow up on adding geko to internal lists
 2014-01-09 11:30 cryptoparty mtg @ reggev hummus ringv
+&%%(diary-block 2014 01 17 2014 01 23) B
+%%(diary-block 2014 01 18 2014 01 19) Lilla Sara
+2014-01-06 Kalla till DFRI-möte
+%%(diary-block 2014 08 20 2014 08 22) USENIX Security, San Diego
+%%(diary-block 2014 05 12 2014 05 16) RIPE, Warsaw
+2014-01-06 10:00 invite geko
+%%(diary-block 2014 05 19 2014 05 22) TERENA, Dublin
