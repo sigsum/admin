@@ -11,14 +11,11 @@ Legend                                                (emacs -*-org-*- mode)
 ** Dev
    - . tor prop 220 reviewed
    - - shadow #111 closed
-   - o shadow #114 decided lost case and reported as such
-   - X first list of "public ledger" research and development
 ** IETF
    - - STRINT paper submitted [wed]
 ** Sysadm
    - - tflows collecting data
    - - pond server running
-   - o postfix @ brk (mail.adb-centralen.se) binds to its IPv6 addr too
 ** DFRI
    - - flashproxy running at dfri.se
 ** Misc
