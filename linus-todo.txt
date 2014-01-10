@@ -9,16 +9,24 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - . shadow #111 closed
-   - - shadow #114 decided lost case and reported as such
-   - - tflows collecting data
-   - - tor prop 220 reviewed
+   - . tor prop 220 reviewed
+   - - shadow #111 closed
+   - o shadow #114 decided lost case and reported as such
    - X first list of "public ledger" research and development
 ** IETF
+   - - STRINT paper submitted [wed]
 ** Sysadm
+   - - tflows collecting data
+   - - pond server running
+   - o postfix @ brk (mail.adb-centralen.se) binds to its IPv6 addr too
 ** DFRI
-   - setup flashproxy at dfri.se
+   - - flashproxy running at dfri.se
 ** Misc
+   - - Hilton London Metropole booked for march 2-7 (or from Apr 28, if STRINT)
+   - . sjmurdoch GN3+ proposal reused for GN4
+   - - FPGA toolchain presentation read and something posted to
+     cryptech about my discussions with bunnie
+     http://lekernel.net/fpga_toolchain_talk.pdf
 * Soon (within a month)
 ** Dev
    - - have tor-gencert take a command line argument for expiration time,
@@ -89,6 +97,8 @@ Legend                                                (emacs -*-org-*- mode)
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** Sysadm
+   - - get cacert.org certs for jabber, mail and web
+   - - SASL authn working in ERC http://www.emacswiki.org/emacs/ErcSASL
    - - HS for xmpp @ adb-centralen.se working
    - - dnssec for nordberg.se, adb-centralen.se
    - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
@@ -132,6 +142,8 @@ Legend                                                (emacs -*-org-*- mode)
      maybe /usr/local/etc/ too?
    - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 ** DFRI
+   - - old abuse submitted to chillingeffects
+   - - incoming abuse automatically submitted to chillingeffects
    - - abuse handling policy written
    - - leap.se running in a linux vm
    - - leap.se running in a freebsd jail
@@ -198,10 +210,13 @@ Legend                                                (emacs -*-org-*- mode)
 - Nov 21-21, Lund, SIDC http://www.luii.lu.se/education/sidc2013/
 - Dec 26-31, Hamburg, 30C3
 2014
-- Feb 15-22, Reykyavik?, Tor winter dev
+? Jan 31-02, Brussels, FOSDEM
+- Feb 06-07, Kastrup, ndn all hands
+- Feb 15-22, Reykyavik, Tor winter dev
+- Feb 28-01, London, STRINT
 - Mar 02-07, London, IETF89
-? Mar 25-28, Zurich, European AFS and Kerberos Conference
 ? May 11-17, Warsaw, RIPE68
+? Mar 25-28, Zurich, European AFS and Kerberos Conference
 - Jun 28-06, Paris, Tor summer dev
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
