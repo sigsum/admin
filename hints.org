@@ -1242,9 +1242,29 @@ sudo echo mem > /sys/power/state
 - DEVSCRIPTS(1) and [[file:/usr/share/doc/devscripts/README.gz::README%20for%20Debian%20devscripts%20package][README for Debian devscripts package]] for
   maintenance of existing packages
 - dh-make; $EDIT debian/control debian/rules
-- dpkg-buildpackage
-- debuild ?
+- dpkg-source --commit can be used to creat patches, but see also [[*using%20quilt%20for%20producing%20patches][using quilt for producing patches]]
+- dpkg-buildpackage runs a bunch of stuff including dpkg-source and
+  debian/rules targets resulting in .deb, .dsc, .debian.tar.gz,
+  .changes files
+- debuild runs dpkg-buildpackage, lintian and signs output
 
+*** using quilt for producing patches
+# From the maint-guide:
+sudo apt-get install quilt
+echo 'alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"' >> ~/.bashrc
+alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
+cat > ~/.quiltrc-dpkg << EOF
+d=. ; while [ ! -d $d/debian -a `readlink -e $d` != / ]; do d=$d/..; done
+if [ -d $d/debian ] && [ -z $QUILT_PATCHES ]; then
+    # if in Debian packaging tree with unset $QUILT_PATCHES
+    QUILT_PATCHES="debian/patches"
+    QUILT_PATCH_OPTS="--reject-format=unified"
+    QUILT_DIFF_ARGS="-p ab --no-timestamps --no-index --color=auto"
+    QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index"
+    QUILT_COLORS="diff_hdr=1;32:diff_add=1;34:diff_rem=1;31:diff_hunk=1;33:diff_ctx=35:diff_cctx=33"
+    if ! [ -d $d/debian/patches ]; then mkdir $d/debian/patches; fi
+fi
+EOF
 ** chosing which version of a package to install
 - debian releases as of <2013-12-02 Mon>: 
   - stable: wheezy, 7.2 2013-10-12 (7.0 2013-05-04)
@@ -32223,7 +32243,6 @@ streamdumps http://mirror.mag.lab.sh/pub/30c3-streamdump/
     war; if we could change [everything] and [start detecting stuff]
   - karsten: we'll always to mistakes and someone will find the bug
 
-
 * NSA ANT
 - link and program name collections
   - https://mailman.stanford.edu/pipermail/liberationtech/2014-January/012498.html
@@ -32239,3 +32258,7 @@ streamdumps http://mirror.mag.lab.sh/pub/30c3-streamdump/
   - wait for SYN/ACK (srv->cli)
   - send HTTP payload with URG/PSH/FIN/ACK set
 
+* video
+clive, libquvi -- uses curl to download video from youtube and more,
+supposedly parsing flash (unclear to me how dangerous it is to run on
+data from teh internets)
