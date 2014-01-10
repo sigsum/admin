@@ -1,12 +1,51 @@
+readme http20 encryption http://www.mnot.net/blog/2014/01/04/strengthening_http_a_personal_view
+ff flashproxy https://addons.mozilla.org/en-US/firefox/addon/tor-flashproxy-badge/
+firefox tls settings http://blog.dbrgn.ch/2014/1/8/improving_firefox_ssl_tls_security/
+tor signing https://people.torproject.org/~linus/sign2048.html
+internet scanning https://scans.io/
+internet scanning https://scans.io/study/sonar.cio
+hackingteam http://surveillance.rsf.org/en/hacking-team/
+readme hackingteam http://www.theverge.com/2013/9/13/4723610/meet-hacking-team-the-company-that-helps-police-hack-into-computers
+readme security backdoor lawfulintercept https://www.blackhat.com/presentations/bh-dc-10/Cross_Tom/BlackHat-DC-2010-Cross-Attacking-LawfulI-Intercept-wp.pdf
+omniquad http://cryptome.org/2013/12/omniquad-exposes.htm
+swedish gov sidd diplomacy http://www.regeringen.se/sb/d/18323/a/231599
+ietf strint privacy workshop https://www.w3.org/2014/strint/
+readme ecc people:agl https://www.imperialviolet.org/2010/12/04/ecc.html
+crypto service tls https://www.howsmyssl.com/
+readme tor memory attack http://www-users.cs.umn.edu/~jansen/papers/sniper-ndss2014.pdf
+vuln security search-engine https://en.wikipedia.org/wiki/Shodan_%28website%29
+asus swedish soho open https://www.idg.se/2.1085/1.541298/svenskars-routrar-vidoppna-mot-natet
+readme web security https://en.wikipedia.org/wiki/Web_bug
+debian packaging http://www.debian.org/doc/manuals/developers-reference/index.en.html
+readme people:amelia people:anakata it-law https://ameliaandersdotter.eu/2014/01/07/so-about-anakata-and-freedom
+webcomics porn http://oglaf.com/obituator/
+nsa google fb article prism snowden people:stevenlevy http://www.wired.com/threatlevel/2014/01/how-the-us-almost-killed-the-internet/all/?utm_content=buffer2d8fc&utm_source=buffer&utm_medium=twitter&utm_campaign=Buffer
+pp fra http://www.dn.se/nyheter/sverige/pirater-signalspanade-pa-fra/
+kpmg dfri-abuse http://www.prnewswire.com/news-releases/kpmg-completes-acquisition-of-data-and-analytics-company-link-analytics-238855591.html
+fpga toolchain https://github.com/Wolfgang-Spraul/fpgatools
+fpga http://milkymist.org/
+fpga toolchain http://lekernel.net/fpga_toolchain_talk.pdf
+fbi leak 1971 http://www.nytimes.com/2014/01/07/us/burglars-who-took-on-fbi-abandon-shadows.html?_r=0
+tor criticism swedish stupid http://cornucopia.cornubot.se/2014/01/amerikanska-och-svenska-staten.html
+networking fiber FTTH http://www.ftthcouncil.eu/resources
+nsa fra swedish people:engstrom https://christianengstrom.wordpress.com/2014/01/06/den-stora-storyn-nsas-bakdorrar-som-underminerar-sakerheten-pa-internet/
+acta letter people:linus http://www.apitv.com/newsletter-cepi.html
+obama spying funny pic http://crazyhyena.com/imagebank/g/funny-obama-tells-a-kid-the-truth-about-his-father.jpg
+freebsd disk encryption https://www.dan.me.uk/blog/2012/05/05/full-disk-encryption-in-freebsd-9-x-well-almost/
+surveillance sweden https://www.idg.se/2.1085/1.540970/att-avlyssna-eller-inte-avlyssna-det-ar-inte-ens-en-fraga
+crypto sidechannel people:molnar people:wheeler http://www.cs.berkeley.edu/~daw/papers/pcmodel-long.pdf
+nsa people:russhousley ietf http://www.heise.de/netze/meldung/Internet-Engineering-Task-Force-bekommt-neue-Fuehrungsriege-160240.html
+nsa people:russhousley ietf https://www.networkworld.com/news/2007/073007-ietf-qa.html
+nsa people:russhousley ietf http://www.centr.org/system/files/agenda/attachment/centr-report-ietf86-20130325.pdf
+nsa people:russhousley ietf iab http://www.centr.org/system/files/share/centr-report-ietf87-20130812_0.pdf
 crypto howto list practical https://bettercrypto.org/static/applied-crypto-hardening.pdf
 sweden transparency http://www.dn.se/nyheter/sverige/identitetsstolder-utmanar-den-svenska-modellen/
 ripe fees https://www.ripe.net/lir-services/member-support/become-a-member/membership-fees
 tor https://trac.torproject.org/projects/tor/wiki/org/meetings/2014WinterDevMeeting
-readme 30c3 annie http://t.co/wdFtaA7SjR
 readme surveillance http://www.academicsagainstsurveillance.net/
 readme isp dfri video http://media.ccc.de/browse/congress/2013/30C3_-_5391_-_en_-_saal_6_-_201312291130_-_y_u_no_isp_taking_back_the_net_-_taziden.html
 readme isp dfri http://www.ffdn.org/en/article/2014-01-03/federating-do-it-yourself-isps-around-world
-nsa list https://mailman.stanford.edu/pipermail/liberationtech/2014-January/012498.html
+nsa ant list people:jake https://mailman.stanford.edu/pipermail/liberationtech/2014-January/012498.html
 surveillance swedish http://www.dn.se/nyheter/nyheter-hem/emanuel-karlsten-om-fra-pastar-att-de-foljer-lagen-sa-ar-allt-ok
 readme formal-languages http://homotopytypetheory.org/book/
 dos freebsd http://silverwraith.com/papers/freebsd-ddos.php
@@ -312,12 +351,9 @@ people:loureed sweden https://www.youtube.com/watch?v=Fhmf4eNdnCg
 fra http://www.svd.se/nyheter/inrikes/fra-chefen-forsvarar-spionsamarbetet_8715340.svd
 fra http://www.nyteknik.se/nyheter/it_telekom/allmant/article3786224.ece
 fra http://www.dn.se/nyheter/sverige/vi-delar-med-oss-av-obearbetat-material/
-nsa people:russhousley http://www.heise.de/netze/meldung/Internet-Engineering-Task-Force-bekommt-neue-Fuehrungsriege-160240.html
 funny pic tired cat http://i.imgur.com/16Ryt.gif
 php security http://php.net/archive/2013.php#id2013-10-24-2
 skruffy pic http://i.imgur.com/EyJa36r.jpg?1
-nsa people:russhousley https://www.networkworld.com/news/2007/073007-ietf-qa.html
-nsa people:russhousley http://www.centr.org/system/files/agenda/attachment/centr-report-ietf86-20130325.pdf
 acta http://acta.ffii.org/?p=1956
 redme badbios https://threatpost.com/dragos-ruiu-on-the-badbios-saga/102823
 mafialeaks globaleaks tor http://mashable.com/2013/11/07/mafialeaks/
@@ -2099,7 +2135,7 @@ http://www.robtex.com/ routing
 http://dev.c-base.org/emacs-otr/emacs-otr emacs otr
 http://www.svd.se/nyheter/utrikes/kolumn-ola-wong-svd-1-svdse_6746503.svd people:wong china swedish censorship
 http://www.dn.se/nyheter/emanuel-karlsten-fra-uppgorelsen-ar-en-skymf-mot-alla-som-gett-sitt-liv-for-frih fra swedish sweden
-http://www.nyteknik.se/nyheter/it_telekom/internet/article3123594.ece tor sida
+tor sida people:linus http://www.nyteknik.se/nyheter/it_telekom/internet/article3123594.ece
 https://www.iis.se/internet-for-alla/reportage/teknikreportage/hackare-intog-se tor people:linus 
 http://lambda-the-ultimate.org/node/4148
 https://www.youtube.com/watch?v=Rk0vpTGFr9Y people:meredith security
@@ -2108,7 +2144,7 @@ https://code.google.com/p/mediggo/ people:filiol
 https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorG#Phase1:December312011 tor ipv6
 http://events.ccc.de/congress/2011/Fahrplan/day_2011-12-27.en.html 28c3
 http://www.independent.co.uk/opinion/commentators/fisk/robert-fisk-bankers-are-the-dictators-of-the-west-6275084.html readme people:robertfisk
-tor ipv6 news http://www.h-online.com/open/news/item/Tor-experiments-with-IPv6-1397242.html
+tor ipv6 news people:linus http://www.h-online.com/open/news/item/Tor-experiments-with-IPv6-1397242.html
 http://www.urbanrail.net/eu/de/b/berlin-map.htm berlin map ubahn
 https://www.noisebridge.net/wiki/M.A.I.D maid security
 http://pastebin.com/YaDuReZ3 anonymous
