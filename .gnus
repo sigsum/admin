@@ -128,7 +128,14 @@
                      smtpmail-auth-supported '(plain login)
                      smtpmail-smtp-user "linus@nordu.net")
                (set (make-local-variable 'message-sendmail-envelope-from)
-                    "linus@nordu.net")))))
+                    "linus@nordu.net")))
+        ("dfri.abuse"
+	 ("From" "DFRI Abuse Team <abuse@dfri.net>")
+	 (eval
+	  (setq smtpmail-smtp-server "localhost"
+                smtpmail-smtp-service 10587
+                smtpmail-smtp-user "linus")
+	  (set (make-local-variable 'message-sendmail-envelope-from) "abuse@dfri.net")))))
 
 (setq message-send-mail-function 'smtpmail-send-it)
 
