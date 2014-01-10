@@ -193,22 +193,6 @@ Legend                                                (emacs -*-org-*- mode)
      (LLNW/limelight), providing routing for cogent (->cymru->tpo)
 ** DFRI
 * Travel
-2013
-- Feb 07-08, Kastrup, ndn all hands
-- Feb 12-13, Linköping, sec-heads
-- Mar 16-21, Boston, tor dev meeting
-- Mar 26-11, Hawaii, vacation
-? May 12-18, Dublin, RIPE 66
-- May 22-23, Stockholm, SIF 13
-? Jun 02-07, Maastricht, TERENA
-? Jul 08-14, Bloomington Indiana USA, PETS
-- Jul 21-28, Munich, tor dev
-- Jul 28-03, Berlin, IETF 87
-- Aug 29-30, Kastrup, ndn all hands
-- Sep 28-02, Berlin, Circumvention Tech Summit IV http://openitp.org/openitp/circumvention-tech-summit.html
-- Nov 01-10, Vancouver, IETF 88
-- Nov 21-21, Lund, SIDC http://www.luii.lu.se/education/sidc2013/
-- Dec 26-31, Hamburg, 30C3
 2014
 ? Jan 31-02, Brussels, FOSDEM
 - Feb 06-07, Kastrup, ndn all hands
