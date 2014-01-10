@@ -1,3 +1,4 @@
+machine localhost login linus port 10587 password ohL0gime
 machine imap.nordberg.se login linus password ohL0gime
 machine smtp.nordberg.se login linus port 587 password ohL0gime
 machine imap.adb-centralen.se login linus password ohL0gime
