@@ -1,13 +1,11 @@
-Curriculum Vitae           Linus Nordberg                   2008-11-05
+Curriculum Vitae           Linus Nordberg                   2014-01-12
 ----------------
 
 Name:           Linus Nordberg       Nationality:  Swedish
-Age:            39                   Location:     Stockholm
+Age:            44                   Location:     Stockholm
 
 Education:      High school diploma in Engineering
 
-Address:        Kungstensgatan 59, SE-113 29 STOCKHOLM
-Phone:          +46 8 658 35 59, +46 707 69 4711
 E-mail:         linus@nordberg.se
 
 
@@ -15,28 +13,30 @@ Skills Summary
 --------------
 
 Software:       Strong C, C++ and Python programming and design skills.
-		Experienced in Java programming.  Good understanding of
+		Experienced in Java programming. Good understanding of
 		dynamic and functional languages such as Erlang and
 		various Lisps.
 
                 Thorough knowledge in network programming and network
-                protocol dissection and design.  Good understanding of
+                protocol dissection and design. Good understanding of
                 IP, Ethernet, DTM and LonWorks (LonTalk protocol).
+
+                FIXME: [tor stuff]
 
 		Experienced in general kernel development as well as
 		device driver programming for the Linux kernel.
 
-                Strong host- and network security skills.  Good
+                Strong host- and network security skills. Good
                 understanding of security fundamentals as well as
                 specific security mechanisms and standards, such as
-                Kerberos, SSL, X509 certificates.
+                Kerberos, TLS, X509.
 
                 Good knowledge of the internals of the GNU toolchain
                 including assembler, linker and debugger.
 
                 Experienced in UNIX system administration (FreeBSD,
-                OpenBSD, Linux, NetBSD, Solaris).  Thorough knowledge
-                in running Internet software such as DNS, firewall,
+                OpenBSD, Linux, NetBSD, Solaris). Thorough knowledge
+                in running internet software such as DNS, firewall,
                 email, web and ftp services with high security
                 demands.
 
@@ -56,10 +56,15 @@ Hardware:	IBM PC, IBM POWER3, Motorola PPC 860, ARM, ARClite
 Experience
 ----------
 
+NORDUnet        Software Engineer
+--------
+May 09 -        FIXME
+Present
+
 Net Insight	Software Engineer
 -----------
 July 05 -	Development of DTM related software on embedded	platforms,
-Present        	system software as well as protocol oriented software.
+May 09        	system software as well as protocol oriented software.
 		Design and development of system simulation software.
 		Development of application and device drivers for
      		Ethernet tunneling over DTM.
@@ -76,7 +81,7 @@ June 05		Linux, implemented as a network driver with its own
 		database environment.
 		Test and development of embedded system for remote
 		meter reading, for the ARClite microRISC core.
-		System administration, FreeBSD and Linux.  Security
+		System administration, FreeBSD and Linux. Security
 		strengthening project including deployment of
 		centralized logging and system monitoring.
 
@@ -84,17 +89,17 @@ e2 Home         Software Engineer
 -------
 November 00 -   Conceptual design of smarthome networked services.
 December 02     Development of networked home appliances based on
-                LonWorks.  Low level communication programming.
+                LonWorks. Low level communication programming.
                 Configuration management in a highly heterogeneous
-                software development environment.  Load-testing and
+                software development environment. Load-testing and
                 performance optimization of distributed J2EE-based
-                applications.  System administration with high demands
+                applications. System administration with high demands
                 on system security and user integrity.
 
 Swox            Software Engineer
 ----
 February 98 -   Working with the GNU Toolchain; compiler, assembler,
-September 00    linker, debugger.  Porting to new hardware platforms,
+September 00    linker, debugger. Porting to new hardware platforms,
                 both CPU's for embedded systems and large CPU's.
 
 Incolumitas     Security Consultant
@@ -105,7 +110,7 @@ February 98     installation and verification, course leader.
 SEB Data        Software Engineer
 --------
 November 93 -   Member of the Architecture & Technique group at SEB
-January 97      (former S-E-Banken).  Planning and implementing
+January 97      (former S-E-Banken). Planning and implementing
                 infrastructure for banking applications, most notably
                 "Internetkontoret" (banking on Internet).
 
