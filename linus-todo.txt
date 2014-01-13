@@ -19,6 +19,8 @@ Legend                                                (emacs -*-org-*- mode)
 ** DFRI
    - - flashproxy running at dfri.se
 ** Misc
+   - - ndn all hands registered at https://e-lomake.fi/lomakkeet/3542/lomake.html
+   - - sri and geko connected re DDC
    - - Hilton London Metropole booked for march 2-7 (or from Apr 28, if STRINT)
    - . sjmurdoch GN3+ proposal reused for GN4
    - - FPGA toolchain presentation read and something posted to
@@ -161,6 +163,12 @@ Legend                                                (emacs -*-org-*- mode)
    - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
+     draft-hallambaker-prismproof-trust-00.txt
+     draft-hallambaker-prismproof-dep-00.txt
+     draft-hallambaker-prismproof-key-00.txt
+     draft-hallambaker-prismproof-req-00.txt
+   - - draft-huitema-perpass-trafficanalysis-00.txt
+   - - draft-farrell-perpass-attack-03.txt
    - - lopez RADIUS fragment draft reviewed for abfab (2)
    - - goals for IETF involvement sent to Josva (1)
    - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
@@ -196,8 +204,8 @@ Legend                                                (emacs -*-org-*- mode)
 - Feb 15-22, Reykyavik, Tor winter dev
 - Feb 28-01, London, STRINT
 - Mar 02-07, London, IETF89
-? May 11-17, Warsaw, RIPE68
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
+? May 11-17, Warsaw, RIPE68
 - Jun 28-06, Paris, Tor summer dev
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
