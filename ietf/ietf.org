@@ -1791,3 +1791,72 @@ Internet-Draft          Perfect Passive Adversary         September 2013
 
 
 Trammell                 Expires March 08, 2014                 [Page 7]
+* STRINT 2014 position papers
+https://www.w3.org/2014/strint/
+** Public logs
+*** Summary
+Trusting data that's been delivered over an insecure network has never
+been a good idea. We've known this for a long time but didn't care
+that much. Recently published documentation of large scale attacks on
+the infrastructure we call the internet has made more people aware of
+this fact.
+
+In parallel with making the use of computer networks more secure we
+should make it more expensive to trick users into using [fake
+data]. One way of doing this is to increase the chance for detection
+of someone feeding a user something else than what she was asking for.
+
+Examples of data that is commonly fetched over insecure networks to be
+used for securing future communication include computer programs,
+public cryptographic keys and [Tor network maps]. If the trust roots
+being used for verifying this data is compromised, an attacker can
+feed the user its own variant of the data and elevate its control over
+the user.
+
+Given the existence of public append-only logs, users could submit
+their view of critical data that they care about. Users that care
+about the authenticity of certain data downloaded over insecure
+networks can use these logs to make a more informed decision on
+whether the data they've been handed is what everybody else sees or if
+they're being fed something else.
+
+[TODO: add note on the type of data it can be used for, i.e. maybe not
+HTML code delivered to a browser. only slowly changing data or data
+changing under strict control? in cooperation with the publisher of
+data only?  we want protection against lying or pwned publisher.]
+
+*** Types of attacks
+In the case of computer programs verified with checksums, one attack
+is to change the checksum files at the point of distribution,
+typically a web server. Another is redirecting the user to an
+alternative web site for downloading both the binaries and the
+checksums.
+
+Public keys are being downloaded in several applications, X.509
+certificates for web browsing, PGP keys for encrypted email and OTR
+keys for encrypted chat being prominent use cases. Certificate
+Transparency [RFC6962] deals with the "lying CA problem" while there's
+yet to be seen initiatives for increasing the chance of detecting
+false PGP and OTR keys being handed to end users.
+
+Regarding Tor consensuses, being able to detect attempts to feed Tor
+users a fake network map would be valuable as an indication of
+compromised authority keys. The attack here would be to get hold of a
+copy of a majority of the authority identity or signing keys and sign
+a fake consensus listing relays that are under the control of the
+attacker.
+
+*** Possible solutions
+Examples of logs that could be used for this include Certificate
+Transparency (RFC6962) and the Bitcoin chains.
+
+Example usage:
+1. x509 certificate chains [CT]
+2. tor consensuses
+3. program binaries
+4. pgp keys
+5. otr keys
+
+** Running tor exits
+[TODO: running tor exits is easy -- set up an organisation, download
+tor and off you go]
