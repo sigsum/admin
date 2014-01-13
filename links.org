@@ -1,6 +1,25 @@
+twitter-like p2p microblog http://twister.net.co/
+swepol anonymity mp http://www.riksdagen.se/sv/Dokument-Lagar/Forslag/Motioner/Digitala-rattigheter_H102N441/?text=true#_Toc371936084
+readme swepol integrity mp http://www.riksdagen.se/sv/Dokument-Lagar/Forslag/Motioner/Digitala-rattigheter_H102N441/?text=true
+swepol mp integrity http://www.mp.se/politik/internet-och-integritet
+tor js http://www.peersm.com/
+tor js https://github.com/Ayms/node-Tor
+tls ssl client testing tool https://github.com/iSECPartners/tlspretense
+gsm a5/1 crypto history https://www.aftenposten.no/nyheter/uriks/Sources-We-were-pressured-to-weaken-the-mobile-security-in-the-80s-7413285.html
+tor java jtor orchid https://github.com/subgraph/Orchid
+us tech it lea fbi saic http://www.corpwatch.org/section.php?id=17
+us tech it lea fbi saic http://www.bizjournals.com/washington/blog/fedbiz_daily/2013/09/the-saic-split-is-done-leidos-ceo.html
+tor hs freedomhosting fbi https://krebsonsecurity.com/2013/08/firefox-zero-day-used-in-child-porn-hunt/
+tor exit law https://blog.torproject.org/blog/start-tor-legal-support-directory
+snowden swedish http://dagens.etc.se/analys/snowden-avslojar-maktens-metoder
+funny nsa http://www.theatlantic.com/politics/archive/2014/01/a-defense-of-chris-christie-courtesy-of-the-nsa/282971/
+tor metrics dirauth https://consensus-health.torproject.org/
+security privacy list https://blog.ageispolis.net/security-privacy-tools/
+readme video people:moglen people:schneier http://www.youtube.com/watch?v=N8Sc6pUR1mA
+funny drugs cocain http://www.svd.se/kultur/jan-malmsjo-jag-vill-prova-kokain_8855926.svd
 readme http20 encryption http://www.mnot.net/blog/2014/01/04/strengthening_http_a_personal_view
 ff flashproxy https://addons.mozilla.org/en-US/firefox/addon/tor-flashproxy-badge/
-firefox tls settings http://blog.dbrgn.ch/2014/1/8/improving_firefox_ssl_tls_security/
+ff firefox tls settings http://blog.dbrgn.ch/2014/1/8/improving_firefox_ssl_tls_security/
 tor signing https://people.torproject.org/~linus/sign2048.html
 internet scanning https://scans.io/
 internet scanning https://scans.io/study/sonar.cio
@@ -417,7 +436,7 @@ surveillance bildt http://www.corren.se/sverige/bildt-far-mothugg-pa-twitter-om-
 readme surveillance bildt https://carlbildt.wordpress.com/2013/11/03/fragor-och-svar-om-s-k-avlyssning/
 crypto http://competitions.cr.yp.to/caesar.html
 readme crypto enisa eu https://www.enisa.europa.eu/activities/identity-and-trust/library/deliverables/algorithms-key-sizes-and-parameters-report/at_download/fullReport
-ecc djb http://safecurves.cr.yp.to/
+readme ecc people:djb crypto http://safecurves.cr.yp.to/
 sweden china security http://www.svt.se/nyheter/sverige/kina-huvudmisstankt-for-hacker-attack-mot-regeringskansliet
 tor crime https://www.informationweek.com/security/attacks/dutch-banking-malware-gang-busted-bitcoi/240163193
 security vuln http://www.gnutls.org/security.html#GNUTLS-SA-2013-3GNUTLS-SA-2013-3
@@ -1236,7 +1255,6 @@ sweden intergrity saml eleg http://www.xml.se/
 sweden intergrity saml eleg http://www.newsmill.se/artikel/2012/04/24/ny-standard-f-r-e-leg-hotar-integriteten
 nginx src http://hg.nginx.org/nginx/
 funny pic moped https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-ash3/164915_395407900577742_671721899_n.jpg
-tor metrics dirauth https://metrics.torproject.org/consensus-health.html#downloadstats
 tool sysadmin https://github.com/joeyh/etckeeper
 dfri routing he http://bgp.he.net/AS198093 
 eu tor http://parltrack.euwiki.org/dossier/2012/0340%28COD%29
@@ -1592,7 +1610,6 @@ paranoia funny tinfoil hat http://berkeley.intel-research.net/arahimi/helmet/
 hs eu commission http://w32fb6kci5dg35bl.onion/
 https://bitbureauet.dk/
 book network tcp/ip internet http://books.google.se/books/about/Computer_networks.html?id=eftSAAAAMAAJ&redir_esc=y
-tails tor ipv6 https://tails.boum.org/todo/really_block_ipv6/
 tor voice https://guardianproject.info/2012/12/10/voice-over-tor/
 tor exit http://svn.noreply.org/svn/weaselutils/trunk/tor-exit-ssl-check
 tor statusnet hs http://lotjbov3gzzf23hc.onion/
