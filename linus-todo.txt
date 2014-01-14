@@ -19,9 +19,13 @@ Legend                                                (emacs -*-org-*- mode)
 ** DFRI
    - - flashproxy running at dfri.se
 ** Misc
+   - - feedback sent on "spoiled onions" [thu]
+   - - anna +46 706 35 65 87
+   - - steven poked about [[gnus:nnimap%2Badbc:INBOX.sent-mail.2014-01#878uuoyt9p.fsf@nordberg.se][Email to Steven Murdoch: Re: GEANT application for "ove]]
    - - ndn all hands registered at https://e-lomake.fi/lomakkeet/3542/lomake.html
    - - sri and geko connected re DDC
-   - - Hilton London Metropole booked for march 2-7 (or from Apr 28, if STRINT)
+   - o Hilton London Metropole booked for march 2-7 (or from feb 28, if STRINT)
+   - - flight booked ARN-london feb 28 morning / mar 7 evening
    - . sjmurdoch GN3+ proposal reused for GN4
    - - FPGA toolchain presentation read and something posted to
      cryptech about my discussions with bunnie
@@ -201,7 +205,7 @@ Legend                                                (emacs -*-org-*- mode)
 2014
 ? Jan 31-02, Brussels, FOSDEM
 - Feb 06-07, Kastrup, ndn all hands
-- Feb 15-22, Reykyavik, Tor winter dev
+- Feb 16-22, Reykyavik, Tor winter dev
 - Feb 28-01, London, STRINT
 - Mar 02-07, London, IETF89
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
