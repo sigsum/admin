@@ -1,3 +1,16 @@
+tweet:dfri_se swedish nsa http://www.sydsvenskan.se/kultur--nojen/i-gliporna-blir-allt-synligt/
+readme dfri http://www.change.org/surveillance
+netclean http://wikileaks.org/wiki/Removed_paper_on_Internet_censorship_trails_in_Australia,_NZ,_UK_with_NetClean_Whitebox,_2009
+readme it-security sweden swedish https://www.regeringen.se/content/1/c6/22/96/48/19e6f557.pdf
+leak swedish it-security people:hakkarainen https://mrpoyz.wordpress.com/2014/01/13/lackerbjudande/
+readme http://youbroketheinternet.org/
+readme openhw video https://cdn.media.ccc.de/congress/2013/mp4/30c3-5459-en-de-Security_of_the_IC_Backside_h264-hq.mp4
+readme openhw video https://cdn.media.ccc.de/congress/2013/mp4/30c3-5337-de-en-Kryptographie_nach_Snowden_h264-hq.mp4
+readme openhw video https://cdn.media.ccc.de/congress/2013/mp4/30c3-5459-en-de-Security_of_the_IC_Backside_h264-hq.mp4
+readme openhw video https://cdn.media.ccc.de/congress/2013/mp4/30c3-5502-de-en-Zwischen_supersicherer_Verschluesselung_und_Klartext_liegt_nur_ein_falsches_Bit__h264-hq.mp4
+readme bunnie openlaptop hw http://makezine.com/magazine/building-an-open-source-laptop/
+strint https://people.torproject.org/~linus/volatile/strint2014publogs2.html
+bitcoin sweden http://www.bitcoinforeningen.se/
 twitter-like p2p microblog http://twister.net.co/
 swepol anonymity mp http://www.riksdagen.se/sv/Dokument-Lagar/Forslag/Motioner/Digitala-rattigheter_H102N441/?text=true#_Toc371936084
 readme swepol integrity mp http://www.riksdagen.se/sv/Dokument-Lagar/Forslag/Motioner/Digitala-rattigheter_H102N441/?text=true
