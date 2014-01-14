@@ -354,6 +354,7 @@
  '(gnus-gcc-externalize-attachments (quote all))
  '(gnus-group-posting-charset-alist (quote ((message-this-is-mail nil nil) (message-this-is-news nil t))))
  '(gnus-group-use-permanent-levels 2)
+ '(gnus-inhibit-images t)
  '(gnus-keep-same-level (quote best))
  '(gnus-play-startup-jingle t)
  '(gnus-select-article-hook (quote (gnus-agent-fetch-selected-article)))
