@@ -615,13 +615,11 @@
 2014-03-12 18:30 [prel] DFRI årsmöte
 2014-03-18 18:30 [prel] DFRI årsmöte
 %%(diary-block 2014 03 10 2014 03 11) cryptech
-&%%(diary-block 2013 12 31 2014 01 09) B
 2013-12-27 15:00 https://events.ccc.de/congress/2013/wiki/Session:Tor_Relay_Operators_Meetup
 2013-12-12 11:30 http://fores.se/seminarie/vem-har-din-data-seminarium-1212/
 2013-12-28 15:00 DFRI
-%%(diary-block 2014 02 16 2014 02 22) [prel] tor winter dev
+%%(diary-block 2014 02 17 2014 02 21) [prel] tor winter dev
 2014-01-10 Book Hilton London Metropole for march 2-7 (or from Apr 28, if STRINT)
-2014-02-06 All hands
 2014-09-24 TechWorld/IDG "Next Generation Threats" (Espionage, surveillance and the art of protecting your VIP:s)
 2014-01-21 [lärka] piano startar
 2014-01-21 [juni] gitarr startar
@@ -638,7 +636,6 @@
 2014-01-09 22:00 ask mike to move to a 2048 bits key
 2014-01-05 follow up on adding geko to internal lists
 2014-01-09 11:30 cryptoparty mtg @ reggev hummus ringv
-&%%(diary-block 2014 01 17 2014 01 23) B
 %%(diary-block 2014 01 18 2014 01 19) Lilla Sara
 2014-01-06 Kalla till DFRI-möte
 %%(diary-block 2014 08 20 2014 08 22) USENIX Security, San Diego
@@ -655,14 +652,26 @@
 2014-02-18 18:00 SNAXX 0x1d http://snaxx.se/29/
 2014-01-13 12:00-17:30 Pawal
 2014-01-10 12:30 Lunch Koreana
-&%%(diary-block 2014 01 31 2014 02 06) B
-&%%(diary-block 2014 02 14 2014 02 20) B
-&%%(diary-block 2014 02 28 2014 03 06) B
-&%%(diary-block 2014 03 14 2014 03 20) B
-&%%(diary-block 2014 03 28 2014 04 03) B
-&%%(diary-block 2014 04 11 2014 04 17) B
-&%%(diary-block 2014 04 25 2014 05 01) B
-&%%(diary-block 2014 05 09 2014 05 15) B
-&%%(diary-block 2014 05 23 2014 05 29) B
-2014-02-03 Moonshot meeting
+&%%(diary-block 2013 12 31 2014 01 09) B
+&%%(diary-block 2014 01 17 2014 01 27) B
+&%%(diary-block 2014 02 07 2014 02 13) B
+&%%(diary-block 2014 02 21 2014 02 27) B
+&%%(diary-block 2014 03 07 2014 03 13) B
+&%%(diary-block 2014 03 21 2014 03 27) B
+&%%(diary-block 2014 04 04 2014 04 10) B
+&%%(diary-block 2014 04 18 2014 05 24) B
+&%%(diary-block 2014 05 02 2014 05 08) B
+&%%(diary-block 2014 05 16 2014 05 22) B
+&%%(diary-block 2014 05 30 2014 06 05) B
+&%%(diary-block 2014 06 13 2014 06 19) B
+&%%(diary-block 2014 06 27 2014 07 03) B
+2014-02-03 15:00-19:00 Moonshot meeting
 &%%(diary-block 2014 01 20 2014 01 24) Vasa Real åhörarvecka
+2014-01-13 10:00-12:00 GN4 brainstorm VC
+2014-01-23 10:00-12:00 GN4 discussion VC
+2014-01-14 09:00 130.225.192.103
+2014-01-16 12:00 Johan non solo
+2014-01-27 report moonshot vc participation Rina.Samani@JA.NET
+2014-03-09 Årsmöte BTC-föreningen
+%%(diary-block 2014 02 06 2014 02 07) All hands KAS
+2014-01-23 12:00 EDRi call @ mumble mumble.netzfreiheit.org:64738

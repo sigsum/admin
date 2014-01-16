@@ -21,15 +21,16 @@ Legend                                                (emacs -*-org-*- mode)
 ** Misc
    - - feedback sent on "spoiled onions" [thu]
    - - anna +46 706 35 65 87
-   - - steven poked about [[gnus:nnimap%2Badbc:INBOX.sent-mail.2014-01#878uuoyt9p.fsf@nordberg.se][Email to Steven Murdoch: Re: GEANT application for "ove]]
    - - ndn all hands registered at https://e-lomake.fi/lomakkeet/3542/lomake.html
    - - sri and geko connected re DDC
    - o Hilton London Metropole booked for march 2-7 (or from feb 28, if STRINT)
    - - flight booked ARN-london feb 28 morning / mar 7 evening
    - . sjmurdoch GN3+ proposal reused for GN4
+     - steven poked about [[gnus:nnimap%2Badbc:INBOX.sent-mail.2014-01#878uuoyt9p.fsf@nordberg.se][Email to Steven Murdoch: Re: GEANT application for "ove]]
    - - FPGA toolchain presentation read and something posted to
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
+   - - toolchain commitment posted
 * Soon (within a month)
 ** Dev
    - - have tor-gencert take a command line argument for expiration time,
