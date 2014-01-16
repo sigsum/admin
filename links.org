@@ -1,4 +1,32 @@
-tweet:dfri_se swedish nsa http://www.sydsvenskan.se/kultur--nojen/i-gliporna-blir-allt-synligt/
+bitcoin pgp http://lists.gnupg.org/pipermail/gnupg-devel/2014-January/028147.html
+nymble http://cgi.soic.indiana.edu/~kapadia/nymble/
+linkability research paper http://www.math.tau.ac.il/~fiat/newpaps/fc04.pdf
+linkability research paper http://freehaven.net/anonbib/cache/steinbrecher:pet2003.pdf
+nymble bnymble anonymity pseudonymity privacy people:iangoldberg http://www.cacr.math.uwaterloo.ca/techreports/2010/cacr2010-05.pdf
+nymble anonymity pseudonymity privacy http://freehaven.net/anonbib/cache/bnymble11.pdf
+nymble anonymity pseudonymity privacy http://freehaven.net/anonbib/cache/nymble-tdsc.pdf
+nymble anonymity pseudonymity privacy http://freehaven.net/anonbib/cache/wpes10-jack.pdf
+https://freehaven.net/anonbib
+privacy linkability ietf strint http://datatracker.ietf.org/doc/draft-johansson-linkability-bad/
+kitten https://www.ietf.org/proceedings/88/minutes/minutes-88-kitten
+pfs https://www.eff.org/deeplinks/2013/08/pushing-perfect-forward-secrecy-important-web-privacy-protection
+readme software-update security http://theupdateframework.github.io/
+readme snowden swedish whistleblowing people:lennartlundquist http://www.svd.se/opinion/brannpunkt/sveket-som-drabbar-oss-alla_8352458.svd
+politics book people:norberg https://www.fundedbyme.com/en-us/campaign/3057/slutet-ar-nara-och-en-ny-borjan/#.UtZoexadW7I
+ccc people:merrill http://media.ccc.de/browse/congress/2010/27c3-4263-en-resisting_excessive_government_surveillance.html
+readme digitalhumanrights privacy poor http://prospect.org/article/want-predict-future-surveillance-ask-poor-communities
+ant quantum nsa http://www.welivesecurity.com/2014/01/15/secret-radio-technology-allowed-nsa-to-spy-on-pcs-disconnected-from-the-internet/
+ant quantum nsa http://rt.com/usa/nsa-radio-wave-cyberattack-607/
+swedish law spy see:chapter5 http://www.riksdagen.se/sv/Dokument-Lagar/Utredningar/Statens-offentliga-utredningar/Spioneri-och-annan-olovlig-und_H0B395/?html=true
+nsa ant swedish http://www.svd.se/nyheter/utrikes/mjukvara-fran-nsa-i-100-000-datorer_8895668.svd
+map stockholm http://www.stockholm.se/-/Karta/
+radme nsa http://www.nrc.nl/nieuws/2013/11/23/nsa-infected-50000-computer-networks-with-malicious-software/
+readme stuxnet nsa http://www.nytimes.com/2012/06/01/world/middleeast/obama-ordered-wave-of-cyberattacks-against-iran.html
+nsa ant airgap surveillance hw http://www.nytimes.com/2014/01/15/us/nsa-effort-pries-open-computers-not-connected-to-internet.html
+tor winter dev https://trac.torproject.org/projects/tor/wiki/org/meetings/2014WinterDevMeeting
+readme anonymity people:danezis people:ekasper https://research.google.com/pubs/archive/39961.pdf
+avpixlat expressen http://www.expressen.se/debatt/overtramp-att-hanga-ut-anonyma-skribenter/
+swedish nsa http://www.sydsvenskan.se/kultur--nojen/i-gliporna-blir-allt-synligt/
 readme dfri http://www.change.org/surveillance
 netclean http://wikileaks.org/wiki/Removed_paper_on_Internet_censorship_trails_in_Australia,_NZ,_UK_with_NetClean_Whitebox,_2009
 readme it-security sweden swedish https://www.regeringen.se/content/1/c6/22/96/48/19e6f557.pdf
@@ -73,7 +101,6 @@ nsa people:russhousley ietf iab http://www.centr.org/system/files/share/centr-re
 crypto howto list practical https://bettercrypto.org/static/applied-crypto-hardening.pdf
 sweden transparency http://www.dn.se/nyheter/sverige/identitetsstolder-utmanar-den-svenska-modellen/
 ripe fees https://www.ripe.net/lir-services/member-support/become-a-member/membership-fees
-tor https://trac.torproject.org/projects/tor/wiki/org/meetings/2014WinterDevMeeting
 readme surveillance http://www.academicsagainstsurveillance.net/
 readme isp dfri video http://media.ccc.de/browse/congress/2013/30C3_-_5391_-_en_-_saal_6_-_201312291130_-_y_u_no_isp_taking_back_the_net_-_taziden.html
 readme isp dfri http://www.ffdn.org/en/article/2014-01-03/federating-do-it-yourself-isps-around-world
@@ -1085,7 +1112,6 @@ midsummer 2013 bergsbo http://doodle.com/8viu6mqv79pnf5qf
 vpn ssh https://github.com/apenwarr/sshuttle
 eu usa prism eudatap people:joe http://edri.org/files/20130618_kennard_letter.pdf
 book gocrypto http://leanpub.com/dashboard?a=2mh05l4n
-ccc people:merrill http://mirror.fem-net.de/CCC/27C3/mp4-h264-HQ/27c3-4263-en-resisting_excessive_government_surveillance.mp4
 people:schneier whistleblowing nsa spying http://www.theatlantic.com/politics/archive/2013/06/what-we-dont-know-about-spying-on-citizens-scarier-than-what-we-know/276607/
 readme spy nsa sw security http://www.bloomberg.com/news/2013-06-14/u-s-agencies-said-to-swap-data-with-thousands-of-firms.html
 prism https://mailman.stanford.edu/pipermail/liberationtech/2013-June/008815.html
