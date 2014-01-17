@@ -11,43 +11,42 @@ Legend                                                (emacs -*-org-*- mode)
 ** Dev
    - . tor prop 220 reviewed
    - - shadow #111 closed
+   - - ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
 ** IETF
-   - - STRINT paper submitted [wed]
+   - - STRINT paper submitted [mon]
 ** Sysadm
    - - tflows collecting data
    - - pond server running
 ** DFRI
    - - flashproxy running at dfri.se
 ** Misc
-   - - feedback sent on "spoiled onions" [thu]
-   - - anna +46 706 35 65 87
-   - - ndn all hands registered at https://e-lomake.fi/lomakkeet/3542/lomake.html
-   - - sri and geko connected re DDC
+   - o feedback sent on "spoiled onions" [thu]
+   - o anna +46 706 35 65 87
+   - o ndn all hands registered at https://e-lomake.fi/lomakkeet/3542/lomake.html
+   - . sri and geko connected re DDC
    - o Hilton London Metropole booked for march 2-7 (or from feb 28, if STRINT)
    - - flight booked ARN-london feb 28 morning / mar 7 evening
    - . sjmurdoch GN3+ proposal reused for GN4
-     - steven poked about [[gnus:nnimap%2Badbc:INBOX.sent-mail.2014-01#878uuoyt9p.fsf@nordberg.se][Email to Steven Murdoch: Re: GEANT application for "ove]]
+     o steven poked about [[gnus:nnimap%2Badbc:INBOX.sent-mail.2014-01#878uuoyt9p.fsf@nordberg.se][Email to Steven Murdoch: Re: GEANT application for "ove]]
    - - FPGA toolchain presentation read and something posted to
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
-   - - toolchain commitment posted
+   - o toolchain commitment posted
 * Soon (within a month)
 ** Dev
-   - - have tor-gencert take a command line argument for expiration time,
+   - - CT design paper
+   - - libradsec: add server failover
+   - X have tor-gencert take a command line argument for expiration time,
        and change the default to 6 months
    - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
-   - - ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
-   - - radsecproxy seeding PRNG properly
+   - - radsecproxy seeding PRNG properly (like libradsec)
    - - post to tor-dev@: paul wouters dnssec related drafts grokked and put into
        context of dnssec in tor
        [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
    - - tor #6027 moved forward some
-   - - CT design paper
    - - #9663 reviewed
    - - #8897 reviewed
-   - - libradsec example server replying to a radius message
-   - - libradsec python binding embryo commited
-   - - 2 pmacct crashes reproduced and reported
+   - X 2 pmacct crashes reproduced and reported
    - . #4847 -- relays w/o ipv4 or port
    - . investigate libevent dns test failures on freebsd
      o why are jails different from non jails?
@@ -181,25 +180,27 @@ Legend                                                (emacs -*-org-*- mode)
    - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
 * Eventually
 ** Dev
-   - build tlsdate on *BSD
-   - libradsec: add server failover
-   - libradsec: think about ephemeral keys
+   - - libradsec example server replying to a radius message
+   - - libradsec python binding embryo commited
+   - - build tlsdate on *BSD
 ** Misc
-   - describe tor HS as a comparison with "dino's LISP extensions"
-   - set up selinux (file:///usr/share/doc/debian-handbook/html/sect.selinux.html)
+   - - describe tor HS as a comparison with "dino's LISP extensions"
+   - - set up selinux (file:///usr/share/doc/debian-handbook/html/sect.selinux.html)
      - contain xmpp-client
      - contain tbb
-   - ask for my "log list" from swedish health care
-   - investigate the idea with selling a "tld zone escrow service";
+   - - ask for my "log list" from swedish health care
+   - - ask for DRD data on me from my providers (phone, internet, minicall)
+   - - investigate the idea with selling a "tld zone escrow service";
      find the ICANN requirements
-   - contact Jens Orback, Palmecentret re DFRI
-   - read "Shining light in dark places" and "LASTor"
-   - email kelly with music
+   - - contact Jens Orback, Palmecentret re DFRI
+   - - contact Maciej Zaremba re the surveillance state
+   - - read "Shining light in dark places" and "LASTor"
+   - X email kelly with music
 ** Sysadm
-   - try out fail2ban
-   - find out whether to shut down gv99c or not
-   - install textsecure on the phone
-   - investigate the possibility for peering with AS22822
+   - - try out fail2ban
+   - - find out whether to shut down gv99c or not
+   - X install textsecure on the phone
+   - - investigate the possibility for peering with AS22822
      (LLNW/limelight), providing routing for cogent (->cymru->tpo)
 ** DFRI
 * Travel
