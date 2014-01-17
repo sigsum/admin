@@ -20,24 +20,17 @@ Legend                                                (emacs -*-org-*- mode)
 ** DFRI
    - - flashproxy running at dfri.se
 ** Misc
-   - o feedback sent on "spoiled onions" [thu]
-   - o anna +46 706 35 65 87
-   - o ndn all hands registered at https://e-lomake.fi/lomakkeet/3542/lomake.html
    - . sri and geko connected re DDC
-   - o Hilton London Metropole booked for march 2-7 (or from feb 28, if STRINT)
    - - flight booked ARN-london feb 28 morning / mar 7 evening
    - . sjmurdoch GN3+ proposal reused for GN4
      o steven poked about [[gnus:nnimap%2Badbc:INBOX.sent-mail.2014-01#878uuoyt9p.fsf@nordberg.se][Email to Steven Murdoch: Re: GEANT application for "ove]]
    - - FPGA toolchain presentation read and something posted to
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
-   - o toolchain commitment posted
 * Soon (within a month)
 ** Dev
    - - CT design paper
    - - libradsec: add server failover
-   - X have tor-gencert take a command line argument for expiration time,
-       and change the default to 6 months
    - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
    - - radsecproxy seeding PRNG properly (like libradsec)
    - - post to tor-dev@: paul wouters dnssec related drafts grokked and put into
@@ -46,7 +39,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - tor #6027 moved forward some
    - - #9663 reviewed
    - - #8897 reviewed
-   - X 2 pmacct crashes reproduced and reported
    - . #4847 -- relays w/o ipv4 or port
    - . investigate libevent dns test failures on freebsd
      o why are jails different from non jails?
@@ -55,18 +47,18 @@ Legend                                                (emacs -*-org-*- mode)
    - . write test cases for voting on "a" lines
    - - read 210-faster-headless-consensus-bootstrap.txt
    - - read and comment on #6414 from an IPv6 perspective
-   - - bridge stats for clients still borken in 0.2.4.4? hivia doesn't
+   - X bridge stats for clients still borken in 0.2.4.4? hivia doesn't
      seem to still have empty "bridge-ips"
    - - comment on prop 208, read prop 205
    - - investigate schlyters idea of client caching of dnssec query results;
      refs: 205-local-dnscache.txt, "Re: [tor-dev] DNS(SEC) draft update"
    - - #6027 and friends -- dir auths on ipv6
    - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
-   - - testing network bug? Jul 19 18:34:48.000 [warn] ISO time "1931-08-09 10:19:16" was nonsensical
-   - . set up torouter on an ipv6 addr at ndn
+   - X testing network bug? Jul 19 18:34:48.000 [warn] ISO time "1931-08-09 10:19:16" was nonsensical
+   - X set up torouter on an ipv6 addr at ndn
    - - write a proposal for the ASN tickets
 ** Misc
-   - - https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
+   - o https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
    - . broken SSD returned (1)
@@ -75,7 +67,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - kopia av bauer-tavlan, http://crimson.se/
    - - tahoe-lafs / tamias on tor HS investigated
    - - feedback to kyle on practical cryptography in go sent
-   - - tor AS awareness studied
+   - X tor AS awareness studied
    - - chime in on paul wouters "mta on localhost" idea?
      https://www.ietf.org/mail-archive/web/perpass/current/msg00022.html
    - - read up on andrews favourite ways of running a company
@@ -100,6 +92,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** Sysadm
+   - * automatic backup of mm; rsync with double-sshd from tight laptop?
    - - get cacert.org certs for jabber, mail and web
    - - SASL authn working in ERC http://www.emacswiki.org/emacs/ErcSASL
    - - HS for xmpp @ adb-centralen.se working
@@ -107,7 +100,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
    - - pkgsrc on siv upgraded, for libevent2 (2)
    - - tor on siv upgraded to 0.2.5 (1)
-   - * automatic backup of mm; rsync with double-sshd from tight laptop?
    - . move all services from banksy to mm -- ports don't seem to work well!
      . krb
        o install another kdc
@@ -129,7 +121,7 @@ Legend                                                (emacs -*-org-*- mode)
        ('relayhost' in postfix/main.cf); connects to mysql at lnspam
    - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt][otr-fp-in-dns draft]] read and tested
    - - document fbsd security tricks and publish
-   - dataless travel figured out
+   - - dataless travel figured out
      - carry x60 w/o any drive, no usb sticks or other storage
      - carry a yubikey
      - ssh on (fresh) HS (in fresh jail) with pw access using sha256
@@ -150,7 +142,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - abuse handling policy written
    - - leap.se running in a linux vm
    - - leap.se running in a freebsd jail
-   - - flashproxy on www.dfri.se (4)
    - - exit relay policy updated w/o old netblock and w/ ipv6 restrictions (1)
    - - email policy written
    - - the Czeck C&D letter submitted to chillingeffects.org
@@ -160,7 +151,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - read "Hemlig teleavlyssning, hemlig teleövervakning och hemlig kameraövervakning.pdf"
    - - update TorExitGuideLines with swedish details https://trac.torproject.org/projects/tor/wiki/doc/TorExitGuidelines
    - - read draft-laurie-pki-sunlight-07.txt
-   o - reply to james "crypto & youth"
+   - o reply to james "crypto & youth"
 ** IETF
    - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09.
    - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
@@ -195,11 +186,9 @@ Legend                                                (emacs -*-org-*- mode)
    - - contact Jens Orback, Palmecentret re DFRI
    - - contact Maciej Zaremba re the surveillance state
    - - read "Shining light in dark places" and "LASTor"
-   - X email kelly with music
 ** Sysadm
    - - try out fail2ban
    - - find out whether to shut down gv99c or not
-   - X install textsecure on the phone
    - - investigate the possibility for peering with AS22822
      (LLNW/limelight), providing routing for cogent (->cymru->tpo)
 ** DFRI
