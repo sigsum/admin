@@ -47,18 +47,13 @@ Legend                                                (emacs -*-org-*- mode)
    - . write test cases for voting on "a" lines
    - - read 210-faster-headless-consensus-bootstrap.txt
    - - read and comment on #6414 from an IPv6 perspective
-   - X bridge stats for clients still borken in 0.2.4.4? hivia doesn't
-     seem to still have empty "bridge-ips"
    - - comment on prop 208, read prop 205
    - - investigate schlyters idea of client caching of dnssec query results;
      refs: 205-local-dnscache.txt, "Re: [tor-dev] DNS(SEC) draft update"
    - - #6027 and friends -- dir auths on ipv6
    - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
-   - X testing network bug? Jul 19 18:34:48.000 [warn] ISO time "1931-08-09 10:19:16" was nonsensical
-   - X set up torouter on an ipv6 addr at ndn
    - - write a proposal for the ASN tickets
 ** Misc
-   - o https://people.torproject.org/~linus/ipv6-relay-howto.html updated for exits (2)
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
    - . broken SSD returned (1)
@@ -67,7 +62,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - kopia av bauer-tavlan, http://crimson.se/
    - - tahoe-lafs / tamias on tor HS investigated
    - - feedback to kyle on practical cryptography in go sent
-   - X tor AS awareness studied
    - - chime in on paul wouters "mta on localhost" idea?
      https://www.ietf.org/mail-archive/web/perpass/current/msg00022.html
    - - read up on andrews favourite ways of running a company
@@ -151,7 +145,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - read "Hemlig teleavlyssning, hemlig teleövervakning och hemlig kameraövervakning.pdf"
    - - update TorExitGuideLines with swedish details https://trac.torproject.org/projects/tor/wiki/doc/TorExitGuidelines
    - - read draft-laurie-pki-sunlight-07.txt
-   - o reply to james "crypto & youth"
 ** IETF
    - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09.
    - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
@@ -191,7 +184,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - find out whether to shut down gv99c or not
    - - investigate the possibility for peering with AS22822
      (LLNW/limelight), providing routing for cogent (->cymru->tpo)
-** DFRI
 * Travel
 2014
 ? Jan 31-02, Brussels, FOSDEM
