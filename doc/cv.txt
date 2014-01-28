@@ -1,4 +1,4 @@
-Curriculum Vitae           Linus Nordberg                   2014-01-12
+Curriculum Vitae           Linus Nordberg                   2014-01-28
 ----------------
 
 Name:           Linus Nordberg       Nationality:  Swedish
@@ -19,17 +19,25 @@ Software:       Strong C, C++ and Python programming and design skills.
 
                 Thorough knowledge in network programming and network
                 protocol dissection and design. Good understanding of
-                IP, Ethernet, DTM and LonWorks (LonTalk protocol).
+                IP, Ethernet and DTM.
 
-                FIXME: [tor stuff]
-
-		Experienced in general kernel development as well as
-		device driver programming for the Linux kernel.
+                Thorough knowledge in Onion Routing, specifically Tor.
+                Good understanding of the protocols and the
+                implementation as well as experience of operation of
+                the components of a Tor network. Skilled in privacy
+                analysis of internet services.
 
                 Strong host- and network security skills. Good
                 understanding of security fundamentals as well as
                 specific security mechanisms and standards, such as
-                Kerberos, TLS, X509.
+                Kerberos, SSL/TLS, X509, RADIUS/RadSec.
+
+                Experienced in routing packets on the internet, using
+                software based routers and Juniper equipment. Good
+                understanding of BGP and OSPF.
+
+		Experienced in kernel development, specifically device
+		driver programming for the Linux kernel.
 
                 Good knowledge of the internals of the GNU toolchain
                 including assembler, linker and debugger.
@@ -37,7 +45,7 @@ Software:       Strong C, C++ and Python programming and design skills.
                 Experienced in UNIX system administration (FreeBSD,
                 OpenBSD, Linux, NetBSD, Solaris). Thorough knowledge
                 in running internet software such as DNS, firewall,
-                email, web and ftp services with high security
+                email, web and XMPP services with high security
                 demands.
 
                 Experienced in CM issues; source code versioning and
@@ -46,8 +54,9 @@ Software:       Strong C, C++ and Python programming and design skills.
                 testing, release engineering, multiple software
                 package versions.
 
-                Also Scheme, PHP, awk, SQL, Win32, assembly (PPC,
-                68k/ColdFire, ARM) and git, cvs, make, gdb, emacs.
+                Also CL, Scheme, XML, JSON, GMP, Nettle, SQL, NoSQL,
+                Twisted, SOCKS, Win32, assembly (PPC, 68k/ColdFire,
+                ARM) and git, cvs, Auto* tools, make, gdb, Emacs.
 
 Hardware:	IBM PC, IBM POWER3, Motorola PPC 860, ARM, ARClite
 		microRISC core, embedded single board computers,
@@ -58,13 +67,24 @@ Experience
 
 NORDUnet        Software Engineer
 --------
-May 09 -        FIXME
-Present
+May 09 -        Development and maintenance of security software,
+Present         including Tor (adding support for IPv6), Kerberos
+                (OTP support in MIT Kerberos), radsecproxy (RADIUS
+                over TLS), libradsec (for Project Moonshot).
+
+                Development of a file sharing system with federated
+                identity management based on BitTorrent.
+
+Frobbit         Software Engineer Consultant
+-------
+Spring 09       Development of EPP (Extensible Provisioning Protocol)
+                software, using Twisted to relay between EPP servers (XML)
+                and administrative systems (JSON).
 
 Net Insight	Software Engineer
 -----------
 July 05 -	Development of DTM related software on embedded	platforms,
-May 09        	system software as well as protocol oriented software.
+April 09      	system software as well as protocol oriented software.
 		Design and development of system simulation software.
 		Development of application and device drivers for
      		Ethernet tunneling over DTM.
@@ -83,7 +103,7 @@ June 05		Linux, implemented as a network driver with its own
 		meter reading, for the ARClite microRISC core.
 		System administration, FreeBSD and Linux. Security
 		strengthening project including deployment of
-		centralized logging and system monitoring.
+		centralised logging and system monitoring.
 
 e2 Home         Software Engineer
 -------
@@ -92,7 +112,7 @@ December 02     Development of networked home appliances based on
                 LonWorks. Low level communication programming.
                 Configuration management in a highly heterogeneous
                 software development environment. Load-testing and
-                performance optimization of distributed J2EE-based
+                performance optimisation of distributed J2EE-based
                 applications. System administration with high demands
                 on system security and user integrity.
 
@@ -101,6 +121,7 @@ Swox            Software Engineer
 February 98 -   Working with the GNU Toolchain; compiler, assembler,
 September 00    linker, debugger. Porting to new hardware platforms,
                 both CPU's for embedded systems and large CPU's.
+                Auto* tools and PRNG for GMP.
 
 Incolumitas     Security Consultant
 -----------
@@ -117,7 +138,7 @@ January 97      (former S-E-Banken). Planning and implementing
 Branschdata     Programmer
 -----------
 1990 - 1992     Working with various computer/telephony systems such
-                as call center and voice messaging systems, mainly
+                as call centre and voice messaging systems, mainly
                 targeting middle sized PBX'es.
 
 Aso Gymnasium   Student
