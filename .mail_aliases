@@ -80,6 +80,8 @@ alias bas			bas.zoetekouw@SURFNET.NL
 alias benjamin                  "Benjamin Erhart <benjamin@tladesignz.de>"
 alias benn			benn.roos@stockholm.se
 alias bergroth			"Magnus Bergroth <bergroth@nordu.net>"
+alias bertil                    "Bertil Fanger <aum@pantarei-floating.com>"
+alias bertil.x60                bertil
 alias bg			"Björn Grönvall <bjorngx@gmail.com>"
 alias birgitta			birgitta@this.is
 alias birgitta.gmail		"Birgitta Jonsdottir <birgittajoy@gmail.com>"
@@ -113,10 +115,12 @@ alias christian.priv            "Christian Wirth <christian@wirth.se>"
 alias christian.tb              "Christian Wirth <christian@teknikbyran.se>"
 alias chulu                     "Henrik Chulu <chulu@frikultur.dk>"
 alias cissi			cissi@astrogator.se
+alias claudio                   claudio@shadowserver.org
 alias cryptoparty               cryptoparty@lists.dfri.se
 alias damian                    "Damian Johnson <atagar@torproject.org>"
 alias dan.frost                 "Dan Frost <frost@f-m.fm>"
-alias daniel                    "Daniel Melin <daniel@viskar.nu>"
+alias daniel.berlin             "Daniel Reusche <dan@degregat.net>"
+alias daniel.melin              "Daniel Melin <daniel@viskar.nu>"
 alias daniel.old                daniel@benissimo.se
 alias daniel.fulgubbe		"Daniel Melin <fulgubbe@gmail.com>"
 alias dan.rfa                   "Dan Meredith <meredithd@rfa.org>"
@@ -133,6 +137,7 @@ alias dfri-d                    dfri-dfri
 alias dfri-dfri                 dfri@dfri.se
 alias dfri-noc                  noc.dfri
 alias dfri-tech			dfri-noc, pawal
+alias dol                       "Василий Долматов <dol@reedcat.net>"
 alias dr			dr@4711.se
 alias duy                       duy@rhizoma.tk
 alias echo                      raphael.vinot@circl.lu
@@ -148,6 +153,7 @@ alias einar.scouterna           einar
 alias ekonomi                   ekonomi@dfri.se
 alias elisabeth			"Elisabeth Nilsson <elisabeth.nilsson@iis.se>"
 alias elof                      elof@sentor.se
+alias emma                      emmakarinsofia@gmail.com
 alias emilia                    "Emilia Kasper <ekasper@google.com>"
 alias emil.isberg               emil@pyttemjuk.se
 alias ep.broken			erikp@djingis.se
@@ -348,12 +354,14 @@ alias kupo                      kupo@damnfbi.tk
 alias kyle                      kyle@tyrfingr.is
 alias l1	 		l1@nordu.net
 alias lai	 		andreas@romab.com
+alias lange                     "Lars Lange Bjørn <longbear@nordu.net>"
 alias larka.b                   "Bungalou Moustache <samenbungalou@googlemail.com>"
 alias larka.gmail               youreonfiremr@gmail.com
 alias larka			larka@nordberg.se
 alias lars.eriksson             lars.eriksson@outlook.com
 alias lars.gitarr               lars.z
 alias lars.kleberg              "Lars Kleberg <lars.kleberg@sh.se>"
+alias lars.lange                lange
 alias lars.ndn			lars@nordu.net
 alias lars.w			lars.wastfelt@oktavilla.se
 alias lars.z                    lars.zettervall@stockholm.se
@@ -496,7 +504,7 @@ alias ola.kjellsson             "ola kjellsson <olakjellsson@gmail.com>"
 alias ola                       ola.bini.riseup
 alias olle.riksnet		olle.risberg
 alias olle.risberg		"Olle Risberg <olle@riksnet.se>"
-alias olof			olofh@kth.se
+alias olof.hagsand              olof@hagsand.se
 alias oscar                     oscar@bahnhof.se
 alias ot                        "Ot van Daalen <ot.vandaalen@bof.nl>"
 alias paf			patrik@frobbit.se
