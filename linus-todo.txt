@@ -9,27 +9,42 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
+   - - release libradsec-0.0.5
+   - - 5min libradsec summary for moonshot meeting (mon 15)
+     - roadmap
    - . tor prop 220 reviewed
-   - - shadow #111 closed
-   - - ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
+   - . ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
 ** IETF
-   - - STRINT paper submitted [mon]
+   - o STRINT paper submitted [mon]
 ** Sysadm
    - - tflows collecting data
    - - pond server running
 ** DFRI
+   - - membership handling outlined
+     - new file, not in git, mapping member number to email address
+   - o claudio article published [thu]
    - - flashproxy running at dfri.se
 ** Misc
-   - . sri and geko connected re DDC
+   - - strombergson and wolfgang connected, possibly by emailing a
+     list with wolfgang wisdom (run the email by peter before
+     posting!)
+   - - maybe sign http://europarl.me/open+letter+for+open+data+Welle
+   - - trip report for 30c3 uploaded
+   - - 2+2 slides on tflows and CT for josva [mon]
+   - X kelly emailed about hotel room
+   - o x60 guy emailed (bertil fanger, pantarei-floating.com)
+   - o ximin emailed about CT work
+   - . sra and geko connected re DDC
    - - flight booked ARN-london feb 28 morning / mar 7 evening
-   - . sjmurdoch GN3+ proposal reused for GN4
+   - o sjmurdoch GN3+ proposal reused for GN4
      o steven poked about [[gnus:nnimap%2Badbc:INBOX.sent-mail.2014-01#878uuoyt9p.fsf@nordberg.se][Email to Steven Murdoch: Re: GEANT application for "ove]]
    - - FPGA toolchain presentation read and something posted to
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
 * Soon (within a month)
 ** Dev
-   - - CT design paper
+   - - shadow #111 closed
+   - - CT design paper sent somewhere
    - - libradsec: add server failover
    - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
    - - radsecproxy seeding PRNG properly (like libradsec)
@@ -146,8 +161,10 @@ Legend                                                (emacs -*-org-*- mode)
    - - update TorExitGuideLines with swedish details https://trac.torproject.org/projects/tor/wiki/doc/TorExitGuidelines
    - - read draft-laurie-pki-sunlight-07.txt
 ** IETF
-   - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09.
+   - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09. (RFC5321)
    - . [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
+   - - draft-farrell-perpass-attack-03.txt
+   - - draft-huitema-perpass-trafficanalysis-00.txt
    - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-saintandre-xmpp-tls-01.txt]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-hallambaker-prismproof-req-00.txt][PRISM-Proof Security Considerations]] read (1)
@@ -155,13 +172,12 @@ Legend                                                (emacs -*-org-*- mode)
      draft-hallambaker-prismproof-dep-00.txt
      draft-hallambaker-prismproof-key-00.txt
      draft-hallambaker-prismproof-req-00.txt
-   - - draft-huitema-perpass-trafficanalysis-00.txt
-   - - draft-farrell-perpass-attack-03.txt
+   - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
    - - lopez RADIUS fragment draft reviewed for abfab (2)
    - - goals for IETF involvement sent to Josva (1)
    - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
    - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
-   - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
+   - - [[file:/u/ietf/internet-drafts/draft-cooper-ietf-privacy-requirements-01.txt]]
 * Eventually
 ** Dev
    - - libradsec example server replying to a radius message
@@ -189,10 +205,10 @@ Legend                                                (emacs -*-org-*- mode)
 ? Jan 31-02, Brussels, FOSDEM
 - Feb 06-07, Kastrup, ndn all hands
 - Feb 16-22, Reykyavik, Tor winter dev
-- Feb 28-01, London, STRINT
-- Mar 02-07, London, IETF89
+- Feb 28-07, London, STRINT+IETF89
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
 ? May 11-17, Warsaw, RIPE68
+? May 25-27, Moscow, ENOG7
 - Jun 28-06, Paris, Tor summer dev
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
