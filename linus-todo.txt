@@ -15,14 +15,12 @@ Legend                                                (emacs -*-org-*- mode)
    - . tor prop 220 reviewed
    - . ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
 ** IETF
-   - o STRINT paper submitted [mon]
 ** Sysadm
    - - tflows collecting data
    - - pond server running
 ** DFRI
    - - membership handling outlined
      - new file, not in git, mapping member number to email address
-   - o claudio article published [thu]
    - - flashproxy running at dfri.se
 ** Misc
    - - strombergson and wolfgang connected, possibly by emailing a
@@ -31,13 +29,8 @@ Legend                                                (emacs -*-org-*- mode)
    - - maybe sign http://europarl.me/open+letter+for+open+data+Welle
    - - trip report for 30c3 uploaded
    - - 2+2 slides on tflows and CT for josva [mon]
-   - X kelly emailed about hotel room
-   - o x60 guy emailed (bertil fanger, pantarei-floating.com)
-   - o ximin emailed about CT work
    - . sra and geko connected re DDC
    - - flight booked ARN-london feb 28 morning / mar 7 evening
-   - o sjmurdoch GN3+ proposal reused for GN4
-     o steven poked about [[gnus:nnimap%2Badbc:INBOX.sent-mail.2014-01#878uuoyt9p.fsf@nordberg.se][Email to Steven Murdoch: Re: GEANT application for "ove]]
    - - FPGA toolchain presentation read and something posted to
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
