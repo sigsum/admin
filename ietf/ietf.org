@@ -2201,6 +2201,28 @@ tokens.
 [18:54] hartmans> so section 5.4 of 7055
 [18:56] linus> excellent, thanks. i've got to run for now. ttyl.
 ---
+*** sam on what -00 needs <2014-02-05 Wed>
+- Description of problem:
+
+-- Privacy against passive observers
+
+--- IDP realm almost always exposed
+
+--- fingerprint of EAP implementation
+
+--- certs of IDP realm
+
+-- EAP exposed between the initiator and acceptor
+
+-- MIC, channel bindings and extensions subtokens exposed to passive
+   attackers
+
+- Solution: generate a DH key in initial phase; use to encrypt other
+  subtokens
+
+- Describe open issues.
+
+I think that's all we need in the 00 draft
 ** Step by step, successful authn
 - NAI (molgan@example.com): abfab client  ------> RP
 
