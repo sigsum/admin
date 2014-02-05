@@ -912,7 +912,7 @@ M-x debug-on-entry
 On debian <2013-10-26 Sat>.
 sudo apt-get install xorg-dev libjpeg8-dev libgif-dev libpng12-dev libtiff4-dev
 ./configure --prefix=$HOME/usr && make all install
-NOTE: cut'n'paste buffer doesn't allways play nicely
+NOTE: cut'n'paste buffer doesn't always play nicely
 ** rfcview
 curl -A '' -x socks4a://localhost:9050/ http://www.neilvandyke.org/rfcview/rfcview.el > ~/usr/share/emacs/site-lisp/rfcview.el
 ** jabber.el
