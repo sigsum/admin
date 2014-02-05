@@ -9,31 +9,29 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - - release libradsec-0.0.5
-   - - 5min libradsec summary for moonshot meeting (mon 15)
-     - roadmap
    - . tor prop 220 reviewed
-   - . ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
+   - o release libradsec-0.0.5
+   - o 5min libradsec summary for moonshot meeting (mon 15)
+   - o ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
 ** IETF
 ** Sysadm
-   - - tflows collecting data
-   - - pond server running
 ** DFRI
+   - - maybe sign the two accessnow things
    - - membership handling outlined
      - new file, not in git, mapping member number to email address
    - - flashproxy running at dfri.se
 ** Misc
-   - - strombergson and wolfgang connected, possibly by emailing a
+   - - flight booked ARN-london feb 28 morning / mar 7 evening
+   - - trip report for 30c3 uploaded
+   - . strombergson and wolfgang connected, possibly by emailing a
      list with wolfgang wisdom (run the email by peter before
      posting!)
    - - maybe sign http://europarl.me/open+letter+for+open+data+Welle
-   - - trip report for 30c3 uploaded
-   - - 2+2 slides on tflows and CT for josva [mon]
    - . sra and geko connected re DDC
-   - - flight booked ARN-london feb 28 morning / mar 7 evening
    - - FPGA toolchain presentation read and something posted to
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
+   - o 2+2 slides on tflows and CT for josva [mon]
 * Soon (within a month)
 ** Dev
    - - shadow #111 closed
@@ -93,7 +91,13 @@ Legend                                                (emacs -*-org-*- mode)
    - - read https://www.iis.se/docs/20120828-remissvar-trafikdatalagring-SE.pdf
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
+** IETF
+   - - [[file:/u/ietf/internet-drafts/draft-perez-radext-radius-fragmentation-06.txt][lopez RADIUS fragment draft]] reviewed for abfab (2)
+   - - https://tools.ietf.org/html/draft-hoffman-uta-opportunistic-tls-00 read
 ** Sysadm
+   - - pond server running
+   - - set up iodine somewhere (at modermodemet?) [pre iceland]
+   - - tflows collecting data
    - * automatic backup of mm; rsync with double-sshd from tight laptop?
    - - get cacert.org certs for jabber, mail and web
    - - SASL authn working in ERC http://www.emacswiki.org/emacs/ErcSASL
@@ -139,6 +143,10 @@ Legend                                                (emacs -*-org-*- mode)
      maybe /usr/local/etc/ too?
    - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 ** DFRI
+   - - publish key points from snowdens ndr interview
+     - http://www.ndr.de/ratgeber/netzwelt/snowden277.html
+     - http://www.cyberwarzone.com/ndr-interview-edward-snowden-english-video
+     - liveleak
    - - old abuse submitted to chillingeffects
    - - incoming abuse automatically submitted to chillingeffects
    - - abuse handling policy written
@@ -166,7 +174,6 @@ Legend                                                (emacs -*-org-*- mode)
      draft-hallambaker-prismproof-key-00.txt
      draft-hallambaker-prismproof-req-00.txt
    - - [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-01.txt][draft-trammell-perpass-ppa-01]] read (1)
-   - - lopez RADIUS fragment draft reviewed for abfab (2)
    - - goals for IETF involvement sent to Josva (1)
    - - [[file:~/Persistent/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt][draft-ietf-abfab-aaa-saml-08]] reviewed (8)
    - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
@@ -199,8 +206,11 @@ Legend                                                (emacs -*-org-*- mode)
 - Feb 06-07, Kastrup, ndn all hands
 - Feb 16-22, Reykyavik, Tor winter dev
 - Feb 28-07, London, STRINT+IETF89
+? Mar ??-??, Gothenburg, Töllborg (FRA) + GeKo + tokmartin + iljas vpn pal + fripost
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
+? Apr ??-??, Umeå, Markus Naarttijärvi
 ? May 11-17, Warsaw, RIPE68
+? May 18-23, Dublin, TNC2014
 ? May 25-27, Moscow, ENOG7
 - Jun 28-06, Paris, Tor summer dev
 - Jul 15-19, Amsterdam, PETS14
