@@ -97,6 +97,75 @@ S.
 > Thanks for any comments on this. They don't have to be too structured,
 > a quick comment from a veteran would be helpful.
 > 
+** Linkability
+*** [[gnus:nnimap%2Badbc:INBOX#CAKDKvuyi_XLuZGFyicNXXnwJmw8gqUdShaiOu%3DG%2BWqeojY8Dtg@mail.gmail.com][Email from Nick Mathewson: Re: W3C/IAB workshop on Streng]]
+I think that it handles authenticator linkability, but it doesn't
+think so much about protocol linkability issues.  Consider for example
+the gmt_unix_time issue in TLS, or the way in which TLS ciphersuites
+can make clients act differently, or the way that web fonts and other
+features make clients so distinguishable.
+
+It should also clarify that probabilistic linkability is still
+linkability.  For example, even things that aren't unique -- like
+clock skew and library versions and window sizes and font sets -- make
+user activity linkable. When we say "Transaction A is linked to
+transaction B", we don't mean "an adversary concludes with P=1 that A
+and B were performed by the same client" but rather "An adversary
+concludes that A and be were performed by the same client with P
+significantly greater than if A and B were two randomly chosen
+transactions."
+
+My most important point to make about linkability is that it makes all
+other privacy problems worse.  When a protocol's transactions are
+highly linkable, then it's impossible to do some things publicly and
+some privately: under such circumstances, no transaction a user makes
+can be more anonymous than their least anonymous transaction.
+
+I'm not going to dogmatically insist that all clients must behave
+indistinguishably in all protocols.  But we do need to admit that
+client linkability is a privacy killer: when we accept too much client
+linkability, we need to admit that we're building something that can't
+provide privacy; and when we declare that we're building something
+compatible with privacy, we need to eliminate all the linkability we
+can.
+
+(Please feel free to grab as much of the text above as you like if you
+think it would help at all.  please feel free to ask me to talk more
+about anything.)
+*** email to leif <2014-01-17 Fri>
+Hej Leif!
+
+Baserat på lite diskussioner med Nick Mathewson så skulle jag vilja
+skriva något om "protocol linkability"
+
+- gmt_unix_time i TLS är aktuellt, fingerprintability av browsers pga
+  installerade fonter och fönsterstorlek är konkret
+
+- även probabilistisk länkbarhet är länkbarhet -- även när P<1 kan det
+  vara klart länkbart
+
+  When we say "Transaction A is linked to transaction B", we don't
+  mean "an adversary concludes with P=1 that A and B were performed by
+  the same client" but rather "An adversary concludes that A and B
+  were performed by the same client with P significantly greater than
+  if A and B were two randomly chosen transactions."
+
+- är länkbarhet privacyns LCD? ingenting en användare gör med ett
+  länkbart protokoll kan vara mer anonymt än den minst anonyma
+  transaktionen utförd
+
+Skall jag försöka få in det i draft-johansson-linkability-bad eller
+skall jag skriva en separat I-D?
+*** draft-xxx-protocol-linkability
+- protocol design should explain [client linkability of the protocol];
+  one way is to give a P for linking one client to another; at one end
+  of the spectrum there's a GID transported in clear text, at the
+  other a single source of constant data flow identical to all the
+  other clients
+
+- client fingerprintability analysis of a handful protocols to
+  encourage new protocols to have one
+
 * I-D blocking-on-the-internet
 * problem statement
 - secure hardware
@@ -106,7 +175,6 @@ S.
   - over time
   - with FOO?
 - fingerprintability (== linkability?)
-
 * involving tor ppl
 ** TODO to: nick, tor-ass
 
@@ -119,8 +187,10 @@ thread: https://www.ietf.org/mail-archive/web/perpass/current/msg00168.html
 synopsis: reasonable change, no barrier, good for Tor
 draft: n/a
 
-* notes
-ben laurie on [[https://www.ietf.org/mail-archive/web/perpass/current/msg00322.html][perpass@]]: "The CFRG is chaired by David McGrew(mcgrew@cisco.com) and Kevin Igoe (kmigoe@nsa.gov)." http://irtf.org/cfrg
+* NOTES
+- ben laurie on [[https://www.ietf.org/mail-archive/web/perpass/current/msg00322.html][perpass@]]: "The CFRG is chaired by David
+  McGrew(mcgrew@cisco.com) and Kevin Igoe (kmigoe@nsa.gov)."
+  http://irtf.org/cfrg
 * emails with nick on tor-ass@
 ** From: Linus Nordberg <linus@torproject.org>
 Subject: Re: [tor-assistants] IETF in Vancouver is going to be about privacy
@@ -393,16 +463,18 @@ Farrell, Sean Turner or Hannes Tschofenig? They want to help us.
 
 --------------------------------------------------------------------------------
 
-* talking to nick <2013-11-01 Fri>
-** standardizing onion routing
+* Tor
+** NOTES
+*** talking to nick <2013-11-01 Fri>
+**** standardizing onion routing
 - fear is that ppl start implementing after RFC and not current
   protocol, which is evolving
 - AP: bring seasoned ietf:er and nick together. stephen and nick sunday?
   ap linus: start email thread today
-** tls AP's
+**** tls AP's
 Contents have moved to [[*TLS][TLS]].
 
-*** chat log
+***** chat log
 <ln5> nickm: ok, found the older email (Tue, 10 Sep 2013 09:34:46 +0200). listing things from there:
 <ln5> Did we start working on a design for TLS-minus-the-warts yet? Should we
 <ln5> bring such a thing to the IETF or would that be creating more trouble
@@ -465,7 +537,6 @@ Contents have moved to [[*TLS][TLS]].
 <Yawning> (there's nothing horrifically broken about BEAR/LION/LIONESS right?                                          
           apart from 'slow')                                            [18:27]
 <nickm> BEAR and LION are problematic.  LIONESS isn't.                  [18:29]
-* Tor
 ** standardizing onion routing
 See [[*standardizing%20onion%20routing][standardizing onion routing]] for Nick's view.
 *** email thread
@@ -1791,10 +1862,137 @@ Internet-Draft          Perfect Passive Adversary         September 2013
 
 
 Trammell                 Expires March 08, 2014                 [Page 7]
+** draft-ietf-abfab-arch-10.txt
+
+
+   This is the minimum amount of identity information necessary for
+   ABFAB to work - it indicates an IdP that the principal has a
+   relationship with.  EAP methods that do not allow this will
+   necessarily also reveal an identifier for the principal in the IdP
+   realm (e.g. a username).
+   ...
+   In this phase, the IdP communicates with the RP informing it as to
+   the success or failure of authentication of the user, and optionally,
+   the sending of identity information about the principal.
+
+s/principal/ABFAB client/g
+                                                                   As no
+   end-to-end security is provided by AAA, all AAA entities on the path
+   between the RP and IdP have the ability to eavesdrop on this
+   information unless additional security measures are taken (such as
+   the use of TLS for RADIUS [I-D.ietf-radext-dtls]).
+   ...
+                                                      As before, when
+   sending this through RADIUS headers, all AAA entities on the path
+   between the RP and IdP have the ability to eavesdrop unless
+   additional security measures are taken (such as the use of TLS for
+   RADIUS [I-D.ietf-radext-dtls]).
+
+s/I-D.ietf-radext-dtls/RFC6614/g
+
+                                                                   As no
+   end-to-end security is provided by AAA, all AAA entities on the path
+   between the RP and IdP have the ability to eavesdrop on this
+   information unless additional security measures are taken (such as
+   the use of TLS for RADIUS [I-D.ietf-radext-dtls]).
+
+Note that RADIUS proxies on the path see all RADIUS datagrams even
+when RADIUS/TLS or RADIUS/DTLS is being used.
+
+
+More nits:
+s/was"/was/1
+s/from the IDP to the RP/from the IdP to the RP/1
+s/per-message services will limit/per-message security services will limit/1
+
+
+** draft-ietf-abfab-gss-eap-09.txt
+s/[RFC4462]describes/[RFC4462] describes/1
+s/the EAP method in use support/the EAP method in use supports/1
+The last sentence in section 5.8 is incomplete.
+s/a EAP/an EAP/1
+s/incremented to each call/incremented for each call/1
+s/involve an EAP supplicant/involve an EAP peer/1
+s/IDP and RP/IdP and RP/1
+I-D.ietf-radext-radsec is now RFC6614
 * STRINT 2014 position papers
 https://www.w3.org/2014/strint/
 ** Public logs
+Scratching this jan 14 since benl is doing exactly this.
 *** Summary
+There are certain types of data that is published on the internet and
+subsequently used for securing further communication or
+operation. Examples include public keys in X.509 certificates,
+computer program binaries, Tor network maps and PGP keys.
+
+Users may trust a publishers intent but not its performance or the
+mechanisms used for getting the dat -- keys are getting stolen, web
+servers broken into, [false public keys published,] internet
+connections man-in-the-middled.
+
+This paper is meant as a starting point for a discussion about how
+public append-only logs can be used to increase the chance of
+detecting the tampering of crucial data at rest or in transit.
+*** some use cases
+Web clients trust x509 certificates signed by anybody who's got hold
+of a private key of a CA. [CT] addresses this by having CA:s and web
+site owners (i.e. customers of CA:s) submit their cert chains to one
+or more logs. Website owners get a signed time stamp in return which
+is sent to web clients (as part of TLS negotiation) as a proof of the
+cert being in a log. Web clients verify time stamps (potentially slow)
+separately from setting up TLS connections (which has to be quick).
+
+Several other protocols need a public key to be fetched over internet.
+PGP keys for encrypted email and OTR keys for encrypted chat. PGP keys
+are typically published by the owner of the key and downloaded from
+public servers by name or email address. Nothing stops Mallory from
+generating and uploading keys carrying other peoples names. The
+servers that PGP keys are being fetched from can be broken into or
+impersonated.
+
+Computer programs are sometimes verified with a checksum. Attack:
+Checksum files can be altered at the point of distribution, typically
+a web server. Attack: Users can be redirected to an alternative web
+site for downloading both the binaries and the checksums (MITM).
+
+Tor network maps are downloaded by clients. Attack: Get hold of the
+signing key for a majority of the directory authorities and sign a
+fake consensus listing relays that are under your own control. DA:s
+could submit consensuses the produce (and votes they produce and
+receive). Clients could submit consensuses they see.
+
+*** Who submits to the logs?
+Publishers can submit what they publish.
+
+How do users trust these particular log entries? In CT, the data has
+structure and a secret key from one of a few known entities is
+required for an entry to be accepted.
+
+
+End users could report what's seen in the wild. 
+
+Are they authenticated? risk for user tracking. also, it would require
+an administrative relationship between users and log
+providers.
+
+Believe in the numbers? easily (?) abused by spamming the
+logs.
+
+Reputation based system? requires authn (?).
+
+*** How CT does it
+#. Publishers of certain types of data submit proofs of existence of
+   their data to public append-only logs.
+
+#. Users of that data verify it by looking it up in the
+   logs. Existence proves that someone has seen and submitted it.
+
+#. Publishers audit logs to find out if someone else has submitted a
+   proof in their name.
+
+#. Auditors verify that logs don't lie about what's been submitted.
+
+*** [reusable?]
 Trusting data that's been delivered over an insecure network has never
 been a good idea. We've known this for a long time but didn't care
 that much. Recently published documentation of large scale attacks on
@@ -1846,17 +2044,421 @@ copy of a majority of the authority identity or signing keys and sign
 a fake consensus listing relays that are under the control of the
 attacker.
 
-*** Possible solutions
+*** Use cases
 Examples of logs that could be used for this include Certificate
 Transparency (RFC6962) and the Bitcoin chains.
 
 Example usage:
-1. x509 certificate chains [CT]
-2. tor consensuses
-3. program binaries
-4. pgp keys
-5. otr keys
-
+1. x509 certificate chain [CT]
+2. tor network map (1d)
+3. program binary (1m)
+4. pgp key (1y)
+5. otr key (1y)
+6. dnssec key (ksk 5y, zsk 1m)
 ** Running tor exits
 [TODO: running tor exits is easy -- set up an organisation, download
 tor and off you go]
+* perpass
+* abfab
+[[file:/u/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt]]
+[[file:/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt]]
+[[file:/u/ietf/internet-drafts/draft-ietf-abfab-gss-eap-09.txt]] now RFC 7055
+[[file:/u/ietf/internet-drafts/draft-ietf-abfab-eapapplicability-06.txt]] now RFC 7057
+[[file:/u/ietf/internet-drafts/draft-ietf-abfab-usecases-05.txt]]
+
+   +----------+-----------+--------------------+-----------------------+
+   | Protocol | Client    | Relying Party      | Identity Provider     |
+   +----------+-----------+--------------------+-----------------------+
+   | ABFAB    | Client    | Relying Party (RP) | Identity Provider     |
+   |          |           |                    | (IdP)                 |
+   |          |           |                    |                       |
+   |          | Initiator | Acceptor           |                       |
+   |          |           |                    |                       |
+   |          |           | Server             |                       |
+   |          |           |                    |                       |
+   | SAML     | Subject   | Service Provider   | Issuer                |
+   |          |           |                    |                       |
+   | GSS-API  | Initiator | Acceptor           |                       |
+   |          |           |                    |                       |
+   | EAP      | EAP peer  | EAP Authenticator  | EAP server            |
+   |          |           |                    |                       |
+   | AAA      |           | AAA Client         | AAA server            |
+   |          |           |                    |                       |
+   | RADIUS   | user      | NAS                | RADIUS server         |
+   |          |           |                    |                       |
+   |          |           | RADIUS client      |                       |
+   +----------+-----------+--------------------+-----------------------+
+
+[[file:/u/ietf/in-notes/rfc3748.txt]] EAP
+[[file:/u/ietf/in-notes/rfc7055.txt]] a GSS-API mech for EAP
+[[file:/u/ietf/in-notes/rfc7057.txt]] EAP for ABFAB
+[[file:/u/ietf/in-notes/rfc7029.txt]] EAP mutual cryptographic binding using EMSK
+[[file:/u/ietf/in-notes/rfc6677.txt]] channel binding for EAP methods
+[[file:/u/ietf/internet-drafts/draft-ietf-emu-eap-tunnel-method-10.txt]] TEAP
+[[file:/u/ietf/in-notes/rfc5056.txt]] (GSS-API) channel binding
+[[file:/u/ietf/in-notes/rfc3579.txt]] EAP over RADIUS
+
+[[file:/u/ietf/in-notes/rfc4462.txt]] GSS-API authn & kex for SSH
+[[file:/u/ietf/in-notes/rfc4253.txt]] SSH transport, incl. DH kex
+
+[[file:/u/ietf/in-notes/rfc6678.txt]] tunnel-based EAP methods, requirements
+[[http://eprint.iacr.org/2002/163.pdf]] tunneled protocols and MITM, paper
+
+People other than Sam who, according to Leif, might know about
+security and ABFAB include Alan DeKok, J. Salowey, Stefan Winter and
+Josh Howlett. I bet Luke knows something too.
+
+** chat logs
+*** hartmans <2014-01-30 Thu>
+[2014-01-29 14:04] linus> hartmans: hi. could you explain what the
+problem is with the DH key exchange in RFC 4462, from an ABFAB
+perspctive?
+Thu 30 Jan 2014 05:00
+[2014-01-30 05:57] hartmans> I know of no such problem.
+Thu 30 Jan 2014 09:00
+[09:03] > Subject: Moonshot Developer's Meeting
+hartmans has set the subject to: Moonshot Developer's Meeting
+[09:19] linus> hartmans: badly phrased question. my appologies and let
+me start over.
+[09:21] linus> you've said on abfab@ that ephemeral keying in abfab
+will benefit protocols like nfs and rfc 4462 kexing more than
+protocols using tls for transport.
+[09:22] linus> since gssapi ssh kexing already does DH i got the
+impression that it was bad in some way and that abfab could fix that.
+[09:37] linus> but now i think that what you meant was that it'd be
+great if we could support DH in an abfab gssapi mech too, since we
+won't be able to use 4462. correct?
+Thu 30 Jan 2014 15:00
+[15:58] > hartmans <hartmans@painless-security.com> has left the
+chatroom
+[15:58] > hartmans <hartmans@painless-security.com> enters the room
+(moderator, owner)
+Thu 30 Jan 2014 16:00
+[16:36] hartmans> no
+[16:36] hartmans> So, 4462 doesn't cover the eap exchange that will
+still run in the clear (I think)
+[16:36] hartmans> taht is, you don't start the encryption until after
+kex concludes
+[16:36] hartmans> NFS is more serious
+[16:44] linus> reading RFC's 7055, 7057, 7029 to get a grip
+Thu 30 Jan 2014 17:00
+[17:23] hartmans> What can I do to help here?
+[17:24] linus> answer questions once i have them will be valuable
+[17:24] linus> this field is quite large :)
+[17:25] linus> that is, the field of tunnel mitm attacks 
+[17:25] linus> it seems reasonable to spend time understanding them
+though. do you agree?
+[17:33] linus> one thing i'm trying to grasp is how these three
+concepts relate to each other: 1) RFC5056 channel binding, 2) RFC6677
+channel binding and 3) RFC3748 cryptographic binding
+[17:44] hartmans> :-)
+[17:44] hartmans> Yeah, that's a bit tricky.
+[17:45] hartmans> We *hope* that the explanations in 5056 and the eap
+channel binding rfc are good enough.
+[17:45] linus> haven't spent enough time with 5056 yet
+[17:46] linus> another way for you to help would be to ask me
+questions which lead me to read up on and think about things that will
+be important in order to be able to come up with a draft of a draft of
+how to add ephemeral keying to abfab
+[17:47] linus> for attacks, i'm currently staring at RADIUS/RadSec
+proxies snarfing the MSK
+[17:48] linus> but i've recently started thinking about "false" RP's
+[17:51] linus> have almost ignored the SAML layer so far. do you have
+pointers to how SAML assertions are given confidentiality and
+integrity protection? i found abfab-aaa-saml short on text about keys.
+[17:51] linus> maybe they're just supposed to be protected by the EAP
+layer?
+[17:55] hartmans> no, in general protected only by radsec
+[17:55] hartmans> What do you mean false rp
+[17:55] hartmans> Also, include passive attacker
+[17:56] hartmans> In abfab today a passive attacker gains realm of
+home idp, information on credentials used, and potential
+fingerprinting you can do from an eap conversation observation
+[17:56] hartmans> My biggest question on doing DH is what's a good way
+to do it?  Is there some way of describing groups or EC groups and a
+way of describing how to validate keys that we can re-use
+Thu 30 Jan 2014 18:00
+[18:00] linus> false rp: ways for an active attacker to pose as
+service provider to client and/or idp
+[18:00] linus> describe groups as in describe in a protocol? for
+negotiating a session?
+[18:02] hartmans> yeah.
+[18:12] linus> so you already have a plan for where to do this (as
+part of abfab-gss-eap?) and how a new (EC)DHE key will fit in?
+[18:12] linus> i'm trying to grasp enough of MSK and EMSK to
+understand how it all ties together
+[18:13] linus> but maybe i'm on the wrong layer?
+[18:49] hartmans> I think you are.
+[18:49] hartmans> because if you do it at the MSK layer you don't
+protect the eap conversation.
+[18:50] hartmans> I was imagining generating something in the initial
+message as a session key we use to encrypt all the future context
+tokens.
+[18:52] linus> ack. initial EAP message, correct?
+[18:53] hartmans> no
+[18:53] hartmans> before that.
+[18:53] > hartmans looks at 7055
+[18:54] hartmans> so section 5.4 of 7055
+[18:56] linus> excellent, thanks. i've got to run for now. ttyl.
+---
+** Step by step, successful authn
+- NAI (molgan@example.com): abfab client  ------> RP
+
+** threat analysis based on abfab
+- add to section 5 of draft-trammell-perpass-ppa?
+
+*** boilerplate
+*** authors
+*** abstract
+*** TOC (if >15 pages)
+*** introduction
+ABFAB is a [system] for authenticating users using [federated mumbo
+jumbo]. The privacy considerations are naturally potentially numerous
+since it's handling users data such as user id (linkable to a person)
+and requests for access to various services. Gleaning operative data
+from systems built on ABFAB could link a person to one or more IP
+addresses and time and date of services s/he wants to access as well
+as the response to such requests. Depending on the type of services
+requested this so called meta data could potentially map a
+significant portion of a persons real life actions and in the long run
+habits. This has to be considered highly sensitive information.
+
+Attackers (as defined by RFC6973) can perform one or both of passive
+and active attacks. Passive attacks include eavesdropping, i.e. doing
+passive wiretapping secretly (RFC4949). Active attacks include sitting
+on the network path between initiator and recipient, perhaps acting as
+a man-in-the-middle injecting packets in the flow.
+
+Apart from attackers, we have also observers, defined by RFC6973 as an
+entity able to observe and collect information from communications and
+are distinguished from eavesdroppers by being at lest tacitly
+authorised.
+
+This document will consider passive and active attackers as well as
+observers but will make distinctions where that makes sense.
+
+*** Terminology
+ABFAB is pretty complicated. This is not made easier because it builds
+many different systems, many of which have their own terminology for
+"client" and "server".
+
+This document will use the term "user" for a human being of flesh and
+blood who can be subject of a "privacy intrusion" but occasionally
+will also say "user" about an entity not necessarily linked to a
+single real name person, like an organisation or a company who's
+integrity and privacy might need protection.
+
+A "client", when the term is used [without a qualifier], refers to a
+piece of software acting as an ABFAB client, often (always?) on behalf
+of a user.
+
+A "server", when the term is used [without a qualifier], refers to a
+piece of software acting as an ABFAB server, typically providing a
+resource that a user is requesting access to. This is often called
+Relying Party (RP) in other documents.
+
+An "IdP" refers to a piece of software providing an identity service,
+i.e. a database of user identities and keys/passphrases together with
+an interface to ask for acknowledgement of the authenticity of a
+given pair.
+
+Eve is an eavesdropper, i.e. a passive attacker listening in. Can't
+modify any messages.
+
+Mallory is a malicious man-in-the-middle attacker who can read,
+modify and replay messages.
+
+[Oscar?] is a passive observer who should be a good guy based on
+administrative arrangements and social contracts but who might leak
+data, inadvertently or not.
+
+*** Keys used in [an ABFAB system]
+- MSK (EAP)
+One MSK (Master Session Key) and one EMSK (Extended MSK) for each
+[ABFAB? EAP?] session which is shared by the Client, the RP and the
+IdP. [Transported all over the place, esp. AAA without end-to-end
+confidentiality or integrity]
+
+- CRK (GSS?)
+Context Root Key, derived from the GMSK (GSS-API MSK).
+
+- GMSK (GSS)
+Derived from the MSK using the encryption type of the mechanism in use.
+*** Points of attack [attack vectors?] against an ABFAB system
+- AAA
+  client/NAS = server
+  server = IdP
+  TODO: don't forget proxies!!!
+
+  [Generally: AAA carries the EAP MSK which is used for securing
+  traffic between Client and RP (and more?) -- the MSK (and EMSK?)
+  should definitely be derived using DH and is the primary goal for
+  the ephemeral keying work]
+
+  - RADIUS
+    Eve has the MD5 secret: [TODO]
+    Mallory has the MD5 secret: [TODO]
+  - RadSec -- RADIUS over TLS
+    - (R)PKI / X509
+      E/M has the radius server secret key: [TODO]
+      E/M has the radius client secret key: [TODO]
+    - PSK
+      E/M has the pre-shared key: [TODO]
+  - Diameter
+    [TODO]
+- EAP
+  peer = client
+  authenticator = server
+  (back-end) server = IdP
+- GSS-API
+  initiator = client
+  acceptor = server
+
+  [The GSS-EAP negotiation phase is not protected in any way.]
+- SAML
+  subject = client
+  SP = server
+  issuer = IdP
+- ABFAB
+
+  User and IdP share a long term NAI (f.ex. an e-mail address) and a long
+  term key (f.ex. a pass phrase).
+
+*** open questions
+- [draft-ietf-abfab-gss-eap-09]: Second, a non-optimal security
+  mechanism may be chosen.
+  Possible downgrade attack.
+*** security considerations
+*** iana considerations
+*** references, normative and informative
+*** author's address
+*** IPR disclosure
+*** copyright notice
+** ephemeral keying
+- 2013-11-15 [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]] 
+   * Protect the EAP conversation between the peer and NAS (initiator and
+   acceptor in GSS terms)
+   * Provide a key to protect ABFAB negotiations 
+   * Prevent the EAP server or proxies between the EAP server and NAS from
+   observing the resulting session
+
+   This would help defeat fingerprinting by passive observers as well as
+   minimize the damage that a passive [ob]server could do cooperating with the
+   home EAP server.  This is more valuable for ABFAB used in protocols like
+   NFS and CIFS or in RFc 4462 SSH key exchange than it is for ABFAB used
+   within an TLS session for IMAP, XMPP or SMTP.
+  ...
+   my conclusion from all this is that the right place to do ephemeral
+   keying for an EAP protocol is in the lower layer and that unless I got
+   something wrong or missed an alternative, ABFAb should do its own
+   mechanism.
+
+I wonder what Sam means that the value of EAP DH keys would be for SSH
+kexing -- SSH is already doing DH in RFC 4462. Update: 4462 is not
+ABFAB -- we need this too?
+
+RFC 6677 describes "the lying NAS problem". What problem does this
+solve? Can we use it?
+
+- [[file:/u/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt::4.2.%20Privacy%20Aspects%20of%20ABFAB%20Communication%20Flows][file:/u/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt::4.2. Privacy Aspects of ABFAB Communication Flows]]
+   o  The EAP MSK is transported between the IdP and the RP over the AAA
+      infrastructure, for example through RADIUS headers.  This is a
+      particularly important privacy consideration, as any AAA Proxy
+      that has access to the EAP MSK is able to decrypt and eavesdrop on
+      any traffic encrypted using that EAP MSK (i.e., all communications
+      between the Client and RP).  This problem can be mitigted by the
+      application protocol setting up a secure tunnel between the Client
+      and the RP and performing a cryptographic binding between the
+      tunnel and EAP MSK.
+
+   o  Related to the above, the AAA server has access to the material
+      necessary to derive the session key, thus the AAA server can
+      observe any traffic encrypted between the Client and RP.  This
+      "feature" was" chosen as a simplification and to make performance
+      faster; if it was decided that this trade-off was not desirable
+      for privacy and security reasons, then extensions to ABFAB that
+      make use of techniques such as Diffie-Helman key exchange would
+      mitigate against this.
+
+- [[file:/u/ietf/in-notes/rfc7057.txt::4.%20Security%20Considerations][file:/u/ietf/in-notes/rfc7057.txt::4. Security Considerations]]
+   existing exchange that provides mutual authentication.  In order to
+   fully mitigate the risk of NAS impersonation when these mechanisms
+   are used, it is RECOMMENDED that mutual channel bindings be used to
+   bind the authentications together as described in [RFC7029].  When
+
+** draft-abfab-ephemeral-keying
+*** Abstract
+This [doc] describes how EAP-GSS provides forward secrecy by
+encrypting each session in an ephemeral key [DH:ed] and shared by the
+initiator (EAP peer) and acceptor (EAP authenticator).
+
+[To stop someone with access to traffic going between an ABFAB user and
+her Identity Provider, possibly by being on the path (like all the
+entitites in the AAA fabric are), from getting access to key material
+[and more],]
+
+- goal 1: provide forward secrecy
+  - fixes what problem? 
+    - passive attacker records client traffic and learns [long term
+      key] later, either through brute force, groundbreaking
+      cryptanalysis work, breaking into some of the parties --> 
+
+- goal 2: providing confidentiality for (bc there is none?)
+  - client<->RP communication (GSS-API run inside an application
+    protocol) during ABFAB (/GSS-API ?) negotiation [because NAI is
+    sent in the clear?]
+
+  - RP<->IdP communication (FIXME: is this two separate things -- EAP
+    peer<->server and IdP<->RP?)
+
+  - 
+
+implemented as a number of context subtokens, 7055 sect. 5?
+
+Q: _remove_ any other crypto now that we have this?
+Q: authenticate too? where and how?
+
+7055 states:
+- initial (vendor, name req+resp)
+- authenticate (eap req+resp)
+- extensions (flags, gss channel binding, MIC)
+
+
+Q: 7055 "context establishment" and this, how do they relate?
+
+Q: they run from GSS initiator to acceptor though, so how do we set up
+keys with the EAP server? pass-through?
+
+Q: will this mess up the [[file:/u/ietf/in-notes/rfc7055.txt::4.%20Selection%20of%20EAP%20Method][selection of EAP method]]?
+
+*** Introduction / background / ABFAB architecture
+[use (parts of) [[*introduction][introduction]]]
+
+*** Problem Statement / The threat(s)
+
+*** The solution
+
+*** The costs
+- This will cost FIXME extra roundtrips.
+- New GSS mech? How to pick the right one?
+
+* EAP
+- [[file:/u/ietf/in-notes/rfc3748.txt][rfc3748]] EAP
+- [[file:/u/ietf/in-notes/rfc5247.txt][rfc5247]] EAP key management
+- rfc4017 EAP for wifi
+
+Methods like LEAP, EAP-TLS, EAP-TTLS, EAP-PSK, EAP-EKE.
+Encapsulations like 802.1X, RADIUS, PPP.
+
+Keys to derive using [DH]:
+- MSK?
+- EMSK?
+* GSS-API and SASL
+- [[file:/u/ietf/in-notes/rfc2743.txt][rfc2743]] GSS-API version 2
+- [[file:/u/ietf/in-notes/rfc4422.txt][rfc4422]] SASL
+- [[file:/u/ietf/in-notes/rfc5056.txt][rfc5056]] (GSS-API) channel binding
+- [[file:/u/ietf/in-notes/rfc5247.txt::Extensible%20Authentication%20Protocol%20(EAP)%20Key%20Management%20Framework][rfc5247]] EAP key management
+- [[file:/u/ietf/in-notes/rfc5801.txt][rfc5801]] GSS-API and SASL: GS2
+
+RFC2743 1.2.2: Per-Message Security Service Availability
+RFC2743 1.2.7: Per-Message Protection During Context Establishment
