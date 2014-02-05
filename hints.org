@@ -347,6 +347,7 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - ncdu -- ncurses disk utility
 - getent -- get entries from NSS libraries (name service)
 - gobby -- p2p live editing
+- notmuch -- email address indexing
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -600,6 +601,105 @@ fatal: unable to access <url>: SSL certificate problem: unable to get local issu
 From GIT-CONFIG(1): Set http.sslCAInfo or http.sslCAPath.
 Or use an environment variable:
 GIT_SSL_CAINFO=/usr/local/share/certs/ca-root-nss.crt git fetch
+** Moving parts and removing other parts of a tree while keeping history
+<2014-02-05 Wed>
+tool:libradsec% git remote -v
+libradsec       git@git.nordu.net:libradsec.git (fetch)
+libradsec       git@git.nordu.net:libradsec.git (push)
+moonshot        http://www.project-moonshot.org/git/radsecproxy.git (fetch)
+moonshot        http://www.project-moonshot.org/git/radsecproxy.git (push)
+radsecproxy     git@git.nordu.net:radsecproxy.git (fetch)
+radsecproxy     git@git.nordu.net:radsecproxy.git (push)
+tool:libradsec% echo "Move lib to the root." | git commit-tree HEAD:lib -p HEAD
+3d954bfd2f658ac05a0f20a1241738ed3e3fdd28
+tool:libradsec% git push libradsec 3d954bfd2f658ac05a0f20a1241738ed3e3fdd28:refs/heads/master
+Initialized empty Git repository in /home/git/repositories/libradsec.git/
+WARNING:gitosis.gitweb.set_descriptions:Cannot find 'ndn-shib-ds' in '/home/git/repositories'
+WARNING:gitosis.gitweb.set_descriptions:Cannot find 'lobber-deluge-dropbox' in '/home/git/repositories'
+WARNING:gitosis.gitweb.set_descriptions:Cannot find 'root-template' in '/home/git/repositories'
+WARNING:gitosis.gitweb.generate_projects_list:Cannot find 'ndn-shib-ds' in '/home/git/repositories'
+WARNING:gitosis.gitweb.generate_projects_list:Cannot find 'lobber-deluge-dropbox' in '/home/git/repositories'
+Counting objects: 4586, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (1812/1812), done.
+Writing objects: 100% (4586/4586), 1.36 MiB, done.
+Total 4586 (delta 3240), reused 3852 (delta 2712)
+To git@git.nordu.net:libradsec.git
+ * [new branch]      3d954bfd2f658ac05a0f20a1241738ed3e3fdd28 -> master
+** Removing tags on remote
+Push an empty <src> to refs/tags/<tag>, like I had to do in libradsec
+after pushing all the tags in that repo:
+
+tool:libradsec% for t in $(git tag | egrep ^radsecproxy); do echo "git tag -d $t && git push libradsec :refs/tags/$t"; done
+git tag -d radsecproxy-1.4 && git push libradsec :refs/tags/radsecproxy-1.4
+git tag -d radsecproxy-1.4-beta1 && git push libradsec :refs/tags/radsecproxy-1.4-beta1
+git tag -d radsecproxy-1.4-beta2 && git push libradsec :refs/tags/radsecproxy-1.4-beta2
+git tag -d radsecproxy-1.4.1 && git push libradsec :refs/tags/radsecproxy-1.4.1
+git tag -d radsecproxy-1.4.2 && git push libradsec :refs/tags/radsecproxy-1.4.2
+git tag -d radsecproxy-1.4.3 && git push libradsec :refs/tags/radsecproxy-1.4.3
+git tag -d radsecproxy-1.5 && git push libradsec :refs/tags/radsecproxy-1.5
+git tag -d radsecproxy-1.6 && git push libradsec :refs/tags/radsecproxy-1.6
+git tag -d radsecproxy-1.6-rc0 && git push libradsec :refs/tags/radsecproxy-1.6-rc0
+git tag -d radsecproxy-1.6-rc1 && git push libradsec :refs/tags/radsecproxy-1.6-rc1
+git tag -d radsecproxy-1.6-rc2 && git push libradsec :refs/tags/radsecproxy-1.6-rc2
+git tag -d radsecproxy-1.6.1 && git push libradsec :refs/tags/radsecproxy-1.6.1
+git tag -d radsecproxy-1.6.2 && git push libradsec :refs/tags/radsecproxy-1.6.2
+git tag -d radsecproxy-1.6.3 && git push libradsec :refs/tags/radsecproxy-1.6.3
+git tag -d radsecproxy-1.6.3-rc0 && git push libradsec :refs/tags/radsecproxy-1.6.3-rc0
+git tag -d radsecproxy-1.6.4 && git push libradsec :refs/tags/radsecproxy-1.6.4
+git tag -d radsecproxy-1.6.5 && git push libradsec :refs/tags/radsecproxy-1.6.5
+
+tool:libradsec% for t in $(git tag | egrep ^radsecproxy); do git tag -d $t && git push libradsec :refs/tags/$t; done   Deleted tag 'radsecproxy-1.4' (was 404a9ad)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.4
+Deleted tag 'radsecproxy-1.4-beta1' (was 78f9d52)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.4-beta1
+Deleted tag 'radsecproxy-1.4-beta2' (was 932012f)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.4-beta2
+Deleted tag 'radsecproxy-1.4.1' (was 0b6724f)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.4.1
+Deleted tag 'radsecproxy-1.4.2' (was 830e6ab)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.4.2
+Deleted tag 'radsecproxy-1.4.3' (was 2d35663)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.4.3
+Deleted tag 'radsecproxy-1.5' (was cc08efe)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.5
+Deleted tag 'radsecproxy-1.6' (was 76e946c)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6
+Deleted tag 'radsecproxy-1.6-rc0' (was 238b041)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6-rc0
+Deleted tag 'radsecproxy-1.6-rc1' (was cd71026)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6-rc1
+Deleted tag 'radsecproxy-1.6-rc2' (was a65508f)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6-rc2
+Deleted tag 'radsecproxy-1.6.1' (was 8daa06e)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6.1
+Deleted tag 'radsecproxy-1.6.2' (was 809d484)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6.2
+Deleted tag 'radsecproxy-1.6.3' (was 295ff5f)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6.3
+Deleted tag 'radsecproxy-1.6.3-rc0' (was 9facadb)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6.3-rc0
+Deleted tag 'radsecproxy-1.6.4' (was abab745)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6.4
+Deleted tag 'radsecproxy-1.6.5' (was 4c3db5a)
+To git@git.nordu.net:libradsec.git
+ - [deleted]         radsecproxy-1.6.5
 * Movie / video
 ** Carnivale
 Start VLC.
@@ -2908,12 +3008,10 @@ Mitt första experiment med att leva utan mobiltelefon började för
 några år sedan och varade ca sju månader. Den gången använde jag
 mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
 
-
 * anagram
   fresh secularism, fissural schemer, miss researchful
   primtal köttfärs, maskfrätt pilört
   german tremblor
-
 * jabber
 ** paf's server konfig
    _jabber._tcp.frobbit.se. 900	IN	SRV	0 0 5269 jabber.frobbit.se.
@@ -2981,12 +3079,6 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
 
   Note that "Got no client credentials" is printed even when things are ok.
 
-* 27c3
-** mon 00:30
-   Boese Buben Bar with Xenia.
-** todo
-   - [ ] follow @laquadrature
-         cafe morgenhaut, kastanjenalle ?
 * kvm
 ** mounting an image in the host
    losetup /dev/loop0 /var/lib/libvirt/images/u64-0.img
@@ -3219,7 +3311,7 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
      /ezb conn irc.xs4all.nl # IRCNET for #isp (no ssl?)
      /ezb conn irc.swipnet.se # IRCNET for #isp (no ssl?)
      /ezb conn irc.ipredator.se 6697 (fwtnuwekoeayj3s7.onion)
-     /ezb conn -ssl chat.eu.freenode.net 6697 (ln5 nickserv pw Eibeic7ShahG)
+     /ezb conn -ssl chat.eu.freenode.net 6697
      /ezb conn -ssl irc.telecomix.org 9999
      /ezb conn 10.0.1.6 7000
      /ezb conn -ssl irc.terahertz.net 6697 # "some net" for michiel-5580 (atrato)
@@ -3765,6 +3857,11 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
    tanngnjost.sunet.se/torscan.sunet.se netbsd
    salsa.sunet.se "netbsd xen"
    siv.sunet.se "netbsd xen"
+** VPN
+https://portal.nordu.net/pages/viewpage.action?spaceKey=nordunet&title=VPN+Access
+TUG VPN 109.105.104.2 se-tug-fw.nordu.net
+KAS VPN 109.105.106.4 dk-kas-fw.nordu.net
+
 * notes
 ** mail to rom
    From: Linus Nordberg <linus@nordberg.se>
@@ -27568,7 +27665,10 @@ vm.pmap.pg_ps_enabled: 1
 ** Ports problem: unpacking .xz
 Old /usr/bin/bsdtar don't know how to deal with .xz. Fix:
 portmaster -d archivers/libarchive
-ln -sf /usr/local/bin/bsdtar /usr/bin/tar
+ln -sf /usr/local/bin/bsdtar /usr/bin/tar  # <-- don't do this!
+TAR=/usr/local/bin/bsdtar portmaster <whatever>  # <-- much better
+
+And if .lzma is problematic (fbsd 8.x), install archivers/gtar.
 * EuroBonus
 EBB609964226
 * No-phone sig
@@ -28637,10 +28737,10 @@ NoScript
   Notifications: Show message about blocked scripts: unchecked
 HTTPS-Everywhere
 # not in TBB:
-Adblock Plus
 RequestPolicy
   Advanced: Miscellaneous -> Allow permanent: checked
 Cookie Whitelist, With Buttons
+Adblock Plus
 ?BetterPrivacy
 # try out
 certificate patrol
@@ -28657,12 +28757,10 @@ To load sem on every boot put the following into your
 sem_load="YES"
 
 * DANE
-
 ** .SE seminar <2012-01-03 Tue>
 - ingen möjl att begränsa tillit
 - RFC 4255 -- SSHFP, checks ssh fingerprint against DNS
 - TLSA -- DANE for TLS
-
 * sec-heads
 ** 2012 get-together
 sec-heads@conference.kirei.se
@@ -28673,7 +28771,7 @@ https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/ideas/xxx-i
 https://trac.torproject.org/projects/tor/ticket/3563
 * mrtg
 indexmaker --compact --columns=1 /usr/local/etc/mrtg/mrtg.conf > /usr/local/www/data/index.html
-* bio
+* bio, linus
 [[Linus Nordberg|https://m.twitter.com/ln4711]] arbetar som programmerare
 på [[NORDUnet|https://www.nordu.net/]] i Stockholm.  I arbetsuppgifterna
 ingår utveckling och drift av ett flertal
@@ -29026,9 +29124,20 @@ u/p: ln+mojang@4711.se/RRR0gn0tudju!
 name: l n
 date of birth: 1970-01-01
 Street 12345, City
+** java
+- give the jvm enough memory at start
+- openjdk is not the performance dream
+- visualvm is the one java troubleshooter, capable of instrumenting
+
+http://forums.bukkit.org/threads/optimize-java-for-minecraft-in-a-extreme-way-p-need-feedback-thx-i-am-back.25994/
+** bukkit (snakedesert)
+t -- enter commands
+/permissions group players <group>           -- list users in group
+/permissions player addgroup <user> <group>  -- add <user> to <group>
+
 * passwords
 https://segate.sunet.se/ linus@nordu.net S2qaEn2TTa4G
-fb "Lord Berusning" coco;nuttery (born 1975-02-11)
+fb "Lord Berusning" HeligaGudsModerVilketHugg! (born 1975-02-11)
 coursera.org "Fnoi Albrektsson" ln+coursera@4711.se BA1NjZUt
 * TLS attacks, by jas
 - types av crypto: stream, block, authenticated
@@ -29089,13 +29198,6 @@ coursera.org "Fnoi Albrektsson" ln+coursera@4711.se BA1NjZUt
 - CBC to stream? or change to AEAD (requires TLS 1.1)
 
 - [hmm, what's GSM?]
-* minecraft
-** java
-- give the jvm enough memory at start
-- openjdk is not the performance dream
-- visualvm is the one java troubleshooter, capable of instrumenting
-
-http://forums.bukkit.org/threads/optimize-java-for-minecraft-in-a-extreme-way-p-need-feedback-thx-i-am-back.25994/
 * mud
 proj% tt++
 * tpb
@@ -30503,7 +30605,6 @@ spittelmarkt
                                                                         [17:13]
 <aagbsn> (if someone else with an x60 wants to try, perhaps write 0x3C then                                            
          0xBC and see if that works. just a guess)                      [17:34]
-
 * tails
 ** wireless usb stick not working
 Jul 31 07:22:34 localhost dhclient: bound to 130.129.23.208 -- renewal in 9917 seconds.
@@ -30605,126 +30706,6 @@ false on the about:config web page.
   hash is probably sha1
   object is something like 'introducer'
 - xmpp: jean.lorchat@gmail.com jean@jit.si
-* XKEYSCORE
-** presentationen
-- presentationen
-  - är en informations/sälj-presentation om ett NSA-program som kallas
-    XKeyscore
-  - säger att global insamling av internettrafik sker
-  - är hemligstämplad med "the five eyes" -- usa, england, kanada,
-    australien och nya zeeland" -- som mottagare
-- både passiva och aktiva attacker
-- lyssnar på 150 ställen och lagrar allt, s.k. "full take" -- metadata
-  och innehåll
-- tre dygns lagring, indexerat på metadata
-- exempel på saker man kan söka efter i databasen: epost-adresser,
-  telefonnummer, inloggningar, filnamn, vänlistor, dator-fingerprint
-  (s. 12), url:ar (i.e. vad folk googlar på), referer header (var folk
-  kommer ifrån)
-- exempel på saker man kan hitta: ngn använder krypto, ngn pratar ett
-  språk som inte är vanligt i det området, ngn söker efter "skumma
-  grejer", alla krypterade word-dokument från Iran, all användning av
-  PGP i Iran
-- exempel på fler saker: "visa mig alla VPN-uppkopplingsförsök i land
-  X så att jag kan dekryptera dom och upptäcka alla användare" (s. 17)
-- metadata lagras typiskt i 30 dagar
-- man har ett dokument och kan spåra vem som skrev det och var
-- "visa mig alla excell-blad från Irak som innehåller en MAC-adress"
-- "visa mig alla maskiner i land X som vi kan ta kontroll över med
-  hjälp av sårbarheter i koden"
-  
-- "DNI exploitation system/analytic framework" (DNI == digital network
-  intelligence)
-
-- letar efter anomalier -- användning av krypto
-- TURMOIL/TURBULENCE är andra program som verkar gå mindre på djupet
-- Marina verkar vara ett program för att göra [PSC] i efterhand
-- Pinwale och Trafficthief är två andra relaterade program
-
-- obs daterat feb 2008, för 5,5 år sedan
-
-- TAO -- tailored attack overview ?
-
-- MDR -- massive data R
-
-** guardian-artikeln
-http://www.theguardian.com/world/2013/jul/31/nsa-top-secret-program-online-data
-- XKeychat är en databas och söksystem som ger användaren möjlighet
-  att söka i enorma databaser med mejl, chat och browsing-historik för
-  miljontals användare
-- ? man kan söka genom metadata och innehåll utan att ha t.ex. en
-  epost-adress ("selector")
-- 2007: 850 miljarder "call events", 150 miljarder "internet records",
-  1-2 miljarder nya entrys per dag
-
-** andra artiklar
-http://www.svd.se/nyheter/utrikes/nsa-overvakar-all-nataktivitet_8388740.svd
-
-http://www.svd.se/naringsliv/nyheter/varlden/avlyssning-hotar-frihandelsavtal_8314174.svd
-TTIP hotat, 25% av intrången kommer från USA, 10% från Asien
-
-http://www.svd.se/naringsliv/digitalt/sa-kan-storebror-folja-dina-spar_8270288.svd
-PRISM
-
-http://www.svd.se/naringsliv/nyheter/varlden/darfor-struntar-wall-street-i-spionskandalen_8264608.svd
-dom 9 lider ingen ekonomisk skada av avslöjandena
-
-http://www.dn.se/nyheter/varlden/usa-sponsrar-brittisk-signalspaning/
-USA har finansierat GCHQ med ca 1 miljard SEK under de senaste tre åren
-
-http://www.svd.se/opinion/brannpunkt/nu-skarps-synen-pa-lackor_8389614.svd
-Funcke om läckor.
-
-http://www.spiegel.de/international/world/new-nsa-leaks-describe-total-surveillance-system-xkeyscore-a-914244.html
-BND kan använda XKS säger hemliga dokument. BND menar att dom bara
-testar programmet och inte har tillgång till databasen.
-
-http://www.spiegel.de/international/world/german-intelligence-worked-closely-with-nsa-on-data-surveillance-a-912355.html
-
-http://www.nyteknik.se/nyheter/it_telekom/allmant/article3033210.ece
-FRA-läcka, äkta?
-
-https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5605784
-https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5596881
-.de hjälpte .us
-
-** kort beksrivning plus åtgärder
-- en databas med avlyssnad internettrafik
-- inhämtning verkar ske på 150 ställen runt jorden, lagringstid ca 3
-  dygn (trafikdata en månad)
-- plus sökmotor -- google -- indexerad på saker som epost-adresser,
-  telefonnummer, filnamn, FB/twitter-vänner och mer
-- kan hitta information utan s.k. "strong selector", dvs ett
-  sökkriterium som en epost-adress, t.ex. vem använder ett språk som
-  är ovanligt i den regionen, vem krypterar sin trafik
-- flera sökmöjligheter: maskiner i land X som har sårbarheter vi kan
-  utnyttja för att bryta oss in i dom
-
-- möjliga tekniska skydd
-  - mer krypterad trafik så att den inte sticker ut
-  - behöver kortlivade kryptonycklar så att man i efterhand inte kan
-    dekryptera all trafik
-
-** frågor
-- Gör FRA också så här? Det finns ingen prick i Sverige i dokumentet,
-  finns det nu? Svensk lag tillåter sedan 2009 FRA att lyssna vid
-  gränsen. TDV (tekniskt detekterings- och varningssystem) är under
-  uppbyggnad.
-- Har FRA tillgång till XKeyscore? Programvara? Databas? BND uppges ha
-  det, BND bekräftar tillgång till programvara (källa: Der Spiegel)
-- Skickar Sverige inhämtat data till det här systemet?
-- Tar Sverige emot information från det här systemet?
-- Är data från TDV tänkt att användas för något liknande detta?
-
-- Bryter FRA mot några lagar om dom lämnar ut data till det här
-  programmet? MK: Nej.
-
-- bara http?
-** p1 morgon fre 2/8 08:15
-linus larsson
-- missar att det är 5,5 år sedan
-- farligt att lagra allt men "nsa är kanske bäst i världen på
-  it-säkerhet"
 * openitp cts iv in berlin
 ** https://wiki.openitp.org/
 linus/quadahfu
@@ -31011,7 +30992,7 @@ tool:src% curl http://localhost/fcgi/
   total used in directory 8 available 109300060
   drwxr-xr-x 2 linus linus 4096 Mar  4  2013 .
   drwxr-xr-x 6 linus linus 4096 Sep 28 10:17 ..
-* twitter pwp reset <2013-10-04 Fri>
+* twitter pw reset <2013-10-04 Fri>
 [[gnus:nnimap%2Badbc:INBOX#524e5ceea8d7c_a55f178d2a417e8@3651441069.twitter.com.tmail][Email from Twitter: Twitter has reset your account]]
 identica and tumblr were my only applications, both had read+write
 * tomten ovanför höjda
@@ -31037,7 +31018,7 @@ fin olivolja
 * pengar hawai
 jun: $67 minus keps och tshirt
 lärka $75 minus tröja och muffinhatt
-* bios
+* BIOS
 ** infected bios <2013-10-11 Fri>
 $ curl -v -O -x socks5h://localhost:9050/ http://offensive.io/bios.tar.bz                                      * About to connect() to proxy localhost port 9050 (#0)
  *   Trying 127.0.0.1...
@@ -31834,7 +31815,6 @@ life - than Ed Snowden."
 And there could not be a better example of the twin concepts of
 privacy and liberty than a man denied the latter for exposing the
 former.
-
 * books
 ** murder in sammarkand, craig murray
 - [X] "The thing with tyranny is that, if you don't try to fight it when it starts, it very quickly gets too strong for you." C. Murray
@@ -32094,7 +32074,13 @@ powers
 * xterm
 start xterm with title: xterm -title allan
 set title in running xterm: echo -ne "\033]0;allan\007"
-* ccc
+* CCC
+** 27c3
+*** mon 00:30
+    Boese Buben Bar with Xenia.
+*** todo
+    - [ ] follow @laquadrature
+          cafe morgenhaut, kastanjenalle ?
 ** 30c3
 recordings https://events.ccc.de/congress/2013/wiki/Static:Documentation
 streamdumps http://mirror.mag.lab.sh/pub/30c3-streamdump/
@@ -32243,7 +32229,128 @@ streamdumps http://mirror.mag.lab.sh/pub/30c3-streamdump/
     war; if we could change [everything] and [start detecting stuff]
   - karsten: we'll always to mistakes and someone will find the bug
 
-* NSA ANT
+* NSA programs
+** XKEYSCORE
+*** presentationen
+- presentationen
+  - är en informations/sälj-presentation om ett NSA-program som kallas
+    XKeyscore
+  - säger att global insamling av internettrafik sker
+  - är hemligstämplad med "the five eyes" -- usa, england, kanada,
+    australien och nya zeeland" -- som mottagare
+- både passiva och aktiva attacker
+- lyssnar på 150 ställen och lagrar allt, s.k. "full take" -- metadata
+  och innehåll
+- tre dygns lagring, indexerat på metadata
+- exempel på saker man kan söka efter i databasen: epost-adresser,
+  telefonnummer, inloggningar, filnamn, vänlistor, dator-fingerprint
+  (s. 12), url:ar (i.e. vad folk googlar på), referer header (var folk
+  kommer ifrån)
+- exempel på saker man kan hitta: ngn använder krypto, ngn pratar ett
+  språk som inte är vanligt i det området, ngn söker efter "skumma
+  grejer", alla krypterade word-dokument från Iran, all användning av
+  PGP i Iran
+- exempel på fler saker: "visa mig alla VPN-uppkopplingsförsök i land
+  X så att jag kan dekryptera dom och upptäcka alla användare" (s. 17)
+- metadata lagras typiskt i 30 dagar
+- man har ett dokument och kan spåra vem som skrev det och var
+- "visa mig alla excell-blad från Irak som innehåller en MAC-adress"
+- "visa mig alla maskiner i land X som vi kan ta kontroll över med
+  hjälp av sårbarheter i koden"
+  
+- "DNI exploitation system/analytic framework" (DNI == digital network
+  intelligence)
+
+- letar efter anomalier -- användning av krypto
+- TURMOIL/TURBULENCE är andra program som verkar gå mindre på djupet
+- Marina verkar vara ett program för att göra [PSC] i efterhand
+- Pinwale och Trafficthief är två andra relaterade program
+
+- obs daterat feb 2008, för 5,5 år sedan
+
+- TAO -- tailored attack overview ?
+
+- MDR -- massive data R
+
+*** guardian-artikeln
+http://www.theguardian.com/world/2013/jul/31/nsa-top-secret-program-online-data
+- XKeychat är en databas och söksystem som ger användaren möjlighet
+  att söka i enorma databaser med mejl, chat och browsing-historik för
+  miljontals användare
+- ? man kan söka genom metadata och innehåll utan att ha t.ex. en
+  epost-adress ("selector")
+- 2007: 850 miljarder "call events", 150 miljarder "internet records",
+  1-2 miljarder nya entrys per dag
+
+*** andra artiklar
+http://www.svd.se/nyheter/utrikes/nsa-overvakar-all-nataktivitet_8388740.svd
+
+http://www.svd.se/naringsliv/nyheter/varlden/avlyssning-hotar-frihandelsavtal_8314174.svd
+TTIP hotat, 25% av intrången kommer från USA, 10% från Asien
+
+http://www.svd.se/naringsliv/digitalt/sa-kan-storebror-folja-dina-spar_8270288.svd
+PRISM
+
+http://www.svd.se/naringsliv/nyheter/varlden/darfor-struntar-wall-street-i-spionskandalen_8264608.svd
+dom 9 lider ingen ekonomisk skada av avslöjandena
+
+http://www.dn.se/nyheter/varlden/usa-sponsrar-brittisk-signalspaning/
+USA har finansierat GCHQ med ca 1 miljard SEK under de senaste tre åren
+
+http://www.svd.se/opinion/brannpunkt/nu-skarps-synen-pa-lackor_8389614.svd
+Funcke om läckor.
+
+http://www.spiegel.de/international/world/new-nsa-leaks-describe-total-surveillance-system-xkeyscore-a-914244.html
+BND kan använda XKS säger hemliga dokument. BND menar att dom bara
+testar programmet och inte har tillgång till databasen.
+
+http://www.spiegel.de/international/world/german-intelligence-worked-closely-with-nsa-on-data-surveillance-a-912355.html
+
+http://www.nyteknik.se/nyheter/it_telekom/allmant/article3033210.ece
+FRA-läcka, äkta?
+
+https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5605784
+https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5596881
+.de hjälpte .us
+
+*** kort beksrivning plus åtgärder
+- en databas med avlyssnad internettrafik
+- inhämtning verkar ske på 150 ställen runt jorden, lagringstid ca 3
+  dygn (trafikdata en månad)
+- plus sökmotor -- google -- indexerad på saker som epost-adresser,
+  telefonnummer, filnamn, FB/twitter-vänner och mer
+- kan hitta information utan s.k. "strong selector", dvs ett
+  sökkriterium som en epost-adress, t.ex. vem använder ett språk som
+  är ovanligt i den regionen, vem krypterar sin trafik
+- flera sökmöjligheter: maskiner i land X som har sårbarheter vi kan
+  utnyttja för att bryta oss in i dom
+
+- möjliga tekniska skydd
+  - mer krypterad trafik så att den inte sticker ut
+  - behöver kortlivade kryptonycklar så att man i efterhand inte kan
+    dekryptera all trafik
+
+*** frågor
+- Gör FRA också så här? Det finns ingen prick i Sverige i dokumentet,
+  finns det nu? Svensk lag tillåter sedan 2009 FRA att lyssna vid
+  gränsen. TDV (tekniskt detekterings- och varningssystem) är under
+  uppbyggnad.
+- Har FRA tillgång till XKeyscore? Programvara? Databas? BND uppges ha
+  det, BND bekräftar tillgång till programvara (källa: Der Spiegel)
+- Skickar Sverige inhämtat data till det här systemet?
+- Tar Sverige emot information från det här systemet?
+- Är data från TDV tänkt att användas för något liknande detta?
+
+- Bryter FRA mot några lagar om dom lämnar ut data till det här
+  programmet? MK: Nej.
+
+- bara http?
+*** p1 morgon fre 2/8 08:15
+linus larsson
+- missar att det är 5,5 år sedan
+- farligt att lagra allt men "nsa är kanske bäst i världen på
+  it-säkerhet"
+** ANT
 - link and program name collections
   - https://mailman.stanford.edu/pipermail/liberationtech/2014-January/012498.html
   - http://cryptome.org/2014/01/nsa-codenames.htm
@@ -32262,7 +32369,50 @@ streamdumps http://mirror.mag.lab.sh/pub/30c3-streamdump/
 clive, libquvi -- uses curl to download video from youtube and more,
 supposedly parsing flash (unclear to me how dangerous it is to run on
 data from teh internets)
-* abfab
-** 
-** ephemeral keying
-- 2013-11-15 [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]] 
+* zfs
+increase the size of a volume : FIXME
+* ipsec
+** Debian
+- package xl2tpd implements L2TP (RFC 2661)
+  - fork of l2tpd by Xelerence
+  - installed by the virtual package l2ptd
+  - tunneling PPP over UDP which together with IPsec can be used for a
+    VPN (L2TP/IPsec RFC 3193)
+  - /usr/share/doc/xl2tpd/README.xl2tpd
+- l2test(1) -- apparently from package 'bluez'
+*** Lean and mean
+sudo apt-get install xl2tpd openswan
+
+IPSEC(8)
+IPSEC.CONF(5)
+/etc/ipsec.conf
+/etc/ipsec.secrets
+*** For a GUI
+sudo apt-get install l2tp-ipsec-vpn
+--> gksu l2tp-ipsec-vpn l2tp-ipsec-vpn-daemon libctemplate2
+    libengine-pkcs11-openssl libgksu2-0 libp11-2 openswan sudo xl2tpd
+
+/usr/share/man/man1/L2tpIPsecVpn.1.gz
+/etc/init.d/l2tp-ipsec-vpn-daemon
+
+* bildt
+- friends with bertil lundin, head of KSI 1974-2000
+  http://www.expressen.se/nyheter/verklighetens-hamilton-dod/
+** Lundin Oil 
+  http://undermattans.blogspot.ca/2011/09/carl-bildt-lundin-oil.html
+** BL
+  http://www.expressen.se/kvp/spionchef-tog-sitt-liv---allt-hemligstamplades/
+  http://intressant.se/bertil_lundin
+  - was the brother of Adolf Henrik Lundin of Lundin Oil
+    https://en.wikipedia.org/wiki/Adolf_Lundin
+  - was a personal friend of ÖB Sverker Göranson
+    http://blog.zaramis.se/2013/03/10/sjalvmord-i-militara-underrattelse/
+    by micke.olander@expressen.se 2013-03-10
+
+* linus skillset
+I have an amazing combination of skills:
+- sw dev
+- running services
+- security
+- privacy
+- network, routing
