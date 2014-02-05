@@ -20,6 +20,7 @@ Legend                                                (emacs -*-org-*- mode)
      - new file, not in git, mapping member number to email address
    - - flashproxy running at dfri.se
 ** Misc
+   - - double room hilton london +44 20 7656 6570
    - - flight booked ARN-london feb 28 morning / mar 7 evening
    - - trip report for 30c3 uploaded
    - . strombergson and wolfgang connected, possibly by emailing a
