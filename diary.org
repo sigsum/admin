@@ -4,6 +4,14 @@
 `C-c C-x C-d' for showing times.
 `C-c C-y' for updating time on line.
 
+* week 05
+<2014-01-30 Thu> abfab ephemeral keying 1h
+12:20 abfab 45m
+15:05 abfab 1h
+17:00 abfab 1h30m
+
+mon-wed: abfab 7h
+mon: ndn security 1h
 * week 02
 ** tor
    CLOCK: [2014-01-10 Fri 11:00]--[2014-01-10 Fri 11:51] =>  0:51
