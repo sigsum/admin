@@ -10,9 +10,8 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
    - . tor prop 220 reviewed
-   - o release libradsec-0.0.5
-   - o 5min libradsec summary for moonshot meeting (mon 15)
-   - o ephemeral keying for abfab grokked, see [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]]
+   - - things not under source control in ~/p/radsecproxy/libradsec/lib checked in
+     typically tests/server.c and the python bindings
 ** IETF
 ** Sysadm
 ** DFRI
@@ -31,7 +30,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - FPGA toolchain presentation read and something posted to
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
-   - o 2+2 slides on tflows and CT for josva [mon]
 * Soon (within a month)
 ** Dev
    - - shadow #111 closed
