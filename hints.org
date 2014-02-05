@@ -30606,6 +30606,11 @@ spittelmarkt
 <aagbsn> (if someone else with an x60 wants to try, perhaps write 0x3C then                                            
          0xBC and see if that works. just a guess)                      [17:34]
 * tails
+** startup
+sudo sh -c "
+  apt-get install gcc make autoconf automake libtool
+  apt-get install golang
+"
 ** wireless usb stick not working
 Jul 31 07:22:34 localhost dhclient: bound to 130.129.23.208 -- renewal in 9917 seconds.
 Jul 31 07:22:35 localhost NetworkManager[6755]: <info> (wlan2): writing resolv.conf to /sbin/resolvconf
