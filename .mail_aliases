@@ -115,7 +115,8 @@ alias christian.priv            "Christian Wirth <christian@wirth.se>"
 alias christian.tb              "Christian Wirth <christian@teknikbyran.se>"
 alias chulu                     "Henrik Chulu <chulu@frikultur.dk>"
 alias cissi			cissi@astrogator.se
-alias claudio                   claudio@shadowserver.org
+alias claudio                   nex@nex.sx
+alias claudio.shadow            claudio@shadowserver.org
 alias cryptoparty               cryptoparty@lists.dfri.se
 alias damian                    "Damian Johnson <atagar@torproject.org>"
 alias dan.frost                 "Dan Frost <frost@f-m.fm>"
@@ -339,6 +340,7 @@ alias karsten.loesing           "Karsten Loesing <karsten@torproject.org>"
 alias karsten.ness              kn@jondos.de
 alias karsten.priv		karsten.loesing@gmx.net
 alias kattpappan                kenta.macken
+alias kel                       "Kelley Misata <kelley@torproject.org>"
 alias kent.engstrom		kent.engstrom@LIU.SE
 alias kenta.macken              "Kent Sjöberg <kent@laboefashion.se>"
 alias kirsten                   "Kirsten <kirsten.fiedler@edri.org>"
@@ -641,7 +643,8 @@ alias sus                       "Sus Andersson <sus.andersson@farad.se>"
 alias sylvia                    sylviavill@hotmail.com
 alias tech                      tech@cryptech.is
 alias tege			tg@gmplib.org
-alias tg			"Torbjörn Gräslund <torbjorn@biotech.kth.se>"
+alias tg                        "Torbjörn Gräslund <torbjorn@kth.se>"
+alias tg.biotech		"Torbjörn Gräslund <torbjorn@biotech.kth.se>"
 alias thomas			"Thomas Hyllested <hyllested@nordu.net>"
 alias thomas.winkler		"Thomas Winkler <thomas.winkler@rkp.police.se>"
 alias tiago			tiago@gnu.org
@@ -692,6 +695,7 @@ alias wictorin.cert             Torbjorn.Wictorin@cert.sunet.se
 alias wingel            	"Christer Weinigel <christer@weinigel.se>"
 alias winter                    stefan.winter
 alias xenia                     xenia@freitagsrunde.org
+alias ximin                     "Ximin Luo <infinity0@torproject.org>"
 alias yair			"Yair Yarom <irush@cs.huji.ac.il>"
 alias ylan			ylan@ylan.nu
 alias yosh			"Johan Marklund <yosh@yosh.se>"
