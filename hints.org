@@ -925,6 +925,9 @@ http://sourceforge.net/projects/emacs-jabber/files/emacs-jabber%20beta%20version
 seems better, but requires 
   (setq jabber-invalid-certificate-servers '("nordu.net"))
 for cert mismatch.
+
+You get "package assoc is obsolete" when running this in emacs24.
+
 * Telia homerun
 user: 46703714984
 pw: ds5XVDEir5
