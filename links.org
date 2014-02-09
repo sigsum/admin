@@ -1,3 +1,13 @@
+nagios tor user:tor-guest https://nagios.torproject.org/
+swedish police anonymity http://www.skanskan.se/article/20120308/ESLOV/703079833/-/polisen-sparar-upp-anonyma-tipsare
+mirror web http://www.pavuk.org/about.html
+readme random rng http://iang.org/ssl/hard_truths_hard_random_numbers.html
+readme dns p2p https://nohats.ca/wordpress/blog/2012/04/09/you-cant-p2p-the-dns-and-have-it-too/
+searchengines http://daveshackleford.com/?p=999
+google fisa http://googleblog.blogspot.ch/2014/02/shedding-some-light-on-foreign.html
+google nsl http://googleblog.blogspot.se/2013/03/transparency-report-shedding-more-light.html
+readme pdf ccc http://events.ccc.de/congress/2010/Fahrplan/attachments/1796_27C3_Julia_Wolf_OMG-WTF-PDF.pdf
+configuration puppet http://docs.ansible.com/
 readme https://www.schneier.com/blog/archives/2014/02/1971_social_eng.html
 tunnel dns tor http://thomer.com/howtos/nstx.html
 tunnel dns tor http://code.kryo.se/iodine/
