@@ -612,7 +612,7 @@ multiperson thing?
 ** TLS
 See [[*talking%20to%20nick][talking to nick <2013-11-01 Fri>]] for background.
 
-Related: [[file:~/Persistent/u/ietf/in-notes/rfc5246.txt][RFC5246 (TLS 1.2)]], [[file:~/Persistent/u/ietf/in-notes/rfc5116.txt][RFC5116 (AEAD)]]
+Related: [[file:~/Persistent~/usr/share/ietf/in-notes/rfc5246.txt][RFC5246 (TLS 1.2)]], [[file:~/Persistent~/usr/share/ietf/in-notes/rfc5116.txt][RFC5116 (AEAD)]]
 
 Here are the action points.
 
@@ -620,7 +620,7 @@ Here are the action points.
   https://en.wikipedia.org/wiki/Authenticated_encryption
   http://www.daemonology.net/blog/2009-06-24-encrypt-then-mac.html
   http://crypto.stackexchange.com/questions/202/should-we-mac-then-encrypt-or-encrypt-then-mac
-  [[file:~/Persistent/u/ietf/internet-drafts/draft-gutmann-tls-encrypt-then-mac-04.txt::TLS%20Working%20Group%20P.%20Gutmann][draft-gutmann-tls-encrypt-then-mac-04]]
+  [[file:~/Persistent~/usr/share/ietf/internet-drafts/draft-gutmann-tls-encrypt-then-mac-04.txt::TLS%20Working%20Group%20P.%20Gutmann][draft-gutmann-tls-encrypt-then-mac-04]]
 - encrypt as much of the handshake as possible, encrypt record types
 - encrypt record boundaries
 - minimize necessary observable differences between TLS implementations
@@ -661,14 +661,14 @@ Related:
 
 TODO: read, input from Sam, who also asks "why would you want AEAD?"
 
-[[file:~/Persistent/u/ietf/in-notes/rfc5246.txt][RFC5246]]:
+[[file:~/Persistent~/usr/share/ietf/in-notes/rfc5246.txt][RFC5246]]:
 
    In AEAD encryption, the plaintext is simultaneously encrypted and
    integrity protected.  The input may be of any length, and aead-
    ciphered output is generally larger than the input in order to
    accommodate the integrity check value.
 
-[[file:~/Persistent/u/ietf/internet-drafts/draft-gutmann-tls-encrypt-then-mac-03.txt][Gutmann's draft]]:
+[[file:~/Persistent~/usr/share/ietf/internet-drafts/draft-gutmann-tls-encrypt-then-mac-03.txt][Gutmann's draft]]:
 
 3.  Applying Encrypt-then-MAC
 [...]
@@ -1436,7 +1436,7 @@ Internet-DraftPassive Traffic Analysis Threats and Defense  October 2013
 
 
 Huitema                   Expires May 01, 2014                 [Page 13]
-** [[file:/u/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt]]
+** [[file:~/usr/share/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt]]
 *** review
 **** speling, take 1
 Typos and speling diff attached. Please disregard line numbers.
@@ -2060,11 +2060,11 @@ Example usage:
 tor and off you go]
 * perpass
 * abfab
-[[file:/u/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt]]
-[[file:/u/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt]]
-[[file:/u/ietf/internet-drafts/draft-ietf-abfab-gss-eap-09.txt]] now RFC 7055
-[[file:/u/ietf/internet-drafts/draft-ietf-abfab-eapapplicability-06.txt]] now RFC 7057
-[[file:/u/ietf/internet-drafts/draft-ietf-abfab-usecases-05.txt]]
+[[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt]]
+[[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt]]
+[[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-09.txt]] now RFC 7055
+[[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-eapapplicability-06.txt]] now RFC 7057
+[[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-usecases-05.txt]]
 
    +----------+-----------+--------------------+-----------------------+
    | Protocol | Client    | Relying Party      | Identity Provider     |
@@ -2089,19 +2089,19 @@ tor and off you go]
    |          |           | RADIUS client      |                       |
    +----------+-----------+--------------------+-----------------------+
 
-[[file:/u/ietf/in-notes/rfc3748.txt]] EAP
-[[file:/u/ietf/in-notes/rfc7055.txt]] a GSS-API mech for EAP
-[[file:/u/ietf/in-notes/rfc7057.txt]] EAP for ABFAB
-[[file:/u/ietf/in-notes/rfc7029.txt]] EAP mutual cryptographic binding using EMSK
-[[file:/u/ietf/in-notes/rfc6677.txt]] channel binding for EAP methods
-[[file:/u/ietf/internet-drafts/draft-ietf-emu-eap-tunnel-method-10.txt]] TEAP
-[[file:/u/ietf/in-notes/rfc5056.txt]] (GSS-API) channel binding
-[[file:/u/ietf/in-notes/rfc3579.txt]] EAP over RADIUS
+[[file:~/usr/share/ietf/in-notes/rfc3748.txt]] EAP
+[[file:~/usr/share/ietf/in-notes/rfc7055.txt]] a GSS-API mech for EAP
+[[file:~/usr/share/ietf/in-notes/rfc7057.txt]] EAP for ABFAB
+[[file:~/usr/share/ietf/in-notes/rfc7029.txt]] EAP mutual cryptographic binding using EMSK
+[[file:~/usr/share/ietf/in-notes/rfc6677.txt]] channel binding for EAP methods
+[[file:~/usr/share/ietf/internet-drafts/draft-ietf-emu-eap-tunnel-method-10.txt]] TEAP
+[[file:~/usr/share/ietf/in-notes/rfc5056.txt]] (GSS-API) channel binding
+[[file:~/usr/share/ietf/in-notes/rfc3579.txt]] EAP over RADIUS
 
-[[file:/u/ietf/in-notes/rfc4462.txt]] GSS-API authn & kex for SSH
-[[file:/u/ietf/in-notes/rfc4253.txt]] SSH transport, incl. DH kex
+[[file:~/usr/share/ietf/in-notes/rfc4462.txt]] GSS-API authn & kex for SSH
+[[file:~/usr/share/ietf/in-notes/rfc4253.txt]] SSH transport, incl. DH kex
 
-[[file:/u/ietf/in-notes/rfc6678.txt]] tunnel-based EAP methods, requirements
+[[file:~/usr/share/ietf/in-notes/rfc6678.txt]] tunnel-based EAP methods, requirements
 [[http://eprint.iacr.org/2002/163.pdf]] tunneled protocols and MITM, paper
 
 People other than Sam who, according to Leif, might know about
@@ -2382,7 +2382,7 @@ ABFAB -- we need this too?
 RFC 6677 describes "the lying NAS problem". What problem does this
 solve? Can we use it?
 
-- [[file:/u/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt::4.2.%20Privacy%20Aspects%20of%20ABFAB%20Communication%20Flows][file:/u/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt::4.2. Privacy Aspects of ABFAB Communication Flows]]
+- [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt::4.2.%20Privacy%20Aspects%20of%20ABFAB%20Communication%20Flows][file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt::4.2. Privacy Aspects of ABFAB Communication Flows]]
    o  The EAP MSK is transported between the IdP and the RP over the AAA
       infrastructure, for example through RADIUS headers.  This is a
       particularly important privacy consideration, as any AAA Proxy
@@ -2402,7 +2402,7 @@ solve? Can we use it?
       make use of techniques such as Diffie-Helman key exchange would
       mitigate against this.
 
-- [[file:/u/ietf/in-notes/rfc7057.txt::4.%20Security%20Considerations][file:/u/ietf/in-notes/rfc7057.txt::4. Security Considerations]]
+- [[file:~/usr/share/ietf/in-notes/rfc7057.txt::4.%20Security%20Considerations][file:~/usr/share/ietf/in-notes/rfc7057.txt::4. Security Considerations]]
    existing exchange that provides mutual authentication.  In order to
    fully mitigate the risk of NAS impersonation when these mechanisms
    are used, it is RECOMMENDED that mutual channel bindings be used to
@@ -2451,7 +2451,7 @@ Q: 7055 "context establishment" and this, how do they relate?
 Q: they run from GSS initiator to acceptor though, so how do we set up
 keys with the EAP server? pass-through?
 
-Q: will this mess up the [[file:/u/ietf/in-notes/rfc7055.txt::4.%20Selection%20of%20EAP%20Method][selection of EAP method]]?
+Q: will this mess up the [[file:~/usr/share/ietf/in-notes/rfc7055.txt::4.%20Selection%20of%20EAP%20Method][selection of EAP method]]?
 
 *** Introduction / background / ABFAB architecture
 [use (parts of) [[*introduction][introduction]]]
@@ -2465,8 +2465,8 @@ Q: will this mess up the [[file:/u/ietf/in-notes/rfc7055.txt::4.%20Selection%20o
 - New GSS mech? How to pick the right one?
 
 * EAP
-- [[file:/u/ietf/in-notes/rfc3748.txt][rfc3748]] EAP
-- [[file:/u/ietf/in-notes/rfc5247.txt][rfc5247]] EAP key management
+- [[file:~/usr/share/ietf/in-notes/rfc3748.txt][rfc3748]] EAP
+- [[file:~/usr/share/ietf/in-notes/rfc5247.txt][rfc5247]] EAP key management
 - rfc4017 EAP for wifi
 
 Methods like LEAP, EAP-TLS, EAP-TTLS, EAP-PSK, EAP-EKE.
@@ -2476,11 +2476,11 @@ Keys to derive using [DH]:
 - MSK?
 - EMSK?
 * GSS-API and SASL
-- [[file:/u/ietf/in-notes/rfc2743.txt][rfc2743]] GSS-API version 2
-- [[file:/u/ietf/in-notes/rfc4422.txt][rfc4422]] SASL
-- [[file:/u/ietf/in-notes/rfc5056.txt][rfc5056]] (GSS-API) channel binding
-- [[file:/u/ietf/in-notes/rfc5247.txt::Extensible%20Authentication%20Protocol%20(EAP)%20Key%20Management%20Framework][rfc5247]] EAP key management
-- [[file:/u/ietf/in-notes/rfc5801.txt][rfc5801]] GSS-API and SASL: GS2
+- [[file:~/usr/share/ietf/in-notes/rfc2743.txt][rfc2743]] GSS-API version 2
+- [[file:~/usr/share/ietf/in-notes/rfc4422.txt][rfc4422]] SASL
+- [[file:~/usr/share/ietf/in-notes/rfc5056.txt][rfc5056]] (GSS-API) channel binding
+- [[file:~/usr/share/ietf/in-notes/rfc5247.txt::Extensible%20Authentication%20Protocol%20(EAP)%20Key%20Management%20Framework][rfc5247]] EAP key management
+- [[file:~/usr/share/ietf/in-notes/rfc5801.txt][rfc5801]] GSS-API and SASL: GS2
 
 RFC2743 1.2.2: Per-Message Security Service Availability
 RFC2743 1.2.7: Per-Message Protection During Context Establishment

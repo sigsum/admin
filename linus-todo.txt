@@ -3,7 +3,7 @@ Legend                                                (emacs -*-org-*- mode)
         * Top priority
         . Partially done
         o Done
-        d Deferrable
+o        d Deferrable
         D Deferred
         X Abandoned
 
