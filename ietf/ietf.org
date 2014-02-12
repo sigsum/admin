@@ -2094,13 +2094,12 @@ tor and off you go]
 [[file:~/usr/share/ietf/in-notes/rfc7057.txt]] EAP for ABFAB
 [[file:~/usr/share/ietf/in-notes/rfc7029.txt]] EAP mutual cryptographic binding using EMSK
 [[file:~/usr/share/ietf/in-notes/rfc6677.txt]] channel binding for EAP methods
+[[file:~/usr/share/ietf/in-notes/rfc4121.txt]] Kerberos GSS-API v2
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-emu-eap-tunnel-method-10.txt]] TEAP
 [[file:~/usr/share/ietf/in-notes/rfc5056.txt]] (GSS-API) channel binding
 [[file:~/usr/share/ietf/in-notes/rfc3579.txt]] EAP over RADIUS
-
 [[file:~/usr/share/ietf/in-notes/rfc4462.txt]] GSS-API authn & kex for SSH
 [[file:~/usr/share/ietf/in-notes/rfc4253.txt]] SSH transport, incl. DH kex
-
 [[file:~/usr/share/ietf/in-notes/rfc6678.txt]] tunnel-based EAP methods, requirements
 [[http://eprint.iacr.org/2002/163.pdf]] tunneled protocols and MITM, paper
 
@@ -2108,7 +2107,7 @@ People other than Sam who, according to Leif, might know about
 security and ABFAB include Alan DeKok, J. Salowey, Stefan Winter and
 Josh Howlett. I bet Luke knows something too.
 
-** chat logs
+** conversations, chat and email
 *** hartmans <2014-01-30 Thu>
 [2014-01-29 14:04] linus> hartmans: hi. could you explain what the
 problem is with the DH key exchange in RFC 4462, from an ABFAB
@@ -2223,6 +2222,12 @@ tokens.
 - Describe open issues.
 
 I think that's all we need in the 00 draft
+** josh on client and RP sending proofs to IdP [[gnus:nnimap%2Badbc:INBOX#CF180C59.D947%25josh.howlett@ja.net][Email from Josh Howlett: Re: ABFAB ephemeral keys chat]]
+We could get the initiator and acceptor to send key possession proofs to
+the IdP, which could compare these and therefore establish for itself that
+both parties are talking to each other. I'm not sure what value this adds,
+other than perhaps providing a cryptographically strong accounting
+mechanism.
 ** Step by step, successful authn
 - NAI (molgan@example.com): abfab client  ------> RP
 
@@ -2296,16 +2301,32 @@ data, inadvertently or not.
 
 *** Keys used in [an ABFAB system]
 - MSK (EAP)
-One MSK (Master Session Key) and one EMSK (Extended MSK) for each
-[ABFAB? EAP?] session which is shared by the Client, the RP and the
-IdP. [Transported all over the place, esp. AAA without end-to-end
+One MSK (Master Session Key) and one EMSK (Extended MSK) for each EAP
+session is derived by the IdP. The MSK [and the EMSK?] is [/are]
+shared by [the Client,?] the RP and the IdP. [It/they is/are
+transported all over the place, esp. over AAA without end-to-end
 confidentiality or integrity]
 
-- CRK (GSS?)
-Context Root Key, derived from the GMSK (GSS-API MSK).
+- AAA-Key (EAP)
+The AAA-Key is derived from the MSK/EMSK. They are often equivalent
+([[file:~/usr/share/ietf/in-notes/rfc3748.txt::7.10.%20Key%20Derivation][RFC3748 section 7.10]]).
+FIXME: case in abfab?
+
+- TSK (EAP)
+Transient Session Keys are derived from the AAA-Key. 
+Each ciphersuite is specifying how this is done.
+FIXME: case in abfab?
 
 - GMSK (GSS)
-Derived from the MSK using the encryption type of the mechanism in use.
+Derived from the MSK based on the RFC3961 random-to-key operation on
+the MSK, using the encryption type of the mechanism in use.
+
+- CRK (GSS-EAP)
+Context Root Key, derived from the GMSK (GSS-API MSK), as defined in
+[[file:~/usr/share/ietf/in-notes/rfc7055.txt::The%20context%20establishment%20process%20may%20be%20passed%20through%20to%20an%20EAP][RFC7055, section 6]].
+
+This key is treated as sub-session key and ticket session key, in
+RFC 4121 terms.
 *** Points of attack [attack vectors?] against an ABFAB system
 - AAA
   client/NAS = server
@@ -2345,7 +2366,6 @@ Derived from the MSK using the encryption type of the mechanism in use.
 
   User and IdP share a long term NAI (f.ex. an e-mail address) and a long
   term key (f.ex. a pass phrase).
-
 *** open questions
 - [draft-ietf-abfab-gss-eap-09]: Second, a non-optimal security
   mechanism may be chosen.
@@ -2407,18 +2427,28 @@ solve? Can we use it?
    fully mitigate the risk of NAS impersonation when these mechanisms
    are used, it is RECOMMENDED that mutual channel bindings be used to
    bind the authentications together as described in [RFC7029].  When
+*** open questions
+- Can radsec proxies see the EAP MSK/EMSK?
+  
+  A: Yes.
+- Can we use something of "this" for signing SAML assertions? The EAP
+  MSK/EMSK?
+- 7055 "context establishment" and this, how do they relate? 
+  
+  A: Context establishment is the term for going through the 7055 states.
+- They run from GSS initiator to acceptor though, so how do we set up
+  keys with the EAP server? pass-through? 
+  
+  A: Apparently, we don't.
+- Will this mess up the [[file:~/usr/share/ietf/in-notes/rfc7055.txt::4.%20Selection%20of%20EAP%20Method][selection of EAP method]]? Depends on wether we
+  want to make this optional or not. 
 
-** draft-abfab-ephemeral-keying
-*** Abstract
-This [doc] describes how EAP-GSS provides forward secrecy by
-encrypting each session in an ephemeral key [DH:ed] and shared by the
-initiator (EAP peer) and acceptor (EAP authenticator).
-
-[To stop someone with access to traffic going between an ABFAB user and
-her Identity Provider, possibly by being on the path (like all the
-entitites in the AAA fabric are), from getting access to key material
-[and more],]
-
+  A: If mandatory there's no difference from before -- we're simply
+  using EAP-GSS. If we're adding some fancy negotiation mechanism for
+  this, I don't know.
+- Can we _remove_ any other crypto now that we have "this"?
+- Can we use "this" to authenticate some part(s) too? Where and how?
+*** misc notes
 - goal 1: provide forward secrecy
   - fixes what problem? 
     - passive attacker records client traffic and learns [long term
@@ -2433,37 +2463,92 @@ entitites in the AAA fabric are), from getting access to key material
   - RP<->IdP communication (FIXME: is this two separate things -- EAP
     peer<->server and IdP<->RP?)
 
-  - 
-
 implemented as a number of context subtokens, 7055 sect. 5?
-
-Q: _remove_ any other crypto now that we have this?
-Q: authenticate too? where and how?
 
 7055 states:
 - initial (vendor, name req+resp)
-- authenticate (eap req+resp)
+  - vendor contains debugging info
+  - name req+resp carries sensitive acceptor name (like TLS SNI)
+- authenticate (eap req+resp) derives MSK/EMSK
+  - [what goes here?]
 - extensions (flags, gss channel binding, MIC)
+  - fixme
+** draft-abfab-ephemeral-keying
+*** Abstract
+This document describes how EAP-GSS provides forward secrecy by
+encrypting each session in an ephemeral key generated in the initial
+state of the context establishment. This Diffie-Hellman key is shared
+by the initiator (EAP peer) and acceptor (EAP authenticator).
 
+The goal is to stop a passive attacker with access to the traffic
+between an ABFAB user and the service she uses (Relying Party), from
+getting access to key material and information linkable to the user or
+from being able to fingerprint the user.
 
-Q: 7055 "context establishment" and this, how do they relate?
+[do we mitigate any active attacks?]
+*** Problem
+**** Privacy against passive observers
+***** IDP realm almost always exposed
+[FIXME]
+***** fingerprint of EAP implementation
+n[FIXME]
+***** certs of IDP realm
+[FIXME]
+**** EAP exposed between the initiator and acceptor
+Access to the MSK/EMSK gives the possibility to decrypt [and tamper
+with?] the traffic protected by the EAP tunnel, i.e. traffic between
+initiator and acceptor (the ABFAB Client and the RP). AAA proxies
+between RP and IdP have this access and so has anyone eavesdropping on
+the path between RP and IdP in case RADIUS/UDP or Diameter is being
+used instead of RADIUS/TLS.
+**** MIC, channel bindings and extensions subtokens exposed to passive attackers
+At the GSS-API layer, the following sensitive data is susceptible for
+eavesdropping by a passive attacker:
 
-Q: they run from GSS initiator to acceptor though, so how do we set up
-keys with the EAP server? pass-through?
+- Acceptor name
 
-Q: will this mess up the [[file:~/usr/share/ietf/in-notes/rfc7055.txt::4.%20Selection%20of%20EAP%20Method][selection of EAP method]]?
+  Carried in name requests and responses during the initial phase.
+  
+  The acceptor name can be used for fingerprinting users since it
+  indicates what service is requested and supplied. In settings where
+  the endpoints IP addresses and other identifying information don't
+  link the user to the service, exposing the acceptor name is bad for
+  privacy.
 
-*** Introduction / background / ABFAB architecture
-[use (parts of) [[*introduction][introduction]]]
+- Key material
 
-*** Problem Statement / The threat(s)
+  Carried in EAP requests and responses in the authenticate phase.
+  
+  [this is where MSK+EMSK are derived by the IdP (server) and sent to
+  client (initiator/peer) and RP (acceptor/authenticator)]
 
-*** The solution
+- GSS channel bindings, in extensions state
 
-*** The costs
+  [FIXME]
+
+- MIC, in extensions state
+
+  [FIXME]
+
+- Flags, in extensions state
+  
+  Currently defined flags leak information about what application
+  protocol is being used and pose a threat to user privacy. Future
+  flags might increase this threat.
+
+- [FIXME: error subtokens]
+
+*** Solution
+Generate a Diffie-Hellman key in the initial state of the context
+establishment and use it to encrypt other subtokens.
+
+[describe where in initial the DH key exchange happens and how; point
+at general description? copy from existing standard?]
+*** Costs
 - This will cost FIXME extra roundtrips.
-- New GSS mech? How to pick the right one?
-
+- [No new GSS mech. Thus no complexity cost of picking the right one.]
+*** Open issues
+- Should we make the ephemeral keying and encryption optional?
 * EAP
 - [[file:~/usr/share/ietf/in-notes/rfc3748.txt][rfc3748]] EAP
 - [[file:~/usr/share/ietf/in-notes/rfc5247.txt][rfc5247]] EAP key management
