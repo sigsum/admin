@@ -257,6 +257,20 @@ wlan0     IEEE 802.11abgn  ESSID:"NUNOC"
           Tx excessive retries:904  Invalid misc:63   Missed beacon:0
 After about 1h.
 
+** USB based
+*** Peter, summer/fall 2013
+Netgear WNDA4100 AKA WNDA4100-100PES, Ralink RT3573-chipset, 2.4 + 5 GHz.
+
+Den drivs av rt2800usb liksom många andra Ralink-USB-adaptrar.
+Drivisen kräver dock att /lib/firmware/rt2870.bin finns på systemet!
+
+Jag har två versioner av firmwarebloben - en från linux-firmware.git (.old)
+och en annan nyare version som en utvecklare länkade till, båda 8192 byte.
+
+$ sha256sum rt2870.bin*
+531ce71af8f9a135eaeeac089d8923dd8166cf3f72708a3cbb99192ee7d92ea3  rt2870.bin
+7406f34a45d21af8740f0d348eaad5cb2fe14560b93571fcdcb2a602fcd8425c  rt2870.bin.old
+$ 
 * libevent
 ** dns issues in tor
 todo
@@ -1289,12 +1303,22 @@ SSL-Session:
   CAPABILITY IMAP4 IMAP4rev1 IDLE ACL LITERAL+ UIDPLUS QUOTA ID SORT
   ANNOTATE ANNOTATEMORE STATUS-COUNTERS UNSELECT LISTEXT NAMESPACE
   XLIST AUTH=CRAM-MD5 AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5
-* Travels
-** Amsterdam march 2010
-- hotel
-radisson blu schiphol 15-19/3 642,60 Euro
-confirmation number: 7501JJX
-booked at 2010-02-08
+* Travel
+There are three types of travelling.
+1. Within Sweden
+2. Not touching UK
+3. To or through UK
+
+Travelling withing Sweden requires backing up your ordinary
+laptop. Going through customs means don't bring an easily owned
+device, i.e. bring an x60 (or equivalent) and a Tails stick or
+two. Going to or through the UK means don't bring any encrypted
+data. This might be a good idea for some other destinations as well,
+depending on circumstances. The US and Canada springs to mind.
+
+** Before leaving
+** During travel
+** At arrival
 * Debian
 - update-rc.d(8) -- fiddle with startup of services
 - apt-get install package
