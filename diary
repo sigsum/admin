@@ -1,5 +1,6 @@
 %%(diary-anniversary 1987 2 4) Runa
-%%(diary-anniversary 2013 2 10) Erinn
+%%(diary-anniversary 1980 2 10) Erinn
+%%(diary-anniversary 2013 2 11) asn
 %%(diary-anniversary 1979 3 22) Aron
 %%(diary-anniversary 1983 4 1) Jake
 %%(diary-anniversary 1969 4 9) Ilja
@@ -638,7 +639,7 @@
 %%(diary-block 2014 01 18 2014 01 19) Lilla Sara
 2014-01-06 Kalla till DFRI-möte
 %%(diary-block 2014 08 20 2014 08 22) USENIX Security, San Diego
-%%(diary-block 2014 05 12 2014 05 16) RIPE, Warsaw
+&%%(diary-block 2014 05 12 2014 05 16) RIPE, Warsaw
 2014-01-06 10:00 invite geko
 %%(diary-block 2014 05 19 2014 05 22) TERENA, Dublin
 2014-01-15 16:00-17:00 [Juni] Aikidon startar
@@ -693,7 +694,7 @@
 2014-01-31 11:25 Christian @ Koreana
 2014-03-12 [prel] prata dfri/tor @ netnod
 2014-02-05 17:10-17:40 Juni utv.samtal
-%%(diary-block 2014 05 26 2014 05 27) ENOG 7 Moskva http://www.enog.org/
+&%%(diary-block 2014 05 26 2014 05 27) ENOG 7 Moskva http://www.enog.org/
 2014-04-08 ENOG 7 CFP deadline http://www.enog.org/meetings/enog-7/cfp/
 %%(diary-block 2014 03 11 2014 03 12) netnod spring mtg
 2014-03-02 15:00-17:00 IETF privacy tutorial 
@@ -708,11 +709,32 @@
 2014-02-05 11:45 Hötorget
 2014-02-10 12:30 Bosse Koreana
 2014-02-28 13:00-18:00 STRINT
-2014-03-01 09:00-14:00 STRINT
+2014-03-01 09:00-17:00 STRINT
 2014-03-02 17:00-19:00 IETF welcome reception
 2014-02-28 07:55-09:35 ARN-LHR
 2014-03-07 18:00-21:30 LHR-ARN
 2014-02-16 13:35-15:45 ARN-KEF
 2014-02-22 07:35-11:30 KEF-ARN
-2014-02-12 12:00 [prel] Lunch Johan L
+2014-02-12 12:00 Lunch Johan L
 2014-03-11 18:00-19:30 PEN @ kulturhuset
+2014-02-12 16:00-17:00 abfab ephemeral key phone conf
+2014-02-26 08:40 tandläkaren
+&%%(diary-block 2014 05 05 2014 05 06) http://www.european-lisp-symposium.org/
+2014-02-13 13:00 711 KTH
+2014-02-13 12:30 pawal
+%%(diary-block 2014 07 12 2014 07 14) Tails code sprint @ http://www.irill.org/
+2014-04-01 16:00-20:00 foss-sthlm, DSV Kista
+2014-02-15 00:59 IETF89 submission deadline
+2014-02-14 23:59 IETF89 submission deadline in an hour
+2014-02-14 20:59 IETF89 submission deadline in four hours
+2014-03-03 11:30-13:00 perpass reviews, room 5-6
+2014-03-04 14:20-15:50 dnse BOF, viscount
+2014-03-04 14:20-15:50 radext, R/C/T
+2014-03-04 16:10-18:40 tls, balmoral
+2014-03-05 15:20-16:20 trans, blenheim
+2014-03-06 14:00-15:00 saag, viscount
+2014-03-06 15:20-16:50 kitten, park suite
+2014-03-07 11:50-13:20 abfab, palace c
+%%(diary-block 2014 03 21 2014 03 23) [Lärka] scoutläger
+2014-02-26 19:00 Sparvnästet årsmöte Hangövägen 18 2tr
+%%(diary-block 2014 04 01 2014 04 04) CRD days

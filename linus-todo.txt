@@ -9,15 +9,18 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - - draft-abfab-ephemeral-keying uploaded [thu? fri?]
+   - - draft-abfab-ephemeral-keying uploaded [fri]
    - . tor prop 220 reviewed
    - - things not under source control in ~/p/radsecproxy/libradsec/lib checked in
      typically tests/server.c and the python bindings
 ** IETF
+   - o ask abfab@ about backward compatibility [wed]
 ** Sysadm
+   - - upgrade bridges https://lists.torproject.org/pipermail/tor-relays/2014-February/003886.html
+     tor.ndn x 2; proj.adbc; more?
 ** DFRI
    - - [[gnus:nnimap%2Badbc:INBOX#CAB5KTYEEOBm7euTZmaXVJiXL84MoSgjQ4FeV4h%3DEumcCT1vAGA@mail.gmail.com][HRMI email]] replied to [wed]
-   - - TB contract rewritten [fri]
+   - . TB contract rewritten [fri]
    - - membership handling outlined
      new file, not in git, mapping member number to email address
    - - flashproxy running at dfri.se
@@ -212,10 +215,12 @@ Legend                                                (emacs -*-org-*- mode)
 ? Mar ??-??, Gothenburg, Töllborg (FRA) + GeKo + tokmartin + iljas vpn pal + fripost
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
 ? Apr ??-??, Umeå, Markus Naarttijärvi
+? Apr 01-04, Stockholm, CRD Days
 ? May 11-17, Warsaw, RIPE68
 ? May 18-23, Dublin, TNC2014
 ? May 25-27, Moscow, ENOG7
 - Jun 28-06, Paris, Tor summer dev
+? Jul 11-15, Paris, Tails code sprint
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
 ? Aug 19-23, San Diego, USENIX Security
