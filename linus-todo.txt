@@ -9,7 +9,7 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - - draft-abfab-ephemeral-keying uploaded [fri]
+   - o draft-abfab-ephemeral-keying uploaded [fri]
    - . tor prop 220 reviewed
    - - things not under source control in ~/p/radsecproxy/libradsec/lib checked in
      typically tests/server.c and the python bindings
@@ -25,9 +25,9 @@ Legend                                                (emacs -*-org-*- mode)
      new file, not in git, mapping member number to email address
    - - flashproxy running at dfri.se
 ** Misc
-   - - registered for SIF14 [fri]
+   - - registered for SIF14 [sun]
      http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
-   - - double room hilton london +44 20 7656 6570
+   - o double room hilton london +44 20 7656 6570
    - - trip report for 30c3 uploaded
    - . strombergson and wolfgang connected, possibly by emailing a
      list with wolfgang wisdom (run the email by peter before
