@@ -741,6 +741,12 @@ Farrell, Sean Turner or Hannes Tschofenig? They want to help us.
 
 --------------------------------------------------------------------------------
 
+* README
+- [[file:~/usr/share/ietf/internet-drafts/draft-hzhwm-start-tls-for-dns-00.txt]]
+- [[file:/u/ietf/internet-drafts/draft-melnikov-email-tls-certs-01.txt]]
+- [[file:/u/ietf/internet-drafts/draft-ietf-dane-smtp-with-dane-05.txt]]
+- [[file:/u/ietf/internet-drafts/draft-perez-radext-radius-fragmentation-06.txt][lopez RADIUS fragment draft]] reviewed for abfab (2)
+- https://tools.ietf.org/html/draft-hoffman-uta-opportunistic-tls-00 read
 * Reviews
 ** DONE http://huitema.net/papers/draft-huitema-perpass-analthreat-00.txt
 *** review
