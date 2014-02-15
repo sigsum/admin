@@ -30606,6 +30606,9 @@ Pappelallee 64
 U2 Schönhauser Alle
 ** peter
 spittelmarkt
+** monsieur vuong
+Monsieur Vuong, Alte Schoenhauser Strasse 46, Berlin-Mitte.
+http://monsieurvuong.com
 * x60
 - pipet kan tas bort om man i boot loadern lägger till kernel-kommandot idle=halt
 ** hints from aagbsn <2013-11-21 Thu>

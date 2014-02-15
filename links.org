@@ -1,3 +1,4 @@
+abfab https://datatracker.ietf.org/doc/draft-linus-abfab-ephemeral-keying/
 poa initial statement riseup hs https://ttbmov2dezfs2fln.onion/p/wDrxQjTD35g4
 readme video nsa fosdem people:phk http://mirrors.dotsrc.org/fosdem/2014/Janson/Sunday/NSA_operation_ORCHESTRA_Annual_Status_Report.webm
 readme fun nsa fosdem people:phk http://phk.freebsd.dk/_downloads/FOSDEM_2014.pdf
