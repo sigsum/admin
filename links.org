@@ -1,3 +1,52 @@
+tor crypto spec https://lists.torproject.org/pipermail/tor-dev/2013-December/005957.html
+abfab https://datatracker.ietf.org/doc/draft-linus-abfab-ephemeral-keying/
+poa initial statement riseup hs https://ttbmov2dezfs2fln.onion/p/wDrxQjTD35g4
+readme video nsa fosdem people:phk http://mirrors.dotsrc.org/fosdem/2014/Janson/Sunday/NSA_operation_ORCHESTRA_Annual_Status_Report.webm
+readme fun nsa fosdem people:phk http://phk.freebsd.dk/_downloads/FOSDEM_2014.pdf
+ietf submission https://datatracker.ietf.org/submit/
+readme ddos http://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack
+vpn https://mullvad.net/
+readme review pjharvey http://consequenceofsound.net/2011/02/album-review-pj-harvey-let-england-shake/
+camera surveillance swedish http://www.bra.se/download/18.607587db133acdc54dc80002808/1323785017474/2009_kort_om_kameraovervakning.pdf
+crypto http://www.bmoeller.de/pdf/pke-pseudo-esorics2004.pdf
+eu libe snowden nsa http://www.europarl.europa.eu/news/en/news-room/content/20140210IPR35501/html/NSA-snooping-MEPs-table-proposals-to-protect-EU-citizens%27-privacy
+eu libe nsareport http://www.theguardian.com/world/2014/jan/09/nsa-gchq-illegal-european-parliamentary-inquiry
+readme eu internet governance http://europa.eu/rapid/press-release_IP-14-142_en.htm
+readme snowden interview danish http://www.denfri.dk/2014/02/dansk-interview-med-whistlebloweren-edward-snowden
+foss france tails tor http://www.irill.org/
+globaleaks tor leak http://news.nationalgeographic.com/news/2014/02/140210-wildleaks-wildlife-crime-trafficking-whistleblower
+fingerprint otr fp pgp people:linus https://www.dfri.se/wiki/users/linus/
+ddos bcp38 http://www.bcp38.info/index.php/Main_Page
+ddos https://deflect.ca/
+ddos https://equalit.ie/content/deflect
+snus anonymity panel http://www.snus.se/2014/02/seminarium-om-anonymiseringstjanster-pa-natet-27-februari-2014/
+boat ship https://www.blocket.se/stockholm/Arbetsbat_dykbat_militarfartyg_bobat_50144005.htm
+readme eu funding http://ec.europa.eu/justice/newsroom/grants/just_2013_frc_ag_en.htm
+crypto people:tjr http://www.ciphersbyritter.com/GLOSSARY.HTM
+readme gsm phone http://www.raspberry-asterisk.org/calling-on-gsm3g-networks/
+denmark surveillance people:phk http://ing.dk/blog/aflytning-op-af-stolen-166241
+sw dev podcast swedish http://kodsnack.se/
+ietf rfc writing https://github.com/cabo/kramdown-rfc2629
+netneutrality http://edri.org/wp-content/uploads/2014/02/1pager_SMEs.pdf
+internet governance SOPA https://arstechnica.com/tech-policy/2011/11/why-sopa-endangers-americas-internet-leadership/
+ccc legal https://digitalcourage.de/blog/2014/strafanzeige-gegen-die-bundesregierung
+strint agenda https://www.w3.org/2014/strint/agenda.html
+strint papers https://www.w3.org/2014/strint/report.html
+theintercept securedrop http://ofwvo6t3agiiwcrq.onion/
+readme nsa drone https://firstlook.org/theintercept/article/2014/02/10/the-nsas-secret-role/
+readme media nsa people:poitras people:ggreenwald https://firstlook.org/theintercept/
+https://metrics.torproject.org/network.html#advbwdist-relay
+https://metrics.torproject.org/network.html#advbwdist-perc
+nagios tor user:tor-guest https://nagios.torproject.org/
+swedish police anonymity http://www.skanskan.se/article/20120308/ESLOV/703079833/-/polisen-sparar-upp-anonyma-tipsare
+mirror web http://www.pavuk.org/about.html
+readme random rng http://iang.org/ssl/hard_truths_hard_random_numbers.html
+readme dns p2p https://nohats.ca/wordpress/blog/2012/04/09/you-cant-p2p-the-dns-and-have-it-too/
+searchengines http://daveshackleford.com/?p=999
+google fisa http://googleblog.blogspot.ch/2014/02/shedding-some-light-on-foreign.html
+google nsl http://googleblog.blogspot.se/2013/03/transparency-report-shedding-more-light.html
+readme pdf ccc http://events.ccc.de/congress/2010/Fahrplan/attachments/1796_27C3_Julia_Wolf_OMG-WTF-PDF.pdf
+configuration puppet http://docs.ansible.com/
 readme https://www.schneier.com/blog/archives/2014/02/1971_social_eng.html
 tunnel dns tor http://thomer.com/howtos/nstx.html
 tunnel dns tor http://code.kryo.se/iodine/

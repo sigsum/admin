@@ -717,6 +717,8 @@
 ;; stupid european-calendar-style entry. Update: Maybe. Still have trouble.
 (calendar-set-date-style 'iso)
 
+(add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
+
 ;; don't activate the debugger automagically when errors are
 ;; encountered
 (setq debug-on-error nil)

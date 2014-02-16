@@ -14,19 +14,21 @@ Legend                                                (emacs -*-org-*- mode)
      typically tests/server.c and the python bindings
 ** IETF
 ** Sysadm
+   - - upgrade bridges https://lists.torproject.org/pipermail/tor-relays/2014-February/003886.html
+     tor.ndn x 2; proj.adbc; more?
 ** DFRI
-   - - maybe sign the two accessnow things
+   - - [[gnus:nnimap%2Badbc:INBOX#CAB5KTYEEOBm7euTZmaXVJiXL84MoSgjQ4FeV4h%3DEumcCT1vAGA@mail.gmail.com][HRMI email]] replied to [wed]
+   - . TB contract rewritten [fri]
    - - membership handling outlined
-     - new file, not in git, mapping member number to email address
+     new file, not in git, mapping member number to email address
    - - flashproxy running at dfri.se
 ** Misc
-   - - double room hilton london +44 20 7656 6570
-   - - flight booked ARN-london feb 28 morning / mar 7 evening
+   - - registered for SIF14 [sun]
+     http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
    - - trip report for 30c3 uploaded
    - . strombergson and wolfgang connected, possibly by emailing a
      list with wolfgang wisdom (run the email by peter before
      posting!)
-   - - maybe sign http://europarl.me/open+letter+for+open+data+Welle
    - . sra and geko connected re DDC
    - - FPGA toolchain presentation read and something posted to
      cryptech about my discussions with bunnie
@@ -91,6 +93,8 @@ Legend                                                (emacs -*-org-*- mode)
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** IETF
+   - - [[file:/u/ietf/internet-drafts/draft-melnikov-email-tls-certs-01.txt]]
+   - - [[file:/u/ietf/internet-drafts/draft-ietf-dane-smtp-with-dane-05.txt]]
    - - [[file:/u/ietf/internet-drafts/draft-perez-radext-radius-fragmentation-06.txt][lopez RADIUS fragment draft]] reviewed for abfab (2)
    - - https://tools.ietf.org/html/draft-hoffman-uta-opportunistic-tls-00 read
 ** Sysadm
@@ -208,10 +212,12 @@ Legend                                                (emacs -*-org-*- mode)
 ? Mar ??-??, Gothenburg, Töllborg (FRA) + GeKo + tokmartin + iljas vpn pal + fripost
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
 ? Apr ??-??, Umeå, Markus Naarttijärvi
+? Apr 01-04, Stockholm, CRD Days
 ? May 11-17, Warsaw, RIPE68
 ? May 18-23, Dublin, TNC2014
 ? May 25-27, Moscow, ENOG7
 - Jun 28-06, Paris, Tor summer dev
+? Jul 11-15, Paris, Tails code sprint
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
 ? Aug 19-23, San Diego, USENIX Security

@@ -1,4 +1,5 @@
-* I-D its-all-about-linkability
+* I-D's
+** I-D its-all-about-linkability
 
 As long as we're sending packets around with the same src IP addr
 field being used for a whole lot of different things, these different
@@ -21,7 +22,7 @@ fingerprint of your web browser and [more examples].
   - spatial, examples
     - [todo]
 
-** [[gnus:nnimap%2Badbc:INBOX#52360EED.6060102@cs.tcd.ie][email w/ stephen]]
+*** [[gnus:nnimap%2Badbc:INBOX#52360EED.6060102@cs.tcd.ie][email w/ stephen]]
 > * I-D its-all-about-linkability
 > 
 > As long as we're sending packets around with the same src IP addr
@@ -97,8 +98,8 @@ S.
 > Thanks for any comments on this. They don't have to be too structured,
 > a quick comment from a veteran would be helpful.
 > 
-** Linkability
-*** [[gnus:nnimap%2Badbc:INBOX#CAKDKvuyi_XLuZGFyicNXXnwJmw8gqUdShaiOu%3DG%2BWqeojY8Dtg@mail.gmail.com][Email from Nick Mathewson: Re: W3C/IAB workshop on Streng]]
+*** Linkability
+**** [[gnus:nnimap%2Badbc:INBOX#CAKDKvuyi_XLuZGFyicNXXnwJmw8gqUdShaiOu%3DG%2BWqeojY8Dtg@mail.gmail.com][Email from Nick Mathewson: Re: W3C/IAB workshop on Streng]]
 I think that it handles authenticator linkability, but it doesn't
 think so much about protocol linkability issues.  Consider for example
 the gmt_unix_time issue in TLS, or the way in which TLS ciphersuites
@@ -132,7 +133,7 @@ can.
 (Please feel free to grab as much of the text above as you like if you
 think it would help at all.  please feel free to ask me to talk more
 about anything.)
-*** email to leif <2014-01-17 Fri>
+**** email to leif <2014-01-17 Fri>
 Hej Leif!
 
 Baserat på lite diskussioner med Nick Mathewson så skulle jag vilja
@@ -156,7 +157,7 @@ skriva något om "protocol linkability"
 
 Skall jag försöka få in det i draft-johansson-linkability-bad eller
 skall jag skriva en separat I-D?
-*** draft-xxx-protocol-linkability
+**** draft-xxx-protocol-linkability
 - protocol design should explain [client linkability of the protocol];
   one way is to give a P for linking one client to another; at one end
   of the spectrum there's a GID transported in clear text, at the
@@ -166,8 +167,13 @@ skall jag skriva en separat I-D?
 - client fingerprintability analysis of a handful protocols to
   encourage new protocols to have one
 
-* I-D blocking-on-the-internet
-* problem statement
+** I-D blocking-on-the-internet
+* NOTES
+** NSA chairs
+- ben laurie on [[https://www.ietf.org/mail-archive/web/perpass/current/msg00322.html][perpass@]]: "The CFRG is chaired by David
+  McGrew(mcgrew@cisco.com) and Kevin Igoe (kmigoe@nsa.gov)."
+  http://irtf.org/cfrg
+** problem statement
 - secure hardware
 - firmware
 - software
@@ -175,8 +181,9 @@ skall jag skriva en separat I-D?
   - over time
   - with FOO?
 - fingerprintability (== linkability?)
-* involving tor ppl
-** TODO to: nick, tor-ass
+
+** Involving tor ppl
+*** TODO to: nick, tor-assistants@
 
 https://down.dsg.cs.tcd.ie/misc/perpass.txt
 
@@ -187,281 +194,36 @@ thread: https://www.ietf.org/mail-archive/web/perpass/current/msg00168.html
 synopsis: reasonable change, no barrier, good for Tor
 draft: n/a
 
-* NOTES
-- ben laurie on [[https://www.ietf.org/mail-archive/web/perpass/current/msg00322.html][perpass@]]: "The CFRG is chaired by David
-  McGrew(mcgrew@cisco.com) and Kevin Igoe (kmigoe@nsa.gov)."
-  http://irtf.org/cfrg
-* emails with nick on tor-ass@
-** From: Linus Nordberg <linus@torproject.org>
-Subject: Re: [tor-assistants] IETF in Vancouver is going to be about privacy
-To: Nick Mathewson <nickm@freehaven.net>
-Cc: Tor Assistants <tor-assistants@lists.torproject.org>, Jacob Appelbaum <jacob@appelbaum.net>
-Date: Tue, 10 Sep 2013 09:34:46 +0200 (7 weeks, 3 days, 9 hours ago)
-X-Boundary: ____________________________________________________________________________________________________________________
+** Tools for writing drafts
+We want to produce XML2RPC XML (RFC 2629).
 
-Nick Mathewson <nickm@freehaven.net> wrote
-Mon, 9 Sep 2013 19:41:20 -0400:
+https://github.com/cabo/kramdown-rfc2629 can do that and can also be
+run _on_ github, see f.ex. FIXME.
 
-| > 1. How can Tor people help IETF to help us all? Do we want to get our
-| > view on things and our knowledge about anonymity into RFC documents, for
-| > reference and copying into other documents?
-| 
-| I think that getting people to realize that privacy in technology is
-| mainly a matter of linkability is the key insight.
+Example usage: 
+$ kramdown-rfc2629 mydraft.mkd > mydraft.xml
+$ xml2rfc mydraft.xml
 
-Good point. I'll keep that in mind.
-
-
-| I think that there are a number of ways that people have been
-| reasoning about security in designs that are not correct; I'll need to
-| think more about that.  Perhaps it will turn into a blog post, but
-| it's likely to be a contentious and flamebaity enough blog post that
-| I'd almost want to start a personal blog for the purpose.
-
-Reading that blog would alone help me frame discussions on lists and in
-Vancouver. How can I help you get this started?
-
-
-| I'll try to think of some more stuff.
-| 
-| > 2. How can IETF help Tor? Do we want some attention on our protocols,
-| > design choices or maybe something else?
-| 
-| We need better options than TLS.
-
-Did we start working on a design for TLS-minus-the-warts yet? Should we
-bring such a thing to the IETF or would that be creating more trouble
-than it would solve? Could it be used as a way of putting pressure on
-the TLS wg, given they care at all about what protocol Tor uses? I guess
-probably not.
-
-Did we enumerate all things problematic with TLS somewhere? The
-protocol, not any particular implementation. In Berlin I overheard Jake
-discuss some of our current issues with ekr, who was not expressing
-immediate disgust in any of the suggestions ("superencrypt" to avoid
-fingerprinting, an argument for adopting Salsa20 and at least one more
-thing that I have forgotten).
-
-
-| Somebody should do something about the RNG problem. Unfortunately, the
-| most problematic platforms (windows, phones) probably wouldn't listen.
-
-A list of all the major PRNG implementations with solid technical
-arguments would maybe be something that the IETF could adopt. That could
-make a difference.
-
-I think that the RNG issue is going to become even more important when
-we start pushing towards more ephemeral keys.
-
-
-| Cryptography-related working groups need to stop sucking up to NIST
-| standards only. It seems as if this is the year that
-| curve25519/salsa20/poly1305 finally gets standardized for TLS, but
-| it's far from certain, and it's only the tip of the iceberg.
-
-What are the alternatives? You mentioned ECRYPT in a post to
-or-talk@. Could various ECRYPT II reports be used more than they are
-today?
-
-
-| >  I've heard that it might be
-| > premature to try standardising Tor right now. Is that still the case?
-| 
-| Having seen the kind of silliness that sometimes pervades the TLS
-| working group, I would hate for the Tor protocol to be subject to such
-| ridiculousness.  Also, I'd hate to split the ecosystem into those
-| protocols implementing "OpenTor" or "RFCxyzTor" and those implementing
-| the latest Tor standard.  Perhaps I misunderstand how these things
-| work, though, and there's a way for us to get the benefits without the
-| risks.
-
-I agree and I'd like to find out. I've talked to at least two
-experienced IETFers who say they want to help Tor. They are Hannes
-Tschofenig and Stephen Farrell, both on the perpass@ list. Would you be
-willing to try figuring this out with their help? Please let me know if
-you'd like an introduction in a non-public thread.
-_______________________________________________
-tor-assistants mailing list
-tor-assistants@lists.torproject.org
-https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants
-
-
-
---------------------------------------------------------------------------------
-
-** From: Linus Nordberg <linus@torproject.org>
-Subject: Re: IETF standardizing onion routing
-To: Paul Syverson <syverson@itd.nrl.navy.mil>
-Cc: tor-assistants@torproject.org
-Date: Wed, 09 Oct 2013 23:17:17 +0200 (3 weeks, 1 day, 19 hours ago)
-Reply-To: tor-assistants@lists.torproject.org
-X-Boundary: ____________________________________________________________________________________________________________________
-
-Paul Syverson <syverson@itd.nrl.navy.mil> wrote
-Thu, 24 Mar 2011 10:36:04 -0400:
-
-| On Thu, Mar 24, 2011 at 06:07:08AM -0700, Robert Ransom wrote:
-| > On Thu, 24 Mar 2011 13:20:01 +0100
-| > Linus Nordberg <linus@torproject.org> wrote:
-| > 
-| > > andrew@torproject.org wrote
-| > > Thu, 24 Mar 2011 08:01:08 -0400:
-| > > 
-| > > | On Fri, Mar 18, 2011 at 01:16:14PM -0700, blibbet@gmail.com wrote 0.8K bytes in 26 lines about:
-| > > | : 1) new IETF anonyminity list (in addition to their privacy list),
-| > > | : and 2) IETF considering ontino routing standardization.
-| > > | 
-| > > | How can we help #2?  I both fear and am encouraged at such an effort.
-| > > 
-| > > Meto.
-| > > 
-| > > I'm currently sitting next to Hannes Tschofenig, on of the authors of
-| > > draft-hansen-privacy-terminology and also present at the Boston meeting
-| > > Nick went to.  We're now at a developer meeting in Prague precluding the
-| > > IETF 80 meeting starting Monday.  As I understand it, he's heavily
-| > > involved in the intersection between privacy and IETF.
-| > > 
-| > > Should I use this opportunity to try to make things happen in this area?
-| > 
-| > How could having the IETF take control over the protocols used in Tor
-| > possibly benefit The Tor Project?
-| > 
-| 
-| The real question is if they are likely to go forward on anonymity protocol
-| standards anyway. If they are and come out with standards that some people
-| are going to follow, then I assume Tor wants to be part of that rather
-| than get into splits between the de facto standard and the official
-| standard. (Can you say "Diffie Hellman parameter"?)
-| It sounds like they are at least exploring going forward before bothering
-| to get the Tor Project Inc. (or other relevant folks).
-| 
-| Note for those who won't know or recall: Back in the days of the Freedom
-| network, ZKS kicked off an IRTF group that included some people from
-| the IAB and with lots of drafts (not in that sense) written up by jbash.
-| It faded with Freedom. If this does go forward, it may be worth
-| reusing lots of that. (Or not Tor design was at most nascent at that
-| point. And the world has changed in other ways.)
-| Also its eventual demise may or may not also be a source of lessons.
-
-Hi,
-
-Picking up a thread from 1,5 years ago.
-
-The world has changed even more now. Jake made a pretty huge impression
-on some of the oldies in the IETF community in Berlin this summer. I'd
-like to try to follow up at IETF88 in Vancouver, November 3-8, but I'm
-not sure how this should be done and if I can do it all by myself. I
-welcome more people to join and/or provide some ideas or even material
-here.
-
-I have a couple of questions in an email to this list from Sep 10
-too. Anyone want to take a shot at them?
-
-Also, Nick, did you ever write that blog post?
-
-
-
---------------------------------------------------------------------------------
-** From: Linus Nordberg <linus@torproject.org>
-To: Nick Mathewson <nickm@freehaven.net>
-Cc: Tor Assistants <tor-assistants@torproject.org>
-Subject: Re: [tor-assistants] IETF standardizing onion routing
-References: <4D83BD8E.4010600@gmail.com>
-	<20110324120108.GB3529@necrid.lewman.is> <87k4foaexa.fsf@nordberg.se>
-	<20110324060708.32f87187@gmail.com>
-	<20110324143604.GA87594@buridan.fw5540.net>
-	<87wqlmta8y.fsf@nordberg.se>
-	<CAKDKvuzGvptgEWSgGr2vZkhbBcdAGuLeW2goJgGz3ed2RFzFMw@mail.gmail.com>
-	<CAKDKvuw5nDwEAXAF7n8Y=knvC-JbJ0Fx9pZx7WD6GNVBLMCb7w@mail.gmail.com>
-X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.assistants" 24909)
-Reply-To: tor-assistants@lists.torproject.org
-Date: Thu, 10 Oct 2013 18:52:24 +0200
-In-Reply-To: <CAKDKvuw5nDwEAXAF7n8Y=knvC-JbJ0Fx9pZx7WD6GNVBLMCb7w@mail.gmail.com>
-	(Nick Mathewson's message of "Thu, 10 Oct 2013 11:51:59 -0400")
-Message-ID: <871u3toypj.fsf@nordberg.se>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-Boundary: ____________________________________________________________________________________________________________________
-
-Nick Mathewson <nickm@freehaven.net> wrote
-Thu, 10 Oct 2013 11:51:59 -0400:
-
-| On Thu, Oct 10, 2013 at 11:39 AM, Nick Mathewson <nickm@freehaven.net> wrote:
-| > On Wed, Oct 9, 2013 at 5:17 PM, Linus Nordberg <linus@torproject.org> wrote:
-| >  [...]
-| >>
-| >> Picking up a thread from 1,5 years ago.
-| >>
-| >> The world has changed even more now. Jake made a pretty huge impression
-| >> on some of the oldies in the IETF community in Berlin this summer. I'd
-| >> like to try to follow up at IETF88 in Vancouver, November 3-8, but I'm
-| >> not sure how this should be done and if I can do it all by myself. I
-| >> welcome more people to join and/or provide some ideas or even material
-| >> here.
-| >
-| > I still wouldn't object to having Tor be in Informational RFC,
-| > although I also don't see much benefit to it.  (Being a standards
-| > track RFC would be completely wrong.)
-| >
-| > My experience with the IETF over the last several months (mostly)
-| > lurking on the some mailing lists has been that standards -- even
-| > informational standards -- get used as an excuse for not improving
-| > things just as often as they get used as a reason to do things
-| > properly.  I would hate to have anybody implement RFC-Tor in a time
-| > when torspec-Tor had diverged.
-| >
-| > I'm not immune to counterargument here, but watching the sausage get
-| > made has turned my stomach a bit.
-| 
-| On the other hand, I _would_ love to have our specs come up to
-| RFC-level quality.  And the ego boost would be pleasant.  And I'm not
-| convinced that I'm necessarily right about my fear that a Tor RFC
-| would represent a protocol fork.  So maybe what I should do is
-| converse with people who want to help work on such a thing.
-
-I think this is the right thing, but only if you (or a substantial set
-of Roger Dingledines or Paul Syversons) do too.
-
-The SAAG chairs Stephen Farrell <stephen.farrell@cs.tcd.ie> and Sean
-Turner <turners@ieca.com> are the one I think that you should start
-talking to. They have multiple times offered to help with all the IETF
-specific nitty-gritty of writing drafts.
-
-
-| Or maybe I should just start rewriting our specs in my Copious Spare Time.
-
-I should have time to help with that, if you think that would be of help.
-
-
-| >> I have a couple of questions in an email to this list from Sep 10
-| >> too. Anyone want to take a shot at them?
-| >
-| > I'll have a quick look if I can find it.
-| 
-| Ah. Apparently I'm the person who *did* answer the other time.
-
-You answered the first email, yes. Thanks.
-
-The follow up questions are in Message-ID: <87y575t9ih.fsf@nordberg.se>
-(sorry for messing up with the threads in my email from yesterday). 
-
-A quick summary of my questions:
-
-1. Is there a design for an option to TLS and should we bring such a
-thing to the IETF?
-
-2. Do we have a list of all things problematic with TLS?
-
-3. Do we have a list of major PRNG implementations with comments on
-their security?
-
-4. What are the alternatives to NIST standards? Something from ECRYPT II?
-
-5. Shall I put you or some other Tor people in touch with Stephen
-Farrell, Sean Turner or Hannes Tschofenig? They want to help us.
-
---------------------------------------------------------------------------------
+For having github create XML and HTML for us, wee http://awestruct.org/auto-deploy-to-github-pages/
+*** Local installation
+apt-get install xml2rfc
+gem install kramdown-rfc2629
+**** Log
+root@tool:~# gem install kramdown-rfc2629
+Fetching: kramdown-1.3.1.gem (100%)
+Fetching: kramdown-rfc2629-1.0.9.gem (100%)
+Successfully installed kramdown-1.3.1
+Successfully installed kramdown-rfc2629-1.0.9
+2 gems installed
+Installing ri documentation for kramdown-1.3.1...
+Installing ri documentation for kramdown-rfc2629-1.0.9...
+Installing RDoc documentation for kramdown-1.3.1...
+Installing RDoc documentation for kramdown-rfc2629-1.0.9...
+*** Putting a secret in the Travis control file
+sudo apt-get install ruby1.9.1-dev
+sudo gem install travis
+curl -A 'meh' -x socks4a://localhost:9050/ -u ln5 -d '{"scopes":["public_repo"],"note":"CI: demosite"}' https://api.github.com/authorizations
+# grabbing "token"
 
 * Tor
 ** NOTES
@@ -707,8 +469,286 @@ So it seems to me.
 
 --
 Nick
+** emails with nick on tor-ass@
+*** From: Linus Nordberg <linus@torproject.org>
+Subject: Re: [tor-assistants] IETF in Vancouver is going to be about privacy
+To: Nick Mathewson <nickm@freehaven.net>
+Cc: Tor Assistants <tor-assistants@lists.torproject.org>, Jacob Appelbaum <jacob@appelbaum.net>
+Date: Tue, 10 Sep 2013 09:34:46 +0200 (7 weeks, 3 days, 9 hours ago)
+X-Boundary: ____________________________________________________________________________________________________________________
+
+Nick Mathewson <nickm@freehaven.net> wrote
+Mon, 9 Sep 2013 19:41:20 -0400:
+
+| > 1. How can Tor people help IETF to help us all? Do we want to get our
+| > view on things and our knowledge about anonymity into RFC documents, for
+| > reference and copying into other documents?
+| 
+| I think that getting people to realize that privacy in technology is
+| mainly a matter of linkability is the key insight.
+
+Good point. I'll keep that in mind.
+
+
+| I think that there are a number of ways that people have been
+| reasoning about security in designs that are not correct; I'll need to
+| think more about that.  Perhaps it will turn into a blog post, but
+| it's likely to be a contentious and flamebaity enough blog post that
+| I'd almost want to start a personal blog for the purpose.
+
+Reading that blog would alone help me frame discussions on lists and in
+Vancouver. How can I help you get this started?
+
+
+| I'll try to think of some more stuff.
+| 
+| > 2. How can IETF help Tor? Do we want some attention on our protocols,
+| > design choices or maybe something else?
+| 
+| We need better options than TLS.
+
+Did we start working on a design for TLS-minus-the-warts yet? Should we
+bring such a thing to the IETF or would that be creating more trouble
+than it would solve? Could it be used as a way of putting pressure on
+the TLS wg, given they care at all about what protocol Tor uses? I guess
+probably not.
+
+Did we enumerate all things problematic with TLS somewhere? The
+protocol, not any particular implementation. In Berlin I overheard Jake
+discuss some of our current issues with ekr, who was not expressing
+immediate disgust in any of the suggestions ("superencrypt" to avoid
+fingerprinting, an argument for adopting Salsa20 and at least one more
+thing that I have forgotten).
+
+
+| Somebody should do something about the RNG problem. Unfortunately, the
+| most problematic platforms (windows, phones) probably wouldn't listen.
+
+A list of all the major PRNG implementations with solid technical
+arguments would maybe be something that the IETF could adopt. That could
+make a difference.
+
+I think that the RNG issue is going to become even more important when
+we start pushing towards more ephemeral keys.
+
+
+| Cryptography-related working groups need to stop sucking up to NIST
+| standards only. It seems as if this is the year that
+| curve25519/salsa20/poly1305 finally gets standardized for TLS, but
+| it's far from certain, and it's only the tip of the iceberg.
+
+What are the alternatives? You mentioned ECRYPT in a post to
+or-talk@. Could various ECRYPT II reports be used more than they are
+today?
+
+
+| >  I've heard that it might be
+| > premature to try standardising Tor right now. Is that still the case?
+| 
+| Having seen the kind of silliness that sometimes pervades the TLS
+| working group, I would hate for the Tor protocol to be subject to such
+| ridiculousness.  Also, I'd hate to split the ecosystem into those
+| protocols implementing "OpenTor" or "RFCxyzTor" and those implementing
+| the latest Tor standard.  Perhaps I misunderstand how these things
+| work, though, and there's a way for us to get the benefits without the
+| risks.
+
+I agree and I'd like to find out. I've talked to at least two
+experienced IETFers who say they want to help Tor. They are Hannes
+Tschofenig and Stephen Farrell, both on the perpass@ list. Would you be
+willing to try figuring this out with their help? Please let me know if
+you'd like an introduction in a non-public thread.
+_______________________________________________
+tor-assistants mailing list
+tor-assistants@lists.torproject.org
+https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-assistants
+
+
+
+--------------------------------------------------------------------------------
+
+*** From: Linus Nordberg <linus@torproject.org>
+Subject: Re: IETF standardizing onion routing
+To: Paul Syverson <syverson@itd.nrl.navy.mil>
+Cc: tor-assistants@torproject.org
+Date: Wed, 09 Oct 2013 23:17:17 +0200 (3 weeks, 1 day, 19 hours ago)
+Reply-To: tor-assistants@lists.torproject.org
+X-Boundary: ____________________________________________________________________________________________________________________
+
+Paul Syverson <syverson@itd.nrl.navy.mil> wrote
+Thu, 24 Mar 2011 10:36:04 -0400:
+
+| On Thu, Mar 24, 2011 at 06:07:08AM -0700, Robert Ransom wrote:
+| > On Thu, 24 Mar 2011 13:20:01 +0100
+| > Linus Nordberg <linus@torproject.org> wrote:
+| > 
+| > > andrew@torproject.org wrote
+| > > Thu, 24 Mar 2011 08:01:08 -0400:
+| > > 
+| > > | On Fri, Mar 18, 2011 at 01:16:14PM -0700, blibbet@gmail.com wrote 0.8K bytes in 26 lines about:
+| > > | : 1) new IETF anonyminity list (in addition to their privacy list),
+| > > | : and 2) IETF considering ontino routing standardization.
+| > > | 
+| > > | How can we help #2?  I both fear and am encouraged at such an effort.
+| > > 
+| > > Meto.
+| > > 
+| > > I'm currently sitting next to Hannes Tschofenig, on of the authors of
+| > > draft-hansen-privacy-terminology and also present at the Boston meeting
+| > > Nick went to.  We're now at a developer meeting in Prague precluding the
+| > > IETF 80 meeting starting Monday.  As I understand it, he's heavily
+| > > involved in the intersection between privacy and IETF.
+| > > 
+| > > Should I use this opportunity to try to make things happen in this area?
+| > 
+| > How could having the IETF take control over the protocols used in Tor
+| > possibly benefit The Tor Project?
+| > 
+| 
+| The real question is if they are likely to go forward on anonymity protocol
+| standards anyway. If they are and come out with standards that some people
+| are going to follow, then I assume Tor wants to be part of that rather
+| than get into splits between the de facto standard and the official
+| standard. (Can you say "Diffie Hellman parameter"?)
+| It sounds like they are at least exploring going forward before bothering
+| to get the Tor Project Inc. (or other relevant folks).
+| 
+| Note for those who won't know or recall: Back in the days of the Freedom
+| network, ZKS kicked off an IRTF group that included some people from
+| the IAB and with lots of drafts (not in that sense) written up by jbash.
+| It faded with Freedom. If this does go forward, it may be worth
+| reusing lots of that. (Or not Tor design was at most nascent at that
+| point. And the world has changed in other ways.)
+| Also its eventual demise may or may not also be a source of lessons.
+
+Hi,
+
+Picking up a thread from 1,5 years ago.
+
+The world has changed even more now. Jake made a pretty huge impression
+on some of the oldies in the IETF community in Berlin this summer. I'd
+like to try to follow up at IETF88 in Vancouver, November 3-8, but I'm
+not sure how this should be done and if I can do it all by myself. I
+welcome more people to join and/or provide some ideas or even material
+here.
+
+I have a couple of questions in an email to this list from Sep 10
+too. Anyone want to take a shot at them?
+
+Also, Nick, did you ever write that blog post?
+
+
+
+--------------------------------------------------------------------------------
+*** From: Linus Nordberg <linus@torproject.org>
+To: Nick Mathewson <nickm@freehaven.net>
+Cc: Tor Assistants <tor-assistants@torproject.org>
+Subject: Re: [tor-assistants] IETF standardizing onion routing
+References: <4D83BD8E.4010600@gmail.com>
+	<20110324120108.GB3529@necrid.lewman.is> <87k4foaexa.fsf@nordberg.se>
+	<20110324060708.32f87187@gmail.com>
+	<20110324143604.GA87594@buridan.fw5540.net>
+	<87wqlmta8y.fsf@nordberg.se>
+	<CAKDKvuzGvptgEWSgGr2vZkhbBcdAGuLeW2goJgGz3ed2RFzFMw@mail.gmail.com>
+	<CAKDKvuw5nDwEAXAF7n8Y=knvC-JbJ0Fx9pZx7WD6GNVBLMCb7w@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.assistants" 24909)
+Reply-To: tor-assistants@lists.torproject.org
+Date: Thu, 10 Oct 2013 18:52:24 +0200
+In-Reply-To: <CAKDKvuw5nDwEAXAF7n8Y=knvC-JbJ0Fx9pZx7WD6GNVBLMCb7w@mail.gmail.com>
+	(Nick Mathewson's message of "Thu, 10 Oct 2013 11:51:59 -0400")
+Message-ID: <871u3toypj.fsf@nordberg.se>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Boundary: ____________________________________________________________________________________________________________________
+
+Nick Mathewson <nickm@freehaven.net> wrote
+Thu, 10 Oct 2013 11:51:59 -0400:
+
+| On Thu, Oct 10, 2013 at 11:39 AM, Nick Mathewson <nickm@freehaven.net> wrote:
+| > On Wed, Oct 9, 2013 at 5:17 PM, Linus Nordberg <linus@torproject.org> wrote:
+| >  [...]
+| >>
+| >> Picking up a thread from 1,5 years ago.
+| >>
+| >> The world has changed even more now. Jake made a pretty huge impression
+| >> on some of the oldies in the IETF community in Berlin this summer. I'd
+| >> like to try to follow up at IETF88 in Vancouver, November 3-8, but I'm
+| >> not sure how this should be done and if I can do it all by myself. I
+| >> welcome more people to join and/or provide some ideas or even material
+| >> here.
+| >
+| > I still wouldn't object to having Tor be in Informational RFC,
+| > although I also don't see much benefit to it.  (Being a standards
+| > track RFC would be completely wrong.)
+| >
+| > My experience with the IETF over the last several months (mostly)
+| > lurking on the some mailing lists has been that standards -- even
+| > informational standards -- get used as an excuse for not improving
+| > things just as often as they get used as a reason to do things
+| > properly.  I would hate to have anybody implement RFC-Tor in a time
+| > when torspec-Tor had diverged.
+| >
+| > I'm not immune to counterargument here, but watching the sausage get
+| > made has turned my stomach a bit.
+| 
+| On the other hand, I _would_ love to have our specs come up to
+| RFC-level quality.  And the ego boost would be pleasant.  And I'm not
+| convinced that I'm necessarily right about my fear that a Tor RFC
+| would represent a protocol fork.  So maybe what I should do is
+| converse with people who want to help work on such a thing.
+
+I think this is the right thing, but only if you (or a substantial set
+of Roger Dingledines or Paul Syversons) do too.
+
+The SAAG chairs Stephen Farrell <stephen.farrell@cs.tcd.ie> and Sean
+Turner <turners@ieca.com> are the one I think that you should start
+talking to. They have multiple times offered to help with all the IETF
+specific nitty-gritty of writing drafts.
+
+
+| Or maybe I should just start rewriting our specs in my Copious Spare Time.
+
+I should have time to help with that, if you think that would be of help.
+
+
+| >> I have a couple of questions in an email to this list from Sep 10
+| >> too. Anyone want to take a shot at them?
+| >
+| > I'll have a quick look if I can find it.
+| 
+| Ah. Apparently I'm the person who *did* answer the other time.
+
+You answered the first email, yes. Thanks.
+
+The follow up questions are in Message-ID: <87y575t9ih.fsf@nordberg.se>
+(sorry for messing up with the threads in my email from yesterday). 
+
+A quick summary of my questions:
+
+1. Is there a design for an option to TLS and should we bring such a
+thing to the IETF?
+
+2. Do we have a list of all things problematic with TLS?
+
+3. Do we have a list of major PRNG implementations with comments on
+their security?
+
+4. What are the alternatives to NIST standards? Something from ECRYPT II?
+
+5. Shall I put you or some other Tor people in touch with Stephen
+Farrell, Sean Turner or Hannes Tschofenig? They want to help us.
+
+--------------------------------------------------------------------------------
+
+* README
+- [[file:~/usr/share/ietf/internet-drafts/draft-hzhwm-start-tls-for-dns-00.txt]]
+- [[file:/u/ietf/internet-drafts/draft-melnikov-email-tls-certs-01.txt]]
+- [[file:/u/ietf/internet-drafts/draft-ietf-dane-smtp-with-dane-05.txt]]
+- [[file:/u/ietf/internet-drafts/draft-perez-radext-radius-fragmentation-06.txt][lopez RADIUS fragment draft]] reviewed for abfab (2)
+- https://tools.ietf.org/html/draft-hoffman-uta-opportunistic-tls-00 read
 * Reviews
-** http://huitema.net/papers/draft-huitema-perpass-analthreat-00.txt
+** DONE http://huitema.net/papers/draft-huitema-perpass-analthreat-00.txt
 *** review
 1st done, sent to huitema
 *** text
@@ -1436,7 +1476,7 @@ Internet-DraftPassive Traffic Analysis Threats and Defense  October 2013
 
 
 Huitema                   Expires May 01, 2014                 [Page 13]
-** [[file:~/usr/share/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt]]
+** TODO [[file:~/usr/share/ietf/internet-drafts/draft-trammell-perpass-ppa-00.txt]]
 *** review
 **** speling, take 1
 Typos and speling diff attached. Please disregard line numbers.
@@ -1862,7 +1902,7 @@ Internet-Draft          Perfect Passive Adversary         September 2013
 
 
 Trammell                 Expires March 08, 2014                 [Page 7]
-** draft-ietf-abfab-arch-10.txt
+** DONE draft-ietf-abfab-arch-10.txt
 
 
    This is the minimum amount of identity information necessary for
@@ -1905,8 +1945,7 @@ s/was"/was/1
 s/from the IDP to the RP/from the IdP to the RP/1
 s/per-message services will limit/per-message security services will limit/1
 
-
-** draft-ietf-abfab-gss-eap-09.txt
+** TODO draft-ietf-abfab-gss-eap-09.txt
 s/[RFC4462]describes/[RFC4462] describes/1
 s/the EAP method in use support/the EAP method in use supports/1
 The last sentence in section 5.8 is incomplete.
@@ -2058,7 +2097,6 @@ Example usage:
 ** Running tor exits
 [TODO: running tor exits is easy -- set up an organisation, download
 tor and off you go]
-* perpass
 * abfab
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt]]
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt]]
@@ -2094,13 +2132,12 @@ tor and off you go]
 [[file:~/usr/share/ietf/in-notes/rfc7057.txt]] EAP for ABFAB
 [[file:~/usr/share/ietf/in-notes/rfc7029.txt]] EAP mutual cryptographic binding using EMSK
 [[file:~/usr/share/ietf/in-notes/rfc6677.txt]] channel binding for EAP methods
+[[file:~/usr/share/ietf/in-notes/rfc4121.txt]] Kerberos GSS-API v2
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-emu-eap-tunnel-method-10.txt]] TEAP
 [[file:~/usr/share/ietf/in-notes/rfc5056.txt]] (GSS-API) channel binding
 [[file:~/usr/share/ietf/in-notes/rfc3579.txt]] EAP over RADIUS
-
 [[file:~/usr/share/ietf/in-notes/rfc4462.txt]] GSS-API authn & kex for SSH
 [[file:~/usr/share/ietf/in-notes/rfc4253.txt]] SSH transport, incl. DH kex
-
 [[file:~/usr/share/ietf/in-notes/rfc6678.txt]] tunnel-based EAP methods, requirements
 [[http://eprint.iacr.org/2002/163.pdf]] tunneled protocols and MITM, paper
 
@@ -2108,7 +2145,7 @@ People other than Sam who, according to Leif, might know about
 security and ABFAB include Alan DeKok, J. Salowey, Stefan Winter and
 Josh Howlett. I bet Luke knows something too.
 
-** chat logs
+** conversations, chat and email
 *** hartmans <2014-01-30 Thu>
 [2014-01-29 14:04] linus> hartmans: hi. could you explain what the
 problem is with the DH key exchange in RFC 4462, from an ABFAB
@@ -2223,6 +2260,43 @@ tokens.
 - Describe open issues.
 
 I think that's all we need in the 00 draft
+*** chat <2014-02-12 Wed>
+- RFC 4121 tokens include sequence numbers, as do EAP messages
+- temporality [foo] means replay or reordering attacks
+- CB == Channel Binding, for EAP it's RFC6677, for non EAP RFC5056
+- AVP == Attribute Value Pair (like in RADIUS)
+- CB+CB horror -- "It allows you to detect a MITM before the EAP conversation concludes"
+[16:39] hartmans> You'd use an EAP CB AVP to communicate whether you
+offered a DH key and if a dh key was agreed its hash to the home IDP
+[16:39] hartmans> Or rather a RADIUS AVP carried in EAP CB
+[16:39] hartmans> Then the acceptor can send the same AVP via radius
+[16:39] hartmans> and the IDP can reject if a MITM did unhappy things.
+[16:41] hartmans> You probably could not depend on an IDP to reject
+because it might not understand your CB AVP or because a proxy between
+acceptor and IDP might filter it out, but you could detect more
+attacks that way.
+[16:43] hartmans> I do like the title "On the use of RFC 6677 channel
+bindings to implement the previously unrelated RFC 5056 channel
+binding for rfc 7055"
+[16:51] hartmans> The cb+cb proposal is not a joke but let's not
+include it in the 00
+[16:53] hartmans> It allows you to detect a MITM before the EAP
+conversation concludes.
+[16:53] hartmans> So before any of the leaks of the  extensions phase
+
+[16:52] Josh Howlett> You know, might be worth seeing if we can get
+the concept into 00
+[16:53] Josh Howlett> I like the fact that the policy can be managed
+and enforced by the IdP
+[16:54] Josh Howlett> interesting to consider how we want policy on
+use of emphemeral keying being managed and enforced by each party
+** josh on client and RP sending proofs to IdP
+[[gnus:nnimap%2Badbc:INBOX#CF180C59.D947%25josh.howlett@ja.net][Email from Josh Howlett: Re: ABFAB ephemeral keys chat]]:
+We could get the initiator and acceptor to send key possession proofs to
+the IdP, which could compare these and therefore establish for itself that
+both parties are talking to each other. I'm not sure what value this adds,
+other than perhaps providing a cryptographically strong accounting
+mechanism.
 ** Step by step, successful authn
 - NAI (molgan@example.com): abfab client  ------> RP
 
@@ -2296,16 +2370,32 @@ data, inadvertently or not.
 
 *** Keys used in [an ABFAB system]
 - MSK (EAP)
-One MSK (Master Session Key) and one EMSK (Extended MSK) for each
-[ABFAB? EAP?] session which is shared by the Client, the RP and the
-IdP. [Transported all over the place, esp. AAA without end-to-end
+One MSK (Master Session Key) and one EMSK (Extended MSK) for each EAP
+session is derived by the IdP. The MSK [and the EMSK?] is [/are]
+shared by [the Client,?] the RP and the IdP. [It/they is/are
+transported all over the place, esp. over AAA without end-to-end
 confidentiality or integrity]
 
-- CRK (GSS?)
-Context Root Key, derived from the GMSK (GSS-API MSK).
+- AAA-Key (EAP)
+The AAA-Key is derived from the MSK/EMSK. They are often equivalent
+([[file:~/usr/share/ietf/in-notes/rfc3748.txt::7.10.%20Key%20Derivation][RFC3748 section 7.10]]).
+FIXME: case in abfab?
+
+- TSK (EAP)
+Transient Session Keys are derived from the AAA-Key. 
+Each ciphersuite is specifying how this is done.
+FIXME: case in abfab?
 
 - GMSK (GSS)
-Derived from the MSK using the encryption type of the mechanism in use.
+Derived from the MSK based on the RFC3961 random-to-key operation on
+the MSK, using the encryption type of the mechanism in use.
+
+- CRK (GSS-EAP)
+Context Root Key, derived from the GMSK (GSS-API MSK), as defined in
+[[file:~/usr/share/ietf/in-notes/rfc7055.txt::The%20context%20establishment%20process%20may%20be%20passed%20through%20to%20an%20EAP][RFC7055, section 6]].
+
+This key is treated as sub-session key and ticket session key, in
+RFC 4121 terms.
 *** Points of attack [attack vectors?] against an ABFAB system
 - AAA
   client/NAS = server
@@ -2345,7 +2435,6 @@ Derived from the MSK using the encryption type of the mechanism in use.
 
   User and IdP share a long term NAI (f.ex. an e-mail address) and a long
   term key (f.ex. a pass phrase).
-
 *** open questions
 - [draft-ietf-abfab-gss-eap-09]: Second, a non-optimal security
   mechanism may be chosen.
@@ -2356,7 +2445,7 @@ Derived from the MSK using the encryption type of the mechanism in use.
 *** author's address
 *** IPR disclosure
 *** copyright notice
-** ephemeral keying
+** some text on ephemeral keying
 - 2013-11-15 [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]] 
    * Protect the EAP conversation between the peer and NAS (initiator and
    acceptor in GSS terms)
@@ -2407,18 +2496,28 @@ solve? Can we use it?
    fully mitigate the risk of NAS impersonation when these mechanisms
    are used, it is RECOMMENDED that mutual channel bindings be used to
    bind the authentications together as described in [RFC7029].  When
+*** open questions
+- Can radsec proxies see the EAP MSK/EMSK?
+  
+  A: Yes.
+- Can we use something of "this" for signing SAML assertions? The EAP
+  MSK/EMSK?
+- 7055 "context establishment" and this, how do they relate? 
+  
+  A: Context establishment is the term for going through the 7055 states.
+- They run from GSS initiator to acceptor though, so how do we set up
+  keys with the EAP server? pass-through? 
+  
+  A: Apparently, we don't.
+- Will this mess up the [[file:~/usr/share/ietf/in-notes/rfc7055.txt::4.%20Selection%20of%20EAP%20Method][selection of EAP method]]? Depends on wether we
+  want to make this optional or not. 
 
-** draft-abfab-ephemeral-keying
-*** Abstract
-This [doc] describes how EAP-GSS provides forward secrecy by
-encrypting each session in an ephemeral key [DH:ed] and shared by the
-initiator (EAP peer) and acceptor (EAP authenticator).
-
-[To stop someone with access to traffic going between an ABFAB user and
-her Identity Provider, possibly by being on the path (like all the
-entitites in the AAA fabric are), from getting access to key material
-[and more],]
-
+  A: If mandatory there's no difference from before -- we're simply
+  using EAP-GSS. If we're adding some fancy negotiation mechanism for
+  this, I don't know.
+- Can we _remove_ any other crypto now that we have "this"?
+- Can we use "this" to authenticate some part(s) too? Where and how?
+*** misc notes
 - goal 1: provide forward secrecy
   - fixes what problem? 
     - passive attacker records client traffic and learns [long term
@@ -2433,37 +2532,131 @@ entitites in the AAA fabric are), from getting access to key material
   - RP<->IdP communication (FIXME: is this two separate things -- EAP
     peer<->server and IdP<->RP?)
 
-  - 
-
 implemented as a number of context subtokens, 7055 sect. 5?
-
-Q: _remove_ any other crypto now that we have this?
-Q: authenticate too? where and how?
 
 7055 states:
 - initial (vendor, name req+resp)
-- authenticate (eap req+resp)
+  - vendor contains debugging info
+  - name req+resp carries sensitive acceptor name (like TLS SNI)
+- authenticate (eap req+resp) derives MSK/EMSK
+  - [what goes here?]
 - extensions (flags, gss channel binding, MIC)
+  - fixme
+** draft-abfab-ephemeral-keying
+Early revision history, to be removed:
+- -alpha0 2014-02-11 initial draft of a draft
+- -alpha1 2014-02-12 adding comments from jabber meeting w/ sam & josh
+*** [boilerplate and authors]
+*** Abstract
+This document describes how EAP-GSS provides forward secrecy by
+encrypting each session in an ephemeral key generated in the initial
+state of the context establishment. This Diffie-Hellman key is shared
+by the initiator (EAP peer) and acceptor (EAP authenticator).
 
+The goal is to stop a passive attacker with access to the traffic
+between an ABFAB user and the service she uses (Relying Party), from
+getting access to key material and information linkable to the user or
+from being able to fingerprint the user.
 
-Q: 7055 "context establishment" and this, how do they relate?
+[do we mitigate any active attacks?]
+*** Introduction
+*** Problem
+**** Privacy against passive observers
+***** IDP realm almost always exposed
+[FIXME]
+***** fingerprint of EAP implementation
+[FIXME]
+***** certs of IDP realm
+[FIXME]
+**** EAP exposed between the initiator and acceptor
+Access to the MSK gives the possibility to decrypt [and tamper with?]
+the traffic protected by the EAP tunnel, i.e. traffic between
+initiator and acceptor (the ABFAB Client and the RP). AAA proxies
+between RP and IdP have this access and so has anyone eavesdropping on
+the path between RP and IdP in case RADIUS/UDP or Diameter is being
+used instead of RADIUS/TLS.
+**** MIC, channel bindings and extensions subtokens exposed to passive attackers
+At the GSS-API layer, the following sensitive data is susceptible for
+eavesdropping by a passive attacker:
 
-Q: they run from GSS initiator to acceptor though, so how do we set up
-keys with the EAP server? pass-through?
+- Acceptor name
 
-Q: will this mess up the [[file:~/usr/share/ietf/in-notes/rfc7055.txt::4.%20Selection%20of%20EAP%20Method][selection of EAP method]]?
+  Carried in name requests and responses during the initial phase.
+  
+  The acceptor name can be used for fingerprinting users since it
+  indicates what service is requested and supplied. In settings where
+  the endpoints IP addresses and other identifying information don't
+  link the user to the service, exposing the acceptor name is bad for
+  privacy.
 
-*** Introduction / background / ABFAB architecture
-[use (parts of) [[*introduction][introduction]]]
+- Key material
 
-*** Problem Statement / The threat(s)
+  Carried in EAP requests and responses in the authenticate phase.
+  
+  [this is where the MSK is derived by the IdP (server) and sent to
+  client (initiator/peer) and RP (acceptor/authenticator)]
 
-*** The solution
+- GSS channel bindings, in extensions state
 
-*** The costs
+  [FIXME]
+
+- MIC, in extensions state
+
+  [FIXME]
+
+- Flags, in extensions state
+  
+  Currently defined flags leak information about what application
+  protocol is being used and pose a threat to user privacy. Future
+  flags might increase this threat.
+
+- [FIXME: error subtokens]
+
+*** Solution
+Generate a Diffie-Hellman key in the initial state of the context
+establishment and use it to encrypt other context tokens. Note that
+the DH key, shared by initiator and acceptor, is unique per GSS-API
+session, not per context token. [Elaborate on why?]
+
+[describe where in initial the DH key exchange happens and how; point
+at general description? copy from existing standard?]
+
+[ describe how we signal algorithm and key size ]
+
+[ describe the use of a nonce/sequence number for temporality, either
+in the key or in the payload, covered by the MIC and verified by the
+other end -- mitigates replay, reflection and reordering attacks ]
+
+[ describe how we derive a symmetric key from the DH key and encrypt
+the context token (perhaps in a GSS "wrap token"?) ]
+
+[ describe how to mix in the DH key with the MSK to form the CRK (7055
+sect 6) -- this will make a MITM kexing with both ends unable to
+create a MIC which validates properly (and a MITM relaying DH kex will
+not know the key and thus not the CRK) ]
+
+*** Costs
 - This will cost FIXME extra roundtrips.
-- New GSS mech? How to pick the right one?
+- [No new GSS mech. Thus no complexity cost of picking the right one.]
+*** Open questions
+- Should we make the ephemeral keying and encryption optional?
 
+  Might have to -- asking the list about breaking backward compatibility.
+- Bid down attacks -- detect, prevent
+
+  "Interesting" idea from Sam: 6067 CB implementing 5056 CB could
+  detect MITM before end of extension state (MIC).
+- Include the nonce/sequence number in tokens or fold it into the key?
+*** Security considerations
+TBD
+*** References
+**** Normative
+3748, 7055, 2743 and draft-ietf-abfab-arch
+**** Informative
+*** Author's address
+Linus Nordberg <linus@nordu.net>
+*** IPR disclosure
+*** Copyright notice
 * EAP
 - [[file:~/usr/share/ietf/in-notes/rfc3748.txt][rfc3748]] EAP
 - [[file:~/usr/share/ietf/in-notes/rfc5247.txt][rfc5247]] EAP key management
