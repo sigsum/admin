@@ -440,6 +440,7 @@
  '(starttls-use-gnutls t)
  '(tags-revert-without-query t)
  '(tls-checktrust (quote ask))
+ '(tls-program (quote ("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h" "gnutls-cli --insecure -p %p %h" "gnutls-cli --insecure -p %p %h --protocols ssl3" "openssl s_client -connect %h:%p -no_ssl2 -ign_eof")))
  '(tool-bar-mode nil)
  '(twit-minor-mode t)
  '(twit-show-user-images t)
