@@ -9,21 +9,30 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - . tor prop 220 reviewed
-   - - things not under source control in ~/p/radsecproxy/libradsec/lib checked in
-     typically tests/server.c and the python bindings
+   - - do exits with an IPv6 exit policy really announce that when
+     IPv6Exit=0?
+   - X tor prop 220 reviewed
+   - - #10519
+   - - #4345
 ** IETF
+   - - schaad replied to
+   - - maybe sign stpeter's xmpp manifesto
 ** Sysadm
-   - - upgrade bridges https://lists.torproject.org/pipermail/tor-relays/2014-February/003886.html
+   - o upgrade bridges https://lists.torproject.org/pipermail/tor-relays/2014-February/003886.html
      tor.ndn x 2; proj.adbc; more?
 ** DFRI
-   - - [[gnus:nnimap%2Badbc:INBOX#CAB5KTYEEOBm7euTZmaXVJiXL84MoSgjQ4FeV4h%3DEumcCT1vAGA@mail.gmail.com][HRMI email]] replied to [wed]
-   - . TB contract rewritten [fri]
+   - - [[gnus:nnimap%2Badbc:INBOX#CAB5KTYEEOBm7euTZmaXVJiXL84MoSgjQ4FeV4h%3DEumcCT1vAGA@mail.gmail.com][HRMI email]] replied to
+   - . TB contract rewritten
    - - membership handling outlined
      new file, not in git, mapping member number to email address
-   - - flashproxy running at dfri.se
 ** Misc
-   - - registered for SIF14 [sun]
+   - - andrew and lise connected re DV
+   - - andrew and peter connected re CRD
+   - - bosse and T connected
+   - - basic HS client auth mitigating ralphs attack? [[file:~/usr/src/tor/src/or/rendservice.c::rend_service_introduce(origin_circuit_t%20*circuit,%20const%20uint8_t%20*request,][rend_service_introduce]]
+   - - add EHSM to cryptech wiki
+   - o find out when the EHSM conference in Berlin happens (march 10th)
+   - o registered for SIF14 [sun]
      http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
    - - trip report for 30c3 uploaded
    - . strombergson and wolfgang connected, possibly by emailing a
@@ -35,6 +44,8 @@ Legend                                                (emacs -*-org-*- mode)
      http://lekernel.net/fpga_toolchain_talk.pdf
 * Soon (within a month)
 ** Dev
+   - - things not under source control in ~/p/radsecproxy/libradsec/lib checked in
+     typically tests/server.c and the python bindings
    - - shadow #111 closed
    - - CT design paper sent somewhere
    - - libradsec: add server failover
@@ -61,6 +72,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
    - - write a proposal for the ASN tickets
 ** Misc
+   - - connected the subgraph ppl with T-SEC
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
    - . broken SSD returned (1)
@@ -93,6 +105,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** IETF
+   - - SOCKS5 extensions mapped, dgoulet
    - - [[file:/u/ietf/internet-drafts/draft-melnikov-email-tls-certs-01.txt]]
    - - [[file:/u/ietf/internet-drafts/draft-ietf-dane-smtp-with-dane-05.txt]]
    - - [[file:/u/ietf/internet-drafts/draft-perez-radext-radius-fragmentation-06.txt][lopez RADIUS fragment draft]] reviewed for abfab (2)
@@ -146,6 +159,8 @@ Legend                                                (emacs -*-org-*- mode)
      maybe /usr/local/etc/ too?
    - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 ** DFRI
+   - - two old unmoderated emails to listan@ looked into
+   - - flashproxy running at dfri.se
    - - publish key points from snowdens ndr interview
      - http://www.ndr.de/ratgeber/netzwelt/snowden277.html
      - http://www.cyberwarzone.com/ndr-interview-edward-snowden-english-video
@@ -209,13 +224,14 @@ Legend                                                (emacs -*-org-*- mode)
 - Feb 06-07, Kastrup, ndn all hands
 - Feb 16-22, Reykyavik, Tor winter dev
 - Feb 28-07, London, STRINT+IETF89
-? Mar ??-??, Gothenburg, Töllborg (FRA) + GeKo + tokmartin + iljas vpn pal + fripost
+? Mar ??-??, Gothenburg, Töllborg (FRA) + GeKo + tokmartin + iljas vpn pal + fripost + cryptoparty
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
 ? Apr ??-??, Umeå, Markus Naarttijärvi
 ? Apr 01-04, Stockholm, CRD Days
 ? May 11-17, Warsaw, RIPE68
 ? May 18-23, Dublin, TNC2014
 ? May 25-27, Moscow, ENOG7
+- May 27-28, Stockholm, SIF14
 - Jun 28-06, Paris, Tor summer dev
 ? Jul 11-15, Paris, Tails code sprint
 - Jul 15-19, Amsterdam, PETS14
