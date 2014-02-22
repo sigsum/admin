@@ -11,15 +11,12 @@ Legend                                                (emacs -*-org-*- mode)
 ** Dev
    - - do exits with an IPv6 exit policy really announce that when
      IPv6Exit=0?
-   - X tor prop 220 reviewed
    - - #10519
    - - #4345
 ** IETF
    - - schaad replied to
    - - maybe sign stpeter's xmpp manifesto
 ** Sysadm
-   - o upgrade bridges https://lists.torproject.org/pipermail/tor-relays/2014-February/003886.html
-     tor.ndn x 2; proj.adbc; more?
 ** DFRI
    - - [[gnus:nnimap%2Badbc:INBOX#CAB5KTYEEOBm7euTZmaXVJiXL84MoSgjQ4FeV4h%3DEumcCT1vAGA@mail.gmail.com][HRMI email]] replied to
    - . TB contract rewritten
@@ -31,9 +28,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - bosse and T connected
    - - basic HS client auth mitigating ralphs attack? [[file:~/usr/src/tor/src/or/rendservice.c::rend_service_introduce(origin_circuit_t%20*circuit,%20const%20uint8_t%20*request,][rend_service_introduce]]
    - - add EHSM to cryptech wiki
-   - o find out when the EHSM conference in Berlin happens (march 10th)
-   - o registered for SIF14 [sun]
-     http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
    - - trip report for 30c3 uploaded
    - . strombergson and wolfgang connected, possibly by emailing a
      list with wolfgang wisdom (run the email by peter before
