@@ -2098,11 +2098,12 @@ Example usage:
 [TODO: running tor exits is easy -- set up an organisation, download
 tor and off you go]
 * abfab
-[[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-arch-10.txt]]
+[[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-arch-12.txt]]
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt]]
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-09.txt]] now RFC 7055
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-eapapplicability-06.txt]] now RFC 7057
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-usecases-05.txt]]
+[[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-usability-ui-considerations-00.txt]]
 
    +----------+-----------+--------------------+-----------------------+
    | Protocol | Client    | Relying Party      | Identity Provider     |
@@ -2129,7 +2130,7 @@ tor and off you go]
 
 [[file:~/usr/share/ietf/in-notes/rfc3748.txt]] EAP
 [[file:~/usr/share/ietf/in-notes/rfc7055.txt]] a GSS-API mech for EAP
-[[file:~/usr/share/ietf/in-notes/rfc7057.txt]] EAP for ABFAB
+[[file:~/usr/share/ietf/in-notes/rfc7057.txt]] update to EAP for ABFAB
 [[file:~/usr/share/ietf/in-notes/rfc7029.txt]] EAP mutual cryptographic binding using EMSK
 [[file:~/usr/share/ietf/in-notes/rfc6677.txt]] channel binding for EAP methods
 [[file:~/usr/share/ietf/in-notes/rfc4121.txt]] Kerberos GSS-API v2
@@ -2140,6 +2141,8 @@ tor and off you go]
 [[file:~/usr/share/ietf/in-notes/rfc4253.txt]] SSH transport, incl. DH kex
 [[file:~/usr/share/ietf/in-notes/rfc6678.txt]] tunnel-based EAP methods, requirements
 [[http://eprint.iacr.org/2002/163.pdf]] tunneled protocols and MITM, paper
+[[file:~/usr/share/ietf/in-notes/rfc4422]] SASL
+[[file:~/usr/share/ietf/in-notes/rfc5801.txt]] GS2
 
 People other than Sam who, according to Leif, might know about
 security and ABFAB include Alan DeKok, J. Salowey, Stefan Winter and
@@ -2445,7 +2448,7 @@ RFC 4121 terms.
 *** author's address
 *** IPR disclosure
 *** copyright notice
-** some text on ephemeral keying
+** various text on ephemeral keying
 - 2013-11-15 [[gnus:nnimap%2Badbc:ietf.abfab#tsly54pjzeq.fsf@mit.edu][Email from Sam Hartman: {abfab} Right place for ABFAB ]] 
    * Protect the EAP conversation between the peer and NAS (initiator and
    acceptor in GSS terms)
@@ -2657,10 +2660,57 @@ TBD
 Linus Nordberg <linus@nordu.net>
 *** IPR disclosure
 *** Copyright notice
+** comments from jim
+Section 2. - I am not sure if you are trying to restrict to the conversation
+between the initiator and the acceptor based on the fact that you are
+throwing in RADIUS.  There is no RADIUS spoken here.  
+
+ 
+
+Section 2.1 - para #2 - The first sentence is just wrong.  No matter what
+type of RADIUS you are using, intermediates always have access to the EAP
+MSK.  The difference between RADIUS/UDP and RADIUS/TLS or RADIUS/DTLS is the
+question of how much passive intermediaries are going to be able to see
+based on the use of a long term shared secret.
+
+ 
+
+Section 2.2 - Passive observers may also be able to fingerprint the client
+based on TLS restart information.
+
+ 
+
+Section 2.3 - This should include exposing the realm of the user (or the
+full user name in bad implementations).
+
+ 
+
+You say
+
+   [ maybe expand on how TEAP [draft-ietf-emu-eap-tunnel-method
+<http://tools.ietf.org/html/draft-ietf-emu-eap-tunnel-method> ] could
+   solve the problem of AAA proxies learning the MSK, impersonating the
+   RP ]
+
+I would be very interested in seeing how you think there could possibly be a
+solution in this space.  I can't see one.
+
+ 
+
+There probably needs to be a nod to using an application level tunnel as
+well.  While I think that it might be nice to have this in the GSS-EAP
+layer, we cannot ignore this as an option.
+
+ 
+
+Jim
 * EAP
 - [[file:~/usr/share/ietf/in-notes/rfc3748.txt][rfc3748]] EAP
 - [[file:~/usr/share/ietf/in-notes/rfc5247.txt][rfc5247]] EAP key management
 - rfc4017 EAP for wifi
+- [[file:~/usr/share/ietf/in-notes/rfc4851.txt][rfc4851]] EAP-FAST
+- [[file:~/usr/share/ietf/in-notes/rfc6678.txt][rfc6678]] requirements for a tunnel-based EAP method
+- [[file:~/usr/share/ietf/in-notes/rfc5077.txt][rfc5077]] TLS session resumption w/o server-side state
 
 Methods like LEAP, EAP-TLS, EAP-TTLS, EAP-PSK, EAP-EKE.
 Encapsulations like 802.1X, RADIUS, PPP.
@@ -2677,3 +2727,11 @@ Keys to derive using [DH]:
 
 RFC2743 1.2.2: Per-Message Security Service Availability
 RFC2743 1.2.7: Per-Message Protection During Context Establishment
+
+* TLS
+[[file:~/usr/share/ietf/in-notes/rfc4279.txt]] PSK
+[[file:~/usr/share/ietf/in-notes/rfc5077.txt][rfc5077]] TLS session resumption w/o server-side state
+[[file:~/usr/share/ietf/in-notes/rfc5746.txt]] TLS renegotiation indication
+
+* perpass
+[[file:~/usr/share/ietf/in-notes/rfc2804.txt]] IETF Policy on Wiretapping
