@@ -9,6 +9,9 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
+   - - boklm abt script acked
+     https://github.com/boklm/prune-old-builds
+   - - tor-relay@ thread about ipv6 handled
    - - do exits with an IPv6 exit policy really announce that when
      IPv6Exit=0?
    - - #10519
@@ -226,8 +229,9 @@ Legend                                                (emacs -*-org-*- mode)
 ? May 18-23, Dublin, TNC2014
 ? May 25-27, Moscow, ENOG7
 - May 27-28, Stockholm, SIF14
-- Jun 28-06, Paris, Tor summer dev
+- Jun 29-05, Paris, Tor summer dev
 ? Jul 11-15, Paris, Tails code sprint
+? Jul 14-18, Berlin, OKFestival
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
 ? Aug 19-23, San Diego, USENIX Security

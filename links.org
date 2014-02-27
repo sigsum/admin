@@ -1,3 +1,30 @@
+penet cp history http://people.dsv.su.se/~matsw/survey1_fulltext.html
+penet cp history http://groups.csail.mit.edu/mac/classes/6.805/articles/anonymity/short-pieces/finland-feb21.txt
+cryptech ml https://cryptech.is/mailman/listinfo/commits
+fra readme http://www.aftonbladet.se/nyheter/kolumnister/oisincantwell/article18442530.ab
+readme nsa http://windowsitpro.com/identity-management/richard-clarke-rsa-conference-10-observations-us-intelligence-gathering
+tor hs attack people:ralph http://www.ieee-security.org/TC/SP2013/papers/4977a080.pdf
+people:stuge code https://git.stuge.se/
+sr people:copylinda cryptoparty radio https://sverigesradio.se/sida/artikel.aspx?programid=1646&artikel=5793836
+privacy research https://dud.inf.tu-dresden.de/literatur/Anon_Terminology_v0.34.pdf
+readme http2 proxy https tls privacy http://hillbrad.typepad.com/blog/2014/02/trusted-proxies-and-privacy-wolves.html
+readme gchq jtrig https://firstlook.org/theintercept/2014/02/24/jtrig-manipulation
+readme tor attack https://blog.torproject.org/blog/new-tor-denial-service-attacks-and-defenses
+ieee paywall http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=5336982
+readme evilmaid hw security https://events.ccc.de/congress/2013/Fahrplan/events/5600.html
+readme git ikiwiki http://ikiwiki.info/rcs/git/
+readme git ikiwiki http://ikiwiki.info/tips/laptop_wiki_with_git/
+security crypto telegram http://unhandledexpression.com/2013/12/17/telegram-stand-back-we-know-maths/
+readme iran usnavy hack http://www.theverge.com/2014/2/18/5421636/us-navy-hack-by-iran-lasted-for-four-months-say-officials
+snowden nsa book http://www.theguardian.com/books/2014/feb/20/edward-snowden-files-nsa-gchq-luke-harding
+tor admin ssh keys https://db.torproject.org/doc-mail.html
+pastebin https://paste.debian.net/
+pic totoro https://pbs.twimg.com/media/BgqqYzCCIAAJFSK.jpg
+crypto http://moderncrypto.org/
+readme wl gchq nsa https://firstlook.org/theintercept/article/2014/02/18/snowden-docs-reveal-covert-surveillance-and-pressure-tactics-aimed-at-wikileaks-and-its-supporters/
+readme video people:schneier http://isoc-ny.org/p2/6317
+skweee http://nordberg.se/linus/.Air0ii/skwee/
+readme security http://cryptome.org/2014/02/nic-ssh-rootkit.htm
 tor crypto spec https://lists.torproject.org/pipermail/tor-dev/2013-December/005957.html
 abfab https://datatracker.ietf.org/doc/draft-linus-abfab-ephemeral-keying/
 poa initial statement riseup hs https://ttbmov2dezfs2fln.onion/p/wDrxQjTD35g4
@@ -2220,7 +2247,6 @@ http://whitney.org/Events/LauraPoitrasObservationAndTrust people:ioerror art sur
 tor faq https://www.torproject.org/docs/faq.html.en
 http://www.itworld.com/security/268510/tor-using-drug-ring-exposed-infiltrator-not-penetration-anonymity-network tor crime LEA
 http://www.dban.org/ wiping hard disk
-https://db.torproject.org/doc-mail.html tor admin
 https://de.wikipedia.org/wiki/Hackerparagraf hackerparagraf
 https://www.fbi.h-da.de/fileadmin/gruppen/FG-IT-Sicherheit/Publikationen/2010/Seeger_DuD2010.pdf hackerparagraf
 http://citizen428.net/blog/2012/04/18/no-tor/ tor
