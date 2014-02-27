@@ -104,6 +104,7 @@ alias calle			FridhKleberg@gmail.com
 alias carina			carina.eklof@tuben12.se
 alias carl.gunnarsson   	"Carl Gunnarsson <carl@linuxserver.se>"
 alias carolyn			carolyn@anhalt.org
+alias caspar                    "Caspar Bowden <caspar@PrivacyStrategy.eu>"
 alias cda                       collina@gmail.com
 alias chiiph                    chiiph@torproject.org
 alias chris.arnold		chris@arnold.se
@@ -400,6 +401,7 @@ alias liss.gmail                lissgarberg@gmail.com
 alias liss                      liss.gmail
 alias listan                    listan@lists.dfri.se
 alias liva			liv.ungermark@sr.se
+alias ljo                       "Leif-Jöran Olsson <ljo@fripost.org>"
 alias lobber			lobber@segate.sunet.se
 alias lol			lol@nordberg.se
 alias lord			sofia.lord
@@ -438,6 +440,7 @@ alias maria.h                   maria.hall
 alias maria.l			"Mark & Maria <lindblom-levy@bolina.hsb.se>"
 alias marianne          	marianne@nordberg.se
 alias marianne.skolan           "Marianne Sthen-Ingler <marianne.sthen-ingler@stockholm.se>"
+alias marie.crd                 "Marie Månson <Marie.Manson@civilrightsdefenders.org>"
 alias marja             	marja.stobin@comhem.se
 alias mark.klamberg.gmail       markklamberg@gmail.com
 alias mark.klamberg             "Mark Klamberg <Mark.Klamberg@juridicum.su.se>"
@@ -658,10 +661,12 @@ alias tiago			tiago@gnu.org
 alias tlund                     tlund@nxs.se
 alias tobbe	 		tobbe@romab.com
 alias tokmartin			m@msp.se
+alias tom.ndn                   tom@nordu.net
+alias helle                     helle@nordu.net
 alias tomb			"Thomas S. Benjamin <tomb@acm.org>"
 alias tom.langborn		"Tom Langborg <tom@nsc.liu.se>"
 alias tom.lowenthal             "Tom Lowenthal <tom@torproject.org>"
-alias tom                       tom.lowenthal
+alias tom                       tom.ndn
 alias tor-accounting            accounting@torproject.org
 alias tor-adm			torproject-admin@torproject.org
 alias tor-ass			tor-assistants@lists.torproject.org
