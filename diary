@@ -566,7 +566,6 @@
 2013-11-9 13:50-17:20 LHR-ARN
 2013-11-1 10:00-11:10 ARN-CPH
 2013-11-1 15:20-16:35 CPH-ARN
-2014-05-2 Juni ledig fr skolan -- studiedag, typ
 2014-06-11 Avslutning i skolan
 2013-10-30 19:00 crypto-hw
 2013-12-26 15:55-17:25 ARN-HAM
@@ -738,3 +737,8 @@
 %%(diary-block 2014 03 21 2014 03 23) [Lärka] scoutläger
 2014-02-26 19:00 Sparvnästet årsmöte Hangövägen 18 2tr
 %%(diary-block 2014 04 01 2014 04 04) CRD days
+2014-03-30 NOC-dag
+2014-02-26 17:00-20:00 Tekniska museet
+2014-04-29 merakrypto
+2014-04-28 17:00 SNUS årsmöte
+2014-05-02 Skolan stängd, studiedag
