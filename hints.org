@@ -2322,6 +2322,7 @@ xmpp-client <2013-11-08 Fri>:
 
 ioerrror@jabber.ccc.de 067508ccc60422e58544e2cd9b4d1d0fa0a1be23
 pawal@iis.se c9fade83b9dd9d5e0dd5b6c656454407e49754ee
+"the other randy" is (approximately) f51f513fe83c075890fbeeaf4608bd1984402c42
 ** emacs-otr
 *** <2011-12-28 Wed>
 Playing with ~/lisp/otr.el and http://mnemonikk.org/emacs-otr (0f58a558).
@@ -28848,7 +28849,22 @@ Please use 0x23103A3C or send unencrypted if you find that suitable.
 
 0x23103A3C: https://www.dfri.se/wiki/users/linus/23103A3C.asc
 Fingerprint: https://www.dfri.se/wiki/users/linus/contact.txt
+** temp mar 2014
+Ute och reser utan mina vanliga nycklar.
 
+Använd gärna 0x8D4240EB, eller skicka okrypterat om du tycker att det
+passar sig.
+
+0x8D4240EB: https://dfri.se/wiki/users/linus/8D4240EB.asc
+Fingerprint: https://www.dfri.se/wiki/users/linus/contact.txt
+
+--------------------------------------------------------------------------------
+Travelling without some keys.
+
+Please use 0x8D4240EB or send unencrypted if you find that suitable.
+
+0x8D4240EB: https://dfri.se/wiki/users/linus/8D4240EB.asc
+Fingerprint: https://www.dfri.se/wiki/users/linus/contact.txt
 * strange dhclient behaviour
 Feb 23 12:17:09 forty711 dhclient[2596]: option option-105 (101) larger than buffer.
 Feb 23 12:17:09 forty711 dhclient[2596]: rejecting bogus offer.
@@ -32500,13 +32516,14 @@ test:
 - /usr/sbin/ntpdc -n -c monlist 193.10.5.86
 - http://nmap.org/nsedoc/scripts/ntp-monlist.html
 * eduroam
-PEAP;MSCHAPv2;linus/ppp: no
+                         anon@nordu.net anon@NORDU.NET
+PEAP;MSCHAPv2;linus/ppp: no		no
 PEAP;MSCHAPv2;linus: no
 PEAP;GTC;linus/ppp: no
-PEAP;MD5;linus/ppp: no
-TTLS;MSCHAPv2;linus/ppp: no
+PEAP;MD5;linus/ppp: no			no
+TTLS;MSCHAPv2;linus/ppp: no		no
 TTLS;MSCHAPv2;linus: no
-TTLS;MSCHAP;linus/ppp: no
+TTLS;MSCHAP;linus/ppp: no               no
 TTLS;MSCHAP;linus: no
 TTLS;PAP;linus/ppp: no
 TTLS;CHAP;linus/ppp: no
@@ -32538,3 +32555,18 @@ julf@penet.fi
 
 - ilja: sjf och tor, har ni pratat om andra tjanster oxo?
 - sus: vi har inte rekommenderat ngn speciell tjanst
+* presentations, creating them
+** Emacs org mode
+Generating a PDF from an org mode file requires pdflatex(1).
+
+Use '#+LaTeX_CLASS: beamer', possibly by invoking
+M-x org-insert-beamer-options-template
+
+apt-get install latex-beamer texlive-latex-extra texlive-fonts-recommended
+
+An example can be found in [[file:ietf/IETF89/abfab-ephem-keying-ietf89.org][file:~/Persistent/linus/ietf/IETF89/abfab-ephem-keying-ietf89.org]]
+
+For scaling images, imagemagick can be used
+
+apt-get install imagemagick
+convert IMG_2749.JPG -resize 10% envelope.png
