@@ -1,0 +1,55 @@
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation]
+#+BEAMER_FRAME_LEVEL: 1
+
+#+BEAMER_HEADER_EXTRA: \usetheme{default}\usecolortheme{default}
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_envargs(Env Args) %4BEAMER_col(Col) %8BEAMER_extra(Extra)
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 :ETC
+
+#+STARTUP: beamer
+
+#+TITLE: Ephemeral keying for ABFAB
+#+AUTHOR: Linus Nordberg, NORDUnet
+#+EMAIL: linus@nordu.net
+
+* Slide 1 \\ with a subtitle
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed
+tempor nulla. Suspendisse potenti. Curabitur non eros iaculis,
+hendrerit quam in, imperdiet nibh.
+
+- Mauris cursus leo non lacus eleifend rhoncus. 
+- Mauris aliquam quis turpis vel commodo.
+- Quisque aliquet nunc ac felis commodo condimentum.
+- Quisque ut lacus malesuada elit auctor varius.
+- Pellentesque ac quam congue ligula consequat placerat a in enim.
+- Proin id dolor interdum lorem ultricies placerat.
+
+* Slide 2 \\ with another subtitle
+** Cras ut vestibulum erat, vel porttitor ante
+Nulla fermentum erat id sapien pharetra, sed eleifend tortor
+venenatis. Pellentesque tempor ultrices lorem in mattis. Mauris sit
+amet tempus nibh. Aenean felis lacus, malesuada ac tincidunt et,
+sodales sed nulla. In consequat a neque eget laoreet.
+
+** Aliquam nulla enim, feugiat eu elit eget, posuere varius augue
+Nulla id nulla magna. Nullam eros velit, porttitor vitae ullamcorper
+quis, ullamcorper quis tellus. Nullam ullamcorper nunc eros, non
+laoreet purus fringilla ut.
+
+** Etiam mi mi, interdum volutpat erat non, euismod sagittis metus
+Donec non tellus cursus, fringilla risus et, luctus justo.
+* Slide 3
+Vestibulum enim mauris, dignissim non felis eu, elementum ultricies
+dui. Quisque pharetra magna non nibh facilisis, ac vestibulum elit
+consectetur. Duis vitae nulla sit amet sem molestie varius vitae
+tempus libero. Praesent massa velit, hendrerit eget est in, venenatis
+mattis lacus.
+
+Nunc dapibus ultrices fringilla. Maecenas tristique fringilla
+ullamcorper. Etiam libero enim, gravida sit amet eros vel, blandit
+vulputate odio. Donec eget orci vel velit tincidunt eleifend ac non
+nisi. Maecenas at mi vitae augue vulputate vestibulum.
+
+Aliquam vehicula, libero vitae aliquet rutrum, turpis est ullamcorper
+nibh, non dapibus nisi augue ac nulla. Etiam fringilla magna in tempor
+ullamcorper.

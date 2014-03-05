@@ -2403,6 +2403,8 @@ implemented as a number of context subtokens, 7055 sect. 5?
 - extensions (flags, gss channel binding, MIC)
   - fixme
 ** draft-abfab-ephemeral-keying
+NOTE: this has moved to [[file:internet-drafts/draft-linus-abfab-ephemeral-keying/draft-linus-abfab-ephemeral-keying.mkd][file:~/Persistent/linus/ietf/internet-drafts/draft-linus-abfab-ephemeral-keying/draft-linus-abfab-ephemeral-keying.mkd]]
+
 Early revision history, to be removed:
 - -alpha0 2014-02-11 initial draft of a draft
 - -alpha1 2014-02-12 adding comments from jabber meeting w/ sam & josh
@@ -2561,6 +2563,47 @@ layer, we cannot ignore this as an option.
  
 
 Jim
+** presentation for IETF89
+*** Ephemeral keying for ABFAB
+**** Slide 1
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed
+tempor nulla. Suspendisse potenti. Curabitur non eros iaculis,
+hendrerit quam in, imperdiet nibh.
+
+Mauris cursus leo non lacus eleifend rhoncus. Mauris aliquam quis
+turpis vel commodo. Quisque aliquet nunc ac felis commodo
+condimentum. Quisque ut lacus malesuada elit auctor
+varius. Pellentesque ac quam congue ligula consequat placerat a in
+enim. Proin id dolor interdum lorem ultricies placerat.
+**** Slide 2
+Cras ut vestibulum erat, vel porttitor ante. Nulla fermentum erat id
+sapien pharetra, sed eleifend tortor venenatis. Pellentesque tempor
+ultrices lorem in mattis. Mauris sit amet tempus nibh. Aenean felis
+lacus, malesuada ac tincidunt et, sodales sed nulla. In consequat a
+neque eget laoreet.
+
+Aliquam nulla enim, feugiat eu elit eget, posuere varius augue. Nulla
+id nulla magna. Nullam eros velit, porttitor vitae ullamcorper quis,
+ullamcorper quis tellus. Nullam ullamcorper nunc eros, non laoreet
+purus fringilla ut.
+
+Etiam mi mi, interdum volutpat erat non, euismod sagittis metus. Donec
+non tellus cursus, fringilla risus et, luctus justo.
+**** Slide 3
+Vestibulum enim mauris, dignissim non felis eu, elementum ultricies
+dui. Quisque pharetra magna non nibh facilisis, ac vestibulum elit
+consectetur. Duis vitae nulla sit amet sem molestie varius vitae
+tempus libero. Praesent massa velit, hendrerit eget est in, venenatis
+mattis lacus.
+
+Nunc dapibus ultrices fringilla. Maecenas tristique fringilla
+ullamcorper. Etiam libero enim, gravida sit amet eros vel, blandit
+vulputate odio. Donec eget orci vel velit tincidunt eleifend ac non
+nisi. Maecenas at mi vitae augue vulputate vestibulum.
+
+Aliquam vehicula, libero vitae aliquet rutrum, turpis est ullamcorper
+nibh, non dapibus nisi augue ac nulla. Etiam fringilla magna in tempor
+ullamcorper.
 * EAP
 - [[file:~/usr/share/ietf/in-notes/rfc3748.txt][rfc3748]] EAP
 - [[file:~/usr/share/ietf/in-notes/rfc5247.txt][rfc5247]] EAP key management
@@ -3122,3 +3165,15 @@ https://tools.ietf.org/html/draft-hoffman-dane-smime
 see [[file:dane-privacy.mkd][file:~/Persistent/linus/ietf/dane-privacy.mkd]]
 
 https://pad.riseup.net/p/dane-privacy
+
+** trans <2014-03-05 Wed> 15:20
+important words: STH, SCT
+
+- ekr: STIR has some similar concerns, have you looked at PIR?
+https://en.wikipedia.org/wiki/Private_information_retrieval
+- dkg: given a phony SCT with random bits; benl: goal is to quickly
+detect, not really prevent, also the 'S' means "signed" so "you" can't
+just put random bits in there
+- ekr: gossip, push list of logs to chrome and also "list heads"?
+
+
