@@ -45,6 +45,9 @@ consectetur. Duis vitae nulla sit amet sem molestie varius vitae
 tempus libero. Praesent massa velit, hendrerit eget est in, venenatis
 mattis lacus.
 
+#+CAPTION: Back of an envelope
+[[./envelope.png]]
+
 Nunc dapibus ultrices fringilla. Maecenas tristique fringilla
 ullamcorper. Etiam libero enim, gravida sit amet eros vel, blandit
 vulputate odio. Donec eget orci vel velit tincidunt eleifend ac non
