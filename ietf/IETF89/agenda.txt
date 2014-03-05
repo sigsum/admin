@@ -1,0 +1,302 @@
+
+
+                    Agenda of the 89th IETF Meeting                     
+
+                            March 2-7, 2014                             
+                    Updated 2014-02-24 10:22:50 PST                     
+
+   IETF agendas are subject to change, up to and during the meeting.    
+
+
+
+SATURDAY, March 1, 2014
+
+0930-1800  Code Sprint - Hilton Meeting Room 13-17
+
+
+SUNDAY, March 2, 2014
+
+1000-1200  IEPG Meeting - Blenheim
+1100-1900  IETF Registration - West Wing Foyer
+1300-1450  Introduction to the Applications Area - Buckingham
+1300-1450  Newcomers' Orientation - Blenheim
+1500-1650  Engineering Privacy into Internet Protocols - Blenheim
+1500-1650  Introduction to Authentication, Authorization and Accounting (AAA) management for distributed IP networks - Buckingham
+1600-1700  Newcomers' Meet and Greet (open to Newcomers and WG chairs only) - Balmoral
+1700-1900  Welcome Reception - Sandringham
+
+
+MONDAY, March 3, 2014
+
+0800-1800  IETF Registration - West Wing Foyer
+0800-0900  Beverage Break - West Wing Foyer
+
+0900-1130  Morning Session I
+Buckingham      	APP 	appsawg     	Applications Area Working Group WG - Combined with APPAREA
+Palace C        	INT 	dhc         	Dynamic Host Configuration WG
+Blenheim        	IRTF	icnrg       	Information-Centric Networking 
+Viscount        	RAI 	mmusic      	Multiparty Multimedia Session Control WG
+Balmoral        	RAI 	stir        	Secure Telephone Identity Revisited WG
+Richmond/Chelsea/Tower  	RTG 	ospf        	Open Shortest Path First IGP WG
+Sovereign       	RTG 	sfc         	Service Function Chaining WG
+Park Suite      	TSV 	tcpm        	TCP Maintenance and Minor Extensions WG
+
+1130-1300  Break
+
+1300-1500  Afternoon Session I
+Blenheim        	APP 	httpbis     	Hypertext Transfer Protocol Bis WG
+Sovereign       	INT 	dnssd       	Extensions for Scalable DNS Service Discovery  WG
+Park Suite      	IRTF	cfrg        	Crypto Forum Research Group 
+Richmond/Chelsea/Tower  	OPS 	netconf     	Network Configuration WG - Moved FROM Wednesday Afternoon Session I 1300-1500
+Buckingham      	RAI 	avtcore     	Audio/Video Transport Core Maintenance WG
+Viscount        	RTG 	nvo3        	Network Virtualization Overlays WG
+Palace C        	TSV 	ippm        	IP Performance Metrics WG
+Balmoral        	TSV 	mptcp       	Multipath TCP WG
+
+1500-1520  Beverage Break - West Wing Foyer
+
+1520-1620  Afternoon Session II
+Park Suite      	INT 	lisp        	Locator/ID Separation Protocol WG
+Balmoral        	IRTF	iccrg       	Internet Congestion Control Research Group 
+Viscount        	OPS 	eman        	Energy Management WG
+Blenheim        	RAI 	dispatch    	Dispatch WG
+Buckingham      	RTG 	l2vpn       	Layer 2 Virtual Private Networks WG
+Sovereign       	SEC 	dice        	DTLS In Constrained Environments WG
+Palace C        	SEC 	httpauth    	Hypertext Transfer Protocol Authentication WG
+
+
+1630-1730  Afternoon Session III
+Park Suite      	INT 	lisp        	Locator/ID Separation Protocol WG
+Balmoral        	IRTF	iccrg       	Internet Congestion Control Research Group 
+Blenheim        	RAI 	sipcore     	Session Initiation Protocol Core WG
+Buckingham      	RTG 	l2vpn       	Layer 2 Virtual Private Networks WG
+Palace C        	SEC 	httpauth    	Hypertext Transfer Protocol Authentication WG
+
+1730-1750  Beverage and Snack Break - West Wing Foyer
+1750-1950  Technical Plenary - Viscount/Sovereign
+
+   1. Welcome
+   2. Reporting
+      - IAB Chair
+      - IRTF Chair
+      - RSE and RSOC Chair
+   3. ITAT Workshop Report
+   4. Technical Topic: Payment Systems
+      - "Internet-Scale Payment Systems: Ecosystems & Challenges"
+           by Malcolm Pearson from Microsoft China
+      - "Identity, Payments, and Bitcoin: Big Changes Ahead"
+           by Steve Kirsch from OneID
+      - Q&A
+   5. IAB Open Mic
+
+
+
+TUESDAY, March 4, 2014
+
+0800-1800  IETF Registration - West Wing Foyer
+0800-0900  Beverage Break - West Wing Foyer
+
+0900-1130  Morning Session I
+Park Suite      	APP 	core        	Constrained RESTful Environments WG
+Sovereign       	INT 	homenet     	Home Networking WG
+Richmond/Chelsea/Tower  	OPS 	mboned      	MBONE Deployment WG
+Blenheim        	RAI 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Buckingham      	RTG 	pce         	Path Computation Element WG
+Balmoral        	RTG 	sidr        	Secure Inter-Domain Routing WG
+Palace C        	SEC 	oauth       	Web Authorization Protocol WG
+Viscount        	TSV 	vnfpool     	Virtualized Network Function Pool BOF
+
+1130-1300  Break
+
+1300-1400  Afternoon Session I
+Palace C        	APP 	precis      	Preparation and Comparison of Internationalized Strings WG
+Viscount        	INT 	intarea     	Internet Area Working Group WG
+Blenheim        	OPS 	grow        	Global Routing Operations WG
+Richmond/Chelsea/Tower  	OPS 	ipfix       	IP Flow Information Export WG - CANCELED
+Park Suite      	RAI 	geopriv     	Geographic Location/Privacy WG
+Balmoral        	RAI 	insipid     	INtermediary-safe SIP session ID WG
+Sovereign       	RTG 	mpls        	Multiprotocol Label Switching WG
+Buckingham      	TSV 	tcmtf       	Tunneling Compressed Multiplexed Traffic Flows BOF
+
+
+1420-1550  Afternoon Session II
+Park Suite      	APP 	paws        	Protocol to Access WS database WG
+Viscount        	INT 	dnse        	Encryption of DNS requests for confidentiality BOF
+Richmond/Chelsea/Tower  	OPS 	radext      	RADIUS EXTensions WG
+Palace C        	RAI 	bfcpbis     	Binary Floor Control Protocol Bis  WG
+Balmoral        	RAI 	xmpp        	Extensible Messaging and Presence Protocol WG
+Blenheim        	RTG 	isis        	IS-IS for IP Internets WG
+Buckingham      	RTG 	pwe3        	Pseudowire Emulation Edge to Edge WG
+Sovereign       	TSV 	aqm         	Active Queue Management and Packet Scheduling WG
+
+1550-1610  Beverage and Snack Break - West Wing Foyer
+
+1610-1840  Afternoon Session III
+Palace C        	APP 	weirds      	Web Extensible Internet Registration Data Service WG
+Viscount        	INT 	6man        	IPv6 Maintenance WG
+Park Suite      	IRTF	ncrg        	Network Complexity Research Group 
+Buckingham      	OPS 	opsawg      	Operations and Management Area Working Group WG - Combined with OPSAREA
+Blenheim        	RTG 	l3vpn       	Layer 3 Virtual Private Networks WG
+Balmoral        	SEC 	tls         	Transport Layer Security WG
+Richmond/Chelsea/Tower  	TSV 	ppsp        	Peer to Peer Streaming Protocol WG
+Sovereign       	TSV 	rmcat       	RTP Media Congestion Avoidance Techniques WG
+
+
+
+WEDNESDAY, March 5, 2014
+
+0800-1700  IETF Registration - West Wing Foyer
+0800-0900  Beverage Break - West Wing Foyer
+
+0900-1130  Morning Session I
+Balmoral        	APP 	ace         	Authentication and Authorization for Constrained Environments BOF
+Park Suite      	INT 	ntp         	Network Time Protocol WG - Combined with TICTOC
+Park Suite      	INT 	tictoc      	Timing over IP Connection and Transfer of Clock WG - Combined with NTP
+Viscount        	IRTF	irtfopen    	IRTF Open Meeting 
+Sovereign       	OPS 	v6ops       	IPv6 Operations WG
+Buckingham      	RAI 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Blenheim        	RTG 	i2rs        	Interface to the Routing System WG
+Palace C        	RTG 	manet       	Mobile Ad-hoc Networks WG
+Richmond/Chelsea/Tower  	TSV 	nfsv4       	Network File System Version 4 WG
+
+1130-1300  Break
+
+1300-1500  Afternoon Session I
+Blenheim        	APP 	httpbis     	Hypertext Transfer Protocol Bis WG
+Buckingham      	INT 	dmm         	Distributed Mobility Management WG
+Palace C        	OPS 	netmod      	NETCONF Data Modeling Language WG - Moved FROM Monday Afternoon Session I 1300-1500
+Park Suite      	RAI 	clue        	ControLling mUltiple streams for tElepresence WG
+Richmond/Chelsea/Tower  	RTG 	pim         	Protocol Independent Multicast WG
+Sovereign       	RTG 	spring      	Source Packet Routing in Networking WG
+Balmoral        	SEC 	ipsecme     	IP Security Maintenance and Extensions WG
+Viscount        	TSV 	taps        	Transport Services BOF
+
+1500-1520  Beverage Break - West Wing Foyer
+
+1520-1620  Afternoon Session II
+Sovereign       	IAB 	rfcform     	RFC Format Design Team Update 
+Balmoral        	INT 	6lo         	IPv6 over Networks of Resource-constrained Nodes WG
+Palace C        	INT 	pcp         	Port Control Protocol WG
+Park Suite      	OPS 	opsec       	Operational Security Capabilities for IP Network Infrastructure WG - CANCELED
+Richmond/Chelsea/Tower  	RAI 	xrblock     	Metric Blocks for use with RTCP's Extended Report Framework WG
+Buckingham      	RTG 	rtgarea     	Routing Area Open Meeting 
+Blenheim        	SEC 	trans       	Public Notary Transparency  WG
+Viscount        	TSV 	tsvwg       	Transport Area Working Group WG
+
+
+1630-1730  Afternoon Session III
+Balmoral        	INT 	6lo         	IPv6 over Networks of Resource-constrained Nodes WG
+Palace C        	INT 	pcp         	Port Control Protocol WG
+Richmond/Chelsea/Tower  	RAI 	ecrit       	Emergency Context Resolution with Internet Technologies WG
+Park Suite      	RAI 	payload     	Audio/Video Transport Payloads WG
+Buckingham      	RTG 	rtgarea     	Routing Area Open Meeting 
+Blenheim        	TSV 	tram        	TURN Revised and Modernized WG
+
+1730-1750  Beverage and Snack Break - West Wing Foyer
+1750-2020  IETF Operations and Administration Plenary - Viscount/Sovereign
+
+   Administrative and Management Plenary
+   
+      1. Welcome
+      2. Host presentation
+      3. Reporting
+         - IETF chair
+         - IAOC chair and IAD
+         - IETF Trust chair
+         - NomCom chair
+      4. Recognition
+      5. Introducing new ISOC CEO
+      6. Postel award announcement
+      7. Thank outgoing IAOC and IESG members
+      8. IAOC open mic
+      9. IESG open mic
+
+
+
+THURSDAY, March 6, 2014
+
+0800-1700  IETF Registration - West Wing Foyer
+0800-0900  Beverage Break - West Wing Foyer
+
+0900-1130  Morning Session I
+Palace C        	INT 	mif         	Multiple Interfaces WG - Combined with SUNSET4
+Palace C        	INT 	sunset4     	Sunsetting IPv4 WG - Combined with MIF
+Sovereign       	IRTF	sdnrg       	Software Defined Networking Research Group 
+Richmond/Chelsea/Tower  	OPS 	dime        	Diameter Maintenance and Extensions WG
+Buckingham      	RAI 	mmusic      	Multiparty Multimedia Session Control WG
+Blenheim        	RTG 	ccamp       	Common Control and Measurement Plane WG
+Park Suite      	SEC 	dane        	DNS-based Authentication of Named Entities WG
+Balmoral        	SEC 	sacm        	Security Automation and Continuous Monitoring WG
+Viscount        	TSV 	tsvarea     	Transport Area Open Meeting 
+
+1130-1300  Break
+
+1300-1500  Afternoon Session I
+Buckingham      	INT 	6tisch      	IPv6 over the TSCH mode of IEEE 802.15.4e WG
+Richmond/Chelsea/Tower  	IRTF	nmrg        	Network Management Research Group 
+Sovereign       	OPS 	v6ops       	IPv6 Operations WG
+Palace C        	RAI 	sipcore     	Session Initiation Protocol Core WG
+Blenheim        	RTG 	idr         	Inter-Domain Routing WG
+Viscount        	SEC 	saag        	Security Area Open Meeting 
+Park Suite      	TSV 	cdni        	Content Delivery Networks Interconnection WG
+Balmoral        	TSV 	tcpm        	TCP Maintenance and Minor Extensions WG
+
+1500-1520  Beverage and Snack Break - West Wing Foyer
+
+1520-1650  Afternoon Session II
+Blenheim        	APP 	dbound      	Domain Boundaries BOF
+Palace C        	IRTF	nwcrg       	Network Coding Research Group 
+Buckingham      	RAI 	avtext      	Audio/Video Transport Extensions WG - 1605-1830
+Buckingham      	RAI 	straw       	Sip Traversal Required for Applications to Work WG - 1520-1605
+Sovereign       	RTG 	mpls        	Multiprotocol Label Switching WG
+Viscount        	RTG 	roll        	Routing Over Low power and Lossy networks WG
+Park Suite      	SEC 	kitten      	Common Authentication Technology Next Generation WG
+Balmoral        	TSV 	alto        	Application-Layer Traffic Optimization WG
+
+
+1700-1830  Afternoon Session III
+Park Suite      	APP 	eppext      	Extensible Provisioning Protocol Extensions WG
+Viscount        	IAB 	igovupdate  	Internet Governance Update 
+Balmoral        	INT 	lwig        	Light-Weight Implementation Guidance WG
+Palace C        	IRTF	nwcrg       	Network Coding Research Group 
+Richmond/Chelsea/Tower  	OPS 	wpkops      	Web PKI OPS WG
+Buckingham      	RAI 	avtext      	Audio/Video Transport Extensions WG - 1605-1830
+Sovereign       	RTG 	mpls        	Multiprotocol Label Switching WG
+Blenheim        	SEC 	jose        	Javascript Object Signing and Encryption WG
+
+
+1840-2040  Afternoon Session IV
+Richmond/Chelsea/Tower  	APP 	scim        	System for Cross-domain Identity Management WG
+
+
+
+FRIDAY, March 7, 2014
+
+0800-1100  IETF Registration - West Wing Foyer
+0800-0900  Beverage Break - West Wing Foyer
+
+0900-1130  Morning Session I
+Richmond/Chelsea/Tower  	APP 	uta         	Using TLS in Applications WG
+Palace C        	INT 	netext      	Network-Based Mobility Extensions WG
+Viscount        	INT 	softwire    	Softwires WG
+Sovereign       	OPS 	dnsop       	Domain Name System Operations WG
+Balmoral        	OPS 	lmap        	Large-Scale Measurement of Broadband Performance WG
+Park Suite      	RAI 	clue        	ControLling mUltiple streams for tElepresence WG
+Blenheim        	RTG 	rtgwg       	Routing Area Working Group WG
+Buckingham      	TSV 	tsvwg       	Transport Area Working Group WG
+
+1130-1150  Beverage and Snack Break - West Wing Foyer
+
+1150-1320  Afternoon Session 1
+Viscount        	APP 	core        	Constrained RESTful Environments WG
+Balmoral        	APP 	json        	JavaScript Object Notation WG
+Blenheim        	INT 	trill       	Transparent Interconnection of Lots of Links WG
+Richmond/Chelsea/Tower  	OPS 	bmwg        	Benchmarking Methodology WG
+Park Suite      	RAI 	siprec      	SIP Recording WG
+Sovereign       	RTG 	ccamp       	Common Control and Measurement Plane WG
+Palace C        	SEC 	abfab       	Application Bridging for Federated Access Beyond web WG
+Buckingham      	SEC 	mile        	Managed Incident Lightweight Exchange WG
+
+
+====================================================================
+

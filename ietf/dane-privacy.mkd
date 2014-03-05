@@ -1,0 +1,107 @@
+Issues to look for:
+- data at rest
+  - local storage
+  - evil service provider
+  - clumsy service provider
+  - compromised service provider
+- data in transit
+  - frequency of transmission of data
+  - fingerprinting of encrypted data, i.e. does encrypted "foo" look
+    the same a second time it's transmitted?
+  - unencrypted data
+- <sort me>
+  - observers (middleboxes, proxies, more) seeing more than a passive attacker does
+  - 
+  
+Helpful resources:
+    \url{https://tools.ietf.org/rfcmarkup?doc=6973}
+
+Documents under review:
+    \url{http://tools.ietf.org/html/draft-ietf-dane-smime-06}
+    \url{http://tools.ietf.org/html/draft-wouters-dane-openpgp-02}
+    \url{http://tools.ietf.org/html/draft-wouters-dane-otrfp-01}
+
+DNS Privacy Problem statement:
+    \url{http://tools.ietf.org/html/draft-bortzmeyer-dnsop-dns-privacy-01}
+
+**Privacy review of storing personal data in DNS**
+
+Three current drafts proposes to store personal keys or certificates in DNS
+using individual identifiers for each person.
+
+"Using DANE to Associate OTR public keys with email addresses"
+[draft-wouters-dane-otrfp] stores OTR public keys associated with an e-mail
+address.
+
+"Using DANE to Associate OpenPGP public keys with email addresses"
+[draft-wouters-dane-openpgp] stores PGP public keys associated with an
+e-mail address.
+
+"Using Secure DNS to Associate Certificates with Domain Names For
+S/MIME" [draft-ietf-dane-smime] stores S/MIME certificates with an e-mail
+address.
+
+**What is stored in DNS?**
+
+Examples of DNS records published in DNS from these drafts:
+    
+nb2wo2a=.\_otrfp.example.com. IN OTRFP (
+      3 0 1 5fdb8166f9089e253b90f95a91f48a8d2d2359ce )
+
+8d5730bd8d76d417bf974c03f59eedb7af98cb5c3dc73ea8ebbd54b7.\_openpgpkey.example.com. IN OPENPGPKEY <encoded public key>
+
+3f51f4663b2b798560c5b9e16d6069a28727f62518c3a1b33f7f5214.\_smimecert.example.com.
+   IN SMIMEA (
+   0 0 1 d2abde240d7cd3ee6b4b28c54df034b9
+         7983a1d16e8a410e4561cb106618e971 )
+
+
+The local part of the SMIMEA and OPENPGPKEY records (the user name) are
+using the same method for encoding, SHA2-224 [RFC5754]. OTRFP uses Base32
+[RFC4648] to achieve the same thing.
+
+Since only the local part of the e-mail address used, is makes it easy to
+construct rainbow tables that can be used across domains. The Base32 encoding
+does not need any effort to find the user name since it is made to be
+decodable. Using SHA2-224 also for OTRFP would be better.
+
+**Data at rest**
+
+DNS data is served by authoritative DNS name servers, and as such any data
+served by the name server is public. When DNS is signed with DNSSEC, the
+zone data can be enumerated. 
+
+A client typically requests DNS data through a cacheing resolver, often managed
+by a third party. The resolver queries the authoritative name servers,
+and can thus also see what person the client will communicate with by
+examining the local parts of these queries (OTRFP, SMIME and OPENPGPKEY),
+which might be unappropriate depending on the relations between the client
+and the resolver operator. The cacheing resolver have all this data in its
+cache, which can also be compromised by an attacker. *(This description of*
+*cache compromise should go into a DNS privacy overview.)*
+
+[FIXME this is not only data at rest] The frequency with which
+OTR/PGP/SMIME keys in DNS are being updated (stored) and who updated
+them (based on source IP address in this case, but potentially with
+stronger links to an individual in the more general case) may expose
+more about an individual than anticipated.
+
+The client stub resolver might also cache data. This can also lead to privacy
+leaks if the client is compromised.
+
+**Data in transit**
+
+Section 2.2 of [draft-bortzmeyer-dnsop-dns-privacy-01] described the unencrypted
+traffic in DNS. Even though using SMTP with STARTTLS, SMTP with OpenPGP or XMPP
+with OTR, which in ways try to mitigate the leak of personal information, the
+attacker can see the unencrypted traffic in DNS. This gives away information
+about who the client communicates with. In the case of pervasive surveillance,
+the attacker sees any communication going back to the origin client, thus can
+see exactly who communicates with whom.
+
+These drafts gives no recommendations on TTL values ("This RR has no special
+TTL requirements"). A lower TTL increases the frequency of when the user names
+leak, and might give indications to how much the clients are communicating
+with the remote party. An increased TTL mitigates this meta-data leak somewhat.
+
+

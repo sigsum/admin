@@ -1954,149 +1954,6 @@ s/incremented to each call/incremented for each call/1
 s/involve an EAP supplicant/involve an EAP peer/1
 s/IDP and RP/IdP and RP/1
 I-D.ietf-radext-radsec is now RFC6614
-* STRINT 2014 position papers
-https://www.w3.org/2014/strint/
-** Public logs
-Scratching this jan 14 since benl is doing exactly this.
-*** Summary
-There are certain types of data that is published on the internet and
-subsequently used for securing further communication or
-operation. Examples include public keys in X.509 certificates,
-computer program binaries, Tor network maps and PGP keys.
-
-Users may trust a publishers intent but not its performance or the
-mechanisms used for getting the dat -- keys are getting stolen, web
-servers broken into, [false public keys published,] internet
-connections man-in-the-middled.
-
-This paper is meant as a starting point for a discussion about how
-public append-only logs can be used to increase the chance of
-detecting the tampering of crucial data at rest or in transit.
-*** some use cases
-Web clients trust x509 certificates signed by anybody who's got hold
-of a private key of a CA. [CT] addresses this by having CA:s and web
-site owners (i.e. customers of CA:s) submit their cert chains to one
-or more logs. Website owners get a signed time stamp in return which
-is sent to web clients (as part of TLS negotiation) as a proof of the
-cert being in a log. Web clients verify time stamps (potentially slow)
-separately from setting up TLS connections (which has to be quick).
-
-Several other protocols need a public key to be fetched over internet.
-PGP keys for encrypted email and OTR keys for encrypted chat. PGP keys
-are typically published by the owner of the key and downloaded from
-public servers by name or email address. Nothing stops Mallory from
-generating and uploading keys carrying other peoples names. The
-servers that PGP keys are being fetched from can be broken into or
-impersonated.
-
-Computer programs are sometimes verified with a checksum. Attack:
-Checksum files can be altered at the point of distribution, typically
-a web server. Attack: Users can be redirected to an alternative web
-site for downloading both the binaries and the checksums (MITM).
-
-Tor network maps are downloaded by clients. Attack: Get hold of the
-signing key for a majority of the directory authorities and sign a
-fake consensus listing relays that are under your own control. DA:s
-could submit consensuses the produce (and votes they produce and
-receive). Clients could submit consensuses they see.
-
-*** Who submits to the logs?
-Publishers can submit what they publish.
-
-How do users trust these particular log entries? In CT, the data has
-structure and a secret key from one of a few known entities is
-required for an entry to be accepted.
-
-
-End users could report what's seen in the wild. 
-
-Are they authenticated? risk for user tracking. also, it would require
-an administrative relationship between users and log
-providers.
-
-Believe in the numbers? easily (?) abused by spamming the
-logs.
-
-Reputation based system? requires authn (?).
-
-*** How CT does it
-#. Publishers of certain types of data submit proofs of existence of
-   their data to public append-only logs.
-
-#. Users of that data verify it by looking it up in the
-   logs. Existence proves that someone has seen and submitted it.
-
-#. Publishers audit logs to find out if someone else has submitted a
-   proof in their name.
-
-#. Auditors verify that logs don't lie about what's been submitted.
-
-*** [reusable?]
-Trusting data that's been delivered over an insecure network has never
-been a good idea. We've known this for a long time but didn't care
-that much. Recently published documentation of large scale attacks on
-the infrastructure we call the internet has made more people aware of
-this fact.
-
-In parallel with making the use of computer networks more secure we
-should make it more expensive to trick users into using [fake
-data]. One way of doing this is to increase the chance for detection
-of someone feeding a user something else than what she was asking for.
-
-Examples of data that is commonly fetched over insecure networks to be
-used for securing future communication include computer programs,
-public cryptographic keys and [Tor network maps]. If the trust roots
-being used for verifying this data is compromised, an attacker can
-feed the user its own variant of the data and elevate its control over
-the user.
-
-Given the existence of public append-only logs, users could submit
-their view of critical data that they care about. Users that care
-about the authenticity of certain data downloaded over insecure
-networks can use these logs to make a more informed decision on
-whether the data they've been handed is what everybody else sees or if
-they're being fed something else.
-
-[TODO: add note on the type of data it can be used for, i.e. maybe not
-HTML code delivered to a browser. only slowly changing data or data
-changing under strict control? in cooperation with the publisher of
-data only?  we want protection against lying or pwned publisher.]
-
-*** Types of attacks
-In the case of computer programs verified with checksums, one attack
-is to change the checksum files at the point of distribution,
-typically a web server. Another is redirecting the user to an
-alternative web site for downloading both the binaries and the
-checksums.
-
-Public keys are being downloaded in several applications, X.509
-certificates for web browsing, PGP keys for encrypted email and OTR
-keys for encrypted chat being prominent use cases. Certificate
-Transparency [RFC6962] deals with the "lying CA problem" while there's
-yet to be seen initiatives for increasing the chance of detecting
-false PGP and OTR keys being handed to end users.
-
-Regarding Tor consensuses, being able to detect attempts to feed Tor
-users a fake network map would be valuable as an indication of
-compromised authority keys. The attack here would be to get hold of a
-copy of a majority of the authority identity or signing keys and sign
-a fake consensus listing relays that are under the control of the
-attacker.
-
-*** Use cases
-Examples of logs that could be used for this include Certificate
-Transparency (RFC6962) and the Bitcoin chains.
-
-Example usage:
-1. x509 certificate chain [CT]
-2. tor network map (1d)
-3. program binary (1m)
-4. pgp key (1y)
-5. otr key (1y)
-6. dnssec key (ksk 5y, zsk 1m)
-** Running tor exits
-[TODO: running tor exits is easy -- set up an organisation, download
-tor and off you go]
 * abfab
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-arch-12.txt]]
 [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-aaa-saml-08.txt]]
@@ -2735,3 +2592,533 @@ RFC2743 1.2.7: Per-Message Protection During Context Establishment
 
 * perpass
 [[file:~/usr/share/ietf/in-notes/rfc2804.txt]] IETF Policy on Wiretapping
+* STRINT 2014
+** papers
+- read-prio value; comments; title
+- 2 - 1: Privacy Protected Email
+- 2 - 2: Opportunistic Encryption for MPLS
+- 4 - 3: Overcoming the Friend-or-Foe Paradigm in Secure Communication
+- 3 - 4: Flows and Pervasive Monitoring
+- 3 - 5: BetterCrypto.org Applied Crypto Hardening
+- 3 - 6: A Complimentary Analysis (The Danger Of The New Internet Choke Points)
+- 3 - 7: Trust Issues with Opportunistic Encryption
+- ? - 8: Challenges with End-to-End Email Encryption
+- 2 - 9: Strengthening the path and strengthening the end-points
+- 3 - 10: SIP is Difficult
+- 2 - 11: Thoughts of Strengthening Network Devices in the Face of Pervasive Surveillance
+- 3 - 12: Opportunistic Encryption for HTTP URIs
+- ? - 13: CyberdefenseOriented Multilayer Threat Analysis
+- 2 - 14: A Threat Model for Pervasive Passive Surveillance
+- 1 -; benl, CT and more; 15: Why Provable Transparency is Useful Against Surveillance
+- 2 - 17: Monitoring message size to break privacy - Current issues and proposed solutions
+- 3 - 19: Making The Internet Secure By Default
+- 3 - 20: Increasing HTTP Transport Confidentiality with TLS Based Alternate Services
+- * - 21: Balance - Societal security versus individual liberty
+- 2 - 22: Strengthening the Extensible Messaging and Presence Protocol (XMPP)
+- ? - 23: The Internet We Want or the Internet We Deserve?
+- 1 -; sam, rfc5056, collection of lots of good info; 24: Beyond Encrypt Everything: Passive Monitoring
+- 3 - 25: Examining Proxies to Mitigate Pervasive Surveillance
+- 4 - 26: Spontaneous Wireless Networking to Counter Pervasive Monitoring
+- 3 - 27: Is Opportunistic Encryption the Answer? Practical Benefits and Disadvantages
+- 3 - 28: Clearing off the Cloud over the Internet of Things
+- * - 29: The ARPA2.net project; Integrating and bundling hardened services for normal users
+- ? - 30: The Trust-to-Trust Model of Cloud Services
+- 1 - 31: Linkability Considered Harmful
+- 1 -; boneh, tcpcrypt, authn in app layer and encryption (giving privacy and integrity) in lower; 32: Simple Opportunistic Encryption
+- 3 - 33: An Architecture for a Secure Cloud Collaboration System
+- * - 34: Security and Simplicity
+- 2 - 35: Privacy at the Link Layer
+- 3 - 36: Erosion of the moral authority of middleboxes
+- 2 - 37: Policy Responses, Implications and Opportunities
+- 2 - 38: Is it time to bring back the hosts file?
+- 2 - 39: Metaphors matter; application-layer; distribute more
+- 2 - 40: Levels of Opportunistic Privacy Protection for Messaging-Oriented Architectures
+- ? - 41: What is fingerprinting?
+- 3 - 42: Eradicating Bearer Tokens for Session Management
+- 3 - 43: STREWS Web-platform security guide: security assessment of the Web ecosystem
+- 2 - 44: Pervasive Attack: A Threat Model and Problem Statement
+- 1 - 45: Cryptech - Building a More Assured HSM with a More Assured Tool-Chain
+- 1 -; iang+benl, SRP rfc5054; 46: Replacing passwords on the Internet AKA post-Snowden Opportunistic Encryption
+- 3 - 47: End-User Concerns about Pervasive Internet Monitoring: Principles and Practice
+- 1 - 48: Developer-Resistant Cryptography
+- 1 -; kai, DetecTor.io; 49: Improving the reliability of key ownership assertions
+- ? - 50: Mike O'Neill's Position Paper
+- 2 - 51: Detecting MITM Attacks on Ephemeral Diffie-Hellman without Relying on a PKI in Real-
+Time Communications
+- 3 - 52: Trust & Usability on the Web, a Social/Legal perspective
+- 3 - 53: Hardening Operations and Management Against Passive Eavesdropping
+- ? - 54: A few theses regarding privacy and security
+- 2 - 55: Meet the new threat model, same as the old threat model
+- 3 - 56: It’s Time for Application-Centric Security
+- ? - 57: Sabatini Monatesti position paper
+- ? - 58: Trust problems in pervasive monitoring
+- 1 -; leap; 59: Beyond “Just TLS Everywhere”: From Client-encrypted Messaging to Defending the Social
+Graph
+- 1 - 60: Network Security as a Public Good
+- ? - 61: Statement of Interest on behalf of the W3C TAG
+- ? - 62: Improving Security on the Internet
+- 1 - 63: Protecting customer data from government snooping
+- ? - 64: Privacy Aware Internet Development Initiative 2014
+- 1 - 65: The Internet is Broken: Idealistic Ideas for Building a NEWGNU Network
+- 1 - 66: Opportunistic Keying as a Countermeasure to Pervasive Monitoring
+- 3 - 999: The Shadow Internet: liberation from Surveillance, Censorship and Servers
+
+** pub
+shaftsbury belle, 36-40 rupert street 
+** sessions
+*** cullen jennings on attack taxonomy
+http://down.dsg.cs.tcd.ie/strint-slides/s1-threat.pdf
+[[file:~/usr/share/ietf/internet-drafts/draft-barnes-pervasive-problem-00.txt]]
+*** break out on research
+- ekr: CRIME
+** AP's
+- Write a draft bringing the research from the [PETS] research
+  community, specifically the term linkability, to the IETF/IRTF. But
+  also see RFC6973. The idea is that other RFC:s would link to it
+  which would make other standardisations efforts would have to read
+  it.
+- Help George Danezis writint a draft on low hanging fruit wrt [static
+  bit-strings] in current protocols.
+- Help Runa with an informational draft explaining real world
+  observations about blocking connection attempts.
+* STRINT 2014 position papers
+https://www.w3.org/2014/strint/
+** Public logs
+Scratching this jan 14 since benl is doing exactly this.
+*** Summary
+There are certain types of data that is published on the internet and
+subsequently used for securing further communication or
+operation. Examples include public keys in X.509 certificates,
+computer program binaries, Tor network maps and PGP keys.
+
+Users may trust a publishers intent but not its performance or the
+mechanisms used for getting the dat -- keys are getting stolen, web
+servers broken into, [false public keys published,] internet
+connections man-in-the-middled.
+
+This paper is meant as a starting point for a discussion about how
+public append-only logs can be used to increase the chance of
+detecting the tampering of crucial data at rest or in transit.
+*** some use cases
+Web clients trust x509 certificates signed by anybody who's got hold
+of a private key of a CA. [CT] addresses this by having CA:s and web
+site owners (i.e. customers of CA:s) submit their cert chains to one
+or more logs. Website owners get a signed time stamp in return which
+is sent to web clients (as part of TLS negotiation) as a proof of the
+cert being in a log. Web clients verify time stamps (potentially slow)
+separately from setting up TLS connections (which has to be quick).
+
+Several other protocols need a public key to be fetched over internet.
+PGP keys for encrypted email and OTR keys for encrypted chat. PGP keys
+are typically published by the owner of the key and downloaded from
+public servers by name or email address. Nothing stops Mallory from
+generating and uploading keys carrying other peoples names. The
+servers that PGP keys are being fetched from can be broken into or
+impersonated.
+
+Computer programs are sometimes verified with a checksum. Attack:
+Checksum files can be altered at the point of distribution, typically
+a web server. Attack: Users can be redirected to an alternative web
+site for downloading both the binaries and the checksums (MITM).
+
+Tor network maps are downloaded by clients. Attack: Get hold of the
+signing key for a majority of the directory authorities and sign a
+fake consensus listing relays that are under your own control. DA:s
+could submit consensuses the produce (and votes they produce and
+receive). Clients could submit consensuses they see.
+
+*** Who submits to the logs?
+Publishers can submit what they publish.
+
+How do users trust these particular log entries? In CT, the data has
+structure and a secret key from one of a few known entities is
+required for an entry to be accepted.
+
+
+End users could report what's seen in the wild. 
+
+Are they authenticated? risk for user tracking. also, it would require
+an administrative relationship between users and log
+providers.
+
+Believe in the numbers? easily (?) abused by spamming the
+logs.
+
+Reputation based system? requires authn (?).
+
+*** How CT does it
+#. Publishers of certain types of data submit proofs of existence of
+   their data to public append-only logs.
+
+#. Users of that data verify it by looking it up in the
+   logs. Existence proves that someone has seen and submitted it.
+
+#. Publishers audit logs to find out if someone else has submitted a
+   proof in their name.
+
+#. Auditors verify that logs don't lie about what's been submitted.
+
+*** [reusable?]
+Trusting data that's been delivered over an insecure network has never
+been a good idea. We've known this for a long time but didn't care
+that much. Recently published documentation of large scale attacks on
+the infrastructure we call the internet has made more people aware of
+this fact.
+
+In parallel with making the use of computer networks more secure we
+should make it more expensive to trick users into using [fake
+data]. One way of doing this is to increase the chance for detection
+of someone feeding a user something else than what she was asking for.
+
+Examples of data that is commonly fetched over insecure networks to be
+used for securing future communication include computer programs,
+public cryptographic keys and [Tor network maps]. If the trust roots
+being used for verifying this data is compromised, an attacker can
+feed the user its own variant of the data and elevate its control over
+the user.
+
+Given the existence of public append-only logs, users could submit
+their view of critical data that they care about. Users that care
+about the authenticity of certain data downloaded over insecure
+networks can use these logs to make a more informed decision on
+whether the data they've been handed is what everybody else sees or if
+they're being fed something else.
+
+[TODO: add note on the type of data it can be used for, i.e. maybe not
+HTML code delivered to a browser. only slowly changing data or data
+changing under strict control? in cooperation with the publisher of
+data only?  we want protection against lying or pwned publisher.]
+
+*** Types of attacks
+In the case of computer programs verified with checksums, one attack
+is to change the checksum files at the point of distribution,
+typically a web server. Another is redirecting the user to an
+alternative web site for downloading both the binaries and the
+checksums.
+
+Public keys are being downloaded in several applications, X.509
+certificates for web browsing, PGP keys for encrypted email and OTR
+keys for encrypted chat being prominent use cases. Certificate
+Transparency [RFC6962] deals with the "lying CA problem" while there's
+yet to be seen initiatives for increasing the chance of detecting
+false PGP and OTR keys being handed to end users.
+
+Regarding Tor consensuses, being able to detect attempts to feed Tor
+users a fake network map would be valuable as an indication of
+compromised authority keys. The attack here would be to get hold of a
+copy of a majority of the authority identity or signing keys and sign
+a fake consensus listing relays that are under the control of the
+attacker.
+
+*** Use cases
+Examples of logs that could be used for this include Certificate
+Transparency (RFC6962) and the Bitcoin chains.
+
+Example usage:
+1. x509 certificate chain [CT]
+2. tor network map (1d)
+3. program binary (1m)
+4. pgp key (1y)
+5. otr key (1y)
+6. dnssec key (ksk 5y, zsk 1m)
+** Running tor exits
+[TODO: running tor exits is easy -- set up an organisation, download
+tor and off you go]
+* IETF89 London
+** Privacy guidance <2014-03-02 Sun> 15:00-16:50
+[[file:~/usr/share/ietf/in-notes/rfc6973.txt]] Privacy Considerations for Internet Protocols
+[[file:~/usr/share/ietf/in-notes/rfc3552.txt]] Guidelines for Writing RFC Text on Security Considerations
+** dnse BOF <2014-03-04 Tue> 14:20
+*** peter koch presents a problem statement
+- even if dns data is public an a sense, the fact that a person requests a particular name is not
+- moving SMTP into an encrypted channel (STARTTLS) hides into that is leaked over DNS
+- botnet mitigation by passive monitoring might be hurt when w encrypt dns
+*** ekr presents IPSEc and DTLS for DNSE (ekr is from Moozailla)
+- key handling is assumed to be solved (?)
+- client is anonumous (?)
+- handshake needs to get throught middleboses
+  - (D)TLS on the same port
+  - IPsec on a separate port
+- middleboxes might block ESP )IPsec)
+- warren (google?): don't forget anycast
+- handhsake latency
+  - problem for recursive resolver running locally
+  - tls might have 0-RTT in 1.3
+- servers do not care if you replay your query over and over again -- might be an argument for anohter, specific, procool
+- conclusion: DTLS might work, IPsec won't
+- [french guy]: there are two problems [which?] ekr: yes. dnscurve is one attempt to solve both
+- roy: forward secrecy and negotiatie while avoiding downgrade attacks. ekr: FS requries a roundtrip or _very_ short lifetimes on "normal  keys"; re downgrade: signed advertisements, [on more thing i missed]; re anonymity vs. privacy: web browssers are so bad so why care
+- ekr: stub reaolver case might work with IPsec
+- ekr: "dnscurve is basically SKIP"
+- dkg: padding needed because of traffic analysis
+- [resolvers: stub -> recursive -> authoritative]
+- DNScurve protects resolver <-> authserv
+*** stephane bortzmeyer (AFNIC) presenting existing solutions to dns encryption
+dtls: [missed this]
+
+dnscurve:
+dnscurve protects resolver <-> authserv. key is found in the delgation
+dnscrypt protects stub resolver <-> resolver. key is manual
+pros: implemented; cons: little deployment, change control prolbmes (bc djb is complicated)
+pwouters: this is dns to a vpn server and we already can do that 
+
+there are more that will be presented [soon]
+*** open mic
+- ekr: TLS won't probably bother hiding stuff in SNI undless DNS also does "this" (encrypting)
+- ted: as a customer, boy do i want this, and i want SNI too.
+- another ted: apple has already done [something], see RFC 6281
+*** nlnet labs present draft-wijngaards-dnsop-confidentintaldns-00
+[[file:~/usr/share/ietf/internet-drafts/draft-wijngaards-dnsop-confidentialdns-00.txt]]
+*** T-DNS presented by duane
+- new EDNS0 bit "TO" meaning "hey let's upgrade this connections to TLS"
+- draft-hzhwm-start-tls-for-dns09
+- T-DNS: connection-oriented DNS to improve privacy and security
+** TLS <2014-03-04 Tue> 16:10
+(Sitting behind a Sue Leicht, NSA. According to blue sheets. She is taking notes on paper.)
+- ekr: right approach on mac-then-encrypt is encrypt-then-mac [[file:~/usr/share/ietf/internet-drafts/draft-gutmann-tls-encrypt-then-mac-05.txt]]
+- benl: standing in for adam langley
+  - middle boxes do downgrade, so we wanna do [CFRG ?] and so we did
+    it last firday and it didn't break anything
+- chacha replacing rc4
+- stephen kent on  explicit independent IV
+- ekr: arguments against: [didn't catch], second is unclear abt the modulo
+- CFRG -- crypto group -- has been asked to provide an update on chacha poly1305
+  - the chair who is not kevin m. igoe (the nsa person) presents
+  - chacha20 should not be used as a stream cipher, according to a number of people
+  - very few hummed yesterday with doing chacha20 and oly1305 -- not suited to respond
+  - cfrg conclusion on new ecc:
+    - focus on doing _one_ new curve family
+    - aim for resuability beyond TLS (SSH, IKE, ...)
+  - paul hoffman: i heard "let's not do five montgommery" in the room, not the thing you're saying
+  - ekr: [something]
+  - russ: [something]
+  - sean: [something]
+*** strengthening Master Secrets
+This is https://secure-resumption.com/
+Slides presented: [[http://www.ietf.org/proceedings/89/slides/slides-89-tls-3.pdf][slides-89-tls-3.pdf]]
+- SASL and other protocols have some sort of channel binding (page 6)
+- TLS reneg and SASL uses "verify data" [?] for the cid (client identifyer)
+- cid (client) and cid' (server) must _NOT_ be the same
+- if M can ensure that the master secrets on the both connections are the same [missed the rest]
+- the master secret is not a good cid
+- triple handshake attack 2 breaks CB in SASL (SCRAM, GS2)
+- root probelm is at the first establishment -- the master secret is not bound to the security context
+  e.g. does not depend on client+server certificates
+  if we make the master secret a good session identifier, tls-unique and reneg indication will be fixed
+- proposal: compute a session hash for full hadnshakes and add that hash to the master secret derivation
+  hash over all the data in the handshake, up to and including clientKeyExchange
+- stefan santesson (?) 
+- dkg: hiding SNI is doing initial connection and pass an SNI in renegotiation
+- dkg: if we has ways of negotiating DH groups, we could [fix foo]
+- mrex (through stpeter): [something about how do you get the master
+  key?] A: there are API:s [?]
+
+*** ekr on 1.3
+(can't find the slides)
+- encrypt as much as possible
+- new handshake flows
+- basic assumptions
+- anon DH to protect the SNI
+- the need for resumption is declining because of faster machines
+- 1RTT handshake assumes knowledge of server key
+- benl: why is the server hello not encrypted? ekr: you could do that, you would need some cleartext indicator but yes
+- russ: two DH? yes. russ: cost for additional DH than [?]. not cheap. ekr: ECDHE is not too expensive. 
+- ekr: we have a triangle here: complexity, privacy, performance
+- dkg: client fingerprinting issue; ekr: [something]; dkg: first:
+  server somethin, third party; ekr: if client gets unique state, the
+  client [something]; dkg: you could [small set]; ekr: yes, reasonable
+- ppl sad about so many modes (variant 1 -- naive client)
+- almost all the complexity comes from protecting the SNI
+- should we try to protect SNI?
+  - ted: yes we should and i prefer this to be the only mode, i.e. always on
+  - dkg: same as ted [and also a push back that i didn't get]
+  - hoffman: hiding SNI is only beneficial to the client
+- 0RTT handshake
+  - we want freshness from both sides, we typically use nonces
+  - server memorizes client nonces, can use timestamp [orbit?] and say i accept tokens from the past hour, f.ex.
+  - comparing this with the mixmaster design
+  - soft state, a lot of work for the server, only useful for a couple of applications
+  - won't have PFS for [?]
+  - application data is being sent in the very first packet cli->server
+  - server data gets PFS but the client data doesn't
+  - why 0-RTT? latency
+  - compare tcp fastopen, it's a trend
+  - it's a bit of assymetry between TCP and TLS
+  - opt in
+  - increased complexity
+  - russ: confused about screw PFS for 0RTT, but earlier you said get rid of RSA bc PFS
+  - RSA is complicated because of two modes and use of the key for two things [if i understood this]
+  - q: have to use 0RTT judiciously? yes, so don't do this with DH keys with long lifetime (1h, 24h)
+  - no strict line between PFS and "partial FS"
+  - hoffman: close to perfect is in a sense perfect (in the context to forward secrecy)
+- deprecating "static RSA keys"
+  - hum says remove it
+- removing compression in tls1.3
+  - hum says remove it
+- symmetric cipher deathmatch
+  - only adad ciphers? allow block and stream ciphers as well? hum says former.
+  - new hum: who needs more info: weaker hum than "only adad".
+- dkg: should fix UI for client auth
+- tompson (?) (on of the http guys): [something about names]
+- derek atkins: this room can't answer the question wether our changes will break peoples applications?
+
+** IRTF <2014-03-05 Wed> 09:00
+https://datatracker.ietf.org/meeting/89/materials.html#irtf
+http://www.ietf.org/proceedings/89/agenda/agenda-89-irtfopen
+*** kevin igoe
+2013-12-20 Trevor Perrin requested Kevin Igoe be removed
+2014-01-07 Lars Eggerts decided to take no action
+2014-01-07 Trevor Perrin took it to the IAB
+2014-01-24? IAB decided to take no action
+
+atkinson: trevor perrins four arguments should be called claims or
+allegations
+*** applied networking research prize
+was dealt out to kenny paterson
+*** kenny paterson on BEAST, CRIME, Lucky 13 and TLS
+**** Intro to TLS
+- sslv2 is still widely supported, like 30% of the top alexa sites still support it
+- IETF rebranded SSL to TLS, TLS1.0 is really SSLv3 1999
+- TLS1.1 2006
+- TLS1.2 2008
+- nowadays used also for back-end operations for google, yahoo
+- BEAST, CRIME, Lucky all attacks against symetric crypto , the
+  records
+- reneg 2009 and triple handshake attack (inria)
+- implementations and their bugs -- apple "goto fail", "why even
+  mallory love android", "the most dangerous code in the world"
+- more attention creates "a virtuous cycle" which makes TLS better
+- simplified view of TLS:
+  - handshake protocol: 1. negotiatioe
+    ciphersuite; 2. authenticate; 3. establish keys used in the record
+    protocol
+  - record protocol: confidentiality and authenticity (and more) of
+    application layer data using keys from handshake protocol
+  - renegotiation -- running the handshake protocol -- can be done
+    within the record protocol
+  - resumption can also be done, "ligthweight [something]"
+- MAC-encode-encrypt
+- encrypt(payload | MAC tag | padding (for CBC mode AES))
+- the MAC is over headers and the payload but not over the padding
+- MAC choices: HMAC-MD5, -SHA1, -SHA256
+- Encrypt: CBC-AES128, -AES256, -3DES, RC4-128 (broken stream cipher)
+- tls record protocol: AE "authenticated encryption" (GCM and CCM) 
+- only 28% of the browsers supported tls1.1 or higher in feb 2014 (it's better now)
+- tls1.2 is required for AE
+- CRIME and BEAST
+  - duong and rizzo in 2011, not "normal researchers" but more black hats
+  - non-random IV -- last block of the last message
+  - full text retreival attack
+  - in 1995 there was a draft by rogaway explaining this attack
+  - fixed used "record splitting", and it's _almost" defensible tot
+    use CBC mode in tls1.0
+  - many "experts" recommended moving to rc4
+- tls1.1 and 1.2 already used random IVs
+- CRIME [missed most of this]
+  - fixed by switch off TLS compression
+  - application layer compression is still problematic
+- Lucky 13
+  - padding should be 1-256 octets on the pattern of "00" or "01 01"
+    or "02 02 02" or ... or "FF FF ... FF"
+  - it's not predictability of the padding that's the problem
+  - because of other attacks (in 2002 by [wolumolu]), you must check
+    the padding
+  - rich salz: what's "encode"? it's concatinating all the things
+  - padding oracles
+    - use a timing side-channel -- if the padding was bad you didn't
+      bother checking the MAC and the operation would take shorter
+      time
+- multi-session attack
+  - each trial cause a fatal error and TLS session termination
+  - moder viewpint: use BEAST-style malware and target HTTP cookies
+- padding oracle attack
+  - 2ms diffference for long messages
+  - recovery of outlook passwords in about 3 hours (bc outlook
+    authenticated whenever the user touched a new mailbox)
+- possible solutions
+  - let's do pad-mac-encrypt or pad-encrypt-mac
+  - switch to rc4
+  - fix the timing leakage -- problem is when the pading is erroneous,
+    what to MAC over? ok, you can guess (and the RFC suggests)
+- lucky13 attacks openssl and gnutls succesfully
+- started dec 2011, key breakthrough in mar 2012 (+4 months)
+- attack publicly disclosed 2013-02 (+18 months)
+- lucky13 plaintext recovery
+  - we have IV + two blocks we don't care about plus Ct-1 and Ct
+  - XOR 2-byte delta in Ct-1 and submit for decryption (goes into the
+    next turn)
+  - outcome is one of three cases
+    - case 01 01: 13+16+16+10=55 bytes payload and then 20 bytes MAC
+      plous "0101" padding => 4 SHA-1 operations
+    - case "00" 56 bytes payload => 5 SHA-1 operations
+    - case bad padding: 57 bytes payload => 5 SHA-1 operations
+    - the difference between 4 and 5 SHA-1 operations gives a timing
+      signal, which is the basis of the attack
+  - typically 1microsecond is the signal, achievable through a couple
+    of switches
+- noisy attack, needs 2^16 attempts to try all 2-byte delta values
+- the headline attack cost is 2^23 sessions, all encrypting the same
+  plaintext
+- combined with BEAST though, you get down to 2^13 GET requests per
+  byte in a cookie
+- constant time decryption for TLS-CBC
+  - add dummy hash copmression function computations
+  - add dummy padding checks
+  - watch out for length santiy checks
+  - agl's patch to openssl to do this is 500 lines of C code,
+    i.e. complicated stuff
+- rc4
+  - no padding (bc stream cihper)
+  - rc4 is broken though
+  - plaintext recovery attacks using BEAST technology totally doable
+  - heatmap of all the biases in rc4 at page 53 in the presentation --
+    red dot means higher probability, see the red line in the bottom,
+    and the x=y line and other spurious dots
+- cbc-mode is tired
+- state
+  - rc4 is dead
+  - aes-based slow w/o AES-NI
+  - aes-gcm hard to implement
+  - salsa20/chacha20 plus poly1305 mac is quite new
+- q: re using gcm securely, what's the problem?
+- need more review
+- tls current status (dead parrot, no he's just resting)
+- thanks nadhem alfardan, djb, pettering schuldt; stephen farrell
+**** BEAST and CRIME
+**** Lucky 13 and RC4
+**** Current/future devleopments in TLS
+*** keith winstein about transport architectures for an evolving internet
+MIT, Boston, going by car recording network metrics and taking the
+data home to the lab.
+
+Sprout is one of the algorithms.
+
+Pretty impressive emulator showing how TCP is unfair and that another
+algorithm (RemyCC) is far more fair. Impressive tool.
+
+RemyCC is designed by a computer program. I _think_ that RemyCC is
+end-to-end as opposed to "the other ones" and that it beats lots of
+them in many environments.
+
+Cool measurement based results.
+
+cellshell (packaged in Debian?) is the name of [one of?] their tools
+for showing how traffic is being run over an emulated network based on
+measurements as per above.
+** Privacy reviews
+huitema on dhcp identifiers
+bortzmeyer -- dns privacy problems statements
+iab privacy reviews
+
+*** review of proposals of putting keys in DNS (DANE)
+[[file:~/usr/share/ietf/internet-drafts/draft-wouters-dane-openpgp-02.txt]]
+file:~/usr/share/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt
+[[file:~/usr/share/ietf/internet-drafts/draft-hoffman-dane-smime-04.txt]]
+^-- is in -06 now, it seems
+https://tools.ietf.org/html/draft-hoffman-dane-smime
+
+- [[file:~/usr/share/ietf/internet-drafts/draft-bortzmeyer-perpass-dns-privacy-01.txt][draft-bortzmeyer-perpass-dns-privacy-01]]
+
+see [[file:dane-privacy.mkd][file:~/Persistent/linus/ietf/dane-privacy.mkd]]
+
+https://pad.riseup.net/p/dane-privacy
