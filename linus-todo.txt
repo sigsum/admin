@@ -9,28 +9,45 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - - boklm abt script acked
+   - - radsecproxy request about json replied to
+   - - [[*Dev][libradsec cert file handling]]
+   - - [[https://www.imperialviolet.org/2014/03/03/triplehandshake.html][triple-way handshake]] writeup sent to the radsecproxy ml
+     no renegotiation, right? or is it resumptino? no channel binding at least
+   - - gcov support in make test-network / chutney
+   - - review of #9729 done https://github.com/kdmurray91/kdm-tor/tree/tik9729tests
+   - - boklm's TBB nightlies purging script deployed
      https://github.com/boklm/prune-old-builds
-   - - tor-relay@ thread about ipv6 handled
-   - - do exits with an IPv6 exit policy really announce that when
-     IPv6Exit=0?
+   - - tor-relay@ thread about relay with unreachable ipv6 orport handled:
+     ticket created, email replied to
+   - - do exits with an IPv6 exit policy really announce that when IPv6Exit=0?
    - - #10519
    - - #4345
 ** IETF
-   - - schaad replied to
-   - - maybe sign stpeter's xmpp manifesto
+   - - SAML naming of AAA entities reviewed for ABFAB
+     [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-naming-07.txt]]
+   - o .onion thread read http://www.ietf.org/mail-archive/web/dnsop/current/msg10785.html
+   - - jaris tools discussed
+   - o abfab ephemeral keying presentation finished
+   - - the [[file:ietf/ietf.org::*AP's][three STRINT AP's]] folded into this document
+   - o schaad replied to
+   - o maybe sign stpeter's xmpp manifesto
 ** Sysadm
 ** DFRI
+   - - postbox emptied [tue]
+   - - fripost informed about 1U availability
    - - [[gnus:nnimap%2Badbc:INBOX#CAB5KTYEEOBm7euTZmaXVJiXL84MoSgjQ4FeV4h%3DEumcCT1vAGA@mail.gmail.com][HRMI email]] replied to
    - . TB contract rewritten
    - - membership handling outlined
      new file, not in git, mapping member number to email address
 ** Misc
+   - - sparvnastet membership fixed
+   - - tor code review expanded in HACKING
+   - o smi informed about the MC situation
    - - andrew and lise connected re DV
-   - - andrew and peter connected re CRD
+   - o andrew and peter connected re CRD
    - - bosse and T connected
    - - basic HS client auth mitigating ralphs attack? [[file:~/usr/src/tor/src/or/rendservice.c::rend_service_introduce(origin_circuit_t%20*circuit,%20const%20uint8_t%20*request,][rend_service_introduce]]
-   - - add EHSM to cryptech wiki
+   - - EHSM added to cryptech wiki
    - - trip report for 30c3 uploaded
    - . strombergson and wolfgang connected, possibly by emailing a
      list with wolfgang wisdom (run the email by peter before
@@ -69,6 +86,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
    - - write a proposal for the ASN tickets
 ** Misc
+   - - feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
    - - connected the subgraph ppl with T-SEC
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
    - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
@@ -102,11 +120,17 @@ Legend                                                (emacs -*-org-*- mode)
    - - read counting-daily-bridge-users-2012-10-24.pdf
    - - check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** IETF
+   - - George Danezis contacted about writing a [[file:ietf/ietf.org::*AP's][draft on low hanging fruit]]
+   - - https://datatracker.ietf.org/doc/draft-hoffman-uta-opportunistic-tls/
+   - - [[file:~/usr/share/ietf/internet-drafts/draft-sheffer-uta-tls-attacks-00.txt]]
+   - - [[file:~/usr/share/ietf/internet-drafts/draft-hoffman-uta-opportunistic-tls-00.txt]]
+   - - privacy review of [[file:~/usr/share/ietf/internet-drafts/draft-ietf-dane-smime-06.txt]] submitted
+   - - read these drafts
+     [[file:~/usr/share/ietf/internet-drafts/draft-iab-crypto-alg-agility-00.txt]]
+     [[file:~/usr/share/ietf/internet-drafts/draft-melnikov-email-tls-certs-01.txt]]
+     [[file:~/usr/share/ietf/internet-drafts/draft-hoffman-uta-opportunistic-tls-00.txt]] read
    - - SOCKS5 extensions mapped, dgoulet
-   - - [[file:/u/ietf/internet-drafts/draft-melnikov-email-tls-certs-01.txt]]
-   - - [[file:/u/ietf/internet-drafts/draft-ietf-dane-smtp-with-dane-05.txt]]
    - - [[file:/u/ietf/internet-drafts/draft-perez-radext-radius-fragmentation-06.txt][lopez RADIUS fragment draft]] reviewed for abfab (2)
-   - - https://tools.ietf.org/html/draft-hoffman-uta-opportunistic-tls-00 read
 ** Sysadm
    - - pond server running
    - - set up iodine somewhere (at modermodemet?) [pre iceland]
@@ -138,7 +162,9 @@ Legend                                                (emacs -*-org-*- mode)
        (/usr/local/www/horde/ipm/config/servers.php) so change to
        'imap.adb-centralen.se'; imp uses local postfix to send mail
        ('relayhost' in postfix/main.cf); connects to mysql at lnspam
-   - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt][otr-fp-in-dns draft]] read and tested
+   - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and
+     [[file:~/usr/share/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt]]
+     read and tested
    - - document fbsd security tricks and publish
    - - dataless travel figured out
      - carry x60 w/o any drive, no usb sticks or other storage
@@ -215,6 +241,9 @@ Legend                                                (emacs -*-org-*- mode)
    - - find out whether to shut down gv99c or not
    - - investigate the possibility for peering with AS22822
      (LLNW/limelight), providing routing for cogent (->cymru->tpo)
+** IETF
+   - - first cut of a [[file:ietf/ietf.org::*AP's][draft bringing the research from the {PETS}
+     research community]] submitted
 * Travel
 2014
 ? Jan 31-02, Brussels, FOSDEM
