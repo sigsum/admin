@@ -206,8 +206,10 @@ $ xml2rfc mydraft.xml
 
 For having github create XML and HTML for us, wee http://awestruct.org/auto-deploy-to-github-pages/
 *** Local installation
-apt-get install xml2rfc
-gem install kramdown-rfc2629
+apt-get install xml2rfc rubygems
+# you might want to 
+# or, theoretically: portmaster -d textprox/xml2rfc lang/ruby21 devel/ruby-gems but unfortunately ruby-gems wants ruby19 :(
+gem install kramdown-rfc2629 # requires Ruby version >= 1.9.2 so won't fly on tails (0.22)
 **** Log
 root@tool:~# gem install kramdown-rfc2629
 Fetching: kramdown-1.3.1.gem (100%)
@@ -225,6 +227,8 @@ sudo gem install travis
 curl -A 'meh' -x socks4a://localhost:9050/ -u ln5 -d '{"scopes":["public_repo"],"note":"CI: demosite"}' https://api.github.com/authorizations
 # grabbing "token"
 
+** How to submit a draft
+Go to https://datatracker.ietf.org/submit/
 * Tor
 ** NOTES
 *** talking to nick <2013-11-01 Fri>
@@ -2720,7 +2724,7 @@ http://down.dsg.cs.tcd.ie/strint-slides/s1-threat.pdf
   also see RFC6973. The idea is that other RFC:s would link to it
   which would make other standardisations efforts would have to read
   it.
-- Help George Danezis writint a draft on low hanging fruit wrt [static
+- Help George Danezis writing a draft on low hanging fruit wrt [static
   bit-strings] in current protocols.
 - Help Runa with an informational draft explaining real world
   observations about blocking connection attempts.
@@ -3176,4 +3180,74 @@ detect, not really prevent, also the 'S' means "signed" so "you" can't
 just put random bits in there
 - ekr: gossip, push list of logs to chrome and also "list heads"?
 
+** dane <2014-03-06 Thu> 09:00
+*** SMTP
+viktor Dukhovni
+http://www.ietf.org/proceedings/89/slides/slides-89-dane-1.pdf
+- in real life, certificates typically expire
+**** questions
+- if an algorithm is to be deprecated has to be left outside of DANE
+  because complexity
+- tls verification is a damned hard problem
+*** SRV, matt miller (& stpeter)
+*** IPsec and opportunistic encryption
+paul hoffman, http://www.ietf.org/proceedings/89/slides/slides-89-dane-8.pdf
+- what does a DANE response mean?
+- delivery vs. discovery
+- delivery: used to be a simple lookup; delivering A info and TXT
+- discovery: does this host have a server for this application protocol, SRV (1996); and nowadays keys (IPSECKEY, SSHFP)
+- many different ways of treat key-carrying DANE replies, or absence of a reply
+**** questions
+- dkg: with dane as a security policy, there might be some things you can not express
+- jschlyter: the lack of tlsa does only mean "i don't know"
+*** pwouters on dane-openpgp-01
+- split in two
+- jschlyter: the client has the incentive to do the right thing and so has the server, lowercasing seems to be the right thing
+*** pwouters on ipsec opportunistic encryption
+http://www.ietf.org/proceedings/89/slides/slides-89-dane-3.pdf
+*** draft-osterweil-dane-ipsec-00
+** saag <2014-03-06 Thu> 13:00
+*** stephen on STRINT
+http://www.ietf.org/proceedings/89/slides/slides-89-saag-6.pdf
+- draft-farrell-perpass-attack is the basis of this
+*** russ housley on crypto agility
+http://www.ietf.org/proceedings/89/slides/slides-89-saag-3.pdf
+*** OTR
+- not standardised ("no stable reference")
+- covers chat plaintext only (!), can't cover presence, can't cover stanzas
+** kitten <2014-03-06 Thu> 15:20
+- SASL-GS2 update to not require mutual authn, make a bis, jas has volunteered
 
+** uta <2014-03-07 Fri> 09:00
+https://datatracker.ietf.org/meeting/89/materials.html#wg-uta
+https://datatracker.ietf.org/meeting/89/agenda/uta
+- orit: goal is producing documents
+- aaron kaplan, bettercrypto.org, telling about their stuff
+- stpeter presenting "TLS Attacks" document and the "Best practices" document
+  https://datatracker.ietf.org/meeting/89/agenda/uta
+- dkg: adding more points to the list of attacks, like renegotiation
+- chris newman: volunteer to write up the STARTTLS attack
+- adopting all the documents presented by stpeter
+- orit presents on behalf of Popov a draft submitted to the TLS WG: deprecating RC4
+  - draft-popov-tls-prohibiting-rc4
+  - 40% of servers deploy ONLY RC4
+  - perfect passive attack
+- kaplan: mozilla said XP in india and china, which means RC4 (same for java6 w/o patches)
+- bagder: [rc4 in curl, not 40%?]
+- rich salz: comment on rc4
+- ekr: yes, rc4 has severe problems but the bias has been known before, but a new powerful attack has been explained in the above draft
+- should the bcp include negative recommendations or not?
+- x509 presentation by alexey melnikov
+  - x509 is underspecified
+- ietf-uta-email by chris newman
+  - provisional vs. normal mode, re "security tags" (latches)
+  - the PFS latch
+  - chris bentzel, google, asks about SCSV for detecting downgrade attacks (?)
+- report back from STRINT by kent
+  - phrasing, opportunistic keying instead of opportunistic encryption
+  - attack model, classes of attacks, prioritization
+  - passive vs. active attacks discussed
+  - make opportunistic keying invisible to users
+  - parallell the actions of setting up connection and authn peer (i think)
+- paul hoffman presentatoin about opportunistic tls, presented by joe hildebrand
+  - https://datatracker.ietf.org/doc/draft-hoffman-uta-opportunistic-tls/
