@@ -1,0 +1,19 @@
+References: <52C99EFB.6030703@weltraumpflege.org>
+X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.relays" 2931)
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-01
+To: tor-relays@lists.torproject.org
+Subject: Re: [tor-relays] [Feedback?] Multiple Tor processes on one host
+From: Linus Nordberg <linus@nordberg.se>
+Date: Mon, 06 Jan 2014 12:27:44 +0100
+--text follows this line--
+Johannes Fürmann <johannes@weltraumpflege.org> wrote
+Sun, 05 Jan 2014 19:05:47 +0100:
+
+| [1]: https://gist.github.com/waaaaargh/8271499
+
+"Also, the relay nodes should be rechable on Port 80 and 443 since those
+ports are often unfiltered and unblocked."
+
+I'm not convinced that's a good advice. Relay operators have to use a
+port that is reachable "from the internet" and verify it by looking at
+Tor log output. 

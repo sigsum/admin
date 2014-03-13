@@ -1,0 +1,14 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-09
+To: Per Nihlen <per@nordu.net> 
+cc: frank@nordu.net, Magnus Bergroth <bergroth@nordu.net> 
+Subject: tflows database design
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Wed, 11 Sep 2013 14:44:25 +0200
+--text follows this line--
+Hej Pelle!
+
+Är det du som är "systemägare" av vårt nya netflow-system? Eller är det
+kanske mer jq?
+

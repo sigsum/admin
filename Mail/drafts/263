@@ -1,0 +1,43 @@
+References: <87ob3bu94q.fsf@nordberg.se>
+	<20140117000509.GG19837@veri.nymity.ch>
+X-Draft-From: ("nnimap+adbc:INBOX" 76349)
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-01
+To: Philipp Winter <philwint@kau.se>
+Subject: Re: Encrypted Thu Jan 16 17:59
+From: Linus Nordberg <linus@nordberg.se>
+Date: Fri, 17 Jan 2014 05:31:08 +0100
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Philipp Winter <philwint@kau.se> wrote
+Fri, 17 Jan 2014 01:05:09 +0100:
+
+| Can I mention you in the acknowledgements?
+
+Sure.
+
+
+| > point one there, that the relays were located in diverse IP address
+| > blocks, is simply false -- they were in the same /20
+| 
+| But not all of them?  There are Russian relays in 92.0.0.0/8, 46.0.0.0/8, and
+| so on.  Am I missing something?
+
+I just re-read 4.2. I am the one missing something. Please ignore this.
+
+
+| > p11. change "Tor Project" to "directory authority operators" or
+| > something, since the Tor Project actually doesn't run any parts of the
+| > network
+| 
+| Well, OK.  But I always felt like that argument is a loophole since you are
+| still part of the Tor Project even if you run your authority with your DFRI hat
+| on ;)
+
+I'm actually running my authority without any other hat than my Linus
+hat. :)
+
+Anyway, the legal entity called Tor Project makes a point of not running
+any relays but maybe you mean the community Tor Project and that's what
+the reader should understand. Given that there are directory operators
+not part of the "commit code, hang out on IRC and at conferences
+community" I think that's slightly misleading too.

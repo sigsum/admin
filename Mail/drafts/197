@@ -1,0 +1,31 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 72096)
+References: <525C3C84.2030605@romab.com>
+	<20131016074557.GA12683@arne.tech.sentor.se>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-10
+To: Johan Nilsson <jn@9999.se>
+Cc: Andreas Jonsson <andreas@romab.com>,  "styrelse@dfri.se" <styrelse@dfri.se>
+Subject: Re: TU-rapport beta2
+From: Linus Nordberg <linus@nordberg.se>
+Date: Wed, 16 Oct 2013 10:00:57 +0200
+--text follows this line--
+Johan Nilsson <jn@9999.se> wrote
+Wed, 16 Oct 2013 09:45:57 +0200:
+
+| Sida 17: Ta bort stycket om Farligt med brygor
+| Jag fortsätter att glömma att klienten har en spärr för samma /16 nät.
+
+Tänkte lite mer på detta.
+
+
+
+
+
+
+0. Jag har inte verifierat att detta gäller för just bryggor.
+
+1. Vi tänkte så när vi valde att sätta bryggorna på eget nät.
+
+2. Det är bra om vi sprider insikten att samma operatör inte borde köra
+ingångar och utgångar.
+
+3.

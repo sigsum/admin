@@ -1,0 +1,41 @@
+X-Draft-From: ("nnimap+ndn:INBOX" 45054)
+References: <87ppspyikl.fsf@nordberg.se>
+	<925B80DD-BD88-4B3D-A118-DACAC1832736@nordu.net>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-09
+To: Frank Blankman <frank@nordu.net>
+Cc: Magnus Bergroth <bergroth@nordu.net>
+Subject: Re: netflow system, size
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+% Abuse contact for '194.68.13.0 - 194.68.13.255' is 'abuse@resilans.se'
+
+
+Frank Blankman <frank@nordu.net> wrote
+Tue, 3 Sep 2013 23:47:06 +0200:
+
+| nordu.deepfield.net ; linus / ceeP6ahshoomiri
+| 
+| Should answer all your questions with a few clicks.
+| 
+| Frank
+| 
+| 
+| On Sep 3, 2013, at 6:29 PM, Linus Nordberg <linus@nordu.net> wrote:
+| > Hi,
+| > 
+| > I'm putting down a rough system design on the netflow system we're about
+| > to build.
+| > 
+| > The design is highly dependent on the amount of data we're about to
+| > put into it. I'd like to get a grip on the size of what demands
+| > NORDUnet would have, both today and in some medium term future (a year
+| > or three).
+| > 
+| > Please give me your best estimated figures of the following, today and
+| > in a year.
+| > 
+| > - number of netflow sources (i.e. the number of border routers i guess?)
+| > - frequency of netflow records sent (average and peak)
+| > 
+| > Thanks!

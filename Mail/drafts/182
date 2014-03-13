@@ -1,0 +1,19 @@
+X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.internal" 5982)
+References: <525279B2.2070304@torproject.org>
+	<CAJLvQyEoEZvvXoN33w-AZvS78LCmzSe+9Ox5nyM7Kmyx2xY27w@mail.gmail.com>
+	<525283A2.8040800@torproject.org>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-10
+To: tor-internal@lists.torproject.org
+Subject: Re: [tor-internal] September 2013 status reports
+Reply-To: tor-internal@lists.torproject.org
+From: Linus Nordberg <linus@torproject.org>
+Date: Mon, 07 Oct 2013 23:08:11 +0200
+--text follows this line--
+Karsten Loesing <karsten@torproject.org> wrote
+Mon, 07 Oct 2013 11:49:22 +0200:
+
+| Quite possible.  As I said below, "I didn't count reports sent after my
+| "$month $year status reports" mail".  Trying to keep the overhead of
+| producing these summaries as small as possible.
+
+What is this "$month $year status reports" mail?

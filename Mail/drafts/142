@@ -1,0 +1,21 @@
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-08
+To: ekonomi@dfri.se 
+Subject: TB-fakturorna
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+commit 3fb854f3a3d0b55342aa2c54458b8768025a807a
+Author: Linus Nordberg <linus@nordberg.se>
+Date:   Mon Aug 26 15:53:10 2013 +0200
+
+    två nya TB-fakturor
+
+	New        fakturor/tb-2013-07-10.pdf
+diff --git a/fakturor/tb-2013-07-10.pdf b/fakturor/tb-2013-07-10.pdf
+new file mode 100644
+index 0000000..195699e
+Binary files /dev/null and b/fakturor/tb-2013-07-10.pdf differ
+	New        fakturor/tb-2013-08-12.pdf
+diff --git a/fakturor/tb-2013-08-12.pdf b/fakturor/tb-2013-08-12.pdf
+new file mode 100644
+index 0000000..03a4f32
+Binary files /dev/null and b/fakturor/tb-2013-08-12.pdf differ

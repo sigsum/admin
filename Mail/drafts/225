@@ -1,0 +1,35 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: Torbjorn Granlund <tg@gmplib.org>
+Subject: Re: Encrypted Sun Dec  8 14:12
+References: <87lhzv5vrk.fsf@nordberg.se> <86ob4r5sj2.fsf@shell.gmplib.org>
+	<87bo0r5r29.fsf@nordberg.se> <86d2l75q9m.fsf@shell.gmplib.org>
+X-Draft-From: ("nnimap+adbc:INBOX" 74477)
+In-Reply-To: <86d2l75q9m.fsf@shell.gmplib.org> (Torbjorn Granlund's message of
+	"Sun, 08 Dec 2013 16:14:13 +0100")
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Date: Sun, 08 Dec 2013 16:28:35 +0100
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+(Kryptera gärna dina svar, iaf om du citerar min text.)
+
+Torbjorn Granlund <tg@gmplib.org> wrote
+Sun, 08 Dec 2013 16:14:13 +0100:
+
+| Jag tror inte Zeta-kartellen skulle göra detta helt enkelt för att de
+| inte skulle göra vinst på det.  Statliga övervakningsklubbmedlemmar har
+
+Men kanske för att undvika förlust?
+
+
+| ju andra motivationer.  Jag tror NSA väldigt gärna skulle kvadda Tor.
+
+Detsamma gäller nog för fler underrättelsetjänster. Hur mycket kostar
+det för följande att ta 10 st RSA1024 på sex månader? Kina, Ryssland,
+Israel, Iran, Syrien, Indien, Azerbajdzjan, Uzbekistan, Sverige?
+
+
+| Jag har inte räknat exakt, men skulle säga att en RSA1024 torde kosta
+| mer än 10 miljoner kronor att faktorisera.  På standardhårdvara.
+
+Koda FPGA och sedan göra ASIC är nog inte så svårt. Har du någon koll på
+om det räcker för att få upp fart och få ner strömkonsumtion?

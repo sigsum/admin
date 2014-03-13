@@ -1,0 +1,37 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 69427)
+References: <878uzvjtv6.fsf@nordberg.se> <521541DF.1010109@FreeBSD.org>
+	<87mwo94ygl.fsf@nordberg.se> <52161DB8.3020004@FreeBSD.org>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-08
+To: DutchDaemon - FreeBSD Forums Administrator <DutchDaemon@FreeBSD.org>
+cc: tor-assistants@lists.torproject.org 
+Subject: Re: The FreeBSD Forums blocking of Tor users
+From: Linus Nordberg <linus@nordberg.se>
+Reply-To: tor-assistants@lists.torproject.org 
+Date: Thu, 22 Aug 2013 16:28:25 +0200
+--text follows this line--
+DutchDaemon - FreeBSD Forums Administrator <DutchDaemon@FreeBSD.org> wrote
+Thu, 22 Aug 2013 16:18:32 +0200:
+
+| On 08/22/13 16:00, Linus Nordberg wrote:
+| 
+| > DutchDaemon - FreeBSD Forums Administrator
+| > <DutchDaemon@FreeBSD.org> wrote Thu, 22 Aug 2013 00:40:31 +0200:
+| 
+| > I do suspect that you might downplay the cons a bit though.
+| 
+| And I suspect that you are overstating the importance of Tor in merely
+| reading our forums, or the importance of anonymously visiting a forum
+| without even registering or logging in. Plenty of anonymous proxies
+| are used for that, and so long as no abusive activity is associated
+| with them, no one cares. I'm sure some Tor nodes are still able to
+| connect. If none of them are, the abuse problem is obviously aptly
+| demonstrated. And it is not ours to solve or mitigate.
+| 
+| Our current firewall protects against the whole gamut of attacks,
+| ranging from port scans to injection attacks to flooding to DDoS from
+| a wide variery of suspect IP addresses. We prefer to have wholesale
+| protection against abusive IPs over selectively disabled
+| functionality, leaving us open to other attack vectors.
+| 
+| There's really nothing more to add to this. Our network, our rules, etc.
+

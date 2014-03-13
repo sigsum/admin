@@ -1,0 +1,33 @@
+X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.talk" 10150)
+References: <N1-Fy4bEakjAA@Safe-mail.net>
+	<CAKDKvuzSCbcVczFrbZQ1DxBCB6diptnfKTLaLyWZTcUUaEUJmA@mail.gmail.com>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-09
+To: 
+Subject: Re: [tor-talk] NSA has cracked web encryption!
+From: Linus Nordberg <linus@torproject.org>
+Date: Tue, 10 Sep 2013 07:23:49 +0200
+--text follows this line--
+Hi Nick,
+
+A couple
+
+Nick Mathewson <nickm@alum.mit.edu> wrote
+Fri, 6 Sep 2013 22:26:55 -0400:
+
+|    * Dubious stuff in NIST standards. Everybody's pointing at that
+| Dual_EC RNG, but other stuff will be getting a lot of cryptographer
+| scrutiny.  What isn't broken may often be found to be deliberately
+
+Sentence cut off.
+
+|    * The commercial CA world is possibly a house of cards.
+|    * Operating system RNGs are a black hole of stupidity. On the one
+| hand, entropy collection really ought to be an OS function.  On the
+| other hand,
+
+Sentence cut off.
+
+| Also, RSA1024 and DH1024 are *not* what folks ought to be using
+| nowadays.  (See that article where a guy who knows how to use   So
+
+Sentence cut off.

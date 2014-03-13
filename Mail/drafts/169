@@ -1,0 +1,24 @@
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-09
+To: listan@lists.dfri.se 
+Subject: Vi är #6!
+From: Linus Nordberg <linus@nordberg.se>
+Date: Thu, 19 Sep 2013 10:34:37 +0200
+--text follows this line--
+Hej!
+
+Man kan titta på tor-exits och sortera dom efter "exit probability",
+dvs sannolikheten att ett givet relä väljs när en klient sätter upp ett
+koppel genom tor-nätet. Om man gruppar på AS-nummer så ser man att DFRI
+är den sjätte största exit-operatören i världen. Sannolikheten för att
+en tor-klient väljer en DFRI-exit är f.n. 3,7%.
+
+https://compass.torproject.org/#?exit_filter=fast_exits_only_any_network&links&sort=cw&sort_reverse&country=&by_as
+(länken kräver javascript)
+
+Vi vill inte att någon enskild person eller organisation skall få "för
+mycket" exit-trafik, eftersom Tor inte klarar av att skydda sina
+användare mot någon som kan övervaka både ingång och utgång ur
+Tor-nätet. 
+
+Frågan är vad vi tycker är OK. Är 3,7% för mycket? Kan vi gå upp till
+5%? 10%? Hur skall vi göra för att 

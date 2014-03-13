@@ -1,0 +1,27 @@
+Gcc: nnimap+adbc:INBOX.sent-mail.2013-11
+to: system@mail.nordberg.se 
+bcc: iha@regexp.se, andreas@romab.com, rom@romab.com, ep@egrc.se,
+ "Lena Hellström Nordberg" <lena@nordberg.se>, erik@nordberg.se,
+ mats.westin@gmail.com, Daniel Melin <daniel@viskar.nu>, per@sunet.se,
+ tobbe@romab.com, juni@nordberg.se, larka@nordberg.se,
+ simon@nordberg.se, fredrik@hes.se, al@ccc.de, peter@xpd.se,
+ "Fredrik Söderblom" <fredrik@xpd.se>, gertrudkleberg@hotmail.com,
+ jan@johannesson.com, jbn@klutt.se, Johan Nilsson <jn@9999.se>,
+ Christian Wirth <christian@teknikbyran.se> 
+Subject: Nytt certifikat igen
+From: Linus Nordberg <linus@nordberg.se>
+Date: Sun, 24 Nov 2013 15:30:40 +0100
+--text follows this line--
+Hej Jabber-användare!
+
+Du har ett Jabber-konto hos ADB-Centralen. Om du inte vill ha det kvar,
+säg bara till så tar jag bort det.
+
+Jabber-servern har fått ett nytt certifikat igen. Den här gången är det
+utfärdat av CAcert.org istället för vårt eget CA som vi har använt
+förut. Tanken är att fler av era Jabber-klienter känner till CAcert.org.
+
+En annan sak som hänt är att vi har ny Jabber-server som är bättre på
+TLS än vår förra. Vi stödjer nu både TLSv1.1 och TLSv1.2 och vägrar
+SSLv2. Jag skall försöka slå av SSLv3 också så fort jag förstår hur man
+gör.

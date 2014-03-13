@@ -1,0 +1,54 @@
+References: <tslzjnzmnf3.fsf@mit.edu> <87haa7z85d.fsf@nordberg.se>
+	<CAK3OfOgx3YgVFbMJc3Vdfc7QSefyqPEr4FixihBjbskG__=qjA@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:INBOX" 75045)
+Gcc: nnimap+adbc:INBOX.sent-mail.2013-12
+To: Nico Williams <nico@cryptonector.com>
+Cc: Sam Hartman <hartmans@painless-security.com>
+Subject: Re: Openssl initialization
+From: Linus Nordberg <linus@nordberg.se>
+Date: Wed, 18 Dec 2013 16:13:34 +0100
+--text follows this line--
+Nico Williams <nico@cryptonector.com> wrote
+Wed, 18 Dec 2013 08:54:48 -0600:
+
+| On Tue, Dec 17, 2013 at 11:42 AM, Linus Nordberg <linus@nordberg.se> wrote:
+| > I was wondering if the recommendation for setting an add_callback was
+| > because the CRYPTO_lock() approach (like what's done if you don't
+| > register a callback) isn't a good one or perhaps that older versions of
+| > OpenSSL did something less sane?
+| 
+| The atomic addition thing was just for completeness, since they have
+| it.  It seems it's not strictly needed.
+
+OK, thanks.
+
+
+| > Slightly related, initialising random state shouldn't be necessary since
+| > RAND_poll() is being called internally (trusting
+| > https://en.wikibooks.org/wiki/OpenSSL/Random_numbers) but there was a
+| > bug in that function in older OpenSSL IIUC. Would you recommend
+| > initialising with data from /dev/*random in addition to RAND_poll()?
+| 
+| Heimdal dies in RAND_bytes() when used from multi-threaded GSS apps.
+
+Dies how?
+
+
+| Some RAND engines have explicit or implicit global initialization.
+| For example, ssleay_rand_bytes() calls CRYPTO_w_lock().  Since ENGINEs
+| are pluggable, it seemed that this is the correct approach in general
+| (I wasn't even willing to inspect every ENGINE that ships with
+| OpenSSL).
+| 
+| I'm not sure I'd trust /dev/*random in all cases.  I think the correct
+| thing for apps to do is to have their own lightweight CSPRNG with a
+| heavyweight seeding process and they should spend a bit of time
+| gathering a few bits to mix in with /dev/*random.  Well, in "paranoid"
+| mode anyways.  I certainly don't mind having a RNG that is straight
+| /dev/*random, even as the default.  I do mind not having extra
+| options, but OpenSSL already has extra options.
+
+Thanks.
+
+In the case of a library the application always has the possibility to
+add more entropy using RAND_poll().

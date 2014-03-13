@@ -1,0 +1,27 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: Mike Perry <mikeperry@fscked.org>,
+ Georg Koppen <georg@getfoxyproxy.org> 
+Subject: Encrypted Sun Dec  8 15:23
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Date: Sun, 08 Dec 2013 15:28:55 +0100
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Hi,
+
+Clicking "New Identity" in 3.5-alpha-1pre gives me two dialogues (one at
+a time):
+
+  TorButton: Unexpected error during localStorage clearing: TypeError:
+  storageManagerService.clearOfflineApps is not a function
+
+  Torbutton: Unexpected error on new identity: [Exception... "Not enough
+  argumetns [nsiContentPrefService.removeGroupedPrefs]" nsresult:
+  "0x80570001 (NS_ERROR_XPC_NOT_ENOUGH_ARGS)" location: "JS frame ::
+  chrome://torbutton/content/torbutton.js :: torbutton_do_new_identity
+  :: line 1581" data: no]
+
+This is on 3.5-alpha-1pre-Linux (64-bit on Debian 7) that I've built
+myself on Nov 25, commit d423a3ed.
+
+Is there a dev list somewhere I should post this instead of to the two
+of you?

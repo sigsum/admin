@@ -1,0 +1,15 @@
+Gcc: nnimap+adbc:INBOX.sent-mail.2013-12
+To: dir-auth@lists.torproject.org 
+cc: Nick Mathewson <nickm@torproject.org> 
+Subject: Switching directory signing key to RSA2048
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Hi directory authority operators,
+
+https://trac.torproject.org/projects/tor/ticket/10324 describes why we
+should stop signing status documents with RSA1024 and suggests switching
+to RSA2048.
+
+Unless someone stop me I'm going to start signing with a 2048 bit key in
+about two days (Wed Dec 11 12:00 UTC). If all goes well, I'm going to
+ask you to do the same at some point.

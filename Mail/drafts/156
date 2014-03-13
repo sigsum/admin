@@ -1,0 +1,278 @@
+X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.internal" 5720)
+References: <51584558.4050008@PrivacyStrategy.eu> <87r4iv8kwh.fsf@nordberg.se>
+	<51595BE9.5020705@PrivacyStrategy.eu>
+	<522DB169.9090900@PrivacyStrategy.eu>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-09
+To: tor-internal@lists.torproject.org
+Subject: Re: [tor-internal] Trying to fix EU Tor Blocking (was Re: Tor blocking by EU Commission?
+Reply-To: tor-internal@lists.torproject.org
+From: Linus Nordberg <linus@torproject.org>
+--text follows this line--
+dfri tor eu blocking filtering https://www.dfri.se/wiki/access-europa-eu-complaint/
+dfri tor eu blocking filtering http://press.ffii.org/Press%20releases/European%20Commission%20net%20neutrality%20consultation%20excludes%20TOR%20users
+
+
+Caspar Bowden <caspar@PrivacyStrategy.eu> wrote
+Mon, 09 Sep 2013 12:30:49 +0100:
+
+| (top-posting exceptionally 'cos below is a bit a wodge to wade through)
+| 
+| I have had an invitation from a sympathetic official as follows:
+| 
+|  * /can you help me put together.. a set of censorship tools´producers
+|    (not just Tor) affected by this policy) like Ipredator vpn, hotspot
+|    shield, etc. to formulate a series of solid arguments /(about
+|    invalidity of security arguments for blocking)/which allow me to
+|    engage again with /(the relevant policymakers)//
+| 
+| I have no idea whether EU blocks the other tools mentioned, and have
+| no bandwidth this month (under the cosh of two horrible deadlines)
+| 
+| Any volunteers for taking on (part of) this, or suggestions for those
+| who might? The official is not (I think) especially techie, so would
+| help to prepare "rebuttal questions" to the likeliest FUD they will
+| encounter.
+| 
+| Caspar
+| 
+| On 04/01/13 11:05, Caspar Bowden wrote:
+| > Thanks v.much Linus and Runa, saw the tweet afterwards ;-)
+| >
+| > Since it has now been a couple of months with no reply, one possible
+| > further step would be to initiate a formal complaint to the European
+| > Data Protection Supervisor (which is the DPA for EU Institutions). I
+| > guess I have made half a dozen major "test" complaints privately to
+| > DPAs over a decade (mostly UK but managed recently to enforce a
+| > Skype full subject access via Luxembourg - been too busy yet to
+| > analyze but guess some here may be interested - ping me if so)
+| >
+| > On 13th Feb the EDPS issued these
+| > <http://www.edps.europa.eu/EDPSWEB/webdav/site/mySite/shared/Documents/Consultation/Comments/2013/13-03-15_Comments_dp_package_EN.pdf>> comments on the proposed new Regulation. As with most DPAs there
+| > tends to be gap between the good intentions of policy statements,
+| > and the practices they will actually enforce against those they
+| > regulate. The EDPS line on anonymity/pseudonymity is pretty much
+| > correct IMHO and it's really important to resist a wedge of
+| > amendments to the Regulation promoted by big advertising lobbies
+| > that seek varying exemptions for pseudonymous data.
+| >
+| > The basic skeleton of the complaint would be:
+| >
+| >   * The Tor system is designed to allow access to web sites, and in
+| >     particular public documents, without it being necessary for the
+| >     website to process any personal data of the user
+| >   * The EU Commission is blocking users of the Tor system, by
+| >     blacklisting known exit nodes, and a Tor user sees a Tor-detected
+| >     page instead of the web page they try to access
+| >   * there is no proportionate or legitimate security reason why it is
+| >     necessary to block access from Tor users (cue further arguments
+| >     why DDoS over Tor is a non-starter, anything else ?)
+| >   * This policy has the consequence that Commission websites are
+| >     processing personal data which is not only excessive but strictly
+| >     (and technically) unnecessary, without a valid legal basis or
+| >     justification (for completeness run through and pre-empt remaining
+| >     wiggle-room). The personal data processed is the IP address, which
+| >     for EU residents must be presumed to be indirectly identifiable in
+| >     consequence of the EU Data Retention Directive. It is now well
+| >     established (Art.29 WP 146 and Sabam etc.) that IP addresses
+| >     constitute personal data (cite from WP146 and pref EDPS also etc.)
+| >   * This complaint is wholly consistent with the extensive remarks on
+| >     pseudonymity/anonymity in section 1 of the EDPS additional
+| >     comments on the Data Protection Reform Package and existing law
+| >     (ref to empowering EU reg establishing EDPS)
+| >   * The blocking policy of the Commission includes the website of the
+| >     Art.29 WP Party. It is manifestly absurd that material published
+| >     by the official supervisory body for harmonizing practice and
+| >     further elucidating the principles of EU Data Protection, should
+| >     only be accessible online in violation of their own guidance and
+| >     settled policy
+| >   * This obviously raises important questions about whether the EDPS
+| >     is vigilantly ensuring that high standards of Data Protection are
+| >     actually enforced and achieved by the institutions EDPS has
+| >     competence to regulate, and that the human right to private life
+| >     is not "theoretical or illusory but...practical and effective"
+| >     (VON HANNOVERv. GERMANY ECHR 2000). It is unacceptable that the
+| >     Commission is unnecessarily interfering to prevent anonymous
+| >     access to public documents, and unless this practice ceases
+| >     permanently and immediately it may bring the EU Commission's
+| >     respect for Fundamental Rights into disrepute.
+| >   * Please investigate and promptly require the Commission to desist
+| >     from this policy
+| >   * cc: Paul Nemitz, Viviane Reding, Neelie Kroes, Robert Madelin,
+| >     Peter Hustinx, Art.29 Secretariat, Fundamental Rights Agency,
+| >     (anyone else), Legal and IT correspondents major media, The
+| >     Register etc.
+| >
+| >
+| > That's a zero'th draft, and hope final would be less clunky and more
+| > gravitas etc.. I suggest that the complaint should try to attract a
+| > wide range of signatories before and after it is filed, and the
+| > press should be encouraged to write about the story in a
+| > co-ordinated way. I think inside the EDPS, it will cause quite a bit
+| > of discomfiture amongst the higher-ups, with some sighs of "at last"
+| > at the level of working officials. It isn't necessary for the
+| > complaint to originate from Tor itself; of course Tor Directors
+| > would need to consider pros and cons of that. I can also use some
+| > contacts to try and sniff out what likely path inside institutions
+| > is going to be in reaction.
+| >
+| > If we have any pro bono EU DP lawyers around, that would be very
+| > helpful to refine/check some details on skeleton above (EDPS
+| > complaints are unusual and covered by a similar but different from
+| > usual DPD). ; also I have several suitable academic contacts we
+| > could ask. From a tactical PoV, exposing what would amount to EDPS
+| > hypocrisy whilst the pseudonymity debate is raging is maximally
+| > embarrassing for EDPS, but bluntly that is why it's a good
+| > idea. However it is potentially a critical test-case for EDPS, so we
+| > probably do want to ensure the complaint is drafted with the best
+| > collection of pro-bono DPO legal expertise it is possible to
+| > muster. My own view is to be a little bit careful about this - there
+| > should be a due separation between those making the complaint, and
+| > any legal advice offered on best approach to making the complaint. I
+| > have seen interesting examples of DP legal activism in civil society
+| > not get anywhere because of bad advice enthusiastically offered.
+| >
+| > But before any of that,
+| >
+| > a) can anyone think of any security arguments from the Commission
+| > that would have any leg to stand on
+| >
+| > b) any reason we would not want to see this happen, any EU
+| > projects/co-operation with Tor this might upset
+| >
+| > c) for EU DP mavens, any further/better lines of complaint, other
+| > than the processing is excessive/unnecessary ?
+| >
+| > d) anyone any insight why the Commission are really doing this? I
+| > could well imagine that some mid-level official doesn't want the
+| > analytics which support his budget to called into question (under
+| > worst case), or equally that some InfoSec officer has buddies in
+| > LEAs or private companies who don't like Tor and want to normalize
+| > blocking.
+| >
+| > (To reiterate, I am conscious that as a Tor Director, any
+| > involvement of Tor in a complaint should be a Board decision, but
+| > wanted to initiate a wider discussion to fully ventilate
+| > pros/cons. Please also say if I am way off base, I am newbie here)
+| >
+| > Cheers
+| >
+| > Caspar
+| > (Happy Easter from France, above not /poisson d'Avril/)
+| > (declaring interest I have in the past and may in the future
+| > consider job with EDPS, but no relevant conflicts at moment)
+| >
+| >
+| >
+| > On 31/03/13 19:49, Linus Nordberg wrote:
+| >> Caspar Bowden<caspar@PrivacyStrategy.eu>  wrote
+| >> Sun, 31 Mar 2013 15:16:56 +0100:
+| >>
+| >> | I only just realized that Tor being blocked by EU Commission ? I know
+| >> | from EPFSUG an MEP was making inquiries, but not seen report back.
+| >> |
+| >> | This is certainly worth bringing to prominence in debate on
+| >> | pseudonymity/anonmyity in new EU Regulation, and It is of course a
+| >> | gift to satire that a privacy regulator is blocking
+| >> |<http://ec.europa.eu/justice/data-protection/article-29/documentation/other-document/files/2013/20130227_statement_dp_annex2_en.pdf>anonymous access to public policy documents.
+| >> |
+| >> | Are we thinking of pursuing a complaint or is one in train?
+| >>
+| >> FWIW, DFRI has an open case regarding this since a couple of
+| >> months. Case might be a strong word though, I don't know. I'm planning
+| >> on following up after consulting the EPFSUG list.
+| >>
+| >> Attaching a private write-up of the story so far.
+| >>
+| >>
+| >>
+| >> ## Asking the EU Commission to stop blocking Tor
+| >>
+| >> On the 24th of December 2012, the following complaint about the EU
+| >> Commission web site not being reachable by Tor users was submitted. A
+| >> month later a message was received that the enquiry had been forwarded
+| >> to "the competent Commission service". Since then it's been quiet.
+| >>
+| >> The full correspondence can be found below.
+| >>
+| >>
+| >> ### Initial complaint
+| >>
+| >> ---
+| >>
+| >>      http://europa.eu/  is not available to users of Tor (https://torproject.org/)>>
+| >>      There are several other sites, supposedly run by you, that are inaccessible
+| >>      to Tor users as well.
+| >>
+| >>      The information I've been able to get regarding this says that this blocking
+| >>      was implemented as a reaction to a DoS (Denial of service) attack some time ago.
+| >>      Is there a way we can help you unblock Tor users from using your services?
+| >>
+| >>      If this is a technical issue, we would be more than happy to work with you
+| >>      to try to solve it. If there are other reasons for you blocking Tor, I'd like to
+| >>      understand them in order to try to influence this in a positive direction.
+| >>      Some people need the protection Tor gives you as a user. Some of these people
+| >>      need access to your sites. Please help me help them.
+| >>
+| >>      Thanks,
+| >>      Linus Nordberg
+| >>      President DFRI
+| >>      https://dfri.se/index.en>>
+| >> ---
+| >>
+| >> ### The response received a month later
+| >>
+| >> ---
+| >>
+| >>      From: "Europe Direct" <citizen_reply@>
+| >>      Subject: [Case_ID: 0697579 / 3796149] Blocking of Tor users
+| >>      To: linus@
+| >>      Date: Wed, 23 Jan 2013 16:09:45 +0100
+| >>           Dear Mr Nordberg,
+| >>           Thank you for your message.
+| >>      Your enquiry has been forwarded to the competent Commission service,
+| >>      which can be contacted for follow-up via the following e-mail address:
+| >>      DIGIT-LISO-SECURITY-OPERATION-CENTRE@
+| >>
+| >> ---
+| >>
+| >> ### Asking for follow-up
+| >>
+| >> ---
+| >>
+| >>      From: Linus Nordberg <linus@>
+| >>      Subject: [Europe Direct] [Case_ID: 0697579 / 3796149] Blocking of Tor users
+| >>      To: DIGIT-LISO-SECURITY-OPERATION-CENTRE@
+| >>      cc: dfri@
+| >>      Date: Wed, 23 Jan 2013 16:53:27 +0100
+| >>           Dear Commission service,
+| >>           I was asked by EUROPE DIRECT Contact Centre to get in
+| >> contact with you
+| >>      for follow-up on my case 0697579 / 3796149.
+| >>           My message about blocking of Tor users sent about a month
+| >> ago (Dec 24)
+| >>      has hopefully reached you by now. Do you have any feedback?
+| >>           Thank you in advance.
+| >>           Linus Nordberg
+| >>      President DFRI
+| >>      https://dfri.se/index.en>>
+| >> ---
+| >>
+| >> ## Related links
+| >>
+| >> - [[FFFI press release 2012-07-23|http://press.ffii.org/Press%20releases/European%20Commission%20net%20neutrality%20consultation%20excludes%20TOR%20users]]>>
+| >>
+| >> _______________________________________________
+| >> tor-internal mailing list
+| >> tor-internal@lists.torproject.org
+| >> https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-internal>
+| >
+| >
+| > _______________________________________________
+| > tor-internal mailing list
+| > tor-internal@lists.torproject.org
+| > https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-internal
+| 
+| _______________________________________________
+| tor-internal mailing list
+| tor-internal@lists.torproject.org
+| https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-internal

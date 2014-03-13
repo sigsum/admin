@@ -1,0 +1,40 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 71757)
+References: <524C17F8.8090109@torproject.org> <87k3htl15f.fsf@nordberg.se>
+	<DC0ACD19-A257-4A49-A0A2-613B510FE48F@nrl.navy.mil>
+	<87eh81jjhe.fsf@nordberg.se>
+	<AF98ECF0-2C7F-41E5-A8B2-A420C2083951@nrl.navy.mil>
+	<87a9ipjhuy.fsf@nordberg.se>
+	<C714AE55-6A1D-4618-A67A-3657329956DB@nrl.navy.mil>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-10
+To: "A. Johnson" <aaron.m.johnson@nrl.navy.mil>
+Cc: Karsten Loesing <karsten@torproject.org>,  Nikita Borisov <nikita@illinois.edu>,  Anupam Das <anupam009@gmail.com>,  Matthew Caesar <mccaesar@gmail.com>,  "Tor-assistants@lists.torproject.org Assistants" <Tor-assistants@lists.torproject.org>
+cc: noc@dfri.net 
+Subject: Re: Traceroute measurement from Tor relays
+From: Linus Nordberg <linus@nordberg.se>
+Date: Tue, 08 Oct 2013 23:40:42 +0200
+--text follows this line--
+After quite some effort my plan has failed. I would have to bring up a
+new machine in order to make this work without compromising our security
+practices.
+
+"A. Johnson" <aaron.m.johnson@nrl.navy.mil> wrote
+Mon, 7 Oct 2013 13:28:34 -0400:
+
+| Hello Linus,
+| 
+| Have you been able to start the traceroutes on your relays or on nearby machines?
+| 
+| Thanks,
+| Aaron
+| 
+| On Oct 4, 2013, at 9:17 AM, Linus Nordberg <linus@nordberg.se> wrote:
+| 
+| > "A. Johnson" <aaron.m.johnson@nrl.navy.mil> wrote
+| > Fri, 4 Oct 2013 08:57:40 -0400:
+| > 
+| > | > How long will one run take?
+| > | 
+| > | Our current estimates are that the traceroute script may take up to 15-16 days to complete. It will have partial results before that they we could use as soon as they are done (there are 3 measurement phases: traceroute all routable prefixes, traceroute all Tor IPs, and traceroute all /24s).
+| > 
+| > We have a full routing table. Would you be interested in a snapshot of
+| > that at the time of some of the stages in this process?

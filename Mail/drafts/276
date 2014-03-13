@@ -1,0 +1,9 @@
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-02
+To: Alexander Rydekull <rydekull@gmail.com> 
+Subject: Encrypted Sat Feb 15 10:56
+From: Linus Nordberg <linus@nordberg.se>
+Date: Sat, 15 Feb 2014 18:20:44 +0100
+X-Draft-From: ("nnimap+adbc:INBOX" 77930)
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Satte pw för 'admin' på www.dfri.se till iRkiU1kEvVoenhvkje

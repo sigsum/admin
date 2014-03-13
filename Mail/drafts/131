@@ -1,0 +1,65 @@
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-08
+To: security@torproject.org
+Subject: Failed assertion in directory authority
+From: Linus Nordberg <linus@nordberg.se>
+Date: Tue, 06 Aug 2013 13:07:58 +0200
+--text follows this line--
+Hi,
+
+
+
+The stack seems corrupted. Any other ideas on what to look at?
+--8<---------------cut here---------------start------------->8---
+Program terminated with signal 6, Aborted.
+#0  0x214fd4fb in ?? ()
+(gdb) bt
+#0  0x214fd4fb in ?? ()
+#1  0x2149be96 in ?? ()
+#2  0x000186f9 in networkstatus_set_current_consensus (consensus=0x2124dc00 "z�P�\001", 
+    flavor=0x2149ccac <Address 0x2149ccac out of bounds>, flags=3217024516) at ../src/tor/src/or/networkstatus.c:1635
+#3  0x2149c56b in ?? ()
+#4  0x21804300 in ?? ()
+#5  0x00000006 in ?? ()
+#6  0xbfbfe748 in ?? ()
+#7  0x215a111a in ?? ()
+#8  0x00000006 in ?? ()
+#9  0xbfbfe72c in ?? ()
+#10 0x00000000 in ?? ()
+#11 0x215899be in ?? ()
+#12 0x215baa30 in ?? ()
+#13 0x011b1e14 in ?? ()
+#14 0xbfbfe758 in ?? ()
+#15 0xffffffdf in ?? ()
+#16 0xffffffff in ?? ()
+#17 0xffffffff in ?? ()
+#18 0xffffffff in ?? ()
+#19 0x0120c918 in ?? ()
+#20 0x00000000 in ?? ()
+#21 0x2e3e2f60 in ?? ()
+#22 0xbfbfe788 in ?? ()
+#23 0x0100b4c3 in ?? ()
+#24 0x215baa30 in ?? ()
+#25 0x011b1e14 in ?? ()
+#26 0x011b1dcd in ?? ()
+#27 0x00000208 in .hash ()
+#28 0x011b215b in ?? ()
+#29 0x011b218b in ?? ()
+#30 0x011b215b in ?? ()
+#31 0x011b218b in ?? ()
+#32 0x3993843d in ?? ()
+#33 0xa082f609 in ?? ()
+#34 0xf1de77ed in ?? ()
+#35 0x010bdcac in ?? ()
+#36 0x5d81d7e5 in ?? ()
+#37 0x0120c918 in ?? ()
+#38 0xbfbfe7c8 in ?? ()
+#39 0x0103730b in ?? ()
+#40 0x3993843d in ?? ()
+#41 0x0dfa9af0 in ?? ()
+#42 0xaaf81df8 in ?? ()
+#43 0xfaa52220 in ?? ()
+#44 0x035cdf32 in ?? ()
+#45 0x00010000 in do_hash_password () at ../src/tor/src/or/main.c:2600
+Previous frame inner to this frame (corrupt stack?)
+(gdb) 
+--8<---------------cut here---------------end--------------->8---

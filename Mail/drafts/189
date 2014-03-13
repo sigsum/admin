@@ -1,0 +1,29 @@
+X-Draft-From: ("nnimap+adbc:INBOX")
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-10
+To: Randy Bush <randy@psg.com>, stephen.farrell@cs.tcd.ie,
+    leifj@nordu.net 
+Subject: Reproducible builds
+From: Linus Nordberg <linus@nordberg.se>
+Date: Sat, 12 Oct 2013 14:02:35 +0200
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Hi,
+
+While verifying tool chains, other user land components and kernels
+would be a Good Thing indeed, I'm not sure that's within reach.
+
+I'd like to point at something shockingly new -- reproducible, or
+deterministic, builds for larger end user software packages [0]. The
+Bitcoin people started it and Tor picked it up and wrote about it
+[1][2]. I've seen Debian and RedHat pick it up [3][4] since.
+
+It's not protecting against back doored tool chains, ofc, but rather an
+operational issue with distributing binaries.
+
+That said, if we find funding for verifying _some_ tool chains, great.
+
+[0] https://mailman.stanford.edu/pipermail/liberationtech/2013-June/009257.html
+[1] https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise
+[2] https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details
+[3] https://wiki.debian.org/ReproducibleBuilds
+[4] http://securityblog.redhat.com/2013/09/18/reproducible-builds-for-fedora/

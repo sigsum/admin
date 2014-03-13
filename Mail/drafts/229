@@ -1,0 +1,56 @@
+References: <87siu32m15.fsf@nordberg.se>
+	<20131209131144.4de34f07@latte.josefsson.org>
+	<87y53utdgg.fsf@nordberg.se> <87wqjerxov.fsf@latte.josefsson.org>
+X-Draft-From: ("nnimap+adbc:INBOX" 74536)
+Gcc: nnimap+adbc:INBOX.sent-mail.2013-12
+To: Simon Josefsson <simon@josefsson.org>
+Subject: Re: Encrypted Sun Dec  8 20:07
+From: Linus Nordberg <linus@nordberg.se>
+Date: Mon, 09 Dec 2013 13:58:56 +0100
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Simon Josefsson <simon@josefsson.org> wrote
+Mon, 09 Dec 2013 13:55:12 +0100:
+
+| Linus Nordberg <linus@nordberg.se> writes:
+| 
+| > Simon Josefsson <simon@josefsson.org> wrote
+| > Mon, 9 Dec 2013 13:11:44 +0100:
+| >
+| > | > Jag tror att min smtpd har svårt att prata TLS med duva.sjd.se. Ser
+| > | > uppkopplingsförsök till smtp.nordberg.se var 10:e minut där STARTTLS
+| > | > misslyckas pga
+| > | > 
+| > | >   ASN1_verify:unknown message digest algorithm
+| > | > 
+| > | > Noterade tidigare idag att din nyckellängd är lite udda, 2432 bitar,
+| > | > men att certifikatet är signerat med SHA1. Har inte tittat närmare än
+| > | > så.
+| > | 
+| > | Har du möjlighet att felsöka mer vad felet verkligen är?  Jag kan prova
+| > | att byta certet mot ett självsignerat dummy-cert, för att testa ifall
+| > | det beror på certet eller TLS.  Jag ser inget uppenbart udda i mitt
+| > | cert (helt vanligt CACert-cert), men jag kan ha missat något.  Jag vet
+| >
+| > Nyckellängden som rapporteras av gnutls-cli är väl lite udda?
+| 
+| Ptja, nyckeln är genererad av GnuTLS med dess default-längd.  Jag gillar
+| nycklar av icke-tvåpotenser bättre. :-)
+| 
+| >   - subject `CN=duva.sjd.se', issuer `O=CAcert
+| > Inc.,OU=http://www.CAcert.org,CN=CAcert Class 3 Root', RSA key 2432
+| > bits, signerat med RSA-SHA1, activated `2013-03-09 06:03:06 UTC',
+| > expires `2015-03-09 06:03:06 UTC', SHA-1 fingerprint
+| > 655b03445cca1fba62d2df0d62b75016dfd98b4d'
+| >
+| > Inte mycket idé att felsöka på mina normala MTA (smtp.nordberg.se) men
+| > vi kan testa min nya. Har satt Reply-To att peka på den.
+| 
+| Vi testar!
+
+--8<---------------cut here---------------start------------->8---
+Dec  9 13:55:28 <mail.info> brk postfix/smtpd[12732]: connect from duva.sjd.se[37.123.176.9]
+Dec  9 13:55:28 <mail.notice> brk postgrey[1452]: action=greylist, reason=new, client_name=duva.sjd.se, client_address=37.123.176.9, sender=simon@josefsson.org, recipient=linus@mail.adb-centralen.se
+Dec  9 13:55:29 <mail.info> brk postfix/smtpd[12732]: NOQUEUE: reject: RCPT from duva.sjd.se[37.123.176.9]: 450 4.2.0 <linus@mail.adb-centralen.se>: Recipient address rejected: Greylisted, see http://postgrey.schweikert.ch/help/mail.adb-centralen.se.html; from=<simon@josefsson.org> to=<linus@mail.adb-centralen.se> proto=ESMTP helo=<duva.sjd.se>
+Dec  9 13:55:30 <mail.info> brk postfix/smtpd[12732]: disconnect from duva.sjd.se[37.123.176.9]
+--8<---------------cut here---------------end--------------->8---

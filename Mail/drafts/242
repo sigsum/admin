@@ -1,0 +1,12 @@
+X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.relays")
+Gcc: nnimap+adbc:INBOX.sent-mail.2013-12
+To: tor-relays@lists.torproject.org 
+Subject: Has anybody seen sudden spikes in memory consumption?
+From: Linus Nordberg <linus@nordberg.se>
+Date: Fri, 20 Dec 2013 00:11:54 +0100
+--text follows this line--
+Hi!
+
+
+
+https://trac.torproject.org/projects/tor/ticket/10432

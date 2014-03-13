@@ -1,0 +1,68 @@
+References: <167046731.5400.1383149937367.JavaMail.jira@esxi-001>
+X-Draft-From: ("nnimap+ndn:INBOX" 45562)
+Gcc: nnimap+adbc:INBOX.sent-mail.2013-10
+To: nordunet.support@eduix.fi
+cc: noc@nordu.net
+Subject: Re: [JIRA] Request updated: (NORDUNET-924) cf-internal.nordu.net
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Thu, 31 Oct 2013 13:54:09 +0100
+--text follows this line--
+Hi,
+
+Thanks for the information.
+
+Note that I'm not asking for anything to change right now. I'm trying to
+understand what's needed for operation of the service at this point in
+time.
+
+- What is 8080/tcp used for today? Your previous answer says that it's
+  not being used now but that it might be in the future. This latest
+  answer says that it's used for upgrading.
+
+- Does Confluence need a TCP port for sending email or could it use some
+  other mechanism?
+
+Thanks,
+Linus
+
+
+nordunet.support@eduix.fi wrote
+Wed, 30 Oct 2013 18:18:57 +0200 (EET):
+
+| New comment: Hello Linus,
+| 
+| - Yes it would be enought to have the ports reachable from
+| portal.nordu.net if you include the 8080 port as well. It would be
+| good to be able to connect to the 8080 port from fw.eduix.fi as well
+| though, as we use that when we're upgrading Confluence
+| 
+| - It isn't necessary to have the TCP port on cf-internal if you have a
+| dedicated SMTP server that can be used for sending mail from
+| Confluence but in this case we'd need to change the mail settings of
+| Confluence before getting rid of it. I think it will work if bound to
+| localhost but I'm not sure how to configure it so as someone else has
+| actually set it up.
+| 
+| Best regards,
+| Juha Leppälä
+| 
+| 
+| Request description: Hi Eduix,
+| 
+| I'm looking at cf-internal and have a couple of questions. If this is
+| not the right place for these questions, do you know whom to ask?
+| 
+| - It has Apache running on the http port (80/tcp). What is it used for?
+|   From where does that service need to be reachable?
+| 
+| - What is SMTP (25/tcp) used for?
+| 
+| - There's a java process binding to ports 8005/tcp, 8009/tcp, 8080/tcp
+|   and 9009/tcp. What are they used for?
+| 
+| Thanks,
+| Linus
+| 
+| [Created via e-mail received from: linus@nordu.net]
+

@@ -1,0 +1,33 @@
+References: <20140107021702.7140.81609.idtracker@ietfa.amsl.com>
+	<CAL02cgRsBQNYd2n05548ZbK-ciPkSNJ=U2V0iv+080p9-1gQbA@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:INBOX.lists.ietf.perpass" 1411)
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-01
+To: Richard Barnes <rlb@ipv.sx>
+Cc: perpass <perpass@ietf.org>
+Subject: Re: [perpass] Fwd: New Version Notification for draft-barnes-pervasive-problem-00.txt
+From: Linus Nordberg <linus@nordberg.se>
+Date: Tue, 07 Jan 2014 15:59:00 +0100
+--text follows this line--
+Richard Barnes <rlb@ipv.sx> wrote
+Mon, 6 Jan 2014 21:24:18 -0500:
+
+| Comments welcome!
+
+3.  Reported Instances of Large-Scale Attacks lists US and UK
+intelligence services. While they indeed seem superior, should more
+reported attackers be mentioned?
+
+If so, it could mention Swedish intelligence services FRA, based on
+[REUTERS-SE] and documents published by Swedish state television
+[SVT-UG].
+
+It could perhaps mention France too, based on [GUARDIAN-FR]. People with
+more local knowledge might be able to verify if there's any substance to
+the claim. Should it mention German, Spanish and Dutch intelligence
+services too, based on [GUARDIAN-EU-ALLIES]?
+
+[REUTERS-SE] http://www.reuters.com/article/2013/12/05/us-sweden-spying-idUSBRE9B40AG20131205
+[SVT-UG] http://www.svt.se/ug/read-all-articles-in-english
+[GUARDIAN-FR] http://www.theguardian.com/world/2013/jul/04/france-electronic-spying-operation-nsa
+[GUARDIAN-EU-ALLIES] http://www.theguardian.com/uk-news/2013/nov/01/gchq-europe-spy-agencies-mass-surveillance-snowden
+

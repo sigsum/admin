@@ -1,0 +1,30 @@
+X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.talk" 10150)
+References: <N1-Fy4bEakjAA@Safe-mail.net>
+	<CAKDKvuzSCbcVczFrbZQ1DxBCB6diptnfKTLaLyWZTcUUaEUJmA@mail.gmail.com>
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-09
+To: tor-talk@lists.torproject.org
+Subject: Re: [tor-talk] NSA has cracked web encryption!
+From: Linus Nordberg <linus@nordberg.se>
+Date: Tue, 10 Sep 2013 07:26:23 +0200
+--text follows this line--
+Hi Nick,
+
+A couple of sentences got cut off in that interesting post of yours.
+
+|    * Dubious stuff in NIST standards. Everybody's pointing at that
+| Dual_EC RNG, but other stuff will be getting a lot of cryptographer
+| scrutiny.  What isn't broken may often be found to be deliberately
+
+Here's one.
+
+|    * The commercial CA world is possibly a house of cards.
+|    * Operating system RNGs are a black hole of stupidity. On the one
+| hand, entropy collection really ought to be an OS function.  On the
+| other hand,
+
+Here's another.
+
+| Also, RSA1024 and DH1024 are *not* what folks ought to be using
+| nowadays.  (See that article where a guy who knows how to use   So
+
+And here.

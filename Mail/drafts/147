@@ -1,0 +1,24 @@
+Gcc: nnimap+adb-centralen:INBOX.sent-mail.2013-08
+To: Ralf Paffrath <paffrath@dfn.de> 
+cc: stefan.winter@restena.lu 
+Subject: Proxy-State patch
+From: Linus Nordberg <linus@nordberg.se>
+Date: Wed, 28 Aug 2013 14:12:40 +0200
+--text follows this line--
+Hi Ralf,
+
+Since you've been working on fixing the Proxy-State issue, can I ask you
+to try out branch proxy-state in the public repo [1] and see if it does
+what the standard says we should do?
+
+If possible, please do _not_ use --enable-experimental-dyndisc for these
+tests. I have reason to believe that you might be happy without them,
+now that Fabian Mauchles patches are in.
+
+I'm planning on releasing 1.6.3 before the end of the week. If this
+works in your setup, I feel much more confident about letting other
+people test it.
+
+Thanks!
+
+[1] http://git.nordu.net/?p=radsecproxy.git;a=snapshot;h=refs/heads/proxy-state;sf=tgz

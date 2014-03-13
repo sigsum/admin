@@ -1,0 +1,21 @@
+References: <20140211191116.30042.73681.idtracker@ietfa.amsl.com>
+	<005101cf275d$65725ff0$30571fd0$@augustcellars.com>
+X-Draft-From: ("nnimap+adbc:ietf.abfab" 1960)
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-02
+To: "Jim Schaad" <ietf@augustcellars.com>
+Subject: Re: [abfab] FW: New Version Notification - draft-ietf-abfab-arch-11.txt
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+(Off list.)
+
+- s/the ability to support channel binding those cses where/the ability to support channel binding in those cases where/1
+
+- maybe s/needs to validate it is talking to the correct RP/needs to validate that it is talking to the correct RP/1
+
+- s|http://www.eduroam.org|https://www.eduroam.org/1
+
+- s/I-D.ietf-radext-dtls/RFC6614/g
+
+- s/was"/was/1
+
+- s/from the IDP to the RP/from the IdP to the RP/1
