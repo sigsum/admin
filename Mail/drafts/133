@@ -1,0 +1,36 @@
+References: <07af01cf2cdd$761361d0$623a2570$@augustcellars.com>
+	<87vbw4pfwm.fsf@nordberg.se>
+	<029e01cf3183$9b1f99d0$d15ecd70$@augustcellars.com>
+X-Draft-From: ("nnimap+adbc:INBOX" 78251)
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-02
+To: "Jim Schaad" <ietf@augustcellars.com>
+Cc: <draft-linus-abfab-ephemeral-keying@tools.ietf.org>,  <abfab@ietf.org>
+Subject: Re: [abfab] Comments on draft-linus-abfab-ephemeral-keying-00
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+"Jim Schaad" <ietf@augustcellars.com> wrote
+Mon, 24 Feb 2014 09:12:32 -0800:
+
+| > | Section 2.2 - Passive observers may also be able to fingerprint the
+| > | client based on TLS restart information.
+| > 
+| > What does "TLS restart" mean in this context? Do you mean a RadSec client
+| > re-establishing a torn down connection? Or maybe TLS renegotiation?  Or,
+| > most probably, something third that I'm not familiar with?
+| 
+| Something else - TLS Session Resumption using server State or PAC (see
+| sections 3.2.1 and 3.2.2 of draft-ietf-emu-eap-tunnel-method)
+
+I see. Interesting. Thanks.
+
+
+| > | Section 2.3 - This should include exposing the realm of the user (or
+| > | the full user name in bad implementations).
+| > 
+| > Do you refer to the "Mechanism Name", as described in RFC7055 section 3.1.
+| > or is user realm (and possibly name) carried somewhere else?
+| 
+| I was referring to exposing the user name, for those cases where people
+| don't either tunnel it or don't truncate it to just the realm in the initial
+| EAP message sent to the acceptor.
+

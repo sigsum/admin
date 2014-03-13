@@ -1,0 +1,21 @@
+References: <CAKDKvuyMR3O7j2_W_PXKNA0cEDMop23BNNfbSBsbBiuFBSKpVg@mail.gmail.com>
+	<CAKDKvuxGryxYvuxO6TrkSMxvs1jWSZjC8GY8WAMj6dVKLeE6Pg@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:INBOX.lists.tor.assistants" 26511)
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-03
+To: Nick Mathewson <nickm@torproject.org>
+Cc: Tor Assistants <tor-assistants@lists.torproject.org>,  Adam Langley <agl@google.com>
+Subject: Re: [tor-assistants] [DRAFT, PLEASE REVIEW] Some initial notes on the "Triple Handshake" attack and Tor
+Reply-To: tor-assistants@lists.torproject.org
+From: Linus Nordberg <linus@torproject.org>
+--text follows this line--
+Nick Mathewson <nickm@torproject.org> wrote
+Mon, 3 Mar 2014 15:24:44 -0500:
+
+| Fortunately, I don't think this assumption can't be used to attack the
+| v3 link protocol, since before the client will sent any such signed
+| authentication statement, it insists on getting authentication from
+| the server, in the form of a certificate chain leading from the
+| server's identity key $S to the the key used for the TLS connection.
+
+s/can't/can/1
+s/sent/send/1

@@ -1,0 +1,28 @@
+From: Linus Nordberg <linus@nordu.net>
+To: noc@nordu.net
+Cc: Linus Nordberg <linus@nordu.net>
+Subject: Re: Jabber trouble today?
+Organization: NORDUnet A/S
+References: <87lhwi4efl.fsf@nordberg.se> <531D8306.2020703@nordu.net>
+X-Draft-From: ("nnimap+ndn:INBOX" 48482)
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-03
+In-Reply-To: <531D8306.2020703@nordu.net> (NUNOC's message of "Mon, 10 Mar
+	2014 10:16:54 +0100")
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Date: Mon, 10 Mar 2014 09:21:37 +0000
+--text follows this line--
+NUNOC <noc@nordu.net> wrote
+Mon, 10 Mar 2014 10:16:54 +0100:
+
+| On 2014-03-10 09:59, Linus Nordberg wrote:
+| > Hi,
+| >
+| > I seem to have some trouble connecting to jabber today (STARTTLS on
+| > jabber.nordu.net:5222). Anything known? (Might be my end, ofc.)
+| >
+| 
+| We suspect something is wrong with the kerberos backend... I bumped
+| ejabberd and my client and its working for now. However we still see
+| intermittent problems
+
+Thanks. I was able to connect now.

@@ -1,0 +1,33 @@
+From: Linus Nordberg <linus@nordu.net>
+To: pettai@nordu.net 
+Subject: Eduroam-problem
+Organization: NORDUnet A/S
+User-Agent: Gnus/5.13 (Gnus v5.13)
+X-Draft-From: ("nnimap+ndn:INBOX")
+Date: Fri, 28 Feb 2014 17:21:27 +0000
+--text follows this line--
+Hej Fredrik!
+
+För ca 1,5 vecka sedan försökte jag ansluta till eduroam (på island,
+reykjaviks universitet) men misslyckades.
+
+Jag provade följande kombinationer utan lycka:
+
+PEAP;MSCHAPv2;linus/ppp: no
+PEAP;MSCHAPv2;linus: no
+PEAP;GTC;linus/ppp: no
+PEAP;MD5;linus/ppp: no
+TTLS;MSCHAPv2;linus/ppp: no
+TTLS;MSCHAPv2;linus: no
+TTLS;MSCHAP;linus/ppp: no
+TTLS;MSCHAP;linus: no
+TTLS;PAP;linus/ppp: no
+TTLS;CHAP;linus/ppp: no
+TTLS;CHAP;linus: no
+
+Jag kör Debian. Har du något tips?
+
+Jag är nämligen i London nu och ser eduroam på hotellet och
+hotellnätverket är som hotellnätverk brukar vara. Skulle vara mycket
+användbart! (Särskilt just nu när hotellet hatar på mitt master card så
+hårt att jag inte får internet av dom, heh.)
