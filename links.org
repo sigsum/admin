@@ -1,3 +1,47 @@
+ietf pm perpass review http://trac.tools.ietf.org/group/ppm-legacy-review/
+readme snowden nsa people:susanlandau http://www.computer.org/cms/Computer.org/ComputingNow/pdfs/HighlightsFromMakingSenseOfSnowdenPartII.pdf
+snowden nsa people:susanlandau http://www.computer.org/cms/Computer.org/ComputingNow/pdfs/MakingSenseFromSnowden-IEEESecurityAndPrivacy.pdf
+x60 https://media.ccc.de/browse/congress/2013/30C3_-_5529_-_en_-_saal_2_-_201312271830_-_hardening_hardware_and_choosing_a_goodbios_-_peter_stuge.html
+readme nsa https://firstlook.org/theintercept/article/2014/03/12/nsa-plans-infect-millions-computers-malware/
+tor swedish https://www.idg.se/2.1085/1.550552/cyberkriminalitet-pa-tor---frihetens-pris
+readme sweden freedomofspeach http://jinge.se/allmant/yttrandefriheten-och-demokratin-minskar-i-sverige.htm
+readme TTIP https://ttipfakta.wordpress.com/
+FRA law GCHQ NSA https://christianengstrom.wordpress.com/2014/03/11/nu-vet-vi-varfor-fra-lagen-var-sa-viktig-for-reinfeldt/
+ddos sweden swedish http://www.journalisten.se/nyheter/tvingas-stanga-sajt-efter-attacker
+ietf89 notes pawal https://gist.github.com/pawal/9484166
+integrity swedish people:bylund http://www.etc.se/debatt/livet-pa-natet-ar-ocksa-irl
+surveillance oakland protest dac http://pando.com/2014/03/07/the-google-military-surveillance-complex/
+rng paper http://eprint.iacr.org/2014/167
+readme lang:german x60 people:stuge http://www.spiegel.de/netzwelt/web/hardware-hacker-wie-man-einen-laptop-vor-angreifern-schuetzt-a-955702.html
+bsp linux fpga microsemi smartfusion2 http://emcraft.com/products/255
+arduino shop http://www.lawicel-shop.se/
+snowden libe eu https://www.techdirt.com/articles/20140307/05485226476/snowden-gives-testimony-to-european-parliament-inquiry-into-mass-surveillance-asks-eu-asylum.shtml
+robot drum rythm video https://www.youtube.com/watch?v=_RyodnisVvU
+hexbright http://community.hexbright.com/New
+funny cryptech dol https://cryptech.is/pipermail/tech/2014-February/000069.html
+funny cryptech dol https://cryptech.is/pipermail/tech/2014-February/000080.html
+cryptokids ctf https://picoctf.com/
+readme tor botnet http://news.techworld.com/security/3505255/tor-network-used-to-hide-900-botnets-and-darknet-markets-says-kaspersky-lab/
+rbl http://www.anti-abuse.org/multi-rbl-check-results/?host=193.10.5.87
+network research presentation video http://ietf89.conf.meetecho.com/index.php/Recorded_Sessions#wed
+ietf ml archive https://mailarchive.ietf.org/arch/
+readme presentation http://www.edwardtufte.com/tufte/books_pp
+readme privacy https://en.wikipedia.org/wiki/Private_information_retrieval
+readme crypto detection https://people.csail.mit.edu/rivest/RivestShamir-HowToExposeAnEavesdropper.pdf
+tor hs press https://www.securelist.com/en/blog/8187/Tor_hidden_services_a_safe_haven_for_cybercriminals
+gnunet bibliography https://gnunet.org/bibliography
+curve25519 http://cr.yp.to/ecdh.html
+security tls https://www.imperialviolet.org/2014/03/03/triplehandshake.html
+nsa ietf igoe cfrg crypto http://permalink.gmane.org/gmane.ietf.irtf.cfrg/2154
+cameron uk porn filtering http://www.theguardian.com/uk-news/2014/mar/03/special-advisor-pm-arrested
+tls security attack https://secure-resumption.com/
+hw arm http://www.hackster.io/janost/catweazle-mini
+bitcloud http://bitcloudproject.org/w/Main_Page
+bitcloud tahoe lafs https://github.com/wetube/bitcloud/commit/show/ec12a5bf31294b3ddcae3f06a666d640762384d4/26183c5#diff-26183c501de524758019269c9b7d2629
+strint meetingminutes http://www.w3.org/2014/02/28-strint-minutes.html
+strint meetingminutes http://www.w3.org/2014/03/01-strint-minutes.html
+onionrouting https://datatracker.ietf.org/doc/draft-pouwelse-perpass-shadow-internet/
+perpass attack taxonomy http://down.dsg.cs.tcd.ie/strint-slides/s1-threat.pdf
 penet cp history http://people.dsv.su.se/~matsw/survey1_fulltext.html
 penet cp history http://groups.csail.mit.edu/mac/classes/6.805/articles/anonymity/short-pieces/finland-feb21.txt
 cryptech ml https://cryptech.is/mailman/listinfo/commits

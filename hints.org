@@ -30619,6 +30619,9 @@ tft_brightness = 0xa0
 first_battery = Secondary
 bluetooth = Disable
 ** notes
+** annoying high frequent noise
+Try passing idle=halt to the kernel.
+Should increase power consumption but shut the noise off.
 * bios-extract
 bios-extract will pull apart factory.bin files
 
@@ -31093,6 +31096,7 @@ identica and tumblr were my only applications, both had read+write
 - amazon (kindle) -- fiu green, fiu@4711.se, Mahoou6
 - electroworld.se -- ln@4711.se, funghu5ew
 - mojang -- RRR0gn0tudju! (typ)
+- lawicel-shop.se -- ln5 / 33pGXHlmVxQj
 * mat
 nom nom, 2 port
 
@@ -31806,6 +31810,7 @@ Wrote /home/linus/News/drafts/drafts/2
 - gnutls handling is found in [[file:~/usr/src/emacs-24.3/lisp/net/gnutls.el::(cl-defun%20gnutls-negotiate][gnutls-negotiate]] which "calls out" to
   [[file:~/usr/src/emacs-24.3/src/gnutls.c::DEFUN%20("gnutls-boot",%20Fgnutls_boot,%20Sgnutls_boot,%203,%203,%200,][gnutls-boot()]].
 * jake on privacy and power
+** elevate.at 2013
 http://2013.elevate.at/festival/ueber-das-festival/newsmagazin/detail/news/jacob-appelbaum-elevate-open-everything/
 
 (Javascript only, so here's the text.)
@@ -31910,6 +31915,17 @@ life - than Ed Snowden."
 And there could not be a better example of the twin concepts of
 privacy and liberty than a man denied the latter for exposing the
 former.
+** re:publica 2012
+- why are we buying into this? part of it is the emotional argument
+- people feel they lack agency and don't contextualize that their
+  curtains are privacy devices
+- if you don't know about tor and similar, you might rationalize that
+  i'm not important
+- representatives under total surveillance
+- take the zeta cartell, send the post privacy people to mexico with
+  a bunch of money and let them talk about post privacy
+- 
+
 * books
 ** murder in sammarkand, craig murray
 - [X] "The thing with tyranny is that, if you don't try to fight it when it starts, it very quickly gets too strong for you." C. Murray
@@ -32557,16 +32573,30 @@ julf@penet.fi
 - sus: vi har inte rekommenderat ngn speciell tjanst
 * presentations, creating them
 ** Emacs org mode
-Generating a PDF from an org mode file requires pdflatex(1).
+Generating a PDF from an org mode file requires pdflatex(1) and some
+extra fonts:
+
+  apt-get install latex-beamer texlive-latex-extra texlive-fonts-recommended
 
 Use '#+LaTeX_CLASS: beamer', possibly by invoking
 M-x org-insert-beamer-options-template
-
-apt-get install latex-beamer texlive-latex-extra texlive-fonts-recommended
 
 An example can be found in [[file:ietf/IETF89/abfab-ephem-keying-ietf89.org][file:~/Persistent/linus/ietf/IETF89/abfab-ephem-keying-ietf89.org]]
 
 For scaling images, imagemagick can be used
 
 apt-get install imagemagick
-convert IMG_2749.JPG -resize 10% envelope.png
+convert IMG_2749.JPG -resize 25% envelope.png
+* misc
+pgp fp for rhys: 8B16 77D6 5423 DB5C FD53 1999 4CD8 CFC4 4638 C985
+pgp fp for adam bishop: e75b1f926407dfdf9f1cbf10c99325046609d460
+
+* lawicel
+** [[gnus:nnimap%2Badbc:INBOX#0E9248B096194D0DA2BA71472E9B91D8@INTSERV7B][order 35657]] <2014-03-10 Mon>
+Ordernr:  35657                   Datum:  2014-03-10 09:30
+Summa totalt: SEK  3057,00
+Betalt 2013-03-11.
+** [[gnus:nnimap%2Badbc:INBOX#D72210FDF2C346A2BC0A7DB173894FB1@INTSERV7B][order 35673]] <2014-03-10 Mon>
+Ordernr:  35673                   Datum:  2014-03-10 22:43
+Summa totalt: SEK  1700,10
+Betalt 2013-03-11.
