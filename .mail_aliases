@@ -140,6 +140,7 @@ alias dfri-d                    dfri-dfri
 alias dfri-dfri                 dfri@dfri.se
 alias dfri-noc                  noc.dfri
 alias dfri-tech			dfri-noc, pawal
+alias dkg                       dkg@fifthhorseman.net
 alias dol                       "Василий Долматов <dol@reedcat.net>"
 alias dr			dr@4711.se
 alias drwhax                    drwhax@2600nl.net
@@ -178,6 +179,7 @@ alias ewa                       ewa_bjorkeson@hotmail.com
 alias fabbe             	fabbe@hbernstone.se
 alias faidon                    "Faidon Liambotis <paravoid@debian.org>"
 alias fia               	fia@hbernstone.se
+alias fia.jobb                  sofia.bernstone@arkdes.se
 alias fifab			fifab@hbernstone.se
 alias figge			figge.priv
 alias figge.priv		"Carl Fredrik Wettermark <figgewettermark@gmail.com>"
@@ -294,6 +296,7 @@ alias jn			jn.9999
 alias jn.sentor			johan.nilsson@sentor.se
 alias jn.tor			tor@fejk.se
 alias joachim			joachim@secworks.se
+alias job                       "Job Snijders <job.snijders@hibernianetworks.com>"
 alias joe                       "Joe McNamee <joe.mcnamee@edri.org>"
 alias joel                      "Joel Purra <mig@joelpurra.se>"
 alias johan.berggren		"Johan Berggren <jbn@nordu.net>"
@@ -346,8 +349,10 @@ alias karsten.priv		karsten.loesing@gmx.net
 alias kattpappan                kenta.macken
 alias kel                       "Kelley Misata <kelley@torproject.org>"
 alias kent.engstrom		kent.engstrom@LIU.SE
+alias keithw                    "Keith Winstein <keithw@mit.edu>"
 alias kenta.macken              "Kent Sjöberg <kent@laboefashion.se>"
 alias kirsten                   "Kirsten <kirsten.fiedler@edri.org>"
+alias klaas                     "Klaas Wierenga <kwiereng@cisco.com>"
 alias klamberg                  mark.klamberg
 alias klaus.eduix               klaus.nylamo@eduix.fi
 alias klaus.layer               "Klaus Layer <klaus.layer@gmx.de>"
@@ -489,6 +494,7 @@ alias nate			nathaniel
 alias nathan.guardian           Nathan of Guardian <nathan@guardianproject.info>
 alias nathaniel			"Nathaniel McCallum <npmccallum@redhat.com>"
 alias nathan                    "Nathan Freitas <nathan@freitas.net>"
+alias nemo                      "Nemo Ekström <nemo@31173.se>"
 alias nick.mit			nickm@alum.mit.edu
 alias nick			nick.tor
 alias nick.tor			"Nick Mathewson <nickm@torproject.org>"
@@ -515,6 +521,7 @@ alias olle.riksnet		olle.risberg
 alias olle.risberg		"Olle Risberg <olle@riksnet.se>"
 alias olof.hagsand              olof@hagsand.se
 alias oscar                     oscar@bahnhof.se
+alias osman                     "Osman Kibar <osman.kibar@dn.no>"
 alias ot                        "Ot van Daalen <ot.vandaalen@bof.nl>"
 alias paf			patrik@frobbit.se
 alias palle			palle.torsson@gmail.com
@@ -700,6 +707,7 @@ alias victor			"Victor Reijs <victor.reijs@heanet.ie>"
 alias vidar                     "Vidar Bergan <vidar@stomneverkstader.se>"
 alias vmon                      vmon@riseup.net
 alias wallberg			"Hans Wallberg <hans.wallberg@umdac.umu.se>"
+alias walter                    FIXME
 alias weasel                    "Peter Palfrader <peter@palfrader.org>"
 alias wendy			"Wendy Seltzer <wendy@seltzer.org>"
 alias wictorin                  wictorin.its
