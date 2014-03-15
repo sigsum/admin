@@ -10,34 +10,25 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
    - - nightly TBB build scripts published
-   - o radsecproxy request about json replied to
    - - [[*Dev][libradsec cert file handling]]
    - - [[https://www.imperialviolet.org/2014/03/03/triplehandshake.html][triple-way handshake]] writeup sent to the radsecproxy ml
      no renegotiation, right? or is it resumptino? no channel binding at least
    - - gcov support in make test-network / chutney
    - - review of #9729 done https://github.com/kdmurray91/kdm-tor/tree/tik9729tests
-   - o boklm's TBB nightlies purging script deployed
-     https://github.com/boklm/prune-old-builds
    - - tor-relay@ thread about relay with unreachable ipv6 orport handled:
      ticket created, email replied to
    - - do exits with an IPv6 exit policy really announce that when IPv6Exit=0?
    - - #10519
    - - #4345
 ** IETF
-   - o the [[file:ietf/ietf.org::*AP's][three STRINT AP's]] folded into this document
 ** Sysadm
 ** DFRI
-   - o postbox emptied [tue]
-   - o fripost informed about 1U availability
-   - o [[gnus:nnimap%2Badbc:INBOX#CAB5KTYEEOBm7euTZmaXVJiXL84MoSgjQ4FeV4h%3DEumcCT1vAGA@mail.gmail.com][HRMI email]] replied to
    - . TB contract rewritten
    - . membership handling outlined
      new file, not in git, mapping member number to email address
 ** Misc
-   - o sparvnastet membership fixed
    - - tor code review expanded in HACKING
    - - andrew and lise connected re DV
-   - o bosse and T connected
    - - basic HS client auth mitigating ralphs attack? [[file:~/usr/src/tor/src/or/rendservice.c::rend_service_introduce(origin_circuit_t%20*circuit,%20const%20uint8_t%20*request,][rend_service_introduce]]
    - - EHSM added to cryptech wiki
    - - trip report for 30c3 uploaded
