@@ -2640,7 +2640,27 @@ RFC2743 1.2.7: Per-Message Protection During Context Establishment
 * perpass
 [[file:~/usr/share/ietf/in-notes/rfc2804.txt]] IETF Policy on Wiretapping
 * STRINT 2014
-** papers
+** pub
+shaftsbury belle, 36-40 rupert street 
+** sessions
+*** cullen jennings on attack taxonomy
+http://down.dsg.cs.tcd.ie/strint-slides/s1-threat.pdf
+[[file:~/usr/share/ietf/internet-drafts/draft-barnes-pervasive-problem-00.txt]]
+*** break out on research
+- ekr: CRIME
+** AP's
+- Write a draft bringing the research from the [PETS] research
+  community, specifically the term linkability, to the IETF/IRTF. But
+  also see RFC6973. The idea is that other RFC:s would link to it
+  which would make other standardisations efforts would have to read
+  it.
+- Help George Danezis writing a draft on low hanging fruit wrt [static
+  bit-strings] in current protocols.
+- Help Runa with an informational draft explaining real world
+  observations about blocking connection attempts.
+** position papers
+https://www.w3.org/2014/strint/
+*** list
 - read-prio value; comments; title
 - 2 - 1: Privacy Protected Email
 - 2 - 2: Opportunistic Encryption for MPLS
@@ -2710,29 +2730,10 @@ Graph
 - 1 - 66: Opportunistic Keying as a Countermeasure to Pervasive Monitoring
 - 3 - 999: The Shadow Internet: liberation from Surveillance, Censorship and Servers
 
-** pub
-shaftsbury belle, 36-40 rupert street 
-** sessions
-*** cullen jennings on attack taxonomy
-http://down.dsg.cs.tcd.ie/strint-slides/s1-threat.pdf
-[[file:~/usr/share/ietf/internet-drafts/draft-barnes-pervasive-problem-00.txt]]
-*** break out on research
-- ekr: CRIME
-** AP's
-- Write a draft bringing the research from the [PETS] research
-  community, specifically the term linkability, to the IETF/IRTF. But
-  also see RFC6973. The idea is that other RFC:s would link to it
-  which would make other standardisations efforts would have to read
-  it.
-- Help George Danezis writing a draft on low hanging fruit wrt [static
-  bit-strings] in current protocols.
-- Help Runa with an informational draft explaining real world
-  observations about blocking connection attempts.
-* STRINT 2014 position papers
-https://www.w3.org/2014/strint/
-** Public logs
+*** my own ideas
+**** Public logs
 Scratching this jan 14 since benl is doing exactly this.
-*** Summary
+***** Summary
 There are certain types of data that is published on the internet and
 subsequently used for securing further communication or
 operation. Examples include public keys in X.509 certificates,
@@ -2746,7 +2747,7 @@ connections man-in-the-middled.
 This paper is meant as a starting point for a discussion about how
 public append-only logs can be used to increase the chance of
 detecting the tampering of crucial data at rest or in transit.
-*** some use cases
+***** some use cases
 Web clients trust x509 certificates signed by anybody who's got hold
 of a private key of a CA. [CT] addresses this by having CA:s and web
 site owners (i.e. customers of CA:s) submit their cert chains to one
@@ -2774,7 +2775,7 @@ fake consensus listing relays that are under your own control. DA:s
 could submit consensuses the produce (and votes they produce and
 receive). Clients could submit consensuses they see.
 
-*** Who submits to the logs?
+***** Who submits to the logs?
 Publishers can submit what they publish.
 
 How do users trust these particular log entries? In CT, the data has
@@ -2793,7 +2794,7 @@ logs.
 
 Reputation based system? requires authn (?).
 
-*** How CT does it
+***** How CT does it
 #. Publishers of certain types of data submit proofs of existence of
    their data to public append-only logs.
 
@@ -2805,7 +2806,7 @@ Reputation based system? requires authn (?).
 
 #. Auditors verify that logs don't lie about what's been submitted.
 
-*** [reusable?]
+***** [reusable?]
 Trusting data that's been delivered over an insecure network has never
 been a good idea. We've known this for a long time but didn't care
 that much. Recently published documentation of large scale attacks on
@@ -2836,7 +2837,7 @@ HTML code delivered to a browser. only slowly changing data or data
 changing under strict control? in cooperation with the publisher of
 data only?  we want protection against lying or pwned publisher.]
 
-*** Types of attacks
+***** Types of attacks
 In the case of computer programs verified with checksums, one attack
 is to change the checksum files at the point of distribution,
 typically a web server. Another is redirecting the user to an
@@ -2857,7 +2858,7 @@ copy of a majority of the authority identity or signing keys and sign
 a fake consensus listing relays that are under the control of the
 attacker.
 
-*** Use cases
+***** Use cases
 Examples of logs that could be used for this include Certificate
 Transparency (RFC6962) and the Bitcoin chains.
 
@@ -2868,386 +2869,6 @@ Example usage:
 4. pgp key (1y)
 5. otr key (1y)
 6. dnssec key (ksk 5y, zsk 1m)
-** Running tor exits
+**** Running tor exits
 [TODO: running tor exits is easy -- set up an organisation, download
 tor and off you go]
-* IETF89 London
-** Privacy guidance <2014-03-02 Sun> 15:00-16:50
-[[file:~/usr/share/ietf/in-notes/rfc6973.txt]] Privacy Considerations for Internet Protocols
-[[file:~/usr/share/ietf/in-notes/rfc3552.txt]] Guidelines for Writing RFC Text on Security Considerations
-** dnse BOF <2014-03-04 Tue> 14:20
-*** peter koch presents a problem statement
-- even if dns data is public an a sense, the fact that a person requests a particular name is not
-- moving SMTP into an encrypted channel (STARTTLS) hides into that is leaked over DNS
-- botnet mitigation by passive monitoring might be hurt when w encrypt dns
-*** ekr presents IPSEc and DTLS for DNSE (ekr is from Moozailla)
-- key handling is assumed to be solved (?)
-- client is anonumous (?)
-- handshake needs to get throught middleboses
-  - (D)TLS on the same port
-  - IPsec on a separate port
-- middleboxes might block ESP )IPsec)
-- warren (google?): don't forget anycast
-- handhsake latency
-  - problem for recursive resolver running locally
-  - tls might have 0-RTT in 1.3
-- servers do not care if you replay your query over and over again -- might be an argument for anohter, specific, procool
-- conclusion: DTLS might work, IPsec won't
-- [french guy]: there are two problems [which?] ekr: yes. dnscurve is one attempt to solve both
-- roy: forward secrecy and negotiatie while avoiding downgrade attacks. ekr: FS requries a roundtrip or _very_ short lifetimes on "normal  keys"; re downgrade: signed advertisements, [on more thing i missed]; re anonymity vs. privacy: web browssers are so bad so why care
-- ekr: stub reaolver case might work with IPsec
-- ekr: "dnscurve is basically SKIP"
-- dkg: padding needed because of traffic analysis
-- [resolvers: stub -> recursive -> authoritative]
-- DNScurve protects resolver <-> authserv
-*** stephane bortzmeyer (AFNIC) presenting existing solutions to dns encryption
-dtls: [missed this]
-
-dnscurve:
-dnscurve protects resolver <-> authserv. key is found in the delgation
-dnscrypt protects stub resolver <-> resolver. key is manual
-pros: implemented; cons: little deployment, change control prolbmes (bc djb is complicated)
-pwouters: this is dns to a vpn server and we already can do that 
-
-there are more that will be presented [soon]
-*** open mic
-- ekr: TLS won't probably bother hiding stuff in SNI undless DNS also does "this" (encrypting)
-- ted: as a customer, boy do i want this, and i want SNI too.
-- another ted: apple has already done [something], see RFC 6281
-*** nlnet labs present draft-wijngaards-dnsop-confidentintaldns-00
-[[file:~/usr/share/ietf/internet-drafts/draft-wijngaards-dnsop-confidentialdns-00.txt]]
-*** T-DNS presented by duane
-- new EDNS0 bit "TO" meaning "hey let's upgrade this connections to TLS"
-- draft-hzhwm-start-tls-for-dns09
-- T-DNS: connection-oriented DNS to improve privacy and security
-** TLS <2014-03-04 Tue> 16:10
-(Sitting behind a Sue Leicht, NSA. According to blue sheets. She is taking notes on paper.)
-- ekr: right approach on mac-then-encrypt is encrypt-then-mac [[file:~/usr/share/ietf/internet-drafts/draft-gutmann-tls-encrypt-then-mac-05.txt]]
-- benl: standing in for adam langley
-  - middle boxes do downgrade, so we wanna do [CFRG ?] and so we did
-    it last firday and it didn't break anything
-- chacha replacing rc4
-- stephen kent on  explicit independent IV
-- ekr: arguments against: [didn't catch], second is unclear abt the modulo
-- CFRG -- crypto group -- has been asked to provide an update on chacha poly1305
-  - the chair who is not kevin m. igoe (the nsa person) presents
-  - chacha20 should not be used as a stream cipher, according to a number of people
-  - very few hummed yesterday with doing chacha20 and oly1305 -- not suited to respond
-  - cfrg conclusion on new ecc:
-    - focus on doing _one_ new curve family
-    - aim for resuability beyond TLS (SSH, IKE, ...)
-  - paul hoffman: i heard "let's not do five montgommery" in the room, not the thing you're saying
-  - ekr: [something]
-  - russ: [something]
-  - sean: [something]
-*** strengthening Master Secrets
-This is https://secure-resumption.com/
-Slides presented: [[http://www.ietf.org/proceedings/89/slides/slides-89-tls-3.pdf][slides-89-tls-3.pdf]]
-- SASL and other protocols have some sort of channel binding (page 6)
-- TLS reneg and SASL uses "verify data" [?] for the cid (client identifyer)
-- cid (client) and cid' (server) must _NOT_ be the same
-- if M can ensure that the master secrets on the both connections are the same [missed the rest]
-- the master secret is not a good cid
-- triple handshake attack 2 breaks CB in SASL (SCRAM, GS2)
-- root probelm is at the first establishment -- the master secret is not bound to the security context
-  e.g. does not depend on client+server certificates
-  if we make the master secret a good session identifier, tls-unique and reneg indication will be fixed
-- proposal: compute a session hash for full hadnshakes and add that hash to the master secret derivation
-  hash over all the data in the handshake, up to and including clientKeyExchange
-- stefan santesson (?) 
-- dkg: hiding SNI is doing initial connection and pass an SNI in renegotiation
-- dkg: if we has ways of negotiating DH groups, we could [fix foo]
-- mrex (through stpeter): [something about how do you get the master
-  key?] A: there are API:s [?]
-
-*** ekr on 1.3
-(can't find the slides)
-- encrypt as much as possible
-- new handshake flows
-- basic assumptions
-- anon DH to protect the SNI
-- the need for resumption is declining because of faster machines
-- 1RTT handshake assumes knowledge of server key
-- benl: why is the server hello not encrypted? ekr: you could do that, you would need some cleartext indicator but yes
-- russ: two DH? yes. russ: cost for additional DH than [?]. not cheap. ekr: ECDHE is not too expensive. 
-- ekr: we have a triangle here: complexity, privacy, performance
-- dkg: client fingerprinting issue; ekr: [something]; dkg: first:
-  server somethin, third party; ekr: if client gets unique state, the
-  client [something]; dkg: you could [small set]; ekr: yes, reasonable
-- ppl sad about so many modes (variant 1 -- naive client)
-- almost all the complexity comes from protecting the SNI
-- should we try to protect SNI?
-  - ted: yes we should and i prefer this to be the only mode, i.e. always on
-  - dkg: same as ted [and also a push back that i didn't get]
-  - hoffman: hiding SNI is only beneficial to the client
-- 0RTT handshake
-  - we want freshness from both sides, we typically use nonces
-  - server memorizes client nonces, can use timestamp [orbit?] and say i accept tokens from the past hour, f.ex.
-  - comparing this with the mixmaster design
-  - soft state, a lot of work for the server, only useful for a couple of applications
-  - won't have PFS for [?]
-  - application data is being sent in the very first packet cli->server
-  - server data gets PFS but the client data doesn't
-  - why 0-RTT? latency
-  - compare tcp fastopen, it's a trend
-  - it's a bit of assymetry between TCP and TLS
-  - opt in
-  - increased complexity
-  - russ: confused about screw PFS for 0RTT, but earlier you said get rid of RSA bc PFS
-  - RSA is complicated because of two modes and use of the key for two things [if i understood this]
-  - q: have to use 0RTT judiciously? yes, so don't do this with DH keys with long lifetime (1h, 24h)
-  - no strict line between PFS and "partial FS"
-  - hoffman: close to perfect is in a sense perfect (in the context to forward secrecy)
-- deprecating "static RSA keys"
-  - hum says remove it
-- removing compression in tls1.3
-  - hum says remove it
-- symmetric cipher deathmatch
-  - only adad ciphers? allow block and stream ciphers as well? hum says former.
-  - new hum: who needs more info: weaker hum than "only adad".
-- dkg: should fix UI for client auth
-- tompson (?) (on of the http guys): [something about names]
-- derek atkins: this room can't answer the question wether our changes will break peoples applications?
-
-** IRTF <2014-03-05 Wed> 09:00
-https://datatracker.ietf.org/meeting/89/materials.html#irtf
-http://www.ietf.org/proceedings/89/agenda/agenda-89-irtfopen
-*** kevin igoe
-2013-12-20 Trevor Perrin requested Kevin Igoe be removed
-2014-01-07 Lars Eggerts decided to take no action
-2014-01-07 Trevor Perrin took it to the IAB
-2014-01-24? IAB decided to take no action
-
-atkinson: trevor perrins four arguments should be called claims or
-allegations
-*** applied networking research prize
-was dealt out to kenny paterson
-*** kenny paterson on BEAST, CRIME, Lucky 13 and TLS
-**** Intro to TLS
-- sslv2 is still widely supported, like 30% of the top alexa sites still support it
-- IETF rebranded SSL to TLS, TLS1.0 is really SSLv3 1999
-- TLS1.1 2006
-- TLS1.2 2008
-- nowadays used also for back-end operations for google, yahoo
-- BEAST, CRIME, Lucky all attacks against symetric crypto , the
-  records
-- reneg 2009 and triple handshake attack (inria)
-- implementations and their bugs -- apple "goto fail", "why even
-  mallory love android", "the most dangerous code in the world"
-- more attention creates "a virtuous cycle" which makes TLS better
-- simplified view of TLS:
-  - handshake protocol: 1. negotiatioe
-    ciphersuite; 2. authenticate; 3. establish keys used in the record
-    protocol
-  - record protocol: confidentiality and authenticity (and more) of
-    application layer data using keys from handshake protocol
-  - renegotiation -- running the handshake protocol -- can be done
-    within the record protocol
-  - resumption can also be done, "ligthweight [something]"
-- MAC-encode-encrypt
-- encrypt(payload | MAC tag | padding (for CBC mode AES))
-- the MAC is over headers and the payload but not over the padding
-- MAC choices: HMAC-MD5, -SHA1, -SHA256
-- Encrypt: CBC-AES128, -AES256, -3DES, RC4-128 (broken stream cipher)
-- tls record protocol: AE "authenticated encryption" (GCM and CCM) 
-- only 28% of the browsers supported tls1.1 or higher in feb 2014 (it's better now)
-- tls1.2 is required for AE
-- CRIME and BEAST
-  - duong and rizzo in 2011, not "normal researchers" but more black hats
-  - non-random IV -- last block of the last message
-  - full text retreival attack
-  - in 1995 there was a draft by rogaway explaining this attack
-  - fixed used "record splitting", and it's _almost" defensible tot
-    use CBC mode in tls1.0
-  - many "experts" recommended moving to rc4
-- tls1.1 and 1.2 already used random IVs
-- CRIME [missed most of this]
-  - fixed by switch off TLS compression
-  - application layer compression is still problematic
-- Lucky 13
-  - padding should be 1-256 octets on the pattern of "00" or "01 01"
-    or "02 02 02" or ... or "FF FF ... FF"
-  - it's not predictability of the padding that's the problem
-  - because of other attacks (in 2002 by [wolumolu]), you must check
-    the padding
-  - rich salz: what's "encode"? it's concatinating all the things
-  - padding oracles
-    - use a timing side-channel -- if the padding was bad you didn't
-      bother checking the MAC and the operation would take shorter
-      time
-- multi-session attack
-  - each trial cause a fatal error and TLS session termination
-  - moder viewpint: use BEAST-style malware and target HTTP cookies
-- padding oracle attack
-  - 2ms diffference for long messages
-  - recovery of outlook passwords in about 3 hours (bc outlook
-    authenticated whenever the user touched a new mailbox)
-- possible solutions
-  - let's do pad-mac-encrypt or pad-encrypt-mac
-  - switch to rc4
-  - fix the timing leakage -- problem is when the pading is erroneous,
-    what to MAC over? ok, you can guess (and the RFC suggests)
-- lucky13 attacks openssl and gnutls succesfully
-- started dec 2011, key breakthrough in mar 2012 (+4 months)
-- attack publicly disclosed 2013-02 (+18 months)
-- lucky13 plaintext recovery
-  - we have IV + two blocks we don't care about plus Ct-1 and Ct
-  - XOR 2-byte delta in Ct-1 and submit for decryption (goes into the
-    next turn)
-  - outcome is one of three cases
-    - case 01 01: 13+16+16+10=55 bytes payload and then 20 bytes MAC
-      plous "0101" padding => 4 SHA-1 operations
-    - case "00" 56 bytes payload => 5 SHA-1 operations
-    - case bad padding: 57 bytes payload => 5 SHA-1 operations
-    - the difference between 4 and 5 SHA-1 operations gives a timing
-      signal, which is the basis of the attack
-  - typically 1microsecond is the signal, achievable through a couple
-    of switches
-- noisy attack, needs 2^16 attempts to try all 2-byte delta values
-- the headline attack cost is 2^23 sessions, all encrypting the same
-  plaintext
-- combined with BEAST though, you get down to 2^13 GET requests per
-  byte in a cookie
-- constant time decryption for TLS-CBC
-  - add dummy hash copmression function computations
-  - add dummy padding checks
-  - watch out for length santiy checks
-  - agl's patch to openssl to do this is 500 lines of C code,
-    i.e. complicated stuff
-- rc4
-  - no padding (bc stream cihper)
-  - rc4 is broken though
-  - plaintext recovery attacks using BEAST technology totally doable
-  - heatmap of all the biases in rc4 at page 53 in the presentation --
-    red dot means higher probability, see the red line in the bottom,
-    and the x=y line and other spurious dots
-- cbc-mode is tired
-- state
-  - rc4 is dead
-  - aes-based slow w/o AES-NI
-  - aes-gcm hard to implement
-  - salsa20/chacha20 plus poly1305 mac is quite new
-- q: re using gcm securely, what's the problem?
-- need more review
-- tls current status (dead parrot, no he's just resting)
-- thanks nadhem alfardan, djb, pettering schuldt; stephen farrell
-**** BEAST and CRIME
-**** Lucky 13 and RC4
-**** Current/future devleopments in TLS
-*** keith winstein about transport architectures for an evolving internet
-MIT, Boston, going by car recording network metrics and taking the
-data home to the lab.
-
-Sprout is one of the algorithms.
-
-Pretty impressive emulator showing how TCP is unfair and that another
-algorithm (RemyCC) is far more fair. Impressive tool.
-
-RemyCC is designed by a computer program. I _think_ that RemyCC is
-end-to-end as opposed to "the other ones" and that it beats lots of
-them in many environments.
-
-Cool measurement based results.
-
-cellshell (packaged in Debian?) is the name of [one of?] their tools
-for showing how traffic is being run over an emulated network based on
-measurements as per above.
-** Privacy reviews
-huitema on dhcp identifiers
-bortzmeyer -- dns privacy problems statements
-iab privacy reviews
-
-*** review of proposals of putting keys in DNS (DANE)
-[[file:~/usr/share/ietf/internet-drafts/draft-wouters-dane-openpgp-02.txt]]
-file:~/usr/share/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt
-[[file:~/usr/share/ietf/internet-drafts/draft-hoffman-dane-smime-04.txt]]
-^-- is in -06 now, it seems
-https://tools.ietf.org/html/draft-hoffman-dane-smime
-
-- [[file:~/usr/share/ietf/internet-drafts/draft-bortzmeyer-perpass-dns-privacy-01.txt][draft-bortzmeyer-perpass-dns-privacy-01]]
-
-see [[file:dane-privacy.mkd][file:~/Persistent/linus/ietf/dane-privacy.mkd]]
-
-https://pad.riseup.net/p/dane-privacy
-
-** trans <2014-03-05 Wed> 15:20
-important words: STH, SCT
-
-- ekr: STIR has some similar concerns, have you looked at PIR?
-https://en.wikipedia.org/wiki/Private_information_retrieval
-- dkg: given a phony SCT with random bits; benl: goal is to quickly
-detect, not really prevent, also the 'S' means "signed" so "you" can't
-just put random bits in there
-- ekr: gossip, push list of logs to chrome and also "list heads"?
-
-** dane <2014-03-06 Thu> 09:00
-*** SMTP
-viktor Dukhovni
-http://www.ietf.org/proceedings/89/slides/slides-89-dane-1.pdf
-- in real life, certificates typically expire
-**** questions
-- if an algorithm is to be deprecated has to be left outside of DANE
-  because complexity
-- tls verification is a damned hard problem
-*** SRV, matt miller (& stpeter)
-*** IPsec and opportunistic encryption
-paul hoffman, http://www.ietf.org/proceedings/89/slides/slides-89-dane-8.pdf
-- what does a DANE response mean?
-- delivery vs. discovery
-- delivery: used to be a simple lookup; delivering A info and TXT
-- discovery: does this host have a server for this application protocol, SRV (1996); and nowadays keys (IPSECKEY, SSHFP)
-- many different ways of treat key-carrying DANE replies, or absence of a reply
-**** questions
-- dkg: with dane as a security policy, there might be some things you can not express
-- jschlyter: the lack of tlsa does only mean "i don't know"
-*** pwouters on dane-openpgp-01
-- split in two
-- jschlyter: the client has the incentive to do the right thing and so has the server, lowercasing seems to be the right thing
-*** pwouters on ipsec opportunistic encryption
-http://www.ietf.org/proceedings/89/slides/slides-89-dane-3.pdf
-*** draft-osterweil-dane-ipsec-00
-** saag <2014-03-06 Thu> 13:00
-*** stephen on STRINT
-http://www.ietf.org/proceedings/89/slides/slides-89-saag-6.pdf
-- draft-farrell-perpass-attack is the basis of this
-*** russ housley on crypto agility
-http://www.ietf.org/proceedings/89/slides/slides-89-saag-3.pdf
-*** OTR
-- not standardised ("no stable reference")
-- covers chat plaintext only (!), can't cover presence, can't cover stanzas
-** kitten <2014-03-06 Thu> 15:20
-- SASL-GS2 update to not require mutual authn, make a bis, jas has volunteered
-
-** uta <2014-03-07 Fri> 09:00
-https://datatracker.ietf.org/meeting/89/materials.html#wg-uta
-https://datatracker.ietf.org/meeting/89/agenda/uta
-- orit: goal is producing documents
-- aaron kaplan, bettercrypto.org, telling about their stuff
-- stpeter presenting "TLS Attacks" document and the "Best practices" document
-  https://datatracker.ietf.org/meeting/89/agenda/uta
-- dkg: adding more points to the list of attacks, like renegotiation
-- chris newman: volunteer to write up the STARTTLS attack
-- adopting all the documents presented by stpeter
-- orit presents on behalf of Popov a draft submitted to the TLS WG: deprecating RC4
-  - draft-popov-tls-prohibiting-rc4
-  - 40% of servers deploy ONLY RC4
-  - perfect passive attack
-- kaplan: mozilla said XP in india and china, which means RC4 (same for java6 w/o patches)
-- bagder: [rc4 in curl, not 40%?]
-- rich salz: comment on rc4
-- ekr: yes, rc4 has severe problems but the bias has been known before, but a new powerful attack has been explained in the above draft
-- should the bcp include negative recommendations or not?
-- x509 presentation by alexey melnikov
-  - x509 is underspecified
-- ietf-uta-email by chris newman
-  - provisional vs. normal mode, re "security tags" (latches)
-  - the PFS latch
-  - chris bentzel, google, asks about SCSV for detecting downgrade attacks (?)
-- report back from STRINT by kent
-  - phrasing, opportunistic keying instead of opportunistic encryption
-  - attack model, classes of attacks, prioritization
-  - passive vs. active attacks discussed
-  - make opportunistic keying invisible to users
-  - parallell the actions of setting up connection and authn peer (i think)
-- paul hoffman presentatoin about opportunistic tls, presented by joe hildebrand
-  - https://datatracker.ietf.org/doc/draft-hoffman-uta-opportunistic-tls/
