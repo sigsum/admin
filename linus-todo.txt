@@ -19,12 +19,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - tor-relay@ thread about relay with unreachable ipv6 orport handled: (1)
      ticket created, email replied to
    - - do exits with an IPv6 exit policy really announce that when IPv6Exit=0? (1)
-   - o nightly TBB build scripts published
-   - o [[*Dev][libradsec cert file handling]]
-   - o [[https://www.imperialviolet.org/2014/03/03/triplehandshake.html][triple-way handshake]] writeup sent to the radsecproxy ml
-     no renegotiation, right? or is it resumptino? no channel binding at least
-   - X review of #9729 done https://github.com/kdmurray91/kdm-tor/tree/tik9729tests (2)
-   - X #4345
 ** IETF
 ** Sysadm
 ** DFRI
@@ -35,13 +29,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - andrew and lise connected re DV
    - - EHSM added to cryptech wiki (1)
    - - tor code review expanded in HACKING (2)
-   - o tflows meeting with job and pettai set up (1)
-   - X basic HS client auth mitigating ralphs attack? [[file:~/usr/src/tor/src/or/rendservice.c::rend_service_introduce(origin_circuit_t%20*circuit,%20const%20uint8_t%20*request,][rend_service_introduce]]
-   - o trip report for 30c3 uploaded
-   - X strombergson and wolfgang connected, possibly by emailing a
-     list with wolfgang wisdom (run the email by peter before
-     posting!)
-   - X sra and geko connected re DDC
 * Soon (within a month)
 ** Dev
    - - #10519 tor uses default IP for dirport instead of the one defined in DirPort (2)
