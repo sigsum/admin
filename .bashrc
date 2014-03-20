@@ -53,6 +53,14 @@ export GOPATH=$HOME/usr/go
 if [ $UID = 0 ]; then PROMPTCHAR="#"; else PROMPTCHAR="%"; fi
 PS1="\h:\W$PROMPTCHAR "; export PS1
 
+# git at times has trouble finding SSL certs
+os=$(uname)
+case $os in
+    Linux) crtfile=/etc/ssl/certs/ca-certificates.crt ;;
+    FreeBSD) crtfile=/usr/local/share/certs/ca-root-nss.crt ;;
+esac
+[ -f $crtfile ] && export GIT_SSL_CAINFO=$crtfile
+
 # With LC_CTYPE set, I can paste swedish characters in xterm+bash.
 LC_CTYPE=sv_SE.ISO8859-15; export LC_TYPE
 LC_PAPER=$LC_CTYPE; export LC_PAPER
