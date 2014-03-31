@@ -1,3 +1,64 @@
+fra http://www.metro.se/nyheter/fra-bryter-mot-lagen-igen/EVHncB!KJIRy04DS07ws/
+bgp openbgpd http://www.packetmischief.ca/openbsd-openbgpd-notes/
+dfri traffic stats https://www.dfri.se/__trafstats__/em3.100.html
+edri wiki https://members.edri.org/wiki
+erlang password hashing https://github.com/ferd/erlpass
+spam rbl sbl spamhaus people:paulgraham http://paulgraham.com/spamhausblacklist.html
+readme erlang otp application http://learnyousomeerlang.com/building-otp-applications
+book people:luban http://www.bokus.com/bok/9780521618335/human-rights-in-the-war-on-terror/
+consensus example https://www.noisebridge.net/pipermail/noisebridge-discuss/2014-March/043337.html
+noisebridge consensus people:leifryge https://www.noisebridge.net/pipermail/noisebridge-discuss/2014-March/043321.html
+privacy swedish http://isverigeforetiden.blogspot.se/2009/02/jag-har-inget-att-dolja.html
+readme schneier nsa https://www.schneier.com/blog/archives/2014/02/breaking_up_the.html
+prism tempora UK https://www.privacynotprism.org.uk/news/2013/10/03/legal-challenge-to-uk-internet-surveillance/
+joelpurra dfri http://grindsjön.se/
+erlang af_unix socket https://github.com/tonyrog/afunix
+readme scalability internet http://highscalability.com/blog/2013/5/13/the-secret-to-10-million-concurrent-connections-the-kernel-i.html
+readme radio surveillance https://sverigesradio.se/sida/avsnitt/344924?programid=793
+security ml http://seclists.org/
+tor censorship circumvention article https://svn.torproject.org/svn/projects/articles/circumvention-features.html
+ipv6 security http://blogs.cisco.com/security/icmp-and-security-in-ipv6/
+intelligence big data http://www.burtcorp.com/
+readme social hacking http://computeranonymous.org/
+readme erlang string https://medium.com/p/7588daad8f05
+video streaming https://github.com/ioerror/freenote
+perpass review rfc standard ietf https://trac.tools.ietf.org/group/ppm-legacy-review/
+readme nsa http://windowsitpro.com/identity-management/richard-clarke-rsa-conference-10-observations-us-intelligence-gathering
+http://erlang.org/doc/man/
+video tor people:asn https://people.torproject.org/~asn/marketing.gif
+gdrp eudatap swedish research http://www.dagensmedicin.se/debatt/debatteus-dataskyddsforslag-hotar-svensk-forskning
+google codejam coding competition https://code.google.com/codejam/contests.html
+bytebeat https://noisebridge.net/wiki/Bytebeat#bytebeat_in_.3C140-character_command_lines_with_python
+bytebeat https://blog.patternsinthevoid.net/algorithmic-compositions.html
+robotjunta hackjunta http://doodle.com/kzc6pss2nv2cs5h4
+readme computer music http://www.brainpickings.org/index.php/2011/07/07/computer-music-pbs-1986/
+dots pomodoro https://trac.torproject.org/projects/tor/wiki/t%C3%B3matar
+readme video snowden ted http://www.ted.com/talks/edward_snowden_here_s_how_we_take_back_the_internet
+tor cp http://www.theguardian.com/world/2014/mar/18/fourteen-arrested-operating-child-porn-site-tor
+tls reneg https://lwn.net/Articles/362234/
+https://github.com/redecentralize/alternative-internet
+iana http://www.internetsociety.org/news/internet-technical-leaders-welcome-iana-globalization-progress
+facebook swedish police http://www.flashback.se/artikel/3841/facebook-i-samarbete-med-svensk-polis
+arduino atmel reference http://www.atmel.com/dyn/resources/prod_documents/doc8161.pdf
+littlebrother translation https://www.transifex.com/projects/p/lillebror/
+arduino uno http://arduino.cc/en/Main/arduinoBoardUno
+mitm tool http://ettercap.github.io/ettercap/
+tls ssl mitm tool http://www.thoughtcrime.org/software/sslsniff/
+robot http://www.robotchampion.se/
+privacy web tool http://netograph.com/
+moonshot gssweb api http://www.project-moonshot.org/gitweb/?p=gssweb.git;a=blob_plain;f=docs/js_api_design.html;hb=HEAD
+tls renegotiation attack http://www.educatedguesswork.org/2009/11/understanding_the_tls_renegoti.html
+tls article docu people:ekr http://www.linuxjournal.com/article/4822 http://www.rtfm.com/openssl-examples/part1.pdf
+tls article docu people:ekr http://www.linuxjournal.com/article/5487 http://www.rtfm.com/openssl-examples/part2.pdf
+remote work github http://zachholman.com/posts/github-communication/
+phone samsung security http://boingboing.net/2014/03/13/samsung-galaxy-back-door-allow.html
+eu snowden people:olleschmidt http://www.dn.se/nyheter/varlden/skarp-kritik-mot-usas-overvakning-i-eu-rapport/
+game http://gabrielecirulli.github.io/2048/
+boardgame security http://d0x3d.com/d0x3d/
+idp people:kazu http://researchmap.jp/yamaji/english/
+fortezza hw crypto http://cryptome.org/jya/fortezza.htm
+SAML idp DFRI eid sweden http://blogs.mnt.se/anfall-ar-basta-forsvar/
+dane x509 dns http://dane.lab.sunet.se/
 ietf pm perpass review http://trac.tools.ietf.org/group/ppm-legacy-review/
 readme snowden nsa people:susanlandau http://www.computer.org/cms/Computer.org/ComputingNow/pdfs/HighlightsFromMakingSenseOfSnowdenPartII.pdf
 snowden nsa people:susanlandau http://www.computer.org/cms/Computer.org/ComputingNow/pdfs/MakingSenseFromSnowden-IEEESecurityAndPrivacy.pdf
@@ -46,7 +107,6 @@ penet cp history http://people.dsv.su.se/~matsw/survey1_fulltext.html
 penet cp history http://groups.csail.mit.edu/mac/classes/6.805/articles/anonymity/short-pieces/finland-feb21.txt
 cryptech ml https://cryptech.is/mailman/listinfo/commits
 fra readme http://www.aftonbladet.se/nyheter/kolumnister/oisincantwell/article18442530.ab
-readme nsa http://windowsitpro.com/identity-management/richard-clarke-rsa-conference-10-observations-us-intelligence-gathering
 tor hs attack people:ralph http://www.ieee-security.org/TC/SP2013/papers/4977a080.pdf
 people:stuge code https://git.stuge.se/
 sr people:copylinda cryptoparty radio https://sverigesradio.se/sida/artikel.aspx?programid=1646&artikel=5793836
@@ -957,7 +1017,6 @@ otr storage https://github.com/guardianproject/keysync
 deterministic reproducible builds https://wiki.debian.org/ReproducibleBuilds/Rebuild20130907
 phone https://guardianproject.info/apps/ostel/
 foss people:rms http://www.wired.com/opinion/2013/09/why-free-software-is-more-important-now-than-ever-before/
-tor censorship circumvention https://svn.torproject.org/svn/projects/articles/circumvention-features.html#1
 tbb tor ff https://gitweb.torproject.org/tor-launcher.git/blob/HEAD:/src/components/tl-process.js
 anonymity mil lps http://www.spi.dod.mil/lipose.htm
 tor ipv6 roadmap https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/IPv6
@@ -2088,7 +2147,6 @@ bufferbloat networking http://queue.acm.org/detail.cfm?id=2209336
 http://developer.pidgin.im/ticket/15308 libpurple security code
 http://bb.man-da.de/mrtg/intern/manda.php?DocLink=debian-dolivo.html tor traffic
 http://web.cecs.pdx.edu/~teshrim/fte.pdf censorship dpi paper readme
-https://members.edri.org/wiki/Main_Page
 http://blog.stephenwolfram.com/2012/08/wolframalpha-personal-analytics-for-facebook/ facebook wolfram privacy
 https://xkcd.com/177/ alice-and-bob crypto webcomics
 https://gdtr.wordpress.com/2012/08/07/leaking-information-with-timing-attacks-on-hashtables-part-1/ security anonymity readme
@@ -2135,7 +2193,6 @@ http://www.exberliner.com/articles/the-lowdown-on-downloads/ germany filesharing
 http://onion.is-found.org/available tor
 https://www.idg.se/2.1085/1.458775/sa-stark-ar-tor tor swedish
 https://rt.com/usa/news/stratfor-trapwire-abraxas-wikileaks-313/ trapwire
-https://www.dfri.se/__trafstats__/em3.100.html dfri traffic stats
 http://www.salon.com/topic/trapwire/ trapwire
 http://www.businessinsider.com/trapwire-everything-you-need-to-know-2012-8 trapwire
 http://isax7s5yooqgelbr.onion/gifiles/releasedate/2012-08-12-08-trapwire-multi-country-surveillance-network.html wl trapwire

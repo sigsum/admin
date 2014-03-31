@@ -1,3 +1,102 @@
+* TLS
+** TLS attacks, by jas
+- types av crypto: stream, block, authenticated
+- 3DES or AES can be run in CBC mode
+- CBC needs padding to even block sizes
+- TLS uses pkcs#5 padding
+- padding attacks started in 2002 (vaudenay)
+- demo in 2010 (rizzo and duong)
+
+- padding oracle attacks guess the last padding byte 
+
+- WTLS (woo, old stuff) returns "padding error" (instead of simply
+  "encryption error"), in clear text, which makes an attack easy
+
+- another solution would be to check the MAC regardless of padding
+  errors
+
+- yet another solution would be to first encrypt and then pad
+
+- or just skip CBC mode
+
+- lucky-13 exploits the timing side channel attack mentioned in RFC
+  5246, 6.2.3.2:
+
+   This leaves a small timing channel, since MAC
+   performance depends to some extent on the size of the data fragment,
+   but it is not believed to be large enough to be exploitable, due to
+   the large block size of existing MACs and the small size of the
+   timing signal.
+
+- BEAST exploits that the IV used in TLS CBC mode is taken from the
+  previous packet
+
+- a solution is to send every second packet empty, to "reset" the IV
+
+- CRIME uses the fact that different types of data are compressed
+  differently
+
+- the solution is to disable compression
+
+- rc4 is an old stream cipher, really fast but considered broken (by
+  crypto people -- encrypted data doesn't look random, which means
+  broken) but still used by "everybody"
+
+- salsa20 is a modern stream cipher by djb, it's fast (but still only
+  half as fast of rc4) and built on a hash function
+
+- concatenated hashes of (key, nonce, block number), where nonce and
+  block number are 64 bit numbers and has a very low setup cost
+
+- the stream is seekable -- you don't have to calculate byte/block of
+  bytes n in order to produce n+1, which is good for things like DTLS
+  (packet drop)
+
+- a problem in TLS is that the protocol doesn't have room for an IV
+  for stream ciphers
+
+- CBC to stream? or change to AEAD (requires TLS 1.1)
+
+- [hmm, what's GSM?]
+** mitming
+- openssl https://security.stackexchange.com/questions/33374/whats-an-easy-way-to-perform-a-man-in-the-middle-attack-on-ssl
+mkfifo request response
+openssl s_server -quiet -no_ssl2 -cipher AES128-SHA \
+  -accept 443 -cert fake.crt -key fake.key  < response | tee -a request
+openssl s_client -quiet -connect www.server.com:443 < request  | tee -a response
+- ettercap http://ettercap.github.io/ettercap/downloads.html
+mkdir build; cd build; cmake -DINSTALL_PREFIX=$HOME/usr -DENABLE_GTK=OFF -DBUNDLED_LIBS=OFF ../
+** triple handshake attack
+- unused writeup for radsecproxy client side
+Radsecproxy client side is another matter. It seems like an OpenSSL
+client supports RFC5746 "secure renegotiation" by default (given OpenSSL
+version 0.9.8m and later). If this is correct and if the RadSec server
+which radsecproxy connects to supports renegotiation, the connection
+might be susceptible to the first attack described. The attacker has to
+be able to make the server initiate renegotiation and the server must
+accept initially unauthenticated clients. I don't know how likely that
+might be but it sounds unlikely.
+
+* erlang
+https://erlangcentral.org/erlang-projects/web/
+
+** debian
+apt-get install erlang
+(setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
+(require 'erlang-start)
+** fair and square problem
+linus@flow:~/src$ time nice erl -noshell -s fairnsquare main "C-large-practice-1.in" -s init stop > C-large-practice-1.out
+
+real    3m20.774s
+user    51m54.563s
+sys     0m14.765s
+** tools
+- 1> help(). % prints help
+- 1> im(). % starts a graphical monitor (debugger), see i(3erl)
+
+- rebar https://github.com/rebar/rebar -- build tool
+** client-server
+- gen_server(3erl)
 * golang
 ** gotour
 export GOPATH=$HOME/usr/go
@@ -614,7 +713,8 @@ fatal: unable to access <url>: SSL certificate problem: unable to get local issu
 
 From GIT-CONFIG(1): Set http.sslCAInfo or http.sslCAPath.
 Or use an environment variable:
-GIT_SSL_CAINFO=/usr/local/share/certs/ca-root-nss.crt git fetch
+GIT_SSL_CAINFO=/usr/local/share/certs/ca-root-nss.crt git fetch   # fbsd
+GIT_SSL_CAINFO=/etc/ssl/certs/ca-certificates.crt git fetch       # debian
 ** Moving parts and removing other parts of a tree while keeping history
 <2014-02-05 Wed>
 tool:libradsec% git remote -v
@@ -1434,7 +1534,7 @@ $ sudo virt-install --connect qemu:///system --virt-type kvm --name debian1 --ra
 $ sudo virsh start test
 ** adding a disk
 root@tool:/u/vm# truncate --size=6G /u/vm/debian0-2.img
-root@tool:/u/vm# virsh attach-disk test /u/vm/debian0-2.img vdb
+root@tool:/u/vm# virsh attach-disk --config test /u/vm/debian0-2.img vdb  # --config makes this change persistent over reboots
 Disk attached successfully
 root@tool:/u/vm# virsh domblklist test   # list domain blocks
 Target     Source
@@ -2431,8 +2531,39 @@ install the libgfshare-bin package.  Use gfcombine on a sufficient
 number of shares to reproduce the original input (make sure the files
 have the proper name (foo.<number>).
 ** people
-andrea pgp @tpo      0x419113d9d0cfbda5 7895 9f53 c6d1 2afd 6344 af6d 35f3 6ffa cbec ca80
-andrea pgp sign this 0x419113d9d0cfbda5 3611 95a4 0740 ed1b 7ea5 df7e 4191 13d9 d0cf bda5
+Subject: In preparation for signing your PGP key
+
+Hi,
+
+Please prove that you read this email address by replying to this
+message, quoting at least the following string:
+
+<string>
+
+Sign your message with the same key as this message is encrypted in.
+
+
+
+- DONE andrea pgp @tpo      0x419113d9d0cfbda5 7895 9f53 c6d1 2afd 6344 af6d 35f3 6ffa cbec ca80
+- DONE andrea pgp sign this 0x419113d9d0cfbda5 3611 95a4 0740 ed1b 7ea5 df7e 4191 13d9 d0cf bda5
+- DONE dgoulet
+  - [X] uid                  David Goulet <dgoulet@ev0ke.net>: aesutiug
+  - [X] uid                  David Goulet <dgoulet@riseup.net>: thuushov
+  - [X] uid                  David Goulet <dgoulet@torproject.org>: aesaebul
+  - [X] uid                  David Goulet (EfficiOS work address) <dgoulet@efficios.com>: oofahsop
+- pgp fp for rhys: 8B16 77D6 5423 DB5C FD53 1999 4CD8 CFC4 4638 C985
+  - [X] uid                  Rhys Smith <rhys@rsmith.org.uk>: tuthaeki / eizeecha
+  - [X] uid                  Rhys Smith <rhys.smith@ja.net>: hohkooyi / ceingail
+  - [X] uid                  Rhys Smith <smith@cardiff.ac.uk>: ohleaphe / redueyah
+- DONE pgp fp for adam bishop: e75b1f926407dfdf9f1cbf10c99325046609d460: 
+  - [ ] uid                  Adam Bishop <adam@omega.org.uk>: iethiequ
+  - [X] uid                  Adam Bishop <adam.bishop@ja.net>: ohghahsh
+  - [ ] uid                  [jpeg image of size 6382]
+- [X] strombergson
+  - uid                  Joachim Strombergson <joachim@secworks.se>: quesiuxu
+  - uid                  Joachim Strombergson <joachim@strombergson.com>: thurooja
+- [ ] derek kozel
+- [ ] dkg
 ** caff
 supposedly good for handling pgp signing
 * wiki
@@ -3890,6 +4021,8 @@ https://portal.nordu.net/pages/viewpage.action?spaceKey=nordunet&title=VPN+Acces
 TUG VPN 109.105.104.2 se-tug-fw.nordu.net
 KAS VPN 109.105.106.4 dk-kas-fw.nordu.net
 
+** "ex jobb"
+- Feidias Moulianitakis
 * notes
 ** mail to rom
    From: Linus Nordberg <linus@nordberg.se>
@@ -28735,6 +28868,8 @@ screen name: xyzzy10
 cypherpunksuser / cypherpunks
 cypherpunks@4711.se
 https://cypherpunksblog.wordpress.com/
+** icd.se
+ln+icd@4711.se v5o2jZ
 * SUNET
 ** Mätdata Chalmers
 [[gnus:nnimap%2Bndn:INBOX#4E5BA90A.3030405@chalmers.se][Email from Tomas Olovsson: Re: Mätdata från SUNET?]]
@@ -29153,6 +29288,29 @@ be a sweet target for some malicious code).
 There are others that are more about the software freedoms as expressed
 by GNU but I won't go into those here.
 
+** email to site owners
+*** swedish
+TODO: Add privacy concerns! (js means tracking)
+TODO: prepare urls to prove insecurity and tracking
+
+Subject: Er websida kräver javascript
+
+Hej!
+
+[URL] fungerar inte så bra i webläsare som inte
+stödjer javascript. Idag har nästan alla läsare javascript så ni har
+kanske valt att inte utforma er sida så att den "faller tillbaka" till
+en enklare variant för användare utan javascript. Det är inte helt
+ovanligt.
+
+Det finns en kategori användare som slår av javascript i sina webläsare
+p.g.a. de ökade riskerna för intrång i den dator som webläsaren kör
+på. Har ni funderat något på om den gruppen användare är viktig nog att
+motivera en förändring av era sidor?
+
+Vänliga hälsningar,
+Linus Nordberg
+
 * the athens affair
 http://spectrum.ieee.org/telecom/security/the-athens-affair
 
@@ -29199,65 +29357,6 @@ t -- enter commands
 https://segate.sunet.se/ linus@nordu.net S2qaEn2TTa4G
 fb "Lord Berusning" HeligaGudsModerVilketHugg! (born 1975-02-11)
 coursera.org "Fnoi Albrektsson" ln+coursera@4711.se BA1NjZUt
-* TLS attacks, by jas
-- types av crypto: stream, block, authenticated
-- 3DES or AES can be run in CBC mode
-- CBC needs padding to even block sizes
-- TLS uses pkcs#5 padding
-- padding attacks started in 2002 (vaudenay)
-- demo in 2010 (rizzo and duong)
-
-- padding oracle attacks guess the last padding byte 
-
-- WTLS (woo, old stuff) returns "padding error" (instead of simply
-  "encryption error"), in clear text, which makes an attack easy
-
-- another solution would be to check the MAC regardless of padding
-  errors
-
-- yet another solution would be to first encrypt and then pad
-
-- or just skip CBC mode
-
-- lucky-13 exploits the timing side channel attack mentioned in RFC
-  5246, 6.2.3.2:
-
-   This leaves a small timing channel, since MAC
-   performance depends to some extent on the size of the data fragment,
-   but it is not believed to be large enough to be exploitable, due to
-   the large block size of existing MACs and the small size of the
-   timing signal.
-
-- BEAST exploits that the IV used in TLS CBC mode is taken from the
-  previous packet
-
-- a solution is to send every second packet empty, to "reset" the IV
-
-- CRIME uses the fact that different types of data are compressed
-  differently
-
-- the solution is to disable compression
-
-- rc4 is an old stream cipher, really fast but considered broken (by
-  crypto people -- encrypted data doesn't look random, which means
-  broken) but still used by "everybody"
-
-- salsa20 is a modern stream cipher by djb, it's fast (but still only
-  half as fast of rc4) and built on a hash function
-
-- concatenated hashes of (key, nonce, block number), where nonce and
-  block number are 64 bit numbers and has a very low setup cost
-
-- the stream is seekable -- you don't have to calculate byte/block of
-  bytes n in order to produce n+1, which is good for things like DTLS
-  (packet drop)
-
-- a problem in TLS is that the protocol doesn't have room for an IV
-  for stream ciphers
-
-- CBC to stream? or change to AEAD (requires TLS 1.1)
-
-- [hmm, what's GSM?]
 * mud
 proj% tt++
 * tpb
@@ -31781,6 +31880,60 @@ nndraft-update-unread-articles: Wrong type argument: numberp, nil
 
 - removing ~/.newsrc.eld, everything's fine (??? really?)
 Wrote /home/linus/News/drafts/drafts/2
+
+<2014-03-16 Sun> No, not really. All is not well.
+
+The error message is printed in nnmh-request-group which builds
+pathname from group and nnmh-directory, using nnmail-group-pathname.
+
+nnmh-directory is set to "~/Mail/".
+group is sometimes "archive.sent..~", "delayed..~" and "drafts..~".
+That's already the case when nnmh-request-group is invoked.
+Here's the call chain:
+  nnmh-request-group("archive.sent..~" "" nil)
+  apply(nnmh-request-group ("archive.sent..~" "" nil))
+  nnoo-parent-function(nndraft nnmh-request-group ("archive.sent..~" "" nil))
+  nndraft-request-group("archive.sent..~" "" nil nil)
+  byte-code("	\206 \n\306\307\f\"J822\206/\3103\206.\204* 4\206.\307\f\"J\204b5\311\3125\"\203Q \313\314\315\3165\"\315\3065\"\206M \317#\202_ \313\3144@4\2116A@)#)\2117\203q 7<\203q 7\206X\32078\"A\206X7\321\232\203\207 4\206<\32079\"A\206<\3207:\"A\206<;<<\203\303 7\313\314<@@@<@@A@#\232\204\303 <\211A<@\210\202\237 <\2116@@*\206<=>>\203\370 7\313\314>\2116@@)>@A@#\232\204\370 >\211A>@\210\202\322 >@)\206<?A\310\211@AA\2039\322A\211AA@8\211;\204	7\310\323BC\324\325\215+\232\203	@\310\211A\204@+\211D\203U\32078\"\204U7DB8B8D))\206.\326!\206.\206m\306\307\f\"J8\310\211\203\202\3228\211\203\202\321\232\203\2074\202-;\203\211\2117\203\2367<\203\2367\206\205\32078\"A\206\2057\321\232\203\2644\206i\32079\"A\206i\3207:\"A\206i;<<\203\3607\313\314<@@@<@@A@#\232\204\360<\211A<@\210\202\314<\2116@@*\206i=>>\203%7\313\314>\2116@@)>@A@#\232\204%>\211A>@\210\202\377>@)\206i?A\310\211@AA\203f\322A\211AA@8\211;\20467\310\323BC\324\325\215+\232\2036@\310\211A\204;@+\211D\203\202\32078\"\204\2027DB8B8D))\202\320\2116A@);\203\317\327\330@!\331P!\211E\2116AA)\236\204\267\332EA@DC\")F\310\211GHIG\204I\211AI@\211H\203@H@=\203\302HJK\333K\2116AA)!\333J\2116AA)!\310\211LMNO\334\335\215.\203\302H\211G\203\307G,\206\320;\310H<\203b<\203b<\211A<@@H@H@\232\203%\2116A@)H\2116A@)\232\203%\336H\"\204%\310\211\204)+\204q\2116AA)\204u\202\313\327\313\337@\"!\211P\2116AA)\236\203\242@\2116A@)\340Q\2116AA)BB\202\302@\2116A@)\340QP\2116A@)D\2116AA)BBB\211FBF)*\202\320\211\2116A@)\317\232\203\341\202-\2116A@)\204\362@\317D\202-\330@!Q\341\320QR\">\203+\327Q\331P!\236\204+\342@R\236>\203+\332\327Q\331P!A@DC\"\202,***\2112;\20332\2117\203I7<\203I7\2060\32078\"A\20607\321\232\203_4\206\32079\"A\206\3207:\"A\206;<<\203\2337\313\314<@@@<@@A@#\232\204\233<\211A<@\210\202w<\2116@@*\206=>>\203\3207\313\314>\2116@@)>@A@#\232\204\320>\211A>@\210\202\252>@)\206?A\310\211@AA\203\322A\211AA@8\211;\204\3417\310\323BC\324\343\215+\232\203\341@\310\211A\204\346@+\211D\203-\32078\"\204-7DB8B8D))22\344\310ST\211\204D\345\346!\210;\203D\2117\203[7<\203[7\206B\32078\"A\206B7\321\232\203q4\206&\32079\"A\206&\3207:\"A\206&;<<\203\2557\313\314<@@@<@@A@#\232\204\255<\211A<@\210\202\211<\2116@@*\206&=>>\203\3427\313\314>\2116@@)>@A@#\232\204\342>\211A>@\210\202\274>@)\206&?A\310\211@AA\203#\322A\211AA@8\211;\204\3637\310\323BC\324\343\215+\232\203\363@\310\211A\204\370@+\211D\203?\32078\"\204?7DB8B8D))U\203_\347!\203V@\202[\350\351!\210\351)\202a@\211V\352NWTW\236\211X\204\214T\327\313\353VT#!BX\354V\352XWB#\210XA)Y\355Y!\204\277@\204\242\345\356!\210\350@!\210\355Y!\204\277S\203\271\310Y\202\277\345\357Y\"\210Y.5\311\3605\"\203\3275\361\225\310O\202\3315)2A@\n$-\207" [group dont-sub-check dont-check method gnus-newsrc-hashtb info 2 intern-soft nil string-match "^\\([^:+]+\\)\\(?:\\+\\([^:]*\\)\\)?:" format "%s:%s" match-string 1 "" assoc "native" 4 t server-name (byte-code "\206 	\n\204 \306\307\"\210\306\310\fD\"\210\211A@)\311\235\203* \312\313@\"\2026 \312\314@\211A@)#\211B\211\235\204V \204V \315@\"\204V B*\207" [method gnus-select-method nocache gnus-server-method-cache gnus-server-alist gnus-predefined-server-alist mapc #[(name-method) "A	\232\205\f \302\303@\"\207" [name-method method throw server-name] 3] #[(server-alist) "\301\302\"\207" [server-alist mapc #[(name-method) "\303A	\"\205 \n\235\204 \nB\304\305@\"\207" [name-method method gnus-server-method-cache gnus-methods-equal-p throw server-name] 3]] 3] (nil "") format "%s" "%s:%s" assoc x name name-method no-enter-cache] 5) gnus-group-name-to-method intern symbol-name "-address" append copy-sequence --cl-block-nil-- (byte-code "\211A@\211\203w 	@\n\236\211\204 \306\307\310\"\210\311\n\"	\232\204  	\211A@);\2037 \211A@);\204? \306\307\310\"\210\202  	\211A@)\211A@)\312\313\"\203\\ \314!\312\313\"\203g \314!\232\204s \306\307\310\"\210*\202  \n?\207" [p1 e1 p2 e2 x s2 throw --cl-block-nil-- nil delq string-match "/$" directory-file-name s1] 4) gnus-methods-sloppily-equal "%s-address" "+" address physical-address (byte-code "\206 	\n\204 \306\307\"\210\306\310\fD\"\210\211A@)\311\235\203* \312\313@\"\2026 \312\314@\211A@)#\211B\211\235\204V \204V \315@\"\204V B*\207" [method gnus-select-method nocache gnus-server-method-cache gnus-server-alist gnus-predefined-server-alist mapc #[(name-method) "A	\232\205\f \302\303@\"\207" [name-method method throw server-name] 3] #[(server-alist) "\301\302\"\207" [server-alist mapc #[(name-method) "\303A	\"\205 \n\235\204 \nB\304\305@\"\207" [name-method method gnus-server-method-cache gnus-methods-equal-p throw server-name] 3]] 3] (nil "") format "%s" "%s:%s" assoc x name name-method no-enter-cache] 5) request-group error "Attempted use of a nil select method" gnus-online require nnagent gnus-method-functions "%s-%s" put fboundp "Trying to require a method that doesn't exist" "No such function: %s" "^[^:]+:" 0 ...] 7)
+  gnus-activate-group("nndraft:archive.sent..~" nil nil (nndraft ""))
+  gnus-group-get-new-news-this-group(nil t)
+  nndraft-update-unread-articles()
+  run-hooks(after-save-hook)
+  basic-save-buffer()
+  save-buffer(1)
+  call-interactively(save-buffer nil nil)
+
+gnus-group-get-new-news-this-group apparently gets some bad groups.
+  (let* ((groups (gnus-group-process-prefix n))
+  ...
+    (while (setq group (pop groups))
+  ...
+      (if (gnus-activate-group group (if dont-scan nil 'scan) nil method)
+
+It gets the groups from groups, which value is
+("nndraft:drafts" "nndraft:drafts..~" "nndraft:queue"
+"nndraft:delayed" "nndraft:delayed..~" "nndraft:archive"
+"nndraft:archive.sent" "nndraft:archive.sent..~" "nndraft:mail"
+"nndraft:mail.misc")
+
+Can't seem to find where groups is defined or set. Let's look at
+nndraft-update-unread-articles, reported in *Messages* like this:
+
+nndraft-update-unread-articles: Wrong type argument: numberp, nil
+
+Oh, it sets groups:
+
+    (let* ((groups (mapcar (lambda (elem)
+			     (gnus-group-prefixed-name (car elem)
+						       (list 'nndraft "")))
+			   (nnmail-get-active)))
+
+nnmail-get-active returns the crap:
+(("drafts" (29 . 278)) ("drafts..~" (1 . 0)) ("queue" (1 . 0))
+("delayed" (1 . 0)) ("delayed..~" (1 . 0)) ("archive" (1 . 0))
+("archive.sent" (1 . 0)) ("archive.sent..~" (1 . 0)) ("mail" (1 . 0))
+("mail.misc" (2376 . 2464)))
+
 ** smtpmail
 - ~/.authinfo: machine kerio.nordu.net port 587 login linus@nordu.net
 
@@ -32258,6 +32411,138 @@ streamdumps http://mirror.mag.lab.sh/pub/30c3-streamdump/
 
 <armadev> ln5: eva's talk at 20:30, and annie's talk at 20:30. and patrick 
           ball's talk at 17:30. and chris soghoian's talk at 21:45.
+*** ndn report
+I spent the time between Christmas and New Years at the 30th Chaos
+Communication Congress [0] in Hamburg. This is the event of the year
+for those who enjoy self organised events about computers and
+networking, for many meanings of the word networking. We were over
+10,000 attendees, including the "angels" volunteering to work with the
+event in different ways.
+
+I attended a silly amount of talks and work shops, some of which I
+will mention here.
+
+The opening event was followed by "Do You Think That's Funny?" by
+lizvlx [1] where she presented some of the art projects she's been
+doing online over the years. They all connect the internet with
+pushing of limits. Quite interesting.
+
+The same day, there was a Tor relay operators meeting where people
+presented their organisations running exit relays. This was a valuable
+chance to touch base with all the people in this field.
+
+Still at day 0, I attended a meeting/workshop with Daniel
+J. Bernstein, Christian Grothoff and more knowledgeable people on the
+topic of decentralised services and "new interesting stuff". These
+discussions moved too quickly into far future in my opinion. Still
+interesting.
+
+Next up, "Mobile network attack evolution" with Karsten Nohl
+[2]. Karsten is presenting pretty much every year and it never gets
+repetitive. He's plain madly good at what he's doing, digging into
+mobile communication and proving how badly it is designed and
+operated. Highly recommended.
+
+Peter Stuge gave the talk "Hardening hardware and choosing
+a #goodBIOS" [3] (in German but lots of good pics) about how to secure
+a Lenovo X60 by opening it and apply soldering skills. Also don't miss
+the Spiegel Online article [4] published the other day about this.
+
+Glenn Greenwalds keynote [5] was presented over link at 19:30. Not much new in here.
+
+Roger Dingledine and Jacob Appelbaum who many of you have met through
+NORDUnet and SUNET activities presented "The Tor Network" [6] and
+explained more about the state of Tor in the light of the Snowden
+releases. I recommend anyone interested in computer or network
+security to take a look at this.
+
+I failed at going to "Baseband Exploitation in 2013" [7] by
+Ralph-Phillip Weinmann and still have it on my to-watch list. RPW is
+crazy skilled and well worth paying attention to IMO.
+
+I could imagine some of you interested in Quinn Nortin and Eleanor
+Saitta giving "No Neutral Ground in a Burning World" [8] too.
+
+Most of my time after the Tor talk went into a long Q&A session where
+about ten Tor people took on one group each answering questions about
+Tor and discussing present and future development and deployment. I
+led a group discussion about IPv6 which spilled into a longer workshop
+the day after for relay operators.
+
+How's that for a first day? Exhausting for sure. There were three more
+days of much or less the same. Dropping links and some notes
+below. Please let me know if you want more details on any of these.
+
+Two things:
+- Take a look at "The NSA's Spy Catalog" published by Spiegel Online
+  and presented by Jacob Appelbaum on day 0x3
+  http://www.spiegel.de/international/world/a-941262.html
+- If you're interested in cryptography at all, make sure to watch "The
+  Year in Crypto" with Nadia, djb and Tanja.
+
+*** Day 0x1
+- Fast Internet-wide Scanning and its Security Applications
+  https://events.ccc.de/congress/2013/Fahrplan/events/5533.html
+- EUDataP: State of the union; MEP Jan Philipp Albrecht
+  https://events.ccc.de/congress/2013/Fahrplan/events/5601.html
+- FPGA 101 --  Making awesome stuff with FPGAs; Karsten Becker
+  https://events.ccc.de/congress/2013/Fahrplan/events/5185.html
+  - New language, PSHDL, instead of Verilog (used mostly in USA and China) or VHDL (Europe).
+  - PSHDL syntehsizes exactly what's in the program, something that the other two languages don't.
+- The Year in Crypto; Nadia Heninger, Daniel J. Bernstein, Tanja Lange
+  https://events.ccc.de/congress/2013/Fahrplan/events/5339.html
+  - check out https://bettercrypto.org
+  - nist trying to weaken sha-3; tweet by marsh ray on 19 sep 13 (kecac)
+  - safecurves.cr.yp.to
+  - bitcoin uses ECDSA
+  - XCB used for disk encryption; chakraborty, hrenandez-jimenez, sarkar; 4 dec 2013
+    XCBv2 broken, XCBv1 is stronger
+- Revisiting trusting trust for binary tool by sergeybratus, Julian Bangert and bx
+  https://events.ccc.de/congress/2013/Fahrplan/events/5542.html
+  - May 18 IEEE langsec workshop http://spw14.langsec.org
+- Programming FPGAs with PSHDL -- Let's create the Arduino for FPGAs; Karsten Becker
+  https://events.ccc.de/congress/2013/Fahrplan/events/5186.html
+  
+*** Day 0x2
+- The Exploration and Exploitation of an SD Memory Card; Andrew "Bunnie" Huang and Xobs
+  https://events.ccc.de/congress/2013/Fahrplan/events/5294.html
+- X Security -- It's worse than it looks by Ilja van Sprundel
+  https://events.ccc.de/congress/2013/Fahrplan/events/5499.html
+- Open Laptop Workshop with Bunnie, Rop Gonggrijp, Karsten Becker and
+  more [Haven't found the recording from this yet. I've got rough
+  notes though. Please ask me for them if you're interested.]
+
+*** Day 0x3
+- To Protect And Infect -- The militarization of the Internet, Part 2 with Jacob Appelbaum
+  https://events.ccc.de/congress/2013/Fahrplan/events/5713.html
+  Jake presents "The NSA's Spy Catalog" published by Spiegel Online an hour earlier:
+  http://www.spiegel.de/international/world/a-941262.html
+
+- Kurt Opsahl giving "Through a PRISM, Darkly -- Everything we know about NSA spying"
+  https://events.ccc.de/congress/2013/Fahrplan/events/5255.html
+- Frank Rieger and Ron on "Security Nightmares -- Tomorrow’s computer
+  nightmares, today" (German)
+  https://events.ccc.de/congress/2013/Fahrplan/events/5413.html
+- Backdoors, Government Hacking and The Next Crypto Wars by Christopher Soghoian
+  https://events.ccc.de/congress/2013/Fahrplan/events/5478.html
+- Sysadmins of the world, unite! -- a call to resistance by Julian
+  Assange (linked) and Jacob Appelbaum
+  https://events.ccc.de/congress/2013/Fahrplan/events/5397.html
+
+
+Find all the recordings at [xxx]
+https://events.ccc.de/congress/2013/wiki/Static:Documentation
+
+[0] https://events.ccc.de/congress/2013/wiki/Static:FAQ
+[1] https://events.ccc.de/congress/2013/Fahrplan/events/5376.html
+[2] https://events.ccc.de/congress/2013/Fahrplan/events/5449.html
+[3] https://events.ccc.de/congress/2013/Fahrplan/events/5529.html
+[4] http://www.spiegel.de/netzwelt/web/hardware-hacker-wie-man-einen-laptop-vor-angreifern-schuetzt-a-955702.html
+[5] https://events.ccc.de/congress/2013/Fahrplan/events/5622.html
+[6] https://events.ccc.de/congress/2013/Fahrplan/events/5423.html
+[7] https://events.ccc.de/congress/2013/Fahrplan/events/5618.html
+[8] https://events.ccc.de/congress/2013/Fahrplan/events/5491.html
+
 *** open laptop workshop
   daniel from you broke the internet running th session, opening with
   the question of what we should do for the next 10-20 years
@@ -32523,7 +32808,7 @@ sudo apt-get install l2tp-ipsec-vpn
 * linus skillset
 I have an amazing combination of skills:
 - sw dev
-- running services
+- running services, sysadmin
 - security
 - privacy
 - network, routing
@@ -32588,9 +32873,6 @@ For scaling images, imagemagick can be used
 apt-get install imagemagick
 convert IMG_2749.JPG -resize 25% envelope.png
 * misc
-pgp fp for rhys: 8B16 77D6 5423 DB5C FD53 1999 4CD8 CFC4 4638 C985
-pgp fp for adam bishop: e75b1f926407dfdf9f1cbf10c99325046609d460
-
 * lawicel
 ** [[gnus:nnimap%2Badbc:INBOX#0E9248B096194D0DA2BA71472E9B91D8@INTSERV7B][order 35657]] <2014-03-10 Mon>
 Ordernr:  35657                   Datum:  2014-03-10 09:30
@@ -32600,3 +32882,186 @@ Betalt 2013-03-11.
 Ordernr:  35673                   Datum:  2014-03-10 22:43
 Summa totalt: SEK  1700,10
 Betalt 2013-03-11.
+* arduino
+apt-get install arduino
+
+The following extra packages will be installed:
+  arduino-core avr-libc avrdude binutils-avr extra-xdg-menus gcc-avr libftdi1 libjna-java librxtx-java
+Suggested packages:
+  arduino-mk avrdude-doc task-c-devel gcc-4.2 libjna-java-doc
+
+apt-get install avrdude-doc arduino-mk   # For command line doc and stuff.
+
+** doc
+- reference http://www.atmel.com/dyn/resources/prod_documents/doc8161.pdf
+- programming the AVR http://efundies.com/avr/default.htm
+** board support
+Package adruino-mk contains program ard-parse-boards.
+
+tool:~% ard-parse-boards uno
+# The uno board:
+---
+bootloader.extended_fuses: 0x05
+bootloader.file: optiboot_atmega328.hex
+bootloader.high_fuses: 0xde
+bootloader.lock_bits: 0x0F
+bootloader.low_fuses: 0xff
+bootloader.path: optiboot
+bootloader.unlock_bits: 0x3F
+build.core: arduino
+build.f_cpu: 16000000L
+build.mcu: atmega328p
+build.variant: standard
+name: Arduino Uno
+upload.maximum_size: 32256
+upload.protocol: arduino
+upload.speed: 115200
+
+So the MCU is an ATmega328P.
+
+The avrdude program, used for programming (or uploading to) the MCU,
+calls that 'm328p'.
+** compiling and linking
+Thanks to gcc-avr, binutils-avr and avr-libc we can use gcc to compile
+programs for an MCU on an Arduino UNO board.
+
+- /usr/share/doc/avr-libc/avr-libc-user-manual.pdf.gz has all the info
+- [[file:/usr/lib/avr/include][/usr/lib/avr/include]] has lots of header files
+- https://balau82.wordpress.com/2011/03/29/programming-arduino-uno-in-pure-c/
+shows how to compile using gcc and uploading using avrdude
+- [[file:src/arduino/Makefile][file:~/src/arduino/Makefile]] contains a working example
+
+** hardware
+- UNO layout https://arduino.cc/en/uploads/Main/arduino-uno-schematic.pdf
+** i/o
+- port registers http://arduino.cc/en/Reference/PortManipulation
+- PWM is easy on pins 3,5,6,9,10,11 (UNO), see
+  http://arduino.cc/en/Reference/AnalogWrite but also
+  http://arduino.cc/en/Tutorial/SecretsOfArduinoPWM and
+  http://garretlab.web.fc2.com/en/arduino/inside/arduino/wiring_analog.c/analogWrite.html
+  and maybe
+  http://urbanhonking.com/ideasfordozens/2009/05/18/an_tour_of_the_arduino_interna/
+** timers
+- http://playground.arduino.cc/Code/Timer1
+- http://www.hobbytronics.co.uk/arduino-timer-interrupts
+- http://www.engblaze.com/microcontroller-tutorial-avr-and-arduino-timer-interrupts/
+- http://www.oreilly.de/catalog/arduinockbkger/Arduino_Kochbuch_englKap_18.pdf
+- http://efundies.com/avr/avr_timer_interupts_c_simple.htm
+* robot building
+** bought
+*** lawicel March 10 2014
+POL-2505	1 Zumo Robot Kit for Arduino
+PAR-ACT-ROB	1 ActivityBot
+ROB-10336	1 Rover 5 Robot Platform 
+ARD-KIT3	1 Arduino Uno R3 Starterkit 
+POL-2361	4 75:1 Micro Metal Gearmotor HP 
+POL-1419	1 Zumo Reflectance Sensor Array 
+ARD-LEO		1 Arduino Leonardo, Headers 
+ROB-11593	1 Rover 5 Motor Driver Board 
+SEN-09088	3 Mini Photocell 
+ADA-1063	2 Microphone Amp - MAX4466 
+SEN-10345	1 3-Axis Acc. BoB - LIS331 
+DIPS082-HNLED	1 LCD Mod. 2x8 - 5.01mm LED BL 
+PAR-SERVO-S05	2 Parallax Servo-S05/STD/FP 
+** base, platform
+*** Rover 5
+- http://lawicel-shop.se/prod/Rover-5-Robot-Platform_797348/Sparkfun_64668/SWE/SEK
+- https://www.sparkfun.com/datasheets/Robotics/Rover%205%20Introduction.pdf
+- https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Robotics/RP6%20motor%20TFK280SC-21138-45.pdf
+  - motors: TECO TFK280SC-21138-45; 5V-7.5V DC, <160mA, 8804+-10%RPM
+  - gearbox: 87:1 ratio
+  - optical quadrature encoder: 1000 pulses over 3 revolutions of the output shaft
+- http://letsmakerobots.com/node/24031
+*** ActivityBot
+http://lawicel-shop.se/prod/ActivityBot_1036481/Parallax_10648/SWE/SEK
+http://learn.parallax.com/ActivityBot
+http://learn.parallax.com/propeller-c-set-simpleide
+http://learn.parallax.com/activitybot/software-and-programming
+** driving motors
+*** quadrature encoders
+Measures the speed and direction of a rotating shaft. Output is
+typically two square waveforms 90 dgr out of phase, corresponding to
+one sensor each. The frequency of one of the waves gives motor
+speed. The pattern of binary numbers from both sensors gives
+direction. Feeding both into an XOR gate will give twice the frequency
+regardless of direction.
+
+- http://letsmakerobots.com/node/24031
+- https://en.wikipedia.org/wiki/Rotary_encoder
+- https://www.dynapar.com/Technology/Encoder_Basics/Quadrature_Encoders/
+- http://www.edn.com/design/integrated-circuit-design/4363949/Decode-a-quadrature-encoder-in-software
+*** Rover 5 Motor Driver Board
+- http://lawicel-shop.se/prod/Rover-5-Motor-Driver-Board_950714/Sparkfun_64668/SWE/SEK
+- https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Robotics/4%20Channel%20instruction%20manual.pdf
+- inputs
+  - 2 x power (+5V logic and the motor power supply)
+  - direction (high=forward, low=backward)
+  - PWM -- pulse-width-modulated speed (high=full, low=off)
+  - 2 x quadrature encoder
+- outputs
+  - motor current (1V per amp the motor draws)
+  - quadrature encoder => motor speed (times two)
+  - driving the motor (max 4.5A)
+** resistors
+1k light blue
+10k darker blue
+329
+** sensors
+*** Mini Photocell
+- light: 1kOhm (measured to 2k in a light room)
+- dark: 10kOhm (measured to 17k when covered)
+- http://lawicel-shop.se/prod/Mini-Photocell_991328/Sparkfun_64668/SWE/SEK
+- http://www.sparkfun.com/datasheets/Sensors/Imaging/SEN-09088-datasheet.pdf
+- http://meettechniek.info/embedded/arduino-analog.html
+- https://sites.google.com/site/qeewiki/books/avr-guide/analog-input
+** MCU:s
+- AVR/Arduino
+- MSP430 Texas Instruments, 16 (and 32?) bit MCU, much like AVR/Arduino.
+* board games
+** Arkham Horror
+https://en.wikipedia.org/wiki/Arkham_Horror
+* translating
+** little brother
+<2014-03-17 Mon>
+<ln5> det är baserat på svenska förläggareföreningens ramavtal
+(http://oversattarsektionen.se/) som säger 90 SEK per 1000 tecken
+<ln5> ny uppskattning: 55 kSEK. låter mer rimligt.
+<ln5> (615000 tecken -- 1500 tkn/sida * 410 sidor)
+<ln5> pawal: eller söka 10k el 25k från några organisationer? som
+rädda barnen, .SE, litteraturfrämjandet, datainspektionen
+<ln5> eller hitta en förläggare, förstås
+<ln5> tror jag skall kontakta "svante" som satt i PEN-panelen i förra
+veckan. han verkar engagerad. han är förläggare.
+<mchack> ln5: finns en bok för alla fortfarande?
+<ln5> mchack: http://enbokforalla.se/
+<ln5> bra tips. om inte dom så kan man ju uppvakta ABF och studieförbundet vuxenskulan.
+
+Svante Weyler svante@weylerforlag.se
+* sparvästet
+  sparvnästet
+300:- / månad till JAK BG 406285-7 ange medlemsnummer 016.
+
+koder: 0315 / 2587
+
+SSID sparvnastet/sparvnastet
+* novena
+** leifj's
+192.36.125.244
+2001:6b0:7:0:cb:65ff:fe02:249d
+root Haq408
+7gp32yilw56o6zm7.onion
+* ICD.se
+** order Sun Mar 23 10:54:10 CET 2014
+Betala in fakturabeloppet (inklusive moms och frakt) till PlusGiro eller BankGiro:
+PG 126 19 61 - 5 BG 5264 - 5322
+
+Mark inbetalningsblanketten med namn, adress och ordernummer:
+ICD Skellefteå AB
+Hörnellgatan 14
+931 30 SKELLEFTEÅ
+
+2370:-
+Ditt ordernummer är: 1057
+
+Ytterligare 200:- i enl. med [[gnus:nnimap%2Badbc:INBOX#53355A2B.9000409@icd.se][Email from info@icd.se: Re: ICD
+order #1057]] för 64G SSD. Betalningsdag 2014-03-31.
