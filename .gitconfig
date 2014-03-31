@@ -4,5 +4,6 @@
 [status]
 	showUntrackedFiles = no
 [http]
-        sslCAPath = /usr/share/ca-certificates
+#        sslCAPath = /usr/share/ca-certificates
 #        sslCAInfo = /usr/local/share/certs/ca-root-nss.crt
+        sslCAInfo = /etc/ssl/certs/ca-certificates.crt
