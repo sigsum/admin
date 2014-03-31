@@ -9,12 +9,6 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - o catlfish https server responding
-   - o cert/CA fuckup fixed on tool (1)
-     fatal: unable to access 'https://code.google.com/p/certificate-transparency/': SSL certificate problem: unable to get local issuer certificate
-   - o ct basic building blocks put down "on paper" (2)
-     current status: [[file:usr/share/ietf/in-notes/rfc6962.txt::3.2.%20Structure%20of%20the%20Signed%20Certificate%20Timestamp][file:usr/share/ietf/in-notes/rfc6962.txt::3.2. Structure of the Signed Certificate Timestamp]]
-   - o ct basic building blocks interfaces and implementation languages decided upon (2)
    - . ct design document first cut (2)
    - - tor-relay@ thread about relay with unreachable ipv6 orport handled: (1)
      ticket created, email replied to
@@ -22,12 +16,7 @@ Legend                                                (emacs -*-org-*- mode)
 ** IETF
 ** Sysadm
 ** DFRI
-   - X TB contract rewritten
-   - o membership handling outlined
-     new file, not in git, mapping member number to email address
 ** Misc
-   - o andrew and lise connected re DV
-   - X EHSM added to cryptech wiki (1)
    - - tor code review expanded in HACKING (2)
 * Soon (within a month)
 ** Dev
