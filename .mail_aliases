@@ -320,7 +320,7 @@ alias jon.sida                  Jon.Hedenstrom@sida.se
 alias jorgen.arb		jorgen@quidquid.se
 alias jorgen			"Jörgen Lundberg <jorgen.lundberg@gmail.com>"
 alias jorgen.priv		jorgen@familjenlundberg.com
-alias josefin			josefin.forsberg@skandiamaklarna.se
+alias joe.cdt                   joe@cdt.org
 alias josh			"Josh Howlett <Josh.Howlett@JA.NET>"
 alias josva			"Josva Kleist <kleist@nordu.net>"
 alias jq			qvist@nordu.net
@@ -446,6 +446,7 @@ alias maria.l			"Mark & Maria <lindblom-levy@bolina.hsb.se>"
 alias marianne          	marianne@nordberg.se
 alias marianne.skolan           "Marianne Sthen-Ingler <marianne.sthen-ingler@stockholm.se>"
 alias marie.crd                 "Marie Månson <Marie.Manson@civilrightsdefenders.org>"
+alias marie.tandl               marie.eklund.1@ptj.se
 alias marja             	marja.stobin@comhem.se
 alias mark.klamberg.gmail       markklamberg@gmail.com
 alias mark.klamberg             "Mark Klamberg <Mark.Klamberg@juridicum.su.se>"
@@ -522,8 +523,10 @@ alias olle.risberg		"Olle Risberg <olle@riksnet.se>"
 alias olof.hagsand              olof@hagsand.se
 alias oscar                     oscar@bahnhof.se
 alias osman                     "Osman Kibar <osman.kibar@dn.no>"
-alias ot                        "Ot van Daalen <ot.vandaalen@bof.nl>"
+alias ot                        "Ot van Daalen <ot.vandaalen@digitaldefence.net>"
+alias ot.bof                    "Ot van Daalen <ot.vandaalen@bof.nl>"
 alias paf			patrik@frobbit.se
+alias paivi                     paivi.morell.heinanen@gmail.com
 alias palle			palle.torsson@gmail.com
 alias pappa.la                  lars.kleberg
 alias par.blomberg              "Pär Blomberg <percoo@gmail.com>"
@@ -589,7 +592,10 @@ alias rom	 		rom@romab.com
 alias rop			"Rop Gongrrijp <rop@xs4all.nl>"
 alias rransom			"Robert Ransom <rransom.8774@gmail.com>"
 alias rsp			radsecproxy
-alias runa			"Runa Sandvik <runa.sandvik@gmail.com>"
+alias runa                      runa.cdt
+alias runa.cdt                  "Runa Sandvik <runa@cdt.org>"
+alias runa.gmail		"Runa Sandvik <runa.sandvik@gmail.com>"
+alias runa.tor                  "Runa Sandvik <runa@torproject.org>"
 alias rydekull                  "Alexander Rydekull <rydekull@gmail.com>"
 alias ryge                      leif.ryge
 alias rysiek                    "Michał 'rysiek' Woźniak <rysiek@fwioo.pl>"
@@ -721,3 +727,4 @@ alias yair			"Yair Yarom <irush@cs.huji.ac.il>"
 alias ylan			ylan@ylan.nu
 alias yosh			"Johan Marklund <yosh@yosh.se>"
 alias ze                        zeh@lavabit.com
+alias zorz                      zorz@isoc.org
