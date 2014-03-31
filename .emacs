@@ -29,6 +29,9 @@
 (require 'jabber)
 (require 'appt)                         ;calendar needs this
 
+(setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
+(require 'erlang-start)
+
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
 ;; another smime.el (from site-lisp/semi/?) is loaded.
 ;; 2012-09-19: upgrading emacs to 24.2 and gnus doesn't seem to carry smime.el
