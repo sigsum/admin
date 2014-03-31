@@ -9,28 +9,30 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - - cert/CA fuckup fixed on tool (1)
+   - o catlfish https server responding
+   - o cert/CA fuckup fixed on tool (1)
      fatal: unable to access 'https://code.google.com/p/certificate-transparency/': SSL certificate problem: unable to get local issuer certificate
-   - . ct basic building blocks put down "on paper" (2)
+   - o ct basic building blocks put down "on paper" (2)
      current status: [[file:usr/share/ietf/in-notes/rfc6962.txt::3.2.%20Structure%20of%20the%20Signed%20Certificate%20Timestamp][file:usr/share/ietf/in-notes/rfc6962.txt::3.2. Structure of the Signed Certificate Timestamp]]
-   - - ct basic building blocks interfaces and implementation languages decided upon (2)
-   - - ct design document first cut (2)
-   - - gcov support in make test-network / chutney (5)
+   - o ct basic building blocks interfaces and implementation languages decided upon (2)
+   - . ct design document first cut (2)
    - - tor-relay@ thread about relay with unreachable ipv6 orport handled: (1)
      ticket created, email replied to
    - - do exits with an IPv6 exit policy really announce that when IPv6Exit=0? (1)
 ** IETF
 ** Sysadm
 ** DFRI
-   - . TB contract rewritten
-   - . membership handling outlined
+   - X TB contract rewritten
+   - o membership handling outlined
      new file, not in git, mapping member number to email address
 ** Misc
-   - - andrew and lise connected re DV
-   - - EHSM added to cryptech wiki (1)
+   - o andrew and lise connected re DV
+   - X EHSM added to cryptech wiki (1)
    - - tor code review expanded in HACKING (2)
 * Soon (within a month)
 ** Dev
+   - - twisted-socks patch for socks5 handled
+   - - gcov support in make test-network / chutney (5)
    - - #10519 tor uses default IP for dirport instead of the one defined in DirPort (2)
    - - things not under source control in ~/p/radsecproxy/libradsec/lib checked in
      typically tests/server.c and the python bindings
@@ -59,6 +61,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - #6027 and friends -- dir auths on ipv6
    - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
 ** Misc
+   - - look into submitting to google code jam https://code.google.com/codejam/contests.html
    - - feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
    - - connected the subgraph ppl with T-SEC
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
@@ -233,6 +236,7 @@ Legend                                                (emacs -*-org-*- mode)
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
 ? Apr ??-??, Umeå, Markus Naarttijärvi
 ? Apr 01-04, Stockholm, CRD Days
+? May 06-07, London, CT hack day
 ? May 11-17, Warsaw, RIPE68
 ? May 18-23, Dublin, TNC2014
 ? May 25-27, Moscow, ENOG7

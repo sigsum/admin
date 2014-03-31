@@ -623,7 +623,7 @@
 2014-01-21 [lärka] piano startar
 2014-01-21 [juni] gitarr startar
 2013-12-17 16:30 Julklappshandling
-%%(diary-block 2014 03 26 2014 03 28) European AFS and Kerberos Conference @ CERN
+&%%(diary-block 2014 03 26 2014 03 28) European AFS and Kerberos Conference @ CERN
 2013-12-19 11:30 Bosse @ Koreana
 2013-12-20 12:30 Sawadee Olofsgatan 6
 2014-02-27 13:00-17:00 SNUS anonymitetstjänster
@@ -657,9 +657,8 @@
 &%%(diary-block 2014 02 21 2014 02 27) B
 &%%(diary-block 2014 03 07 2014 03 13) B
 &%%(diary-block 2014 03 21 2014 03 27) B
-&%%(diary-block 2014 04 04 2014 04 10) B
-&%%(diary-block 2014 04 18 2014 05 24) B
-&%%(diary-block 2014 05 02 2014 05 08) B
+&%%(diary-block 2014 04 04 2014 04 13) B
+&%%(diary-block 2014 04 27 2014 05 09) B
 &%%(diary-block 2014 05 16 2014 05 22) B
 &%%(diary-block 2014 05 30 2014 06 05) B
 &%%(diary-block 2014 06 13 2014 06 19) B
@@ -683,7 +682,7 @@
 2014-01-22 19:00-19:45 weather in #tor-dev
 2014-01-24 19:00 Simon, käka lite
 2014-01-27 11:00-12:30 ndn security review
-2014-04-27 [prel] cryptoparty @ cyklopen
+2014-04-27 cryptoparty @ cyklopen
 2014-05-28 SIF14
 2014-02-17 register for SIF14 http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
 2014-02-10 one week to register for SIF14 http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
@@ -752,4 +751,26 @@
 %%(diary-block 2014 08 25 2014 08 26) [prel] cryptech.is
 2014-03-24 14:00-15:00 NDN all hands (TUG)
 2014-04-02 DFRI styrelsemöte (TUG?)
-2014-03-19 Lise & Erik hämtar spelet
+2014-03-19 19:00 Lise & Erik hämtar spelet
+2014-03-29 Intl. Arduino Day (sparvnästet)
+2014-03-21 14:00-15:00 ndn linus planning
+2014-04-07 18:00-19:30 ISOC-SE årsmöte
+2014-03-24 11:30 Lunch med Johan
+2014-03-27 10:10 [juni] Återbesök armen, Rinkeby
+2014-04-09 [lärka] f-möte
+2014-04-04 16:00-20:00 CRD day @ Elite Hotel Marina Tower
+%%(diary-block 2014 06 27 2014 06 29) EHSM Hamburg http://ehsm.eu/
+2014-04-03 Arkham Horror med Simon!
+2014-03-28 10:00 merakrypto @ TUG
+2014-04-29 13:00-17:00 JRA3 @ TUG
+2014-04-30 09:00-16:00 JRA3 @ TUG
+2014-04-13 15:00 Edis årsmöte, Café Gråmunken
+2014-04-09 13:00 internet of things at sics http://iea.sust.se/2014/03/07/global-internet-of-things-day-9th-april/
+2014-03-26 11:30 Lunch Johan L
+2014-04-04 17:00 "allas lika värde" vasaparken
+%%(diary-block 2014 05 17 2014 05 18) [prel] robotjunta
+2014-05-07 CT hack day, London https://docs.google.com/a/google.com/forms/d/1z5pqkm5EGasuzg228RZfZdJxR6fBSuIf3D0XZIpKRzM/edit
+2014-05-02 Last day for registering for CT hack day https://docs.google.com/a/google.com/forms/d/1z5pqkm5EGasuzg228RZfZdJxR6fBSuIf3D0XZIpKRzM/edit 
+2014-04-03 11:30 lunch jn+christian, medborgarplatsen
+2014-04-15 En vecka till seminariet i Uppsala. Raklama lite?
+2014-04-02 12:00 cryptoparty planering, la neta östgötag. 12b

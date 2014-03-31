@@ -4,6 +4,31 @@
 `C-c C-x C-d' for showing times.
 `C-c C-y' for updating time on line.
 
+* week 13
+  CLOCK: [2014-03-28 Fri 17:04]--[2014-03-28 Fri 17:14] =>  0:10
+  CLOCK: [2014-03-28 Fri 15:43]--[2014-03-28 Fri 16:50] =>  1:07
+  CLOCK: [2014-03-28 Fri 15:26]--[2014-03-28 Fri 15:35] =>  0:09
+  CLOCK: [2014-03-28 Fri 14:15]--[2014-03-28 Fri 15:00] =>  0:45
+  CLOCK: [2014-03-28 Fri 13:45]--[2014-03-28 Fri 14:00] =>  0:15
+  CLOCK: [2014-03-28 Fri 12:33]--[2014-03-28 Fri 13:00] =>  0:27
+  CLOCK: [2014-03-28 Fri 12:12]--[2014-03-28 Fri 12:23] =>  0:11
+
+thu 4 CT
+wed 6 CT
+tue 4 CT
+mon 4 CT
+* week 12
+** CT
+   4h design
+   4h design
+   CLOCK: [2014-03-20 Thu 18:39]--[2014-03-20 Thu 20:02] =>  1:23
+   https
+   fri: 1,5h dynamic web content and design
+* week 11 (2014-03-10--16)
+2x8h cryptech
+on-fre: travel expenses and trip reports
+* week 10
+IETF89
 * week 05
 <2014-01-30 Thu> abfab ephemeral keying 1h
 12:20 abfab 45m
