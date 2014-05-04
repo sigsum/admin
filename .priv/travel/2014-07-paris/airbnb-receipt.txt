@@ -1,0 +1,61 @@
+X-Gnus-Coding-System: -*- coding: utf-8; -*-
+
+From: Airbnb <automated@airbnb.com>
+Subject: Faktureringskvitto för bokning
+To: ln+airbnb14@4711.se
+Date: Sun, 04 May 2014 14:58:15 +0000 (14 minutes, 32 seconds ago)
+
+                                                                        Logga in          
+Airbnb                                                                                    
+                                                E-posta kvitto                Skriv ut kvitto               Visa resplan      
+ [ico]                         [ico]                         [ico]                        
+                                                                                          
+           
+        Kundkvitto                                                         Airbnb        Bekräftelsekod: SRXAAW                           /help/contact           sön, 4 maj 2014 Kvitto # 2037702862                Linus Nordberg                       Paris, Île-de-France[r]             och 3 andra                                                          [r]  
+        [bev]   Namn                         [bev]   Resans destination                   
+                                                                                          
+                97 Rue de Clignancourt               once upon a time in                  
+                Paris, Île-de-France 75018           Montmartre                           
+        [bev]   Frankrike                    [bev]   Fastighet                            
+                Boendets adress                                                           
+                Eget hem/lägenhet                    8                                    
+                     [bev]   Typ av boende                [bev]   Nätter                               
+                                                                                          
+                lör, 5 juli 2014                     sön, 13 juli 2014                    
+                16:00                                11:00                                
+        [bev]   Checka in                    [bev]   Utcheckning                          
+        Betalningsinformation                                                             
+                                                                                          
+        Betalning mottagen:sön, 4 maj 2014                                                
+                                                                                          
+                       Boende                7293 kr SEK (912 kr SEK per                  
+                                             natt)                                        
+          Airbnb Serviceavgift (inkluderar   892 kr SEK                                   
+                       moms)                                                              
+                       Totalt                8185 kr SEK                                  
+                                                                                          
+        Betalning (VISA xxxxxxxxxxxx0180) 8185 kr SEK                                     
+                      Saldo               0 kr SEK                                        
+                                                                                          
+        Tack för att du reser med Airbnb                                                  
+                                                                                          
+        888 Brannan St., San Francisco, CA, 94103, United States                          
+[receipt-grey-bottom-8cde1fcc3fe7b6dfc4907940f41e3448]                                    
+Airbnb är auktoriserad att ta emot boendeavgifter på uppdrag av                           
+värden som dennes begränsade ombud. Detta innebär att din                                 
+betalningsskyldighet till värden uppfylls genom din betalning till                        
+Airbnb. Eventuella meningsskiljaktigheter från värdens sida angående                      
+betalningen måste lösas mellan värden och Airbnb.                                         
+                                                                                          
+                                                                                          
+                                                                                          
+                               Ladda ner vår app                                          
+                                                                                          
+                                                                                          
+                          Skickat med ♥ från Airbnb HQ                                    
+                                                                                          
+*
+
+
+
+

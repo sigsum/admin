@@ -1,0 +1,178 @@
+;; Do this early -- other requirements might depend on it.
+(require 'package)
+;; The default is using http rather than https.
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")))
+;; nice, but no thanks until there's https
+;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+(require 'tls)
+(setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
+;(setq load-path (cons "~/.emacs.d/elpa/erlang-2.4.1" load-path))
+(require 'erlang-start)
+(global-set-key "\C-xg" 'magit-status)
+;; http://jblevins.org/projects/markdown-mode/
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.mdwn$" . markdown-mode))
+;; rfcview
+(autoload 'rfcview-mode "rfcview" nil t)
+(add-to-list 'auto-mode-alist
+	     '("/rfc[0-9]+\\.txt\\(\\.gz\\)?\\'" . rfcview-mode))
+;; org-mode
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(add-hook 'org-mode-hook 'turn-on-font-lock)
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+;; misc settings
+(setq dired-listing-switches "-alB")
+(setq case-fold-search nil)
+(setq case-replace t)
+;; Don't recurse in vc-dired.
+(setq vc-dired-recurse nil)
+;; Make sure VC knows when a remote repo is changed.
+(setq vc-cvs-stay-local nil)
+;; Git
+;(require 'vc-git "" nil)
+;(require 'git "" nil)
+(when (featurep 'vc-git)
+  (add-to-list 'vc-handled-backends 'git))
+(autoload 'git-blame-mode
+  "git-blame"
+  "Minor mode for incremental blame for Git."
+  t)
+(put 'narrow-to-region 'disabled nil)
+(setq visible-bell t)
+(setq add-log-mailing-address nil)
+(setq default-major-mode 'text-mode)
+(setq require-final-newline t)
+(global-set-key (kbd "M-n") 'next-error)
+(global-set-key (kbd "M-p") 'previous-error)
+
+(setq delete-old-versions t)		; don't whine when deleting old backups
+(setq kept-old-versions 0)
+(setq kept-new-versions 5)
+(setq version-control t)
+(setq backup-directory-alist '(("." . ".~")))
+
+;; This font is nice, at least on 1920x1200.
+(set-default-font "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1")
+;; a sentence can end with a single space or double space -- match
+;; both, but don't strip extra space when doing M-q.
+; this strips extra space on M-q: (setq sentence-end-double-space nil)
+(setq sentence-end "[.?!][]\"')}]*\\($\\| $\\|	\\|  \\| \\)[ 	\n]*")
+;; mode line fiddle
+;(setq display-time-day-and-date t)
+(display-time)
+(setq column-number-mode t)
+(setq inhibit-startup-message t)
+;; need user-mail-address for change-log entries:
+(setq user-mail-address "linus@nordberg.se")
+;;;;;;;;;;;;;;;;;;;;;;;
+;; Some keybindings
+;; M-C-g 
+(global-set-key "\e\007" 'goto-line)
+;; make apropos do everything possible
+(setq apropos-do-all t)
+;; for buffers visitng files of the same name, make the
+;; buffer name have something to do with the path to the file
+;; instead of just tacking a number to the end
+(require 'uniquify)
+(toggle-uniquify-buffer-names)
+(setq uniquify-buffer-name-style 'post-forward)
+;(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+
+;; Have Swedish characters as Meta-[ ] \
+(define-key esc-map "]" 'iso-Aring-insert)
+(define-key esc-map "[" 'iso-Adieresis-insert)
+(define-key esc-map "\\" 'iso-Odieresis-insert)
+(define-key esc-map "}" 'iso-aring-insert)
+(define-key esc-map "{" 'iso-adieresis-insert)
+(define-key esc-map "|" 'iso-odieresis-insert)
+;(define-key esc-map "e" 'iso-eacute-insert)
+(define-key esc-map "o" 'iso-danish-odieresis-insert)
+(define-key esc-map "O" 'iso-danish-ae-insert)
+
+;;---------------------------------------------------------------------------
+;;
+;; The character-inserting functions
+;;
+;;---------------------------------------------------------------------------
+(defun iso-Aring-insert nil
+  "Insert AA."
+  (interactive)
+  (insert #xc5))
+
+(defun iso-aring-insert nil
+  "Insert aa."
+  (interactive)
+  (insert #xe5))
+
+(defun iso-Adieresis-insert nil
+  "Insert AE."
+  (interactive)
+  (insert #xc4))
+
+(defun iso-adieresis-insert nil
+  "insert ae."
+  (interactive)
+  (insert #xe4))
+
+(defun iso-Odieresis-insert nil
+  "Insert OE."
+  (interactive)
+  (insert #xd6))
+
+(defun iso-odieresis-insert nil
+  "insert oe."
+  (interactive)
+  (insert #xf6))
+
+(defun iso-eacute-insert nil
+  "insert eacute."
+  (interactive)
+  (insert #xe9))
+
+(defun iso-danish-odieresis-insert nil
+  "insert eacute."
+  (interactive)
+  (insert #xf8))
+
+(defun iso-danish-ae-insert nil
+  "insert eacute."
+  (interactive)
+  (insert #xe6))
+
+;; ø - "\370"; Ø - "\330"
+;; æ - "\346"; Æ - "\306"
+;; ü - "\374"
+;;---------------------------------------------------------------------------
+(put 'narrow-to-page 'disabled nil)
+(add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(current-language-environment "UTF-8")
+ '(display-time-24hr-format t)
+ '(display-time-day-and-date t)
+ '(display-time-format "%Y-%m-%d %H:%M")
+ '(grep-command "grep -nH -Ed skip -e ")
+ '(indent-tabs-mode nil)
+ '(ispell-program-name "aspell")
+ '(ido-case-fold t)
+ '(ido-create-new-buffer (quote always))
+ '(ido-enable-regexp t)
+ '(ido-mode (quote buffer) nil (ido))
+ '(menu-bar-mode nil)
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
