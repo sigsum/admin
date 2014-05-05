@@ -4,6 +4,16 @@
 `C-c C-x C-d' for showing times.
 `C-c C-y' for updating time on line.
 
+* week 16
+mon: CT
+* week 15
+mon: CT 6h
+* week 14
+fri: CT 4h
+thu: CT 4h
+wed: CT 4h
+tue: CT 4h
+mon: CT 4h
 * week 13
   CLOCK: [2014-03-28 Fri 17:04]--[2014-03-28 Fri 17:14] =>  0:10
   CLOCK: [2014-03-28 Fri 15:43]--[2014-03-28 Fri 16:50] =>  1:07

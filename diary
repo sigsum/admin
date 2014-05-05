@@ -3,6 +3,8 @@
 %%(diary-anniversary 2013 2 11) asn
 %%(diary-anniversary 1979 3 22) Aron
 %%(diary-anniversary 1983 4 1) Jake
+%%(diary-anniversary 1969 4 4) tg
+%%(diary-anniversary 2010 4 6) Moa
 %%(diary-anniversary 1969 4 9) Ilja
 %%(diary-anniversary 2008 4 9) Julian
 %%(diary-anniversary 2012 4 10) Fia & Fredde
@@ -607,7 +609,7 @@
 2014-05-23 jabber.adb-centralen.se (from cacert.org) expires
 2014-05-16 jabber.adb-centralen.se (from cacert.org) expires in a week
 2013-12-27 Tor relay meeting, hall 13
-2014-04-22 15:00-16:30 Seminarium integritet, Tor, UU (Uppsala Learning Lab (ULL))
+2014-04-22 15:00-16:30 Seminarium integritet, UU (Uppsala Learning Lab (ULL)), sal 12:020, http://www.blasenhus.uu.se/om-blasenhus/besok/hittahit/
 2013-12-20 10:00 [juni] avslutning
 %%(diary-block 2014 02 28 2014 03 01) STRINT http://www.w3.org/2014/strint/
 2013-12-16 17:00 [juni] gradering
@@ -661,8 +663,6 @@
 &%%(diary-block 2014 04 27 2014 05 09) B
 &%%(diary-block 2014 05 16 2014 05 22) B
 &%%(diary-block 2014 05 30 2014 06 05) B
-&%%(diary-block 2014 06 13 2014 06 19) B
-&%%(diary-block 2014 06 27 2014 07 03) B
 2014-02-03 15:00-19:00 Moonshot meeting
 &%%(diary-block 2014 01 20 2014 01 24) Vasa Real åhörarvecka
 2014-01-13 10:00-12:00 GN4 brainstorm VC
@@ -687,7 +687,7 @@
 2014-02-17 register for SIF14 http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
 2014-02-10 one week to register for SIF14 http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
 2014-03-20 cryptoparty umeå
-%%(diary-block 2014 05 31 2014 06 01) [prel] Malmö
+%%(diary-block 2014 05 31 2014 06 01) Malmö
 2014-02-23 cryptoparty konsthall c, hökarängen
 2014-01-31 11:25 Christian @ Koreana
 2014-03-12 [prel] prata dfri/tor @ netnod
@@ -739,7 +739,7 @@
 2014-03-30 NOC-dag
 2014-02-26 17:00-20:00 Tekniska museet
 2014-04-29 merakrypto
-2014-04-28 17:00 SNUS årsmöte
+2014-04-28 17:30-19:30 SNUS årsmöte
 2014-05-02 Skolan stängd, studiedag
 2014-03-15 Ylki fölsis 44:an
 2014-03-04 11:30-13:00 secdir Hilton Meeting Room 1-4
@@ -757,7 +757,7 @@
 2014-04-07 18:00-19:30 ISOC-SE årsmöte
 2014-03-24 11:30 Lunch med Johan
 2014-03-27 10:10 [juni] Återbesök armen, Rinkeby
-2014-04-09 [lärka] f-möte
+2014-04-09 [juni] f-möte
 2014-04-04 16:00-20:00 CRD day @ Elite Hotel Marina Tower
 %%(diary-block 2014 06 27 2014 06 29) EHSM Hamburg http://ehsm.eu/
 2014-04-03 Arkham Horror med Simon!
@@ -774,3 +774,45 @@
 2014-04-03 11:30 lunch jn+christian, medborgarplatsen
 2014-04-15 En vecka till seminariet i Uppsala. Raklama lite?
 2014-04-02 12:00 cryptoparty planering, la neta östgötag. 12b
+2014-04-03 15:00 Feidas @ TUG
+%%(diary-block 2014 04 05 2014 04 06) Mozilla @ Sparvnästet
+2014-05-12 18:30 DFRI
+2014-04-08 10:50 Tandläkaren
+2014-05-26 Walter van Holst i Stockholm
+2014-04-15 12:00 [prel] Johan & Peter @ CRD, pk 1943
+2014-04-10 11:25 lukas @ koreana
+2014-04-22 [lärka] inget piano
+2014-05-24 Fotboll?
+2014-05-20 15:30-17:30 Pugwash årsmötesseminarium, Visualiseringsstudion Lindestedtsv. 5, KTH
+2014-04-24 19:00 BRF årsmöte, Aprilg. 8
+2014-04-10 19:00 gratta fia & fredde
+2014-04-14 11:30 Lunch med Johan och Christian
+2014-05-06 09:00-11:30 "ndn as an attractive workplace"
+2014-04-12 12:00-15:00 arduino Labb17 http://skarpnackskulturhus.stockholm.se/Globala-sidor/Kalender/2014/Lov/Pasklov/Fira-Arduinodagen-i-efterskott/
+2014-06-29 edison http://on.edis.nu/
+&%%(diary-block 2014 07 21 2014 08 08) jbn i sthlm
+2014-04-29 farmor
+2014-04-23 19:00 cyklopen wifi
+&%%(diary-block 2014 06 16 2014 07 13) grtrd sem
+&%%(diary-block 2014 08 04 2014 08 17) grtrd sem
+&%%(diary-block 2014 06 13 2014 06 27) B (sem)
+&%%(diary-block 2014 08 03 2014 08 17) B (sem)
+2014-04-23 12:00 Lunch Thomas Winkler @ Hokaido
+2015-04-22 PGP key expires tomorrow
+2015-04-16 PGP key expires in a week
+2014-06-14 Sommarfest Långholmen, Tove
+2014-06-20 Midsommarafton
+2014-06-06 Flaggdagen, röd
+2014-05-29 Kristi himmelsfärds dag
+2014-05-30 10:45-15:47 Sthlm-Malmö
+2014-06-01 14:11-19:10 Malmö-Sthlm
+2014-07-05 barn flyg
+2014-07-13 barn flyg
+2014-08-08 lärka tillbaka fr läger
+2014-05-08 17:30-19:30 ADBJ om DKD
+2014-04-30 10:45-12:15 CT, JRA2
+2014-05-10 flogsta
+2014-05-17 kalas
+2014-05-05 10:00 maconomy!
+2014-05-08 17:00 middag hos E&L
+%%(diary-block 2014 09 23 2014 09 26) CHES http://www.chesworkshop.org/ches2014/
