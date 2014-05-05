@@ -9,17 +9,31 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - . ct design document first cut (2)
+   - - plop server accepting submissions, emitting pst's and enough
+     functionality to implement the following CT specific functions
+     - get-entries
+     - get-sth
+     - get-proof-by-hash
+   - o ct design document first cut (2)
+** IETF
+** Sysadm
+   - - new CA created, w/ nameConstraints; new certs on smtp, jabber, imap, www
+** DFRI
+   - o email sent informing dfri@ about postponed LEAP
+   - - avtalsförslag skickat till christian, ta med [[gnus:nnimap%2Badbc:INBOX#20140415073954.GB1495@turing.lan.9999.se][Email from Johan Nilsson: Re: Avtal]] oxo
+   - - noc daily things to do posted
+   - o abuse-c set for ORG-DFRI1-RIPE
+   - D LEAP deployment work described in short text, sent to rom, bagder (and oej?)
+** Misc
+   - - flights and room booked paris jul 5-13
+   - - roland asked about map in ct proj
+* Soon (within a month)
+** Dev
+   - - verify ipv6 in tor master, especially wrt dns
    - - tor-relay@ thread about relay with unreachable ipv6 orport handled: (1)
      ticket created, email replied to
    - - do exits with an IPv6 exit policy really announce that when IPv6Exit=0? (1)
-** IETF
-** Sysadm
-** DFRI
-** Misc
    - - tor code review expanded in HACKING (2)
-* Soon (within a month)
-** Dev
    - - twisted-socks patch for socks5 handled
    - - gcov support in make test-network / chutney (5)
    - - #10519 tor uses default IP for dirport instead of the one defined in DirPort (2)
@@ -50,7 +64,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - #6027 and friends -- dir auths on ipv6
    - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
 ** Misc
-   - - look into submitting to google code jam https://code.google.com/codejam/contests.html
+   - X look into submitting to google code jam https://code.google.com/codejam/contests.html
    - - feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
    - - connected the subgraph ppl with T-SEC
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
@@ -119,6 +133,9 @@ Legend                                                (emacs -*-org-*- mode)
    - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-cooper-ietf-privacy-requirements-01.txt]]
 ** Sysadm
+   - - fluffypw deployed for new kdc
+   - - email users asked to set their pw in new kdc
+   - - kerberos based user handling for jabber deployed
    - - pond server running
    - - set up iodine somewhere (at modermodemet?) [pre iceland]
    - - tflows collecting data
@@ -169,6 +186,7 @@ Legend                                                (emacs -*-org-*- mode)
      maybe /usr/local/etc/ too?
    - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 ** DFRI
+   - - relay at x0 moved to new jail at anastasia, and increased some 40 Mbps
    - - two old unmoderated emails to listan@ looked into
    - - flashproxy running at dfri.se
    - - publish key points from snowdens ndr interview
