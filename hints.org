@@ -92,11 +92,38 @@ user    51m54.563s
 sys     0m14.765s
 ** tools
 - 1> help(). % prints help
-- 1> im(). % starts a graphical monitor (debugger), see i(3erl)
-
+- 1> im(). % starts a graphical monitor (debugger), see i(3erl); requires debian package erlang-debugger
 - rebar https://github.com/rebar/rebar -- build tool
+- dialyzer file.erl
+  To build a PLT, run
+  $ dialyzer --build_plt --apps erts kernel stdlib mnesia crypto
+  once and it'll end up in ~/.dialyzer_plt
+  Use --add_to_plt to add more appplications.
+- registered() lists all registered names
+- whereis(RegisteredName)
+- exit(Pid, kill)
+- 1> rl(entry).  % from plop.erl
+  2> #entry{type=1, data= <<"a foo is a bar">>}.
+  #entry{type = 1,data = <<"a foo is a bar">>}
+- tuple_size({}), element(N, {})
 ** client-server
 - gen_server(3erl)
+** R16
+- has crypto:hash/2 doing SHA-2
+- has integer_to_binary/1 -- in previous versions, use binary:encode_unsigned/1
+  114> [test:ffs(binary:encode_unsigned(X)) || X <- lists:seq(3,9)].
+  [2,3,3,3,3,4,4]
+** ssl application version
+ssl_imp
+| erlang/ssl version | release date | new    | old still | new is      |
+|                    |              | exists | exists    | the default |
+|--------------------+--------------+--------+-----------+-------------|
+| R12B/5.6/3.9       |              | yes    | yes       | no          |
+| R13A/5.7/3.10.1    |              | yes    | yes       | no          |
+| R14B04/5.8.5/4.1.6 |   2011-10-06 | yes    | yes       | yes         |
+| R15B/5.9/5.0       |   2011-12-14 | yes    | no        | yes         |
+| R16                |              | yes    | no        | yes         |
+|--------------------+--------------+--------+-----------+-------------|
 * golang
 ** gotour
 export GOPATH=$HOME/usr/go
@@ -1042,6 +1069,17 @@ for cert mismatch.
 
 You get "package assoc is obsolete" when running this in emacs24.
 
+** installing packages
+Info pages at
+- [[info:emacs#Packages]]
+- [[info:efaq#Packages%20that%20do%20not%20come%20with%20Emacs][info:efaq#Packages that do not come with Emacs]]
+
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
+Installed packages end up in ~/.emacs.d/elpa/.
 * Telia homerun
 user: 46703714984
 pw: ds5XVDEir5
@@ -1248,6 +1286,11 @@ mod_vcard_odbc.erl:156:                           sub_el = [SubEl, ?ERR_SERVICE_
 mod_vcard_odbc.erl:297:     Err = jlib:make_error_reply(Packet, ?ERR_SERVICE_UNAVAILABLE),
 mod_vcard_odbc.erl:408:                                         ?ERR_SERVICE_UNAVAILABLE),
 
+** configuratoin for requiring tls 
+<2014-04-22 Tue>
+<emias> ice9: For c2s, set "starttls_required: true"; for s2s, set                                                     
+        "s2s_use_starttls: required" or "required_truested".  See                                                      
+        <http://www.process-one.net/docs/ejabberd/guide_en.html#listened-options>.          
 * maatuska IP
 193.11.3.226
 * Kundnummer
@@ -2517,9 +2560,9 @@ RFC 4880 OpenPGP Message Format
 gpg --edit-key <keyid>
 addkey   # 6 (RSA encrypt only); 4096 (keysize); 1y (validity)
 key 1    # 1 was for 4096R/5681169D  created: 2010-05-07
-revkey   # might want to do this after the expiration date
+revkey   # 2 (Key is superseded); might want to do this after the expiration date
 save
-gpg --send-key <keyid>
+torsocks gpg --send-key <keyid>
 ** splitting a key
 For backup purposes a copy of the secret primary and subkey has been
 split into five shares.  Three shares are required to reassemble the
@@ -3635,8 +3678,11 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
 * i18l
   LANG=sv_SE.UTF-8
 * laptop
-** 24 -- lenovo T410s
+** Lenovo T410s (nordunet)
    <2011-02-17 Thu> ref. inlämning: 01DX DYZ
+** junis samsung
+https://www.samsung.com/us/computer/pcs/NP535U3C-A01US-specs
+13.3", 1.5kg
 * Generating x509 certs
 ** Generate a CA cert with CN "Test CA"
    42:moonshot% mkdir -p demoCA/private
@@ -4083,7 +4129,7 @@ KAS VPN 109.105.106.4 dk-kas-fw.nordu.net
     https://www.ripe.net/ripe/docs/ripe-467 IPv6 PI Assignment
     docu: 
     [[file:doc/RIPE-DB-Getting_started.pdf][RIPE-DB-Getting_started]]
-    [[file:doc/RIPE-update-reference-manual.pdf][RIPE-update-reference-manual]]
+    [[file:p/dfri/dfriadm/RIPE/RIPE%20Database%20Update%20Manual20140328.pdf][file:~/p/dfri/dfriadm/RIPE/RIPE Database Update Manual20140328.pdf]]
 **** ripe-537 -- PI request
      http://www.ripe.net/ripe/docs/ripe-537
      Supporting Notes for the Provider Independent (PI) Assignment Request Form
@@ -27830,6 +27876,8 @@ ln -sf /usr/local/bin/bsdtar /usr/bin/tar  # <-- don't do this!
 TAR=/usr/local/bin/bsdtar portmaster <whatever>  # <-- much better
 
 And if .lzma is problematic (fbsd 8.x), install archivers/gtar.
+** portmaster with pkgng
+echo WITH_PKGNG=yes >> /etc/make.conf
 * EuroBonus
 EBB609964226
 * No-phone sig
@@ -28870,6 +28918,8 @@ cypherpunks@4711.se
 https://cypherpunksblog.wordpress.com/
 ** icd.se
 ln+icd@4711.se v5o2jZ
+** airbnb.com
+ln+airbnb14@4711.se / ska11eper
 * SUNET
 ** Mätdata Chalmers
 [[gnus:nnimap%2Bndn:INBOX#4E5BA90A.3030405@chalmers.se][Email from Tomas Olovsson: Re: Mätdata från SUNET?]]
@@ -29046,7 +29096,7 @@ default password: password
 ** 8-port Netgear ProSafe switch / firewall
 FVS318G-100EUS
 S/N 27G61BB700328
-http://192.168.1.1 over port 1-8
+https://192.168.1.1 over port 1-8
 user: admin
 passsword: ska11eper (default: password)
 * riksgälden
@@ -29336,7 +29386,7 @@ Nationella telesamverkansgruppen
   - the VPN (PPTP) endorsement
   - that it lacked peer review and was hard to contribute at the time
 ** wiki
-ln5/iekae5Eih0Re (ln5+cryptopartyorg@4711.se)
+ln5/<see passphrases10> (ln5+cryptopartyorg@4711.se)
 * minecraft / mojang
 u/p: ln+mojang@4711.se/RRR0gn0tudju!
 name: l n
@@ -30547,8 +30597,10 @@ c7/x1Dwq0EWrn3TUT9+hm2l2XeCZa/W3a6Xo8/cxre/GREVzPEetEmNuWoXrgfhK
 2d4ZlYNGibZD+WEZdkMCQQC046yTa7g2pktaReOvsLXfW2j48Oc14I2NT57B0Cb5
 734+lUeOXN4ykhKQWzFrWuqMMJLPHsY6SVh9c888AMI0
 -----END RSA PRIVATE KEY-----
-* Xorg
-** key rate
+* X11 (window system)
+- xpra - tool to detach/reattach running X programs
+** Xorg
+*** key rate
 xset r on
 xset r rate 255 128
 xvfb, x11 virtual framebuffer, a server without video memory
@@ -32883,140 +32935,9 @@ Ordernr:  35673                   Datum:  2014-03-10 22:43
 Summa totalt: SEK  1700,10
 Betalt 2013-03-11.
 * arduino
-apt-get install arduino
-
-The following extra packages will be installed:
-  arduino-core avr-libc avrdude binutils-avr extra-xdg-menus gcc-avr libftdi1 libjna-java librxtx-java
-Suggested packages:
-  arduino-mk avrdude-doc task-c-devel gcc-4.2 libjna-java-doc
-
-apt-get install avrdude-doc arduino-mk   # For command line doc and stuff.
-
-** doc
-- reference http://www.atmel.com/dyn/resources/prod_documents/doc8161.pdf
-- programming the AVR http://efundies.com/avr/default.htm
-** board support
-Package adruino-mk contains program ard-parse-boards.
-
-tool:~% ard-parse-boards uno
-# The uno board:
----
-bootloader.extended_fuses: 0x05
-bootloader.file: optiboot_atmega328.hex
-bootloader.high_fuses: 0xde
-bootloader.lock_bits: 0x0F
-bootloader.low_fuses: 0xff
-bootloader.path: optiboot
-bootloader.unlock_bits: 0x3F
-build.core: arduino
-build.f_cpu: 16000000L
-build.mcu: atmega328p
-build.variant: standard
-name: Arduino Uno
-upload.maximum_size: 32256
-upload.protocol: arduino
-upload.speed: 115200
-
-So the MCU is an ATmega328P.
-
-The avrdude program, used for programming (or uploading to) the MCU,
-calls that 'm328p'.
-** compiling and linking
-Thanks to gcc-avr, binutils-avr and avr-libc we can use gcc to compile
-programs for an MCU on an Arduino UNO board.
-
-- /usr/share/doc/avr-libc/avr-libc-user-manual.pdf.gz has all the info
-- [[file:/usr/lib/avr/include][/usr/lib/avr/include]] has lots of header files
-- https://balau82.wordpress.com/2011/03/29/programming-arduino-uno-in-pure-c/
-shows how to compile using gcc and uploading using avrdude
-- [[file:src/arduino/Makefile][file:~/src/arduino/Makefile]] contains a working example
-
-** hardware
-- UNO layout https://arduino.cc/en/uploads/Main/arduino-uno-schematic.pdf
-** i/o
-- port registers http://arduino.cc/en/Reference/PortManipulation
-- PWM is easy on pins 3,5,6,9,10,11 (UNO), see
-  http://arduino.cc/en/Reference/AnalogWrite but also
-  http://arduino.cc/en/Tutorial/SecretsOfArduinoPWM and
-  http://garretlab.web.fc2.com/en/arduino/inside/arduino/wiring_analog.c/analogWrite.html
-  and maybe
-  http://urbanhonking.com/ideasfordozens/2009/05/18/an_tour_of_the_arduino_interna/
-** timers
-- http://playground.arduino.cc/Code/Timer1
-- http://www.hobbytronics.co.uk/arduino-timer-interrupts
-- http://www.engblaze.com/microcontroller-tutorial-avr-and-arduino-timer-interrupts/
-- http://www.oreilly.de/catalog/arduinockbkger/Arduino_Kochbuch_englKap_18.pdf
-- http://efundies.com/avr/avr_timer_interupts_c_simple.htm
+Moved to [[file:p/robots/robots.org][file:~/p/robots/robots.org]].
 * robot building
-** bought
-*** lawicel March 10 2014
-POL-2505	1 Zumo Robot Kit for Arduino
-PAR-ACT-ROB	1 ActivityBot
-ROB-10336	1 Rover 5 Robot Platform 
-ARD-KIT3	1 Arduino Uno R3 Starterkit 
-POL-2361	4 75:1 Micro Metal Gearmotor HP 
-POL-1419	1 Zumo Reflectance Sensor Array 
-ARD-LEO		1 Arduino Leonardo, Headers 
-ROB-11593	1 Rover 5 Motor Driver Board 
-SEN-09088	3 Mini Photocell 
-ADA-1063	2 Microphone Amp - MAX4466 
-SEN-10345	1 3-Axis Acc. BoB - LIS331 
-DIPS082-HNLED	1 LCD Mod. 2x8 - 5.01mm LED BL 
-PAR-SERVO-S05	2 Parallax Servo-S05/STD/FP 
-** base, platform
-*** Rover 5
-- http://lawicel-shop.se/prod/Rover-5-Robot-Platform_797348/Sparkfun_64668/SWE/SEK
-- https://www.sparkfun.com/datasheets/Robotics/Rover%205%20Introduction.pdf
-- https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Robotics/RP6%20motor%20TFK280SC-21138-45.pdf
-  - motors: TECO TFK280SC-21138-45; 5V-7.5V DC, <160mA, 8804+-10%RPM
-  - gearbox: 87:1 ratio
-  - optical quadrature encoder: 1000 pulses over 3 revolutions of the output shaft
-- http://letsmakerobots.com/node/24031
-*** ActivityBot
-http://lawicel-shop.se/prod/ActivityBot_1036481/Parallax_10648/SWE/SEK
-http://learn.parallax.com/ActivityBot
-http://learn.parallax.com/propeller-c-set-simpleide
-http://learn.parallax.com/activitybot/software-and-programming
-** driving motors
-*** quadrature encoders
-Measures the speed and direction of a rotating shaft. Output is
-typically two square waveforms 90 dgr out of phase, corresponding to
-one sensor each. The frequency of one of the waves gives motor
-speed. The pattern of binary numbers from both sensors gives
-direction. Feeding both into an XOR gate will give twice the frequency
-regardless of direction.
-
-- http://letsmakerobots.com/node/24031
-- https://en.wikipedia.org/wiki/Rotary_encoder
-- https://www.dynapar.com/Technology/Encoder_Basics/Quadrature_Encoders/
-- http://www.edn.com/design/integrated-circuit-design/4363949/Decode-a-quadrature-encoder-in-software
-*** Rover 5 Motor Driver Board
-- http://lawicel-shop.se/prod/Rover-5-Motor-Driver-Board_950714/Sparkfun_64668/SWE/SEK
-- https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Robotics/4%20Channel%20instruction%20manual.pdf
-- inputs
-  - 2 x power (+5V logic and the motor power supply)
-  - direction (high=forward, low=backward)
-  - PWM -- pulse-width-modulated speed (high=full, low=off)
-  - 2 x quadrature encoder
-- outputs
-  - motor current (1V per amp the motor draws)
-  - quadrature encoder => motor speed (times two)
-  - driving the motor (max 4.5A)
-** resistors
-1k light blue
-10k darker blue
-329
-** sensors
-*** Mini Photocell
-- light: 1kOhm (measured to 2k in a light room)
-- dark: 10kOhm (measured to 17k when covered)
-- http://lawicel-shop.se/prod/Mini-Photocell_991328/Sparkfun_64668/SWE/SEK
-- http://www.sparkfun.com/datasheets/Sensors/Imaging/SEN-09088-datasheet.pdf
-- http://meettechniek.info/embedded/arduino-analog.html
-- https://sites.google.com/site/qeewiki/books/avr-guide/analog-input
-** MCU:s
-- AVR/Arduino
-- MSP430 Texas Instruments, 16 (and 32?) bit MCU, much like AVR/Arduino.
+Moved to [[file:p/robots/robots.org][file:~/p/robots/robots.org]].
 * board games
 ** Arkham Horror
 https://en.wikipedia.org/wiki/Arkham_Horror
@@ -33052,6 +32973,9 @@ root Haq408
 7gp32yilw56o6zm7.onion
 * ICD.se
 ** order Sun Mar 23 10:54:10 CET 2014
+http://www.icd.se/index.php?main_page=product_info&cPath=67_175_179_182&products_id=1844
+http://www.icd.se/index.php?main_page=product_info&cPath=67_175_179_182&products_id=1843
+
 Betala in fakturabeloppet (inklusive moms och frakt) till PlusGiro eller BankGiro:
 PG 126 19 61 - 5 BG 5264 - 5322
 
@@ -33065,3 +32989,15 @@ Ditt ordernummer är: 1057
 
 Ytterligare 200:- i enl. med [[gnus:nnimap%2Badbc:INBOX#53355A2B.9000409@icd.se][Email from info@icd.se: Re: ICD
 order #1057]] för 64G SSD. Betalningsdag 2014-03-31.
+* DV, womens right
+[SKR] http://www.kvinnojouren.se/
+[AKH] http://www.kvinnojouren.se/jour/alla-kvinnors-hus-akh
+[ROKS] http://www.roks.se/
+[Terrafem] http://www.terrafem.org/
+[NCK] http://www.nck.uu.se/
+* CM (configuration management) tools
+- ansible
+- chef
+- cosmos
+- puppet
+- salt
