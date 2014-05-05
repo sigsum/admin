@@ -1,0 +1,2 @@
+#! /bin/sh
+egrep -i $1 ~/.priv/contacts.txt
