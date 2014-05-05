@@ -1,9 +1,8 @@
-Gcc: nnimap+adbc:INBOX.sent-mail.2014-02
-To: Alexander Rydekull <rydekull@gmail.com> 
-Subject: Encrypted Sat Feb 15 10:56
-From: Linus Nordberg <linus@nordberg.se>
-Date: Sat, 15 Feb 2014 18:20:44 +0100
-X-Draft-From: ("nnimap+adbc:INBOX" 77930)
+From: DFRI Abuse Team <abuse@dfri.net>
+To: linus@nordberg.se 
+Subject: test
+X-Draft-From: ("nnimap+adbc:INBOX.dfri.abuse")
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-03
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Date: Fri, 21 Mar 2014 07:42:28 +0100
 --text follows this line--
-<#secure method=pgpmime mode=signencrypt>
-Satte pw för 'admin' på www.dfri.se till iRkiU1kEvVoenhvkje

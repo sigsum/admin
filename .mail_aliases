@@ -178,6 +178,7 @@ alias eva.stiber                "Eva Stiber <eva.stiber@stockholm.se>"
 alias ewa                       ewa_bjorkeson@hotmail.com
 alias fabbe             	fabbe@hbernstone.se
 alias faidon                    "Faidon Liambotis <paravoid@debian.org>"
+alias feidas                    "Feidias Moulianitakis <feidias@kth.se>"
 alias fia               	fia@hbernstone.se
 alias fia.jobb                  sofia.bernstone@arkdes.se
 alias fifab			fifab@hbernstone.se
@@ -188,7 +189,7 @@ alias fl                	fredrik.laurin
 alias fnojan			henrikvoneuler@gmail.com
 alias foss-sthlm                foss-sthlm@cool.haxx.se
 alias francis			fnjfrancis@gmail.com
-alias frank	 		frank@nordu.net
+alias frank	 		Frank.Blankman@hibernianetworks.com
 alias frans			frans.carlqvist@gmail.com
 alias fredde                    fredrik.nordberg
 alias fredrik.amnesty		fredrik.gustafsson
@@ -206,7 +207,7 @@ alias froo			"Fredrik Söderblom <fredrik@xpd.se>"
 alias ft			ft.priv
 alias ft.priv                   "Fredrik Thulin <fredrik@thulin.net>"
 alias fuzzel			jeroen
-alias geko                      koppen.foxy
+alias geko                      koppen.tor
 alias gerd			behrmann@ndgf.org
 alias gertrud.arb		gertrud.kleberg@stockholm.se
 alias gertrud           	gertrudkleberg@hotmail.com
@@ -273,6 +274,7 @@ alias jan.rapp                  jan_rapp@hotmail.com
 alias jari                      "Jari Arkko <jari.arkko@piuha.net>"
 alias jas			simon@josefsson.org
 alias jbn			jbn@klutt.se
+alias jbn.google                "Johan Berggren <jbn@google.com>"
 alias jbn.ndn			johan.berggren
 alias jelena                    "Jelena Georgijevic <jelena@lugons.org>"
 alias jenny.b			jeberggren@gmail.com
@@ -352,6 +354,7 @@ alias kent.engstrom		kent.engstrom@LIU.SE
 alias keithw                    "Keith Winstein <keithw@mit.edu>"
 alias kenta.macken              "Kent Sjöberg <kent@laboefashion.se>"
 alias kirsten                   "Kirsten <kirsten.fiedler@edri.org>"
+alias klas                      "Klas Lindfors <klas@yubico.com>"
 alias klaas                     "Klaas Wierenga <kwiereng@cisco.com>"
 alias klamberg                  mark.klamberg
 alias klaus.eduix               klaus.nylamo@eduix.fi
@@ -359,6 +362,7 @@ alias klaus.layer               "Klaus Layer <klaus.layer@gmx.de>"
 alias kolla			kolla@uninett.no
 alias koppen.jondos             "Georg Koppen <g.koppen@jondos.de>"
 alias koppen.foxy               "Georg Koppen <georg@getfoxyproxy.org>"
+alias koppen.tor                gk@torproject.org
 alias kramse                    "Henrik Lund Kramshøj <hlk@kramse.org>"
 alias krbdev			krbdev@mit.edu
 alias krb-wg			ietf-krb-wg@lists.anl.gov
@@ -416,8 +420,10 @@ alias lucky                     "Lucky Green <shamrock@cypherpunks.to>"
 alias lucy                      lucy.priv
 alias lucy.isoc                 "Lucy Lynch <lynch@isoc.org>"
 alias lucy.priv                 "Lucy Lynch <llynch@civil-tongue.net>"
+alias lukas                     lukas.priv
 alias lukas.arb			"Lukas Granlund <lukas@sublime.se>"
-alias lukas                     granluke69@gmail.com
+alias lukas.priv                lukas@m2f.nu
+alias lukas.gmail               granluke69@gmail.com
 alias luke			"Luke Howard <lukeh@PADL.COM>"
 alias luke.me			luke.howard@me.com
 alias lunar                     lunar@torproject.org
@@ -458,6 +464,7 @@ alias martin.bjorklund		mbj@tail-f.com
 alias martin.fredriksson	tokmartin
 alias martin.johansson  	martinhugojohansson@gmail.com
 alias martin.tailf		martin.bjorklund
+alias mathias.tervo             "Mathias Tervo <mathias.tervo@gmail.com>"
 alias mats.westin		cadar
 alias matt.gmail                matthew.a.pagan@gmail.com
 alias matthijs.bof              "Matthijs van Bergen <m.vanbergen@ictrecht.nl>"
@@ -496,9 +503,10 @@ alias nathan.guardian           Nathan of Guardian <nathan@guardianproject.info>
 alias nathaniel			"Nathaniel McCallum <npmccallum@redhat.com>"
 alias nathan                    "Nathan Freitas <nathan@freitas.net>"
 alias nemo                      "Nemo Ekström <nemo@31173.se>"
-alias nick.mit			nickm@alum.mit.edu
 alias nick			nick.tor
+alias nick.mit			nickm@alum.mit.edu
 alias nick.tor			"Nick Mathewson <nickm@torproject.org>"
+alias nickh                     hopper
 alias nico                      nico@cryptonector.com
 alias niklas                    "Niklas Johansson <raphexion@gmail.com>"
 alias nil			ct@duckduckgo.com
@@ -610,7 +618,9 @@ alias sanne			sanne.stroeh@gmail.com
 alias sarah.b                   sarahbennettsmail@yahoo.se
 alias sarah.cortes.edu          "SARAH CORTES <sarah_cortes@post.harvard.edu>"
 alias sarah.cortes.gmail        "Sarah Cortes <sarah.cortes@gmail.com>"
-alias sarah.cortes              sarah.cortes.gmail
+alias sarah.cortes.lewis        "Sarah Cortes <sarah@lewis.is>"
+alias sarah.c                   sarah.cortes
+alias sarah.cortes              sarah.cortes.lewis
 alias sara.ndn			"Sara Naldal <sara@nordu.net>"
 alias sean                      "Sean Turner <turners@ieca.com>"
 alias sebastian.hahn		mail@sebastianhahn.net
@@ -639,7 +649,9 @@ alias sofia             	sofia@nordberg.se
 alias solix                     kontakt@sol-ix.net
 alias spacedump			anders.olausson
 alias sparvnastet               sparvnastet@lists.riseup.net
+alias sparvnastet.kassor        mathias.tervo
 alias spe                       stefan.petersen
+alias sra                       rob.austein
 alias staffan.jonson            "Staffan Jonson <staffan.jonson@iis.se>"
 alias staffan.ulfberg          	staffan@ulfberg.se
 alias stefan.helm		stefan.helm@gmail.com
@@ -648,6 +660,7 @@ alias stefan.listrom 		"Stefan Listrom <steli@sunet.se>"
 alias stefan.petersen           "Stefan Petersen <spe@ciellt.se>"
 alias stefan.solpanel           stefan@kruse.nu
 alias stefan.winter		stefan.winter@restena.lu
+alias stefan.wold               ratler@stderr.eu
 alias stephen.borrill		"Stephen Borrill <sborrill@precedence.co.uk>"
 alias stephen.farrell           stephen.farrell@cs.tcd.ie
 alias stephen                   stephen.farrell
@@ -662,12 +675,14 @@ alias susanne.lager		lagersusanne@yahoo.com
 alias susanne.soderman		susanne.soderman@kinnarps.se, susanne.soderman@spray.se
 alias susanne			susanne.lager
 alias sus                       "Sus Andersson <sus.andersson@farad.se>"
+alias swold                     stefan.wold
 alias sylvia                    sylviavill@hotmail.com
 alias tails                     tails@boum.org
 alias tech                      tech@cryptech.is
 alias tege			tg@gmplib.org
 alias tg                        "Torbjörn Gräslund <torbjorn@kth.se>"
 alias tg.biotech		"Torbjörn Gräslund <torbjorn@biotech.kth.se>"
+alias thijs                     "Thijs Kinkhorst <thijs@uvt.nl>"
 alias thomas			"Thomas Hyllested <hyllested@nordu.net>"
 alias thomas.winkler		"Thomas Winkler <thomas.winkler@rkp.police.se>"
 alias tiago			tiago@gnu.org
