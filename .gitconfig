@@ -7,3 +7,5 @@
 #        sslCAPath = /usr/share/ca-certificates
 #        sslCAInfo = /usr/local/share/certs/ca-root-nss.crt
         sslCAInfo = /etc/ssl/certs/ca-certificates.crt
+[push]
+	default = current
