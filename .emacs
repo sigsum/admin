@@ -6,8 +6,6 @@
 ;; w3m buggy and won't let you quit emacs?
 ;;   (setq kill-emacs-hook (remove 'w3m-arrived-shutdown kill-emacs-hook))
 
-;(add-to-list 'load-path "~/usr/share/emacs/site-lisp")
-
 ;; gnus / nnimap debugging.
 ;; gnus installs itself in /usr/share/emacs/site-lisp/gnus.  We
 ;; need this dir to appear before /usr/local/share/emacs/VERSION/lisp
@@ -21,8 +19,10 @@
 
 ;; Do this early -- other requirements might depend on it.
 (require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; The default is using http rather than https.
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")))
+;; nice, but no thanks until there's https
+;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
 (require 'tls)
@@ -30,6 +30,7 @@
 (require 'appt)                         ;calendar needs this
 
 (setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
+;(setq load-path (cons "~/.emacs.d/elpa/erlang-2.4.1" load-path))
 (require 'erlang-start)
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
@@ -161,7 +162,7 @@
 ;(aset keyboard-translate-table ?\b ?\^?)
 ;(aset keyboard-translate-table ?\^? ?\b)
 
-(autoload 'mpg123 "mpg123" "A Front-end to mpg123" t)
+;;(autoload 'mpg123 "mpg123" "A Front-end to mpg123" t)
 ;(load "id3.el")
 
 ;; EMMS -- http://www.gnu.org/software/emms/quickstart.html
