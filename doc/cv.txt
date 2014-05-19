@@ -1,8 +1,8 @@
-Curriculum Vitae           Linus Nordberg                   2014-01-28
+Curriculum Vitae           Linus Nordberg                   2014-05-19
 ----------------
 
 Name:           Linus Nordberg       Nationality:  Swedish
-Age:            44                   Location:     Stockholm
+Age:            45                   Location:     Stockholm
 
 Education:      High school diploma in Engineering
 
@@ -12,17 +12,17 @@ E-mail:         linus@nordberg.se
 Skills Summary
 --------------
 
-Software:       Strong C, C++ and Python programming and design skills.
-		Experienced in Java programming. Good understanding of
-		dynamic and functional languages such as Erlang and
-		various Lisps.
+Software:       Strong C, C++ and Python programming and design
+		skills. Experienced in Erlang and Java
+		programming. Good understanding of other dynamic and
+		functional languages such as various Lisps.
 
                 Thorough knowledge in network programming and network
                 protocol dissection and design. Good understanding of
                 IP, Ethernet and DTM.
 
-                Thorough knowledge in Onion Routing, specifically Tor.
-                Good understanding of the protocols and the
+                Thorough knowledge in onion routing, specifically Tor.
+                Good understanding of the Tor protocol and
                 implementation as well as experience of operation of
                 the components of a Tor network. Skilled in privacy
                 analysis of internet services.
@@ -70,7 +70,8 @@ NORDUnet        Software Engineer
 May 09 -        Development and maintenance of security software,
 Present         including Tor (adding support for IPv6), Kerberos
                 (OTP support in MIT Kerberos), radsecproxy (RADIUS
-                over TLS), libradsec (for Project Moonshot).
+                over TLS), libradsec (for Project Moonshot) and
+                Certificate Transparency (RFC 6962).
 
                 Development of a file sharing system with federated
                 identity management based on BitTorrent.
