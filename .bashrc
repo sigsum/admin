@@ -99,3 +99,8 @@ alias tunnel-sieve='ssh -Nf -L 2000:lnmail:2000 banksy.nordberg.se && echo "2000
 #alias whois='whois -h geektools.com'
 alias xlock='xlock -mode blank'
 alias antiexcel='python /usr/local/share/examples/py-excelerator/xls2txt.py'
+
+## pastebin
+#sprunge () {
+#    printf '%s%s\n' "$(curl -sF 'sprunge=<-' http://sprunge.us/)" "${*:+?$*}"
+#}
