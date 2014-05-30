@@ -39,7 +39,7 @@
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
 
-;(require 'magit)
+(require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
 ;; Fun.
@@ -405,13 +405,16 @@
  '(message-send-mail-function (quote smtpmail-send-it))
  '(message-setup-hook nil)
  '(message-subject-re-regexp "^[ 	]*\\(\\([Rr][Ee]\\|[Ss][Vv]\\)\\(\\[[0-9]*\\]\\)*:[ 	]*\\)*[ 	]*")
+ '(mm-automatic-display (quote ("text/plain" "text/x-verbatim" "text/x-vcard" "message/delivery-status" "multipart/.*" "message/rfc822" "text/x-patch" "text/dns" "application/pgp-signature" "application/emacs-lisp" "application/x-emacs-lisp" "application/x-pkcs7-signature" "application/pkcs7-signature" "application/x-pkcs7-mime" "application/pkcs7-mime" "application/pgp\\'" "text/x-org")))
  '(mm-coding-system-priorities (quote (utf-8)))
  '(mm-decrypt-option nil)
- '(mm-default-directory "/tmp")
+ '(mm-default-directory nil)
+ '(mm-enable-external (quote ask))
  '(mm-encrypt-option nil)
  '(mm-sign-option nil)
  '(mm-url-use-external t)
  '(mm-verify-option (quote known))
+ '(mm-w3m-safe-url-regexp "")
  '(mml-secure-cache-passphrase nil)
  '(mml-secure-passphrase-cache-expiry 0)
  '(mml2015-always-trust nil)
@@ -722,6 +725,7 @@
 (calendar-set-date-style 'iso)
 
 (add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; don't activate the debugger automagically when errors are
 ;; encountered

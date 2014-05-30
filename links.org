@@ -1,3 +1,96 @@
+poll http://www.gnuheter.com/val/
+tor runa snowden catfitz http://3dblogger.typepad.com/wired_state/2014/05/so-snowdens-honolulu-crypto-party-girl-runasand-goes-to-moscow.html
+hotel ams pets 2014 http://www.hampshire-hotels.com/en/the-manor-hotel-amsterdam-hampshire-eden
+readme privacy tor doctorow http://www.tor.com/blogs/2014/05/you-are-not-a-digital-native-privacy-in-the-age-of-the-internet
+eu svpol sjf http://journalisten.se/nyheter/datalagring-och-transparens-heta-eu-fragor
+sif14 http://m.independent.mk//articles/5483/Stockholm
+tor articles press https://trac.torproject.org/projects/tor/wiki/TorArticles
+readme kidsonline research http://onlinelibrary.wiley.com/doi/10.1111/jcpp.12260/full
+sif14 snowden ggreenwald https://medium.com/p/dbccbc083a3f
+internet freedom of expression people:larue https://www.eff.org/deeplinks/2013/06/internet-and-surveillance-UN-makes-the-connection
+sif14 snowden ggreenwald http://www.cicero.de/weltbuehne/conference-internet-freedom-swedish-foreign-ministry-prevents-snowdens-invitation/57582
+sif14 snowden ggreenwald https://www.aftonbladet.se/kultur/article18948838.ab 
+sif14 snowden ggreenwald https://sverigesradio.se/sida/artikel.aspx?programid=478&artikel=5872246
+bildt surveillance http://www.thelocal.se/20131205/bildt-defends-sweden-surveillance
+readme tor hs http://motherboard.vice.com/read/the-legal-side-of-the-deep-web-is-wonderfully-bizarre
+readme tdv http://www.nyteknik.se/nyheter/it_telekom/allmant/article3709339.ece
+readme tdv https://computersweden.idg.se/2.2683/1.485364/signalspaning-bygger-fras-cyberskydd
+readme tdv https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5530792
+tdv people:amel https://www.iis.se/blogg/vad-var-det-vi-sa-fra/
+pic drawing http://www.onlamp.com/pub/a/onlamp/2007/06/21/in-praise-of-pic.html?page=1
+readme tor http://motherboard.vice.com/read/tor-is-being-used-as-a-safe-haven-for-victims-of-cyberstalking
+netnod members http://www.netnod.se/ix/members
+readme people:frankrieger http://frank.geekheim.de/?page_id=128
+surveillance theater sweden http://www.uppsalastadsteater.se/2034-2/
+readme nsa lea https://www.eff.org/deeplinks/2014/05/how-nsa-transforming-law-enforcement
+erlang code https://medium.com/p/b5936dceb5e4
+sif14 http://www.etc.se/inrikes/ud-stoppar-snowden
+drd eu us https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1348322
+drd eu us https://papers.ssrn.com/sol3/papers.cfm?abstract_id=445180
+readme drd eu us https://www.eff.org/issues/mandatory-data-retention/us
+integrity sweden dir:2014:65 http://www.regeringen.se/content/1/c6/23/98/71/9159b7b7.pdf
+readme drd eu us people:markklamberg http://www.lawfareblog.com/2013/09/mark-klamberg-on-eu-metadata-collection/
+readme drd eu us people:markklamberg http://www.gbv.de/dms/spk/sbb/toc/730231380.pdf
+tor pt https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports
+biohacking https://sthlmbiohackers.wordpress.com/
+readme swedish law http://www.riksdagen.se/sv/Dokument-Lagar/Utskottens-dokument/Betankanden/Arenden/201314/KU17/
+drd sweden http://janlindgren.se/2014/05/20/datalagring-och-hur-polisen-loser-brott/
+anakata amelia http://www.expressen.se/kvp/ledare/debatt-varfor-skyddar-inte-it-lagarna-oss/
+ct https://github.com/google/certificate-transparency
+mozilla drm tbb people:mikeperry https://groups.google.com/forum/#!topic/mozilla.dev.privacy/3jA9zt1pXVo
+readme staatstrojaner http://ccc.de/en/updates/2011/staatstrojaner
+rfc privacy review http://down.dsg.cs.tcd.ie/ppm/
+minecraft http://wiki.vg/Protocol#Sound_Effect
+crypto https://regmedia.co.uk/2014/05/16/0955_peter_gutmann.pdf
+malware fbi swede http://www.svd.se/nyheter/utrikes/svensk-huvudman-i-hackerliga_3577252.svd
+chipnpin people:sjmurdoch http://www.theregister.co.uk/2014/05/19/chip_and_skim
+readme nsa snowden cisco http://www.engadget.com/2014/05/16/nsa-bugged-cisco-routers/
+swedish law seziure http://www.advokatsamfundet.se/Juridiska-biblioteket/Nyheter/2012/januari/Brottsutredares-mojligheter-att-fa-tillgang-till-handlingar/
+swedish law seziure http://umu.diva-portal.org/smash/record.jsf?pid=diva2:463391
+radio buzzer https://en.wikipedia.org/wiki/UVB-76
+google email ratelimiting https://support.google.com/mail/answer/81126
+cryptech http://m.heise.de/security/meldung/Open-Source-Kryptochip-soll-Vertrauen-schaffen-2191514.html
+readme nsa snowden http://www.theguardian.com/commentisfree/2014/may/17/government-lies-nsa-justice-department-supreme-court
+ct pdf https://csrc.nist.gov/groups/ST/ca-workshop-2013/presentations/Kasper_ca-workshop2013.pdf
+ct https://www.imperialviolet.org/2013/08/01/ctpilot.html
+readme ddc https://lwn.net/Articles/555730/
+readme ddc http://paul.jakma.org/2010/09/20/critique-of-diverse-double-compiling/
+sif http://www.cicero.de/weltbuehne/conference-internet-freedom-swedish-foreign-ministry-prevents-snowdens-invitation/57582
+readme tor interview http://www.pen.org/blog/keeping-writers-safe-online-interview-tor-project
+readme ipv6 security http://www.surf.nl/binaries/content/assets/surf/en/knowledgebase/2014/report-ipv6-security.pdf
+readme pgp key server replacement people:bleidl https://nymsio.github.io/
+tor summer dev 2014 https://trac.torproject.org/projects/tor/wiki/org/meetings/2014SummerDevMeeting
+leak swedish https://tvleaks.se/
+torbrowser design https://www.torproject.org/projects/torbrowser/design/
+littlebrother https://www.transifex.com/projects/p/lillebror/
+snowden ggreenwald book https://thepiratebay.se/torrent/10144759/Glenn_Greenwald_-_No_Place_to_Hide_%28epub__mobi%29
+privacy hw https://kinko.me/
+readme torture uk http://www.telegraph.co.uk/news/uknews/law-and-order/10825041/Britons-more-likely-to-support-torture-than-Russians.html
+readme google military http://pando.com/2014/04/23/the-revolving-door-between-google-and-the-department-of-defense/
+ietf privacy http://www.tschofenig.priv.at/wp/?p=1024
+google dns funny https://xkcd.com/1361/
+dns measurement https://ripe68.ripe.net/presentations/164-2014-05-14-huston-dns-measurements.pdf
+eduroam android http://www.eduroam.ie/userdocs/android-peap.php
+tor dns https://lists.dns-oarc.net/pipermail/dns-operations/2014-May/011677.html
+security sploit kernel http://bugfuzz.com/stuff/cve-2014-0196-md.c
+readme eu https://www.consilium.europa.eu/uedocs/cms_data/docs/pressdata/EN/foraff/142549.pdf
+raft paper https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf
+raft erlang https://github.com/andrewjstone/rafter
+raft https://raftconsensus.github.io/
+readme google nsa http://thehackernews.com/2014/05/leaked-emails-show-google-in.html
+readme video jake pgp http://re-publica.de/en/session/lets-talk-about-sex-baby-lets-talk-about-pgp
+ct rt http://www.links.org/?p=1272
+service explain http://splasho.com/upgoer5/
+readme db crdt https://batasrki.github.io/blog/2013/07/29/crdt-primer-in-riak-and-ruby/
+integrity sweden http://www.regeringen.se/sb/d/18313/a/239871
+ct monitor person https://github.com/tomfitzhenry
+readme norway nsa http://www.dagbladet.no/2014/04/26/nyheter/snowden_i_norge/edward_snowden/nsa/etterretningstjenesten/32991102/
+ct https://code.google.com/p/certificate-transparency/wiki/GitTipsAndTricks
+readme x509 mitm https://www.linshunghuang.com/papers/mitm.pdf
+di surveillance sweden http://www.svd.se/opinion/brannpunkt/det-finns-en-overtro-pa-kameraovervakning_3518594.svd
+readme audio http://planka.fm/2014/03/08/traffic-jam-avsnitt-7/
+readme surveillance sweden http://www.svd.se/opinion/brannpunkt/kameror-oroar-di-mer-an-kriminaliteten_3528454.svd
+readme work http://www.ted.com/talks/jason_fried_why_work_doesn_t_happen_at_work
 25519 amd64 bug https://gist.github.com/CodesInChaos/8374632
 people:wheeler https://crypto.stackexchange.com/users/351/d-w
 book algorithm programming https://en.wikipedia.org/wiki/Introduction_to_Algorithms
@@ -366,9 +459,6 @@ surveillance people:blanu people:phw people:farrell http://www.newscientist.com/
 readme .SE pod people:roll https://www.iis.se/blogg/ping11/
 security compiler hardening linux http://www.outflux.net/blog/archives/2014/02/03/compiler-hardening-in-ubuntu-and-debian/
 readme people:anneramberg http://www.advokatsamfundet.se/Advokaten/Tidningsnummer/2014/Nr-1-2014-argang-80/Politiskt-ledarskap/
-people:markusnaarttijarvi surveillance swedish law
-people:markusnaarttijarvi surveillance swedish law
-people:markusnaarttijarvi surveillance swedish law
 people:markusnaarttijarvi surveillance swedish law http://www.nsd.se/nyheter/overvakning-viktigare-an-integritet-8052090.aspx
 bildt internet governance http://www.chathamhouse.org/media/news/view/196835
 bildt internet governance http://www.theguardian.com/world/2014/jan/22/independent-commission-future-internet-nsa-revelations-davos

@@ -19,14 +19,21 @@ Legend                                                (emacs -*-org-*- mode)
 ** Sysadm
    - - new CA created, w/ nameConstraints; new certs on smtp, jabber, imap, www
 ** DFRI
+   - - avtalsförslag, andra varvet
+   - - letterhead
+   - o dfri-sw (TUG) has vlan 41 on i/f 1 and 24
+   - o suggested internetdagarna ppl sent to pawal [wed]
+   - o avtalsförslag skickat till christian [fri]
+       ta med [[gnus:nnimap%2Badbc:INBOX#20140415073954.GB1495@turing.lan.9999.se][Email from Johan Nilsson: Re: Avtal]] oxo
    - o email sent informing dfri@ about postponed LEAP
-   - - avtalsförslag skickat till christian, ta med [[gnus:nnimap%2Badbc:INBOX#20140415073954.GB1495@turing.lan.9999.se][Email from Johan Nilsson: Re: Avtal]] oxo
-   - - noc daily things to do posted
+   - o noc daily things to do posted
    - o abuse-c set for ORG-DFRI1-RIPE
    - D LEAP deployment work described in short text, sent to rom, bagder (and oej?)
 ** Misc
-   - - flights and room booked paris jul 5-13
-   - - roland asked about map in ct proj
+   - - flights booked paris jul 5-13
+   - - room booked paris jul 5-13
+   - o tony@okfn.org
+   - o roland asked about map in ct proj
 * Soon (within a month)
 ** Dev
    - - verify ipv6 in tor master, especially wrt dns

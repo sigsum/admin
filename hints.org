@@ -96,7 +96,7 @@ sys     0m14.765s
 - rebar https://github.com/rebar/rebar -- build tool
 - dialyzer file.erl
   To build a PLT, run
-  $ dialyzer --build_plt --apps erts kernel stdlib mnesia crypto
+  $ dialyzer --build_plt --apps erts kernel stdlib mnesia crypto public_key inets
   once and it'll end up in ~/.dialyzer_plt
   Use --add_to_plt to add more appplications.
 - registered() lists all registered names
@@ -184,9 +184,9 @@ PONDCLI=1 ~/usr/go/bin/client
 
 State file is in ~/.config/pond .
 ** building
-go get github.com/agl/pond
-go build -tags nogui github.com/agl/pond
-go install -tags nogui github.com/agl/pond
+go get github.com/agl/pond/client
+go build -tags nogui github.com/agl/pond/client
+go install -tags nogui github.com/agl/pond/client
 $GOPATH/bin/client
 ** forums
 #OPEntropicTravel @ OFTC
@@ -348,6 +348,10 @@ And since my problem is solved here, I won't finish this text today either!
 [py2-unicode] http://docs.python.org/2/howto/unicode.html
 [py3-unicode] http://docs.python.org/py3k/howto/unicode.html
 
+Update <2014-05-06 Tue>: Debian (at least modern, like jessie) seem to
+set a couple of LC_ environment variables which might be missing. Do
+the /etc/locale.gen and /usr/sbin/locale-gen trick desribed
+above. Important for bash and xterm to be happy about _input_.
 * wifi / * wlan
 ** Networks
 - bolibompa @ kåks: WrongProdukt
@@ -841,6 +845,9 @@ To git@git.nordu.net:libradsec.git
 Deleted tag 'radsecproxy-1.6.5' (was 4c3db5a)
 To git@git.nordu.net:libradsec.git
  - [deleted]         radsecproxy-1.6.5
+** compact output from swold
+git log --pretty=format:'%Cred%h%Creset -%C(magenta)%d%Creset %s [%C(cyan)%an%Creset] %Cgreen(%cr)%Creset' --date=relative
+git log --pretty=format:'%C(red)%h%Creset -%C(magenta)%d%Creset %s [%C(cyan)%cn%Creset] %Cgreen(%cr)%Creset' --date=relative --decorate --numstat
 * Movie / video
 ** Carnivale
 Start VLC.
@@ -1465,10 +1472,40 @@ depending on circumstances. The US and Canada springs to mind.
 * Debian
 - update-rc.d(8) -- fiddle with startup of services
 - apt-get install package
-** wifi
+** wifi / wlan
 Kernel module iwlwifi supports the Intel 6200AGN chipset in Lenovo T140s.
 Needs non-free firmware though: apt-get install firmware-iwlwifi
 Might want to turn of 5GHz: echo "options iwlwifi 11n_disable=1" > /etc/modprobe.d/iwlwifi.conf
+
+On X60 with Debian jessie/sid with a netgear/realtek USB wifi plug:
+$ sudo apt-get install firmware-realtek  # requires source jessie/non-free
+$ apt-cache policy firmware-realtek
+firmware-realtek:
+  Installed: 0.41
+  Candidate: 0.41
+  Version table:
+ *** 0.41 0
+        500 http://ftp.de.debian.org/debian/ jessie/non-free i386 Packages
+        100 /var/lib/dpkg/status
+$ sudo wpa_passphrase NUNOC RosalieM >> /etc/wpa_supplicant/wpa_supplicant.wlan0.conf
+$ tail -5 /etc/wpa_supplicant/wpa_supplicant.wlan0.conf
+network={
+        ssid="NUNOC"
+        #psk="RosalieM"
+        psk=00c5118b58209902f7488df2a44d85ba574991306a6e315b4921f10b7de17a5f
+}
+sudo wpa_supplicant -B -c/etc/wpa_supplicant/wpa_supplicant.wlan0.conf -iwlan0
+sudo dhclient wlan0
+
+iwlist scan | egrep SSID
+
+Good resources:
+- [[/usr/share/doc/wpa_supplicant/examples/plaintext.conf]]
+- [[/usr/share/doc/wpa_supplicant/examples/wep.conf]]
+- [[/usr/share/doc/wpa_supplicant/examples/wpa_supplicant.conf.gz]]
+- WPA_SUPPLICANT(8)
+- WPA_SUPPLICANT.CONF(5)
+- ? /sbin/iw help
 ** ratpoison
 - key rate
   # after every boot or suspend/resume
@@ -3655,6 +3692,8 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
     Written in go.
     Has exactly one commit (<2013-06-26 Wed>): Date:   Sat Jan 19 02:33:14 2013 -0500
     It's very small (847 lines in all).
+** bots
+- manderlbot -- bot written in erlang
 * dnsec
   libraries, from pawal: 
   "ja, i unbound ingår ett, och har du ldns, båda från nlnet labs"
@@ -28881,6 +28920,35 @@ Ooops, one level off in the rsync copy:
 [root@banksy /usr/jaildisks/ln/lnmail/usr/local/cyrus/spool/user]# ls linus
 .snap   linus
 [root@banksy /usr/jaildisks/ln/lnmail/usr/local/cyrus/spool/user]# mv linus/linus/* linus/
+*** dead qemu-dm (on tbd0)
+xm destroy banksy
+xm create banksy
+while true; do xm list | egrep ^banksy; sleep 1; done
+*** jails missing ip addrs after reboot
+banksy# for f in 1 2 3 4 5 6; do ifconfig re0 alias 10.0.1.$f netmask 0xffffff00; done
+banksy# /usr/local/etc/rc.d/ezjail.sh restart lndns lnkrb lnspam lnmail lnweb
+*** corrupted ISAM table (myslqld) in lnspam
+Presumably because of a full disk.
+
+[root@lnspam /usr/local/mysql]# tail -1 lnspam.nordberg.se.err
+140514 14:52:43 [ERROR] /usr/local/libexec/mysqld: Incorrect key file for table './sa/bayes_token.MYI'; try to repair it
+[root@lnspam /usr/local/mysql]# myisamchk -r sa/bayes_token.MYI 
+- recovering (with sort) MyISAM-table 'sa/bayes_token.MYI'
+Data records: 2453944
+- Fixing index 1
+myisamchk: warning: Duplicate key for record at   39363522 against record at   18573126
+myisamchk: warning: Duplicate key for record at   23274680 against record at   16651206
+myisamchk: warning: Duplicate key for record at   38741736 against record at   23756370
+myisamchk: warning: Duplicate key for record at   37056448 against record at   18480506
+myisamchk: warning: Duplicate key for record at   32135136 against record at   19509820
+myisamchk: warning: Duplicate key for record at   36525764 against record at   22282612
+myisamchk: warning: Duplicate key for record at   30824992 against record at   18549938
+myisamchk: warning: Duplicate key for record at   44726924 against record at   39775736
+- Fixing index 2
+- Fixing index 3
+Data records: 2453715
+myisamchk: warning: 8 records have been removed
+[root@lnspam /usr/local/mysql]# 
 * MUD
 ** tintin++
 #session dfri mud.dfri.se 4242
@@ -28920,6 +28988,10 @@ https://cypherpunksblog.wordpress.com/
 ln+icd@4711.se v5o2jZ
 ** airbnb.com
 ln+airbnb14@4711.se / ska11eper
+** google
+johndoejohndoejohndoe33@gmail.com / makesmecrazythaticantpastehere
+** soundcloud
+ln+soundcloud@4711.se / ohmygoshthatshard
 * SUNET
 ** Mätdata Chalmers
 [[gnus:nnimap%2Bndn:INBOX#4E5BA90A.3030405@chalmers.se][Email from Tomas Olovsson: Re: Mätdata från SUNET?]]
@@ -29402,7 +29474,11 @@ http://forums.bukkit.org/threads/optimize-java-for-minecraft-in-a-extreme-way-p-
 t -- enter commands
 /permissions group players <group>           -- list users in group
 /permissions player addgroup <user> <group>  -- add <user> to <group>
+/permissions player setgroup <player> <group> -- set group(s)
 
+To make a new player be in the right group for playing ("user"), do
+
+/permissions player setgroup <player> user 
 * passwords
 https://segate.sunet.se/ linus@nordu.net S2qaEn2TTa4G
 fb "Lord Berusning" HeligaGudsModerVilketHugg! (born 1975-02-11)
@@ -29837,21 +29913,6 @@ but then sadly ignored.
 ** Trojkan
 http://kfucyoi2kkgt524e.onion/
 <2013-05-16 Thu> receipt CQIH+20262
-* sif13
-** first session
-Carl Bildt @ 41:55
-
-differentiation ...
-
-the surveillance technologies, that are there, including country by the way,
-they do not limit in any sort of way freedom of expression and information
-
-because of the very fact that when you want to have... if i was
-security service, because we do have one, want to tap the telephone of
-someone, i mean the due process, they certainly don't want to expose
-the fact that they are tapping because that would limit their ability
-to get the information, so surveillance technologies are exceedingly
-discreet, they don't limit anything
 * printing
 lpq -al
 lpstat -l
@@ -30797,7 +30858,16 @@ spittelmarkt
 Monsieur Vuong, Alte Schoenhauser Strasse 46, Berlin-Mitte.
 http://monsieurvuong.com
 * x60
-- pipet kan tas bort om man i boot loadern lägger till kernel-kommandot idle=halt
+- Pipet kan tas bort om man i boot loadern lägger till
+  kernel-kommandot idle=halt 
+  - update <2014-05-06 Tue> did that by editing /etc/default/grub:
+    GRUB_CMDLINE_LINUX="idle=halt" and running update-grub. A bit less
+    noisy but hotter -- fan running a lot and temp around 45C. Or
+    40/45 (Thermal 0/1) when on a good surface.
+- rmmod uhci_hcd removes the noise
+  - Unfortunately this is the "USB Universal Host Controller Interface
+    driver" which means that there is no USB when this is not loaded.
+    Don't forget to load it again before locking!
 ** hints from aagbsn <2013-11-21 Thu>
 <aagbsn> x60 people with the SST25VF016B                                [16:49]
 <aagbsn> We want to set 0xBC                                            [16:50]
@@ -30822,6 +30892,14 @@ http://monsieurvuong.com
                                                                         [17:13]
 <aagbsn> (if someone else with an x60 wants to try, perhaps write 0x3C then                                            
          0xBC and see if that works. just a guess)                      [17:34]
+** bying
+- 5 x x60 from bf before tor summer dev 2013, munich
+  6000:- IIRC.
+- 5 x x60 from bf before tor winter dev 2014, iceland
+  Sthlm 2014-02-05; 6750 för 5st X60 bärbara datorer med laddare
+  All 5 had 2Gb RAM and there were 5x2Gb extra (750:-).
+- 3 x x60 + 2x2Gb RAM from bf <2014-05-14 Wed>
+  3 x 1000:- + 2 x 250:- --> 3500:-
 * tails
 ** startup
 sudo sh -c "
@@ -33001,3 +33079,124 @@ order #1057]] för 64G SSD. Betalningsdag 2014-03-31.
 - cosmos
 - puppet
 - salt
+* SIF
+** sif13
+*** first session
+Carl Bildt @ 41:55
+
+differentiation ...
+
+the surveillance technologies, that are there, including country by the way,
+they do not limit in any sort of way freedom of expression and information
+
+because of the very fact that when you want to have... if i was
+security service, because we do have one, want to tap the telephone of
+someone, i mean the due process, they certainly don't want to expose
+the fact that they are tapping because that would limit their ability
+to get the information, so surveillance technologies are exceedingly
+discreet, they don't limit anything
+** SIF14
+*** questions
+- Does Sweden intercept, store or analyse in any way the
+  communications of millions of individuals?
+- And do you believe that simply increasing the effectiveness of
+  intelligence or law-enforcement investigations can justify placing
+  societies, rather than subjects, under surveillance?
+*** sessions
+Day 1, first session, 09:15-10:30
+- "privacy vs. security"
+- [mustache guy] part of setting up icann
+  - one thing you should've learned from snowden is you don't have any
+    privacy and no security on the internet
+  - threat comes from regulation of data
+  - most ppl don't know what their intelligence services do
+- who are not in the room today?
+  - [olof ehrenkrona] when we started, two criterias: 1) 50% from
+    developing countries, 2) gender balance; renew the list of
+    participants; 1500 has to go down to 450; only 1/10 have been
+    invited all three years
+  - regarding the agenda, how can we find solutions; there are no
+    technical solutions there are only political solutions; rule of
+    law online has to be as off line
+  - [moderator] commitment?
+  - [ak hatt] we've had a very intense debate on this; regulation
+    that's transparent and proportional, clear motive; i was in the
+    middle of that regulation; checks and balances are in place
+- [floor, protection of journalists] if privacy is impossible to solve
+  using tech, why is sweden and usgov spending million of dollars on
+  tech?
+  - [american lady with a large hair] us has undermined the security
+    of the world
+  - [balded brit] i'd like to speak for hours on security, but without
+    a mic and a camera
+
+Day 1, second session, 11:00-12:15
+- [bangladesh or indian woman] don't want to accept the "privacy is
+  dead" mantra
+- [floor, emily taylor] long speach
+- [eduardo, law professor, argentina] what's wrong with redefining
+  privacy?
+- [women from india] privacy is three things:
+  secrecy -- send a private msg without someone reading it
+  anonymity -- when posting public content, i should be able to be anonymous
+  autonomy -- without coersion by ppl who have violated secrecy or anonymity
+
+Day 1, citizenlab on fixme
+- paf, renate, dutch foreign ministry woman previously at BoF, more
+
+Day 1, Unconference session 1
+- markus bylund (SICS)
+  - privacy is important, needed for: democracy, identity forming,
+    physical security, financial, social interaction
+  - balance privacy and surveillance
+  - the david lyon, 2007 definiing surveillance: the focused,
+    systematic, and routine attention to personal details for the
+    purpose of influence, management, protection or direction
+- alexandria (? [surname], privacy international
+  - 30 years old organisation
+  - the discourse has changed
+  - suing GCHQ or state
+  - by not informing us about 0-days we are put at risk
+- david ?-tander, head of X, google
+  - disagrees of the connection between government and commercial
+    surveillance
+- moderator
+  - lots of ngo's in the audience
+  - can there be symbiotic relationship between security and privacy?
+- sasha: don't trust governments, because a fundamental distrust is
+  needed for government
+- alberto: google privacy policy says we don't own it; if my website
+  is being hit by criminals; why can't google share data on that?
+- google person: we can't be totally open about how we protect our
+  users
+- ugandan woman: what are the issues?
+- eva, eff: there are ways of securing stuff; early microsoft
+  transparency report lied about skype
+- david: it's a fair question, we use independent third party
+  validators for some things like datacenter security, but not yet
+  transparency reports
+- david: privacy is becoming a competitive factor
+- markus: when will we see a transparency report that talks about your
+  own activities?
+- david: privacy of users is number one for us
+
+Day 1, Unconference session 2
+- female yemeni blogger
+  - censorship started at home
+- andrew lewman
+  - abuse comes from power and control
+  - soft power influence, self censorship, chilling effects
+- brett solomon, accessnow
+- wilhelm konander on russia
+  - nationalisation of internet resources
+  - 2008 merged two state agencies --- censorship and surveillance of
+    internet
+  - 2011 developed surveillance and censorship technique
+  - 2012 blacklisting, DPI and blocking on a nation wide scale
+  - 2014 legislation with mandatory blogger registration of blogs > 3k
+    daily visits
+  - 2014 threatens to block FB and Twitter in Russia
+** people
+eva blum-d?
+** notes
+- "deep pocket inspection"
