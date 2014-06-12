@@ -9,17 +9,17 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - - plop server accepting submissions, emitting pst's and enough
-     functionality to implement the following CT specific functions
-     - get-entries
-     - get-sth
-     - get-proof-by-hash
+   - o libradsec PSK thread commented
    - o ct design document first cut (2)
 ** IETF
 ** Sysadm
-   - - new CA created, w/ nameConstraints; new certs on smtp, jabber, imap, www
+   - - fluffypw deployed for new kdc
+   - o new CA created, w/ nameConstraints; new certs on smtp, jabber, imap, www
+   - * automatic backup of mm; rsync with double-sshd from tight laptop?
+   - * automatic backup of new-mm; rsync with double-sshd from tight laptop?
 ** DFRI
-   - - avtalsförslag, andra varvet
+   - o avtalsförslag skickat
+   - o avtalsförslag, andra varvet
    - - letterhead
    - o dfri-sw (TUG) has vlan 41 on i/f 1 and 24
    - o suggested internetdagarna ppl sent to pawal [wed]
@@ -30,12 +30,20 @@ Legend                                                (emacs -*-org-*- mode)
    - o abuse-c set for ORG-DFRI1-RIPE
    - D LEAP deployment work described in short text, sent to rom, bagder (and oej?)
 ** Misc
-   - - flights booked paris jul 5-13
-   - - room booked paris jul 5-13
+   - o PETS hotel booked
+   - o ARN-AMS-YYZ-ARN booked
+   - - IETF registration
+   - o flights booked paris jul 5-13
+   - o room booked paris jul 5-13
    - o tony@okfn.org
    - o roland asked about map in ct proj
 * Soon (within a month)
 ** Dev
+   - - plop server accepting submissions, emitting pst's and enough
+     functionality to implement the following CT specific functions
+     - get-entries
+     - get-sth
+     - get-proof-by-hash
    - - verify ipv6 in tor master, especially wrt dns
    - - tor-relay@ thread about relay with unreachable ipv6 orport handled: (1)
      ticket created, email replied to
@@ -140,14 +148,12 @@ Legend                                                (emacs -*-org-*- mode)
    - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
    - - [[file:/u/ietf/internet-drafts/draft-cooper-ietf-privacy-requirements-01.txt]]
 ** Sysadm
-   - - fluffypw deployed for new kdc
    - - email users asked to set their pw in new kdc
    - - kerberos based user handling for jabber deployed
    - - pond server running
    - - set up iodine somewhere (at modermodemet?) [pre iceland]
-   - - tflows collecting data
-   - * automatic backup of mm; rsync with double-sshd from tight laptop?
-   - - get cacert.org certs for jabber, mail and web
+   - D tflows collecting data
+   - X get cacert.org certs for jabber, mail and web
    - - SASL authn working in ERC http://www.emacswiki.org/emacs/ErcSASL
    - - HS for xmpp @ adb-centralen.se working
    - - dnssec for nordberg.se, adb-centralen.se
@@ -193,7 +199,12 @@ Legend                                                (emacs -*-org-*- mode)
      maybe /usr/local/etc/ too?
    - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 ** DFRI
-   - - relay at x0 moved to new jail at anastasia, and increased some 40 Mbps
+   - - set up peering at netnod
+     - peering@godaddy.com
+     - sasha@westcall.ru
+     - peerings@ripe.net
+     - peering@ipvision.dk
+   - o relay at x0 moved to new jail at anastasia, and increased some 40 Mbps
    - - two old unmoderated emails to listan@ looked into
    - - flashproxy running at dfri.se
    - - publish key points from snowdens ndr interview
