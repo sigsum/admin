@@ -9,6 +9,7 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
+   - - plop + catlfish published
 ** IETF
 ** Sysadm
    - - fluffypw deployed for new kdc
@@ -18,7 +19,7 @@ Legend                                                (emacs -*-org-*- mode)
    - - letterhead
    - D LEAP deployment work described in short text, sent to rom, bagder (and oej?)
 ** Misc
-   - - IETF registration
+   - o IETF registration
 * Soon (within a month)
 ** Dev
    - - plop server accepting submissions, emitting pst's and enough
