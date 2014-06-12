@@ -9,34 +9,16 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-   - o libradsec PSK thread commented
-   - o ct design document first cut (2)
 ** IETF
 ** Sysadm
    - - fluffypw deployed for new kdc
-   - o new CA created, w/ nameConstraints; new certs on smtp, jabber, imap, www
    - * automatic backup of mm; rsync with double-sshd from tight laptop?
    - * automatic backup of new-mm; rsync with double-sshd from tight laptop?
 ** DFRI
-   - o avtalsförslag skickat
-   - o avtalsförslag, andra varvet
    - - letterhead
-   - o dfri-sw (TUG) has vlan 41 on i/f 1 and 24
-   - o suggested internetdagarna ppl sent to pawal [wed]
-   - o avtalsförslag skickat till christian [fri]
-       ta med [[gnus:nnimap%2Badbc:INBOX#20140415073954.GB1495@turing.lan.9999.se][Email from Johan Nilsson: Re: Avtal]] oxo
-   - o email sent informing dfri@ about postponed LEAP
-   - o noc daily things to do posted
-   - o abuse-c set for ORG-DFRI1-RIPE
    - D LEAP deployment work described in short text, sent to rom, bagder (and oej?)
 ** Misc
-   - o PETS hotel booked
-   - o ARN-AMS-YYZ-ARN booked
    - - IETF registration
-   - o flights booked paris jul 5-13
-   - o room booked paris jul 5-13
-   - o tony@okfn.org
-   - o roland asked about map in ct proj
 * Soon (within a month)
 ** Dev
    - - plop server accepting submissions, emitting pst's and enough
@@ -79,7 +61,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - #6027 and friends -- dir auths on ipv6
    - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
 ** Misc
-   - X look into submitting to google code jam https://code.google.com/codejam/contests.html
    - - feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
    - - connected the subgraph ppl with T-SEC
    - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
@@ -153,7 +134,6 @@ Legend                                                (emacs -*-org-*- mode)
    - - pond server running
    - - set up iodine somewhere (at modermodemet?) [pre iceland]
    - D tflows collecting data
-   - X get cacert.org certs for jabber, mail and web
    - - SASL authn working in ERC http://www.emacswiki.org/emacs/ErcSASL
    - - HS for xmpp @ adb-centralen.se working
    - - dnssec for nordberg.se, adb-centralen.se
@@ -204,7 +184,6 @@ Legend                                                (emacs -*-org-*- mode)
      - sasha@westcall.ru
      - peerings@ripe.net
      - peering@ipvision.dk
-   - o relay at x0 moved to new jail at anastasia, and increased some 40 Mbps
    - - two old unmoderated emails to listan@ looked into
    - - flashproxy running at dfri.se
    - - publish key points from snowdens ndr interview
