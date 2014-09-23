@@ -9,19 +9,50 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- - plop + catlfish published
-** IETF
+- o 15 min CT preso sent to josva
+- o plop + catlfish published
+** IETF / W3C
+- o PING ml joined
+- X w3c beacon reviewed
 ** Sysadm
-- - fluffypw deployed for new kdc
-- * automatic backup of mm; rsync with double-sshd from tight laptop?
-- * automatic backup of new-mm; rsync with double-sshd from tight laptop?
+- o new webmail
+- - spam+av moved to ioctl
+- - new resolver running
+- . ns.nordberg.se moved to ns.adb-centralen.se
+- - automatic backup of mm; rsync with double-sshd from tight laptop?
+- - automatic backup of ioctl; rsync with double-sshd from tight laptop?
+- o fluffypw deployed for new kdc
 ** DFRI
-- - letterhead
-- D LEAP deployment work described in short text, sent to rom, bagder (and oej?)
+- o subgraph, dan and pawal emailed about ind14
+- o harry halpin and pawal emailed about ind14
+- D www.blocked.org.uk checked out; should we do something similar?
+- D thought about disabling RST for [[file:usr/share/ietf/in-notes/rfc4953.txt::2.2.%20Recent%20BGP%20Attacks%20Using%20TCP%20RSTs][BGP protection
+]]- D LEAP deployment work described in short text, sent to rom, bagder (and oej?)
 ** Misc
+- - PETS trip report uploaded
+- - IETF90 trip report uploaded
+- - [[file:Uttag%20fr%C3%A5n%20Riksg%C3%A4ldsspar.pdf][file:~/Uttag från Riksgäldsspar.pdf]] printed, signed and sent
+- o kelly and calle connected
+- - green EU ppl analysis of DR court decision sent to dkg
+- - picture of street sent to dkg
+- o Thomas White put in contact with Open Rights Group (benl); Tom
+  Watson, MP; Lord Erroll (house of lords); Andrews & Arnold ltd, an
+  ISP
+- - sharon goldberg contacted about her and axels [[file:PETS14/PETS14.org::*hotpets:%20law%20and%20policy][hotpets: law and policy]] 
+  paper, esp. the details on the [[docview:PETS14/program/Arnbak.pdf::16][traffick hijacking]] by icelandic operator
+  Siminn (AS6677) using specific community strings; see slide 16 in
+  http://www.renesys.com/wp-content/uploads/2014/05/Linx851.pdf ([[file:doc/Linx851.pdf][local copy]])
+- X tor dev trip report uploaded
+- X [[file:hints.org::*trip%20report][openitp CTS]] (in berlin) member emailed
+- - some openitp person contacted about jari's IETF statistics
+- - thomas white's pgp key signed and sent
+- o [[file:hints.org::*flashing][coreboot instructions]] sent to [[file:.mail_aliases::alias%20hugh%20hugh@mimosa.com][hugh]]
 - o IETF registration
+- o tor dev key signing party keys signed and sent
 * Soon (within a month)
 ** Dev
+- - find out if pwouters dnssec thing is a thing to respond to
+  [[gnus:nnimap%2Badbc:lists.tor.talk#53D96702.3050901@gmail.com][Email from Ondrej Mikle: Re: {tor-talk} Tor DNS]] with
 - - plop server accepting submissions, emitting pst's and enough
      functionality to implement the following CT specific functions
   - get-entries
@@ -44,7 +75,7 @@ Legend                                                (emacs -*-org-*- mode)
 - - radsecproxy seeding PRNG properly (like libradsec)
 - - post to tor-dev@: paul wouters dnssec related drafts grokked and put into
        context of dnssec in tor
-       [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
+       [[file:usr/share/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:usr/share/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
 - - tor #6027 moved forward some
 - - #9663 reviewed
 - - #8897 reviewed
@@ -62,17 +93,18 @@ Legend                                                (emacs -*-org-*- mode)
 - - #6027 and friends -- dir auths on ipv6
 - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
 ** Misc
+- - research that dkg wifi usb plug from thinkpenguin.com
 - - feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
-- - connected the subgraph ppl with T-SEC
+- X connected the subgraph ppl with T-SEC
 - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
 - - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
-- . broken SSD returned (1)
-- - jeans; bought (?)
+- o broken SSD returned (1)
+- o jeans; bought (?)
 - - WPS (at home wlan router) disabled (1)
 - - kopia av bauer-tavlan, http://crimson.se/
 - - tahoe-lafs / tamias on tor HS investigated
 - - feedback to kyle on practical cryptography in go sent
-- - chime in on paul wouters "mta on localhost" idea?
+- X chime in on paul wouters "mta on localhost" idea?
      https://www.ietf.org/mail-archive/web/perpass/current/msg00022.html
 - - read up on andrews favourite ways of running a company
      http://wiki.lewman.is/snippets/ge_Printer_Friendly
@@ -99,6 +131,7 @@ Legend                                                (emacs -*-org-*- mode)
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
 ** IETF
+- - transparency gossip draft started, co-authors roped in (dkg, benl)
 - - SAML naming of AAA entities reviewed for ABFAB
      [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-naming-07.txt]]
 - - jaris tools discussed
@@ -180,6 +213,7 @@ Legend                                                (emacs -*-org-*- mode)
      maybe /usr/local/etc/ too?
 - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 ** DFRI
+- - letterhead
 - - set up peering at netnod
   - peering@godaddy.com
   - sasha@westcall.ru
