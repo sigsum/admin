@@ -1,6 +1,10 @@
-machine localhost login linus port 10587 password ohL0gime
-machine imap.nordberg.se login linus password ohL0gime
-machine smtp.nordberg.se login linus port 587 password ohL0gime
-machine imap.adb-centralen.se login linus password ohL0gime
-machine kerio.nordu.net port 587 login linus@nordu.net password vo0aquei3uSoe5th
-machine kerio.nordu.net login linus port 993 password vo0aquei3uSoe5th
+machine smtp.adb-centralen.se login linus password p00MPZ1clUk0NU
+machine imap.adb-centralen.se login linus password p00MPZ1clUk0NU
+machine kerio.nordu.net login linus@nordu.net password 85ZAVPV1yhEdOQvhEN
+machine kerio.nordu.net login linus password 85ZAVPV1yhEdOQvhEN
+
+machine localhost port 1993 login linus password p00MPZ1clUk0NU
+machine localhost port 10587 login linus password p00MPZ1clUk0NU
+machine localhost port 1587 login linus password p00MPZ1clUk0NU
+machine localhost port 2587 login linus@nordu.net password 85ZAVPV1yhEdOQvhEN
+machine localhost port 2993 login linus password 85ZAVPV1yhEdOQvhEN
