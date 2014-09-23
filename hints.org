@@ -99,6 +99,12 @@ sys     0m14.765s
   $ dialyzer --build_plt --apps erts kernel stdlib mnesia crypto public_key inets
   once and it'll end up in ~/.dialyzer_plt
   Use --add_to_plt to add more appplications.
+  Rebuild the PLT when upgrading your erlang packages.
+
+  "[...] has no local return" means that a function doesn't guarantee
+  to return something, which can be due to lacking type information in
+  function called by the current function, or below.
+
 - registered() lists all registered names
 - whereis(RegisteredName)
 - exit(Pid, kill)
@@ -106,13 +112,11 @@ sys     0m14.765s
   2> #entry{type=1, data= <<"a foo is a bar">>}.
   #entry{type = 1,data = <<"a foo is a bar">>}
 - tuple_size({}), element(N, {})
+- sys:get_status(Name) shows info about a process, f.ex. gen_server state
 ** client-server
 - gen_server(3erl)
 ** R16
 - has crypto:hash/2 doing SHA-2
-- has integer_to_binary/1 -- in previous versions, use binary:encode_unsigned/1
-  114> [test:ffs(binary:encode_unsigned(X)) || X <- lists:seq(3,9)].
-  [2,3,3,3,3,4,4]
 ** ssl application version
 ssl_imp
 | erlang/ssl version | release date | new    | old still | new is      |
@@ -188,6 +192,32 @@ go get github.com/agl/pond/client
 go build -tags nogui github.com/agl/pond/client
 go install -tags nogui github.com/agl/pond/client
 $GOPATH/bin/client
+*** trouble finding packages <2014-09-06 Sat>
+$ go get github.com/agl/pond/client
+Package gdk-3.0 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `gdk-3.0.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'gdk-3.0' found
+exit status 1
+# pkg-config --cflags glib-2.0 gobject-2.0
+Package glib-2.0 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `glib-2.0.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'glib-2.0' found
+Package gobject-2.0 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `gobject-2.0.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'gobject-2.0' found
+exit status 1
+# pkg-config --cflags pango
+Package pango was not found in the pkg-config search path.
+Perhaps you should add the directory containing `pango.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'pango' found
+exit status 1
+
+Debian was severely out of date:
+243 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
 ** forums
 #OPEntropicTravel @ OFTC
 github
@@ -492,6 +522,7 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - getent -- get entries from NSS libraries (name service)
 - gobby -- p2p live editing
 - notmuch -- email address indexing
+- [[*sip][ekiga]] -- instead of skype
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -500,6 +531,17 @@ There are more than one.
   - fbsd ports: /usr/local/bin/netcat from net/netcat
 - netcat6 http://www.deepspace6.net/projects/netcat6.html
   - pkgsrc: /usr/pkg/bin/nc6 from net/netcat6
+** publish (weasels https://.../volatile/ thing)
+<weasel> publish has a -8 switch that puts the right .htaccess thing there                                                                                               
+                                                                        [19:57]
+<weasel> except that's not a publish url, so nevermind
+<Sebastian> comments in a query
+<Lunar^> I'll set up that script one day                                [19:58]
+<weasel> vi  .publish.cfg 
+<weasel> base_http="https://www.palfrader.org/volatile"
+<weasel> base_rsync="asteria.noreply.org:volatile"
+<weasel> set these two.
+<weasel> checkout weaselutils, symlink publish to your ~/bin
 * git
 ** Pushing a branch
 Magit does some magic so I don't know how I managed to create the
@@ -705,8 +747,7 @@ $ git clone ssh://torgit/<thing>.git
 1. edit files, realise you don't want this in the current branch
 2. git stash
 3. git stash branch new-wip-branch-name
-** Magit magic
-*** Rebase [unfinished]
+** Magit: Rebase [unfinished]
 ------
 
 R to start the rebase, say 'origin'.
@@ -716,7 +757,7 @@ resolve conflicts, stage them (s) and hit 'R' again.  Answer that
 you'd like to continue the rebase and you'll get back to branch 'head'
 again.
 
-*** Melting two commits
+** Magit: Melting two commits
 Place cursor on the (chronologically) _first_ commit of the two to
 melt together.  Press 'r b' for beginning a rewriting operation.
 
@@ -735,7 +776,8 @@ $ git config --add branch.BRANCH.merge refs/heads/BRANCH
 $ git config --add branch.BRANCH.remote linus
 $ git pull
 ** Finding out where a branch comes from
-git merge-base
+git merge-base (which is also useful for finding a common ancestor of
+two branches)
 
 Together with git describe:
 git describe --contains --all `git merge-base <branch> origin/master`
@@ -845,9 +887,14 @@ To git@git.nordu.net:libradsec.git
 Deleted tag 'radsecproxy-1.6.5' (was 4c3db5a)
 To git@git.nordu.net:libradsec.git
  - [deleted]         radsecproxy-1.6.5
-** compact output from swold
+** Compact log output, from swold
 git log --pretty=format:'%Cred%h%Creset -%C(magenta)%d%Creset %s [%C(cyan)%an%Creset] %Cgreen(%cr)%Creset' --date=relative
 git log --pretty=format:'%C(red)%h%Creset -%C(magenta)%d%Creset %s [%C(cyan)%cn%Creset] %Cgreen(%cr)%Creset' --date=relative --decorate --numstat
+** Changing the commit message on an existing commit
+git commit --amend
+
+In magit: 'r b' to start a rewrite from HEAD, pick the commit and
+`change the message, finish with 'r f'.
 * Movie / video
 ** Carnivale
 Start VLC.
@@ -1132,6 +1179,9 @@ bluesnake.snakedesert.se:/var/storage/media/music (1024 d3:44:27:e9:7a:3c:b3:07:
 * Quotes
 "It is easier to optimize correct code than to correct optimized code."
 -- Bill Harlan <http://billharlan.com/pub/papers/A_Tirade_Against_the_Cult_of_Performance.html>
+
+"It is forbidden to kill; therefore all murderers are punished unless
+they kill in large numbers and to the sound of trumpets." -- Voltaire
 * Bug reports
 ** Apple
 DHCPv6: 7301758
@@ -1473,9 +1523,11 @@ depending on circumstances. The US and Canada springs to mind.
 - update-rc.d(8) -- fiddle with startup of services
 - apt-get install package
 ** wifi / wlan
-Kernel module iwlwifi supports the Intel 6200AGN chipset in Lenovo T140s.
-Needs non-free firmware though: apt-get install firmware-iwlwifi
-Might want to turn of 5GHz: echo "options iwlwifi 11n_disable=1" > /etc/modprobe.d/iwlwifi.conf
+- Kernel module iwlwifi supports the Intel 6200AGN chipset in Lenovo
+  T140s.
+- Needs non-free firmware though: apt-get install firmware-iwlwifi
+- Might want to turn of 5GHz: echo "options iwlwifi 11n_disable=1" >
+  /etc/modprobe.d/iwlwifi.conf
 
 On X60 with Debian jessie/sid with a netgear/realtek USB wifi plug:
 $ sudo apt-get install firmware-realtek  # requires source jessie/non-free
@@ -2347,6 +2399,26 @@ Getting starttls to work can be tricky. Remember that
         (nnimap-server-port 993)
         (nnimap-authenticator login)
         (nnimap-stream tls))
+*** running emacs under torsocks
+Sending email gives
+network-stream-open-starttls: smtp.adb-centralen.se/587 Name or service not known
+
+ '(gnus-auto-expirable-newsgroups "adbc:\\(lists\\.\\|sys\\|spam\\)")
+
+(setq gnus-message-archive-group
+      '(lambda (group)
+	 "Return name of mailbox to store archive copy in.  Use GROUP, default to one at ADB-Centralen."
+	 (if (and nil message-news-p)	;disabled for now
+	     "misc-news"
+	   (format "%s:sent-mail.%s"
+		   (car (split-string
+			 (if (or (string= group "")
+				 (compare-strings group nil (length "nntp") "nntp" nil nil))
+			     "nnimap+adbc"
+			   group)
+			 (make-string 1 ?:)))
+		   (format-time-string "%Y-%m" (current-time))))))
+
 * Wireless
 ** USB stick CNet (Iljas)
 Jun 11 22:05:36 maatuska kernel: [295358.659673] usbcore: registered new interface driver rt2500usb
@@ -2646,6 +2718,106 @@ Sign your message with the same key as this message is encrypted in.
 - [ ] dkg
 ** caff
 supposedly good for handling pgp signing
+** Yubikey NEO
+- Max 2048 bit keys.
+- For PGP, use GPG 2.0.22 or newer.
+*** Big picture
+- pcscd is the PC/SC Smart Card Daemon
+  - run by root, as a normal service
+- gpg-agent is the interface for both gpg2 and ssh
+  - started from ~/.xsession
+- scdaemon is how gpg2 talks to the card
+  - started by gpg-agent
+*** Trouble shooting
+- NEO doesn't blink after insertion
+sudo service pcscd restart
+
+*** Recipe for setting up a NEO on a Debian (jessie/sid) system
+Based on https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd
+
+**** Install software
+apt-get install gpgsm scdaemon pcscd 
+**** Set Yubikey in CCID plus HID mode
+root@flogsta:~# uname -a
+Linux flogsta 3.14-1-686-pae #1 SMP Debian 3.14.9-1 (2014-06-30) i686 GNU/Linux
+root@flogsta:~# ykpersonalize -m82
+Firmware version 3.2.0 Touch level 1541 Program sequence 1
+
+The USB mode will be set to: 0x82
+
+Commit? (y/n) [n]: y
+**** Generate key on host machine
+flogsta:~% umask 077
+flogsta:~% cd /dev/shm/ && mkdir k; cd k
+flogsta:k% export GNUPGHOME=$PWD
+
+flogsta:k% gpg2 --gen-key
+
+FIXME: replace
+
+gpg (GnuPG) 2.0.25; Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+gpg: keyring `/dev/shm/k/secring.gpg' created
+gpg: keyring `/dev/shm/k/pubring.gpg' created
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection? 4
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048)
+Requested keysize is 2048 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0)
+Key does not expire at all
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: Linus Nordberg
+Email address: linus@nordu.net
+Comment:
+You selected this USER-ID:
+    "Linus Nordberg <linus@nordu.net>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
+You need a Passphrase to protect your secret key.
+
+You don't want a passphrase - this is probably a *bad* idea!
+I will do it anyway.  You can change your passphrase at any time,
+using this program with the option "--edit-key".
+
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: /dev/shm/k/trustdb.gpg: trustdb created
+gpg: key 8845E49C marked as ultimately trusted
+public and secret key created and signed.
+
+gpg: checking the trustdb
+gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+pub   2048R/8845E49C 2014-08-20
+      Key fingerprint = 67EF 6286 E101 4289 0FCC  4447 1B6D 0C99 8845 E49C
+uid       [ultimate] Linus Nordberg <linus@nordu.net>
+
+Note that this key cannot be used for encryption.  You may want to use
+the command "--edit-key" to generate a subkey for this purpose.
+
+flogsta:k% gpg --armor --export 8845E49C > ~/public-key-on-NEO.asc
+
+
+unset GNUPGHOME
+
 * wiki
 - ikiwiki is supposed to be nice.  Uploading text files (markdown!)
   using git f.ex.
@@ -3247,17 +3419,18 @@ Mitt första experiment med att leva utan mobiltelefon började för
 några år sedan och varade ca sju månader. Den gången använde jag
 mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
 
+[andra gång lade jag ifrån mig telefonen helt, med start juli 2013]
+
 * anagram
   fresh secularism, fissural schemer, miss researchful
   primtal köttfärs, maskfrätt pilört
   german tremblor
 * jabber
-** paf's server konfig
+** paf's DNS-konfig
    _jabber._tcp.frobbit.se. 900	IN	SRV	0 0 5269 jabber.frobbit.se.
    _jabber-client._tcp.frobbit.se.	900 IN	SRV	0 0 5222 jabber.frobbit.se.
    _jabber-ssl-client._tcp.frobbit.se. 900	IN SRV	0 0 5223 jabber.frobbit.se.
    _xmpp-server._tcp.frobbit.se. 900 IN	SRV	0 0 5269 jabber.frobbit.se.
-
 ** xmpp-client (agl)
    [moved to ~/p/xmpp-client/xmpp-client.org]
 
@@ -3694,27 +3867,44 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
     It's very small (847 lines in all).
 ** bots
 - manderlbot -- bot written in erlang
-* dnsec
-  libraries, from pawal: 
-  "ja, i unbound ingår ett, och har du ldns, båda från nlnet labs"
-* dig
-** segfault
-   Running a shell in Emacs runing under usewithtor:
+* DNS
+** DNSSEC
+   libraries, from pawal: 
+   "ja, i unbound ingår ett, och har du ldns, båda från nlnet labs"
+** dig
+*** segfault
+    Running a shell in Emacs runing under usewithtor:
 
-   42:~% dig -x 109.123.119.163
-   15:39:34 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
-   15:39:35 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
-   15:39:40 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
-   15:39:41 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
-   15:39:46 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
-   15:39:47 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
+    42:~% dig -x 109.123.119.163
+    15:39:34 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
+    15:39:35 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
+    15:39:40 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
+    15:39:41 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
+    15:39:46 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
+    15:39:47 dig(22319): sendmsg: Connection is a UDP or ICMP stream, may be a DNS request or other form of leak: rejecting.
 
-   ; <<>> DiG 9.7.1-P2 <<>> -x 109.123.119.163
-   ;; global options: +cmd
-   ;; connection timed out; no servers could be reached
-   Segmentation fault
-   42:~% 
-* i18l
+    ; <<>> DiG 9.7.1-P2 <<>> -x 109.123.119.163
+    ;; global options: +cmd
+    ;; connection timed out; no servers could be reached
+    Segmentation fault
+    42:~% 
+** TSIG
+*** this is how?
+[[gnus:nnimap%2Badbc:INBOX#87vbur1kid.fsf@nordberg.se][Email to Patrik Wallstrom: TSIG]]
+Verkar det här vettigt på master (ns.dfri.se)?
+
+dnssec-keygen -a HMAC-SHA256 -b 512 -n HOST tsigkey
+printf "key \"dfri-tsig\" {\n algorithm HMAC-SHA256;\n secret
+\"%s\";\n};\n" $(egrep ^Key Ktsigkey.*.private | cut -d\ -f 2) >
+named.tsigkeys.conf
+printf "include \"/etc/namedb/named.tsigkeys.conf\";\n" >> /etc/namedb/named.conf
+
+Sen lägga till det här för våra zoner:
+
+allow-transfer {
+  key "dfri-tsig";
+};
+* i18n
   LANG=sv_SE.UTF-8
 * laptop
 ** Lenovo T410s (nordunet)
@@ -27917,6 +28107,7 @@ TAR=/usr/local/bin/bsdtar portmaster <whatever>  # <-- much better
 And if .lzma is problematic (fbsd 8.x), install archivers/gtar.
 ** portmaster with pkgng
 echo WITH_PKGNG=yes >> /etc/make.conf
+Now, portmaster -L should show packages installed by pkg (i think)
 * EuroBonus
 EBB609964226
 * No-phone sig
@@ -28949,6 +29140,23 @@ myisamchk: warning: Duplicate key for record at   44726924 against record at   3
 Data records: 2453715
 myisamchk: warning: 8 records have been removed
 [root@lnspam /usr/local/mysql]# 
+*** mysql @ lnspam
+su - mysql
+mysql -u root -p   # use the one for root@webmail
+
+mysql> use horde
+mysql> describe userpref;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| prefid     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| username   | varchar(255) | NO   | MUL |         |                |
+| preference | varchar(30)  | NO   |     |         |                |
+| value      | varchar(100) | NO   |     |         |                |
++------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.05 sec)
+
+mysql> update value="4.5" from userpref where username = "some_user" and preference="required_score";
 * MUD
 ** tintin++
 #session dfri mud.dfri.se 4242
@@ -28992,6 +29200,12 @@ ln+airbnb14@4711.se / ska11eper
 johndoejohndoejohndoe33@gmail.com / makesmecrazythaticantpastehere
 ** soundcloud
 ln+soundcloud@4711.se / ohmygoshthatshard
+** listserv.nordu.net ?
+pw: diheeYi9
+** segate.sunet.se
+pw: diheeYi9
+** axs
+ln_axs@4711.se / Hie0hoht (or Ska11eper)
 * SUNET
 ** Mätdata Chalmers
 [[gnus:nnimap%2Bndn:INBOX#4E5BA90A.3030405@chalmers.se][Email from Tomas Olovsson: Re: Mätdata från SUNET?]]
@@ -29191,13 +29405,17 @@ Renewed 2013-04-11, valid until 2013-07-12
 cu
 
 * ipv6
- -RA -- router announcment
+- RA -- router announcment
 - DHCPv6
 - PD -- prefix delegation?
 - rtsold, rtsol -- router solicitation daemon/program
 - ip6addrctl -- address selection policy, see /etc/rc.d/ip6addrctl;
   also this is changing in 9.x, see
   http://unix.derkeiler.com/Mailing-Lists/FreeBSD/stable/2011-12/msg00101.html
+- [[file:usr/share/ietf/in-notes/rfc6980.txt][RFC6980]] Security Implications of IPv6 Fragmentation with IPv6 Neighbor Discovery
+- [[file:usr/share/ietf/internet-drafts/draft-ietf-6man-stable-privacy-addresses-17.txt][draft-ietf-6man-stable-privacy-addresses-17]]
+- [[file:usr/share/ietf/in-notes/rfc6724.txt][RFC6724]] Default Address Selection for Internet Protocol Version 6 (IPv6)
+- [[file:usr/share/ietf/in-notes/rfc6104.txt][RFC6104]] Rogue IPv6 Router Advertisement Problem Statement 
 * Adresser snail mail
 ** Daniel Melin
 Diligensvägen 35
@@ -29538,6 +29756,47 @@ NOTE: FreeBSD has a port net-p2p/bitcoin.
 sh autogen.sh
 ./configure --without-qt
 make
+*** installing fbsd package
+[root@btc ~]# pkg install bitcoin-daemon
+Updating FreeBSD repository catalogue...
+FreeBSD repository is up-to-date.
+All repositories are up-to-date.
+The following 4 packages will be affected (of 0 checked):
+
+New packages to be INSTALLED:
+        bitcoin-daemon: 0.9.2_1
+        boost-libs: 1.55.0_3
+        icu: 53.1
+        db48: 4.8.30.0_2
+
+The process will require 207 MB more space.
+23 MB to be downloaded.
+
+Proceed with this action? [y/N]: y
+[btc.adb-centralen.se] Fetching bitcoin-daemon-0.9.2_1.txz: 100%    1 MB   1.2M/s    00:01    
+[btc.adb-centralen.se] Fetching boost-libs-1.55.0_3.txz:   5%  520 KB 532.5k/s    00[btc.adb-centralen.se] Fetching boost-libs-1.55.0_3.txz:  53%    5 MB   4.4M/s    00[btc.adb-centralen.se] Fetching boost-libs-1.55.0_3.txz: 100%    9 MB   4.5M/s    00:02    
+[btc.adb-centralen.se] Fetching icu-53.1.txz: 100%   13 MB   6.6M/s    00:02    
+[btc.adb-centralen.se] Fetching db48-4.8.30.0_2.txz:   5%   50 KB  51.2k/s    00:17 [btc.adb-centralen.se] Fetching db48-4.8.30.0_2.txz: 100%  915 KB 937.1k/s    00:01    
+Checking integrity... done (0 conflicting)
+[btc.adb-centralen.se] [1/4] Installing icu-53.1: 100%
+[btc.adb-centralen.se] [2/4] Installing boost-libs-1.55.0_3: 100%
+[btc.adb-centralen.se] [3/4] Installing db48-4.8.30.0_2: 100%
+[btc.adb-centralen.se] [4/4] Installing bitcoin-daemon-0.9.2_1: 100%
+[root@btc ~]# 
+
+Or, i guess, for building:
+portmaster -d p2p-net/bitcoin-daemon
+*** configuring to use tor
+[root@modermodemet /jail/ln/ln/home/linus]# cat .bitcoin/bitcoin.conf 
+rpcallowip=193.10.5.84
+rpcuser=bitcoinrpc
+rpcpassword=<generated by invoking bitcoin once>
+socks=5
+proxy=127.0.0.1:9050
+[root@modermodemet /jail/ln/ln/home/linus]# 
+*** starting
+$ bitcoind &
+$ tail -F ~/.bitcoin/debug.log | awk '/^SetBestChain/{print $7, $8;}' &
 *** bitcoind help
 addmultisigaddress <nrequired> <'["key","key"]'> [account]
 addnode <node> <add|remove|onetry>
@@ -29734,12 +29993,25 @@ $ /u/src/bitcoin/src/bitcoind walletpassphrase '<passphrase>' 10
 tool:~% /u/src/bitcoin/src/bitcoind sendtoaddress 189TCcDyJDYBvLXyyH5P4W5uCaWKJdo7SH 1.8 'andy #2'
 ff6e4fff10d89664a3c6836ac55e8126d0f8cb40d38e335338b96ee38f7042bf
 tool:~% /u/src/bitcoin/src/bitcoind walletlock
-** sending 9.0 BTC to andy
+*** sending 9.0 BTC to andy
 tool:~% /u/src/bitcoin/src/bitcoind sendtoaddress 189TCcDyJDYBvLXyyH5P4W5uCaWKJdo7SH 9.0 'andy #3'
 a2641b6f5356eab2e9216b63efdf2726c46bbbbb9f8567a533d1f04d330df507
-** sending 0.1 BTC to andy
+*** sending 0.1 BTC to andy
 tool:~% /u/src/bitcoin/src/bitcoind sendtoaddress 189TCcDyJDYBvLXyyH5P4W5uCaWKJdo7SH 0.1 'andy #4'
 a9ce7fd818d6ddcbbdda81e952bb03e111c29ec38c9aded6e3ebfd1fb70f6c5c
+*** bitcoin-cli
+bitcoin-cli comes with (fbsd pkg) bitcoin-daemon. Looks like a wrapper
+around bitcoind.
+
+After copying old wallet.dat but before getting all the blocks:
+[linus@btc ~]$ bitcoin-cli listaccounts
+{
+    "" : 9.00000000,
+    "ln5" : -9.00000000
+}
+
+There should be between 6 and 7 BTC in that wallet. Let's hope they
+appear.
 ** clients
 - electrum, lightweight client, python
 - sx
@@ -30681,7 +30953,6 @@ t-mobile, e-plus, vodafone.de, o2-de
 apt-get install build-essential ncurses-dev 
 ** flashing
 http://www.coreboot.org/Lenovo_x60x
-
 *** web page content
      Patch flashrom to use RES1 SPI identification and spi_chip_write_1 for your flash chip, as well as change the flash chip model id to fit the RES1 command.
 
@@ -30813,7 +31084,6 @@ Reading old flash chip contents... done.
 Erasing and writing flash chip... Erase/write done.
 Verifying flash... VERIFIED.
 root@amnesia:/home/amnesia/Persistent/coreboot# 
-
 ** done
 root@amnesia:/home/amnesia/Persistent/coreboot# src/coreboot/util/nvramtool/nvramtool -a
 boot_option = Fallback
@@ -30830,13 +31100,12 @@ volume = 0x41
 tft_brightness = 0xa0
 first_battery = Secondary
 bluetooth = Disable
-** notes
 ** annoying high frequent noise
 Try passing idle=halt to the kernel.
 Should increase power consumption but shut the noise off.
+See [[*x60][x60]] for more on this.
 * bios-extract
 bios-extract will pull apart factory.bin files
-
 * flashrom
 (example from another computer)
 ./flashrom -p internal -c MX25L1605A/MX25L1606E -v ../../obj/coreboot.rom 
@@ -30858,16 +31127,29 @@ spittelmarkt
 Monsieur Vuong, Alte Schoenhauser Strasse 46, Berlin-Mitte.
 http://monsieurvuong.com
 * x60
-- Pipet kan tas bort om man i boot loadern lägger till
-  kernel-kommandot idle=halt 
+- That noise will go away with the kernel command line argument idle=halt 
   - update <2014-05-06 Tue> did that by editing /etc/default/grub:
     GRUB_CMDLINE_LINUX="idle=halt" and running update-grub. A bit less
     noisy but hotter -- fan running a lot and temp around 45C. Or
     40/45 (Thermal 0/1) when on a good surface.
+  - Update <2014-06-03 Tue> did that for real this time by running
+    update-grub too (doh!). This time it went silence but the fan
+    seems to be running constantly and temp is 45/57 (on a good
+    surface) but climbing! Currently at 43/81 without loading the
+    CPU. Estimated battery life time seems to go down to 2h30m from
+    well over 5h IIRC. Note that I don't know what the actual battery
+    life time is.
+  - w/o idle=halt, temp is typically between 35 and 45 degrees for
+    both values
 - rmmod uhci_hcd removes the noise
   - Unfortunately this is the "USB Universal Host Controller Interface
     driver" which means that there is no USB when this is not loaded.
-    Don't forget to load it again before locking!
+    Don't forget to load it again before locking the computer, if you
+    depend on a yubikey to unlock.
+- powertop, set all entries under "tunables" to "Good",
+  in particular " Autosuspend for USB device [...]"
+  - This also lowers the power consumption according to
+    http://www.coreboot.org/Lenovo_x60x
 ** hints from aagbsn <2013-11-21 Thu>
 <aagbsn> x60 people with the SST25VF016B                                [16:49]
 <aagbsn> We want to set 0xBC                                            [16:50]
@@ -30900,6 +31182,26 @@ http://monsieurvuong.com
   All 5 had 2Gb RAM and there were 5x2Gb extra (750:-).
 - 3 x x60 + 2x2Gb RAM from bf <2014-05-14 Wed>
   3 x 1000:- + 2 x 250:- --> 3500:-
+- 1 x x60 w/ 2x1Gb RAM
+  3 x x60 w/ 2x1Gb RAM + HDD
+  2 x 2Gb RAM 1000:-
+** processors
+- model 14, T2400 @ 1.83Ghz
+  address sizes   : 32 bits physical, 32 bits virtual
+- model 15, Core2 T5600 @ 1.83Ghz
+  address sizes   : 36 bits physical, 48 bits virtual
+** RAM
+32bit with 4G says (dmesg):
+[    0.000000] 2428MB HIGHMEM available.
+[    0.000000] 889MB LOWMEM available.
+
+which adds up to 3317 MB, and
+[    0.000000] Memory: 3349808K/3398136K available (4191K kernel code, 379K rwdata, 1284K rodata, 532K init, 588K bss, 48328K reserved, 2487176K highmem)
+** graphics chip
+Intel 945GM
+UMA 128MB (max)
+** CMOS RAM
+242 bytes
 * tails
 ** startup
 sudo sh -c "
@@ -31119,6 +31421,8 @@ concrete when we applied this on Tor. Not many people understand Tor.
 All in all I'm afraid that this trip was not worth the time, mid
 Saturday to late Wednesday including travel.
 
+** session with 'ana' on anonymity and wordings
+https://wiki.openitp.org/cts:4:ana_what_is_anonymity
 * tor 
 ** sponsorf sep/oct -13
 [[gnus:nnimap%2Badbc:INBOX.sent-mail.2013-09#87fvsuvd8q.fsf@nordberg.se][Email from Linus Nordberg: Re: Proposed contract for Tor ]]
@@ -31964,6 +32268,7 @@ Between 08:43 and 08:45:
 * jabber
 ** servers
 - prosody
+- jabber2 http://jabberd2.org/
 ** weirdness
 tool:~% /u/src/xmpp-client/xmpp-client
  * (9:32AM) Making connection to jabber.adb-centralen.se:5222 via proxy
@@ -31997,6 +32302,44 @@ linus@nordberg.se: offline
  * (9:48AM) [*] ioerrror@jabber.ccc.de                both      ioerror 
  * (9:48AM) Exiting because command channel closed
 > 
+** crashing xmpp-client bc missing otr key in config <2014-09-04 Thu>
+flogsta:~% xmpp-client -config-file=.xmpp-client.ndn
+ * (9:02AM) Making connection to jabber.nordu.net:5222 via proxy
+ * (9:02AM) Starting TLS handshake
+ * (9:02AM) Authenticating as linus
+ * (9:02AM) Authentication successful
+ * (9:02AM) Fetching roster
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal 0xb code=0x1 addr=0x1 pc=0x8131ad3]
+
+goroutine 1 [running]:
+runtime.panic(0x821eac0, 0x84a9788)
+        /usr/lib/go/src/pkg/runtime/panic.c:266 +0xac
+math/big.(*Int).Bytes(0x0, 0x81e4c00, 0x2, 0x807372a)
+        /usr/lib/go/src/pkg/math/big/int.go:568 +0x23
+code.google.com/p/go.crypto/otr.appendMPI(0x18887780, 0x2, 0x2, 0x0, 0x2, ...)
+        /home/linus/usr/go/src/code.google.com/p/go.crypto/otr/otr.go:1383 +0x2b
+code.google.com/p/go.crypto/otr.(*PublicKey).Serialize(0x188960f0, 0x0, 0x0, 0x0, 0x188942a0, ...)
+        /home/linus/usr/go/src/code.google.com/p/go.crypto/otr/otr.go:1194 +0xd5
+code.google.com/p/go.crypto/otr.(*PublicKey).Fingerprint(0x188960f0, 0x0, 0x0, 0x188942a0)
+        /home/linus/usr/go/src/code.google.com/p/go.crypto/otr/otr.go:1203 +0x34
+main.main()
+        /home/linus/usr/go/src/github.com/agl/xmpp-client/ui.go:357 +0x1323
+
+goroutine 3 [runnable]:
+main.(*Input).ProcessCommands(0x1880e41c, 0x18896150)
+        /home/linus/usr/go/src/github.com/agl/xmpp-client/input.go:328
+created by main.main
+        /home/linus/usr/go/src/github.com/agl/xmpp-client/ui.go:349 +0x1256
+
+goroutine 4 [runnable]:
+main.(*Session).readMessages(0x1880e400, 0x18896180)
+        /home/linus/usr/go/src/github.com/agl/xmpp-client/ui.go:164
+created by main.main
+        /home/linus/usr/go/src/github.com/agl/xmpp-client/ui.go:352 +0x12a0
+flogsta:~% 
+
+Generated a key by letting xmpp-client generate a new config.
 * gnus, debugging
 ** warnings writing drafts after upgrading to v5.13 (emacs-24.3.1)
 Wrote /home/linus/Mail/drafts/205
@@ -32937,10 +33280,9 @@ sudo apt-get install l2tp-ipsec-vpn
 
 * linus skillset
 I have an amazing combination of skills:
-- sw dev
+- sw design and development
 - running services, sysadmin
-- security
-- privacy
+- security and privacy
 - network, routing
 * ntp
 test:
@@ -33049,8 +33391,9 @@ SSID sparvnastet/sparvnastet
 2001:6b0:7:0:cb:65ff:fe02:249d
 root Haq408
 7gp32yilw56o6zm7.onion
-* ICD.se
-** order Sun Mar 23 10:54:10 CET 2014
+* buying stuff online
+** ICD.se
+*** order Sun Mar 23 10:54:10 CET 2014
 http://www.icd.se/index.php?main_page=product_info&cPath=67_175_179_182&products_id=1844
 http://www.icd.se/index.php?main_page=product_info&cPath=67_175_179_182&products_id=1843
 
@@ -33067,6 +33410,14 @@ Ditt ordernummer är: 1057
 
 Ytterligare 200:- i enl. med [[gnus:nnimap%2Badbc:INBOX#53355A2B.9000409@icd.se][Email from info@icd.se: Re: ICD
 order #1057]] för 64G SSD. Betalningsdag 2014-03-31.
+** pixmania
+Kundnummer: 73722333
+pixmania@4711.se / !Ska11eper!
+*** 2 x WD 1TB <2014-06-03 Tue>
+2 x WD VelociRaptor WD1000DHTZ 3.5" 1 TB
+3469,10 SEK + 169,00 SEK = 3665,10 SEK
+Order number: CCL1503512678
+http://www.wdc.com/global/products/specs/?driveID=1052
 * DV, womens right
 [SKR] http://www.kvinnojouren.se/
 [AKH] http://www.kvinnojouren.se/jour/alla-kvinnors-hus-akh
@@ -33200,3 +33551,298 @@ Day 1, Unconference session 2
 eva blum-d?
 ** notes
 - "deep pocket inspection"
+* CrossTalks on "dark web"
+chip says things like
+  they are basically insecure
+  timing and latency attacks
+  the sense that they offer any anonymity is a [falsicity]
+  not more private than your ordinary browser
+* new modermodemet (new-mm), running fbsd-10
+** services and their hosts
+Before
+| "old" | mail for nordberg.se++ | mta            |
+|       |                        | spam filtering |
+|       |                        | imap           |
+|       | dns                    |                |
+|       | web                    |                |
+|       | kdc                    |                |
+| "ok"  | jabber                 |                |
+|       | mail for klutt.se      |                |
+| "new" | maatuska               |                |
+
+After
+| "old"  |   |   |   |
+| "ok"   |   |   |   |
+| "new"  |   |   |   |
+** TODO june 6-8 2014 [24/27]
+- [X] maatuska moved to alternative hw
+- [X] base installation of new-mm
+- [X] TTL for MX and imap + smtp is 5m
+- [X] email copied to new disk
+- [X] web data copied to new disk
+- [X] kdc installed
+- [X] dovecot installed
+- [X] imap authn verified
+- [X] molgans email verified -- authn and inbox
+- [X] incoming email to internal mta goes to dovecot
+- [X] incomgin email to external mta goes to dovecot
+- [X] postgrey working
+- [X] spam filtering working
+- [X] users present in new kdc
+- [X] sieve
+  - [X] sieve working
+  - [X] scripts copied
+- [X] old imapd rejects logins
+  stopped <2014-06-08 Sun 18:08>
+- [X] old mta stopped
+  stopped <2014-06-08 Sun 18:08>
+- [X] final rsync
+- [X] dovecot stopped
+- [X] email imported into dovecot, including chown -R
+- [X] new imap accepting logins
+- [X] MX pointing at new mta
+- [X] imap.adbc and smtp.adbc -> new addrs
+- [ ] webmail using new imap server
+- [X] virus scanning working
+- [ ] web moved (not including webmail)
+  - [ ] new web working
+  - [ ] final sync of web data done
+  - [ ] old web closed down
+  - [ ] www.adb-centralen.se -> new addr
+- [ ] backup of new-mm
+** TODO week of june 9 2014 [0/2]
+- [ ] pwchange running
+- [ ] info about pwchange communicated
+- [ ] dns moved
+  - [ ] knot configured
+- [ ] webmail moved
+  - [ ] database moved
+  - [ ] new webmail working
+- [ ] backups of new-mm automated
+- [ ] spam and virus moved
+  - [ ] new clamav working
+  - [ ] new SA working
+- [ ] start bouncing hard again
+** mirroring disks
+[root@modermodemet ~]# dmesg|egrep ^ada
+ada0 at ahcich0 bus 0 scbus0 target 0 lun 0
+ada0: <WDC WD1000DHTZ-04N21V0 04.06A00> ATA-8 SATA 3.x device
+ada0: Serial Number WD-WX11E83NW836
+ada0: 600.000MB/s transfers (SATA 3.x, UDMA6, PIO 8192bytes)
+ada0: Command Queueing enabled
+ada0: 953869MB (1953525168 512 byte sectors: 16H 63S/T 16383C)
+ada0: Previously was known as ad4
+ada1 at ahcich1 bus 0 scbus1 target 0 lun 0
+ada1: <WDC WD1000DHTZ-04N21V0 04.06A00> ATA-8 SATA 3.x device
+ada1: Serial Number WD-WXK1E63ARNTM
+ada1: 600.000MB/s transfers (SATA 3.x, UDMA6, PIO 8192bytes)
+ada1: Command Queueing enabled
+ada1: 953869MB (1953525168 512 byte sectors: 16H 63S/T 16383C)
+ada1: Previously was known as ad6
+
+[root@modermodemet ~]# diskinfo -v ada0
+ada0
+        512             # sectorsize
+        1000204886016   # mediasize in bytes (932G)
+        1953525168      # mediasize in sectors
+        4096            # stripesize
+        0               # stripeoffset
+        1938021         # Cylinders according to firmware.
+        16              # Heads according to firmware.
+        63              # Sectors according to firmware.
+        WD-WX11E83NW836 # Disk ident.
+
+http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/geom-mirror.html
+section 19.3.3.
+
+[root@modermodemet ~]# cat /boot/loader.conf 
+geom_mirror_load=YES
+[root@modermodemet ~]# gpart show ada0
+=>        34  1953525101  ada0  GPT  (932G)
+          34           6        - free -  (3.0K)
+          40         128     1  freebsd-boot  (64K)
+         168  1946156920     2  freebsd-ufs  [bootme]  (928G)
+  1946157088     7368046     3  freebsd-swap  (3.5G)
+  1953525134           1        - free -  (512B)
+
+[root@modermodemet ~]# gpart show mirror/gm0
+=>        34  1953525100  mirror/gm0  GPT  (932G)
+          34           6              - free -  (3.0K)
+          40         128           1  freebsd-boot  (64K)
+         168  1946156920           2  freebsd-ufs  [bootme]  (928G)
+  1946157088     7368045           3  freebsd-swap  (3.5G)
+  1953525133           1              - free -  (512B)
+
+[root@modermodemet ~]# gpart bootcode -b /boot/pmbr -p /boot/gptboot -i 1 mirror/gm0
+bootcode written to mirror/gm0
+[root@modermodemet ~]# gpart set -a bootme -i 2 mirror/gm0
+bootme set on mirror/gm0p2
+[root@modermodemet ~]# gpart backup ada0
+GPT 128
+1   freebsd-boot         40        128  
+2    freebsd-ufs        168 1946156920   [bootme] 
+3   freebsd-swap 1946157088    7368046  
+[root@modermodemet ~]# gpart backup mirror/gm0
+GPT 128
+1   freebsd-boot         40        128  
+2    freebsd-ufs        168 1946156920   [bootme] 
+3   freebsd-swap 1946157088    7368045  
+** importing email
+[root@imap /var/db/imap/banksy]# time rsync -az --delete --rsh="ssh -l cyrus -p 60222 -i /root/.ssh/imap-old.key" banksy.nordberg.se:spool /var/db/imap-from-banksy/
+Enter passphrase for key '/root/.ssh/imap-old.key'
+
+using http://www.cyrus2dovecot.sw.fu-berlin.de/documentation.html with some changed defaults
+
+the conversion program doesn't know about .squat, remove them:
+find imap-from-banksy/spool -name \*.squat -exec rm {} \;
+
+export user=molgan
+[root@imap /var/db/imap]# /root/cyrus2dovecot $user
+cyrus2dovecot [molgan]: 46 messages in 21 folders (0.1 MiB, 0 s)
+chown -R dovecot:dovecot $user
+
+[root@imap /var/db/imap]# time /root/cyrus2dovecot linus
+cyrus2dovecot [linus]: 159259 messages in 162 folders (2868.4 MiB, 150 s)
+
+OK, here we go!
+
+[root@imap /var/db/imap-from-banksy/spool]# cat > /root/migrated-users 
+erik
+fabbe
+fia
+fredrik
+jn
+juni
+larka
+lena
+linus
+lise
+marianne
+micke
+simon
+sofia
+[root@imap /var/db/imap-from-banksy/spool]# find . -name \*.squat\* -exec rm {} \;
+[root@imap /var/db/imap]# time cat /root/migrated-users | /root/cyrus2dovecot 
+cyrus2dovecot [erik]: 19877 messages in 56 folders (1946.5 MiB, 51 s)
+cyrus2dovecot [fabbe]: 21710 messages in 60 folders (1891.5 MiB, 56 s)
+cyrus2dovecot [fia]: 1478 messages in 66 folders (251.6 MiB, 7 s)
+cyrus2dovecot [fredrik]: 5962 messages in 4 folders (621.2 MiB, 18 s)
+cyrus2dovecot [jn]: 38691 messages in 57 folders (394.0 MiB, 31 s)
+cyrus2dovecot [juni]: 1020 messages in 5 folders (64.0 MiB, 2 s)
+cyrus2dovecot [larka]: 5661 messages in 16 folders (140.2 MiB, 6 s)
+cyrus2dovecot [lena]: 12460 messages in 22 folders (668.2 MiB, 23 s)
+cyrus2dovecot [linus]: 159388 messages in 162 folders (2869.3 MiB, 154 s)
+cyrus2dovecot [lise]: 7887 messages in 26 folders (733.2 MiB, 20 s)
+cyrus2dovecot [marianne]: 2904 messages in 8 folders (190.0 MiB, 6 s)
+cyrus2dovecot [micke]: 35161 messages in 23 folders (1095.0 MiB, 46 s)
+cyrus2dovecot [simon]: 889 messages in 15 folders (1396.8 MiB, 24 s)
+cyrus2dovecot [sofia]: 1728 messages in 10 folders (256.6 MiB, 6 s)
+
+real    7m30.016s
+user    3m52.840s
+sys     0m58.805s
+
+[root@new-mm /jails]# df -ih .
+Filesystem           Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/mirror/gm0p2    899G     41G    786G     5%    1.0M  121M    1%   /
+
+** moving web
+[root@www /usr/local/www]# time rsync -az --rsh "ssh -i /root/.ssh/webkey -l www -p 60225" banksy.nordberg.se:apache22/data .
+rsync: opendir "/usr/local/www/apache22/data/4711.se/.~" failed: Permission denied (13)
+rsync: opendir "/usr/local/www/apache22/data/adb-centralen.se/RCS" failed: Permission denied (13)
+rsync: send_files failed to open "/usr/local/www/apache22/data/adb-centralen.se/Makefile": Permission denied (13)
+rsync: send_files failed to open "/usr/local/www/apache22/data/adb-centralen.se/index.html.in.OFF": Permission denied (13)
+rsync: send_files failed to open "/usr/local/www/apache22/data/adb-centralen.se/index.org": Permission denied (13)
+rsync: opendir "/usr/local/www/apache22/data/nordberg.se/larka" failed: Permission denied (13)
+rsync: opendir "/usr/local/www/apache22/data/nordberg.se/lol" failed: Permission denied (13)
+rsync: opendir "/usr/local/www/apache22/data/tuben12.se/.~" failed: Permission denied (13)
+rsync: send_files failed to open "/usr/local/www/apache22/data/tuben12.se/admin": Permission denied (13)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1657) [generator=3.1.0]
+
+real    107m14.576s
+user    3m19.539s
+sys     1m53.614s
+** setting up MTA:s
+flogsta:~% printf "\x0molgan\x0ska11eper" | base64 
+AG1vbGdhbgBza2ExMWVwZXI=
+flogsta:~% openssl s_client -starttls smtp -connect mail.adb-centralen.se:submission 
+[...]
+auth plain
+334
+AG1vbGdhbgBza2ExMWVwZXI=
+235 2.7.0 Authentication successful
+** webmail
+*** database, postgresql
+pgsql user horde has pw aeth4Oop, created like this:
+
+[root@creat /]# su - pgsql
+$ createuser -P -d -E horde
+Enter password for new role: 
+Enter it again: 
+$ exit
+*** database, mysql
+mysql user horde has pw aeth4Oop
+
+* chromebook
+- (Tue Jun 10 21:58:07 +0200 2014) peter@stuge.se: det ser ut som att
+  andra redan har provat det:
+http://blog.brocktice.com/2013/03/09/running-debian-wheezy-7-0-on-the-chromebook-pixel/
+http://liliputing.com/2013/02/the-chromebook-pixel-can-run-ubuntu-linux-mint-other-distros.html
+http://www.zdnet.com/chromebook-pixel-run-ubuntu-alongside-chrome-os-7000012381/
+http://nemesisrobotics.com/installing-linux-on-the-chromebook-pixel/
+http://reviewingtech.com/install-fedora-on-chromebook-pixel/
+http://www.h-online.com/open/news/item/Booting-desktop-Linux-on-the-Chromebook-Pixel-1809912.html
+- pixel är IIRC en ivybridge, som alltså har management engine
+  inbyggd, för fjärradministration via nätverk.
+- detsamma gäller för alla intel-maskiner sedan 2008 eller så
+- om man bygger bort wifi-kortet från intel och låter bli att använda
+  eventuellt intern nätverksadapter (jag vet faktiskt inte om det ens
+  finns en ethernetkontakt på pixel) så reducerar man den uppenbara
+  faran med ME
+- nej, hårdvaran stänger av sig efter 30 minuter om ME-firmwarens
+  rsa2048-signature inte stämmer.
+- chipset+cpu stänger av sig
+* paris
+- palai de tokyo
+  utställning "eternelle" tomas hirschborn
+  http://www.palaisdetokyo.com/fr/exposition/flamme-eternelle
+* pager
+3 - juni
+8 - andreas
+* LI / "lawful" intercept
+http://support.cptc.edu/calea/file713.pdf abt cisco eq
+RFC3924
+* stories from nickm
+** fables of sw dev
+- stone soop
+  three travellers come to a town
+  find a stone, and people donate
+- belling the cat
+- drunk looking for keys
+* remote control of laptops and other computer devices
+- AMT
+  http://www.uberwall.org/bin/download/download/102/lacon12_intel_amt.pdf
+  http://web.it.kth.se/~maguire/DEGREE-PROJECT-REPORTS/100402-Vassilios_Ververis-with-cover.pdf
+  http://software.intel.com/en-us/blogs/2008/11/25/intel-amt-remote-provisioning-what-happens-there
+- ME -- management engine
+  - present in ivybridge
+  - all intel machines since about 2008
+  - chipset and CPU shuts down after 30 minutes if the ME firware
+    RSA2048 signature doesn't match
+* sip
+ekiga - H.323 and SIP compatible VoIP client
+* Simoom, Saudi, FOI, KSI
+SR Ekot 2014-08-19 08:00
+https://sv.wikipedia.org/wiki/Projekt_Simoom
+https://en.wikipedia.org/wiki/Project_Simoom
+Thomas Tjäder, ISP
+https://en.wikipedia.org/wiki/Operation_Scorched_Earth#Saudi_Incursion
+* undervakning, sousveillance
+https://gnuheter.com/creeper/
+
+https://twitter.com/parliamentedits, UK
+https://twitter.com/congressedits, USA
+
+http://sverigesradio.se/sida/artikel.aspx?programid=1637&artikel=5934692
+* latex
+apt-get install texlive-latex-base texlive-latex-base-doc texlive-lang-european
