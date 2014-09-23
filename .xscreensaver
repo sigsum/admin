@@ -1,10 +1,10 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.15 for linus on Sat Sep  7 12:54:43 2013.
+# Written by xscreensaver-demo 5.26 for linus on Thu Aug 21 14:49:19 2014.
 # http://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
 cycle:		0:10:00
-lock:		True
+lock:		False
 lockTimeout:	0:00:00
 passwdTimeout:	0:00:30
 visualID:	default
@@ -25,7 +25,7 @@ captureStderr:	True
 ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
 dpmsEnabled:	False
-#dpmsQuickOff:	False
+dpmsQuickOff:	False
 dpmsStandby:	2:00:00
 dpmsSuspend:	2:00:00
 dpmsOff:	4:00:00
@@ -244,6 +244,11 @@ programs:								      \
 - GL: 				hilbert -root				    \n\
 - GL: 				tronbit -root				    \n\
 				unicode -root				    \n\
+- GL: 				geodesic -root				    \n\
+				hexadrop -root				    \n\
+- GL: 				kaleidocycle -root			    \n\
+- GL: 				quasicrystal -root			    \n\
+- GL: 				unknownpleasures -root			    \n\
 
 
 pointerPollTime:    0:00:05
@@ -252,6 +257,6 @@ windowCreationTimeout:0:00:30
 initialDelay:	0:00:00
 GetViewPortIsFullOfLies:False
 procInterrupts:	True
-#xinputExtensionDev: False
+xinputExtensionDev: False
 overlayStderr:	True
 
