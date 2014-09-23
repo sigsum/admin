@@ -66,6 +66,9 @@ LC_CTYPE=sv_SE.ISO8859-15; export LC_TYPE
 LC_PAPER=$LC_CTYPE; export LC_PAPER
 LC_MEASUREMENT=$LC_CTYPE; export LC_MEASUREMENT
 
+[ -f "${HOME}/.gpg-agent-info" ] && . "${HOME}/.gpg-agent-info"
+export GPG_TTY=$(tty)
+
 #function dmalloc { eval `command dmalloc -b $*`; }
 
 #alias ehlo='ssh -L 8080:127.0.0.1:8080 -i ~/ustick/.ssh/keys/e -p 7000 localhost'
@@ -81,9 +84,10 @@ alias screenshot='xwd | xwdtopnm | pnmtopng'
 alias ssh-keepalive='ssh -o ServerAliveInterval=60'
 alias startx='ssh-agent startx & vlock'
 #alias tunnel-ehlo='ssh -Nf -L 7000:ehlo.4711.se:22 banksy.nordberg.se'
-alias tunnel-dfri-abuse='ssh -NfL 10587:lnmail:587 banksy.nordberg.se'
+alias tunnel-dfri-abuse='torsocks ssh -NfL 10587:smtp.adb-centralen.se:587 smtp.adb-centralen.se'
 alias tunnel-ehlo='ssh -NfL 4700:127.0.0.1:4711 -L 1880:127.0.0.1:8080 ehlo.4711.se'
 alias tunnel-ehlo-mrtg='ssh -Nf -L 8080:127.0.0.1:8080 ehlo.4711.se'
+alias tunnel-email='ssh -Nf -L 1993:imap.adb-centralen.se:993 -L 2993:kerio.nordu.net:993 -L 1587:smtp.adb-centralen.se:587 -L 2587:kerio.nordu.net:587 -L 10119:news.gmane.org:119 smtp.adb-centralen.se'
 alias tunnel-freenode='ssh -Nf -L 6669:127.0.0.1:6669 d.nordberg.se && echo "6669 -> d.nordberg.se:6669"'
 alias tunnel-irc='ssh -NfL 6667:localhost:6667 proj.adb-centralen.se'
 alias tunnel-irc-tor='torify ssh -NfL 6667:lntest:6667 banksy.nordberg.se'
