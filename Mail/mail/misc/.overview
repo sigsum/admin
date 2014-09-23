@@ -239,3 +239,4 @@
 2614	Tiger Auditing Report for tool	"Tiger automatic auditor at tool" <root@tool>	Mon, 05 May 2014 04:00:01 +0200	<E1Wh8CH-0004TS-OC@tool>		236	4	Xref: tool mail.misc:2614	To: root@tool	
 2615	Anacron job 'cron.daily' on tool	Anacron <root@tool>	Mon, 05 May 2014 07:54:50 +0200	<E1WhBrW-0005IE-A4@tool>		248	8	Xref: tool mail.misc:2615	To: root@tool	
 2616	Tiger Auditing Report for tool	"Tiger automatic auditor at tool" <root@tool>	Mon, 05 May 2014 10:00:01 +0200	<E1WhDof-0006lN-VM@tool>		236	4	Xref: tool mail.misc:2616	To: root@tool	
+2617	exim paniclog on flogsta has non-zero size	root <root@flogsta>	Mon, 14 Jul 2014 17:11:58 +0200	<E1X6hv4-0000RV-W1@flogsta>		221	4	Xref: flogsta mail.misc:2617	To: root@flogsta	
