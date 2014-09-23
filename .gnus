@@ -107,8 +107,9 @@
       '((".*" (organization nil) ;("^nnimap\\+adbc" (organization nil)
 	 ("From" "Linus Nordberg <linus@nordberg.se>")
 	 (eval
-	  (setq smtpmail-smtp-server "smtp.nordberg.se"
-                smtpmail-smtp-service 587
+          ;;(setq smtpmail-smtp-server "smtp.adb-centralen.se"
+          (setq smtpmail-smtp-server "localhost"
+                smtpmail-smtp-service 1587
                 smtpmail-smtp-user "linus")
 	  (set (make-local-variable 'message-sendmail-envelope-from) "linus@nordberg.se")))
 	("lists.tor.assistants"
@@ -120,11 +121,13 @@
 	("lists.pmacct"
 	 ("From" "Linus Nordberg <linus+pmacct@nordberg.se>")
 	 (organization "NORDUnet A/S"))
-	("ndn:\\|gmane.comp.encryption.kerberos"
+	("ndn:\\|lists\\.\\(ct\\|ietf\\)\\|gmane.ietf"
 	 (organization "NORDUnet A/S")
 	 ("From" "Linus Nordberg <linus@nordu.net>")
-	 (eval (setq smtpmail-smtp-server "kerio.nordu.net"
-                     smtpmail-smtp-service 587
+	 (eval
+          ;(setq smtpmail-smtp-server "kerio.nordu.net"
+          (setq smtpmail-smtp-server "localhost"
+                     smtpmail-smtp-service 2587
                      smtpmail-auth-supported '(plain login)
                      smtpmail-smtp-user "linus@nordu.net")
                (set (make-local-variable 'message-sendmail-envelope-from)
@@ -145,7 +148,7 @@
 	 "Return name of mailbox to store archive copy in.  Use GROUP, default to one at ADB-Centralen."
 	 (if (and nil message-news-p)	;disabled for now
 	     "misc-news"
-	   (format "%s:INBOX.sent-mail.%s"
+	   (format "%s:sent-mail.%s"
 		   (car (split-string
 			 (if (or (string= group "")
 				 (compare-strings group nil (length "nntp") "nntp" nil nil))
