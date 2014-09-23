@@ -4,6 +4,377 @@
 `C-c C-x C-d' for showing times.
 `C-c C-y' for updating time on line.
 
+* September 2014
+- <2014-09-22 Mon>
+[[file:usr/share/ietf/in-notes/rfc5280.txt::4.2.1.10.%20Name%20Constraints][file:usr/share/ietf/in-notes/rfc5280.txt::4.2.1.10. Name Constraints]]
+
+- <2014-09-19 Fri>
+linus@glog:~$ curl -s 'https://ct.googleapis.com/pilot/ct/v1/get-proof-by-hash?hash=zeJQt7T1Qzxg9eoQWA7moSyW6neivIKwErhMPrxNTFs=&tree_size=1' | json_pp 
+{
+   "success" : false,
+   "error_message" : "Hash is unknown : generic::failed_precondition: Leafhash (cde250b7b4f5433c60f5ea10580ee6a12c96ea77a2bc82b012b84c3ebc4d4c5b) not in index"
+}
+
+- <2014-09-18 Thu>
+echo '{"chain": ["another foo", "bar"]}' | curl -s --data @- --cacert catlfish/webroot/certs/webcert.pem https://flimsytest:8080/ct/v1/add-chain | json_pp 
+{
+   "timestamp" : 1411033095093,
+   "sct_version" : 0,
+   "id" : "k9Hik73cNe/hdhH1q/ymCxlbgpm8QAHtWEt39SH4BGM=",
+   "signature" : "BAMARjBEAiADpYyOtskNPxu58eqEIgXUe250EG39Jp/GrnOZHT8QqQIgOWsQLAZwcROVpBIbnihzNLHExPn0k7v68VSs4Bz++o8=",
+   "extensions" : ""
+}
+
+- <2014-09-16 Tue>
+251> bench:run(consing, [10*1000*1000, []]).
+{471167,
+
+- <2014-09-15 Mon>
+How expensive are arrays on RAM?
+https://stackoverflow.com/questions/19458696/estimating-memory-scope-of-erlang-datastructure
+https://stackoverflow.com/questions/16447921/arrays-implementation-in-erlang
+
+Sep 15 22:47:59.000 [warn] Rejecting SOCKS request for anonymous connection to private address [scrubbed].
+Supposedly known behaviour of TB, see ticket.
+
+23> lists:map(fun(M) -> code:soft_purge(M), code:load_file(M) end, [v1, plop]).
+[{module,v1},{module,plop}]
+
+- <2014-09-14 Sun>
+[ht:add(X) || X <- [<<X:16>> || X <- lists:seq(0, 100)]].
+ht:path(0, ht:size()).
+
+3> ht:size().
+20001
+4> ht:add(<<"nr 20002">>).
+ok
+5> ht:path(0, 20002).
+ ** exception exit: {{{badmatch,false},
+                     [{ht,old_version_tree_head,3,
+                          [{file,"src/ht.erl"},{line,194}]},
+                      {ht,path,6,[{file,"src/ht.erl"},{line,162}]},
+                      {ht,path,4,[{file,"src/ht.erl"},{line,148}]},
+                      {ht,handle_call,3,[{file,"src/ht.erl"},{line,101}]},
+                      {gen_server,handle_msg,5,
+                                  [{file,"gen_server.erl"},{line,580}]},
+                      {proc_lib,init_p_do_apply,3,
+                                [{file,"proc_lib.erl"},{line,239}]}]},
+                    {gen_server,call,[ht,{path,0,20002}]}}
+     in function  gen_server:call/2 (gen_server.erl, line 182)
+6> 
+=ERROR REPORT==== 14-Sep-2014::19:55:14 ===
+ ** Generic server ht terminating 
+ ** Last message in was {path,0,20002}
+ ** When Server state == {tree,20001,-1,
+                            {tree_store,
+
+When ht crashes we get an ERROR REPORT including server state. With
+20k entries, that's not much fun. Learn more about how to avoid having
+_parts_of_ state printed. In this case, 'tree_store'. 'version' and
+'evaluated' are very valuable to keep.
+
+What was missing was the Version >> Layer detail in fun path which
+made path/6 walk too far.
+
+TVL = [[],[0],[16]," !","01","@ABC","PQRSTUVW","`abcdefghijklmno"].
+
+ht:stop(), ht:start_link(TVL), ht:print_tree().
+6E34 96A2 0298 0750 BC1A 4271 B086 46F6 
+FAC5 5F08 0EBC CA85 
+D37E 6B47 
+5DC9 
+
+V=6
+6E34 96A2 0298 0750 BC1A 4271 B086 
+FAC5 5F08 0EBC B086 
+D37E 837D 
+DDB8 
+
+V=5
+6E34 96A2 0298 0750 BC1A 4271 
+FAC5 5F08 0EBC 
+D37E 0EBC 
+76E6 
+
+V=4
+6E34 96A2 0298 0750 BC1A 
+FAC5 5F08 BC1A 
+D37E BC1A 
+4E3B 
+
+V=3
+6E34 96A2 0298 0750 
+FAC5 5F08 
+D37E 
+
+V=2
+6E34 96A2 0298 
+FAC5 0298 
+AEB6 
+
+V=1
+6E34 96A2 
+FAC5 
+
+lists:map(fun(X) -> ht:mth(X) end, TVL).
+[<<227,176,196,66,152,252,28,20,154,251,244,200,153,111,
+   185,36,39,174,65,228,100,155,147,76,164,149,153,27,...>>,
+ <<150,162,150,210,36,242,133,198,123,238,147,195,15,138,
+   48,145,87,240,218,163,93,197,184,126,65,11,120,...>>,
+ <<2,152,209,34,144,109,207,193,8,146,203,83,167,57,146,
+   252,91,159,73,62,164,201,186,219,39,183,...>>,
+ <<234,76,79,70,117,217,0,187,26,11,127,233,119,136,22,157,
+   176,140,113,98,167,159,67,243,122,...>>,
+ <<203,0,152,157,148,165,105,192,166,120,174,4,43,99,220,
+   212,98,93,185,100,64,81,127,55,...>>,
+ <<123,46,87,72,113,133,77,236,141,196,183,159,65,36,65,36,
+   14,211,89,160,168,151,145,...>>,
+ <<202,199,209,219,245,232,187,179,0,108,196,87,4,69,31,74,
+   150,6,113,143,18,88,...>>,
+ <<240,12,220,56,100,75,98,163,2,145,247,35,135,209,145,
+   38,67,3,80,123,217,...>>]
+
+[hex:bin_to_hexstr(X) || X <- lists:map(fun(X) -> ht:mth(X) end, TVL)].
+["E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+ "96A296D224F285C67BEE93C30F8A309157F0DAA35DC5B87E410B78630A09CFC7",
+ "0298D122906DCFC10892CB53A73992FC5B9F493EA4C9BADB27B791B4127A7FE7",
+ "EA4C4F4675D900BB1A0B7FE97788169DB08C7162A79F43F37AA9F3EC43727814",
+ "CB00989D94A569C0A678AE042B63DCD4625DB96440517F37A6EB7976EA24ED4B",
+ "7B2E574871854DEC8DC4B79F412441240ED359A0A89791BF4483057D5124A57D",
+ "CAC7D1DBF5E8BBB3006CC45704451F4A9606718F1258970A8120BE6B107750F9",
+ "F00CDC38644B62A30291F72387D191264303507BD9D767F2E429C421ECA223E6"]
+
+lists:map(fun(X) -> ht:mth(X) end, [lists:sublist(TVL, N) || N <- lists:seq(1, 8)]).
+[<<110,52,11,156,255,179,122,152,156,165,68,230,187,120,
+   10,44,120,144,29,63,179,55,56,118,133,17,163,6,...>>,
+ <<250,197,66,3,231,204,105,108,240,223,203,66,201,42,29,
+   157,186,247,10,217,230,33,244,189,141,152,102,...>>,
+ <<174,182,188,254,39,75,112,161,79,176,103,165,229,87,130,
+   100,219,15,169,181,26,245,224,186,21,145,...>>,
+ <<211,126,228,24,151,109,217,87,83,193,199,56,98,185,57,
+   143,162,162,207,155,79,240,253,254,139,...>>,
+ <<78,59,187,31,123,71,141,207,231,31,182,49,99,21,25,163,
+   188,161,44,154,239,202,22,18,...>>,
+ <<118,230,125,173,188,223,30,16,225,183,77,220,96,138,189,
+   47,152,223,177,111,188,231,82,...>>,
+ <<221,184,155,228,3,128,158,50,87,80,211,210,99,205,120,
+   146,156,41,66,183,148,42,...>>,
+ <<93,201,218,121,167,6,89,169,173,85,156,183,1,222,217,
+   162,171,157,130,58,173,...>>]
+
+[hex:bin_to_hexstr(X) || X <- lists:map(fun(X) -> ht:mth(X) end, [lists:sublist(TVL, N) || N <- lists:seq(1, 8)])].
+["6E340B9CFFB37A989CA544E6BB780A2C78901D3FB33738768511A30617AFA01D",
+ "FAC54203E7CC696CF0DFCB42C92A1D9DBAF70AD9E621F4BD8D98662F00E3C125",
+ "AEB6BCFE274B70A14FB067A5E5578264DB0FA9B51AF5E0BA159158F329E06E77",
+ "D37EE418976DD95753C1C73862B9398FA2A2CF9B4FF0FDFE8B30CD95209614B7",
+ "4E3BBB1F7B478DCFE71FB631631519A3BCA12C9AEFCA1612BFCE4C13A86264D4",
+ "76E67DADBCDF1E10E1B74DDC608ABD2F98DFB16FBCE75277B5232A127F2087EF",
+ "DDB89BE403809E325750D3D263CD78929C2942B7942A34B77E122C9594A74C8C",
+ "5DC9DA79A70659A9AD559CB701DED9A2AB9D823AAD2F4960CFE370EFF4604328"]
+
+
+- <2014-09-13 Sat>
+[hex:bin_to_hexstr(X2) || X2 <- lists:map(fun(X) -> ht:mkleafhash(X) end, TVL)].
+[hex:bin_to_hexstr(X2) || X2 <- lists:map(fun(X) -> ht:mth(X) end, TVL)].
+
+Old versions of a tree happened to work yesterday since we never went
+back in time. Now that get_hash updates the tree to what version the
+tree is at things break. Time to fix the going back in time issues.
+
+- <2014-09-10 Wed>
+Replacing ets with one array per layer shaved off 28% from the time it
+takes to insert an entry (to 196 us). This is still not lazy
+evaluation though, which is the real goal.
+
+
+
+- <2014-09-09 Tue>
+f(), N=1000*1000, T=element(1, bench:run(f5, [[<<X:16>> || X <- lists:seq(0, N)]])), {T/N, T/1000}.
+{272.383279,272383.279}
+
+Says that adding an entry to the current implementation of the tree
+(using a single ETS table) takes 272 us and that it takes 4.5 minutes
+to add them all. This is on my X60 (32-bit Intel T2400 1.8GHz)
+utilizing a single core. The numbers for 1000 entries are
+{159.179,159.179}.
+
+Here's what it looks like on a modern machine (Intel(R) Xeon(R) CPU
+E5-2643 0 @ 3.30GHz):
+- 1000: {43.496,43.496}
+- 1000*1000: {71.37873,71378.73}
+
+So we see a factor 3.7/3.8 between a modern and an old computer.
+
+Invoking a gen_server function takes about 9 us, about 200 times
+slower than a direct funcall.
+
+plop:add(#timestamped_entry{entry = #plop_entry{type = test, data = <<"entry 0">>}}).
+#spt{
+    version = 0,
+    logid = 
+        <<147,209,226,147,189,220,53,239,225,118,17,245,171,252,
+          166,11,25,91,130,153,188,64,1,237,88,75,...>>,
+    timestamp = 1410291344472,
+    signature = 
+        #signature{
+            algorithm = 
+                #sig_and_hash_alg{hash_alg = sha256,signature_alg = ecdsa},
+            signature = 
+                <<48,69,2,33,0,250,235,123,224,130,132,186,224,132,27,
+                  91,90,121,130,211,219,...>>}}
+
+129> sys:get_status(plop).
+{status,<0.833.0>,
+    {module,gen_server},
+    [[{'$ancestors',[plop_sup,<0.697.0>]},
+      {'$initial_call',{plop,init,1}}],
+     running,<0.698.0>,[],
+     [{header,"Status for generic server plop"},
+      {data,
+          [{"Status",running},
+           {"Parent",<0.698.0>},
+           {"Logged events",[]}]},
+      {data,
+          [{"State",
+            #state{
+                pubkey = 
+                    {#'ECPoint'{point = <<4,226,165,170,233,167,225,...>>},
+                     {namedCurve,{1,2,840,10045,3,1,...}}},
+                privkey = 
+                    #'ECPrivateKey'{
+                        version = 1,
+                        privateKey = [195,63,22,54,120,21|...],
+                        parameters = {namedCurve,{1,2,840,...}},
+                        publicKey = {0,<<4,226,...>>}},
+                logid = <<147,209,226,147,189,220,53,239,...>>,
+                hashtree = {history_tree,7,{tree_store,462879}}}}]}]]}
+
+199> plop:sth().
+#sth{
+    treesize = 10000,timestamp = 1410294422349,
+    roothash = 
+        <<83,119,190,163,101,77,217,189,82,147,75,28,141,151,1,
+          104,38,39,1,77,136,23,92,69,98,...>>,
+    signature = 
+        #signature{
+            algorithm = 
+                #sig_and_hash_alg{hash_alg = sha256,signature_alg = ecdsa},
+            signature = 
+                <<48,70,2,33,0,175,99,149,9,117,25,159,197,171,154,98,
+                  168,148,244,207,73,...>>}}
+
+timer:tc(application, start, [plop]).
+{848814,ok}
+
+- <2014-09-08 Mon>
+70> ets:tab2list(364580).
+[{{0,8},
+  <<225,80,39,42,196,126,68,129,159,77,93,72,21,5,74,133,
+    133,82,64,42,194,219,236,11,96,175,...>>},
+ {{0,0},
+  <<196,212,27,156,104,131,129,200,81,152,171,6,159,129,
+    139,11,78,193,43,92,93,140,61,81,48,...>>},
+ {{1,0},
+  <<53,97,17,101,0,91,70,46,13,74,154,242,131,216,177,225,
+    107,149,112,53,75,165,85,168,...>>}]
+71> db:size().
+2
+72> db:get_by_index_sorted(0, 1).
+[#mtl{
+     version = 0,leaf_type = timestamped_entry,
+     entry = 
+         #timestamped_entry{
+             timestamp = 1409972023840,
+             entry = #plop_entry{type = test,data = <<"entry 01">>}}},
+ #mtl{
+     version = 0,leaf_type = timestamped_entry,
+     entry = 
+         #timestamped_entry{
+             timestamp = 1410174433665,
+             entry = 
+                 #plop_entry{type = test,data = <<"entry 01 (again)">>}}}]
+
+- <2014-09-05 Fri>
+
+24> cd("/home/linus/p/ct/plop").
+/home/linus/p/ct/plop
+ok
+25> code:add_path("/home/linus/p/ct/plop/ebin").
+true  
+26> plop_app:install([node()]).
+
+=INFO REPORT==== 5-Sep-2014::17:26:15 ===
+    application: mnesia
+    exited: stopped
+    type: temporary
+{[ok],[]}
+27> application:start(mnesia), application:start(plop).
+DEBUG: new: Tree = {history_tree,-1,{tree_store,155679}}
+ok
+
+- <2014-09-04 Thu>
+~/tor-browser_en-US/Browser/TorBrowser/Docs/sources/bundle.inputs
+
+- <2014-09-03 Wed>
+126> dets:open_file(test, []).
+{ok,test}
+127> dets:insert(test, {0, <<"foo">>}).
+ok
+128> dets:traverse(test, fun(E)->io:format("~p~n", [E]), continue end).
+{0,<<"foo">>}
+[]
+
+dets:traverse(es1, fun(E)->io:format("~p~n", [E]), continue end).
+
+lists:foreach(fun(N)->es:store(S, N, <<"bar">>) end, lists:seq(11, 257)).
+
+- <2014-09-01 Mon>
+Received a note about a package, 407 SEK import charge.
+Asked Joshua Datko <jbdatko@gmail.com> if he's sent the BeagleBone (BBB).
+
+* August 2014
+- <2014-08-29 Fri>
+https://code.google.com/p/end-to-end/wiki/KeyDistribution
+[[gnus:nnimap%2Badbc:lists.moderncrypto.messaging#CAMfhd9UiXXMR5P1d8XcJ0cwHd6A5%2BE1hvwib68YFFoY67sWAeg@mail.gmail.com][Email from Adam Langley: Re: {messaging} Google End-to-]]
+[[gnus:nnimap%2Badbc:lists.moderncrypto.messaging#53FF7270.2080303@thoughtcrime.org][Email from Moxie Marlinspike: Re: {messaging} Google End-to-]] has good pushback
+
+- <2014-08-28 Thu>
+ets:new(nil, [set, protected, {read_concurrency, true}]).
+or
+ets:new(mytable, [set, protected, named_table, {read_concurrency, true}]).
+
+module instrument file:///usr/share/doc/erlang-doc/lib/tools-2.6.15/doc/html/instrument.html
+
+- <2014-08-27 Wed>
+[[gnus:nnimap%2Bndn:INBOX#CA%2B1pcZ_GvwgoQBvKTpztN4dUO3VbusgcF4q4XMXMxLL0VBt0XQ@mail.gmail.com][Email from Pascal Leroy: Re: Intro - talk about CT goss]]
+
+[[file:src/keyval_benchmark.erl][file:~/src/keyval_benchmark.erl]] with maps
+
+either we use dict's or possibly gb_tree's -- gb_tree's might be
+slightly faster in our case but dicts have fold and map
+
+or we use maps -- maps seem slow for n>100 (unless i'm benching badly,
+see https://joearms.github.io/2014/02/01/big-changes-to-erlang.html)
+but maybe that's changing, see http://learnyousomeerlang.com/maps
+
+evening, update on history tree data structure: we need three data
+structures -- current_tree (gb_tree), entries (array) and
+frozen_hashes (map)
+
+gb_trees are https://en.wikipedia.org/wiki/AA_tree
+
+- <2014-08-25 Mon>
+http://learnyousomeerlang.com/static/erlang/keyval_benchmark.erl
+http://learnyousomeerlang.com/maps
+
+- <2014-08-21 Thu>
+leif on ct gossip: post a 1-2 page (plus boilerplate) requirements
+text on _general_ gossip to trans@ soon
+
+- <2014-08-20 Wed>
+Raft, thinkdistributed.io; "open replica", linearizability
+vimeo.com/71635670; speakerdeck.com/ajs
+
 * week 16
 mon: CT
 * week 15

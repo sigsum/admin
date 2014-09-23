@@ -14,8 +14,11 @@
 %%(diary-anniversary 1999 4 26) Etta
 %%(diary-anniversary 1945 5 10) Erik
 %%(diary-anniversary 1983 5 26) Andreas
+%%(diary-anniversary 2014 06 12) isis
 %%(diary-anniversary 1973 6 29) Johan Ruterhagen
 %%(diary-anniversary 1999 7 2) Lärka
+%%(diary-anniversary 2014 7 11) Marianne
+%%(diary-anniversary 2014 8 2) Andrea
 %%(diary-anniversary 1977 8 30) Nick Mathewson
 %%(diary-anniversary 2002 9 3) Nicks first Tor commit
 %%(diary-anniversary 2003 10 8) tor https://lists.torproject.org/pipermail/tor-dev/2003-October/002185.html
@@ -573,7 +576,7 @@
 2013-12-26 15:55-17:25 ARN-HAM
 2013-12-31 13:50-15:20 HAM-ARN
 2013-11-21 Tor-kurs, SIDC Karlskrona
-&%%(diary-cyclic 7 2013 11 08) 13:00-14:00 NORDUnet weekly
+&%%(diary-cyclic 7 2013 11 08) 10:00-11:00 NORDUnet weekly
 2013-11-21 18:00-21:00 Cryptoparty 2013 I
 2013-11-28 18:00-21:00 Cryptoparty 2013 II
 2013-12-05 18:00-21:00 Cryptoparty 2013 III
@@ -683,7 +686,6 @@
 2014-01-24 19:00 Simon, käka lite
 2014-01-27 11:00-12:30 ndn security review
 2014-04-27 cryptoparty @ cyklopen
-2014-05-28 SIF14
 2014-02-17 register for SIF14 http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
 2014-02-10 one week to register for SIF14 http://www.delegia.com/app/attendee/default.asp?pageId=3D30138&TemplateId=3D12012
 2014-03-20 cryptoparty umeå
@@ -748,7 +750,6 @@
 2014-03-07 09:00-11:30 uta, Richmond/Chelsea/Tower
 2014-03-06 09:00-11:30 dane, Park Suite
 2014-03-06 18:40-20:40 dnsop, Sovereign
-%%(diary-block 2014 08 25 2014 08 26) [prel] cryptech.is
 2014-03-24 14:00-15:00 NDN all hands (TUG)
 2014-04-02 DFRI styrelsemöte (TUG?)
 2014-03-19 19:00 Lise & Erik hämtar spelet
@@ -808,7 +809,7 @@
 2014-06-01 14:11-19:10 Malmö-Sthlm
 2014-07-05 barn flyg
 2014-07-13 barn flyg
-2014-08-08 lärka tillbaka fr läger
+2014-08-08 17:15 lärka tillbaka fr läger
 2014-05-08 17:30-19:30 ADBJ om DKD
 2014-04-30 10:45-12:15 CT, JRA2
 2014-05-10 flogsta
@@ -816,3 +817,137 @@
 2014-05-05 10:00 maconomy!
 2014-05-08 17:00 middag hos E&L
 %%(diary-block 2014 09 23 2014 09 26) CHES http://www.chesworkshop.org/ches2014/
+2014-05-13 16:00 juni gittarr
+2014-06-16 17:30-19:30 ISOC-SE extra stämma, .SE
+2014-05-21 09:30-16:30 UI om Big data
+2014-05-13 18:00-22:00 DFRI sysadm
+2014-05-12 19:30 Södra Sällskapet, Åsögatan 111; http://verificationhandbook.com
+%%(diary-block 2014 05 27 2014 05 28) SIF14
+2014-10-25 17:00 födelsedagsmiddag, liss!
+&%%(diary-block 2014 05 23 2014 05 30) Andrew in Stockholm
+2014-05-13 15:15 fixa recept
+2014-06-11 17:00-21:00 https://www.netnod.se/netnod-summer-drink-2014
+&%%(diary-block 2014 09 18 2014 09 19) SEC-T https://www.sec-t.org/
+%%(diary-block 2014 11 24 2014 11 25) Internetdagarna
+2014-06-04 15:00 Juni klipp
+2014-06-04 15:45 Lärka klipp
+2014-06-09 18:30-20:00 DFRI
+2014-06-03 12:00 Lunch, Daniel Melin, Curry Spice City
+2014-06-10 12:30 Bosse lunch
+%%(diary-block 2014 06 06 2014 06 08) Sysadmin++
+2014-05-30 Varna användare för syadminhelg
+2014-05-26 Jillian York, evening
+2014-05-27 08:30 Waynes Götgatsbacken
+2014-05-29 Middag med Andrew & Sarah
+2014-06-29 15:30-18:05 ARN-CDG
+2014-07-13 18:55-21:10 CDG-ARN
+2014-06-03 14:30 (or 15:30?) crosstalks.tv/talk/the-dark-side-of-the-web-internets/
+2014-06-04 Lunch Andreas
+2014-06-09 11:30 Josva
+%%(diary-block 2014 06 27 2014 06 29) steampunkfestival.se
+%%(diary-block 2014 07 28 2014 07 29) cryptech, sthlm
+2014-06-07 18:30 tre vänner
+2014-06-11 11:15 Lärka B22
+2014-06-11 Lunch Lena
+2014-08-18 18:30 DFRI
+2014-06-11 18:30 Middag med Lena och barnen
+2014-06-16 10:30 Ultraljud
+2014-06-11 11:30 Juni D25
+2014-07-11 14:00 Marianne (fyller år)
+2014-07-31 10:00 Skype HeiniEDRi.
+2014-07-31 jbn hela kvällen, inkl. soffa
+2014-07-14 11:30 lunch andreas
+2014-07-15 17:25-19:30 ARN-AMS
+2014-07-19 18:00-19:55 AMS-YYZ
+2014-07-25 18:40 YYZ-CDG-ARN
+2014-07-26 12:20 ARN
+2014-07-22 11:45-12:45 ISOC Panel @ IETF 90 - Internet Security and Privacy: Ten years later
+2014-07-24 15:20-17:20 tcpinc @ tudor 7/8
+2014-07-20 Niagra falls?
+2014-07-20 10:00-16:00 https://www.ietf.org/mail-archive/web/tls/current/msg13078.html @ Mozilla Toronto, 366 Adelaide St W, Suite 500
+2014-07-21 15:20-17:20 TLS @ Ontario
+2014-07-24 17:30-19:00 TLS @ Ontario
+2014-07-22 09:00-11:30 UTA @ Ontario
+2014-07-21 17:10-19:10 Technical planery @ Canadian
+2014-07-21 19:15 philipp @ lobby
+2014-07-22 11:30-13:00 opesc @ Territories
+2014-07-22 14:20-16:20 irtfopen @ Tudor 7/8
+2014-07-22 16:40-18:40 dane @ Canadian
+2014-07-23 13:30 [prel] tjatt grtrd
+2014-07-25 09:00-11:30 trans @ Manitoba
+2014-07-30 14:00 CT med map @ TUG
+2014-07-23 13:00 cryptech @ Quebec
+2014-07-22 18:55 lobby, for hacklab
+2014-07-27 15:46 Lärka Centralen
+2014-07-24 11:30-13:00 PING @ Confederation 6
+2014-07-24 20:00 http://spiceroute.ca/ 499 King St. W.
+2014-08-09 13:46-15:45 [Lärka] Stockholm C - Säter
+2014-09-26 IPEN workshop, Berlin
+2014-08-06 16:00 consensus diff weekly, #tor-dev
+2014-08-07 12:00 Lunch Pawal
+2014-08-28 09:30-16:00 NORDUnet All Hands
+%%(diary-block 2014 08 28 2014 08 29) KAS for all hands
+&%%(diary-block 2014 08 25 2014 08 31) B
+&%%(diary-block 2014 09 05 2014 09 11) B
+&%%(diary-block 2014 09 19 2014 09 25) B
+&%%(diary-block 2014 10 03 2014 10 09) B
+&%%(diary-block 2014 10 17 2014 10 23) B
+&%%(diary-block 2014 10 31 2014 11 06) B
+&%%(diary-block 2014 11 14 2014 11 20) B
+&%%(diary-block 2014 11 28 2014 12 04) B
+&%%(diary-block 2014 12 12 2014 12 18) B
+&%%(diary-block 2014 12 26 2015 01 01) B
+2014-09-02 11:30 Lunch m. Johan Lagerkvist
+2014-08-23 Bengtfesten
+2014-08-30 Surströmming, Yxlan
+2014-09-28 12:00-18:00 FUB, Danderyds sjukhus
+2014-08-18 14:30-16:30 CT @ TUG
+2014-08-18 10:00 Boka ARN-KAS-ARN
+2014-08-18 10:00 Tidsredovisning
+2014-08-19 18:30 Dan & Pawal @ Morfar Ginko
+2014-08-28 07:10-08:25 ARN-CPH
+2014-08-29 13:25-14:35 CPH-ARN
+2014-09-29 18:30 DFRI
+2014-08-26 [Lärka] upprop pianot
+2014-08-22 14:00 CT @ TUG
+2015-06-14 5y anniversary of first torservers.net relay 4C15F9C9.4040500@torservers.net
+2014-09-08 10:00-11:30 some meeting with bancks @ TUG
+%%(diary-block 2014 09 30 2014 10 03) [prel] Mossbacka med Simon
+2014-10-31 The Knife
+%%(diary-block 2014 10 14 2014 10 16) Zurich
+2014-09-09 18:00 [juni] f-möte
+2014-09-21 14:00 kalla till dfri-mötet
+2014-09-09 16:45-17:15 [lärka] piano
+2014-09-27 Beat Butchers 30, Münchenbryggeriet
+2014-09-11 [lärka] f-möte, troligen 18:00
+2014-09-06 13:00 maatuska cert expires tomorrow!
+2015-03-06 Tor & Circumvention Tech conf @ Valencia? https://openitp.org/festival/circumvention-tech-festival.html
+%%(diary-block 2014 09 27 2014 09 28) [Lärka] "Scouternas natt" Kärsön
+%%(diary-block 2014 11 07 2014 11 09) [Lärka] Scoutövernattning
+%%(diary-block 2014 12 12 2014 12 14) [Lärka] "Winerövernattning"
+2014-09-10 18:30 F-möte scouterna
+2014-09-07 14:00-17:00 http://gransen.nu/
+2014-09-08 18:00-19:30 PEN, Snowden, Kulturhuset http://kulturhusetstadsteatern.se/ForumDebatt/Evenemang/2014/FRIHET-OCH-ERKANNANDE-FOR-EDWARD-SNOWDEN/
+&%%(diary-block 2014 10 15 2014 10 20) Ola Bini i Stockholm
+2014-09-09 11:25 pawal T-bana rådmansg, vid rehnsg
+2014-09-11 11:30 Lunch Christian
+2014-09-15 12:00 Två veckor kvar till DFRI-möte
+2014-09-23 15:00 cryptech conf call (skype, biweekly)
+2014-09-22 12:00 Boka Zürich
+2014-09-24 16:00-16:30 [prel] [juni] utv.samtal
+2014-09-16 18:00 http://snaxx.se/31/ @ bishops arms folkungag
+2014-09-23 17:00-21:00 kryptokväll laurin https://twitter.com/gunnarr/status/510056213707776000/photo/1
+2014-10-09 14:30 SöS
+2014-09-21 16:35 Lärka sthlm C
+2014-09-24 08:30 CRD om nätfrihet i Thailand
+2014-09-18 14:30-16:00 jra3t2 http://connect.sunet.se/idtrust
+%%(diary-block 2014 11 25 2014 11 26) jra3t2 f2f in Rome
+2014-10-30 Cryptoparty @ handels
+2014-10-14 09:45-12:10 ARN-ZRH SK3509
+2014-10-16 16:35-18:55 ZRH-ARN SK3510
+2014-10-03 Middag hos E&L
+2014-09-25 14:00 Mamma Mia
+2014-09-24 11:30 Ultraljud, Mamma Mia
+2014-10-09 10:00-12:00 Roland och Göran Kero om testning
+2014-10-07 15:00 cryptech conf call (skype, biweekly)
+2014-10-21 15:00 cryptech conf call (skype, biweekly)
