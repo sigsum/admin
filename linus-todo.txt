@@ -10,21 +10,13 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
 - - docker image w/ debian jessie/sid (?) + erlang created
-- o pkix_is_issuer crash caught in x509:signed_by_p(), or validate asn1 earlier
-- o al contacted about example of broken cert
-- X mochiweb looked into
 - - plop map/external-mergeN tested
-- o catlfish validate chain branch merged
 - - catlfish precert handling implemented
-- o 6962bis words about cert validation sent to trans
 - - maximum STH's per time unit proposal posted to trans
 - - conclude something on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
-- o ietf-sync to get RFC7322
-- X find "ITU-T Recommendation X.509 (2005) | ISO/IEC 9594-8:2005"
 - - find out if removing {mod, ...} from catlfish.app will save us
   from having dummy/0 in catlfish_app.erl, see LYSE page 314.
 ** IETF / W3C
-- o draft of gossip draft pushed to [github|git.ndn]
 ** Sysadm
 - - flimsy onion
 - * imap.adbc backing up to ioctl instead of mm
@@ -35,27 +27,6 @@ Legend                                                (emacs -*-org-*- mode)
   echo "relayhost = [smtp.adb-centralen.se]" >> main.cf
 - - maatuska reinstalled on banksy hw
 - - automatic backup of ioctl; rsync from tight laptop with double-sshd?
-- o upgrade jails on ioctl
-  o reboot to get down securelevel
-  o for f in $(egrep ^jail_list /etc/rc.conf | tr -d \" | cut -d = -f 2); do
-      /root/upgrade-jail.sh $f; done
-  o reboot to get all restarted and set securelevel
-- X see if ports-mgmt/portdowngrade can help us back down php5 to
-  5.4.32 on webmail
-- o shut down modermodemet
-  o don't ssh jump via banksy and mm!
-    o through banksy: modermodemet, tex
-    o through mm: ehlo (jump via ioctl instead), linus.klutt.se
-- o banksy moved to temp IP addr
-  o ns.nordberg.se moved to ns.adb-centralen.se
-  o new resolver running
-  o spam+av moved to ioctl
-    X postgres set up
-    o spamd running, looking in sql db
-    X smtp using 10.0.8.30 (spam.adbc)
-    o imap.adbc using 10.0.8.30 (spam.adbc)
-- X automatic backup of mm; rsync with double-sshd from tight laptop?
-- o return unused ip addrs on mm
 ** DFRI
 - * status on all hosts wrt security updates
 - - stop-ttip 
@@ -64,23 +35,13 @@ Legend                                                (emacs -*-org-*- mode)
 - . find a time for a day long meeting
   o follow up on the dudle [wed]
 ** Misc
-- - [[file:p/tor/slides/it-forensics-2012/2012-05-24-Swedish-police-IT-forensics.tex][2012-05-24-Swedish-police-IT-forensics.tex]] compiles
-  o images/ subdirectory found
-  - ! Package keyval Error: [ undefined.
-    l.115 \end{frame}
-- o [[file:tool/doc/tuben12/Fukt_under_golvet/dagbok.txt][Notes]] sent to Ulf
 - - Mail archive to Ulf
 - D PETS trip report uploaded
 - D IETF90 trip report uploaded
 - - [[file:Uttag%20fr%C3%A5n%20Riksg%C3%A4ldsspar.pdf][file:~/Uttag från Riksgäldsspar.pdf]] printed, signed and sent
 - - green EU ppl analysis of DR court decision sent to dkg
 - - picture of street sent to dkg
-- X sharon goldberg contacted about her and axels [[file:PETS14/PETS14.org::*hotpets:%20law%20and%20policy][hotpets: law and policy]] 
-  paper, esp. the details on the [[docview:PETS14/program/Arnbak.pdf::16][traffick hijacking]] by icelandic operator
-  Siminn (AS6677) using specific community strings; see slide 16 in
-  http://www.renesys.com/wp-content/uploads/2014/05/Linx851.pdf ([[file:doc/Linx851.pdf][local copy]])
 - - some openitp person contacted about jari's IETF statistics
-- o thomas white's pgp key signed and sent
 * Soon (within a month)
 ** Dev
 - - RADSECPROXY-58 fixed
