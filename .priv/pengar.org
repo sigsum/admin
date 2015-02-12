@@ -1,0 +1,3 @@
+* Skuld lgh --> linus
+150000 150000  # till kajsa för handpenning (340') <2015-02-11 Wed>
+150000+ 300000  # till kajsa för handpenning (340') <2015-02-12 Thu>
