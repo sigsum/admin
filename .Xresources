@@ -20,3 +20,5 @@ XAlarm.confirm: False
 XAlarm.Warning: ""
 
 xscreensaver.timeout: 5
+
+!vncviewer.grabKeyboard: true
