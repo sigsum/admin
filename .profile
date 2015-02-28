@@ -22,3 +22,5 @@ PATH=$HOME/bin:$PATH; export PATH
 
 GOPATH=$HOME/usr/go; export GOPATH
 PATH=$HOME/usr/bin:$PATH:$GOPATH/bin; export PATH
+unset LC_PAPER
+unset LC_MEASUREMENT
