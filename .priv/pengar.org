@@ -1,3 +1,15 @@
 * Skuld lgh --> linus
-150000 150000  # till kajsa för handpenning (340') <2015-02-11 Wed>
-150000+ 300000  # till kajsa för handpenning (340') <2015-02-12 Thu>
+150000          # till kajsa för handpenning (340') <2015-02-11 Wed>
+150000+         # till kajsa för handpenning (340') <2015-02-12 Thu>
+40000+ 340000   # till kajsa för handpenning (340')
+
+* Matpengar
+** gertrud
+2443		# <2015-02-20 Fri>
+
+** linus
+5149		# <2015-02-20 Fri>
+
+* Skuld grtrds --> linus
+5000		# för valenciabiljett
+
