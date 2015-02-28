@@ -9,43 +9,54 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- - docker image w/ debian jessie/sid (?) + erlang created
-- - plop map/external-mergeN tested
-- - catlfish precert handling implemented
-- - maximum STH's per time unit proposal posted to trans
-- - conclude something on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
-- - find out if removing {mod, ...} from catlfish.app will save us
+- o linus/extmerge tested and merged to master
+- o tests for x509 including certs not conformant with #'OTPCertificate'{}
+- o maximum STH's published per time unit proposal posted to trans
+- o docker image w/ debian jessie/sid (?) + erlang created
+- X find out if removing {mod, ...} from catlfish.app will save us
   from having dummy/0 in catlfish_app.erl, see LYSE page 314.
 ** IETF / W3C
 ** Sysadm
-- - flimsy onion
-- * imap.adbc backing up to ioctl instead of mm
-- - resurrect stuff from mm:~linus, the repos f.ex.
-- - https://nordberg.se/linus resurrected
-- - postfix set up on all ioctl jails
+- - maatuska signing key renewed
+- - valencia travel computer prepared
+  - tails travel stick
+  - tstick on 
+- o temp pgp key put on tstick
+- o postfix set up on all ioctl jails
   mv main.cf main.cf.ORIG; egrep -v '^#|^ *$' main.cf.ORIG > main.cf
   echo "relayhost = [smtp.adb-centralen.se]" >> main.cf
-- - maatuska reinstalled on banksy hw
-- - automatic backup of ioctl; rsync from tight laptop with double-sshd?
+- X imap.adbc backing up to ioctl instead of mm
+- X find out if ADBCA should have hasSubordinate
 ** DFRI
-- * status on all hosts wrt security updates
-- - stop-ttip 
-  - signed
+- - paulinas tor text read and commented on
+- - motion about board election changes written
+- . cert for dfri xmpp service; see rfc6125
+  o startcom paperwork done
+- - DNSSEC
+  . enable TSIG signing and swap regexp for leifj
+  . enable TSIG signing with fatburen
+  o frobbit setting DS for at4am
+- . stop-ttip (https://stop-ttip.org/ ?)
+  o signed
   - blog post published
-- . find a time for a day long meeting
+- . letterhead
+- o TC access arranged
+- o erik z replied to 
+- o "Emma Almroth" <emma@sunet.se> hinted about on dfri@
+- o stuff sent to emma: movies, youtube clips, "begrepp", articles, dataskydd.net?
+- X status on all hosts wrt security updates
+- X find a time for a day long meeting
   o follow up on the dudle [wed]
 ** Misc
-- - Mail archive to Ulf
 - D PETS trip report uploaded
 - D IETF90 trip report uploaded
-- - [[file:Uttag%20fr%C3%A5n%20Riksg%C3%A4ldsspar.pdf][file:~/Uttag från Riksgäldsspar.pdf]] printed, signed and sent
-- - green EU ppl analysis of DR court decision sent to dkg
-- - picture of street sent to dkg
-- - some openitp person contacted about jari's IETF statistics
+- o [[file:Uttag%20fr%C3%A5n%20Riksg%C3%A4ldsspar.pdf][file:~/Uttag från Riksgäldsspar.pdf]] printed, signed and sent
+- D green EU ppl analysis of DR court decision sent to dkg
 * Soon (within a month)
 ** Dev
-- - RADSECPROXY-58 fixed
-  https://project.nordu.net/browse/RADSECPROXY-58
+- - catlfish precert handling implemented
+- - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
+- - flimsy onion
 - - find out if pwouters dnssec thing is a thing to respond to
   [[gnus:nnimap%2Badbc:lists.tor.talk#53D96702.3050901@gmail.com][Email from Ondrej Mikle: Re: {tor-talk} Tor DNS]] with
 - - plop server accepting submissions, emitting pst's and enough
@@ -87,7 +98,12 @@ Legend                                                (emacs -*-org-*- mode)
      refs: 205-local-dnscache.txt, "Re: [tor-dev] DNS(SEC) draft update"
 - - #6027 and friends -- dir auths on ipv6
 - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
+- o RADSECPROXY-58 fixed
+  https://project.nordu.net/browse/RADSECPROXY-58
 ** Misc
+- - tuben12 mail archive sent to Ulf
+- - picture of street sent to dkg
+- - some openitp person contacted about jari's IETF statistics
 - - research that dkg wifi usb plug from thinkpenguin.com
 - - feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
 - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
@@ -153,9 +169,13 @@ Legend                                                (emacs -*-org-*- mode)
 - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
 - - [[file:/u/ietf/internet-drafts/draft-cooper-ietf-privacy-requirements-01.txt]]
 ** Sysadm
-- - set up 64bit x60 to run Debian with a grsec kernel (https://mempo.org/?)
+- - received headers scrubbed at smtp.adbc
+- - stuff resurrected from mm:~linus, the repos f.ex.
+- - https://nordberg.se/linus resurrected
+- - maatuska reinstalled on banksy hw
+- - automatic backup of ioctl; rsync from tight laptop with double-sshd?
+- - 64bit x60 set up to run Debian with a grsec kernel (https://mempo.org/?)
   https://wiki.debian.org/grsecurity
-- o email users asked to set their pw in new kdc
 - - kerberos based user handling for jabber deployed
 - - pond server running
 - - set up iodine, for tunneling, somewhere (ioctl?)
@@ -199,18 +219,20 @@ Legend                                                (emacs -*-org-*- mode)
     - travel-stick image with otr key and selected ssh keys
   - BEFORE LEAVING VERIFY ACCESS TO
     - mm.adbc
-
-- mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
+- X mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
-- look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
+- o email users asked to set their pw in new kdc
 ** DFRI
-- - letterhead
+- - abuse handling policy written
+- - OBE paperwork signed
+- - https on git.dfri.se
+- - figure it if be (bugseverywhere.org)
+- - LEAP tested [[gnus:nnimap%2Badbc:INBOX#20141210183559.GW77619@turing.lan.9999.se][Email from Johan Nilsson: testa LEAP!]]
 - - set up peering at netnod
   - peering@godaddy.com
   - sasha@westcall.ru
-  - peerings@ripe.net
+  o peerings@ripe.net
   - peering@ipvision.dk
-- - two old unmoderated emails to listan@ looked into
 - - flashproxy running at dfri.se
 - - publish key points from snowdens ndr interview
   - http://www.ndr.de/ratgeber/netzwelt/snowden277.html
@@ -218,18 +240,18 @@ Legend                                                (emacs -*-org-*- mode)
   - liveleak
 - - old abuse submitted to chillingeffects
 - - incoming abuse automatically submitted to chillingeffects
-- - abuse handling policy written
-- - leap.se running in a linux vm
 - - leap.se running in a freebsd jail
 - - exit relay policy updated w/o old netblock and w/ ipv6 restrictions (1)
 - - email policy written
 - - the Czeck C&D letter submitted to chillingeffects.org
-- - DNSSEC
 - - read and comment on http://rys.io/en/94.txt
-- - announce second ipv6 net (DFRI-DNS) in TC
-- - read "Hemlig teleavlyssning, hemlig teleövervakning och hemlig kameraövervakning.pdf"
-- - update TorExitGuideLines with swedish details https://trac.torproject.org/projects/tor/wiki/doc/TorExitGuidelines
-- - read draft-laurie-pki-sunlight-07.txt
+- - "Hemlig teleavlyssning, hemlig teleövervakning och hemlig kameraövervakning.pdf" read
+- - TorExitGuideLines updated with swedish details https://trac.torproject.org/projects/tor/wiki/doc/TorExitGuidelines
+- - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
+- X leap.se running in a linux vm
+- X announce second ipv6 net (DFRI-DNS) in TC
+- X two old unmoderated emails to listan@ looked into
+- X read draft-laurie-pki-sunlight-07.txt
 * Eventually
 ** Dev
 - - libradsec example server replying to a radius message
@@ -280,3 +302,9 @@ Legend                                                (emacs -*-org-*- mode)
 ? Aug 19-23, San Diego, USENIX Security
 ? Nov 07-16, Honolulu, IETF91
 - Oct 14-16, Zurich, CT gossip
+2015
+- Mar 01-06, Valencia, Tor winter dev
+X Mar 20-27, Dallas, IETF92
+? Jun 14-19, Porto, TNC15
+? Jun 30-02, Philadelphia, PETS15
+- Jul 16-25, Prague, Cryptech + IETF93
