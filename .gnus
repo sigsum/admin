@@ -112,6 +112,7 @@
                 smtpmail-smtp-service 1587
                 smtpmail-smtp-user "linus")
 	  (set (make-local-variable 'message-sendmail-envelope-from) "linus@nordberg.se")))
+        ("lists.edri..*" ("From" "Linus Nordberg <linus@dfri.se>"))
 	("lists.tor.assistants"
 	 ("Reply-To" "tor-assistants@lists.torproject.org")
 	 ("From" "Linus Nordberg <linus@torproject.org>"))
