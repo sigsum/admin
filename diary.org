@@ -4,7 +4,241 @@
 `C-c C-x C-d' for showing times.
 `C-c C-y' for updating time on line.
 
+* February 2015
+** week 0216-22
+<2015-02-19 Thu>
+- [ ] ct 4h
+- [ ] cryptech 0.5h
+<2015-02-18 Wed>
+- [ ] ndn: interview 4h
+** notes
+PKCS #7 is standardised in RFC5652 and is called CMS (Cryptographic
+Message Syntax).
+
+https://dudle.inf.tu-dresden.de/sm1-15/
+admin: kaka12
+participant: dfri22
+
+twisted -> gevent
+
+RFC6454 web origin
+RFC7234 http caching
+
+
+* January 2015
+  - andreas: why kern.randompid=0
+
+** week 0126-0201
+<2015-01-27 Tue>
+- [ ] cryptech: 0.5h
+
+<2015-01-26 Mon>
+- [ ] cryptech: 1h
+- [ ] ndn admin: 1h
+- [ ] jra3-t2: design: 2.5h
+
+** week 0119-25
+<2015-01-23 Fri>
+- [X] sunet: sysadmin tor: bwauth + lule: 4h
+- [X] ndn internal: weekly mtg: 0.75h
+- [X] ndn misc: 0.5
+- [X] ndn tor: tor consensus transparency: 0.5
+
+<2015-01-22 Thu>
+- [X] jra3-t1: radsecproxy: 0.5h
+- [X] ndn misc: 0.5h
+- [X] jra3-t2 (ct): 1h
+- [X] sunet: sysadmin tor: salsa: 1.5h
+
+<2015-01-21 Wed>
+- [X] ndn: sysadmin: 2h
+- [X] ndn: admin: planning: 1.5h
+
+<2015-01-20 Tue>
+- [X] sunet: sysadmin tor: salsa, siv, continous builds: 4h
+- [X] ndn tor: keeping track: 0.75h
+- [X] jra3-t2 (ct): admin: 0.5h
+
+<2015-01-19 Mon>
+- [X] sunet: sysadmin tor: 0.5h
+- [X] jra3-t1: radsecproxy: 2.5h
+- [X] jra3-t2 (ct): admin: 2.25h
+
+** week(s) 0106-16 (18h)
+<2015-01-16 Fri>
+- [X] jra3-t1: radsecproxy: 5h
+- [X] sunet: sysadmin tor: 1.5h
+
+<2015-01-15 Thu>
+- [X] jra3-t1: radsecproxy: 3.25h
+- [X] sunet: sysadmin tor: 0.5h
+<2015-01-14 Wed>
+- [X] jra3-t1: radsecproxy: 5h
+<2015-01-12 Mon>
+- [X] ndn: admin: 0.75h
+- [X] jra3-t1: radsecproxy: 2h
+
+<2015-01-09 Fri> Inrikesminister Anders Ygeman i P1. PNR viktigt för
+att lagföra personer som rest och brutit mot framtida lag mot att
+strida utomlands.
+
+<2015-01-06 Tue>
+- [X] sunet: sysadmin tor: 4h
+
+* November 2014
+- <2014-11-17 Mon>
+docker run -v /var/local/db/flimsy:/ctlog/flimsy/db -it --rm ct-flimsy:0.1 /bin/bash
+
+* October 2014
+- <2014-11-06 Thu>
+102> Plain#'Certificate'.tbsCertificate#'TBSCertificate'.subjectPublicKeyInfo#'SubjectPublicKeyInfo'.subjectPublicKey.
+{0,
+ <<48,130,1,10,2,130,1,1,0,144,117,63,63,12,172,202,212,
+   124,196,72,167,24,187,58,187,161,187,...>>}
+- <2014-10-23 Thu>
+erl -pa ebin -pa ../jiffy/ebin -pa ../plop/ebin -pa ../lager/ebin/ \
+-config catlfish -eval "application:start(plop), application:start(inets)."
+
+Error creating directory(makedir): enospc
+db terminating
+plop terminating
+
+<ahltorp> ln5: found how to compile with lager                          [00:52]
+<ahltorp> {parse_transform, lager_transform} in the Emakefile and "erl -pa          
+          ../lager/ebin -make" in the Makefile                          [00:53]
+
+- <2014-10-20 Mon>
+some EC ciphers suites in ssl R16B1 and R16B2 are broken
+https://github.com/mworrell/mochiweb/commit/95c0c926cc80969fbcb4200a7b2005becc3e5121
+http://permalink.gmane.org/gmane.comp.lang.erlang.bugs/3816
+- <2014-10-17 Fri>
+PKCS-7 in erlang http://erlang.org/pipermail/erlang-questions/2013-November/076119.html
+
+http://www.process-one.net/docs/ejabberd/guide_en.html#sec27
+ciphers: Ciphers
+    OpenSSL ciphers list in the same format accepted by ‘openssl ciphers’ command. 
+protocol_options: ProtocolOpts
+    List of general options relating to SSL/TLS. These map to OpenSSL’s set_options(). For a full list of options available in ejabberd, see the source. The default entry is: "no_sslv2" 
+global, outside of "listeners":
+s2s_ciphers: Ciphers
+    OpenSSL ciphers list in the same format accepted by ‘openssl ciphers’ command. 
+s2s_protocol_options: ProtocolOpts
+    List of general options relating to SSL/TLS. These map to OpenSSL’s set_options(). For a full list of options available in ejabberd, see the source. The default entry is: "no_sslv2" 
+
+- <2014-10-17 Fri>
+PHP 5.4.34 should fix the SSL issue we're suffering from in the webmail.
+https://bugs.php.net/bug.php?id=68046
+5.4.34 was released yesterday, waiting for ports/packages.
+https://www.freshports.org/lang/php5
+
+- <2014-10-15 Wed>
+pubkey_cert:validate_names(public_key:pkix_decode_cert(Der, otp), no_constraints, [], true, true, fun(_, _, _, _) -> true end).
+
+{ok, Pem} = file:read_file("/home/linus/p/ct/catlfish/certs/testcerts/cert1.txt"),
+{_, C0, not_encrypted} = hd(public_key:pem_decode(Pem)),
+{_, C1, not_encrypted} = hd(tl(public_key:pem_decode(Pem))).
+
+- <2014-10-14 Tue>
+FF: security.tls.version.min=1 (0)
+
+- <2014-10-14 Tue>
+~/usr/src/erlang-17.1-dfsg/lib/public_key/src/public_key.erl
+An OTPCertificate is like a TBSCertificate with two differences
+- signature is of type SignatureAlgorithm vs. AlgorithmIdentifier
+  {id_signature_algorithm(), asn1_novalue | DSS-Parms} vs.
+  {oid(), der_encoded()}
+- OTPSubjectPublicKeyInfo vs subjectPublicKeyInfo
+
+- <2014-10-13 Mon>
+{ok, Pem} = file:read_file("certs/testcert/cert1.txt").
+{CertType, CertDer, not_encrypted} = hd(public_key:pem_decode(Pem)).
+public_key:der_decode(CertType, CertDer).
+
+- <2014-10-13 Mon>
+User's Guide: "See Public key records and X.509 Certificate records."
+
+- <2014-10-11 Sat>
+# building ports (with portmaster), using pkgng
+echo "WITH_PKGNG=yes" >> /etc/make.conf
+
+cd /usr/local/etc/postfix
+mv main.cf main.cf.ORIG; egrep -v '^#|^ *$' main.cf.ORIG > main.cf
+echo "relayhost = [smtp.adb-centralen.se]" >> main.cf
+echo "postfix_enable=YES" >> /etc/rc.conf
+
+- <2014-10-09 Thu>
+cd("/home/linus/p/ct/catlfish").
+code:add_path("/home/linus/p/ct/plop/ebin").
+code:add_path("/home/linus/p/ct/catlfish/ebin").
+code:add_path("/home/linus/p/ct/jiffy/ebin").
+lists:foreach(fun(E) -> application:set_env(plop, element(1, E), element(2, E)) end,
+   [{entry_root_path, "db/certentries/"},
+   {index_path, "db/index"},
+   {entryhash_root_path, "db/entryhash/"},
+   {treesize_path, "db/treesize"},
+   {indexforhash_root_path, "db/certindex/"}]).
+application:start(plop).
+application:start(inets).
+application:start(catlfish).
+inets:start(httpd, [
+ {port, 8080},
+ {bind_address, {127, 0, 0, 1}},
+ {server_name, "flimsy"},
+ {server_root, "webroot"},
+ {document_root, "webroot/docroot"},
+ {modules, [mod_alias, mod_auth, mod_esi, mod_get, mod_head,
+            mod_log, mod_disk_log]},
+ {erl_script_alias, {"/ct", [v1]}},
+ {erl_script_nocache, true},
+ {error_log, "log/error"},
+ {security_log, "log/security"},
+ {transfer_log, "log/transfer"},
+ {socket_type,
+  {essl,                              % See ssl(3erl) for SSL options.
+   [{certfile, "webroot/certs/webcert.pem"},
+    {keyfile, "webroot/keys/webkey.pem"},
+    {cacertfile, "webroot/certs/webcert.pem"}]}}]).
+
+- <2014-10-08 Wed>
+On flow (64bit):
+HTstate = sys:get_state(ht).
+TS=element(4, HTstate).
+19> erts_debug:size(TS).
+7909
+20> db:size().
+597
+
+This is ~106 bytes per entry, compared to theoretical 32+32 (two
+hashes) that's 42 bytes (66%) overhead. Since ht is using lists, we
+should calculate with a pointer per entry too so the list overhead
+should be 2x8=16. Still "missing" 26 bytes per entry, some of which
+probably is one-time costs.
+
+Later, around 1k entries, we see
+26> erts_debug:size(element(4, sys:get_state(ht))) / db:size() * 8.
+128.66725197541703
+
+I don't know how to explain this. In the meantime the beam.smp process
+weighs in around 85MB RSS and ten times that in VSZ.
+
+But hmm, look at this:
+36> erts_debug:size(crypto:hash(sha256, [])).
+6
+
+So 12 words (96 bytes) are spent on the hashes. This gives 32 bytes
+overhead, out of which 16 are explained by the lists.
 * September 2014
+- <2014-09-25 Thu>
+ct says
+Key ID mismatch, got: 93d1e293bddc35efe17611f5abfca60b195b8299bc4001ed584b77f521f80463 expected: 537b69a3564335a9c04904e39593b2c298eb8d7a6e83023635c627248cd6b440
+
+which means that it read 93d1e2 from the SCT file and calculated
+537b69 from the public key file (plop/test/eckey-public.pem).
+
+
+[[file:usr/share/ietf/in-notes/rfc3279.txt::prime256v1%20OBJECT%20IDENTIFIER%20::%3D%20{%20primeCurve%207%20}][file:usr/share/ietf/in-notes/rfc3279.txt::prime256v1 OBJECT IDENTIFIER ::= { primeCurve 7 }]]
+
+
 - <2014-09-22 Mon>
 [[file:usr/share/ietf/in-notes/rfc5280.txt::4.2.1.10.%20Name%20Constraints][file:usr/share/ietf/in-notes/rfc5280.txt::4.2.1.10. Name Constraints]]
 
@@ -16,7 +250,7 @@ linus@glog:~$ curl -s 'https://ct.googleapis.com/pilot/ct/v1/get-proof-by-hash?h
 }
 
 - <2014-09-18 Thu>
-echo '{"chain": ["another foo", "bar"]}' | curl -s --data @- --cacert catlfish/webroot/certs/webcert.pem https://flimsytest:8080/ct/v1/add-chain | json_pp 
+echo '{"chain": ["another foo", "bar"]}' | curl -s --data @- --cacert catlfish/webroot/certs/webcert.pem https://flimsytest:8080/ct/v1/add-chain | json_pp a
 {
    "timestamp" : 1411033095093,
    "sct_version" : 0,
