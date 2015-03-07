@@ -333,11 +333,12 @@ mapping.  We think this is an acceptable tradeoff.
  
 * Notes about changes 
 ** in gossip-ct-01
-- don't assume that clients have STH's
+- removing all protocols but HTTPS in order to simplify -- let's come
+  back and add more later
+- stop assuming that clients have STH's
 - clients send SCT's to originating web server
-- removing all protocols but HTTPS in order to simplify; let's come
-  back and add more
+- stop referring to trans-gossip and trans-gossip-transport-https
 ** in gossip-transport-https-01
 - don't use an http header but instead a .well-known url
-  - don't have to convince [the http wg]
+  - don't have to convince any http wg
   - not time sensitive
