@@ -1,3 +1,5 @@
+april1 rfc people:tjr https://tools.ietf.org/html/rfc6217
+buy hw wifi usb plug people:dkg https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
 readme video reproduciblebuilds https://media.ccc.de/browse/congress/2014/31c3_-_6240_-_en_-_saal_g_-_201412271400_-_reproducible_builds_-_mike_perry_-_seth_schoen_-_hans_steiner.html
 readme book http://www.bokus.com/cgi-bin/product_search.cgi?ac_used=no&search_word=John+Twelve+Hawks
 readme tor hs btc http://www.forbes.com/sites/thomasbrewster/2015/02/24/blockchain-and-darknet-hacks-lead-to-epic-bitcoin-losses/

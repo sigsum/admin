@@ -34053,3 +34053,6 @@ NDU (National Defense University) -> whitepaper Oct 2014
 home.elis.nu etu
 33bits.eu pettter
 totoro.hack.org
+* leap.se
+** tor dev valencia
+<2015-03-06 Fri> met with meskio / ruben

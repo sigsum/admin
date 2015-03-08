@@ -104,7 +104,6 @@ alias tunnel-rs0web='ssh -NfL 4780:localhost:4780 rs0.dfri.net; fixme'
 alias tunnel-slime='ssh -Nf -L 4711:localhost:4711 lntest.nordberg.se'
 alias tunnel-sieve='ssh -Nf -L 2000:lnmail:2000 banksy.nordberg.se && echo "2000 -> lnmail.nordberg.se:2000"'
 #alias whois='whois -h geektools.com'
-alias xlock='xlock -mode blank'
 alias xmpp='xmpp-client'
 alias xmpp-ndn='xmpp-client -config-file ~/tstick/.xmpp-client.ndn'
 
