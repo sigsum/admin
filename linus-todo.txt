@@ -10,29 +10,9 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
 - - catlfish precert handling implemented
-- o linus/extmerge tested and merged to master
-- o tests for x509 including certs not conformant with #'OTPCertificate'{}
-- o maximum STH's published per time unit proposal posted to trans
-- o docker image w/ debian jessie/sid (?) + erlang created
-- X find out if removing {mod, ...} from catlfish.app will save us
-  from having dummy/0 in catlfish_app.erl, see LYSE page 314.
 ** IETF / W3C
 ** Sysadm
-- o maatuska signing key renewed
-- o valencia travel computer prepared
-  - tails travel stick
-  - tstick on 
-- o temp pgp key put on tstick
-- o postfix set up on all ioctl jails
-  mv main.cf main.cf.ORIG; egrep -v '^#|^ *$' main.cf.ORIG > main.cf
-  echo "relayhost = [smtp.adb-centralen.se]" >> main.cf
-- X imap.adbc backing up to ioctl instead of mm
-- X find out if ADBCA should have hasSubordinate
 ** DFRI
-- o paulinas tor text read and commented on
-- X motion about board election changes written
-- o cert for dfri xmpp service; see rfc6125
-  o startcom paperwork done
 - - DNSSEC
   . enable TSIG signing and swap regexp for leifj
   . enable TSIG signing with fatburen
@@ -41,20 +21,9 @@ Legend                                                (emacs -*-org-*- mode)
   o signed
   - blog post published
 - . letterhead
-- o TC access arranged
-- o erik z replied to 
-- o "Emma Almroth" <emma@sunet.se> hinted about on dfri@
-- o stuff sent to emma: movies, youtube clips, "begrepp", articles, dataskydd.net?
-- X status on all hosts wrt security updates
-- X find a time for a day long meeting
-  o follow up on the dudle [wed]
 ** Misc
 - - buy wifi plug https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
 - - picture of street sent to dkg
-- D PETS trip report uploaded
-- D IETF90 trip report uploaded
-- o [[file:Uttag%20fr%C3%A5n%20Riksg%C3%A4ldsspar.pdf][file:~/Uttag från Riksgäldsspar.pdf]] printed, signed and sent
-- D green EU ppl analysis of DR court decision sent to dkg
 * Soon (within a month)
 ** Dev
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
@@ -100,8 +69,6 @@ Legend                                                (emacs -*-org-*- mode)
      refs: 205-local-dnscache.txt, "Re: [tor-dev] DNS(SEC) draft update"
 - - #6027 and friends -- dir auths on ipv6
 - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
-- o RADSECPROXY-58 fixed
-  https://project.nordu.net/browse/RADSECPROXY-58
 ** Misc
 - - tuben12 mail archive sent to Ulf
 - - some openitp person contacted about jari's IETF statistics
@@ -221,7 +188,6 @@ Legend                                                (emacs -*-org-*- mode)
     - mm.adbc
 - X mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
-- o email users asked to set their pw in new kdc
 ** DFRI
 - - abuse handling policy written
 - - OBE paperwork signed
