@@ -9,20 +9,14 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- o rebase docker2 on map/genauthkeys and merge to master
 - - catlfish 0.6.0 released
 - - <something>.appendto.org/ct/v1 running
-- o catlfish precert handling implemented
+    hulk?
 ** IETF / W3C
 - - ct gossip summary sent to protocols list, including latest development re STH's
 ** Sysadm
 ** DFRI
 - - BGP session in sto4 up and running
-- o [[gnus:nnimap%2Badbc:lists.edri.members#551A6BA4.8010406@edri.org][Email from Heini Jarvinen: {EDRi-members} Your logos adde]] replied to re [[https://edri.org/about/]] [fri]
-- o accounting
-  - 3 x member
-  - PL-245
-- X curl (working git clone https) on retrograde
 - - https on git.dfri.se
 - - DNSSEC enabled for dfri.{se,net,org}
   . enable TSIG signing and swap regexp for leifj
@@ -34,18 +28,14 @@ Legend                                                (emacs -*-org-*- mode)
 - . letterhead
 ** Misc
 - . flyttfirma bokad 29, 30 el. 31
+- - travel reports done
 - - mini course abstract sent to the norweigans
 - - [[gnus:nnimap%2Badbc:lists.tor.assistants#551DC25A.8080705@unix.se][Email from Anders Jensen-Urstad: {tor-assistants} Swedish trans]] followed up on
 - - ietf93 registered, hotel booked
 - - [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
 - - wifi plug bought https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
-- o picture of street sent to dkg
-- D soekris reinstalled https://www.pfsense.org/download/mirror.php?section=downloads#mirrors
-- o /add leckrone@jabb3r.org
-- o Tor.Helleseth@uib.no
 * Soon (within a month)
 ** Dev
-- X (note: not a libradsec bug) libradsec cert validation failure bug fixed https://bugs.launchpad.net/moonshot/+bug/1438484
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
 - - flimsy onion
 - - find out if pwouters dnssec thing is a thing to respond to
@@ -237,10 +227,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - "Hemlig teleavlyssning, hemlig teleövervakning och hemlig kameraövervakning.pdf" read
 - - TorExitGuideLines updated with swedish details https://trac.torproject.org/projects/tor/wiki/doc/TorExitGuidelines
 - - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
-- X leap.se running in a linux vm
-- X announce second ipv6 net (DFRI-DNS) in TC
-- X two old unmoderated emails to listan@ looked into
-- X read draft-laurie-pki-sunlight-07.txt
 * Eventually
 ** Dev
 - - libradsec example server replying to a radius message
