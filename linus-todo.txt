@@ -9,23 +9,43 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- - catlfish precert handling implemented
+- o rebase docker2 on map/genauthkeys and merge to master
+- - catlfish 0.6.0 released
+- - <something>.appendto.org/ct/v1 running
+- o catlfish precert handling implemented
 ** IETF / W3C
+- - ct gossip summary sent to protocols list, including latest development re STH's
 ** Sysadm
 ** DFRI
-- - DNSSEC
+- - BGP session in sto4 up and running
+- o [[gnus:nnimap%2Badbc:lists.edri.members#551A6BA4.8010406@edri.org][Email from Heini Jarvinen: {EDRi-members} Your logos adde]] replied to re [[https://edri.org/about/]] [fri]
+- o accounting
+  - 3 x member
+  - PL-245
+- X curl (working git clone https) on retrograde
+- - https on git.dfri.se
+- - DNSSEC enabled for dfri.{se,net,org}
   . enable TSIG signing and swap regexp for leifj
-  . enable TSIG signing with fatburen
+  o enable TSIG signing with fatburen
   o frobbit setting DS for at4am
 - . stop-ttip (https://stop-ttip.org/ ?)
   o signed
   - blog post published
 - . letterhead
 ** Misc
-- - buy wifi plug https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
-- - picture of street sent to dkg
+- . flyttfirma bokad 29, 30 el. 31
+- - mini course abstract sent to the norweigans
+- - [[gnus:nnimap%2Badbc:lists.tor.assistants#551DC25A.8080705@unix.se][Email from Anders Jensen-Urstad: {tor-assistants} Swedish trans]] followed up on
+- - ietf93 registered, hotel booked
+- - [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
+- - wifi plug bought https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
+- o picture of street sent to dkg
+- D soekris reinstalled https://www.pfsense.org/download/mirror.php?section=downloads#mirrors
+- o /add leckrone@jabb3r.org
+- o Tor.Helleseth@uib.no
 * Soon (within a month)
 ** Dev
+- X (note: not a libradsec bug) libradsec cert validation failure bug fixed https://bugs.launchpad.net/moonshot/+bug/1438484
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
 - - flimsy onion
 - - find out if pwouters dnssec thing is a thing to respond to
@@ -189,10 +209,13 @@ Legend                                                (emacs -*-org-*- mode)
 - X mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
 ** DFRI
-- - abuse handling policy written
+- - exitmap (spoiled onions) running http://www.cs.kau.se/philwint/spoiled_onions/
+- . abuse handling policy written
 - - OBE paperwork signed
-- - https on git.dfri.se
-- - figure it if be (bugseverywhere.org)
+- - figure out what issue tracker we want
+  - be (bugseverywhere.org)
+  - roundup https://en.wikipedia.org/wiki/Roundup_%28issue_tracker%29
+  - https://about.gitlab.com/features
 - - LEAP tested [[gnus:nnimap%2Badbc:INBOX#20141210183559.GW77619@turing.lan.9999.se][Email from Johan Nilsson: testa LEAP!]]
 - - set up peering at netnod
   - peering@godaddy.com
@@ -271,6 +294,8 @@ Legend                                                (emacs -*-org-*- mode)
 2015
 - Mar 01-06, Valencia, Tor winter dev
 X Mar 20-27, Dallas, IETF92
-? Jun 14-19, Porto, TNC15
-? Jun 30-02, Philadelphia, PETS15
+- May 3-8?, Finse, infosec winter school
+- Jun 14-19, Porto, TNC15
+X Jun 30-02, Philadelphia, PETS15
 - Jul 16-25, Prague, Cryptech + IETF93
+- Aug ??-??, ??, Tor summer dev
