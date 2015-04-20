@@ -9,17 +9,12 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- o catlfish 0.6.0 released
-- o CT abstract sent to tnc15
-- o disk swapped in f0
 - - urd.appendto.org/ct/v1 running
 ** IETF / W3C
 - - ct gossip summary sent to protocols list, including latest development re STH's
 ** Sysadm
 ** DFRI
 - - OBE payed [2014-04-27]
-- o ask Hibernia, KB and OBE about transit costs, with and without commit
-- o WP clone running on sywald
 - - BGP session in sto4 up and running
 - - https on git.dfri.se
 - - DNSSEC enabled for dfri.{se,net,org}
@@ -37,11 +32,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - porto flight tickets, conference fee and accomodation sorted
 - - erlang user conf investigated (jun 11-12)
 - - prague flights booked  
-- o norge-resan bokad
-- o flyttfirma bokad 29, 30 el. 31
-- X mini course abstract sent to the norweigans
-- o [[gnus:nnimap%2Badbc:lists.tor.assistants#551DC25A.8080705@unix.se][Email from Anders Jensen-Urstad: {tor-assistants} Swedish trans]] followed up on
-- o ietf93 registered, hotel booked
 - - [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
 - - wifi plug bought https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
 * Soon (within a month)
@@ -212,7 +202,7 @@ Legend                                                (emacs -*-org-*- mode)
 ** DFRI
 - - exitmap (spoiled onions) running http://www.cs.kau.se/philwint/spoiled_onions/
 - . abuse handling policy written
-- - OBE paperwork signed
+- o OBE paperwork signed
 - - figure out what issue tracker we want
   - be (bugseverywhere.org)
   - roundup https://en.wikipedia.org/wiki/Roundup_%28issue_tracker%29
