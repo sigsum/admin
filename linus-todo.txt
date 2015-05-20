@@ -10,15 +10,32 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
 - - urd.appendto.org/ct/v1 running
+  o cert and key for urd.ao [may 18]
+  o onion docker: generate torrc as a here doc, see stud
+    o can HiddenServicePort take names as well as ipv4? yes
+- o leifj's CT docu [may 18]
 ** IETF / W3C
-- - ct gossip summary sent to protocols list, including latest development re STH's
+- o ct gossip summary sent to protocols list, including latest development re STH's
+- - gossip draft updated and shared with tjr and dkg
+  . text added with outcome of <2015-05-18 Mon> conf call 
+  - text added on the risk for server tracking through variations of
+    cert chains (email from yan <2015-05-18 Mon>)
+  - text added to 4.1.2 on clients that disable 3rd party cookies
+    should also not send SCT's to 3rd parties [[gnus:nnimap%2Badbc:INBOX#CA%2BcU71mCwP44T5Ug6%2BV52BcsFQOPQN8jkre0Ws%2BATg6Cy0nLxw@mail.gmail.com][Email from Tom Ritter:
+    Re: {Protocols} Some backgroun]]
 ** Sysadm
 ** DFRI
-- - OBE payed [2014-04-27]
+- - Ask Boney for a quote on more traffic [may 20]
+- - membership handling outlined [may 20]
 - - BGP session in sto4 up and running
+- - expired members prodded
+  - email sent to all expired members
+- X ben whelan [[gnus:nnimap%2Badbc:INBOX#CAOKC-1N6CVRsCwqB4rYqMYNWPubNxajs5VsKo2yggPas4Vgb0g@mail.gmail.com][email]] acted upon
+- o OBE payed [2014-04-27]
 - - https on git.dfri.se
-- - DNSSEC enabled for dfri.{se,net,org}
-  . enable TSIG signing and swap regexp for leifj
+- - https://dfri.net/ running again
+- o DNSSEC enabled for dfri.{se,net,org}
+  o enable TSIG signing and swap regexp for leifj
   o enable TSIG signing with fatburen
   o frobbit setting DS for at4am
 - . stop-ttip (https://stop-ttip.org/ ?)
@@ -26,12 +43,20 @@ Legend                                                (emacs -*-org-*- mode)
   - blog post published
 - . letterhead
 ** Misc
-- - CT PEG improved and sent to josva+fischer
-- . mäklarn (anders) om överlåtelse -- jag flyger 4/5 12:30 från ARN
-- - travel reports done
-- - porto flight tickets, conference fee and accomodation sorted
-- - erlang user conf investigated (jun 11-12)
-- - prague flights booked  
+- * tnc15 poster submitted [may 18]
+- o tnc15, porto, sorted
+  o flight tickets bought
+  o conf fee payed
+  o http://www.tuelaportohotel.com/ booked
+- o utrecht tickets bought
+- - utrecht lodging sorted
+- X dish washer canceled
+- o flytta comhem
+- - CT PEG improved and sent to josva+fischer+jacob+kim
+- o mäklarn (anders) om tid för överlåtelse -- jag flyger 4/5 12:30 från ARN
+- o travel reports done
+- . erlang user conf investigated (jun 11-12)
+- o prague flights booked  
 - - [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
 - - wifi plug bought https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
 * Soon (within a month)
@@ -200,6 +225,7 @@ Legend                                                (emacs -*-org-*- mode)
 - X mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
 ** DFRI
+- - leap tested on 2038.se
 - - exitmap (spoiled onions) running http://www.cs.kau.se/philwint/spoiled_onions/
 - . abuse handling policy written
 - o OBE paperwork signed
@@ -281,8 +307,10 @@ Legend                                                (emacs -*-org-*- mode)
 2015
 - Mar 01-06, Valencia, Tor winter dev
 X Mar 20-27, Dallas, IETF92
-- May 3-8?, Finse, infosec winter school
-- Jun 14-19, Porto, TNC15
+- May 4-6, Finse, infosec winter school
+- May 27-28, Utrecht, GN4 kickoff
+- Jun 8, Berlin, CT hack day
+- Jun 14-Jul 06, Porto, TNC15 + vacation
 X Jun 30-02, Philadelphia, PETS15
-- Jul 16-25, Prague, Cryptech + IETF93
-- Aug ??-??, ??, Tor summer dev
+- Jul 16-26+some, Prague, Cryptech + IETF93 + vacation
+- Aug?, ??, Tor summer dev
