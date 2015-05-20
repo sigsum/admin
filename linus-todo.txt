@@ -10,12 +10,7 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
 - - urd.appendto.org/ct/v1 running
-  o cert and key for urd.ao [may 18]
-  o onion docker: generate torrc as a here doc, see stud
-    o can HiddenServicePort take names as well as ipv4? yes
-- o leifj's CT docu [may 18]
 ** IETF / W3C
-- o ct gossip summary sent to protocols list, including latest development re STH's
 - - gossip draft updated and shared with tjr and dkg
   . text added with outcome of <2015-05-18 Mon> conf call 
   - text added on the risk for server tracking through variations of
@@ -30,33 +25,16 @@ Legend                                                (emacs -*-org-*- mode)
 - - BGP session in sto4 up and running
 - - expired members prodded
   - email sent to all expired members
-- X ben whelan [[gnus:nnimap%2Badbc:INBOX#CAOKC-1N6CVRsCwqB4rYqMYNWPubNxajs5VsKo2yggPas4Vgb0g@mail.gmail.com][email]] acted upon
-- o OBE payed [2014-04-27]
 - - https on git.dfri.se
 - - https://dfri.net/ running again
-- o DNSSEC enabled for dfri.{se,net,org}
-  o enable TSIG signing and swap regexp for leifj
-  o enable TSIG signing with fatburen
-  o frobbit setting DS for at4am
 - . stop-ttip (https://stop-ttip.org/ ?)
   o signed
   - blog post published
 - . letterhead
 ** Misc
-- * tnc15 poster submitted [may 18]
-- o tnc15, porto, sorted
-  o flight tickets bought
-  o conf fee payed
-  o http://www.tuelaportohotel.com/ booked
-- o utrecht tickets bought
 - - utrecht lodging sorted
-- X dish washer canceled
-- o flytta comhem
 - - CT PEG improved and sent to josva+fischer+jacob+kim
-- o mäklarn (anders) om tid för överlåtelse -- jag flyger 4/5 12:30 från ARN
-- o travel reports done
 - . erlang user conf investigated (jun 11-12)
-- o prague flights booked  
 - - [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
 - - wifi plug bought https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
 * Soon (within a month)
