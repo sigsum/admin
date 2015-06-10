@@ -9,22 +9,38 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- - urd.appendto.org/ct/v1 running
+- . devp running a frontend+storage node for plausible
+- o map/frontendverify merged (both plop and catlfish)
+- - plausible using secondary merge according to [[gnus:nnimap%2Bndn:INBOX#D99F49C8-0383-4E65-8D49-4BFA7E4F9044@kth.se][Email from Magnus Ahltorp: Merge-secondary]]
+- * urd.appendto.org/ct/v1 running
+  o config created
+  o keys generated
+  o catlfish-dev-lunahsm autoconfiguring if missing config
+  - logkey generated on (or imported into) luna
+  - fresh CATT list distributed
+  - munin added to all systems
+  - frontend-4 set up on m0
 ** IETF / W3C
-- - gossip draft updated and shared with tjr and dkg
-  . text added with outcome of <2015-05-18 Mon> conf call 
+- * gossip draft updated and shared with tjr and dkg [jun 19 (cut-off jul 7)]
+  . Text added with outcome of [[file:p/ct/ct.org::*conf%20call%20with%20dkg%20and%20tjr%20<2015-05-18%20Mon>][conf call with dkg and tjr <2015-05-18 Mon>]]
   - text added on the risk for server tracking through variations of
     cert chains (email from yan <2015-05-18 Mon>)
   - text added to 4.1.2 on clients that disable 3rd party cookies
-    should also not send SCT's to 3rd parties [[gnus:nnimap%2Badbc:INBOX#CA%2BcU71mCwP44T5Ug6%2BV52BcsFQOPQN8jkre0Ws%2BATg6Cy0nLxw@mail.gmail.com][Email from Tom Ritter:
-    Re: {Protocols} Some backgroun]]
+    should also not send SCT's to 3rd parties [[gnus:nnimap%2Badbc:INBOX#CA%2BcU71mCwP44T5Ug6%2BV52BcsFQOPQN8jkre0Ws%2BATg6Cy0nLxw@mail.gmail.com][Email from Tom Ritter]]
 ** Sysadm
 ** DFRI
-- - Ask Boney for a quote on more traffic [may 20]
-- - membership handling outlined [may 20]
+- - make dfri http://dfriawqocxecq52e.onion/ work
+  - try https://wordpress.org/plugins/relative-url/
+- X number of members [meeting jun 9]
+- o [[file:p/dfri/dfriadm/fakturor/2015/obe-101244.pdf][OBE june]] payed [due jun 23]
+- o new cert for www.dri.se installed [expires jun 4]
+- o Portlane invoice payed, using paypal [jun 6]
+- o Ask Boney for a quote on more traffic [may 20]
+- o membership handling outlined [may 20]
+- o https://dfri.se new theme from andersju installed [may 20]
 - - BGP session in sto4 up and running
-- - expired members prodded
-  - email sent to all expired members
+- - recently expired members prodded
+- - verify OOB to sto3 (nacka)
 - - https on git.dfri.se
 - - https://dfri.net/ running again
 - . stop-ttip (https://stop-ttip.org/ ?)
@@ -32,15 +48,25 @@ Legend                                                (emacs -*-org-*- mode)
   - blog post published
 - . letterhead
 ** Misc
-- - utrecht lodging sorted
-- - CT PEG improved and sent to josva+fischer+jacob+kim
-- . erlang user conf investigated (jun 11-12)
+- o TNC poster ready for printing [jun 9]
+- o talked to marcin abt SR [thu]
+- X [[file:doc/Their%20Eyes%20on%20Me%20-%20English_0.pdf][file:~/doc/Their Eyes on Me - English_0.pdf]] read [fri]
+- - CT PEG submitted
+  o CT PEG-4 sent to wulf
+  o risk matrix updated [thu]
+- o utrecht lodging sorted
+- o berlin tickets
+- o berlin hotel
+- o new key for maatuska [may 24]
+- o CT PEG improved and sent to josva+fischer+jacob+kim
+- o erlang user conf investigated (jun 11-12)
 - - [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
 - - wifi plug bought https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
+    or "netgear wna1100" (stuge)
 * Soon (within a month)
 ** Dev
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
-- - flimsy onion
+- X flimsy onion
 - - find out if pwouters dnssec thing is a thing to respond to
   [[gnus:nnimap%2Badbc:lists.tor.talk#53D96702.3050901@gmail.com][Email from Ondrej Mikle: Re: {tor-talk} Tor DNS]] with
 - - plop server accepting submissions, emitting pst's and enough
@@ -287,8 +313,9 @@ Legend                                                (emacs -*-org-*- mode)
 X Mar 20-27, Dallas, IETF92
 - May 4-6, Finse, infosec winter school
 - May 27-28, Utrecht, GN4 kickoff
-- Jun 8, Berlin, CT hack day
+- Jun 7-8, Berlin, CT hack day
 - Jun 14-Jul 06, Porto, TNC15 + vacation
 X Jun 30-02, Philadelphia, PETS15
-- Jul 16-26+some, Prague, Cryptech + IETF93 + vacation
+- Jul 16-28, Prague, Cryptech + IETF93 + vacation
 - Aug?, ??, Tor summer dev
+- Sep 15-17, Kastrup, NORDUnet tech workshop
