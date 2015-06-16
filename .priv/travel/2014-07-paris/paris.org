@@ -1,0 +1,53 @@
+* Flyg
+lör 2014/jul/5 - sön 2014/jul/13
+
+Expedia resplan # 12300132482
+Boknings-ID: 5KTPBE
+
+ARN       CDG
+13:10     15:50
+
+CDG       ARN
+15:55     18:25
+
+http://parisbytrain.com/rer-train-from-paris-to-roissy-charles-de-gaulle-cdg-airport/
+
+* Boende
+** pengar (kurs 9.24 SEK/Euro)
+grtrds: 7762:- för hotell
+linus: 1998:- (8185:- - 6187:-) för airbnb
+       1294:- för hotell
+totalt: 11054:- --> 2764:- per person
+** airbnb
+oh, man...
+
+http://www.airbnb.com/resolutions/96831
+
+https://www.airbnb.com/z/q/41056443
+
+vi betalade (den 5:e maj) 8185:- (872 euro?) varav 892 till airbnb så
+7292:- till "albert&helena".
+
+----------------------------------------------------------------------
+You got 784 euro for 8 days (98 euro/day) from us.
+
+We want 7 days back, as you promised yesterday. That would be 686
+euro.
+
+We have already paid a 10% fee (96 euro) to Airbnb which we will ask
+them to refund. We suggest you do the same with your 3% fee.
+
+So we want 686 euro back.
+--------------------------------------------------------------------------------
+
+Got 6187 SEK back on 2014-07-10.
+
+** nuveuel
+*** wifi
+http://passman02.wifipass.org/publicaccess/formulaire_fin.php?id=nouvel_hotel&domain=controleur.wifipass.org
+G4AABVKKRL / gzmgee
+
+
+SSID = Livebox-ad50 (hidden?)
+pw = 2AE2949617123466C6D1569512 WPA/WPA2 (TKIP/AES)
+MAC = 5c:33:8e:47:23:eb
