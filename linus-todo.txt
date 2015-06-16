@@ -10,35 +10,33 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
 - . devp running a frontend+storage node for plausible
-- o map/frontendverify merged (both plop and catlfish)
 - - plausible using secondary merge according to [[gnus:nnimap%2Bndn:INBOX#D99F49C8-0383-4E65-8D49-4BFA7E4F9044@kth.se][Email from Magnus Ahltorp: Merge-secondary]]
 - * urd.appendto.org/ct/v1 running
   o config created
   o keys generated
   o catlfish-dev-lunahsm autoconfiguring if missing config
-  - logkey generated on (or imported into) luna
+  - logkey generated on (or imported into?) luna
   - fresh CATT list distributed
   - munin added to all systems
   - frontend-4 set up on m0
 ** IETF / W3C
-- * gossip draft updated and shared with tjr and dkg [jun 19 (cut-off jul 7)]
-  . Text added with outcome of [[file:p/ct/ct.org::*conf%20call%20with%20dkg%20and%20tjr%20<2015-05-18%20Mon>][conf call with dkg and tjr <2015-05-18 Mon>]]
-  - text added on the risk for server tracking through variations of
+- - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] read
+- o Karen Seo replied [sun]
+- o gossip draft updated and shared with tjr and dkg [jun 19 (cut-off jul 7)]
+  o Text added with outcome of [[file:p/ct/doc/gossip.org::*conf%20call%20with%20dkg%20and%20tjr%20<2015-05-18%20Mon>][conf call with dkg and tjr <2015-05-18 Mon>]]
+  o text added on the risk for server tracking through variations of
     cert chains (email from yan <2015-05-18 Mon>)
-  - text added to 4.1.2 on clients that disable 3rd party cookies
+  o text added to 4.1.2 on clients that disable 3rd party cookies
     should also not send SCT's to 3rd parties [[gnus:nnimap%2Badbc:INBOX#CA%2BcU71mCwP44T5Ug6%2BV52BcsFQOPQN8jkre0Ws%2BATg6Cy0nLxw@mail.gmail.com][Email from Tom Ritter]]
+  o yan emailed about being mentioned as a contributor (branch credit-yan)
+  o draft sent off to tjr and dkg with new git url [sun]
+- - 6962bis max STH per time unit reviewed
+  - http://trac.tools.ietf.org/wg/trans/trac/ticket/58
+  - https://github.com/google/certificate-transparency-rfcs/commit/239e6a04ba1cbd0d5a9681d905a8104c98db874d
 ** Sysadm
+- o ioctl upgraded [fri]
 ** DFRI
-- - make dfri http://dfriawqocxecq52e.onion/ work
-  - try https://wordpress.org/plugins/relative-url/
-- X number of members [meeting jun 9]
-- o [[file:p/dfri/dfriadm/fakturor/2015/obe-101244.pdf][OBE june]] payed [due jun 23]
-- o new cert for www.dri.se installed [expires jun 4]
-- o Portlane invoice payed, using paypal [jun 6]
-- o Ask Boney for a quote on more traffic [may 20]
-- o membership handling outlined [may 20]
-- o https://dfri.se new theme from andersju installed [may 20]
-- - BGP session in sto4 up and running
+- o BGP session in sto4 up and running
 - - recently expired members prodded
 - - verify OOB to sto3 (nacka)
 - - https on git.dfri.se
@@ -48,21 +46,21 @@ Legend                                                (emacs -*-org-*- mode)
   - blog post published
 - . letterhead
 ** Misc
-- o TNC poster ready for printing [jun 9]
-- o talked to marcin abt SR [thu]
-- X [[file:doc/Their%20Eyes%20on%20Me%20-%20English_0.pdf][file:~/doc/Their Eyes on Me - English_0.pdf]] read [fri]
+- - Madrid hotel booked Jul 13-16 (nearby Calle Mazarredo, 9)
+  - http://thehatmadrid.com/?lang=en
+  - http://www.hotelmeninas.es/
+- . ARN-PRH-ARN canceled [fri]
+- o ARN-MAD-PRH-ARN bought [fri]
+- . expense reports [fri]
 - - CT PEG submitted
   o CT PEG-4 sent to wulf
   o risk matrix updated [thu]
-- o utrecht lodging sorted
-- o berlin tickets
-- o berlin hotel
-- o new key for maatuska [may 24]
-- o CT PEG improved and sent to josva+fischer+jacob+kim
-- o erlang user conf investigated (jun 11-12)
+  - fischer prodded more
 - - [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
-- - wifi plug bought https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
-    or "netgear wna1100" (stuge)
+- - wifi plug bought 
+    - https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
+    - "netgear wna1100" (stuge)
+    - http://www.acmesystems.it/WIFI-2
 * Soon (within a month)
 ** Dev
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
@@ -229,10 +227,11 @@ Legend                                                (emacs -*-org-*- mode)
 - X mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
 ** DFRI
+- - make dfri http://dfriawqocxecq52e.onion/ work
+  - try https://wordpress.org/plugins/relative-url/
 - - leap tested on 2038.se
 - - exitmap (spoiled onions) running http://www.cs.kau.se/philwint/spoiled_onions/
 - . abuse handling policy written
-- o OBE paperwork signed
 - - figure out what issue tracker we want
   - be (bugseverywhere.org)
   - roundup https://en.wikipedia.org/wiki/Roundup_%28issue_tracker%29
@@ -316,6 +315,7 @@ X Mar 20-27, Dallas, IETF92
 - Jun 7-8, Berlin, CT hack day
 - Jun 14-Jul 06, Porto, TNC15 + vacation
 X Jun 30-02, Philadelphia, PETS15
+- Jul 13-16, Madrid, Core Infrastucture Workshop
 - Jul 16-28, Prague, Cryptech + IETF93 + vacation
-- Aug?, ??, Tor summer dev
+- Sep?, ??, Tor summer dev
 - Sep 15-17, Kastrup, NORDUnet tech workshop
