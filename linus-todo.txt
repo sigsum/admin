@@ -9,6 +9,9 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
+- - ticket filed on moving sendsth to after distribution is done for all frontend
+- - hsmhelper being restarted
+- - catlfish-dev-lunahsm working again, without erlang dir being symlinked
 - . devp running a frontend+storage node for plausible
 - - plausible using secondary merge according to [[gnus:nnimap%2Bndn:INBOX#D99F49C8-0383-4E65-8D49-4BFA7E4F9044@kth.se][Email from Magnus Ahltorp: Merge-secondary]]
 - * urd.appendto.org/ct/v1 running
@@ -20,23 +23,30 @@ Legend                                                (emacs -*-org-*- mode)
   - munin added to all systems
   - frontend-4 set up on m0
 ** IETF / W3C
+- - draft-linus-trans-gossip-ct
+  o decide on where to put tickets
+  . create trac tickets 
+    - from comment from al [[file:p/ct/doc/email:al-cutter:draft-02.txt][file:~/p/ct/doc/email:al-cutter:draft-02.txt]]
+      o ok from al to copy his text to a ticket
+- o handle pull req from al https://github.com/ln5/draft-linus-trans-gossip-ct/pull/3
+- o two tickets from email from dkg
+- o draft-linus-trans-gossip-ct submitted (-02)
+  o comments from tjr [[file:p/ct/doc/email:draft-02.txt][file:~/p/ct/doc/email:draft-02.txt]]
+  o comments from ben in branch benlaurie/comments
+  o edits from dkg in dkg/master
+  o decide on 3metheco (A: not ready)
+  o changes section updated
+  o whitespace
+  o version
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] read
-- o Karen Seo replied [sun]
-- o gossip draft updated and shared with tjr and dkg [jun 19 (cut-off jul 7)]
-  o Text added with outcome of [[file:p/ct/doc/gossip.org::*conf%20call%20with%20dkg%20and%20tjr%20<2015-05-18%20Mon>][conf call with dkg and tjr <2015-05-18 Mon>]]
-  o text added on the risk for server tracking through variations of
-    cert chains (email from yan <2015-05-18 Mon>)
-  o text added to 4.1.2 on clients that disable 3rd party cookies
-    should also not send SCT's to 3rd parties [[gnus:nnimap%2Badbc:INBOX#CA%2BcU71mCwP44T5Ug6%2BV52BcsFQOPQN8jkre0Ws%2BATg6Cy0nLxw@mail.gmail.com][Email from Tom Ritter]]
-  o yan emailed about being mentioned as a contributor (branch credit-yan)
-  o draft sent off to tjr and dkg with new git url [sun]
 - - 6962bis max STH per time unit reviewed
   - http://trac.tools.ietf.org/wg/trans/trac/ticket/58
   - https://github.com/google/certificate-transparency-rfcs/commit/239e6a04ba1cbd0d5a9681d905a8104c98db874d
 ** Sysadm
-- o ioctl upgraded [fri]
+- o create jabber user robbin@xpd.se w/ pw hNqXv85uqi8c5aFw
 ** DFRI
-- o BGP session in sto4 up and running
+- * review of [[gnus:nnimap%2Badbc:INBOX#55ACEFDD.1070409@andersdotter.cc][Email from Amelia Andersdotter: privat Re: Inför mötet tisdag]] sent
+- o can we use joels three HP switches (24 x 10/100, 2 x 10/100/1000, 2 x Mini-GBIC)
 - - recently expired members prodded
 - - verify OOB to sto3 (nacka)
 - - https on git.dfri.se
@@ -46,16 +56,17 @@ Legend                                                (emacs -*-org-*- mode)
   - blog post published
 - . letterhead
 ** Misc
-- - Madrid hotel booked Jul 13-16 (nearby Calle Mazarredo, 9)
+- o amm@jabber.ccc.de: c188f4a241b21fa0d5a0a15ed63bcaaaf062f47f
+- o .1 BTC donated to  1courAa6zrLRM43t8p98baSx6inPxhigc (https://couragefound.org/donate/)
+- o basil got info, light info, about "how tor works"
+- o Madrid hotel booked Jul 13-16 (nearby Calle Mazarredo, 9)
   - http://thehatmadrid.com/?lang=en
   - http://www.hotelmeninas.es/
-- . ARN-PRH-ARN canceled [fri]
-- o ARN-MAD-PRH-ARN bought [fri]
-- . expense reports [fri]
+- o ARN-PRH-ARN canceled [fri]
 - - CT PEG submitted
   o CT PEG-4 sent to wulf
   o risk matrix updated [thu]
-  - fischer prodded more
+  . fischer prodded more
 - - [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
 - - wifi plug bought 
     - https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
@@ -232,10 +243,11 @@ Legend                                                (emacs -*-org-*- mode)
 - - leap tested on 2038.se
 - - exitmap (spoiled onions) running http://www.cs.kau.se/philwint/spoiled_onions/
 - . abuse handling policy written
-- - figure out what issue tracker we want
+- - figure out what issue tracker (ticketing system) we want
   - be (bugseverywhere.org)
   - roundup https://en.wikipedia.org/wiki/Roundup_%28issue_tracker%29
   - https://about.gitlab.com/features
+  - http://syncwith.us/sd/
 - - LEAP tested [[gnus:nnimap%2Badbc:INBOX#20141210183559.GW77619@turing.lan.9999.se][Email from Johan Nilsson: testa LEAP!]]
 - - set up peering at netnod
   - peering@godaddy.com
