@@ -28,25 +28,13 @@ Legend                                                (emacs -*-org-*- mode)
   . create trac tickets 
     - from comment from al [[file:p/ct/doc/email:al-cutter:draft-02.txt][file:~/p/ct/doc/email:al-cutter:draft-02.txt]]
       o ok from al to copy his text to a ticket
-- o handle pull req from al https://github.com/ln5/draft-linus-trans-gossip-ct/pull/3
-- o two tickets from email from dkg
-- o draft-linus-trans-gossip-ct submitted (-02)
-  o comments from tjr [[file:p/ct/doc/email:draft-02.txt][file:~/p/ct/doc/email:draft-02.txt]]
-  o comments from ben in branch benlaurie/comments
-  o edits from dkg in dkg/master
-  o decide on 3metheco (A: not ready)
-  o changes section updated
-  o whitespace
-  o version
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] read
 - - 6962bis max STH per time unit reviewed
   - http://trac.tools.ietf.org/wg/trans/trac/ticket/58
   - https://github.com/google/certificate-transparency-rfcs/commit/239e6a04ba1cbd0d5a9681d905a8104c98db874d
 ** Sysadm
-- o create jabber user robbin@xpd.se w/ pw hNqXv85uqi8c5aFw
 ** DFRI
 - * review of [[gnus:nnimap%2Badbc:INBOX#55ACEFDD.1070409@andersdotter.cc][Email from Amelia Andersdotter: privat Re: Inför mötet tisdag]] sent
-- o can we use joels three HP switches (24 x 10/100, 2 x 10/100/1000, 2 x Mini-GBIC)
 - - recently expired members prodded
 - - verify OOB to sto3 (nacka)
 - - https on git.dfri.se
@@ -56,13 +44,6 @@ Legend                                                (emacs -*-org-*- mode)
   - blog post published
 - . letterhead
 ** Misc
-- o amm@jabber.ccc.de: c188f4a241b21fa0d5a0a15ed63bcaaaf062f47f
-- o .1 BTC donated to  1courAa6zrLRM43t8p98baSx6inPxhigc (https://couragefound.org/donate/)
-- o basil got info, light info, about "how tor works"
-- o Madrid hotel booked Jul 13-16 (nearby Calle Mazarredo, 9)
-  - http://thehatmadrid.com/?lang=en
-  - http://www.hotelmeninas.es/
-- o ARN-PRH-ARN canceled [fri]
 - - CT PEG submitted
   o CT PEG-4 sent to wulf
   o risk matrix updated [thu]
