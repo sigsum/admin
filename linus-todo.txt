@@ -9,12 +9,16 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- - ticket filed on moving sendsth to after distribution is done for all frontend
-- - hsmhelper being restarted
-- - catlfish-dev-lunahsm working again, without erlang dir being symlinked
-- . devp running a frontend+storage node for plausible
-- - plausible using secondary merge according to [[gnus:nnimap%2Bndn:INBOX#D99F49C8-0383-4E65-8D49-4BFA7E4F9044@kth.se][Email from Magnus Ahltorp: Merge-secondary]]
-- * urd.appendto.org/ct/v1 running
+- o map/storagegc merged
+- o map/plopstoragefix merged
+- o map/convertdb merged
+- - linus/cleanup 07817e7 cherry-picked
+- - ticket filed on moving sendsth to after distribution is done for all frontends
+- X hsmhelper restarted with new docker image
+- o catlfish-dev-lunahsm working again, without erlang dir being symlinked
+- X devp running a frontend+storage node for plausible
+- . plausible using secondary merge according to [[gnus:nnimap%2Bndn:INBOX#D99F49C8-0383-4E65-8D49-4BFA7E4F9044@kth.se][Email from Magnus Ahltorp: Merge-secondary]]
+- - urd.appendto.org/ct/v1 running
   o config created
   o keys generated
   o catlfish-dev-lunahsm autoconfiguring if missing config
@@ -23,6 +27,8 @@ Legend                                                (emacs -*-org-*- mode)
   - munin added to all systems
   - frontend-4 set up on m0
 ** IETF / W3C
+- - draft-ietf-trans-gossip nits fixed
+- - draft-ietf-trans-gossip with 6962bis perspective
 - - draft-linus-trans-gossip-ct
   o decide on where to put tickets
   . create trac tickets 
@@ -33,10 +39,18 @@ Legend                                                (emacs -*-org-*- mode)
   - http://trac.tools.ietf.org/wg/trans/trac/ticket/58
   - https://github.com/google/certificate-transparency-rfcs/commit/239e6a04ba1cbd0d5a9681d905a8104c98db874d
 ** Sysadm
+- o junis laptop reinstalled with ubuntu
+- - three jails moved from tex
+  - mail
+  - len
+  - retrograde
 ** DFRI
-- * review of [[gnus:nnimap%2Badbc:INBOX#55ACEFDD.1070409@andersdotter.cc][Email from Amelia Andersdotter: privat Re: Inför mötet tisdag]] sent
-- - recently expired members prodded
-- - verify OOB to sto3 (nacka)
+- o obenetwork invoice payed [2015-09-04]
+- o dfri.net renewed (binero) [2015-09-06]
+- o portlane invoice payed [2015-09-06]
+- o review of [[gnus:nnimap%2Badbc:INBOX#55ACEFDD.1070409@andersdotter.cc][Email from Amelia Andersdotter: privat Re: Inför mötet tisdag]] sent
+- o recently expired members prodded
+- - OOB to sto3 (nacka) verified
 - - https on git.dfri.se
 - - https://dfri.net/ running again
 - . stop-ttip (https://stop-ttip.org/ ?)
@@ -44,11 +58,22 @@ Legend                                                (emacs -*-org-*- mode)
   - blog post published
 - . letterhead
 ** Misc
+- - ndn technical workshop submitted lightning talk for
+- - hotel berlin tor-dev booked
+- - IETF conf fee payed
+- o norweigan tor project replied to
+- o karsten replied to re measurement road map
+- o ndn technical workshop signed up for
+- o hotel ndn technical workshop booked
+- o ARN-KAS SEP 2; KAS-ARN SEP 3 bokade
+- o [juni] avboka klättring
+- o [juni] mejla om badminton
+- o ndn https server vm requested
 - - CT PEG submitted
   o CT PEG-4 sent to wulf
   o risk matrix updated [thu]
-  . fischer prodded more
-- - [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
+  o fischer prodded more
+- X [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
 - - wifi plug bought 
     - https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
     - "netgear wna1100" (stuge)
@@ -165,7 +190,7 @@ Legend                                                (emacs -*-org-*- mode)
 - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
 - - [[file:/u/ietf/internet-drafts/draft-cooper-ietf-privacy-requirements-01.txt]]
 ** Sysadm
-- - received headers scrubbed at smtp.adbc
+- - received headers scrubbed at smtp.adbc [[gnus:nnimap%2Badbc:INBOX#16738763.Zpc6BlTK60@foo][Email from Fredrik Thulin: Re: postfix conf]]
 - - fix [[file:p/adb-centralen/src/spam-edu-from-banksy.sh][file:~/p/adb-centralen/src/spam-edu-from-banksy.sh]] for dovecot and cron it on imap.adbc
 - - stuff resurrected from mm:~linus, the repos f.ex.
 - - https://nordberg.se/linus resurrected
@@ -287,7 +312,7 @@ Legend                                                (emacs -*-org-*- mode)
 ? Mar 25-28, Zurich, European AFS and Kerberos Conference
 ? Apr ??-??, Umeå, Markus Naarttijärvi
 ? Apr 01-04, Stockholm, CRD Days
-? May 06-07, London, CT hack day
+- May 06-07, London, CT hack day
 ? May 11-17, Warsaw, RIPE68
 ? May 18-23, Dublin, TNC2014
 ? May 25-27, Moscow, ENOG7
@@ -303,12 +328,16 @@ Legend                                                (emacs -*-org-*- mode)
 2015
 - Mar 01-06, Valencia, Tor winter dev
 X Mar 20-27, Dallas, IETF92
-- May 4-6, Finse, infosec winter school
+- May 04-06, Finse, infosec winter school
 - May 27-28, Utrecht, GN4 kickoff
-- Jun 7-8, Berlin, CT hack day
-- Jun 14-Jul 06, Porto, TNC15 + vacation
+- Jun 07-08, Berlin, CT hack day
+- Jun 14-06, Porto, TNC15 + vacation
 X Jun 30-02, Philadelphia, PETS15
 - Jul 13-16, Madrid, Core Infrastucture Workshop
 - Jul 16-28, Prague, Cryptech + IETF93 + vacation
-- Sep?, ??, Tor summer dev
-- Sep 15-17, Kastrup, NORDUnet tech workshop
+- Sep 02-03, Kastrup, NORDUnet all hands
+- Sep 16-17, Kastrup, NORDUnet tech workshop
+- Sep 27-02, Berlin, Tor summer dev
+? Oct 14-15, Stockholm, Netnod
+? Oct 21-22, Stockholm, SIF15
+- Oct 30-07, Yokohama, IETF94
