@@ -9,14 +9,8 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- o map/storagegc merged
-- o map/plopstoragefix merged
-- o map/convertdb merged
 - - linus/cleanup 07817e7 cherry-picked
 - - ticket filed on moving sendsth to after distribution is done for all frontends
-- X hsmhelper restarted with new docker image
-- o catlfish-dev-lunahsm working again, without erlang dir being symlinked
-- X devp running a frontend+storage node for plausible
 - . plausible using secondary merge according to [[gnus:nnimap%2Bndn:INBOX#D99F49C8-0383-4E65-8D49-4BFA7E4F9044@kth.se][Email from Magnus Ahltorp: Merge-secondary]]
 - - urd.appendto.org/ct/v1 running
   o config created
@@ -39,17 +33,11 @@ Legend                                                (emacs -*-org-*- mode)
   - http://trac.tools.ietf.org/wg/trans/trac/ticket/58
   - https://github.com/google/certificate-transparency-rfcs/commit/239e6a04ba1cbd0d5a9681d905a8104c98db874d
 ** Sysadm
-- o junis laptop reinstalled with ubuntu
 - - three jails moved from tex
   - mail
   - len
   - retrograde
 ** DFRI
-- o obenetwork invoice payed [2015-09-04]
-- o dfri.net renewed (binero) [2015-09-06]
-- o portlane invoice payed [2015-09-06]
-- o review of [[gnus:nnimap%2Badbc:INBOX#55ACEFDD.1070409@andersdotter.cc][Email from Amelia Andersdotter: privat Re: Inför mötet tisdag]] sent
-- o recently expired members prodded
 - - OOB to sto3 (nacka) verified
 - - https on git.dfri.se
 - - https://dfri.net/ running again
@@ -61,19 +49,10 @@ Legend                                                (emacs -*-org-*- mode)
 - - ndn technical workshop submitted lightning talk for
 - - hotel berlin tor-dev booked
 - - IETF conf fee payed
-- o norweigan tor project replied to
-- o karsten replied to re measurement road map
-- o ndn technical workshop signed up for
-- o hotel ndn technical workshop booked
-- o ARN-KAS SEP 2; KAS-ARN SEP 3 bokade
-- o [juni] avboka klättring
-- o [juni] mejla om badminton
-- o ndn https server vm requested
 - - CT PEG submitted
   o CT PEG-4 sent to wulf
   o risk matrix updated [thu]
   o fischer prodded more
-- X [[gnus:nnimap%2Badbc:lists.tor.assistants#20150330124445.GB8186@moria.seul.org][ross anderson thread]] on multiple bridge auths read 
 - - wifi plug bought 
     - https://www.thinkpenguin.com/gnu-linux/penguin-wireless-n-usb-adapter-gnu-linux-tpe-n150usb
     - "netgear wna1100" (stuge)
