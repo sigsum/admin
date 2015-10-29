@@ -20,11 +20,11 @@
 ;; Login info
 ;(setq nnimap-authinfo-file "~/.priv/nnimap-authinfo" )
 
-;; Flyspell.
-(add-hook 'message-mode-hook
-	  (lambda ()
-	    (ispell-change-dictionary "svenska") ;"british"
-	    (flyspell-mode 1)))
+;; Flyspell and spel checker.
+;(add-hook 'message-mode-hook
+;	  (lambda ()
+;	    (ispell-change-dictionary "svenska") ;"british"
+;	    (flyspell-mode 1)))
 
 ;; Interaction with planner-el
 ;(require 'planner-gnus)
@@ -122,7 +122,7 @@
 	("lists.pmacct"
 	 ("From" "Linus Nordberg <linus+pmacct@nordberg.se>")
 	 (organization "NORDUnet A/S"))
-	("ndn:\\|lists\\.\\(ct\\|ietf\\)\\|gmane.ietf"
+	("ndn:\\|lists\\.\\(ct\\|ietf\\.trans\\)"
 	 (organization "NORDUnet A/S")
 	 ("From" "Linus Nordberg <linus@nordu.net>")
 	 (eval
