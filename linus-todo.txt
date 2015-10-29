@@ -9,8 +9,8 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
+- - https://trac.torproject.org/projects/tor/ticket/4581 reviewed
 - - linus/cleanup 07817e7 cherry-picked
-- X ticket filed on moving sendsth to after distribution is done for all frontends
 - . plausible using secondary merge according to [[gnus:nnimap%2Bndn:INBOX#D99F49C8-0383-4E65-8D49-4BFA7E4F9044@kth.se][Email from Magnus Ahltorp: Merge-secondary]]
 - - urd.appendto.org/ct/v1 running
   o config created
@@ -21,45 +21,53 @@ Legend                                                (emacs -*-org-*- mode)
   - munin added to all systems
   - frontend-4 set up on m0
 ** IETF / W3C
-- - tjr's pull request merged
+- o tjr's pull request merged (see [[file:p/ct/doc/gossip.org::*][gossip.org TODO]] for open issues) [oct 19]
+- o draft-ietf-trans-gossip with 6962bis perspective [oct 19]
+- . STK comments handled [oct 19]
+- o [[http://trac.tools.ietf.org/wg/trans/trac/query?status%3Dassigned&status%3Dnew&status%3Dreopened&component%3Dgossip&order%3Dpriority][open trac tickets]] handled [oct 19]
 - - draft-ietf-trans-gossip nits fixed
-- - draft-ietf-trans-gossip with 6962bis perspective
-- - draft-linus-trans-gossip-ct
+- o Bryan Ford emailed with request for feedback on Yokohama draft [oct 20]
+- - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
+- o draft-linus-trans-gossip-ct
   o decide on where to put tickets
-  . create trac tickets 
-    - from comment from al [[file:p/ct/doc/email:al-cutter:draft-02.txt][file:~/p/ct/doc/email:al-cutter:draft-02.txt]]
+  o create trac tickets or just fix the following
+    o comment from al [[file:p/ct/doc/email:al-cutter:draft-02.txt][file:~/p/ct/doc/email:al-cutter:draft-02.txt]]
       o ok from al to copy his text to a ticket
-- - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] read
-- - 6962bis max STH per time unit reviewed
+- X 6962bis max STH per time unit reviewed
   - http://trac.tools.ietf.org/wg/trans/trac/ticket/58
   - https://github.com/google/certificate-transparency-rfcs/commit/239e6a04ba1cbd0d5a9681d905a8104c98db874d
 ** Sysadm
-** DFRI
-- o kb payed [sep 26]
-- - obe payed [oct 5]
-- - three jails moved from tex
+- o three jails moved from tex
   - len
   - mail
   - retrograde
-- - ipv6 to sto4
-- - rewrite dfriadm git repo to remove register
-- o christian informed about invoice
+** DFRI
+- - Zouaves application fixed and signed
+- - PL-1278 payed [nov 04]
+- o 2 x http://www.sthix.net/join.php print, scan and send
+- o EDRi invoice payed [oct 14]
+- o STHIX invoice payed
+- - leif asked about anycasting maatuska
+- - route object added for AS4224, announcing 194.0.61.0/24
+- o bibblerian slides [oct 4]
+- o PL payed [oct 5]
+- o obe payed [oct 5]
+- . ipv6 to sto4
+- . rewrite dfriadm git repo to remove register
+  - [X] andreas
+  - [ ] alex
+  - [X] jn
+  - [X] mike
+  - [ ] pawal
 - - OOB to sto3 (nacka) verified
 - - https on git.dfri.se
 - - https://dfri.net/ running again
-- X stop-ttip (https://stop-ttip.org/ ?)
-  o signed
-  - blog post published
-- X letterhead
 ** Misc
-- - ilja replied to re CT talk
-- o ndn technical workshop submitted lightning talk for
-- o hotel berlin tor-dev booked
-- o IETF conf fee payed
-- o CT PEG submitted
-  o CT PEG-4 sent to wulf
-  o risk matrix updated [thu]
-  o fischer prodded more
+- - phw's exit scanner running in jail on ioctl
+- o EUC2015 invoice investigated [oct 16]
+- o TBB nightlies [oct 16]
+    <GeKo> could you start the whole procedure with c88cf009396bac20601b2de35eba2d9d98905438 ?
+- o ilja replied to re CT talk
 * Soon (within a month)
 ** Dev
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
@@ -106,6 +114,7 @@ Legend                                                (emacs -*-org-*- mode)
 - - #6027 and friends -- dir auths on ipv6
 - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
 ** Misc
+- - leif replied to re "how much is a linus?"
 - - tuben12 mail archive sent to Ulf
 - - some openitp person contacted about jari's IETF statistics
 - - feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
@@ -140,7 +149,7 @@ Legend                                                (emacs -*-org-*- mode)
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
 ** IETF
-- - transparency gossip draft started, co-authors roped in (dkg, benl)
+- o transparency gossip draft started, co-authors roped in (dkg, benl)
 - - SAML naming of AAA entities reviewed for ABFAB
      [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-naming-07.txt]]
 - - jaris tools discussed
@@ -290,26 +299,26 @@ Legend                                                (emacs -*-org-*- mode)
      research community]] submitted
 * Travel
 2014
-? Jan 31-02, Brussels, FOSDEM
+X Jan 31-02, Brussels, FOSDEM
 - Feb 06-07, Kastrup, ndn all hands
 - Feb 16-22, Reykyavik, Tor winter dev
 - Feb 28-07, London, STRINT+IETF89
-? Mar ??-??, Gothenburg, Töllborg (FRA) + GeKo + tokmartin + iljas vpn pal + fripost + cryptoparty
-? Mar 25-28, Zurich, European AFS and Kerberos Conference
-? Apr ??-??, Umeå, Markus Naarttijärvi
-? Apr 01-04, Stockholm, CRD Days
+X Mar ??-??, Gothenburg, Töllborg (FRA) + GeKo + tokmartin + iljas vpn pal + fripost + cryptoparty
+X Mar 25-28, Zurich, European AFS and Kerberos Conference
+X Apr ??-??, Umeå, Markus Naarttijärvi
+- Apr 01-04, Stockholm, CRD Days
 - May 06-07, London, CT hack day
-? May 11-17, Warsaw, RIPE68
-? May 18-23, Dublin, TNC2014
-? May 25-27, Moscow, ENOG7
+X May 11-17, Warsaw, RIPE68
+X May 18-23, Dublin, TNC2014
+X May 25-27, Moscow, ENOG7
 - May 27-28, Stockholm, SIF14
 - Jun 29-05, Paris, Tor summer dev
-? Jul 11-15, Paris, Tails code sprint
-? Jul 14-18, Berlin, OKFestival
+X Jul 11-15, Paris, Tails code sprint
+X Jul 14-18, Berlin, OKFestival
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
-? Aug 19-23, San Diego, USENIX Security
-? Nov 07-16, Honolulu, IETF91
+X Aug 19-23, San Diego, USENIX Security
+X Nov 07-16, Honolulu, IETF91
 - Oct 14-16, Zurich, CT gossip
 2015
 - Mar 01-06, Valencia, Tor winter dev
@@ -327,3 +336,6 @@ X Jun 30-02, Philadelphia, PETS15
 ? Oct 14-15, Stockholm, Netnod
 ? Oct 21-22, Stockholm, SIF15
 - Oct 30-07, Yokohama, IETF94
+2016
+- Mar 01-05, Valencia, Tor dev
+? Jun 12-17, Prague, TNC16

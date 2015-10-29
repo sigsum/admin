@@ -4,6 +4,11 @@
 `C-c C-x C-d' for showing times.
 `C-c C-y' for updating time on line.
 
+* Sep 2015
+- EC and CT [[gnus:nnimap%2Badbc:INBOX#55EAC8FB.2080406@andersdotter.cc][Email from Amelia Andersdotter: Re: Encrypted Fri Sep 4 22:50]]
+* March 2015
+** week 0316-22
+mo, tu: cryptech
 * February 2015
 ** week 0216-22
 <2015-02-19 Thu>
@@ -23,7 +28,6 @@ twisted -> gevent
 
 RFC6454 web origin
 RFC7234 http caching
-
 
 * January 2015
   - andreas: why kern.randompid=0

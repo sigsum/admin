@@ -7,7 +7,9 @@
 %%(diary-anniversary 2010 4 6) Moa
 %%(diary-anniversary 1969 4 9) Ilja
 %%(diary-anniversary 2008 4 9) Julian
-%%(diary-anniversary 2012 4 10) Fia & Fredde
+%%(diary-anniversary 1982 4 10) Fia
+%%(diary-anniversary 1983 4 10) Fredde
+%%(diary-anniversary 1972 4 11) grtrd
 %%(diary-anniversary 1989 4 18) Xenia
 %%(diary-anniversary 1933 4 18) Elsie
 %%(diary-anniversary 2012 4 22) Roger
@@ -15,16 +17,20 @@
 %%(diary-anniversary 1945 5 10) Erik
 %%(diary-anniversary 1983 5 26) Andreas
 %%(diary-anniversary 2014 06 12) isis
+%%(diary-anniversary 2015 06 18) isabela
 %%(diary-anniversary 1973 6 29) Johan Ruterhagen
 %%(diary-anniversary 1999 7 2) Lärka
+%%(diary-anniversary 2011 07 08) DFRI
 %%(diary-anniversary 2014 7 11) Marianne
 %%(diary-anniversary 2014 8 2) Andrea
 %%(diary-anniversary 1977 8 30) Nick Mathewson
 %%(diary-anniversary 2002 9 3) Nicks first Tor commit
 %%(diary-anniversary 2003 10 8) tor https://lists.torproject.org/pipermail/tor-dev/2003-October/002185.html
 %%(diary-anniversary 2012 10 15) Lise
+%%(diary-anniversary 1900 10 21) Tok-martin
 %%(diary-anniversary 1944 10 25) Liss
 %%(diary-anniversary 1971 11 3) Simon
+%%(diary-anniversary 2014 11 25) Steffe
 %%(diary-anniversary 1965 11 25) Lena
 %%(diary-anniversary 1972 11 29) Sarah
 %%(diary-anniversary 1900 12 6) aagbsn
@@ -592,7 +598,7 @@
 %%(diary-block 2014 03 02 2014 03 07) IETF89 London
 %%(diary-block 2014 07 20 2014 07 25) IETF90 Toronto
 &%%(diary-block 2014 11 09 2014 11 14) IETF91 Honolulu
-%%(diary-block 2015 03 22 2015 03 27) IETF92 Dallas
+&%%(diary-block 2015 03 22 2015 03 27) IETF92 Dallas
 %%(diary-block 2015 07 19 2015 07 24) IETF93 Prague
 %%(diary-block 2015 11 01 2015 11 06) IETF94 Yokohama
 2013-11-18 17:00-19:00 TA3M @ Scandic Bromma Hotel
@@ -1041,6 +1047,9 @@
 &%%(diary-block 2015 02 13 2015 02 19) B
 &%%(diary-block 2015 03 08 2015 03 22) B
 &%%(diary-block 2015 03 27 2015 04 02) B
+&%%(diary-block 2015 04 10 2015 04 16) B
+&%%(diary-block 2015 04 24 2015 04 30) B
+&%%(diary-block 2015 05 08 2015 05 14) B
 %%(diary-block 2015 07 17 2015 07 18) Cryptech, Prague
 %%(diary-block 2015 03 16 2015 03 17) Cryptech, Stockholm
 %%(diary-block 2015 08 13 2015 08 16) CCC camp
@@ -1054,15 +1063,6 @@
 2015-03-06 BIKES vs. CARS release, Folkets Bio
 2015-01-22 16:15 elof @ nackabussarna
 2015-02-03 11:30 Sibiriens med tg
-2015-03-15 [Lärka] nat. prov svenska
-2015-03-17 [Lärka] nat. prov svenska
-2015-04-15 [Lärka] nat. prov NO
-2015-04-25 [Lärka] nat. prov engelska
-2015-04-27 [Lärka] nat. prov engelska
-2015-05-11 [Lärka] nat. prov matte
-2015-05-13 [Lärka] nat. prov matte
-2015-05-17 [Lärka] nat. prov SO
-2015-05-19 [Lärka] nat. prov SO
 2015-02-02 [Lärka] 18:00-20:00 klättra 1
 2015-02-05 [Lärka] 18:00-20:00 klättra 2
 2015-02-09 [Lärka] 18:00-20:00 klättra 3
@@ -1086,10 +1086,9 @@
 2015-02-17 13:00 lunch med jn, medis
 2015-03-05 merakrypto
 2015-02-24 19:00 sparvårsmöte viskagränd 8
-%%(diary-block 2015 09 16 2015 09 17) ndn tech workshop
+%%(diary-block 2015 09 15 2015 09 17) ndn tech workshop
 2015-04-29 Flytta
 2015-03-29 13:00-15:00 DFRI årsmöte
-2015-03-18 [prel] mera krypto gbg
 2015-02-27 Kränkta vita män i Uppsala
 2015-02-17 09:20 Tandläkaren
 %%(diary-block 2016 09 20 2016 09 22) ndn2016 helsinki
@@ -1109,3 +1108,256 @@
 2015-05-21 maatuska auth key expires in a week
 2015-03-28 stadsvandring med mamma och syskon
 2015-03-09 ietf dallas cutoff
+2015-03-25 16:30-17:00 [juni] utv.samtal
+%%(diary-block 2015 05 27 2015 05 28) 12:00-13:00+1 GN4-JRA3 kick-off, Utrecht?
+2015-03-14 11:00 Farsta
+2015-03-24 11:00 Tandläkaren
+2015-04-01 16:10 [juni & lärka] Tandläkaren
+%%(diary-block 2015 04 27 2015 04 28) sec-heads lkpg
+2015-03-28 årsmöte charta2008
+2015-05-10 kalas för erik!
+2015-04-10 ndn fredagsöl
+2015-03-19 lena middag
+2015-03-13 11:00 call Lasse
+2015-03-23 14:00 prata CT med NOC
+2015-06-10 Skolavslutning
+2015-06-19 Midsommarafton
+%%(diary-block 2015 06 14 2015 06 19) Porto, TNC15
+2015-04-02 Anders Schröder (mp) om trafikdatalagring
+%%(diary-block 2015 05 05 2015 05 08) jbn i sthlm
+%%(diary-block 2015 05 03 2015 05 08) https://www.frisc.no/arrangementer/finse-winter-school-2015/
+2015-09-10 13:00 internetfonden stänger
+2015-09-03 internetfonden stänger om en vecka
+2015-03-17 18:00 crowd funding meeting in #tor-project
+2015-04-08 MeraKrypto gbg
+2015-05-28 xpd vårfest
+2015-05-21 osa xpd, titti@xpd.se
+2015-03-24 18:00-19:30 dfri web tema med emma
+2015-03-21 11:00-13:00 deklarera dfri med andreas @ romab
+2015-03-22 middag för victor hos pappa la
+%%(diary-block 2015 03 28 2015 03 29) Lärka hos Elliot
+2015-04-05 BIKES vs. CARS, Tellus
+2015-04-09 BIKES vs. CARS, Tellus
+%%(diary-block 2015 04 29 2015 05 03) Flytt
+2015-03-23 17:30-21:00 trans https://datatracker.ietf.org/meeting/92/agenda/trans/
+2015-03-25 19:00 Middag E&L
+2015-05-18 18:00 [Lärka] Mariaskolan, piano
+2015-04-28 17:30-19:30 årsmöte SNUS
+2015-03-31 12:30 lunch m lars w
+2015-04-20 18:30 DFRI @ TUG
+2015-04-01 19:00 Päivi och Per
+2015-04-20 20:00 Äta mat med Christian och Gustav
+2015-03-30 16:00 #ct-gossip; 08-40304946, 26650
+2015-03-31 10:00 tfn-möte med lkgp-killen
+2016-03-18 appendto.org expires
+2016-03-11 appendto.org expires in a week
+2015-04-07 [prel] josva, salary
+2015-04-01 15:00 #ct-gossip; 08-40304946, 26650
+2015-04-12 grtrd visar lgh
+2015-04-13 grtrd visar lgh
+2015-04-11 tvätta fönster hos grtrd
+2015-04-11 fira grtrd!
+2015-05-23 18:00 eva fuchs 70
+2015-04-18 17:00-20:00 buffé Anders Wästfelt 50; August Södermans väg 6, Mälarhöjden
+2015-04-10 09:00 josef gustafsson (lpkg-student)
+2015-06-04 www.dfri.se cert expires
+2015-05-28 www.dfri.se cert expires in a week
+2015-05-11 13:00-16:00 MSG integritet Norra Latin, Musiksalen
+%%(diary-block 2015 07 27 2015 07 30) https://httpworkshop.github.io/ in Münster
+2015-05-16 Hanna (Kakan) 40
+2015-04-11 19:00 Gyllenborgens, fyra pers
+2015-04-08 Flytta ngt hos Simon
+2015-04-09 19:00 prata pengar med jn @ irc
+2015-05-27 17:00-21:00 summer drinks meeting@netnod.se
+2015-05-25 register meeting@netnod.se
+2015-04-13 kalla till mötet
+2015-04-16 13:00-14:00 ndn all hands
+&%%(diary-block 2015 09 11 2015 09 13) BalCCon2k15, Novi Sad, Vojvodina, Serbia
+2015-04-22 12:30 [lärka] utv.samtal
+2015-04-14 11:30 lunch TG sibiriens
+2015-04-23 18:30 andol @ Pitcher's Mariatorget
+2015-06-08 09:00 [lärka] allergitest Barnallergimottagningen, Riddargatan 12 A
+2015-05-03 jbn på middag
+2015-04-21 11:00 Josva @ TUG, lönesamtal.
+2015-05-20 18:30 DFRI arbetsmöte
+2015-05-26 18:30-19:30 DFRI styrelsemöte
+2015-05-13 lokal till arbetsmöte klar
+2015-05-06 kolla lokal till arbetsmöte
+2015-04-21 10:00 boka tid hos swedbank, ons e. 13
+2016-04-19 PGP key expires
+2016-04-12 PGP key expires in a week
+&%%(diary-block 2015 06 22 2015 07 06) alla i portugal
+2015-07-13 L&J till Lena
+&%%(diary-block 2015 08 10 2015 08 14) L&J semester
+2015-05-11 23:00 poster for tnc15 submitted
+2015-05-07 12:00 two working days until poster for tnc15
+2015-05-13 13:00-17:00 work on gossip with dkg
+%%(diary-block 2015 05 27 2015 05 28) Cryptech
+%%(diary-block 2015 11 19 2015 11 21) http://nordsec2015.csc.kth.se/
+2015-05-15 register for erlang conf
+2015-06-08 CT hack day Google Berlin (Unter den Linden 14)
+&%%(diary-block 2015 05 20 2015 05 29) B
+&%%(diary-block 2015 06 05 2015 06 12) B
+2015-05-18 17:00 gossip with dkg and tjr
+%%(diary-block 2015 10 19 2015 10 21) http://nordsec2015.csc.kth.se/
+2015-06-04 16:00-19:00 FOSS @ Spotify
+2015-07-16 14:15 ARN - 16:25 TXL 17:40 - 18:40 PRG
+2015-06-14 17:00 ARN - 19:00 FRA 20:50 - 22:30 OPO
+2015-07-06 09:10 LIS - 14:25 ARN
+2015-06-09 21:59 IETF93 draft submission cut-off
+2015-05-25 15:00-21:00 IKEA
+2015-05-25 11:00-11:30 ergonomi med Caroline Ljunglöf från Feelgood
+%%(diary-block 2015 06 11 2015 06 12) EUC Münchenbryggeriet
+2015-05-28 18:00 Middag 9A
+2015-05-29 stuge i sthlm
+2015-05-28 [juni] picnic rålis
+2015-06-03 DFRI NOC work
+2015-06-07 18:10 ARN-TXL 19:40
+2015-06-08 19:40 TXL-ARN 21:10
+2015-06-05 fredagsöl
+2015-06-09 09:00 intervju, Jocke Palmkvist 0706-465792, Maria Trappgränd 7c ö.g.
+2017-05-29 www.dfri.se expirerar
+2017-05-22 www.dfri.se expirerar om en vecka
+2015-08-29 Heldag med Pappa E
+2015-06-09 DFRI styrelsemöte
+2015-06-05 15:00 Hisham @ Sostas
+&%%(diary-block 2015 08 21 2015 08 27) B
+&%%(diary-block 2015 09 04 2015 09 10) B
+&%%(diary-block 2015 09 18 2015 09 24) B
+2015-08-19 09:30 Juni upprop
+2015-07-06 23:59 IETF93 draft cut-off in two hours
+2015-06-23 18:35 L&J landar LIS
+2015-06-09 12:30 CT PEG, TUG small
+2015-07-14 16:00-18:00 DFRI styrelse- och arbestmöte
+2015-08-28 Remissvar DL-utredning inne
+%%(diary-block 2015 07 14 2015 07 15) ciw madrid
+2015-06-15 12:30 lobbyn
+2015-07-13 14:55 ARN 17:05 MUC 19:00 MAD 21:40
+2015-07-16 15:25 MAD 17:55 MUC 18:40 PRG 19:30
+2015-07-28 14:05 PRG 15:15 FRA 16:00 ARN 18:00
+2015-07-07 08:00 skärholmen
+2015-07-07 16:00 CIW call
+2015-07-15 15:30 (14:30 UTC) Tor network team IRC meeting
+&%%(diary-block 2015 09 27 2015 10 03) tor dev mtg, berlin
+2015-07-07 electrolux
+2015-08-21 Remissvar DL-utredning inne om en vecka
+2015-07-21 18:00 DLD-möte
+2015-07-19 10:00-12:00 IEPG, Congress I
+2015-07-19 19:00 CITIZENFOUR, Congress II
+2015-07-20 11:30-13:00 ISOC OMAC JPAT on encryption, Palmovka
+2015-07-20 15:20-17:20 dnsop, Congress II
+2015-07-20 17:40-18:40 ABFAB, Karlin III
+2015-07-20 18:50-19:50 radext, Karlin III
+2015-07-20 18:50-19:50 DANE, Congress II
+2015-07-21 13:00 i2nsf BOF, Karlin I/II
+2015-07-21 15:20-17:20 tls, Congress III
+2015-07-21 17:40-18:40 uta, Congress III
+2015-07-22 09:00-11:30 tls, ballroom
+2015-07-22 13:00-15:40 cfrg, athens/barcelona
+2015-07-22 15:50-17:20 iccrg, Congress I
+2015-07-22 17:40-19:40 hrpc, Berlin/Brussels
+2015-07-23 11:30-13:00 PING, Rokoska
+2015-07-23 13:00-15:00 saag, Congress II
+2015-07-23 17:40-19:10 TRANS, Karlin III
+2015-07-24 09:00-11:30 dprive, Karlin I/II
+2015-08-18 15:00 merakrypto @ sunet
+2015-08-26 18:00 sunet "kick off"
+&%%(diary-block 2015 08 10 2015 08 14) B
+&%%(diary-block 2015 08 21 2015 08 27) B
+2015-08-25 maatuska key expires tomorrow!
+2015-08-19 maatuska key expires in a week
+2015-08-06 13:00 prata hashar med danskar
+%%(diary-block 2015 10 21 2015 10 22) SIF15
+2015-08-14 DLD-utredningen inne om två veckor
+%%(diary-block 2016 01 25 2016 01 27) Enigma (USENIX)
+2015-09-14 Ägget är löst!
+2015-10-19 Ägget är löst!
+2015-11-23 Ägget är löst!
+2015-08-31 18:00 DFRI styrelsemöte
+%%(diary-block 2015 09 04 2015 09 06) slången
+2015-09-02 All hands, Kastrup
+2015-08-21 10:20-11:00 agilo
+2015-08-21 07:00-09:30 tvättmaskin, laga
+2015-09-01 18:00 [lärka] f-möte globala
+&%%(diary-block 2015 10 24 2015 11 01) Höstlov
+%%(diary-block 2015 10 14 2015 10 15) Netnod
+2015-08-26 10:20 agilo
+2015-08-27 12:00 lunch lena
+2015-10-08 09:00-09:40 agilo
+2015-09-10 rensa medlemsregister och medlem@
+%%(diary-block 2015 11 07 2015 11 08) FSCONS gbg
+&%%(diary-block 2015 10 20 2015 10 30) mike in sthlm
+2015-09-09 Middag hos Liss
+%%(diary-block 2015 11 23 2015 11 24) internetdagarna
+2015-09-25 [prel] sus & lee
+2015-09-02 07:40-08:50 ARN-KAS
+2015-09-03 13:25-14:35 KAS-ARN
+2015-09-01 14:00 Stig Mjolsnes et al
+%%(diary-block 2016 05 05 2016 05 08) BIRDIE
+2015-10-05 18:30 DFRI Björns Trädgårdsgränd 1 (mat Green Deli)
+2015-09-09 18:30 Scout-fmöte
+2015-09-14 Stig Mjølsnes et al, phone meeting
+2015-09-08 11:30 lunch m christian, gustav, jn
+2016-01-21 09:00-16:00 ndn all hands KAS
+2015-09-04 11:00-12:00 wolf
+2015-09-04 12:00-13:00 CT PEG
+2015-09-07 11:00-12:00 TUG plan2 plans
+2015-09-21 15:00-17:30 http://www.iffs.se/seminarium/the-future-of-privacy/
+2015-09-09 13:30-15:00 GTS training, scopia room 60863 http://gatekeeper.nordu.net:60580/scopia/mt/ndn/entry/index.jsp
+2015-10-23 13:00-14:30 cultural workshop preparation
+2015-11-26 init.se ilja
+2015-09-10 13:00-15:00 jra3t2 meeting https://connect.sunet.se/idtrust
+2015-09-20 skicka påminnelser till expirerande medlemmar
+2015-10-11 14:00-16:00 DFRI vision
+2015-09-18 11:00-12:00 norweigans on tor and android
+2015-10-06 lärka st eriksplan 7:50
+2015-10-07 GGM feat. DFRI https://www.dfri.se/ggmifdfri/
+2015-10-06 17:00-19:00 Bibblerian Hässelby, Åke Nygren
+2015-10-05 Lärka & Liss
+2015-11-09 SNUS 25 år
+%%(diary-block 2016 03 01 2016 03 06) [prel] tor dev mtg valencia
+2015-10-19 IETF94 I-D submission cut-off
+2015-10-12 en vecka till I-D submission
+2015-09-23 17:00 gossip call
+%%(diary-block 2016 04 03 2016 04 08) IETF95 Buenos Aires
+%%(diary-block 2016 07 17 2016 07 22) IETF96 Berlin
+%%(diary-block 2016 11 13 2016 11 18) IETF97 Seoul
+%%(diary-block 2017 03 26 2017 03 31) IETF98 Montreal
+2015-10-20 16:10 [juni] utv.samtal
+2015-12-10 ndn x-mas dinner
+&%%(diary-block 2015 10 02 2015 10 08) B
+&%%(diary-block 2015 10 16 2015 10 29) B
+&%%(diary-block 2015 11 13 2015 11 19) B
+2015-10-30 13:30 ARN-CPH 14:40 15:45 CPH-NRT 10:40+
+2015-11-07 12:30 NRT-CPH 16:05 18:00 CPH-ARN 19:10
+2015-10-01 20:00 tor dinner
+2015-10-20 OSA om SNUS 25
+2015-10-08 merakrypto
+2015-11-03 http://ietf94.jp/social-event/
+2015-10-05 10:00 http://ietf94.jp/social-event/
+2015-10-05 11:00 kontakta yosh ang. pingdom-kontot
+%%(diary-date t 20 t) DFRI påminn expirerande medlemmar
+%%(diary-block 2015 10 16 2015 10 19) edri & https://www.freedomnotfear.org/
+%%(diary-block 2016 06 12 2016 06 16) TNC16 prague
+&%%(diary-block 2015 10 23 2015 10 29) geko in sthlm
+2015-10-20 10:00-11:00 kickoff sunet
+2015-10-08 16:00 tandhygienist
+2015-10-15 16:30-17:30 gossip call http://www.voicebridge.de/en/numbers.html 6059
+2015-10-14 13:00 Steffen Birkeland et al (tor+android research)
+&%%(diary-block 2015 11 27 2015 12 03) B
+&%%(diary-block 2015 12 11 2015 12 17) B
+&%%(diary-block 2015 12 25 2015 12 31) B
+2015-11-09 11:30 KB
+2015-10-21 11:25 Dijana @ Koreana
+2015-11-05 11:30-13:00 PING @ Room 511
+2015-12-12 inflyttningsfest!
+2015-11-20 DFRI medlemshantering
+2015-12-20 DFRI medlemshantering
+2016-01-20 DFRI medlemshantering
+2016-02-20 DFRI medlemshantering
+2016-03-20 DFRI medlemshantering
+&%%(diary-block 2015 11 11 2015 11 16) Paulina i Stockholm
+%%(diary-block 2016 03 18 2016 03 20) http://www.infoteh.rs.ba/indexe.php
+&%%(diary-block 2015 11 27 2015 12 06) grtrd i NYC
+2015-11-13 12:00 lunch m lukas
+2015-11-04 15:00-15:30 HRPC film room 301-304

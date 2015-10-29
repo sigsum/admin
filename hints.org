@@ -111,7 +111,7 @@ sys     0m14.765s
   Rebuild the PLT when upgrading your erlang packages.
 
   "[...] has no local return" means that a function doesn't guarantee
-  to return something, which can be due to lacking type information in
+  to return something, perhaps because of lacking type information in
   function called by the current function, or below.
 
 - registered() lists all registered names
@@ -399,6 +399,7 @@ above. Important for bash and xterm to be happy about _input_.
 - KauluaFarmWifi: C965C6FEE2FC11617A1DB27FDE
 - Tropical Frozen Yogurts: Amentropicalyogurts2011
 - ComHem<FA22A2> 68d8gc4a
+-  4C93118324
 ** stable/unstable on the t410s running debian
 Is it 2.4Ghz vs. 5.2Ghz?
 *** stable
@@ -441,6 +442,187 @@ $ sha256sum rt2870.bin*
 531ce71af8f9a135eaeeac089d8923dd8166cf3f72708a3cbb99192ee7d92ea3  rt2870.bin
 7406f34a45d21af8740f0d348eaad5cb2fe14560b93571fcdcb2a602fcd8425c  rt2870.bin.old
 $ 
+** USB based device I got from Peter in June 2015
+Needs /lib/firmware/rt2870.bin (apt-get install firmware-ralink) and
+loads like this:
+
+[  405.234803] ieee80211 phy0: rt2x00_set_rt: Info - RT chipset 5390, rev 0502 detected
+[  405.263053] ieee80211 phy0: rt2x00_set_rf: Info - RF chipset 5370 detected
+[  405.267612] ieee80211 phy0: Selected rate control algorithm 'minstrel_ht'
+[  405.268136] usbcore: registered new interface driver rt2800usb
+[  405.280986] systemd-udevd[1480]: renamed network interface wlan0 to wlan2
+[  691.882352] ieee80211 phy0: rt2x00lib_request_firmware: Info - Loading firmware file 'rt2870.bin'
+[  691.886717] rt2800usb 5-5:1.0: firmware: direct-loading firmware rt2870.bin
+[  691.886725] ieee80211 phy0: rt2x00lib_request_firmware: Info - Firmware detected - version: 0.33
+
+# iw list
+Wiphy phy0
+	max # scan SSIDs: 4
+	max scan IEs length: 2257 bytes
+	Retry short limit: 7
+	Retry long limit: 4
+	Coverage class: 0 (up to 0m)
+	Device supports RSN-IBSS.
+	Supported Ciphers:
+		* WEP40 (00-0f-ac:1)
+		* WEP104 (00-0f-ac:5)
+		* TKIP (00-0f-ac:2)
+		* CCMP (00-0f-ac:4)
+	Available Antennas: TX 0 RX 0
+	Supported interface modes:
+		 * IBSS
+		 * managed
+		 * AP
+		 * AP/VLAN
+		 * WDS
+		 * monitor
+		 * mesh point
+	Band 1:
+		Capabilities: 0x172
+			HT20/HT40
+			Static SM Power Save
+			RX Greenfield
+			RX HT20 SGI
+			RX HT40 SGI
+			RX STBC 1-stream
+			Max AMSDU length: 3839 bytes
+			No DSSS/CCK HT40
+		Maximum RX AMPDU length 65535 bytes (exponent: 0x003)
+		Minimum RX AMPDU time spacing: 2 usec (0x04)
+		HT RX MCS rate indexes supported: 0-7, 32
+		TX unequal modulation not supported
+		HT TX Max spatial streams: 1
+		HT TX MCS rate indexes supported may differ
+		Bitrates (non-HT):
+			* 1.0 Mbps
+			* 2.0 Mbps (short preamble supported)
+			* 5.5 Mbps (short preamble supported)
+			* 11.0 Mbps (short preamble supported)
+			* 6.0 Mbps
+			* 9.0 Mbps
+			* 12.0 Mbps
+			* 18.0 Mbps
+			* 24.0 Mbps
+			* 36.0 Mbps
+			* 48.0 Mbps
+			* 54.0 Mbps
+		Frequencies:
+			* 2412 MHz [1] (20.0 dBm)
+			* 2417 MHz [2] (20.0 dBm)
+			* 2422 MHz [3] (20.0 dBm)
+			* 2427 MHz [4] (20.0 dBm)
+			* 2432 MHz [5] (20.0 dBm)
+			* 2437 MHz [6] (20.0 dBm)
+			* 2442 MHz [7] (20.0 dBm)
+			* 2447 MHz [8] (20.0 dBm)
+			* 2452 MHz [9] (20.0 dBm)
+			* 2457 MHz [10] (20.0 dBm)
+			* 2462 MHz [11] (20.0 dBm)
+			* 2467 MHz [12] (20.0 dBm) (no IR)
+			* 2472 MHz [13] (20.0 dBm) (no IR)
+			* 2484 MHz [14] (20.0 dBm) (no IR)
+	Supported commands:
+		 * new_interface
+		 * set_interface
+		 * new_key
+		 * start_ap
+		 * new_station
+		 * new_mpath
+		 * set_mesh_config
+		 * set_bss
+		 * authenticate
+		 * associate
+		 * deauthenticate
+		 * disassociate
+		 * join_ibss
+		 * join_mesh
+		 * set_tx_bitrate_mask
+		 * frame
+		 * frame_wait_cancel
+		 * set_wiphy_netns
+		 * set_channel
+		 * set_wds_peer
+		 * probe_client
+		 * set_noack_map
+		 * register_beacons
+		 * start_p2p_device
+		 * set_mcast_rate
+		 * Unknown command (104)
+		 * connect
+		 * disconnect
+	Supported TX frame types:
+		 * IBSS: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+		 * managed: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+		 * AP: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+		 * AP/VLAN: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+		 * mesh point: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+		 * P2P-client: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+		 * P2P-GO: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+		 * P2P-device: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+	Supported RX frame types:
+		 * IBSS: 0x40 0xb0 0xc0 0xd0
+		 * managed: 0x40 0xd0
+		 * AP: 0x00 0x20 0x40 0xa0 0xb0 0xc0 0xd0
+		 * AP/VLAN: 0x00 0x20 0x40 0xa0 0xb0 0xc0 0xd0
+		 * mesh point: 0xb0 0xc0 0xd0
+		 * P2P-client: 0x40 0xd0
+		 * P2P-GO: 0x00 0x20 0x40 0xa0 0xb0 0xc0 0xd0
+		 * P2P-device: 0x40 0xd0
+	software interface modes (can always be added):
+		 * AP/VLAN
+		 * monitor
+	valid interface combinations:
+		 * #{ AP, mesh point } <= 8,
+		   total <= 8, #channels <= 1
+	HT Capability overrides:
+		 * MCS: ff ff ff ff ff ff ff ff ff ff
+		 * maximum A-MSDU length
+		 * supported channel width
+		 * short GI for 40 MHz
+		 * max A-MPDU length exponent
+		 * min MPDU start spacing
+	Device supports TX status socket option.
+	Device supports HT-IBSS.
+	Device supports SAE with AUTHENTICATE command
+	Device supports low priority scan.
+	Device supports scan flush.
+	Device supports AP scan.
+	Device supports per-vif TX power setting
+	Driver supports a userspace MPM
+
+** wpa-supplicant
+- sample wpa2 config
+network={
+        ssid="ietf-hotel"
+        scan_ssid=1
+        proto=WPA RSN
+        key_mgmt=WPA-PSK
+        pairwise=CCMP TKIP
+        psk="ietf-hotel"
+}
+- sample open network config
+network={
+        ssid="hhonors"
+        key_mgmt=NONE
+}
+- sample wpa-eap config
+network={
+        ssid="eduroam"
+        scan_ssid=1
+        key_mgmt=WPA-EAP
+        eap=PEAP
+        anonymous_identity="anonymous@NORDU.NET"
+        identity="linus/ppp"
+        password="sikrit"
+        phase1="peapver=0"
+        phase2="auth=MSCHAPV2"
+}
+- sample wpa (psk) config, using wpa_passphrase(8) to generate psk
+network={
+        ssid="Erlang"
+        #psk="FailSafe"
+        psk=bdf47fa73a7844c9b604b5cdace4538a4d94a3f7445ace98c3c6d95a05363d37
+}
 * libevent
 ** dns issues in tor
 todo
@@ -533,6 +715,8 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - gobby -- p2p live editing
 - notmuch -- email address indexing
 - [[*sip][ekiga]] -- instead of skype
+- festival -- voice synthesis
+- hping3 -- network research and attack tool
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -1146,6 +1330,8 @@ Info pages at
 (package-initialize)
 
 Installed packages end up in ~/.emacs.d/elpa/.
+** twitter
+tiwttering-mode
 * Telia homerun
 user: 46703714984
 pw: ds5XVDEir5
@@ -1647,6 +1833,11 @@ EOF
 
 ** adding a user to a group
 usermod -a -G <group> <user>
+** disabling a service
+sudo update-rc.d <daemon> enable|disable
+
+** deb mirrors
+speglar.simnet.is
 * Virtualization with qemu-kvm / libvirt
 ** vm's on tool
 Active
@@ -2541,6 +2732,10 @@ Serial no: YK2K196412
 - [X] [django book]
 - [X] [tdd in django]
 - [ ] Stevens x 3
+- [ ] Vinge "A Deepness In The Sky"
+- [ ] Stross "Halting State"
+- [ ] Walter Tevis "Mockingbird"
+- [ ] Stephenson "Anathem"
 * Gustav Vasa
 ** 2001C
 jvlycke@comhem.se,
@@ -2850,6 +3045,176 @@ flogsta:k% gpg --armor --export 8845E49C > ~/public-key-on-NEO.asc
 
 unset GNUPGHOME
 
+*** How 0xF64A60A0 (linus (SUNET hw key) <linus@nordu.net>) was created
+flogsta:src% gpg2 --card-edit
+
+scdaemon[24265]: updating slot 0 status: 0x0000->0x0007 (0->1)
+scdaemon[24265]: reading public key failed: Card error
+scdaemon[24265]: reading public key failed: Card error
+scdaemon[24265]: reading public key failed: Card error
+Application ID ...: D2760001240102000000000000010000
+Version ..........: 2.0
+Manufacturer .....: test card
+Serial number ....: 00000001
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Sex ..............: unspecified
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: forced
+Key attributes ...: 2048R 2048R 2048R
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 3 3
+Signature counter : 0
+Signature key ....: [none]
+Encryption key....: [none]
+Authentication key: [none]
+General key info..: [none]
+
+gpg/card> admin
+Admin commands are allowed
+
+gpg/card> generate
+
+Please note that the factory settings of the PINs are
+   PIN = `123456'     Admin PIN = `12345678'
+You should change them using the command --change-pin
+
+scdaemon[24265]: 2 Admin PIN attempts remaining before card is permanently locked
+scdaemon[24265]: DBG: asking for PIN '|A|Please enter the Admin PIN%0A[remaining attempts: 2]'
+scdaemon[24265]: DBG: asking for PIN '||Please enter the PIN'
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0)
+Key does not expire at all
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: linus
+Email address: linus@nordu.net
+Comment: SUNET hw key
+You selected this USER-ID:
+    "linus (SUNET hw key) <linus@nordu.net>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
+scdaemon[24265]: generating new key
+scdaemon[24265]: please wait while key is being generated ...
+scdaemon[24265]: key generation completed (26 seconds)
+scdaemon[24265]: signatures created so far: 0
+scdaemon[24265]: generating new key
+scdaemon[24265]: please wait while key is being generated ...
+scdaemon[24265]: key generation completed (6 seconds)
+scdaemon[24265]: signatures created so far: 1
+scdaemon[24265]: signatures created so far: 2
+scdaemon[24265]: generating new key
+scdaemon[24265]: please wait while key is being generated ...
+scdaemon[24265]: key generation completed (22 seconds)
+scdaemon[24265]: signatures created so far: 3
+scdaemon[24265]: signatures created so far: 4
+gpg: key F64A60A0 marked as ultimately trusted
+public and secret key created and signed.
+
+gpg: checking the trustdb
+gpg: Note: signatures using the MD5 algorithm are rejected
+gpg: 3 marginal(s) needed, 1 complete(s) needed, classic trust model
+gpg: depth: 0  valid:  14  signed: 132  trust: 0-, 0q, 0n, 0m, 0f, 14u
+gpg: depth: 1  valid: 132  signed: 129  trust: 70-, 2q, 11n, 15m, 34f, 0u
+gpg: depth: 2  valid:  50  signed:  69  trust: 28-, 0q, 15n, 6m, 1f, 0u
+gpg: depth: 3  valid:   2  signed:   6  trust: 0-, 0q, 0n, 2m, 0f, 0u
+gpg: next trustdb check due at 2015-04-13
+pub   2048R/F64A60A0 2015-04-08
+      Key fingerprint = DA19 92F6 AD67 6BF6 3B99  2383 8CE5 2C9B F64A 60A0
+uid       [ultimate] linus (SUNET hw key) <linus@nordu.net>
+sub   2048R/FDB31F21 2015-04-08
+sub   2048R/D38E26C6 2015-04-08
+
+
+gpg/card> list
+
+Application ID ...: D2760001240102000000000000010000
+Version ..........: 2.0
+Manufacturer .....: test card
+Serial number ....: 00000001
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Sex ..............: unspecified
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: forced
+Key attributes ...: 2048R 2048R 2048R
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 3 3
+Signature counter : 5
+Signature key ....: DA19 92F6 AD67 6BF6 3B99  2383 8CE5 2C9B F64A 60A0
+      created ....: 2015-04-08 09:08:32
+Encryption key....: 93B5 473E 9A1E 12E5 EE69  87C1 FFCA 822F D38E 26C6
+      created ....: 2015-04-08 09:08:32
+Authentication key: 45D1 F30F 62C6 F342 9F88  57BC 8289 6B29 FDB3 1F21
+      created ....: 2015-04-08 09:08:32
+General key info..:
+pub  2048R/F64A60A0 2015-04-08 linus (SUNET hw key) <linus@nordu.net>
+sec>  2048R/F64A60A0  created: 2015-04-08  expires: never
+                      card-no: 0000 00000001
+ssb>  2048R/FDB31F21  created: 2015-04-08  expires: never
+                      card-no: 0000 00000001
+ssb>  2048R/D38E26C6  created: 2015-04-08  expires: never
+                      card-no: 0000 00000001
+
+gpg/card> % scdaemon[24265]: scdaemon (GnuPG) 2.0.26 stopped
+gpg2 --list-key FDB31F21
+pub   2048R/F64A60A0 2015-04-08
+uid       [ultimate] linus (SUNET hw key) <linus@nordu.net>
+sub   2048R/FDB31F21 2015-04-08
+sub   2048R/D38E26C6 2015-04-08
+
+% gpg2 --finger F64A60A0
+pub   2048R/F64A60A0 2015-04-08
+      Key fingerprint = DA19 92F6 AD67 6BF6 3B99  2383 8CE5 2C9B F64A 60A0
+uid       [ultimate] linus (SUNET hw key) <linus@nordu.net>
+sub   2048R/FDB31F21 2015-04-08
+sub   2048R/D38E26C6 2015-04-08
+
+% gpg2 -a --export F64A60A0 > ~/.gnupg/SUNET-hwkey.asc
+% gpg2 --change-pin
+scdaemon[24641]: updating slot 0 status: 0x0000->0x0007 (0->1)
+gpg: OpenPGP card no. D2760001240102000000000000010000 detected
+
+1 - change PIN
+2 - unblock PIN
+3 - change Admin PIN
+4 - set the Reset Code
+Q - quit
+
+Your selection? 1
+scdaemon[24641]: DBG: asking for PIN '||Please enter the PIN'
+scdaemon[24641]: DBG: asking for PIN '|N|New PIN'
+PIN changed.
+
+1 - change PIN
+2 - unblock PIN
+3 - change Admin PIN
+4 - set the Reset Code
+Q - quit
+
+Your selection? 3
+scdaemon[24641]: 3 Admin PIN attempts remaining before card is permanently locked
+scdaemon[24641]: DBG: asking for PIN '|A|Please enter the Admin PIN'
+scdaemon[24641]: DBG: asking for PIN '|AN|New Admin PIN'
+PIN changed.
+
+1 - change PIN
+2 - unblock PIN
+3 - change Admin PIN
+4 - set the Reset Code
+Q - quit
+
+Your selection? q
+% scdaemon[24641]: scdaemon (GnuPG) 2.0.26 stopped
 * wiki
 - ikiwiki is supposed to be nice.  Uploading text files (markdown!)
   using git f.ex.
@@ -3461,7 +3826,7 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
   fresh secularism, fissural schemer, miss researchful
   primtal köttfärs, maskfrätt pilört
   german tremblor
-* jabber
+* xmpp / jabber
 ** paf's DNS-konfig
    _jabber._tcp.frobbit.se. 900	IN	SRV	0 0 5269 jabber.frobbit.se.
    _jabber-client._tcp.frobbit.se.	900 IN	SRV	0 0 5222 jabber.frobbit.se.
@@ -3476,6 +3841,101 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
    Really quickly, to connect over Tor:
    "UseTor": true,
    "Proxies": ["socks5://127.0.0.1:9050"],
+** STARTTLS
+C->S <stream:stream to='nordu.net' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>
+S->C <?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='909926038' from='nordu.net' version='1.0' xml:lang='en'><stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms><c xmlns='http://jabber.org/protocol/caps' hash='sha-1' node='http://www.process-one.net/en/ejabberd/' ver='TQ2JFyRoSa70h2G1bpgjzuXb2sU='/><register xmlns='http://jabber.org/features/iq-register'/></stream:features>
+C->S <starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>
+
+*** nordu.net example
+flogsta:~% gnutls-cli -sp 5222 jabber.nordu.net
+Processed 174 CA certificate(s).
+Resolving 'jabber.nordu.net'...
+Connecting to '2001:948:4:6::109:5222'...
+
+- Simple Client Mode:
+
+<stream:stream to='nordu.net' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>
+<?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='2541841518' from='nordu.net' version='1.0' xml:lang='en'><stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms><c xmlns='http://jabber.org/protocol/caps' hash='sha-1' node='http://www.process-one.net/en/ejabberd/' ver='TQ2JFyRoSa70h2G1bpgjzuXb2sU='/><register xmlns='http://jabber.org/features/iq-register'/></stream:features>
+
+
+<starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>
+<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>*** Starting TLS handshake
+- Certificate type: X.509
+- Got a certificate list of 4 certificates.
+- Certificate[0] info:
+ - subject `OU=Domain Control Validated,CN=jabber.nordu.net', issuer `C=NL,O=TERENA,CN=TERENA SSL CA', RSA key 4096 bits, signed using RSA-SHA1, activated `2014-04-10 00:00:00 UTC', expires `2017-04-09 23:59:59 UTC', SHA-1 fingerprint `69da4d90ba96e3eeff75c2f6aae8659715549cf1'
+        Public Key ID:
+                df001b6ceae3df1c88c4db649debb6019484186b
+        Public key's random art:
+                +--[ RSA 4096]----+
+                |    .o ..        |
+                |    ...o .       |
+                |    E   B        |
+                |   . . + = .     |
+                |      + S +      |
+                |     o * + +     |
+                |      = o = .    |
+                |     . . +.o     |
+                |      ....=.     |
+                +-----------------+
+
+- Certificate[1] info:
+ - subject `C=NL,O=TERENA,CN=TERENA SSL CA', issuer `C=US,ST=UT,L=Salt Lake City,O=The USERTRUST Network,OU=http://www.usertrust.com,CN=UTN-USERFirst-Hardware', RSA key 2048 bits, signed using RSA-SHA1, activated `2009-05-18 00:00:00 UTC', expires `2020-05-30 10:48:38 UTC', SHA-1 fingerprint `3a881764472b6441ddb3afdd47c6b8b76ee7ba1d'
+- Certificate[2] info:
+ - subject `C=SE,O=AddTrust AB,OU=AddTrust External TTP Network,CN=AddTrust External CA Root', issuer `C=SE,O=AddTrust AB,OU=AddTrust External TTP Network,CN=AddTrust External CA Root', RSA key 2048 bits, signed using RSA-SHA1, activated `2000-05-30 10:48:38 UTC', expires `2020-05-30 10:48:38 UTC', SHA-1 fingerprint `02faf3e291435468607857694df5e45b68851868'
+- Certificate[3] info:
+ - subject `C=US,ST=UT,L=Salt Lake City,O=The USERTRUST Network,OU=http://www.usertrust.com,CN=UTN-USERFirst-Hardware', issuer `C=SE,O=AddTrust AB,OU=AddTrust External TTP Network,CN=AddTrust External CA Root', RSA key 2048 bits, signed using RSA-SHA1, activated `2005-06-07 08:09:10 UTC', expires `2020-05-30 10:48:38 UTC', SHA-1 fingerprint `3d4b2a4c64317143f50258d7e6fd7d3c021a529e'
+- Status: The certificate is trusted.
+- Description: (TLS1.2)-(RSA)-(AES-128-GCM)
+- Session ID: (empty)
+- Version: TLS1.2
+- Key Exchange: RSA
+- Cipher: AES-128-GCM
+- MAC: AEAD
+- Compression: NULL
+*** adb-centralen example
+flogsta:~% gnutls-cli -sp 5222 jabber.adb-centralen.se
+Processed 174 CA certificate(s).
+Resolving 'jabber.adb-centralen.se'...
+Connecting to '2001:6b0:8::85:5222'...
+
+- Simple Client Mode:
+
+<stream:stream to='adb-centralen.se' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>
+<?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='656752030' from='adb-centralen.se' version='1.0' xml:lang='en'><stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism><mechanism>DIGEST-MD5</mechanism><mechanism>SCRAM-SHA-1</mechanism></mechanisms><c xmlns='http://jabber.org/protocol/caps' hash='sha-1' node='http://www.process-one.net/en/ejabberd/' ver='Gr5VWdNVSjSxcOxz6QFYVvuu5JY='/><register xmlns='http://jabber.org/features/iq-register'/></stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>*** Starting TLS handshake
+- Certificate type: X.509
+- Got a certificate list of 2 certificates.
+- Certificate[0] info:
+ - subject `C=SE,ST=Stockholm,L=\#48e46765727374656e,O=Linus Nordberg,CN=jabber.adb-centralen.se,EMAIL=hostmaster@adb-centralen.se', issuer `C=IL,O=StartCom Ltd.,OU=Secure Digital Certificate Signing,CN=StartCom Class 2 Primary Intermediate Server CA', RSA key 4096 bits, signed using RSA-SHA256, activated `2015-01-18 18:56:17 UTC', expires `2017-01-18 23:12:49 UTC', SHA-1 fingerprint `3142c6e70819a31945ffe52ca37f9a3b3547d464'
+        Public Key ID:
+                cd552f8b24d9f00bddda9d3b41369c37b5f051fb
+        Public key's random art:
+                +--[ RSA 4096]----+
+                |          .  ...+|
+                |           * o+.*|
+                |          + * o@o|
+                |         o = =o+*|
+                |        S o + ooE|
+                |                o|
+                |               o |
+                |                .|
+                |                 |
+                +-----------------+
+
+- Certificate[1] info:
+ - subject `C=IL,O=StartCom Ltd.,OU=Secure Digital Certificate Signing,CN=StartCom Class 2 Primary Intermediate Server CA', issuer `C=IL,O=StartCom Ltd.,OU=Secure Digital Certificate Signing,CN=StartCom Certification Authority', RSA key 2048 bits, signed using RSA-SHA256, activated `2007-10-24 20:57:09 UTC', expires `2017-10-24 20:57:09 UTC', SHA-1 fingerprint `a0298b9e378302336c4a839e2fac00f463af4323'
+- Status: The certificate is trusted. 
+- Description: (TLS1.2)-(ECDHE-RSA-SECP256R1)-(AES-128-GCM)
+- Session ID: (empty)
+- Ephemeral EC Diffie-Hellman parameters
+ - Using curve: SECP256R1
+ - Curve size: 256 bits
+- Version: TLS1.2
+- Key Exchange: ECDHE-RSA
+- Server Signature: RSA-SHA256
+- Cipher: AES-128-GCM
+- MAC: AEAD
+- Compression: NULL
 * Ethernet trouble with erl <--> oleg
   Sometimes when erl is connected to oleg using a crossed cable, packets
   just don't leave erl.
@@ -3609,6 +4069,15 @@ I recommend this:
 $ sudo sh -c "echo unset LC_PAPER LC_MEASUREMENT >> /etc/profile"
 *** grub hanging on the reboot after some failure
 GRUB_RECORDFAIL_TIMEOUT=0
+** grsec kernel
+<2015-08-04 Tue>
+<ioerror> debian kernel is a nightmare
+<ioerror> use vanila kernel +  grsec
+<ioerror> if you need specific patches in debian kernel, email spender and he                                                                                            
+          may merge them into grsec
+<ioerror> micah: it would be so amazing if the debian kernel team built a                                                                                                
+          grsec enabled kernel
+
 * gdb
 ** debug program made by libtool
    M-x gdb
@@ -3682,7 +4151,9 @@ GRUB_RECORDFAIL_TIMEOUT=0
    /mode +q nick
 ** servers
    OFTC (#tor #tor-dev #tor-se #dfri_se) irc.oftc.net 6697 (ssl)
-   IRCNET (#isp #sthix #sunet) irc.portlane.se 6667
+   IRCNET (#isp #sthix #sunet) open.ircnet.net 6667 / irc.portlane.se 6667
+   FREENODE (#sparvnastet #edri #erlang) chat.eu.freenode.net 6697
+   Baconsvin (#celo) havana.baconsvin.org 6nbtgccn5nbcodn3.onion 6697 (TLS)
    DALNET (Michiel-5580) irc.terahertz.net 6697
    Telecomix (#telekompaketet) irc.telecomix.org 9999 (ssl)
    Telecomix weoq7a4exzcyaasj.onion 6667/6697
@@ -3925,10 +4396,68 @@ GRUB_RECORDFAIL_TIMEOUT=0
     It's very small (847 lines in all).
 ** bots
 - manderlbot -- bot written in erlang
+** banning and kicking on OFTC
+http://www.oftc.net/ChannelModes/
+http://www.oftc.net/UserModes/
+
+Example, muting a user:
+/msg chanserv op #tor-dev ln5
+/mode #tor-dev +q <nick>!~<name>@<host>
+
+Use `+b' to ban.
+
+Or use AKICK in chanserv, I guess.
+
+Example of how to list akick and quiet:
+/query ChanServ akick #nottor list
+/query ChanServ quiet #nottor list
+
+Example banning:
+*** ChanServ (services@services.oftc.net) has changed mode for #tor-project to      
+    +o weasel
+*** weasel (~weasel@anguilla.debian.or.at) has changed mode for #tor-project        
+    to +b *!*Moev@*.tor-irc.dnsbl.oftc.net
+*** weasel (~weasel@anguilla.debian.or.at) has kicked Moev off channel              
+    #tor-project: Moev
+*** weasel (~weasel@anguilla.debian.or.at) has changed mode for #tor-project        
+    to -o weasel
 * DNS
 ** DNSSEC
-   libraries, from pawal: 
-   "ja, i unbound ingår ett, och har du ldns, båda från nlnet labs"
+ns.adb-centralen.se uses knot for DNSSEC.
+
+Two handy scripts for creating ZSK and KSK for a zone and getting DS
+for a zone:
+
+[root@ns /usr/local/etc/knot]# cat mkdnsseckeys.sh
+#! /bin/sh
+
+ZONE=$1
+OUTDIR=/var/db/knot/keys
+
+dnssec-keygen -K $OUTDIR -3 -a RSASHA256 -b 2048 $ZONE
+dnssec-keygen -K $OUTDIR -3 -a RSASHA256 -b 2048 -f KSK $ZONE
+
+chmod g+r ${OUTDIR}/K${ZONE}*.key
+chmod g+r ${OUTDIR}/K${ZONE}*.private
+[root@ns /usr/local/etc/knot]# cat ./getds.sh
+#! /bin/sh
+
+ZONE=$1
+
+dig @193.10.5.87 dnskey $ZONE | dnssec-dsfromkey -1 -f - $ZONE
+dig @193.10.5.87 dnskey $ZONE | dnssec-dsfromkey -2 -f - $ZONE
+[root@ns /usr/local/etc/knot]# 
+
+When adding DS to parent zone, use digest type 2 (SHA256):
+
+[root@ns /usr/local/etc/knot]# ./getds.sh adb-centralen.se
+adb-centralen.se. IN DS 3787 8 1 A58AC95664AC1DD9168F31E80F00F8EA49DCB465
+adb-centralen.se. IN DS 3787 8 2 AAD386D929CB8432EA2E365C1872EA779F488C46C48B5F2E87859FF5B8DE31D6
+
+In this example, the keytag is 3787, the algorithm is 8 (RSA/SHA-256)
+and the digest type is 2 (SHA-256).
+
+
 ** dig
 *** segfault
     Running a shell in Emacs runing under usewithtor:
@@ -4403,6 +4932,7 @@ KAS VPN 109.105.106.4 dk-kas-fw.nordu.net
 
    For being able to present statistics on the global numbers of individual
    users/devices moving between several tenths of administrative domains
+** RFC3649 HighSpeed TCP for Large Congestion Windows
 * miredo
 * RIPE
 ** Links, hints, howto
@@ -21531,7 +22061,7 @@ mp-import:       afi ipv4.unicast {
                    from AS34244 193.243.183.71 at 193.243.183.73 accept AS34244;
                    from AS33885 193.243.183.72 at 193.243.183.73 accept AS-OWNIT;
                    from AS44123 193.243.183.78 at 193.243.183.73 accept AS44123;
-                   from AS42708 193.243.183.79 at 193.243.183.73 accept AS-PORTLANE;
+
                    from AS44581 193.243.183.81 at 193.243.183.73 accept AS-ALLTELE;
                    from AS50986 193.243.183.82 at 193.243.183.73 accept AS50986;
                    from AS20574 193.243.183.83 at 193.243.183.73 accept AS20574;
@@ -28166,6 +28696,48 @@ And if .lzma is problematic (fbsd 8.x), install archivers/gtar.
 ** portmaster with pkgng
 echo WITH_PKGNG=yes >> /etc/make.conf
 Now, portmaster -L should show packages installed by pkg (i think)
+** bhyve for virtualisation
+https://wiki.freebsd.org/bhyve
+cat /var/run/dmesg.boot | egrep POPCNT
+sudo kldload vmm
+echo vmm_load=YES >> /boot/loader.conf
+fetch ftp://ftp.freebsd.org/pub/FreeBSD/snapshots/VM-IMAGES/11.0-CURRENT/amd64/Latest/FreeBSD-11.0-CURRENT-amd64.raw.xz
+unxz FreeBSD-11.0-CURRENT-amd64.raw.xz
+http://svnweb.freebsd.org/base/head/share/examples/bhyve/vmrun.sh?view=log
+sudo sh ./vmrun.sh -d FreeBSD-11.0-CURRENT-amd64.raw vm0
+
+pkg install sysutils/grub2-bhyve
+http://saimei.acc.umu.se/debian-cd/8.2.0/amd64/iso-cd/debian-8.2.0-amd64-netinst.iso
+http://ftp.nl.debian.org/debian/dists/jessie/main/installer-amd64/current/images/SHA256SUMS
+https://www.monkeybrains.net/support/bhyve
+https://www.freebsd.org/doc/handbook/virtualization-host-bhyve.html
+
+echo if_tap_load=YES >> /boot/loader.conf
+echo net.link.tap.up_on_open=1 >> /etc/sysctl.conf
+
+truncate -s 16G debian82-0.img
+cat > debian82-0.device.map << EOF
+(hd0) ./debian82-0.img
+(cd0) ./debian-8.2.0-amd64-netinst.iso
+EOF
+sudo grub-bhyve -m debian82-0.device.map -r cd0 -M 1024M debian82-0
+sudo bhyve -A -H -P -s 0:0,hostbridge -s 1:0,lpc -s 2:0,virtio-net,tap0 -s 3:0,virtio-blk,./debian82-0.img -s 4:0,ahci-cd,./debian-8.2.0-amd64-netinst.iso -l com1,stdio -c 4 -m 1024M debian82-0
+sudo bhyvectl --vm=debian82-0 --destroy
+
+installing debian on debian82-0
+root Yauwohk8, linus oqu5Kae6
+installing GRUB on /dev/vda
+exit installer
+sudo bhyvectl --vm=debian82-0 --destroy
+
+sudo grub-bhyve -m debian82-0.device.map -r hd0,msdos1 -M 1024M debian82-0
+sudo bhyve -A -H -P -s 0:0,hostbridge -s 1:0,lpc -s 2:0,virtio-net,tap0 -s 3:0,virtio-blk,./debian82-0.img -l com1,/dev/nmdm0A -c 4 -m 1024M debian82-0 &
+sudo cu -l /dev/nmdm0B -s 9600	# for console, type ~. to quit (beware of ssh using ~ too!)
+
+update-rc.d nfs-common disable
+update-rc.d rpcbind disable
+update-rc.d exim4 disable
+
 * EuroBonus
 EBB609964226
 * No-phone sig
@@ -28275,7 +28847,7 @@ origin:         AS44925
 mnt-by:         MNT-1984
 changed:        mordur@1984.is 20080505
 source:         RIPE
-* ComHem, Tegelbruksv.
+* ComHem router NETGEAR CG3100
 In NAT mode: 192.168.0.1
 In bridge mode: 192.168.100.1
 
@@ -28283,8 +28855,7 @@ user: admin
 password: ska11eper (or "password", if reset)
 
 tfn 0771-550000
-kundnr 60720308
-uppsagt till 2012-04-30
+kundnr ?60720308
 * macchanger
 ** view MAC
 Thu Jul 21 11:39:12 CEST 2011
@@ -29250,6 +29821,8 @@ ln+bgg@4711.se
 1995-01-26
 ** 2015.vinter.narcon.se
 grtrds72 el. gerran1: ananas
+** gitlab.labs.nic.cz
+ln5 / CRHVDAdzEDUZz0uJ5e
 * SUNET
 ** Mätdata Chalmers
 [[gnus:nnimap%2Bndn:INBOX#4E5BA90A.3030405@chalmers.se][Email from Tomas Olovsson: Re: Mätdata från SUNET?]]
@@ -29273,6 +29846,7 @@ grtrds72 el. gerran1: ananas
 * Firefox
 ** Add-ons
 Torbutton
+  extensions.torbutton.resize_windows -> false
 NoScript
   General: Scripts Globally Allowed: off 
   Appearance: Contextual -> Temporarily allow: checked
@@ -29286,6 +29860,10 @@ Cookie Whitelist, With Buttons
 Adblock Plus
 ?BetterPrivacy
 # try out
+privacy badger
+uBlock Origin
+Vanilla Cookie manager
+Edit with Emacs
 certificate patrol
 https finder
 ** freebsd
@@ -29782,6 +30360,9 @@ To make a new player be in the right group for playing ("user"), do
 https://segate.sunet.se/ linus@nordu.net S2qaEn2TTa4G
 fb "Lord Berusning" HeligaGudsModerVilketHugg! (born 1975-02-11)
 coursera.org "Fnoi Albrektsson" ln+coursera@4711.se BA1NjZUt
+- https://openexchangerates.org ln+oex@4711.se / Uhei9doo
+  api key c113305bc9684688b14ef413522facad
+  https://openexchangerates.org/api/latest.json?app_id=c113305bc9684688b14ef413522facad
 * mud
 proj% tt++
 * tpb
@@ -29827,11 +30408,16 @@ perf (linux only?) -- https://perf.wiki.kernel.org/index.php/Main_Page
 - 0.8369 BTC at Bistamp at $305.10 on 2014-12-18, fee $1.28
 ** backing up wallet
 bitcoind backupwallet ~/ostick/wallet.tool.1
-
 ** bitcoind (https://github.com/bitcoin/bitcoin.git)
 https://en.bitcoin.it/wiki/Accounts_explained
 https://en.bitcoin.it/wiki/API_reference_(JSON-RPC)
 https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list
+
+HISTFILE= bash -
+bitcoin-cli walletpassphrase <passphrase> 10
+bitcoin-cli sendfrom <account> <btc-address> <amount> <local note> <note to rcpt>
+bitcoin-cli walletlock
+exit
 *** building
 NOTE: FreeBSD has a port net-p2p/bitcoin.
 
@@ -30070,7 +30656,7 @@ tool:src% ./bitcoind listtransactions '' 1
 ]
 *** sending 1.8 BTC to andy
 HISTFILE= bash -
-$ /u/src/bitcoin/src/bitcoind walletpassphrase '<passphrase>' 10
+$ bitcoin-cli walletpassphrase '<passphrase>' 10
 
 tool:~% /u/src/bitcoin/src/bitcoind sendtoaddress 189TCcDyJDYBvLXyyH5P4W5uCaWKJdo7SH 1.8 'andy #2'
 ff6e4fff10d89664a3c6836ac55e8126d0f8cb40d38e335338b96ee38f7042bf
@@ -31049,8 +31635,60 @@ t-mobile, e-plus, vodafone.de, o2-de
 * coreboot
 ** building
 apt-get install build-essential ncurses-dev 
+git clone http://review.coreboot.org/coreboot.git
+make menuconfig crossgcc-i386
+make
+*** output from building <2015-09-07 Mon>
+Version: rel-1.8.2-0-g33fbe13
+Fixed space: 0xe05b-0x10000  total: 8101  slack: 15  Percent slack: 0.2%
+16bit size:           34432
+32bit segmented size: 2269
+32bit flat size:      21443
+32bit flat init size: 41984
+Lowmem size:          2176
+f-segment var size:   1408
+  Linking out/rom16.o
+  Stripping out/rom16.strip.o
+  Linking out/rom32seg.o
+  Stripping out/rom32seg.strip.o
+  Linking out/rom.o
+  Prepping out/bios.bin.prep
+Total size: 106180  Fixed: 59552  Free: 24892 (used 81.0% of 128KiB rom)
+  Creating out/bios.bin.elf
+    CBFS       coreboot.rom
+    PAYLOAD    payloads/external/SeaBIOS/seabios/out/bios.bin.elf (compression: LZMA)
+    SeaBIOS    Wait up to 3000 ms for PS/2 keyboard controller initialization
+    CONFIG     .config
+    REVISION   build.h
+    CONFIG      payloads/external/SeaBIOS/seabios/.config
+    REVISION   payloads/external/SeaBIOS/seabios/out/version.c
+    CBFSPRINT  coreboot.rom
+
+coreboot.rom: 2048 kB, bootblocksize 1552, romsize 2097152, offset 0x0
+alignment: 64 bytes, architecture: x86
+
+Name                           Offset     Type         Size
+cmos.default                   0x0        cmos_default 256
+cmos_layout.bin                0x140      cmos_layout  1828
+fallback/dsdt.aml              0x8c0      raw          11896
+cpu_microcode_blob.bin         0x3780     microcode    94208
+etc/ps2-keyboard-spinup        0x1a800    raw          8
+config                         0x1a840    raw          49
+revision                       0x1a8c0    raw          569
+payload_config                 0x1ab40    raw          1451
+payload_revision               0x1b140    raw          41
+(empty)                        0x1b1c0    null         19864
+fallback/romstage              0x1ff80    stage        36748
+fallback/ramstage              0x28f80    stage        56118
+fallback/payload               0x36b00    payload      56085
+(empty)                        0x44680    null         1815320
+    HOSTCC     cbfstool/rmodtool.o
+    HOSTCC     cbfstool/rmodule.o
+    HOSTCC     cbfstool/rmodtool (link)
 ** flashing
 http://www.coreboot.org/Lenovo_x60x
+
+flashrom -p internal -w coreboot.rom -c <third suggested, ends in 98D iirc>
 *** web page content
      Patch flashrom to use RES1 SPI identification and spi_chip_write_1 for your flash chip, as well as change the flash chip model id to fit the RES1 command.
 
@@ -31086,7 +31724,7 @@ http://www.coreboot.org/Lenovo_x60x
         This will successfully overwrite the entire flash chip, including the last 64k that were write protected with the factory BIOS. 
 
 11.   Run bucts 0 
-*** doing stuff
+*** log of install on an x60, summer dev mtg munich
 probe_spi_res1: id 0x14
 
 apt-get install libpci-dev
@@ -31182,7 +31820,7 @@ Reading old flash chip contents... done.
 Erasing and writing flash chip... Erase/write done.
 Verifying flash... VERIFIED.
 root@amnesia:/home/amnesia/Persistent/coreboot# 
-** done
+** nvramtool -a (summer dev mtg munich)
 root@amnesia:/home/amnesia/Persistent/coreboot# src/coreboot/util/nvramtool/nvramtool -a
 boot_option = Fallback
 last_boot = Fallback
@@ -31289,31 +31927,45 @@ http://monsieurvuong.com
   6 x 2Gb RAM 150:-
   4 x 1Gb RAM 75:-
   7200:-
+- 1 x x60 1000:-
+- 2 x x60s 1000:-
+- 2 x battery 5200 300:-
+- 2 x 2Gb RAM 150:- 
 ** on the shelf
-x60 64bit: 1
-x60 32bit: 5
+x60 64bit: 0
+x60 32bit: 5 <-- needs update
+x60s 32bit: 0
 RAM 1GB: 4
-RAM 2GB: 6
-SSD 128GB (samsung 850 pro): 2
+RAM 2GB: 1
+SSD 128GB (samsung 850 pro): 0
 ** selling
 - [X] olof: x60 plus some RAM
-- <2015-01-08 Thu> promised aagbsn 3 x x60 with 2+1G, 150 euro each
-** processors
+- [X] <2015-01-08 Thu> promised aagbsn 3 x x60 with 2+1G, 150 euro each
+** spec
+see thinkwiki.org
+
+https://support.lenovo.com/us/en/documents/pd010033
+*** processors
 - model 14, T2400 @ 1.83Ghz
   address sizes   : 32 bits physical, 32 bits virtual
 - model 15, Core2 T5600 @ 1.83Ghz
   address sizes   : 36 bits physical, 48 bits virtual
-** RAM
-32bit with 4G says (dmesg):
+
+2MB onboard L2 cache
+*** RAM
+2 x PC2-5300 DDR2
+667 MHz SO-DIMM recommended
+
+My 32bit with 4G says (dmesg):
 [    0.000000] 2428MB HIGHMEM available.
 [    0.000000] 889MB LOWMEM available.
 
 which adds up to 3317 MB, and
 [    0.000000] Memory: 3349808K/3398136K available (4191K kernel code, 379K rwdata, 1284K rodata, 532K init, 588K bss, 48328K reserved, 2487176K highmem)
-** graphics chip
+*** graphics chip
 Intel 945GM
 UMA 128MB (max)
-** CMOS RAM
+*** CMOS RAM
 242 bytes
 * tails
 ** startup
@@ -31758,9 +32410,10 @@ socker
 salt
 fin olivolja
 2 klickar majonnäs
-* pengar hawai
-jun: $67 minus keps och tshirt
-lärka $75 minus tröja och muffinhatt
+* pengar
+linus skyldig juni: $67 (minus keps och tshirt)
+linus skyldig lärka: $75 (minus tröja och muffinhatt)
+juni skyldig linus: 1519:- (2569+469/2) för speldator
 * BIOS
 ** infected bios <2013-10-11 Fri>
 $ curl -v -O -x socks5h://localhost:9050/ http://offensive.io/bios.tar.bz                                      * About to connect() to proxy localhost port 9050 (#0)
@@ -32667,10 +33320,13 @@ former.
 - 
 
 * books
+** crypto
+- [X] A. Menezes, P. van Oorschot, and S. Vanstone. Handbook of Applied Cryptography. CRC Press, 1996.
+  [[file:doc/books/Handbook%20of%20Applied%20Cryptography%20(HAC)][file:~/doc/books/Handbook of Applied Cryptography (HAC)]]
 ** murder in sammarkand, craig murray
 - [X] "The thing with tyranny is that, if you don't try to fight it when it starts, it very quickly gets too strong for you." C. Murray
 - [X] "If you achieve a voice that will be heard, you should use it to speak up for the voiceless and oppressed." C. Murray
-- [ ] "If you possess any power or authority, you must strive to use it to help and to empower the powerless." C. Murray
+- [X] "If you possess any power or authority, you must strive to use it to help and to empower the powerless." C. Murray
 * images
 ** mm.adb-centralen.se
 SHA1 (.priv/img) = 706ed9d23d4cdf0309dee44fa9e9dc41eea1b1b9
@@ -33458,6 +34114,8 @@ For scaling images, imagemagick can be used
 
 apt-get install imagemagick
 convert IMG_2749.JPG -resize 25% envelope.png
+** Converting SVG to PNG
+
 * misc
 * lawicel
 ** [[gnus:nnimap%2Badbc:INBOX#0E9248B096194D0DA2BA71472E9B91D8@INTSERV7B][order 35657]] <2014-03-10 Mon>
@@ -33551,6 +34209,8 @@ http://www.wdc.com/global/products/specs/?driveID=1052
 - cosmos
 - puppet
 - salt
+
+- multiverse (cosmos+puppet+fabric)
 * SIF
 ** sif13
 *** first session
@@ -34011,7 +34671,8 @@ apt-get install texlive-latex-base texlive-latex-base-doc texlive-lang-european
 * pictures
 https://www.debian-administration.org/article/62/Working_with_images_from_the_command_line
 convert -resize 300x200 in.jpg out.jpg  # part of imagemagick
-* flogsta sdd fuckup
+* flogsta messing up
+** sdd fuckup
 flogsta:~% find . -name fisk\*
 find: `./ostick/lost+found': Permission denied
 find: `./tstick/lost+found': Permission denied
@@ -34038,6 +34699,11 @@ Message from syslogd@flogsta at Nov 11 17:40:03 ...
  kernel:[222655.596010] EIP: [<c1433735>] _raw_spin_lock+0x5/0x30 SS:ESP 0068:f3c85dc0
 ^C
 flogsta:~% 
+** kernel NULL ptr deref after resume <2015-08-06 Thu>
+ kernel:[  931.981172] EIP: [<c10acf36>] __refrigerator+0x56/0x130 SS:ESP 0068:c003fe64
+Aug  6 08:32:02 flogsta kernel: [  931.977586] BUG: unable to handle kernel NULL pointer dereference at   (null)
+Aug  6 08:32:02 flogsta kernel: [  931.977995] IP: [<c10acf36>] __refrigerator+0x56/0x130
+Aug  6 08:32:02 flogsta kernel: [  931.978285] *pdpt = 0000000033167001 *pde = 0000000000000000
 * bostad
 ** johan enbergs v. 22
 http://svenskamaklarhuset.se/objekt/?gid=OBJ22213_1375685726
@@ -34056,3 +34722,606 @@ totoro.hack.org
 * leap.se
 ** tor dev valencia
 <2015-03-06 Fri> met with meskio / ruben
+* document formats and converting
+- unoconv (libreoffice)
+* dns
+** TSIG
+To generate a shared secret for TSIG:
+
+    $ dnssec-keygen -a hmac-sha256 -b 256 -n HOST <name>
+
+where <name> is a string. Suggested form for the name is
+
+  <our-end>-<their-end>
+
+For example
+
+  adb-centralen.se-fatburen.org
+
+Keys end up in a file on the form K<name>.<some-numbers>.key and .private.
+** DNSCheck utan JS
+https://github.com/dotse/zonemaster/blob/master/docs/documentation/installation.md
+* services
+** POTS conf call / voice bridge
+- +46 8 500 050 00
+- 08-40304946 http://www.voicebridge.de/en/numbers.html
+* flytt
+** offerter
+- flyttkonsumenterna.se säger att 3 man + bil kostar 1300-1600/h och
+  att en 3:a tar 7-9h
+
+- "AJ Express-Service" <kundtjanst@expresservice.nu>
+6h flytt utan packn med städ: ~11k, se [[gnus:nnimap%2Badbc:INBOX#DUB408-EAS3266502A9757008A07648D7D8F50@phx.gbl][mejlsvar]]
+- info@flyttamedoss.nu
+skickat <2015-03-30 Mon>
+Jag undrar om jag kan få en offert på packning, flytt och flyttstäd av
+en 3:a på 67 kvm, inkl. kartonger.
+
+Flytt från Midsommarkransen, våning 2 med stor hiss, till Farsta,
+våning 9+10 med liten hiss.
+
+Datum 29/4, 30/4 el 1/5.
+- flyttifrman 4 ess ab, farsta
+08-446 824 05
+* python
+** ssl / tls
+python 2.7.9 has trouble finding the root certs in /etc/ssl/certs
+(from debian package ca-certificates)
+
+pip takes `--cert' if you can find out which PEM file has the
+necessary cert
+** enumerate
+for i, line in enumerate(open(filename, 'r'))
+* docker.sunet.se
+** client cert
+laptop:sunet-ops$ scripts/mkreq linus
+
+server:/# touch /etc/docker/certs.d/docker.sunet.se/client.key
+server:/# chmod 600 /etc/docker/certs.d/docker.sunet.se/client.key
+server:/# cat > /etc/docker/certs.d/docker.sunet.se/client.key <<EOF
+-----BEGIN PRIVATE KEY-----
+<key printed by mkreq>
+-----END PRIVATE KEY-----
+EOF
+
+laptop:sunet-ops$ ./bump-tag
+
+Download cert from http://ca.sunet.se/infra/ and put it in
+server:/etc/docker/certs.d/docker.sunet.se/client.cert.
+* startcom
+** ssl_error_handshake_failure_alert at authn
+- do you have the client cert in your browser?
+  - https://www.startssl.com/?app=25#10
+  - FF: Edit -> Preferences -> Advanced -> Certificates -> View
+    Certificates -> Your Certificates -> Import
+    ~linus/ostick/startcom-linus@nordberg.se-20150109.p12
+* pgp fp
+hannes@mehnert.org
+hannes@berlin.ccc.de
+0xdf7c28ee 11b5 4642 49b5 bd85 8fff 6328 bc89 6588
+* CII
+** madrid participants
+Allen Gunn <gunner@aspirationtech.org>,  Beatrice Martini <beatrice@aspirationtech.org>, Ben Laurie <benl@google.com>
+
+pascal.cuoq@trust-in-soft.com
+Tom Ritter <tom@ritter.vg>
+Sandy Clark <saender@seas.upenn.edu>
+Kareem Khazem <karkhaz@karkhaz.com>
+"sacha@greenhost.nl van Geffen" <sacha@greenhost.nl>
+Hannes Mehnert <hannes@mehnert.org>
+Zooko Wilcox-OHearn <zooko@leastauthority.com>
+Ed Maste <emaste@freebsd.org>, 
+Matt Caswell <matt@openssl.org>
+Adam Chlipala <adamc@csail.mit.edu>,
+Florian Weimer <fweimer@redhat.com>
+dkg@aclu.org
+Daniel Meredith <blah@opentechfund.org>, 
+Rich Felker <dalias@libc.org>
+Holger Levsen <holger@layer-acht.org>
+Alexander Lucas <alexl@amazon.com>
+Hanno Böck <hanno@hboeck.de>
+"Richard A. Bennett" <richard.bennett@gs.com>
+Ben Delaware <bendy@csail.mit.edu>
+Chris Wysopal <cwysopal@veracode.com>
+Gilles Barthe <gjbarthe@gmail.com>
+David Drysdale <drysdale@google.com>
+Linus Nordberg <linus@nordberg.se>
+Kate Stewart <kstewart@linuxfoundation.org>
+Lunar <lunar@anargeek.net>
+Benjamin Nickolls <ben@mysociety.org>
+david <david@numm.org>
+Robert Seacord <rcseacord@gmail.com>
+Solar Designer <solar@openwall.com>
+Emily Ratliff <eratliff@linuxfoundation.org>
+"David A. Wheeler" <dwheeler@dwheeler.com>
+Kenn White <kenn@kennwhite.com>
+"David D. LaBianca" <David.LaBianca@gs.com>
+dankohn@linux.com
+micah <micah@riseup.net>
+Trevor Perrin <trevp@trevp.net>
+Martin Chapman <martin.chapman@kcl.ac.uk>
+ch3root@openwall.com
+Jun Matsushita <jun@iilab.org>
+Pascal Kesseli <pascal.kesseli@stx.ox.ac.uk>
+"Graham Holmes (gholmes)" <gholmes@cisco.com>
+Katrina Joyce <katrinacjoyce@gmail.com>
+* cryptech
+** ietf prague
+*** pkcs11-proxy bug
+31.133.134.244
+31.133.131.250
+
+pkcs11-proxy on a 32-bit system, requests from a 64-bit system
+hsmbully can probably be used to trigger the bug
+
+linus@f0:~/usr/src/pkcs11-proxy$ dpkg -L opensc|egrep spy
+/usr/lib/x86_64-linux-gnu/pkcs11-spy.so
+https://www.opensc-project.org/opensc/wiki/UsingOpensc
+
+PKCS11SPY=/usr/lib/pkcs11/opensc-pkcs11.so \
+PKCS11SPY_OUTPUT=logfile \
+some-command
+
+root@devp:~# uname -a
+Linux devp 3.13.0-57-generic #95-Ubuntu SMP Fri Jun 19 09:28:15 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+linus@devp:~/usr/src/pkcs11-proxy$ env PKCS11SPY=/usr/lib/softhsm/libsofthsm.so PKCS11SPY_OUTPUT=spy.log PKCS11_PROXY_TLS_PSK_FILE="psk.txt" PKCS11_DAEMON_SOCKET="tls://109.105.111.63:4444" ./pkcs11-daemon /usr/lib/x86_64-linux-gnu/pkcs11-spy.so
+
+linus@f0:~/usr/src/pkcs11-proxy$ uname -a
+Linux f0 3.13.0-49-generic #83-Ubuntu SMP Fri Apr 10 20:11:33 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+linus@f0:~/usr/src/pkcs11-proxy$ env PKCS11SPY=o/libpkcs11-proxy.so PKCS11SPY_OUTPUT=spy.log PKCS11_PROXY_TLS_PSK_FILE="psk.txt" PKCS11_PROXY_SOCKET="tls://109.105.111.63:4444" pkcs11-tool --module /usr/lib/x86_64-linux-gnu/pkcs11-spy.so -L Available
+
+RSA keygen should break things:
+64-bit system sends modulo bits as 8 bytes, which is wrong for the
+receiving 32-bit system.
+
+pkcs11-tool:
+
+  -l, --login                   Log into the token first
+  -p, --pin <arg>               Supply User PIN on the command line (if used in scripts: careful!)
+      --so-pin <arg>            Supply SO PIN on the command line (if used in scripts: careful!)
+
+  -k, --keypairgen              Key pair generation
+      --key-type <arg>          Specify the type and length of the key to create, for example rsa:1024 or EC:prime256v1
+
+Run as root, for SoftHSM permission issues:
+
+env PKCS11SPY=/usr/lib/softhsm/libsofthsm.so
+PKCS11SPY_OUTPUT=/tmp/spy.log
+PKCS11_PROXY_TLS_PSK_FILE=/home/linus/usr/src/pkcs11-proxy/psk.txt
+PKCS11_DAEMON_SOCKET="tls://109.105.111.63:4444"
+/home/linus/usr/src/pkcs11-proxy/pkcs11-daemon
+/usr/lib/x86_64-linux-gnu/pkcs11-spy.so
+
+32bit vm from leif: 
+ssh root@130.242.125.89
+
+root@p11test:/home/linus# vi /etc/softhsm/softhsm.conf 
+root@p11test:/home/linus# softhsm --init-token --slot 0 --label ln --pin 0000 --so-pin 0000
+The token has been initialized.
+
+env PKCS11SPY=/usr/lib/softhsm/libsofthsm.so \
+PKCS11SPY_OUTPUT=/tmp/spy.log \
+PKCS11_PROXY_TLS_PSK_FILE=/root/psk.txt \
+PKCS11_DAEMON_SOCKET="tls://130.242.125.89:4444" \
+/usr/local/bin/pkcs11-daemon \
+/usr/lib/i386-linux-gnu/pkcs11-spy.so
+
+cat psk.txt
+psk:e19710bf2ef0a65bfa9b1c3012ca6c17
+
+linus@f0:~/usr/src/pkcs11-proxy$ env PKCS11SPY=o/libpkcs11-proxy.so PKCS11SPY_OUTPUT
+=spy.log PKCS11_PROXY_TLS_PSK_FILE=psk.txt PKCS11_PROXY_SOCKET=tls://130.242.125.89:
+4444 pkcs11-tool --module /usr/lib/x86_64-linux-gnu/pkcs11-spy.so -l -O --slot 0 --i
+d aaaa -p 0000
+Public Key Object; RSA 2048 bits
+  label:      ln
+  ID:         aaaa
+  Usage:      encrypt, verify, wrap
+Private Key Object; RSA
+  label:      ln
+  ID:         aaaa
+  Usage:      decrypt, sign, unwrap
+Public Key Object; RSA 1024 bits
+  label:      ln
+  ID:         aaaa
+  Usage:      encrypt, verify, wrap
+Private Key Object; RSA
+  label:      ln
+  ID:         aaaa
+  Usage:      decrypt, sign, unwrap
+Public Key Object; RSA 1024 bits
+  label:      ln
+  ID:         aaaa
+  Usage:      encrypt, verify, wrap
+
+opendnssec (req libldns-dev, libxml1-dev) has libhsm, which test suite
+should do it
+
+DEBUG: C_GetAttributeValue: enter
+DEBUG: prepared call: 27
+DEBUG: wrote 4 bytes
+DEBUG: wrote 40 bytes
+DEBUG: read 4 bytes
+DEBUG: read 36 bytes
+DEBUG: received response from daemon
+DEBUG: parsing response values   
+DEBUG: ret: 0x0
+DEBUG: C_GetAttributeValue: enter
+DEBUG: prepared call: 27
+DEBUG: wrote 4 bytes
+DEBUG: wrote 40 bytes
+DEBUG: read 4 bytes
+DEBUG: read 52 bytes
+DEBUG: received response from daemon
+DEBUG: parsing response values
+DEBUG: ret: 0x0
+DEBUG: C_GetAttributeValue: enter
+DEBUG: prepared call: 27
+DEBUG: wrote 4 bytes
+DEBUG: wrote 40 bytes
+DEBUG: read 4 bytes
+DEBUG: read 40 bytes
+DEBUG: received response from daemon
+DEBUG: parsing response values
+DEBUG: ret: 0x0
+DEBUG: C_GetAttributeValue: enter
+DEBUG: prepared call: 27
+DEBUG: wrote 4 bytes
+DEBUG: wrote 40 bytes
+DEBUG: read 4 bytes
+DEBUG: read 40 bytes
+DEBUG: received response from daemon
+DEBUG: parsing response values
+DEBUG: ret: 0x0
+DEBUG: C_GetAttributeValue: enter
+DEBUG: prepared call: 27
+DEBUG: wrote 4 bytes
+DEBUG: wrote 40 bytes
+DEBUG: read 4 bytes
+DEBUG: read 40 bytes
+DEBUG: received response from daemon
+DEBUG: parsing response values
+DEBUG: ret: 0x0
+DEBUG: C_Logout: enter
+DEBUG: prepared call: 22
+DEBUG: wrote 4 bytes
+DEBUG: wrote 17 bytes
+DEBUG: read 4 bytes
+DEBUG: read 8 bytes
+DEBUG: received response from daemon
+DEBUG: parsing response values
+DEBUG: ret: 0x0
+DEBUG: C_CloseSession: enter
+
+                        <Module>/usr/lib/x86_64-linux-gnu/pkcs11-spy.so</Module>
+
+Reproduce using ods-hsmutil:
+env PKCS11SPY=~/usr/src/pkcs11-proxy/o/libpkcs11-proxy.so PKCS11SPY_OUTPUT=/tmp/spy.log PKCS11_PROXY_TLS_PSK_FILE="psk.txt" PKCS11_PROXY_SOCKET="tcp://31.133.134.244:4567" ~/usr/bin/ods-hsmutil dnskey 470d45ba6e4440c469a021bd7a60e9c8 foo 256 8
+
+[[file:usr/src/pkcs11-proxy/gck-rpc-dispatch.c::static%20CK_RV%20rpc_C_GetAttributeValue(CallState%20*%20cs)][file:usr/src/pkcs11-proxy/gck-rpc-dispatch.c::static CK_RV rpc_C_GetAttributeValue(CallState * cs)]]
+[[file:usr/src/pkcs11-proxy/gck-rpc-dispatch.c::proto_read_attribute_buffer(CallState%20*%20cs,%20CK_ATTRIBUTE_PTR%20*%20result,][file:usr/src/pkcs11-proxy/gck-rpc-dispatch.c::proto_read_attribute_buffer(CallState * cs, CK_ATTRIBUTE_PTR * result,]]
+
+[[file:usr/src/pkcs11-proxy/egg-buffer.c::egg_buffer_get_uint64(EggBuffer%20*%20buffer,%20size_t%20offset,][file:usr/src/pkcs11-proxy/egg-buffer.c::egg_buffer_get_uint64(EggBuffer * buffer, size_t offset,]]
+seems to have a severe bug, resulting in offset not being advanced. call sites:
+- [[file:usr/src/pkcs11-proxy/gck-rpc-message.c::if%20(!egg_buffer_get_uint64(&msg->buffer,%20msg->parsed,%20&msg->parsed,%20&v))][file:usr/src/pkcs11-proxy/gck-rpc-message.c::if (!egg_buffer_get_uint64(&msg->buffer, msg->parsed, &msg->parsed, &v))]]
+- [[file:usr/src/pkcs11-proxy/gck-rpc-module.c::egg_buffer_get_uint64(&msg->buffer,%20msg->parsed,%20&msg->parsed,][file:usr/src/pkcs11-proxy/gck-rpc-module.c::egg_buffer_get_uint64(&msg->buffer, msg->parsed, &msg->parsed,]]
+
+
+root@novena-ventura-imitate:~# env PKCS11SPY=/usr/lib/libpkcs11.so PKCS11SPY_OUTPUT=/tmp/spy.log PKCS11_DAEMON_SOCKET="tcp://31.133.134.244:4567" /usr/local/bin/pkcs11-daemon /usr/lib/arm-linux-gnueabihf/pkcs11-spy.so 
+pkcs11.c:1820: hal_rsa_key_gen(&key, keybuf, sizeof(keybuf), keysize/8, public_exponent, (size_t) public_exponent_len) returned Unsupported key type or key length
+pkcs11.c:1825: CKR_FUNCTION_FAILED
+pkcs11.c:1820: hal_rsa_key_gen(&key, keybuf, sizeof(keybuf), keysize/8, public_exponent, (size_t) public_exponent_len) returned Unsupported key type or key length
+pkcs11.c:1825: CKR_FUNCTION_FAILED
+
+"ods-hsmutil dnskey" triggers the bug. "ods-hsmutil test" does not.
+If it doesn't find the key, it should print that (asking for "123"):
+Key not found: 123
+
+linus@f0:~/usr/src/pkcs11-proxy/o$ env PKCS11SPY=~/usr/src/pkcs11-proxy/o/libpkcs11-proxy.so PKCS11SPY_OUTPUT=/tmp/spy.log PKCS11_PROXY_SOCKET="tcp://31.133.131.250:4567" /usr/bin/ods-hsmutil -c ~/usr/etc/opendnssec/conf.xml dnskey c2f7b5402cdc4d6daf72b3c0b2801e10 foo
+...
+DEBUG: C_GetAttributeValue: enter
+DEBUG: prepared call: 27
+DEBUG: wrote 4 bytes
+DEBUG: wrote 40 bytes
+DEBUG: read 4 bytes
+DEBUG: read 40 bytes
+DEBUG: call_send_recv: len=40; debugbuf: 0000001b000000036141750000000100000100010000000400000004000000000000000000000000
+DEBUG: received response from daemon
+DEBUG: parsing response values
+DEBUG: ret: 0x0
+DEBUG: C_Logout: enter
+...
+
+15: C_GetAttributeValue
+2015-07-20 14:02:38.497
+[in] hSession = 0x13
+[in] hObject = 0x80000015
+[in] pTemplate[1]:
+    CKA_KEY_TYPE          00007ffdf9381a98 / 8
+[out] pTemplate[1]:
+    CKA_KEY_TYPE          Value 7F6800000000 not found for type CK_KEY_TYPE
+Returned:  0 CKR_OK
+
+This is what it looks like when it succeeds:
+linus@p11test:~$ PKCS11SPY=/usr/local/lib/libpkcs11-proxy.so PKCS11SPY_OUTPUT=~/spy.log PKCS11_PROXY_SOCKET="tcp://31.133.131.250:4567" /usr/bin/ods-hsmutil -c ~/usr/etc/opendnssec/conf.xml dnskey c2f7b5402cdc4d6daf72b3c0b2801e10 foo
+foo.    3600    IN      DNSKEY  256 3 5 AwEAAbzergn3QKN3zNE8owiL/wFJ0Z9OZDcdpGcwPkiYrVFBlky+phanwacvvfKYt7dz9jK/+/DfwdQKat9cb6ydFsyDoepHPFvUkcEl2L4sdvzq5VpqnBiLFc/fuqYkfhJU34uVI3kYxWBAvq0FTxrATSwmr3mYx9F7FyXbbB+gb3P1eDt/SHIILqmxBcyMo+Eo1N51ngTsRwJ8dyfB6/UaFaB3r8j07+xL5tP+x8iwJosyK7ln410NdFEjxpPgQDFa20106TF0MRKdE/gv7pc/no7pU9eiup3y2Qij2YySn8urtIq9Y+inpwaSmCpXfsydpVjBXxrPdp7Qx328cEbjKWqQzqPSVujXhybvYxOrwIAVTPUTrBJmgNGoIExH3ir+WpDyKJKZ8Y40zIbGzSNIpUvVEPlB43lxTJuwu8V+pczkvQfdf7QqKnjqvW1Q8fYPlu/moLLdxqJOXUmIUqebKWbFfhxcaaFG2ThNEhTLXFe6MS4wAtlGP8rfn9gmEAXdBACNqg2A6jzmWi5sPNE2fQyLJrOM6c2azswrDrt98s4WieN2axvRjIiCCzxYMgFJvPcd6NUHIXpg0FYbhdQq0TTso6wgLcOXeN7j0L4xyuVyboJWDgZ9SlALeOTRbk12b5fwP5RvCy4qmXsXucXNTSZ5u+9ncHrKgS8lduC1Ozyb ;{id = 51937 (zsk), size = 4096b}
+
+--------------------
+DEBUG: C_FindObjectsInit: enter
+DEBUG: prepared call: 29
+DEBUG: gck_rpc_message_write_attribute_array: ulValueLen=8
+DEBUG: gck_rpc_message_write_attribute_array: buffer=0001d00037561410000000380002000010008000820000000
+DEBUG: gck_rpc_message_write_attribute_array: ulValueLen=16
+DEBUG: gck_rpc_message_write_attribute_array: buffer=0001d00037561410000000380002000010008000820000000001210001000010c2f7b5402cdc4d6daf72b3c0b2801e10
+DEBUG: wrote 4 bytes
+DEBUG: wrote 73 bytes
+DEBUG: read 4 bytes
+DEBUG: read 8 bytes
+DEBUG: call_send_recv: len=8; debugbuf: 0000001d00000000
+DEBUG: received response from daemon
+DEBUG: parsing response values
+DEBUG: ret: 0x0
+--------
+12: C_FindObjectsInit
+2015-07-21 18:11:11.256
+[in] hSession = 0x38
+[in] pTemplate[2]:
+    CKA_CLASS             CKO_PUBLIC_KEY
+    CKA_ID                0000000000c487c0 / 16
+    00000000  C2 F7 B5 40 2C DC 4D 6D AF 72 B3 C0 B2 80 1E 10  ...@,.Mm.r......
+Returned:  0 CKR_OK
+--------------------
+
+* ietf93
+** snowden q&a
+https://www.youtube.com/watch?v=0NvsUXBCeVA
+- 15:30 divorse identity from persona
+- 18:00 the simplest path is the safest path
+- 22:30 the progress of human rights in a historich context [...] we
+  in the technological community are the vanguard of that progress
+  today
+
+** dnsop <2015-07-20 Mon>
+- [[file:usr/share/ietf/internet-drafts/draft-ietf-dnsop-5966bis-02.txt][draft-ietf-dnsop-5966bis-02 (DNS Transport over TCP - Implementation Requirements)]]
+  - [[file:usr/share/ietf/in-notes/rfc6891.txt][RFC6891 (Extension Mechanisms for DNS (EDNS(0)))]]
+  - q: ted lemon asks who would benefit from long lived sessions; my
+    comment: dnssec over tor
+  - [https] [[https://lists.torproject.org/pipermail/tor-dev/2012-January/003224.html][DNS/DNSSEC resolving in Tor (PoC implementation)]]
+  - read more: [[gnus:nnimap%2Badbc:lists.tor.dev#4F274CD8.80305@gmail.com][Email from Ondrej Mikle: Re: {tor-dev} Tor and DNS]]
+  - hiviah/ondrej points out https://tools.ietf.org/html/draft-shore-tls-dnssec-chain-extension-01
+- special use domain names, christian grothoff
+  - .bit
+    2011
+  - .exit
+    todo: find out why .exit is going away
+  - .gnu and .zkey for gnunets gns
+  - .i2p
+    2002/2003
+  - .tor
+    combining namecoin without proof of work
+** dane <2015-07-20 Mon>
+*** agenda https://datatracker.ietf.org/meeting/93/agenda/dane/
+What: DANE - DNS-based Authentication of Named Entities
+When: Monday Afternoon session IV (18:50-19:50)
+Where: Congress Hall II
+
+Agenda: (final)
+Administrivia
+Olafur / Warren
+10 minutes
+
+
+TLS extension for DNSSEC chain
+Shumon Huque
+https://tools.ietf.org/html/draft-shore-tls-dnssec-chain-extension-01
+15 minutes
+
+
+Client Certificates in DANE TLSA Records
+Shumon Huque / Viktor Dukhovni
+https://tools.ietf.org/html/draft-huque-dane-client-cert-01
+15 minutes
+
+
+Where to store SMIME and OPENPGP records? 
+Olafur for chairs
+10 minutes
+https://mailarchive.ietf.org/arch/msg/dane/GEQBu2I32RXA7ypPkkLdRioVT9k
+https://mailarchive.ietf.org/arch/msg/dane/iBnaWP8Au0bPrDbayXODq8Oe0P4
+
+*** https://tools.ietf.org/html/draft-shore-tls-dnssec-chain-extension-01
+- and also in tls wg: https://datatracker.ietf.org/meeting/93/agenda/tls/
+
+- addresses
+  - latency
+  - middlebox blocking
+  - "dnssec last mile problem" (stubs not doing validation)
+  - link layer (802.something, i.e. wifi) authn where dns requests are
+    not available
+- unresolved
+  - cnames, dname and maybe wildcards
+  - dkg: srv records
+  - pwouters: use binary format
+** tls, tuesday
+*** agenda https://datatracker.ietf.org/meeting/93/agenda/tls/
+IETF 93 TLS Working Group Meeting
+Date: Tuesday, July 21, 2015, 15:20-17:20 (CEST) and
+      Wednesday, July 22, 2015 9:00-11:30 (CEST)
+Location: Prague, Czech Republic
+Version: 1.1.1
+=======================================================
+Day 1
+1. Welcome, note takers, blue sheets, note well (10 min) [Chairs]
+2. TLS 1.3 - Overview of recent changes since last meeting (30 Min)
+- http://datatracker.ietf.org/doc/draft-ietf-tls-tls13/
+3. known configuration mechanism (20  min) [EKR]
+4. 0-RTT (20 min) [EKR]
+5. PSK and Resumption (20 min)  [EKR]
+6. Client auth (20 min)       [POPOV]
+
+Day 2
+1. Welcome, note takers, blue sheets, note well (5 min) [Chairs]
+2. TLS 1.3 day one recap (45 min) [EKR]
+3. Ciphersuite discussion  (30 min)  [EKR]
+4. 4492bis update (15 min)  [Nir]
+- https://datatracker.ietf.org/doc/draft-ietf-tls-rfc4492bis/
+5. Cached Info (15 min)
+- https://datatracker.ietf.org/doc/draft-ietf-tls-cached-info/
+
+***  Priority will be given to the discussion of existing work items
+***  It is possible that there may not be time to cover the topics below
+
+6. DNSSEC or DANE Validation chain (5min) [Shore/Barnes]
+- https://datatracker.ietf.org/doc/draft-shore-tls-dnssec-chain-extension/
+7. IEEE1609 Certs  (5min) [Kaiser]
+- https://datatracker.ietf.org/doc/draft-lonc-tls-certieee1609/
+8. ECDHE-PSK (5min) [Mattsson]
+- http://datatracker.ietf.org/doc/draft-mattsson-tls-ecdhe-psk-aead/
+9. Session Key Interface (5min) [Mattsson]
+- https://datatracker.ietf.org/doc/draft-cairns-tls-session-key-interface/
+10. Hybrid Quantum Safe Ciphersuites in TLS (5 min) [Whyte]
+** CFRG
+- William Whyte on post-quantom security withot breaking anything
+QSKE quantum-safe key exchange (expansion?)
+NTRU
+presents qs-ntor (with NTRU)
+"Our company" (security innovation) has patents on this 
+Patents usable under GPL
+eprint oct -14 https://eprint.iacr.org/2015/287
+draft-whyte-qsh-tls{12,13}
+choice of QSKE 
+
+q (openssh hacker): gpl only is problematic; a: not in public. let's
+talk afterwards.
+
+- signatures (edDSA) presented
+  - brown (dave (?) brown)
+  - hamburg by mike (US west coast)
+  - ladd by watson ladd
+  - edDSA tanja & djb
+  - liusvaara by the finn
+
+- djb going through signing operation in his python implemention of
+  all five proposals
+** hrpc -- human rights protocol considerations (research group)
+** PING <2015-07-23 Thu>
+*** header enrichments
+- mnot reporting about wc3 tag findings
+  - ISPs (?) adding http headres for billing purposes is pretty common
+    according to the head/chair of some geolocation / geofencing group
+    (giri mandayam)
+- MAC / wifi privacy
+  - experiments with randomized MAC addresses
+  - still linking on higher layers, dhcp identifiers
+
+** SAAG
+*** scanning tls certs in email settings
+- abuse@sba-research.org
+*** rich barnes, mozilla
+- measurement from a browser pov
+- 37% of page loads are over https (based on ~15% of mozilla users
+  opting in on measurement)
+- rsa 20% going down, 75% ecdh rising
+- rsa key sizes are 2k, like 99% since at least a year
+*** rich salz, akamai
+server side view
+- 
+** TRANS <2015-07-23 Thu>
+
+* w3c
+<wseltzer> Hi Linus, it might be possible to get secured w3c irc on irc.w3.org 6667
+* linser
+Linssort: Acuvue 2 (6st)
+
+Vänster öga:
+Styrka: +3.00
+Diameter: 14.0
+Baskurva: 8.7
+
+Höger öga:
+Styrka:+2.50 
+Diameter: 14.0
+Baskurva:8.7
+* medlemskap
+** charta2008
+lncharta2008@4711.se
+* GTS -- gts.geant.net
+This is Jerry Sobiesk's testbed.
+
+[[gnus:nnimap%2Bndn:INBOX#55897CDC.8060008@nordu.net][Email from Jerry Sobieski: Testbeds]]
+[[gnus:nnimap%2Bndn:INBOX#55E7FD84.1020606@nordu.net][Email from Jerry Sobieski: Project training]]
+
+http://gts.geant.net/
+username=ln, pw=eeChai8i (was: kuri6Aik)
+** use cases
+*** tor
+- controlled latency and throughput is useful for research, design,
+  implementation and testing of especially client behaviour in
+  constrained areas
+*** ct gossip
+- research on ct gossip propagation might require a complex setup of
+  host systems with controlled reachability and network properties
+- chaos monkey testing -- automated randomized killing of links,
+  network interfaces and hosts part of the log while monitoring it all
+*** linuxfoundation cii
+- experimantal general purpose public append-only untrusted log
+  (gaol.ct.nordu.net) for experiments with binary transparency
+  (reproducible builds) and tor consensus transparency
+*** eduid
+Systems such as eduID that are dependent on multiple component
+distributed over several host and data centers could use the testbed
+for reliability testing of new features or solutions without affecting
+the current testing environment.
+** project=CTrans
+vpn username=ln, pw=sheuTai6
+
+** tickets at support@gts.geant.net
+- [X] [[gnus:nnimap%2Badbc:sent-mail.2015-09#8737ypf2wv.fsf@nordberg.se][Email to support@gts.geant.net: Missing console URL]]
+- [ ] [[gnus:nnimap%2Badbc:sent-mail.2015-09#87y4ghdoaq.fsf@nordberg.se][Email to support@gts.geant.net: Missing private IP address on ]]
+- [X] [[gnus:nnimap%2Badbc:sent-mail.2015-09#87si6ocb0g.fsf@nordberg.se][Email to support@gts.geant.net: Missing access to my profile]]
+- [ ] [[gnus:nnimap%2Badbc:sent-mail.2015-09#87oahccaye.fsf@nordberg.se][Email to support@gts.geant.net: Missing VPN info]]
+- [X] [[gnus:nnimap%2Badbc:sent-mail.2015-09#87k2s0caus.fsf@nordberg.se][Email to support@gts.geant.net: Missing DSL script]]
+
+* computers
+vardagsrumsdata, lundberg: Intel NUC DN2820FYKH med Ubuntu + Kodi (f.d. XBMC)
+Alt., för youtube och netflix: chromecast
+* gentoo, hardened gentoo
+http://mirror.mdfnet.se/gentoo/releases/amd64/autobuilds/20150903/hardened/stage3-amd64-hardened-20150903.tar.bz2
+http://mirror.mdfnet.se/gentoo/releases/amd64/autobuilds/20150903/hardened/stage3-amd64-hardened-20150903.tar.bz2.DIGESTS.asc
+* sha-1 deprecation, danish researchers
+alexander brandbyge
+lars embøll nielssen
+sha1 has a space of 2^122
+hashclash attack reduces 2^80 to 2^61
+* qubes
+- "firewallvm" having a direct feed to pulseaudio decompression
+  running as root in dom0
+- by default EVERYTHING is logged to dom0 permanent storage
+* smtp privacy Received:
+** modifying MUST and MUST NOT
+> | If I were a particularly privacy-aware SMTP entity, would it make
+> sense | for me to strip an incoming email of Received headers that
+> were added by | others?  Or is that considered very rude?
+> 
+> I don't know how that'd be received. Simon, do you have an idea?
+
+It would be a harder sell, but I like the idea and we should try to
+come up with some wording that enables this.  The crux is that the
+current draft modify the following MUST in RFC 5321:
+
+   When an SMTP server receives a message for delivery or further
+   processing, it MUST insert trace ("time stamp" or "Received")
+   information at the beginning of the message content, as discussed in
+
+Removing other Received headers would modify this MUST NOT:
+
+   An Internet mail program MUST NOT change or delete a Received: line
+   that was previously added to the message header section.  SMTP
+
+So additional discussion is required.  I'm sure there would be
+objections to this (breaking old protocols yadayada), but since the
+purpose of the lines are primarily for debugging, I think those
+objections aren't strong.  Unless someone can present a case for the
+received headers actually provide some useful functionality.
+* games
+- undertale (steam)

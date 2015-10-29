@@ -1,9 +1,10 @@
 I'm travelling without some of my keys.
+
 I'll be able to read your message within a week.
-If you're very eager to reach me and won't email
-unencrypted, I can provide you with a fresh,
-untrustable key. Let me know if that's of
-interest to you.
+
+If you're very eager to reach me and won't email unencrypted, I can
+provide you with a temporary key signed by my ordinary one. Let me
+know if that's of interest to you.
 
 Thanks,
 Linus
