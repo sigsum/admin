@@ -1,8 +1,8 @@
-Curriculum Vitae           Linus Nordberg                   2014-05-19
+Curriculum Vitae           Linus Nordberg                   2015-06-22
 ----------------
 
 Name:           Linus Nordberg       Nationality:  Swedish
-Age:            45                   Location:     Stockholm
+Age:            46                   Location:     Stockholm
 
 Education:      High school diploma in Engineering
 
@@ -12,10 +12,10 @@ E-mail:         linus@nordberg.se
 Skills Summary
 --------------
 
-Software:       Strong C, C++ and Python programming and design
-		skills. Experienced in Erlang and Java
-		programming. Good understanding of other dynamic and
-		functional languages such as various Lisps.
+Software:       Strong C, C++, Python and Erlang programming and
+		design skills. Experienced in Java programming. Good
+		understanding of other dynamic and functional
+		languages such as various Lisps.
 
                 Thorough knowledge in network programming and network
                 protocol dissection and design. Good understanding of
