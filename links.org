@@ -1,3 +1,5 @@
+x60 hw io http://www.alldatasheet.com/datasheet-pdf/pdf/86219/NSC/PC87382.html
+x60 hw io http://www.thinkwiki.org/wiki/NS_PC87382
 moonshot spnego https://wiki.moonshot.ja.net/display/Moonshot/Small+Python+script+to+perform+HTTP+SPNEGO+authentication+in+command+line
 pax rip rop https://pax.grsecurity.net/docs/PaXTeam-H2HC15-RAP-RIP-ROP.pdf
 funny wl asterix https://twitter.com/SomersetBean/status/654283973347119104
