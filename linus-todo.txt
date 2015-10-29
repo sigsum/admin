@@ -21,12 +21,14 @@ Legend                                                (emacs -*-org-*- mode)
   - munin added to all systems
   - frontend-4 set up on m0
 ** IETF / W3C
-- . STK comments handled [oct 19]
+- . STK comments handled
 - - draft-ietf-trans-gossip nits fixed
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
 ** DFRI
-- - Zouaves application fixed and signed
+- - Zouaves application
+  - docs collected
+  - signed and sent
 - - PL-1278 payed [nov 04]
 - - leif asked about anycasting maatuska
 - - route object added for AS4224, announcing 194.0.61.0/24
