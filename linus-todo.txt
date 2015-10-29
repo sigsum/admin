@@ -21,37 +21,15 @@ Legend                                                (emacs -*-org-*- mode)
   - munin added to all systems
   - frontend-4 set up on m0
 ** IETF / W3C
-- o tjr's pull request merged (see [[file:p/ct/doc/gossip.org::*][gossip.org TODO]] for open issues) [oct 19]
-- o draft-ietf-trans-gossip with 6962bis perspective [oct 19]
 - . STK comments handled [oct 19]
-- o [[http://trac.tools.ietf.org/wg/trans/trac/query?status%3Dassigned&status%3Dnew&status%3Dreopened&component%3Dgossip&order%3Dpriority][open trac tickets]] handled [oct 19]
 - - draft-ietf-trans-gossip nits fixed
-- o Bryan Ford emailed with request for feedback on Yokohama draft [oct 20]
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
-- o draft-linus-trans-gossip-ct
-  o decide on where to put tickets
-  o create trac tickets or just fix the following
-    o comment from al [[file:p/ct/doc/email:al-cutter:draft-02.txt][file:~/p/ct/doc/email:al-cutter:draft-02.txt]]
-      o ok from al to copy his text to a ticket
-- X 6962bis max STH per time unit reviewed
-  - http://trac.tools.ietf.org/wg/trans/trac/ticket/58
-  - https://github.com/google/certificate-transparency-rfcs/commit/239e6a04ba1cbd0d5a9681d905a8104c98db874d
 ** Sysadm
-- o three jails moved from tex
-  - len
-  - mail
-  - retrograde
 ** DFRI
 - - Zouaves application fixed and signed
 - - PL-1278 payed [nov 04]
-- o 2 x http://www.sthix.net/join.php print, scan and send
-- o EDRi invoice payed [oct 14]
-- o STHIX invoice payed
 - - leif asked about anycasting maatuska
 - - route object added for AS4224, announcing 194.0.61.0/24
-- o bibblerian slides [oct 4]
-- o PL payed [oct 5]
-- o obe payed [oct 5]
 - . ipv6 to sto4
 - . rewrite dfriadm git repo to remove register
   - [X] andreas
@@ -64,10 +42,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - https://dfri.net/ running again
 ** Misc
 - - phw's exit scanner running in jail on ioctl
-- o EUC2015 invoice investigated [oct 16]
-- o TBB nightlies [oct 16]
-    <GeKo> could you start the whole procedure with c88cf009396bac20601b2de35eba2d9d98905438 ?
-- o ilja replied to re CT talk
 * Soon (within a month)
 ** Dev
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
@@ -149,7 +123,6 @@ Legend                                                (emacs -*-org-*- mode)
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
 ** IETF
-- o transparency gossip draft started, co-authors roped in (dkg, benl)
 - - SAML naming of AAA entities reviewed for ABFAB
      [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-naming-07.txt]]
 - - jaris tools discussed
