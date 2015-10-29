@@ -1,6 +1,7 @@
 .~
 .bash_history
 .cache
+.caff
 .compiz
 .config
 .emacs.d
@@ -46,3 +47,4 @@ tstick
 ostick
 u
 usr
+tor-browser*

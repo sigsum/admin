@@ -15,6 +15,9 @@ shopt -s histappend
 HISTFILESIZE=10000
 HISTSIZE=10000
 
+unset LC_PAPER
+unset LC_MEASUREMENT
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -72,6 +75,7 @@ export GPG_TTY=$(tty)
 #function dmalloc { eval `command dmalloc -b $*`; }
 
 alias antiexcel='python /usr/local/share/examples/py-excelerator/xls2txt.py'
+alias curl-tor='curl -A "" -x socks4a://127.0.0.1:9050/'
 #alias ehlo='ssh -L 8080:127.0.0.1:8080 -i ~/ustick/.ssh/keys/e -p 7000 localhost'
 alias ehlo-root='ssh -i ~/.ssh/keys/e2 -p 4700 root@localhost'
 alias ext='sockstat -46'
@@ -97,12 +101,15 @@ alias tunnel-irc-tor='torify ssh -NfL 6667:lntest:6667 banksy.nordberg.se'
 alias tunnel-jabber='ssh -K -NfL 5222:lntest:5222 banksy.nordberg.se'
 alias tunnel-jabber-web='ssh -Nf -L 5280:accept:5280 accept.adb-centralen.se'
 #alias tunnel-nordberg-mail='ssh -Nf -L 1243:localhost:143 -L 1126:localhost:25 lnmail.nordberg.se && echo "(1243, 1126) -> imap.nordberg.se:(143, 25)"'
+alias tunnel-munin-ndn='ssh -NfL 8089:localhost:80 munin.nordu.net'
+alias tunnel-appendto-sign1='ssh -NfL 22001:sign-1.urd.appendto.org:22 statler.nordu.net'
+alias tunnel-appendto-sign2='ssh -NfL 22002:sign-2.urd.appendto.org:22 statler.nordu.net'
 alias tunnel-nordberg-mail='ssh -Nf -L 1126:localhost:25 lnmail.nordberg.se && echo "1126 -> imap.nordberg.se:25"'
 alias tunnel-proxy='ssh -Nf -L 8080:localhost:8080 mgv.nordberg.se && echo "8080 -> mgv.nordberg.se:8080"'
 alias tunnel-rs0='ssh -NfL 7001:10.3.3.1:22 mm.adb-centralen.se'
 alias tunnel-rs0web='ssh -NfL 4780:localhost:4780 rs0.dfri.net; fixme'
 alias tunnel-slime='ssh -Nf -L 4711:localhost:4711 lntest.nordberg.se'
-alias tunnel-sieve='ssh -Nf -L 2000:lnmail:2000 banksy.nordberg.se && echo "2000 -> lnmail.nordberg.se:2000"'
+alias tunnel-sieve='ssh -Nf -L 4190:imap.adb-centralen.se:4190 ioctl.adb-centralen.se'
 #alias whois='whois -h geektools.com'
 alias xmpp='xmpp-client'
 alias xmpp-ndn='xmpp-client -config-file ~/tstick/.xmpp-client.ndn'

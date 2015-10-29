@@ -17,12 +17,15 @@ erik: +46 8 31 66 03; +46 70 752 34 11; 1425
 fl: +46708326202; 
 frank: +46 73 071 49 85; 
 grtrd: +46 70 789 28 31; 
+harmony: ricochet:zrdcwq52r7alm7ni
 helen: +46 73 924 84 64;
 helix: +46722603430;
 iha: +46708628490;
 jas: +46708458602;
 jn: +46 70 757 30 36;
-john: +46708447177;
+Jocke Palmkvist: 0706-465792;
+john?: +46708447177;
+john.ndn: irc:uzumak1
 juni: +46 735 16 25 04;
 kenta macken: +46708394980;
 kenta sjöberg macken: +46 73 506 41 71;
@@ -53,4 +56,5 @@ rydekull: +46 70 240 32 23;
 sanna (lars): +46 70 444 61 75; +46 8 615 06 46;
 sas scb: +45 32 32 66 33; +45 70 10 20 00
 simon: +46 73 962 69 79; 
+special: ricochet:rs7ce36jsj24ogfw
 tege: 0736696135; 

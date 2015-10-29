@@ -1,3 +1,19 @@
 * flights
    NORDBERG/JUNIMRS 23JUN ARN LIS
    NORDBERG/LARKAMRS 23JUN ARN LIS
+
+grtrd JUN 20 09:10 ARN 11:25 FRA 13:00 LIS 15:00
+      JUL 06 09:10 ARN 14:25
+* hotels
+** Residencial Camões
+Com os melhores cumprimentos
+R. Arlapen
+Residencial Camões
+Endereço:
+Tv. Do Poço da Cidade, nº38
+1º Esq/2º - Bairro Alto
+1200 - 344 Lisboa - Portugal
+contactos:
+Tel: (00351) 213 467 510
+(00351) 213 256 771/2/3
+Fax: (00351) 21 346 63 61

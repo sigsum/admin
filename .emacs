@@ -223,7 +223,7 @@
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 ;; load extra stuff
-(autoload 'python-mode "python-mode" "Mode for editing Python source files")
+;(autoload 'python-mode "python-mode" "Mode for editing Python source files")
 (autoload 'ses-mode "ses.el" "Spreadsheet mode" t)
 ;(require 'planner)
 
@@ -326,14 +326,26 @@
  '(current-language-environment "UTF-8")
  '(dabbrev-upcase-means-case-search t)
  '(diary-abbreviated-year-flag nil)
- '(diary-date-forms (quote ((year "-" month "-" day "[^0-9]") (month "/" day "[^/0-9]") (month "/" day "/" year "[^0-9]") (monthname " *" day "[^,0-9]") (monthname " *" day ", *" year "[^0-9]") (dayname "\\W"))))
+ '(diary-date-forms
+   (quote
+    ((year "-" month "-" day "[^0-9]")
+     (month "/" day "[^/0-9]")
+     (month "/" day "/" year "[^0-9]")
+     (monthname " *" day "[^,0-9]")
+     (monthname " *" day ", *" year "[^0-9]")
+     (dayname "\\W"))))
  '(diary-hook (quote (appt-make-list)))
  '(diary-mail-addr "linus@nordberg.se")
  '(dired-dwim-target t)
  '(display-time-24hr-format t)
  '(display-time-day-and-date t)
  '(display-time-format "%Y-%m-%d %H:%M")
- '(erc-autojoin-channels-alist (quote (("luth.se" "#isp" "#sunet" "#sthix") ("#tor-status" "#epfsug" "#dfri-admin" "#tor-internal" "#tpo-admin" "#torservers" "#tor-dev" "#tor-ipv6" "#hackjunta" "#cryptodotis" "#nottor" "#tor" "#tor-bots" "#dfri_se" "#tor-se" "#libevent") ("freenode.net" "#sparvnastet" "#edri" "#krbdev") ("telecomix.org" "#telecomix"))))
+ '(erc-autojoin-channels-alist
+   (quote
+    (("luth.se" "#isp" "#sunet" "#sthix")
+     ("#tor-status" "#epfsug" "#dfri-admin" "#tor-internal" "#tpo-admin" "#torservers" "#tor-dev" "#tor-ipv6" "#hackjunta" "#cryptodotis" "#nottor" "#tor" "#tor-bots" "#dfri_se" "#tor-se" "#libevent")
+     ("freenode.net" "#sparvnastet" "#edri" "#krbdev")
+     ("telecomix.org" "#telecomix"))))
  '(erc-autojoin-mode t)
  '(erc-hide-list nil)
  '(erc-join-buffer (quote window-noselect))
@@ -345,7 +357,9 @@
  '(erc-server-reconnect-timeout 10)
  '(erc-show-channel-key-p nil)
  '(erc-track-exclude nil)
- '(erc-track-exclude-types (quote ("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE" "333" "353")))
+ '(erc-track-exclude-types
+   (quote
+    ("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE" "333" "353")))
  '(erc-track-shorten-aggressively t)
  '(global-font-lock-mode t nil (font-lock))
  '(gnus-agent-go-online t)
@@ -356,14 +370,19 @@
  '(gnus-auto-expirable-newsgroups "adbc:\\(lists\\.\\|sys\\|spam\\)")
  '(gnus-buttonized-mime-types (quote ("multipart/encrypted" "multipart/signed")))
  '(gnus-gcc-externalize-attachments (quote all))
- '(gnus-group-posting-charset-alist (quote ((message-this-is-mail nil nil) (message-this-is-news nil t))))
+ '(gnus-group-posting-charset-alist
+   (quote
+    ((message-this-is-mail nil nil)
+     (message-this-is-news nil t))))
  '(gnus-group-use-permanent-levels 2)
  '(gnus-inhibit-images t)
  '(gnus-keep-same-level (quote best))
  '(gnus-play-startup-jingle t)
  '(gnus-select-article-hook (quote (gnus-agent-fetch-selected-article)))
  '(gnus-simplify-ignored-prefixes "^(SV|VB):")
- '(gnus-simplify-subject-functions (quote (gnus-simplify-subject-re gnus-simplify-subject-fuzzy)))
+ '(gnus-simplify-subject-functions
+   (quote
+    (gnus-simplify-subject-re gnus-simplify-subject-fuzzy)))
  '(gnus-summary-resend-default-address nil)
  '(gnus-suppress-duplicates t)
  '(gnus-treat-body-boundary (quote head))
@@ -371,16 +390,25 @@
  '(gnus-treat-x-pgp-sig (quote head))
  '(gnus-use-full-window nil)
  '(gnus-user-agent (quote (gnus)))
- '(gnutls-trustfiles (quote ("/etc/ssl/certs/ca-certificates.crt" "/etc/pki/tls/certs/ca-bundle.crt" "/etc/ssl/ca-bundle.pem" "/usr/ssl/certs/ca-bundle.crt" "/home/amnesia/Persistent/linus/nordberg-ca.crt")))
+ '(gnutls-trustfiles
+   (quote
+    ("/etc/ssl/certs/ca-certificates.crt" "/etc/pki/tls/certs/ca-bundle.crt" "/etc/ssl/ca-bundle.pem" "/usr/ssl/certs/ca-bundle.crt" "/home/amnesia/Persistent/linus/nordberg-ca.crt")))
  '(grep-command "grep -nH -Ed skip -e ")
  '(ido-case-fold t)
  '(ido-create-new-buffer (quote always))
  '(ido-enable-regexp t)
  '(ido-mode (quote buffer) nil (ido))
- '(imap-ssl-program (quote ("gnutls-cli -p %p --x509cafile ~/nordberg-ca.crt %s")))
+ '(imap-ssl-program
+   (quote
+    ("gnutls-cli -p %p --x509cafile ~/nordberg-ca.crt %s")))
  '(indent-tabs-mode nil)
- '(ispell-program-name "aspell")
- '(jabber-account-list (quote (("linus@nordu.net/around" (:password . "85ZAVPV1yhEdOQvhEN") (:network-server . "jabber.nordu.net") (:connection-type . starttls)))))
+ '(ispell-program-name "spell")
+ '(jabber-account-list
+   (quote
+    (("linus@nordu.net/around"
+      (:password . "85ZAVPV1yhEdOQvhEN")
+      (:network-server . "jabber.nordu.net")
+      (:connection-type . starttls)))))
  '(jabber-activity-banned (quote ("twitter")))
  '(jabber-activity-make-strings (quote jabber-activity-make-strings-shorten))
  '(jabber-alert-message-hooks (quote (jabber-message-scroll)))
@@ -402,10 +430,14 @@
  '(message-default-charset (quote utf-8))
  '(message-hidden-headers (quote ("^Gcc:\\|^Xref:\\|^X-Draft-From:\\|^References:")))
  '(message-kill-buffer-on-exit t)
+ '(message-mode-hook nil)
  '(message-send-mail-function (quote smtpmail-send-it))
  '(message-setup-hook nil)
- '(message-subject-re-regexp "^[ 	]*\\(\\([Rr][Ee]\\|[Ss][Vv]\\)\\(\\[[0-9]*\\]\\)*:[ 	]*\\)*[ 	]*")
- '(mm-automatic-display (quote ("text/plain" "text/x-verbatim" "text/x-vcard" "message/delivery-status" "multipart/.*" "message/rfc822" "text/x-patch" "text/dns" "application/pgp-signature" "application/emacs-lisp" "application/x-emacs-lisp" "application/x-pkcs7-signature" "application/pkcs7-signature" "application/x-pkcs7-mime" "application/pkcs7-mime" "application/pgp\\'" "text/x-org")))
+ '(message-subject-re-regexp
+   "^[ 	]*\\(\\([Rr][Ee]\\|[Ss][Vv]\\)\\(\\[[0-9]*\\]\\)*:[ 	]*\\)*[ 	]*")
+ '(mm-automatic-display
+   (quote
+    ("text/plain" "text/x-verbatim" "text/x-vcard" "message/delivery-status" "multipart/.*" "message/rfc822" "text/x-patch" "text/dns" "application/pgp-signature" "application/emacs-lisp" "application/x-emacs-lisp" "application/x-pkcs7-signature" "application/pkcs7-signature" "application/x-pkcs7-mime" "application/pkcs7-mime" "application/pgp\\'" "text/x-org")))
  '(mm-coding-system-priorities (quote (utf-8)))
  '(mm-decrypt-option nil)
  '(mm-default-directory nil)
@@ -448,14 +480,18 @@
  '(starttls-use-gnutls t)
  '(tags-revert-without-query t)
  '(tls-checktrust (quote ask))
- '(tls-program (quote ("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h" "gnutls-cli --insecure -p %p %h" "gnutls-cli --insecure -p %p %h --protocols ssl3" "openssl s_client -connect %h:%p -no_ssl2 -ign_eof")))
+ '(tls-program
+   (quote
+    ("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h" "gnutls-cli --insecure -p %p %h" "gnutls-cli --insecure -p %p %h --protocols ssl3" "openssl s_client -connect %h:%p -no_ssl2 -ign_eof")))
  '(tool-bar-mode nil)
  '(twit-minor-mode t)
  '(twit-show-user-images t)
  '(twit-user-image-dir "~/usr/share/images/twitter")
  '(twitter-username "ln4711")
  '(user-full-name "Linus Nordberg")
- '(w3m-command-arguments (quote ("-o" "use_proxy=1" "-o" "http_proxy=http://127.0.0.1:9050/" "-o" "https_proxy=http://127.0.0.1:9050/" "-o" "ftp_proxy=http://127.0.0.1:9050/")))
+ '(w3m-command-arguments
+   (quote
+    ("-o" "use_proxy=1" "-o" "http_proxy=http://127.0.0.1:9050/" "-o" "https_proxy=http://127.0.0.1:9050/" "-o" "ftp_proxy=http://127.0.0.1:9050/")))
  '(w3m-default-save-directory "~/")
  '(w3m-file-coding-system (quote w3m-iso-latin-1))
  '(w3m-file-name-coding-system (quote w3m-iso-latin-1))

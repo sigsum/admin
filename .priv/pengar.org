@@ -1,15 +1,36 @@
-* Skuld lgh --> linus
-150000          # till kajsa för handpenning (340') <2015-02-11 Wed>
-150000+         # till kajsa för handpenning (340') <2015-02-12 Thu>
+* Linus utlägg lgh
+150000 150000   # till kajsa för handpenning (340') <2015-02-11 Wed>
+150000+ 300000  # till kajsa för handpenning (340') <2015-02-12 Thu>
 40000+ 340000   # till kajsa för handpenning (340')
-
-* Matpengar
+6885+ 346885	# avg utö3 2015-04-30
+6885+ 353770	# avg utö3 2015-05-29
+8800+ 362570	# tapeter 2015-04-15
+1000+ 363570	# del av handpenning grumsg
+1500+ 365070	# handpenning soffa 2015-04-11
+24341+ 389411	# mediamarkt 2015-04-26
+919+ 390330	# fortum 2015-06-01
+340000- 50330	# grtrd bet. halva lgh 2015-06-02
+0		# kvittat <2015-08-15 Sat>
+* Matpengar och annat gemensamt
 ** gertrud
 2443		# <2015-02-20 Fri>
-
+6007+ 8450	# <2015-03-30 Mon>
+2098+ 10548	# <2015-05-15 Fri>
+8824+ 19372	# <2015-08-15 Sat>
+0		# kvittat <2015-08-15 Sat>
 ** linus
 5149		# <2015-02-20 Fri>
-
+2996+ 8145	# <2015-03-30 Mon>
+7455+ 15600	# <2015-05-15 Fri>
+1540+ 17140	# <2015-08-15 Sat>
+3132+ 20272	# <2015-08-15 Sat>
+0		# kvittat <2015-08-15 Sat>
 * Skuld grtrds --> linus
 5000		# för valenciabiljett
+13500		# dator
+1500+ 20000	# extra
+2000+ 22000	# middag
+1000+ 23000	# extra
+20000- 3000	# betalt tillbaka
+0		# kvittat <2015-08-15 Sat>
 
