@@ -335,9 +335,12 @@ mapping.  We think this is an acceptable tradeoff.
 ** in gossip-ct-01
 - removing all protocols but HTTPS in order to simplify -- let's come
   back and add more later
+- SCT feedback mechanism: clients send SCT's to originating web server
+  which shares them with auditors
 - stop assuming that clients have STH's
-- clients send SCT's to originating web server
-- stop referring to trans-gossip and trans-gossip-transport-https
+- stop referring to trans-gossip and trans-gossip-transport-https --
+  too complicated
+- don't use HTTP headers but instead .well-known URL's
 ** in gossip-transport-https-01
 - don't use an http header but instead a .well-known url
   - don't have to convince any http wg
