@@ -2945,6 +2945,8 @@ Sign your message with the same key as this message is encrypted in.
 - [ ] dkg
 ** caff
 supposedly good for handling pgp signing
+** monkeysign
+might be a good tool for handling pgp signing
 ** Yubikey NEO
 - Max 2048 bit keys.
 - For PGP, use GPG 2.0.22 or newer.
@@ -34105,6 +34107,8 @@ extra fonts:
 
   apt-get install latex-beamer texlive-latex-extra texlive-fonts-recommended
 
+(and maybe texlive-generic-recommended?)
+
 Use '#+LaTeX_CLASS: beamer', possibly by invoking
 M-x org-insert-beamer-options-template
 
@@ -35325,3 +35329,10 @@ objections aren't strong.  Unless someone can present a case for the
 received headers actually provide some useful functionality.
 * games
 - undertale (steam)
+* crypto
+** hash functions
+** stream ciphers
+- salsa20
+  - salsa20/12, salsa20/20 ("full salsa20")
+** block ciphers
+** key exchange

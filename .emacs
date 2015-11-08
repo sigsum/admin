@@ -26,12 +26,12 @@
 (package-initialize)
 
 (require 'tls)
-(require 'jabber)
+;(require 'jabber)
 (require 'appt)                         ;calendar needs this
 
 (setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
 ;(setq load-path (cons "~/.emacs.d/elpa/erlang-2.4.1" load-path))
-(require 'erlang-start)
+;(require 'erlang-start)
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
 ;; another smime.el (from site-lisp/semi/?) is loaded.
@@ -39,7 +39,7 @@
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
 
-(require 'magit)
+;(require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
 ;; Fun.

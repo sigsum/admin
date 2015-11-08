@@ -1,4 +1,20 @@
+sks pgp keyserver hs http://dyh2j3qyrirn43iw.onion:11371/
+dnssec https://getdnsapi.net/
+funny ietf http://ietfmemes.tumblr.com/
+pgp tor hs hkp://jirk5u4osbsr34t5.onion
+tls http://arxiv.org/abs/1511.00341
+axolotl https://whispersystems.org/blog/advanced-ratcheting/
+tcp encryption http://tcpcrypt.org/download.php
+readme merkle tree hash collision https://crypto.stackexchange.com/questions/2106/what-is-the-purpose-of-using-different-hash-functions-for-the-leaves-and-interna
+crypto algorithm https://www.hyperelliptic.org/EFD/
+readme crypto https://eprint.iacr.org/2015/1060
+cothority ct https://github.com/dedis/cothority
+https://www.cs.princeton.edu/~melara/pubs/mse-thesis.pdf
+ietf network https://tickets.meeting.ietf.org/wiki/IETF94network
+dns privacy https://getdnsapi.net/
+tor messenger http://www.bbc.co.uk/news/technology-34677323
 readme crypto tls backdoor random https://eprint.iacr.org/2014/438.pdf
+aead people:rogaway http://web.cs.ucdavis.edu/~rogaway/papers/ad.pdf
 x60 hw io http://www.alldatasheet.com/datasheet-pdf/pdf/86219/NSC/PC87382.html
 x60 hw io http://www.thinkwiki.org/wiki/NS_PC87382
 moonshot spnego https://wiki.moonshot.ja.net/display/Moonshot/Small+Python+script+to+perform+HTTP+SPNEGO+authentication+in+command+line
