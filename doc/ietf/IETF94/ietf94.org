@@ -1,0 +1,62 @@
+* Sunday
+- hackathon
+* Monday
+- trans 1300-1500 411/412
+  - 6962bis
+    - #96 metadata is static; q: what about change of known roots?
+- cfrg 1520-1650 303
+- dprive 1710-1910 304
+  - todo: read internet-drafts/draft-am-dprive-eval
+- iij dinner 1930
+  - The Attimo Restaurant is in the Exhibition Hall, accross the
+    circular pit from the meeting.  Exit the meeting on 2F, go right
+    around the circle, turn right when you reach the wall of the
+    Exhibition Hall, and you are there.
+* Tuesday
+Q: when's PING?
+- lunch eranm 1130 unclear
+- radext 1300-1500 413
+- hrpc 1520-1650 302
+- cose 1520-1650 413
+- openpgp 1710-1840 411/412
+  - pgp was once (some 20y ago) lacking integrity checks; MDC was
+    added; attack is: stripping the checksum and change the header and
+    the receiver doesn't require it
+- social event 1900-2130 The Yokohama Bay Hotel Tokyu B2F Queen’s Grand Ballroom
+- email bar bof 2000 jack's bar, yokohama hotel (queens mall)
+* Wednesday
+- tls 0900-1130 303
+- tcpinc 1300-1500 501
+- hrpc film 1500 301
+- alexey+barry 301-304
+- plenary 1530-1830 301-304
+- yawning 1900- ietf registration 3rd floor
+* Thursday
+- dnsop 0900-1130 304
+- onion routing 1130-1300 418
+  weihaw has a draft, draft-wchuang-grunion-01.txt
+  in email, hiding to and from
+  rewrap the email and use a proxy
+  ted: make changes not visible
+  stephen: pgp?
+  wei: talked to dkg about that
+  ted: negotiate s/mime or pgp with proxy servers
+  mnot: http workshop had some tor people, no activity now
+- ping 1130-1300 511
+- saag 1300-1500 502
+- dnssec trans bof 1500 TBD
+  - AP: linus sets up a log accepting RRSETs signed by a given set of
+    zones, the root to begin with
+- oauth 1520-1720 301
+- tls 1740-1840 501
+- bitsnbites 1900-2100 intercontinental ballrom
+- dnssec workshop verisign, 5th floor
+  - re dnssec trans
+    getdns, validation of dnssec
+    verify_chain()
+    dnssec.c
+    AP: send requirements for a dnssec trans frontend system to jan vcelak
+* Friday
+- acme 0900-1130 304
+- perc 0900-1130 502
+- tokyo afternoon

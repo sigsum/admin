@@ -1,0 +1,285 @@
+
+
+                    Agenda of the 94th IETF Meeting                     
+
+                           November 1-6, 2015                           
+                    Updated 2015-10-19 11:14:26 PDT                     
+
+   IETF agendas are subject to change, up to and during the meeting.    
+
+
+
+SATURDAY, October 31, 2015
+
+0900-2100  IETF Hackathon - Room 315
+0900-1830  RAIM Workshop - Room 303
+0900-1830  t2trg: Joint W3C IG WoT/Thing-to-Thing PRG - Room 304
+0930-1800  Code Sprint - Room 316
+
+
+SUNDAY, November 1, 2015
+
+0900-1800  IETF Hackathon - Room 315
+0900-1600  t2trg: Joint W3C IG WoT/Thing-to-Thing PRG - Room 304
+1000-1200  IEPG Meeting - Room 303
+1000-1900  IETF Registration - 3F Foyer
+1300-1450  Newcomers' Orientation - Room 303
+1300-1450  Newcomers' Orientation in Japanese - Room 302
+1300-1450  Tools for Creating IDs and RFCs - Room 301
+1300-1700  YANG Tutorial and YANG Advice/Editing Session - Room 413
+1430-1600  Routing AD Office Hours - Room 312
+1500-1600  Internet Area Overview - Room 302
+1500-1650  PRECIS and i18n - Room 303
+1600-1700  Newcomers' Meet and Greet (open to Newcomers, WG chairs and Mentors only) - InterContinental Bay View Room
+1600-1630  CBOR - Room 301
+1700-1900  Welcome Reception - InterContinental Ballroom
+
+
+MONDAY, November 2, 2015
+
+0745-0845  Speed Mentoring - Room 413
+0800-0900  Beverage Break - 3F and 5F Foyers
+0800-1800  IETF Registration - 3F Foyer
+
+0900-1130  Morning Session I
+Room 304        	ART 	mmusic      	Multiparty Multimedia Session Control WG
+Room 303        	IRTF	hopsrg      	Proposed How Ossified is the Protocol Stack? Research Group 
+Room 502        	IRTF	sdnrg       	Software Defined Networking 
+Room 501        	OPS 	v6ops       	IPv6 Operations WG
+Room 301        	RTG 	detnet      	Deterministic Networking WG
+Rooms 411/412   	RTG 	i2rs        	Interface to the Routing System WG
+Room 302        	SEC 	ace         	Authentication and Authorization for Constrained Environments WG
+Room 413        	TSV 	mptcp       	Multipath TCP WG
+
+1130-1300  Break
+
+1300-1500  Afternoon Session I
+Room 501        	ART 	httpbis     	Hypertext Transfer Protocol WG
+Room 301        	ART 	stir        	Secure Telephone Identity Revisited WG
+Room 304        	OPS 	anima       	Autonomic Networking Integrated Model and Approach WG
+Room 502        	RTG 	idr         	Inter-Domain Routing WG
+Room 302        	RTG 	pals        	Pseudowire And LDP-enabled Services WG
+Room 413        	SEC 	mile        	Managed Incident Lightweight Exchange WG
+Rooms 411/412   	SEC 	trans       	Public Notary Transparency  WG
+Room 303        	TSV 	tsvwg       	Transport Area Working Group WG
+
+1500-1520  Beverage Break - 3F and 5F Foyers
+
+1520-1650  Afternoon Session II
+Room 413        	ART 	bfcpbis     	Binary Floor Control Protocol Bis  WG - CANCELLED
+Room 304        	ART 	netvc       	Internet Video Codec WG
+Room 302        	INT 	dnssd       	Extensions for Scalable DNS Service Discovery  WG
+Room 303        	IRTF	cfrg        	Crypto Forum 
+Room 413        	OPS 	grow        	Global Routing Operations WG - Moved from Friday 0900
+Room 301        	OPS 	lime        	Layer Independent OAM Management in the Multi-Layer Environment WG
+Rooms 411/412   	RTG 	ccamp       	Common Control and Measurement Plane WG
+Room 502        	RTG 	rtgwg       	Routing Area Working Group WG
+Room 501        	TSV 	rmcat       	RTP Media Congestion Avoidance Techniques WG
+
+1650-1710  Beverage and Snack Break - 3F and 5F Foyers
+1710-1830  Transport AD Office Hours - Room 312
+
+1710-1910  Afternoon Session III
+Room 301        	ART 	slim        	Selection of Language for Internet Media WG
+Room 304        	INT 	dprive      	DNS PRIVate Exchange WG
+Rooms 411/412   	INT 	ntp         	Network Time Protocol WG - Combined with TICTOC
+Rooms 411/412   	INT 	tictoc      	Timing over IP Connection and Transfer of Clock WG - Combined with NTP
+Room 413        	IRTF	nmrg        	Network Management 
+Room 303        	OPS 	lmap        	Large-Scale Measurement of Broadband Performance WG
+Room 502        	OPS 	v6ops       	IPv6 Operations WG
+Room 501        	RTG 	rtgarea     	Routing Area Open Meeting 
+Room 302        	SEC 	tokbind     	Token Binding WG
+
+
+
+TUESDAY, November 3, 2015
+
+0745-0845  Regional Mentoring (Mentors Only) - Room 413
+0800-0900  Beverage Break - 3F and 5F Foyers
+0800-1800  IETF Registration - 3F Foyer
+
+0900-1130  Morning Session I
+Room 301        	ART 	core        	Constrained RESTful Environments WG
+Room 501        	ART 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Rooms 411/412   	INT 	dmm         	Distributed Mobility Management WG
+Room 502        	INT 	homenet     	Home Networking WG
+Room 304        	IRTF	nmlrg       	Proposed Network Machine Learning Research Group 
+Room 413        	OPS 	bmwg        	Benchmarking Methodology WG
+Room 303        	RTG 	bfd         	Bidirectional Forwarding Detection WG - 1030 - 1130
+Room 303        	RTG 	spring      	Source Packet Routing in Networking WG - 0900 - 1030
+Room 302        	SEC 	i2nsf       	Interface to Network Security Functions WG
+
+1130-1300  Break
+
+1300-1500  Afternoon Session I
+Room 304        	ART 	avtcore     	Audio/Video Transport Core Maintenance WG
+Rooms 411/412   	ART 	webpush     	Web-Based Push Notifications WG
+Room 413        	OPS 	dime        	Diameter Maintenance and Extensions WG - 1300 - 1400
+Room 413        	OPS 	radext      	RADIUS EXTensions WG - 1400 - 1500
+Room 303        	OPS 	supa        	Simplified Use of Policy Abstractions WG
+Room 502        	RTG 	nvo3        	Network Virtualization Overlays WG
+Room 501        	SEC 	dots        	DDoS Open Threat Signaling WG
+Room 302        	TSV 	dtn         	Delay/Disruption Tolerant Networking WG
+Room 301        	TSV 	ippm        	IP Performance Metrics WG
+
+1500-1520  Beverage and Snack Break - 3F and 5F Foyers
+
+1520-1650  Afternoon Session II
+Room 502        	ART 	iss         	Internet Storage Sync BOF
+Room 501        	ART 	netvc       	Internet Video Codec WG
+Room 302        	IRTF	hrpc        	Proposed Human Rights Protocol Considerations Research Group 
+Room 303        	OPS 	anima       	Autonomic Networking Integrated Model and Approach WG
+Room 301        	RTG 	lisp        	Locator/ID Separation Protocol WG
+Rooms 411/412   	RTG 	trill       	Transparent Interconnection of Lots of Links WG
+Room 413        	SEC 	cose        	CBOR Object Signing and Encryption WG
+Room 304        	TSV 	taps        	Transport Services WG
+
+1650-1710  Beverage Break - 3F and 5F Foyers
+1710-1840  Operations and Management AD Office Hours - Room 312
+
+1710-1840  Afternoon Session III
+Room 303        	ART 	dbound      	Domain Boundaries WG
+Room 301        	ART 	modern      	Managing, Ordering, Distributing, Exposing, & Registering telephone Numbers WG
+Room 413        	ART 	payload     	Audio/Video Transport Payloads WG
+Room 502        	IRTF	irtfopen    	IRTF Open Meeting 
+Room 501        	RTG 	pce         	Path Computation Element WG
+Room 304        	RTG 	sidr        	Secure Inter-Domain Routing WG
+Rooms 411/412   	SEC 	openpgp     	Open Specification for Pretty Good Privacy WG
+Room 302        	SEC 	sacm        	Security Automation and Continuous Monitoring WG
+
+1900-2130  IETF 94 Social Event at the Yokohama Bay Hotel Tokyu  - 
+
+
+WEDNESDAY, November 4, 2015
+
+0745-0845  Workshop: Journey from I-D to RFC - Room 413
+0800-0900  Beverage Break - 3F and 5F Foyers
+0800-1700  IETF Registration - 3F Foyer
+
+0900-1130  Morning Session I
+Rooms 411/412   	ART 	cdni        	Content Delivery Networks Interconnection WG
+Room 413        	ART 	clue        	ControLling mUltiple streams for tElepresence WG - 1030 - 1130
+Room 413        	ART 	ecrit       	Emergency Context Resolution with Internet Technologies WG - 0900 - 1000
+Room 501        	INT 	6man        	IPv6 Maintenance WG
+Room 502        	IRTF	nfvrg       	Network Function Virtualization 
+Room 302        	IRTF	t2trg       	Proposed Thing-to-Thing Research Group  - 1030 - 1130
+Room 301        	OPS 	netmod      	NETCONF Data Modeling Language WG
+Room 304        	RTG 	mpls        	Multiprotocol Label Switching WG
+Room 303        	SEC 	tls         	Transport Layer Security WG
+Room 302        	TSV 	tram        	TURN Revised and Modernized WG - 0900 - 1030
+
+1130-1300  Break
+1130-1230  Working Group Chairs Training (For WG Chairs Only) - Room 304
+
+1300-1500  Afternoon Session I
+Room 502        	ART 	dispatch    	Dispatch WG
+Rooms 411/412   	OPS 	netmod      	NETCONF Data Modeling Language WG
+Room 413        	RTG 	ospf        	Open Shortest Path First IGP WG
+Room 501        	TSV 	tcpinc      	TCP Increased Security WG
+
+1500-1530  Beverage and Snack Break - 3F and 5F Foyers
+1530-1830  IETF Operations, Administration, and Technical Plenary - Rooms 301-304
+
+   1. Welcome (IETF chair)
+   
+   2. Host Presentation (host)
+   
+   3. Updates on hot topics
+   
+    - IETF-wide issues (IETF chair)
+    - Administrative topics (IAOC/Trust chairs)
+    - Meeting calendar updates (IAD)
+    - NomCom update and requests (Nomcom chair)
+    - New research groups (IRTF Chair)
+    - Progress in format work (RSE)
+   
+   4. Architectural issues needing attention (IAB chair)
+   
+   5. Technical Topic: Measurement-Driven Protocol
+       Engineering (IAB & speakers + Q&A)
+   
+   6. IAB, IAOC, and IESG Open Mic	sessions
+   
+   7. Close of meeting
+   
+   8. Opportunity for additional discussion (30min)
+      - Area ADs, IAOC, IAB stay on the floor and
+        are available for discussion
+
+
+
+THURSDAY, November 5, 2015
+
+0800-0900  Beverage Break - 3F and 5F Foyers
+0800-1700  IETF Registration - 3F Foyer
+
+0900-1130  Morning Session I
+Room 303        	ART 	ice         	Interactive Connectivity Establishment WG
+Room 501        	INT 	6lo         	IPv6 over Networks of Resource-constrained Nodes WG
+Room 302        	IRTF	icnrg       	Information-Centric Networking 
+Room 304        	OPS 	dnsop       	Domain Name System Operations WG
+Room 502        	RTG 	sfc         	Service Function Chaining WG
+Room 301        	RTG 	teas        	Traffic Engineering Architecture and Signaling WG
+Room 413        	SEC 	sacm        	Security Automation and Continuous Monitoring WG
+Rooms 411/412   	TSV 	tcpm        	TCP Maintenance and Minor Extensions WG
+
+1130-1300  Break
+1200-1245  Thursday Lunch Speaker Series  - Room 304
+
+1300-1500  Afternoon Session I
+Rooms 411/412   	ART 	avtext      	Audio/Video Transport Extensions WG
+Room 413        	ART 	geojson     	Geographic JSON WG - CANCELLED
+Room 303        	INT 	softwire    	Softwires WG
+Room 501        	OPS 	netconf     	Network Configuration WG
+Room 304        	RTG 	bess        	BGP Enabled Services WG
+Room 301        	RTG 	isis        	IS-IS for IP Internets WG
+Room 502        	SEC 	saag        	Security Area Open Meeting 
+Room 302        	TSV 	tsvwg       	Transport Area Working Group WG
+
+1500-1520  Beverage and Snack Break - 3F and 5F Foyers
+
+1520-1720  Afternoon Session II
+Room 413        	ART 	eppext      	Extensible Provisioning Protocol Extensions WG
+Room 502        	ART 	rtcweb      	Real-Time Communication in WEB-browsers WG
+Room 303        	INT 	6tisch      	IPv6 over the TSCH mode of IEEE 802.15.4e WG
+Room 302        	INT 	dhc         	Dynamic Host Configuration WG
+Room 501        	OPS 	opsarea     	Operations & Management Area Open Meeting  - Combined with OPSAWG
+Rooms 411/412   	RTG 	pim         	Protocols for IP Multicast WG
+Room 304        	RTG 	rtgwg       	Routing Area Working Group WG
+Room 301        	SEC 	oauth       	Web Authorization Protocol WG
+
+1720-1740  Beverage Break
+
+1740-1840  Afternoon Session III
+Room 301        	ART 	lager       	Label Generation Rules WG
+Room 413        	ART 	xrblock     	Metric Blocks for use with RTCP's Extended Report Framework WG
+Room 304        	INT 	intarea     	Internet Area Working Group WG
+Rooms 411/412   	OPS 	mboned      	MBONE Deployment WG
+Room 502        	RTG 	mpls        	Multiprotocol Label Switching WG - Combined with TEAS
+Room 302        	RTG 	roll        	Routing Over Low power and Lossy networks WG
+Room 303        	RTG 	trill       	Transparent Interconnection of Lots of Links WG
+Room 501        	SEC 	tls         	Transport Layer Security WG
+
+1900-2100  Bits-N-Bites - InterContinental Ballroom
+
+
+FRIDAY, November 6, 2015
+
+0745-0845  Mentee Feedback Session - Room 413
+0800-0900  Beverage Break - 3F and 5F Foyers
+0800-1100  IETF Registration - 3F Foyer
+
+0900-1130  Morning Session I
+Room 302        	ART 	core        	Constrained RESTful Environments WG
+Room 502        	ART 	perc        	Privacy Enhanced RTP Conferencing  WG
+Rooms 411/412   	INT 	mif         	Multiple Interfaces WG
+Room 301        	OPS 	l3sm        	L3VPN Service Model  WG - 0900 - 1030
+Room 301        	OPS 	opsec       	Operational Security Capabilities for IP Network Infrastructure WG - CANCELLED
+Room 413        	RTG 	bier        	Bit Indexed Explicit Replication WG
+Room 303        	RTG 	sidr        	Secure Inter-Domain Routing WG - 0900 - 1030
+Room 304        	SEC 	acme        	Automated Certificate Management Environment WG
+Room 501        	TSV 	rmcat       	RTP Media Congestion Avoidance Techniques WG
+
+
+====================================================================
+
