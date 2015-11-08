@@ -19,6 +19,7 @@
 .libreoffice
 .local
 .mozilla
+.ndn
 .openoffice.org
 .pulse
 .priv/ostick.img
@@ -39,12 +40,13 @@
 bin
 forty711
 maatuska
+ostick
 p
 pics
 quicklisp
+src
 tmp
+tor-browser*
 tstick
-ostick
 u
 usr
-tor-browser*
