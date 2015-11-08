@@ -345,6 +345,7 @@ alias jas			simon@josefsson.org
 alias jbn			jbn@klutt.se
 alias jbn.google                "Johan Berggren <jbn@google.com>"
 alias jbn.ndn			johan.berggren
+alias jc                        "J. C. Jones <jcjones@letsencrypt.org>"
 alias jelena                    "Jelena Georgijevic <jelena@lugons.org>"
 alias jenny.b			jeberggren@gmail.com
 alias jenny.engstrom            Jenny.Engstrom@stfturist.se
@@ -405,7 +406,8 @@ alias joe.cdt                   joe@cdt.org
 alias josef                     josef.ndn
 alias josef.ndn                 "Josef Gustafsson <josef@nordu.net>"
 alias josef.gmail               "Josef Gustafsson <josef.gson@gmail.com>"
-alias josh			"Josh Howlett <Josh.Howlett@JA.NET>"
+alias josh.aas                  "Josh Aas <josh@letsencrypt.org>"
+alias josh.howlett		"Josh Howlett <Josh.Howlett@JA.NET>"
 alias joshua                    "Joshua Datko <jbdatko@gmail.com>"
 alias joshua.crypt              "Joshua Brian Datko <jbd@cryptotronix.com>"
 alias josva			"Josva Kleist <kleist@nordu.net>"
@@ -618,6 +620,7 @@ alias nick.mit			nickm@alum.mit.edu
 alias nick.tor			"Nick Mathewson <nickm@torproject.org>"
 alias nickh                     hopper
 alias nico                      nico@cryptonector.com
+alias niels                     mail@nielstenoever.net
 alias niklas                    "Niklas Johansson <raphexion@gmail.com>"
 alias nil			ct@duckduckgo.com
 alias nils                      "Nils Agnesson <nils.agnesson@piratpartiet.se>"
@@ -720,8 +723,8 @@ alias rene			"Rene Buch <rene.buch@nordu.net>"
 alias revisor                   revisor@dfri.se
 alias rhys			"Rhys Smith <smith@cardiff.ac.uk>"
 alias ricardo                   "Ricardo Noronha <ricardo.noronha@gmail.com>"
-alias rich                      "Richard Barnes <rlb@ipv.sx>"
 alias richard                   "Richard Binning <anok4u2b4u@gmail.com>"
+alias richard.barnes            "Richard Barnes <rlb@ipv.sx>"
 alias rickard.ostman		"Rickard Östman <rickard.ostman@bahnhof.net>"
 alias rikard.linde              "Rikard Linde <rikard.linde@fores.se>"
 alias ripe			auto-dbm
@@ -835,6 +838,8 @@ alias sylvia                    sylviavill@hotmail.com
 alias tails                     tails@boum.org
 alias tbb-dev                   tbb-dev@lists.torproject.org
 alias tech                      tech@cryptech.is
+alias ted.lemon                 "Ted Lemon <Ted.Lemon@nominum.com>"
+alias ted.hardie                ted.ietf@gmail.com
 alias tege			tg@gmplib.org
 alias tg                        "Torbjörn Gräslund <torbjorn@kth.se>"
 alias tg.biotech		"Torbjörn Gräslund <torbjorn@biotech.kth.se>"
@@ -906,6 +911,7 @@ alias xenia                     xenia@freitagsrunde.org
 alias ximin                     "Ximin Luo <infinity0@torproject.org>"
 alias yair			"Yair Yarom <irush@cs.huji.ac.il>"
 alias yan                       "Yan Zhu <yan@mit.edu>"
+alias yawning                   "Yawning Angel <yawning@schwanenlied.me>"
 alias ylan			ylan@ylan.nu
 alias yosh			"Johan Marklund <yosh@yosh.se>"
 alias ze                        zeh@lavabit.com
