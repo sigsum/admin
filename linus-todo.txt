@@ -10,8 +10,8 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
 - - https://trac.torproject.org/projects/tor/ticket/4581 reviewed
-- - linus/cleanup 07817e7 cherry-picked
-- . plausible using secondary merge according to [[gnus:nnimap%2Bndn:INBOX#D99F49C8-0383-4E65-8D49-4BFA7E4F9044@kth.se][Email from Magnus Ahltorp: Merge-secondary]]
+- - catlfish linus/cleanup 07817e7 cherry-picked
+- o plausible using secondary merge according to [[gnus:nnimap%2Bndn:INBOX#D99F49C8-0383-4E65-8D49-4BFA7E4F9044@kth.se][Email from Magnus Ahltorp: Merge-secondary]]
 - - urd.appendto.org/ct/v1 running
   o config created
   o keys generated
@@ -25,11 +25,16 @@ Legend                                                (emacs -*-org-*- mode)
 - - draft-ietf-trans-gossip nits fixed
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
+- * web.ndn set up
+- * software.ndn working with tls
+- o new id key for maatuska
+- o v6-only vps https://trac.torproject.org/projects/tor/ticket/17271
+- - tor consensuses in a log https://trac.torproject.org/projects/tor/ticket/17274
 ** DFRI
-- - Zouaves application
-  - docs collected
-  - signed and sent
-- - PL-1278 payed [nov 04]
+- - gnu social jail created for MMN-o
+- - ICT-11-2017
+  - elevator pitch
+  - invitations sent for 4/12
 - - leif asked about anycasting maatuska
 - - route object added for AS4224, announcing 194.0.61.0/24
 - . ipv6 to sto4
@@ -38,12 +43,28 @@ Legend                                                (emacs -*-org-*- mode)
   - [ ] alex
   - [X] jn
   - [X] mike
-  - [ ] pawal
+  - [X] pawal
 - - OOB to sto3 (nacka) verified
 - - https on git.dfri.se
 - - https://dfri.net/ running again
+- o kallat till SM#9 https://dudle.inf.tu-dresden.de/dfri-sm-9-2015/
+- o bagder and åke connected re cryptoparty
+- o IND15 tickets handed out 'TORIND15' https://delegia.com/app/attendee/new_registration.asp?ProjectId=6374&ReglineNo=29&ReglineId=29141&ReglinePageNo=1&edit=off&clear=yes
+  - [X] osund
+  - [X] sus
+  - [X] pjotr
+- o board meeting 15th announced (medlem@ + listan@ + twitter?)
+- o PL-1278 payed [nov 04]
+- o announce a board meeting
+- o Zouaves application
+  - docs collected
+  - signed and sent
 ** Misc
+- * emmaus booked
 - - phw's exit scanner running in jail on ioctl
+- o abstract submitted for TNC16 [nov 30]
+- o flogsta travel prep
+  - for f in . p/fluffypw ndn p/moonshot p/dfri p/dfri/dfriadm src p/dfri/dfri; do cd ~/$f && git push; done
 * Soon (within a month)
 ** Dev
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
@@ -156,6 +177,7 @@ Legend                                                (emacs -*-org-*- mode)
 - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
 - - [[file:/u/ietf/internet-drafts/draft-cooper-ietf-privacy-requirements-01.txt]]
 ** Sysadm
+- - onionperf running https://github.com/robgjansen/onionperf
 - - received headers scrubbed at smtp.adbc [[gnus:nnimap%2Badbc:INBOX#16738763.Zpc6BlTK60@foo][Email from Fredrik Thulin: Re: postfix conf]]
 - - fix [[file:p/adb-centralen/src/spam-edu-from-banksy.sh][file:~/p/adb-centralen/src/spam-edu-from-banksy.sh]] for dovecot and cron it on imap.adbc
 - - stuff resurrected from mm:~linus, the repos f.ex.
@@ -312,5 +334,8 @@ X Jun 30-02, Philadelphia, PETS15
 ? Oct 21-22, Stockholm, SIF15
 - Oct 30-07, Yokohama, IETF94
 2016
-- Mar 01-05, Valencia, Tor dev
-? Jun 12-17, Prague, TNC16
+- Feb 27-05, Valencia, Tor dev
+- Apr 02-09, Buenos Aires, IET95
+- Jun 11-17, Prague, TNC16
+- Jul 15-23, Berlin, IETF96
+- Nov 11-19, Seoul, IETF97
