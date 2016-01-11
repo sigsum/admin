@@ -316,6 +316,35 @@ Legend                                                (emacs -*-org-*- mode)
 - - first cut of a [[file:ietf/ietf.org::*AP's][draft bringing the research from the {PETS}
      research community]] submitted
 * Travel
+2016
+- Jan 20-22, CPH, all hands + hanno
+- Feb 26-03, Valencia, Tor dev
+? Mar 02-06, Barcelona, vacation
+? Mar 07-09, Vienna, GN4
+? Mar 10-13, Berlin, Logan ICJ
+? Mar 10-17, Marrakech, MirageOS hackathon
+- Apr 02-09, Buenos Aires, IET95
+? Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
+- Jun 11-17, Prague, TNC16
+- Jul 15-23, Berlin, IETF96
+? Jul 19-22, Darmstadt, PETS16
+- Nov 11-19, Seoul, IETF97
+2015
+- Mar 01-06, Valencia, Tor winter dev
+X Mar 20-27, Dallas, IETF92
+- May 04-06, Finse, infosec winter school
+- May 27-28, Utrecht, GN4 kickoff
+- Jun 07-08, Berlin, CT hack day
+- Jun 14-06, Porto, TNC15 + vacation
+X Jun 30-02, Philadelphia, PETS15
+- Jul 13-16, Madrid, Core Infrastucture Workshop
+- Jul 16-28, Prague, Cryptech + IETF93 + vacation
+- Sep 02-03, Kastrup, NORDUnet all hands
+- Sep 16-17, Kastrup, NORDUnet tech workshop
+- Sep 27-02, Berlin, Tor summer dev
+X Oct 14-15, Stockholm, Netnod
+X Oct 21-22, Stockholm, SIF15
+- Oct 30-07, Yokohama, IETF94
 2014
 X Jan 31-02, Brussels, FOSDEM
 - Feb 06-07, Kastrup, ndn all hands
@@ -338,32 +367,3 @@ X Jul 14-18, Berlin, OKFestival
 X Aug 19-23, San Diego, USENIX Security
 X Nov 07-16, Honolulu, IETF91
 - Oct 14-16, Zurich, CT gossip
-2015
-- Mar 01-06, Valencia, Tor winter dev
-X Mar 20-27, Dallas, IETF92
-- May 04-06, Finse, infosec winter school
-- May 27-28, Utrecht, GN4 kickoff
-- Jun 07-08, Berlin, CT hack day
-- Jun 14-06, Porto, TNC15 + vacation
-X Jun 30-02, Philadelphia, PETS15
-- Jul 13-16, Madrid, Core Infrastucture Workshop
-- Jul 16-28, Prague, Cryptech + IETF93 + vacation
-- Sep 02-03, Kastrup, NORDUnet all hands
-- Sep 16-17, Kastrup, NORDUnet tech workshop
-- Sep 27-02, Berlin, Tor summer dev
-X Oct 14-15, Stockholm, Netnod
-X Oct 21-22, Stockholm, SIF15
-- Oct 30-07, Yokohama, IETF94
-2016
-- Jan 20-22, CPH, all hands + hanno
-- Feb 26-03, Valencia, Tor dev
-? Mar 02-06, Barcelona, vacation
-? Mar 07-09, Vienna, GN4
-? Mar 10-13, Berlin, Logan ICJ
-? Mar 10-17, Marrakech, MirageOS hackathon
-- Apr 02-09, Buenos Aires, IET95
-? Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
-- Jun 11-17, Prague, TNC16
-- Jul 15-23, Berlin, IETF96
-? Jul 19-22, Darmstadt, PETS16
-- Nov 11-19, Seoul, IETF97
