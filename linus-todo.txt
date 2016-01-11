@@ -9,6 +9,9 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
+- - tor #17840 tested and reviewed
+- o map's stuff merged
+- - 0.9.0 released
 - - https://trac.torproject.org/projects/tor/ticket/4581 reviewed
 - - catlfish linus/cleanup 07817e7 cherry-picked
 - - urd.appendto.org/ct/v1 running
@@ -24,17 +27,27 @@ Legend                                                (emacs -*-org-*- mode)
 - - draft-ietf-trans-gossip nits fixed
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
-- * web.ndn set up
-- * software.ndn working with tls
 - - tor consensuses in a log https://trac.torproject.org/projects/tor/ticket/17274
+- - phw's exit scanner running in jail on ioctl
+- - tor consensuses in the blockchain, using getombuds.org
+- o web.ndn set up
+- o software.ndn working with tls
 ** DFRI
-- - gnu social jail created for MMN-o
+- * TOT report amended
+- . prepare financial statement for 2015
+- . prepare the 2016 budget
+- - current members sent a membership token
+- - set up a private bridge for whonix (#17988)
+- . ipv6 to sto4
+- - fix the permissions in ikiwiki repos https://ikiwiki.info/rcs/git/
+- - pre-commit hook enabled on both repos, to avoid nonascci characters in file names
+- - extend the NOC group? what is NOC anyway?
+  - andreas needs more rest, what about hassel (for routing)?
 - - ICT-11-2017
   - elevator pitch
   - invitations sent for 4/12
 - - leif asked about anycasting maatuska
 - - route object added for AS4224, announcing 194.0.61.0/24
-- . ipv6 to sto4
 - . rewrite dfriadm git repo to remove register
   - [X] andreas
   - [ ] alex
@@ -44,9 +57,29 @@ Legend                                                (emacs -*-org-*- mode)
 - - OOB to sto3 (nacka) verified
 - - https on git.dfri.se
 - - https://dfri.net/ running again
+- o pjotr's expense claim
+  o pay him
+  o renew his membership
+- o portlane invoice [3 jan]
+- o member handling! [25 dec]
+- o invoice obe-000570 payed [25 dec]
+- o möte #1 2016 spikat (Tor 7/1 18:00) https://dudle.inf.tu-dresden.de/dfri-1-2016/
+- o linda replied to re södertälje stadsbibliotek
+- o södertälje stadsbibliotek answered [fri]
+- X stadgar prepared
+- o invoice PL-001410 payed [5 dec]
+- o gnu social jail created for MMN-o
+- o host SNUS stuff or not?
+- o host dfribot
 ** Misc
-- * emmaus booked
-- - phw's exit scanner running in jail on ioctl
+- * time reported
+- * [[https://jobsboard.geant.org/Pages/Online-Application-Form.aspx?vacancy%3DGN4-2-509883%2520-%2520Team%2520Member][GN4]] applied for
+- - extra expense report for japan
+- - cancel comhem broadband and telephony, customer 60720308: phone 90222
+- - ISOC-se betald [[file:ISOC.pdf][file:~/ISOC.pdf]]
+- - https://sebastianhahn.net/tor/ed25519_identities read and commented
+- o gaming screen for juni
+- X emmaus booked
 * Soon (within a month)
 ** Dev
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
@@ -93,8 +126,11 @@ Legend                                                (emacs -*-org-*- mode)
 - - #6027 and friends -- dir auths on ipv6
 - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
 ** Misc
+- - http://summerschool-croatia.cs.ru.nl/2016/ go or not?
+- - hanno böck, copenhagen 20-22 jan?
+- - ethereum vs. a log? https://musalbas.com/Report.pdf
 - - leif replied to re "how much is a linus?"
-- - tuben12 mail archive sent to Ulf
+- X tuben12 mail archive sent to Ulf
 - - some openitp person contacted about jari's IETF statistics
 - - feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
 - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
@@ -214,6 +250,7 @@ Legend                                                (emacs -*-org-*- mode)
 - X mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
 ** DFRI
+- - sthix invoice 300012 (feb 1)
 - - make dfri http://dfriawqocxecq52e.onion/ work
   - try https://wordpress.org/plugins/relative-url/
 - - leap tested on 2038.se
@@ -247,6 +284,8 @@ Legend                                                (emacs -*-org-*- mode)
 - - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 * Eventually
 ** Dev
+- - design and implement a ticket system -- offline, quarantine,
+  externally verifiable
 - - libradsec example server replying to a radius message
 - - libradsec python binding embryo commited
 - - build tlsdate on BSD's
@@ -312,12 +351,19 @@ X Jun 30-02, Philadelphia, PETS15
 - Sep 02-03, Kastrup, NORDUnet all hands
 - Sep 16-17, Kastrup, NORDUnet tech workshop
 - Sep 27-02, Berlin, Tor summer dev
-? Oct 14-15, Stockholm, Netnod
-? Oct 21-22, Stockholm, SIF15
+X Oct 14-15, Stockholm, Netnod
+X Oct 21-22, Stockholm, SIF15
 - Oct 30-07, Yokohama, IETF94
 2016
-- Feb 27-05, Valencia, Tor dev
+- Jan 20-22, CPH, all hands + hanno
+- Feb 26-03, Valencia, Tor dev
+? Mar 02-06, Barcelona, vacation
+? Mar 07-09, Vienna, GN4
+? Mar 10-13, Berlin, Logan ICJ
+? Mar 10-17, Marrakech, MirageOS hackathon
 - Apr 02-09, Buenos Aires, IET95
+? Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
 - Jun 11-17, Prague, TNC16
 - Jul 15-23, Berlin, IETF96
+? Jul 19-22, Darmstadt, PETS16
 - Nov 11-19, Seoul, IETF97
