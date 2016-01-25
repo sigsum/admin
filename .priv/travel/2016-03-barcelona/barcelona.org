@@ -2,3 +2,6 @@ mar 1 -- mar 6
 spoke on the phone <2016-01-15 Fri 13:29>, resending confirmation
 email addrs: grtrds72@hotmail.com, a25@4711.se
 booking code: J5BNVI
+
+Flight VY1266 ARN T5 MAR 1 16:40 - 20:10 BCN T1
+Flight VY1265 BCN T1 MAR 6 12:20 - 16:00 ARN T5
