@@ -21,23 +21,17 @@ Legend                                                (emacs -*-org-*- mode)
   - fresh CATT list distributed
   - munin added to all systems
   - frontend-4 set up on m0
-- o map's stuff merged
 ** IETF / W3C
-- o agenda for thursday call
 - . STK comments handled
 - - draft-ietf-trans-gossip nits fixed
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
-- o phw's exit scanner running in jail on ioctl
-- o web.ndn set up
-- o software.ndn working with tls
 ** DFRI
 - . TOT report amended with financial info
 - . 2016 budget prepared
 - - schröder replied to [feb 3]
   [[gnus:nnimap%2Badbc:INBOX#4f8ecaae5fa8425eb07ca8a556e666e5@PAEXCH04WF.riksdagen.se][Email from Anders Schröder: Hur förbättrar vi den personli]]
 - - portlane invoice payed [feb 4] [[file:p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf][file:~/p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf]] 
-- o financial statement for 2015 prepared
 - - library-privacy (libpriv@?) list set up [[gnus:nnimap%2Badbc:INBOX#e9bd7d8233474e02bf162ca6782ed4df@Exchange03.kb.local][Email from Elisabet Ahlqvist: SV: Introductions]]
 - - the permissions issue in ikiwiki repos fixed https://ikiwiki.info/rcs/git/
 - - pre-commit hook enabled on both repos, to avoid nonascci characters in file names
@@ -57,20 +51,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - OOB to sto3 (nacka) verified
 - - https on git.dfri.se (cgit)
 - - https://dfri.net/ running again
-- o pjotr's expense claim
-  o pay him
-  o renew his membership
-- o portlane invoice [3 jan]
-- o member handling! [25 dec]
-- o invoice obe-000570 payed [25 dec]
-- o möte #1 2016 spikat (Tor 7/1 18:00) https://dudle.inf.tu-dresden.de/dfri-1-2016/
-- o linda replied to re södertälje stadsbibliotek
-- o södertälje stadsbibliotek answered [fri]
-- X stadgar prepared
-- o invoice PL-001410 payed [5 dec]
-- o gnu social jail created for MMN-o
-- o host SNUS stuff or not?
-- o host dfribot
 ** Misc
 - - extra expense report for japan
 - - hotel booked BA
@@ -78,14 +58,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - ISOC-se betald [[file:ISOC.pdf][file:~/ISOC.pdf]]
 - - SNUS betald?
 - - https://sebastianhahn.net/tor/ed25519_identities read and commented
-- o flights booked BA [[file:ndn/travel/2016-04-ba-ietf95/ba.org][file:~/ndn/travel/2016-04-ba-ietf95/ba.org]]
-- o flights booked ARN-MAD/BCN, BCN-VIE, VIE-ARN [[file:ndn/travel/2016-02-valencia/valencia.org][file:~/ndn/travel/2016-02-valencia/valencia.org]]
-- o cancel comhem broadband and telephony, customer 60720308: phone 90222
-  - done over phone on <2016-01-18 Mon>: bredband 17 feb, telefon sista apr
-- o time reported
-- o [[https://jobsboard.geant.org/Pages/Online-Application-Form.aspx?vacancy%3DGN4-2-509883%2520-%2520Team%2520Member][GN4]] applied for
-- o gaming screen for juni
-- X emmaus booked
 * Soon (within a month)
 ** Dev
 - - tor consensuses in the blockchain, using getombuds.org
