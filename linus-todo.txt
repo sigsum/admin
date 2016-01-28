@@ -10,7 +10,6 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
 - - tor #17840 tested and reviewed
-- o map's stuff merged
 - - 0.9.0 released
 - - https://trac.torproject.org/projects/tor/ticket/4581 reviewed
 - - catlfish linus/cleanup 07817e7 cherry-picked
@@ -22,24 +21,25 @@ Legend                                                (emacs -*-org-*- mode)
   - fresh CATT list distributed
   - munin added to all systems
   - frontend-4 set up on m0
+- o map's stuff merged
 ** IETF / W3C
+- o agenda for thursday call
 - . STK comments handled
 - - draft-ietf-trans-gossip nits fixed
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
-- - tor consensuses in a log https://trac.torproject.org/projects/tor/ticket/17274
-- - phw's exit scanner running in jail on ioctl
-- - tor consensuses in the blockchain, using getombuds.org
+- o phw's exit scanner running in jail on ioctl
 - o web.ndn set up
 - o software.ndn working with tls
 ** DFRI
-- * TOT report amended
-- . prepare financial statement for 2015
-- . prepare the 2016 budget
-- - current members sent a membership token
-- - set up a private bridge for whonix (#17988)
-- . ipv6 to sto4
-- - fix the permissions in ikiwiki repos https://ikiwiki.info/rcs/git/
+- . TOT report amended with financial info
+- . 2016 budget prepared
+- - schröder replied to [feb 3]
+  [[gnus:nnimap%2Badbc:INBOX#4f8ecaae5fa8425eb07ca8a556e666e5@PAEXCH04WF.riksdagen.se][Email from Anders Schröder: Hur förbättrar vi den personli]]
+- - portlane invoice payed [feb 4] [[file:p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf][file:~/p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf]] 
+- o financial statement for 2015 prepared
+- - library-privacy (libpriv@?) list set up [[gnus:nnimap%2Badbc:INBOX#e9bd7d8233474e02bf162ca6782ed4df@Exchange03.kb.local][Email from Elisabet Ahlqvist: SV: Introductions]]
+- - the permissions issue in ikiwiki repos fixed https://ikiwiki.info/rcs/git/
 - - pre-commit hook enabled on both repos, to avoid nonascci characters in file names
 - - extend the NOC group? what is NOC anyway?
   - andreas needs more rest, what about hassel (for routing)?
@@ -55,7 +55,7 @@ Legend                                                (emacs -*-org-*- mode)
   - [X] mike
   - [X] pawal
 - - OOB to sto3 (nacka) verified
-- - https on git.dfri.se
+- - https on git.dfri.se (cgit)
 - - https://dfri.net/ running again
 - o pjotr's expense claim
   o pay him
@@ -72,16 +72,24 @@ Legend                                                (emacs -*-org-*- mode)
 - o host SNUS stuff or not?
 - o host dfribot
 ** Misc
-- * time reported
-- * [[https://jobsboard.geant.org/Pages/Online-Application-Form.aspx?vacancy%3DGN4-2-509883%2520-%2520Team%2520Member][GN4]] applied for
 - - extra expense report for japan
-- - cancel comhem broadband and telephony, customer 60720308: phone 90222
+- - hotel booked BA
+- - IETF95 fee payed
 - - ISOC-se betald [[file:ISOC.pdf][file:~/ISOC.pdf]]
+- - SNUS betald?
 - - https://sebastianhahn.net/tor/ed25519_identities read and commented
+- o flights booked BA [[file:ndn/travel/2016-04-ba-ietf95/ba.org][file:~/ndn/travel/2016-04-ba-ietf95/ba.org]]
+- o flights booked ARN-MAD/BCN, BCN-VIE, VIE-ARN [[file:ndn/travel/2016-02-valencia/valencia.org][file:~/ndn/travel/2016-02-valencia/valencia.org]]
+- o cancel comhem broadband and telephony, customer 60720308: phone 90222
+  - done over phone on <2016-01-18 Mon>: bredband 17 feb, telefon sista apr
+- o time reported
+- o [[https://jobsboard.geant.org/Pages/Online-Application-Form.aspx?vacancy%3DGN4-2-509883%2520-%2520Team%2520Member][GN4]] applied for
 - o gaming screen for juni
 - X emmaus booked
 * Soon (within a month)
 ** Dev
+- - tor consensuses in the blockchain, using getombuds.org
+- - tor consensuses in a log https://trac.torproject.org/projects/tor/ticket/17274
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
 - X flimsy onion
 - - find out if pwouters dnssec thing is a thing to respond to
@@ -250,7 +258,10 @@ Legend                                                (emacs -*-org-*- mode)
 - X mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
 ** DFRI
-- - sthix invoice 300012 (feb 1)
+- - obfs4 on DFRI bridge(s)
+- . ipv6 to sto4
+- - set up a private bridge for whonix (#17988)
+- o sthix invoice 300012 (feb 1)
 - - make dfri http://dfriawqocxecq52e.onion/ work
   - try https://wordpress.org/plugins/relative-url/
 - - leap tested on 2038.se
@@ -315,21 +326,31 @@ Legend                                                (emacs -*-org-*- mode)
 ** IETF
 - - first cut of a [[file:ietf/ietf.org::*AP's][draft bringing the research from the {PETS}
      research community]] submitted
+** DFRI
+- - current members sent a membership token
+  - idea A: 1. seed a PRNG with member number; 2. generate 1MB of data
+    using the PRNG; 3. sign the random data with an ECDSA key known to
+    the DFRI admin(s); 4. digest the signature like OATH
+    does; 5. distribute the digested sig to the member
+  - idea B: 1. hash member number; 2. encrypt the hash (1) using an
+    ECDSA key known to the DFRI admin(s); 3. hash the cryptotext
+    (2); 4. distribute the first 6 octets of the hash (3) to the
+    member
 * Travel
 2016
-- Jan 20-22, CPH, all hands + hanno
-- Feb 26-03, Valencia, Tor dev
-? Mar 02-06, Barcelona, vacation
-? Mar 07-09, Vienna, GN4
+- Jan 20-22, CPH, all hands
+- Feb 26-01, Valencia, Tor dev
+- Mar 01-06, Barcelona, vacation
+- Mar 06-09, Vienna, GN4
 ? Mar 10-13, Berlin, Logan ICJ
 ? Mar 10-17, Marrakech, MirageOS hackathon
-- Apr 02-09, Buenos Aires, IET95
+- Apr 01-08, Buenos Aires, IET95
 ? Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
 - Jun 11-17, Prague, TNC16
 - Jul 15-23, Berlin, IETF96
 ? Jul 19-22, Darmstadt, PETS16
 - Nov 11-19, Seoul, IETF97
-2015
+** 2015
 - Mar 01-06, Valencia, Tor winter dev
 X Mar 20-27, Dallas, IETF92
 - May 04-06, Finse, infosec winter school
@@ -345,7 +366,7 @@ X Jun 30-02, Philadelphia, PETS15
 X Oct 14-15, Stockholm, Netnod
 X Oct 21-22, Stockholm, SIF15
 - Oct 30-07, Yokohama, IETF94
-2014
+** 2014
 X Jan 31-02, Brussels, FOSDEM
 - Feb 06-07, Kastrup, ndn all hands
 - Feb 16-22, Reykyavik, Tor winter dev
