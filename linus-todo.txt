@@ -22,13 +22,8 @@ Legend                                                (emacs -*-org-*- mode)
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
 ** DFRI
-- o ekonomisk redogörelse
-- o 2016 budget sent out [thu 4/2]
-- o Erik Z replied to re statement on FRA law [fri 5/2]
-- o 2016 budget prepared
 - . TOT report amended with financial info
 - - KB document FOIAd
-- o portlane invoice payed [feb 4] [[file:p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf][file:~/p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf]] 
 - - library-privacy (libpriv@?) list set up [[gnus:nnimap%2Badbc:INBOX#e9bd7d8233474e02bf162ca6782ed4df@Exchange03.kb.local][Email from Elisabet Ahlqvist: SV: Introductions]]
 - - the permissions issue in ikiwiki repos fixed https://ikiwiki.info/rcs/git/
 - - pre-commit hook enabled on both repos, to avoid nonascci characters in file names
@@ -45,13 +40,9 @@ Legend                                                (emacs -*-org-*- mode)
 - - OOB to sto3 (nacka) verified
 - - https on git.dfri.se (cgit)
 - - https://dfri.net/ running again
-- o leif asked about anycasting maatuska
-- o schröder replied to [feb 3]
-  [[gnus:nnimap%2Badbc:INBOX#4f8ecaae5fa8425eb07ca8a556e666e5@PAEXCH04WF.riksdagen.se][Email from Anders Schröder: Hur förbättrar vi den personli]]
 ** Misc
 - - yubikey starters kit
 - . geant report https://docs.google.com/document/d/1sl9wc3HoUNWTrV9uJYnywGXzs24YLIfETSNE2o4KZ0o/
-- o feedback on leif's https://gist.github.com/leif/43f51d7c1c28e4a4512d
 - * pay for TNC
 - - feedback given on [[https://bugs.torproject.org/16558][invalid and badexit]]
 - - extra expense report for japan
@@ -60,7 +51,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - summary of all things append-only sent to fischer (cc rene)
 - - https://sebastianhahn.net/tor/ed25519_identities read and commented
 - X SNUS betald? 2015-10-12 150:-
-- o ISOC-se betald [[file:ISOC.pdf][file:~/ISOC.pdf]]
 * Soon (within a month)
 ** Dev
 - - tor consensuses in the blockchain, using getombuds.org
@@ -244,7 +234,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - obfs4 on DFRI bridge(s)
 - . ipv6 to sto4
 - - set up a private bridge for whonix (#17988)
-- o sthix invoice 300012 (feb 1)
 - - make dfri http://dfriawqocxecq52e.onion/ work
   - try https://wordpress.org/plugins/relative-url/
 - - leap tested on 2038.se
