@@ -9,38 +9,32 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
+- * tct proposal sent to tor-dev@
+- * consensuses in gaol announced on tor-dev@
 - - tor #17840 tested and reviewed
-- - 0.9.0 released
+- - catlfish-0.9.0 released
 - - https://trac.torproject.org/projects/tor/ticket/4581 reviewed
 - - catlfish linus/cleanup 07817e7 cherry-picked
-- - urd.appendto.org/ct/v1 running
-  o config created
-  o keys generated
-  o catlfish-dev-lunahsm autoconfiguring if missing config
-  - logkey generated on (or imported into?) luna
-  - fresh CATT list distributed
-  - munin added to all systems
-  - frontend-4 set up on m0
 ** IETF / W3C
+- - [[https://github.com/google/certificate-transparency-rfcs/pull/109][6962bis log shutdown]] reviewed
 - . STK comments handled
 - - draft-ietf-trans-gossip nits fixed
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
 ** DFRI
+- o ekonomisk redogörelse
+- o 2016 budget sent out [thu 4/2]
+- o Erik Z replied to re statement on FRA law [fri 5/2]
+- o 2016 budget prepared
 - . TOT report amended with financial info
-- . 2016 budget prepared
-- - schröder replied to [feb 3]
-  [[gnus:nnimap%2Badbc:INBOX#4f8ecaae5fa8425eb07ca8a556e666e5@PAEXCH04WF.riksdagen.se][Email from Anders Schröder: Hur förbättrar vi den personli]]
-- - portlane invoice payed [feb 4] [[file:p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf][file:~/p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf]] 
+- - KB document FOIAd
+- o portlane invoice payed [feb 4] [[file:p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf][file:~/p/dfri/dfriadm/fakturor/2016/portlane-1660.pdf]] 
 - - library-privacy (libpriv@?) list set up [[gnus:nnimap%2Badbc:INBOX#e9bd7d8233474e02bf162ca6782ed4df@Exchange03.kb.local][Email from Elisabet Ahlqvist: SV: Introductions]]
 - - the permissions issue in ikiwiki repos fixed https://ikiwiki.info/rcs/git/
 - - pre-commit hook enabled on both repos, to avoid nonascci characters in file names
-- - extend the NOC group? what is NOC anyway?
-  - andreas needs more rest, what about hassel (for routing)?
 - - ICT-11-2017
   - elevator pitch
   - invitations sent for 4/12
-- - leif asked about anycasting maatuska
 - - route object added for AS4224, announcing 194.0.61.0/24
 - . rewrite dfriadm git repo to remove register
   - [X] andreas
@@ -51,13 +45,22 @@ Legend                                                (emacs -*-org-*- mode)
 - - OOB to sto3 (nacka) verified
 - - https on git.dfri.se (cgit)
 - - https://dfri.net/ running again
+- o leif asked about anycasting maatuska
+- o schröder replied to [feb 3]
+  [[gnus:nnimap%2Badbc:INBOX#4f8ecaae5fa8425eb07ca8a556e666e5@PAEXCH04WF.riksdagen.se][Email from Anders Schröder: Hur förbättrar vi den personli]]
 ** Misc
+- - yubikey starters kit
+- . geant report https://docs.google.com/document/d/1sl9wc3HoUNWTrV9uJYnywGXzs24YLIfETSNE2o4KZ0o/
+- o feedback on leif's https://gist.github.com/leif/43f51d7c1c28e4a4512d
+- * pay for TNC
+- - feedback given on [[https://bugs.torproject.org/16558][invalid and badexit]]
 - - extra expense report for japan
 - - hotel booked BA
 - - IETF95 fee payed
-- - ISOC-se betald [[file:ISOC.pdf][file:~/ISOC.pdf]]
-- - SNUS betald?
+- - summary of all things append-only sent to fischer (cc rene)
 - - https://sebastianhahn.net/tor/ed25519_identities read and commented
+- X SNUS betald? 2015-10-12 150:-
+- o ISOC-se betald [[file:ISOC.pdf][file:~/ISOC.pdf]]
 * Soon (within a month)
 ** Dev
 - - tor consensuses in the blockchain, using getombuds.org
@@ -106,6 +109,10 @@ Legend                                                (emacs -*-org-*- mode)
 - - #6027 and friends -- dir auths on ipv6
 - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
 ** Misc
+- - 2-3y plan for Sunet wrt privacy/security/internet -- here's where
+  we could be given that some of the following funding opportunities
+  goes our way
+- - some CT thing proposed for https://portal.nordu.net/plugins/servlet/callForPresentations
 - - http://summerschool-croatia.cs.ru.nl/2016/ go or not?
 - - hanno böck, copenhagen 20-22 jan?
 - - ethereum vs. a log? https://musalbas.com/Report.pdf
@@ -230,6 +237,10 @@ Legend                                                (emacs -*-org-*- mode)
 - X mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
 ** DFRI
+- - publish the thing from ot somewhere
+- - publish the [[file:p/dfri/doc/hrc-q6-sweden-submission.pdf][HRC paper]]
+- - extend the NOC group? what is NOC anyway?
+  - andreas needs more rest, what about hassel (for routing)?
 - - obfs4 on DFRI bridge(s)
 - . ipv6 to sto4
 - - set up a private bridge for whonix (#17988)
@@ -267,6 +278,14 @@ Legend                                                (emacs -*-org-*- mode)
 - - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 * Eventually
 ** Dev
+- - urd.appendto.org/ct/v1 running
+  o config created
+  o keys generated
+  o catlfish-dev-lunahsm autoconfiguring if missing config
+  - logkey generated on (or imported into?) luna
+  - fresh CATT list distributed
+  - munin added to all systems
+  - frontend-4 set up on m0
 - - design and implement a ticket system -- offline, quarantine,
   externally verifiable
 - - libradsec example server replying to a radius message
@@ -320,7 +339,8 @@ Legend                                                (emacs -*-org-*- mode)
 ? Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
 - Jun 11-17, Prague, TNC16
 - Jul 15-23, Berlin, IETF96
-? Jul 19-22, Darmstadt, PETS16
+? Jul 19-23, Darmstadt, PETS16
+- Sep 19-23, Helsinki, NDN2016
 - Nov 11-19, Seoul, IETF97
 ** 2015
 - Mar 01-06, Valencia, Tor winter dev
@@ -358,5 +378,6 @@ X Jul 14-18, Berlin, OKFestival
 - Jul 15-19, Amsterdam, PETS14
 - Jul 19-26, Toronto, IETF90
 X Aug 19-23, San Diego, USENIX Security
+? Aug 26-04, Bornholm, Bornhack
 X Nov 07-16, Honolulu, IETF91
 - Oct 14-16, Zurich, CT gossip
