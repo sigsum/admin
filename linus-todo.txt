@@ -9,52 +9,58 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- * tct proposal sent to tor-dev@
-- * consensuses in gaol announced on tor-dev@
+- o [[http://meetbot.debian.net/tor-dev/2016/tor-dev.2016-03-17-14.58.html][TCT meeting]] summarised in an email to tor-dev@
+- o radsecproxy-1.6.7 released [mon]
+  o what to do about DTLS (RFC6347)? leave it be (i.e. DTLSv1)? use
+    undocumented DTLS_method()?  deprecate?
+- - [[https://trac.torproject.org/projects/tor/ticket/17668][#17668]] reviewed again
+- o prop 267 meeting time finalized
+    https://trac.torproject.org/projects/tor/wiki/org/teams/NetworkTeam/MeetingSchedule
 - - tor #17840 tested and reviewed
-- - catlfish-0.9.0 released
+    [[https://trac.torproject.org/projects/tor/ticket/17840][Add a minimal implementation of ClientUseIPv4 so IPv6-only clients can bootstrap]]
 - - https://trac.torproject.org/projects/tor/ticket/4581 reviewed
 - - catlfish linus/cleanup 07817e7 cherry-picked
+- o [[https://trac.torproject.org/projects/tor/ticket/17668][#17668]] reviewed: looking at 60efce4..03d484f
+  - NOTE: i'm not competent to verify the logic
+  - in routers_make_ed_keys_unique(), by_ed_key is never freed
+- o tct proposal sent to tor-dev@
+- o consensuses in gaol announced on tor-dev@
 ** IETF / W3C
-- - [[https://github.com/google/certificate-transparency-rfcs/pull/109][6962bis log shutdown]] reviewed
-- . STK comments handled
-- - draft-ietf-trans-gossip nits fixed
-- - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
+- - tor bulk exit list showing 1800 exits explained on list
+- - draft-ietf-trans-gossip-02 published
+- o email thread "[[gnus:nnimap%2Badbc:INBOX#56AA9A77.7000302@ritter.vg][CT Gossip and Third Party Cookies]]" read
+- o tjr/policy-recommendations reviewed
 ** Sysadm
+- - IPv6 DirPort added on maatuska: DirPort [<addr>]:443 NoAdvertise
+- - ns2.named.se added for adb-centralen.se
 ** DFRI
-- . TOT report amended with financial info
-- - KB document FOIAd
-- - library-privacy (libpriv@?) list set up [[gnus:nnimap%2Badbc:INBOX#e9bd7d8233474e02bf162ca6782ed4df@Exchange03.kb.local][Email from Elisabet Ahlqvist: SV: Introductions]]
-- - the permissions issue in ikiwiki repos fixed https://ikiwiki.info/rcs/git/
-- - pre-commit hook enabled on both repos, to avoid nonascci characters in file names
-- - ICT-11-2017
-  - elevator pitch
-  - invitations sent for 4/12
-- - route object added for AS4224, announcing 194.0.61.0/24
-- . rewrite dfriadm git repo to remove register
-  - [X] andreas
-  - [ ] alex
-  - [X] jn
-  - [X] mike
-  - [X] pawal
-- - OOB to sto3 (nacka) verified
-- - https on git.dfri.se (cgit)
-- - https://dfri.net/ running again
+- - [[file:p/dfri/dfriadm/fakturor/2016/obe-1239.pdf][obe-1239]] payed [mar 27]
+- - amelia replied re NN: [[gnus:nnimap%2Badbc:INBOX#CAJHsFncfVQPm9Ww640tUb3zM77RNLr-2G%3DwAe6CCXGNojDyVWg@mail.gmail.com][Email from Erik Nihlen: Re: DPI-utrustning]]
+- o UFS email sent [wed]
 ** Misc
-- - yubikey starters kit
-- . geant report https://docs.google.com/document/d/1sl9wc3HoUNWTrV9uJYnywGXzs24YLIfETSNE2o4KZ0o/
-- * pay for TNC
-- - feedback given on [[https://bugs.torproject.org/16558][invalid and badexit]]
-- - extra expense report for japan
-- - hotel booked BA
+- - mirrors@heanet.ie contacted re tor mirror
+- * CT introduction (with pics) and future work sent to remco, max one
+  page each [mar 18]
+- * pgp keys from valencia meeting signed
+- - aep and hugge connected (fastnetmon, flowspec)
+- o holger [[gnus:nnimap%2Badbc:lists.bintrans#201603091210.19970.holger@layer-acht.org][replied to]] on bintrans
+- * johan & amanda, dinner (w/ kids) invite
+- * TNC payed for
 - - IETF95 fee payed
-- - summary of all things append-only sent to fischer (cc rene)
-- - https://sebastianhahn.net/tor/ed25519_identities read and commented
+- - feedback given on [[https://bugs.torproject.org/16558][invalid and badexit]]
+- o hotel booked BA
+  [[gnus:nnimap%2Bndn:INBOX#005501d1794b$a242a600$e6c7f200$@nh-hotels.com][Email from GROUPS MERCOSUR: RE: Booking for IETF meeting, ]]
+- o travel info printed (flight info, valencia hotel + venue,
+  barcelona appartment, vienna hotel)
+- o geant report https://docs.google.com/document/d/1sl9wc3HoUNWTrV9uJYnywGXzs24YLIfETSNE2o4KZ0o/
+- X https://sebastianhahn.net/tor/ed25519_identities read and commented
 - X SNUS betald? 2015-10-12 150:-
 * Soon (within a month)
 ** Dev
-- - tor consensuses in the blockchain, using getombuds.org
-- - tor consensuses in a log https://trac.torproject.org/projects/tor/ticket/17274
+- - check out [[https://github.com/manopapad/proper][PropEr]], for property-based checking (erlang)
+- - check out cuter, "concolic testing" tool for erlang
+- - catlfish-0.9.0 released
+- o tor consensuses in a log https://trac.torproject.org/projects/tor/ticket/17274
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
 - X flimsy onion
 - - find out if pwouters dnssec thing is a thing to respond to
@@ -99,6 +105,12 @@ Legend                                                (emacs -*-org-*- mode)
 - - #6027 and friends -- dir auths on ipv6
 - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
 ** Misc
+- - Nicolas replied to re [[gnus:nnimap%2Badbc:INBOX#CAL_x9uErkNe%2B8Nox9ppoR7YRPdrpQVnGjk6ob2FdRQBomez9dw@mail.gmail.com][tor-cothority]]
+- - hotel booked prague https://tnc16.geant.org/web/venue/hotels
+- - flights booked for prague
+- - summary of all things append-only sent to fischer (cc rene)
+- - extra expense report for japan
+- - yubikey starters kit
 - - 2-3y plan for Sunet wrt privacy/security/internet -- here's where
   we could be given that some of the following funding opportunities
   goes our way
@@ -141,6 +153,10 @@ Legend                                                (emacs -*-org-*- mode)
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
 ** IETF
+- - [[https://github.com/google/certificate-transparency-rfcs/pull/109][6962bis log shutdown]] reviewed
+- . STK comments handled
+- - draft-ietf-trans-gossip nits fixed
+- - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 - - SAML naming of AAA entities reviewed for ABFAB
      [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-naming-07.txt]]
 - - jaris tools discussed
@@ -227,6 +243,24 @@ Legend                                                (emacs -*-org-*- mode)
 - X mm: move /usr/home/bup to its own dataset -- lets us back up /usr/home
      maybe /usr/local/etc/ too?
 ** DFRI
+- . TOT report amended with financial info
+- - KB document FOIAd
+- - library-privacy (libpriv@?) list set up [[gnus:nnimap%2Badbc:INBOX#e9bd7d8233474e02bf162ca6782ed4df@Exchange03.kb.local][Email from Elisabet Ahlqvist: SV: Introductions]]
+- - the permissions issue in ikiwiki repos fixed https://ikiwiki.info/rcs/git/
+- - pre-commit hook enabled on both repos, to avoid nonascci characters in file names
+- - ICT-11-2017
+  - elevator pitch
+  - invitations sent for 4/12
+- - route object added for AS4224, announcing 194.0.61.0/24
+- . rewrite dfriadm git repo to remove register
+  - [X] andreas
+  - [ ] alex
+  - [X] jn
+  - [X] mike
+  - [X] pawal
+- - OOB to sto3 (nacka) verified
+- - https on git.dfri.se (cgit)
+- - https://dfri.net/ running again
 - - publish the thing from ot somewhere
 - - publish the [[file:p/dfri/doc/hrc-q6-sweden-submission.pdf][HRC paper]]
 - - extend the NOC group? what is NOC anyway?
@@ -267,6 +301,8 @@ Legend                                                (emacs -*-org-*- mode)
 - - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 * Eventually
 ** Dev
+- - radsecproxy "system test" (tls version and cipher suites, more)
+- - tor consensuses in the blockchain, using getombuds.org
 - - urd.appendto.org/ct/v1 running
   o config created
   o keys generated
@@ -324,13 +360,20 @@ Legend                                                (emacs -*-org-*- mode)
 - Mar 06-09, Vienna, GN4
 ? Mar 10-13, Berlin, Logan ICJ
 ? Mar 10-17, Marrakech, MirageOS hackathon
-- Apr 01-08, Buenos Aires, IET95
+- Apr 01-09, Buenos Aires, IET95
+- May ??, ??, JRA2 all hands
 ? Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
-- Jun 11-17, Prague, TNC16
-- Jul 15-23, Berlin, IETF96
+? Jun 11-17, Prague, TNC16
+- Jun 20-03, ?, Vacation
+? Jul 04-10, ?, Vacation
+? Jul 15-23, Berlin, IETF96
 ? Jul 19-23, Darmstadt, PETS16
+- Jul 25-07, ?, Vacation
 - Sep 19-23, Helsinki, NDN2016
-- Nov 11-19, Seoul, IETF97
+? Nov 11-19, Seoul, IETF97
+** 2017
+? Mar 24-31, Chicago, IETF98
+? Jul 15-22, Prague, IETF99
 ** 2015
 - Mar 01-06, Valencia, Tor winter dev
 X Mar 20-27, Dallas, IETF92
