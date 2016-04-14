@@ -9,58 +9,42 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- o [[http://meetbot.debian.net/tor-dev/2016/tor-dev.2016-03-17-14.58.html][TCT meeting]] summarised in an email to tor-dev@
-- o radsecproxy-1.6.7 released [mon]
-  o what to do about DTLS (RFC6347)? leave it be (i.e. DTLSv1)? use
-    undocumented DTLS_method()?  deprecate?
-- - [[https://trac.torproject.org/projects/tor/ticket/17668][#17668]] reviewed again
-- o prop 267 meeting time finalized
-    https://trac.torproject.org/projects/tor/wiki/org/teams/NetworkTeam/MeetingSchedule
-- - tor #17840 tested and reviewed
+- o [[gnus:nnimap%2Bndn:INBOX#alpine.LFD.2.20.1603050640370.15398@bofh.nohats.ca][Email from Paul Wouters: Re: {DNSSEC-Transparency} Vali]] replied to
+- X [[https://trac.torproject.org/projects/tor/ticket/17668][#17668]] reviewed again
+- X tor #17840 tested and reviewed
     [[https://trac.torproject.org/projects/tor/ticket/17840][Add a minimal implementation of ClientUseIPv4 so IPv6-only clients can bootstrap]]
-- - https://trac.torproject.org/projects/tor/ticket/4581 reviewed
+- X [[https://trac.torproject.org/projects/tor/ticket/4581][#4581]] reviewed
 - - catlfish linus/cleanup 07817e7 cherry-picked
-- o [[https://trac.torproject.org/projects/tor/ticket/17668][#17668]] reviewed: looking at 60efce4..03d484f
-  - NOTE: i'm not competent to verify the logic
-  - in routers_make_ed_keys_unique(), by_ed_key is never freed
-- o tct proposal sent to tor-dev@
-- o consensuses in gaol announced on tor-dev@
 ** IETF / W3C
-- - tor bulk exit list showing 1800 exits explained on list
-- - draft-ietf-trans-gossip-02 published
-- o email thread "[[gnus:nnimap%2Badbc:INBOX#56AA9A77.7000302@ritter.vg][CT Gossip and Third Party Cookies]]" read
-- o tjr/policy-recommendations reviewed
+- - gossip meeting scheduled https://dudle.inf.tu-dresden.de/privacy/CT_gossip/
+- - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
+- - tor bulk exit list showing 1800 exits explained on ietf@
+- o draft-ietf-trans-gossip-02 published
 ** Sysadm
-- - IPv6 DirPort added on maatuska: DirPort [<addr>]:443 NoAdvertise
-- - ns2.named.se added for adb-centralen.se
+- - new key for maatuska deployed
+- o new pgp subkey uploaded
+- o IPv6 DirPort added on maatuska: DirPort [<addr>]:443 NoAdvertise
+- o ns2.named.se added for adb-centralen.se
 ** DFRI
-- - [[file:p/dfri/dfriadm/fakturor/2016/obe-1239.pdf][obe-1239]] payed [mar 27]
 - - amelia replied re NN: [[gnus:nnimap%2Badbc:INBOX#CAJHsFncfVQPm9Ww640tUb3zM77RNLr-2G%3DwAe6CCXGNojDyVWg@mail.gmail.com][Email from Erik Nihlen: Re: DPI-utrustning]]
-- o UFS email sent [wed]
+- o [[file:p/dfri/dfriadm/fakturor/2016/obe-1239.pdf][obe-1239]] payed [mar 27]
+- o [[file:p/dfri/dfriadm/fakturor/2016/portlane-1917.pdf][portlane-1917]] payed [apr 05]
+- o [[gnus:nnimap%2Badbc:junk#FC3CC900-1C0C-42D1-8B78-3B6B261396B3@michanek.se][Email from Peter Michanek: {rpitor-wg} Tankar om våra rel]] read [mar 30]
 ** Misc
-- - mirrors@heanet.ie contacted re tor mirror
-- * CT introduction (with pics) and future work sent to remco, max one
+- o johan & amanda, dinner (w/ kids) invite
+- X oliver.pinter@hardenedbsd.org, shawn.webb@hardenedbsd.org emailed
+  about whitelisting Tor in CF
+- X feedback given on [[https://bugs.torproject.org/16558][invalid and badexit]]
+- o CT introduction (with pics) and future work sent to remco, max one
   page each [mar 18]
-- * pgp keys from valencia meeting signed
-- - aep and hugge connected (fastnetmon, flowspec)
-- o holger [[gnus:nnimap%2Badbc:lists.bintrans#201603091210.19970.holger@layer-acht.org][replied to]] on bintrans
-- * johan & amanda, dinner (w/ kids) invite
-- * TNC payed for
-- - IETF95 fee payed
-- - feedback given on [[https://bugs.torproject.org/16558][invalid and badexit]]
-- o hotel booked BA
-  [[gnus:nnimap%2Bndn:INBOX#005501d1794b$a242a600$e6c7f200$@nh-hotels.com][Email from GROUPS MERCOSUR: RE: Booking for IETF meeting, ]]
-- o travel info printed (flight info, valencia hotel + venue,
-  barcelona appartment, vienna hotel)
-- o geant report https://docs.google.com/document/d/1sl9wc3HoUNWTrV9uJYnywGXzs24YLIfETSNE2o4KZ0o/
-- X https://sebastianhahn.net/tor/ed25519_identities read and commented
-- X SNUS betald? 2015-10-12 150:-
+- o pgp keys from valencia meeting signed
+- o TNC payed for
+- o IETF95 fee payed
 * Soon (within a month)
 ** Dev
 - - check out [[https://github.com/manopapad/proper][PropEr]], for property-based checking (erlang)
 - - check out cuter, "concolic testing" tool for erlang
 - - catlfish-0.9.0 released
-- o tor consensuses in a log https://trac.torproject.org/projects/tor/ticket/17274
 - - something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
 - X flimsy onion
 - - find out if pwouters dnssec thing is a thing to respond to
@@ -105,6 +89,9 @@ Legend                                                (emacs -*-org-*- mode)
 - - #6027 and friends -- dir auths on ipv6
 - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
 ** Misc
+- - OSA mattias och pernillas bröllop
+- o aep and hugge connected (fastnetmon, flowspec)
+- - mirrors@heanet.ie contacted re tor mirror
 - - Nicolas replied to re [[gnus:nnimap%2Badbc:INBOX#CAL_x9uErkNe%2B8Nox9ppoR7YRPdrpQVnGjk6ob2FdRQBomez9dw@mail.gmail.com][tor-cothority]]
 - - hotel booked prague https://tnc16.geant.org/web/venue/hotels
 - - flights booked for prague
@@ -114,27 +101,27 @@ Legend                                                (emacs -*-org-*- mode)
 - - 2-3y plan for Sunet wrt privacy/security/internet -- here's where
   we could be given that some of the following funding opportunities
   goes our way
+- - leif replied to re "how much is a linus?"
 - - some CT thing proposed for https://portal.nordu.net/plugins/servlet/callForPresentations
 - - http://summerschool-croatia.cs.ru.nl/2016/ go or not?
-- - hanno böck, copenhagen 20-22 jan?
+- o hanno böck, copenhagen 20-22 jan?
 - - ethereum vs. a log? https://musalbas.com/Report.pdf
-- - leif replied to re "how much is a linus?"
 - X tuben12 mail archive sent to Ulf
 - - some openitp person contacted about jari's IETF statistics
-- - feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
+- X feedback sent to Johan Pouwelse <peer2peer@gmail.com> re Tribler
 - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated  (1)
-- - 4711 phone abb canceled, tele2, kundnr 04650832 (1)
-- - WPS (at home wlan router) disabled (1)
+- o 4711 phone abb canceled, tele2, kundnr 04650832 (1)
+- X WPS (at home wlan router) disabled (1)
 - - kopia av bauer-tavlan, http://crimson.se/
-- - tahoe-lafs / tamias on tor HS investigated
-- - feedback to kyle on practical cryptography in go sent
+- X tahoe-lafs / tamias on tor HS investigated
+- X feedback to kyle on practical cryptography in go sent
 - - read up on andrews favourite ways of running a company
      http://wiki.lewman.is/snippets/ge_Printer_Friendly
      http://firstround.com/article/How-Medium-is-building-a-new-kind-of-company-with-no-managers
      http://falkvinge.net/2013/07/19/book-launch-swarmwise-the-tactical-manual-to-changing-the-world/
 - - split https://portal.nordu.net/display/nordunetops/Tor in two
-- - review #6939, #6026, #8475
-- - look at #8380
+- X review #6939, #6026, #8475
+- X look at #8380
 - - get back to kupo/w03 about rhnet saying that nordunet as
      upstream blocks tor operation (wed)
      o send email to lars & bj
@@ -153,10 +140,10 @@ Legend                                                (emacs -*-org-*- mode)
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
 ** IETF
+- - [[file:usr/share/ietf/internet-drafts/draft-margolis-smtp-sts-00.txt][draft-margolis-smtp-sts-00]] read
 - - [[https://github.com/google/certificate-transparency-rfcs/pull/109][6962bis log shutdown]] reviewed
 - . STK comments handled
 - - draft-ietf-trans-gossip nits fixed
-- - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 - - SAML naming of AAA entities reviewed for ABFAB
      [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-naming-07.txt]]
 - - jaris tools discussed
@@ -358,16 +345,17 @@ Legend                                                (emacs -*-org-*- mode)
 - Feb 26-01, Valencia, Tor dev
 - Mar 01-06, Barcelona, vacation
 - Mar 06-09, Vienna, GN4
-? Mar 10-13, Berlin, Logan ICJ
-? Mar 10-17, Marrakech, MirageOS hackathon
-- Apr 01-09, Buenos Aires, IET95
+x Mar 10-13, Berlin, Logan ICJ
+x Mar 10-17, Marrakech, MirageOS hackathon
+x Apr 01-09, Buenos Aires, IET95
 - May ??, ??, JRA2 all hands
 ? Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
-? Jun 11-17, Prague, TNC16
+- Jun 12-16, Prague, TNC16
 - Jun 20-03, ?, Vacation
 ? Jul 04-10, ?, Vacation
 ? Jul 15-23, Berlin, IETF96
 ? Jul 19-23, Darmstadt, PETS16
+? Jul 25-30, New York, CII
 - Jul 25-07, ?, Vacation
 - Sep 19-23, Helsinki, NDN2016
 ? Nov 11-19, Seoul, IETF97
