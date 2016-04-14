@@ -1,9 +1,338 @@
-
 `C-c C-x C-i' for starting a clock.
 `C-c C-x C-i' for stopping the clock.
 `C-c C-x C-d' for showing times.
 `C-c C-y' for updating time on line.
 
+* week 15
+** nordunet
+   CLOCK: [2016-04-11 Mon 13:23]--[2016-04-11 Mon 13:29] =>  0:06
+   CLOCK: [2016-04-11 Mon 12:35]--[2016-04-11 Mon 12:49] =>  0:14
+   admin
+   CLOCK: [2016-04-11 Mon 10:45]--[2016-04-11 Mon 10:59] =>  0:14
+   misc
+   CLOCK: [2016-04-11 Mon 09:15]--[2016-04-11 Mon 10:40] =>  1:25
+   gitlab
+** cryptech
+   CLOCK: [2016-04-12 Tue 09:30]--[2016-04-12 Tue 10:03] =>  0:33
+** CT
+   CLOCK: [2016-04-14 Thu 09:54]--[2016-04-14 Thu 10:04] =>  0:10
+   geant report
+   CLOCK: [2016-04-13 Wed 16:01]--[2016-04-13 Wed 16:16] =>  0:15
+** dnssec trans
+   CLOCK: [2016-04-14 Thu 16:30]--[2016-04-14 Thu 17:01] =>  0:31
+   CLOCK: [2016-04-14 Thu 11:04]--[2016-04-14 Thu 11:22] =>  0:18
+   CLOCK: [2016-04-13 Wed 17:23]--[2016-04-13 Wed 17:48] =>  0:25
+   CLOCK: [2016-04-13 Wed 16:40]--[2016-04-13 Wed 17:01] =>  0:21
+   CLOCK: [2016-04-13 Wed 16:20]--[2016-04-13 Wed 16:24] =>  0:04
+   CLOCK: [2016-04-13 Wed 15:33]--[2016-04-13 Wed 16:01] =>  0:28
+   CLOCK: [2016-04-13 Wed 14:46]--[2016-04-13 Wed 15:29] =>  0:43
+   CLOCK: [2016-04-13 Wed 14:10]--[2016-04-13 Wed 14:36] =>  0:26
+   CLOCK: [2016-04-13 Wed 13:41]--[2016-04-13 Wed 13:56] =>  0:15
+   CLOCK: [2016-04-13 Wed 12:55]--[2016-04-13 Wed 13:32] =>  0:37
+   CLOCK: [2016-04-13 Wed 11:14]--[2016-04-13 Wed 11:50] =>  0:36
+   CLOCK: [2016-04-13 Wed 09:54]--[2016-04-13 Wed 10:57] =>  1:03
+   CLOCK: [2016-04-13 Wed 09:40]--[2016-04-13 Wed 09:45] =>  0:05
+   CLOCK: [2016-04-13 Wed 08:58]--[2016-04-13 Wed 09:14] =>  0:16
+   CLOCK: [2016-04-13 Wed 08:26]--[2016-04-13 Wed 08:54] =>  0:28
+   CLOCK: [2016-04-12 Tue 16:38]--[2016-04-12 Tue 16:59] =>  0:21
+   CLOCK: [2016-04-12 Tue 14:42]--[2016-04-12 Tue 16:12] =>  1:30
+   CLOCK: [2016-04-12 Tue 13:45]--[2016-04-12 Tue 14:20] =>  0:35
+   CLOCK: [2016-04-12 Tue 13:13]--[2016-04-12 Tue 13:40] =>  0:27
+   CLOCK: [2016-04-12 Tue 12:15]--[2016-04-12 Tue 12:46] =>  0:31
+   CLOCK: [2016-04-12 Tue 10:46]--[2016-04-12 Tue 11:07] =>  0:21
+   CLOCK: [2016-04-11 Mon 19:47]--[2016-04-11 Mon 19:59] =>  0:12
+   CLOCK: [2016-04-11 Mon 19:15]--[2016-04-11 Mon 19:42] =>  0:27
+   CLOCK: [2016-04-11 Mon 17:58]--[2016-04-11 Mon 18:29] =>  0:31
+   CLOCK: [2016-04-11 Mon 14:52]--[2016-04-11 Mon 16:14] =>  1:22
+   CLOCK: [2016-04-11 Mon 13:29]--[2016-04-11 Mon 14:26] =>  0:57
+
+* week 14
+NOTE: We're +4.5h in jra3t2 from last weekend which should be reported
+on this week
+
+** ndn internal
+   CLOCK: [2016-04-08 Fri 17:53]--[2016-04-08 Fri 18:01] =>  0:08
+   CLOCK: [2016-04-05 Tue 08:26]--[2016-04-05 Tue 08:59] =>  0:33
+   - 0.5h extra
+** gossip draft
+   CLOCK: [2016-04-04 Mon 20:40]--[2016-04-04 Mon 21:47] =>  1:07
+   TRANS meeting
+   CLOCK: [2016-04-04 Mon 09:45]--[2016-04-04 Mon 10:24] =>  0:39
+** dnssec trans
+   CLOCK: [2016-04-08 Fri 17:19]--[2016-04-08 Fri 17:52] =>  0:33
+   CLOCK: [2016-04-08 Fri 16:47]--[2016-04-08 Fri 17:11] =>  0:24
+   CLOCK: [2016-04-08 Fri 15:49]--[2016-04-08 Fri 16:37] =>  0:48
+   CLOCK: [2016-04-08 Fri 14:43]--[2016-04-08 Fri 15:10] =>  0:27
+   CLOCK: [2016-04-08 Fri 14:09]--[2016-04-08 Fri 14:34] =>  0:25
+   CLOCK: [2016-04-08 Fri 13:09]--[2016-04-08 Fri 13:46] =>  0:37
+   CLOCK: [2016-04-08 Fri 12:11]--[2016-04-08 Fri 12:42] =>  0:31
+   CLOCK: [2016-04-07 Thu 15:58]--[2016-04-07 Thu 16:23] =>  0:25
+   CLOCK: [2016-04-07 Thu 15:12]--[2016-04-07 Thu 15:39] =>  0:27
+   CLOCK: [2016-04-07 Thu 11:36]--[2016-04-07 Thu 12:48] =>  1:12
+   CLOCK: [2016-04-07 Thu 11:11]--[2016-04-07 Thu 11:35] =>  0:24
+   CLOCK: [2016-04-06 Wed 17:17]--[2016-04-06 Wed 17:51] =>  0:34
+   CLOCK: [2016-04-06 Wed 10:52]--[2016-04-06 Wed 11:00] =>  0:08
+   CLOCK: [2016-04-06 Wed 08:40]--[2016-04-06 Wed 10:07] =>  1:27
+   CLOCK: [2016-04-05 Tue 21:07]--[2016-04-05 Tue 21:18] =>  0:11
+   CLOCK: [2016-04-05 Tue 18:51]--[2016-04-05 Tue 19:33] =>  0:42
+   CLOCK: [2016-04-05 Tue 17:59]--[2016-04-05 Tue 18:20] =>  0:21
+   CLOCK: [2016-04-05 Tue 17:25]--[2016-04-05 Tue 17:40] =>  0:15
+   CLOCK: [2016-04-05 Tue 16:48]--[2016-04-05 Tue 17:23] =>  0:35
+   CLOCK: [2016-04-05 Tue 16:13]--[2016-04-05 Tue 16:18] =>  0:05
+   CLOCK: [2016-04-05 Tue 15:52]--[2016-04-05 Tue 16:04] =>  0:12
+   CLOCK: [2016-04-05 Tue 14:45]--[2016-04-05 Tue 14:51] =>  0:06
+   CLOCK: [2016-04-05 Tue 13:03]--[2016-04-05 Tue 14:04] =>  1:01
+   CLOCK: [2016-04-05 Tue 12:21]--[2016-04-05 Tue 12:59] =>  0:38
+   CLOCK: [2016-04-05 Tue 11:41]--[2016-04-05 Tue 12:14] =>  0:33
+* week 13 (2016-03-28--03)
+** gossip draft
+   CLOCK: [2016-04-03 Sun 22:17]--[2016-04-03 Sun 22:43] =>  0:26
+   CLOCK: [2016-04-03 Sun 14:28]--[2016-04-03 Sun 14:38] =>  0:10
+   CLOCK: [2016-04-03 Sun 13:00]--[2016-04-03 Sun 13:49] =>  0:49
+** dnssec trans
+   CLOCK: [2016-04-03 Sun 20:36]--[2016-04-03 Sun 20:45] =>  0:09
+   CLOCK: [2016-04-03 Sun 20:22]--[2016-04-03 Sun 20:36] =>  0:14
+   CLOCK: [2016-04-03 Sun 20:00]--[2016-04-03 Sun 20:08] =>  0:08
+   CLOCK: [2016-04-03 Sun 19:09]--[2016-04-03 Sun 19:52] =>  0:43
+   CLOCK: [2016-04-03 Sun 18:33]--[2016-04-03 Sun 19:00] =>  0:27
+   CLOCK: [2016-04-03 Sun 17:30]--[2016-04-03 Sun 18:27] =>  0:57
+   CLOCK: [2016-04-03 Sun 17:15]--[2016-04-03 Sun 17:17] =>  0:02
+   CLOCK: [2016-04-03 Sun 16:14]--[2016-04-03 Sun 16:58] =>  0:44
+   CLOCK: [2016-04-03 Sun 14:38]--[2016-04-03 Sun 14:48] =>  0:10
+   CLOCK: [2016-04-03 Sun 14:01]--[2016-04-03 Sun 14:11] =>  0:10
+   CLOCK: [2016-04-02 Sat 15:34]--[2016-04-02 Sat 16:02] =>  0:28
+** x
+   CLOCK: [2016-04-01 Fri 16:27]--[2016-04-01 Fri 16:54] =>  0:27
+   CLOCK: [2016-04-01 Fri 15:39]--[2016-04-01 Fri 16:10] =>  0:31
+   CLOCK: [2016-04-01 Fri 14:56]--[2016-04-01 Fri 15:26] =>  0:30
+   canonicalise in port program and return canonicalised result
+   CLOCK: [2016-04-01 Fri 14:04]--[2016-04-01 Fri 14:39] =>  0:35
+   email discussions
+   CLOCK: [2016-03-30 Wed 21:20]--[2016-03-30 Wed 21:42] =>  0:22
+   CLOCK: [2016-03-30 Wed 20:09]--[2016-03-30 Wed 20:36] =>  0:27
+   CLOCK: [2016-03-30 Wed 14:31]--[2016-03-30 Wed 14:54] =>  0:23
+   CLOCK: [2016-03-30 Wed 13:07]--[2016-03-30 Wed 14:13] =>  1:06
+   CLOCK: [2016-03-29 Tue 19:51]--[2016-03-29 Tue 20:34] =>  0:43
+   CLOCK: [2016-03-29 Tue 19:24]--[2016-03-29 Tue 19:49] =>  0:25
+   making tools work with local nameserver (good for offline
+   situations like flights and proably other parts of the IETF week)
+
+   mon: 2h
+* week 12 (2016-03-21--27)
+** ct gossip
+   CLOCK: [2016-03-21 Mon 16:05]--[2016-03-21 Mon 16:45] =>  0:40
+   CLOCK: [2016-03-21 Mon 12:05]--[2016-03-21 Mon 15:17] =>  3:12
+   CLOCK: [2016-03-21 Mon 09:53]--[2016-03-21 Mon 11:06] =>  1:13
+   CLOCK: [2016-03-21 Mon 09:13]--[2016-03-21 Mon 09:44] =>  0:31
+   CLOCK: [2016-03-21 Mon 08:15]--[2016-03-21 Mon 08:47] =>  0:32
+** dnssec transparency
+   CLOCK: [2016-03-27 Sun 19:34]--[2016-03-27 Sun 20:34] =>  1:00
+   validating
+   CLOCK: [2016-03-27 Sun 18:41]--[2016-03-27 Sun 19:08] =>  0:27
+   CLOCK: [2016-03-27 Sun 18:08]--[2016-03-27 Sun 18:35] =>  0:27
+   CLOCK: [2016-03-27 Sun 14:00]--[2016-03-27 Sun 14:31] =>  0:31
+   CLOCK: [2016-03-26 Sat 22:11]--[2016-03-26 Sat 22:33] =>  0:22
+   CLOCK: [2016-03-26 Sat 21:47]--[2016-03-26 Sat 22:09] =>  0:22
+   CLOCK: [2016-03-26 Sat 17:45]--[2016-03-26 Sat 18:22] =>  0:37
+   CLOCK: [2016-03-26 Sat 17:19]--[2016-03-26 Sat 17:44] =>  0:25
+   CLOCK: [2016-03-26 Sat 16:00]--[2016-03-26 Sat 16:29] =>  0:29
+   wire format
+   CLOCK: [2016-03-26 Sat 13:49]--[2016-03-26 Sat 14:15] =>  0:26
+   CLOCK: [2016-03-26 Sat 13:17]--[2016-03-26 Sat 13:26] =>  0:09
+   CLOCK: [2016-03-26 Sat 13:01]--[2016-03-26 Sat 13:16] =>  0:15
+   CLOCK: [2016-03-26 Sat 12:22]--[2016-03-26 Sat 12:48] =>  0:26
+   CLOCK: [2016-03-26 Sat 11:48]--[2016-03-26 Sat 12:14] =>  0:26
+   set up knot to have something to work with when offline
+** notes
+- [X] cd ~/usr/src/knot && torsocks git pull
+- [X] Need dnssec-dsfromkey, unclear from which package but I think
+  it's an ISC thing, maybe it's in bind9utils. udns-utils is another
+  debian package that might be useful.
+- [ ] GUD (gdb in emacs) creates new frames all the time. This isn't
+  very good, at least not with a tiling wm. Fix: M-x
+  tooltip-mode. TODO: Verify that customizing `tooltip-mode nil' fixes
+  this.
+* week 11 (2016-03-14--20)
+** ct gossip
+   CLOCK: [2016-03-20 Sun 18:45]--[2016-03-20 Sun 21:16] =>  2:31
+   CLOCK: [2016-03-20 Sun 17:26]--[2016-03-20 Sun 17:50] =>  0:24
+   CLOCK: [2016-03-20 Sun 16:14]--[2016-03-20 Sun 16:55] =>  0:41
+   CLOCK: [2016-03-20 Sun 15:10]--[2016-03-20 Sun 15:47] =>  0:37
+* week 8 (2016-02-22--28)
+** tor 7
+   CLOCK: [2016-02-24 Wed 21:50]--[2016-02-24 Wed 22:20] =>  0:30
+   CLOCK: [2016-02-24 Wed 16:40]--[2016-02-24 Wed 17:48] =>  1:08
+   CLOCK: [2016-02-24 Wed 15:36]--[2016-02-24 Wed 15:56] =>  0:20
+   CLOCK: [2016-02-24 Wed 12:15]--[2016-02-24 Wed 13:43] =>  1:28
+   CLOCK: [2016-02-24 Wed 11:27]--[2016-02-24 Wed 11:37] =>  0:10
+   CLOCK: [2016-02-24 Wed 10:29]--[2016-02-24 Wed 11:17] =>  0:48
+   CLOCK: [2016-02-23 Tue 14:59]--[2016-02-23 Tue 15:51] =>  0:52
+   CLOCK: [2016-02-23 Tue 14:50]--[2016-02-23 Tue 14:55] =>  0:05
+   CLOCK: [2016-02-23 Tue 14:11]--[2016-02-23 Tue 14:43] =>  0:32
+   proposal
+   CLOCK: [2016-02-22 Mon 16:13]--[2016-02-22 Mon 16:28] =>  0:15
+   CLOCK: [2016-02-22 Mon 11:06]--[2016-02-22 Mon 11:13] =>  0:07
+   CLOCK: [2016-02-22 Mon 10:40]--[2016-02-22 Mon 10:55] =>  0:15
+   CLOCK: [2016-02-22 Mon 10:02]--[2016-02-22 Mon 10:22] =>  0:20
+   tct large submissions
+** jra2t3 1
+   CLOCK: [2016-02-24 Wed 09:47]--[2016-02-24 Wed 10:06] =>  0:19
+   gossip
+   CLOCK: [2016-02-22 Mon 16:28]--[2016-02-22 Mon 17:15] =>  0:47
+   report
+* week 7 (2016-02-15--21)
+** jra3t2 7.5
+   CLOCK: [2016-02-19 Fri 12:58]--[2016-02-19 Fri 13:37] =>  0:39
+   CLOCK: [2016-02-19 Fri 12:21]--[2016-02-19 Fri 12:38] =>  0:17
+   CLOCK: [2016-02-19 Fri 10:33]--[2016-02-19 Fri 11:10] =>  0:37
+   CLOCK: [2016-02-19 Fri 09:24]--[2016-02-19 Fri 10:03] =>  0:39
+   CLOCK: [2016-02-18 Thu 17:19]--[2016-02-18 Thu 17:38] =>  0:19
+   plausible and sysadmin
+   CLOCK: [2016-02-19 Fri 11:40]--[2016-02-19 Fri 12:16] =>  0:36
+   project admin
+   CLOCK: [2016-02-18 Thu 19:30]--[2016-02-18 Thu 20:35] =>  1:05
+   CLOCK: [2016-02-18 Thu 17:47]--[2016-02-18 Thu 19:14] =>  1:27
+   gossip: https client poc
+   CLOCK: [2016-02-18 Thu 17:17]--[2016-02-18 Thu 17:19] =>  0:02
+   CLOCK: [2016-02-18 Thu 16:50]--[2016-02-18 Thu 17:04] =>  0:14
+   CLOCK: [2016-02-18 Thu 15:01]--[2016-02-18 Thu 16:27] =>  1:26
+   gossip
+   CLOCK: [2016-02-15 Mon 10:50]--[2016-02-15 Mon 10:55] =>  0:05
+   ct
+** adbc
+   CLOCK: [2016-02-16 Tue 09:36]--[2016-02-16 Tue 09:37] =>  0:01
+   CLOCK: [2016-02-15 Mon 10:25]--[2016-02-15 Mon 10:32] =>  0:07
+   CLOCK: [2016-02-15 Mon 09:13]--[2016-02-15 Mon 09:14] =>  0:01
+** tor 17
+   CLOCK: [2016-02-19 Fri 17:41]--[2016-02-19 Fri 18:08] =>  0:27
+   CLOCK: [2016-02-19 Fri 14:07]--[2016-02-19 Fri 17:30] =>  3:23
+   tct chunked POST
+   CLOCK: [2016-02-18 Thu 14:39]--[2016-02-18 Thu 15:01] =>  0:22
+   tb ci
+   CLOCK: [2016-02-18 Thu 12:05]--[2016-02-18 Thu 12:56] =>  0:51
+   CLOCK: [2016-02-18 Thu 11:42]--[2016-02-18 Thu 11:56] =>  0:14
+   CLOCK: [2016-02-18 Thu 10:40]--[2016-02-18 Thu 11:22] =>  0:42
+   CLOCK: [2016-02-17 Wed 19:35]--[2016-02-17 Wed 20:10] =>  0:35
+   CLOCK: [2016-02-17 Wed 16:10]--[2016-02-17 Wed 16:55] =>  0:45
+   CLOCK: [2016-02-16 Tue 14:28]--[2016-02-16 Tue 15:20] =>  0:52
+   tct chunked POST
+   CLOCK: [2016-02-16 Tue 11:05]--[2016-02-16 Tue 13:33] =>  2:28
+   CLOCK: [2016-02-16 Tue 10:06]--[2016-02-16 Tue 10:55] =>  0:49
+   CLOCK: [2016-02-15 Mon 18:00]--[2016-02-15 Mon 19:00] =>  1:00
+   CLOCK: [2016-02-15 Mon 17:28]--[2016-02-15 Mon 17:48] =>  0:20
+   CLOCK: [2016-02-15 Mon 16:32]--[2016-02-15 Mon 17:27] =>  0:55
+   CLOCK: [2016-02-15 Mon 15:18]--[2016-02-15 Mon 15:51] =>  0:33
+   CLOCK: [2016-02-15 Mon 13:29]--[2016-02-15 Mon 13:47] =>  0:18
+   tct
+   CLOCK: [2016-02-17 Wed 14:30]--[2016-02-17 Wed 15:22] =>  0:52
+   network team meeting
+   CLOCK: [2016-02-16 Tue 16:33]--[2016-02-16 Tue 17:07] =>  0:34
+   CLOCK: [2016-02-16 Tue 15:50]--[2016-02-16 Tue 16:28] =>  0:38
+   CLOCK: [2016-02-15 Mon 12:51]--[2016-02-15 Mon 13:00] =>  0:09
+   CLOCK: [2016-02-15 Mon 10:59]--[2016-02-15 Mon 11:11] =>  0:12
+   misc
+   CLOCK: [2016-02-15 Mon 13:06]--[2016-02-15 Mon 13:13] =>  0:07
+   CLOCK: [2016-02-15 Mon 10:33]--[2016-02-15 Mon 10:37] =>  0:04
+   tb nightly
+** ndn 2 
+   CLOCK: [2016-02-19 Fri 13:40]--[2016-02-19 Fri 13:54] =>  0:14
+   security
+   CLOCK: [2016-02-19 Fri 10:03]--[2016-02-19 Fri 10:33] =>  0:30
+   meeting weekly
+   CLOCK: [2016-02-18 Thu 13:00]--[2016-02-18 Thu 13:18] =>  0:18
+   ct geant
+   CLOCK: [2016-02-17 Wed 16:57]--[2016-02-17 Wed 17:27] =>  0:30
+   CLOCK: [2016-02-15 Mon 10:37]--[2016-02-15 Mon 10:48] =>  0:11
+   sysadmin
+** dfri
+   CLOCK: [2016-02-19 Fri 12:38]--[2016-02-19 Fri 12:48] =>  0:10
+   dfripi
+   CLOCK: [2016-02-15 Mon 15:56]--[2016-02-15 Mon 16:16] =>  0:20
+   medlemshantering
+** notes
+glibc versions
+debian testing (stretch): 2.21-8
+debian unstable (sid): 2.21-8
+debian stable (jessie): 2.19-18+deb8u3
+debian old-stable (wheezy): 2.13-38+deb7u10
+ubuntu 15.10: 2.21-0ubuntu4.1
+ubuntu 14.04: 2.19-0ubuntu6.7
+ubuntu 12.04: 2.15-0ubuntu10.13 
+* week 6 (2016-02-08--14)
+** jra2t3 16
+*** plausible 2
+   2 load certs
+*** dnssec trans 12.5
+*** admin 0.5
+*** misc 0.75
+   permdb
+** ndn 4
+*** meeting 0.5
+    0.5 weekly meeting
+*** admin 0.25
+*** tor 1
+   0.75 dns
+   0.25 tb ci
+*** ct 0.5
+*** misc 1.5
+   cosmos+puppet: key handling
+** dfri
+   0.75 medlemshantering
+   0.25 comm
+   2.5 sysadmin
+   0.25 HRC submission
+   1.25 admin
+** adbc
+   0.5 sysadmin
+** tor 6.5
+   6.5 tct
+* week 5 (2016-02-01--07)
+** adbc
+   0.75 sysadmin: upgrade and cleaning smtp headers for submission
+** dfri
+   5 meeting: general assembly
+   0.5 internetfonden, zouave
+   0.5 admin
+   2.5 sysadmin
+   1 budget
+** jra3t2 18.5
+   0.5 verifiable data structures
+   16.5 dnssec trans: dev and comm
+   1.5 ct: project admin
+** ndn 7
+   1 meeting: weekly
+   0.5 tor: tb periodic
+   0.5 append-only logs
+   0.5 tor: tb periodic builds
+   0.5 tor: comm
+   0.5 tor: tct: build and navigate code
+   1 ct: admin
+   2 ct: politics
+   0.5 security: asan
+** tor
+** notes
+-  sprintf(buf, "%ld", i);
++  sprintf(buf, "%" PRId64, i);
+defined in inttypes.h
+
+asan https://blog.hboeck.de/archives/879-Safer-use-of-C-code-running-Gentoo-with-Address-Sanitizer.html
+* week 4 (2016-01-25--31)
+** sunet
+   0.5 tor-sjf
+** jra3t2
+   3 gossip
+   0.25 design
+   0.25 gn4
+** dfri
+   0.25 member admin
+   0.5 sysadmin
+   1 economic admin, TOT
+** ndn
+   4.5 dnssec trans
+** notes
+https://groups.google.com/forum/?_escaped_fragment_=msg/binary-transparency/f-BI4o8HZW0/MDmnWideAgAJ#!msg/binary-transparency/f-BI4o8HZW0/MDmnWideAgAJ
+printf "[transfer]\n\tfsckobjects = true\n[fetch]\n\tfsckobjects = true\n[receive]\n\tfsckobjects = true\n" >> .git/config
+git fsck --full
 * Sep 2015
 - EC and CT [[gnus:nnimap%2Badbc:INBOX#55EAC8FB.2080406@andersdotter.cc][Email from Amelia Andersdotter: Re: Encrypted Fri Sep 4 22:50]]
 * March 2015

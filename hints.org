@@ -1,3 +1,4 @@
+;; hints.org (in -*-mode: org; coding: utf-8 -*- format)
 * TLS
 ** TLS attacks, by jas
 - types av crypto: stream, block, authenticated
@@ -400,6 +401,9 @@ above. Important for bash and xterm to be happy about _input_.
 - Tropical Frozen Yogurts: Amentropicalyogurts2011
 - ComHem<FA22A2> 68d8gc4a
 -  4C93118324
+- NUNOC-GUEST tie bag day pan
+- SUNET-GUEST Razmataz
+- NUNOC at SUNET B1ahBl4h
 ** stable/unstable on the t410s running debian
 Is it 2.4Ghz vs. 5.2Ghz?
 *** stable
@@ -623,6 +627,9 @@ network={
         #psk="FailSafe"
         psk=bdf47fa73a7844c9b604b5cdace4538a4d94a3f7445ace98c3c6d95a05363d37
 }
+** devices
+*** GL.iNet 6416
+[[gnus:nnimap%2Badbc:junk#20160212183918.GC988@loar][Email from lunar@torproject.org: Re: {valencia2016} A local Eth]]
 * libevent
 ** dns issues in tor
 todo
@@ -717,6 +724,7 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - [[*sip][ekiga]] -- instead of skype
 - festival -- voice synthesis
 - hping3 -- network research and attack tool
+- cloc -- count lines of code (loc)
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -1089,6 +1097,18 @@ git commit --amend
 
 In magit: 'r b' to start a rewrite from HEAD, pick the commit and
 `change the message, finish with 'r f'.
+** Weaknesses with SHA1
+<A> B: collisions, someone can create fake/malicious objects with the
+    same id
+
+<A> gpg signing doesn't help afaics because the signatures are over
+    the commit object, which merely references another tree object via
+    its id
+
+<A> linus' argument historically for not bothering to fix this was
+    that "you can sign blah blah" but that completely misses the
+    point, even with signatures you still have these weak references
+    that can be attacked
 * Movie / video
 ** Carnivale
 Start VLC.
@@ -1332,6 +1352,11 @@ Info pages at
 Installed packages end up in ~/.emacs.d/elpa/.
 ** twitter
 tiwttering-mode
+** [[info:emacs#Coding%20Systems][Coding Systems]]
+- a '=' in the first position of the [[info:emacs#Mode%20Line][mode line]] means "no conversion
+  whatsoever", while a '1' means ISO Latin-1
+- `C-x <RET> r' sets a file's coding system, `utf-8' is often a good
+  choice, or use the `-*- ... -*-' thing at the beginning of the file
 * Telia homerun
 user: 46703714984
 pw: ds5XVDEir5
@@ -3844,8 +3869,8 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
    "UseTor": true,
    "Proxies": ["socks5://127.0.0.1:9050"],
 ** STARTTLS
-C->S <stream:stream to='nordu.net' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>
-S->C <?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='909926038' from='nordu.net' version='1.0' xml:lang='en'><stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms><c xmlns='http://jabber.org/protocol/caps' hash='sha-1' node='http://www.process-one.net/en/ejabberd/' ver='TQ2JFyRoSa70h2G1bpgjzuXb2sU='/><register xmlns='http://jabber.org/features/iq-register'/></stream:features>
+C->S <stream:stream to='example.com' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>
+S->C <?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='909926038' from='example.com' version='1.0' xml:lang='en'><stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms><c xmlns='http://jabber.org/protocol/caps' hash='sha-1' node='http://www.process-one.net/en/ejabberd/' ver='TQ2JFyRoSa70h2G1bpgjzuXb2sU='/><register xmlns='http://jabber.org/features/iq-register'/></stream:features>
 C->S <starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>
 
 *** nordu.net example
@@ -4017,6 +4042,51 @@ Connecting to '2001:6b0:8::85:5222'...
     Gottfrid.Kullberg@4711.se
     pw: thipaShisiy
 * linux
+** debian without gnome
+- to make ratpoison an option in the gdm3 start screen, add a file in
+  /urs/share/xsessions
+sudo cat >> /usr/share/xsessions/ratpoison <<EOF
+[Desktop Entry]
+Name=rp
+Comment=ratpoison
+Exec=ratpoison
+TryExec=ratpoison
+Icon=
+Type=Application
+EOF
+- make sure ssh-agent is started (and session-dbus is not) by editing
+  /etc/X11/Xsession.options
+
+- ctrl -> caps key mapping
+  setxkbmap -option caps:ctrl_modifier
+  (to restore, do setxkbmap -option '' -option caps:capslock)
+  (old buggy way: xmodmap ~/.xmodmap)
+- key rate
+  # after every boot or suspend/resume
+  xset r on; xset r rate 255 128
+- lock screen
+  # Requires 'xscreensaver -no-splash &' at X startup
+  /usr/bin/xscreensaver-command -lock
+- mount usb stick
+  see tool:/root/mount-stick.sh, which boils down to
+    cryptsetup luksOpen /dev/$1 $2
+    mount /dev/mapper/$2 ~linus/$2
+  and
+    umount /dev/mapper/$1
+    cryptsetup luksClose $1
+- mount file-backed filesystem
+  losetup /dev/loop0 file.img
+  mount-stick.sh loop0
+  # use, unmount
+  losetup -d /dev/loop0
+- suspend
+  pm-suspend
+- controlling NetworkManager (esp. chosing SSID)
+  nmcli con up id <SSID>
+  nmcli dev wifi list
+  nmcli nm wifi off
+- battery status
+  acpi -b
 ** examples of sloppyness
 *** IPTABLES(8)
     --------------------------------------------------
@@ -4079,7 +4149,6 @@ GRUB_RECORDFAIL_TIMEOUT=0
           may merge them into grsec
 <ioerror> micah: it would be so amazing if the debian kernel team built a                                                                                                
           grsec enabled kernel
-
 * gdb
 ** debug program made by libtool
    M-x gdb
@@ -4089,6 +4158,54 @@ GRUB_RECORDFAIL_TIMEOUT=0
 * skivspelare
   Veteran hi fi, Karlbergsv. 62, 08-300846, miroslaw@simplyblack.net.
 * yubikey
+** hardware
+- yubikey 4 has an SLE 78CLFX3000P:
+  https://twitter.com/lrvick/status/695664752215793664
+  http://www.infineon.com/cms/en/product/security-and-smart-card-solutions/security-controllers/sle78/SLE+78CLFX3000P/productType.html?productType=db3a30433f764301013f995084a85d3b#ispnTab11
+** notes
+*** klali on yk4, feb 2016
+- using 3des and not aes
+des 18 cykler
+3des 51 cykler
+aes-128 263 cykler
+aes-192 313 cykler
+aes-256 363 cykler
+*** john on touch <2016-02-24 Wed>
+encrypted [[gnus:nnimap%2Badbc:INBOX#56CCE081.1070703@binary.to][Email from John Van de Meulebrouck Brendgard: Angående touch på yubikey]]
+
+Jag har låtit undersöka om jag kan reproducera problemen jag nämnde att
+jag hade med https://gist.github.com/a-dma/797e4fa2ac4b5c9024ccDet verkar dock lite svårt för den nyare som du fick fungerade utan
+problem för mig att sätta touch på. Den verkar även ha en nyare version
+av firmwaren än vad jag har testat förut:
+gpg-connect-agent --hex "scd apdu 00 f1 00 00" /bye
+D[0000]  04 02 08 90 00
+
+Medan min vanliga produktionsnykel har:
+gpg-connect-agent --hex "scd apdu 00 f1 00 00" /bye
+D[0000]  04 02 07 90 00
+
+Jag testade därefter om problemen kvarstår på den äldre versionen och
+det gjorde de tills det att jag återställde firmwaren - då gick det på
+första försöket.
+
+Oavsett om det går eller ej så kan man "autentisera sig" genom att byta
+admin lösenord med gpg2 --card-edit -> admin -> passwd -> "3 - change
+Admin PIN" (går att sätta till samma om man vill) och modifiera skriptet
+så att det inte försöker autentisera dig (eftersom du redan har gjort
+det), alternativt ta ut godbitarna såsom t ex:
+Sätt touch på sig:
+gpg-connect-agent --hex "scd apdu 00 da 00 D6 02 01 20" /bye
+
+Sätt touch på dec:
+gpg-connect-agent --hex "scd apdu 00 da 00 D7 02 01 20" /bye
+
+Sätt touch på aut:
+gpg-connect-agent --hex "scd apdu 00 da 00 D8 02 01 20" /bye
+
+Jag har satt fixed touch (02 istället för 01 i kommandona ovan) på sig
+och dec eftersom jag inte vill att någon ska kunna ta bort kravet på
+touch för dessa även om denne någon sniffat mitt admin-lösenord.
+** host software
   - [X] libykclient-dev - Yubikey client library development files
   - [X] libykclient3 - Yubikey client library runtime
   - [ ] libykpers-1-1 - Personalization tool for Yubikey OTP tokens
@@ -4114,7 +4231,6 @@ GRUB_RECORDFAIL_TIMEOUT=0
         /usr/share/doc/libykclient-dev/changelog.gz
         /usr/share/doc/libykclient-dev/changelog.Debian.gz
         /usr/lib/libykclient.so
-
 ** Making a static key
    sudo ykpersonalize -y -1 -ostatic-ticket -a $(~linus/src/hexpw.py) >/dev/null 2>&1
 *** tool:~% cat src/hexpw.py
@@ -4130,6 +4246,45 @@ GRUB_RECORDFAIL_TIMEOUT=0
     print hexify(file('/dev/random').read(16))
     
     main()
+** basic info
+Documentation can be found at
+
+  https://www.yubico.com/support/documentation/
+
+and in particular the user manual at
+
+  https://www.yubico.com/wp-content/uploads/2015/03/YubiKeyManual_v3.4.pdf
+
+
+Yubikey 4 doesn't have a JavaCard like the manual says. It has a
+"secure element" from Infinion (SLE78).
+
+Quick guide on how to get started using SSH keys on a Debian system
+(based on
+https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd):
+
+    sudo apt-get install gnupg2 scdaemon
+
+    cat >> $GNUPGHOME/gpg-agent.conf <<EOF
+    scdaemon-program /usr/lib/gnupg2/scdaemon
+    enable-ssh-support
+    write-env-file "$GNUPGHOME/gpg-agent-info-$(hostname)"
+    EOF
+
+    cat >> $HOME/.profile <<EOF
+    if [ -f "${GNUPGHOME}/gpg-agent-info-$(hostname)" ]; then
+        . "${GNUPGHOME}/gpg-agent-info-$(hostname)"
+        export GPG_AGENT_INFO
+        export SSH_AUTH_SOCK
+        export SSH_AGENT_PID
+    fi
+    GPG_TTY=$(tty); export GPG_TTY
+    EOF
+
+    ykpersonalize -m82		# requires yuibkey to be inserted
+
+yubikey-personalization - Personalization tool for Yubikey OTP tokens
+yubikey-personalization-gui - Graphical personalization tool for YubiKey tokens
 * YubiHSM
 ** <2011-03-17 Thu>
    NO_CFG> sysinfo
@@ -4154,11 +4309,12 @@ GRUB_RECORDFAIL_TIMEOUT=0
 ** servers
    OFTC (#tor #tor-dev #tor-se #dfri_se) irc.oftc.net 6697 (ssl)
    IRCNET (#isp #sthix #sunet) open.ircnet.net 6667 / irc.portlane.se 6667
-   FREENODE (#sparvnastet #edri #erlang) chat.eu.freenode.net 6697
-   Baconsvin (#celo) havana.baconsvin.org 6nbtgccn5nbcodn3.onion 6697 (TLS)
+   FREENODE (#sparvnastet #edri #erlang) wolfe.freenode.net / chat.eu.freenode.net 6697
+   Baconsvin (#celo) havana.baconsvin.org / 6nbtgccn5nbcodn3.onion 6697 (TLS)
    DALNET (Michiel-5580) irc.terahertz.net 6697
    Telecomix (#telekompaketet) irc.telecomix.org 9999 (ssl)
-   Telecomix weoq7a4exzcyaasj.onion 6667/6697
+   Telecomix (#telekompaketet) weoq7a4exzcyaasj.onion 6667/6697
+   EFNET irc.nordu.net.se
 ** bouncers
 *** ezbounce
 **** status STAT
@@ -4458,8 +4614,6 @@ adb-centralen.se. IN DS 3787 8 2 AAD386D929CB8432EA2E365C1872EA779F488C46C48B5F2
 
 In this example, the keytag is 3787, the algorithm is 8 (RSA/SHA-256)
 and the digest type is 2 (SHA-256).
-
-
 ** dig
 *** segfault
     Running a shell in Emacs runing under usewithtor:
@@ -28717,6 +28871,7 @@ https://www.freebsd.org/doc/handbook/virtualization-host-bhyve.html
 echo if_tap_load=YES >> /boot/loader.conf
 echo net.link.tap.up_on_open=1 >> /etc/sysctl.conf
 
+# creating a linux guest
 truncate -s 16G debian82-0.img
 cat > debian82-0.device.map << EOF
 (hd0) ./debian82-0.img
@@ -28732,14 +28887,25 @@ installing GRUB on /dev/vda
 exit installer
 sudo bhyvectl --vm=debian82-0 --destroy
 
+# starting a linux guest
 sudo grub-bhyve -m debian82-0.device.map -r hd0,msdos1 -M 1024M debian82-0
 sudo bhyve -A -H -P -s 0:0,hostbridge -s 1:0,lpc -s 2:0,virtio-net,tap0 -s 3:0,virtio-blk,./debian82-0.img -l com1,/dev/nmdm0A -c 4 -m 1024M debian82-0 &
 sudo cu -l /dev/nmdm0B -s 9600	# for console, type ~. to quit (beware of ssh using ~ too!)
 
+# configuring linux vm's
 update-rc.d nfs-common disable
 update-rc.d rpcbind disable
 update-rc.d exim4 disable
 
+# listing running guests
+ls /dev/vmm/
+
+** configure complains about syntax error
+and the offending line (in configure.ac) is PKG_CHECK_MODULES()
+
+Solution: pkg install pkgconf
+** pkg
+pkg which -- like debian dpkg -S
 * EuroBonus
 EBB609964226
 * No-phone sig
@@ -29807,6 +29973,8 @@ gitweb = yes
 owner = mgw@umk.pl
 description = Maja's radsecproxy repository
 * Accounts
+** skype
+markkuallanpi marko.pi@4711.se
 ** flickr
 aug 12 1958
 ** google
@@ -29825,6 +29993,18 @@ ln+bgg@4711.se
 grtrds72 el. gerran1: ananas
 ** gitlab.labs.nic.cz
 ln5 / CRHVDAdzEDUZz0uJ5e
+** apple id
+in a failed attempt at creating an appled id on <2016-03-29 Tue> i
+used the following data:
+
+password vt10Ysq8
+best friend eEdanFCOoiRWM0
+dream job iRQNNvhbxt0kWT
+first album 1jYGyo1CeIfMjJ
+date of birth 1970-01-01
+** skodaklubben.com
+arme@4711.se Arne Mellberg, Grästorp
+pw: arme
 * SUNET
 ** Mätdata Chalmers
 [[gnus:nnimap%2Bndn:INBOX#4E5BA90A.3030405@chalmers.se][Email from Tomas Olovsson: Re: Mätdata från SUNET?]]
@@ -29848,7 +30028,7 @@ ln5 / CRHVDAdzEDUZz0uJ5e
 * Firefox
 ** Add-ons
 Torbutton
-  extensions.torbutton.resize_windows -> false
+  about:config:extensions.torbutton.resize_windows -> false
 NoScript
   General: Scripts Globally Allowed: off 
   Appearance: Contextual -> Temporarily allow: checked
@@ -30077,6 +30257,10 @@ cu
 - [[file:usr/share/ietf/internet-drafts/draft-ietf-6man-stable-privacy-addresses-17.txt][draft-ietf-6man-stable-privacy-addresses-17]]
 - [[file:usr/share/ietf/in-notes/rfc6724.txt][RFC6724]] Default Address Selection for Internet Protocol Version 6 (IPv6)
 - [[file:usr/share/ietf/in-notes/rfc6104.txt][RFC6104]] Rogue IPv6 Router Advertisement Problem Statement 
+- RFC4291 IP Version 6 Addressing Architecture
+- RFC6164 Using 127-Bit IPv6 Prefixes on Inter-Router Links
+- RFC6890 Special-Purpose IP Address Registries
+- [[file:usr/share/ietf/in-notes/rfc7721.txt][RFC7721]] Security and Privacy Considerations for IPv6 Address Generation Mechanisms
 * Adresser snail mail
 ** Daniel Melin
 Diligensvägen 35
@@ -30103,55 +30287,12 @@ Thomas di Leva
 Caroline af Ugglas
 Nanne Grönvall
 * Backup
+** Cross-platform
+https://en.wikipedia.org/wiki/Duplicity_%28software%29
 ** Linux
 *** backups
 bacula, rsnapshot, amanda?
 Liman says "backuppc".
-*** debian without gnome
-- to make ratpoison an option in the gdm3 start screen, add a file in
-  /urs/share/xsessions
-sudo cat >> /usr/share/xsessions/ratpoison <<EOF
-[Desktop Entry]
-Name=rp
-Comment=ratpoison
-Exec=ratpoison
-TryExec=ratpoison
-Icon=
-Type=Application
-EOF
-- make sure ssh-agent is started (and session-dbus is not) by editing
-  /etc/X11/Xsession.options
-
-- ctrl -> caps key mapping
-  setxkbmap -option caps:ctrl_modifier
-  (to restore, do setxkbmap -option '' -option caps:capslock)
-  (old buggy way: xmodmap ~/.xmodmap)
-- key rate
-  # after every boot or suspend/resume
-  xset r on; xset r rate 255 128
-- lock screen
-  # Requires 'xscreensaver -no-splash &' at X startup
-  /usr/bin/xscreensaver-command -lock
-- mount usb stick
-  see tool:/root/mount-stick.sh, which boils down to
-    cryptsetup luksOpen /dev/$1 $2
-    mount /dev/mapper/$2 ~linus/$2
-  and
-    umount /dev/mapper/$1
-    cryptsetup luksClose $1
-- mount file-backed filesystem
-  losetup /dev/loop0 file.img
-  mount-stick.sh loop0
-  # use, unmount
-  losetup -d /dev/loop0
-- suspend
-  pm-suspend
-- controlling NetworkManager (esp. chosing SSID)
-  nmcli con up id <SSID>
-  nmcli dev wifi list
-  nmcli nm wifi off
-- battery status
-  acpi -b
 ** FreeBSD
 *** UFS
 Use dump/restore.
@@ -30177,7 +30318,6 @@ zroot/jail/ln/dfri/root@bup           0      -    55K  -
 zroot/jail/ln/dfri/tmp@bup            0      -   142K  -
 zroot/jail/ln/dfri/usr-local@bup      0      -   659M  -
 zroot/jail/ln/dfri/var@bup         154K      -  57.8M  -
-
 * checkout
 - https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorJ pt 11 --> lai
   https://trac.torproject.org/projects/tor/ticket/7008
@@ -30365,6 +30505,12 @@ coursera.org "Fnoi Albrektsson" ln+coursera@4711.se BA1NjZUt
 - https://openexchangerates.org ln+oex@4711.se / Uhei9doo
   api key c113305bc9684688b14ef413522facad
   https://openexchangerates.org/api/latest.json?app_id=c113305bc9684688b14ef413522facad
+  "free plan" (can't change base currency from USD)
+- https://openexchangerates.org ln+oex2@4711.se / Pmj4uudvitRQ
+  app id 81637de8fad44051a376885b4bb60ba1
+  example: https://openexchangerates.org/api/latest.json?app_id=81637de8fad44051a376885b4bb60ba1
+  "free plan" (can't change base currency from USD)
+  NOTE: to get SEK/EUR, one can simply calculate SEK/USD / EUR/USD
 * mud
 proj% tt++
 * tpb
@@ -31585,6 +31731,9 @@ Apr  4 11:05:46 lnmail saslauthd[1857]: do_auth         : auth failure: [user=li
 Apr  4 11:05:48 lnmail saslauthd[1853]: do_auth         : auth failure: [user=linus] [service=smtp] [realm=nordberg.se] [mech=kerberos5] [reason=krb5_verify_user_opt failed]
 Apr  4 11:05:51 lnmail saslauthd[1856]: do_auth         : auth failure: [user=linus] [service=smtp] [realm=nordberg.se] [mech=kerberos5] [reason=krb5_verify_user_opt failed]
 
+** tor friendly email providers
+mailbox.org
+bitmessage.ch
 * Carbon X1
 alex: 14,4 kSEK
 * interesting plot
@@ -33527,7 +33676,7 @@ money
   o services such as storage
   o run through nordunet/sunet
 --------------------
-* public ledger
+* public ledgers
 ** wiretapped on putting committments in the bitcoin blockchain
 i found out recently it is actually cheap to put committments in the blockchain
 using the homomorphic property of ecc keys
@@ -33546,6 +33695,15 @@ p1 is known
 you can send money to p3 (=p1+p2)
 and anyone can confirm s2 is part of it
 (you publish p1 and s2)
+** balloon, tpulls
+- append-only
+- proof of (non-)membership, for present or past versions
+- verifiable inserts
+- q: is sha256 not at a 128-bits security level?
+- "At first glance, sparse Merkle trees [as in laurie's and kasper's
+  cert revocation] could replace the hash treap in a Balloon with
+  similar size/time complexity operations."
+
 * unposted emails
 ** JS
 Date: 2044-12-13
@@ -33870,6 +34028,35 @@ https://events.ccc.de/congress/2013/wiki/Static:Documentation
     war; if we could change [everything] and [start detecting stuff]
   - karsten: we'll always to mistakes and someone will find the bug
 
+** 32c3
+*** Day 1
+https://events.ccc.de/congress/2015/Fahrplan/events/7324.html What is the value of anonymous communication?
+[[https://events.ccc.de/congress/2015/Fahrplan/events/7196.html][How the Great Firewall discovers hidden circumvention servers]] phw [[https://media.ccc.de/v/32c3-7196-how_the_great_firewall_discovers_hidden_circumvention_servers][video]]
+http://fahrplan.top/congress/2015/Fahrplan/events/7352.html Towards (reasonably) trustworthy x86 laptops
+http://fahrplan.top/congress/2015/Fahrplan/events/7227.html Avoiding kernel panic: Europe’s biggest fails in digital policy-making
+http://fahrplan.top/congress/2015/Fahrplan/events/7139.html A Free and Open Source Verilog-to-Bitstream Flow for iCE40 FPGAs
+http://fahrplan.top/congress/2015/Fahrplan/events/7146.html Hardware-Trojaner in Security-Chips
+http://fahrplan.top/congress/2015/Fahrplan/events/7412.html Running your own 3G/3.5G network
+http://fahrplan.top/congress/2015/Fahrplan/events/7171.html When hardware must „just work“
+http://fahrplan.top/congress/2015/Fahrplan/events/7368.html Shopshifting
+http://fahrplan.top/congress/2015/Fahrplan/events/7210.html PQCHacks
+*** Day 2
+https://events.ccc.de/congress/2015/Fahrplan/events/7143.html The state of Internet Censorship andz@tpo, will scott
+https://events.ccc.de/congress/2015/wiki/Session:Tor_Relay_Operators_MeetupTor Relay Operators Meetup
+https://events.ccc.de/congress/2015/wiki/Session:Zwiebelfreunde_MitgliederversammlungZwiebelfreunde Mitgliederversammlung
+https://events.ccc.de/congress/2015/wiki/Session:In_Memoriam_Caspar_Bowden_-_Transatlantic_Privacy_AgendaIn Memoriam Caspar Bowden - Transatlantic Privacy Agenda
+http://fahrplan.top/congress/2015/Fahrplan/events/7280.html Cyber all the Wassenaars
+[[http://fahrplan.top/congress/2015/Fahrplan/events/7195.html][Verified Firewall Ruleset Verification]]
+[[http://fahrplan.top/congress/2015/Fahrplan/events/7134.html][Ecuador: how an authoritarian government is fooling the entire world]]
+[[http://fahrplan.top/congress/2015/Fahrplan/events/7308.html][Digital Signal Processors]]
+[[http://fahrplan.top/congress/2015/Fahrplan/events/7305.html][Quantum Cryptography]]
+[[http://fahrplan.top/congress/2015/Fahrplan/events/7288.html][Logjam: Diffie-Hellman, discrete logs, the NSA, and you]] nadia
+[[http://fahrplan.top/congress/2015/Fahrplan/events/7493.html][How hackers grind an MMORPG: by taking it apart!]]
+[[http://fahrplan.top/congress/2015/Fahrplan/events/7438.html][goto fail;]]
+*** Day 3
+https://events.ccc.de/congress/2015/Fahrplan/events/7322.html Tor onion services: more useful than you think
+https://events.ccc.de/congress/2015/Fahrplan/events/7307.html State of the Onion
+https://events.ccc.de/congress/2015/wiki/Session:Analysis_of_the_privacy_technology_landscape Analysis of the privacy technology landscape
 * NSA programs
 ** XKEYSCORE
 *** presentationen
@@ -34170,6 +34357,7 @@ SSID sparvnastet/sparvnastet
 - utgifter endast hyra
 * novena
 ** leifj's
+use the eth jack [closest to/farthest away from] the power cord
 192.36.125.244
 2001:6b0:7:0:cb:65ff:fe02:249d
 root Haq408
@@ -35290,8 +35478,28 @@ vpn username=ln, pw=sheuTai6
 vardagsrumsdata, lundberg: Intel NUC DN2820FYKH med Ubuntu + Kodi (f.d. XBMC)
 Alt., för youtube och netflix: chromecast
 * gentoo, hardened gentoo
+https://wiki.gentoo.org/wiki/Project:Hardened
 http://mirror.mdfnet.se/gentoo/releases/amd64/autobuilds/20150903/hardened/stage3-amd64-hardened-20150903.tar.bz2
 http://mirror.mdfnet.se/gentoo/releases/amd64/autobuilds/20150903/hardened/stage3-amd64-hardened-20150903.tar.bz2.DIGESTS.asc
+NOTE: these are sha512 checksums, not sha256
+
+** grsec, pax or selinux?
+Based on info from https://wiki.gentoo.org/wiki/Hardened/Introduction_to_Hardened_Gentoo
+
+"At the heart of the project is PaX. PaX is a kernel patch that allows
+systems to be protected against buffer and heap overflows and similar
+attacks. PaX is the first line of defense in hardening a system."
+
+- The cornerstone of PaX is ASLR, which makes you want PIE.
+- PaX also provides pageexec (r/o executable segments and the rest
+  non-executable).
+- SSP (stack smashing protection) is a userland thing using canaries.
+- PaX is a subset of [[https://packages.gentoo.org/packages/sys-kernel/hardened-sources][the grsecurity patch set]].
+- You do want something for mandatory access control (MAC) too --
+  choose from SELinux, grsecurity and RSBAC. We will choose
+  grsecurity.
+- You might want to use some Integrity Measurement Architecture (IMA)
+  but we won't for now.
 * sha-1 deprecation, danish researchers
 alexander brandbyge
 lars embøll nielssen
@@ -35301,6 +35509,17 @@ hashclash attack reduces 2^80 to 2^61
 - "firewallvm" having a direct feed to pulseaudio decompression
   running as root in dom0
 - by default EVERYTHING is logged to dom0 permanent storage
+** vt-d and vt-x
+<joe> vt-d: d for "directed IO" (IBM POWER term, IBM was the first to have an
+      IO MMU. feature is called IOMMU on AMD)
+<joe> vt-x: virtualization eXtensions, or perhaps it's related to virtualized
+      execution (pages being +x), not sure
+<joe> so vt-x is the general thing that allows certain ASIDs to operate in
+      ring 0 without accessing each other or the hypervisor (==run as a vm)
+<joe> and vt-d allows you to "mmap" DMA access for PCI devices into specific
+      VMs to prevent them from fucking over the entire machine.
+<joe> why they can't be limited to the advertised DMA memory mapping range is
+      a mystery to me, but intel didn't want it so.         
 * smtp privacy Received:
 ** modifying MUST and MUST NOT
 > | If I were a particularly privacy-aware SMTP entity, would it make
@@ -35336,3 +35555,526 @@ received headers actually provide some useful functionality.
   - salsa20/12, salsa20/20 ("full salsa20")
 ** block ciphers
 ** key exchange
+* web.nordu.net (software.nordu.net)
+** TODO cosmos + puppet [0/8]
+- [ ] docker.io (manually installed)
+- [ ] make (manually installed) shouldn't be needed
+- [ ] sshd.conf: disallow pw authn (PasswordAuthentication no)
+- [ ] automated start of ikiwiki container
+  - docker run -d --name software-web -v /usr/local/etc/software.nordu.net:/etc/lighttpd:ro -v /usr/local/src/radsecproxy-web:/var/www -p 109.105.110.33:80:80 ikiwiki
+- [ ] merge markus' CSS
+- [ ] logo / icon
+- [ ] https
+- [ ] index.html with list of sw projects
+* frukostmöte ABF med anne ramberg <2015-11-13 Fri>
+- socialdemokratiska s2000, startades för 7 år sedan på initiativ av
+  anders carlberg
+- rättssäkerhet
+- företräda den enskilde, f.a. mot staten
+- oberoend domstolar är beroend av oberoende advokater
+
+- advokatsamfundets fyra mål: advokatkår med hög etik och
+  professionalism; värna rättsäkerheten; tillgodose advokaternas
+  intressen; värna ett enat advokatsamfund
+
+- efter 9/11 har advokatsamfundet varit mer kritiska
+
+- den demokratiska rättstaten, den enskilde har rätt och tillämpningen
+  av lagen
+
+- lagstiftaren har begränsad sin makt
+
+- socialistiska sidan tycker inte om att de demokratiska besluten
+  ifrågasätts, tycker inte om författningsdomstol, tycker inte om
+  ifrågasättande
+
+- högerkanten positiv till domstolar överpröva demokratiskt fattade
+  beslut
+
+- liberala skribenter gillar inte att vi lägger oss i
+
+- utan en lagstiftning har vi inget rättssamhälle
+
+- 850 år sedan magna carta tillkom, sen kom FN-stadgan och
+  EU-konventionen om mänskliga rättigheter
+
+- lagstiftaren har en svår balansgång -- grundläggande principer
+  ställs mot individens trygghet (nedslagen, bombattentat, våldtäkt i
+  en park)
+
+- efter 9/11 har säkerhetstänkadet tagit överhanden; bygger upp
+  hotbilder, delvis reella men lätt att dras med av säkerhetstänkandet
+  och offrar det andra; det har inte lagstiftarna varit bra på; den
+  internationella lagstiftaren i synnerhet (säkerhetsrådet)
+
+- men sverige drev frågan om datalagring
+
+- säkerhetsrådet är inte så bra på fred och att få de fem permanenta
+  ledamöterna från att lägga sitt veto
+
+- inte få kriga i syrien, implementation av säkerhetsrådets X
+
+- vi har ingen entydig definition av en terrorist (kontra
+  frihetskämpe), t.ex. ANC och mostståndsrörelsen under WW2
+
+- får inte åka och slåss för ISIL, men åka till syrien för att hjälpa
+  vanliga människor?
+
+- liggande förslag kriminaliserar finansiering som mammas gåva till
+  sin son som åker till syrien
+
+- [mycket abf-gubbar här, men alla tysta]
+
+- hemliga tvångsmedel, ges möjlighet att avlyssna personer
+
+- i brottsbekämpningen måste man göra inskränkningar i personers
+  integritet
+
+- utan integritet kan en inte utöva sina demokratiska rättigheter,
+  bl.a. pga vågar inte yttra sig plus angiverisamhälle
+
+- måste kunna häkta folk, sätta dom i fängelse, vid misstanke om
+  allvarlig brottslighet avlyssna eller bugga
+
+- men vi har öppnat upp för polisen att i förebyggande syfte utan
+  konkret misstanke om brott använda hemliga tvångsmedel, något som
+  var fullständigt otänkbart föra 9/11 -- man har övergivit
+  grundläggande rättssäkerhet
+
+- datalagring, mkt integritestkränkande
+
+- signalspaning, vi är duktiga; vi skall ha signalspaning men
+  lagstiftningen (med 30 ändringar) innebär att man kan samla in all
+  information; man får inte signalspana på svenskar som befinner sig i
+  landet
+
+- ingen politiker är upprörd över NSA avlyssnar merkel, BND avlyssnar
+  sverige pga alla gör samma sak
+
+- SIN har åtalat
+
+- säkerhetstänkadet och teknikutvecklingen är ett hot mot vår
+  rättssäkerhet
+
+- till det kommer kommersialiseringen av våra personuppgifter
+
+- varje svensk registrerad i minst 150 databaser; vägverket säljer
+  våra uppgifter
+
+- sammantaget dessa tre saker utgör ett hot mot vår integritet och
+  rättsäkerhet
+
+- vi har bott i en välfärdsstat med en unik yttrandefrihet, sociala
+  förmåner som inte kan jämföras med ngn annan stat, folk lutar sig
+  tillbaka och litar på det goda samhället, som inte finns, samhället
+  är själlöst och blir vad man gör det till
+
+- djupt oroväckande att 20% ansluter sig till ett direkt odemokratiskt
+  parti
+
+- SD utser domare genom nämndemän (==domare), sitter i
+  förvaltningsdomstolar och prövar asylsökande, sitter i domstolar som
+  prövar brottmål
+
+- två undersökningar visar att där SD suttit som nämndemän har get
+  länger påföljder plus mindre asyl; så inte bara tilltroende utan
+  reell påverkan
+
+- sverige kommer nästan alltid högst upp i mätningar av world justice
+  project
+
+- sverige kritiseras varje år av FN:s tortyrkommitté pga låter folk
+  sitta häktade i åratal och pga sitta i åratal med fulla
+  restriktioner (8 kvm och utan kontakt med omvärlden)
+
+- sista två uppmärksammade målen, stälje- och planjamålen; häktad i 4
+  år och frikändes, skadestånd på 1,6 milj
+
+- vi kritiserar alla andra länder som gör så men tillämpar samma sak
+  själva -- ändamålen helgar medlen
+
+- inte skydd att dölja ngt olagligt utan människor skall kunna utöva
+  sina demokratiska rättigheter
+
+- en del bovar går fria, även allvarliga brott; detta är priset för
+  rättsäkerheten och det måste man betala
+
+- fruktansvärd tanke att döma oskyldiga, får inte hända
+
+- sexualbrottslagstiftningen är ett annat exempel (förutom terrorism);
+  fruktansvärt brott och man är beredd att ge upp beviskraven;
+  otroligt allvarlig utveckling när man tittar på graden av brottet
+  och släpper på beviskraven; både politiker och media är skyldiga
+
+- ett annat exempel är flyktingsituationen; asylrätten grundar sig
+  efter flyktingkonventionen, europakonventionen (mm) och nationell
+  lagstiftning; vi erbjuder asyl i ngt större utsträckning än andra
+  länder; kanske ett hundratal per år omfattas av denna lagstiftning
+  (asylrätten) (av tiotusentals)
+
+- "det kommer för många" kan man inte säga, det strider mot
+  konventioner och dublinförordningen, det europeiska regelverk som
+  bestämmer vilket land som är skyldig att pröva asylansökan; _inte_
+  var man är _skyldig_ att söka asyl, men det första landet är
+  skyldigt att pröva
+
+- de två länder, grekland och italien, har inte kunnat hantera detta,
+  fullt begripligt
+
+- sverige har nu infört gränskontroller, fullt lagligt, inom ramen för
+  lagstiftningen, politiskt beslut; inte samma som att stänga gränsen
+
+- vi måste få hjälp av övriga EU, vi tar emot flest per capita
+
+- alla som kommer hit har inte skyddsskäl
+
+- frågestund
+
+- [abf-mannen har glasögon och grått skägg, ibland hörapparat]
+
+- görel, ensamkommande flyktingbarn, nämndeman i
+  [migrationsdomstolen?]: SD har inte så mycket makt som du påstår och
+  hur har man undersökt detta mtp att vi inte har politiska skyltar
+
+- AR: två akademiska undersökningar, gbg uni och uppsala, för ett
+  halvår sedan; man överröstar inte domaren utan man påverkar genom
+  samtal
+
+- sten lundström: hur vill du förändra häktningstiden? jag är
+  nämndeman i solna och har haft problem med SD, flera har blivit
+  uteslutna
+
+- AR: pågår ett arbete om häktninsregler; man måste ha en deadline; vi
+  har ingen tidsbegränsning, vilket leder till att polis och åklagare
+  håller på i åratal
+  
+- lars daneck, nämndeman i tingsrätten: vi vet inte vilka partier
+  andra tillhör
+
+- AR: rätten till advokat grundläggande, men alla har inte det, en
+  viss påföljd krävs för att man skall få det; i en internationell jmf
+  ligger vi bra till
+
+- [person], nämndeman: du har varit kritisk mot assangefallet, hur kan
+  man lösa upp detta?
+
+- AR: assangefallet är bedrövligt; fallet är storpolitik, samma som
+  snowden; vi är fega i sverige och i eu -- vågar inte gå emot
+  amerikanska intressen; tror inte att HD skulle utlämna JA till USA
+  om han kom hit; kan förstå att han känner obehag,
+  t.ex. scientologibibeln
+
+- trehörning, SJF: yppandeförbud under pågående undersökningar
+
+- AR: förhandling och förhör får inte nämnas; advokaten blir begränsad
+  om hen inte får tala med vittnen utan att avslöja saker; begränsning
+  som är av ondo; samtidigt för att inte skada förundersökningen så
+  krävs yppandeförbud; men "och som kan skada förundersökningen" är en
+  viktig grej som åklagaren, endast, har större möjligheter att
+  kommentera saker (pga åklagaren har helhetsbilden och kan bedöma vad
+  som kan skada); i praktiken är det inte så vanligt förekommande (iaf
+  i stockholm -- gbg är värre);
+
+- [ledamot justititeutskottet]: om SD som nämndemän påverkar 1 av 100
+  ärenden så är det en rättsfråga; jag tror att dom kan påverka
+  diskussioner
+
+- samtalsledare on behalf of samir [sahdi?], dömdes för mord på
+  styvmor medan det i själva verkat var fadern som gjort det: utdrag
+  ur kriminalregistret
+
+- trehörning: det pågår en utredning
+
+- samtalsledaren: nästa fråga
+
+- magnus: under thomas bodströms tid var alla fängelser fulla
+* sjf & tor, winter 2015/2016
+Projektet syftar till att reda ut de straffrättsliga aspekterna av att
+driva en exitnod i anonymiseringsnätverket Tor. Nätverket används bland
+annat av människorättskämpar, journalister och deras källor för att
+anonymisera sin nättrafik.
+För att bidra till kapaciteten i nätverket och för att öka säkerheten,
+skulle det vara bra om fler drev noder. En faktor som är begränsande för
+viljan att driva exitnoder är de juridiska aspekterna. Även mindre väl
+sedd trafik utnyttjar Tors anonymitet, och om polis eller andra
+brottsbekämpande myndigheter skulle intressera sig för trafiken är det
+den som driver exitnoden som ”syns” utåt. Idag är det oklart vilka lagar
+som träffar den som driver en exitnod, hur lagstiftningen ska tolkas och
+vilket ansvar den som driver noden kan ha för den trafik som kommer
+därifrån.
+Genom att klargöra rättsläget hoppas vi kunna underlätta beslut om att
+driva anonymiseringstjänster. Därmed bidrar projektet också till
+möjligheten för människor att bibehålla anonymitet vid kommunikation och
+informationsinhämtning på Internet.
+Linus Nordberg skulle vara en värdefull resurs i projektet genom sin
+kunskap om Tornätverket i allmänhet och genom sin erfarenhet som
+operatör av Tornoder i synnerhet.
+
+Som någon slags första approximation på arbetsinsatser från din sida,
+och en grov tidplan som är med reservation för att jag inte pratat med
+Paulina och Daniel ännu. Vad tror du?
+
+- bidra till projektupplägget/bollplank - någon timme november - december
+- kickoffmöte, presentation av Tornätverket och vilka rättsliga frågor
+som en operatör kan möta. Januari. Förberedelse + möte ~ ett par timmar
+- delta i referensgrupp och fungera som bollplank för juristerna. ~
+några timmar utspridda under våren
+- delta vid slutseminarium. ett par timmar i slutet av våren eller
+tidigt i höst.
+
+* ind15
+** code red
+- annie machon, simon davies
+- twelve-digit index number, apply a wayback machine, revoke data
+- swedish government handling of tha JA case; integrity of government
+  assertions
+- cynthia mckinney, bangladesh
+- glyn moody, techdirt
+  - TPP pacifics; started 10y ago; includes the worst parts of ACTA, f.ex. ISP
+    3strikes; criminalises whistleblowing; "not your traditional trade
+    agreement"
+  - TTIP complements TPP for the atlantic region; ISDS -- a company
+    can sue a country in a secret trial
+  - TISA complements TPP and TTIP; it's about services instead of
+    goods, from 2013; negative listing == "if you don't exclude
+    something now you can never exclude it later"
+- peter wright, DigitalLawUK
+- caroline hunt-matthes; UN whistleblower (?)
+
+* ownit
+Dec  8 22:33:59 flogsta dhclient: DHCPOFFER from 84.216.33.129
+DHCPACK from 84.216.33.129
+Dec  8 22:34:00 flogsta dhclient: DHCPACK from 84.216.33.129
+bound to 10.161.73.147 -- renewal in 216 seconds.
+Dec  8 22:34:00 flogsta dhclient: bound to 10.161.73.147 -- renewal in 216 seconds.
+Dec  8 22:34:00 flogsta postfix[15946]: Reloading Postfix configuration...done.
+
+root@flogsta:~# tcptraceroute www.google.com
+Selected device eth1, address 10.161.73.147, port 60450 for outgoing packets
+Tracing the path to www.google.com (37.247.0.10) on TCP port 80 (http), 30 hops max
+ 1  10.161.73.1  11.282 ms  6.791 ms  1.775 ms
+ 2  89.253.100.129  0.660 ms  0.611 ms  0.639 ms
+ 3  89.253.100.154  0.752 ms  0.848 ms  0.744 ms
+ 4  89.253.100.214  1.690 ms  1.933 ms  1.879 ms
+ 5  37.247.0.10 [open]  1.032 ms  0.923 ms  1.071 ms
+
+22:37:00.576014 IP6 fe80::5535:a9a3:2e24:b008.546 > ff02::1:2.547: dhcp6 solicit
+
+root@flogsta:~# Dec  8 22:37:36 flogsta dhclient: DHCPREQUEST on eth1 to 37.247.0.13 port 67
+Dec  8 22:37:36 flogsta dhclient: DHCPACK from 37.247.0.13
+Dec  8 22:37:36 flogsta dhclient: bound to 10.161.73.147 -- renewal in 255 seconds.
+
+root@flogsta:~# ifconfig eth1
+eth1      Link encap:Ethernet  HWaddr 00:16:d3:83:00:10  
+          inet addr:10.161.73.147  Bcast:10.161.73.255  Mask:255.255.255.0
+          inet6 addr: fe80::216:d3ff:fe83:10/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:4788659 errors:0 dropped:21 overruns:0 frame:0
+          TX packets:1431145 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:2146717495 (1.9 GiB)  TX bytes:317407635 (302.7 MiB)
+          Interrupt:16 Memory:ee000000-ee020000 
+
+Some fucking captive portal here?
+* H2020 call 2016
+People
+
+- Rainer Hoerbe <rainer@hoerbe.at>, http://www.identinetics.com/, 
+
+** phnoe chat with stephen <2016-01-19 Tue>
+1. homomorphic stuff
+
+   Explore what kinds of homomorphic functions (up to and including
+   FHEs) could beof use for application developers.  Functions might
+   be used for pseudonymity(maybe [1]) or access control in ICNs or
+   other applications.[1]
+   http://www.cs.ru.nl/E.Verheul/papers/PP2/PEKScheme.pdf
+
+2. turn privacy up to 11 and check usability
+
+   Identify some good end-users (tolerant, real but not critical need,
+   will deploybits that work), develop them a super-privacy solution
+   (mostly packaging, somenew dev), and see what bits work and what
+   breaks; inlcude usability studies ofattempts to use/deploy the
+   stuff.
+
+3. Log  based stuff
+
+   Identify some good applications where logs (like CT's) or a
+   blockchain-like logcan add value. Possibly something in the public
+   space (e.g. permits of somesort), and try develop for that.
+* iranska kompisar till e&L
+Ardo, Mahan och Edvin
+
+* johans papper om svensk och kinesisk cyber warfare
+- s. 101 says FRA law was adopted in 2008, the page after says 2006
+* comments on 4zm book
+Allmänt:
+- jag gillar att texten är så konkret och pragmatisk
+- bra genomgång av appar och tjänster!
+
+- s. 10 s/ovärldsanalytiker/omvärldsanalytiker/1
+- s. 14, 15: s/kännsligt/känsligt/1
+- s. 13 och 14: några meningear börjar med liten bokstav eller saknar
+  första bokstaven
+- s. 14 ett starkt lösenord kan röjas t.ex. genom titta-över-axeln eller
+  keylogger, så kanske rekommendationen att i princip aldrig byta bör
+  bytas mot ngt lite svagare
+- s. 15 aha! där kom det :)
+- s. 21 s/pattenterade/patenterade/1
+- s. 23 inte alltid bra skicka bilagor till virustotal
+- s. 24 tipsa om ngn tjänst som expanderar förkortade url:ar?
+- s. 32 första gången "snutar" nämns
+- s. 35 s/Stänga av/Stäng av/1
+- s. 41 skulle kunna nämna "Private Browsing" i FF och varför inte Tor?
+- s. 43 s/kallender/kalender/1
+- s. 47 s/krytera/kryptera/1
+- s. 51 "avsnitt X"
+- s. 52 "OS X Lion": byt mot (eller komplettera med) versionsnummer
+- s. 51-52 (kryptering i Windows) finns det något sätt att verifiera
+  att disken verkligen blivit krypterad?
+- s. 53 s/och välja/och välj/1
+- s. 55 s/Android enhet/Android-enhet/1
+- s. 55 s/Se till att telefonen är/Se till att enheten är/1
+- s. 55 s/telefonen kommer måste/telefonen måste/1
+- s. 56 s/apple enhet/apple-enhet/1
+- s. 57 blandar "telefon" och "enhet"
+- s. 61 "cybernetiskers" skall vara "cybernetikers" kanske? (jag vet inte)
+- s. 61 s/MAC adress/MAC-adress/1
+- s. 63 s/VPN leverantör/VPN-leverantör/1
+- s. 65 s/kryperas/krypteras/1
+- s. 65 s/web-mail till okrypterad/web-mail för okrypterad/1
+- s. 65 s/publicera din nyckel till/skicka din nyckel till/1
+- s. 65 s/bizzar/bizarr/1 (tror jag)
+- s. 66 s/Office dokument/Office-dokument/1
+- s. 67 s/WHOIS tjänst,/WHOIS-tjänst/1
+- s. 68 om archive.org, tipsa om att registrera interssanta sidor
+  tidigt (apropå research på motståndare) eller om en inte vill ge dom
+  mer uppmärksamhet, sätta upp en egen privat speglingstjänst (lite
+  för krångligt kanske)
+- s. 69 s/chat loggen/chat-loggen/1
+- s. 71 s/Facebook chatten/Facebook-chatten/1
+- s. 73 s/chat loggar/chat-loggar/1
+- s. 73 s/kÃ¤nnsliga/känsliga/1
+- s. 73 s/iwebmailens/i webmailens/1
+- s. 74 "browsern, en utsatt applikation eftersom den är i kontakt med
+Internet." håller jag med om men bör förklaras kort varför en
+e-postklient som också är i kontakt med internet är mindre
+problematiskt
+- s. 74 ingen OTR för UNIX-användare? Tor Messenger har det och saknas
+  f.ö. i listan; agl's xmpp-client har det men är kanske lite för
+  användarfientlig för den här guiden; Pidgin finns ju för Linux och
+  borde listas (med OTR) men att den är läskig (f.a. pga libpurple
+  IIUC), mcabber finns ju också men jag vet inte hur mycket den
+  underhålls (den är också skriven i C++ och använder loudmouth (?)
+  och f.a. libxmpp2 *hutter*)
+- s. 75 s/kännslig/känslig/1
+* DDoS, ip stressers, booters
+** tl@ on "the open booter data set" <2016-03-07 Mon>
+The Open Booter Data Set Project
+
+With the increase of denial of service attacks and pay-as-you-go
+services labeled as stress testers or booters in the Internet,
+critical services can be targeted with little technical knowledge. The
+porpoise of our research is to publicly document how these services
+operate including the technical analysis and description of the attack
+vectors they exploit.
+
+The research goals of this project include:
+
+T1 Find the most active booters
+
+T2 Document the attack vectors they advertise
+
+T3 Collect and record attack data
+
+T4 Measure their impact and performance
+
+T5 Provide a technical analysis of how such malicious traffic is
+created
+
+T6 Provide signatures that help the development of low cost mitigation
+strategies
+** flowspec
+[[file:usr/share/ietf/in-notes/rfc5575.txt][RFC5575]] Dissemination of Flow Specification Rules
+[[file:usr/share/ietf/in-notes/rfc7153.txt][RFC7153]] IANA Registries for BGP Extended Communities
+[[file:usr/share/ietf/in-notes/rfc7674.txt][RFC7674]] Clarification of the Flowspec Redirect Extended Community
+* Umberto Eco on Ur-Fascism
+[...] but I had also learned that freedom of speech means freedom from
+rhetoric.
+
+If we still think of the totalitarian governments that ruled Europe
+before the Second World War we can easily say that it would be
+difficult for them to reappear in the same form in different
+historical circumstances.
+
+Nevertheless, even though political regimes can be overthrown, and
+ideologies can be criticized and disowned, behind a regime and its
+ideology there is always a way of thinking and feeling, a group of
+cultural habits, of obscure instincts and unfathomable drives. Is
+there still another ghost stalking Europe (not to speak of other parts
+of the world)?
+
+In modern culture the scientific community praises disagreement as a
+way to improve knowledge. For Ur-Fascism, disagreement is treason.
+
+Besides, disagreement is a sign of diversity. Ur-Fascism grows up and
+seeks for consensus by exploiting and exacerbating the natural fear of
+difference. The first appeal of a fascist or prematurely fascist
+movement is an appeal against the intruders. Thus Ur- Fascism is
+racist by definition.
+
+Thus at the root of the Ur-Fascist psychology there is the obsession
+with a plot, possibly an international one. The followers must feel
+besieged. The easiest way to solve the plot is the appeal to
+xenophobia. But the plot must also come from the inside: Jews are
+usually the best target because they have the advantage of being at
+the same time inside and outside.
+
+By contrast, the Ur-Fascist hero craves heroic death, advertised as
+the best reward for a heroic life. The Ur-Fascist hero is impatient to
+die. In his impatience, he more frequently sends other people to
+death.
+
+Wherever a politician casts doubt on the legitimacy of a parliament
+because it no longer represents the Voice of the People, we can smell
+Ur-Fascism.
+
+Ur-Fascism speaks Newspeak.
+
+All the Nazi or Fascist schoolbooks made use of an impoverished
+vocabulary, and an elementary syntax, in order to limit the
+instruments for complex and critical reasoning. But we must be ready
+to identify other kinds of Newspeak, even if they take the apparently
+innocent form of a popular talk show.
+* curl
+See [[file:p/ct/doc/gossip.org::*https%20client][https client]] in [[file:p/ct/doc/gossip.org][gossip.org]].
+* SUNET cloud "SaaS" service
+- contrail -- SDN ("software-defined networking")
+* kameravänner
+Citat av BE:
+Det publika samtalet om säkerhetskameror är viktigt eftersom jag vet att
+vi kameravänner kommer att få som vi vill även om det kommer att ta lite
+tid. När hotbilderna blir tillräckligt starka så kommer kamerasidan att
+rycka fram. /Björn Eriksson, ordförande för Säkerhetsbranschen
+* google groups / googlegroups
+To join a google group (mailing list), based on [[http://www.mydigitallife.info/how-to-subscribe-or-join-google-groups-without-google-account/][this]]. NOTE: This is
+assuming that you can figure out the name of the group.
+
+- Figure out the name of the group
+  - Group name with spaces substituted by `-'
+- Send an email to [Group Name]+subscribe@googlegroups.com
+  - Tried the following addresses for the group
+    https://groups.google.com/a/hardenedbsd.org/forum/#!forum/users:
+    - HardenedBSD-Users+subscribe@googlegroups.com
+    - hardenedbsd.org+subscribe@googlegroups.com
+    - hardenedbsd-org+subscribe@googlegroups.com
+    - HardenedBSD+subscribe@googlegroups.com
+
+The way I finally joined the HardenedBSD list was by sending an email
+to users+request@hardenedbsd.org. The reply pointed at
+https://groups.google.com/a/hardenedbsd.org/group/users/subscribe
+which redirects to
+https://groups.google.com/a/hardenedbsd.org/forum/#!forum/users/join
+where I can enter an email address (and solve a CAPTCHA).
+
