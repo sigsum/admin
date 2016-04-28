@@ -9,16 +9,28 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
+- o reply to pauls mail on cryptech-tech@
+- ? ticket [[https://trac.torproject.org/projects/tor/ticket/17282][write a chutney HOWTO]]
+- ? ticket [[https://trac.torproject.org/projects/tor/ticket/17280][anti-DoS for tor]]
 - - catlfish linus/cleanup 07817e7 cherry-picked
+- - another radsecproxy release, with thread stomping fixes
+- o tor [[https://trac.torproject.org/projects/tor/ticket/17519][nightly hardened]]
 ** IETF / W3C
-- - gossip meeting scheduled https://dudle.inf.tu-dresden.de/privacy/CT_gossip/
+- o gossip poc work prepared [tue]
+- o gossip meeting scheduled https://dudle.inf.tu-dresden.de/privacy/CT_gossip/
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 - - tor bulk exit list showing 1800 exits explained on ietf@
 ** Sysadm
-- - new key for maatuska deployed
+- o new key for maatuska deployed
+- - CSR for urd.appendto.org uploaded
 ** DFRI
+- - [[file:p/dfri/dfriadm/fakturor/2016/portlane-2065.pdf][file:portlane-2065.pdf]] payed [mon]
 - - amelia replied re NN: [[gnus:nnimap%2Badbc:INBOX#CAJHsFncfVQPm9Ww640tUb3zM77RNLr-2G%3DwAe6CCXGNojDyVWg@mail.gmail.com][Email from Erik Nihlen: Re: DPI-utrustning]]
+- o new members
+- o [[file:p/dfri/dfriadm/fakturor/2016/EDRi-2016.pdf][EDRi-2016]]
+- o [[file:p/dfri/dfriadm/fakturor/2016/kustbandet-21330.pdf][kustbandet-21330]] payed
 ** Misc
+- - payed edri (sponsor thing)
 * Soon (within a month)
 ** Dev
 - - check out [[https://github.com/manopapad/proper][PropEr]], for property-based checking (erlang)
@@ -108,6 +120,7 @@ Legend                                                (emacs -*-org-*- mode)
      cryptech about my discussions with bunnie
      http://lekernel.net/fpga_toolchain_talk.pdf
 ** IETF
+- - gossip draft AP's handled [may 3]
 - - [[file:usr/share/ietf/internet-drafts/draft-margolis-smtp-sts-00.txt][draft-margolis-smtp-sts-00]] read
 - - [[https://github.com/google/certificate-transparency-rfcs/pull/109][6962bis log shutdown]] reviewed
 - o STK comments handled
@@ -317,12 +330,12 @@ x Apr 01-09, Buenos Aires, IET95
 - May ??, ??, JRA2 all hands
 ? Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
 - Jun 12-16, Prague, TNC16
-- Jun 20-03, ?, Vacation
-? Jul 04-10, ?, Vacation
+- Jun 20-03, Vacation
 ? Jul 15-23, Berlin, IETF96
 ? Jul 19-23, Darmstadt, PETS16
 ? Jul 25-30, New York, CII
-- Jul 25-07, ?, Vacation
+- Jul 25-07, Vacation
+? Aug 08-14, Vacation
 - Sep 19-23, Helsinki, NDN2016
 ? Nov 11-19, Seoul, IETF97
 ** 2017
