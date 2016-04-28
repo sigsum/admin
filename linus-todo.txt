@@ -9,26 +9,18 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- o reply to pauls mail on cryptech-tech@
 - ? ticket [[https://trac.torproject.org/projects/tor/ticket/17282][write a chutney HOWTO]]
 - ? ticket [[https://trac.torproject.org/projects/tor/ticket/17280][anti-DoS for tor]]
 - - catlfish linus/cleanup 07817e7 cherry-picked
 - - another radsecproxy release, with thread stomping fixes
-- o tor [[https://trac.torproject.org/projects/tor/ticket/17519][nightly hardened]]
 ** IETF / W3C
-- o gossip poc work prepared [tue]
-- o gossip meeting scheduled https://dudle.inf.tu-dresden.de/privacy/CT_gossip/
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 - - tor bulk exit list showing 1800 exits explained on ietf@
 ** Sysadm
-- o new key for maatuska deployed
 - - CSR for urd.appendto.org uploaded
 ** DFRI
 - - [[file:p/dfri/dfriadm/fakturor/2016/portlane-2065.pdf][file:portlane-2065.pdf]] payed [mon]
 - - amelia replied re NN: [[gnus:nnimap%2Badbc:INBOX#CAJHsFncfVQPm9Ww640tUb3zM77RNLr-2G%3DwAe6CCXGNojDyVWg@mail.gmail.com][Email from Erik Nihlen: Re: DPI-utrustning]]
-- o new members
-- o [[file:p/dfri/dfriadm/fakturor/2016/EDRi-2016.pdf][EDRi-2016]]
-- o [[file:p/dfri/dfriadm/fakturor/2016/kustbandet-21330.pdf][kustbandet-21330]] payed
 ** Misc
 - - payed edri (sponsor thing)
 * Soon (within a month)
@@ -123,7 +115,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - gossip draft AP's handled [may 3]
 - - [[file:usr/share/ietf/internet-drafts/draft-margolis-smtp-sts-00.txt][draft-margolis-smtp-sts-00]] read
 - - [[https://github.com/google/certificate-transparency-rfcs/pull/109][6962bis log shutdown]] reviewed
-- o STK comments handled
 - - draft-ietf-trans-gossip nits fixed
 - - SAML naming of AAA entities reviewed for ABFAB
      [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-naming-07.txt]]
@@ -174,25 +165,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
 - - pkgsrc on siv upgraded, for libevent2 (2)
 - - tor on siv upgraded to 0.2.5 (1)
-- o move all services from banksy to mm -- ports don't seem to work well!
-     . krb
-       o install another kdc
-    - web service for setting pw in new kdc running (was: copy users from old kdc)
-     * lnspam (email filtering; clamav + spamd) replaced with new jail
-  - mail
-       o set up an imapd in new jail on mm and let jbn run there
-         (needs new kerberos jail too)
-    - new mta set up with spam and virus filtering (brk)
-    - no mail loops on brk when delivering to imap (execve)
-    - users moved from lnmail
-  - new dns jail
-    - jail setup and verified (lseek)
-    - ip address moved to new jail
-     * web -- apache-2.2.22_5 is vulnerable, php5-5.3.8 too; imp
-       connects to 'lnmail' over SSL
-       (/usr/local/www/horde/ipm/config/servers.php) so change to
-       'imap.adb-centralen.se'; imp uses local postfix to send mail
-       ('relayhost' in postfix/main.cf); connects to mysql at lnspam
 - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and
      [[file:~/usr/share/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt]]
      read and tested
@@ -238,7 +210,6 @@ Legend                                                (emacs -*-org-*- mode)
   - try https://wordpress.org/plugins/relative-url/
 - - leap tested on 2038.se
 - - exitmap (spoiled onions) running http://www.cs.kau.se/philwint/spoiled_onions/
-- o abuse handling policy written
 - - figure out what issue tracker (ticketing system) we want
   - be (bugseverywhere.org)
   - roundup https://en.wikipedia.org/wiki/Roundup_%28issue_tracker%29
