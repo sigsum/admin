@@ -1,0 +1,39 @@
+* current
+Saab XBD476
+* next
+** tips
+skoda yeti
+subaru forester (and outback?)
+** subaru forester
+- https://en.wikipedia.org/wiki/Subaru_Forester
+- 2.0D; 2010; 13680 mil; 50-90 kkr; kvd stälje; bromsar, pälsdjur, rost
+- 2.0X; 2006; 15000 mil; 65 kkr; kronbilcenter.se rågsved
+- 2.0; 2006; 10000 mil; 75 kkr; framtidabil köping; en ägare
+** subaru outback
+- https://en.wikipedia.org/wiki/Subaru_Outback
+** vw touran
+- 1.4 TSI aut; 2010; 7710 mil; 70-90 kkr; kvd lkpg; vindruta sprucken
+** blandat kvd
+https://www.kvd.se/auktion/personbil/Saab/9-7X-4-2-Aut--Hell%C3%A4der--4WD--291hk/712920
+https://www.kvd.se/auktion/personbil/VW/Passat-3-2-V6-Variant-4Motion-GT-Sport-Aut--Hell%C3%A4der--4WD--250hk/715088
+** skoda yeti
+- http://www.blocket.se/stockholm/Skoda_Yeti_2_0_TDI_4x4_D_VARM_A_DRAG_65402771.htm?ca=11&w=1
+  2.0 TDI, 2011, 12500, 110k
+- http://www.blocket.se/stockholm/Skoda_Yeti_1_8_TSI_4X4_160_hk_65452543.htm?ca=11&w=1#vi-carousel
+  http://biluppgifter.se/fordon/kdg968
+  1.8 TSI, 2010, 9200, 120k
+* notes
+** OBD, OBD-II, OBD2
+on-board-diagnostics
+
+https://sv.wikipedia.org/wiki/Diagnosuttag_%28bilar%29
+https://en.wikipedia.org/wiki/On-board_diagnostics
+
+debian packages
+- obdgpslogger - suite of tools to log OBDII and GPS data
+  http://icculus.org/obdgpslogger
+- scantool - OBD-II vehicle diagnostic scanner
+  http://www.scantool.net
+
+hardware
+- foxwell.com.au, nt301 949:- @ www.24.se
