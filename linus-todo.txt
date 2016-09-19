@@ -9,83 +9,100 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** TPI
-- - figured out how much to ask travel@ for
-  - depends on the time schedule with musse, will know more aug 8
+- - ask sue to talk to kate [tue]
+- - follow up on the DC information
+  - point in case: https://blog.torproject.org/blog/tor-social-contract#comment-200007
+- o follow up to tom, qbi and sebastian [tue]
+- o board minutes reviewed
+- o 990 draft reviewed
+- o reply to the DC thread asking for clarification being sent to
+  tor-internal@
+- o figured out how much to ask travel@ for (flights $850)
+- o flights booked for seattle [mon]
 ** Dev
-- - CATLFISH-80 (precert poison)
-- - CATLFISH-69 (R18)
-- - CATLFISH-73 (HSM load balancing)
-- - using libevent1 anywhere? https://trac.torproject.org/projects/tor/ticket/19554
-- - is libradsec verifying the authenticator in responses?
-- o CT handover skeleton on portal, email to leif
-- o permdb branch reviewed
-- o map-permdb-index-endian-3 merged to plop/master
-- - permdb read cache disabled and reads benchmarked
-- o leveldb added as a plop db backend
 - . getting SCT's in pycurl
+- - glog shut down
+- . [[https://project.nordu.net/browse/RADSECPROXY-66][RADSECPROXY-66]] (openssl-1.1)
+  o list asked about backward compat [mon]
+  - code merged to master [fri]
+- - CATLFISH-73 (HSM load balancing)
+- - is libradsec verifying the authenticator in responses?
+- - permdb read cache disabled and reads benchmarked
 - - another radsecproxy release, with thread stomping fixes
-- o ATtiny828 blinking [mon]
-- o ATtiny828 reset button working [wed]
-- D sunet-irt scanner collector running, poc
 - - catlfish linus/cleanup 07817e7 cherry-picked
-- ? ticket [[https://trac.torproject.org/projects/tor/ticket/17282][write a chutney HOWTO]]
-- ? ticket [[https://trac.torproject.org/projects/tor/ticket/17280][anti-DoS for tor]]
+- X using libevent1 anywhere? https://trac.torproject.org/projects/tor/ticket/19554
+- D sunet-irt scanner collector running, poc
+- o CATLFISH-69 (R18)
+- o CATLFISH-80 (precert poison)
+  - look at -69 for how to pick a method based on release
+** Tor
+- o randy about bwauth research/implementation
+- - follow up on kate addressing twitter critique; ask shari first?
+- - make people aware of the [[https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/ds-08-2017.html][h2020 call on privacy ]]
+- - add TCT to https://storm.torproject.org/shared/86vrjdw6Hy5Z3nn7LItnsWtirkxBGovoEQUTV38Ce2F
 ** IETF / W3C
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
-- - tor bulk exit list showing 1800 exits explained on ietf@
-- o gossip draft AP's handled [may 3]
+- D tor bulk exit list showing 1800 exits explained on ietf@
+  - see [[gnus:nnimap%2Badbc:lists.tor.dev#8C78E6AE-41F3-459C-9495-A1224001EE40@torproject.org][Email from Arlo Breault: Re: {tor-dev} What does TorBul]]
 ** Sysadm
+- - ehlo reinstalled on old modermodemet hw
 - - stud in front of plausible updated wrt latest openssl bugs
 - - stud in front of gaol updated wrt latest openssl bugs
-- o CSR for urd.appendto.org uploaded
 ** DFRI
+- - linda reimbursed [sun]
+- - quitter email to dfri-internal@
+- o [[file:p/dfri/dfriadm/fakturor/2016/portlane-2572.pdf][portlane-2572]] payed [sep 5]
+- o [[file:p/dfri/dfriadm/fakturor/2016/obe-2328.pdf][obe-2328]] payed [sep 20]
+- o [[file:p/dfri/dfriadm/fakturor/2016/kustbandet-21888.pdf][kustbandet-21888]] payed [sep 25]
+- - feedback to paulina [[gnus:nnimap%2Badbc:INBOX#1471205573731.65495.74192@webmail7][{sjf-tor} Utkast till rapport ]][oct 1]
 - - cosmos on debian rpitor
-- X trim noc@, beredskap@, peering@ [wed]
-- o [[file:p/dfri/dfriadm/fakturor/2016/kustbandet-21368.pdf][kustbandet-21368]] payed
-- o [[file:p/dfri/dfriadm/fakturor/2016/obe-1694.pdf][obe-1694]] payed
-- o [[file:p/dfri/dfriadm/fakturor/2016/portlane-2188.pdf][portlane-2188]] payed
-- o [[file:p/dfri/dfriadm/fakturor/2016/portlane-2065.pdf][file:portlane-2065.pdf]] payed [mon]
-- X amelia replied re NN: [[gnus:nnimap%2Badbc:INBOX#CAJHsFncfVQPm9Ww640tUb3zM77RNLr-2G%3DwAe6CCXGNojDyVWg@mail.gmail.com][Email from Erik Nihlen: Re: DPI-utrustning]]
+- o linda called re next meeting
+- o member ship handling [sun]
+- o [[file:p/dfri/dfriadm/fakturor/2016/binero-2474909.pdf][binero]] payed [sep 2]
 ** Misc
+- - travel computer prepared [fri]
+- - 5 page CT presentation for Jerry [sep 23]
+- - travel expenses done [wed]
+- - decided where to place 650k SEK
+  - JAK?
+- o ndn conf presentation(s) sorted
+  o replacement speaker for ct talk at ndn conf found
+  o travel costs cleared
+  . conf ticket transfered to new speaker (SMI)
+  o andreas (solberg@uninett.no) and josva (for jaqueline) informed
+    about new speaker
+- - how does idemix/ABC4trust relate to anonymous blacklisting and PP
+  (polymporphic pseudonymization)?
 - - TAILS mirror at ndn/sunet? see email
-- - feedback on W3C EME sent
-- - get an RFHL Sthlm name communicated to the A-Clinic people (linda?)
-- o ticket Darmstadt->ARN on sun jul 24 bought
-- X hotel berlin rebooked (check out on fri 22 instead of sat 23)
-- o hotel booked in darmstadt jul 22-24
-- X test ~/usr/src/mt7610u_wifi/
-- o tnc16 presentation updated [fri jun 03]
-- o OSA mattias och pernillas bröllop
-- o register for ndn conf! [fri]
-- o hotel booked prague https://tnc16.geant.org/web/venue/hotels 
-  o [[gnus:nnimap%2Badbc:sent-mail.2016-05#87twhg2bgj.fsf@nordberg.se][Email to Jerichova Veronika: {Linus Nordberg} Re: TNC16]]
-- o pengar fr. riddermark [[gnus:nnimap%2Badbc:sent-mail.2016-05#87oa7tgc0p.fsf@nordberg.se][Email to mats@riddermarkbil.se: {Linus Nordberg} Garantiärende]]
-- o flights booked for berlin
-- o hotel booked for berlin
-- o flights booked for prague
-- o malaga hotel booked
-- o malaga flights booked
-- o sign up https://www.engagingprivacy.se/, but as SUNET or DFRI?
-- o TNC16 preliminary presentation uploaded [fri]
-- o payed edri (sponsor thing)
+- o md.ndn
+  /etc/shibboleth2/shibboleth.conf:
+  s!http://md.nordu.net!https://md.nordu.net!g
+- o all CT hosts described in email to mariah
+- o stuff moved to SUNET
+- o ESTA applied for (need passport number)
+- o finish slides for IFIP
+- o karlstad tickets
+- o invite liss to saturday fika
+- X feedback on W3C EME sent
+- o sunet vm's open tickets
+- o get back to pepijn re concrete stuff for seattle [mon]
+- o get an RFHL Sthlm name communicated to the A-Clinic people (linda?)
+- o get back to simone about IFIP
 * Soon (within a month)
 ** TPI
-- - publish the by-laws? and possibly more
+- - push for publishing the by-laws, and possibly more
 ** Dev
+- - release radsecproxy2-0.1
+- - check out [[file:usr/src/oniongateway/docs/design.rst][file:~/usr/src/oniongateway/docs/design.rst]]
+- - check out CONIKS
 - - check out [[https://github.com/manopapad/proper][PropEr]], for property-based checking (erlang)
 - - check out cuter, "concolic testing" tool for erlang
 - - catlfish-0.9.0 released
-- X something concluded on path validation after reading [[gnus:nnimap%2Badbc:lists.ietf.trans#54296FB2.1060109@bbn.com][this trans thread]]
 - - find out if pwouters dnssec thing is a thing to respond to
   [[gnus:nnimap%2Badbc:lists.tor.talk#53D96702.3050901@gmail.com][Email from Ondrej Mikle: Re: {tor-talk} Tor DNS]] with
-- - plop server accepting submissions, emitting pst's and enough
-     functionality to implement the following CT specific functions
-  - get-entries
-  - get-sth
-  - get-proof-by-hash
 - - verify ipv6 in tor master, especially wrt dns
 - - tor-relay@ thread about relay with unreachable ipv6 orport handled: (1)
-     ticket created, email replied to
+  - ticket created, email replied to
 - - do exits with an IPv6 exit policy really announce that when IPv6Exit=0? (1)
 - - tor code review expanded in HACKING (2)
 - - twisted-socks patch for socks5 handled
@@ -94,7 +111,7 @@ Legend                                                (emacs -*-org-*- mode)
 - - things not under source control in ~/p/radsecproxy/libradsec/lib checked in
      typically tests/server.c and the python bindings
 - - shadow #111 closed
-- - CT design paper sent somewhere
+- X CT design paper sent somewhere
 - - libradsec: add server failover
 - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
 - - radsecproxy seeding PRNG properly (like libradsec)
@@ -102,8 +119,8 @@ Legend                                                (emacs -*-org-*- mode)
        context of dnssec in tor
        [[file:usr/share/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:usr/share/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
 - - tor #6027 moved forward some
-- - #9663 reviewed
-- - #8897 reviewed
+- X #9663 reviewed
+- X #8897 reviewed
 - . #4847 -- relays w/o ipv4 or port
 - . investigate libevent dns test failures on freebsd
      o why are jails different from non jails?
@@ -117,29 +134,29 @@ Legend                                                (emacs -*-org-*- mode)
      refs: 205-local-dnscache.txt, "Re: [tor-dev] DNS(SEC) draft update"
 - - #6027 and friends -- dir auths on ipv6
 - - change AuthDirGuardBWGuarantee when TestingTorNetwork?
+- - ticket [[https://trac.torproject.org/projects/tor/ticket/17282][write a chutney HOWTO]]
+- - ticket [[https://trac.torproject.org/projects/tor/ticket/17280][anti-DoS for tor]]
 ** Misc
-- - Meeting Jürgen Brauckmann <brauckmann@dfn-cert.de> in Berlin
+- - buy a [[http://www.megrosoff.co.uk/][meg rosoff]] book or three
+- X Meeting Jürgen Brauckmann <brauckmann@dfn-cert.de> in Berlin
 - - mirrors@heanet.ie contacted re tor mirror
-- o Nicolas replied to re [[gnus:nnimap%2Badbc:INBOX#CAL_x9uErkNe%2B8Nox9ppoR7YRPdrpQVnGjk6ob2FdRQBomez9dw@mail.gmail.com][tor-cothority]]
-- - summary of all things append-only sent to fischer (cc rene)
-- X extra expense report for japan
-- - yubikey starters kit
+- X summary of all things append-only sent to fischer (cc rene)
+- - yubikey starters kit published
 - - 2-3y plan for Sunet wrt privacy/security/internet -- here's where
   we could be given that some of the following funding opportunities
   goes our way
-- - leif replied to re "how much is a linus?"
+- X leif replied to re "how much is a linus?"
 - - some CT thing proposed for https://portal.nordu.net/plugins/servlet/callForPresentations
-- X http://summerschool-croatia.cs.ru.nl/2016/ go or not?
 - - ethereum vs. a log? https://musalbas.com/Report.pdf
-- - some openitp person contacted about jari's IETF statistics
+- X some openitp person contacted about jari's IETF statistics
 - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated (1)
-- - kopia av bauer-tavlan, http://crimson.se/
+- - kopia av bauer-tavlan, http://crimson.se/?
 - - read up on andrews favourite ways of running a company
      http://wiki.lewman.is/snippets/ge_Printer_Friendly
      http://firstround.com/article/How-Medium-is-building-a-new-kind-of-company-with-no-managers
      http://falkvinge.net/2013/07/19/book-launch-swarmwise-the-tactical-manual-to-changing-the-world/
 - - split https://portal.nordu.net/display/nordunetops/Tor in two
-- - get back to kupo/w03 about rhnet saying that nordunet as
+- X get back to kupo/w03 about rhnet saying that nordunet as
      upstream blocks tor operation (wed)
      o send email to lars & bj
      o poke lars again
@@ -150,15 +167,12 @@ Legend                                                (emacs -*-org-*- mode)
      o follow up on jq email
   - follow up discussions with maria
 - - read Clayton "Failures in a Hybrid Content Blocking System" ~/p/tor/doc/cleanfeed.pdf
-- - read https://www.iis.se/docs/20120828-remissvar-trafikdatalagring-SE.pdf
-- - read counting-daily-bridge-users-2012-10-24.pdf
-- - check out "Soft v6CPE" for a possible IPv6 tunnel solution
-- X FPGA toolchain presentation read and something posted to
-     cryptech about my discussions with bunnie
-     http://lekernel.net/fpga_toolchain_talk.pdf
+- X read https://www.iis.se/docs/20120828-remissvar-trafikdatalagring-SE.pdf
+- X read counting-daily-bridge-users-2012-10-24.pdf
+- X check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** IETF
-- - [[file:usr/share/ietf/internet-drafts/draft-margolis-smtp-sts-00.txt][draft-margolis-smtp-sts-00]] read
-- - [[https://github.com/google/certificate-transparency-rfcs/pull/109][6962bis log shutdown]] reviewed
+- X [[file:usr/share/ietf/internet-drafts/draft-margolis-smtp-sts-00.txt][draft-margolis-smtp-sts-00]] read
+- X [[https://github.com/google/certificate-transparency-rfcs/pull/109][6962bis log shutdown]] reviewed
 - - draft-ietf-trans-gossip nits fixed
 - - SAML naming of AAA entities reviewed for ABFAB
      [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-naming-07.txt]]
@@ -175,7 +189,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - SOCKS5 extensions mapped, dgoulet
 - - [[file:/u/ietf/internet-drafts/draft-perez-radext-radius-fragmentation-06.txt][lopez RADIUS fragment draft]] reviewed for abfab (2)
 - . "moritz task" on perpass@ grabbed. maybe. see email from jas 2013-12-09. (RFC5321)
-- X [[file:/u/ietf/internet-drafts/draft-tschofenig-hourglass-00.txt][hannes hourglass]] draft reviewed (1)
 - - draft-farrell-perpass-attack-03.txt
 - - draft-huitema-perpass-trafficanalysis-00.txt
 - - [[file:/u/ietf/internet-drafts/draft-moonesamy-privacy-identifiers-01.txt]] read (1)
@@ -192,23 +205,22 @@ Legend                                                (emacs -*-org-*- mode)
 - - [[file:/u/ietf/internet-drafts/draft-cooper-ietf-privacy-requirements-01.txt]]
 ** Sysadm
 - - onionperf running https://github.com/robgjansen/onionperf
-- o received headers scrubbed at smtp.adbc [[gnus:nnimap%2Badbc:INBOX#16738763.Zpc6BlTK60@foo][Email from Fredrik Thulin: Re: postfix conf]]
 - - fix [[file:p/adb-centralen/src/spam-edu-from-banksy.sh][file:~/p/adb-centralen/src/spam-edu-from-banksy.sh]] for dovecot and cron it on imap.adbc
 - - stuff resurrected from mm:~linus, the repos f.ex.
 - - https://nordberg.se/linus resurrected
 - - maatuska reinstalled on banksy hw
 - - automatic backup of ioctl; rsync from tight laptop with double-sshd?
-- - 64bit x60 set up to run Debian with a grsec kernel (https://mempo.org/?)
+- X 64bit x60 set up to run Debian with a grsec kernel (https://mempo.org/?)
   https://wiki.debian.org/grsecurity
 - - kerberos based user handling for jabber deployed
 - - pond server running
 - - set up iodine, for tunneling, somewhere (ioctl?)
 - - SASL authn working in ERC http://www.emacswiki.org/emacs/ErcSASL
 - - HS for xmpp @ adb-centralen.se working
-- - dnssec for nordberg.se, adb-centralen.se
+- o dnssec for nordberg.se, adb-centralen.se
 - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
-- - pkgsrc on siv upgraded, for libevent2 (2)
-- - tor on siv upgraded to 0.2.5 (1)
+- X pkgsrc on siv upgraded, for libevent2 (2)
+- X tor on siv upgraded to 0.2.5 (1)
 - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and
      [[file:~/usr/share/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt]]
      read and tested
@@ -350,8 +362,9 @@ x Apr 01-09, Buenos Aires, IET95
 ? Jul 19-23, Darmstadt, PETS16
 ? Jul 25-30, New York, CII
 - Jul 25-07, Vacation
-? Aug 08-14, Vacation
-? Aug 26-04, Bornholm, Bornhack
+- Aug 08-10, Vacation
+- Aug 21-26, Karlstad, IFIP
+x Aug 26-04, Bornholm, Bornhack
 ? Sep 08-09, Stockholm, EUC
 - Sep 09-11, Berlin, Tor dev
 - Sep 19-23, Helsinki, NDN2016
