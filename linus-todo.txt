@@ -12,13 +12,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - ask sue to talk to kate [tue]
 - - follow up on the DC information
   - point in case: https://blog.torproject.org/blog/tor-social-contract#comment-200007
-- o follow up to tom, qbi and sebastian [tue]
-- o board minutes reviewed
-- o 990 draft reviewed
-- o reply to the DC thread asking for clarification being sent to
-  tor-internal@
-- o figured out how much to ask travel@ for (flights $850)
-- o flights booked for seattle [mon]
 ** Dev
 - . getting SCT's in pycurl
 - - glog shut down
@@ -30,20 +23,12 @@ Legend                                                (emacs -*-org-*- mode)
 - - permdb read cache disabled and reads benchmarked
 - - another radsecproxy release, with thread stomping fixes
 - - catlfish linus/cleanup 07817e7 cherry-picked
-- X using libevent1 anywhere? https://trac.torproject.org/projects/tor/ticket/19554
-- D sunet-irt scanner collector running, poc
-- o CATLFISH-69 (R18)
-- o CATLFISH-80 (precert poison)
-  - look at -69 for how to pick a method based on release
 ** Tor
-- o randy about bwauth research/implementation
 - - follow up on kate addressing twitter critique; ask shari first?
 - - make people aware of the [[https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/ds-08-2017.html][h2020 call on privacy ]]
 - - add TCT to https://storm.torproject.org/shared/86vrjdw6Hy5Z3nn7LItnsWtirkxBGovoEQUTV38Ce2F
 ** IETF / W3C
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
-- D tor bulk exit list showing 1800 exits explained on ietf@
-  - see [[gnus:nnimap%2Badbc:lists.tor.dev#8C78E6AE-41F3-459C-9495-A1224001EE40@torproject.org][Email from Arlo Breault: Re: {tor-dev} What does TorBul]]
 ** Sysadm
 - - ehlo reinstalled on old modermodemet hw
 - - stud in front of plausible updated wrt latest openssl bugs
@@ -51,43 +36,17 @@ Legend                                                (emacs -*-org-*- mode)
 ** DFRI
 - - linda reimbursed [sun]
 - - quitter email to dfri-internal@
-- o [[file:p/dfri/dfriadm/fakturor/2016/portlane-2572.pdf][portlane-2572]] payed [sep 5]
-- o [[file:p/dfri/dfriadm/fakturor/2016/obe-2328.pdf][obe-2328]] payed [sep 20]
-- o [[file:p/dfri/dfriadm/fakturor/2016/kustbandet-21888.pdf][kustbandet-21888]] payed [sep 25]
 - - feedback to paulina [[gnus:nnimap%2Badbc:INBOX#1471205573731.65495.74192@webmail7][{sjf-tor} Utkast till rapport ]][oct 1]
 - - cosmos on debian rpitor
-- o linda called re next meeting
-- o member ship handling [sun]
-- o [[file:p/dfri/dfriadm/fakturor/2016/binero-2474909.pdf][binero]] payed [sep 2]
 ** Misc
 - - travel computer prepared [fri]
 - - 5 page CT presentation for Jerry [sep 23]
 - - travel expenses done [wed]
 - - decided where to place 650k SEK
   - JAK?
-- o ndn conf presentation(s) sorted
-  o replacement speaker for ct talk at ndn conf found
-  o travel costs cleared
-  . conf ticket transfered to new speaker (SMI)
-  o andreas (solberg@uninett.no) and josva (for jaqueline) informed
-    about new speaker
 - - how does idemix/ABC4trust relate to anonymous blacklisting and PP
   (polymporphic pseudonymization)?
 - - TAILS mirror at ndn/sunet? see email
-- o md.ndn
-  /etc/shibboleth2/shibboleth.conf:
-  s!http://md.nordu.net!https://md.nordu.net!g
-- o all CT hosts described in email to mariah
-- o stuff moved to SUNET
-- o ESTA applied for (need passport number)
-- o finish slides for IFIP
-- o karlstad tickets
-- o invite liss to saturday fika
-- X feedback on W3C EME sent
-- o sunet vm's open tickets
-- o get back to pepijn re concrete stuff for seattle [mon]
-- o get an RFHL Sthlm name communicated to the A-Clinic people (linda?)
-- o get back to simone about IFIP
 * Soon (within a month)
 ** TPI
 - - push for publishing the by-laws, and possibly more
