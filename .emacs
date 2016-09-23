@@ -39,7 +39,9 @@
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
 
-;(require 'magit)
+(require 'magit)
+;(load "/usr/share/emacs/site-lisp/magit/rebase-mode.el")
+(load "rebase-mode.el")
 (global-set-key "\C-xg" 'magit-status)
 
 ;; Fun.
@@ -484,6 +486,7 @@
    (quote
     ("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h" "gnutls-cli --insecure -p %p %h" "gnutls-cli --insecure -p %p %h --protocols ssl3" "openssl s_client -connect %h:%p -no_ssl2 -ign_eof")))
  '(tool-bar-mode nil)
+ '(tooltip-mode nil)
  '(twit-minor-mode t)
  '(twit-show-user-images t)
  '(twit-user-image-dir "~/usr/share/images/twitter")

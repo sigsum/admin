@@ -5,6 +5,8 @@ definekey top C-M-u exec ~/bin/keyboardmap.sh se
 definekey top C-M-i exec ~/bin/keyboardmap.sh us
 
 definekey root C-i focus
+definekey root g gnext
+definekey root G gselect
 
 exec redshift -l 59:18
 hsplit

@@ -345,3 +345,84 @@ libradsec 5h -> jra3t1 5
   :ARCHIVE_CATEGORY: diary
   :END:
 
+
+* CT
+  CLOCK: [2016-04-21 Thu 08:40]--[2016-04-21 Thu 08:50] =>  0:10
+  gossip
+  CLOCK: [2016-04-19 Tue 12:43]--[2016-04-19 Tue 12:58] =>  0:15
+  ct-policy
+  CLOCK: [2016-04-18 Mon 16:15]--[2016-04-18 Mon 17:10] =>  0:55
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-04-21 Thu 14:18
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_OLPATH: week 16
+  :ARCHIVE_CATEGORY: diary
+  :END:
+  urd ops
+
+* cryptech
+  CLOCK: [2016-05-16 Mon 07:23]--[2016-05-16 Mon 07:34] =>  0:11
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-05-16 Mon 07:58
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_OLPATH: week 20
+  :ARCHIVE_CATEGORY: diary
+  :END:
+  tamper mcu
+
+* cryptech
+  CLOCK: [2016-05-16 Mon 09:57]--[2016-05-16 Mon 10:02] =>  0:05
+  CLOCK: [2016-05-16 Mon 08:21]--[2016-05-16 Mon 08:26] =>  0:05
+  CLOCK: [2016-05-16 Mon 07:58]--[2016-05-16 Mon 08:19] =>  0:21
+  CLOCK: [2016-05-16 Mon 07:23]--[2016-05-16 Mon 07:34] =>  0:11
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-05-16 Mon 11:02
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_OLPATH: week 20
+  :ARCHIVE_CATEGORY: diary
+  :END:
+  tamper mcu
+
+* radsecproxy
+  CLOCK: [2016-05-19 Thu 11:25]--[2016-05-19 Thu 11:58] =>  0:33
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-05-19 Thu 13:35
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_OLPATH: week 20
+  :ARCHIVE_CATEGORY: diary
+  :END:
+  misc, admin
+
+* radsecproxy (ndn)
+  CLOCK: [2016-05-23 Mon 13:20]--[2016-05-23 Mon 17:55] =>  4:35
+  CLOCK: [2016-05-23 Mon 11:19]--[2016-05-23 Mon 12:20] =>  6:36
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-05-24 Tue 08:29
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_OLPATH: week 21
+  :ARCHIVE_CATEGORY: diary
+  :END:
+
+* week 37
+  CLOCK: [2016-09-15 Thu 09:45]--[2016-09-15 Thu 09:52] =>  0:07
+  CLOCK: [2016-09-15 Thu 09:28]--[2016-09-15 Thu 09:45] =>  0:17
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-09-15 Thu 09:52
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_CATEGORY: diary
+  :END:
+- tor
+  - misc: 3
+- sunet
+  - misc: 1
+  - h2020: 2
+  - sjf tor: 5.5
+- ndn
+  - misc: 2
+  - travel expenses: 
+- jra3t4
+  - radsecproxy
+    - openssl-1.1: 2.5
+    - docbook2x-man: 0.5
+- jra2t6
+  - gossip poc: 1.5

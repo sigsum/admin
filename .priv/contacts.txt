@@ -1,39 +1,61 @@
 4zm: 0739975368; 
+ahf: +45 22 13 33 73;
 andrew: +46 762 41 47 30;
+albina: +46 76 130 12 40;
+ale: +46 70 209 09 81;
 amel: +46 734 31 53 10;
 anna laurin: +46 706 35 65 87
 annika ohlin mob: +33 (0)619 02 17 54
 arma: arma234@jabber.org
+arma: +1 617 794 8667;
 aron: +46 73 632 28 23; 
 bg: 0707680635; 
 christian: +46 707 34 25 66;
+christoffer hell: +46 76 120 13 58;
 copylinda: +46705739737; 
 daniel melin: 087000774; 
 danne macken: +468-6160031; +4676-3066566; +4673-5232329; 
 denise: +46 760 41 02 68
+duy: +49 151 50190162;
 ehj: +46707696567; +32 484 08 20 63; 
 elsie: +46 73 556 65 45; 
 erik: +46 8 31 66 03; +46 70 752 34 11; 1425
+etta: +46 79 949 65 44;
+fabbe: +46 70 779 77 13;
 fl: +46 708 32 62 02; 
 fredde: +46 739 84 16 41;
+froo: +46 70 829 21 40;
+ft: +46 70 605 12 25;
 grtrd: +46 70 789 28 31; 
+hannesm: +49 179 6665089;
 harmony: ricochet:zrdcwq52r7alm7ni
 helen: +46 73 924 84 64;
-helix: +46722603430;
+helix: +1 415 318 6399;
+hesse: +46 707991656;
 iha: +46708628490;
+jakob schlyter: +46 70 595 07 94;
 jas: +46708458602;
+jenny rymdsnigel: 070 73 57 458;
 jn: +46 70 757 30 36;
 Jocke Palmkvist: 0706-465792;
+johan lagerkvist: +46 73 692 97 28;
 john?: +46708447177;
-john.ndn: irc:uzumak1
+john.ndn: irc:uzumak1;
+john.ndn: +46 76 175 88 05;
+jonas nilsson, foyen: +46 70 825 78 79;
+josva: +45 31 62 14 03;
+julius mittenzwei: +49 172 8312485;
 juni: +46 735 16 25 04;
-kenta macken: +46708394980;
-kenta sjöberg macken: +46 73 506 41 71;
+kajsa: +46 70 447 08 17;
+kate: +1-718-864-6647;
 lai: +46 73 375 59 80;
+larka: +46 703 42 52 41;
+lars kleberb: +46 70 488 50 01;
 lars zettervall: 0761294754;
 leif: +46 70 341 98 86;
 lena: +46 72 222 44 22; +46 8 656 82 02; 084408992;
 linus: +46 740 10 22 35; +46 8 441 88 15
+linus neumann: +49 163 5468763;
 lise: +46 70 757 48 58;
 liss: +46 73 947 45 89; +46 8 510 124 21; 
 lukas: +46 70 928 98 66;
@@ -41,20 +63,44 @@ lundberg: +46 73 071 43 75;
 lärka: +46 70 342 52 41; 
 mamma ka: 0704470817; 0738308548
 mango: 0736739252; 016-70828
-map: 0705778022;
+map: 0705778022
+marcin: +46 8 698 57 95; +46 76 804 51 51;
 Marie Eklund Tandl: 08 669 99 09; 
+marianne: +46 70 641 74 53;
+maryshiro: +49 157 31814160;
+mattias tjeder: +46 76 418 74 00;
+mc: +46 70 255 96 70;
+MC McGrath: +1 207 475 8401;
+matthias mehldau, netzpolitik: +49 152 26373573;
 micke: +46 70 982 13 81; 
+nadine: +46 73 758 96 22;
+nick merill: +1 917 770 2491
 niscayah larm tug: +56 77 150 60 80 (id 800425)
 pappa la: +46 70 488 50 01; +46 8 615 06 46;
-pawal: +46 73 317 39 56; 
+paulina: +46 76 617 09 67; +46 8 527 709 67;
+pawal: +46 733 17 39 56; 
 pelle: +46 70 349 41 37; 
 pepijn: +31 6 26012891;
-peter: +46 730 77 99 39; 
+peter michanek: +46 70 530 20 10;
+peter oholm: +46 730 77 99 39; 
 pettai: +46 73 071 43 76; 
+philip: +46 70 734 20 34;
+pian: +46 72 505 03 28;
+rachel: +1 818 825 0302;
 rom: +46708330378; 5712
 rydekull: +46 70 240 32 23; 
 sanna (lars): +46 70 444 61 75; +46 8 615 06 46;
 sas scb: +45 32 32 66 33; +45 70 10 20 00
+shari: +1 415 412 0301;
 simon: +46 73 962 69 79; 
+smi: +45 26 81 62 13;
+sofia: +46 70 713 54 03;
 special: ricochet:rs7ce36jsj24ogfw
-tege: 0736696135; 
+stefan listrom: +46733-023915;
+stephen farrell: +353-87-854-0597;
+tege: 0736696135;
+tg: +46 70 323 27 07;
+tjr: +1 908 917 2977;
+per trehorning: +46 70 513 75 29;
+wendy seltzer: +1 914 374 0613;
+

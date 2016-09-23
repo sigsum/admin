@@ -18,6 +18,12 @@ HISTSIZE=10000
 unset LC_PAPER
 unset LC_MEASUREMENT
 
+# Don't want this, set by some part of Debian:
+#LESSCLOSE='/usr/bin/lesspipe %s %s'
+#LESSOPEN='| /usr/bin/lesspipe %s'
+unset LESSOPEN
+unset LESSCLOSE
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -69,10 +75,14 @@ LC_CTYPE=sv_SE.ISO8859-15; export LC_TYPE
 LC_PAPER=$LC_CTYPE; export LC_PAPER
 LC_MEASUREMENT=$LC_CTYPE; export LC_MEASUREMENT
 
-[ -f "${HOME}/.gpg-agent-info" ] && . "${HOME}/.gpg-agent-info"
-export GPG_TTY=$(tty)
+#[ -f "${HOME}/.gpg-agent-info" ] && . "${HOME}/.gpg-agent-info"
+#export GPG_TTY=$(tty)
 
 #function dmalloc { eval `command dmalloc -b $*`; }
+## pastebin
+#sprunge () {
+#    printf '%s%s\n' "$(curl -sF 'sprunge=<-' http://sprunge.us/)" "${*:+?$*}"
+#}
 
 alias antiexcel='python /usr/local/share/examples/py-excelerator/xls2txt.py'
 alias curl-tor='curl -A "" -x socks4a://127.0.0.1:9050/'
@@ -81,19 +91,22 @@ alias ehlo-root='ssh -i ~/.ssh/keys/e2 -p 4700 root@localhost'
 alias ext='sockstat -46'
 #alias ext='netstat -n --inet --inet6 | egrep ESTABLISH'
 alias grep='grep -E'
+alias less='less -n'
 alias ls='ls -F'
 alias pond='$GOPATH/bin/client -cli=true -state-file=$HOME/tstick/.config/pond'
 alias pwd="pwd | sed s,^$HOME,~,"
 alias screenshot='xwd | xwdtopnm | pnmtopng'
 #alias ssh-agent='ssh-agent -s | grep -v ^echo | tee ~/ssh-agent.sh; . ~/ssh-agent.sh'
 alias ssh-keepalive='ssh -o ServerAliveInterval=60'
-alias ssh-add-all-keys='(cd ~/tstick/keys/ssh/ && ssh-add id_dsa jails rsa2 linus.nordu.net linus@torproject.org)'
+#alias ssh-add-all-keys='(cd ~/tstick/keys/ssh/ && ssh-add id_dsa jails rsa2 linus.nordu.net linus@torproject.org)'
+alias ssh-add-all-keys='(cd ~/tstick/keys/ssh/ && ssh-add adbc dfri github gitlab tpo ndn ndn-rsa)'
 alias startx='ssh-agent startx & vlock'
+alias tailf='less -nUEX +F'
 #alias tunnel-ehlo='ssh -Nf -L 7000:ehlo.4711.se:22 banksy.nordberg.se'
-alias tunnel-dfri-abuse='torsocks ssh -NfL 10587:smtp.adb-centralen.se:587 smtp.adb-centralen.se'
+alias tunnel-dfri-abuse='ssh -NfL 10587:smtp.adb-centralen.se:587 smtp.adb-centralen.se'
 alias tunnel-ehlo='ssh -NfL 4700:127.0.0.1:4711 -L 1880:127.0.0.1:8080 ehlo.4711.se'
 alias tunnel-ehlo-mrtg='ssh -Nf -L 8080:127.0.0.1:8080 ehlo.4711.se'
-alias tunnel-email='ssh -Nf -L 1993:imap.adb-centralen.se:993 -L 2993:kerio.nordu.net:993 -L 1587:smtp.adb-centralen.se:587 -L 2587:kerio.nordu.net:587 -L 10119:news.gmane.org:119 smtp.adb-centralen.se'
+alias tunnel-email='ssh -Nf -L 2025:smtp.adb-centralen.se:25 -L 1993:imap.adb-centralen.se:993 -L 2993:kerio.nordu.net:993 -L 1587:smtp.adb-centralen.se:587 -L 2587:kerio.nordu.net:587 -L 10119:news.gmane.org:119 smtp.adb-centralen.se'
 alias tunnel-email-tor='torsocks ssh -Nf -L 1993:imap.adb-centralen.se:993 -L 2993:kerio.nordu.net:993 -L 1587:smtp.adb-centralen.se:587 -L 2587:kerio.nordu.net:587 -L 10119:news.gmane.org:119 smtp.adb-centralen.se'
 alias tunnel-freenode='ssh -Nf -L 6669:127.0.0.1:6669 d.nordberg.se && echo "6669 -> d.nordberg.se:6669"'
 alias tunnel-irc='ssh -NfL 6667:localhost:6667 proj.adb-centralen.se'
@@ -113,8 +126,3 @@ alias tunnel-sieve='ssh -Nf -L 4190:imap.adb-centralen.se:4190 ioctl.adb-central
 #alias whois='whois -h geektools.com'
 alias xmpp='xmpp-client'
 alias xmpp-ndn='xmpp-client -config-file ~/tstick/.xmpp-client.ndn'
-
-## pastebin
-#sprunge () {
-#    printf '%s%s\n' "$(curl -sF 'sprunge=<-' http://sprunge.us/)" "${*:+?$*}"
-#}

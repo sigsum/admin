@@ -138,6 +138,13 @@ ssl_imp
 | R15B/5.9/5.0       |   2011-12-14 | yes    | no        | yes         |
 | R16                |              | yes    | no        | yes         |
 |--------------------+--------------+--------+-----------+-------------|
+** kerl
+cd ~/usr/src/kerl
+torsocks kerl build 18.2.1 r18.2.1
+kerl list builds
+torsocks kerl install r18.2.1 ~/usr/share/erlang-18.2.1
+. ~/usr/share/erlang-18.2.1/activate
+kerl active
 * golang
 ** gotour
 export GOPATH=$HOME/usr/go
@@ -404,6 +411,22 @@ above. Important for bash and xterm to be happy about _input_.
 - NUNOC-GUEST tie bag day pan
 - SUNET-GUEST Razmataz
 - NUNOC at SUNET B1ahBl4h
+- eduroam
+  - android:
+    - PEAP
+    - userid: linus/ppp
+    - anon userid: anon@NORDU.NET
+  - iPhone: 
+    - WPA2 Enterprise (select "Other network")
+    - linus/ppp@NORDU.NET (case sensitive?)
+  - wpa_supplicant: 
+        key_mgmt=WPA-EAP
+        eap=PEAP
+        anonymous_identity="anonymous@NORDU.NET"
+        identity="linus/ppp"
+        password="<password>"
+        phase1="peapver=0"
+        phase2="auth=MSCHAPV2
 ** stable/unstable on the t410s running debian
 Is it 2.4Ghz vs. 5.2Ghz?
 *** stable
@@ -725,6 +748,7 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - festival -- voice synthesis
 - hping3 -- network research and attack tool
 - cloc -- count lines of code (loc)
+- xwd | xwdtopnm | pnmtopng -- screenshot
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -2756,11 +2780,11 @@ Serial no: YK2K196412
 - [X] [[http://diveintopython.org/][Dive Into Python]]
 - [X] [django book]
 - [X] [tdd in django]
-- [ ] Stevens x 3
+- [X] Stevens x 3
 - [ ] Vinge "A Deepness In The Sky"
-- [ ] Stross "Halting State"
+- [X] Stross "Halting State"
 - [ ] Walter Tevis "Mockingbird"
-- [ ] Stephenson "Anathem"
+- [X] Stephenson "Anathem"
 * Gustav Vasa
 ** 2001C
 jvlycke@comhem.se,
@@ -4023,6 +4047,9 @@ Connecting to '2001:6b0:8::85:5222'...
    umount /mnt
    kpartx -d /dev/loop0
    losetup -d /dev/loop0
+** creating a debian image
+qemu-make-debian-root -s 1024 jessie http://ftp.se.debian.org/debian/ /var/lib/kvm/jessie1
+
 * SIM
 ** blau.de
 *** first
@@ -4307,10 +4334,12 @@ yubikey-personalization-gui - Graphical personalization tool for YubiKey tokens
    /j #channel -- join #channel
    /mode +q nick
 ** servers
-   OFTC (#tor #tor-dev #tor-se #dfri_se) irc.oftc.net 6697 (ssl)
+   OFTC (#tor #tor-dev #tor-se #dfri_se) irc.oftc.net 6697 (TLS)
+   Baconsvin (#celo #talla) 6nbtgccn5nbcodn3.onion / havana.baconsvin.org 6697 (TLS)
+   SUNET slack (#general #random #devops #nunoc) sunet.irc.slack.com 6697 (TLS)
    IRCNET (#isp #sthix #sunet) open.ircnet.net 6667 / irc.portlane.se 6667
    FREENODE (#sparvnastet #edri #erlang) wolfe.freenode.net / chat.eu.freenode.net 6697
-   Baconsvin (#celo) havana.baconsvin.org / 6nbtgccn5nbcodn3.onion 6697 (TLS)
+
    DALNET (Michiel-5580) irc.terahertz.net 6697
    Telecomix (#telekompaketet) irc.telecomix.org 9999 (ssl)
    Telecomix (#telekompaketet) weoq7a4exzcyaasj.onion 6667/6697
@@ -4579,6 +4608,34 @@ Example banning:
     #tor-project: Moev
 *** weasel (~weasel@anguilla.debian.or.at) has changed mode for #tor-project        
     to -o weasel
+** certs
+1. Create a cert
+   cd .priv
+   rm -r demoCA
+   ./mkcert ln5
+   Common Name (e.g. server FQDN or YOUR name) []:ln5
+2. Make ERC use it
+3. Tell Nickserv to accept it
+*** [linus@proj ~]$ cat mkcert.sh
+#! /bin/sh
+
+[ -d demoCA ] || { mkdir -p demoCA/private; mkdir demoCA/newcerts; echo 01 > demoCA/serial; touch demoCA/index.txt; }
+
+openssl req -newkey rsa:2048 -nodes -keyout $1.key -out $1.req
+chmod 600 $1.key
+openssl ca -selfsign -keyfile $1.key -in $1.req -extensions v3_ca -out $1.crt
+rm $1.req
+
+openssl x509 -fingerprint -sha1 -noout -in $1.crt
+openssl x509 -fingerprint -sha256 -noout -in $1.crt
+*** ERC config
+(custom-set-variables
+ '(tls-program
+   (quote
+    ("openssl s_client -connect %h:%p -tls1 -no_ssl2 -no_ssl3 -cert ~/.priv/ln5.crt -key ~/.priv/ln5.key"))))
+*** /q nickserv
+identify <password> ln5
+cert add <sha1 fpr>
 * DNS
 ** DNSSEC
 ns.adb-centralen.se uses knot for DNSSEC.
@@ -29391,6 +29448,8 @@ dsa 2048 bits 0.002015s 0.002374s    496.2    421.3
  409 bit ecdh (nistb409)   0.0087s    115.6
  571 bit ecdh (nistb571)   0.0189s     53.0
 
+** Building from git, on debian jessie
+./config --prefix=$HOME/usr/openssl11 --shared && make all install
 * IRC
 ** mansaxel #isp <2011-10-07 Fri>
 <mansaxel> ellajarr
@@ -30005,6 +30064,8 @@ date of birth 1970-01-01
 ** skodaklubben.com
 arme@4711.se Arne Mellberg, Grästorp
 pw: arme
+** zoom.us
+linus@nordu.net xapie6Yaeghi
 * SUNET
 ** Mätdata Chalmers
 [[gnus:nnimap%2Bndn:INBOX#4E5BA90A.3030405@chalmers.se][Email from Tomas Olovsson: Re: Mätdata från SUNET?]]
@@ -30563,7 +30624,7 @@ https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list
 
 HISTFILE= bash -
 bitcoin-cli walletpassphrase <passphrase> 10
-bitcoin-cli sendfrom <account> <btc-address> <amount> <local note> <note to rcpt>
+bitcoin-cli sendfrom <account> <btc-address> <amount>
 bitcoin-cli walletlock
 exit
 *** building
@@ -30979,7 +31040,6 @@ http://throwtheswitch.org/white-papers/unity-intro.html
 <ln5> ok, i guess that bumping count to 257 makes it 1 due to wrapping and
       then r->count-- makes ngx_http_free_request() get invoked on the
       request. that might be a bad thing, agreed.  [17:13]
-
 *** The bug is in ngx_http_close_request()
 ngx_http_close_request(ngx_http_request_t *r, ngx_int_t rc)
 /* ... */
@@ -31009,7 +31069,6 @@ being zero is being done earlier in that function:
     }
 
 but then sadly ignored.
-
 ** source code analysis
 - rats has no debian package afaict
 - flawfinder knows C and C++
@@ -33258,8 +33317,9 @@ created by main.main
 flogsta:~% 
 
 Generated a key by letting xmpp-client generate a new config.
-* gnus, debugging
-** warnings writing drafts after upgrading to v5.13 (emacs-24.3.1)
+* gnus
+** debugging
+*** warnings writing drafts after upgrading to v5.13 (emacs-24.3.1)
 Wrote /home/linus/Mail/drafts/205
 Can't select group (no such directory): archive.sent..~
 nndraft:archive.sent..~ error: Can't select group (no such directory): archive.sent..~
@@ -33325,7 +33385,7 @@ nnmail-get-active returns the crap:
 ("archive.sent" (1 . 0)) ("archive.sent..~" (1 . 0)) ("mail" (1 . 0))
 ("mail.misc" (2376 . 2464)))
 
-** smtpmail
+*** smtpmail
 - ~/.authinfo: machine kerio.nordu.net port 587 login linus@nordu.net
 
   ==> emacs prompting for SMTP password for
@@ -33341,18 +33401,122 @@ nnmail-get-active returns the crap:
 
 - (setq smtpmail-auth-supported '(plain login)) makes CRAM-MD5 not be
   chosen and LOGIN. All good!
-*** old config in .gnus
-      smtpmail-starttls-credentials '(("smtp.nordberg.se" 587 nil nil)
-                                      ("kerio.nordu.net" 587 nil nil))
-      ;; '(("smtp.nordberg.se" 587 "~/.priv/maatuska.nordberg.se.key" "~/.priv/maatuska.nordberg.se.pem"))
-      smtpmail-auth-credentials '(("kerio.nordu.net" 587 "linus@nordu.net" "<pw>")
-                                  ("smtp.nordberg.se" 587 "linus" "<pw>"))
-      ;;i'd like to use nnimap-authinfo-file instead
-** connecting over the net
+**** old config in .gnus
+       smtpmail-starttls-credentials '(("smtp.nordberg.se" 587 nil nil)
+                                       ("kerio.nordu.net" 587 nil nil))
+       ;; '(("smtp.nordberg.se" 587 "~/.priv/maatuska.nordberg.se.key" "~/.priv/maatuska.nordberg.se.pem"))
+       smtpmail-auth-credentials '(("kerio.nordu.net" 587 "linus@nordu.net" "<pw>")
+                                   ("smtp.nordberg.se" 587 "linus" "<pw>"))
+       ;;i'd like to use nnimap-authinfo-file instead
+*** connecting over the net
 - The meat is in [[file:~/usr/src/emacs-24.3/lisp/net/network-stream.el::(defun%20open-network-stream%20(name%20buffer%20host%20service%20&rest%20parameters)][open-network-stream]] (we come there from
   [[file:~/usr/src/emacs-24.3/lisp/gnus/nnimap.el::(defun%20nnimap-open-connection-1%20(buffer)][nnimap-open-connection-1]]).
 - gnutls handling is found in [[file:~/usr/src/emacs-24.3/lisp/net/gnutls.el::(cl-defun%20gnutls-negotiate][gnutls-negotiate]] which "calls out" to
   [[file:~/usr/src/emacs-24.3/src/gnutls.c::DEFUN%20("gnutls-boot",%20Fgnutls_boot,%20Sgnutls_boot,%203,%203,%200,][gnutls-boot()]].
+** bugs
+*** C-g deleting stuff?
+Expiring articles...done
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Quit trying to open server nnimap+adbc
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+gnus-select-newsgroup: Couldn't open server
+Quit [3 times]
+Beginning of buffer [2 times]
+Opening nnimap server on ndn...done
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Quit trying to open server nnimap+adbc
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:dfri.abuse error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Quit trying to open server nnimap+adbc
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:sys error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Quit trying to open server nnimap+adbc
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.cii error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Quit trying to open server nnimap+adbc
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.cryptech.tech error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Quit trying to open server nnimap+adbc
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.ct error: *nnimap* deleted
+
+gnutls.c: [0] (Emacs) fatal error: The TLS connection was non-properly terminated.
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Unable to open server nnimap+adbc due to: make client process failed: connection refused, :name, *nnimap*, :buffer,  *nnimap localhost 1993  *nntpd**-381200, :host, localhost, :service, 1993, :nowait, nil
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.dfri.listan error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Unable to open server nnimap+adbc due to: make client process failed: connection refused, :name, *nnimap*, :buffer,  *nnimap localhost 1993  *nntpd**-185232, :host, localhost, :service, 1993, :nowait, nil
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.getdns.users error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Unable to open server nnimap+adbc due to: make client process failed: connection refused, :name, *nnimap*, :buffer,  *nnimap localhost 1993  *nntpd**-727133, :host, localhost, :service, 1993, :nowait, nil
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.ietf.shutup error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Unable to open server nnimap+adbc due to: make client process failed: connection refused, :name, *nnimap*, :buffer,  *nnimap localhost 1993  *nntpd**-143189, :host, localhost, :service, 1993, :nowait, nil
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.misc error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Unable to open server nnimap+adbc due to: make client process failed: connection refused, :name, *nnimap*, :buffer,  *nnimap localhost 1993  *nntpd**-797576, :host, localhost, :service, 1993, :nowait, nil
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.protocols error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Unable to open server nnimap+adbc due to: make client process failed: connection refused, :name, *nnimap*, :buffer,  *nnimap localhost 1993  *nntpd**-120514, :host, localhost, :service, 1993, :nowait, nil
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.sec-heads error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Unable to open server nnimap+adbc due to: make client process failed: connection refused, :name, *nnimap*, :buffer,  *nnimap localhost 1993  *nntpd**-798997, :host, localhost, :service, 1993, :nowait, nil
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.tor.assistants error: *nnimap* deleted
+
+Opening nnimap server on adbc...
+Opening connection to localhost via tls...
+Unable to open server nnimap+adbc due to: make client process failed: connection refused, :name, *nnimap*, :buffer,  *nnimap localhost 1993  *nntpd**-540600, :host, localhost, :service, 1993, :nowait, nil
+Opening nnimap server on adbc...failed: *nnimap* deleted
+
+nnimap+adbc:lists.tor.bad-relays error: *nnimap* deleted
+
 * jake on privacy and power
 ** elevate.at 2013
 http://2013.elevate.at/festival/ueber-das-festival/newsmagazin/detail/news/jacob-appelbaum-elevate-open-everything/
@@ -33478,6 +33642,8 @@ former.
 - [X] "The thing with tyranny is that, if you don't try to fight it when it starts, it very quickly gets too strong for you." C. Murray
 - [X] "If you achieve a voice that will be heard, you should use it to speak up for the voiceless and oppressed." C. Murray
 - [X] "If you possess any power or authority, you must strive to use it to help and to empower the powerless." C. Murray
+** sf
+- ann leckie's "Radch" trilogy
 * images
 ** mm.adb-centralen.se
 SHA1 (.priv/img) = 706ed9d23d4cdf0309dee44fa9e9dc41eea1b1b9
@@ -34966,7 +35132,7 @@ necessary cert
 for i, line in enumerate(open(filename, 'r'))
 * docker.sunet.se
 ** client cert
-laptop:sunet-ops$ scripts/mkreq linus
+laptop:nunoc-ops$ scripts/mkreq linus
 
 server:/# touch /etc/docker/certs.d/docker.sunet.se/client.key
 server:/# chmod 600 /etc/docker/certs.d/docker.sunet.se/client.key
@@ -34976,7 +35142,7 @@ server:/# cat > /etc/docker/certs.d/docker.sunet.se/client.key <<EOF
 -----END PRIVATE KEY-----
 EOF
 
-laptop:sunet-ops$ ./bump-tag
+laptop:nunoc-ops$ ./bump-tag
 
 Download cert from http://ca.sunet.se/infra/ and put it in
 server:/etc/docker/certs.d/docker.sunet.se/client.cert.
@@ -35478,28 +35644,7 @@ vpn username=ln, pw=sheuTai6
 vardagsrumsdata, lundberg: Intel NUC DN2820FYKH med Ubuntu + Kodi (f.d. XBMC)
 Alt., för youtube och netflix: chromecast
 * gentoo, hardened gentoo
-https://wiki.gentoo.org/wiki/Project:Hardened
-http://mirror.mdfnet.se/gentoo/releases/amd64/autobuilds/20150903/hardened/stage3-amd64-hardened-20150903.tar.bz2
-http://mirror.mdfnet.se/gentoo/releases/amd64/autobuilds/20150903/hardened/stage3-amd64-hardened-20150903.tar.bz2.DIGESTS.asc
-NOTE: these are sha512 checksums, not sha256
-
-** grsec, pax or selinux?
-Based on info from https://wiki.gentoo.org/wiki/Hardened/Introduction_to_Hardened_Gentoo
-
-"At the heart of the project is PaX. PaX is a kernel patch that allows
-systems to be protected against buffer and heap overflows and similar
-attacks. PaX is the first line of defense in hardening a system."
-
-- The cornerstone of PaX is ASLR, which makes you want PIE.
-- PaX also provides pageexec (r/o executable segments and the rest
-  non-executable).
-- SSP (stack smashing protection) is a userland thing using canaries.
-- PaX is a subset of [[https://packages.gentoo.org/packages/sys-kernel/hardened-sources][the grsecurity patch set]].
-- You do want something for mandatory access control (MAC) too --
-  choose from SELinux, grsecurity and RSBAC. We will choose
-  grsecurity.
-- You might want to use some Integrity Measurement Architecture (IMA)
-  but we won't for now.
+Moved to [[file:p/hgd/hgd.org][file:~/p/hgd/hgd.org]].
 * sha-1 deprecation, danish researchers
 alexander brandbyge
 lars embøll nielssen
@@ -35520,6 +35665,14 @@ hashclash attack reduces 2^80 to 2^61
       VMs to prevent them from fucking over the entire machine.
 <joe> why they can't be limited to the advertised DMA memory mapping range is
       a mystery to me, but intel didn't want it so.         
+** chromebook 201
+<xee5Aexa> cat >/etc/dracut.conf.d/nopat_make_x201_work.conf <<EOF
+<xee5Aexa> kernel_cmdline+=" nopat"
+<xee5Aexa> EOF
+<xee5Aexa> in dom0
+<viet5auJ> 2600         nopat           [X86] Disable PAT (page attribute table extension of
+<viet5auJ> 2601                         pagetables) support.
+<xee5Aexa> yes, wonder if that somehow disables vt-d
 * smtp privacy Received:
 ** modifying MUST and MUST NOT
 > | If I were a particularly privacy-aware SMTP entity, would it make
@@ -35877,11 +36030,12 @@ eth1      Link encap:Ethernet  HWaddr 00:16:d3:83:00:10
 
 Some fucking captive portal here?
 * H2020 call 2016
+** "mine"
 People
 
 - Rainer Hoerbe <rainer@hoerbe.at>, http://www.identinetics.com/, 
 
-** phnoe chat with stephen <2016-01-19 Tue>
+** phone chat with stephen <2016-01-19 Tue>
 1. homomorphic stuff
 
    Explore what kinds of homomorphic functions (up to and including
@@ -35903,9 +36057,117 @@ People
    Identify some good applications where logs (like CT's) or a
    blockchain-like logcan add value. Possibly something in the public
    space (e.g. permits of somesort), and try develop for that.
-* iranska kompisar till e&L
-Ardo, Mahan och Edvin
 
+** aalborg uni/ CMI
+*** vc <2016-08-17 Wed>
+henning olesen
+
+- leif: we do TRL 5, 6 and up; working with yubico and stina for many
+years; stina has had a lot of conversations with USG and EC for
+practicaly id schemes but also with pseudonymity and protection of
+user data; most countries would like to have mechanisms with a higher
+protection; we know of idmix, credential stuff and other
+non-deployable ideas; bring to the table: access to one of the larger
+id infrastructures in the world (idp's and such)
+
+- henning: copenhagen campus of aalborg; belonging to the dep of
+electronic systems (mobile and wireless); came in from a "user
+profiles" angle but in recent years we've been moving more into
+security and privacy
+
+- someone else: cyber security and trust; malware and hacking
+
+- henning: combining u2f and openid connect
+
+- leif: polymorphic identity from neumegen
+
+- henning: the call talks about qualified anonymity
+
+- leif: well written up attack on OPN, attack vector was KBA
+  (knowledge based authn) i.e. social engineering; if not centralised
+  db, maybe WoT? i won't mention ledgers
+
+- henning: GDPR, privacy by default
+
+- leif: we need a coalition, it helps to have a PM early on; TRL 6-7
+  mandates we need to talk about something that exists
+
+- henning: need an industry partner
+
+- leif: i think i can help with that; yubico and kantara initiative
+  (currently US based but are now setting up a branch in the EU)
+
+- leif: have to make sense to the big social id providers (google and
+  FB, and MS)
+
+- henning: maybe partners in the UK, like citizen services; 3y
+  project, 6-8 partners
+
+- leif: first prio is to find out what we want to do, industry
+  partners will have to come later
+
+- other person: a page with main points from each side
+
+- leif: next call in 2w
+
+- henning: collection of attributes
+
+- leif: like personal data stores; problem is this haven't failed on
+  tech but flies in the face of current business practices
+
+- leif: new consortium content and movie industry, a next generation
+  DRM approach, tagging everything with a fingerprint, maybe we could
+  treat personal data like something that needs that kind of
+  protection
+
+- henning: looked at swamid, could that be used?
+*** looking at the PP paper from nijmegen
+- what's the problem it tries to solve?
+  - a pupil goes to a school; the shool sends the pupil to a publisher
+    of an e-book that the pupil shall read and interact with (UC2);
+    the publisher wants to get paid (UC1); the school wants to receive
+    feedback from the publisher (UC3)
+  - as two addons, it presents solutions for pseudonymous attribute
+    release and user inspection (of their own data)
+- proposed solution
+  - two central roles: key manager authority (KMA) and pseudonym
+    facility (PF)
+  - other parties: pupil, school and publisher
+  - keys: yK = system-wide public key
+  - data objects: PN = personal number; PP = PN encrypted in yK; EP =
+    PP encrypted in key held by a given party (school, publisher)
+  - PP and EP are randomizable, i.e. same content can have different
+    look
+- errata: missing a "not" in the sentence "The nature of the PF is
+  more internet connected but does have particularly high availability
+  requirements."
+*** can we make a pseudonomy servers system (a la nymble) from this?
+- two models: group signature (nymble, nymbler, bnymble) and TTP-free
+  (BLAC, PEREA, FAUST, BLACR, PERM) (see [[file:p/dfri/dfri.org::*pseudonomy%20servers][pseudonomy servers]])
+- what's the problem?
+  - when all users look the same thanks to anonymity/pseudonymity,
+    service providers can not hold users accountable for bad behaviour
+  - a "revocable anonymity system" solves this by a TTP which can
+    deanon a user
+  - the primary problem is that of sybil resistance
+- proposed solution
+  - two lists: registered users ("whitelist") and banned users
+    ("blacklist"), where registration has to be sybil safe too
+  - authenticating user must prove she's registered but not banned, in
+    zero-knowledge
+  - associate each user with a scarce resource ("unique identifier"),
+    like IP addresses, phone numbers, money, RAM, CPU
+  - [more]
+*** initial ideas, interests and contributions
+- interest
+  - pseudonymity service
+  - [need more]
+- contributions
+  - network resources, network design and operational experience
+  - access to id infrastructure, i.e. user base for PoC's
+  - [need more]
+* iranska kompisar till E&L
+Ardo, Mahan och Edvin
 * johans papper om svensk och kinesisk cyber warfare
 - s. 101 says FRA law was adopted in 2008, the page after says 2006
 * comments on 4zm book
@@ -36077,4 +36339,76 @@ https://groups.google.com/a/hardenedbsd.org/group/users/subscribe
 which redirects to
 https://groups.google.com/a/hardenedbsd.org/forum/#!forum/users/join
 where I can enter an email address (and solve a CAPTCHA).
+* sunet cloud iias
+- https://portal-beta.cloud.ipnett.se/project/instances/
+- iaas@cloud.ipnett.se
+** releases
+- 2016-03-30 (2016-04-15): beta
+- 2016-05-23
+- 2016-09-15
+** bug reports / wish list
+- [ ] IPv6 address in vm
+- [ ] real IP addrs
+- [ ] traceroute
+* scol / sunet cert's new "file spool to database filtering machinery"
+- name
+  - scol
+  - file2db
+  - spool2db
+  - filter machine, filtering machinery, filma
+- database
+  - https://github.com/comtihon/mongodb-erlang
+* MUA
+- notmuch https://notmuchmail.org/ for indexing, has an emacs UI
+- getmail (or offlineimap) for pulling mail to a local maildir
+  repository
+- notmuch emacs mode will use Message and hopefully smtpmail for
+  sending (yes, see https://notmuchmail.org/emacstips/)
+* EDRi supporter
+- 2015-10-28 20 EUR
+- 2016-05-03? 120 EUR
+* storagesafe, froo
+passordshanterare
+appliance
+använder pgp i botten
+startade 2011
+uppdelat i valv
+audit log
+escrow-användare
+KB vill köpa, genom sunet
+leif vill inte
 
+konkurrent: hashicorp
+
+* blodgivning
+** tfnsamtal 08-58581111 <2016-07-05 Tue>
+Hur skyddas persondata?
+
+Lagras i 30 år, allt som rör din blodgivning.
+
+Karolinska, sthlm läns landsting, Socialstyrelsen.
+
+Hälso-sjukvårdslagen, sekretesslagen.
+
+Hälsodeklaration, personnummer, tappningsnummer, resultat av testerna.
+Tid och plats, vem som utför.
+* phones
+** nexus 5x
+*** copperheados
+https://copperhead.co/android/
+https://github.com/CopperheadOS
+**** installing on nexus 5x
+https://copperhead.co/android/docs/install
+
+    curl-tor -O https://builds.copperhead.co/builds/bullhead-factory-2016.07.24.12.17.03.tar.xz
+    curl-tor -O https://builds.copperhead.co/builds/bullhead-factory-2016.07.24.12.17.03.tar.xz.sig
+
+    # Don't 'apt-get install android-tools-adb android-tools-fastboot'
+    # on jessie since they're too old (4.2.2+git20130529-5.1). On sid
+    # (unstable) they're at 5.1.1r29 which also is too old, according
+    # to the copperheados instructions.
+* threema
+ln5: 8WTERSCW
+hjerturr: DP447BD9
+* randomness from noisy diode
+see [[file:p/hwrand/hwrand.org][file:~/p/hwrand/hwrand.org]]

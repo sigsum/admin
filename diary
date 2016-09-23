@@ -12,6 +12,7 @@
 %%(diary-anniversary 1972 4 11) grtrd
 %%(diary-anniversary 1989 4 18) Xenia
 %%(diary-anniversary 1933 4 18) Elsie
+%%(diary-anniversary 1933 4 20) DrWhax
 %%(diary-anniversary 2012 4 22) Roger
 %%(diary-anniversary 1999 4 26) Etta
 %%(diary-anniversary 1945 5 10) Erik
@@ -20,11 +21,13 @@
 %%(diary-anniversary 2015 06 18) isabela
 %%(diary-anniversary 1973 6 29) Johan Ruterhagen
 %%(diary-anniversary 1999 7 2) Lärka
+%%(diary-anniversary 2016 7 8) dkg
 %%(diary-anniversary 2011 07 08) DFRI
 %%(diary-anniversary 2014 7 11) Marianne
 %%(diary-anniversary 2014 8 2) Andrea
 %%(diary-anniversary 1977 8 30) Nick Mathewson
 %%(diary-anniversary 2002 9 3) Nicks first Tor commit
+%%(diary-anniversary 1968 9 12) Leif
 %%(diary-anniversary 2003 10 8) tor https://lists.torproject.org/pipermail/tor-dev/2003-October/002185.html
 %%(diary-anniversary 2012 10 15) Lise
 %%(diary-anniversary 1900 10 21) Tok-martin
@@ -1445,7 +1448,7 @@
 2016-03-05 Open Data Day
 2016-03-25 Document Freedom Day
 2016-06-04 [lärka] jobba marathon
-%%(diary-block 2016 06 07 2016 06 09) [lärka] scout kajak
+&%%(diary-block 2016 06 07 2016 06 09) [lärka] scout kajak
 %%(diary-block 2016 03 19 2016 03 20) LibrePlanet @ MIT, Boston
 2016-02-26 10:35-12:10 ARN T2 - TXL
 2016-02-26 13:05-16:05 TXL - MAD T4
@@ -1461,13 +1464,12 @@
 &%%(diary-block 2016 03 24 2016 03 28) Påsk
 &%%(diary-block 2016 07 25 2016 08 14) [prel] semester
 2016-04-06 onsdagsöl @ TUG
-&%%(diary-block 2016 07 25 2016 08 07) [lärka] kårläger
+&%%(diary-block 2016 07 25 2016 08 05) [lärka] kårläger
 2016-03-09 20:30-22:50 VIE-ARN ZZ35YU
 2016-03-16 14:00 VC on JRA2T6 w/ jerry, metzger, map and stefan
 2016-03-22 14:00 ori shimony <os7hf@virginia.edu> on jabber
 2016-03-17 16:00-17:00 prop 267 @ #tor-dev
 2016-05-26 16:00 XPD vårfest
-2016-05-23 OSA xpd:s fest: titti@xpd.se
 2016-03-16 12:00 lunch m simon
 2016-03-16 15:00 gossip call http://www.voicebridge.de/en/numbers.html 6059
 2016-03-20 12:00 lunch m lukas
@@ -1512,7 +1514,7 @@
 &%%(diary-block 2016 07 25 2016 08 07) B (semester)
 2016-05-24 18:30-20:15 fam.hem-info farsta
 2016-04-13 18:00-20:30 MUST mfl @ KTH http://www.ser.se/kryptoafton-pa-kth/
-%%(diary-block 2016 06 11 2016 06 19) [lärka] scoutläger
+&%%(diary-block 2016 06 13 2016 06 23) [lärka] scoutläger
 &%%(diary-block 2016 05 09 2016 05 20) Juni PRAO
 2016-09-17 Mattias gifter sig
 2016-04-30 johan & amanda på middag
@@ -1523,11 +1525,184 @@
 2016-06-24 en vecka till cfp deadline, balccon, https://2k16.balccon.org/index.php?title=CfP_BalCCon2k16
 2016-04-14 11:30 tg @ sibiriens
 %%(diary-block 2016 09 08 2016 09 09) EUC Stockholm
-%%(diary-cyclic 7 2016 04 11) 19:00 tor network-team meeting #tor-dev
+&%%(diary-cyclic 7 2016 04 11) 19:00 tor network-team meeting #tor-dev
 2016-04-15 13:00 Lunch med Johan
 &%%(diary-block 2016 09 18 2016 09 21) EPF -- european peering forum @ Sofia
 2016-04-29 Fredagsöl
-2016-04-18 18:00 [prel] gossip call https://dudle.inf.tu-dresden.de/privacy/CT_gossip/
 2017-04-14 PGP key expires
 2017-04-07 PGP key expires in one week
 2017-04-19 Revoke PGP key 0x3B249393
+%%(diary-block 2016 08 31 2016 09 02) "Advancing human centric personal data" @ Helsingfors
+2016-04-19 09:00-12:00 IPnet @ ndn
+2016-04-19 19:00-21:00 dfri noc
+2016-04-23 middag med simon & nadine
+2016-05-02 lämna bil mekonomen, pepparvägen
+2016-04-21 18:00 gossip call http://www.voicebridge.de/en/numbers.html 7548
+2016-04-26 15:00-17:00 hack on gossip poc with dkg
+2016-05-04 18:00 gossip call
+2016-04-28 12:00 lunch lena @ dumplings
+2016-05-02 08:00-15:00 ventilation
+2017-05-02 12:00 cert for urd.appendto.org expires
+2017-04-25 cert for urd.appendto.org expires in a week
+%%(diary-block 2016 05 14 2016 05 15) geko i sthlm
+2016-04-28 09:15 KB Humlegården, Laurent Fournier
+2016-05-04 09:15 Laurent, KB Humlegården
+2016-05-10 10:00-16:00 http://digibib.se/cryptoparty-bibldag16/
+2016-07-01 DFRI dekl inne
+2016-06-17 två veckor till DFRI dekl inne
+2016-06-10 tre veckor till DFRI dekl inne
+&%%(diary-block 2016 05 27 2016 05 29) Kerstin i Täby
+2016-05-27 Middag i Täby!
+2016-03-24 Foten gick sönder
+2016-05-25 09:30 christoffer, soc
+2016-05-23 14:30-16:30 Kina @ UI
+2016-05-30 13:00-16:00 Engaging Privacy, Kista Science Tower
+2016-05-12 18:00-19:00 gossip call http://www.voicebridge.de/en/numbers.html, code 6874
+%%(diary-block 2016 07 16 2016 07 17) IETF hackathon
+2016-05-19 Subscribe people to new radsecproxy list
+2016-05-19 12:00 anders.lund@uninett.no closes old radsecproxy list
+2016-05-24 cyber security conf http://isdp.eu/event/cyber-security-identifying-threats-charting-common-defense/
+2016-06-15 09:00-10:30 TNC16 session 8B
+2016-06-12 18:30-20:00 TNC16 speakers reception @ Malostranský palác https://eventr.terena.org/events/2380
+2016-05-17 15:00 Läkarbesök
+2016-05-26 Johan & Amanda
+&%%(diary-cyclic 7 2016 05 17) 19:00-21:00 DFRI NOC
+2016-05-18 11:30 Lunch jn
+2016-05-18 15:00-16:00 JRA2-T6 Kickoff VC
+2016-05-25 13:00-14:00 EISCAT @ SUNET https://www.eiscat.se/
+2016-07-04 cryptech AVR tamper deadline
+2016-05-31 07:55-12:15 ARN-AGP
+2016-06-02 14:30-18:40 AGP-ARN
+2016-05-24 17:20 röntga, sabb
+2016-05-24 11:30 lunch jn
+2016-07-14 14:55-16:30 ARN-TXL
+2016-07-23 12:40-14:10 TXL-ARN
+2016-06-10 Fredagsöl
+2016-06-11 11:45-13:45 ARN-PRG
+2016-06-16 11:40-13:40 PRG-ARN
+2016-05-30 17:30-19:00 Amnesty ICC om drönare @ kulturhuset
+2016-06-13 18:00 DFRI styrelsemöte
+2016-06-13 1 working week til AVR tamper cryptech delivery
+2016-07-08 IETF96 draft cut-off
+2016-07-01 1 week to IETF96 draft cut-off
+2016-06-03 15:20 agilo
+2016-06-07 [prel] henrik på TUG
+2016-06-17 christoffer (soc), f.m.
+&%%(diary-cyclic 14 2016 06 29) 14:00-14:30 JRA2T6 VC
+%%(diary-block 2016 10 14 2016 10 16) http://www.hack4heritage.se/
+2016-08-17 10:00 H2020 privacy skype (henning_olesen_cmi) call; https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/2428-ds-08-2017.html, 3rd strand proposed
+2016-07-06 11:30 soc
+&%%(diary-block 2016 08 21 2016 08 26) http://www.ifip-summerschool.org/
+2016-07-06 19:00 http://www.voicebridge.de/en/numbers.html 27275
+2016-07-07 16:30 call with shari
+&%%(diary-block 2016 07 26 2016 08 07) jbn på landet
+%%(diary-block 2016 09 09 2016 09 11) Tor Berlin meeting
+&%%(diary-block 2016 08 19 2016 08 25) B
+&%%(diary-block 2016 09 02 2016 09 08) B
+&%%(diary-block 2016 09 16 2016 09 22) B
+&%%(diary-block 2016 09 30 2016 10 06) B
+&%%(diary-block 2016 10 14 2016 10 20) B
+&%%(diary-block 2016 10 28 2016 11 03) B
+&%%(diary-block 2016 11 11 2016 11 17) B
+&%%(diary-block 2016 11 25 2016 12 01) B
+&%%(diary-block 2016 12 09 2016 12 15) B
+&%%(diary-block 2016 12 23 2016 12 29) B
+%%(diary-block 2016 09 23 2016 10 02) Tor dev, Seattle
+2016-07-19 12:30-13:45 DNSSEC root key changes @ Bellevue
+2016-10-10 maatuska keys expire
+2016-10-03 maatuska keys expire in a week
+2016-07-12 20:00 TB meeting
+2016-07-13 14:00 JRA2T6 VC
+2016-07-13 20:00 tor-community meeting #tor-project
+2016-07-13 19:00 tor board news
+2016-08-31 18:00-19:30 DFRI styrelsemöte @ tekniska TA MED LOCKPICKING!!!
+2016-07-14 19:00 tor board meeting https://www.uberconference.com/ssteele05 / +1 857-216-6112 PIN: 66328
+2016-07-20 08:15 tfn med soc
+2016-07-20 12:30 Lunch Richard Barnes @ registration
+2016-07-20 15:15-17:20 hrpc @ bellevue
+2016-07-20 19:00 onionspace @ Gottschedstrasse 4 (U9 Nauener Plats / S Wedding)
+2016-08-15 19:00-21:00 tor board
+2016-07-21 10:00-12:30 PLUS in potsdam I
+2016-07-21 12:30-14:00 PING @ Schinkel 3
+2016-07-21 16:30-18:30 civlib meeting
+2016-07-21 19:30 civlib dinner
+2016-07-21 22:30 ietf pecha kucha  @ charlottenburg I
+2016-07-18 20:00 gossip @ Köpenick III
+2016-07-18 11:00 soho house, tor strasse 1
+2016-07-18 18:00 tamper talk, meet lobby
+2016-07-19 schedule a phone chat with erinn
+2016-07-24 16:05-18:10 FRA-ARN
+2016-07-22 09:46-14:44 Zoo-Fra
+2016-07-22 15:06-15:25 Fra-Darmstadt
+2016-07-20 20:30 Yellow Sunshine @ Wiener Straße 19, 10999 berlin, U Görlitzer Bahnhof (east of Kottbusser Tor)
+2016-07-26 01:00-03:00 tor network-team meeting
+2016-09-29 10:00-12:00 Tor board meeting, open
+2016-08-04 respond to tor social contract
+2016-08-02 kolla signeringsburken (linux)
+2016-08-27 15:00 högbergs @ Bryggerivägen 12, Ulvsunda (tvärbanan Norra Ulvsunda el buss Voltavägen)
+2016-09-04 lwn.net subscription expires
+2016-08-28 lwn.net subscription expires in a week
+2016-08-11 11:30 tg @ soppan
+2016-09-21 http://icomm16.internetsociety.org/
+2016-08-10 10:00 soc
+2016-08-30 ndn all hands
+2016-08-18 13:00 sunet cert @ tug
+%%(diary-block 2016 08 23 2016 08 24) IFIP @ KAU?
+2016-09-06 18:00-21:00 DFRI sysadmin
+%%(diary-block 2016 08 25 2016 08 26) geko i sthlm
+2016-08-17 18:00 pöholm 41 (och mattias + mandra)
+2016-08-24 09:00 SUNET-fika
+2016-08-23 15:15-16:45 Tor talk @ IFIP, Karlstad
+2016-09-22 09:00-10:30 web security @ ndn2016
+2016-09-21 cryptoparty
+2016-08-16 11:00 lunch med andreas
+2016-08-19 15:00 skype call w/ DFN-CERT, brauckmann@dfn-cert.de
+2016-09-25 06:20-12:05 ARN-FRA-SEA
+2016-09-30 14:00-12:15 SEA-FRA-ARN
+2016-10-11 regenerate "Continuous TBB builds" key (4096 bits this time)
+2016-08-25 [juni] f-möte
+2016-08-31 11:00-12:00 h2020 call with aalborg
+2016-08-30 one page for the h2020 call
+2016-08-19 12:00-13:00 ndn staff survey mtg https://nordunet.zoom.us/j/6944158411 https://nordunet.zoom.us/zoomconference?m=NUidqNIjWfH21qCwe0Dw9k0YJhGlTaTP
+2016-08-27 medlemshantering
+2016-08-25 08:15 fika med robban
+2016-09-02 fredagsöl @ TUG
+2016-08-25 18:00 PING call
+2016-09-29 Tor board meeting, closed (in the evening)
+2016-09-07 14:00-14:30 jra2t6 vc
+2016-09-22 13:40-14:10 [juni] utv.samtal
+2016-12-21 [juni] avslutning
+2016-08-30 10:00 mustapha i rinkeby
+2016-08-30 11:30-12:00 soc, birgitta
+2016-08-31 10:00-11:30 mustapha i rinkeby
+2016-09-01 10:00-14:30 mustapha i rinkeby
+2016-09-04 mustapha i farsta
+2016-09-05 11:00 mustapha i farsta
+2016-09-06 11:00 mustapha i farsta
+2016-09-08 musse flyttar in!
+2016-09-17 christina hälsar på mustapha
+2016-08-30 15:00 Mansslingan, Arninge
+2016-10-11 18:00-19:30 DFRI styrelsemöte
+2016-09-14 21:00-23:00 gossip poc w/ dkg
+%%(diary-block 2016 10 29 2016 10 30) [prel] kratta i täby
+2016-10-30 CEST -> CET
+%%(diary-block 2016 10 14 2016 10 17) https://www.freedomnotfear.org/
+2016-09-07 12:00 SEB Tegnergatan 18
+2016-09-14 13:00-14:30 Tor @ SJF tc@sjf.se
+2016-09-20 14:00 nacka ortopedmottagn
+2016-10-18 18:00-20:00 JAK
+2017-03-18 open source days in cph
+2016-09-19 14:00 birgitta
+2016-09-14 18:30 scoutmöte
+2016-09-15 17:00 Mozilla, code 2383
+2016-09-20 10:00 annika soc
+2016-09-19 16:00-18:00 gossip poc with dkg
+2016-10-06 10:30 [musse] tandl. marie eklund, götg 21, pk 2308, 1tr
+2016-09-28 frågastaten @ Sunet
+2016-09-22 10:00 Christina
+2016-10-04 10:00-12:00 birgitta
+2016-10-20 15:30 (el 16:00) Pulls och Lindkvist till Sunet
+2016-10-05 rpitor-möte
+%%(diary-block 2016 11 19 2016 11 20) libcurl conf, Nuremberg
+2016-10-04 18:00-19:00 [juni] gymnasieinfo
+2016-09-27 18:00-19:30 yttrandefriet @ SU

@@ -56,9 +56,9 @@
   (switch-to-buffer "*Group*"))
 (global-set-key (kbd "C-x C-m C-m") 'ln-gnus-group-buffer)
 
-(setq message-yank-prefix "| "
-      message-yank-empty-prefix message-yank-prefix
-      message-yank-cited-prefix message-yank-prefix)
+;(setq message-yank-prefix "| "
+;      message-yank-empty-prefix message-yank-prefix
+;      message-yank-cited-prefix message-yank-prefix)
 
 (setq gnus-use-long-file-name nil
       nnmail-use-long-file-names nil)
@@ -107,18 +107,14 @@
       '((".*" (organization nil) ;("^nnimap\\+adbc" (organization nil)
 	 ("From" "Linus Nordberg <linus@nordberg.se>")
 	 (eval
-          (setq smtpmail-smtp-server "smtp.adb-centralen.se"
-          ;;(setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 1587
-		smtpmail-smtp-service 587
+          ;;(setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587
+          (setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 1587
                 smtpmail-smtp-user "linus")
 	  (set (make-local-variable 'message-sendmail-envelope-from) "linus@nordberg.se")))
         ("lists.edri..*" ("From" "Linus Nordberg <linus@dfri.se>"))
-	("lists.tor.assistants"
-	 ("Reply-To" "tor-assistants@lists.torproject.org")
-	 ("From" "Linus Nordberg <linus@torproject.org>"))
 	("lists.tor.internal" ("Reply-To" "tor-internal@lists.torproject.org"))
         ("lists.tor..*" ("From" "Linus Nordberg <linus@torproject.org>"))
-        ("lists.tor.\\(relays\\|talk\\)" ("From" "Linus Nordberg <linus@nordberg.se>"))
+        ("lists.tor.\\(board\\|relays\\|talk\\)" ("From" "Linus Nordberg <linus@nordberg.se>"))
 	("lists.pmacct"
 	 ("From" "Linus Nordberg <linus+pmacct@nordberg.se>")
 	 (organization "NORDUnet A/S"))
@@ -126,9 +122,8 @@
 	 (organization "NORDUnet A/S")
 	 ("From" "Linus Nordberg <linus@nordu.net>")
 	 (eval
-          (setq smtpmail-smtp-server "kerio.nordu.net"
-          ;;(setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 2587
-		smtpmail-smtp-service 587
+          ;;(setq smtpmail-smtp-server "kerio.nordu.net" smtpmail-smtp-service 587
+          (setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 2587
                      smtpmail-auth-supported '(plain login)
                      smtpmail-smtp-user "linus@nordu.net")
                (set (make-local-variable 'message-sendmail-envelope-from)

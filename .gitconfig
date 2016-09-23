@@ -9,3 +9,9 @@
         sslCAInfo = /etc/ssl/certs/ca-certificates.crt
 [push]
 	default = current
+[transfer]
+        fsckobjects = true
+[fetch]
+        fsckobjects = true
+[receive]
+        fsckobjects = true

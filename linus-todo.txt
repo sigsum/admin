@@ -10,20 +10,26 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** TPI
 - - ask sue to talk to kate [tue]
+  - <asn> ailanthus added the WaPo reference in the end, and I thought she knew
+    that there is an onion site.
 - - follow up on the DC information
   - point in case: https://blog.torproject.org/blog/tor-social-contract#comment-200007
+- o ask about the investigation
+  - does it seem [thorough, trustworthy, good]?
+  - are the consequences proportionate? j,w,s
 ** Dev
 - . getting SCT's in pycurl
 - - glog shut down
-- . [[https://project.nordu.net/browse/RADSECPROXY-66][RADSECPROXY-66]] (openssl-1.1)
+- o [[https://project.nordu.net/browse/RADSECPROXY-66][RADSECPROXY-66]] (openssl-1.1)
   o list asked about backward compat [mon]
   - code merged to master [fri]
+- o another radsecproxy release, with thread stomping fixes
 - - CATLFISH-73 (HSM load balancing)
 - - is libradsec verifying the authenticator in responses?
 - - permdb read cache disabled and reads benchmarked
-- - another radsecproxy release, with thread stomping fixes
 - - catlfish linus/cleanup 07817e7 cherry-picked
 ** Tor
+- - PeerFlow paper read
 - - follow up on kate addressing twitter critique; ask shari first?
 - - make people aware of the [[https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/ds-08-2017.html][h2020 call on privacy ]]
 - - add TCT to https://storm.torproject.org/shared/86vrjdw6Hy5Z3nn7LItnsWtirkxBGovoEQUTV38Ce2F
@@ -35,13 +41,21 @@ Legend                                                (emacs -*-org-*- mode)
 - - stud in front of gaol updated wrt latest openssl bugs
 ** DFRI
 - - linda reimbursed [sun]
-- - quitter email to dfri-internal@
+- - quitter email going to dfri-internal@
 - - feedback to paulina [[gnus:nnimap%2Badbc:INBOX#1471205573731.65495.74192@webmail7][{sjf-tor} Utkast till rapport ]][oct 1]
 - - cosmos on debian rpitor
 ** Misc
 - - travel computer prepared [fri]
-- - 5 page CT presentation for Jerry [sep 23]
+  . new jail w/ sshd and travelstick img
+  - temporary pgp key, signed and published
+  - secrets memorized
+    - main passphrase (input for ssh login, tails login)
+    - onion address
+    - shared onion secret
+  - procedure verified
+- o 5 page CT presentation for Jerry [fri sep 23]
 - - travel expenses done [wed]
+  - hand in envelopes
 - - decided where to place 650k SEK
   - JAK?
 - - how does idemix/ABC4trust relate to anonymous blacklisting and PP
