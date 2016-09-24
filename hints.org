@@ -482,6 +482,8 @@ loads like this:
 [  691.886717] rt2800usb 5-5:1.0: firmware: direct-loading firmware rt2870.bin
 [  691.886725] ieee80211 phy0: rt2x00lib_request_firmware: Info - Firmware detected - version: 0.33
 
+531ce71af8f9a135eaeeac089d8923dd8166cf3f72708a3cbb99192ee7d92ea3  /lib/firmware/rt2870.bin
+
 # iw list
 Wiphy phy0
 	max # scan SSIDs: 4

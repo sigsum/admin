@@ -1,10 +1,18 @@
+Hi,
+
 I'm travelling without some of my keys.
 
-I'll be able to read your message within a week.
+I will be able to read your message within a week.
 
-If you're very eager to reach me and won't email unencrypted, I can
-provide you with a temporary key signed by my ordinary one. Let me
-know if that's of interest to you.
+If you're eager to reach me by email and don't want to send
+unencrypted email, please download and use the following temporary
+key, signed by my ordinary one:
+
+  https://www.dfri.se/wiki/users/linus/BAC3329AF46DFA29.asc
+
+More info can be found at
+
+  https://www.dfri.se/wiki/users/linus/contact.txt
 
 Thanks,
 Linus
