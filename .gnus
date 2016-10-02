@@ -108,7 +108,7 @@
 	 ("From" "Linus Nordberg <linus@nordberg.se>")
 	 (eval
           ;;(setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587
-          (setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 1587
+          (setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587
                 smtpmail-smtp-user "linus")
 	  (set (make-local-variable 'message-sendmail-envelope-from) "linus@nordberg.se")))
         ("lists.edri..*" ("From" "Linus Nordberg <linus@dfri.se>"))
@@ -123,7 +123,7 @@
 	 ("From" "Linus Nordberg <linus@nordu.net>")
 	 (eval
           ;;(setq smtpmail-smtp-server "kerio.nordu.net" smtpmail-smtp-service 587
-          (setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 2587
+          (setq smtpmail-smtp-server "kerio.nordu.net" smtpmail-smtp-service 587
                      smtpmail-auth-supported '(plain login)
                      smtpmail-smtp-user "linus@nordu.net")
                (set (make-local-variable 'message-sendmail-envelope-from)
