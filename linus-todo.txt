@@ -10,27 +10,9 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** TPI
 - . turn tor-board@tpo alias into tor-board@lists.tpo
-- o set up new list, trim the current list [earliest fri 14:00]
-  o see notes from seattle closed board meeting
-- o start board discussion about expanding the board [thu]
-  - julius is willing; how would prev board and rest of world react?
-- D ask sue to talk to kate [tue]
-  - <asn> ailanthus added the WaPo reference in the end, and I thought she knew
-    that there is an onion site.
-- D follow up on the DC information
-  - point in case: https://blog.torproject.org/blog/tor-social-contract#comment-200007
-- o ask about the investigation
-  - does it seem [thorough, trustworthy, good]?
-  - are the consequences proportionate? j,w,s
 ** Dev
-- o merge map's testing branch
-- o analyze ralf's radsecproxy bug [fri]
 - . getting SCT's in pycurl
 - - glog shut down
-- o [[https://project.nordu.net/browse/RADSECPROXY-66][RADSECPROXY-66]] (openssl-1.1)
-  o list asked about backward compat [mon]
-  o code merged to master [fri]
-- o another radsecproxy release, with thread stomping fixes
 - - CATLFISH-73 (HSM load balancing)
 - - is libradsec verifying the authenticator in responses?
 - - permdb read cache disabled and reads benchmarked
@@ -41,8 +23,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - flow.ndn reinstalled (debian)
 - - see if #17950 or #17951 might be the reason for tor being worse at
   recovering from ip addr change
-- o [[gnus:nnimap%2Badbc:INBOX#20161010142807.gerphwjzwbe6b3vq@raoul][Email from David Goulet: David's TCP trick]]
-  - david's tcp trick understood
 - - sunet web pages
   - add tor services to 'bastjanster', perhaps tricky bc nordunet is
     running most of them, talk to bj (bridges, relays, torperf)
@@ -52,9 +32,7 @@ Legend                                                (emacs -*-org-*- mode)
   - figure out a name for the blog, like "privacy" or "trust, identity
     and privacy" and let emma know
 - - PeerFlow paper read
-- D follow up on kate addressing twitter critique; ask shari first?
 - - make people aware of the [[https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/ds-08-2017.html][h2020 call on privacy ]]
-- X add TCT to https://storm.torproject.org/shared/86vrjdw6Hy5Z3nn7LItnsWtirkxBGovoEQUTV38Ce2F
 ** IETF / W3C
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
@@ -63,24 +41,9 @@ Legend                                                (emacs -*-org-*- mode)
 - - stud in front of gaol updated wrt latest openssl bugs
 ** DFRI
 - - pawal reimbursed
-- o linda reimbursed [sun]
 - - quitter email going to dfri-internal@
-- X feedback to paulina [[gnus:nnimap%2Badbc:INBOX#1471205573731.65495.74192@webmail7][{sjf-tor} Utkast till rapport ]][oct 1]
 - - cosmos on debian rpitor
 ** Misc
-- * feedback on GEANT privacy policy to valter [tue]
-- o move money from SEB account
-- o travel computer prepared [fri]
-  . new jail w/ sshd and travelstick img
-  - temporary pgp key, signed and published
-  - secrets memorized
-    - main passphrase (input for ssh login, tails login)
-    - onion address
-    - shared onion secret
-  - procedure verified
-- o 5 page CT presentation for Jerry [fri sep 23]
-- o travel expenses done [wed]
-  o hand in envelopes
 - - decided where to place 650k SEK
   - JAK?
 - - how does idemix/ABC4trust relate to anonymous blacklisting and PP
