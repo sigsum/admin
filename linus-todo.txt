@@ -8,20 +8,23 @@ Legend                                                (emacs -*-org-*- mode)
         X Abandoned
 
 * RSN (within a week)
-** TPI
-- . turn tor-board@tpo alias into tor-board@lists.tpo
 ** Dev
+- - fabians stuff merged
+- o keys and config to DFN-CERT
 - . getting SCT's in pycurl
-- - glog shut down
-- - CATLFISH-73 (HSM load balancing)
+- o keygen apu2 ready for SWAMID [nov 30]
 - - is libradsec verifying the authenticator in responses?
 - - permdb read cache disabled and reads benchmarked
 - - catlfish linus/cleanup 07817e7 cherry-picked
+** TPI
+- o replied to [[gnus:nnimap%2Badbc:lists.tor.bof#75763746-ab6e-89a2-4ccc-fd053e258551@mcgill.ca][{bof} New Minutes]] [dec 10]
+- o turn tor-board@tpo alias into tor-board@lists.tpo
 ** Tor
-- - paulina svar [nov 4]
+- X qbi on https://planetprinceton.com/2016/11/17/talk-at-princeton-high-about-digital-privacy-takes-a-controversial-turn-principal-apologizes/
+- o paulina svar [nov 4]
   - doc: [[file:p/dfri/doc/tor-legalitet.utkast-20161023.docx][file:~/p/dfri/doc/tor-legalitet.utkast-20161023.docx]]
-- - flow.ndn reinstalled (debian)
-- - see if #17950 or #17951 might be the reason for tor being worse at
+- - flow.ndn reinstalled (debian?)
+- X see if #17950 or #17951 might be the reason for tor being worse at
   recovering from ip addr change
 - - sunet web pages
   - add tor services to 'bastjanster', perhaps tricky bc nordunet is
@@ -31,34 +34,57 @@ Legend                                                (emacs -*-org-*- mode)
   - write up a first blog post about tor and research for sunet blog
   - figure out a name for the blog, like "privacy" or "trust, identity
     and privacy" and let emma know
-- - PeerFlow paper read
-- - make people aware of the [[https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/ds-08-2017.html][h2020 call on privacy ]]
+- X PeerFlow paper read
+- X make people aware of the [[https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/ds-08-2017.html][h2020 call on privacy ]]
 ** IETF / W3C
+- * tjr's email read
+- * estark emailed about gossip at google
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
-- - ehlo reinstalled on old modermodemet hw
-- - stud in front of plausible updated wrt latest openssl bugs
-- - stud in front of gaol updated wrt latest openssl bugs
+- * ehlo reinstalled on old modermodemet hw
+  - vote bw
+  - copy stats to siv
+- - pkg.hardenedbsd.org mirror set up
+- - gaol needs new internal certs
+- - glog.ct.ndn shut down
+- o stud in front of plausible updated wrt latest openssl bugs
+- o stud in front of gaol updated wrt latest openssl bugs
 ** DFRI
-- - pawal reimbursed
+- o annual report sent to medlem@
+- - TOT report published
+- o [[file:p/dfri/dfriadm/fakturor/2017/portlane-3172.pdf][portlane-3172]] payed [feb 05]
+- o tot economy zip file sent to leif
+- - new machine racked and installed
+- - hbsd installed on machine from jn
+- o tor-legalitets-rapporten -> erik something
+- o [[file:p/dfri/dfriadm/fakturor/2016/kustbandet-21948.pdf][file:~/p/dfri/dfriadm/fakturor/2016/kustbandet-21948.pdf]] [dec 20]
 - - quitter email going to dfri-internal@
 - - cosmos on debian rpitor
+- o contact lindorff + postnord re payment
+- o invoice [[file:p/dfri/dfriadm/fakturor/2016/portlane-2801.pdf][file:~/p/dfri/dfriadm/fakturor/2016/portlane-2801.pdf]] payed [nov 4]
+- o new member handled
+- o pawal reimbursed
 ** Misc
+- o ipnett replied to about tor vm's
+- o EC privacy workshop prepared [dec 9]
+- - tor-legalitets-rapporten -> polisen
+- - CT handover doc done, ticket closed / handed over
 - - decided where to place 650k SEK
   - JAK?
 - - how does idemix/ABC4trust relate to anonymous blacklisting and PP
   (polymporphic pseudonymization)?
-- - TAILS mirror at ndn/sunet? see email
+- X TAILS mirror at ndn/sunet? see email
 * Soon (within a month)
 ** TPI
 - - push for publishing the by-laws, and possibly more
 ** Dev
-- - release radsecproxy2-0.1
+- - radsecproxy-1.7 released [jan 15]
+- - radsecproxy2-0.1 released
 - - check out [[file:usr/src/oniongateway/docs/design.rst][file:~/usr/src/oniongateway/docs/design.rst]]
 - - check out CONIKS
 - - check out [[https://github.com/manopapad/proper][PropEr]], for property-based checking (erlang)
 - - check out cuter, "concolic testing" tool for erlang
-- - catlfish-0.9.0 released
+- o catlfish-0.9.0 released
 - - find out if pwouters dnssec thing is a thing to respond to
   [[gnus:nnimap%2Badbc:lists.tor.talk#53D96702.3050901@gmail.com][Email from Ondrej Mikle: Re: {tor-talk} Tor DNS]] with
 - - verify ipv6 in tor master, especially wrt dns
@@ -316,24 +342,28 @@ x Mar 10-13, Berlin, Logan ICJ
 x Mar 10-17, Marrakech, MirageOS hackathon
 x Apr 01-09, Buenos Aires, IET95
 - May 31-02, Malaga, JRA2 all hands
-? Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
+x Jun 04-11, Sibenik (Croatia), summer school crypto & privacy
 - Jun 11-16, Prague, TNC16
 - Jun 20-03, Vacation
 - Jul 15-23, Berlin, IETF96
-? Jul 19-23, Darmstadt, PETS16
-? Jul 25-30, New York, CII
+- Jul 19-23, Darmstadt, PETS16
+x Jul 25-30, New York, CII
 - Jul 25-07, Vacation
 - Aug 08-10, Vacation
 - Aug 21-26, Karlstad, IFIP
 x Aug 26-04, Bornholm, Bornhack
-? Sep 08-09, Stockholm, EUC
+x Sep 08-09, Stockholm, EUC
 - Sep 09-11, Berlin, Tor dev
 - Sep 19-23, Helsinki, NDN2016
 - Sep 24-02, Seattle, Tor dev
-? Nov 11-19, Seoul, IETF97
+x Nov 11-19, Seoul, IETF97
 ** 2017
-? Mar 24-31, Chicago, IETF98
+- Mar 20-28, Amsterdam, Tor
+x Mar 24-31, Chicago, IETF98
+? May 28-03, Linz, TNC17
 ? Jul 15-22, Prague, IETF99
+? Sep 10-16, Oslo, ESORICS
+? Nov 11-18, Singapore, IETF100
 ** 2015
 - Mar 01-06, Valencia, Tor winter dev
 X Mar 20-27, Dallas, IETF92
