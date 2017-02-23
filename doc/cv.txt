@@ -1,8 +1,8 @@
-Curriculum Vitae           Linus Nordberg                   2015-06-22
+Curriculum Vitae           Linus Nordberg                   2017-02-22
 ----------------
 
 Name:           Linus Nordberg       Nationality:  Swedish
-Age:            46                   Location:     Stockholm
+Age:            47                   Location:     Stockholm
 
 Education:      High school diploma in Engineering
 
@@ -43,10 +43,9 @@ Software:       Strong C, C++, Python and Erlang programming and
                 including assembler, linker and debugger.
 
                 Experienced in UNIX system administration (FreeBSD,
-                OpenBSD, Linux, NetBSD, Solaris). Thorough knowledge
-                in running internet software such as DNS, firewall,
-                email, web and XMPP services with high security
-                demands.
+                Linux, NetBSD, OpenBSD). Thorough knowledge in running
+                internet software such as DNS, firewall, email, web
+                and XMPP services with high security demands.
 
                 Experienced in CM issues; source code versioning and
                 concurrent usage, daily builds, multiple target
@@ -65,16 +64,17 @@ Hardware:	IBM PC, IBM POWER3, Motorola PPC 860, ARM, ARClite
 Experience
 ----------
 
-NORDUnet        Software Engineer
---------
-May 09 -        Development and maintenance of security software,
-Present         including Tor (adding support for IPv6), Kerberos
-                (OTP support in MIT Kerberos), radsecproxy (RADIUS
-                over TLS), libradsec (for Project Moonshot) and
-                Certificate Transparency (RFC 6962).
+Sunet/NORDUnet  Software Engineer
+--------------
+May 09 -        Design, development and maintenance of security        
+Present         software, including Certificate Transparency (design   
+                and implementation of a CT log server), Tor (adding    
+                support for IPv6), Kerberos (OTP support in MIT        
+                Kerberos), radsecproxy (RADIUS over TLS) and libradsec 
+                (for Project Moonshot).
 
-                Development of a file sharing system with federated
-                identity management based on BitTorrent.
+                Design and development of a file sharing system with
+                federated identity management based on BitTorrent.
 
 Frobbit         Software Engineer Consultant
 -------
