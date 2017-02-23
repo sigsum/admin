@@ -10,22 +10,13 @@ Legend                                                (emacs -*-org-*- mode)
 * RSN (within a week)
 ** Dev
 - - fabians stuff merged
-- o keys and config to DFN-CERT
 - . getting SCT's in pycurl
-- o keygen apu2 ready for SWAMID [nov 30]
 - - is libradsec verifying the authenticator in responses?
 - - permdb read cache disabled and reads benchmarked
 - - catlfish linus/cleanup 07817e7 cherry-picked
 ** TPI
-- o replied to [[gnus:nnimap%2Badbc:lists.tor.bof#75763746-ab6e-89a2-4ccc-fd053e258551@mcgill.ca][{bof} New Minutes]] [dec 10]
-- o turn tor-board@tpo alias into tor-board@lists.tpo
 ** Tor
-- X qbi on https://planetprinceton.com/2016/11/17/talk-at-princeton-high-about-digital-privacy-takes-a-controversial-turn-principal-apologizes/
-- o paulina svar [nov 4]
-  - doc: [[file:p/dfri/doc/tor-legalitet.utkast-20161023.docx][file:~/p/dfri/doc/tor-legalitet.utkast-20161023.docx]]
 - - flow.ndn reinstalled (debian?)
-- X see if #17950 or #17951 might be the reason for tor being worse at
-  recovering from ip addr change
 - - sunet web pages
   - add tor services to 'bastjanster', perhaps tricky bc nordunet is
     running most of them, talk to bj (bridges, relays, torperf)
@@ -34,39 +25,26 @@ Legend                                                (emacs -*-org-*- mode)
   - write up a first blog post about tor and research for sunet blog
   - figure out a name for the blog, like "privacy" or "trust, identity
     and privacy" and let emma know
-- X PeerFlow paper read
-- X make people aware of the [[https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/ds-08-2017.html][h2020 call on privacy ]]
 ** IETF / W3C
-- * tjr's email read
-- * estark emailed about gossip at google
+- - estark emailed about gossip at google
 - - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
-- * ehlo reinstalled on old modermodemet hw
-  - vote bw
-  - copy stats to siv
 - - pkg.hardenedbsd.org mirror set up
 - - gaol needs new internal certs
 - - glog.ct.ndn shut down
-- o stud in front of plausible updated wrt latest openssl bugs
-- o stud in front of gaol updated wrt latest openssl bugs
 ** DFRI
-- o annual report sent to medlem@
-- - TOT report published
-- o [[file:p/dfri/dfriadm/fakturor/2017/portlane-3172.pdf][portlane-3172]] payed [feb 05]
-- o tot economy zip file sent to leif
-- - new machine racked and installed
+- - contactd sebastian gjerding re https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
+  - sebastian_@jabber.ccc.de 33218b6023ae3157381def0b0c78a99ef63c1162
+- - clean out joel from all places DFRI
+- . TOT report published
+- . new machine racked and installed
 - - hbsd installed on machine from jn
-- o tor-legalitets-rapporten -> erik something
-- o [[file:p/dfri/dfriadm/fakturor/2016/kustbandet-21948.pdf][file:~/p/dfri/dfriadm/fakturor/2016/kustbandet-21948.pdf]] [dec 20]
-- - quitter email going to dfri-internal@
-- - cosmos on debian rpitor
-- o contact lindorff + postnord re payment
-- o invoice [[file:p/dfri/dfriadm/fakturor/2016/portlane-2801.pdf][file:~/p/dfri/dfriadm/fakturor/2016/portlane-2801.pdf]] payed [nov 4]
-- o new member handled
-- o pawal reimbursed
+- o quitter email going to dfri-internal@
+- X cosmos on debian rpitor
 ** Misc
-- o ipnett replied to about tor vm's
-- o EC privacy workshop prepared [dec 9]
+- - reply to [[gnus:nnimap%2Badbc:INBOX#C5FAA4F8-1D5E-4AB9-A995-087940CE759B@netnod.se][Email from Siri Brenden: Re: Netnod vårmöte - 5-6 April]]
+- o ledig innan el efter påsk (15-16/4)?
+- o reply to MC re netnod presentation on tor
 - - tor-legalitets-rapporten -> polisen
 - - CT handover doc done, ticket closed / handed over
 - - decided where to place 650k SEK
@@ -76,7 +54,6 @@ Legend                                                (emacs -*-org-*- mode)
 - X TAILS mirror at ndn/sunet? see email
 * Soon (within a month)
 ** TPI
-- - push for publishing the by-laws, and possibly more
 ** Dev
 - - radsecproxy-1.7 released [jan 15]
 - - radsecproxy2-0.1 released
@@ -84,7 +61,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - check out CONIKS
 - - check out [[https://github.com/manopapad/proper][PropEr]], for property-based checking (erlang)
 - - check out cuter, "concolic testing" tool for erlang
-- o catlfish-0.9.0 released
 - - find out if pwouters dnssec thing is a thing to respond to
   [[gnus:nnimap%2Badbc:lists.tor.talk#53D96702.3050901@gmail.com][Email from Ondrej Mikle: Re: {tor-talk} Tor DNS]] with
 - - verify ipv6 in tor master, especially wrt dns
@@ -98,7 +74,6 @@ Legend                                                (emacs -*-org-*- mode)
 - - things not under source control in ~/p/radsecproxy/libradsec/lib checked in
      typically tests/server.c and the python bindings
 - - shadow #111 closed
-- X CT design paper sent somewhere
 - - libradsec: add server failover
 - - radsecproxy testing tool; 500 TLS clients in erlang, see https://github.com/fredrikt/nagios-pers
 - - radsecproxy seeding PRNG properly (like libradsec)
@@ -106,8 +81,6 @@ Legend                                                (emacs -*-org-*- mode)
        context of dnssec in tor
        [[file:usr/share/ietf/internet-drafts/draft-wouters-edns-tcp-chain-query-01.txt][draft-wouters-edns-tcp-chain-query-01]], [[file:usr/share/ietf/internet-drafts/draft-wouters-edns-tcp-keepalive-00.txt][draft-wouters-edns-tcp-keepalive-00]]
 - - tor #6027 moved forward some
-- X #9663 reviewed
-- X #8897 reviewed
 - . #4847 -- relays w/o ipv4 or port
 - . investigate libevent dns test failures on freebsd
      o why are jails different from non jails?
@@ -125,17 +98,13 @@ Legend                                                (emacs -*-org-*- mode)
 - - ticket [[https://trac.torproject.org/projects/tor/ticket/17280][anti-DoS for tor]]
 ** Misc
 - - buy a [[http://www.megrosoff.co.uk/][meg rosoff]] book or three
-- X Meeting Jürgen Brauckmann <brauckmann@dfn-cert.de> in Berlin
 - - mirrors@heanet.ie contacted re tor mirror
-- X summary of all things append-only sent to fischer (cc rene)
 - - yubikey starters kit published
 - - 2-3y plan for Sunet wrt privacy/security/internet -- here's where
   we could be given that some of the following funding opportunities
   goes our way
-- X leif replied to re "how much is a linus?"
 - - some CT thing proposed for https://portal.nordu.net/plugins/servlet/callForPresentations
 - - ethereum vs. a log? https://musalbas.com/Report.pdf
-- X some openitp person contacted about jari's IETF statistics
 - - [[https://www.torproject.org/docs/faq.html.en#IPv6][tor ipv6 faq entry]] updated (1)
 - - kopia av bauer-tavlan, http://crimson.se/?
 - - read up on andrews favourite ways of running a company
@@ -143,23 +112,8 @@ Legend                                                (emacs -*-org-*- mode)
      http://firstround.com/article/How-Medium-is-building-a-new-kind-of-company-with-no-managers
      http://falkvinge.net/2013/07/19/book-launch-swarmwise-the-tactical-manual-to-changing-the-world/
 - - split https://portal.nordu.net/display/nordunetops/Tor in two
-- X get back to kupo/w03 about rhnet saying that nordunet as
-     upstream blocks tor operation (wed)
-     o send email to lars & bj
-     o poke lars again
-     o poke lars again^2
-     o poke lars again^3
-     o poke lars again^5
-     o poke lars again^4
-     o follow up on jq email
-  - follow up discussions with maria
 - - read Clayton "Failures in a Hybrid Content Blocking System" ~/p/tor/doc/cleanfeed.pdf
-- X read https://www.iis.se/docs/20120828-remissvar-trafikdatalagring-SE.pdf
-- X read counting-daily-bridge-users-2012-10-24.pdf
-- X check out "Soft v6CPE" for a possible IPv6 tunnel solution
 ** IETF
-- X [[file:usr/share/ietf/internet-drafts/draft-margolis-smtp-sts-00.txt][draft-margolis-smtp-sts-00]] read
-- X [[https://github.com/google/certificate-transparency-rfcs/pull/109][6962bis log shutdown]] reviewed
 - - draft-ietf-trans-gossip nits fixed
 - - SAML naming of AAA entities reviewed for ABFAB
      [[file:~/usr/share/ietf/internet-drafts/draft-ietf-abfab-gss-eap-naming-07.txt]]
@@ -204,10 +158,7 @@ Legend                                                (emacs -*-org-*- mode)
 - - set up iodine, for tunneling, somewhere (ioctl?)
 - - SASL authn working in ERC http://www.emacswiki.org/emacs/ErcSASL
 - - HS for xmpp @ adb-centralen.se working
-- o dnssec for nordberg.se, adb-centralen.se
 - - put [[file:/u/ietf/in-notes/rfc4255.txt::Network%20Working%20Group%20J.%20Schlyter][ssh fps in dns]] (ssh-keygen -r host)
-- X pkgsrc on siv upgraded, for libevent2 (2)
-- X tor on siv upgraded to 0.2.5 (1)
 - - pauls [[file:~/Persistent/u/ietf/internet-drafts/draft-wouters-dane-openpgp-01.txt][pgp-keys-in-dns draft]] and
      [[file:~/usr/share/ietf/internet-drafts/draft-wouters-dane-otrfp-01.txt]]
      read and tested
@@ -224,7 +175,6 @@ Legend                                                (emacs -*-org-*- mode)
   - BEFORE LEAVING VERIFY ACCESS TO
     - mm.adbc
 ** DFRI
-- . TOT report amended with financial info
 - - KB document FOIAd
 - - library-privacy (libpriv@?) list set up [[gnus:nnimap%2Badbc:INBOX#e9bd7d8233474e02bf162ca6782ed4df@Exchange03.kb.local][Email from Elisabet Ahlqvist: SV: Introductions]]
 - - the permissions issue in ikiwiki repos fixed https://ikiwiki.info/rcs/git/
