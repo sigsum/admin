@@ -80,8 +80,7 @@ might be but it sounds unlikely.
 
 * erlang
 https://erlangcentral.org/erlang-projects/web/
-
-** debian
+** running on debian
 apt-get install erlang
 (setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
 (require 'erlang-start)
@@ -94,6 +93,14 @@ apt-get install erlang-dev erlang-src erlang-tools
 
 # Releases are good
 apt-get install erlang-reltool
+** packaging for debian
+<2016-12-19 Mon>
+<dozzie> ln5: personally I put my Erlang stuff in code:lib_dir(), so it is
+         picked up automatically
+<dozzie> and my DEB package just ships that
+<dozzie> ln5: with fpm, bear in mind that it produces packages that are
+         terrible, so if you want to _publish_ something, better stick to
+         official ways of building packages (debhelper, dpkg-dev, and stuff)
 ** fair and square problem
 linus@flow:~/src$ time nice erl -noshell -s fairnsquare main "C-large-practice-1.in" -s init stop > C-large-practice-1.out
 
@@ -1383,6 +1390,49 @@ tiwttering-mode
   whatsoever", while a '1' means ISO Latin-1
 - `C-x <RET> r' sets a file's coding system, `utf-8' is often a good
   choice, or use the `-*- ... -*-' thing at the beginning of the file
+** weird crash <2016-12-15 Thu>
+Backtrace:
+emacs[0x8138719]
+emacs[0x8120446]
+emacs[0x813758e]
+emacs[0x81375fb]
+linux-gate.so.1(__kernel_sigreturn+0x0)[0xb7787d1c]
+emacs[0x80982f4]
+emacs[0x8098614]
+emacs[0x80fbbfb]
+emacs[0x80fc344]
+/usr/lib/i386-linux-gnu/libgdk-3.so.0(+0x47e85)[0xb6dbce85]
+/usr/lib/i386-linux-gnu/libgdk-3.so.0(+0x481b7)[0xb6dbd1b7]
+/usr/lib/i386-linux-gnu/libgdk-3.so.0(gdk_display_get_event+0x87)[0xb6d91ca7]
+/usr/lib/i386-linux-gnu/libgdk-3.so.0(+0x47f25)[0xb6dbcf25]
+/lib/i386-linux-gnu/libglib-2.0.so.0(g_main_context_dispatch+0x244)[0xb687bdb4]
+/lib/i386-linux-gnu/libglib-2.0.so.0(+0x470d9)[0xb687c0d9]
+/lib/i386-linux-gnu/libglib-2.0.so.0(g_main_context_iteration+0x36)[0xb687c1a6]
+/usr/lib/i386-linux-gnu/libgtk-3.so.0(gtk_main_iteration+0x20)[0xb7020ac0]
+emacs[0x80f5581]
+emacs[0x812714f]
+emacs[0x8126a95]
+emacs[0x8172db9]
+emacs[0x8192bd7]
+emacs[0x819312d]
+emacs[0x812560c]
+emacs[0x8125c6d]
+emacs[0x812725b]
+emacs[0x8129eaa]
+emacs[0x81c7c90]
+emacs[0x806343b]
+emacs[0x812aca2]
+emacs[0x812bdad]
+emacs[0x812d838]
+emacs[0x818b76c]
+emacs[0x8120890]
+emacs[0x818b66b]
+emacs[0x8124b84]
+emacs[0x8124e3f]
+emacs[0x8059cb0]
+/lib/i386-linux-gnu/i686/cmov/libc.so.6(__libc_start_main+0xf3)[0xb5a04a63]
+emacs[0x805a76f]
+Segmentation fault
 * Telia homerun
 user: 46703714984
 pw: ds5XVDEir5
@@ -1425,6 +1475,8 @@ bluesnake.snakedesert.se:/var/storage/media/music (1024 d3:44:27:e9:7a:3c:b3:07:
 50. Icona Pop - I love it
 70. Four Tet - Pyramid
 96. Merchandise - Time
+** Skull Snaps "It's a new day" (Skull Snaps)
+http://genius.com/Skull-snaps-its-a-new-day-lyrics
 * Quotes
 "It is easier to optimize correct code than to correct optimized code."
 -- Bill Harlan <http://billharlan.com/pub/papers/A_Tirade_Against_the_Cult_of_Performance.html>
@@ -2228,6 +2280,8 @@ https://github.com/Gijutsu/doldaInstr
   - java
 - protocols
 - sysadmin tasks
+** Rickard Linde, Fores
+- exposing "personnummer" (19700520-0139) on twitter https://twitter.com/rikardlinde/status/811157482949242880
 * Caps Lock and Control
 I used to have the following in ~/.xmodmap:
 remove Lock = Caps_Lock
@@ -3863,7 +3917,6 @@ inte hur jag hade gjort. Att avslöja
 - källkritik
 - transparens vs. privacy -- offentlig vs. privat person
 
-
 ** jag håller på med ett experiment
 - jag håller på med ett experiment
 - är inte det lite jobbigt?
@@ -3875,6 +3928,15 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
 
 [andra gång lade jag ifrån mig telefonen helt, med start juli 2013]
 
+** communicate more, not less
+- inspired by http://pastebin.com/SxHS0xkh
+- communication style is an authentication method
+** good for you, bad for the rest
+- github, privacy (location, social graph), rep building, visibility
+  as a currency (just like online habits)
+- gmail
+** on staying relevant
+- going out on a limb vs. compromising too much
 * anagram
   fresh secularism, fissural schemer, miss researchful
   primtal köttfärs, maskfrätt pilört
@@ -3889,7 +3951,9 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
    [moved to ~/p/xmpp-client/xmpp-client.org]
 
    Really quickly, how to build xmpp-client:
-   FIXME
+   cd ~/usr/go/src/github.com/agl/xmpp-client
+   git pull
+   GOPATH=$HOME/usr/go go install
 
    Really quickly, to connect over Tor:
    "UseTor": true,
@@ -3898,7 +3962,6 @@ mobiltelefon hemma och på jobbet men slog av den när jag gick ut.
 C->S <stream:stream to='example.com' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>
 S->C <?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='909926038' from='example.com' version='1.0' xml:lang='en'><stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms><c xmlns='http://jabber.org/protocol/caps' hash='sha-1' node='http://www.process-one.net/en/ejabberd/' ver='TQ2JFyRoSa70h2G1bpgjzuXb2sU='/><register xmlns='http://jabber.org/features/iq-register'/></stream:features>
 C->S <starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>
-
 *** nordu.net example
 flogsta:~% gnutls-cli -sp 5222 jabber.nordu.net
 Processed 174 CA certificate(s).
@@ -4261,7 +4324,7 @@ touch för dessa även om denne någon sniffat mitt admin-lösenord.
         /usr/share/doc/libykclient-dev/changelog.Debian.gz
         /usr/lib/libykclient.so
 ** Making a static key
-   sudo ykpersonalize -y -1 -ostatic-ticket -a $(~linus/src/hexpw.py) >/dev/null 2>&1
+sudo ykpersonalize -y -1 -ostatic-ticket -a $(~linus/src/hexpw.py) >/dev/null 2>&1
 *** tool:~% cat src/hexpw.py
 #! /usr/bin/python
     
@@ -4314,6 +4377,50 @@ https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd):
 
 yubikey-personalization - Personalization tool for Yubikey OTP tokens
 yubikey-personalization-gui - Graphical personalization tool for YubiKey tokens
+** Generating a key on a NEO <2016-12-27 Tue>
+$ gpg2 --card-edit
+gpg/card> generate
+[...]
+
+pub   2048R/1983D15A 2016-12-27
+      Key fingerprint = 1310 BE34 91E9 80C7 2D14  C209 4F4A C7C1 1983 D15A
+uid       [ultimate] Linus Nordberg <linus@nordberg.se>
+sub   2048R/813C6BD2 2016-12-27
+sub   2048R/08E3FB84 2016-12-27
+
+
+
+gpg/card> list
+
+Application ID ...: D2760001240102000006030353660000
+Version ..........: 2.0
+Manufacturer .....: Yubico
+Serial number ....: 03035366
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Sex ..............: unspecified
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: not forced
+Key attributes ...: 2048R 2048R 2048R
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 3 3
+Signature counter : 5
+Signature key ....: 1310 BE34 91E9 80C7 2D14  C209 4F4A C7C1 1983 D15A
+      created ....: 2016-12-27 00:26:14
+Encryption key....: BAC2 ADE0 AD9D 12F4 094F  A777 0561 55F4 08E3 FB84
+      created ....: 2016-12-27 00:26:14
+Authentication key: 3762 7C9D F990 34D2 BB1D  CAEF 470B 053D 813C 6BD2
+      created ....: 2016-12-27 00:26:14
+General key info..:
+pub  2048R/1983D15A 2016-12-27 Linus Nordberg <linus@nordberg.se>
+sec>  2048R/1983D15A  created: 2016-12-27  expires: never
+                      card-no: 0006 03035366
+ssb>  2048R/813C6BD2  created: 2016-12-27  expires: never
+                      card-no: 0006 03035366
+ssb>  2048R/08E3FB84  created: 2016-12-27  expires: never
+                      card-no: 0006 03035366
+
 * YubiHSM
 ** <2011-03-17 Thu>
    NO_CFG> sysinfo
@@ -4638,6 +4745,11 @@ openssl x509 -fingerprint -sha256 -noout -in $1.crt
 *** /q nickserv
 identify <password> ln5
 cert add <sha1 fpr>
+** umode
+https://www.oftc.net/CallerId/ helps when ppl are spamming you in PM
+/mode ln5 +G
+/mode ln5 -G
+with +G, you'll get messages in "initial buffer"
 * DNS
 ** DNSSEC
 ns.adb-centralen.se uses knot for DNSSEC.
@@ -5148,6 +5260,11 @@ KAS VPN 109.105.106.4 dk-kas-fw.nordu.net
    For being able to present statistics on the global numbers of individual
    users/devices moving between several tenths of administrative domains
 ** RFC3649 HighSpeed TCP for Large Congestion Windows
+** xxxddd@kdetalk.net
+(Dec 24 16:36:01) xxxddd@kdetalk.net: Madness DDoS??Servers stress
+testing HQ class bot system??Description
+??http://pastebin.com/raw/eXFsbBVF??In action
+??https://youtu.be/TR4JcFHfdrM??Jabber ??mad13@dukgo.com
 * miredo
 * RIPE
 ** Links, hints, howto
@@ -29452,6 +29569,8 @@ dsa 2048 bits 0.002015s 0.002374s    496.2    421.3
 
 ** Building from git, on debian jessie
 ./config --prefix=$HOME/usr/openssl11 --shared && make all install
+** cms
+echo foo | openssl cms -sign -binary -stream -nocerts -nodetach -signer crt -inkey key | openssl cms -verify -stream -certfile crt -nointern -CAfile demoCA/cacert.pem 2>/dev/null || echo ERROR
 * IRC
 ** mansaxel #isp <2011-10-07 Fri>
 <mansaxel> ellajarr
@@ -32179,6 +32298,14 @@ Intel 945GM
 UMA 128MB (max)
 *** CMOS RAM
 242 bytes
+** flashing bios
+*** hw
+- 8 pin SOIC test clip "pomona" 5250
+  - http://se.farnell.com/pomona/5250/test-clip-8-pos-1-27mm-soj-soic/dp/2406243
+  - http://www.pomonaelectronics.com/pdf/d5250-54_5437_1_01.pdf
+  - https://www.amazon.com/CPT-063-Test-Clip-SOIC8-Pomona/dp/B00HHH65T4
+- https://libreboot.org/docs/install/x60_unbrick.html
+- http://www.ja.axxs.net/x60_x60s.htm
 * tails
 ** startup
 sudo sh -c "
@@ -33640,12 +33767,19 @@ former.
 ** crypto
 - [X] A. Menezes, P. van Oorschot, and S. Vanstone. Handbook of Applied Cryptography. CRC Press, 1996.
   [[file:doc/books/Handbook%20of%20Applied%20Cryptography%20(HAC)][file:~/doc/books/Handbook of Applied Cryptography (HAC)]]
+- [ ] Douglas R Stinson. Cryptography Theory and Practice.
+  http://cacr.uwaterloo.ca/~dstinson/CTAP3/CTAP3.html
+  http://www.bokus.com/bok/9781584885085/cryptography/
+- [ ] [[https://www.springer.com/gp/book/9780387094939][The Arithmetic of Elliptic Curves]], but probably way too hard
+  http://www.bokus.com/bok/9780387094939/the-arithmetic-of-elliptic-curves/
 ** murder in sammarkand, craig murray
 - [X] "The thing with tyranny is that, if you don't try to fight it when it starts, it very quickly gets too strong for you." C. Murray
 - [X] "If you achieve a voice that will be heard, you should use it to speak up for the voiceless and oppressed." C. Murray
 - [X] "If you possess any power or authority, you must strive to use it to help and to empower the powerless." C. Murray
 ** sf
 - ann leckie's "Radch" trilogy
+** misc
+[[https://en.wikipedia.org/wiki/The_Sandman_%2528Vertigo%2529][The Sandman]]
 * images
 ** mm.adb-centralen.se
 SHA1 (.priv/img) = 706ed9d23d4cdf0309dee44fa9e9dc41eea1b1b9
@@ -35027,7 +35161,15 @@ https://twitter.com/congressedits, USA
 
 http://sverigesradio.se/sida/artikel.aspx?programid=1637&artikel=5934692
 * latex
-apt-get install texlive-latex-base texlive-latex-base-doc texlive-lang-european
+- apt-get install texlive-latex-base texlive-latex-base-doc texlive-lang-european
+- simplest document class: article
+- have all paragraphs start in column 0 (no indenting)
+  - \usepackage{parskip}
+- build latex (and pdf) from emacs org
+  #+LATEX_CLASS: article
+  #+LATEX_CLASS_OPTIONS: [a4paper]
+  #+LATEX_HEADER: \usepackage{parskip}
+  - C-c C-e l o
 * pictures
 https://www.debian-administration.org/article/62/Working_with_images_from_the_command_line
 convert -resize 300x200 in.jpg out.jpg  # part of imagemagick
@@ -35079,6 +35221,7 @@ NDU (National Defense University) -> whitepaper Oct 2014
 home.elis.nu etu
 33bits.eu pettter
 totoro.hack.org
+mumble.calyxinstitute.org 64738
 * leap.se
 ** tor dev valencia
 <2015-03-06 Fri> met with meskio / ruben
@@ -35646,7 +35789,10 @@ vpn username=ln, pw=sheuTai6
 vardagsrumsdata, lundberg: Intel NUC DN2820FYKH med Ubuntu + Kodi (f.d. XBMC)
 Alt., för youtube och netflix: chromecast
 * gentoo, hardened gentoo
-Moved to [[file:p/hgd/hgd.org][file:~/p/hgd/hgd.org]].
+Installation related notes moved to [[file:p/hgd/hgd.org][file:~/p/hgd/hgd.org]].
+- equery b $(which vi)   -- like dpkg -S
+- eselect locale list; eselect locale set 240 # en_US
+- dispatch-conf -- update configuration files
 * sha-1 deprecation, danish researchers
 alexander brandbyge
 lars embøll nielssen
@@ -35976,6 +36122,8 @@ som en operatör kan möta. Januari. Förberedelse + möte ~ ett par timmar
 några timmar utspridda under våren
 - delta vid slutseminarium. ett par timmar i slutet av våren eller
 tidigt i höst.
+** analys LEK
+tor 
 
 * ind15
 ** code red
@@ -36313,8 +36461,6 @@ to identify other kinds of Newspeak, even if they take the apparently
 innocent form of a popular talk show.
 * curl
 See [[file:p/ct/doc/gossip.org::*https%20client][https client]] in [[file:p/ct/doc/gossip.org][gossip.org]].
-* SUNET cloud "SaaS" service
-- contrail -- SDN ("software-defined networking")
 * kameravänner
 Citat av BE:
 Det publika samtalet om säkerhetskameror är viktigt eftersom jag vet att
@@ -36341,8 +36487,14 @@ https://groups.google.com/a/hardenedbsd.org/group/users/subscribe
 which redirects to
 https://groups.google.com/a/hardenedbsd.org/forum/#!forum/users/join
 where I can enter an email address (and solve a CAPTCHA).
+
+To leave a google group, send an email to [Group
+Name]+unsubscribe@googlegroups.com.
+
+- Example: snabb-devel+unsubscribe@googlegroups.com
 * sunet cloud iias
-- https://portal-beta.cloud.ipnett.se/project/instances/
+- https://dashboard.cloud.sunet.se/
+- contrail -- SDN ("software-defined networking")
 - iaas@cloud.ipnett.se
 ** releases
 - 2016-03-30 (2016-04-15): beta
@@ -36351,7 +36503,10 @@ where I can enter an email address (and solve a CAPTCHA).
 ** bug reports / wish list
 - [ ] IPv6 address in vm
 - [ ] real IP addrs
-- [ ] traceroute
+- [X] traceroute; update: fixed
+- [ ] shouldn't be able to use floating IP addr 193.11.89.8 [IaaS #2564]
+- [ ] please remove non working project "demo.tpo" [IaaS #2565]
+- [X] what is "intertubes"? [IaaS #2566]; update: will disappear, ignore it
 * scol / sunet cert's new "file spool to database filtering machinery"
 - name
   - scol
@@ -36366,9 +36521,10 @@ where I can enter an email address (and solve a CAPTCHA).
   repository
 - notmuch emacs mode will use Message and hopefully smtpmail for
   sending (yes, see https://notmuchmail.org/emacstips/)
-* EDRi supporter
+* EDRi supporter (20 EUR/month)
 - 2015-10-28 20 EUR
 - 2016-05-03? 120 EUR
+- 2017-02-01 200 EUR (20170430)
 * storagesafe, froo
 passordshanterare
 appliance
@@ -36409,8 +36565,115 @@ https://copperhead.co/android/docs/install
     # on jessie since they're too old (4.2.2+git20130529-5.1). On sid
     # (unstable) they're at 5.1.1r29 which also is too old, according
     # to the copperheados instructions.
-* threema
+* threema id
 ln5: 8WTERSCW
 hjerturr: DP447BD9
 * randomness from noisy diode
 see [[file:p/hwrand/hwrand.org][file:~/p/hwrand/hwrand.org]]
+* luks
+** debian
+root@flogsta:~# blkid /dev/sda5
+/dev/sda5: UUID="57e32d35-d85e-413a-a82e-00d993e51764" TYPE="crypto_LUKS" PARTUUID="0008a5cd-05"
+root@flogsta:~# cat /etc/crypttab
+sda5_crypt UUID=57e32d35-d85e-413a-a82e-00d993e51764 none luks
+root@flogsta:~# 
+* EC initiatives
+** Next Generation Internet initiative (2016)
+Florian Kerschbaum <fkerschbaum@googlemail.com>
+carmela.troncoso@imdea.org
+hannah.short@cern.ch
+niels.vandijk@surfnet.nl
+Christos Kanellopoulos <skanct@admin.grnet.gr>
+Jean-Luc.DOREL@ec.europa.eu
+Stefania.BURADA@ec.europa.eu
+- <2016-11-03 Thu> invited (using my @tpo addr) to a "Privacy and
+  Personal Data Spaces Consultation" VC in November
+  - Rational: why this topic can drive the transformation of the Internet
+  - Key research challenges
+  - Main research initiatives in the area
+  - Market situation / market players
+  - Expected impacts
+- https://ec.europa.eu/digital-single-market/en/next-generation-internet-initiative
+- this is input to WP 18-20
+- european values: privacy, openness, federation, collaborative,
+  cross-borders, trustable, inclusive
+*** talking points
+-? the network is also its devices, not only routers and servers,
+  including billions of handhelds and other end-user eq
+- online privacy requires computer security, including endpoints
+- keywords: linkability and decentralisation (trust, storage, intelligence)
+- missing [not only technical]
+  - anonymous communication (Tor)
+  - pseudonomy servers
+  - secure messaging
+  - secure endpoints
+    - free, as in speach, hardware design, fw and software (cryptech, coreboot)
+    - reproducible builds
+    - binary transparency
+- public append-only verifiable logs
+  - CT and other key misissuance detection (DNSSEC trans)
+  - binary trans
+  - audit trail (access logs)
+  - provenance
+  - document dbs
+- ? https://panoramix-project.eu/
+* dehydrated / letsencrypt.sh
+- example from pics.nordberg.se running lighttpd
+  - cat /jails/pics/usr/local/etc/letsencrypt.sh/domains.txt
+bilder.nordberg.se
+  - cat /jails/pics/usr/local/etc/letsencrypt.sh/config.sh | egrep -v '^(#| *$)'
+CA="https://acme-v01.api.letsencrypt.org/directory"
+LICENSE="https://letsencrypt.org/documents/LE-SA-v1.1.1-August-1-2016.pdf"
+HOOK="${BASEDIR}/hook.sh"
+CONTACT_EMAIL=hostmaster@adb-centralen.se
+  - hook.sh
+function deploy_cert {
+    local DOMAIN="${1}" KEYFILE="${2}" CERTFILE="${3}" FULLCHAINFILE="${4}" CHAINFILE="${5}" TIMESTAMP="${6}"
+    DEST=/usr/local/etc/lighttpd/certs/${DOMAIN}.pem
+    cat $KEYFILE $CERTFILE $CHAINFILE > $DEST
+    chmod 640 $DEST
+    chown root:www $DEST
+    DEST=/usr/local/etc/lighttpd/certs/le.pem
+    cp $FULLCHAINFILE $DEST
+    chmod 640 $DEST
+    chown root:www $DEST
+    service lighttpd restart
+}
+- how-to on jail 'web'
+pkg install dehydrated
+export CONTACT=hostmaster@adb-centralen.se
+export CN=adb-centralen.se SAN=www.adb-centralen.se
+cat /usr/local/etc/dehydrated/config.example | sed -e 's|#HOOK=|HOOK=${BASEDIR}/hook.sh|1' -e "s/#CONTACT_EMAIL=/CONTACT_EMAIL=${CONTACT}/1" > /usr/local/etc/dehydrated/config
+cp /usr/local/etc/dehydrated/hook.sh.example /usr/local/etc/dehydrated/hook.sh
+$EDITOR /usr/local/etc/dehydrated/hook.sh  # add deploy_cert() from 'pics'
+chmod +x /usr/local/etc/dehydrated/hook.sh
+echo $CN $SAN > /usr/local/etc/dehydrated/domains.txt
+$EDITOR /usr/local/etc/lighttpd/modules.conf  # enable 'mod_alias'
+$EDITOR /usr/local/etc/lighttpd/lighttpd.conf
+  $SERVER["socket"] == <hostname:80>" {  # NOTE: http, not https
+  ...
+    $HTTP["url"] =~ "/.well-known/acme-challenge/(.*)" {
+      alias.url += ( "/.well-known/acme-challenge/" => "/usr/local/www/dehydrated/" )
+    }
+  }
+service lighttpd restart
+dehydrated -c
+sysrc -f /etc/periodic.conf weekly_dehydrated_enable=YES
+- for testing, use the staging environment
+CA="https://acme-staging.api.letsencrypt.org/directory"
+* hardenedbsd
+** hbsd-update
+*** getting version from dns
+- get_version()
+  - is ${dnsrec} never set? 
+  - it's set in /etc/hbsd-update.conf
+* hoerbert
+239 euro
+reference 9.742.308
+
+* bibliotek
+** <2017-02-13 Mon> marika per tfn
+* sunet
+** nagios
+ssh root@monitor.sunet.se cat NAGIOSADM
+https://monitor.sunet.se/
