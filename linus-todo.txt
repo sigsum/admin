@@ -9,39 +9,26 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- . fabians stuff merged
-- X catlfish linus/cleanup 07817e7 cherry-picked
+- . fabians stuff merged to radsecproxy
 ** TPI
 - * documents from shari redacted
 - - inform bof@ and tor-board@ about the non-archiveness
 ** Tor
-- o publish the following files over http on siv or revived salsa: 64M, 32M, 16M, 8M
 ** IETF / W3C
-- X estark emailed about gossip at google
-- X [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
-- o postfix-tls (2.11.3) -> postfix (3.1.4) on {smtp,imap}, see https://www.freshports.org/mail/postfix
-- X pkg.hardenedbsd.org mirror set up
 ** DFRI
 - * swb machine installed
 - * backup!
-- o payed [[file:p/dfri/dfriadm/fakturor/2017/kustbandet-22687.pdf][file:~/p/dfri/dfriadm/fakturor/2017/kustbandet-22687.pdf]] [mar 27]
-- o payed [[file:p/dfri/dfriadm/fakturor/2017/portlane-3301.pdf][file:~/p/dfri/dfriadm/fakturor/2017/portlane-3301.pdf]] [mar 3]
 - - contactd sebastian gjerding re https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
   - sebastian_@jabber.ccc.de 33218b6023ae3157381def0b0c78a99ef63c1162
 - . clean out joel from all places DFRI
 - . TOT report published
 - . new machine racked and installed
 - - hbsd installed on machine from jn
-- o quitter email going to dfri-internal@
-- X cosmos on debian rpitor
 ** Misc
 - * reply to [[gnus:nnimap%2Badbc:INBOX#C5FAA4F8-1D5E-4AB9-A995-087940CE759B@netnod.se][Email from Siri Brenden: Re: Netnod vårmöte - 5-6 April]]
   - pic, bio, topic
-- o ledig innan el efter påsk (15-16/4)?
-- o reply to MC re netnod presentation on tor
 - - tor-legalitets-rapporten -> polisen
-- X TAILS mirror at ndn/sunet? see email
 * Soon (within a month)
 ** TPI
 ** Dev
