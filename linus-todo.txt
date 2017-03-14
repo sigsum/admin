@@ -9,48 +9,38 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- - fabians stuff merged
-- . getting SCT's in pycurl
-- - is libradsec verifying the authenticator in responses?
-- - permdb read cache disabled and reads benchmarked
-- - catlfish linus/cleanup 07817e7 cherry-picked
+- . fabians stuff merged
+- X catlfish linus/cleanup 07817e7 cherry-picked
 ** TPI
+- * documents from shari redacted
+- - inform bof@ and tor-board@ about the non-archiveness
 ** Tor
-- - flow.ndn reinstalled (debian?)
-- - sunet web pages
-  - add tor services to 'bastjanster', perhaps tricky bc nordunet is
-    running most of them, talk to bj (bridges, relays, torperf)
-  - write up a tor page for sunet.se/samarbeten mentioning my board
-    position in tor
-  - write up a first blog post about tor and research for sunet blog
-  - figure out a name for the blog, like "privacy" or "trust, identity
-    and privacy" and let emma know
+- o publish the following files over http on siv or revived salsa: 64M, 32M, 16M, 8M
 ** IETF / W3C
-- - estark emailed about gossip at google
-- - [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
+- X estark emailed about gossip at google
+- X [[file:usr/share/ietf/internet-drafts/draft-ietf-trans-threat-analysis-00.txt][draft-ietf-trans-threat-analysis]] reviewed
 ** Sysadm
-- - pkg.hardenedbsd.org mirror set up
-- - gaol needs new internal certs
-- - glog.ct.ndn shut down
+- o postfix-tls (2.11.3) -> postfix (3.1.4) on {smtp,imap}, see https://www.freshports.org/mail/postfix
+- X pkg.hardenedbsd.org mirror set up
 ** DFRI
+- * swb machine installed
+- * backup!
+- o payed [[file:p/dfri/dfriadm/fakturor/2017/kustbandet-22687.pdf][file:~/p/dfri/dfriadm/fakturor/2017/kustbandet-22687.pdf]] [mar 27]
+- o payed [[file:p/dfri/dfriadm/fakturor/2017/portlane-3301.pdf][file:~/p/dfri/dfriadm/fakturor/2017/portlane-3301.pdf]] [mar 3]
 - - contactd sebastian gjerding re https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
   - sebastian_@jabber.ccc.de 33218b6023ae3157381def0b0c78a99ef63c1162
-- - clean out joel from all places DFRI
+- . clean out joel from all places DFRI
 - . TOT report published
 - . new machine racked and installed
 - - hbsd installed on machine from jn
 - o quitter email going to dfri-internal@
 - X cosmos on debian rpitor
 ** Misc
-- - reply to [[gnus:nnimap%2Badbc:INBOX#C5FAA4F8-1D5E-4AB9-A995-087940CE759B@netnod.se][Email from Siri Brenden: Re: Netnod vårmöte - 5-6 April]]
+- * reply to [[gnus:nnimap%2Badbc:INBOX#C5FAA4F8-1D5E-4AB9-A995-087940CE759B@netnod.se][Email from Siri Brenden: Re: Netnod vårmöte - 5-6 April]]
+  - pic, bio, topic
 - o ledig innan el efter påsk (15-16/4)?
 - o reply to MC re netnod presentation on tor
 - - tor-legalitets-rapporten -> polisen
-- - CT handover doc done, ticket closed / handed over
-- - decided where to place 650k SEK
-  - JAK?
-- - how does idemix/ABC4trust relate to anonymous blacklisting and PP
-  (polymporphic pseudonymization)?
 - X TAILS mirror at ndn/sunet? see email
 * Soon (within a month)
 ** TPI
@@ -97,6 +87,11 @@ Legend                                                (emacs -*-org-*- mode)
 - - ticket [[https://trac.torproject.org/projects/tor/ticket/17282][write a chutney HOWTO]]
 - - ticket [[https://trac.torproject.org/projects/tor/ticket/17280][anti-DoS for tor]]
 ** Misc
+- - CT handover doc done, ticket closed / handed over
+- - decided where to place 650k SEK
+  - JAK?
+- - how does idemix/ABC4trust relate to anonymous blacklisting and PP
+  (polymporphic pseudonymization)?
 - - buy a [[http://www.megrosoff.co.uk/][meg rosoff]] book or three
 - - mirrors@heanet.ie contacted re tor mirror
 - - yubikey starters kit published
@@ -145,6 +140,9 @@ Legend                                                (emacs -*-org-*- mode)
 - - [[gnus:nntp%2Bnews.gmane.org:gmane.ietf.tls#c8943847aecd44c29540bd198794746b@BY2PR03MB074.namprd03.prod.outlook.com][Email from Marsh Ray: Encrypt-then-HMAC is the only ]] read (1)
 - - [[file:/u/ietf/internet-drafts/draft-cooper-ietf-privacy-requirements-01.txt]]
 ** Sysadm
+- - glog.ct.ndn shut down
+- - gaol needs new internal certs
+- - toripv6dev moved to sunet iias, under sunet noc responsibility
 - - onionperf running https://github.com/robgjansen/onionperf
 - - fix [[file:p/adb-centralen/src/spam-edu-from-banksy.sh][file:~/p/adb-centralen/src/spam-edu-from-banksy.sh]] for dovecot and cron it on imap.adbc
 - - stuff resurrected from mm:~linus, the repos f.ex.
@@ -231,6 +229,9 @@ Legend                                                (emacs -*-org-*- mode)
 - - look over https://www.dfri.se/tor-i-sverige/ and add abuse stats
 * Eventually
 ** Dev
+- - permdb read cache disabled and reads benchmarked
+- - is libradsec verifying the authenticator in responses?
+- . getting SCT's in pycurl
 - - radsecproxy "system test" (tls version and cipher suites, more)
 - - tor consensuses in the blockchain, using getombuds.org
 - - urd.appendto.org/ct/v1 running
@@ -248,6 +249,14 @@ Legend                                                (emacs -*-org-*- mode)
 - - build tlsdate on BSD's
 - - write a proposal for the ASN tickets
 ** Misc
+- - sunet web pages
+  - add tor services to 'bastjanster', perhaps tricky bc nordunet is
+    running most of them, talk to bj (bridges, relays, torperf)
+  - write up a tor page for sunet.se/samarbeten mentioning my board
+    position in tor
+  - write up a first blog post about tor and research for sunet blog
+  - figure out a name for the blog, like "privacy" or "trust, identity
+    and privacy" and let emma know
 - - describe tor HS as a comparison with "dino's LISP extensions"
 - - set up selinux (file:///usr/share/doc/debian-handbook/html/sect.selinux.html)
   - contain xmpp-client
@@ -264,6 +273,7 @@ Legend                                                (emacs -*-org-*- mode)
     - "netgear wna1100" (stuge)
     - http://www.acmesystems.it/WIFI-2
 ** Sysadm
+- - flow.ndn reinstalled (debian?)
 - - warn adbc email users about pending passphrase expiration
 - - try out fail2ban
 - - find out whether to shut down gv99c or not
@@ -283,7 +293,14 @@ Legend                                                (emacs -*-org-*- mode)
     (2); 4. distribute the first 6 octets of the hash (3) to the
     member
 * Travel
-2016
+** 2017
+- Mar 20-28, Amsterdam, Tor
+x Mar 24-31, Chicago, IETF98
+x May 28-03, Linz, TNC17
+? Jul 15-22, Prague, IETF99
+? Sep 10-16, Oslo, ESORICS
+? Nov 11-18, Singapore, IETF100
+** 2016
 - Jan 20-22, CPH, all hands
 - Feb 26-01, Valencia, Tor dev
 - Mar 01-06, Barcelona, vacation
@@ -307,13 +324,6 @@ x Sep 08-09, Stockholm, EUC
 - Sep 19-23, Helsinki, NDN2016
 - Sep 24-02, Seattle, Tor dev
 x Nov 11-19, Seoul, IETF97
-** 2017
-- Mar 20-28, Amsterdam, Tor
-x Mar 24-31, Chicago, IETF98
-? May 28-03, Linz, TNC17
-? Jul 15-22, Prague, IETF99
-? Sep 10-16, Oslo, ESORICS
-? Nov 11-18, Singapore, IETF100
 ** 2015
 - Mar 01-06, Valencia, Tor winter dev
 X Mar 20-27, Dallas, IETF92
