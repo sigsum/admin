@@ -9,31 +9,44 @@ Legend                                                (emacs -*-org-*- mode)
 
 * RSN (within a week)
 ** Dev
-- . fabians stuff merged to radsecproxy
+- . fabians radsecproxy stuff merged
 ** TPI
-- * documents from shari redacted
-- - inform bof@ and tor-board@ about the non-archiveness
+- o documents from shari redacted
+- o creation of a european entity brought up
+- - bof@ and tor-board@ informed about their non-archiveness
 ** Tor
 ** IETF / W3C
+- - support for v1 logs added back to gossip-draft
+- - gossip draft shepherd writeup notes addressed
+  - https://datatracker.ietf.org/doc/draft-ietf-trans-gossip/shepherdwriteup/
+- o [[gnus:nndraft:drafts#fake%2Bnone%2Bnndraft:drafts%2B635][Email to Andrew Ayer: Re: {Trans} Gossip URL version]] replied to
+- - paf mail "Logga DS i root"
+- - benno mail "Help DNSSEC Trans client"
+- - ekr mail "Interested in gaol?"
 ** Sysadm
 ** DFRI
-- * swb machine installed
+- o at4am info sent to joel
+- o msb response feedback to tom
 - * backup!
-- - contactd sebastian gjerding re https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
+- o swb machine installed
+- - sebastian gjerding contacted re https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
   - sebastian_@jabber.ccc.de 33218b6023ae3157381def0b0c78a99ef63c1162
+  - "1 country, Sweden, said it was not able to disclose the requested information, because the authorities have not registered this information in a sufficient detail."
 - . clean out joel from all places DFRI
 - . TOT report published
 - . new machine racked and installed
 - - hbsd installed on machine from jn
 ** Misc
-- * reply to [[gnus:nnimap%2Badbc:INBOX#C5FAA4F8-1D5E-4AB9-A995-087940CE759B@netnod.se][Email from Siri Brenden: Re: Netnod vårmöte - 5-6 April]]
-  - pic, bio, topic
 - - tor-legalitets-rapporten -> polisen
+- o svara [[gnus:nnimap%2Badbc:INBOX#000001d2b9a1$9ea655e0$dbf301a0$@sunnebilomaskin.se][Email from Börje Jönsson: Koppling KBR510]] [fri]
+- o reply to [[gnus:nnimap%2Badbc:INBOX#C5FAA4F8-1D5E-4AB9-A995-087940CE759B@netnod.se][Email from Siri Brenden: Re: Netnod vårmöte - 5-6 April]]
+  o pic, bio, topic
 * Soon (within a month)
 ** TPI
 ** Dev
 - - radsecproxy-1.7 released [jan 15]
 - - radsecproxy2-0.1 released
+  - name?
 - - check out [[file:usr/src/oniongateway/docs/design.rst][file:~/usr/src/oniongateway/docs/design.rst]]
 - - check out CONIKS
 - - check out [[https://github.com/manopapad/proper][PropEr]], for property-based checking (erlang)
@@ -280,11 +293,12 @@ Legend                                                (emacs -*-org-*- mode)
     (2); 4. distribute the first 6 octets of the hash (3) to the
     member
 * Travel
-** 2017
+2017
 - Mar 20-28, Amsterdam, Tor
 x Mar 24-31, Chicago, IETF98
 x May 28-03, Linz, TNC17
 ? Jul 15-22, Prague, IETF99
+? Aug 21-30, Bornholm, Bornhack
 ? Sep 10-16, Oslo, ESORICS
 ? Nov 11-18, Singapore, IETF100
 ** 2016
@@ -349,3 +363,5 @@ X Jul 14-18, Berlin, OKFestival
 X Aug 19-23, San Diego, USENIX Security
 X Nov 07-16, Honolulu, IETF91
 - Oct 14-16, Zurich, CT gossip
+** 2018
+? Aug 15-24, Bornholm, Bornhack
