@@ -9,43 +9,20 @@ Legend                                                      (emacs -*-org-*- mod
 
 * RSN (within a week)
 ** CT
-- o [[gnus:nnimap%2Bsunet:INBOX#630BDA6C-88B2-485E-9A33-901E94A589D9@kth.se][Email from Magnus Ahltorp: Re: {Rob Stradling} Plausible ]]
-- o [[gnus:nnimap%2Bsunet:INBOX#32229ADD-6CEB-4F78-A67E-C765B3501C95@paypal.com][Email from Jeff Hodges: Save the Date: Ensuring Web PK]] [jul 26]
-  - dkg?
-- o [[gnus:nnimap%2Bsunet:INBOX#CAHVAv2Yt0W9zRgsM%3DhRvcm-DvXJZ%2BNZ8cvpp%3D237FcwqyVAWVw@mail.gmail.com][Email from Rasmus Dahlberg: {Comments} Gossiping in CT (dr]]
 - - ndn portal updated according to [[gnus:nnimap%2Bsunet:INBOX#0FA5F222-2CCA-4E37-A92F-E3046E71FE64@nordu.net][Email from Jonny Lundin: Re: CT log]]
 - - benchreport branches merged
   o map/catlfish/benchreport
   o map/plop/benchreport2
   - map/catlfish/submission-fix
 ** Radsecproxy
-- o radsecproxy-1.6.9 released
-  - fixing -77
-  - fabians patches and suggestions considered
-  - "--enable-fticks" removed from documentation
+- - "--enable-fticks" removed from documentation
     [[file:p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml][file:~/p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml]]
-  - coverity branch
-- o [[gnus:nnimap%2Bsunet:INBOX#20170713100542.bvj5uiukatoheqly@charite.de][Email from Ralf Hildebrandt: radsecproxy bug report]]
-- o freebsd port net/radsecproxy updated
-  [[gnus:nnimap%2Bndn:INBOX#CAGK%3D9AGYyALVum5xTmKtJvu9M8xg%2BcWtZj58YLxwf_4XZD8H7w@mail.gmail.com][Email from Mikhail Tsatsenko: Re: net/radsecproxy update]]
-  https://www.freshports.org/net/radsecproxy
-  https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=220364
 ** TPI
-- o talked to nick about julius
-- X bof@ and tor-board@ informed about their non-archiveness
 ** Tor
-- X bwauth jail set up on tanngnjost
-  - install hbsd first?
-  - [[gnus:nnimap%2Badbc:INBOX#0e88cd0b-94b7-c23f-c3dc-a89f622caad0@ritter.vg][Email from Tom Ritter: Re: Maatuska bwauth]]
-- o montreal meeting
-  - https://trac.torproject.org/projects/tor/wiki/org/meetings/2017Montreal#Who
-  - lodging sorted, moritz? Hotel A2K, CAD 312 for four nights
-- o sunet-fail@segate subscribed and filter on <some header> SU-S003562 for iaas
 - - TorPerf set up on siv
 - - new tb build system set up on flow
 - - sunet publishing tor work
   [[gnus:nnimap%2Bndn:INBOX#871t1ectpj.fsf@nordberg.se][Email to Emma Almroth: Blogserie om SUNET:s arbete me]]
-- o funding email sent to tommy [jun 11]
 ** IETF / W3C
 - - [[file:usr/share/ietf/internet-drafts/draft-tenoever-hrpc-anonymity-00.txt][draft-tenoever-hrpc-anonymity-00]] read
 - - support for v1 logs added back to gossip-draft
@@ -55,30 +32,22 @@ Legend                                                      (emacs -*-org-*- mod
 - - benno mail "Help DNSSEC Trans client"
 - - ekr mail "Interested in gaol?"
 ** Sysadm
-- o sieve on imap2.sunet.se
-- o sunet imap server running
 - - ns.adbc knot1 -> knot2
 - - flow.nordu.net reinstalled
 - - tor.nordu.net reinstalled
 - - DKIM signing for adb-centralen.se
-- o new laptop running with debian stretch
 ** DFRI
 - * backup!
-- o update lighttpd config wrt cipher suites
-  https://mozilla.github.io/server-side-tls/ssl-config-generator/
 - - ns# pkg install -r dfrirepo knot2 (2.3.3 -> 2.5.2)
 - - DKIM signing for dfri.se
 - - RK emailed about "hemlig dataavläsning"
   - http://www.dagensjuridik.se/2017/06/vanliga-telefonappar-hindrar-hemlig-avlyssning-vi-behover-nya-tekniska-och-legala-mojlighete
   - [[file:hints.org::*@teirdes%20re%20http:/www.dagensjuridik.se/2017/06/vanliga-telefonappar-hindrar-hemlig-avlyssning-vi-behover-nya-tekniska-och-legala-mojlighete][@teirdes re]]
   - [[https://www.dfri.se/inlaga-om-regler-for-beslag-och-husrannsakan/]]
-- o EDRi membership fee payed
 - . flattr account discontinued
-- o hermes support communicated
 - - using [[https://www.knot-dns.cz/docs/2.3/html/reference.html#policy-section][zone.dnssec-policy]] instead of "DNSSEC policy settings in KASP database"
   - [[gnus:nnimap%2Badbc:sent-mail.2017-05#87r2zwwx9h.fsf@nordberg.se][Email to noc@dfri.net: Fortfarande trassel med DNS]]
   - [[file:usr/share/ietf/in-notes/rfc6781.txt][file:~/usr/share/ietf/in-notes/rfc6781.txt]]
-- o dfri board decision on vetting hermes for edri observership prepared
 - - sebastian gjerding contacted re https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
   - sebastian_@jabber.ccc.de 33218b6023ae3157381def0b0c78a99ef63c1162
   - "1 country, Sweden, said it was not able to disclose the requested information, because the authorities have not registered this information in a sufficient detail."
@@ -86,19 +55,8 @@ Legend                                                      (emacs -*-org-*- mod
 - . TOT report published
 - . new machine racked and installed
 - - hbsd installed on machine from jn
-- o gitta and malin payed
-- o joel recv'd more at4am info
-- o items for may 16 board meeting onto agenda
-  - hermes
-  - flattr
 ** Misc
-- o [[gnus:nnimap%2Badbc:INBOX#22c0dd21-6efc-1838-acd0-8e4e74fb5db5@riseup.net][Email from juga@riseup.net: encrypted]]
-- o [[gnus:nnimap%2Bsunet:INBOX#8e182a7c-7c53-1123-dce1-f334d58d361a@kau.se][Email from Tobias Pulls: Re: ds-08 saken]]
 - - "ISC Passive DNS Architecture" reviewed (see [[file:sunet/sunet.org::*ISC%20passive%20DNS][ISC passive DNS]])
-- o talk to ola about board member position [thu 6]
-- o vab fre v.17 (28/4?) kollad med fsk
-- o [[file:doc/swedma-pul-utdrag.pdf][file:~/doc/swedma-pul-utdrag.pdf]] skickat
-- o tor-legalitets-rapporten -> polisen
 * Soon (within a month)
 ** TPI
 ** Dev
