@@ -34,3 +34,7 @@
 20000- 3000	# betalt tillbaka
 0		# kvittat <2015-08-15 Sat>
 
+* SEB
+- [[file:seb-arsbesked-2016.pdf][file:~/.priv/seb-arsbesked-2016.pdf]]
+- [[file:avrakningsnota_nr_170530400116.pdf][file:~/.priv/avrakningsnota_nr_170530400116.pdf]]
+- [[file:avrakningsnota_nr_170530400065.pdf][file:~/.priv/avrakningsnota_nr_170530400065.pdf]]
