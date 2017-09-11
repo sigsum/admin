@@ -1,10 +1,6 @@
-machine smtp.adb-centralen.se login linus password p00MPZ1clUk0NU
-machine imap.adb-centralen.se login linus password p00MPZ1clUk0NU
-machine kerio.nordu.net login linus@nordu.net password 85ZAVPV1yhEdOQvhEN
-machine kerio.nordu.net login linus password 85ZAVPV1yhEdOQvhEN
-
 machine localhost port 1993 login linus password p00MPZ1clUk0NU
 machine localhost port 10587 login linus password p00MPZ1clUk0NU
 machine localhost port 1587 login linus password p00MPZ1clUk0NU
-machine localhost port 2587 login linus@nordu.net password 85ZAVPV1yhEdOQvhEN
+machine localhost port 2587 login linus password vQLmayn6ghdvVASgVZ
 machine localhost port 2993 login linus password 85ZAVPV1yhEdOQvhEN
+machine localhost port 3993 login linus password BIGKqZCGzprTyUdeOuB0
