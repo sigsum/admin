@@ -1,0 +1,128 @@
+References: <alpine.GSO.1.10.1503222238550.22210@multics.mit.edu>
+	<CA+cU71nN3f7TSoda_DOUzt5YVDzOmyLVhu8f9bR9hg42QNCLkw@mail.gmail.com>
+	<87fv8wge7h.fsf@nordberg.se>
+	<alpine.GSO.1.10.1503231043340.22210@multics.mit.edu>
+	<87bnjic0fx.fsf@nordberg.se>
+	<alpine.GSO.1.10.1503241738310.22210@multics.mit.edu>
+X-Draft-From: ("nnimap+ndn:INBOX" 56856)
+Gcc: nnimap+adbc:sent-mail.2015-03
+To: Benjamin Kaduk <kaduk@MIT.EDU>
+Cc: trans@ietf.org
+Subject: Re: [Trans] comments on draft-linus-trans-gossip-ct-01
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Benjamin Kaduk <kaduk@MIT.EDU> wrote
+Tue, 24 Mar 2015 18:16:06 -0400 (EDT):
+
+| In section 3.1.1, """When the client later reconnects to any HTTPS server
+| for the same domain it again receives a set of SCTs.  The client [...]
+| MUST send to the server the ones in its store that were not received from
+| that server."""  This precludes the client from doing any sort of MITM
+| detection and refusing to send SCTs to a (presumed) attacker.  Admittedly,
+| the scope of exposure here is pretty small; it seems like the only privacy
+| loss would be that attacker A who has MITM'd the client then can learn
+| whether the client has *also* been MITM'd by attacker B at some point in
+| the past (since presumably the attackers know which SCTs are legitimate).
+| But, it is not too much of a stretch to think that three-letter
+| organizations might want to know if their target is being attacked by
+| someone else.
+
+That's an interesting attack. The best thing I can come up with right
+now would be to s/MUST/SHOULD/1 and leave it at that.
+
+I have very little clue about how that would change implementors minds
+about the whole thing though. Guidance welcome.
+
+
+| > | > | > In a related vein, in 3.1.2, should the server be allowed to
+| > | > | > exclude SCTs
+| > | > | > that it considers legitimate?
+| > | > |
+| > | > | This is an optimization: if a server sends you SCTs A,B,C and then you
+| > | > | as a client report back to it "I know about SCTs A, B, and C - it
+| > | > | doesn't make a whole lot of sense for a server to report those to the
+| > | > | auditor.
+| > | > |
+| > | > | I suppose; however, that an attacker may feed a server invalid SCTs
+| > | > | somehow to 'load it's cache' such that it never reports them. So
+| > | > | perhaps yes, it should report the SCTs it knows about to an auditor.
+| > | >
+| > | > I'm thinking of SCT's being legitimate as a "policy decision" made by
+| > | > the operator and not something a piece of software decides. Does this
+| > | > make sense? Should we add text to explain this?
+| > |
+| > | I guess I'm coming at this from the assumption that an auditor will want
+| > | to know about all SCTs for a given site, including the "legitimate" ones.
+| > | On the other hand, it could be useful for the site to have a way to
+| > | indicate to an external auditor which SCTs it believes are legitimate.
+| > | But it's not clear that omitting them from the results is the best way to
+| > | make that indication, since it is not distinguishable from the site not
+| > | knowing about those SCTs.  In short, is the extra complexity of making
+| > | this optional justified?
+| >
+| > Backing up a bit, the question can be posed as whether the optimisation
+| > of not sending them all is justified. This is somewhat related to the
+| > open question of how (push vs. pull) and how often and much auditors and
+| > web servers gossip. Getting an idea about the quantity of data would
+| > help. I don't have any numbers at the moment.
+| 
+| 
+| Waiting for data seems like a fine plan for now.
+| 
+| I do wonder if there should be an explicit way for an auditor to query
+| which SCTs are considered "legitimate".
+
+I've been thinking about some "score" mechanism too. My gut feeling is
+that it complicates an already complicat
+
+
+| 
+| > | > | > I'm also a little confused by the last paragraph of 3.1.2,
+| > | > | > "the selection
+| > | > | > MUST NOT be influenced by potential HTTPS clients connecting directly to
+| > | > | > the auditor".  It seems like the only risk of allowing a
+| > | > | > client to request
+| > | > | > monitoring for a given site is additional resource usage by the server
+| > | > | > (assuming the client is aware of the privacy considerations
+| > | > | > of making such
+| > | > | > a request).  I suspect that there is a valid concern here,
+| > | > | > but the text as
+| > | > | > written may be overly broad.
+| > | > |
+| > | > | It's designed to prevent the following traffic analysis:
+| > | > |
+| > | > | - Adversary is watching traffic of the auditor and client, and wants
+| > | > | to learn historical client behavior
+| > | > | - Client connects to an auditor and sends a bunch of SCTs over HTTPS
+| > | > | - Auditor immediately goes and queries all the domains the client sent for
+| > | > | - Adversary learns which domains the client sent in SCTs for
+| > | >
+| > | > Should we add text explaining this? Should explanations like this go
+| > | > into "Security considerations", refering to appropriate sections (like
+| > | > 3.1.2. in this particular case)?
+| > |
+| > | I think it would be fine to mention this in 4.1.2 (near "SCTs [are]
+| > | sensitive data").
+| > |
+| > | I still think it is possible for a properly-written auditor to add sites
+| > | to monitor in a way which does not expose client information via traffic
+| > | analysis (i.e., probabilistic/staggered/delayed queries), but I am willing
+| > | to conced that getting it right is sufficiently hard that we should not be
+| > | recommending it.
+| >
+| > Could this be what 4.1.2 calls "mixing"? We put that down as "TBD" for
+| > now.
+| 
+| They are very related issues, and TBD for now is fine.  When the mixing
+| question comes up again, we might think about auditors starting to monitor
+| more sites as well.
+| 
+| 
+| 
+| Hmm, re-reading the document just now I noticed a new issue -- in section
+| 3.1.1 ("HTTPS client to server"), the first enumerated action is not
+| required for interoperability, so I don't think MUST is appropriate.  (It
+| is explicitly disclaimed as "a pure optimization".)
+| 
+| -Ben

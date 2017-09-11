@@ -1,0 +1,125 @@
+References: <23BC396D-0D98-4C42-B0F8-F94294EF93DC@dfn.de>
+	<87h9egr7h6.fsf@nordberg.se>
+	<96132E77-0F56-428D-9752-9E973920F631@dfn.de>
+	<87vb2vl2xt.fsf@nordberg.se>
+	<8E0B881B-A81E-453D-80A0-90D386428180@dfn.de>
+	<8760uajrra.fsf@nordberg.se>
+	<F1FC0233-ACAB-49FF-9A42-F0185ABC82CD@dfn.de>
+X-Draft-From: ("nnimap+ndn:INBOX" 68913)
+Gcc: nnimap+adbc:sent-mail.2016-05
+To: Ralf Paffrath <paffrath@dfn.de>
+cc: stefan.winter@restena.lu, Maja Wolniewicz <mgw@umk.pl>
+Subject: Re: two more bugs
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Mon, 23 May 2016 14:07:31 +0200
+--text follows this line--
+Ralf Paffrath <paffrath@dfn.de> wrote
+Mon, 23 May 2016 11:13:11 +0200:
+
+> Hi Linus,
+>
+> off the list.
+
+Hi Ralf,
+
+Adding Stefan and Maja so more of us have the same information.
+
+I would prefer to have this conversation in the open but if some of you
+are depending on dynamic discovery and cannot turn it off, we might want
+to come up with a solution before talking more widely about the options.
+
+
+Before commenting on specific issues below, here's a reflection I just
+made: The (good!) bug reports I receive showing how broken radsecproxy
+is all come from Ralf and Maja who are using dynamic discovery, but who
+_also_ have lots and lots of traffic. I tend to blame the obviously
+broken dynamic discovery code while maybe more code than that is at
+fault. Maybe my way of dealing with this by putting dynamic discovery
+under a conditional compile might not be enough and we should instead
+advice people to not run radsecproxy at all until we're reasonably
+confident that we've squashed all security critical bugs?
+
+
+>> Sounds good. Thanks.
+>> 
+>> To avoid risk for regression, I will put your code within
+>> ENABLE_EXPERIMENTAL_DYNDISC. I will also move some other code in order
+>> to make it impossible to use the dynamic discovery feature without
+>> compiling with ENABLE_EXPERIMENTAL_DYNDISC.
+>> 
+>> This means that those of you who are using dynamic discovery will have
+>> to compile radsecproxy yourselves, unless your distribution is doing
+>> this of course.
+>> 
+>
+> I don’t agree to call dynamic server discovery experimental. We use
+> dynamic discovery in both direction (client and server) for several
+> years successfully.  Dynamic is not more experimental than the rest of
+> the radsec process. In DFN we promote dynamic server discovery but if
+> you make it experimental than we will have lots of admins they don’t
+> like to use something what is called experimental. eduroam recently
+> celebrated the 1 billion authentication and DFN has made a big
+> contribution to this huge number of authenticated devices in
+> eduroam. A huge number of authentication were dynamic client/server
+> triggered, this is a fact, you can’t ingnore that.
+>
+> What about when we call it ENABLE_DYNDISC. ./configure —with-dynamic ?
+> This sounds a bit neutral and helps us to promote dynamic
+> client/server in DFN and in other NREN’s?
+
+Why would we want to promote the use of an option that puts the system
+at risk of compromise? I think this is where we are in disagreement.
+
+The dynamic discovery code is not good and it has not been tested in
+such a way that I, the maintainer, can say that it works. From my point
+of view, it's a feature that in theory is broken but in practice seems
+to work under some conditions. I use the word "broken" here because, as
+you've shown, the handling of memory between threads is not correct. The
+bugs we've seen puts radsecproxy users at risk.
+
+There is already a config option --enable-experimental-dyndisc. Renaming
+it according to your suggestion would signal that it's not experimental
+any more. That's not my view, as you know.
+
+
+The only two ways forward from here that I can see are
+
+1) add a testing framework so that we, including me, can make sure that
+we don't ship radsecproxy with known serious bugs
+
+2) find a maintainer that is willing to say that radsecproxy works with
+dynamic discovery as it is
+
+(These options can of course be combined.)
+
+I've started on option 1 in my spare time but haven't made much
+progress. I don't know when this could be finished but I'm pretty sure
+it's not going to happen before the summer conference + vacation circus
+is over. This means September at best.
+
+For option 2, maybe you'd like to maintain a fork of radsecproxy with
+dynamic discovery? I'd be happy to tear out all the code related to
+dynamic discovery from radsecproxy and update the web page with a link
+to a fork which has this feature.
+
+
+>> The goal of this is to avoid having users of a feature that seems to
+>> work at low loads but fails in mysterious ways when traffic gets more
+>> complicated. Breaking radsecproxy installations with a clear error
+>> message at startup after an upgrade is better than breaking in subtle
+>> ways after some time. Please note that the kind of bugs we're unveiling
+>> here might be useful for mounting an attack on radsecproxy.
+>
+> Yes, that is a big point. If we find a bug I’ll send it to you first you decide it to inform or not to inform the mailing list.
+
+For clarity, I have not understood until recently that people are
+actually using the dynamic discovery feature in a production
+environment.
+
+I have also not understood that people are actually using the feature
+without compiling with `--enable-experimental-dyndisc'. It was my
+mistake to not put the `dynamicLookupCommand' configuration option under
+`#ifdef ENABLE_EXPERIMENTAL_DYNDISC' when I found out how broken this
+part of the code is. This mistake I intend to correct in an upcoming
+release.

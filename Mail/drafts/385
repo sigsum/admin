@@ -1,0 +1,6 @@
+Gcc: nnimap+adbc:sent-mail.2015-03
+To: "Michał 'rysiek' Woźniak" <rysiek@hackerspace.pl> 
+Subject: Encrypted Tue Mar 17 20:28
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>

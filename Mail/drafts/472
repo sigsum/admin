@@ -1,0 +1,181 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 111341)
+Gcc: nnimap+adbc:sent-mail.2016-02
+To: gk@torproject.org 
+Subject: [linus+tbb@nordu.net] Nightly build failure -- 2016-02-18
+From: Linus Nordberg <linus@nordberg.se>
+Date: Thu, 18 Feb 2016 09:37:19 +0100
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Hej!
+
+Mitt fel för att jag satte PATH hårt och glömde /usr/sbin (för kvm-ok).
+Har startat om. (Fast manuellt pga lyckas inte via cron, wtf?)
+
+
+
+<#mml type=message/rfc822 disposition=inline>
+Return-Path: <linus+tbb@nordu.net>
+Delivered-To: linus@adb-centralen.se
+Received: from imap.adb-centralen.se
+	by imap.adb-centralen.se (Dovecot) with LMTP id 5ZFyJs56xVaaKAAAnAFZSg
+	for <linus@adb-centralen.se>; Thu, 18 Feb 2016 09:03:49 +0100
+Received: by imap.adb-centralen.se (Postfix, from userid 127)
+	id 3F0231D69F3; Thu, 18 Feb 2016 09:03:49 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on
+	spam.adb-centralen.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.2 required=4.0 tests=BAYES_00,RCVD_IN_DNSWL_MED
+	autolearn=ham autolearn_force=no version=3.4.1
+Received: from smtp.adb-centralen.se (smtp.adb-centralen.se [IPv6:2001:6b0:8::129])
+	by imap.adb-centralen.se (Postfix) with ESMTP id BDD231D694C
+	for <linus@nordberg.se>; Thu, 18 Feb 2016 09:03:48 +0100 (CET)
+Received: from eugeni.torproject.org (eugeni.torproject.org [IPv6:2620:0:6b0:b:1a1a:0:26e5:480d])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id 7C6DEA201E3
+	for <linus@nordberg.se>; Thu, 18 Feb 2016 09:03:48 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id B33B1390CB;
+	Thu, 18 Feb 2016 08:03:45 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at 
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gW2Op-lcceKN; Thu, 18 Feb 2016 08:03:45 +0000 (UTC)
+Received: from e-mailfilter02.sunet.se (e-mailfilter02.sunet.se [IPv6:2001:6b0:8:2::202])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client CN "e-mailfilter02.sunet.se", Issuer "TERENA SSL CA" (not verified))
+	by eugeni.torproject.org (Postfix) with ESMTPS id 5A39C390CA;
+	Thu, 18 Feb 2016 08:03:44 +0000 (UTC)
+Received: from smtp1.nordu.net (smtp1.nordu.net [IPv6:2001:948:4:6::32])
+	by e-mailfilter02.sunet.se (8.14.4/8.14.4/Debian-4) with ESMTP id u1I83dWl018126
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+	Thu, 18 Feb 2016 09:03:39 +0100
+Received: from flow.nordu.net (flow.nordu.net [109.105.109.130])
+	by smtp1.nordu.net (8.14.7/8.14.7) with ESMTP id u1I83aW5012144;
+	Thu, 18 Feb 2016 08:03:39 GMT
+Received: by flow.nordu.net (Postfix, from userid 1017)
+	id 436A85F8A3; Thu, 18 Feb 2016 09:03:33 +0100 (CET)
+Date: Thu, 18 Feb 2016 09:03:33 +0100
+From: linus+tbb@nordu.net
+To: mikeperry@torproject.org, linus@torproject.org, gk@torproject.org
+Subject: Nightly build failure -- 2016-02-18
+Message-ID: <56c57ad5.QBBQaO9gGb4H0HE5%linus+tbb@nordu.net>
+User-Agent: Heirloom mailx 12.5 6/20/10
+X-Scanned-By: CanIt (www . roaringpenguin . com)
+X-Scanned-By: MIMEDefang 2.74 on 109.105.111.32
+X-p0f-Info: os=unknown unknown, link=Ethernet or modem
+X-CanIt-Geo: ip=109.105.109.130; country=SE; latitude=59.3294; longitude=18.0686; http://maps.google.com/maps?q=59.3294,18.0686&z=6
+X-CanItPRO-Stream: outbound-nordu-net:outbound (inherits from outbound-nordu-net:default,nordu-net:default,base:default)
+X-Canit-Stats-ID: 0aQjI3D3n - 29b625804ca3 - 20160218
+X-CanIt-Archive-Cluster: PfMRe/vJWMiXwM2YIH5BVExnUnw
+Received-SPF: neutral (e-mailfilter02.sunet.se: 109.105.109.130 is neither permitted
+	nor denied by domain linus+tbb@nordu.net)
+	receiver=e-mailfilter02.sunet.se; client-ip=109.105.109.130;
+	envelope-from=<linus+tbb@nordu.net>; helo=smtp1.nordu.net;
+	identity=mailfrom
+
+==> build-logs/1455772205.log <==
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 1. target=nightly.
+Thu Feb 18 05:10:05 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building nightly 1 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 2. target=nightly.
+Thu Feb 18 05:10:05 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 2 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 3. target=nightly.
+Thu Feb 18 07:31:24 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 3 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 4. target=nightly.
+Thu Feb 18 07:33:53 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 4 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 5. target=nightly.
+Thu Feb 18 07:36:12 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 5 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 6. target=nightly.
+Thu Feb 18 07:38:23 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 6 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 7. target=nightly.
+Thu Feb 18 07:40:37 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 7 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 8. target=nightly.
+Thu Feb 18 07:42:41 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 8 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 9. target=nightly.
+Thu Feb 18 07:44:50 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 9 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 10. target=nightly.
+Thu Feb 18 07:47:09 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 10 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 11. target=nightly.
+Thu Feb 18 07:49:33 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 11 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 12. target=nightly.
+Thu Feb 18 07:51:50 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 12 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 13. target=nightly.
+Thu Feb 18 07:54:13 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 13 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 14. target=nightly.
+Thu Feb 18 07:56:27 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 14 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 15. target=nightly.
+Thu Feb 18 07:58:33 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 15 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Starting build number 16. target=nightly.
+Thu Feb 18 08:01:04 UTC 2016
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: Tried building build-nightly 16 times. Status: init.
+/home/linus/usr/src/tor-browser-bundle/tools/continuous-builds/build-tbb.sh: giving up after 16 tries
+
+==> ../../gitian-builder/var/build.log <==
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot1-stixgeneral-bolditalic.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/t1-stixgeneral-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot2-stixgeneral-italic.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/t1-stixgeneral.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot1-stixgeneral-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathcal.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathscr.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathrm.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathbbit.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathit.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-extra2.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathtt.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot1-stixgeneralsc.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/t1-stixgeneralsc.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathrm-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathbbit-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/t1-stixgeneral-italic.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathsfit.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-extra3.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathsf-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathfrak.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathex-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot1-stixgeneralsc-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathcal-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathex.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot1-stixgeneral-italic.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot1-stixgeneral.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-extra1.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathsfit-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathscr-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ts1-stixgeneral.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathbb-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathit-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ts1-stixgeneral-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot2-stixgeneralsc.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot2-stixgeneralsc-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathtt-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ot2-stixgeneral-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathsf.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathfrak-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/stix-mathbb.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/t1-stixgeneralsc-bold.tfm  
+  inflating: STIX/Fonts/fonts/tfm/public/stix/ts1-stixgeneral-bolditalic.tfm  
++ cp STIX/Fonts/fonts/opentype/public/stix/STIXMath-Regular.otf tor-browser-stage/Browser/fonts/
++ cp NotoEmoji-Regular.ttf tor-browser-stage/Browser/fonts/
++ cp NotoSansJP-Regular.otf NotoSansKR-Regular.otf NotoSansSC-Regular.otf NotoSansTC-Regular.otf tor-browser-stage/Browser/fonts/
+cp: cannot stat `NotoSansJP-Regular.otf': No such file or directory
+cp: cannot stat `NotoSansKR-Regular.otf': No such file or directory
+cp: cannot stat `NotoSansSC-Regular.otf': No such file or directory
+cp: cannot stat `NotoSansTC-Regular.otf': No such file or directory
+
+==> ../../gitian-builder/var/target.log <==
+<#/mml>

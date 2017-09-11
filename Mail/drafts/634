@@ -1,0 +1,124 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 122770)
+Gcc: nnimap+adbc:sent-mail.2017-03
+To: Patrik Wallstrom <pawal@blipp.com> 
+Subject: [Erika Olsson] SV: Goto 10 dag om Tor?
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+1. I det här svaret är hvudlokalen tillgänglig utan registrering. Var
+det inte tvärtom i svaret du fick?
+
+2. 
+
+
+<#mml type=message/rfc822 disposition=inline>
+Return-Path: <erika.olsson@iis.se>
+Delivered-To: linus@adb-centralen.se
+Received: from imap.adb-centralen.se
+	by imap.adb-centralen.se (Dovecot) with LMTP id 4Un+CYumxli4awEAnAFZSg
+	for <linus@adb-centralen.se>; Mon, 13 Mar 2017 15:02:51 +0100
+Received: by imap.adb-centralen.se (Postfix, from userid 127)
+	id 285EC1D642B; Mon, 13 Mar 2017 15:02:51 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on
+	spam.adb-centralen.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-2.2 required=4.0 tests=BAYES_00,RP_MATCHES_RCVD
+	autolearn=ham autolearn_force=no version=3.4.1
+Received: from smtp.adb-centralen.se (smtp.adb-centralen.se [IPv6:2001:6b0:8::129])
+	by imap.adb-centralen.se (Postfix) with ESMTP id 6AA5E1D6420
+	for <linus@nordberg.se>; Mon, 13 Mar 2017 15:02:49 +0100 (CET)
+X-Greylist:
+Received: from relay2.iis.se (relay2.iis.se [IPv6:2001:67c:124c:2007::38])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id 68E5AA1DE96
+	for <linus@nordberg.se>; Mon, 13 Mar 2017 15:02:49 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+	d=iis.se; s=iis2015;
+	h=received:received:received:from:to:cc:subject:thread-topic:thread-index:date:
+	 message-id:references:in-reply-to:accept-language:content-language:
+	 x-ms-has-attach:x-ms-tnef-correlator:x-ms-exchange-transport-fromentityheader:
+	 x-originating-ip:content-type:content-transfer-encoding:mime-version;
+	bh=J4wBaohADvXQzVUpBM7AopuSndTF5vBjRxZmcg524qM=;
+	b=VLCY9YlMjpZz9KbgH0GsHZ0VP1yWGpuKBTJrXZyo5wEZH9SwuO85RA+rOsq4U4MNDSLSiwkPDLPUc
+	 m8Aphv9p8/SD4eZ2gllHJLimO5R3+MGrot1WFbKHJcaXI6PXU9HNqA+fTCi1GGIur+iSTLUDYw2eDe
+	 0NWBNUmoze7yrsbY=
+Received: from exchange02.office.nic.se (unknown [2001:67c:124c:2043::25])
+	by relay2.iis.se (Halon) with ESMTPS
+	id 80333263-07f3-11e7-bc6e-00505682e997;
+	Mon, 13 Mar 2017 13:46:46 +0000 (UTC)
+Received: from exchange01.office.nic.se (2001:67c:124c:100e::20) by
+ exchange02.office.nic.se (2001:67c:124c:2043::25) with Microsoft SMTP Server
+ (TLS) id 15.0.1130.7; Mon, 13 Mar 2017 14:46:46 +0100
+Received: from exchange01.office.nic.se ([fe80::b9a6:a277:cb69:e153]) by
+ exchange01.office.nic.se ([fe80::b9a6:a277:cb69:e153%15]) with mapi id
+ 15.00.1130.005; Mon, 13 Mar 2017 14:46:46 +0100
+From: Erika Olsson <Erika.Olsson@iis.se>
+To: Tobias Pulls <tobias.pulls@kau.se>, Linus Nordberg <linus@nordberg.se>
+CC: Stefan Lindskog <Stefan.Lindskog@kau.se>
+Subject: SV: Goto 10 dag om Tor?
+Thread-Topic: Goto 10 dag om Tor?
+Thread-Index: AQHSm+Snp9JtxzNC7kmA0XwUohzG3qGSpQED///7sICAACbMkA==
+Date: Mon, 13 Mar 2017 13:46:46 +0000
+Message-ID: <533c780070fc4a888978c4a825f47573@exchange01.office.nic.se>
+References: <1badce4a-f39d-de8c-93c3-16f62beb1205@kau.se>
+ <87lgs9jtin.fsf@nordberg.se> <68e3c358-ae62-c372-b3f2-82e1a370deae@kau.se>
+In-Reply-To: <68e3c358-ae62-c372-b3f2-82e1a370deae@kau.se>
+Accept-Language: sv-SE, en-US
+Content-Language: sv-SE
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [172.18.23.104]
+
+Hej,
+
+Kul att intresse finns. Här kan ni läsa mer om förutsättningarna: https://www.goto10.se/samarbete/
+
+Evenemanget är i) kostnadsfritt, ii) öppet för alla, ii) utan registrering (gäller i huvudlokalen, men mejladress krävs om du ska in i fiket och övrig lokal), och iii) alla resultat från evenemanget är fritt tillgängliga under en vettig licens.
+
+Med vänliga hälsningar
+
+Erika Olsson
+Projektledare, IIS
+E-post: erika.olsson@iis.se   Mobil: 070 72 80 443
+Postadress: Box 7399, 103 91 Stockholm
+http://www.iis.se  | http://internetdagarna.se  | http://goto10.se
+
+
+-----Ursprungligt meddelande-----
+Från: Tobias Pulls [mailto:tobias.pulls@kau.se] 
+Skickat: den 13 mars 2017 13:23
+Till: Linus Nordberg <linus@nordberg.se>
+Kopia: Erika Olsson <Erika.Olsson@iis.se>; Stefan Lindskog <Stefan.Lindskog@kau.se>
+Ämne: Re: Goto 10 dag om Tor?
+
+On 13/03/17 12:38, Linus Nordberg wrote:
+> Tobias Pulls <tobias.pulls@kau.se> wrote Mon, 13 Mar 2017 11:29:00 
+> +0100:
+> 
+>> Hej Linus,
+>>
+>> Erika (i cc) på IIS har hört av sig till oss på KAU om att komma och 
+>> prata om något kring Tor-nätverket på Goto 10: https://www.goto10.se/ .
+>> Dom spånar om att ha en heldag kring Tor och då kom vi så klart och 
+>> tänka på dig. Kanske kan vi slå våra kloka huvuden ihop och göra 
+>> något kul tillsamans?
+> 
+> Hej Tobias!
+> 
+> Jag vet inte tillräckligt mycket om Goto 10 för att göra något där ännu.
+> 
+> Men om evenemanget är i) kostnadsfritt, ii) öppet för alla, ii) utan 
+> registrering, och iii) alla resultat från evenemanget är fritt 
+> tillgängliga under en vettig licens så kanske det vore intressant.
+> 
+Hej Linus,
+
+Ok, jag håller med om listan på krav och vad jag vet så är så fallet.
+Erika, kan du stämma in?
+
+Mvh,
+Tobias
+
+<#/mml>

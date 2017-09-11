@@ -1,0 +1,174 @@
+X-Draft-From: ("nnimap+adbc:dfri.abuse" 6248)
+Gcc: nnimap+adbc:sent-mail.2017-01
+From: linus@nordberg.se 
+To: dfri-intern@lists.dfri.se 
+Subject: [CERT-SE] [CERT-SE #160765] Tor och DFRI
+User-Agent: Gnus/5.13 (Gnus v5.13)
+--text follows this line--
+Frågor från CERT-SE.
+
+Jag har inga svar på deras frågor ännu.
+Förslag?
+
+<#part type=message/rfc822 disposition=inline raw=t>
+Return-Path: <fel@cert.se>
+Delivered-To: linus@adb-centralen.se
+Received: from imap.adb-centralen.se
+	by imap.adb-centralen.se (Dovecot) with LMTP id NZiEKZQ9f1hPfwEAnAFZSg
+	for <linus@adb-centralen.se>; Wed, 18 Jan 2017 11:04:04 +0100
+Received: by imap.adb-centralen.se (Postfix, from userid 127)
+	id A6AF71D64A0; Wed, 18 Jan 2017 11:04:04 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on
+	spam.adb-centralen.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-5.1 required=4.0 tests=BAYES_00,RP_MATCHES_RCVD
+	autolearn=ham autolearn_force=no version=3.4.1
+Received: from smtp.adb-centralen.se (smtp.adb-centralen.se [IPv6:2001:6b0:8::129])
+	by imap.adb-centralen.se (Postfix) with ESMTP id AEFD61D6412
+	for <linus@nordberg.se>; Wed, 18 Jan 2017 11:04:03 +0100 (CET)
+Received: from mail.dfri.se (mail.dfri.se [171.25.193.17])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id 9443DA1F7A9
+	for <linus@nordberg.se>; Wed, 18 Jan 2017 11:04:03 +0100 (CET)
+Received: by mail.dfri.se (Postfix)
+	id 6DAAE84F852; Wed, 18 Jan 2017 11:04:03 +0100 (CET)
+Delivered-To: abuse@dfri.net
+Received: from mx2.cert.se (mx2.cert.se [IPv6:2001:67c:1c:7::3])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.dfri.se (Postfix) with ESMTPS id 69A2084F81F
+	for <abuse@dfri.net>; Wed, 18 Jan 2017 11:04:03 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=cert.se; s=may2014;
+	h=mime-version:in-reply-to:references:content-type:reply-to:message-id:
+	 x-rt-ticket:x-rt-original-encoding:subject:sender:date:precedence:to:
+	 x-rt-loop-prevention:from;
+	bh=epr1//QMDTDzEdiwS3IkM7nEYxFqrbResfLdRMRvEO0=;
+	b=qFxkchY6n/NPaO+6WzLJm1cEl9HLU1tQ/slarnk8HrFmFiLWGT5txpQxp0uvVEEKHDeXTTHGhfN8o
+	 0iNkGDYXhaEFu6L76a7j3UZbS9COLlYQ0uEJjVCFvxz8J9j48/mbeA7nxFozCbrh2mCEObdE9rD2Vx
+	 qjLKz7ONVd0Bz+Bo=
+MIME-Version: 1.0
+In-Reply-To: <87h94z883o.fsf@localhost>
+References: <RT-Ticket-160765@cert.se> <87h94z883o.fsf@localhost>
+Content-Type: multipart/signed;
+ boundary="----------=_1484733840-26188-7";
+ micalg="pgp-sha512";
+ protocol="application/pgp-signature"
+Reply-To: cert@cert.se
+Message-ID: <rt-4.4.0-26188-1484733839-761.160765-19-0@cert.se>
+X-RT-Ticket: CERT-SE #160765
+X-RT-Original-Encoding: utf-8
+Subject: [CERT-SE #160765] Tor och DFRI
+Sender: CERT-SE <cert@cert.se>
+Date: Wed, 18 Jan 2017 11:04:00 +0100
+Precedence: bulk
+To: abuse@dfri.net
+X-RT-Loop-Prevention: CERT-SE
+From: "CERT-SE" <cert@cert.se>
+
+This is a multi-part message in MIME format...
+
+------------=_1484733840-26188-7
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hej DFRI!
+
+Trevlig att h=C3=B6ra fr=C3=A5n er! :)
+
+Vi f=C3=B6rst=C3=A5r att ni driftar Tor exit-noder och vad det inneb=C3=A4r=
+ b=C3=A5da g=C3=A4llande
+sp=C3=A5rbarhet, men ocks=C3=A5 =C3=A4ven f=C3=B6r er m=C3=B6jlighet att =
+=C3=A5tg=C3=A4rda enskilda fall d=C3=A4r
+tj=C3=A4nsten missbrukas.
+
+Som den nationella CERT:en f=C3=B6r Sverige innefattas det i v=C3=A5r roll =
+att hj=C3=A4lpa
+till med att hantera Abuse-=C3=A4renden som relaterar till svenska system. =
+V=C3=A5rt m=C3=A5l
+med det arbetet har varit att uppm=C3=A4rksamma svenska system=C3=A4gare om=
+ hur deras
+system missbrukas och uppmanna till =C3=A5tg=C3=A4rder d=C3=A4r det kan var=
+a l=C3=A4mpligt.
+
+Ni =C3=A4r ju ett 's=C3=A4rskild fall' inom den ramen p=C3=A5 grund av exit=
+-noderna.
+
+N=C3=A5gra fr=C3=A5gor som kan funderar p=C3=A5:
+
+1) =C3=84r ni intresserad utav att veta om er exit-noder missbrukas, genere=
+llt?
+2) Kan jag fr=C3=A5ga vad det =C3=A4r f=C3=B6r exit-node-policy som ni k=C3=
+=B6r p=C3=A5 era noder? Kan
+information fr=C3=A5n 1) vara av intresse f=C3=B6r er i syfte att spetsa p=
+=C3=A5
+exit-node-policyn?
+3) Ifall era exit-noder har fasta-ip, skulle ni vara intresserade av att
+registrera dem i v=C3=A5rt Abuse-hantering verktyg?
+Vi anv=C3=A4nder egen-utvecklad mjukvara (https://github.com/cert-se/megatr=
+on-java)
+f=C3=B6r att omh=C3=A4nderta abuse utskick i bulk.
+=C3=84r det s=C3=A5 att ni inte =C3=B6nskar f=C3=A5 Abuse mejl fr=C3=A5n os=
+s kan vi vitlista era
+range:er eller enskilda adresser.
+(P=C3=A5 grund av tekniska-prio kan inte vi ha en l=C3=B6pande vit-list p=
+=C3=A5 deklarerade
+exit-noder =C3=A4n s=C3=A5 l=C3=A4nge).
+
+Vad tycker ni?
+
+Med v=C3=A4nlig h=C3=A4lsning,
+=C3=81sgeir Davidsson
+CERT-SE
+
+On Mon Jan 16 14:09:20 2017, abuse@dfri.net wrote:
+
+  Hej CERT-SE!
+=20=20
+  Med anledning av bifogat mejl, d=C3=A4r ni =C3=A4r i CC, s=C3=A5 t=C3=A4n=
+kte vi ta
+  tillf=C3=A4llet i akt att h=C3=B6ra med er om ni har n=C3=A5gra fr=C3=A5g=
+or kring eller
+  synpunkter p=C3=A5 DFRI:s drift av Tor-rel=C3=A4n.
+=20=20
+  Vi antar att det resulterar i fler klagom=C3=A5l riktade till er men hopp=
+as
+  och tror att ni liksom vi anser att det =C3=A4r ett relativt l=C3=A5gt pr=
+is f=C3=B6r
+  m=C3=B6jligheterna att =C3=A4ven f=C3=B6r vanligt folk anv=C3=A4nda inter=
+net utan att bli
+  automatiskt identifierade p=C3=A5 layer 3.
+=20=20
+  V=C3=A4nliga h=C3=A4lsningar,
+  DFRI Abuse Team
+  gm Linus Nordberg <linus@nordberg.se>, 0730-714984
+
+
+
+
+------------=_1484733840-26188-7
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+iQIcBAABCgAGBQJYfz2QAAoJEJ+eB9WkQGGvvGgP/R73Yeo7nBGaJWd1V5v7j76c
+yBJYvjJcd+n+Sv9mUwxUS72fUxy6ztGXEjxOZ22V/RDqyNryW/X+aiaJqPfhxofq
+4ZyrhqCKrNUr6tt7SqFtwgj3ewwfK8TXr9S2+mGvA6wzZJozzWkSh5eokerwoAnV
+F7LqzP/JLD/I/Ilgp6f8ZkWAelprHH4QNMCwQtj3qk9GvTFIRAe6JgkhGZxQcQL7
+ViFRC8M62BpXEqVvznQwGlSgYX0jmLyJlvZh17+3JHLphMRtT9TBI9p17GziMXmF
+N68lnqOq3VHVaZeW0uBJMGQ7wI7iqVjFL9PeKebVPc92q1QfPe84P2+LGFji0tbT
+lhtmLo0RKP+ZERzhs2KeFibMXxJFDLydNitzjM6xOttyAyXU/mDgGQEG74RLA+A3
+/cjFuyQQ5ZsNO/bdXTUaH2415ZPY65rqsmJm5PeINAyUyZNoXgU4j9YOK0dtnE63
+n4sDC8yt2cXC2DXWetu5zkYG0ZDC2vc2v4G1/rXGxG9zLDCoMhCRPsCKVw89WGpo
+CuvZrowgYx52ZCMZ3o3H5UsHWIoVDwncyp+2CHzL3MhpXBA4Irkx9LBtbiSc+lRy
+xiKxaeu3RvVILSP+x+s1vuUZHKo4KoGdCLaM+rKP2HqJ5yxqKhR3Hf2ixXV/8aCN
+/kgNUxC6ViY9jRVnj0Df
+=ywFa
+-----END PGP SIGNATURE-----
+
+------------=_1484733840-26188-7--
+<#/part>

@@ -1,0 +1,215 @@
+References: <CABrd9SQQWpqiku1xKYRzJj5p_G4bE63x6LAzQpFTNObwiZegxQ@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:lists.ietf.trans" 1307)
+Gcc: nnimap+adbc:sent-mail.2015-07
+To: Ben Laurie <benl@google.com>
+Cc: draft-linus-trans-gossip-ct@tools.ietf.org,  "trans@ietf.org" <trans@ietf.org>
+Subject: Re: [Trans] Review of draft-linus-trans-gossip-ct-02
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Ben, thank you for the review. Comments inline.
+
+Ben Laurie <benl@google.com> wrote
+Mon, 20 Jul 2015 13:51:33 +0100:
+
+| Comments in {} when in quoted sections.
+| 
+| "2.  Overview
+| 
+|    Public append-only untrusted {verifiable is perhaps a better word} logs "
+
+I kind of like "untrusted" and it seems like 6962 and 6962bis do
+too. But if they're changing, I guess we should consider changing here
+too.
+
+
+| Diagram in section 3 appears to omit SCTs delivered over OCSP.
+
+Fixed in 03-dev (branch master in git repo at [0]).
+
+
+| Also, the line from CA to Website is labelled "Cert and SCT" but the SCT
+| may be omitted.
+
+OK. Adding brackets around "& SCT". (We need a better notation for
+optional.)
+
+
+| Section 5
+| 
+| "Trusted Auditor Stream, HTTPS clients communicating directly with
+|       trusted CT auditors/monitors sharing SCTs, certificate chains and
+|       STHs. {Slightly confused: section 4 mentions auditors and monitors
+| using this channel between themselves?}"
+
+Addressed in 03-dev:
+
+--8<---------------cut here---------------start------------->8---
+# Who gossips {#who}
+
+- HTTPS clients and servers (SCT Feedback and STH Pollination)
+- HTTPS servers and CT auditors (SCT Feedback)
+- CT auditors and monitors (Trusted Auditor Relationship)
+
+Additionally, some HTTPS clients may engage with an auditor who they
+trust with their privacy:
+
+- HTTPS clients and CT auditors (Trusted Auditor Relationship)
+--8<---------------cut here---------------end--------------->8---
+
+
+| 5.1
+| 
+| " Note that clients
+|    send the same SCTs and chains to servers multiple times with the
+|    assumption that a potential man-in-the-middle attack eventually will
+|    cease so that an honest server will receive collected malicious SCTs
+|    and certificate chains. {note that if an SCT is sent over a channel that
+| used an SCT from the same log, then that new SCT can replace the existing
+| one for reporting - bad behaviour is still detected - i.e. an SCT can be
+| considered "sent" if it is sent over a channel validated by the same log}"
+|
+| 5.1.1
+| 
+| " The client MUST
+|    send to the server the ones in the store that are for that server and
+|    were not received from that server. {comment about "sent SCTs" applies}"
+
+03-dev hsa the following.
+
+   The client MUST NOT send the same set of SCTs to the same server more
+   often than TBD.  [benl: "sent to the server" only really counts if
+   the server presented a valid SCT in the handshake and the certificate
+   is known to be unrevoked (which will be hard for a MitM to sustain)]
+
+Does this capture it? (For purposes of tracking your requested
+adddition, not resolving it.)
+
+
+| "An SCT MUST NOT be sent to any other HTTPS server than one serving
+|    the domain that the certificate signed by the SCT refers to.{Not all TLS
+| clients care about privacy: e.g. crawlers, so this MUST NOT is too strong}"
+
+I see. Wonder how we could express that. Should we try to differentiate
+between browsers with real people using them and other clients? Or bring
+in "user consent"?
+
+
+| "First, the server
+|    recieving the SCT would learn about other sites visited by the HTTPS
+|    client{if SCTs are gossipped then this is clearly untrue: however, I
+| agree that it is hard to avoid some kind of privacy leak}. "
+
+It is true for the first N clients gossiping was my first reaction. Then
+there was an interesting discussion off list about if either of those
+claims could be proven correct through simulation. Without more data my
+position is that we don't know and should err on the side of safety and
+not gossip SCTs. Not counting SCT Feedback here. That we should do.
+
+
+| "Secondly, auditors or monitors recieving SCTs from the HTTPS
+|    server would learn information about the other HTTPS servers visited
+|    by its clients.{ditto}"
+
+See above.
+
+
+| "If the HTTPS client has configuration options for not sending cookies
+|    to third parties, SCTs MUST be treated as cookies with respect to
+|    this setting.{don't understand - you already banned sending to third
+| parties}"
+
+This is for local attacks, i.e. someone digging through the local
+store. Should probably expand. Added a TODO for now.
+
+
+| "The data sent in the POST is defined in Section 5.1.3.{what if the POST
+| fails, as it obviously will for most servers initially?}"
+
+Then no SCT Feedback is happening. Do we need to add text?
+
+
+| "   3.  if the leaf cert is not for a domain that the server is
+|        authoritative for, the SCT MUST be discarded {only true if you ban
+| SCT gossip}"
+
+Yes.
+
+
+| " It's important to note
+|    that the check must be on pairs of SCT and chain in order to catch
+|    different chains accompanied by the same SCT.  [XXX why is this
+|    important?]{given that logs do _not_ have to log multiple chains, I
+| suspect this is actually not important}"
+
+
+
+
+| " Note that an HTTPS server MAY perform a certificate chain validation
+|    on a submitted certificate chain, and if it matches a trust root
+|    configured on the server (but is otherwise unknown to the server),
+|    the HTTPS server MAY store the certificate chain and MAY choose to
+|    store any submitted SCTs even if they are unable to be verified.  The
+|    risk of spamming and denial of service can be mitigated by
+|    configuring the server with all known acceptable certificates (or
+|    certificate hashes). {Confused by this, surely the point is to find
+| certs/SCTs the server does not expect?}"
+| 
+| 5.1.3
+| 
+| "      *  sct_data: An array of objects consisting of the base64
+|          representation of the binary SCT data as defined in [RFC6962]
+|          Section 3.2. {SCTs may be in the certs, so should they be
+| replicated here or not?}"
+| 
+| "   The 'x509_chain' element MUST contain at{typo} the leaf certificate and
+| the
+|    full chain to a known root."
+| 
+| 5.2
+| 
+| "   o  Logs cannot issue STHs too frequently.  This is restricted to 1
+|       per hour. {probably should refer to 6962-bis for this restriction}"
+| 
+| Also in 5.2, note that servers could function as their own auditors.
+| 
+| 5.2.2
+| 
+| "After retrieving the consistency proof to the most recent STH, they
+|    SHOULD pollinate this new STH among participating HTTPS Servers {and may
+| safely discard the older STH}. "
+| 
+| 5.2.3
+| 
+| "  o  sths - an array of 0 or more fresh STH objects [XXX recently
+|       collected] from the log associated with log_id.  Each of these
+|       objects consists of {note that we've moved to binary format for SCTs
+| in 6962-bis}"
+| 
+| 6.1.1
+| 
+| " Therefore, a
+|    client with an SCT for a given server should transmit that
+|    information in only two channels: to a server associated with the SCT
+|    itself; and to a trusted CT auditor, if one exists.{only if the client
+| cares about privacy}"
+| 
+| 6.1.4
+| 
+| "This is similar to
+|    the fingerprinting attack described in Section 6.1.2, but it is
+|    mitigated by the following factors: {mention rate limit?}"
+| 
+| 6.1.6
+| 
+| "The log's inability to
+|       provide either proof will not be externally cryptographically-
+|       verifiable, as it may be indistinguishable from a network error.
+| {note that anyone who sees the whole log can independently prove
+| inconsistency/non-inclusion}"
+| _______________________________________________
+| Trans mailing list
+| Trans@ietf.org
+| https://www.ietf.org/mailman/listinfo/trans
+
+[0] https://github.com/ln5/draft-linus-trans-gossip-ct

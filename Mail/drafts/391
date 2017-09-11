@@ -1,0 +1,41 @@
+X-Draft-From: ("nnimap+adbc:INBOX")
+Gcc: nnimap+adbc:sent-mail.2015-04
+To: auto-dbm@ripe.net 
+Subject: CREATE
+From: Linus Nordberg <linus@nordberg.se>
+Date: Sat, 25 Apr 2015 15:14:55 +0200
+--text follows this line--
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+domain:         61.0.194.in-addr.arpa
+descr:          DFRI
+org:            ORG-DFRI1-RIPE
+admin-c:        LN2086-RIPE
+tech-c:         LN2086-RIPE
+zone-c:         LN2086-RIPE
+nserver:        ns3.dfri.se
+nserver:        ns.adb-centralen.se
+nserver:        vic20.blipp.com
+nserver:        ns2.mnt.se
+nserver:        ns3.mnt.se
+mnt-by:         DFRI-MNT
+changed:        linus@dfri.net 20150425
+source:         RIPE
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBCAAGBQJVO4/SAAoJEFiWuTKJqZQNTPQP/RWgnLvH+pcwAr/fyhw/PuPW
+Ul97ASftriMXDAfC3Y/gtUCV+pCd10QKPH6zBOppVAt74jSzAGq27LE03v9ImA9x
+V/nGf7+XmA6hOGyXcBY4/ofzO67EME8fcaDAHAjowD6vBx/w78GtPZq+iTOzp/wC
+dGEYL7DnrcRb/WPoFTy70u1HPd19TTh5V84VBIMkPRX+IjzD0TeeIbX/3lR/oiFJ
+it9CXusCBfJ54u8+VpRtCWfc6cwr95Tfo5bPy2Wi3bJWmdXC1/7DySTcwasbLIAB
+u2Fxi1jv5k3jo/otiF4NhaeWB7ml6h8UR2V1tQrUIcRQ5VYIUnVv472Miz8AUPPJ
+/1UEzZWq+S+P+/Tu0gjOzy/nGyTJ6rEOcG1Mu0RkpOrIrwiz/HRNULLmXuJaa5sl
+LlcqHxM9AWXUwE9zmNyJkfGdSLhkv8cXFec7TFYH7yvE/evUOCfwKSqb2ezvODMG
+QOA1hAXjJmNatJLYYGkp3+LvP8//dVCJqvaMslEovyBQr1u5AoB9AXEODChJW6L0
+u6uc6HcZYc0sZ9wh/Kym3mQ5ED+v07PROj7o05so4Belf+DRY/KUdxfnnOgK3zXq
+U1scyUEHaR711yBlYGD/W37g/dt+AZmFdlk1Q0sTQhWGpCPFc6DeBDP2ZvQsNRKl
+PXpBpb4iPqPcG7p2Dmvt
+=mkxd
+-----END PGP SIGNATURE-----

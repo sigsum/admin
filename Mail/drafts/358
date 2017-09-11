@@ -1,0 +1,22 @@
+Gcc: nnimap+adbc:sent-mail.2015-01
+To: Alexander Rydekull <rydekull@gmail.com>
+cc: noc@dfri.net 
+Subject: Paket-repot på build @ tex
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Hej Alex!
+
+tl;dr Vad är 
+
+Att döma av root's .bash_history på build@tex så skapade du
+
+  /s/portbuild/usr/ports/packages/dfrirepo
+
+och kopierade
+
+  /s/portbuild/usr/ports/packages/All/*
+
+dit för att sedan 'pkg repo dfrirepo' och peka lighttpd dit.
+
+Nu har jag byggt om alla paket (hamnar i All/), kopierat dom till
+dfrirepo/ och kört om 'pkg repo'.

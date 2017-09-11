@@ -1,0 +1,115 @@
+From: linus@nordberg.se 
+To: noc@dfri.net 
+Subject: [Various] Digested Articles
+User-Agent: Gnus/5.13 (Gnus v5.13)
+X-Draft-From: ("nnimap+adbc:dfri.abuse" 4094 4095)
+Gcc: nnimap+adbc:sent-mail.2014-11
+Date: Sat, 22 Nov 2014 13:56:57 +0100
+--text follows this line--
+Hej NOC!
+
+Jag har svårt att hantera datagrejer idag och några dagar framöver. Kan
+någon av er ta över beredskap?
+
+Jag har inte hanterat de här två abuse-mejlen.
+
+Tack!
+
+<#multipart type=digest>
+<#mml type=message/rfc822>
+Subject: Topics
+
+Topics:
+   Mass bruteforce attempts from your network: IP 171.25.193.77
+   BitNinja.io - Incident report about 171.25.193.20
+<#/mml>
+
+<#mml type=message/rfc822>
+Date: Sat, 22 November 2014 08:29
+From: ValueHost abuse team <replay2abuse@valuehost.ru>
+To: abuse@dfri.net
+Subject: Mass bruteforce attempts from your network: IP 171.25.193.77
+Message-Id: <201411220529.sAM5T1c9041713@v79.valuehost.ru>
+
+Greetings,
+
+ValueHost abuse team like to inform you, that we have had mass bruteforce attempts to the Joomla / WordPress control panel on the our shared-hosting server v79.valuehost.ru [217.112.35.78] from your network, from IP address 171.25.193.77
+
+During the last 30 minutes we recorded 480 attempts like this:
+
+171.25.193.77 krasnoder.ru - [22/Nov/2014:08:24:52 +0300] "POST /administrator/index.php HTTP/1.1" 303 5 "-" "-"
+171.25.193.77 krasnoder.ru - [22/Nov/2014:08:24:53 +0300] "POST /administrator/index.php HTTP/1.1" 303 5 "-" "-"
+171.25.193.77 krasnoder.ru - [22/Nov/2014:08:24:53 +0300] "POST /administrator/index.php HTTP/1.1" 303 5 "-" "-"
+171.25.193.77 krasnoder.ru - [22/Nov/2014:08:24:54 +0300] "POST /administrator/index.php HTTP/1.1" 303 5 "-" "-"
+171.25.193.77 krasnoder.ru - [22/Nov/2014:08:24:55 +0300] "POST /administrator/index.php HTTP/1.1" 303 5 "-" "-"
+
+====
+
+This message was sent automatically by ValueHost security system.
+Yor e-mail address obtained from the public WhoIs services.
+You do not have to answer this message. Just close this ticket if the problem is solved.
+If you want to contact us, PLEASE, write to e-mail noc@valuehost.ru
+
+We are sorry for disturb if you have received this message by mistake.
+Please contact us to noc@valuehost.ru if your e-mail is not relevant to this IP-address or network.
+
+====
+
+Thank you,
+ValueHost abuse team
+
+http://www.valuehost.ru
++7 (812) 313-29-08,
++7 (495) 540-52-24
+E-mail: abuse@valuehost.ru
+
+<#/mml>
+
+<#mml type=message/rfc822>
+Date: Sat, 22 Nov 2014 07:40:03 +0100
+From: BitNinja Server Security <incident-report@bitninja.io>
+To: abuse@dfri.net
+Subject: BitNinja.io - Incident report about 171.25.193.20
+Message-Id: <E1Xs4MV-00088R-CS@jellbo.jellbo.com>
+
+<#multipart type=alternative>
+<#part type=text/plain charset="utf-8" disposition=inline nofile=yes>
+Dear Provider,
+We would like to inform you about an INCIDENT COMING FROM YOUR NETWORK(IP address 171.25.193.20). Please examine the case and provide for the security steps needed.
+The mission of BitNinja.io team is to make the Internet a safer place, so that IP address 171.25.193.20has been placed to our blacklist and servers protected by us won’t accept any communication from this IP address. If attacks keep coming IP address will stay in our blacklist for a longer period.
+You can find detailed logs about the detected malicious attempt in the incident report:http://bitninja.io/incidentReport.php?details=13523f1b45
+If you need further information about this warning, or you think this IP is listed wrongful do not hesitate to contact us atincident-discuss@bitninja.io.
+To prevent incidents in the future please take a look at an INTEGRATED SERVER SECURITY SYSTEM that works with no redirection and can be installed for every server.
+Protect your server, install the intergrated BitNinja Server Security System now:http://bitninja.io
+_______________________________________________________________
+The attempts from your server means someone intruded into your system.
+/ If your review this offensive site, please do this carefully, pay attention for redirects also. Also, please consider this particular machines may have a root kit installed. So simply deleting some files or dirs or disabling cgi may not really solve the issue! /
+Additional advice:
+The server's owner should disconnect and not return the system into service until it is up to date with the latest security fixes, and ensure that any backdoors and other exploits left by the intruders are closed. Logs should be preserved and analyzed and, perhaps, the appropriate law enforcement agencies notified.
+If you need further information about the warning, do not hesitate to contact us.
+
+Best wishes,
+BitNinja Security team
+Let’s make the Internet a safer place
+<#part type=text/html charset="utf-8" nofile=yes>
+<html><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /></head><body style=""><div id="cons_content_leveltorzs" aria-hidden="true"><p><span>Dear Provider,</span></p>
+<p><span>We would like to inform you about an INCIDENT COMING FROM YOUR NETWORK&nbsp;</span><span>&nbsp;</span><span>(</span><span>IP address 171.25.193.20)</span>. Please examine the case and provide for the security steps needed.</p>
+<p><span>The mission of BitNinja.io team is to make the Internet a safer place, so that IP address 171.25.193.20&nbsp;has been placed to our blacklist and servers protected by us won’t accept any communication from this IP address. If attacks keep coming IP address will stay in our blacklist for a longer period.</span></p>
+<p><span>You can find detailed logs about the detected malicious attempt in the incident report:<br><a href="http://bitninja.io/incidentReport.php?details=13523f1b45" tabindex="-1" target="_blank"><span>http://bitninja.io/incidentReport.php?details=13523f1b45</span></a></span></p>
+<p><span>If you need further information about this warning, or you think this IP is listed wrongful do not hesitate to contact us at&nbsp;<a href="mailto:incident-discuss@bitninja.io" tabindex="-1" target="_blank"><span>incident-discuss@bitninja.io</span></a>.</span></p>
+<p><span>To prevent incidents in the future please take a look at an INTEGRATED SERVER SECURITY SYSTEM that works with no redirection and can be installed for every server.</span></p>
+<p><span>Protect your server, install the intergrated BitNinja Server Security System now:&nbsp;<a href="http://bitninja.io/" tabindex="-1" target="_blank"><span>http://bitninja.io</span></a></span></p>
+<p><span>_______________________________________________________________</span><span></span></p>
+<p><span>The attempts from your server means someone intruded into your system.</span></p>
+<p><span>/ If your review this offensive site, please do this carefully, pay attention for redirects also. Also, please consider this particular machines may have a root kit installed. So simply deleting some files or dirs or disabling cgi may not really solve the issue! /</span></p>
+<p><span>Additional advice:</span></p>
+<p><span>The server's owner should disconnect and not return the system into service until it is up to date with the latest security fixes, and ensure that any backdoors and other exploits left by the intruders are closed. Logs should be preserved and analyzed and, perhaps, the appropriate law enforcement agencies notified.</span></p>
+<p><span><br>If you need further information about the warning, do not hesitate to contact us.</span></p>
+<p><span>&nbsp;</span></p>
+<p><span>Best wishes,</span></p>
+<p><span>BitNinja Security team</span></p>
+<p><em><span>Let’s make the Internet a safer place</span></em></p></div></body></html>
+<#/multipart>
+
+<#/mml>
+<#/multipart>

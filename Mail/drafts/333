@@ -1,0 +1,13 @@
+References: <543A914A.3030906@mqas.net>
+X-Draft-From: ("nnimap+adbc:INBOX" 89851)
+Gcc: nnimap+adbc:sent-mail.2014-10
+To: Michael Quentin Angelo Sidors <m@mqas.net>
+Subject: Re: opt out please
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Michael Quentin Angelo Sidors <m@mqas.net> wrote
+Mon, 13 Oct 2014 01:33:46 +1100:
+
+| "HEAD /index.html HTTP/1.1" 200 0 "-" "-" ECDHE-ECDSA-AES128-GCM-SHA256
+| 0.000

@@ -1,0 +1,63 @@
+Gcc: nnimap+adbc:sent-mail.2017-06
+To: 
+Subject: 
+From: Linus Nordberg <linus@nordberg.se>
+Date: Thu, 29 Jun 2017 12:57:05 +0200
+--text follows this line--
+--8<---------------cut here---------------start------------->8---
+linus@flow:~/usr/src/tor-browser-bundle/gitian$ tail -20 build-logs/build-1498703407.log
+28a9153da402c9f0ba85eac8cdcd82a2c171d5fd0c2cf7d65b5d6a295ecb2696  libevent-2.0.22-stable-win32-utils.zip
+117a0b469b0889d4b35cbae371d80aa6bfef88d777348a1a59cfc32776083dbe  mingw-w64-5.1.0-win32-utils.zip
+f21d6e5c29034f4023178258e624f4c048377d657638390a49bb00bcb42d1fa8  nsis-2.51-win32-utils.zip
+e9dc52c88ebd72e1f7d84b1d7f97e0119c42cf5dcf5433b41a416cd409091747  openssl-1.0.2l-win32-utils.zip
+acc0af055ce469b0ed2e83a5c27d2bd7eb487b8a21103be5f2154e7f820d7378  yasm-1.2.0-linux32-precise-utils.zip
+b7d01464d2b32fd2491941308365102e76c704c8fb603e56d793535126e327d9  zlib-1.2.8-win32-utils.zip
+d5990b17b3bc482e7cbe599d846f3f208a6b3786938506c9ff52bde3a787b45a  utils-windows-res.yml
+Done.
+
+****** Starting Tor Component of Windows Bundle (2/5 for Windows) ******
+
+--- Building tor-windows for precise i386 ---
+Stopping target if it is up
+Making a new image copy
+Formatting 'target-precise-i386.qcow2', fmt=qcow2 size=22548578304 backing_file=base-precise-i386.qcow2 encryption=off cluster_size=65536 lazy_refcounts=off refcount_bits=16
+Starting target
+Checking if target is up.
+Preparing build environment
+Updating apt-get repository (log in var/install.log)
+Makefile:21: recipe for target 'build-nightly' failed
+--8<---------------cut here---------------end--------------->8---
+
+--8<---------------cut here---------------start------------->8---
+linus@flow:~/usr/src/gitian-builder/var$ tail -30 install.log 
+  503  DNS error for hostname se.archive.ubuntu.com: Temporary failure in name resolution. If se.archive.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+Err http://10.0.2.2 precise/universe i386 Packages
+  503  DNS error for hostname se.archive.ubuntu.com: Temporary failure in name resolution. If se.archive.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+Err http://10.0.2.2 precise-security/main i386 Packages
+  503  DNS error for hostname security.ubuntu.com: Temporary failure in name resolution. If security.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+Err http://10.0.2.2 precise-security/universe i386 Packages
+  503  DNS error for hostname security.ubuntu.com: Temporary failure in name resolution. If security.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+Err http://10.0.2.2 precise-updates/main i386 Packages
+  503  DNS error for hostname se.archive.ubuntu.com: Temporary failure in name resolution. If se.archive.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+Err http://10.0.2.2 precise-updates/universe i386 Packages
+  503  DNS error for hostname se.archive.ubuntu.com: Temporary failure in name resolution. If se.archive.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+Ign http://10.0.2.2 precise/main Translation-en
+Ign http://10.0.2.2 precise/universe Translation-en
+Ign http://10.0.2.2 precise-security/main Translation-en
+Ign http://10.0.2.2 precise-security/universe Translation-en
+Ign http://10.0.2.2 precise-updates/main Translation-en
+Ign http://10.0.2.2 precise-updates/universe Translation-en
+W: Failed to fetch http://10.0.2.2:3142/archive.ubuntu.com/ubuntu/dists/precise/main/binary-i386/Packages  503  DNS error for hostname se.archive.ubuntu.com: Temporary failure in name resolution. If se.archive.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+
+W: Failed to fetch http://10.0.2.2:3142/archive.ubuntu.com/ubuntu/dists/precise/universe/binary-i386/Packages  503  DNS error for hostname se.archive.ubuntu.com: Temporary failure in name resolution. If se.archive.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+
+W: Failed to fetch http://10.0.2.2:3142/security.ubuntu.com/ubuntu/dists/precise-security/main/binary-i386/Packages  503  DNS error for hostname security.ubuntu.com: Temporary failure in name resolution. If security.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+
+W: Failed to fetch http://10.0.2.2:3142/security.ubuntu.com/ubuntu/dists/precise-security/universe/binary-i386/Packages  503  DNS error for hostname security.ubuntu.com: Temporary failure in name resolution. If security.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+
+W: Failed to fetch http://10.0.2.2:3142/archive.ubuntu.com/ubuntu/dists/precise-updates/main/binary-i386/Packages  503  DNS error for hostname se.archive.ubuntu.com: Temporary failure in name resolution. If se.archive.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+
+W: Failed to fetch http://10.0.2.2:3142/archive.ubuntu.com/ubuntu/dists/precise-updates/universe/binary-i386/Packages  503  DNS error for hostname se.archive.ubuntu.com: Temporary failure in name resolution. If se.archive.ubuntu.com refers to a configured cache repository, please check the corresponding configuration file.
+
+E: Some index files failed to download. They have been ignored, or old ones used instead.
+--8<---------------cut here---------------end--------------->8---

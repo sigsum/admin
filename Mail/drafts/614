@@ -1,0 +1,19 @@
+References: <RT-Ticket-2675@IPNett_Cloud_Services>
+	<87d1evaaqz.fsf@nordberg.se>
+	<rt-4.2.8-29666-1487236581-1452.2675-5-0@IPNett_Cloud_Services>
+X-Draft-From: ("nnimap+ndn:INBOX" 75488)
+Gcc: nnimap+adbc:sent-mail.2017-02
+To: "Jan Munkhammar via RT" <iaas@cloud.ipnett.se>
+Cc: peter@palfrader.org,  pettai@nordu.net
+Subject: Re: [IaaS #2675] Project networks
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+"Jan Munkhammar via RT" <iaas@cloud.ipnett.se> wrote
+Thu, 16 Feb 2017 10:16:21 +0100:
+
+> There where no ipv6 rules in the access security group. I added any-any rules
+> to your default group. You need to make sure dhcp6 is requesting or you need to
+> configure static.
+
+Hmm. 

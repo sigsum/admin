@@ -1,0 +1,61 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: Klas Lindfors <klas@yubico.com>,
+ Fredrik Thulin <fredrik@thulin.net>,
+ Leif Johansson <leifj@sunet.se> 
+Subject: "The card does not support the import of keys"
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Date: Wed, 20 Aug 2014 17:36:26 +0200
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Hej!
+
+Tog en NEO från hyllan (Leifs hylla) och försökte skriva en nyckel till
+den.
+
+"The card does not support the import of keys"
+
+Måste jag bygga egen applet?
+
+--8<---------------cut here---------------start------------->8---
+flogsta:k% gpg2 --card-status
+Application ID ...: D2760001240102000000000000010000
+Version ..........: 2.0
+Manufacturer .....: test card
+Serial number ....: 00000001
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Sex ..............: unspecified
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: forced
+Key attributes ...: 2048R 2048R 2048R
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 3 3
+Signature counter : 0
+Signature key ....: [none]
+Encryption key....: [none]
+Authentication key: [none]
+General key info..: [none]
+flogsta:k% gpg2 --edit-key 8845E49C
+gpg (GnuPG) 2.0.25; Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Secret key is available.
+
+pub  2048R/8845E49C  created: 2014-08-20  expires: never       usage: SC
+                     trust: ultimate      validity: ultimate
+[ultimate] (1). Linus Nordberg <linus@nordu.net>
+
+gpg> toggle
+
+sec  2048R/8845E49C  created: 2014-08-20  expires: never
+(1)  Linus Nordberg <linus@nordu.net>
+
+gpg> keytocard
+Really move the primary key? (y/N) y
+The card does not support the import of keys
+
+
+gpg>
+--8<---------------cut here---------------end--------------->8---

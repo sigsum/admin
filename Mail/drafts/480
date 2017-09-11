@@ -1,0 +1,18 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2016-03
+To: noc@nordu.net
+Subject: EduSAFE
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Hi,
+
+Do you have a point of contact for https://edusafe.nordu.net/ ?
+
+The federated login takes you to 
+
+subject: OU=Domain Control Validated; CN=idp.dante.net
+
+DNS Name: idp.dante.net
+DNS Name: prod-idp.dante.net
+DNS Name: uat-idp.dante.net

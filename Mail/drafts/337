@@ -1,0 +1,38 @@
+References: <543A914A.3030906@mqas.net> <87r3ydtikq.fsf@nordberg.se>
+	<543B84B6.2020502@mqas.net>
+X-Draft-From: ("nnimap+ndn:INBOX" 52517)
+Gcc: nnimap+adbc:sent-mail.2014-10
+To: Michael Quentin Angelo Sidors <m@mqas.net>
+Subject: Re: opt out please
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Michael Quentin Angelo Sidors <m@mqas.net> wrote
+Mon, 13 Oct 2014 18:52:22 +1100:
+
+| hej
+| 
+| Linus Nordberg wrote:
+| > Michael Quentin Angelo Sidors <m@mqas.net> wrote
+| > Mon, 13 Oct 2014 01:33:46 +1100:
+| > 
+| > | "HEAD /index.html HTTP/1.1" 200 0 "-" "-" ECDHE-ECDSA-AES128-GCM-SHA256
+| > | 0.000
+| > 
+| > Hi Michael,
+| > 
+| > Thanks for contacting us.
+| > 
+| > Which netblocks would you like to opt out?
+| 
+| oops - i forgot
+| 
+| 58.96.67.63
+| 
+| ps - do you have a paid subscription from roaring penguin to add
+| VBR-Info:md=nordu.net; mc=all; mv=swamid.se
+| 
+| ?
+| 
+| i can't see any way to add this using opendkim [which i use]

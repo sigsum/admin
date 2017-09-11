@@ -1,0 +1,34 @@
+References: <87twpmzb6g.fsf@nordberg.se>
+	<20151020090328.5281f034@latte.josefsson.org>
+X-Draft-From: ("nnimap+adbc:INBOX" 105222)
+Gcc: nnimap+adbc:sent-mail.2015-10
+To: Simon Josefsson <simon@josefsson.org>
+Subject: Re: draft-josefsson-email-received-privacy
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Simon Josefsson <simon@josefsson.org> wrote
+Tue, 20 Oct 2015 09:03:28 +0200:
+
+| Hej Linus!
+| 
+| > Hej Simon!
+| > 
+| > - RFC7624 section 3.3.4 pratar om Received:. Skall vi referera till
+| > den kanske?
+| 
+| Första stycket i Introduction är stulet direkt därifrån.
+| 
+| > - hittar inget om att gmail slutat skicka första Received och, skall
+| >   höra med phw om han har en referens
+| 
+| Om vi kan hitta en referens till någon som beter sig såhär vore det bra.
+
+
+
+
+| > - hotmail skickar sedan slutet av 2012 X-EIP istället för
+| >   X-Originating-IP
+| 
+| Jag tror det är enklast att bara strunta i att nämna dessa headers.
+
+Det håller jag med om.

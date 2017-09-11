@@ -1,0 +1,41 @@
+References: <57583434.7080006@dfn-cert.de> <87twh3vh55.fsf@nordberg.se>
+	<5758445E.3070101@dfn-cert.de> <878tyfuzvg.fsf@nordberg.se>
+	<57595FB6.5060802@dfn-cert.de> <874m92tsne.fsf@nordberg.se>
+	<575A6B1C.7040702@dfn-cert.de> <87eg85qx1v.fsf@nordberg.se>
+	<578C884B.9020108@dfn-cert.de> <8760rb8b1t.fsf@nordberg.se>
+	<57B1C846.8080809@dfn-cert.de> <87bn0u6r9z.fsf@nordberg.se>
+	<57B6FB83.20703@dfn-cert.de> <8737m052ra.fsf@nordberg.se>
+	<57B71F32.6040209@dfn-cert.de>
+	<7b2595c0-9670-5fd8-219e-84f1e0dedb87@dfn-cert.de>
+	<87h99rsvwo.fsf@nordberg.se>
+	<09ddf366-fd4f-74c7-ab9f-7ddfd7270deb@dfn-cert.de>
+	<87mvj9ut2s.fsf@nordberg.se>
+	<6de7b7e8-b45e-6184-be00-24e98b6ae4b3@dfn-cert.de>
+	<2e48b0f3-2031-ec12-6e21-214b71b0e533@dfn-cert.de>
+X-Draft-From: ("nnimap+ndn:INBOX" 72593)
+Gcc: nnimap+adbc:sent-mail.2016-10
+To: Jan Klever <klever@dfn-cert.de>
+Cc: Jürgen Brauckmann <brauckmann@dfn-cert.de>,  Magnus Ahltorp <map@kth.se>
+Subject: Re: catlfish operations/DFN-CERT
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Jan Klever <klever@dfn-cert.de> wrote
+Mon, 17 Oct 2016 10:50:33 +0200:
+
+> Hi Linus,
+>
+> Am 19.09.2016 um 13:43 schrieb Jan Klever:
+>> I will do some setup and then send you the API-Key and the CSR.
+>
+> please find attached the API-Key and CSR for our node.
+
+Hi Jan,
+
+Oh, here's this thing I totally forgot to bring up. I'm afraid we're not
+prepared to use an S/MIME signed email for a trust anchor. :(
+
+Is there any way we can bootstrap trust by finding 
+
+exchanging PGP keys? Perhaps
+by reading fingerprints in a VC or something?

@@ -1,0 +1,15 @@
+References: <87r3kqao8d.fsf@nordberg.se> <20151019153400.GH18068@nymity.ch>
+X-Draft-From: ("nnimap+adbc:lists.tor.assistants" 33359)
+Gcc: nnimap+adbc:sent-mail.2015-10
+To: tor-assistants@lists.torproject.org
+cc: j
+Subject: Re: [tor-assistants] IETF draft on Received-headers
+Reply-To: tor-assistants@lists.torproject.org
+From: Linus Nordberg <linus@torproject.org>
+--text follows this line--
+Philipp Winter <phw@nymity.ch> wrote
+Mon, 19 Oct 2015 11:34:00 -0400:
+
+| Isn't GMail, among others, stripping the first Received header to
+| protect the sender's network identity?  Maybe you want to reference
+| that.

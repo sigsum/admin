@@ -1,0 +1,90 @@
+References: <60ddd980b3bc423fb208f9dd0c28d203@UMU-EX02.ad.umu.se>
+	<HE1PR07MB15799590474D81274418B372BCA20@HE1PR07MB1579.eurprd07.prod.outlook.com>
+	<5b828894f2514dfc8477cf624a5dfde5@UMU-EX02.ad.umu.se>
+	<HE1PR07MB1579B256ED56467EC9B9FBD2BCA20@HE1PR07MB1579.eurprd07.prod.outlook.com>
+	<87mvhf7egk.fsf@nordberg.se>
+	<HE1PR07MB1579219C90220BC644B3F06EBCA20@HE1PR07MB1579.eurprd07.prod.outlook.com>
+X-Draft-From: ("nnimap+ndn:INBOX" 73242)
+Gcc: nnimap+adbc:sent-mail.2016-11
+To: Josh Howlett <Josh.Howlett@jisc.ac.uk>
+Cc: Anders Nilsson <anders.nilsson@umu.se>,  "mobility@lists.geant.org" <mobility@lists.geant.org>
+Subject: Re: [mobility] EAP-AKA exposes identity
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Fri, 04 Nov 2016 11:38:36 +0100
+--text follows this line--
+A.k.a. "WPA-Personal"? (I'm a wifi noob, despite being on this
+list. Appologies.)
+
+
+
+
+Josh Howlett <Josh.Howlett@jisc.ac.uk> wrote
+Fri, 4 Nov 2016 10:13:34 +0000:
+
+> IEEE802.11i uses PBKDF2 with CCMP to get that functionality.
+>
+>> -----Original Message-----
+>> From: Linus Nordberg [mailto:linus@nordu.net]
+>> Sent: 04 November 2016 10:00
+>> To: Josh Howlett <Josh.Howlett@jisc.ac.uk>
+>> Cc: Anders Nilsson <anders.nilsson@umu.se>; mobility@lists.geant.org
+>> Subject: Re: [mobility] EAP-AKA exposes identity
+>> 
+>> I wonder if something like ephemeral keying at the EAP layer would be
+>> valuable.
+>> 
+>> Josh Howlett <Josh.Howlett@jisc.ac.uk> wrote Fri, 4 Nov 2016 09:01:07
+>> +0000:
+>> 
+>> > The fact that it’s old doesn’t mean it’s not important :-) It’s
+>> > definitely something that needs fixing. None of the PAKE methods
+>> > support privacy, to my knowledge. I think some work to add privacy
+>> > support to EAP-EKE, the most interesting PAKE method, would be really
+>> > useful.
+>> >
+>> > https://tools.ietf.org/html/rfc6124#section-8.4> >
+>> > From: Anders Nilsson [mailto:anders.nilsson@umu.se]
+>> > Sent: 04 November 2016 08:45
+>> > To: Josh Howlett <Josh.Howlett@jisc.ac.uk>; mobility@lists.geant.org
+>> > Subject: SV: EAP-AKA exposes identity
+>> >
+>> > ..and I’m an old guy so I guess it it’s only logical for to bring this
+>> > up.  ;)
+>> >
+>> > Cheers
+>> > Anders
+>> >
+>> >
+>> > Från: Josh Howlett [mailto:Josh.Howlett@jisc.ac.uk]
+>> > Skickat: den 4 november 2016 09:42
+>> > Till: Anders Nilsson
+>> > <anders.nilsson@umu.se<mailto:anders.nilsson@umu.se>>;
+>> > mobility@lists.geant.org<mailto:mobility@lists.geant.org>
+>> > Ämne: RE: EAP-AKA exposes identity
+>> >
+>> > Very, very old news!
+>> >
+>> > From: Anders Nilsson [mailto:anders.nilsson@umu.se]
+>> > Sent: 04 November 2016 08:25
+>> > To: mobility@lists.geant.org<mailto:mobility@lists.geant.org>
+>> > Subject: [mobility] EAP-AKA exposes identity
+>> >
+>> > Hi all,
+>> >
+>> > Interesting reading, any comments?
+>> > http://networkworld.com/article/3138468/security/mobile-subscriber-ide> > ntity-numbers-can-be-exposed-over-wi-fi.html
+>> >
+>> >
+>> > Cheers
+>> > Herr Nilsson
+>> >
+>> > Jisc is a registered charity (number 1149740) and a company limited by
+>> > guarantee which is registered in England under Company No. 5747339,
+>> > VAT No. GB 197 0632 86. Jisc’s registered office is: One Castlepark,
+>> > Tower Hill, Bristol, BS2 0JA. T 0203 697 5800.
+>> >
+>> > Jisc Services Limited is a wholly owned Jisc subsidiary and a company
+>> > limited by guarantee which is registered in England under company
+>> > number 2881024, VAT number GB 197 0632 86. The registered office is:
+>> > One Castle Park, Tower Hill, Bristol BS2 0JA. T 0203 697 5800.

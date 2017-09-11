@@ -1,0 +1,33 @@
+References: <20160215191940.GX3452@happy.bamsoftware.com>
+X-Draft-From: ("nnimap+adbc:INBOX" 111231)
+Gcc: nnimap+adbc:sent-mail.2016-02
+To: tor-assistants@lists.torproject.org
+Subject: Re: Please make ndnop5 publish its server descriptor
+From: Linus Nordberg <linus@nordberg.se>
+Date: Mon, 15 Feb 2016 22:08:07 +0100
+--text follows this line--
+David Fifield <david@bamsoftware.com> wrote
+Mon, 15 Feb 2016 11:19:40 -0800:
+
+| Please set these settings on the bridge ndnop5:
+| 	PublishServerDescriptor 1
+| 	AssumeReachable 1
+
+Done.
+
+
+| We originally had this set up so that ndnop3 was published and ndnop5
+| was not published. But because ndnop3 had an inaccessible ORPort, it was
+| never in BridgeDB, and we weren't testing what we meant to. Checking
+| now, I see that ndnop3 is indeed missing the "Running" flag:
+| https://globe.torproject.org/#/bridge/FEC8FB380DABA9D3C80790B634E4540BF5D09CCA
+
+It seems to relay some traffic:
+
+Feb 15 21:45:45.000 [notice] Heartbeat: Tor's uptime is 27 days 12:00 hours, with 1311 circuits open. I've sent 2273.89 GB and received 2206.85 GB.
+Feb 15 21:45:45.000 [notice] Heartbeat: In the last 6 hours, I have seen 5679 unique clients.
+
+bridge-stats-end 2016-02-15 08:45:45 (86400 s)
+bridge-ips us=1832,ir=1816,ru=1760,gb=656,de=544,fr=328,in=320,nl=272,it=264,ca=240,br=224,tr=216,au=208,kz=208,id=192,sa=192,ua=192,mx=168,pl=168,ye=168,es=128,jp=120,at=96,ae=88,eg=88,ph=88,ro=88,se=88,ch=72,ar=64,vn=64,za=64,bd=56,by=56,kr=56,my=56,sd=56,be=48,co=48,cz=48,fi=48,pk=48,dz=40,gr=40,hk=40,hu=40,ma=40,ng=40,pt=40,sg=40,ci=32,cl=32,gh=32,ie=32,il=32,no=32,nz=32,om=32,pe=32,th=32,tm=32,cd=24,iq=24,jo=24,ke=24,ly=24,ni=24,qa=24,rs=24,tn=24,tw=24,uz=24,ve=24,??=16,az=16,bj=16,dk=16,ec=16,hr=16,kg=16,kw=16,lb=16,lk=16,lt=16,lv=16,md=16,mn=16,mu=16,np=16,si=16,sk=16,ad=8,af=8,ag=8,al=8,am=8,ao=8,aw=8,ba=8,bg=8,bh=8,bn=8,bo=8,bs=8,bw=8,cm=8,cn=8,cr=8,cu=8,cy=8,dj=8,do=8,ee=8,et=8,ge=8,gf=8,gn=8,gq=8,gt=8,gu=8,hn=8,ht=8,im=8,is=8,jm=8,kh=8,li=8,lr=8,lu=8,mg=8,mh=8,mk=8,ml=8,mo=8,mt=8,mv=8,na=8,ne=8,pa=8,pg=8,pr=8,ps=8,py=8,re=8,rw=8,sc=8,sn=8,so=8,sr=8,sv=8,sy=8,sz=8,tc=8,tg=8,tj=8,tt=8,tz=8,ug=8,uy=8,vu=8,zm=8,zw=8
+bridge-ip-versions v4=12656,v6=0
+bridge-ip-transports obfs4=12656

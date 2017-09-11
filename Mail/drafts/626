@@ -1,0 +1,110 @@
+References: <57583434.7080006@dfn-cert.de> <87h99rsvwo.fsf@nordberg.se>
+	<09ddf366-fd4f-74c7-ab9f-7ddfd7270deb@dfn-cert.de>
+	<87mvj9ut2s.fsf@nordberg.se>
+	<6de7b7e8-b45e-6184-be00-24e98b6ae4b3@dfn-cert.de>
+	<2e48b0f3-2031-ec12-6e21-214b71b0e533@dfn-cert.de>
+	<87ziktypcz.fsf@nordberg.se> <87lgwcyhsm.fsf@nordberg.se>
+	<bc331ba7-6f2c-68f8-3e5e-639a865d81e2@dfn-cert.de>
+	<871sxqr1ol.fsf@nordberg.se> <878tqph6ml.fsf@localhost>
+	<866af721-932f-e42b-fecb-c5d2b2b23b95@dfn-cert.de>
+	<87eg07jfv4.fsf@localhost>
+	<203a1943-51dd-944b-a55c-1b940ff14c8c@dfn-cert.de>
+	<87r347hz58.fsf@nordberg.se> <87h94gyk87.fsf@nordberg.se>
+	<87vashij9f.fsf@nordberg.se> <87d1ejzpra.fsf@nordberg.se>
+	<9fc048d5-c46a-27dc-20fa-b537a01f92ec@dfn-cert.de>
+	<A21CC8F4-1241-4F1E-B0C3-53DC083BFA48@kth.se>
+	<077b21a1-b4f5-a210-a048-527bad982dbd@dfn-cert.de>
+X-Draft-From: ("nnimap+adbc:INBOX" 122250)
+Gcc: nnimap+adbc:sent-mail.2017-02
+To: Jan Klever <klever@dfn-cert.de>
+Cc: Magnus Ahltorp <map@kth.se>,  Jürgen Brauckmann <brauckmann@dfn-cert.de>
+Subject: Re: catlfish operations/DFN-CERT
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Jan Klever <klever@dfn-cert.de> wrote
+Thu, 23 Feb 2017 12:14:10 +0100:
+
+> Am 23.02.2017 um 10:54 schrieb Magnus Ahltorp:
+>> getconfig.sh can be invoked like this:
+>>
+>> getconfig.sh <localconfig> <globalconfig> force-compile
+>>
+>> This compiles the configuration even if it is not newer than the old one.
+>> This is useful when the system is not started yet, and will be necessary
+>> when upgrading
+>>
+>> The normal way to run it is like this:
+>>
+>> getconfig.sh <localconfig> <globalconfig> <plopcontrolfile>
+>>
+>> The "plopcontrolfile" argument is a path to a file that contains the port
+>> number of the control port. It is in the current working directory of the
+>> running system, the same directory that log files are written to. In your
+>> case, it will be called "frontend-3.plopcontrol". When running
+>> getconfig.sh in this way, it will only compile the configuration if it is
+>> newer, and also tell the system to reload the configuration. This is
+>> meant to be run in cron periodically.
+>
+> Thank you! I did that, but something im my local configuration seems to be
+> wrong. When I try to start the frontend-3 node, it crashes. Attached you'll
+> find my local configuration and the error-log of the node.
+>
+> Can't make sense of the logging message, sorry.
+
+Don't be sorry. That's normal. :)
+
+The problem is that you have a string in your configuration that's not a
+valid IP address. I think you will have to put IP addresses and not DNS
+names in your local config. This is some
+
+would guess it's unhappy about one of the instances
+of "localhost". Could you try replacing that with "127.0.0.1" for now
+and I'll 
+
+
+>
+> --
+> Jan Klever (Senior PKI Team Member), Phone +49 40 808077-619
+>
+> DFN-CERT Services GmbH, https://www.dfn-cert.de,  Phone  +49 40 808077-580
+> Sitz / Register: Hamburg, AG Hamburg, HRB 88805,  Ust-IdNr.:  DE 232129737
+> Sachsenstraße 5, 20097 Hamburg / Germany, CEO: Dr. Klaus-Peter Kossakowski
+>
+> localnodes:
+>         - frontend-3
+>
+> publichttpaddresses:
+>         frontend-3: localhost:8080
+>
+> ctapiaddresses:
+>         frontend-3: localhost:4711
+>
+> frontendaddresses:
+>         frontend-3: plausible-fe3.ct.nordu.net:8082
+>
+> storageaddresses:
+>         frontend-3: plausible-fe3.ct.nordu.net:8081
+>
+> paths:
+>         configdir: .
+>         knownroots: /services/inst/catlfish/conf/known_roots
+>         https_certfile: /services/inst/catlfish/conf/ssl/plausible-fe3.ct.nordu.net.crt
+>         https_keyfile: /services/inst/catlfish/conf/ssl/plausible-fe3.ct.nordu.net.key
+>         https_cacertfile: /services/inst/catlfish/conf/ssl/nordunet-test-ca.pem
+>         privatekeys: /services/inst/catlfish/conf/keys
+>         db: /services/inst/catlfish/data/plausible
+>
+> dbbackend: permdb
+>
+> ratelimits:
+>         add_chain: 10 per second
+>
+> configurl: https://www.ct.nordu.net/logs/plausible.ct.nordu.net/plausible.cfg
+>
+> logadminkey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE5xWgs7bCMV6s4F5rbJZTArj5MKzB
+>     0A1r7z07hJlAX6eSFc2F3TBkW+gi9KnCfCHIJgaZX0QDTZdaN8XSLN+VhA==
+>
+> 2017-02-23 11:43:04.286 [error] <0.128.0> CRASH REPORT Process <0.128.0> with 0 neighbours exited with reason: no match of right hand value {error,einval} in catlfish_sup:gen_http_config/3 line 24 in gen_server:init_it/6 line 330
+> 2017-02-23 11:43:04.287 [error] <0.126.0> CRASH REPORT Process <0.126.0> with 0 neighbours exited with reason: {{{badmatch,{error,einval}},[{catlfish_sup,gen_http_config,3,[{file,"src/catlfish_sup.erl"},{line,24}]},{lists,map,2,[{file,"lists.erl"},{line,1237}]},{catlfish_sup,init,1,[{file,"src/catlfish_sup.erl"},{line,42}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,243}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,306}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,237}]}]},{catlfish_app,start,[normal,[]]}} in application_master:init/4 line 133
+> 2017-02-23 12:06:53.984 [error] <0.128.0> CRASH REPORT Process <0.128.0> with 0 neighbours exited with reason: no match of right hand value {error,einval} in catlfish_sup:gen_http_config/3 line 24 in gen_server:init_it/6 line 330
+> 2017-02-23 12:06:53.985 [error] <0.126.0> CRASH REPORT Process <0.126.0> with 0 neighbours exited with reason: {{{badmatch,{error,einval}},[{catlfish_sup,gen_http_config,3,[{file,"src/catlfish_sup.erl"},{line,24}]},{lists,map,2,[{file,"lists.erl"},{line,1237}]},{catlfish_sup,init,1,[{file,"src/catlfish_sup.erl"},{line,42}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,243}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,306}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,237}]}]},{catlfish_app,start,[normal,[]]}} in application_master:init/4 line 133

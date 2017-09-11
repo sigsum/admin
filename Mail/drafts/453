@@ -1,0 +1,156 @@
+X-Draft-From: ("nnimap+adbc:lists.misc" 13409)
+Gcc: nnimap+adbc:sent-mail.2016-01
+To: dev@lists.sunet.se 
+Subject: [Ben Hutchings] [SECURITY] [DSA 3440-1] sudo security update
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Oh, nice.
+
+If you're using 'sudoedit' on a file that the user could edit without
+using sudo, the user can edit _any_ file
+
+
+<#part type=message/rfc822 disposition=inline raw=t>
+Return-Path: <bounce-debian-security-announce=linus=nordberg.se@lists.debian.org>
+Delivered-To: linus@adb-centralen.se
+Received: from imap.adb-centralen.se
+	by imap.adb-centralen.se (Dovecot) with LMTP id N4JRHJqxk1a7XgAAnAFZSg
+	for <linus@adb-centralen.se>; Mon, 11 Jan 2016 14:46:07 +0100
+Received: by imap.adb-centralen.se (Postfix, from userid 127)
+	id 2B05A1D6915; Mon, 11 Jan 2016 14:46:07 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on
+	spam.adb-centralen.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-6.9 required=4.0 tests=BAYES_00,RCVD_IN_DNSWL_HI,
+	RCVD_IN_MSPIKE_H3,RCVD_IN_MSPIKE_WL,RP_MATCHES_RCVD autolearn=ham
+	autolearn_force=no version=3.4.1
+Received: from smtp.adb-centralen.se (smtp.adb-centralen.se [193.10.5.129])
+	by imap.adb-centralen.se (Postfix) with ESMTP id B71751D68E6
+	for <linus@nordberg.se>; Mon, 11 Jan 2016 14:46:06 +0100 (CET)
+Received: from bendel.debian.org (bendel.debian.org [82.195.75.100])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id A7031A20180
+	for <linus@nordberg.se>; Mon, 11 Jan 2016 14:46:06 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by bendel.debian.org (Postfix) with QMQP
+	id 2E649DC; Mon, 11 Jan 2016 13:44:04 +0000 (UTC)
+X-Mailbox-Line: From debian-security-announce-request@lists.debian.org  Mon Jan 11 13:44:04 2016
+Old-Return-Path: <corsac@corsac.net>
+X-Original-To: lists-debian-security-announce@bendel.debian.org
+Delivered-To: lists-debian-security-announce@bendel.debian.org
+Received: from localhost (localhost [127.0.0.1])
+	by bendel.debian.org (Postfix) with ESMTP id 4CAC17C
+	for <lists-debian-security-announce@bendel.debian.org>; Mon, 11 Jan 2016 13:43:53 +0000 (UTC)
+X-Virus-Scanned: at lists.debian.org with policy bank moderated
+X-Amavis-Spam-Status: No, score=-11.679 tagged_above=-10000 required=5.3
+	tests=[BAYES_00=-2, DIGITS_LETTERS=1, FVGT_m_MULTI_ODD=0.02,
+	HEADER_FROM_DIFFERENT_DOMAINS=0.001, LDO_WHITELIST=-5,
+	PGPSIGNATURE=-5, RCVD_IN_DNSWL_LOW=-0.7]
+	autolearn=ham autolearn_force=no
+Received: from bendel.debian.org ([127.0.0.1])
+	by localhost (lists.debian.org [127.0.0.1]) (amavisd-new, port 2525)
+	with ESMTP id 2TPK31PyYzHL
+	for <lists-debian-security-announce@bendel.debian.org>;
+	Mon, 11 Jan 2016 13:43:47 +0000 (UTC)
+X-policyd-weight:  DYN_NJABL=ERR(0) NOT_IN_SBL_XBL_SPAMHAUS=-1.5 BL_NJABL=ERR(-1.5) CL_IP_EQ_HELO_IP=-2 (check from: .corsac. - helo: .smtp3-g21.free. - helo-domain: .free.)  FROM/MX_MATCHES_NOT_HELO(DOMAIN)=0; rate: -5
+Received: from smtp3-g21.free.fr (smtp3-g21.free.fr [IPv6:2a01:e0c:1:1599::12])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by bendel.debian.org (Postfix) with ESMTPS id 0831951
+	for <debian-security-announce@lists.debian.org>; Mon, 11 Jan 2016 13:43:34 +0000 (UTC)
+Received: from molly.corsac.net (unknown [IPv6:2a01:e34:ec2f:4e20:ff:ff:fe00:5])
+	by smtp3-g21.free.fr (Postfix) with ESMTPS id 6D54AA6297
+	for <debian-security-announce@lists.debian.org>; Mon, 11 Jan 2016 14:42:28 +0100 (CET)
+Received: from scapa.corsac.net (unknown [IPv6:2a01:e34:ec2f:4e20::ff42])
+	by molly.corsac.net (Postfix) with ESMTPS id 3F34C70
+	for <debian-security-announce@lists.debian.org>; Mon, 11 Jan 2016 14:42:43 +0100 (CET)
+Received: by scapa.corsac.net (Postfix, from userid 1000)
+	id D5B732C77; Mon, 11 Jan 2016 14:42:42 +0100 (CET)
+Date: Mon, 11 Jan 2016 14:42:42 +0100
+From: Ben Hutchings <benh@debian.org>
+To: debian-security-announce@lists.debian.org
+Subject: [SECURITY] [DSA 3440-1] sudo security update
+Message-ID: <20160111134240.GA25794@scapa.corsac.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii; x-action=pgp-signed
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Debian: PGP check passed for security officers
+Priority: urgent
+Reply-To: debian-security@lists.debian.org
+X-Rc-Virus: 2007-09-13_01
+X-Rc-Spam: 2008-11-04_01
+Resent-Message-ID: <1kuR2ZfvB6F.A.ouH.kG7kWB@bendel>
+Resent-From: debian-security-announce@lists.debian.org
+X-Mailing-List: <debian-security-announce@lists.debian.org> archive/latest/2263
+X-Loop: debian-security-announce@lists.debian.org
+List-Id: <debian-security-announce.lists.debian.org>
+List-URL: <http://lists.debian.org/debian-security-announce/>
+List-Post: <mailto:debian-security-announce@lists.debian.org>
+List-Help: <mailto:debian-security-announce-request@lists.debian.org?subject=help>
+List-Subscribe: <mailto:debian-security-announce-request@lists.debian.org?subject=subscribe>
+List-Unsubscribe: <mailto:debian-security-announce-request@lists.debian.org?subject=unsubscribe>
+Precedence: list
+Resent-Sender: debian-security-announce-request@lists.debian.org
+List-Archive: https://lists.debian.org/msgid-search/20160111134240.GA25794@scapa.corsac.net
+Resent-Date: Mon, 11 Jan 2016 13:44:04 +0000 (UTC)
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+- -------------------------------------------------------------------------
+Debian Security Advisory DSA-3440-1                   security@debian.org
+https://www.debian.org/security/                            Ben Hutchings
+January 11, 2016                      https://www.debian.org/security/faq
+- -------------------------------------------------------------------------
+
+Package        : sudo
+CVE ID         : CVE-2015-5602
+Debian Bug     : 804149
+
+When sudo is configured to allow a user to edit files under a directory
+that they can already write to without using sudo, they can actually
+edit (read and write) arbitrary files. Daniel Svartman reported that a
+configuration like this might be introduced unintentionally if the
+editable files are specified using wildcards, for example:
+
+    operator ALL=(root) sudoedit /home/*/*/test.txt
+
+The default behaviour of sudo has been changed so that it does not allow
+editing of a file in a directory that the user can write to, or that is
+reached by following a symlink in a directory that the user can write
+to. These restrictions can be disabled, but this is strongly
+discouraged.
+
+For the oldstable distribution (wheezy), this problem has been fixed
+in version 1.8.5p2-1+nmu3+deb7u1.
+
+For the stable distribution (jessie), this problem has been fixed in
+version 1.8.10p3-1+deb8u3.
+
+For the testing distribution (stretch), this problem has been fixed
+in version 1.8.15-1.1.
+
+For the unstable distribution (sid), this problem has been fixed in
+version 1.8.15-1.1.
+
+We recommend that you upgrade your sudo packages.
+
+Further information about Debian Security Advisories, how to apply
+these updates to your system and frequently asked questions can be
+found at: https://www.debian.org/security/
+
+Mailing list: debian-security-announce@lists.debian.org
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCgAGBQJWk7FLAAoJEG3bU/KmdcClQYwH/3LGjK0rNnxrGTcOwoVMAtWi
+iK89C+0P/GDEuqVjpG+WKArvgwyWBsx9AXrHkyXKq8uFdAuYJ2BzsD1r0zmgtRR9
+8+d9ez9WwJLzrjFjkrvJp2XgWbIPq2n6eEA0W00oJ+rgXNlvs52xBuWVqSThSqus
+b6ta2bIKpGkIotNkXNwEHfCCwMk4BkwECNDXMlIcC9Qz2Gpy8rYSkAyJg4nmcKeb
+6VFVsnVp4l8KU9hnFiRmOw2L/yCbNC/IqiboTAR/m7OJJa6HnJ6ohW6iV+ddy9cO
+rLvsBlbrvP/DUUPqpIiOmjrlmXYuxnSAYaUgbwnq3odwHLn7CbZUovyIkVOCuoo=
+=Yi0D
+-----END PGP SIGNATURE-----
+
+<#/part>

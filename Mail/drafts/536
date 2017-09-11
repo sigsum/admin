@@ -1,0 +1,67 @@
+X-Draft-From: ("nnimap+ndn:INBOX" 68462)
+Gcc: nnimap+adbc:sent-mail.2016-05
+To: Anders Lund <anders.lund@uninett.no>
+Subject: [Linus Nordberg] Ready to take over the radsecproxy mailing list too
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Wed, 04 May 2016 14:28:59 +0200
+--text follows this line--
+Hej Anders!
+
+Fick du det här?
+
+
+<#mml type=message/rfc822 disposition=inline>
+From: Linus Nordberg <linus@nordu.net>
+To: Anders Lund <anders.lund@uninett.no>, kolla@uninett.no 
+Subject: Ready to take over the radsecproxy mailing list too
+Organization: NORDUnet A/S
+X-Draft-From: ("nnimap+ndn:INBOX")
+Date: Mon, 02 May 2016 18:24:30 +0200
+Message-ID: <871t5kpgw1.fsf@nordberg.se>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+
+Hi Anders and Kolbjørn,
+
+NORDUnet is ready to take over the radsecproxy mailing list whenever you
+are.
+
+I think the following steps make sense. Let me know if you have any
+suggested changes or additions to this.
+
+0. You disable subscriptions to radsecproxy@uninett.no and put up a sign
+on the web and possibly in any response messages from your list manager
+that the list has moved to https://lists.nordu.net/admin/radsecproxy/ .
+
+1. I change the information on
+https://software.nordu.net/radsecproxy/contact/ to point at
+https://lists.nordu.net/admin/radsecproxy/ .
+
+2. You send me the list of subscribers of radsecproxy@uninett.no,
+including full names where appropriate.
+
+3. I subscribe them all to radsecproxy@lists.nordu.net without sending
+out a notification.
+
+4. You set up forwarding of email sent to radsecproxy@uninett.no to go
+to radsecproxy@lists.nordu.net.
+
+5. I post a message about upcoming changes to radsecproxy@uninett.no to
+make sure that the forwarding works.
+
+6. You send me the mailing list archives and I try to make them available.
+
+7. I post information to the list saying that the change have been done.
+
+8. I tell you that the archives have been succesfully imported and you
+put up information at
+https://sympa.uninett.no/lists/uninett.no/arc/radsecproxy/ that points
+to http://lists.nordu.net/pipermail/radsecproxy/ but keep your archives
+so that old links keep working. If we can find out how to set up an HTTP
+redirect for each message in your archive, let's do that and you can
+remove your archives.
+
+What do you think?
+
+
+<#/mml>

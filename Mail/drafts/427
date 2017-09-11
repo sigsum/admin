@@ -1,0 +1,178 @@
+References: <87eggwrvou.fsf@nordberg.se> <561FD170.6010606@ritter.vg>
+X-Draft-From: ("nnimap+adbc:INBOX" 105055)
+Gcc: nnimap+adbc:sent-mail.2015-10
+To: Tom Ritter <tom@ritter.vg>
+Cc: dkg@fifthhorseman.net
+Subject: Re: Notes and availability
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Tom Ritter <tom@ritter.vg> wrote
+Thu, 15 Oct 2015 11:16:48 -0500:
+
+| > My availability for phone or IRC until draft cut-off:
+| > Friday 0700-0900 UTC
+| 
+| I can't make this time.
+| 
+| > Monday 0700-23:59 UTC
+| 
+| I'm free 14:00-23:00 UTC
+| 
+| 
+| I will work on my action items below and put them into branches on
+| github when they're complete (with pull requests to Linus' repo).
+| 
+| 
+| Linus:
+| I closed my huge pull request, as you merged it into a branch.
+| I added this pull request to add some small changes to that branch:
+| https://github.com/ln5/draft-ietf-trans-gossip/pull/2
+| 
+| dkg:
+| My github repo is accurate now.
+| branch tjr-yokohama matches Linus's (plus the above commit)
+| branch local-trust-anchor contains the commit for you to improve.
+| 
+| My notes:
+| 
+| Japan Draft must be done by Monday Evening!!!!
+| 
+| #####################################################
+| 
+| The 'x509_chain' element SHOULD contain the leaf certificate and the
+| full chain to a trust anchor that is publicly trusted by the client.
+| A client SHOULD NOT submit certificates that chain to an administratively
+| trusted root, as this represents private client data. If a
+| certificate contains SCTs issued by publicly trusted logs, and chains
+| to an administratively added trust anchor, the client SHOULD submit
+| the 'x509_chain' consisting only of the leaf certificate.
+| 
+| \[
+| tjr: We want to change the 'SHOULD NOT' to something slightly different.
+| \]
+| 
+| ACTION: dkg to revise
+| 
+| -----------------------------------------------------
+| 
+| - 'Escape Valve' question: there are states a client can suspect they
+| have data indicative of an attack, but it's private. What do they do
+| with it?
+| 
+| ACTION: Tom to write up description, send to ln5 and dkg, then to list
+| 
+| -----------------------------------------------------
+| 
+| - Should we have a client not pollinate a brand-new STH and allow other
+| clients the opportunity to retrieve it? Are there any attacks we can
+| come up with from this? (last call resolution was 'Think about for a week.')
+| 
+| DECISION: We don't think the delay will solve any problems, and make it
+| more difficult to reason about the system.
+| 
+| ACTION: The log can hold a STH in reserve and give to a specific client.
+| This attack should be documented. Tom to do so.
+| 
+| -----------------------------------------------------
+| 
+| - log shutdown
+| 
+| ACTION: Ask -bis to describe what log shutdown looks like. Then we refer
+| to that.  dkg to make request.  Current text may be sufficient, but we
+| will adapt as necessary.
+| 
+| -----------------------------------------------------
+| 
+| - The HTTP responses a HTTPS server provides (SCTs and STHs) can be
+| blocked without the server knowing.  (Section "Censorship/Blocking
+| considerations")
+| 
+| ACTION: Tom to update text. This doesn't matter because the other end
+| of this could by a sybil attack anyway.
+| 
+| -----------------------------------------------------
+| 
+| - Is the current description of how we mitigate 'tracking via multiple
+| sths' good enough? Section: #privacy-sth-interaction
+| 
+| ACTION: Tom thinks so, because he wrote it.  ln5 and dkg to consider.
+| 
+| -----------------------------------------------------
+| 
+| - https clients without privacy needs, i.e. robots
+| 
+| ACTION: Specifically call out such clients and explain it as being
+| dangerous. Tom to do.
+| 
+| -----------------------------------------------------
+| 
+| - pollinating inclusion and consistency proofs
+| 
+| DECISION: Do not pollinate inclusion proof.
+| 
+| 
+| STILL TO DECIDE: Do we pollinate consistency proof?
+| Neutral: Doesn't let us detect any additional attacks.
+| Small Advantage: We _may_ avoid fetching other consistency proofs
+| Disadvantage: More complexity. More data.
+| 
+| PROPOSAL: Do not specify in draft, but say we considered it,
+| don't see a strong advantage, and if you have one, say so.
+| 
+| ACTION: ln to decide if he likes proposal?
+| 
+| -----------------------------------------------------
+| 
+| - "There is another similar fingerprinting attack where an HTTPS server
+| tracks a client by using a variation of cert chains. The risk for this
+| attack is accepted on the same grounds as the unique SCT attack
+| described above. \[XXX any mitigations possible here?\]"
+| 
+| ACTION: Discuss this.  Someone start us off.
+| 
+| #####################################################
+| ## More Procedural Questions
+| 
+| - What do we call 'anonymized Proof Fetching' since it isn't anonymous.
+|  "Privacy Preserving Proof Fetching"?
+| 
+| Thoughts?
+| 
+| -----------------------------------------------------
+| 
+| - Should 'Anonymized Proof Fetching' move to another document?
+| 
+| Thoughts?
+| Tom leans against...?
+| 
+| -----------------------------------------------------
+| 
+| - move some of overview into new section "defining the problem"
+| 
+| Thoughts?
+| 
+| #####################################################
+| ## Stuff to Do that isn't necessarily a question *yet*
+| 
+| - Mixing Policy Recommendations, including pulling in references from
+| published papers and the like.
+| 
+| ACTION: Tom to do.
+| 
+| -----------------------------------------------------
+| 
+| - Trusted Auditor Data Format
+| 
+| PROPOSAL: Make a proposal (not in draft) in Yokohama.
+| Flesh this out on list post-yokohama.
+| 
+| -----------------------------------------------------
+| 
+| - various todos through the doc
+| 
+| -----------------------------------------------------
+| 
+| More examples of why DNS is bad
+| 
+| ACTION: Tom to add cleartext leakage language.

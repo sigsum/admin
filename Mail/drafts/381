@@ -1,0 +1,33 @@
+References: <87r3svo3xc.fsf@riseup.net> <20150313182048.GB8201@moria.seul.org>
+X-Draft-From: ("nnimap+adbc:lists.tor.internal" 9705)
+Gcc: nnimap+adbc:sent-mail.2015-03
+To: Roger Dingledine <arma@mit.edu>
+Cc: tor-internal@lists.torproject.org
+Subject: Re: [tor-internal] Adding special to tor-internal?
+Reply-To: tor-internal@lists.torproject.org
+From: Linus Nordberg <linus@torproject.org>
+Date: Sun, 15 Mar 2015 21:05:29 +0100
+--text follows this line--
+Roger Dingledine <arma@mit.edu> wrote
+Fri, 13 Mar 2015 14:20:48 -0400:
+
+| While we are thinking about people to add: here are some other people
+| you might have interacted with last week that you might want to propose
+| adding too. None of them are slam dunks yet, but they each would bring
+| something neat, if we get enough critical mass here of people who want
+| to help make them succeed as part of our community.
+| 
+| Collin Anderson (cda)
+| Jurre van Bergen (drwhax)
+| Ola Bini
+| Jeff Burdges
+| Peter Eckersley (pde)
+| Alison Macrina
+| Fabio Pietrosanti (naif)
+| Mike Tigas
+| Brandon Wiley (blanu)
+
+I'd like to support adding cda, drwhax, ola, alison, naif and blanu.
+
+The lack of support for the others means that I don't know much about
+them, nothing else.

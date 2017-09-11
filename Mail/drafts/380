@@ -1,0 +1,18 @@
+Gcc: nnimap+adbc:sent-mail.2015-03
+To: noc@dfri.net 
+Subject: 
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+--8<---------------cut here---------------start------------->8---
+[root@mail /var/mlmmj/lists.dfri.se]# tail listan/mlmmj.operation.log 
+Wed Feb 18 08:32:36 2015 mlmmj-process: access - A mail from "mig@joelpurra.se" was allowed by rule #1 "allow"
+Sun Feb 22 19:30:24 2015 mlmmj-sub: request for regular subscription from ake.nygren@gmail.com
+Sun Feb 22 19:31:29 2015 mlmmj-sub: ake.nygren@gmail.com confirmed subscription to regular list
+Sun Feb 22 19:31:29 2015 mlmmj-recieve: sending mail from listan+bounces-help@lists.dfri.se to owner
+Wed Feb 25 17:10:28 2015 mlmmj-process: access - A mail from "o.bello4@aol.fr" was allowed by rule #1 "allow"
+Thu Mar  5 09:35:52 2015 mlmmj-process: access - A mail from "sven.ruin@teroc.se" was allowed by rule #1 "allow"
+Thu Mar  5 10:55:24 2015 mlmmj-process: access - A mail from "louise.bradvik@med.lu.se" was allowed by rule #1 "allow"
+Thu Mar  5 19:45:16 2015 mlmmj-process: access - A mail from "erik.josefsson@europarl.europa.eu" was allowed by rule #1 "allow"
+Thu Mar  5 19:54:13 2015 mlmmj-process: access - A mail from "erik.hjalmar.josefsson@gmail.com" was allowed by rule #1 "allow"
+Wed Mar 11 12:44:13 2015 mlmmj-process: access - A mail from "linus@nordberg.se" was allowed by rule #1 "allow"
+--8<---------------cut here---------------end--------------->8---

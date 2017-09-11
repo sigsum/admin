@@ -1,0 +1,80 @@
+References: <56AA9A77.7000302@ritter.vg>
+	<CA+cU71kSiN4b2JM1tGU8HsbjZNL9g-9TN=D+bd5zbqBQXGdG6g@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:INBOX" 111384)
+Gcc: nnimap+adbc:sent-mail.2016-03
+To: Tom Ritter <tom@ritter.vg>
+Cc: Daniel Kahn Gillmor <dkg@fifthhorseman.net>,  yan@mit.edu
+Subject: Re: CT Gossip and Third Party Cookies
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Tom Ritter <tom@ritter.vg> wrote
+Thu, 18 Feb 2016 14:06:48 -0600:
+
+| Hey all. Top-posting the below message that we should have talked
+| about today on our call (but I forgot.)
+| 
+| Anyone have thoughts?
+| 
+| On 28 January 2016 at 16:47, Tom Ritter <tom@ritter.vg> wrote:
+| > Hey Yan, all
+| >
+| > (Yan I don't have a current PGP key for you; FAC78CF7 expired recently)
+| >
+| > When we first talked about gossip with you, you said "You should treat
+| > SCTs like cookies and respect the Third Party Cookie setting" and we
+| > went "Duh, yes, that makes sense, we should."
+| >
+| > Now I think we shouldn't.
+| >
+| > The difference is that ignoring third-party cookies has no security
+| > implications. It doesn't make the user less secure.
+| >
+| > In contrast, ignoring third-party SCTs _does_ make the user less secure.
+| > If the attacker knows they have the setting enabled (and we can assume
+| > they do), then the attacker can MITM that TLS connection with a
+| > mis-issued SCT and know it will never be reported.
+| >
+| > I think it's more appropriate to treat SCTs like HPKP.  Ignoring HPKP on
+| > third party connections would make the user less safe.
+| >
+| > (And I assume browsers store HPKP info on third party connections.)
+| >
+| >
+| > Now if we do this, we are enabling third-party tracking. The attacks
+| > we've identified are 4 (and they apply to first party tracking via SCTs
+| > also):
+| >
+| > 1) Server normally serves SCTs from logs A, B, and C. It tags a client
+| > with a SCT from log D, and can recognize that client later. Limited to
+| > number of logs available.
+| > 2) Server normally servers cert X. It serves the client cert Y with
+| > different SCTs, and recognizes Y later. Limited by how many certs it
+| > wants to get.
+| > 3) Server normally serves cert chain X. It tags a client with cert chain
+| > Y, and can recognize that client later. Limited by... who the f knows
+| > about all the crazy intermediate stuff.
+| > 4) Server colludes with a log to get a bunch of unique SCTs. It can tag
+| > lots of clients with these unique SCTs. Limited by requiring a log to
+| > collude with you.
+| >
+| > [2] is functionally the same as HPKP tracking, as far as I'm able to
+| > think about it. HPKP tracking would require more server requests than
+| > tracking via SCTs... but would be a 100% guaranteed track.  With SCTs,
+| > we intend to encourage (but not require) a probabilistic algorithm that
+| > would mean the server wouldn't be 100% sure that someone connecting to
+| > it _wasn't_ the client it was trying to track.  (But obviously would be
+| > 100% sure if the client did send the tracking information.) I suspect
+| > that the False Negative rate would actually make this fairly comforting,
+| > but perhaps I'm pretending I know more about statistics than I really do.
+| >
+| >
+| > What does everything think? (Do I have my assumption about HPKP correct
+| > on third party requests?)
+| 
+| The ideal situation would be to double-key the third party domain
+| stuff by the first-party domain.  Like Tor Browser does.  But it seems
+| exceptionally unlikely that we would get any browser to actually
+| implement that.  (But we could always mention it as a SHOULD or MAY.)
+
+Is it exceptionally unlikely because implementation complexity or
+something else?

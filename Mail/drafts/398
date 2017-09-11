@@ -1,0 +1,35 @@
+References: <878ucw2n6k.fsf@nordberg.se>
+	<2463C7D1-DA51-47B5-8AE5-81652B00DE34@kth.se>
+	<E25D0AE4-C1B4-4C51-B1C9-270600C4FD4B@kth.se>
+	<87mw1b1qib.fsf@nordberg.se>
+	<CD893F3B-A69C-4ED3-B34A-8C6ED9214E95@kth.se>
+X-Draft-From: ("nnimap+ndn:INBOX" 57794)
+Gcc: nnimap+adbc:sent-mail.2015-05
+To: Magnus Ahltorp <map@kth.se>
+Subject: Re: plausible har fastnat
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Magnus Ahltorp <map@kth.se> wrote
+Mon, 11 May 2015 10:51:07 +0200:
+
+| Den borde alltså inte se ut så här:
+| 
+| deserialise_extra_data(ExtraData) ->
+|      case decode_tls_vector(ExtraData, 3) of
+|          {E, <<>>} ->
+|              [E];
+|         {E, Rest} ->
+|              [E | deserialise_extra_data(Rest)]
+|      end.
+| 
+| utan så här:
+| 
+| deserialise_extra_data(<<>>) ->
+| 	[];
+| deserialise_extra_data(ExtraData) ->
+|      {E, Rest} = decode_tls_vector(ExtraData, 3)
+|      [E | deserialise_extra_data(Rest)].
+| 
+| ungefär.
+

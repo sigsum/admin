@@ -1,0 +1,71 @@
+References: <RT-Ticket-2675@IPNett_Cloud_Services>
+	<20170207122032.GA5838@b3767762d518520f8bd1e23a>
+	<rt-4.2.8-20002-1486472547-979.2675-3-0@IPNett_Cloud_Services>
+	<20170208123307.GA16960@8ba775bbff18b26f9f868720>
+	<rt-4.2.8-20002-1486562324-1021.2675-3-0@IPNett_Cloud_Services>
+	<20170214095929.GA9024@978123b8e1b91e8bab09b0ca>
+	<rt-4.2.8-29666-1487066405-235.2675-5-0@IPNett_Cloud_Services>
+	<87r32zv4o8.fsf@nordberg.se>
+	<rt-4.2.8-30334-1487173536-1242.2675-3-0@IPNett_Cloud_Services>
+	<00c601d287a5$6a71c440$3f554cc0$@safespring.com>
+	<rt-4.2.8-30334-1487174775-183.2675-5-0@IPNett_Cloud_Services>
+X-Draft-From: ("nnimap+ndn:INBOX" 75476)
+Gcc: nnimap+adbc:sent-mail.2017-02
+To: "Jan Munkhammar via RT" <iaas@cloud.ipnett.se>
+Cc: peter@palfrader.org,  pettai@nordu.net
+Subject: Re: [IaaS #2675] Project networks
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+OK, my bad.
+
+So I've got 89.45.235.19 attached as floating IP. And I got packets
+through (after fiddling around a bit and rebooting my instance).
+
+Yes, r2 is weird. I tried to delete all those strange interfaces
+yesterday but they just popped back up. I should probably create a new
+router.
+
+IPv6, there's something going on with the routing at Sunet but
+2001:6b0:5a:5000::3 is reachable from 
+
+flogsta:~% traceroute6 2001:6b0:5a:5000::3
+traceroute to 2001:6b0:5a:5000::3 (2001:6b0:5a:5000::3), 30 hops max, 80 byte packets
+ 1  m1tug-xe-4-3-2.sunet.se (2001:6b0:7:1::1)  0.320 ms  0.275 ms  0.273 ms
+ 2  baas.sunet.se (2001:6b0:1e:100d::3)  0.734 ms !H  0.857 ms !H  0.836 ms !H
+flogsta:~% 
+
+
+"Jan Munkhammar via RT" <iaas@cloud.ipnett.se> wrote
+Wed, 15 Feb 2017 17:06:15 +0100:
+
+> Hi, it depends which network you tried to attach. I just attached your
+> instanse to net2 and then you can associate a fip from
+> torproject-netv4. The router r2 do look a bit odd with all it's
+> interfaces. Normally you have "local net"<=>"router"<=>"ext net" but
+> this might be the way you want it.
+>
+> The torproject-netv6 should be possible to directly attach to an instance. What net did you try to attach?
+>
+> BR, Jan
+>
+> -----Original Message-----
+> From: Linus Nordberg via RT [mailto:iaas@cloud.ipnett.se] 
+> Sent: den 15 februari 2017 16:46
+> Subject: Re: [IaaS #2675] Project networks
+>
+>
+> <URL: https://rt.cloud.ipnett.se/Ticket/Display.html?id=2675 >
+>
+> "Johan Belin via RT" <iaas@cloud.ipnett.se> wrote Tue, 14 Feb 2017 11:00:05 +0100:
+>
+>> We have delegated 89.45.235.16/28 and 2001:6b0:5a:5000::/64 to 
+>> ns[1-5].torproject.org. Is there anything else we can do or can we 
+>> close this ticket?
+>
+> I'm trying to verify that these networks get routed to a test instance
+> (linus-test-3) by:
+>
+> Attach Interface (dropdown) -> torproject-netv4 (dropdown) -> Attach Interface (button) -> Working (window) -> "Error: Unable to attach interface." (red window)
+>
+> What should I do differently?

@@ -1,0 +1,44 @@
+References: <CAGDCdM7fpxx_BfJeqyLAsVLFSQ4LCH86ko2OJp0USZxToJ+-TQ@mail.gmail.com>
+X-Draft-From: ("nnimap+ndn:INBOX" 75694)
+Gcc: nnimap+adbc:sent-mail.2017-02
+To: Paul Hadfield <hadfieldp@google.com>
+cc: Magnus Ahltorp <map@kth.se> 
+Subject: Re: plausible.ct.nordu.net get-entries responses
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Fri, 24 Feb 2017 16:50:15 +0100
+--text follows this line--
+Paul Hadfield <hadfieldp@google.com> wrote
+Fri, 24 Feb 2017 15:35:23 +0000:
+
+> Hi Linus,
+>
+> so, forking this from the other thread.
+>
+> Our merge delay probe does the following:
+>   - get-sth
+>   - add-chain or add-pre-chain
+>   - get-sth ; sleep until it sees the tree grow
+>   - get-entries repeatedly, until it finds the probe cert (if it doesn't it
+> sleeps awhile then goes back to the previous step)
+>   - verify that the entry found matches the chain added
+>   - get-proof-by-hash ; verify proof
+>   - get-sth-consistency ; verify proof
+>
+> With plausible, it has been bailing out after the 'verify the entry matches
+> the chain' step.
+>
+> The reason is that the number of certs returned in the get-entries response
+> doesn't match the length of the chain added.  The most likely explanation
+> is that perhaps the root cert is being omitted?
+
+   "certificate_chain" is a chain of additional certificates required to
+   verify the end-entity certificate.  The first certificate MUST
+   certify the end-entity certificate.  Each following certificate MUST
+   directly certify the one preceding it.  The final certificate MUST be
+   a root certificate accepted by the log.
+
+
+> I will need to delve into our audit database to find some exact examples,
+> but wanted to give you an overview now.
+

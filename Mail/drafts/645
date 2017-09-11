@@ -1,0 +1,30 @@
+References: <CAFewVt5z3sq-Occ1VaHeNeBvt1yyCM_3_nssZSu2f_PBEL4SFQ@mail.gmail.com>
+	<CA+cU71kBmKsxyvsmpuF6UAzP+fict3v62gEq_iKY-O2P07ZRLw@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:lists.ietf.trans" 2840)
+Gcc: nnimap+adbc:sent-mail.2017-05
+To: Tom Ritter <tom@ritter.vg>
+Cc: trans@ietf.org
+Subject: Re: [Trans] The RFC6979 requirement in RFC6962-bis is bad
+Organization: Sunet
+From: Linus Nordberg <linus@sunet.se>
+--text follows this line--
+Tom Ritter <tom@ritter.vg> wrote
+Mon, 8 May 2017 12:38:45 -0500:
+
+> If a log and server colluded to issue and serve different SCT
+> signatures for the same SCT, there are no great options to detect it:
+>
+> - very complicated logic in the client
+> - auditors performing aggressive fake-client spidering from multiple
+> network vantage points combined with significant refactoring and data
+> storage requirements
+> - the SCT Feedback part of the Gossip draft combined with the auditor changes
+>
+> As far as the concern of this attack goes: without long-term storage
+> of the SCT (such as that in SCT Feedback) - the impact is minimal when
+> it comes to log+webserver-collaboration-for-tracking.
+>
+> But the log is still able to send different SCTs out and can do this
+> without the server participating. With the distribution part outside
+> the log's control it's not as effective, and more turns into a game of
+> "I wonder what happens...". (I think.)

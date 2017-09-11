@@ -1,0 +1,25 @@
+From: Linus Nordberg <linus@nordu.net>
+To: radsecproxy@uninett.no 
+Subject: radsecproxy-1.6.7 has been released
+Organization: NORDUnet A/S
+User-Agent: Gnus/5.13 (Gnus v5.13)
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2016-03
+Date: Mon, 14 Mar 2016 16:20:37 +0100
+--text follows this line--
+<#secure method=pgpmime mode=sign>
+Hi,
+
+radsecproxy-1.6.7 has been released. We think it's the best radsecproxy
+release ever. Here's what the ChangeLog has to say about this release:
+
+	Enhancements (security):
+	- Negotiate TLS1.1, TLS1.2 and DTLS1.2 when possible, client and
+	server side. Fixes RADSECPROXY-62.
+
+	Enhancements:
+	- Build HTML documentation properly.
+
+Pick it up from https://software.nordu.net/radsecproxy/ .
+
+Thanks to those of you who've helped testing this release!

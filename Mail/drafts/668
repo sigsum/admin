@@ -1,0 +1,13 @@
+Gcc: nnimap+adbc:sent-mail.2017-05
+To: dfri-intern-moderators@lists.dfri.se
+Subject: Tror jag sätter upp SA
+From: Linus Nordberg <linus@nordberg.se>
+Date: Mon, 22 May 2017 19:20:53 +0200
+--text follows this line--
+Hej moderatorer!
+
+Mycket spam här. För den som har vitlistat modereringsmejl från DFRI i
+sin lokala spamtvätt alltså.
+
+Sugen på att sätta upp SpamAssassin på mail.dfri.se och säga åt min egen
+SA att lita på spamindikerings-headers från mail.dfri.se

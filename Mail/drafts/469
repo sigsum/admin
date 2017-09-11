@@ -1,0 +1,28 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2016-02
+To:
+Subject: 
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Wed, 10 Feb 2016 10:47:48 +0100
+--text follows this line--
+Hej Roland!
+
+Lite bakgrund till varför saker och ting inte ser så imponerande ut på
+pappret vad gäller JRA3T2.
+
+CC Leif som varit i loopen hela tiden.
+
+Den första stora grejen gäller drift av en officiell log. NORDUnet vill
+inte driva en CT-log, något jag inte hade räknat med skulle bli ett
+problem för ca ett år sedan när vi var redo att dra igång skarpt. Det
+har varit många turer fram och tillbaka och just nu ligger bollen hos
+Lars Fischer som tydligen har sålt in drift av CT-log hos GÉANT's nya
+CEO. Chansen finns att GÉANT hostar upp pengar som gör NORDUnet mer
+intresserade. Risken finns att GÉANT lägger driften i sin egen NOC.
+
+Det andra är att jag ägnar en del tid åt skunkjobb med relaterade
+log-lösningar som en "general append-only log" (gaol) och DNSSEC
+Transparency.
+
+

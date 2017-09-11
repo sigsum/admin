@@ -1,0 +1,83 @@
+References: <CABrd9SQu1cHzhPXgrNj9eAb_0-4rxDyfHhiR3hmjvbLDcir__w@mail.gmail.com>
+	<CA+cU71=O7Lf3L7ia51V82DK3TVn11U8vo66jJiRwc6BffODgFA@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:lists.ietf.trans" 969)
+Gcc: nnimap+adbc:sent-mail.2015-05
+To: Tom Ritter <tom@ritter.vg>
+Cc: Ben Laurie <benl@google.com>,  "trans@ietf.org" <trans@ietf.org>
+Subject: Re: [Trans] draft-linus-trans-gossip-ct-01: gossiping STHs
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Mon, 18 May 2015 09:27:04 +0200
+--text follows this line--
+Tom Ritter <tom@ritter.vg> wrote
+Wed, 25 Mar 2015 09:10:19 -0500:
+
+| On 24 March 2015 at 16:48, Ben Laurie <benl@google.com> wrote:
+| > If TLS clients and servers send each other STHs, then realistically, there
+| > is no privacy issue: everyone has all STHs.
+| 
+| I had thought about this for a while, I'm going to outline my train of
+| thought as briefly as I can, but it'll still be a tad long.
+
+Commenting on the usefulness of STH's, cutting text about how clients
+would get them.
+
+
+| A STH is minorly useful, in that it's a signed statement we may catch
+| a log having lied about.  But without an inclusion proof for a SCT, a
+| STH is just a dead piece of data the client holds and then gives to
+| someone in the hope it's useful later. Assume a client gets an
+| inclusion proof along with an STH. This is one more component of the
+| lie, but still, is just dead data that does not significantly help the
+| client.
+
+| Are STH's (by themselves) even useful for detecting misissuance? No.
+| If we assume a log will misbehave we have to assume a log will try to
+| cover up it's misbehavior. This means an SCT will have a valid STH
+| associated, and that a log will be willing to continue a 'fork'
+| (including all other SCTs, so differing in only a single node)
+| essentially forever in the hope of not getting caught.  So assume the
+| STH 'branch' extends from the point of misissuance until present day.
+| So we need consistency proofs.
+| 
+| An STH (even on the misissuance branch) is not useful without linking
+| that STH to another STH. There is value in linking STHs with
+| consistency proofs - if one cannot get a consistency proof between two
+| STH's _then_ you've detected log misbehavior. But how does someone get
+| consistency proofs? They can only come from the log. So either the
+| client attempts to resolve consistency proofs itself (this brings us
+| back to the original problem of asking a log or proxies, so we rule
+| this out) or the client passes on STH's for someone else to resolve
+| consistency proofs.
+
+
+
+| Of note: if I've been attacked, and have a STH on a misissuance branch
+| I will _never_ just 'happen' to get a consistency proof that shows
+| it's an attack. I'll always have an STH hanging out I can't connect,
+| but also can't be certain _isn't_ connected. I can _only_ detect
+| misissuance by _actively_ querying a log for a consistency proof
+| between by misissuance STH and a valid STH.
+
+
+| Gossiping STHs seems natural, but I could not arrive at a way to
+| connect all the data in a privacy preserving manner.  If we follow
+| strict privacy protection this is what I arrived at:
+| A) Clients get STH's (from servers I must conclude) but don't care
+| about them. (Or they get STH's + Inclusion Proofs and validate the
+| proof)
+| B) Clients pass the STH back to someone (which must be the server it
+| got it from.  (Or a opt-in trusted auditor))
+| C) An auditor collects the STHs from somewhere (must be servers
+| following from (B)) and retrieves consistency proofs between them.
+| 
+| Misissuance is detected at (C). Because the client itself does not do
+| anything with a STH, and because a SCT will always resolve to an STH,
+| it seemed like it would be both simpler and bandwidth reduction to
+| just cut it out.
+
+How do auditors get STH's if not from TLS clients? They ask logs.
+
+But how do auditors get "false" STH's aimed for a subset of the TLS
+clients on the internet? If the attack is MITM:ing TLS client->web
+server, feeding 

@@ -1,0 +1,81 @@
+References: <87lh5he62o.fsf@localhost>
+	<8C78E6AE-41F3-459C-9495-A1224001EE40@torproject.org>
+X-Draft-From: ("nnimap+adbc:lists.tor.dev" 8557)
+Gcc: nnimap+adbc:sent-mail.2016-03
+To: Arlo Breault <arlo@torproject.org>
+Cc: tor-dev@lists.torproject.org
+Subject: Re: [tor-dev] What does TorBulkExitList.py return?
+From: Linus Nordberg <linus@torproject.org>
+Date: Thu, 17 Mar 2016 21:51:54 +0100
+--text follows this line--
+Arlo Breault <arlo@torproject.org> wrote
+Thu, 17 Mar 2016 09:22:43 -0700:
+
+| > Point in case: Earlier today the list from TorBulkExitList.py contained
+| > 58% more addresses than exit-addresses:
+| > 
+| > --8<---------------cut here---------------start------------->8---
+| > $ curl-tor -q
+| > 'https://check.torproject.org/cgi-bin/TorBulkExitList.py?ip=8.8.8.8'
+| > | egrep -v ^# | wc -l
+| > 1554
+| > $ curl-tor -q https://check.torproject.org/exit-addresses | egrep
+| > ^ExitNode | wc -l
+| > 985
+| 
+| Shouldn't this grep `ExitAddress`?
+| (which only adds 3 right now)
+
+True, better.
+
+
+| > --8<---------------cut here---------------end--------------->8---
+| > 
+| > Counting relays with the Exit flag in a consensus of roughly the same
+| > time gives 912:
+| > 
+| > --8<---------------cut here---------------start------------->8---
+| > $ curl-tor -q
+| > http://171.25.193.9:443/tor/status-vote/current/consensus | egrep
+| > '^s.*Exit' | wc -l
+| > 912
+| > --8<---------------cut here---------------end--------------->8---
+| > 
+| > 
+| > If I read the code [check.py][exitips.py] correctly, we include the
+| > following IP addresses in what is served from [TorBulkExitList.py]:
+| > 
+| > - all routers in the current consensus
+| >  - with exit addresses from TorDNSEL file(s) added
+| > - for which stem's exit_policy.is_exiting_allowed() returns true
+| 
+| 
+| It's more like,
+| 
+| - all routers in the past 16 consensuses
+| - for which stem's exit_policy.is_exiting_allowed() returns true
+| 
+| but it also includes all ips it has ever known for a relay,
+| https://gitweb.torproject.org/check.git/commit/?id=026e43b08656d78398b15742ddf51s0f6b17f859ewhich seems a little suspect.
+| 
+| 
+| > I haven't read any TorDNSEL code and don't know exactly what above
+| > mentioned TorDNSEL file(s) are but I think they include results from
+| > active testing of what address exit relays really use for exiting.
+| 
+| Yup, that's it.
+| 
+| 
+| > [exit-addresses] seems to be from TorDNSEL too but holding more of a
+| > snapshot while the files mentioned above supposedly cover some period of
+| > time.
+| 
+| Yes.
+| 
+| 
+| > Before I dig further, perhaps someone here already know why the numbers
+| > differ so? I wouldn't expect the churn of addresses used for exiting to
+| > be high enough to explain the difference.
+| 
+| If the numbers don't add up, can you file a bug?
+

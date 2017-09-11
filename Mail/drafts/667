@@ -1,0 +1,162 @@
+References: <CALzYgEe+PbYJN6Zz4NnPXBnnhYCi8Op-WmSzFKGxRv+uf+b=sA@mail.gmail.com>
+	<20170504082636.dd0212e34e17949eb69b2fed@andrewayer.name>
+	<CAFDDyk93AcRsCTmt+EPO6VFn-Y4D8g1ETTdGuJrtVk3rH7Xnxg@mail.gmail.com>
+	<20170504123447.41d957a88bd65417e714be78@andrewayer.name>
+	<CAFDDyk-DyBObm2W96R1dZPET-CWwTnitmonkHV2oT+_GH4Gyew@mail.gmail.com>
+	<20170505100910.f3da472d9ad71d1d540b8b62@andrewayer.name>
+	<87lgq7j6a3.fsf@nordberg.se>
+	<CALzYgEeXq0iwJTOfcRUQPR49=Xaqvd21nR=Tk5C884xyGehRuQ@mail.gmail.com>
+	<20170516221717.c05a62d681ecd64322bdc682@andrewayer.name>
+	<CALzYgEdgDSOTTL3BdBFCZCLmH6Z=c==m53d3KO-oKu2RFt4cqQ@mail.gmail.com>
+	<CACM=_OdZy2wyNZo4GMtOSdmanzBhyw=SKr=DOOSS9h05V80arw@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:lists.ietf.trans" 2897)
+Gcc: nnimap+adbc:sent-mail.2017-05
+To: Al Cutter <al@google.com>
+Cc: Eran Messeri <eranm@google.com>,  "trans@ietf.org" <trans@ietf.org>,  Andrew Ayer <agwa@andrewayer.name>
+Subject: Re: [Trans] Providing the history of STHs a log has issued (in 6962-bis)
+Organization: Sunet
+From: Linus Nordberg <linus@sunet.se>
+Date: Mon, 22 May 2017 15:46:18 +0200
+--text follows this line--
+Al Cutter <al@google.com> wrote
+Fri, 19 May 2017 18:44:31 +0100:
+
+> On Fri, May 19, 2017 at 3:49 PM, Eran Messeri <eranm@google.com> wrote:
+>
+>> Following an out-of-band discussion with Andrew (summarized below), I
+>> propose the following, to make progress on 6962-bis:
+>> * Add get-sths as a mandatory API.
+>>
+> * Defer discussion on chaining of STHs to a follow-up document: It's
+>> evident that we need to do more thinking about it. Since we have an STH
+>> extensions mechanism, an extension including a reference to a past STHs can
+>> be added in a later document.
+>>
+>
+> In the ticket you said:
+> "The problem it [get-sths API] solves is the lack of ability to verify that
+> the log did not breach the MMD throughout its lifetime: A submission's
+> timestamp is available via get-entries, but unless a monitor has observed
+> STHs issued by the log around the time an entry was created for it, there's
+> no proof that the entry was incorporated within the MMD."
+>
+> but you later acknowledged that a get-sths API without some extra sprinkles
+> *somewhere* doesn't actually solve that problem because there's nothing
+> stopping a Log from going back and creating a few extra "old" STHs to
+> cover, say, a period when its signing infrastructure was down, which it'll
+> happily return to you when you call get-sths at a later date.
+>
+> I admit I'm not really that familiar with process of defining RFCs, but it
+> seems weird to me to add a mandatory API, which, as defined in the standard
+> which makes it mandatory, doesn't solve the problem it was added to solve...
+
++1
+
+
+>> It seems to me that STH chaining is set out to achieve a goal that's
+>> different than how CT currently operates; I'm also not confident it can
+>> achieve this goal. Because further discussion on both topics is necessary,
+>> I don't think it's right to add this feature to 6962-bis yet or gate
+>> 6962-bis on it.
+>>
+>
+>> CT's current design aims to detect a single log presenting different views
+>> (i.e. different trees) to different parties by exchanging STHs between
+>> observers.
+>> A variant with stronger security guarantees aims to have individual
+>> clients have the entire STH history so they cannot be presented with
+>> inclusion proofs to different trees at different times. Chaining STHs aims
+>> to achieve that (as far as I understand).
+>>
+>> However it seems to me chaining STHs does not prevent a client, that
+>> fetches STHs individually, from being tricked into accepting inclusion
+>> proofs to different trees presented by the same log:
+>>
+>> A log could produce the following chain of STHs:
+>> STH 1 with root hash Z, then STH 2 with root hash Y = HASH(Z ||
+>> hash(entry_1)), prev_hash = Z, then STH 3 with root hash X = HASH(Z ||
+>> hash(entry_2)), prev_hash = Y (assuming the tree size with STH1 is an exact
+>> power of 2, just for simplicity, as the new root hash would be exactly
+>> HASH(0x01 || Z || hash(new entry))).
+>> STH 1 chains to STH 2 that chains to STH 3, but STH 2 and STH 3 each have,
+>> as their root hash, hash of Z, appending a different entry every time (the
+>> tree is forked at root hash Z).
+>> To the rest of the world, the log would present a chain of hashes that is
+>> STH 1 and  STH 3' - which has the same root hash as STH 3 but prev_hash = Z.
+>> The client could not know that it's being presented with a chain of STHs
+>> that are for different trees unless it has consistency proofs between
+>> (STH1, STH2) and (STH2, STH3).
+>>
+>
+>> It seems to me that:
+>> - Clients still need to get (via push or pull) consistency proofs between
+>> STHs and validate them.
+>> - STHs still have to be gossiped for a single entity (monitor) to be in
+>> possession of STHs that cannot be proven consistent.
+>>
+>
+> The hash chaining is only a commitment to a claim of which blob is the
+> immediate predecessor of this other blob, you still need to verify the
+> correctness of the blobs in context, of course.
+>
+> At least for the monitoring-MMD use-case, it seems like a similar thing
+> could be achieved by requiring Logs to also log their own STHs, even
+> allowing for the vagaries of pending queues that'd put an MMD-sized window
+> on how far back in time a log could create old STHs to cover up MMD-blown
+> fails.
+
+What about requiring logs to add an entry containing the timestamp of
+the STH they're about to issue? This can be thought of as a "pre-STH"
+and could also include the tree size of the STH to be issued (even if
+that's implied by the entries position in the log) but obviously not
+tree head, nor signature. (It could include the tree size of the
+previous "pre-STH" as well, for efficient retrieval of all (information
+regarding) STH's.)
+
+A reason for requiring this is that it makes the log commit to each and
+every STH it's issuing, helping clients to make sure a log doesn't
+violate its STH frequency count. At the time of receiving the STH, no
+less.
+
+A reason for at least _allowing_ this is that it makes it possible for
+log implemenations to not have to remember another piece of data across
+disk crashes, network failures, etc. In our particular case, the only
+data we can remember with certainty are submitted cert chains and the
+tree, besides log configuration.
+
+This can of course be combined with adding the whole STH, including the
+actual signature, _after_ it has been minted and published through
+get-sth, if that's useful.
+
+
+> The monitors wouldn't then need a get-sths call (although if there were
+> other use cases for that API then the results from it would at least be
+> verifiable by monitors).
+> A thought is that you'd then have the ability to query a Log using
+> get-proof-by-hash for an STH you're holding to see if it can prove it was
+> logged, I'm not sure if that's useful at the moment, but my Friday evening
+> brain finds it amusing for some reason.
+>
+> The obvious next step would be to require Logs to log their STHs with a
+> quorum of other Logs. Assuming all Logs are not collaborating, that makes
+> it quite a lot harder for anyone to pull off split views, and of course you
+> can now do the same get-proof-by-hash call for your STH on other logs now,
+> if you didn't mind trying a a number of logs (or if you already knew in
+> which Logs to look*).
+>
+> *perhaps the set of target logs for a given STH could be defined by some
+> function of the day or week that the STH timestamp corresponds to -
+> something which changes infrequently enough that Logs can't simply not
+> issue an STH during that period or they'd blow their MMD - the intention
+> being to narrow the set of logs you'd have to look in, but also make it
+> harder to to choose colluding Logs.
+
+Requiring STH's to be logged in other logs is interesting. It would
+change a bunch of things for logs, like adding another configuration
+item as well as require logs to make outbound calls. Possibly
+neglectable, but in need of analysis also from an operations
+perspective.
+
+
+While possibly useful, none of this is strictly required for 6962bis in
+my opinion.

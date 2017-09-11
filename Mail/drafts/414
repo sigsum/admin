@@ -1,0 +1,65 @@
+X-Draft-From: ("nnimap+adbc:INBOX")
+Gcc: nnimap+adbc:sent-mail.2015-07
+To: cii-core@lists.coreinfrastructure.org
+Subject: Go to gaol
+From: Linus Nordberg <linus@nordberg.se>
+Date: Fri, 17 Jul 2015 20:42:05 +0200
+--text follows this line--
+Hi,
+
+As discussed in Madrid, here's an instance of a wide open general
+append-only log that should help you get started playing with logs if
+you're interested in that.
+
+It's running at
+
+  https://open.gaol.ct.nordu.net:8080/
+
+currently serving a certificate from a toy CA which root cert can be
+found at
+
+  https://www.ct.nordu.net/open-gaol.cacert.pem
+
+The log key can be found at
+
+  https://www.ct.nordu.net/open-gaol.logkey.pem
+
+There should be a new tree head every 10 minutes.
+
+
+The API is like RFC6962 with the following differences:
+
+- ct/v1/add-chain is replaced by ct/v1/add-blob which input is 'blob'
+  rather than 'chain'
+
+- There's no ct/v1/add-pre-chain
+
+Example of how to get an STH:
+
+  curl -s --cacert open-gaol.cacert.pem https://open.gaol.ct.nordu.net:8080/ct/v1/get-sth
+
+Submitting some data:
+
+  printf '{"blob": ["my stuff"]}' | curl -s --cacert open-gaol.cacert.pem --data @- https://open.gaol.ct.nordu.net:8080/ct/v1/add-blob
+
+
+This instance currently has a storage quorum of 1 and is susceptible to
+sudden disappearance should the right (wrong) disks die. Another reason
+for disappearance is if the log is abused for material that we can't
+publish for legal reasons. Please be kind.
+
+If you want to help out by running an additional frontend and storage
+node for this log, please let me know and I will help you get going. The
+source code and some very sparse documentation can be found by cloning
+the following repos:
+
+  https://git.nordu.net/catlfish.git
+  https://git.nordu.net/plop.git
+  https://git.nordu.net/catlfish-dockerfiles.git
+  
+This log instance is running the 'gaol' branch of catlfish.
+
+More info about this software can be found at
+
+  https://www.ct.nordu.net/
+  

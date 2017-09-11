@@ -1,0 +1,18 @@
+Gcc: nnimap+adbc:sent-mail.2015-02
+To: bugzilla-admin@mozilla.org
+Subject: Account creation
+From: Linus Nordberg <linus@nordberg.se>
+Date: Fri, 06 Feb 2015 14:31:29 +0100
+X-Draft-From: ("nnimap+adbc:INBOX" 94798)
+--text follows this line--
+Hi,
+
+https://bugzilla.mozilla.org/createaccount.cgi says "User account
+creation has been restricted."
+
+Is it possible that this is related to which IP address I connect from?
+I'm connecting over Tor and use one of ~1000 Tor exit relays to reach
+your service. I can see how this could be a problem (spam).
+
+Are there any alternative ways to create a bugzilla account?
+

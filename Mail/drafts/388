@@ -1,0 +1,40 @@
+Gcc: nnimap+adbc:sent-mail.2015-03
+To: 
+Subject: 
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+linus@f0:~$ cd /home/linus/ctlog/flimsy/catlfish
+linus@f0:~/ctlog/flimsy/catlfish$ (cd rel; bin/erl -config catlfish)
+Erlang R16B03 (erts-5.10.4) [source] [64-bit] [smp:24:24] [async-threads:10] [kernel-poll:false]
+
+
+=ERROR REPORT==== 24-Mar-2015::14:35:41 ===
+** Generic server ht terminating 
+** Last message in was {reset_tree,[1756714]}
+** When Server state == {tree,-1,-1,{tree_store,{array,0,10,undefined,10}}}
+** Reason for termination == 
+** {timeout,{gen_server,call,[db,{get_by_indices,{0,1756714,true}}]}}
+
+=INFO REPORT==== 24-Mar-2015::14:35:51 ===
+    application: plop
+    exited: {{shutdown,
+                 {failed_to_start_child,the_plop,
+                     {badarg,
+                         [{erlang,process_info,
+                              [undefined,current_stacktrace],
+                              []},
+                          {stacktrace,call,2,
+                              [{file,"src/stacktrace.erl"},{line,12}]},
+                          {plop,init,1,[{file,"src/plop.erl"},{line,101}]},
+                          {gen_server,init_it,6,
+                              [{file,"gen_server.erl"},{line,304}]},
+                          {proc_lib,init_p_do_apply,3,
+                              [{file,"proc_lib.erl"},{line,239}]}]}}},
+             {plop_app,start,
+                 [normal,["test/eckey.pem","test/eckey-public.pem"]]}}
+    type: permanent
+{"Kernel pid terminated",application_controller,"{application_start_failure,plop,{{shutdown,{failed_to_start_child,the_plop,{badarg,[{erlang,process_info,[undefined,current_stacktrace],[]},{stacktrace,call,2,[{file,\"src/stacktrace.erl\"},{line,12}]},{plop,init,1,[{file,\"src/plop.erl\"},{line,101}]},{gen_server,init_it,6,[{file,\"gen_server.erl\"},{line,304}]},{proc_lib,init_p_do_apply,3,[{file,\"proc_lib.erl\"},{line,239}]}]}}},{plop_app,start,[normal,[\"test/eckey.pem\",\"test/eckey-public.pem\"]]}}}"}
+
+Crash dump was written to: erl_crash.dump
+Kernel pid terminated (application_controller) ({application_start_failure,plop,{{shutdown,{failed_to_start_child,the_plop,{badarg,[{erlang,process_info,[undefined,current_stacktrace],[]},{stacktrac
+linus@f0:~/ctlog/flimsy/catlfish$ 

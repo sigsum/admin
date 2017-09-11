@@ -1,0 +1,113 @@
+References: <alpine.DEB.2.03.1709071346180.14263@lrz.de>
+	<87y3pq8vjd.fsf@nordberg.se>
+	<alpine.DEB.2.03.1709110943390.14926@lrz.de>
+X-Draft-From: ("nnimap+sunet:INBOX" 18639)
+Gcc: nnimap+adbc:sent-mail.2017-09
+To: David Schmitz <David.Schmitz@lrz.de>
+Cc: map@kth.se,  Ivana Golub <ivana.pezelj.golub@gmail.com>
+Subject: Re: Draft for Security-Session Presentation at GEANT-Symposium
+Organization: Sunet
+From: Linus Nordberg <linus@sunet.se>
+--text follows this line--
+David Schmitz <David.Schmitz@lrz.de> wrote
+Mon, 11 Sep 2017 09:53:15 +0200 (CEST):
+
+> Hi Linus,
+>
+> On Thu, 7 Sep 2017, Linus Nordberg wrote:
+>
+>> Date: Thu, 07 Sep 2017 15:53:26 +0200
+>> From: Linus Nordberg <linus@sunet.se>
+>> To: David Schmitz <David.Schmitz@lrz.de>
+>> Cc: map@kth.se, Ivana Golub <ivana.pezelj.golub@gmail.com>
+>> Subject: Re: Draft for Security-Session Presentation at GEANT-Symposium
+>>
+>> David Schmitz <David.Schmitz@lrz.de> wrote
+>> Thu, 7 Sep 2017 13:54:49 +0200 (CEST):
+>>
+>>> Any comments are welcome.
+>>
+>>  => discover illegitimate domain certificates from untrusted CAs issued
+>>  without knowledge/approval of domain
+>>
+>> An untrusted CA is not a threat to anyone. I suggest removing "untrusted".
+>>
+>> "Illegitimate" might be OK for this audience but is generally a
+>> problematic term since a _technically_ illegitimate certificate is not
+>> going to be trusted by any browser. The common term used in CT is
+>> "misissuance". Not sure if "misissued" is such great, but might work. Or
+>> rewrite it as "discover misissuance of domain certificates from CA:s
+>> issued without knowledge/approval of domain [owner]".
+>>
+>> I suggest adding "owner" to the end of that sentence.
+> Ok, new version proposed is:
+> "discover mis-issuance of certificates issued without
+> knowledge/approval of domain owner"
+
+OK.
+
+
+>>  => higher trust/reputation for domain
+>>
+>> Maaaaaybe. But foremost a way of catching "lying CA:s", incentivizing
+>> CA:s to get their act together by this enforced light on their
+>> mishaps. The transparency also serves as a deterrent due to the
+>> increased risk of getting caught. And oh, there's also the effect of
+>> _protection_ thanks to browser vendors being able to act quickly on
+>> credible proof of misissuance.
+> That is why the "discover of misissuance" comes as first result point
+> on that silde.
+>
+> But, we should really try to explain why this first "immediate" result
+> is useful and especially for whom,
+> that is, why should GEANT or an NREN really invest in such a service;
+>
+> Increased security (e.g. catching criminal CAs) as such is not easy to
+> sell without
+> making clear the final benefits, I think;
+> and more general, an IT service always has customers (the ones who
+> order and subscribe to and manage the service) and users (the ones
+> actually benefitting from the service) - we really have to identify
+> these roles more clearly,
+> otherwise we can not "sell" CT as a service.
+
+I think that one of the missing pieces amongst those who are not heavily
+engaged in the field is that the current system is horribly brittle and
+not really trustworthy.
+
+One more thing. "Criminal CAs" is not describing the problem very well,
+especially not from a PR perspective. It's rather a problem of a) sloppy
+CA:s and b) CA:s actually _following_ the laws they're operating
+under. In the first category, sloppy, we find the ones issuing thousands
+of test certs and those who can't keep up with the security threats on
+the internet of today. In the second category we don't have much proof,
+but the French National Cybersecurity Agency of France (ANSSI) case in
+2013 [0][1], the Indian National Informatics Centre (NIC of India) case
+in 2014 [2] and the China Internet Network Information Center (CNNIC)
+case in 2015 [3][4] seem to be governments using their powers.
+
+[0] https://security.googleblog.com/2013/12/further-improving-digital-certificate.html
+[1] https://bugzilla.mozilla.org/show_bug.cgi?id=952572
+[2] https://security.googleblog.com/2014/07/maintaining-digital-certificate-security.html
+[3] https://security.googleblog.com/2015/03/maintaining-digital-certificate-security.html
+[4] https://blog.mozilla.org/security/2015/04/02/distrusting-new-cnnic-certificates/
+
+
+>>> @Linus and Magnus: especially the 2nd slide for CT is still to be filled:
+>>> maybe information about upcoming CT service in GEANT (or maybe some
+>>> technical details about CT server)?
+>>
+>> There's a lot of stuff that could go there.
+>> What's our goal with the slide?
+>> Making people curious? Impressed? Confident?
+>> Making NREN's interested in participating?
+>> Something else?
+> Ideally, any of these,
+> but maybe getting curious and interested is the most important for now,
+> either reagrding managers/operators of GEANT organization, of NRENs or
+> maybe even of institutions.
+
+For operators, we could show the system design [0] and 
+
+[0] https://git.nordu.net/?p=catlfish.git;a=blob;f=doc/design.txt;h=7b415453b61f173ea6a4c8a410c1f38b3949bbb8;hb=HEAD
+[1] 

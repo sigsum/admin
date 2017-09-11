@@ -1,0 +1,20 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2014-09
+To: catlfish@LISTSRV.NORDU.NET 
+Subject: catlfish-0.1.1 released and deployed
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Sat, 20 Sep 2014 16:16:59 +0200
+--text follows this line--
+Hi,
+
+We found a couple of bugs in 0.1.0, most of which are now fixed,
+released and deployed at flimsy.ct.nordu.net:8080.
+
+We think that things should work now, modulo x509 specific
+functions. That's for 0.2.0. Please let us know if you find anything
+suspicious or plain wrong.
+
+Thanks,
+Linus
+https://www.ct.nordu.net/

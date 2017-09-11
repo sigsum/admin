@@ -1,0 +1,52 @@
+From: Linus Nordberg <linus@nordu.net>
+To: Brian Haberman <brian@innovationslab.net>
+Cc: Linus Nordberg <linus+ietf@nordu.net>
+Subject: Re: IETF web site behind CloudFlare
+Organization: NORDUnet A/S
+References: <87ha07eq9r.fsf@nordberg.se> <54185539.6030405@innovationslab.net>
+X-Draft-From: ("nnimap+ndn:INBOX" 51869)
+Gcc: nnimap+adbc:sent-mail.2014-09
+In-Reply-To: <54185539.6030405@innovationslab.net> (Brian Haberman's message
+	of "Tue, 16 Sep 2014 11:20:25 -0400")
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Date: Tue, 16 Sep 2014 17:30:07 +0200
+--text follows this line--
+Hi Brian,
+
+I would guess that's because you're not selected for solving a
+CAPTCHA. I am since I access the site over Tor.
+
+
+
+Brian Haberman <brian@innovationslab.net> wrote
+Tue, 16 Sep 2014 11:20:25 -0400:
+
+| Hi Linus,
+|      Yes, the IETF website is hosted by CloudFlare.  I visit the site
+| quite often and am running NoScript in my browser.  I have no issues
+| with accessing the content despite blocking JavaScript.
+| 
+| Regards,
+| Brian
+| 
+| On 9/16/14 7:52 AM, Linus Nordberg wrote:
+| > Hi IETF,
+| > 
+| > It seems like www.ietf.org is behind CloudFlare:
+| > 
+| > $ dig +short www.ietf.org
+| > www.ietf.org.cdn.cloudflare.net.
+| > 104.20.1.85
+| > 104.20.0.85
+| > 
+| > This is sad because it's now not possible to visit the site without
+| > accepting JavaScript. At least if you get selected for solving a
+| > CAPTCHA. Tor users is one group of users who are selected.
+| > 
+| > Is this permanent?
+| > Will it hit more domains than www?
+| > Where can I read about the decision to hide www behind CloudFlare?
+| > 
+| > Thanks,
+| > Linus
+| > 

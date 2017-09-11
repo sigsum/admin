@@ -1,0 +1,25 @@
+Gcc: nnimap+adbc:sent-mail.2017-02
+To: David Goulet <dgoulet@ev0ke.net> 
+Subject: InternationalHouse
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Hi David,
+
+FYI, I received this in an encrypted email today:
+
+--8<---------------cut here---------------start------------->8---
+Dear Linus,
+
+I am a relay operator, operating the InternationalHouse relay
+(fingerprint 4C1348B26F7538A3F9B79ED336122A4AA82956E8).
+
+As of yesterday, my relay is not working and returning the
+following message:
+Feb 19 19:32:40.000 [warn] http status 400 ("Fingerprint is marked rejected -- pleas
+e contact us?") response from dirserver '171.25.193.9:443'. Please correct.
+
+Why is this happening?
+
+InternationalHouse.
+--8<---------------cut here---------------end--------------->8---

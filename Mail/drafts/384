@@ -1,0 +1,121 @@
+References: <55073FF8.4070502@romab.com>
+X-Draft-From: ("nnimap+adbc:INBOX" 96767)
+Gcc: nnimap+adbc:sent-mail.2015-03
+To: Andreas Jonsson <andreas@romab.com>
+Subject: Re: mer text
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Andreas Jonsson <andreas@romab.com> wrote
+Mon, 16 Mar 2015 21:41:28 +0100:
+
+| Datalagring igen
+| Den 18:e mars 2015 kommer Tele2 att få datalagringslagen prövad i
+| kammarrätten och med det kommer vi troligen får veta om man kommer att
+| skicka datalagringslagen (DLL, den svenska implementationen av
+| datalagringsdirektivet) för att prövas i EU-domstolen.
+| 
+| Förvaltningsrätten som prövade detta 2014-10-13 ansåg inte att de
+| svenska datalagringsbestämmelserna strider mot varken grundlagen,
+| EU-lagstiftning eller Europakonventionen.  Den sammanfattade bedömningen
+| lyder [1]:
+| 
+| ” Förvaltningsrätten anser att EU-domstolens dom ska förstås på så sätt
+| att datalag- ringsdirektivet har ogiltigförklarats eftersom de
+| konstaterade bristerna i direktivet, vid en sammantagen bedömning,
+| inneburit att direktivet inte lever upp till det krav på
+| proportionalitet som unionsrätten uppställer avseende inskränkningar i
+| fri- och rättigheter (rätten till respekt för privatliv och familjeliv
+| samt skyddet för person- uppgifter). “
+| 
+| I nuläget har 10 av 28 länder i EU valt att antingen inte implementera
+| lagen eller implementerat för att sedan få den uppriven i respektive
+| lands konstitutionsdomstol.
+| 
+| DFRI har varit kritisk mot både direktivet och den svenska
+| implementationen [2], då vi anser att den strider mot grundläggande
+| mänskliga rättigheter. Nedan följer en icke komplett summering av vad
+| som hänt:
+| 
+| •	19 september 2002: Litauens konstitutionsdomstol förklarar en tidig
+| litauisk datalagringslag oförenlig med Litauens konstitution:
+| http://www.lrkt.lt/lt/teismo-aktai/paieska/135/ta309/content
+| 
+| •	11 december 2008: Bulgariens högsta förvaltningsdomstol förklarar
+| flera delar av den bulgariska datalagringslagen oförenliga med
+| rättssäkerhet.
+| http://www.aip-bg.org/documents/data_retention_campaign_11122008eng.htm
+| 
+| •	8 oktober 2009: Rumänska konstitutionsdomstolen förklarar en rumänsk
+| datalagringslag olaglig för att den vänder på oskuldspresumtionen.
+| http://www.legi-internet.ro/jurisprudenta-it-romania/decizii-it/decizia-curtii-constitutionale-referitoare-la-legea-pentru-pastrarea-datelor-de-trafic-298-2008.html
+| 
+| 
+| •	2 mars 2010: Tyska konstitutionsdomstolen säger att datalagring är
+| osäkert och därför olagligt.
+| http://www.spiegel.de/international/germany/defending-privacy-german-high-court-limits-phone-and-e-mail-data-storage-a-681251.html
+| 
+| 
+| •	5 maj 2010: Irlands konstitutionsdomstol skickar
+| datalagringsdirektivet till EU-domstolen.
+| https://www.digitalrights.ie/high-court-decision-on-our-data-retention-challenge/
+| 
+| 
+| •	1 februari 2011: Cyperns högsta domstol förklarar den cypriotiska
+| datalagringslagen i strid med mänskliga rättigheter.
+| https://edri.org/edrigramnumber9-3data-retention-un-lawful-cyprus/
+| 
+| •	31 mars 2011: Tjeckiens konstitutionsdomstol förklarar den tjeckiska
+| datalagringslagen oförenlig Tjeckiens konstitution.
+| https://edri.org/czech-decision-data-retention/
+| 
+| •	18 december 2012: Österrikes konstitutionsdomstol skickar
+| datalagringsdirektivet till EU-domstolen:
+| http://www.techweekeurope.co.uk/workspace/austria-eu-data-retention-directive-102438Officiell pressrelease:
+| https://www.vfgh.gv.at/cms/vfgh-site/attachments/4/0/5/CH0004/CMS1363699553901/vorratsdatenspeicherung_vorlagebeschluss_presseinformation.pdf
+| 
+| 
+| •	8 april 2014: EU-domstolen förklarar datalagringsdirektivet oförenligt
+| med Europeiska unionens stadga artikel 7 och 8.
+| http://curia.europa.eu/jcms/upload/docs/application/pdf/2014-04/cp140054en.pdf
+| 
+| 
+| •	23 april 2014: Slovakiens konstitutionsdomstol förklarar den
+| slovakiska datalagringslagen oförenlig med Slovakiens konstitution.
+| http://www.eisionline.org/index.php/projekty-m/ochrana-sukromia/74-us-data-retention-suspension
+| 
+| 
+| •	3 juli 2014: Sloveniens konstitutionsdomstol förklarar den slovenska
+| datalagringslagen oförenlig med Sloveniens konstitution.
+| https://www.ip-rs.si/index.php?id=272&tx_ttnews[tt_news]=1256&cHash=2885f4a56e6ff9d8abc6f94da098f461
+| 
+| 
+| •	8 juli 2014: Rumänska konstitutionsdomstolen förklarar en
+| datalagringslag oförenlig med rättssäkerhetsprinciper.
+| http://www.ccr.ro/noutati/COMUNICAT-DE-PRES-99
+| 
+| •	11 mars 2015: Domstol i Den Haag förklarar den nederländska
+| datalagringslagen oförenlig med mänskliga rättigheter.
+| http://tweakers.net/nieuws/101839/rechter-stelt-bewaarplicht-buiten-werking.htmlDomslutet: http://tweakimg.net/files/upload/uitspraak-WBT.pdf Alla
+| internetoperatörer slutar omedelbart datalagra.
+| 
+| •	12 mars 2015: Domstol i Sofia förklarar den bulgariska
+| datalagringslagen som oförenlig med mänskliga rättigheter.
+| http://sofiaglobe.com/2015/03/12/bulgarias-constitutional-court-scraps-data-retention-provisions/(domslut ej tillgängligt)
+| 
+| •	18 mars 2015: Fler nyheter om en belgisk rättssak mot belgiska
+| datalagringslagen väntas:
+| http://www.datapanik.org/2015/03/11/nederlandse-rechter-verklaart-dataretentierichtlijn-onwettelijk-volgt-straks-ook-belgie/
+| 
+| 
+| •	18 mars 2015: Kammarrätten i Stockholm beslutar om man vill skicka
+| även den svenska datalagringslagen till EU-domstolen, eller inte.
+| 
+| 
+| 
+| 
+| 
+| 1.
+| http://www.forvaltningsrattenistockholm.domstol.se/Domstolar/lansrattenistockholm/Pressmeddelande/14891-14.pdfs29.
+| 2.
+| https://www.dfri.se/dfri/dfris-asikt-om/remissvar-trafikdatalagring-20120824/

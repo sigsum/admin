@@ -1,0 +1,23 @@
+References: <CALzYgEe+PbYJN6Zz4NnPXBnnhYCi8Op-WmSzFKGxRv+uf+b=sA@mail.gmail.com>
+	<20170504082636.dd0212e34e17949eb69b2fed@andrewayer.name>
+	<CAFDDyk93AcRsCTmt+EPO6VFn-Y4D8g1ETTdGuJrtVk3rH7Xnxg@mail.gmail.com>
+	<20170504123447.41d957a88bd65417e714be78@andrewayer.name>
+	<CAFDDyk-DyBObm2W96R1dZPET-CWwTnitmonkHV2oT+_GH4Gyew@mail.gmail.com>
+	<20170505100910.f3da472d9ad71d1d540b8b62@andrewayer.name>
+	<87lgq7j6a3.fsf@nordberg.se>
+	<CALzYgEeXq0iwJTOfcRUQPR49=Xaqvd21nR=Tk5C884xyGehRuQ@mail.gmail.com>
+	<20170516221717.c05a62d681ecd64322bdc682@andrewayer.name>
+X-Draft-From: ("nnimap+adbc:lists.ietf.trans" 2894)
+Gcc: nnimap+adbc:sent-mail.2017-05
+To: Andrew Ayer <agwa@andrewayer.name>
+Cc: trans@ietf.org
+Subject: Re: [Trans] Providing the history of STHs a log has issued (in 6962-bis)
+Organization: Sunet
+From: Linus Nordberg <linus@sunet.se>
+--text follows this line--
+Andrew Ayer <agwa@andrewayer.name> wrote
+Tue, 16 May 2017 22:17:17 -0700:
+
+> I have a simpler proposal: have each STH contain the hash of the previous
+> STH.
+

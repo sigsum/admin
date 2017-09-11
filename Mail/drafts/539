@@ -1,0 +1,119 @@
+References: <CA+cU71mWHSuM6=jTCdk-yKc4A5YJ57u_yS-X-F-OVME7A68V7g@mail.gmail.com>
+	<0cb7feb6-497e-6073-3c52-6aeb551c85c4@epfl.ch>
+	<97851175-89EB-485C-8A8E-97710B15E8B9@epfl.ch>
+	<CA+cU71nhy07GcsYHf+uN9tp4xjgx5c-6Keqtpi48euOxHkqdEA@mail.gmail.com>
+	<D770327A-3CBE-4406-B9A1-743E3739A73E@epfl.ch>
+	<8760ulgfrq.fsf@localhost>
+	<D1794B8A-B822-4183-A6CA-33AA1EE3225F@epfl.ch>
+X-Draft-From: ("nnimap+adbc:INBOX" 114668)
+Gcc: nnimap+adbc:sent-mail.2016-05
+To: Linus Gasser <linus.gasser@epfl.ch>
+Cc: Bryan Ford <bryan.ford@epfl.ch>,  Tom Ritter <tom@ritter.vg>,  Gailly Nicolas <nicolas.gailly@epfl.ch>
+Subject: Re: [tor-dev] Proposal: Tor with collective signatures
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+
+
+Linus Gasser <linus.gasser@epfl.ch> wrote
+Wed, 11 May 2016 10:34:45 +0200:
+
+| Hi Linus N,
+| 
+| we have a quite revamped structure now which allows for better
+| integration with other languages, even though we didn’t write those
+| libraries yet ;) For the moment we’re still using a binary to create
+| the signatures, then we call that binary from other programs (we
+| hacked something with Google’s CT, Coniks and TUF).
+| 
+| What do you use for RPC-calls? We’re not sure yet whether we should go
+| with protobuf or some JSON-structure when accessing our framework from
+| the outside.
+| 
+| Linus
+| 
+| > On 11 May 2016, at 10:28, Linus Nordberg <linus@nordberg.se> wrote:
+| > 
+| > Hi all,
+| > 
+| > Thanks Tom for connecting!
+| > 
+| > I've been lagging on CoSi in catlfish for a long time now, my appologies
+| > to Linus for not getting back with any updates at all lately. Please let
+| > me know when your new release is out. I really would like to integrate
+| > this at some point.
+| > 
+| > NORDUnet is still interested in trying out CoSi for one or more of our
+| > logs, as an experiment. We're currently running two test logs -- one
+| > RFC6962 (i.e. v1) CT log and one hacked-up version of 6962 accepting
+| > arbitrary data.
+| > 
+| > Our project have experienced some (political) trouble on the operations
+| > side of things ("OMG!1! what if!" and similar), which is why we're still
+| > not in Chrome. I have good hopes of getting it submitted later this year
+| > though.
+| > 
+| > 
+| > 
+| > 
+| > Ford Bryan <bryan.ford@epfl.ch> wrote
+| > Wed, 11 May 2016 07:23:14 +0000:
+| > 
+| > | Thanks Tom!  Indeed, we have already been in contact with Linus
+| > | Nordberg on using CoSi in his CT log (and in other contexts), and
+| > | remain very interested in getting CoSi into his log server and
+| > | experimenting with deployment in that environment.
+| > | 
+| > | We’re working on a new/improved/more-solid/easier-to-use CoSi release
+| > | to go with our talk at IEEE S&P on CoSi.  We’re hoping after that
+| > | it’ll be much easier to get CoSi working seamlessly with systems
+| > | written in other languages such as Linus’s Haskell-based CT log
+| > | server.
+| > | 
+| > | Cheers
+| > | Bryan
+| > | 
+| > | > On 10 May 2016, at 18:43, Tom Ritter <tom@ritter.vg> wrote:
+| > | > 
+| > | > On 10 May 2016 at 03:40, Ford Bryan <bryan.ford@epfl.ch> wrote:
+| > | > 
+| > | >>> Aside from that - for folks who don't know I'm working on Certificate
+| > | >>> Transparency Gossip, which some people see as a 'competitor' to CoSi
+| > | >>> in the CT space. I agree CoSi reduces the need for Gossip in CT; but I
+| > | >>> would be happy to see CoSi developed and deployed for CT logs.  I just
+| > | >>> don't think it will be for many of the trusted logs (e.g. Google's)
+| > | >>> for operational reasons - and I want to ensure the correct behavior of
+| > | >>> these logs in as privacy-preserving way as I can. So I keep working on
+| > | >>> that.  Gossip for Tor would be radically different from Gossip in the
+| > | >>> web ecosystem (to the point where it may not work). CoSi may be a
+| > | >>> better fit.
+| > | >> 
+| > | >> I completely agree and would also love “to see CoSi developed and
+| > | >> deployed for CT logs.” In fact we already prototyped a CoSi
+| > | >> extension for Google’s CT log server, and mentioned it a while ago
+| > | >> on the IETF trans mailing list.  I would love to continue working
+| > | >> on something like that and see it deployed, but so far we have
+| > | >> gotten no apparent interest at all from at least the Google CT
+| > | >> people, which is why we’ve set that development thread aside for
+| > | >> now.  If you or and/or other people involved in CT-related
+| > | >> activities outside of Google would be interested in working with us
+| > | >> to get a CoSi extension to CT log servers standardized and
+| > | >> deployed, in spite of the Google team’s apparent lack of interest,
+| > | >> I would be very happy to resurrect that activity.  Do you run a CT
+| > | >> log server and/or have other potentially feasible routes to
+| > | >> experimentation and deployment in mind?  I’d be glad to hear your
+| > | >> thoughts.
+| > | > 
+| > | > 
+| > | > I'm not terribly surprised about the lack of interest from Google.  I
+| > | > don't run a log, but my friend Linus does (copied).  And I know he's
+| > | > interested in the CoSi idea!
+| > | > 
+| > | > His log isn't accepted in Chrome, and it's (AFAIK) primarily a test
+| > | > log (I think it accepts arbitrary binary data, not just certificates).
+| > | > But maybe he has multiple logs. Anyway, it's using custom software,
+| > | > more about it here: https://www.ct.nordu.net/>> | > I'm not sure what the roadmap is for the Nordunet log or server
+| > | > development, but it's probably the best opportunity to work with
+| > | > someone who will (I think, at some point) deploy a real log and is
+| > | > interested in doing CoSi.
+| > | > 
+| > | > -tom

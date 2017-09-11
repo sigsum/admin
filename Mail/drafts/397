@@ -1,0 +1,63 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2015-05
+To: Leif Johansson <leifj@sunet.se> 
+Subject: 
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+TUG
+  f1.ct.nordu.net
+    vm:urd-fe-1 em1:130.242.125.94/26 ct-frontend-1.sunet.se.
+      docker:stud
+        secret-file:external-cert-and-key.pem
+      docker:onion
+        public-file:torrc
+        public-file:hs-address
+        secret-file:hs-key
+      docker:catlfish frontend
+        volume:db
+        public-file:catlfish.config
+        public-dir:known-roots
+        public-file:logkey.pem
+        secret-file:plop-key.pem
+        public-dir:plop-public-keys
+        public-file:plop-ca.pem
+        public-file:plop-cert.pem
+        secret-file:plop-key.pem
+      docker:catlfish storage
+        public-file:catlfish.config
+        public-dir:known-roots
+        public-file:logkey.pem
+        secret-file:plop-key.pem
+        public-dir:plop-public-keys
+        public-file:plop-ca.pem
+        public-file:plop-cert.pem
+        secret-file:plop-key.pem
+  m0.ct.nordu.net "merge and sign"
+    vm:urd-merge-1 em1:130.242.125.93/26 ct-merge-1.sunet.se.
+      docker:catlfish merge
+        public-file:merge.cfg
+        public-file:system.cfg
+        public-file:logkey.pem
+        secret-file:plop-key.pem
+        public-dir:plop-public-keys
+        public-file:plop-ca.pem
+    vm:urd-sign-1 em2:193.10.80.145/31 ct-sign-1.sunet.se.
+      docker:catlfish signing
+        public-file:catlfish.config
+        public-file:logkey.pem
+        secret-file:luna-something
+        secret-file:plop-key.pem
+        public-dir:plop-public-keys
+        public-file:plop-ca.pem
+        public-file:plop-cert.pem
+        secret-file:plop-key.pem
+FRE
+  m1.ct.nordu.net "frontend and sign"
+    vm:urd-fe-2 em1:130.242.125.136/26 ct-frontend-2.sunet.se.
+      docker:stud
+      docker:onion
+      docker:catlfish frontend
+      docker:catlfish storage
+    vm:urd-sign-2 em2:193.10.80.177/31 ct-sign-2.sunet.se.
+      docker:catlfish signing

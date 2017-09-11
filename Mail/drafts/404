@@ -1,0 +1,26 @@
+References: <87h9radhif.fsf@nordberg.se>
+	<CA+cU71mGJSaOVhG-LZ19u06g_4NsPwXJpBNJN_bHKuuZ9dCX_A@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:INBOX" 99107)
+Gcc: nnimap+adbc:sent-mail.2015-05
+To: Tom Ritter <tom@ritter.vg>
+Cc: "protocols@lists.mayfirst.org" <protocols@lists.mayfirst.org>
+Subject: Re: [Protocols] Some background to and current state of gossip in CT
+From: Linus Nordberg <linus@nordberg.se>
+Date: Mon, 18 May 2015 00:17:31 +0200
+--text follows this line--
+Tom Ritter <tom@ritter.vg> wrote
+Sun, 17 May 2015 16:45:49 -0500:
+
+| On 17 May 2015 at 16:24, Linus Nordberg <linus@nordberg.se> wrote:
+| > Since then the discussion has mostly been focused on how to get STH's
+| > back. Some people are convinced that gossiping about STH's is crucial
+| > for the system to work. I'm currently working on understanding if this
+| > is true or not. More about this in a later update.
+| 
+| Has anyone given a compelling reason why we need to gossip STHs, or a
+| reasonable, privacy-preserving approach on how?
+
+On the need for STH's in general, 
+
+| I tried to write up my thoughts on why STHs were useless from a gossip
+| POV here: https://www.ietf.org/mail-archive/web/trans/current/msg01056.htmlbut never saw any replies.

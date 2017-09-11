@@ -1,0 +1,46 @@
+References: <m2oayphu7n.wl%randy@psg.com>
+	<DCD7D977-87AD-447D-96C0-301FFF902FC9@cs.columbia.edu>
+	<m24n0gj16b.wl%randy@psg.com>
+	<B8B14988-EFCD-4ED1-9008-C3DD8260E307@cs.columbia.edu>
+	<877g5cq0st.fsf@nordberg.se>
+	<104C25A7-0744-4385-AE69-6CB49ED049AD@cs.columbia.edu>
+X-Draft-From: ("nnimap+adbc:INBOX" 82696)
+Gcc: nnimap+adbc:INBOX.sent-mail.2014-05
+To: "Steven M. Bellovin" <smb@cs.columbia.edu>
+Cc: Randy Bush <randy@psg.com>,  Leif Johansson <leifj@sunet.se>,  Lucy Lynch <llynch@civil-tongue.net>
+Subject: Re: phone chat
+From: Linus Nordberg <linus@nordberg.se>
+Date: Mon, 26 May 2014 17:23:22 +0200
+--text follows this line--
+"Steven M. Bellovin" <smb@cs.columbia.edu> wrote
+Fri, 23 May 2014 10:07:00 -0700:
+
+| A lot depends on how much Tor use there normally is from this country.
+| It's not that heavily used, which means that it can stick out like a
+| sore thumb.  You may remember that last December, someone emailed a
+| bomb threat to Harvard during finals.  (Yes, your guess about motive
+| is correct.)  He'd used Tor, so it was very easy to spot -- there was
+| only one person using Tor then on the Harvard campus, and that made
+| him easy to find.  If use of Tor is itself suspicious, this is a
+| problem.
+
+That is indeed true.
+
+If all the traffic (or meta data) the campus IT people ever had recorded
+from his particular laptop for the last couple of years had been Tor
+traffic, I wonder how much it'd mattered though. As usual, starting to
+anonymise your traffic the second you want to be anonymous usually
+doesn't work out so well.
+
+
+| https://metrics.torproject.org/ may have data that's helpful in
+| figuring this out.  Note that that site does include a list of all
+| Tor nodes, which makes them easy to block if the government is 
+| sufficiently competent and motivated.
+
+Yes. Public relays are public. That's how clients can chose their three
+hops without risk of being steered towards certain relays attacking them.
+
+Bridges, on the other hand, are not. And private bridges are not even
+semi-public. You'd need DPI or active probing to figure out they're Tor
+relays. Using PT's, even that might fail. But I'm repeating myself.

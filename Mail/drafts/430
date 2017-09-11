@@ -1,0 +1,91 @@
+References: <87eggwrvou.fsf@nordberg.se> <561FD170.6010606@ritter.vg>
+	<87io5zq7vf.fsf@nordberg.se> <562907F8.4030300@ritter.vg>
+	<87io5yq3b2.fsf@nordberg.se> <56290F3B.7050809@ritter.vg>
+X-Draft-From: ("nnimap+adbc:INBOX" 105379)
+Gcc: nnimap+adbc:sent-mail.2015-10
+To: Tom Ritter <tom@ritter.vg>
+Cc: dkg@fifthhorseman.net
+Subject: Re: Notes and availability
+From: Linus Nordberg <linus@nordberg.se>
+Date: Thu, 22 Oct 2015 18:37:14 +0200
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Tom Ritter <tom@ritter.vg> wrote
+Thu, 22 Oct 2015 11:30:51 -0500:
+
+| On 10/22/15 11:24 AM, Linus Nordberg wrote:
+| > Tom Ritter <tom@ritter.vg> wrote
+| > Thu, 22 Oct 2015 10:59:52 -0500:
+| > 
+| > | On 10/22/15 9:45 AM, Linus Nordberg wrote:
+| > | > Tom Ritter <tom@ritter.vg> wrote
+| > | > Thu, 15 Oct 2015 11:16:48 -0500:
+| > | > 
+| > | > | The 'x509_chain' element SHOULD contain the leaf certificate and the
+| > | > | full chain to a trust anchor that is publicly trusted by the client.
+| > | > | A client SHOULD NOT submit certificates that chain to an administratively
+| > | > | trusted root, as this represents private client data. If a
+| > | > | certificate contains SCTs issued by publicly trusted logs, and chains
+| > | > | to an administratively added trust anchor, the client SHOULD submit
+| > | > | the 'x509_chain' consisting only of the leaf certificate.
+| > | > | 
+| > | > | \[
+| > | > | tjr: We want to change the 'SHOULD NOT' to something slightly different.
+| > | > | \]
+| > | > | 
+| > | > | ACTION: dkg to revise
+| > | > 
+| > | > What is the problem again? Can't seem to find the discussion about
+| > | > this. It was in email, wasn't it?
+| > | > 
+| > | > How do one end up with a cert chain with an end entity logged in a
+| > | > public log and a chain containing private cert(s)?
+| > | 
+| > | I think dkg put it here:
+| > | https://github.com/dkg/draft-ietf-trans-gossip/tree/local-trust-anchors> 
+| > Yeah, that's what's in -01. I was being lazy and replying to an old
+| > thread.
+| > 
+| > 
+| > | It was to reword my language so it wasn't so harsh about never
+| > | submitting chains that end in local trust anchors.
+| > | 
+| > | Although now that I read his commit, I'm not sure about it.
+| > | 
+| > | 
+| > | 
+| > | "The 'x509\_chain' element MUST contain at least the leaf certificate
+| > | and SHOULD contain the full chain to a root accepted by all of the
+| > | logs in the set of logs issuing all the SCTs in the 'sct\_data'
+| > | element."
+| > | 
+| > | The root doesn't need to be accepted by all the logs.  Consider a
+| > | CA-run-log that doesn't include Let's Encrypt.  That would disqualify
+| > | LE.  I think you want to say "by at least one of the logs in the set of
+| > | logs".
+| > 
+| > dkg, what was the thought behind "all of the logs"?
+| > 
+| > 
+| > | "If a certificate is covered by SCTs
+| > | issued by publicly trusted logs, but it chains to a privacy-sensitive
+| > | local trust anchor, the client SHOULD submit it as an `x509\_chain`
+| > | consisting only of the leaf certificate."
+| > | 
+| > | The leaf itself may contain privacy-sensitive data.
+| > 
+| > If it's in a public log?
+| 
+| Oh wait, I missed that, never-mind, ignore my comment.  Yea if it's in a
+| public log, for sure.
+
+The comment about "The root doesn't need to be accepted by all the
+logs"?
+
+
+| > And again, how does one end up with a cert chain with an end entity
+| > logged in a public log and a chain containing private cert(s)?
+| 
+| That's easy - CACert is a locally-added Trust Root that issues public
+| certificates.  Heck, Let's Encrypt's root is the same.
+

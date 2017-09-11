@@ -1,0 +1,71 @@
+From: Linus Nordberg <linus@nordu.net>
+To: Josva Kleist <kleist@nordu.net> 
+Subject: CT preso
+Organization: NORDUnet A/S
+User-Agent: Gnus/5.13 (Gnus v5.13)
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2014-08
+Date: Thu, 21 Aug 2014 21:29:21 +0200
+--text follows this line--
+Hi Josva,
+
+I've got a long list of Q&A now, a format I think will keep people awake
+more than just rambling on. If possible, I would like to have them in a
+presentation in such a way that I can click to get the next question,
+then click again to get the answer and so forth. I will also provide
+pictures to some, hopefully all, of them later tonight and
+tomorrow. At all feasible?
+
+Here are 15 questions with answers. I'm guessing I'll spend at least
+half a minute on each of them. Do you think we're missing anything? My
+gut feeling is that system design and other interesting topics would be
+better handled in a smaller group, maybe in the dev group on Friday?
+
+--8<---------------cut here---------------start------------->8---
+What's CT?
+Certificate Transparency -- a public log, or bulletin board
+
+A bulletin board for what?
+SSL certificates for the web
+
+What's a certificate?
+A digital document tying a public key to a company name and a domain
+name, sent from a web site to your browser
+
+What's a public key?
+A piece of data needed to encrypt the communication between your browser
+and a web site
+
+Why do we need a bulletin board for that?
+Do detect illegitimate certificates
+
+What's an illegitimate certificate?
+A certificate made without the site owners explicit order
+
+Why would that happen?
+CA:s fail
+
+Wait, what's a CA?
+Certificate Authority -- manufacturing and signing certificates
+
+Has this really happened?
+Yes, Comodo and DigiNotar in 2011 being the most known examples
+
+What will happen when my browser gets a cert not on the bulletin board?
+There will be no green address bar in your browser
+
+What if the bulletin board is lying too?
+It will get caught by auditors and monitors and put out of business
+
+Who's running this bulletin board?
+Several, Google being one and ISOC hopefully another
+
+Why is NORDUnet interested in this?
+To save the world but also not letting Google be the only player
+
+Is it hard?
+A bit
+
+Why?
+Must never fail, needs high availability and has a somewhat high load
+--8<---------------cut here---------------end--------------->8---

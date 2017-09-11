@@ -1,0 +1,60 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2014-11
+To: Magnus Ahltorp <map@kth.se> 
+Subject: ERROR: merge expected 0 got 1
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Tue, 04 Nov 2014 15:22:01 +0100
+--text follows this line--
+Hej Magnus!
+
+Är det här förväntat?
+
+catlfish linus/master f7939d1a
+plop linus/stacktrace 90754940
+
+--8<---------------cut here---------------start------------->8---
+flogsta:catlfish% make tests
+rm -r rel/known_roots
+rm: cannot remove ‘rel/known_roots’: No such file or directory
+Makefile:28: recipe for target 'tests-prepare' failed
+make: [tests-prepare] Error 1 (ignored)
+mkdir rel/known_roots
+cp tools/testcerts/roots/* rel/known_roots
+mkdir -p test/nodes/frontend-1/log
+mkdir -p test/nodes/storage-1/log
+mkdir -p test/nodes/storage-2/log
+cp test/config/frontend-1.config rel
+cp test/config/storage-1.config rel
+rm -r rel/tests
+rm: cannot remove ‘rel/tests’: No such file or directory
+Makefile:28: recipe for target 'tests-prepare' failed
+make: [tests-prepare] Error 1 (ignored)
+mkdir -p rel/tests/machine/machine-1/db
+printf "0" > rel/tests/machine/machine-1/db/treesize
+mkdir -p rel/tests/machine/machine-2/db
+printf "0" > rel/tests/machine/machine-2/db/treesize
+touch rel/tests/machine/machine-1/db/index
+touch rel/tests/machine/machine-1/db/newentries
+(cd rel ; bin/run_erl -daemon ../test/nodes/frontend-1/ ../test/nodes/frontend-1/log/ "exec bin/erl -config frontend-1 -name frontend-1")
+(cd rel ; bin/run_erl -daemon ../test/nodes/storage-1/ ../test/nodes/storage-1/log/ "exec bin/erl -config storage-1 -name storage-1")
+sleep 3
+(cd tools ; python testcase1.py ) || echo "Tests failed"
+tree size was correct
+ERROR: fetchnewentries Internal Server Error
+
+ERROR: merge expected 0 got 1
+cert1:
+ERROR: Internal Server Error
+
+Tests failed
+sleep 5
+echo "halt()." | ./rel/bin/to_erl test/nodes/frontend-1/
+Attaching to test/nodes/frontend-1/erlang.pipe.1 (^D to exit)
+
+[EOF]
+echo "halt()." | ./rel/bin/to_erl test/nodes/storage-1/
+No running Erlang on pipe test/nodes/storage-1/erlang.pipe: No such file or directory
+Makefile:54: recipe for target 'tests-stop' failed
+make: *** [tests-stop] Error 1
+--8<---------------cut here---------------end--------------->8---

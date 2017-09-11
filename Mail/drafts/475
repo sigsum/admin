@@ -1,0 +1,37 @@
+References: <20160224040646.A9BA7BFC05@cappadocicum.torproject.org>
+	<20160224041624.GF10234@moria.seul.org> <87lh6att9q.fsf@nordberg.se>
+	<CAJdkzEOd3=6RSR7a8zGGL+o1Yv+y2ZdQHNvgC+8_K0W_41W+BQ@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:INBOX" 111704)
+Gcc: nnimap+adbc:sent-mail.2016-02
+To: Damian Johnson <atagar@torproject.org>
+Cc: Roger Dingledine <arma@mit.edu>,  Sebastian Hahn <tor@sebastianhahn.net>,  "auto: consensus problem system reports" <tor-consensus-health@lists.torproject.org>
+Subject: Re: Consensus issues
+From: Linus Nordberg <linus@nordberg.se>
+Date: Wed, 24 Feb 2016 18:20:37 +0100
+--text follows this line--
+Damian Johnson <atagar@torproject.org> wrote
+Wed, 24 Feb 2016 08:47:43 -0800:
+
+| > Does "not in consensus: <dirauths>" mean that <dirauths> did not vote
+| > BadExit for the relay in question?
+| >
+| > If so, did they vote for the relay at all?
+| >
+| > Looking at https://consensus-health.torproject.org/ for the 2016-02-24
+| > 07:00:00 consensus it seems all five vote badexit for the same 7 relays.
+| 
+| Hi Linus. Yup, "not in consensus" means the later (that this relay
+| wasn't in their consensus at all). Here's this particular check...
+| 
+| https://gitweb.torproject.org/doctor.git/tree/consensus_health_checker.py#n643
+
+Thanks. Very helpful.
+
+
+| This was a single one-off alert so I suspect this is a relay that
+| joined the network then immediately disappeared. We get a lot of churn
+| so I should probably modify this DocTor check to only notify once
+| relays have a little uptime.
+
+Looking at maatuska's cached-descriptors.new and guessing a bit makes me
+think maatuska got the descriptor for this relay from moria1.

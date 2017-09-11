@@ -1,0 +1,84 @@
+References: <87inpcxrhz.fsf@localhost>
+	<642E061376AC8678.5C3F2942-AE51-44BA-84FF-39850DA2594C@mail.outlook.com>
+X-Draft-From: ("nnimap+adbc:INBOX" 121268)
+Gcc: nnimap+adbc:sent-mail.2017-01
+To: Emil Tullstedt <emiltu@kth.se>
+Cc: "dfri-intern@lists.dfri.se" <dfri-intern@lists.dfri.se>
+Subject: Re: [DFRI-intern] [CERT-SE] [CERT-SE #160765] Tor och DFRI
+From: Linus Nordberg <linus@nordberg.se>
+Date: Fri, 20 Jan 2017 08:07:16 +0100
+--text follows this line--
+Hej!
+
+verktyg: blockera port eller destination, tillfälligt eller permanent
+
+det här är blockering, när är det befogat? när skadan är större än nyttan
+
+
+1. vad kan vi göra med den informationen? vad av detta vill vi göra?
+
+2a. samtliga exitrelän använder "default exit policy", dvs tillåter
+uppkoppling till samtliga tcp-portar utn smtp, nntp, ms smb+ds, några
+fildelningsprotokoll; se https://atlas.torproject.org/#search/dfri
+
+2b. dvs strypa lite
+
+3. vad innebär det att ha ip-adresser i ert abuse-hanteringsverktyg?
+
+
+Våra Tor-relän använder idag "default exit policy". Det innebär att dom
+tillåter uppkoppling till samtliga TCP-portar utom ett fåtal: mejl,
+diverse microsoft-portar (SMB+DS) och några fildelningsprotokoll.
+
+Mål med verksamheten? Maximera mängden fritt internet? Avsteg,
+tillfälliga och permanenta?
+
+Copyright-relaterad abuse har försvunnit, i stort sett allt är
+"scans". Mycket (det mesta?) av detta är web.
+
+Verkligen rimligt att basera beslut på abuse-mejl? Skev verklighet, som
+kanske skulle bli bättre med data från CERT-SE?
+
+Vissa portar stänger vi helt enkelt inte av -- 80, 443 (web) och 6667
+(irc) -- därför att ett relä som inte tillåter dessa inte får
+exit-flaggan och alltså blir helt oanvänt.
+
+Andra portar är så värdefulla för internetanvändning att det gör 
+
+En mycket värdefull tjänst, som web (portar 80 och 443), används till
+
+
+tycker vi t.ex. att det
+är rimligt att förmedla intrångsförsök över ssh
+
+
+
+
+
+Emil Tullstedt <emiltu@kth.se> wrote
+Wed, 18 Jan 2017 18:57:42 +0000:
+
+> Det låter ju klart som ganska så vettigt att låta CERT hjälpa till med
+> att skicka abuse-ärenden rörande oss och ev förslag på nya exit
+> policys (de kan förhoppningsvis vara snabba på att uppmana oss att
+> låsa ner en specifik port t.ex. om det uppdagas någon slags DDoS
+> attackvektor i något protokoll eller liknande). Det kanske kan
+> underlätta för oss att skriva bra rapporter om hur man driftar Tor
+> exits.
+>
+> Hur hanterar man det på ett transparent sätt utan att dela med sig av
+> hela innehållet i vad CERT skickar till oss?
+>
+>
+>
+>
+>
+> On Wed, Jan 18, 2017 at 5:27 PM +0100, "Linus Nordberg"
+> <linus@nordberg.se<mailto:linus@nordberg.se>> wrote:
+>
+>
+> Hej!
+>
+> Frågor från CERT-SE.
+>
+> Jag har inga svar ännu. Förslag?

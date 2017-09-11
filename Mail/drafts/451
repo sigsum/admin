@@ -1,0 +1,67 @@
+X-Draft-From: ("nnimap+adbc:sys" 155594)
+Gcc: nnimap+adbc:sent-mail.2016-01
+To: noc@dfri.net 
+Subject: [Cron Daemon] Cron <root@anastasia>    /usr/sbin/portsnap cron update > /dev/null | mail -E root
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Hej!
+
+Fixade det här genom att
+
+  rm /var/db/portsnap/tag /var/db/portsnap/files/*
+  portsnap fetch extract
+  portsnap update
+
+<#mml type=message/rfc822 disposition=inline>
+Return-Path: <root@anastasia.dfri.se>
+Delivered-To: linus@adb-centralen.se
+Received: from imap.adb-centralen.se
+	by imap.adb-centralen.se (Dovecot) with LMTP id Ytn0AUgik1b2cwEAnAFZSg
+	for <linus@adb-centralen.se>; Mon, 11 Jan 2016 04:32:24 +0100
+Received: by imap.adb-centralen.se (Postfix, from userid 127)
+	id 050391D690F; Mon, 11 Jan 2016 04:32:24 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on
+	spam.adb-centralen.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00,RP_MATCHES_RCVD
+	autolearn=ham autolearn_force=no version=3.4.1
+Received: from smtp.adb-centralen.se (smtp.adb-centralen.se [193.10.5.129])
+	by imap.adb-centralen.se (Postfix) with ESMTP id 24ADD1D690C
+	for <linus@nordberg.se>; Mon, 11 Jan 2016 04:32:23 +0100 (CET)
+Received: from mail.dfri.se (mail.dfri.se [IPv6:2001:67c:289c::17])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id 1FE8FA20177
+	for <linus@nordberg.se>; Mon, 11 Jan 2016 04:32:22 +0100 (CET)
+Received: by mail.dfri.se (Postfix)
+	id 3EA0684F8D8; Mon, 11 Jan 2016 04:32:22 +0100 (CET)
+Delivered-To: beredskap@dfri.net
+Received: from anastasia.dfri.se (anastasia.dfri.se [171.25.193.70])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.dfri.se (Postfix) with ESMTPS id 1219E84F816
+	for <beredskap@dfri.net>; Mon, 11 Jan 2016 04:32:22 +0100 (CET)
+Received: from anastasia.dfri.se (localhost [127.0.0.1])
+	by anastasia.dfri.se (8.14.9/8.14.9) with ESMTP id u0B3V6VZ045991
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO)
+	for <root@anastasia.dfri.se>; Mon, 11 Jan 2016 04:31:06 +0100 (CET)
+	(envelope-from root@anastasia.dfri.se)
+Received: (from root@localhost)
+	by anastasia.dfri.se (8.14.9/8.14.9/Submit) id u0B3V1nm045949;
+	Mon, 11 Jan 2016 04:31:01 +0100 (CET)
+	(envelope-from root)
+Date: Mon, 11 Jan 2016 04:31:01 +0100 (CET)
+Message-Id: <201601110331.u0B3V1nm045949@anastasia.dfri.se>
+From: root@anastasia.dfri.se (Cron Daemon)
+To: root@anastasia.dfri.se
+Subject: Cron <root@anastasia>    /usr/sbin/portsnap cron update > /dev/null | mail -E root
+X-Cron-Env: <SHELL=/bin/sh>
+X-Cron-Env: <PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <LOGNAME=root>
+X-Cron-Env: <USER=root>
+
+gunzip: can't stat: files/8c390535d749a751b8068d7cf3bbea762f9fa5985793df9b5e068ef8a00be8df.gz: No such file or directory
+dc: divide by zero
+dc: divide by zero
+<#/mml>

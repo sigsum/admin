@@ -1,0 +1,18 @@
+X-Draft-From: ("nnimap+adbc:lists.ietf.trans")
+Gcc: nnimap+adbc:sent-mail.2015-12
+To: trans@ietf.org 
+Subject: Tracking browsers using HPKP, HSTS and CSP
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Thu, 03 Dec 2015 08:23:42 +0100
+--text follows this line--
+Hi,
+
+This might be yawning material to those with more knowledge about web
+browsers than myself. That would be great!
+
+For the rest of us, when thinking about how gossip should work, we
+should consider attacks like the ones in
+https://zyan.scripts.mit.edu/presentations/toorcon2015.pdf, pp. 24,
+http://zyan.scripts.mit.edu/sniffly/ .
+

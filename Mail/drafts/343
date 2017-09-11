@@ -1,0 +1,58 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2014-10
+To: Magnus Ahltorp <map@kth.se> 
+Subject: 
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Fri, 31 Oct 2014 11:22:44 +0100
+--text follows this line--
+Hej!
+
+Jag har hängande beam.smp-processer efter att ha kört testerna ():
+
+0  1000 32321 32315  20   0  92984 25028 -      Ssl+ pts/15     0:16 /home/linus/p/ct/catlfish/rel/erts-6.1/bin/beam.smp -- -root /home/linus/p/ct/catlfish/rel -progname
+0  1000 32322 32320  20   0  92472 24960 -      Ssl+ pts/18     0:09 /home/linus/p/ct/catlfish/rel/erts-6.1/bin/beam.smp -- -root /home/linus/p/ct/catlfish/rel -progname
+
+--8<---------------cut here---------------start------------->8---
+systemd(1)─┬─agetty(1052)
+           ├─agetty(1078)
+           ├─atd(574)
+           ├─console-kit-dae(883)─┬─{console-kit-dae}(885)
+           │                      ├─{console-kit-dae}(887)
+           │                      ├─{console-kit-dae}(888)
+           │                      ├─{console-kit-dae}(889)
+           │                      ├─{console-kit-dae}(890)
+...
+           ├─run_erl(32315)───beam.smp(32321)─┬─{beam.smp}(32329)
+           │                                  ├─{beam.smp}(32333)
+           │                                  ├─{beam.smp}(32334)
+           │                                  ├─{beam.smp}(32335)
+           │                                  ├─{beam.smp}(32336)
+           │                                  ├─{beam.smp}(32337)
+           │                                  ├─{beam.smp}(32338)
+           │                                  ├─{beam.smp}(32339)
+           │                                  ├─{beam.smp}(32340)
+           │                                  ├─{beam.smp}(32341)
+           │                                  ├─{beam.smp}(32342)
+           │                                  ├─{beam.smp}(32344)
+           │                                  ├─{beam.smp}(32355)
+           │                                  ├─{beam.smp}(32357)
+           │                                  ├─{beam.smp}(32358)
+           │                                  └─{beam.smp}(32359)
+           ├─run_erl(32320)───beam.smp(32322)─┬─{beam.smp}(32330)
+           │                                  ├─{beam.smp}(32343)
+           │                                  ├─{beam.smp}(32345)
+           │                                  ├─{beam.smp}(32346)
+           │                                  ├─{beam.smp}(32347)
+           │                                  ├─{beam.smp}(32348)
+           │                                  ├─{beam.smp}(32349)
+           │                                  ├─{beam.smp}(32350)
+           │                                  ├─{beam.smp}(32351)
+           │                                  ├─{beam.smp}(32352)
+           │                                  ├─{beam.smp}(32353)
+           │                                  ├─{beam.smp}(32354)
+           │                                  ├─{beam.smp}(32356)
+           │                                  ├─{beam.smp}(32360)
+           │                                  ├─{beam.smp}(32361)
+           │                                  └─{beam.smp}(32362)
+--8<---------------cut here---------------end--------------->8---

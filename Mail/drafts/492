@@ -1,0 +1,75 @@
+Gcc: nnimap+adbc:sent-mail.2016-03
+To: Jacob Appelbaum <jacob@appelbaum.net>
+cc: dir-auth@lists.torproject.org 
+Subject: 
+From: Linus Nordberg <linus@nordberg.se>
+Date: Sat, 19 Mar 2016 11:08:53 +0100
+X-Draft-From: ("nnimap+ndn:INBOX" 66821)
+--text follows this line--
+2607:ff58::d053:df22
+
+[root@ehlo ~]# gnutls-cli -p 80 208.83.223.34 
+Processed 168 CA certificate(s).
+Resolving '208.83.223.34'...
+Connecting to '208.83.223.34:80'...
+- Certificate type: X.509
+- Got a certificate list of 1 certificates.
+- Certificate[0] info:
+ - subject `CN=www.2efa5343jofki5q5cbv.net', issuer `CN=www.27onxe4n.com', RSA key 1024 bits, signed using RSA-SHA1, activated `2015-11-09 00:00:00 UTC', expires `2016-03-21 23:59:59 UTC', SHA-1 fingerprint `95be423c675d1122577ed954e977b52e52481b65'
+        Public Key ID:
+                ff2bf18126246343160bb3a12b4a53a2fbb8e289
+        Public key's random art:
+                +--[ RSA 1024]----+
+                |    + ..         |
+                |   . =o.         |
+                | ....o.          |
+                |. o.  = .        |
+                |oo.  . =S  .     |
+                |oo.     ..+ .    |
+                |o        o.o .   |
+                |oo.       ...    |
+                |E+.        .o.   |
+                +-----------------+
+
+- Status: The certificate is NOT trusted. The certificate issuer is unknown. The name in the certificate does not match the expected. 
+*** PKI verification of server certificate failed...
+*** Fatal error: Error in the certificate.
+*** Handshake has failed
+GnuTLS error: Error in the certificate.
+[root@ehlo ~]# gnutls-cli -p 80 208.83.223.34^C
+[root@ehlo ~]# openssl s_client -connect [^C
+[root@ehlo ~]# gnutls-cli -p 80 2607:ff58::d053:df22  
+Processed 168 CA certificate(s).
+Resolving '2607:ff58::d053:df22'...
+Connecting to '2607:ff58::d053:df22:80'...
+
+[root@ehlo ~]# traceroute6 2607:ff58::d053:df22
+traceroute6 to 2607:ff58::d053:df22 (2607:ff58::d053:df22) from 2001:67c:289c::9, 64 hops max, 12 byte packets
+ 1  rs0-1.dfri.net  0.227 ms  0.407 ms  0.259 ms
+ 2  10gigabitethernet1-3.core1.sto1.he.net  7.466 ms  10.659 ms  1.143 ms
+ 3  10ge12-6.core1.ams1.he.net  27.399 ms  39.988 ms  33.827 ms
+ 4  100ge9-1.core1.lon2.he.net  33.186 ms  26.251 ms  26.090 ms
+ 5  100ge1-1.core1.nyc4.he.net  95.295 ms  91.598 ms  93.290 ms
+ 6  100ge7-2.core1.chi1.he.net  126.621 ms  109.836 ms  115.655 ms
+ 7  100ge10-1.core1.msp1.he.net  136.664 ms  132.341 ms  125.016 ms
+ 8  100ge4-1.core1.sea1.he.net  161.757 ms  157.825 ms  163.121 ms
+ 9  v6-cr2-sea-be250.bb.spectrumnet.us  171.245 ms  165.450 ms  163.868 ms
+10  *
+    2001:418:0:5000::58f  162.126 ms *
+11  *
+    2607:f060:200:5014::1  164.150 ms  169.325 ms
+12  *
+    2607:f060:c000:8::2  163.407 ms *
+13  2607:f060:c000:7::2  164.508 ms  168.797 ms
+    2607:f060:c000:8::2  168.497 ms
+14  xe1-2.sw1.scl.layer42.net  167.705 ms
+    xe0-2-0-4.core3.scl.layer42.net  165.318 ms
+    xe1-4.core1.vxc.layer42.net  165.061 ms
+15  xe1-2.sw1.scl.layer42.net  161.441 ms
+    xe1-1.sw1.scl.layer42.net  168.852 ms
+    2001:1868:a100:102::2  163.464 ms
+16  2607:ff58::1:4  171.476 ms
+    2001:1868:a100:102::2  169.078 ms  164.888 ms
+17  2607:ff58::1:4  168.355 ms  174.861 ms *
+18  * * *
+19  * * *

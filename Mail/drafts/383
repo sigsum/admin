@@ -1,0 +1,18 @@
+Gcc: nnimap+adbc:sent-mail.2015-03
+To: noc@dfri.net 
+Subject: Få igång OSPF igen
+From: Linus Nordberg <linus@nordberg.se>
+Date: Mon, 16 Mar 2015 09:28:43 +0100
+--text follows this line--
+Hej!
+
+För att slippa konfa statisk routing för våra nät så skulle jag vilja få
+igång OSPF igen. Vi brukade göra det i OpenOSPF, OpenBGP:s kompis, men
+den är inte supportad i FreeBSD 10. Detta är ytterligare en bra
+anledning att flytta till Bird. Problemet med Bird är att vi inte vet
+hur man rattar den och att det är lite krångligare än OpenBGP.
+
+Det största bekymret när man gör bort sig med BGP-demonen är att man
+tappar sina routrar. Detta är ju ett mindre bekymmer om man har
+fungerande alternativa vägar till sina routrar. Problemet för mig är att
+jag har dålig koll på läget här. 

@@ -1,0 +1,38 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2016-02
+To: berra@nordu.net
+cc: Jonny Lundin <jlundin@nordu.net> 
+Subject: Handover
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Thu, 04 Feb 2016 17:03:37 +0100
+--text follows this line--
+Hej Berra!
+
+
+
+--8<---------------cut here---------------start------------->8---
+- assuming a platform based on cosmos+puppet and knowledgable personnel
+- assuming the following written documentation from the project
+  - [ ] system description (overview plus specifics on log instance)
+  - [ ] service description, including dependencies (h&f, base system,
+    ip, firewalls, hsm, dns, ntp, monitoring, deployment, see
+    https://portal.nordu.net/display/sunetops/eduID+service+description)
+  - [ ] incident and escalation instructions
+- CT + catlfish education
+  - [ ] CT system overview (1h)
+  - [ ] catlfish system overview (1h)
+  - [ ] operation of catlfish components (4h)
+  - [ ] incident handling (4h)
+  - [ ] log instance specifics (1h)
+- launch of urd.appendto.org
+  - [ ] installation of base OS + cosmos+puppet on 3 hosts (TBD)
+  - [ ] deployment of 11 log compontents (8h)
+  - [ ] monitoring of 3 physical and 5 virtual systems (TBD)
+  - [ ] test and verification, including incident handling (16h)
+- running a log instance
+  - base system upgrade (TBD)
+  - security patches (TBD)
+  - service deployment (TBD)
+  - incident handling (TBD)
+--8<---------------cut here---------------end--------------->8---

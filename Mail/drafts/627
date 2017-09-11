@@ -1,0 +1,37 @@
+References: <57583434.7080006@dfn-cert.de>
+	<6de7b7e8-b45e-6184-be00-24e98b6ae4b3@dfn-cert.de>
+	<2e48b0f3-2031-ec12-6e21-214b71b0e533@dfn-cert.de>
+	<87ziktypcz.fsf@nordberg.se> <87lgwcyhsm.fsf@nordberg.se>
+	<bc331ba7-6f2c-68f8-3e5e-639a865d81e2@dfn-cert.de>
+	<871sxqr1ol.fsf@nordberg.se> <878tqph6ml.fsf@localhost>
+	<866af721-932f-e42b-fecb-c5d2b2b23b95@dfn-cert.de>
+	<87eg07jfv4.fsf@localhost>
+	<203a1943-51dd-944b-a55c-1b940ff14c8c@dfn-cert.de>
+	<87r347hz58.fsf@nordberg.se> <87h94gyk87.fsf@nordberg.se>
+	<87vashij9f.fsf@nordberg.se> <87d1ejzpra.fsf@nordberg.se>
+	<9fc048d5-c46a-27dc-20fa-b537a01f92ec@dfn-cert.de>
+	<A21CC8F4-1241-4F1E-B0C3-53DC083BFA48@kth.se>
+	<077b21a1-b4f5-a210-a048-527bad982dbd@dfn-cert.de>
+	<61700346-C278-4B80-8870-370F29D31C1F@kth.se>
+	<dfd24d24-903c-db04-a3a0-8348c286d145@dfn-cert.de>
+	<422c97f8-b51a-5492-ecf0-0e18e33c1ecf@dfn-cert.de>
+X-Draft-From: ("nnimap+adbc:INBOX" 122253)
+Gcc: nnimap+adbc:sent-mail.2017-02
+To: Jan Klever <klever@dfn-cert.de>
+Cc: Magnus Ahltorp <map@kth.se>,  Jürgen Brauckmann <brauckmann@dfn-cert.de>
+Subject: Re: catlfish operations/DFN-CERT
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Jan Klever <klever@dfn-cert.de> wrote
+Thu, 23 Feb 2017 12:50:38 +0100:
+
+> Am 23.02.2017 um 12:27 schrieb Jan Klever:
+>>> In this case, the problem is that the addresses in frontend-3.cfg
+>> are not IP addresses. These addresses tell the system what to
+>> address and port to bind to, and we don't support DNS names for
+>> those.
+>> 
+>> Thanks! I will fix that. :)
+>
+> The Erlang Node and SSL Revers Proxy are up and running :)
+

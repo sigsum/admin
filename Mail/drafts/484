@@ -1,0 +1,25 @@
+References: <201603091210.19970.holger@layer-acht.org>
+X-Draft-From: ("nnimap+adbc:lists.bintrans" 23)
+Gcc: nnimap+adbc:sent-mail.2016-03
+To: Holger Levsen <holger@layer-acht.org>
+Cc: "binary-transparency@googlegroups.com" <binary-transparency@googlegroups.com>
+Subject: Re: uploading .buildinfo files… (from Debian reproducible  builds…)
+From: Linus Nordberg <linus@nordberg.se>
+Date: Sun, 13 Mar 2016 13:28:02 +0100
+--text follows this line--
+Holger Levsen <holger@layer-acht.org> wrote
+Wed, 9 Mar 2016 12:10:18 +0100:
+
+| Hi Linus,
+| 
+| we recently discussed uploading .buildinfo files to your log and you said it 
+| would be simple, so… what's the exact command to upload? :-)
+
+Hi Holger!
+
+
+
+
+
+| We currently create ~6000 .buildinfo files per day.
+

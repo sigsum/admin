@@ -1,0 +1,61 @@
+From: Linus Nordberg <linus@nordu.net>
+To: Remco Poortinga - van Wijnen <remco.poortinga@surfnet.nl>
+Subject: CT in GEANT, overview and future plans
+Organization: NORDUnet A/S
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2016-03
+cc: roland.hedberg@adm.umu.se 
+cc: Magnus Ahltorp <map@kth.se>, "Metzger, Stefan" <Stefan.Metzger@lrz.de> 
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Date: Fri, 18 Mar 2016 16:04:39 +0100
+--text follows this line--
+Hi Remco,
+
+As discussed in Vienna recently.
+
+# Here's an overview of catlfish. Text and a nice picture.
+
+--8<---------------cut here---------------start------------->8---
+Catlfish is an implementation of a Certificate Transparency log that is
+designed to work well in a multi-organization Internet-wide deployment
+environment.
+
+The system is divided into frontend, storage, merge, and signing nodes.
+Frontend nodes provide the public HTTPS service for submission and
+queries. Submitted certificate chains are validated and sent to all
+storage nodes. When a configured quorum of the storage nodes report that
+they have stored the data on disk, a signature is requested from a
+signing node and a Signed Certificate Timestamp (SCT) is returned to the
+submitter.
+
+The primary merge node periodically collects all new log entries from
+the storage nodes, orders them, builds a new tree, signs the root hash
+and distributes the new entries and the signed root hash to the frontend
+nodes.
+--8<---------------cut here---------------end--------------->8---
+
+<#part type="application/pdf" filename="~/p/ct/doc/catlfish-system-2.pdf" disposition=attachment>
+<#/part>
+
+
+# Here's my rough view on what will happen 2016-05 -- 2017--04.
+
+Continue develop catlfish (and plop) in order to
+- reach a 1.0 release
+- implement CT v2 (ie rfc6962bis)
+- improve support for building other transparency systems (like Binary
+  Transparency, DNSSEC Transparency and Tor Consensus Transparency)
+- produce good user guides and system documentation
+- improve test coverage
+- remove burdens on deployment and operation of a log
+
+Work on CT gossip standardisation within the IETF, including
+- getting the draft to working group last call
+- implementing proof-of-concept code for the whole shebang -- browser,
+  web server, monitor and auditor
+- contribute to the TRANS wg work with rfc6962-bis, the threat
+  analysis draft and if possible also the non-wg drafts
+
+Advocate for both CT and transparency systems in general by giving
+talks, presenting at conferences, arrange training for developers and
+operational staff.

@@ -1,0 +1,79 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 117282)
+Gcc: nnimap+adbc:sent-mail.2016-08
+To: dfri@dfri.se 
+Subject: [PhishLabs Security Operations] [PL-389996] Malware files on your server:
+From: Linus Nordberg <linus@nordberg.se>
+Date: Wed, 10 Aug 2016 09:15:38 +0200
+--text follows this line--
+Hej!
+
+Det här är märkligt. 
+
+
+<#mml type=message/rfc822 disposition=inline>
+Return-Path: <soc@phishlabs.com>
+Delivered-To: linus@adb-centralen.se
+Received: from imap.adb-centralen.se
+	by imap.adb-centralen.se (Dovecot) with LMTP id WxWuKB+jqlcAXgAAnAFZSg
+	for <linus@adb-centralen.se>; Wed, 10 Aug 2016 05:44:31 +0200
+Received: by imap.adb-centralen.se (Postfix, from userid 127)
+	id A28FB1D649F; Wed, 10 Aug 2016 05:44:31 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on
+	spam.adb-centralen.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=4.0 tests=BAYES_00 autolearn=ham
+	autolearn_force=no version=3.4.1
+Received: from smtp.adb-centralen.se (smtp.adb-centralen.se [IPv6:2001:6b0:8::129])
+	by imap.adb-centralen.se (Postfix) with ESMTP id 03EF81D6494
+	for <linus@nordberg.se>; Wed, 10 Aug 2016 05:44:30 +0200 (CEST)
+Received: from mail.dfri.se (mail.dfri.se [IPv6:2001:67c:289c::17])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id 033EFA20368
+	for <linus@nordberg.se>; Wed, 10 Aug 2016 05:44:30 +0200 (CEST)
+Received: by mail.dfri.se (Postfix)
+	id DC27184F84B; Wed, 10 Aug 2016 05:44:29 +0200 (CEST)
+Delivered-To: ekonomi@dfri.se
+Received: from mail.phishlabs.com (2000.0000.0000.0000.a500.1031.0d0f.7062.ip6.static.sl-reverse.com [IPv6:2607:f0d0:1301:5a::2])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.dfri.se (Postfix) with ESMTPS id B6B3184F83E;
+	Wed, 10 Aug 2016 05:44:29 +0200 (CEST)
+X-Mailer: MIME::Lite 3.029 (F2.77; T1.38; A2.08; B3.07; Q3.07)
+Date: Wed, 10 Aug 2016 03:44:26 +0000
+From: PhishLabs Security Operations <soc@phishlabs.com>
+Subject: [PL-389996] Malware files on your server:
+To: dfri@dfri.se, ekonomi@dfri.se, ekonomi@dfri.se
+Message-Id: <20160810034426.72AAB6E012A@soc1.phishlabs.com>
+
+Our company investigates computer crime incidents on behalf of banks and other companies.
+
+The following URL(s) are being used as part of a malware (computer virus) attack.
+
+
+171.25.193.9:80
+
+
+ 
+
+
+We request that all hacker files and malware files be disabled or removed from the system(s) as soon as possible.
+
+If we have contacted you in error, or there is a better way for us to report this incident, please let us know.
+
+Thank you,
+
+Dustin Figatner
+PhishLabs Security Operations
+soc@phishlabs.com
++1.202.386.6001
+http://www.phishlabs.com
+
+
+Evidence:
+-Virustotal for IP:
+hXXps://virustotal.com/en/ip-address/171.25.193.9/information/
+
+-Virustotal for Torrentlocker sample utilizing this C2:
+hXXps://www.virustotal.com/en/file/658aab7a29da97db4606ce502e367489e41a7ba2fe99ef77780204a7f4522b88/analysis/
+<#/mml>

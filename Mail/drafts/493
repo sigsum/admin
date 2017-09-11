@@ -1,0 +1,47 @@
+Gcc: nnimap+adbc:sent-mail.2016-03
+To: dfri@dfri.se 
+Subject: Bristande säkerhet hos gridlane/portlane/glesys
+From: Linus Nordberg <linus@nordberg.se>
+Date: Sat, 19 Mar 2016 11:36:09 +0100
+--text follows this line--
+Hej!
+
+DFRI är kund hos Portlane (nu glesys/portlane sedan de gick ihop).
+Portlane ägde gridlane som nu är nedlagt vad jag kan förstå.
+
+
+--8<---------------cut here---------------start------------->8---
+Subject: Re: [#CJK-37723-242] Gridlanes databaser tillgängliga utan
+autentisering
+Date: Sun, 13 Mar 2016 21:02:18 +0100
+From: Portlane NOC <support@portlane.com>
+To: john@sunet.se
+
+Hej,
+
+Tack för headsupen.
+Vi har blockerat all åtkomst till de databaserna, jag kan bara beklaga
+att problemet uppstod.
+
+--
+Best Regards, Andreas / PORTLANE AB - Internet  Hosting  Data Communication
+Web: www.portlane.com ASN: 42708 Address: Västberga Allé 60, Stockholm
+
+On Sun, 13 Mar 2016, john@sunet.se wrote:
+> Hej,
+> Leverantören av VPS:er - Gridlane, som mig veterligen driftades av er på
+> Portlane, har råkat exponera MongoDB utan autentisering innehållande
+> totalt 41,9 GB data:
+> 32GB data exponerad utan autentisering hos www.gridlane.com
+> (188.126.64.226) på port 27017 enligt
+> https://www.shodan.io/host/188.126.64.226> 9,9GB data exponerad utan autentisering hos hos www.moln.is
+> (188.126.79.235) på port 27017 enligt
+> https://www.shodan.io/host/188.126.79.235>
+> Observera att jag har inte anslutit till era databaser för att undvika
+> göra advokater glada - vilket ni kan verifiera i era loggar - utan
+> baserar enbart information ovan på vad shodan redan har grävt fram.
+>
+> Som tidigare privatkund hos Gridlane är det väldigt tråkigt att se detta
+> hända,
+> John Van de Meulebrouck Brendgard
+--8<---------------cut here---------------end--------------->8---

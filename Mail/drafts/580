@@ -1,0 +1,20 @@
+Gcc: nnimap+adbc:sent-mail.2016-10
+To: estark@google.com
+cc: Tom Ritter <tom@ritter.vg>, dkg@fifthhorseman.net 
+Subject: CT Gossip progress
+From: Linus Nordberg <linus@nordberg.se>
+Date: Mon, 31 Oct 2016 17:31:49 +0100
+X-Draft-From: ("nnimap+ndn:INBOX" 73087)
+--text follows this line--
+Hi Emily,
+
+We're trying to get the CT Gossip draft [1] to working group last call
+(wglc) in the TRANS working group of the IETF but lack knowledge about
+what implementations there might be.
+
+[1] https://datatracker.ietf.org/doc/draft-ietf-trans-gossip/
+
+I am curious if  Google has anything cooking in Chrome that might make
+us wiser wrt to this, if you can share. Last time we spoke, over email,
+
+

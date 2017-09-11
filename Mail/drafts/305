@@ -1,0 +1,122 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 87039)
+Gcc: nnimap+adbc:sent-mail.2014-08
+To: styrelse@dfri.se 
+Subject: Söka pengar med LEAP
+From: Linus Nordberg <linus@nordberg.se>
+Date: Thu, 21 Aug 2014 12:44:01 +0200
+--text follows this line--
+Hej styrelsen,
+
+Den här grejen med att söka pengar tillsammans med LEAP.se diskuterade
+vi per mejl i våras (mitten av April, Subject: Skall vi söka EU-pengar
+tillsammans med LEAP?) men vi fick aldrig till ett beslut.
+
+
+Lite klargörande från Harry. Den första delen är det vi pratat om förut
+-- DFRI deployar LEAP och anställer två personer (för klient utveckling
+såvitt jag förstår).
+
+
+
+<#part type=message/rfc822 disposition=inline raw=t>
+Return-Path: <hhalpin@w3.org>
+Delivered-To: <linus@adb-centralen.se>
+Received: from imap.adb-centralen.se
+	by imap.adb-centralen.se (Dovecot) with LMTP id Ib9HHizG9VMVnQAAnAFZSg
+	for <linus@adb-centralen.se>; Thu, 21 Aug 2014 12:13:00 +0200
+Received: from smtp.adb-centralen.se (smtp.adb-centralen.se [193.10.5.129])
+	by imap.adb-centralen.se (Postfix) with ESMTP id 795821D7AEC
+	for <linus@nordberg.se>; Thu, 21 Aug 2014 12:13:00 +0200 (CEST)
+Received: by smtp.adb-centralen.se (Postfix, from userid 58)
+	id 722D786D1E6; Thu, 21 Aug 2014 12:13:00 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.3.0 (2010-01-18) on lnspam.nordberg.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-6.3 required=4.0 tests=BAYES_00,RCVD_IN_DNSWL_HI,
+	SPF_HELO_PASS,SPF_PASS,T_RP_MATCHES_RCVD,URG_BIZ autolearn=ham version=3.3.0
+Received: from jay.w3.org (ssh.w3.org [128.30.52.60])
+	(using TLSv1 with cipher AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id E2FB886B5BF
+	for <linus@nordberg.se>; Thu, 21 Aug 2014 12:12:53 +0200 (CEST)
+Received: from aorleans-256-1-158-235.w90-24.abo.wanadoo.fr ([90.24.122.235] helo=[192.168.1.16])
+	by jay.w3.org with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.72)
+	(envelope-from <hhalpin@w3.org>)
+	id 1XKPMS-0002Hg-14; Thu, 21 Aug 2014 06:12:52 -0400
+Message-ID: <53F5C622.9040007@w3.org>
+Date: Thu, 21 Aug 2014 12:12:50 +0200
+From: Harry Halpin <hhalpin@w3.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.0
+MIME-Version: 1.0
+To: Linus Nordberg <linus@nordberg.se>
+CC: "moomin@leap.se" <moomin@leap.se>
+Subject: Re: URGENT: LEAP and EC proposal round 2
+References: <53F5128E.90301@w3.org> <87wqa2p39t.fsf@nordberg.se>
+In-Reply-To: <87wqa2p39t.fsf@nordberg.se>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Yes, we'd need DFRI to commit to deploy the existing almost-finished
+LEAP email system and take on hiring 2 LEAP folks (i.e. "handle the
+money") for about 2.5 years to finish the system.  We'd use "direct
+costs" in the EC projet to buy extra servers for LEAP explicitly as well.
+
+We would know the results of the application by end of the year and
+funding would not appear till 2015. DFRI would get all the overheads
+and could also hire a person as well!
+
+The PANORAMIX project adds mix-networking to LEAP, which is quite
+useful and would be advantage to encrypted email.
+
+There's no real work necessary by the 28th except filling out PART A
+of the application, which if you guys have done an EC application
+before, you just copy that - otherwise, we can help you fill it out.
+It's pretty simple.
+
+  yours,
+     harry
+
+
+
+
+On 08/21/2014 12:04 PM, Linus Nordberg wrote:
+> Harry Halpin <hhalpin@w3.org> wrote Wed, 20 Aug 2014 23:26:38
+> +0200:
+> 
+> | Hey, would DFRI still have any interest in helping LEAP for a
+> proposal | creating a mix networking project on the scale of Tor? |
+>  | I think we discussed this in detail and you said it was tricky,
+> but I | forget the final resolution. | | We need an answer ASAP,
+> proposal is due Aug 28th. Happy to email it to | you.
+> 
+> Hi Harry,
+> 
+> Seems like I have misunderstood you earlier in our EU funding 
+> discussions. My impression so far has been that DFRI would commit
+> to deploy an existing system for secure email, be a name on the
+> funding application and possibly "handle the money" or some of it.
+> 
+> If the work needed to be done for the 28th is of any substance,
+> I'm afraid we're out. That time frame simply doesn't work for us.
+> 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iQIcBAEBAgAGBQJT9cYiAAoJEPgwUoSfMzqcX2IP/iZQl8B+Q7UNVuhcF3Bpsxbi
+/4Dtp6i5cp0Gsgf5G5KGqNjCxFOXg2PR7OckBPsGMJRPKSGntHuXO+2EYBWUmMqD
+wD/8lahy4mCVcxIKEHovTdkxUWvDOZOZjOpn/8pvz/2MHfS1PvEjePqZ6vwcixuM
+5CWcYWd1dapiLn0sp0ssmW+EYUzL9jq6QOIB/NetCAz6cY0OOQdJQVtrePTGeb3m
+amMEyR6HmBS94M5JCVpKYbL87JtMjrWMb+sy+DwcPz/uc1Mzpr7jFMEcNLoiM6tr
+4gc+GhdNBa+8L+/MB7MfQ82ul3tbYJ0E+VfFdfrCD2XccCucuAL98+ZdCK+2Wjpr
+aFryky3DPLFtCOFKfMJEbg52l0vX/p++oLEYZ6ejGvarXku+kFA14I7tONBIcTXv
+EugqkaGXGJ3kedAvzBxsOHZI2c6HnW2CEon59630ozyNdYSFWQr35AvhXqq02Wsd
+q7+Ma7G6gp8CLshPYCe+6rzK2LvRP/et5MycAWUupYrUzJyza8IKgAA0Nk/QiF4m
+5xdlR6iKgYMet8BbaNfiRRBHqnGnRreR2gCXkH9hZouUmILXkpM5G4X55fkYk4V/
+2ITKdk/RamufFa/XP2vXduSRU91fp1Ov67/5nn6tUUYqZ7sGMAxXqe5Qqa+ygR4k
+zoqx/rmi4t/UaZWND1V6
+=hOy0
+-----END PGP SIGNATURE-----
+<#/part>

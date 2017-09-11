@@ -1,0 +1,79 @@
+References: <1791322D-A714-4F91-809F-73188DE8FF36@sunet.se>
+X-Draft-From: ("nnimap+ndn:INBOX" 66295)
+Gcc: nnimap+adbc:sent-mail.2016-03
+To: Valter Nordh <valter@sunet.se>
+Cc: Emma Almroth <emma@sunet.se>
+Subject: Re: About MailChimp and privacy
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Hej Valter!
+
+Valter Nordh <valter@sunet.se> wrote
+Thu, 3 Mar 2016 11:03:06 +0100:
+
+| Hej Emma o Linus!
+| 
+| GÉANT överväger att skaffa sig verktyg för kunna mäta/veta vilka kommunikationsinsatser som är ger bäst genomslag.
+| 
+| MailChimp är ett verktyg som varit uppe för diskussion. Jag upplevde
+| att det saknades en förståelse för vad och hur spärrningen av
+| individer faktiskt görs och vilket fält som GÉANT ger sig in på - om
+| man går från "vanliga" e-post listor till att använda "e-post
+| spårare".
+| 
+| 
+| Jag tänkte skicka nedan till styrelsen - som inte är så tekniskt
+| bevandrad - som lite bakgrund och informationsmaterial. Om GÉANT
+| väljer att gå vidare så är iallafall alla informerade am vad vi gör.
+| 
+| Kan ni hjälpa mig och se om det är något som verkar tokigt - eller Emma - om jag får med ungefär hur SUNET resonerat..
+| 
+| ----------
+| Hi folks!
+| 
+| In our last board meeting I promised a brief background on the privacy related issues when implementing e-mail tracking.
+| 
+| 
+| What do we want to achieve?
+| For GÉANTs communication one important toll is to be able to measure the impact of of our communication towards our stakeholders.
+| Currently we have various ways of sending our information, both to the
+| GA and to the wider general audience (and this is to some extent two
+| different questions, I restrict the discussion here to only
+| mailing-lists where the primary audience is either the GA or the
+| community at large).
+| 
+| 
+| Currently, our communication with the GA is though a e-mail list
+| server that GÉANT runs. One e-mail gets in, is duplicated, and an
+| identical copy is sent to all recipients.
+| In this way there is no (easy) way to measure or to know WHO opened and reads the mail, same is true for the Pear (I think) newsletter and the Tryfons weekly update.
+| 
+| Another way of doing this is to use a different mailing list solution
+| (one popular is called MailChimp), this could be connected to our
+| existing mail-server and few people would _see_ the difference.
+| The difference would be "under the hood". Instead of sending out an
+| identical copy of the mail to each they now get a unique tag attached
+| to each mail, using different technical ways. (See
+| https://en.wikipedia.org/wiki/Web_beacon<https://en.wikipedia.org/wiki/Web_beacon> and/or
+| https://en.wikipedia.org/wiki/Email_tracking<https://en.wikipedia.org/wiki/Email_tracking>).
+| By implementing this GÉANT would be able to "fairly accurately" be able to tell who opens an e-mail and to some extent who forwards the e-mail (not to whom though!).
+| 
+| There are advantages and disadvantages to implement user tracking and I would be happy to hear what other NRENs have chosen to do in this area.
+| 
+| regards, Valter
+| 
+| 
+| *
+| A second use case is user tracking on web-pages, not covered here.
+| 
+| *
+| Another complexity when using an internal tools or external provider..
+| 
+| 
+| ---------
+| 
+| 
+| Verkar det vettig??
+| 
+| mvh Valter

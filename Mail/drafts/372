@@ -1,0 +1,30 @@
+Gcc: nnimap+adbc:sent-mail.2015-02
+To: Magnus Ahltorp <map@kth.se> 
+Subject: include ../
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Hej!
+
+Varför inkludera ../?
+
+--8<---------------cut here---------------start------------->8---
+commit a287b6c12c4d81b9fd09dd4ae9a85d8f6eef1cb9
+Author: Magnus Ahltorp <map@kth.se>
+Date:   Thu Feb 19 12:32:44 2015 +0100
+
+    Use hackney instead of inets:httpc
+
+	Modified   Emakefile
+diff --git a/Emakefile b/Emakefile
+index fe4b31d..dc13e9c 100644
+--- a/Emakefile
++++ b/Emakefile
+@@ -2,6 +2,7 @@
+ {["src/*", "test/*"],
+  [debug_info,
+   {i, "include/"},
++  {i, "../"},
+   {outdir, "ebin/"},
+   {parse_transform, lager_transform}]}.
+ {["test/src/*"],
+--8<---------------cut here---------------end--------------->8---

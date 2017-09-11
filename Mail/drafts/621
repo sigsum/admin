@@ -1,0 +1,50 @@
+References: <57583434.7080006@dfn-cert.de>
+	<866af721-932f-e42b-fecb-c5d2b2b23b95@dfn-cert.de>
+	<87eg07jfv4.fsf@localhost>
+	<203a1943-51dd-944b-a55c-1b940ff14c8c@dfn-cert.de>
+	<87r347hz58.fsf@nordberg.se> <87h94gyk87.fsf@nordberg.se>
+	<87vashij9f.fsf@nordberg.se> <87d1ejzpra.fsf@nordberg.se>
+	<2aaad0fa-3747-0152-0dee-aae6f220e9fb@dfn-cert.de>
+	<87wpcry6c8.fsf@nordberg.se>
+	<5af29d8d-ec95-7ab7-f3f2-5651d577b7a3@dfn-cert.de>
+	<871suzy3rp.fsf@nordberg.se>
+	<d9c5712f-ff3d-24c3-fddd-7bb10c12ce27@dfn-cert.de>
+	<871suyqxjp.fsf@nordberg.se>
+	<64e82833-7014-8629-c14d-1f759e203632@dfn-cert.de>
+	<87d1eikxib.fsf@nordberg.se>
+	<e3adb94c-007c-4f57-c30b-50eefb8e5a0e@dfn-cert.de>
+	<878tp5iyyg.fsf@nordberg.se>
+	<e4017227-c45b-d5c7-3a8a-624b417a527f@dfn-cert.de>
+	<87ino5c8l2.fsf@nordberg.se>
+	<8f6aac66-97ec-8df2-c2c9-0f86d5673110@dfn-cert.de>
+X-Draft-From: ("nnimap+ndn:INBOX" 75583)
+Gcc: nnimap+adbc:sent-mail.2017-02
+To: Jan Klever <klever@dfn-cert.de>
+Cc: Jürgen Brauckmann <brauckmann@dfn-cert.de>,  Magnus Ahltorp <map@kth.se>
+Subject: Re: catlfish operations/DFN-CERT
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Jan Klever <klever@dfn-cert.de> wrote
+Mon, 20 Feb 2017 14:15:13 +0100:
+
+> Am 20.02.2017 um 14:09 schrieb Linus Nordberg:
+> [...]
+>> Your email doesn't check out properly (PGP signature) in my MUA. Might be
+>> because of attachments?
+>>
+>> It also doesn't match the key you sent us a long time ago, then called
+>> dfn-cert-node-api-key.pem. Did you generate a new key for frontend-3? Can
+>> you use the previously communicated one? If not, please send it again
+>> inlined in a signed email. Thanks.
+>
+> Ah, got that mixed up. Pls. use the old dfn-cert-node-api-key.pem and
+> discard the new one.
+
+ACK.
+
+I'd like to postpone the inclusion of frontend-3 until tomorrow after
+11:00 in order for me to be able to monitor the progress a bit in the
+beginning at least.
+
+If I can make it earlier, I'll let you know.

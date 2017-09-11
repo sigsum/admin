@@ -1,0 +1,23 @@
+Gcc: nnimap+adbc:sent-mail.2016-01
+To: iha@regexp.se 
+Subject: 
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Hej Ilja!
+
+Kikar lite i loggar från min DNS-server och ser att
+
+inte verkar gillar mina SOA queries och NOTIFY-meddelanden.
+
+Mina loggar säger att v4-adressen ger "connection refused" medan
+v6-adressen accepterar TCP-kopplet men returnerar "REFUSED".
+
+När jag manuellt provar att göra en AXFR så får jag "connection
+refused".
+
+När jag kollar hur gamla mina zonfiler är för dina domäner så är dom
+från 2015-10-10. Inte bra.
+
+Jag kommer från 193.10.5.87 / 2001:6b0:8::87.
+
+Kan du kolla om du kan se något?

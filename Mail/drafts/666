@@ -1,0 +1,39 @@
+References: <33cdae01-01f6-cfae-07fd-ce52ee8f13ae@um.es>
+	<87shjxxpxw.fsf@nordberg.se>
+	<fdd0333e-c9fd-f699-a90b-967991827561@um.es>
+	<87inktxn8w.fsf@nordberg.se>
+	<3dd81dfe-086f-a680-7ba0-9fd4c3c61c34@um.es>
+	<87a865xhyq.fsf@nordberg.se>
+	<ba3e63e9-1020-7182-1f8f-b8acca29f7d6@um.es>
+	<8760gtxhla.fsf@nordberg.se>
+	<435d373c-f0ea-886e-b79f-207105b5f18f@um.es>
+X-Draft-From: ("nnimap+adbc:INBOX" 125026)
+Gcc: nnimap+adbc:sent-mail.2017-05
+To: Alejandro Pérez Méndez <alex@um.es>
+Subject: Re: Problem with Moonshot & libradsec?
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Alejandro Pérez Méndez <alex@um.es> wrote
+Mon, 22 May 2017 13:23:29 +0200:
+
+> El 22/05/17 a las 13:21, Linus Nordberg escribió:
+>> Alejandro Pérez Méndez <alex@um.es> wrote
+>> Mon, 22 May 2017 13:15:41 +0200:
+>>
+>>>> Of course -- mech_aep uses the rs_request abstraction. Makes sense.
+>>>>
+>>>> rs_request_send() is where rs_packet_send() is being called and a new
+>>>> TCP connection is set up if one doesn't already exist.
+>>> But then....can I assume that rs_conn_create actually creates a new
+>>> TCP connection or is it a different concept?
+>> rs_conn_create() creates a new connection object but doesn't do any
+>> network business. rs_packet_send() will create a new TCP session if
+>> there is none. So figuring out how many radsec connection objects that
+>> mech creates should be a good start for figuring where things go bad for
+>> you.
+>>
+>> Or look at tcpdump/wireshark output and count the number of TCP
+>> sessions, I guess.
+> Right, that'd actually help. Or just check the source port as you
+> mentioned earlier.
+

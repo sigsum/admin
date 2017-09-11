@@ -1,0 +1,49 @@
+References: <87sib2qe20.fsf@nordberg.se> <5551D8A1.4020506@comodo.com>
+	<87a8xaqatj.fsf@nordberg.se>
+	<alpine.LFD.2.11.1505120825430.8541@bofh.nohats.ca>
+X-Draft-From: ("nnimap+ndn:INBOX" 57823)
+Gcc: nnimap+adbc:sent-mail.2015-05
+To: Paul Wouters <paul@nohats.ca>
+Cc: Rob Stradling <rob.stradling@comodo.com>,  trans@ietf.org
+Subject: Re: [Trans] Empty extra_data
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Tue, 12 May 2015 15:06:57 +0200
+--text follows this line--
+Paul Wouters <paul@nohats.ca> wrote
+Tue, 12 May 2015 08:27:11 -0400 (EDT):
+
+| > The wording is not crystal clear but as the meaning is pretty intuitive
+| > I'll not insist on a clarification.
+| 
+| As an implementer, can you offer improved text? We are in the process of
+| writing a bis document after all - now is a good time.
+
+
+
+
+Present 6962bis:
+--8<---------------cut here---------------start------------->8---
+   "leaf_certificate" is the end-entity certificate submitted for
+   auditing.
+
+   "certificate_chain" is a chain of additional certificates required to
+   verify the end-entity certificate.  The first certificate MUST
+   certify the end-entity certificate.  Each following certificate MUST
+   directly certify the one preceding it.  The final certificate MUST
+   either be, or be issued by, a root certificate accepted by the log.
+--8<---------------cut here---------------end--------------->8---
+
+Proposed 6962bis:
+--8<---------------cut here---------------start------------->8---
+
+   "leaf_certificate" is the end-entity certificate submitted for
+   auditing.
+
+   "certificate_chain" is a chain of additional certificates required to
+   verify the end-entity certificate.  The first certificate MUST
+   certify the end-entity certificate.  Each following certificate MUST
+   directly certify the one preceding it.  The final certificate MUST
+   either be, or be issued by, a root certificate accepted by the log.
+
+--8<---------------cut here---------------end--------------->8---

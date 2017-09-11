@@ -1,0 +1,26 @@
+References: <B437CCC5-DE13-4B13-BC8A-E55C33AA6391@dfn.de>
+	<87eh1mcult.fsf@nordberg.se>
+	<E83BABD3-0FE3-4903-86D4-F5D0480728A0@dfn.de>
+	<874n2eijrv.fsf@nordberg.se>
+	<20141216153444.09323e0a@leda.localdomain>
+	<EBB69E50-662C-43D0-B2E3-0E20E75C4D93@dfn.de>
+	<20141217152203.2abb017b@leda.localdomain>
+X-Draft-From: ("nnimap+ndn:INBOX" 54203)
+Gcc: nnimap+adbc:sent-mail.2015-01
+To: Christian Hesse <list@eworm.de>
+Cc: Ralf Paffrath <paffrath@dfn.de>,  Elmar Dreher <Elmar.Dreher@uni-konstanz.de>,  radsecproxy@uninett.no
+Subject: Re: Problems with radiator to radsecproxy TLS connections
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Wed, 14 Jan 2015 17:41:58 +0100
+--text follows this line--
+Christian Hesse <list@eworm.de> wrote
+Wed, 17 Dec 2014 15:22:03 +0100:
+
+| On the other hand I did enable StatusServer. This sends packets every now and
+| then and keeps the connection alive as well, no?
+
+If it is a question of equipment between client and server timing out on
+lack of traffic _and_ that timeout is higher than 25 seconds, yes. The
+25 seconds figure comes from the radsecproxy Status-Server period.
+

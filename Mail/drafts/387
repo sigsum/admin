@@ -1,0 +1,27 @@
+From: Linus Nordberg <linus@nordu.net>
+To: John Van de Meulebrouck Brendgard <john@nordu.net>
+Cc: pettai@nordu.net
+Subject: Re: Fwd: Re: Vulnerability report along with crash-file
+In-Reply-To: <5511209A.5050900@nordu.net> (John Van de Meulebrouck Brendgard's
+	message of "Tue, 24 Mar 2015 09:30:18 +0100")
+Organization: NORDUnet A/S
+References: <551019BE.7060805@isc.org> <5511209A.5050900@nordu.net>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+X-Draft-From: ("nnimap+ndn:INBOX" 56843)
+Gcc: nnimap+adbc:sent-mail.2015-03
+Date: Tue, 24 Mar 2015 09:47:52 +0100
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+John Van de Meulebrouck Brendgard <john@nordu.net> wrote
+Tue, 24 Mar 2015 09:30:18 +0100:
+
+| Nedan följer förhandsinformation samt patch för en liten bug som kan
+| krasha bind 9 enligt beskrivningen nedan.
+
+Snyggt.
+
+
+| Informationen är inte tänkt att vara publik ännu så var vänlig och inte
+| distribuera den vidare.
+
+Ack.

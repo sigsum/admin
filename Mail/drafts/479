@@ -1,0 +1,18 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2016-03
+To: cat-users@geant.net
+Subject: Where's the code?
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Tue, 08 Mar 2016 12:34:28 +0100
+--text follows this line--
+Hi,
+
+is there a repository with source code somewhere?
+Can't seem to find any pointers at https://cat.eduroam.org/ .
+
+Using "downloading the installer" and picking an institution at random
+gives me a shell script. Is there more code than this?
+
+A first question regarding that shell script would be "Are you using any
+bash-specific features or would /bin/sh work?"

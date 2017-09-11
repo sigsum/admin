@@ -1,0 +1,33 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2014-09
+To: Magnus Ahltorp <map@kth.se> 
+Subject: Lagringsformat för certifikaten
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Tue, 23 Sep 2014 13:22:41 +0200
+--text follows this line--
+Hej Magnus!
+
+Jag funderar på hur vi borde lagra cert i databasen.
+
+Är frestad att följa RFC6962 sektion 3.1 och lagra dom med
+5246-vektor-information. 
+
+En positiv sak med det är att ett entry har tillräcklig struktur för att
+plop (och db) skall kunna hantera det som en opak dataklump. Det blir
+potentiellt lättare att använda plop till annat senare.
+
+En nackdel är att 
+
+       struct {
+           uint64 timestamp;
+           LogEntryType entry_type;
+           select(entry_type) {
+               case x509_entry: ASN.1Cert;
+               case precert_entry: PreCert;
+           } signed_entry;
+           CtExtensions extensions;
+       } TimestampedEntry;
+
+
+

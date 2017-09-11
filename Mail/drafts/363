@@ -1,0 +1,21 @@
+References: <87oapu93dy.fsf@nordberg.se>
+	<A84F9683-86B2-4005-88FB-F1D5E9AE9EBF@kth.se>
+X-Draft-From: ("nnimap+ndn:INBOX" 54979)
+Gcc: nnimap+adbc:sent-mail.2015-01
+To: Magnus Ahltorp <map@kth.se>
+Cc: roland.hedberg@adm.umu.se,  Ragnar Sundblad <ragge@csc.kth.se>,  Göran Kero <goran.kero@umu.se>,  Leif Johansson <leifj@sunet.se>
+Subject: Re: Tillbaka. Ganska i alla fall.
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Thu, 22 Jan 2015 15:33:08 +0100
+--text follows this line--
+Magnus Ahltorp <map@kth.se> wrote
+Thu, 22 Jan 2015 00:25:48 +0100:
+
+| Jag kommer inte ihåg exakt hur merge blev långsam, men så fort jag får
+| ordning på hur Docker fungerar så kan jag titta igen.
+
+
+
+Finns instruktioner för att bygga Docker-image på
+https://www.ct.nordu.net/README.html .

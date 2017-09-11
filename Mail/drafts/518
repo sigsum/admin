@@ -1,0 +1,29 @@
+References: <8760vunj85.fsf@nordberg.se> <5705E0F0.5090900@ritter.vg>
+X-Draft-From: ("nnimap+ndn:INBOX" 67663)
+Gcc: nnimap+adbc:sent-mail.2016-04
+To: Tom Ritter <tom@ritter.vg>
+Cc: dkg@fifthhorseman.net
+Subject: Re: DNSSEC Transparency
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Tom Ritter <tom@ritter.vg> wrote
+Wed, 6 Apr 2016 23:24:16 -0500:
+
+| On 4/6/16 11:19 PM, Linus Nordberg wrote:
+| > Hi Tom,
+| > 
+| > Not sure I've told you, but when I saw your mention of DNSSEC
+| > Transparency on ct-policy@ I thought I shold make sure you know: There's
+| > a mailing list at https://lists.sunet.se/listinfo/dnssec-transparency> you migth want to be part of.
+| > 
+| > I'm currently asking a couple of questions that surely could benefit
+| > From another smart mind with CT knowledge.
+| > 
+| 
+| Sure! All the mailing lists!! =D
+| 
+| Aside: the best week for a follow-up call about CT Gossip for me is
+| definitely the week of 4/18
+

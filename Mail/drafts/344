@@ -1,0 +1,52 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: e-support@​stockholm.se
+Subject: Svårigheter att skapa lösenordskonto
+User-Agent: Gnus/5.13 (Gnus v5.13)
+X-Draft-From: ("nnimap+adbc:INBOX")
+Gcc: nnimap+adbc:sent-mail.2014-11
+Date: Mon, 03 Nov 2014 14:43:02 +0100
+--text follows this line--
+Hej!
+
+1. Det gick den Mon Nov  3 14:42:33 CET 2014 inte att skicka det här som
+ett mejl till e-support@stockholm.se pga
+
+  Sending failed: 504 5.5.2 <=?utf-8?Q?=E2=80=8Bstockholm=2Ese?=>: Recipient address rejected: need fully-qualified address
+
+
+2. Det är lite svårt att skapa lösenordskonto eftersom det tar lång tid för
+epost från er att nå mig medan aktiveringskoderna gäller i en timme.
+
+Det är kanske inte omöjligt, bara man passar sin epost noggrant. Skall
+försöka med det senare.
+
+Skulle ni kunna snabba på er epost-leverans lite alternativt dra upp
+tiden som en aktiveringskod gäller?
+
+
+Två exempel på mejl som tagit lång tid:
+
+34m:
+--8<---------------cut here---------------start------------->8---
+Received: from emea01-db3-obe.outbound.protection.outlook.com (mail-db3on0116.outbound.protection.outlook.com [157.55.234.116])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id 05B7DA44A9F
+	for <linus@nordberg.se>; Sun,  2 Nov 2014 14:08:14 +0100 (CET)
+Received: from AMSPR03MB454.eurprd03.prod.outlook.com (10.242.22.148) by
+ AMSPR03MB066.eurprd03.prod.outlook.com (10.242.73.144) with Microsoft SMTP
+ Server (TLS) id 15.1.6.9; Sun, 2 Nov 2014 12:34:46 +0000
+--8<---------------cut here---------------end--------------->8---
+
+
+1h34m:
+--8<---------------cut here---------------start------------->8---
+Received: from emea01-db3-obe.outbound.protection.outlook.com (mail-db3on0108.outbound.protection.outlook.com [157.55.234.108])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id D84DCA44A9F
+	for <linus@nordberg.se>; Mon,  3 Nov 2014 14:21:42 +0100 (CET)
+Received: from DB3PR03CA0020.eurprd03.prod.outlook.com (10.255.183.20) by
+ DB4PR03MB457.eurprd03.prod.outlook.com (10.141.236.140) with Microsoft SMTP
+ Server (TLS) id 15.1.6.9; Mon, 3 Nov 2014 11:47:18 +0000
+--8<---------------cut here---------------end--------------->8---

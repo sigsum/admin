@@ -1,0 +1,80 @@
+References: <55BF54D8.4030508@nordu.net>
+X-Draft-From: ("nnimap+ndn:INBOX" 60777)
+Gcc: nnimap+adbc:sent-mail.2015-08
+To: John Van de Meulebrouck Brendgard <john@nordu.net>
+Cc: catlfish+noc@nordu.net
+Subject: Re: Lite noteringar från helgens försök med ct
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Mon, 03 Aug 2015 14:50:12 +0200
+--text follows this line--
+John Van de Meulebrouck Brendgard <john@nordu.net> wrote
+Mon, 03 Aug 2015 13:47:36 +0200:
+
+| Hej!
+| Nedan följer lite noteringar från helgens försök att experimentera med
+| ct för den som är intresserad:
+
+Tack, bra input!
+
+
+| 1. catlfish/examples/docker-minimal/README anger att "docker build -t
+| my-single-image-catlfish docker" ska köras för att bygga en minimal
+| instans av catlfish. catlfish/examples/docker-minimal/docker/Dockerfile
+| vill dock bygga från "FROM catlfish" som inte går att finna i Docker Hub.
+| 1.1 Antagligen är det tänkt att man först ska clona catlfish-dockerfiles
+| och sedan köra build-from-source.sh för att erhålla erlang:latest,
+| base-debian:jessie, samt catlfish:latest.
+
+Jag har uppdaterat catlfish/examples/docker-minimal/README att peka på
+catlfish-dockerfiles.
+
+
+| 1.2 När man har de nödvändiga komponenterna så kan man fortsätta bygga
+| enligt punkt 1, dock stannar byggprocessen på "mkdir: cannot create
+| directory '/opt/catlfish/rel/log': Permission denied".
+| 1.3 "RUN ls -l" visar inte att det är fel behörighet på
+| /opt/catlfish/rel, så det är antaligen något annat fel.
+
+
+
+
+| 1.4 Om mkdir som skapar log-mappen bortkommenteras så kan containern
+| byggas men inte startas enligt anvisningen: "docker run
+| --name=my-catlfish --detach=true --publish
+| 127.0.0.1:8080-8082:8080-8082/tcp my-single-image-catlfish" då den
+| klagar på "catlfish: unknown role: "
+| 
+| 2. catlfish/tools/fetchallcert.py ska enligt catlfish/doc/README köras
+| med t ex "fetchallcerts.py --store /tmp/testcert1 --write-sth
+| https://127.0.0.1:8080" men klagar då på att "--publickey" saknas.
+| 2.1 Det går bättre att köras med  t ex "fetchallcerts.py --publickey
+| /tmp/plausible-logkey.pem --store ../../plausible-certs
+| https://plausible.ct.nordu.net/"2.2 fetchallcerts.py går då igång men kastar ett undantag att:
+| -------------------
+| Public key for https://plausible.ct.nordu.net/ not found, specify key
+| file with --publickey
+| john@batou:~/workspace/catlfish/tools$ ./fetchallcerts.py --publickey
+| /tmp/plausible-logkey.pem --store ../../plausible-certs
+| https://plausible.ct.nordu.net/Log last updated Mon Aug  3 13:31:33 2015, 39 seconds ago
+| tree size 5694864
+| root hash CFC7C78C570701B4C31211DEE3228F6E25BE49E03FCB59B51F54DF9FB3C9772A
+| 
+| ncerts 0
+| fetching from 0
+| Traceback (most recent call last):
+|   File "./fetchallcerts.py", line 117, in <module>
+|     (chain, timestamp, issuer_key_hash) = extract_original_entry(entry)
+|   File "/home/john/workspace/catlfish/tools/certtools.py", line 735, in
+| extract_original_entry
+|     certchain = decode_certificate_chain(extra_data)
+|   File "/home/john/workspace/catlfish/tools/certtools.py", line 228, in
+| decode_certificate_chain
+|     (unpacked_certchain, rest) = unpack_tls_array(packed_certchain, 3)
+|   File "/home/john/workspace/catlfish/tools/certtools.py", line 171, in
+| unpack_tls_array
+|     (length,) = struct.unpack(">Q", "".join(padded_length))
+| struct.error: unpack requires a string argument of length 8
+| -------------------
+| 
+| // John

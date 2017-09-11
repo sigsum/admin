@@ -1,0 +1,40 @@
+From: Linus Nordberg <linus@nordu.net>
+To: Leif Johansson <leifj@sunet.se>
+Cc: dev@lists.sunet.se
+Subject: Re: [Dev] ca.sunet.se
+Organization: NORDUnet A/S
+References: <87oa8cg9zw.fsf@nordberg.se> <57330B9F.20908@sunet.se>
+X-Draft-From: ("nnimap+ndn:INBOX" 68660)
+Gcc: nnimap+adbc:sent-mail.2016-05
+In-Reply-To: <57330B9F.20908@sunet.se> (Leif Johansson's message of "Wed, 11
+	May 2016 12:38:23 +0200")
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Date: Thu, 12 May 2016 12:17:34 +0200
+--text follows this line--
+Leif Johansson <leifj@sunet.se> wrote
+Wed, 11 May 2016 12:38:23 +0200:
+
+| On 2016-05-11 12:33, Linus Nordberg wrote:
+| > Hej!
+| > 
+| > Varför ser jag inte ett nytt cert CN=linus på http://ca.sunet.se/infra/> trots
+| > https://git.nordu.net/?p=nunoc-ops.git;a=commit;h=2e8439e8f1ca62199fb544a4ca0c3cd32192fcb3> tror ni?
+| > 
+| > _______________________________________________
+| > Dev mailing list
+| > Dev@lists.sunet.se
+| > https://lists.sunet.se/listinfo/dev> 
+| (17:32:44) leifj@nordu.net/klapautius: aha
+| (17:32:49) leifj@nordu.net/klapautius: mkreq -c
+| (17:33:32) leifj@nordu.net/klapautius: din csr hamnade inte i rätt hög
+| (17:34:04) leifj@nordu.net/klapautius: den finns i
+| ca.sunet.se/overlay/var/lib/ca/infra/requests va?
+| (17:34:15) leifj@nordu.net/klapautius: git mv till requests/client
+| (17:34:19) leifj@nordu.net/klapautius: så borde det bli bra
+
+Oj, jag gjorde ju fel.
+
+Funkar nu.
+
+Tack!
+

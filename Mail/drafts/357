@@ -1,0 +1,12 @@
+Gcc: nnimap+adbc:sent-mail.2015-01
+To: 
+Subject: 
+From: Linus Nordberg <linus@nordberg.se>
+Date: Sat, 10 Jan 2015 13:15:24 +0100
+--text follows this line--
+Hi good people who know things about the bandwidth scanner,
+
+Is there a way to determine how far a scanner has come on its journey
+towards writing a bws-* file? My scanners have been running for 3.5 days
+and have "had enough streams" for some 2.5 days now.
+

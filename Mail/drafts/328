@@ -1,0 +1,46 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2014-10
+To: pettai@nordu.net, Magnus Bergroth <bergroth@nordu.net>,
+ he@nordu.net 
+Subject: 
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Tue, 07 Oct 2014 17:28:16 +0200
+--text follows this line--
+På hidden-master.sunet.se:
+--8<---------------cut here---------------start------------->8---
+-bash-4.3$ vi 229.130 
+-bash-4.3$ make
+*************************************************************************************
+zone sunet.se/IN: loaded serial 2014100500
+OK
+zone 229.130.in-addr.arpa/IN: loaded serial 2014092600
+OK
+zone 124.242.130.in-addr.arpa/IN: loaded serial 2014100500
+OK
+*************************************************************************************
+../bin/Fixserial sunet.se 229.130 124.242.130
+Fixing...
+sunet.se                                2014100700
+229.130                                 2014100700
+124.242.130                             2014100700
+for i in sunet.se 229.130 124.242.130 ;  do  /usr/pkg/sbin/named-compilezone -o ./compiled/${i} ${i} ${i};  done
+zone sunet.se/IN: loaded serial 2014100700
+dump zone to ./compiled/sunet.se...done
+OK
+zone 229.130/IN: loaded serial 2014100700
+dump zone to ./compiled/229.130...done
+OK
+zone 124.242.130/IN: loaded serial 2014100700
+dump zone to ./compiled/124.242.130...could not open output file "./compiled/124.242.130" for writing
+done
+*** Error code 1
+
+Stop.
+make: stopped in /etc/namedb/master
+-bash-4.3$ ls -l compiled/124.242.130 
+-rw-r--r--  1 root  named  2052 Oct  5 20:22 compiled/124.242.130
+-bash-4.3$ ls -l 124.242.130 
+-r--r--r--  1 linus  named  1735 Oct  7 17:22 124.242.130
+-bash-4.3$ rm compiled/124.242.130
+--8<---------------cut here---------------end--------------->8---

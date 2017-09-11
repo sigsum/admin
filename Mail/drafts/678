@@ -1,0 +1,40 @@
+References: <f8d451bd-5282-8846-5557-cfdda7447ea2@surfnet.nl>
+	<87lgy5d1dw.fsf@nordberg.se>
+	<8d42dc8d-b882-5362-67f8-c0ef0e478239@surfnet.nl>
+	<66e55ae6-108b-0682-6d2f-58b810b273a9@surfnet.nl>
+	<87zimh3ga9.fsf@nordberg.se>
+	<7d50031b-f99c-d326-659b-6b6524900d5a@surfnet.nl>
+	<8760ff2n97.fsf@nordberg.se>
+	<554c4205-c38c-b533-1ec7-1fc2ba57e423@surfnet.nl>
+X-Draft-From: ("nnimap+ndn:INBOX" 77732)
+Gcc: nnimap+adbc:sent-mail.2017-06
+To: Remco Poortinga - van Wijnen <remco.poortinga@surfnet.nl>
+Subject: Re: CT log follow-up
+Organization: Sunet
+From: Linus Nordberg <linus@sunet.se>
+--text follows this line--
+Remco Poortinga - van Wijnen <remco.poortinga@surfnet.nl> wrote
+Thu, 29 Jun 2017 14:46:33 +0200:
+
+>> Are you still interested in operating a frontend node in a CT log?
+>> DFN-CERT are participating in our test log "plausible" by running
+>> a so called frontend system since a couple of months.
+>> 
+>> If you're still interested, let's discuss technical details.
+>> 
+>
+> Yep, still interested. I'll share this with my team to see who's
+> interested and where I can place this topic best
+> 'functionally/logically' (close to SURFcertificates seems to make sense).
+>
+> And you're looking for another front-end node right?
+
+That was my thought, yes. It's not because we need it for either of load
+balancing or availability at this point but rather because we'd like to
+try our stuff out on another NREN.
+
+We might want to postpone until after summer before getting started but
+starting planning makes sense. One thing that should be in better shape
+after the summer is the documentation, which I'd very much would like
+someone to try out and comment on. Another thing would be more testing
+on our end wrt running on a less 

@@ -1,0 +1,22 @@
+References: <87d25owds5.fsf@nordberg.se>
+	<20150205160320.GB53340@vpn212046.nrl.navy.mil>
+X-Draft-From: ("nnimap+adbc:INBOX" 94771)
+Gcc: nnimap+adbc:sent-mail.2015-02
+To: Paul Syverson <paul.syverson@nrl.navy.mil>
+Subject: Re: Your paper
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Paul Syverson <paul.syverson@nrl.navy.mil> wrote
+Thu, 5 Feb 2015 11:03:20 -0500:
+
+| > Can I read your and Griffins paper? I agree not to share further.
+| 
+| Here you go.
+
+Thanks. A few comments below.
+
+- p.2: in addition to money and administrative burdens, getting an x509
+  cert from a CA might involve sharing potentially sensitive personal
+  data with an unknown business entity in an unknown jurisdiction
+
+- 

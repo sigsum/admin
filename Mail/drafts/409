@@ -1,0 +1,34 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2015-06
+To: Magnus Ahltorp <map@kth.se> 
+Subject: 
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Fri, 12 Jun 2015 15:53:31 +0200
+--text follows this line--
+Fri Jun 12 06:05:30 UTC 2015
+getting new entries from storage-1
+getting new entries from storage-2
+adding 885118 entries
+getting 881048 entries from storage-1
+getting 4070 entries from storage-2
+added 885118 entries
+[('get logorder', 15625561), ('get new entries', 218485850), ('add entries', 10036137711), ('build sth', 120118192)]
+root hash B153DEFA4C073BCAB708766700440A58D03BB31CCC875A5CB392712E3B108521
+distributing for node frontend-1
+current position 4310418
+...
+missing entries: 0
+ERROR: sendsth Internal Server Error
+...
+Fri Jun 12 12:41:58 UTC 2015
+getting new entries from storage-1
+getting new entries from storage-2
+adding 498714 entries
+getting 498714 entries from storage-1
+getting 0 entries from storage-2
+added 498714 entries
+[('get logorder', 17107332), ('get new entries', 201899691), ('add entries', 3379643343), ('build sth', 85609363)]
+root hash 75F47F762FA2929062438F801C26C61D09BA88078DB4904D005D5684BE196DAF
+distributing for node frontend-1
+current position 4310418

@@ -1,0 +1,19 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2016-05
+To: Leif Johansson <leifj@sunet.se> 
+Subject: CT ops, beställning
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Mon, 30 May 2016 17:33:35 +0200
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+lägg under under https://portal.nordu.net/display/sunetops/:
+
+- arkitekturskiss
+- ägare, eskaleringsvägar
+- system-alive-test, manuellt och automatiskt
+- vanliga fel och åtgärder
+- vanliga handgrepp, standardförändringar (typ säkerhetsuppdateringar)
+
+(se dok av sunets webkluster: https://portal.nordu.net/display/sunetops/SUNET+web+platform)
+(eduid: https://portal.nordu.net/display/sunetops/eduID+service+description)

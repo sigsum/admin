@@ -1,0 +1,27 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2014-09
+To: Magnus Ahltorp <map@kth.se> 
+Subject: Brancharna 'releasemanagement'
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Mon, 22 Sep 2014 09:02:09 +0200
+--text follows this line--
+Hej Magnus!
+
+Jag har mergat 'releasemanagement' i ditt catlfish-repo med några små
+ändringar:
+
+- ebin/catlfish.app fick aktuellt versionsnummer i 'vsn'
+- Makefile fick en rad uppbruten för att rymmas på 80 kolumner
+- reltool.config fick aktuellt versionsnummer i 'rel'
+- catlfish_app.erl fick whitespace i en io:format()
+
+Frågan är hur vi gör med versionsnummer framöver. Vore fint att ha det
+på ett mindre ställe. Idag finns det tre versionsnummer -- plop,
+catlfish och det som står i reltool.config. Kan de två sistnämnda "slås
+ihop"?
+
+
+Är branch 'releasemanagement' i ditt plop-repo något du vill att jag
+skall merga? Den ser väldigt underlig ut, som om du stoppar in catlfish
+i plop.

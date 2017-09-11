@@ -1,0 +1,20 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2017-05
+To: Al Cutter <al@google.com> 
+Subject: Chained STH's
+Organization: Sunet
+From: Linus Nordberg <linus@sunet.se>
+--text follows this line--
+Hi Al,
+
+How are things? Hope they're well.
+
+I'm currently fighting a headache with its origin in trying to figure
+out how badly the suggested chaining of STH's [0] are for a secure
+distributed CT log. My initial conclusion is that, because we'd end up
+with two append only data structures, which are not independent of each
+other, this is a complicating enough change that I should scream stop
+and argue why. Curious to hear if you've thought about it and concluded
+it's easy enough to let it pass or perhaps already solved it?
+
+[0]

@@ -1,0 +1,47 @@
+References: <75643e16-ba8e-4456-a516-b8eb1bbaab6d@chromium.org>
+X-Draft-From: ("nnimap+ndn:INBOX" 53112)
+Gcc: nnimap+adbc:sent-mail.2014-11
+To: Rick Andrews <rick_andrews@symantec.com>
+Cc: ct-policy@chromium.org
+Subject: Re: [ct-policy] Third log server and IP addresses
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Tue, 04 Nov 2014 21:57:36 +0100
+--text follows this line--
+Rick Andrews <rick_andrews@symantec.com> wrote
+Tue, 4 Nov 2014 11:16:43 -0800 (PST):
+
+|  
+| 
+| Symantec, GlobalSign, Trend Micro and Entrust have a couple of concerns 
+| about the deployment of CT.
+| 
+| 1) We have all built in the ability to easily add new log servers as they 
+| come on board, but we're getting very close to deploying our final CT code 
+| within the next month, and we want to test and validate our code with three 
+| distinct log servers before we go live. At this point, we have no practical 
+| way to do that. In our earlier testing, we included two SCTs from the same 
+| log server, and used our own non-production quality test log server, and 
+| manually configured Chrome to trust it. But we would all breathe easier if 
+| we could test against three officially trusted log servers.
+| 
+| We would like to ask Google to commit to a date when (at least) a third log 
+| server will be announced, or else relax the 3-SCT rule for 15-27 month 
+| certs, sooner the better. If the 3-SCT rule is relaxed, we need to code in 
+| that change and test it. 
+| 
+| 2) We have to open up outbound access through our firewall to Google’s log 
+| servers, and our IT folks have a policy whereby outbound access from hosts 
+| involved in the certificate issuance process is allowed for external 
+| services only on known IP addresses. Can Google publish the IP addresses or 
+| net block range of their log servers for this purpose?
+| 
+| -- 
+| You received this message because you are subscribed to the Google Groups "Certificate Transparency Policy" group.
+| To unsubscribe from this group and stop receiving emails from it, send an email to ct-policy+unsubscribe@chromium.org.
+| To post to this group, send email to ct-policy@chromium.org.
+| To view this discussion on the web visit https://groups.google.com/a/chromium.org/d/msgid/ct-policy/75643e16-ba8e-4456-a516-b8eb1bbaab6d%40chromium.org.
+
+The GEANT project together with ISOC is working on a plan for
+establishing a production CT log. They hope to be able to announce their
+timetable soon.

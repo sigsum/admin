@@ -1,0 +1,46 @@
+References: <56275CCD.9000908@epfl.ch>
+	<28C36F64-D275-45AD-B8D9-6F7A91ADD863@epfl.ch>
+	<87si542wn3.fsf@nordberg.se>
+	<D61732FD-52E5-4C6F-A627-14FAD3D35646@epfl.ch>
+	<87y4evwg4p.fsf@nordberg.se>
+	<4E6F187B-7441-4A33-A2F0-E1C3EE386BA3@epfl.ch>
+	<87pp07wfkf.fsf@nordberg.se>
+	<BB57A94E-21E2-455D-A429-C3A15A0F7D10@epfl.ch>
+X-Draft-From: ("nnimap+ndn:INBOX" 62463)
+Gcc: nnimap+adbc:sent-mail.2015-10
+To: Linus Gasser <linus.gasser@epfl.ch>
+Subject: Re: Catlfish
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Thu, 22 Oct 2015 11:57:25 +0200
+--text follows this line--
+Linus Gasser <linus.gasser@epfl.ch> wrote
+Thu, 22 Oct 2015 10:11:15 +0200:
+
+| Hi Linus,
+| 
+| I’m trying to compile catlfish on my mac os X with the erlang from
+| brew (version 18). It seems that the dependencies are somewhat in the
+| ‘reverse’ order, so not top-to-bottom. Anyway, now I have everything
+| except the plop-library which barks at:
+| 
+| $ make
+| (cd c_src && make all)
+| make[1]: Nothing to be done for `all'.
+| mkdir -p priv
+| cp c_src/fsynchelper c_src/hsmhelper priv/
+| mkdir -p test/ebin
+| (cd src && erlc -bber +der src/Dss.asn1 && rm Dss.beam)
+| ./make.erl
+| Recompile: src/plop_httputil
+| Recompile: src/plop_app
+| Recompile: src/plop
+| src/plop.hrl:10: type tuple(_,_,_,_) undefined
+| src/plop.erl:372: Warning: erlang:now/0: Deprecated BIF. See the "Time and Time Correction in Erlang" chapter of the ERTS User's Guide for more information.
+| make: *** [build] Error 1
+| 
+| A quick google-search didn’t show up anything useful. Do you have any idea what is going on?
+
+Oh, those are not OSX things, they're R18 things. Let me offer you an
+(untested) patch while we're waiting for map to reply on list:
+

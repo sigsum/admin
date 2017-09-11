@@ -1,0 +1,15 @@
+Gcc: nnimap+adbc:sent-mail.2014-10
+To: sofia@nordberg.se 
+Subject: Spam-folder
+From: Linus Nordberg <linus@nordberg.se>
+Date: Wed, 15 Oct 2014 14:21:41 +0200
+--text follows this line--
+Hej!
+
+Jag har just fixat till spam-hanteringen lite bättre på mejlservern.
+
+Om du skapar en folder "spam" så kommer mejl som spamtaggats att hamna
+där.
+
+Vet inte hur man gör det i just ditt mejlprogram, men i webmejlen vet
+jag att man kan göra det genom att 

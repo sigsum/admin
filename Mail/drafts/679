@@ -1,0 +1,171 @@
+X-Draft-From: ("nnimap+adbc:INBOX" 127650)
+Gcc: nnimap+adbc:sent-mail.2017-08
+To: "Gabriella \"Biella\" Coleman" <biella@riseup.net> 
+Subject: [Ahmad Gharbeia] Re: Tor board: interest and availability
+From: Linus Nordberg <linus@nordberg.se>
+Date: Tue, 22 Aug 2017 13:24:52 +0200
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Hi Biella,
+
+My Thursday is complicated between 15:00 UTC and approx. 19:30 UTC since
+I'm solo with our 4yo. Experience has showed that participating in a
+meeting under these circumstances is non-optimal.
+
+<#part type=message/rfc822 disposition=inline raw=t>
+Return-Path: <ahmad@gharbeia.org>
+Delivered-To: linus@adb-centralen.se
+Received: from imap.adb-centralen.se
+	by imap.adb-centralen.se (Dovecot) with LMTP id kKvyE70CnFnwVQEAnAFZSg
+	for <linus@adb-centralen.se>; Tue, 22 Aug 2017 12:09:01 +0200
+Received: by imap.adb-centralen.se (Postfix, from userid 127)
+	id 4DB462087AAC; Tue, 22 Aug 2017 12:09:01 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on
+	spam.adb-centralen.se
+X-Spam-Level: 
+X-Spam-Status: No, score=-6.9 required=4.0 tests=BAYES_00,RCVD_IN_DNSWL_HI
+	autolearn=ham autolearn_force=no version=3.4.1
+Received: from smtp.adb-centralen.se (smtp.adb-centralen.se [IPv6:2001:6b0:8::129])
+	by imap.adb-centralen.se (Postfix) with ESMTP id 566BE20879A5
+	for <linus@nordberg.se>; Tue, 22 Aug 2017 12:09:00 +0200 (CEST)
+Received: from eugeni.torproject.org (eugeni.torproject.org [138.201.14.202])
+	(using TLSv1.2 with cipher ADH-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.adb-centralen.se (Postfix) with ESMTPS id 4391520879A1
+	for <linus@nordberg.se>; Tue, 22 Aug 2017 12:09:00 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+	by eugeni.torproject.org (Postfix) with ESMTP id 52560E0779
+	for <linus@nordberg.se>; Tue, 22 Aug 2017 10:08:58 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at 
+Received: from eugeni.torproject.org ([127.0.0.1])
+	by localhost (eugeni.torproject.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CDuGPoBZVSKX for <linus@nordberg.se>;
+	Tue, 22 Aug 2017 10:08:58 +0000 (UTC)
+Received: from sender-of-o51.zoho.com (sender-of-o51.zoho.com [135.84.80.216])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by eugeni.torproject.org (Postfix) with ESMTPS id AA60BE0711
+	for <linus@torproject.org>; Tue, 22 Aug 2017 10:08:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1503396523;
+	s=zoho; d=gharbeia.org; i=ahmad@gharbeia.org;
+	h=Subject:To:Cc:References:From:Message-ID:Date:MIME-Version:In-Reply-To:Content-Type;
+	l=3480; bh=dw1qLhcz3C9sSkQmT9a5ZsU3Zh2RvlAZcBpoQthGLAs=;
+	b=e0oopFsN5cS5XJhDVagMo1HfLwSb9Q1o+jEHM8UtKHZC577qaqmZvgNP43au11cp
+	BiTjwApOVG9wbMtGplEJOSld8JJyp5rIF0JqlQ+n1S9tMU7FNtvLEJdsfD00PGNDA69
+	3y1PVEsbJ/WRUWNDsQzKT6qkSgrQT7hbfz28UYo8=
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws; 
+  s=zoho; d=gharbeia.org; 
+  h=subject:to:cc:references:from:message-id:date:user-agent:mime-version:in-reply-to:content-type; 
+  b=me1dvDkZe6iB+2RsdZkQZp8YLhJ5J3wcW1vs4ecDXUFoVw7R8uH11H1yRTBz1zG7i5Q1ldeixaTg
+    e572z4PIEflPn9Zjy9aADMSvJksxr8HmZ+PSVvNvKtefFUdBWbcG8jBxPpGcbL9UqeGkNhQKlf8N
+    MH/0aLgNCVvvPHhp15E=  
+Received: from [192.168.69.43] (45.247.48.211 [45.247.48.211]) by mx.zohomail.com
+	with SMTPS id 1503396523826752.8626990300601; Tue, 22 Aug 2017 03:08:43 -0700 (PDT)
+Subject: Re: Tor board: interest and availability
+To: gabriella.coleman@mcgill.ca
+Cc: Linus Nordberg <linus@torproject.org>
+References: <befd3b05-092d-08cc-96e4-5d6de6cd976a@mcgill.ca>
+From: Ahmad Gharbeia <ahmad@gharbeia.org>
+Openpgp: id=A68AB4A51607BA5A136103D27AA85404923F205A
+Message-ID: <f607ac4a-bb01-4adc-5d08-171ce362645b@gharbeia.org>
+Date: Tue, 22 Aug 2017 12:07:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <befd3b05-092d-08cc-96e4-5d6de6cd976a@mcgill.ca>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature";
+ boundary="MoiWBdsK1CKHiPmQ0WDF3QgJpWJHFneSH"
+X-Zoho-Virus-Status: 1
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--MoiWBdsK1CKHiPmQ0WDF3QgJpWJHFneSH
+Content-Type: multipart/mixed; boundary="ht5eNT8mJicxdVldIsamdjixQrs44kdl6";
+ protected-headers="v1"
+From: Ahmad Gharbeia <ahmad@gharbeia.org>
+To: gabriella.coleman@mcgill.ca
+Cc: Linus Nordberg <linus@torproject.org>
+Message-ID: <f607ac4a-bb01-4adc-5d08-171ce362645b@gharbeia.org>
+Subject: Re: Tor board: interest and availability
+References: <befd3b05-092d-08cc-96e4-5d6de6cd976a@mcgill.ca>
+In-Reply-To: <befd3b05-092d-08cc-96e4-5d6de6cd976a@mcgill.ca>
+
+--ht5eNT8mJicxdVldIsamdjixQrs44kdl6
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-GB
+Content-Transfer-Encoding: quoted-printable
+
+Hallo Gabriella,
+
+I'm certainly interested in joining Tor's board. Your nomination is
+cordially received.
+
+I'd like to know more about the duties and responsibilities of a borad
+member, and about the governance model.
+
+So, as you suggest, let's have a call. I live in Cairo, GMT+2. What's
+yours? Thursday is a good day for me because I work from home on that day=
+=2E
+
+I'm agharbeia on Skype, and can also be on Google's or any other commons
+service.
+
+Thanks, Gabriella and Linus.
+I look forward to talking with you.
+
+Ahmad Gharbeia
+
+=D9=81=D9=8A 21 =D8=A3=D8=BA=D8=B3, 2017 =D9=85 02:58 =D9=83=D8=AA=D8=A8 =
+Gabriella "Biella" Coleman:
+> Dear Ahmad Gharbeia,
+>=20
+> We've never had the pleasure of meeting and wish I was introducing myse=
+lf in person rather than email.
+> I=E2=80=99m writing in my capacity as a member of the Tor Board of Dire=
+ctor. We=E2=80=99ve been scheming about possible additional Board members=
+ and your name came up. =20
+>=20
+> We thought you=E2=80=99d be a great fit if you are interested and have =
+the available time. We are small, with just me, Linus Nordberg (cc=E2=80=99=
+d above), Matt Blaze, Bruce Schneier, Megan Price and Cindy Cohn, along w=
+ith Shari Steele who is also President and ED. This would be for the US n=
+onprofit organization.
+>=20
+> We=E2=80=99re looking for new Board members to reflect the broader dive=
+rsity of Tor users and developers, especially internationally. We=E2=80=99=
+re also facing some interesting questions about Tor=E2=80=99s role and pl=
+ace going forward. Your talents as a security trainer and an activist, as=
+ well as your perspective  about the need for security and privacy that a=
+dvocates, journalists, and lawyers require around the world, will be inva=
+luable. =20
+>=20
+> I=E2=80=99m hoping we can set up a time for a call with you, Linus, and=
+ me to discuss things further and answer any questions you may have. The =
+board is meeting at the end of the month to discuss new board members and=
+ so we'd love to arrange the call before August 28th, if possible. If oth=
+er board members are available, we will invite them to join the call.
+>=20
+> Hope all is well,
+>=20
+> Gabriella (and Linus).
+>=20
+
+
+--ht5eNT8mJicxdVldIsamdjixQrs44kdl6--
+
+--MoiWBdsK1CKHiPmQ0WDF3QgJpWJHFneSH
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+iF4EAREKAAYFAlmcAm8ACgkQsXCptqulA9HgmAD/WBkZvLTPU4FnYFROVLfOKDBk
+CUTQn4d6fLBAukWZ+gAA/0POGHI+k6O4cRUU+a9u4PYB6ag3/H4PdAofYe96kOjh
+=/JOi
+-----END PGP SIGNATURE-----
+
+--MoiWBdsK1CKHiPmQ0WDF3QgJpWJHFneSH--
+
+<#/part>

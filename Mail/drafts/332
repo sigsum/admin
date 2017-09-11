@@ -1,0 +1,20 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2014-10
+To: noc@nordu.net
+cc: Ragnar Sundblad <ragge@csc.kth.se> 
+cc: Josva Kleist <kleist@nordu.net>, roland.hedberg@adm.umu.se,
+ Torbjorn.Wictorin@its.uu.se 
+Subject: Byter scanning-strategi lite
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Sat, 11 Oct 2014 12:09:03 +0200
+--text follows this line--
+Hej!
+
+University of Michigan's Project Sonar [0] publicerar listor av
+"aktiva" IP-adresser för flera tjänster, bl.a. https.
+
+Vi har avbrutit vår urpsrungliga scan (ca 30% klar) och börjat scanna
+enligt en av dessa listor. Den har 27M adresser så den är snart klar.
+
+[0] https://community.rapid7.com/community/infosec/sonar

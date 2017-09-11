@@ -1,0 +1,18 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2017-02
+To: iaas@cloud.ipnett.se
+cc: pettai@nordu.net 
+cc: Peter Palfrader <peter@palfrader.org> 
+Subject: Static project networks
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Hi,
+
+I'd like to order two "static project networks" for torproject, much
+like what Pettai had set up for "mail filter".
+
+IPv4: We'd like 16 addresses. Regarding reverse, would it be possible to
+have CNAME's point at names in a zone we run?
+
+IPv6: We'd like a /64 with 

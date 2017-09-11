@@ -1,0 +1,19 @@
+References: <CY4PR11MB1576695FC3097E0CDBFF02FBA7DC0@CY4PR11MB1576.namprd11.prod.outlook.com>
+X-Draft-From: ("nnimap+ndn:INBOX" 72537)
+Gcc: nnimap+adbc:sent-mail.2016-10
+To: Luke Benes <lukebenes@hotmail.com>
+Cc: "radsecproxy@lists.nordu.net" <radsecproxy@lists.nordu.net>
+Subject: Re: [radsecproxy] Error building radsecproxy with clang
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Luke Benes <lukebenes@hotmail.com> wrote
+Thu, 13 Oct 2016 02:07:23 +0000:
+
+> Building radsecproxy with clang results in:
+>
+> radsecproxy-hash.c:22:2: error: embedding a directive within macro arguments has undefined behavior
+>
+> Full log:
+> http://clang.debian.net/logs/2016-08-30/radsecproxy_1.6.7-1_unstable_clang.log
+

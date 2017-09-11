@@ -1,0 +1,16 @@
+X-Draft-From: ("nnimap+ndn:INBOX")
+Gcc: nnimap+adbc:sent-mail.2017-02
+To: catlfish@listsrv.nordu.net 
+Subject: 
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Wed, 01 Feb 2017 10:51:35 +0100
+--text follows this line--
+Hi,
+
+For catlfish-0.10, we will make changes to the way config files are
+being read that are not backwards compatible. This means that you will
+have to regenerate your .config files after upgrading to 0.10.
+
+This is good practice regardless of compatibility issues but something
+we haven't communicated clearly before.

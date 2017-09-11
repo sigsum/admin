@@ -1,0 +1,12 @@
+Gcc: nnimap+adbc:sent-mail.2015-10
+To: Tom Ritter <tom@ritter.vg>, dkg@fifthhorseman.net 
+Subject: 
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+Some clients have trust anchors that are locally added (e.g. by an
+administrator or by the user themselves). A local trust anchor is
+potentially privacy-sensitive since it may carry information about the
+specific computer or user. If a certificate is covered by SCTs issued
+by publicly trusted logs, but it chains to a privacy-sensitive local
+trust anchor, the client SHOULD submit it as an 'x509\_chain'
+consisting only of the leaf certificate.

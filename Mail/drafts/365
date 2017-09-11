@@ -1,0 +1,18 @@
+References: <54C7693F.5090808@nordu.net> <87r3ug1ovk.fsf@nordberg.se>
+	<54C77492.7050402@nordu.net> <87r3ugzc9h.fsf@nordberg.se>
+	<54C77C66.60306@nordu.net>
+X-Draft-From: ("nnimap+ndn:INBOX" 55192)
+Gcc: nnimap+adbc:sent-mail.2015-01
+To: Salu Upadhyay <salu@nordu.net>
+Subject: Re: IP ändring på linus.nordu.net
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Salu Upadhyay <salu@nordu.net> wrote
+Tue, 27 Jan 2015 12:54:14 +0100:
+
+| address 2001:948:4:c::102
+| netmask 64
+| gateway 2001:948:4:c::1
+
+Tack.

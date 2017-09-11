@@ -1,0 +1,83 @@
+From: Linus Nordberg <linus@nordberg.se>
+To: Thomas White <thomaswhite@riseup.net>
+Subject: Re: ISP Thoughts
+In-Reply-To: <53CA5479.8060807@riseup.net> (Thomas White's message of "Sat, 19
+	Jul 2014 12:20:25 +0100")
+References: <53CA5479.8060807@riseup.net>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+X-Draft-From: ("nnimap+adbc:INBOX" 85514)
+Date: Tue, 22 Jul 2014 09:17:51 -0400
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Hi Thomas,
+
+Anything else in here that I can help with? You did get the difference
+between paying for a port at an IX and paying a transit provider for a
+full table?
+
+WRT pond, I don't think it should matter much. Are you still suffering
+the same error as in Paris?
+
+
+Thomas White <thomaswhite@riseup.net> wrote
+Sat, 19 Jul 2014 12:20:25 +0100:
+
+| Hi again,
+| 
+| I had a very bad night's sleep so decided this morning to further my
+| research about setting up an ISP. As most sites relating to Swedish
+| ISP's, laws and hosts are in Swedish (surprise!) and my Swedish is still
+| looking patchy beyond "Hur mår du?" and "Jag heter Thomas och jag är en
+| tor operatör", I decided to look into setting up a UK ISP so I could get
+| familiar with how it works overall rather than specifics.
+| 
+| Having looked all morning at this stuff (9 hours straight), some still
+| makes no sense to me especially as it gets more technical, but I did
+| notice what you said in the last email that Netnod was expensive. This
+| is the biggest UK Internet Exchange Point fees for connecting:
+| 
+| https://www.linx.net/service/servicefees.html
+| 
+| 10GE for £675 a month or £8,100 a year, plus £1,200 annual membership
+| fee is very good I think. Plus since I have existing contacts in the UK
+| for legal and finance, I think that would be viable although I am still
+| not sure how offering internet to the home would be, which really is
+| quite high up my list of priorities since we lack "privacy preserving"
+| ISPs here. Having said that I do believe I know somebody I could ask
+| about getting into the "home internet" market so I will send him an
+| email now for some basic information.
+| 
+| Accounting for this, what are your thoughts on starting a small ISP in
+| the UK? The UK is not a great place to start because of GCHQ and that
+| our laws allowing snooping - but in some ways that makes me want to
+| start it even more as the first company to make a stand against their
+| bullying and I am sure Privacy International and the Open Rights Group
+| would jump right on board with me if they know our objective too. If
+| they were interested, we could perhaps even ask Ross Anderson/Steven
+| Murdoch for their opinion?
+| 
+| A further option of course is starting in two locations (Sweden and the
+| UK) at once, but that may be me getting a little ahead of myself.
+| 
+| Also, assuming we had a 10GE connection, does peering with a datacenter
+| mean we effectively have free bandwidth up to 10GE (minus peering
+| allocations) on our own servers? Looking at my hosting costs for running
+| Tor, it would be cheaper for me to get a 10GE line, and then use that
+| 10GE line just to run my servers on co-location. With my current host,
+| the 8Gbps I currently have costs me 3200 Euro/month, plus another 2000
+| Euro/month for all the server rentals. If I got a 10GE line and use
+| colocation, that can be reduced to just 1400 Euro/month after the
+| hardware has been purchase so it will be cheaper in the long-term.
+| 
+| Anyway sorry for typing a lot (and sorry if it makes no sense) here, a
+| lot of new ideas I had that I wanted to write down before I forget them
+| because I think your idea of starting an ISP is brilliant. If anything
+| above makes no sense, just let me know and I will retype it when I've
+| had a bit more sleep.
+| 
+| Regards,
+| Tom
+| 
+| P.S Having a second shot at setting up Pond this afternoon. What OS
+| would Pond work best on as my Linux Mint seems to break a lot of
+| programs I think?

@@ -1,0 +1,45 @@
+References: <CALzYgEf6BFEDEDUReNbVahnCdAH7QOKmRhxEauA369SRKPkfrQ@mail.gmail.com>
+X-Draft-From: ("nnimap+adbc:lists.ietf.trans" 2871)
+Gcc: nnimap+adbc:sent-mail.2017-05
+To: Eran Messeri <eranm@google.com>
+Cc: "trans@ietf.org" <trans@ietf.org>
+Subject: Re: [Trans] Seeking feedback: Simplification of get-entries in 6962-bis and associated data structures
+Organization: Sunet
+From: Linus Nordberg <linus@sunet.se>
+--text follows this line--
+Eran Messeri <eranm@google.com> wrote
+Thu, 11 May 2017 16:37:29 +0100:
+
+> I'm looking for feedback on the following proposal:
+> - Make 'get-entries' in 6962-bis return the submission as-is (i.e., a JSON
+> object with the submitted certificate / precertificate and associated
+> chain).
+> - Remove the  X509ChainEntry and  PrecertChainEntryV2 structures, whose
+> sole use is a container for the submission that can be put in a TransItem.
+>
+> This proposal has the following benefits:
+> - The get-entries output mirrors the submission input, making it easier to
+> reason about.
+> - Parsing the output of get-entries would only require JSON & base64
+> decoding, not TLS decoding anything: The whole purpose behind CT logs is
+> storing certificates, this change makes it easier to parse them.
+> - The spec would be simpler, removing two data structures which aren't
+> really used in the log's internal structure, making it clearer what's up to
+> the implementation to decide and what's required by the spec.
+
+These are all good reasons for the proposed change.
+
+The only downside I can think of right now is 
+
+> This would resolve issues 190 <https://trac.ietf.org/trac/trans/ticket/190>
+>  and 176 <https://trac.ietf.org/trac/trans/ticket/176>.
+>
+> A preview of the change could be found here
+> <https://github.com/google/certificate-transparency-rfcs/pull/256>.
+>
+> Thanks,
+> Eran
+> _______________________________________________
+> Trans mailing list
+> Trans@ietf.org
+> https://www.ietf.org/mailman/listinfo/trans

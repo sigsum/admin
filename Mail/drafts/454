@@ -1,0 +1,22 @@
+References: <ffe61917-1d87-4960-a485-c56c5c8f0e3b@thulin.net>
+	<56981873.2090307@sunet.se> <1718446.x1zHksYSJ7@thulin.net>
+X-Draft-From: ("nnimap+ndn:INBOX" 65016)
+Gcc: nnimap+adbc:sent-mail.2016-01
+To: Fredrik Thulin <fredrik@THULIN.NET>
+Cc: BABBEL@segate.sunet.se
+Subject: Re: [BABBEL] SSH bug
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+Date: Fri, 15 Jan 2016 10:08:20 +0100
+--text follows this line--
+Fredrik Thulin <fredrik@THULIN.NET> wrote
+Fri, 15 Jan 2016 09:10:26 +0100:
+
+| If you ask me, the only acceptable way to SSH jump is what we've
+| described in https://
+| github.com/SUNET/eduid-docs/blob/master/eduid-ssh-jumping.mkd[1] -
+| personally I use option
+| 1a. 
+
+If you don't want o depend on nc at your jumphost, there's `-W` to
+ssh. You can replace  %h:%p

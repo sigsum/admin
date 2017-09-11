@@ -1,0 +1,50 @@
+References: <8761cc0yg5.fsf@nordberg.se> <54B4E59A.9090208@switch.ch>
+X-Draft-From: ("nnimap+ndn:INBOX" 54704)
+Gcc: nnimap+adbc:sent-mail.2015-01
+To: Fabian Mauchle <fabian.mauchle@switch.ch>
+Subject: Re: RADSECPROXY-59 updated
+Organization: NORDUnet A/S
+From: Linus Nordberg <linus@nordu.net>
+--text follows this line--
+Fabian Mauchle <fabian.mauchle@switch.ch> wrote
+Tue, 13 Jan 2015 10:30:02 +0100:
+
+| ListenUDP		*:1812
+| 
+| rewrite default {
+| 	removeAttribute 64
+| 	removeAttribute 65
+| 	removeAttribute 81
+| }
+| 
+| client ETH1 {
+| 	host ...
+| 	type udp
+| 	secret ...
+| }
+| 
+| rewrite PHZH-Special {
+| 	removeAttribute 11
+| 	removeAttribute 64
+| 	removeAttribute 65
+| 	removeAttribute 81
+| }
+| 
+| server PHZH1 {
+| 	host ...
+| 	type udp
+| 	secret ...
+| 	rewriteIn PHZH-Special
+| }
+| 
+| realm phzh.ch {
+| 	server PHZH1
+| 	accountingResponse on
+| }
+| 
+| EOF
+| 
+| When a request from client ETH1 was forwarded to server PHZH1, and its
+| response backward, attribute 11 was not removed form server PHZH1's
+| response (but attributes 64,65,81 were removed).
+

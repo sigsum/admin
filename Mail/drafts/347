@@ -1,0 +1,18 @@
+Gcc: nnimap+adbc:sent-mail.2014-11
+To: noc@dfri.net, andreas@romab.com 
+Subject: Skydda relä-nycklar
+From: Linus Nordberg <linus@nordberg.se>
+Date: Mon, 10 Nov 2014 10:54:46 +0100
+--text follows this line--
+Hej!
+
+I ljuset av beslagen av Tor-relän i HS-busten förra veckan så föreslår
+jag att vi
+
+- lagrar samtliga identitets-nycklar någonstans som inte är ett relä  
+
+- konfar om reläna så att de läser identitets-nycklar från
+  tmpfs-partition
+
+- manuellt pushar nycklar till tmpfs-partition vi start av relä
+

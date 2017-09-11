@@ -1,0 +1,63 @@
+References: <20160210050612.4312.qmail@syslog.vms.phoffice.de-nserver.de>
+X-Draft-From: ("nnimap+adbc:dfri.abuse" 5566)
+Gcc: nnimap+adbc:sent-mail.2016-02
+To: noc@profihost.ag
+Subject: Re: SSH brute-force from your network / domain (171.25.193.78)
+From: DFRI Abuse Team <abuse@dfri.net>
+--text follows this line--
+noc@profihost.ag wrote
+Wed, 10 Feb 2016 06:06:12 +0100:
+
+| An attempt to brute-force account passwords over SSH/FTP by a machine
+| in your domain or in your network has been detected. Attached are the
+| host who attacks and time / date of activity. Please take the
+| necessary action(s) to stop this activity immediately. If you have any
+| questions please reply to this email.
+| 
+| Host of attacker: 171.25.193.78 => tor-exit4-readme.dfri.se => dfri.se
+| Responsible email contacts: abuse@dfri.se, security@apnic.net,
+| nobody@apnic.net, hm-changed@apnic.net
+| Attacked hosts in our Network: 77.75.254.61, 85.158.176.137
+| 
+| Logfile entries (time is MET / GMT+1):
+| Wed Feb 10 06:06:06 2016: user: root service: ssh target:
+| 85.158.176.137 source: 171.25.193.78
+| Wed Feb 10 06:06:06 2016: user: root service: ssh target:
+| 85.158.176.137 source: 171.25.193.78
+| Wed Feb 10 06:06:06 2016: user: admin service: ssh target:
+| 85.158.176.137 source: 171.25.193.78
+| Wed Feb 10 04:40:59 2016: user: root service: ssh target: 77.75.254.61
+| source: 171.25.193.78
+| Wed Feb 10 04:40:59 2016: user: root service: ssh target: 77.75.254.61
+| source: 171.25.193.78
+| 
+| Regards,
+|    Profihost AG Team
+
+Hello,
+
+The IP address in question is a Tor exit relay, see
+https://www.torproject.org/overview.html for more info about the Tor
+Project.
+
+There is little we can do to trace this matter further. As can be seen
+from the overview page, the Tor network is designed to make tracing of
+users impossible. The Tor network is run by some 7000 volunteers using
+free software provided by the Tor Project to run Tor relays.  Client
+connections are routed through multiple relays. The system does not
+record logs of client connections or previous hops.
+
+To tell if a Tor exit relay is running on a given IP address, the Tor
+Project provides as a service named TorDNSEL:
+https://www.torproject.org/tordnsel/.
+
+Service providers like yourself can use this tool to for example impose
+stricter rate limits or add a captcha for users connecting over Tor. You
+can host this service yourself if you prefer not to hand out information
+about your connecting clients to a third party.
+
+Thank you for your understanding. If you have further questions, feel
+free to contact us again.
+
+Regards
+:DFRI Abuse Team

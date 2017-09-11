@@ -1,0 +1,19 @@
+Gcc: nnimap+adbc:sent-mail.2017-04
+To: 
+Subject: 
+From: Linus Nordberg <linus@nordberg.se>
+Date: Fri, 07 Apr 2017 10:44:56 +0200
+X-Draft-From: ("nnimap+adbc:lists.tor.bof" 118)
+--text follows this line--
+
+
+looking at
+https://metrics.torproject.org/torperf.html?start=2016-01-01&end=2017-04-03&source=all&filesize=50kb
+something happened mid october 2016 that made smallish request over tor
+sometimes take longer time than before while median values stayed about
+the same
+
+<ln5> any idea what happened? tried to figure out if it was related to the                                                                                               
+      measurement method by looking at onionperf results only but i can't                                                                                                
+      really tell
+<ln5> perhaps karsten knows?

@@ -1,0 +1,60 @@
+References: <87h9fivpf4.fsf@localhost>
+	<87fuv2vyf8.fsf@alice.fifthhorseman.net> <874mbhrenl.fsf@localhost>
+	<87d1q5wpy6.fsf@alice.fifthhorseman.net> <87d1q5o974.fsf@localhost>
+	<87y48tv0ic.fsf@alice.fifthhorseman.net>
+X-Draft-From: ("nnimap+adbc:INBOX" 113139)
+Gcc: nnimap+adbc:sent-mail.2016-04
+To: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Cc: Tom Ritter <tom@ritter.vg>
+Subject: Re: CT Gossip presentation
+From: Linus Nordberg <linus@nordberg.se>
+--text follows this line--
+<#secure method=pgpmime mode=signencrypt>
+Daniel Kahn Gillmor <dkg@fifthhorseman.net> wrote
+Mon, 04 Apr 2016 12:47:55 -0300:
+
+| On Mon 2016-04-04 09:22:07 -0300, Linus Nordberg wrote:
+| >  | re-sent note to Tom had a very interesting layout where the "attached"
+| >  | files weren't actually attached -- the message body looked like this:
+| >  | 
+| >  | >> --=-=-=
+| >  | >> Content-Type: message/external-body;
+| >  | >>  name="~/p/ct/doc/trans-gossip-ietf95.pdf"; access-type=local-file
+| >  | >> 
+| >  | >> Content-Type: application/pdf
+| >  | >> Content-ID: <87vb3xpzyz.fsf@nordberg.se>
+| >  | >> Content-Transfer-Encoding: binary
+| >  | >> 
+| >  | >> 
+| >  | >> 
+| >  | >> --=-=-=
+| >  | 
+| >  | weird!
+| >
+| >  I was forwarding a message wih attachments and worried about how that'd
+| >  work so i BCC'd myself to make sure it was good. And it was. On my
+| >  computer. :)
+| >
+| >  Interesting. I should probably figure out if that's a bug or a
+| >  feature. If nothing else, I'm not pleased with my MUA exposing my local
+| >  directory structure to recipients of my email.
+| 
+| yeah -- who knew that you keep us in your /p/ folder‽
+| 
+| My MUA (notmuch) doesn't even know what to do with a
+| message/external-body part, or with access-type, i think :)
+| 
+| I wonder if i can cause your MUA to fetch a network resource with the
+| appropriate access-type https://tools.ietf.org/html/rfc2017 ?
+| 
+| 
+| 
+| >  I see. Thanks for stepping up. I'd have been there if I could but I
+| >  hurt my foot pretty badly and as a follow-up on that, my back kinda
+| >  broke down. Bodies are complicated things.
+| 
+| yikes, leif mentioned that you were unable to make it because of some
+| sort of injury.  That sounds even more ragged than i've felt!  i hope
+| you have a chance to rest, and that you feel better soon, man.
+| 
+|    --dkg
