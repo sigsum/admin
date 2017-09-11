@@ -113,7 +113,7 @@ sys     0m14.765s
 - rebar https://github.com/rebar/rebar -- build tool
 - dialyzer file.erl
   To build a PLT, run
-  $ dialyzer --build_plt --apps erts kernel stdlib mnesia crypto public_key inets
+  $ dialyzer --build_plt --apps erts kernel stdlib crypto public_key
   once and it'll end up in ~/.dialyzer_plt
   Use --add_to_plt to add more appplications.
   Rebuild the PLT when upgrading your erlang packages.
@@ -152,6 +152,8 @@ kerl list builds
 torsocks kerl install r18.2.1 ~/usr/share/erlang-18.2.1
 . ~/usr/share/erlang-18.2.1/activate
 kerl active
+** unicode in the shell
+erl +pc unicode
 * golang
 ** gotour
 export GOPATH=$HOME/usr/go
@@ -729,8 +731,8 @@ prints ÿ. LANG is en_US.UTF-8. If I unset LANG, M-b, M-f and M-BS
 work as intended (back one word, forward one word and delete one
 word).
 
-The xterm(1) man page says a lot of things about meta. It hints that
-the "terminfo capabilities smm and rmm" might be used to change
+The xterm(1) man page has a lot of things to say about meta. It hints
+that the "terminfo capabilities smm and rmm" might be used to change
 xterm's terminal mode between 7-bit and 8-bit mode while running.
 
 The terminfo(5) man page says that 'smm' has the variable string
@@ -758,6 +760,7 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - hping3 -- network research and attack tool
 - cloc -- count lines of code (loc)
 - xwd | xwdtopnm | pnmtopng -- screenshot
+- testdisk -- restore partition table (from memory?)
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -1443,6 +1446,10 @@ pw: ds5XVDEir5
 - Souls of mischief
 - extrawelt (pawal <2011-12-03 Sat>)
 - FPU (pawal <2011-12-03 Sat>)
+- Ram John Holder -- Brixton Blues (Black London Blues)
+  - 17:28 https://soundcloud.com/jimsharp/straighten-it-out-volume-2
+- Sharon Jones -- Damn It's Hot
+  - 58:25 https://soundcloud.com/leonardf/dont-handle-this-funk-limited
 ** Dylan
 Johanna Maria Axelsson
 :) sÃ¥ skulle jag vÃ¤lja Blood On The Tracks som nÃ¤sta album!
@@ -1874,6 +1881,14 @@ Good resources:
   # Requires 'xscreensaver -no-splash &' at X startup
   /usr/bin/xscreensaver-command -lock
 - ctrl -> caps key mapping
+  cat > ~/.xmodmap <<EOF
+! /etc/X11/Xmodmap
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
+EOF
   xmodmap ~/.xmodmap
 - suspend
   pm-suspend
@@ -1881,7 +1896,6 @@ Good resources:
   nmcli con up id <SSID>
   nmcli dev wifi list
   nmcli nm wifi off
-
 ** adding a CA cert
 sudo sh -c "echo nordberg.se/nordberg-ca.crt >> /etc/ca-certificates.conf"
 sudo mkdir /usr/share/ca-certificates/nordberg.se
@@ -2223,7 +2237,7 @@ sudo wicd-ncurses		# configure connection
 linux kernel module from the bifrost people
 *** tcpreplay 
 from a .pcap.
-** performance / benchmark
+** performance measurement / benchmark
 *** ttcp
 portmaster -d benchmarks/ttcp
 receiver-host: ttcp -s -r -f m
@@ -2234,9 +2248,14 @@ portmaster -d benchmarks/iperf
 
 host0$ iperf -s
 host1$ iperf -c host0
+*** [[file:usr/share/ietf/in-notes/rfc2544.txt::Network%20Working%20Group%20S.%20Bradner][RFC2544]]
 ** tools
 - hping http://www.hping.org/
 - fragrouter http://www.monkey.org/~dugsong/fragroute/
+** analysis
+tcpdump -s 0 -w pcap
+tcptrace -G -l pcap
+xplot.org *_tsg.xpl
 * people
 ** Torbjörn Wictorin
 018-471 77 33
@@ -4018,7 +4037,8 @@ Connecting to '2001:6b0:8::85:5222'...
 - Simple Client Mode:
 
 <stream:stream to='adb-centralen.se' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>
-<?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='656752030' from='adb-centralen.se' version='1.0' xml:lang='en'><stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism><mechanism>DIGEST-MD5</mechanism><mechanism>SCRAM-SHA-1</mechanism></mechanisms><c xmlns='http://jabber.org/protocol/caps' hash='sha-1' node='http://www.process-one.net/en/ejabberd/' ver='Gr5VWdNVSjSxcOxz6QFYVvuu5JY='/><register xmlns='http://jabber.org/features/iq-register'/></stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>*** Starting TLS handshake
+<?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='656752030' from='adb-centralen.se' version='1.0' xml:lang='en'><stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism><mechanism>DIGEST-MD5</mechanism><mechanism>SCRAM-SHA-1</mechanism></mechanisms><c xmlns='http://jabber.org/protocol/caps' hash='sha-1' node='http://www.process-one.net/en/ejabberd/' ver='Gr5VWdNVSjSxcOxz6QFYVvuu5JY='/><register xmlns='http://jabber.org/features/iq-register'/></stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/><proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>
+ *** Starting TLS handshake
 - Certificate type: X.509
 - Got a certificate list of 2 certificates.
 - Certificate[0] info:
@@ -4324,7 +4344,9 @@ touch för dessa även om denne någon sniffat mitt admin-lösenord.
         /usr/share/doc/libykclient-dev/changelog.Debian.gz
         /usr/lib/libykclient.so
 ** Making a static key
-sudo ykpersonalize -y -1 -ostatic-ticket -a $(~linus/src/hexpw.py) >/dev/null 2>&1
+$ HISTFILE=/dev/null sudo bash -
+# ykpersonalize -y -1 -oappend-cr -ostatic-ticket -ostrong-pw1 -ostrong-pw2 -oman-update -a$(~linus/src/hexpw.py) >/dev/null || echo FAIL
+NOTE: use -o-append-cr to make the yubikey not send the final cr/lf, perhaps in slot 2
 *** tool:~% cat src/hexpw.py
 #! /usr/bin/python
     
@@ -4444,10 +4466,10 @@ ssb>  2048R/08E3FB84  created: 2016-12-27  expires: never
    /mode +q nick
 ** servers
    OFTC (#tor #tor-dev #tor-se #dfri_se) irc.oftc.net 6697 (TLS)
-   Baconsvin (#celo #talla) 6nbtgccn5nbcodn3.onion / havana.baconsvin.org 6697 (TLS)
    SUNET slack (#general #random #devops #nunoc) sunet.irc.slack.com 6697 (TLS)
-   IRCNET (#isp #sthix #sunet) open.ircnet.net 6667 / irc.portlane.se 6667
-   FREENODE (#sparvnastet #edri #erlang) wolfe.freenode.net / chat.eu.freenode.net 6697
+   Baconsvin (#celo #talla) 6nbtgccn5nbcodn3.onion / gff4ixq3takworeuhkubzz4xh2ulytoct4xrpazkiykhupalqlo53ryd.onion / havana.baconsvin.org 6697 (TLS)
+   IRCNET (#isp #sthix #sunet) irc.atw-inter.net 6697 (TLS) / open.ircnet.net 6667 / irc.portlane.se 6667
+   FREENODE (#sparvnastet #edri #erlang) wolfe.freenode.net 6697 (TLS) / chat.eu.freenode.net 6697
 
    DALNET (Michiel-5580) irc.terahertz.net 6697
    Telecomix (#telekompaketet) irc.telecomix.org 9999 (ssl)
@@ -4561,18 +4583,7 @@ ssb>  2048R/08E3FB84  created: 2016-12-27  expires: never
 
      OFTC:
      /msg nickserv identify <pw> ln5
-     /j #cryptodotis
-     /j #dfri_se
-     /j #hackjunta
-     /j #libevent
-     /j #nottor
-     /j #tor-se
-     /j #tor
-     /j #tor-bots
-     /j #tor-dev
-     /j #tor-internal <pw>
-     /j #torservers
-     /j #tpo-admin
+     /msg cert add
 
      /msg chanserv op #CHANNEL ln5
      /mode #<channel> +q NICK!~NAME@HOST
@@ -29081,7 +29092,7 @@ and the offending line (in configure.ac) is PKG_CHECK_MODULES()
 
 Solution: pkg install pkgconf
 ** pkg
-pkg which -- like debian dpkg -S
+- pkg which -- like debian dpkg -S
 * EuroBonus
 EBB609964226
 * No-phone sig
@@ -30470,11 +30481,12 @@ Caroline af Ugglas
 Nanne Grönvall
 * Backup
 ** Cross-platform
-https://en.wikipedia.org/wiki/Duplicity_%28software%29
-** Linux
-*** backups
-bacula, rsnapshot, amanda?
-Liman says "backuppc".
+- https://en.wikipedia.org/wiki/Duplicity_%28software%29
+- bacula
+- [[https://en.wikipedia.org/wiki/BackupPC][backuppc]]
+  - weasel likes it; perl
+- https://obnam.org/
+  - weasel would look at it; python
 ** FreeBSD
 *** UFS
 Use dump/restore.
@@ -33646,6 +33658,17 @@ Opening nnimap server on adbc...failed: *nnimap* deleted
 
 nnimap+adbc:lists.tor.bad-relays error: *nnimap* deleted
 
+** config
+- <2017-07-04 Tue> removing unused imap-ssl-program
+ '(imap-ssl-program
+   (quote
+    ("gnutls-cli -p %p --x509cafile ~/nordberg-ca.crt %s")))
+- <2017-07-04 Tue> remmoving the insecure fallback for tls-program
+ '(tls-program
+   (quote
+    ("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h" 
+     "gnutls-cli --insecure -p %p %h" "gnutls-cli --insecure -p %p %h --protocols ssl3"
+     "openssl s_client -connect %h:%p -no_ssl2 -ign_eof")))
 * jake on privacy and power
 ** elevate.at 2013
 http://2013.elevate.at/festival/ueber-das-festival/newsmagazin/detail/news/jacob-appelbaum-elevate-open-everything/
@@ -33778,6 +33801,7 @@ former.
 - [X] "If you possess any power or authority, you must strive to use it to help and to empower the powerless." C. Murray
 ** sf
 - ann leckie's "Radch" trilogy
+- octavia butler https://en.wikipedia.org/wiki/Lilith%27s_Brood
 ** misc
 [[https://en.wikipedia.org/wiki/The_Sandman_%2528Vertigo%2529][The Sandman]]
 * images
@@ -35277,7 +35301,7 @@ necessary cert
 for i, line in enumerate(open(filename, 'r'))
 * docker.sunet.se
 ** client cert
-laptop:nunoc-ops$ scripts/mkreq linus
+laptop:nunoc-ops$ scripts/mkreq -c -- linus
 
 server:/# touch /etc/docker/certs.d/docker.sunet.se/client.key
 server:/# chmod 600 /etc/docker/certs.d/docker.sunet.se/client.key
@@ -36519,12 +36543,23 @@ Name]+unsubscribe@googlegroups.com.
 - notmuch https://notmuchmail.org/ for indexing, has an emacs UI
 - getmail (or offlineimap) for pulling mail to a local maildir
   repository
+  - [[http://pyropus.ca/software/getmail/][getmail]] is 4.7kloc python, seems mature
+  - [[http://www.offlineimap.org/][offlineimap]] is 8.7kloc python
+  - mbsync/isync
 - notmuch emacs mode will use Message and hopefully smtpmail for
   sending (yes, see https://notmuchmail.org/emacstips/)
+** notmuch test failures <2017-05-29 Mon>
+Notmuch test suite complete.
+651/800 tests passed.
+2 broken tests failed as expected.
+36 tests failed.
+111 tests skipped.
 * EDRi supporter (20 EUR/month)
+IBAN BE32733021502102
 - 2015-10-28 20 EUR
 - 2016-05-03? 120 EUR
 - 2017-02-01 200 EUR (20170430)
+- 2017-04-28 120 EUR (20171031)
 * storagesafe, froo
 passordshanterare
 appliance
@@ -36661,12 +36696,43 @@ dehydrated -c
 sysrc -f /etc/periodic.conf weekly_dehydrated_enable=YES
 - for testing, use the staging environment
 CA="https://acme-staging.api.letsencrypt.org/directory"
+- how-to on systems without a web server
+jexec le /root/le-renew.sh
+# follow the instructions on how to add TXT records
+# copy new certs to corresponding jail and restart service, example:
+/root/le-deploy.sh jabber imap smtp
+# print some key fpr if you need it:
+cd /jails/le/usr/local/etc/dehydrated/certs
+for c in sha512 sha256 sha1; do
+  for f in */cert.pem; do
+    echo -n "$f "; openssl x509 -fingerprint -${c} -noout -in ${f}; done; done
+
 * hardenedbsd
 ** hbsd-update
 *** getting version from dns
 - get_version()
   - is ${dnsrec} never set? 
   - it's set in /etc/hbsd-update.conf
+** updates over onion services
+From [[gnus:nntp%2Bnews.gmane.org:gwene.org.hardenedbsd#x1-1wed4mnaNhKANbQORKEpYcgBDRI@gwene.org][Email from Shawn Webb: HardenedBSD Through Tor Hidden]]:
+
+HardenedBSD: {
+  url: "http://t3a73imee26zfb3d.onion/HardenedBSD/pkg/${ABI}",
+  mirror_type: "http",
+  signature_type: "fingerprints",
+  fingerprints: "/usr/share/keys/pkg",
+  enabled: yes
+}
+
+And for hbsd-update, replace /etc/hbsd-update.conf with this
+configuration file:
+
+
+dnsrec=""
+capath="/usr/share/keys/hbsd-update/trusted"
+# NOTE: Replace the branch variable with whatever branch you normally use. Check your existing hbsd-update.conf file.
+branch="hardened/current/master"
+baseurl="http://t3a73imee26zfb3d.onion/HardenedBSD/updates/pub/HardenedBSD/updates/${branch}/$(uname -m)"
 * hoerbert
 239 euro
 reference 9.742.308
@@ -36677,3 +36743,282 @@ reference 9.742.308
 ** nagios
 ssh root@monitor.sunet.se cat NAGIOSADM
 https://monitor.sunet.se/
+* docker
+** looking at container contents from the host
+*** example
+linus@f0:~/usr/share/logs/dotltest$ docker ps -a | egrep dotl
+ab4d1be3f6be        dotlfish:latest                 "/var/run/catlfish/st"   3 months ago        Exited (143) 3 weeks ago                                                              dotltest-merge-ndn1
+f6d137e45c47        dotlfish:latest                 "/var/run/catlfish/st"   3 months ago        Exited (143) 3 weeks ago                                                              dotltest-frontend-ndn1
+6e81ee192847        dotlfish:latest                 "/var/run/catlfish/st"   3 months ago        Exited (143) 3 weeks ago                                                              dotltest-storage-ndn1
+a0621d28b804        dotlfish:latest                 "/var/run/catlfish/st"   3 months ago        Exited (143) 3 weeks ago                                                              dotltest-signing-ndn1
+root@f0:~# find /var/lib/docker -name a0621d28b804\*
+/var/lib/docker/containers/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756
+/var/lib/docker/containers/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756-json.log
+/var/lib/docker/aufs/mnt/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756-init
+/var/lib/docker/aufs/mnt/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756
+/var/lib/docker/aufs/diff/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756-init
+/var/lib/docker/aufs/diff/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756
+/var/lib/docker/aufs/layers/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756-init
+/var/lib/docker/aufs/layers/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756
+root@f0:~# ls /var/lib/docker/aufs/diff/a0621d28b8048566281836f45aaaf028bfb32fdcafdb62522cb352762978b756/run/catlfish/
+erlang_log       sasl_log                    signing-ndn1-console.log.1  signing-ndn1-debug.log    signing-ndn1-debug.log.3  signing-ndn1-error.log.2
+erlang.pipe.1.r  signing-ndn1                signing-ndn1-console.log.2  signing-ndn1-debug.log.0  signing-ndn1-debug.log.4  signing-ndn1-error.log.3
+erlang.pipe.1.w  signing-ndn1.config         signing-ndn1-console.log.3  signing-ndn1-debug.log.1  signing-ndn1-error.log.0  signing-ndn1-error.log.4
+log              signing-ndn1-console.log.0  signing-ndn1-console.log.4  signing-ndn1-debug.log.2  signing-ndn1-error.log.1
+* the mit tweet
+https://twitter.com/ln4711/status/843403483676131328
+
+This is not a good idea:
+- This award should at least acknowledge Aaron Swartz, as posthumous
+  winner and naming it after him
+  https://twitter.com/techforgoodtv/status/843401841815830528
+Because it would make MIT look like they were profiting from Aarons memory.
+
+So either MIT Media Lab does it this way, or they leave it to someone else.
+
+If unable to acknowledge and explain, don't do it.
+
+If MIT Media Lab couldn't do it any other way, maybe they should
+refrain from doing it.
+
+The MIT Media Lab is probably perceived as closer to MIT the further
+away from MIT you are.
+
+The MIT Media Lab is probably perceived as more separate from MIT the
+closer you are to it. From my horizon it's too close for leaving this
+uncommented.
+
+Without proper acknowledgement and explanation, MIT Media Lab is too
+close to MIT for this.
+
+If this was perceived as an insult to Aarons friends at MIT Media Lab
+I appologise and ask them to acknowledge and explain.
+** in favour of the award
+https://twitter.com/Joi/status/842365976410771459
+  https://thetech.com//2017/03/16/media-lab-announces-civil-disobedience-award
+* yaser (elisabet rundqvist)
+** tfn <2017-04-20 Thu>
+morgan johansson arb.grupp om asyl
+ensamkommande, anhöriginv, permanent uppehållstillst
+MJ stängde allt
+jobba mot EU
+
+hotbild
+asylskälshot, pappan har haft ett jobb som är en belastning för NN
+plus blodshämd, familjen
+namn är problem, nu tagit bort efternamn och ett av förnamnen
+ett FB-konto som interagerat med pappan, där pappan har sitt riktiga namn
+bild på pappa och NN som NN gillat
+NN har gillat pappans gamla arb.givare
+"krypterad mejl", protonmail.com
+NN är i gbg numera
+ärendet nu i migrationsöverdomstolen
+VUT -- verkställighetshinder
+yaser
+blir väldigt fort trött, PST, näst intill ingen syn på ena ögat, trött
+* personnummer i mejl från stockholm.se
+- [[gnus:nnimap%2Badbc:INBOX#201704190825.v3J8PwKJ017605@smtprelay02.stockholm.se][Email from noreply@stockholm.se: Familjeuppgifter ändrade]]
+- pnr är inte känslig uppgift men begreppet "aktsamhet" kan vara
+  tillämpligt
+- att det är pnr är separat från den juridiskt mer intressanta frågan
+  om behandling av information om familjehem, socialtjänstlagen, OSL
+  ([[https://lagen.nu/2009:400][2009:400]]) -- pnr behövs inte för att identifiera personerna i det
+  här mejlet
+- börja med att prata med medborgarkontoret (stadsdelsförvaltningen)?
+  mejlet är ju från stockholms stad
+- http://www.stockholm.se/Fristaende-webbplatser/Forvaltningar_seo/Farsta-stadsdelsforvaltning/
+  Besökadress: Storforsplan 36, plan 11
+  Postadress: Box 113, 123 22 Farsta
+  E-post: farsta@​stockholm.se
+  Telefon, växel: 08-508 18 000
+* personuppgifter i unikum.net
+Hur hanterar ni uppgifter om familjehemsplacerade barn? [Behandling av
+sådana uppgifter regleras för myndigheter (!) såvitt jag förstår i OSL
+26 kap. och SoL snarare än i PUL. Eller https://lagen.nu/2001:454?]
+
+Angående "Safe Harobour-överenskommelsen" som nämns i er EULA så är det
+dels felstavat men f.a. inte giltigt sedan beslut i EU-domstolen (ECJ) i
+Oktober 2015. Har Unikum med anledning av detta gjort några förändringar
+vad gäller i vilken jurisdiktion data lagras?
+
+* fake quotes
+** foo
+Nä det har ju varit en eskalerande ökning sedan första dag ett det här va.
+Nu ska jag sätta mig och slå mig ner innan ...
+* vita bussen
+drift: 3l diesel / mil á 14 kr => 42 kr/mil
+slitage: samma som drift: 42 kr/mil (enl.ök.m. anders: 50 kr/mil)
+wira -> KBV t.o.r.: ca 10 mil => 900 kr
+* lukas bröllop
+[[http://siggestagard.se/wp/sv/pa-garden/hitta-hit/][siggesta gård]], värmdö, (59.3725915, 18.5278724)
+37 km från KBV
+(wira->KBV 53 km)
+totalt 18 mil
+3 l/mil á 14 kr => 756 kr
+slitage (samma som drift): 756 kr
+totalt 1512 kr
+
+uppdaterad kalkyl:
+wira->farsta 65 km
+farsta->älvsjö 10 km
+älvsjö->siggesta 40 km
+totalt 115 km => 23 mil
+23 mil á 42+50 kr => 2116 kr
+* lisbeth söderqvist
+alice -99 natsam @ globala
+ella (?) -01 söker natsam @ globala
+* oauth
+- RFC6749
+- RFC6750
+- OAuth 2.0 does not support signature, encryption, channel binding,
+  or client verification. It relies completely on TLS for some degree
+  of confidentiality and server authentication. [[https://en.wikipedia.org/wiki/OAuth][wikipedia]]
+- RFC6819 -- OAuth 2.0 Threat Model and Security Considerations
+* smartcard
+** digipass 920 (SEB)
+Jun 12 07:08:44 flogsta kernel: [ 5294.140154] usb 3-1: USB disconnect, device number 8
+Jun 12 07:08:49 flogsta kernel: [ 5298.888135] usb 3-1: new full-speed USB device number 9 using uhci_hcd
+Jun 12 07:08:49 flogsta kernel: [ 5299.069146] usb 3-1: New USB device found, idVendor=1a44, idProduct=0920
+Jun 12 07:08:49 flogsta kernel: [ 5299.069152] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+Jun 12 07:08:49 flogsta kernel: [ 5299.069156] usb 3-1: Product: DIGIPASS 920
+Jun 12 07:08:49 flogsta kernel: [ 5299.069159] usb 3-1: Manufacturer: Vasco
+Jun 12 07:08:49 flogsta systemd[1]: Starting Smart Card.
+Jun 12 07:08:49 flogsta systemd[1]: Reached target Smart Card.
+
+root@flogsta:~# pcsc_scan
+PC/SC device scanner
+V 1.4.23 (c) 2001-2011, Ludovic Rousseau <ludovic.rousseau@free.fr>
+Compiled with PC/SC lite version: 1.8.11
+Jun 12 07:15:33 flogsta systemd[1]: Starting PC/SC Smart Card Daemon...
+Jun 12 07:15:33 flogsta systemd[1]: Started PC/SC Smart Card Daemon.
+Using reader plug'n play mechanism
+Scanning present readers...
+0: VASCO DIGIPASS 920 [CCID] 00 00
+
+Mon Jun 12 07:15:33 2017
+Reader 0: VASCO DIGIPASS 920 [CCID] 00 00
+  Card state: Card removed,
+
+Mon Jun 12 07:15:50 2017
+Reader 0: VASCO DIGIPASS 920 [CCID] 00 00
+  Card state: Card inserted,
+  ATR: 3B 6D 00 00 00 73 C8 00 13 64 54 37 43 33 00 90 00
+
+ATR: 3B 6D 00 00 00 73 C8 00 13 64 54 37 43 33 00 90 00
++ TS = 3B --> Direct Convention
++ T0 = 6D, Y(1): 0110, K: 13 (historical bytes)
+  TB(1) = 00 --> VPP is not electrically connected
+  TC(1) = 00 --> Extra guard time: 0
++ Historical bytes: 00 73 C8 00 13 64 54 37 43 33 00 90 00
+  Category indicator byte: 00 (compact TLV data object)
+    Tag: 7, len: 3 (card capabilities)
+      Selection methods: C8
+        - DF selection by full DF name
+        - DF selection by partial DF name
+        - Implicit DF selection
+      Data coding byte: 00
+        - Behaviour of write functions: one-time write
+        - Value 'FF' for the first byte of BER-TLV tag fields: invalid
+        - Data unit in quartets: 1
+      Command chaining, length fields and logical channels: 13
+        - Logical channel number assignment: by the card
+        - Maximum number of logical channels: 4
+    Tag: 6, len: 4 (pre-issuing data)
+      Data: 54 37 43 33
+    Mandatory status indicator (3 last bytes)
+      LCS (life card cycle): 00 (No information given)
+      SW: 9000 (Normal processing.)
+
+Possibly identified card (using /usr/share/pcsc/smartcard_list.txt):
+        NONE
+
+find: `/root/.cache/smartcard_list.txt': No such file or directory
+Your card is not present in the database.
+Please submit your unknown card at:
+http://smartcard-atr.appspot.com/parse?ATR=3B6D00000073C800136454374333009000
+* @teirdes re http://www.dagensjuridik.se/2017/06/vanliga-telefonappar-hindrar-hemlig-avlyssning-vi-behover-nya-tekniska-och-legala-mojlighete
+i höst kan den vara det. utredningarna ska ju vara klara i september och november.
+
+men vad du också kan göra, är att skriva till kalli
+johanna.kallifatides@regeringskansliet.se och
+david.caldevik@regeringskansliet.se (egentligen mer den senare) och
+tipsa dem typ "Hej, jag skriver från DFRI. Vi skrev en inlaga till er
+tillsammans med dataskydd.net förra året. Jag uppmärksammades nyligen
+på Åklagarmyndigheten i Malmös utredning om svårigheterna att säkra
+e-bevis och tänkte att den här artikeln, som går igenom vissa tekniska
+aspekter av kringgående av kryptering (utifrån en amerikansk kontext)
+kunde vara hjälpsamma för er när ni färdigställer era förslag."
+
+Jag har inte läst Schneier/Kerr-texten och så, men våra förslag från
+förra året var typ "transparens, förutsebarhet, inga bakdörrar,
+polisen måste berätta vad de gör" osv.
+
+Caldewik utreder hemlig dataavläsning som sekreterare under Petra
+Lundh.  Kallifatides utreder modernisering av husrannsakkan under
+Nicklas Wågnert. Kallifatides/Wågnert är nog mindre relevanta för
+detta, men det är svårt att veta - jag förstår inte riktigt hur de gör
+skillnad mellan en husrannsakan som behöver kringgå kryptering och ett
+tvångsmedel som försöker göra det, typ. Tekniskt är deras uppdrag så
+vitt jag förstår ekvivalenta utmaningar.
+
+hänvisa till din auktoritet som TOR-styrelsemedlem och så också. "Jag
+har arbetat större delen av mitt vuxna liv med IT-säkerhet, och för
+användarvänlig kryptering så att så många som möjligt kan ha en säker
+nät-tillvaro. Därför ligger området mig varmt om hjärtat."  (allting
+inom ""-tecken är tänkt att vara välmenande förslag på hur man kan
+skriva.
+* ssh
+** reconnect ssh tunnels
+- `autossh -M 0 -o "ServerAliveInterval 20"` for port forwarding
+- see also ControlMaster in SSH_CONFIG(5)
+* cosmos + puppet @ sunet
+- initiating hiera secrets 
+  /var/cache/cosmos/model/pre-tasks.d/040hiera-gpg --force
+* thoughtworks spinoff
+- mumble call with ola on 2017-05-03
+- TW is creating a two-headed foundation, one in .br and one in BCN
+- three headed board for the spanish "fundacion":
+  ola, dmytri kleiner and possibly me
+- non-working board, for legal stuff
+- due in 1-1,5 months; need to go to BCN for signing papers
+- compensating for lost income
+* distributed bugtracking / ticketing
+- be (bugseverywhere.org); seems dead
+- roundup https://en.wikipedia.org/wiki/Roundup_%28issue_tracker%29
+- https://about.gitlab.com/features; heavy; requires js
+- http://syncwith.us/sd/
+- https://en.wikipedia.org/wiki/Fossil_(software); might not integrate with git
+- https://distix.eu/
+* lfe
+$ git clone https://github.com/rvirding/lfe
+$ cd lfe/
+$ make compile
+$ make install PREFIX=$HOME/usr
+
+;; lfe-mode
+(add-to-list 'load-path "~/usr/src/lfe/emacs")
+(require 'lfe-start)
+(add-to-list 'auto-mode-alist '("\\.lfe\\'" . lfe-mode))
+
+M-x run-lfe
+* calendar
+https://webmail.adb-centralen.se/rpc.php
+
+curl-tor -v https://webmail.adb-centralen.se/.well-known/caldav
+< HTTP/1.1 301 Moved Permanently
+< Location: https://webmail.adb-centralen.se/rpc.php
+
+_caldavs._tcp SRV 0 0 443 webmail.adb-centralen.se.
+* switching/routing hardware/software
+** mikrotik.com
+https://www.routerboard.se/prest/126-core-router
+
+- 10G
+  - [[https://www.routerboard.se/prest/ethernet-routrar/273-cloud-core-router-ccr1016-12s-1s.html][CCR1016-12S-1S+]] 8182:-
+  - [[https://www.routerboard.se/prest/ethernet-routrar/249-cloud-core-router-ccr1036-8g-2s.html][CCR1036-8G-2S+]] 11792:-
+
+** ubiquiti
+https://www.ubnt.com/products/
+
+- https://www.ubnt.com/edgemax/edgerouter-pro/
+

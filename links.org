@@ -1,4 +1,388 @@
-readme https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
+readme https://www.pubpub.org/pub/direct-radio-introspection
+bluetooth mesh spec people:kugg https://www.bluetooth.com/specifications/mesh-specifications
+anakata https://wikileaks.org/gottfrid-docs/
+readme e-voting https://ccc.de/en/updates/2017/pc-wahl
+library https://www.ifla.org/faife
+https://peterals.wordpress.com/2016/12/29/om-digital-overvakning-och-personlig-integritet-pa-svenska-bibliotek/
+people:bogatov https://www.accessnow.org/access-now-eff-condemn-arrest-tor-node-operator-dmitry-bogatov-russia/
+people:bogatov https://meduza.io/en/feature/2017/04/10/mathematics-teacher-accused-of-inciting-mass-riots-now-also-accused-of-supporting-terrorism-and-once-again-detained
+hbsd secadm https://github.com/HardenedBSD/secadm-rules
+hbsd doc https://hardenedbsd.org/~shawn/hbsd_handbook/book.html#hardenedbsd
+people:bogatov https://lists.debian.org/debian-devel/2016/08/msg00506.html
+people:bogatov https://www.reddit.com/r/debian/comments/64qat1/debian_maintainer_dmitry_bogatov_was_arrested_in/
+people:bogatov https://www.cyberguerrilla.org/blog/free-dmitry-bogatov/
+russia vpn ban law https://www.amnesty.org.uk/press-releases/russia-vpn-ban-major-blow-internet-freedom#.WX9TmeZukG4.twitter
+ddos detection https://github.com/pavel-odintsov/fastnetmon
+codereview https://github.com/google/git-appraise-web
+reproducible builds scheme https://gitlab.com/janneke/mes
+readme hs onionservice x509 cert tls people:syverson https://www.nrl.navy.mil/itd/chacs/syverson-once-and-future-onion
+securedrop vuln people:donncha https://github.com/freedomofpress/securedrop/issues/2238
+nagios sunet nordunet https://monitor.sunet.se/nagios3/
+chromium ct log requirements https://www.chromium.org/Home/chromium-security/certificate-transparency/log-policy
+chromium ct logs https://www.chromium.org/Home/chromium-security/certificate-transparency
+computer hw store berlin lenovo http://www.cecon.de/
+web testing wpt https://github.com/w3c/web-platform-tests
+readme tor censorship nazi ds http://www.hackerfactor.com/blog/index.php?/archives/773-Tor-and-the-Perfect-Storm.html
+freebsd jail ansible https://github.com/JoergFiedler/freebsd-ansible-demo
+freebsd jail ansible https://www.keltia.net/howtos/jail-mgmt-with-ansible/
+freebsd jail ansible https://bsdploy.readthedocs.io/en/latest/
+swamid oss web saml https://sp.swamid.se/
+bgp leaking hijacking https://bgpmon.net/bgp-leak-causing-internet-outages-in-japan-and-beyond/
+calendar emacs caldav org https://github.com/dengste/org-caldav
+internet blacklist https://www.abuseipdb.com/check/
+readme erlang https://mazenharake.wordpress.com/2010/10/31/9-erlang-pitfalls-you-should-know-about/
+tor dos onion http://www.hackerfactor.com/blog/index.php?/archives/2017/05/05.html
+network routing service https://tools.keycdn.com/ping
+google play https://github.com/matlink/gplayweb
+tor hs https://www.theguardian.com/technology/2017/aug/23/dark-web-neo-nazis-tor-dissidents-white-supremacists-criminals-paedophile-rings
+mirageos freebsd bhyve people:hannesm https://hannes.nqsb.io/Posts/VMM
+tor doc https://media.torproject.org/templates/
+bitcoin wallet https://trezor.io/
+security sweden people:rom https://www.svt.se/nyheter/inrikes/inte-helt-olikt-den-stora-lackan-2012
+usb contact tracking device https://www.aliexpress.com/item/GPS-Activity-Tracker-Vehicle-Car-Locator-USB-Cable-Charger-Listen-Sound-GSM-GPRS-Tracking-Alarm-Devices/32812530511.html
+privacy library sweden http://biblioteksbladet.se/regeringen-vill-utoka-bibliotekssekretessen/
+privacy library sweden http://biblioteksbladet.se/ilshammar-positiv-till-utokad-sekretess/
+privacy library sweden http://www.regeringen.se/49e19f/contentassets/1f6ae1011c044aeab712ff2f77853b4c/161720800webb.pdf
+ca misissuance history x509 cert ct https://sslmate.com/blog/post/history_of_ca_sanctions
+tor funding https://pipeline.torproject.net/
+tor onion https://www.wired.com/2017/01/get-even-easier-hide-dark-web/
+movie people:billbinney http://www.imdb.com/title/tt4065414/
+readme periodically https://notamonadtutorial.com/
+readme periodically https://medium.com/tag/erlang/latest
+tor people:arma http://www.bbc.com/news/technology-40810771
+crypto book "krypto" http://libris.kb.se/bib/8198782
+chainiac people:bryanford https://www.cyberscoop.com/chainiac-software-backdoor-mandates-nsa-gchq/
+elsa wifi tracking wl https://wikileaks.org/vault7/#Elsa
+oped dfri http://www.aftonbladet.se/debatt/a/3n3wq/tank-om--nya-lagen-doljer-dataintrangen
+hannesm blog https://hannes.nqsb.io/Posts
+spam SA pre-queue https://wiki.apache.org/spamassassin/IntegratePostfixViaSpampd
+flight routes https://uk.flightaware.com/
+tsa egencia tor tpi travel https://people.torproject.org/~gk/misc/GOT-YUL-TSA.png
+security threadmodeling https://ssd.eff.org/en/module/introduction-threat-modeling
+tech politics people:mikeperry https://blog.torproject.org/blog/technology-hostile-states-ten-principles-user-protection
+fbsd suspend resume https://ixquick-proxy.com/do/spg/proxy?ep=566b414c556b314e50785677435645784a6977526678565252685659576a304b4f52354c465555374855776e516b3853526a41414c68743764516c64566d4958434268494c52344e5243496246516434496955434c674d745057353661543162475263744a68773363796c7856314e584f685a475242554c4846414b503035665577774a54414e79414263684642384f566e6b6948566737496a555a4b6a6f76487870724c6c42664d78394f45556f48424138474756564b4d69596b4145494a526a554749455a4f61534963516c55485a547337456a4154457777324651516548694a43443359314e4564734c4639654245784c486a744145524646624267614452745750517750596c70556631564c424652574757426d5a58734f6133684852443055444156745068734643485a2b55676463565670474142396d41444d4e4748646255455a4756683445616a73486543704147674d465943354244514166514778434952776355466b4a4345705344304e534e794d554453634d416834754a45385861795637634235434d7a6c47427938444952516945686878&epile=4q6n41784r7n41334q6n67784s4638344q5335725n586o3q&edata=ac450f1e44492450b3dbb9129eaba727&ek=4r58316n4r47736p5532524r59535646566p38305446523064464r3961487439546q6p6p5n6n4661627n68584979683361464r76517n354n4q32307963314252653330705833316p596p427963546s32616q6p535n5539676244346s496q786s4o535n715945706p4s58773063543971583367684o48783464485n70586n70694n476p72616r4n505n6q5645635831394q6p4n5066445n4s51316o79554542564s57395752695172517n70395547383151696s30587n4q6p51464r4n633278764r46426n516n5571523031754n584131493068546655646r6533355464474177626o6s794o6o567n51474n6661476p6r4q483574613138685n5842345648306n4s534n6758326o33566n686r536n52344q5446674o565n665545772o576o7078643134694s574r4p546q68324r556459665745314s54396s5n3256416345422o4n555n39497n5n374r435n6p5746356o545568794o32646r56456s6o4s6n52364n563537516r68394q576p71616r6869626r46305131417051484r5n64564r366258315n50305n4o506p396r&ekdata=61ff5c9c4ec71b2e0dbc09a62c314749
+fbsd suspend resume https://wiki.freebsd.org/SuspendResume
+fbsd fde disk encryption https://vesterman.com/FreeBSD/FullDiskEncryption
+readme security pfs https://eprint.iacr.org/2016/221
+readme politics https://en.wikipedia.org/wiki/Left-libertarianism
+readme people:adamcurtis https://www.theregister.co.uk/2011/05/23/adam_curtis_machines_interview/
+readme people:adamcurtis https://web.archive.org/web/20110507182050/http://www.guardian.co.uk/tv-and-radio/2011/may/06/adam-curtis-computers-documentary
+readme video tv-series https://en.wikipedia.org/wiki/All_Watched_Over_by_Machines_of_Loving_Grace_(TV_series)
+readme ietf privacy https://tools.ietf.org/id/draft-gont-numeric-ids
+openssl engine yubikey https://developers.yubico.com/PIV/Guides/Certificate_authority.html
+tor police netherlands http://politiepcvh42eav.onion/hansafaq.html
+tor police netherlands http://politiepcvh42eav.onion/faq.html
+readme https://blog.cr.yp.to/20170723-random.html
+ethernet mac vendor prefix http://standards.ieee.org/regauth/oui/oui.txt
+x509 revocation https://revoked.grc.com/
+security RADIUS http://freeradius.org/security/fuzzer-2017.html
+matrix protocol https://en.wikipedia.org/wiki/Matrix_(communication_protocol)
+matrix protocol https://matrix.org/
+readme wire https://motherboard.vice.com/en_us/article/gvzw5x/secure-messaging-app-wire-stores-everyone-youve-ever-contacted-in-plain-text
+tls incterception people:sftcd https://github.com/sftcd/tinfoil
+tor insecurity discussions https://github.com/nylira/prism-break/issues/1760
+vpn sw https://git.zx2c4.com/WireGuard/
+vpn sw https://www.wireguard.com/
+pomodoro emacs https://github.com/lolownia/org-pomodoro
+ssl tls tool https://github.com/google/ssl_logger
+service poll doodle https://framadate.org/
+readme tcp networking code http://www.saminiir.com/lets-code-tcp-ip-stack-5-tcp-retransmission/
+tor article circumvention https://svn.torproject.org/svn/projects/articles/circumvention-features.html
+tor debian package https://www.torproject.org/docs/debian.html.en
+inkommen handling skatteverket deklarationstidpunkt https://www4.skatteverket.se/rattsligvagledning/edition/2017.5/325472.html
+libgrypt vuln sidechannel https://eprint.iacr.org/2017/627
+tls ciphers service https://mozilla.github.io/server-side-tls/ssl-config-generator/
+dovecot logout hook https://www.dovecot.org/patches/2.2/imap-logout-plugin.c
+encrypted sni people:richsalz https://www.ietf.org/proceedings/interim-2014-tls-02/slides/slides-interim-2014-tls-2-9.pptx
+hbsd docu https://hardenedbsd.org/content/hardenedbsd-handbook
+dns security https://github.com/jedisct1/dnscrypt-proxy
+security exiv2 people:hanno http://www.openwall.com/lists/oss-security/2017/06/30/1
+nationell cyberstrategi sweden http://www.regeringen.se/49f22c/contentassets/3f89e3c77ad74163909c092b1beae15e/nationell-strategi-for-samhallets-informations--och-cybersakerhet-skr.-201617213
+linux cia netfilter https://wikileaks.org/vault7/document/OutlawCountry_v1_0_User_Manual/
+readme skylake vuln https://medium.com/ahrefs/skylake-bug-a-detective-story-ab1ad2beddcd
+http://www.idg.se/2.1085/1.606293/svenska-tekniken-som-sparar-dig-pa-stan
+unix signals https://ldpreload.com/blog/signalfd-is-useless
+buss http://svenskbusshistoria.se/
+fticks privacy radiator https://github.com/stockholmuniversity/radiator-fticks-anonymizer
+radsecproxy freebsd https://www.freshports.org/net/radsecproxy
+security cfi paper https://arxiv.org/abs/1706.07257v1
+readme asynchronous python https://lwn.net/Articles/544522/
+ntru crypto https://github.com/NTRUOpenSourceProject/ntru-crypto
+programming signal threads http://www.linuxprogrammingblog.com/all-about-linux-signals?page=11
+readme hbsd stackclash https://hardenedbsd.org/article/shawn-webb/2017-06-25/stack-clash-mitigations
+eddsa ed25519 [[gnus:nnimap%2Badbc:junk#CAGZ8ZG3aff6HTcrVYzDEvo01zP%3D9xPDRj0NR4OSMqS1Mnwsd-w@mail.gmail.com][Email from Trevor Perrin: {curves} Generalizing EdDSA]]
+key-value service https://keyvalue.xyz/
+tor mit https://www.forbes.com/sites/matthewherper/2017/06/28/mit-shuts-down-a-dorm-and-grapples-with-its-identity/#3f443d54360f
+https://www.propublica.org/article/facebook-hate-speech-censorship-internal-documents-algorithms
+browser chrome privacy https://iridiumbrowser.de/
+x509 revocation crl https://www.imperialviolet.org/2011/03/18/revocation.html
+x509 revocation crl https://www.imperialviolet.org/2012/02/05/crlsets.html
+tor drugs people:juha http://www.drugandalcoholdependence.com/article/S0376-8716(17)30291-0/fulltext
+tor sha https://program.sha2017.org/events/102.html
+tor darkweb icann people:piscitello https://www.icann.org/news/blog/the-dark-web-the-land-of-hidden-services
+ocaml mirage qubes graphics people:joe http://hapy.0x90.dk/~apache2/mirage_qubes_unifont.png
+https://www.mail-tester.com/
+python reactive web ui react.js https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503
+fragastaten.se https://lists.okfn.org/pipermail/fragastaten/
+fragastaten.se https://github.com/mysociety/alaveteli
+teke elliptic book https://www.ems-ph.org/books/book.php?proj_nr=35
+grsec https://github.com/minipli/linux-unofficial_grsec
+https://github.com/copperhead/linux-hardened
+hardened-gentoo grsec announcement https://archives.gentoo.org/gentoo-hardened/message/62ebc2e26d91e8f079197c2c83788cff
+tor nsa gchq 2013 https://www.theguardian.com/world/2013/oct/04/nsa-gchq-attack-tor-network-encryption
+tor un hr https://blog.torproject.org/blog/un-special-rapporteur-anonymity-gateway-free-expression
+tor https://www.princeton.edu/news/2017/06/01/research-identifies-methods-protect-against-online-privacy-attacks
+intel hyperthreading https://paste.debian.net/hidden/9955768e
+grsec spender torvalds http://www.openwall.com/lists/oss-security/2017/06/25/1
+grsec torvalds bashing https://www.spinics.net/lists/kernel/msg2540934.html
+hbsd http://updates.hardenedbsd.org/pub/HardenedBSD/updates/hardened/10-stable/master/amd64/update-hbsd-vXXX.tar
+hbsd http://updates.hardenedbsd.org/pub/HardenedBSD/updates/hardened/10-stable/master/amd64/update-latest.txt
+openvpn https://guidovranken.wordpress.com/2017/06/21/the-openvpn-post-audit-bug-bonanza/
+https://github.com/HardenedBSD/hardenedBSD/commit/45e900925ca3dc8799168749146ee33b182bae1d
+security freebsd mac vuln https://github.com/SoldierX/freebsd_mac_rootkits
+readme security vuln stack-clash https://www.qualys.com/2017/06/19/stack-clash/stack-clash.txt
+crypto aead aes-gcm-siv 3people:agl https://tools.ietf.org/html/draft-irtf-cfrg-gcmsiv-05
+math book https://en.wikibooks.org/wiki/Calculus
+algorithm graph enumeration http://www.cs.tufts.edu/comp/150GA/homeworks/hw1/Johnson%2075.PDF
+ct geant https://eventr.geant.org/events/2644
+privacy ietf perpass https://tools.ietf.org/html/rfc7258 https://tools.ietf.org/html/bcp188
+privacy ietf https://tools.ietf.org/html/rfc6973
+privacy ietf https://tools.ietf.org/html/rfc8165
+privacy ietf https://tools.ietf.org/html/rfc8164
+tor funding infographics http://www.whoishostingthis.com/blog/2014/11/17/who-funded-tor/
+tor bridges ndnop3 ndnop5 https://trac.torproject.org/projects/tor/wiki/doc/MetricsTimeline
+wire.com constant-bit-rate-encoding https://medium.com/@wireapp/call-security-constant-bit-rate-encoding-and-improving-webrtc-a85be6caa43a
+wire.com source code https://github.com/wireapp
+wire.com https://medium.com/@wireapp/a-major-upgrade-to-calling-9ac8780741a1
+sou:2017:37 http://www.regeringen.se/49930b/contentassets/8df6c84af7a549f6be4326e0114b2ce6/kvalificerad-valfardsbrottslighet--forebygga-forhindra-upptacka-och-beivra-sou-201737
+tor https://cyber.harvard.edu/people/mjayaram
+http://www.allmanhandling.se/2012/05/31/du-har-inte-sagt-vem-du-ar-och-vad-du-ska-anvanda-handlingarna-till/
+egypt blocking tor https://twitter.com/OpenObservatory/status/870066944124366848
+readme msb report cyber https://www.msb.se/sv/Om-MSB/Nyheter-och-press/Nyheter/Nyheter-fran-MSB/Nationell-risk--och-formagebedomning-2017-/
+readme dataprotection https://lwn.net/Articles/724454/
+readme dataprotection https://conferences.oreilly.com/strata/strata-eu/public/schedule/detail/57693
+tor research fingerprinting http://www.cl.cam.ac.uk/users/sjm217/papers/oakland05torta.pdf
+tor research fingerprinting http://freehaven.net/anonbib/papers/congestion-longpaths.pdf
+tor research fingerprinting https://netfiles.uiuc.edu/mittal2/www/throughput-fingerprinting-ccs11.pdf
+tor research fingerprinting http://www.robgjansen.com/publications/howlow-pets2013.pdf
+cert mafia https://tkware.info/2014/11/19/the-certificate-authority-racket/
+book C programming http://icube-icps.unistra.fr/img_auth.php/d/db/ModernC.pdf
+ec crypto ed25519 fail monero https://nickler.ninja/blog/2017/05/23/exploiting-low-order-generators-in-one-time-ring-signatures/
+debate people:tomandersson dfri fra apt10 https://www.dagenssamhalle.se/debatt/oppna-upp-om-cyberhoten-17484
+integrity sweden integritetskommitten slutbet sou:2017:52 http://www.regeringen.se/pressmeddelanden/2017/06/integritetskommitten-redovisar-sitt-slutbetankande/
+integrity sweden integritetskommitten delbet sou:2016:41 http://www.regeringen.se/rattsdokument/statens-offentliga-utredningar/2016/06/sou-201641/
+linux vdso http://articles.manugarg.com/systemcallinlinux2_6.html
+freebsd update bug security https://gist.github.com/anonymous/e48209b03f1dd9625a992717e7b89c4f
+oidc https://openid.net/specs/openid-connect-discovery-1_0.html
+oidc https://openid.net/specs/openid-connect-registration-1_0.html
+oidc https://openid.net/specs/openid-connect-core-1_0.html
+pts web guideline swedish https://webbriktlinjer.se/
+people:ioanniskakavas https://twitter.com/ilektrojohn
+mr dr sweden http://data.riksdagen.se/dokument/H40362
+mr dr sweden http://www.regeringen.se/49adea/contentassets/5429e024be6847fc907b786ab954228f/digitaliseringsstrategin_slutlig_170518-2.pdf
+fra cloudhopper https://www.svd.se/fra-delger-statlig-aktor-bakom-massiv-cyberattack/om/cyberattackerna-mot-sverige
+ipsec vpn ansible https://github.com/trailofbits/algo
+anuto-td https://github.com/reloZid/android-anuto
+readme encryption-workarounds lea crypto people:kerr people:schneier https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2938033
+password generation dice http://world.std.com/~reinhold/diceware.html
+privacy security guide https://ssd.eff.org/
+privacy guide bad https://www.vpnmentor.com/blog/online-privacy-journalists/
+library https://github.com/isislovecruft/library--
+readme https://labs.rs/en/
+ct plausible monitor https://ct.grahamedgecombe.com/logs/8
+trng https://github.com/waywardgeek/infnoise
+bitmessage "Crypto-Anarchist Federation" BM-2cWdaAUTrGZ21RzCpsReCk8n86ghu2oY3v
+bitmessage p2p messaging https://bitmessage.org/wiki/Compiling_instructions
+ecc crypto primer http://ecchacks.cr.yp.to/
+flow https://github.com/Juniper/contrail-controller/wiki/Flow-Handling
+neal stephenson https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=6518
+sou:2017:36 consultation http://www.regeringen.se/remisser/2017/05/remiss-av-sou-201736-informationssakerhet-for-samhallsviktiga-och-digitala-tjanster/
+sou:2017:36 http://www.regeringen.se/rattsdokument/statens-offentliga-utredningar/2017/05/sou-201736/
+software firmware static analysis car industri diesel vw https://www.ieee-security.org/TC/SP2017/papers/101.pdf
+tor people:lewman https://www.cyberscoop.com/tor-dark-web-andrew-lewman-securedrop/
+cage uk detention crypto passphrase https://www.theregister.co.uk/2017/05/18/nonprofit_director_charged_terrorism_act_2000/
+cage uk detention crypto passphrase https://gizmodo.com/why-this-man-is-risking-jail-by-refusing-to-surrender-p-1795272517
+cloud https://xkcd.com/908/
+hammertime https://xkcd.com/210/
+netnod tor people:linus https://www.youtube.com/watch?v=eB6PDXw0eUc
+fra 2016 https://kryptera.se/t/fra/
+fra dc3 http://www.jallai.se/2014/08/spionringen-pa-fra-2-0/
+uk encryption password heathrow jailed http://www.bbc.com/news/uk-39947993
+https://www.svd.se/hemlighetsmakeri-gor-oss-mer-sarbara-for-it-attacker/om/den-globala-it-attacken
+http://data.riksdagen.se/dokument/H403186
+sunet cloud doc https://docs.safespring.com/known-issues/
+http://www.regeringen.se/remisser/2017/05/remiss-av-ds-20171-elektronisk-overvakning-av-kontaktforbud/
+wifi freifunk https://www.open-mesh.org/projects/batman-adv/wiki
+funny theo djb https://web.archive.org/web/20081104101103/http://www.monkey.org:80/openbsd/archive/ports/0108/msg00505.html
+funny logic montypython http://www.montypython.net/scripts/logician.php
+grsec statement http://www.openwall.com/lists/kernel-hardening/2017/05/11/2
+msb sensors http://www.dagensjuridik.se/2017/05/massovervakning-av-internet-utan-lagstiftning-skarp-kritik-mot-regeringens-forslag
+eu uber electronicplatform http://curia.europa.eu/jcms/jcms/p1_347782
+anonymity https://ripe74.ripe.net/wp-content/uploads/presentations/20-Ripe-Presentation.pdf
+tor hs attack archive.org proxy http://www.hackerfactor.com/blog/index.php?/archives/762-Attacked-Over-Tor.html
+article19 position job https://article.peoplehr.net/Pages/JobBoard/Opening.aspx?v=f667fef8-cc90-45dd-911b-c1652c65e389
+docu russia video https://www.youtube.com/watch?v=eXYQbgvzxdM
+docu russia medvedev video https://www.youtube.com/watch?v=qrwlk7_GF9g
+tor onion links lol funny http://ypqmhx5z3q5o6beg.onion/
+people:poitras people:jake https://www.washingtonpost.com/news/act-four/wp/2017/05/08/i-saw-laura-poitrass-julian-assange-movie-10-days-ago-im-still-struggling-with-it/
+tails socialcontract https://tails.boum.org/contribute/working_together/social_contract/
+service translation https://hosted.weblate.org/
+h2020 pets privacy https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/ds-08-2017.html
+msb sensor http://computersweden.idg.se/2.2683/1.681936/kritik-tekniksensorer-hot-integritet
+software versioning http://semver.org/
+people:bogatov tor russia https://www.debian.org/News/2017/20170417
+swedish police sapo http://www.dagensjuridik.se/2017/05/aberopar-fel-lag-och-anger-ingen-grund-sina-beslut-kritik-mot-sapos-hemliga-teleovervakning
+heads laptop people:trammelhudson https://fahrplan.events.ccc.de/congress/2016/Fahrplan/events/8314.html
+intel amt vuln https://mjg59.dreamwidth.org/48429.html
+intel amt vuln https://semiaccurate.com/2017/05/01/remote-security-exploit-2008-intel-platforms/
+dfri meetings https://dudle.inf.tu-dresden.de/DFRI/
+x260 https://pcsupport.lenovo.com/se/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x260/
+x260 https://download.lenovo.com/pccbbs/mobiles/r02uj53d.iso
+algorithms https://m.xkcd.com/1831/
+tor sunet contribution metrics https://lists.torproject.org/pipermail/tor-project/2017-May/001129.html
+binary transparency https://androidobservatory.org/
+http://www.stilldrinking.org/programming-sucks
+dfri media https://www.dn.se/sthlm/lar-dig-kryptera-och-surfa-anonymt/
+dfri media http://www.vlt.se/vastmanland/vasteras/just-nu-storningen-har-startat
+dfri media http://computersweden.idg.se/2.2683/1.679489/sluta-morka-it-incidenter
+dfri media http://www.nyteknik.se/digitalisering/msb-kan-fa-overvaka-datatrafik-6844922
+fra privacy dir:2017:42 http://www.regeringen.se/rattsdokument/kommittedirektiv/2017/04/dir.-201742/
+security cyber dk mil https://fe-ddis.dk/cfcs/CFCSDocuments/Unders%C3%B8gelsesrapport%20-%20En%20akt%C3%B8r%20mange%20angreb.pdf
+oidc openidconnect pam https://github.com/its-dirg/non-web-oidc
+tor ipv6 todo https://trac.torproject.org/projects/tor/query?status=accepted&status=assigned&status=merge_ready&status=needs_information&status=needs_review&status=needs_revision&status=new&status=reopened&keywords=~ipv6
+sweden cash handling car parking http://www.dagensjuridik.se/2017/04/p-avgift-av-civilrattslig-karaktar-kommun-behover-inte-ta-kontanter-i-p-automater
+sweden law terrorism surveillance https://www.dn.se/kultur-noje/kulturdebatt/viktor-banke-om-terrorns-konsekvenser-lat-inte-paniken-stifta-lagar/
+readme tor https://patternsinthevoid.net/hyphae/hyphae.pdf
+readme video security defense https://youtu.be/PLJJY5UFtqY
+camera surveillance sweden https://www.bra.se/bra/publikationer/arkiv/publikationer/2015-12-22-kameraovervakning-pa-stureplan-och-medborgarplatsen.html
+readme privacy people:bryanford https://pop.dedis.ch/
+erlang people:ingelalundin https://github.com/erlang/otp/commits?author=IngelaAndin
+online safety guide https://www.accessnow.org/cms/assets/uploads/archive/docs/securitydoc_20100612.pdf
+sweden migration http://vistarinteut.org/
+integrity library sweden kb https://peterals.wordpress.com/2016/12/29/om-digital-overvakning-och-personlig-integritet-pa-svenska-bibliotek/
+https://www.mozilla.org/en-US/security/advisories/mfsa2017-12/
+tor globalsouth https://trac.torproject.org/projects/tor/wiki/org/meetings/2017Amsterdam/Notes/GlobalSouth2
+tor hs cert ct https://crt.sh/?q=%25.onion
+scuttlebutt https://ssbc.github.io/docs/scuttlebot/tutorial.html
+scuttlebutt https://www.scuttlebutt.nz/
+map publictransport https://www.livemap24.com/?lat=59.31190690282781&lon=18.06976318359375&zoom=12
+sunet job description http://www.mercuriurval.com/sv/Countries/Sweden/Jobb/En-annons/?ad=43632
+ai transparency google https://www.wired.com/2017/03/google-deepminds-untrendy-blockchain-play-make-actually-useful/
+ai transparency https://deepmind.com/blog/trust-confidence-verifiable-data-audit/
+ct monitor gossip https://github.com/SSLMate/ct-honeybee
+ct monitor gossip https://ct.grahamedgecombe.com/
+http://www.dagensjuridik.se/2017/04/stopp-polisens-ratt-att-besluta-om-inhamtning-av-teleuppgifter-ny-lag-om-datalagring-pa-gang
+readme security handshake https://dominictarr.github.io/secret-handshake-paper/shs.pdf
+scuttlebutt https://staltz.com/an-off-grid-social-network.html
+pgp vuln https://github.com/Yubico/ykneo-openpgp
+msb incidenthandling dataskydd.net https://www.msb.se/sv/Om-MSB/Nyheter-och-press/Nyheter/Nyheter-fran-MSB/Kammarratten-i-Goteborg-avslar-ytterligare-tva-overklaganden-angaende-utlamning-av-uppgifter-om-allvarliga-it-incidenter/
+msb incidenthandling dataskydd.net https://dataskydd.net/nyheter/2017/03/18/dataskyddnet-forlorade-mot-msb-i-kammarratten
+dfri people:tomandersson http://www.dagenssamhalle.se/debatt/vi-maste-laera-oss-leva-med-it-saekerhetsrisker-32856
+service dudle doodle https://framadate.org/
+curves crypto ecc https://moderncrypto.org/mail-archive/curves/2016/000803.html
+blocking azerbaijan https://www.qurium.org/alerts/azerbaijan/deep-packet-inspection-and-internet-censorship-in-azerbaijan/
+tor transport quic https://www.benthamsgaze.org/2016/09/29/quux-a-quic-un-multiplexing-of-the-tor-relay-transport/
+tor transport libutp https://research.torproject.org/techreports/libutp-2013-10-30.pdf
+dfri msb https://dataskydd.net/nyheter/2017/03/18/dataskyddnet-forlorade-mot-msb-i-kammarratten
+dfri msb http://computersweden.idg.se/2.2683/1.679489/sluta-morka-it-incidenter
+tor metrics torperf mystery https://lists.torproject.org/pipermail/metrics-team/2016-December/000257.html
+spotify android rickroll https://github.com/kjempelodott/rickify
+tor meeting ams https://trac.torproject.org/projects/tor/wiki/org/meetings/2017Amsterdam/Notes
+readme nsa backdoor nobus kleptography https://www.techdirt.com/articles/20160816/07465535255/ed-snowden-explains-why-hackers-published-nsas-hacking-tools.shtml
+readme nsa backdoor nobus kleptography https://www.washingtonpost.com/news/the-switch/wp/2013/10/04/why-everyone-is-left-less-secure-when-the-nsa-doesnt-help-fix-security-flaws/
+tails port filter https://git-tails.immerda.ch/tails/tree/config/chroot_local-includes/etc/tor-controlport-filter.d
+tails port filter https://git-tails.immerda.ch/tails/plain/config/chroot_local-includes/usr/local/lib/tor-controlport-filter
+kill people metadata people:michaelhayden http://www.nybooks.com/daily/2014/05/10/we-kill-people-based-metadata/
+dv https://hackblossom.org/domestic-violence/
+bintrans https://github.com/guardianproject/f-droid.org_binary_transparency_log
+compiler toolchain security http://bootstrappable.org/
+tor facebook https://motherboard.vice.com/en_us/article/facebook-says-1-million-people-accessed-the-site-over-tor-this-month
+tor facebook https://threatpost.com/one-million-access-facebook-over-tor/117653/
+tor facebook https://www.facebook.com/notes/facebook-over-tor/1-million-people-use-facebook-over-tor/865624066877648/
+tor presentations https://media.torproject.org/outreach-material/presentations/
+turkey religious app arrested http://www.latimes.com/world/europe/la-fg-turkey-purge-crackdown-snap-story.html
+readme privacy us https://www.washingtonpost.com/news/the-switch/wp/2017/03/28/the-house-just-voted-to-wipe-out-the-fccs-landmark-internet-privacy-protections/
+bt bintrans https://wiki.mozilla.org/Security/Binary_Transparency
+tor https://theconversation.com/tor-upgrades-to-make-anonymous-publishing-safer-73641
+donncha lulzsec http://www.washingtontimes.com/news/2017/mar/23/donncha-ocearbhaill-former-lulzsec-hacker-sentence/
+netnod spring 2017 https://www.netnod.se/event/netnod-spring-meeting-2017/agenda1
+readme ct privacy https://arxiv.org/abs/1703.02209
+readme https://secure.politico.com/story/2017/02/trump-twitter-staffer-235263
+readme https://www.theatlantic.com/business/archive/2017/02/scheidel-great-leveler-inequality-violence/517164/
+hsm http://people.cs.uchicago.edu/~dinoj/smartcard/javaring.html
+readme sw-dist https://in-toto.github.io/
+google symantec https://groups.google.com/a/chromium.org/forum/?_escaped_fragment_=msg/blink-dev/eUAKwjihhBs/rpxMXjZHCQAJ#!msg/blink-dev/eUAKwjihhBs/rpxMXjZHCQAJ
+https://en.wikipedia.org/wiki/Bill_Joy
+readme https://en.wikipedia.org/wiki/To_Mock_a_Mockingbird
+people https://en.wikipedia.org/wiki/Raymond_Smullyan
+http://www.phdcomics.com/comics/archive.php?comicid=1174
+hotel amsterdam http://livezoku.com/
+funding edri rff https://grants.digitalrights.fund/
+http://rosettacode.org/
+readme security https://www.ctrlc.hu/~stef/blog/pitchfork.html
+readme tor http://www.econotimes.com/Tor-upgrades-to-make-anonymous-publishing-safer-597568
+https://strasbourgobservers.com/2017/03/20/pihl-v-sweden-non-profit-blog-operator-is-not-liable-for-defamatory-users-comments-in-case-of-prompt-removal-upon-notice/
+ct gossip code https://github.com/SSLMate/sthset2pollen
+ct gossip code https://github.com/SSLMate/ct-honeybee
+readme dcf detention https://www.bamsoftware.com/writing/mia-cbp.html
+ct monitor https://ct.grahamedgecombe.com/
+tls testing https://badssl.com/
+dnssec transparency ct http://blog.huque.com/2014/07/dnssec-key-transparency.html
+sunet vacation list https://docs.google.com/a/sunet.se/spreadsheets/d/12aooog8oPAYM1HLUE_JbLJyI5KXN4XsKQ6cR872rh0I/edit?usp=sharing
+readme science methodology https://www.theguardian.com/science/blog/2013/jun/05/trust-in-science-study-pre-registration
+bug bounty program security https://internetbugbounty.org/
+security linux people:hboeck https://int21.de/slides/fosdem2017-linuxsecurity/
+ddos tord http://luca.ntop.org/CommoditisingDDoSMitigation.pdf
+linux kernel hardening https://kernsec.org/wiki/index.php/Kernel_Self_Protection_Project
+readme saml https://auth0.com/blog/how-saml-authentication-works/
+0day paper people:schneier https://www.schneier.com/blog/archives/2012/10/studying_zero-d.html
+saml bug ruby github http://www.economyofmechanism.com/github-saml
+funny pic fixing-from-the-inside https://berlin.ccc.de/~hannes/inside.jpg
+http://www.breakit.se/artikel/6876/telia-tvingas-lamna-ut-kundernas-namn-till-danska-piratjagarna
+security js https://www.bleepingcomputer.com/news/security/over-a-third-of-websites-use-outdated-and-vulnerable-javascript-libraries/
+https://docs.ejabberd.im/developer/ejabberd-api/oauth
+hw http://www.adiengineering.com/
+radius fticks ietf https://tools.ietf.org/html/draft-johansson-fticks-00
+tor ipv6 https://trac.torproject.org/projects/tor/wiki/org/meetings/2017Amsterdam/IPv6Hackfest
+readme video GPIO people:linuswalleij https://www.youtube.com/watch?v=lQRCDl0tFiQ
+0day rand report http://www.rand.org/pubs/research_reports/RR1751.html
+TDV http://www.fra.se/verksamhet/informationssakerhet/regeringsuppdragtillfra.121.html
+TDV RR rapport informationssäkerhet https://data.riksdagen.se/fil/BE7AD878-9C78-4756-95B0-F1617EAB2241
+TDV https://www.msb.se/Upload/Nyheter_press/Ett_nationellt_tekniskt_IT-intrangsdetekterings-_och_varningssystemTDV.pdf
+sgx security https://arxiv.org/abs/1702.08719
+readme https://www.svd.se/panamalackan-visar-pa-vikten-av-delaktighet
+readme https://www.msb.se/sv/Om-MSB/Nyheter-och-press/Nyheter/Nyheter-fran-MSB/Ny-rapport-om-betydelsen-av-informationssakerhet/
+readme http://www.nyteknik.se/opinion/hog-tid-att-rensa-i-alternativa-fakta-om-it-sakerhet-6830546
+readme protobufs https://medium.com/@marin_m/how-i-found-a-5-000-google-maps-xss-by-fiddling-with-protobuf-963ee0d9caff
+free speech https://xkcd.com/1357/
+dld drd sweden http://www.nyteknik.se/digitalisering/kammarratten-underkanner-datalagring-6830821
+readme pax mprotect https://pax.grsecurity.net/docs/mprotect.txt
+tor traffic dist https://munin.torproject.org/torproject.org/aroides.torproject.org/ip_38_229_72_16.html
+tor traffic dist https://munin.torproject.org/torproject.org/archeotrichon.torproject.org/ip_154_35_132_70.html
+tor traffic dist sunet https://munin.torproject.org/torproject.org/weschniakowii.torproject.org/index.html#network
+ct chrome policy https://www.chromium.org/Home/chromium-security/certificate-transparency
+minesweeper satsolver z3 smt https://yurichev.com/blog/minesweeper/
+tdv http://www.regeringen.se/rattsdokument/departementsserien-och-promemorior/2017/02/tillhandahallande-av-tekniska-sensorsystem--ett-satt-att-forbattra-samhallets-informationssakerhet/
+surveillance http://www.dagensjuridik.se/2017/03/polisen-storsatsar-pa-kameraovervakning-med-ansiktsigenkanning-startar-i-var
+http://youbroketheinternet.cheettyiapsyciew.onion/
+readme podcast audio bunnie http://theamphour.com/the-amp-hour-336-an-interview-with-bunnie-huang-2nd
+grsec debian https://micahflee.com/2016/01/debian-grsecurity/
+dld sweden http://www.dagensjuridik.se/2017/03/efter-kritiken-fran-aklagare-och-polis-han-ska-se-till-sa-att-svensk-datalagring-kan-fortsat
+dns resolver pic https://pbs.twimg.com/media/BjPs6e6IUAAPZix.jpg
+funny pic working-from-home https://s3.amazonaws.com/theoatmeal-img/comics/working_home/6.png
+privacy cloud https://eprint.iacr.org/2010/305.pdf
+privacy cloud obfuscating compiler https://eprint.iacr.org/2017/050.pdf
+keyboard https://www.ippinka.com/blog/air-type-typing-words-thin-air/
+sweden it crime http://www.dn.se/ledare/huvudledare/myndigheterna-har-gatt-vilse-bland-it-brotten/
+intel me https://github.com/platomav/MEAnalyzer
+tor bsd https://trac.torproject.org/projects/tor/ticket/21562
+stellar consensus cartoon https://www.stellar.org/stories/adventures-in-galactic-consensus-chapter-1/
+readme libraries https://boingboing.net/2016/03/28/how-libraries-can-save-the-int.html
+swedish sexual crime https://www.bra.se/bra/brott-och-statistik/valdtakt-och-sexualbrott.html
+swedish sexual crime https://web.archive.org/web/20100902015153/http://www.bra.se/extra/news/?module_instance=3&id=173
+debian disk mirroring https://wiki.debian.org/DebianInstaller/SoftwareRaidRoot
+cloudbleed https://bugs.chromium.org/p/project-zero/issues/detail?id=1139
+readme surveillance https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
 asn ipaddress mapping https://iptoasn.com/
 swedish crime statistics http://bra.se/bra/brott-och-statistik/statistik/personer-lagforda-for-brott.html
 surveillance china https://www.svd.se/terrorskrack-i-kina--alla-bilagare-satellitsparas
@@ -17,7 +401,7 @@ trac cli https://github.com/hiromipaw/lightsaber
 anonymity pseudonymity research debunked https://blog.coralproject.net/the-real-name-fallacy/
 travel us https://musingsonimmigration.blogspot.de/2017/02/if-you-are-immigrant-even-us-citizen.html
 camera surveillance sweden http://www.dn.se/nyheter/sverige/polisen-storsatsar-pa-overvakningskameror/
-bigdata us-election facebook privacy ocean https://motherboard.vice.com/en_us/article/big-data-cambridge-analytica-brexit-trump
+privacy bigdata us-election facebook privacy ocean https://motherboard.vice.com/en_us/article/big-data-cambridge-analytica-brexit-trump
 dfri tor https://onionoo.torproject.org/details?contact=1Muz37TfXVBiJKRJkAqTNo7MnEZN8hhmJQ&fields=platform,nickname
 shared randomness https://eprint.iacr.org/2016/1067.pdf
 readme security review paper wire https://www.x41-dsec.de/reports/Kudelski-X41-Wire-Report-phase1-20170208.pdf
@@ -81,7 +465,6 @@ ejabberd filter example spam https://stackoverflow.com/questions/1939879/how-to-
 tor cp fbi http://arstechnica.com/tech-policy/2017/01/tor-hidden-child-porn-site-admin-sentenced-to-20-years-in-prison/
 readme anonymity philosophy people:syverson https://www.freehaven.net/anonbib/cache/entropist.pdf
 wire.com crypto https://twitter.com/FiloSottile/status/806916153134104576
-wire.com crypto https://twitter.com/FiloSottile/status/806916153134104576
 readme crypto people:djb https://cr.yp.to/talks/2015.10.05/slides-djb-20151005-a4.pdf
 readme crypto politics people:rogaway http://web.cs.ucdavis.edu/~rogaway/papers/moral-fn.pdf
 readme crypto people:rogaway https://crypto.stanford.edu/RealWorldCrypto/slides/phil.pdf
@@ -107,7 +490,6 @@ cp sweden http://www.svd.se/rekordokning--far-dagliga-samtal-fran-radda-pedofile
 cp sweden http://www.svd.se/72-man-identifierade--laddade-ner-sexovergrepp-pa-barn/om/anvandarnao
 coreboot linux https://github.com/osresearch/heads
 coreboot linux https://github.com/mfc/flashing-docs/wiki/Walkthrough-for-flashing-Heads-on-an-x230
-grsec https://micahflee.com/2016/01/debian-grsecurity/
 https://github.com/RetroShare/documentation/wiki
 fra nsa http://www.nybooks.com/articles/2017/01/19/the-swedish-kings-of-cyberwar/
 dld http://www.svd.se/sverige-maste-riva-upp-lagen-om-datalagring/om/debatt
@@ -563,7 +945,7 @@ tor board http://arstechnica.com/security/2016/07/in-wake-of-appelbaum-fiasco-to
 tor board http://www.nytimes.com/2016/07/14/technology/tor-project-a-digital-privacy-group-reboots-with-new-board.html
 readme tor people:sjmurdoch https://royalsociety.org/topics-policy/projects/cybersecurity-research/
 gossip berlin https://dudle.inf.tu-dresden.de/ietf96-ct-gossip/
-tor web fingerprinting padding http://arxiv.org/pdf/1512.00524
+tor web fingerprinting defense padding wtf-pad http://arxiv.org/pdf/1512.00524
 readme darkweb https://motherboard.vice.com/read/these-maps-show-what-the-dark-web-looks-like
 tor routing https://arxiv.org/pdf/1511.05453v1.pdf
 readme tor mlat http://ohmygodel.com/publications/trustrep-popets15.pdf
@@ -954,7 +1336,7 @@ tor signaling attack https://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber
 erlang build tool http://erlang.mk/
 eu privacy regulation http://ec.europa.eu/justice/data-protection/document/review2012/com_2012_11_en.pdf
 tor tpi finance https://blog.torproject.org/blog/transparency-openness-and-our-2014-financials
-tor visualtisation https://torflow.uncharted.software/
+tor visualisation https://torflow.uncharted.software/
 http security headers service https://securityheaders.io/
 erlang xen http://erlangonxen.org/
 tor bsd build http://buildbot.pixelminers.net/
@@ -1805,7 +2187,7 @@ security ssl https://www.openssl.org/~bodo/ssl-poodle.pdf
 readme oracle crypto key hsm ftp://ftp.di.ens.fr/pub/users/pointche/Papers/2002_cryptobytes.pdf
 sweden politics integrity mp s https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=5990858
 readme tor optimisation paper https://www.robgjansen.com/publications/kist-sec2014.pdf 
-readme tor optimisation paper people:sjm https://www.cl.cam.ac.uk/~sjm217/papers/#pub-el14optimising
+readme tor optimisation paper people:sjmurdoch https://www.cl.cam.ac.uk/~sjm217/papers/#pub-el14optimising
 surveillance swedish http://www.dn.se/nyheter/sverige/lena-sundstrom-kjolreklamen-gor-natspionaget-begripligt/
 tor cloudflare https://github.com/jgrahamc/torhoney
 scanning law https://community.rapid7.com/community/infosec/sonar/blog/2013/10/30/legal-considerations-for-widespread-scanning
@@ -3980,7 +4362,7 @@ tor https://trac.torproject.org/projects/tor/timeline
 twitter encoding unicode https://blogs.oracle.com/ksplice/resource/legacy/lehman.txt
 webrtc tor flashproxy http://blog.printf.net/articles/2013/05/17/webrtc-without-a-signaling-server/
 programming http://www.nyx.net/~gthompso/poly/polyglot.txt
-tor network tcp udp datagram people:sjm http://www.cl.cam.ac.uk/~sjm217/papers/tor11datagramcomparison.pdf
+tor network transport tcp udp datagram people:sjmurdoch http://www.cl.cam.ac.uk/~sjm217/papers/tor11datagramcomparison.pdf
 tor fp people:dcf http://freehaven.net/anonbib/papers/pets2013/paper_29.pdf
 tor video https://media.torproject.org/video/
 irc bot python http://supybook.fealdia.org/latest/#installing_plugins
@@ -4606,7 +4988,7 @@ unhappy dev funny http://securityreactions.tumblr.com/post/31192560793/devs-reac
 security funny http://securityreactions.tumblr.com/post/31794202432/how-i-see-people-publishing-xss-and-defacements-as-big
 php funny http://securityreactions.tumblr.com/post/32666012903/the-last-time-i-looked-at-the-php-svn
 security funny http://securityreactions.tumblr.com/
-peering db peeringdb https://www.peeringdb.com/private/
+peering db peeringdb https://www.peeringdb.com/
 google readme http://www.wired.com/wiredenterprise/2012/10/ff-inside-google-data-center/
 nsa surveillance readme http://spectrum.ieee.org/podcast/telecom/security/police-states-and-domestic-terrorism
 phone http://www.telehomo.se/
@@ -4628,7 +5010,7 @@ portugal politics https://rda69.wordpress.com/
 funny nmap http://www.theregister.co.uk/2012/10/05/hakin9_silliness/
 sweden security identity-theft privacy http://www.dn.se/ekonomi/varje-dag-kapas-12-svenskars-identiteter
 sthix http://www.allabolag.se/5569017832/Stockholm_Internet_eXchange_AB
-portlane stats 95percentile https://cacti.portlane.com/graph_view.php?action=tree&tree_id=30&leaf_id=2528
+portlane stats 95percentile https://cacti.portlane.com/graph_view.php?action=tree&tree_id=17&leaf_id=3376
 skweee flogsta http://dl.dropbox.com/u/19661380/SKW34AKU.zip
 dnssec https://grepular.com/Understanding_DNSSEC
 security tls crypto readme http://blog.cryptographyengineering.com/2012/09/on-provable-security-of-tls-part-1.html
