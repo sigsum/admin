@@ -1,9 +1,12 @@
 4zm: 0739975368; 
 ahf: +45 22 13 33 73;
+ahf: Holstebrogade 9, st. tv.; DK-2100 Copenhagen
+ancha/gk: +46 735074013
 andrew: +46 762 41 47 30;
 albina: +46 76 130 12 40;
 ale: +46 70 209 09 81;
 amel: +46 734 31 53 10;
+annika frendberg: +46 8 508 012 97
 anna laurin: +46 706 35 65 87
 annika ohlin mob: +33 (0)619 02 17 54
 arma: arma234@jabber.org
@@ -89,7 +92,10 @@ pian: +46 72 505 03 28;
 rachel: +1 818 825 0302;
 rom: +46708330378; 5712
 rydekull: +46 70 240 32 23; 
-sanna (lars): +46 70 444 61 75; +46 8 615 06 46;
+sanna (lars kleberg): +46 70 444 61 75; +46 8 615 06 46;
+sarah (ahf): jagenau @ baconsvin
+saya amin: +46 8 508 019 97
+saya amin: +46 76 120 19 97
 sas scb: +45 32 32 66 33; +45 70 10 20 00
 shari: +1 415 412 0301;
 simon: +46 73 962 69 79; 
@@ -103,4 +109,3 @@ tg: +46 70 323 27 07;
 tjr: +1 908 917 2977;
 per trehorning: +46 70 513 75 29;
 wendy seltzer: +1 914 374 0613;
-

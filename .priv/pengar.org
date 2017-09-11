@@ -36,5 +36,21 @@
 
 * SEB
 - [[file:seb-arsbesked-2016.pdf][file:~/.priv/seb-arsbesked-2016.pdf]]
-- [[file:avrakningsnota_nr_170530400116.pdf][file:~/.priv/avrakningsnota_nr_170530400116.pdf]]
+** värdepapper
+*** SEB-1703K Kreditindexbevis "high yield"
+- [[FILE:avrakningsnota_nr_170530400116.pdf][file:~/.priv/avrakningsnota_nr_170530400116.pdf]]
+- likviddag 2017-06-08
+- inkköpspris 101.000 inkl. kurtage
+- förfallodag 2022-07-15
+*** SEB-1703G Aktieobligation "globala storbolag"
 - [[file:avrakningsnota_nr_170530400065.pdf][file:~/.priv/avrakningsnota_nr_170530400065.pdf]]
+- likviddag 2017-06-08
+- inkköpspris 112.200 inkl. kurtage
+- förfallodag 2020-06-08
+** fonder
+*** Corp bond Eur Lux
+- årlig avg 0,75%
+*** Etisk Europa Lux
+- årlig avg 1,5%
+*** Etisk Global Index Lux
+- årlig avg 0,45%

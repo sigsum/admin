@@ -1,5 +1,33 @@
 * current
-Saab XBD476
+** Saab XBD476
+** Subaru Forester KBR510
+2009
+*** verkstäder
+- Sunne bil & maskin
+0565-135 10
+info@sunnebilomaskin.se
+<2017-04-19 Wed> mejlat om prisuppgift kopplingsbyte
+- Fürstenhoff, nu Sverige Bilcenter
+Glömstavägen 546, Huddinge
+http://www.bilcenter.net/hitta-till-oss/
+<2017-04-19 Wed> bett om prisuppgift kopplingsbyte
+<2017-04-19 Wed> återkom med "måste kolla på den, hur det sitter, om man måste byta hjullager också" lol
+- Torvalla försäljning
+Hantverkarvägen 30, Haninge
+<2017-04-19 Wed> svarar inte i telefon
+- Bromma bil & motor
+Missionsvägen 60
+08-68404450
+<2017-04-19 Wed> prisuppgift kopplingsbyte
+  lamell, tryckplatta, lager, vxllådsolja
+  13000 inkl moms, bokat 26/4, 07:00
+*** rep bromma bil & motor <2017-04-26 Wed>
+- bokn-bekr: [[file:kopplingsbyte-bromma-2.pdf][file:~/doc/bil/kopplingsbyte-bromma-2.pdf]]
+- tfn lunchtid <2017-04-26 Wed> 
+  - service (liten, 13500 mil) 3900:- + 700:- "injektorinlearning"
+  - stag till givare för tillstrålkastarinställning 1860:- (inkl arbete)
+  - släcka 2:an 270:- (ta med bes.protokoll!)
+  - totalt 21000:-
 * next
 ** tips
 skoda yeti

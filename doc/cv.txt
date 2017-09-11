@@ -68,10 +68,11 @@ Sunet/NORDUnet  Software Engineer
 --------------
 May 09 -        Design, development and maintenance of security        
 Present         software, including Certificate Transparency (design   
-                and implementation of a CT log server), Tor (adding    
-                support for IPv6), Kerberos (OTP support in MIT        
-                Kerberos), radsecproxy (RADIUS over TLS) and libradsec 
-                (for Project Moonshot).
+                and implementation of a CT log server, standardisation
+                of a CT Gossip protocol), Tor (adding support for IPv6),
+                Kerberos (OTP support in MIT Kerberos), radsecproxy
+                (RADIUS over TLS) and libradsec (for Project
+                Moonshot).
 
                 Design and development of a file sharing system with
                 federated identity management based on BitTorrent.
@@ -134,7 +135,7 @@ SEB Data        Software Engineer
 November 93 -   Member of the Architecture & Technique group at SEB
 January 97      (former S-E-Banken). Planning and implementing
                 infrastructure for banking applications, most notably
-                "Internetkontoret" (banking on Internet).
+                "Internetkontoret" (Internet banking).
 
 Branschdata     Programmer
 -----------

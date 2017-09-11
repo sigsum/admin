@@ -1,9 +1,33 @@
+* info om musse
 Mustapha Jafuneh
 20130505-3074
+* kontaktinfo soc
+Familjevårdshandläggare: annika.frendberg@stockholm.se 08-50801297
+Barnhandläggare: Saya Amin <saya.amin@stockholm.se> 08-50801997 0761201997
+* pågående ärenden
+- 2016-11-15 Tandläkaren om höger framtand
+  - Marie bedömmer efter röntgen att den skall dras ut för att undvika
+    infektion. Det är en mörk rand ovanför mjölktanden, i gränsen mot
+    den permanenta.
+  - <2016-11-29 Tue> Marie meddelar att hon skickat remiss till
+    Eastman. Dom har 2 mån väntetid.
+  - <2017-04-06 Thu> Marie säger att Eastman prioriterat ner ärendet
+    och föreslår att vi tittar på det igen vid nästa ordinarie
+    kontroll i Oktober. Vi har då förtur på Eastman om det behövs.
 
-Familjevårdshandläggare: annika.frendberg@stockholm.se
-Barnhandläggare: Saya Amin <saya.amin@stockholm.se>
-
+- <2017-08-31 Thu> FSK: ser på "mina sidor"
+  - att VAB den 28/4 är borta
+    - var tog den vägen?
+    - jag anmäler ny idag och ansöker "bakåt"
+  - att nordunet fortfarande står som arb.givare
+    - hur ändrar jag till vetenskapsrådet?
+    - fixat per tfn <2017-08-31 Thu>
+  - att juni listas som enda barn i "min profil"
+    - bör vara tre st
+    - eller inte! lärka är ju 18 och musse är inte mitt i den meningen
+  - ett beslut från 21/6 om sjukpenninggrundande inkomst: ok
+    - 336k baserat på årsinkomst 692k (egentligen 648k)
+* avslutade ärenden
 - <2016-10-07 Fri> "Mattias" på Kontaktcenter Stockholm, per tfn 
 08-508 00 508
 Skicka in ansökan via blankett.
@@ -13,9 +37,29 @@ Bifoga intyg från socialtjänsten att barnet bor hos er.
 Hemförsäkringen täcker alla som är skrivna på adressen den gäller för.
 L & J går på Lenas hemförsäkring.
 
-- 2016-11-15 Tandläkaren om höger framtand
-  - Marie bedömmer efter röntgen att den skall dras ut för att undvika
-    infektion. Det är en mörk rand ovanför mjölktanden, i gränsen mot
-    den permanenta.
-  - <2016-11-29 Tue> Marie meddelar att hon skickat remiss till
-    Eastman. Dom har 2 mån väntetid.
+- <2017-05-09 Tue> söker annika för frågan om medborgarskap inför möte 1/6
+  - verkar gå trögt att få till umgänge
+  - hur påverkar det arbetet för medborgarskap?
+  - kan vi komma överens om ett måldatum för när medborgarskapet är
+    klart?
+  - är det något vi kan förbereda inför mötet 1/7?
+
+- <2017-06-08 Thu> söker saya angående umgänge och medborgarskap
+  - lämnat meddelande
+* vårdnadsöverflytt
+- https://www.familjehemmet.se/vardnadsoverflyttning.php
+  - familjhemmet blir "särskilt förordnad vårdnadshavare" och juridiskt
+    ansvarigt för barnet
+  - blir vanligtvis även förmyndare men utan försörjningsplikt
+  - oförändrad arvsrätt -- barnet ärver fortfarande sina biologiska
+    föräldrar
+  - regleras i [[https://lagen.nu/1949:381#K6][6 kap. föräldrabalken]] (FB) och [[https://lagen.nu/1990:52#P13S3][LVU]]
+* föreningar
+- http://faco.nu/ intresseförening för familjehem, jourhem, förstärkta
+  familjehem och kontaktfamiljer/personer
+- tidning: http://faco.nu/familjehemsnytt/
+- bli medlem: http://faco.nu/bli-medlem/ listar ingen lokal förening
+  för stockholmare
+- Kontaktperson Uppland
+enl. http://faco.nu/wp-content/uploads/2013/10/AM06-5.pdf: Annika
+Nygren, tel: 070-767 88 82
