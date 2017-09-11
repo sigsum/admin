@@ -1,0 +1,11 @@
+.gnupg
+.mozilla
+ostick
+p/ct/catlfish/rel/db
+p/ct/certs
+p/ct/db*
+p/tor/data/consensuses
+tor-browser*
+tstick
+usr/share/ietf
+usr/src
