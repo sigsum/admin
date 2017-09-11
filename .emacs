@@ -29,6 +29,9 @@
 ;(require 'jabber)
 (require 'appt)                         ;calendar needs this
 
+;(add-to-list 'load-path "~/usr/share/emacs/site-lisp")
+;(require 'notmuch)
+
 (setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
 ;(setq load-path (cons "~/.emacs.d/elpa/erlang-2.4.1" load-path))
 ;(require 'erlang-start)
@@ -74,6 +77,11 @@
 ;; Mailcrypt for PGP
 ;(require 'mailcrypt)
 
+;; lfe-mode
+(add-to-list 'load-path "~/usr/src/lfe/emacs")
+(require 'lfe-start)
+(add-to-list 'auto-mode-alist '("\\.lfe\\'" . lfe-mode))
+
 ;; TAGS, generate it with `etags -I --members'.  `--members' doesn't seem
 ;; to be default contrary to what the fine manual says (etags (GNU Emacs 22.1)).
 ;; M-. in C++ files normally don't include stuff before and after `::'.
@@ -116,8 +124,7 @@
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (add-hook 'org-mode-hook 'turn-on-font-lock)
-(setq org-clock-persist 'history)
-(org-clock-persistence-insinuate)
+;;(org-clock-persistence-insinuate)
 
 ;; nxml
 ;(load-library "nxml/rng-auto.el")
@@ -370,7 +377,9 @@
  '(gnus-agent-synchronize-flags t)
  '(gnus-agent-unplugged-hook nil)
  '(gnus-auto-expirable-newsgroups "adbc:\\(lists\\.\\|sys\\|spam\\)")
- '(gnus-buttonized-mime-types (quote ("multipart/encrypted" "multipart/signed")))
+ '(gnus-buttonized-mime-types
+   (quote
+    ("multipart/encrypted" "multipart/signed" "multipart/alternative")))
  '(gnus-gcc-externalize-attachments (quote all))
  '(gnus-group-posting-charset-alist
    (quote
@@ -390,19 +399,19 @@
  '(gnus-treat-body-boundary (quote head))
  '(gnus-treat-unsplit-urls t)
  '(gnus-treat-x-pgp-sig (quote head))
+ '(gnus-unbuttonized-mime-types nil)
  '(gnus-use-full-window nil)
  '(gnus-user-agent (quote (gnus)))
+ '(gnutls-min-prime-bits 2048)
  '(gnutls-trustfiles
    (quote
     ("/etc/ssl/certs/ca-certificates.crt" "/etc/pki/tls/certs/ca-bundle.crt" "/etc/ssl/ca-bundle.pem" "/usr/ssl/certs/ca-bundle.crt" "/home/amnesia/Persistent/linus/nordberg-ca.crt")))
+ '(gnutls-verify-error (quote (("localhost" (:trustfiles)))))
  '(grep-command "grep -nH -Ed skip -e ")
  '(ido-case-fold t)
  '(ido-create-new-buffer (quote always))
  '(ido-enable-regexp t)
  '(ido-mode (quote buffer) nil (ido))
- '(imap-ssl-program
-   (quote
-    ("gnutls-cli -p %p --x509cafile ~/nordberg-ca.crt %s")))
  '(indent-tabs-mode nil)
  '(ispell-program-name "spell")
  '(jabber-account-list
@@ -443,6 +452,7 @@
  '(mm-coding-system-priorities (quote (utf-8)))
  '(mm-decrypt-option nil)
  '(mm-default-directory nil)
+ '(mm-discouraged-alternatives (quote ("text/html" "multipart/related")))
  '(mm-enable-external (quote ask))
  '(mm-encrypt-option nil)
  '(mm-sign-option nil)
@@ -461,6 +471,9 @@
  '(nnmail-extra-headers (quote (Keywords To Newsgroups Cc)))
  '(ns-alternate-modifier (quote meta))
  '(ns-command-modifier (quote meta))
+ '(org-agenda-default-appointment-duration 60)
+ '(org-agenda-include-diary t)
+ '(org-clock-persist (quote history))
  '(org-export-html-postamble nil)
  '(ps-n-up-margin 18)
  '(ps-n-up-printing 1)
@@ -468,6 +481,11 @@
  '(ps-print-header nil)
  '(ps-printer-name "")
  '(ps-printer-name-option nil)
+ '(safe-local-variable-values
+   (quote
+    ((Base . 10)
+     (Package . INVITE)
+     (Syntax . COMMON-LISP))))
  '(scheme-program-name "gsi")
  '(scroll-bar-mode nil)
  '(smime-CA-directory "~/ssl/CAs")
@@ -484,7 +502,9 @@
  '(tls-checktrust (quote ask))
  '(tls-program
    (quote
-    ("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h" "gnutls-cli --insecure -p %p %h" "gnutls-cli --insecure -p %p %h --protocols ssl3" "openssl s_client -connect %h:%p -no_ssl2 -ign_eof")))
+    ("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h")))
+ '(tls-untrusted
+   "- certificate is NOT trusted\\|Verify return code: \\([^0] \\|.[^ ]\\)")
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
  '(twit-minor-mode t)

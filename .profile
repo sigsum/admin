@@ -19,14 +19,18 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 PATH=$HOME/bin:$PATH; export PATH
-
 GOPATH=$HOME/usr/go; export GOPATH
 PATH=$HOME/usr/bin:$PATH:$GOPATH/bin; export PATH
+WORKON_HOME=$HOME/.virtualenvs; export WORKON_HOME
+PROJECT_HOME=$HOME/p/python; export PROJECT_HOME
+. /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
-#if [ -f "/gpg-agent-info-flogsta" ]; then
-#    . "/gpg-agent-info-flogsta"
-#    export GPG_AGENT_INFO
-#    export SSH_AUTH_SOCK
-#    export SSH_AGENT_PID
-#fi
-#GPG_TTY=/dev/pts/2; export GPG_TTY
+GNUPGHOME=$HOME/.gnupg; export GNUPGHOME
+if [ -f "${GNUPGHOME}/gpg-agent-info-$(hostname)" ]; then
+    . "${GNUPGHOME}/gpg-agent-info-$(hostname)"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+    export SSH_AGENT_PID
+fi
+GPG_TTY=$(tty); export GPG_TTY
+

@@ -69,7 +69,7 @@
       mail-source-delete-incoming t)
 
 (setq gnus-ignored-from-addresses
-      '("linus@\\(swox\\|nordberg\\|dfri\\).se"
+      '("linus@\\(swox\\|nordberg\\|dfri\\|sunet\\).se"
 	"linus@swox.com"
 	"linus@\\(nordu\\|dfri\\).net"
         "linus@torproject.org"
@@ -101,15 +101,13 @@
 ;; ~linus/lisp/linus-misc.el.
 ;(add-hook 'message-setup-hook 'mail-insert-cookie)
 
-;; Posting styles
+;; Posting styles, first match applies.
 ;; Use (signature-file "~/.signature") for whole file.
 (setq gnus-posting-styles
       '((".*" (organization nil) ;("^nnimap\\+adbc" (organization nil)
 	 ("From" "Linus Nordberg <linus@nordberg.se>")
 	 (eval
-          ;;(setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587
-          (setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587
-                smtpmail-smtp-user "linus")
+          (setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 1587 smtpmail-smtp-user "linus")
 	  (set (make-local-variable 'message-sendmail-envelope-from) "linus@nordberg.se")))
         ("lists.edri..*" ("From" "Linus Nordberg <linus@dfri.se>"))
 	("lists.tor.internal" ("Reply-To" "tor-internal@lists.torproject.org"))
@@ -117,17 +115,18 @@
         ("lists.tor.\\(board\\|relays\\|talk\\)" ("From" "Linus Nordberg <linus@nordberg.se>"))
 	("lists.pmacct"
 	 ("From" "Linus Nordberg <linus+pmacct@nordberg.se>")
-	 (organization "NORDUnet A/S"))
-	("ndn:\\|lists\\.\\(ct\\|ietf\\.trans\\)"
-	 (organization "NORDUnet A/S")
-	 ("From" "Linus Nordberg <linus@nordu.net>")
+	 (organization "Sunet"))
+        ("fixme"
+         ("From" "Linus Nordberg <ln+snus@4711.se>")
+         )
+	("sunet:\\|ndn:\\|lists\\.\\(ct\\|ietf\\.trans\\|radsecproxy\\)"
+	 (organization "Sunet")
+	 ("From" "Linus Nordberg <linus@sunet.se>")
 	 (eval
-          ;;(setq smtpmail-smtp-server "kerio.nordu.net" smtpmail-smtp-service 587
-          (setq smtpmail-smtp-server "kerio.nordu.net" smtpmail-smtp-service 587
-                     smtpmail-auth-supported '(plain login)
-                     smtpmail-smtp-user "linus@nordu.net")
-               (set (make-local-variable 'message-sendmail-envelope-from)
-                    "linus@nordu.net")))
+          (setq smtpmail-smtp-server "localhost"
+                smtpmail-smtp-service 2587
+                smtpmail-smtp-user "linus")
+          (set (make-local-variable 'message-sendmail-envelope-from) "linus@sunet.se")))
         ("dfri.abuse"
 	 ("From" "DFRI Abuse Team <abuse@dfri.net>")
 	 (eval
