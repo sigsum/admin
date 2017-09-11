@@ -1,6 +1,10 @@
 %%(diary-anniversary 1987 2 4) Runa
 %%(diary-anniversary 1980 2 10) Erinn
+%%(diary-anniversary 2017 2 10) Mango
 %%(diary-anniversary 1990 2 11) asn
+%%(diary-anniversary 1982 3 12) hannes (or 13:th?)
+%%(diary-anniversary 2017 03 16) paulo (ndn)
+%%(diary-anniversary 1993 03 18) joe
 %%(diary-anniversary 1979 3 22) Aron
 %%(diary-anniversary 1983 4 1) Jake
 %%(diary-anniversary 1969 4 4) tg
@@ -9,14 +13,17 @@
 %%(diary-anniversary 2008 4 9) Julian
 %%(diary-anniversary 1982 4 10) Fia
 %%(diary-anniversary 1983 4 10) Fredde
+%%(diary-anniversary 2017 4 10) ahf
 %%(diary-anniversary 1972 4 11) grtrd
 %%(diary-anniversary 1989 4 18) Xenia
 %%(diary-anniversary 1933 4 18) Elsie
-%%(diary-anniversary 1933 4 20) DrWhax
+%%(diary-anniversary 1992 4 20) DrWhax
 %%(diary-anniversary 2012 4 22) Roger
 %%(diary-anniversary 1999 4 26) Etta
+%%(diary-anniversary 2013 5 5) Mustapha
 %%(diary-anniversary 1945 5 10) Erik
 %%(diary-anniversary 1983 5 26) Andreas
+%%(diary-anniversary 1981 5 30) Lundberg
 %%(diary-anniversary 2014 06 12) isis
 %%(diary-anniversary 2015 06 18) isabela
 %%(diary-anniversary 1973 6 29) Johan Ruterhagen
@@ -24,10 +31,11 @@
 %%(diary-anniversary 2016 7 8) dkg
 %%(diary-anniversary 2011 07 08) DFRI
 %%(diary-anniversary 2014 7 11) Marianne
+%%(diary-anniversary 2017 07 28) Shari
 %%(diary-anniversary 2014 8 2) Andrea
 %%(diary-anniversary 1977 8 30) Nick Mathewson
 %%(diary-anniversary 2002 9 3) Nicks first Tor commit
-%%(diary-anniversary 1968 9 12) Leif
+%%(diary-anniversary 1968 9 12) leifj
 %%(diary-anniversary 2003 10 8) tor https://lists.torproject.org/pipermail/tor-dev/2003-October/002185.html
 %%(diary-anniversary 2012 10 15) Lise
 %%(diary-anniversary 1900 10 21) Tok-martin
@@ -585,7 +593,6 @@
 2013-12-26 15:55-17:25 ARN-HAM
 2013-12-31 13:50-15:20 HAM-ARN
 2013-11-21 Tor-kurs, SIDC Karlskrona
-&%%(diary-cyclic 7 2013 11 08) 10:00-11:00 NORDUnet weekly
 2013-11-21 18:00-21:00 Cryptoparty 2013 I
 2013-11-28 18:00-21:00 Cryptoparty 2013 II
 2013-12-05 18:00-21:00 Cryptoparty 2013 III
@@ -1240,7 +1247,6 @@
 2015-07-28 14:05 PRG 15:15 FRA 16:00 ARN 18:00
 2015-07-07 08:00 skärholmen
 2015-07-07 16:00 CIW call
-2015-07-15 15:30 (14:30 UTC) Tor network team IRC meeting
 &%%(diary-block 2015 09 27 2015 10 03) tor dev mtg, berlin
 2015-07-07 electrolux
 2015-08-21 Remissvar DL-utredning inne om en vecka
@@ -1324,8 +1330,8 @@
 2015-09-23 17:00 gossip call
 &%%(diary-block 2016 04 03 2016 04 08) IETF95 Buenos Aires
 %%(diary-block 2016 07 17 2016 07 22) IETF96 Berlin
-%%(diary-block 2016 11 13 2016 11 18) IETF97 Seoul
-%%(diary-block 2017 03 26 2017 03 31) IETF98 Montreal
+&%%(diary-block 2016 11 13 2016 11 18) IETF97 Seoul
+&%%(diary-block 2017 03 26 2017 03 31) IETF98 Montreal
 2015-10-20 16:10 [juni] utv.samtal
 2015-12-10 ndn x-mas dinner
 &%%(diary-block 2015 10 02 2015 10 08) B
@@ -1443,7 +1449,6 @@
 2016-04-18 17:30 SNUS årsmöte
 2016-05-14 19:30 teater med sofia och philip
 2016-02-25 11:10 [lärka] utvecklingssamtal
-2016-02-17 14:30 network team #tor-dev
 2016-02-22 12:30 lunch med johan lagerkvist
 2016-03-05 Open Data Day
 2016-03-25 Document Freedom Day
@@ -1476,7 +1481,7 @@
 2016-03-17 12:30 ola på sibiriens
 2016-05-23 cert for urd.appendto.org expires
 2016-05-16 cert for urd.appendto.org expires in a week
-%%(diary-block 2017 03 01 2017 03 08) Marrakech?
+&%%(diary-block 2017 03 01 2017 03 08) Marrakech, ocaml
 2016-04-04 20:50-22:20 TRANS in Quebracho A
 2016-03-31 fetch and print keysigning doc https://oerdnj.github.io/dns-oarc-keysigning/
 2016-03-23 16:00 ietf95 hackathon call +46.8.685.9035 "300 615 301"
@@ -1525,7 +1530,6 @@
 2016-06-24 en vecka till cfp deadline, balccon, https://2k16.balccon.org/index.php?title=CfP_BalCCon2k16
 2016-04-14 11:30 tg @ sibiriens
 %%(diary-block 2016 09 08 2016 09 09) EUC Stockholm
-&%%(diary-cyclic 7 2016 04 11) 19:00 tor network-team meeting #tor-dev
 2016-04-15 13:00 Lunch med Johan
 &%%(diary-block 2016 09 18 2016 09 21) EPF -- european peering forum @ Sofia
 2016-04-29 Fredagsöl
@@ -1566,7 +1570,6 @@
 2016-06-12 18:30-20:00 TNC16 speakers reception @ Malostranský palác https://eventr.terena.org/events/2380
 2016-05-17 15:00 Läkarbesök
 2016-05-26 Johan & Amanda
-&%%(diary-cyclic 7 2016 05 17) 19:00-21:00 DFRI NOC
 2016-05-18 11:30 Lunch jn
 2016-05-18 15:00-16:00 JRA2-T6 Kickoff VC
 2016-05-25 13:00-14:00 EISCAT @ SUNET https://www.eiscat.se/
@@ -1588,8 +1591,7 @@
 2016-06-03 15:20 agilo
 2016-06-07 [prel] henrik på TUG
 2016-06-17 christoffer (soc), f.m.
-&%%(diary-cyclic 14 2016 06 29) 14:00-14:30 JRA2T6 VC
-%%(diary-block 2016 10 14 2016 10 16) http://www.hack4heritage.se/
+&%%(diary-block 2016 10 14 2016 10 16) http://www.hack4heritage.se/
 2016-08-17 10:00 H2020 privacy skype (henning_olesen_cmi) call; https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/2428-ds-08-2017.html, 3rd strand proposed
 2016-07-06 11:30 soc
 &%%(diary-block 2016 08 21 2016 08 26) http://www.ifip-summerschool.org/
@@ -1684,14 +1686,13 @@
 2016-08-30 15:00 Mansslingan, Arninge
 2016-10-11 18:00-19:30 DFRI styrelsemöte
 2016-09-14 21:00-23:00 gossip poc w/ dkg
-%%(diary-block 2016 10 29 2016 10 30) [prel] kratta i täby
 2016-10-30 CEST -> CET
-%%(diary-block 2016 10 14 2016 10 17) https://www.freedomnotfear.org/
+&%%(diary-block 2016 10 14 2016 10 17) https://www.freedomnotfear.org/
 2016-09-07 12:00 SEB Tegnergatan 18
 2016-09-14 13:00-14:30 Tor @ SJF tc@sjf.se
 2016-09-20 14:00 nacka ortopedmottagn
 2016-10-18 18:00-20:00 JAK
-2017-03-18 open source days in cph
+&2017-03-18 open source days in cph
 2016-09-19 14:00 birgitta
 2016-09-14 18:30 scoutmöte
 2016-09-15 17:00 Mozilla, code 2383
@@ -1706,5 +1707,352 @@
 %%(diary-block 2016 11 19 2016 11 20) libcurl conf, Nuremberg
 2016-10-04 18:00-19:00 [juni] gymnasieinfo
 2016-09-27 18:00-19:30 yttrandefriet @ SU
-2016-12-15 Tor board meeting
-%%(diary-block 2017 03 13 2017 03 17) [prel] tor mtg
+2016-10-06 10:30-11:00 [lärka] utv.samtal
+%%(diary-block 2016 10 28 2016 11 01) gk i sthlm
+2016-10-05 14:00 https://nordunet.zoom.us/j/999151966
+2016-10-05 14:00 sunet, mattias
+2016-10-06 14:00 sunet, einar
+2016-10-19 19:00-21:00 rpitor
+2016-12-05 19:00-21:00 tor board meeting
+2016-11-30 10:30-11:00 polarforskning @ sunet
+2016-10-13 jobba hemifrån, M fr 11:00 pga G -> tandl
+2016-12-01 18:00-19:30 DFRI (Malin)
+2016-10-17 21:00-22:00 #reproducible-builds
+2016-11-12 check if bilder.nordberg.se was automatically renewed
+2016-10-20 cryptech+tor with stuge
+2016-10-20 lunch lukas
+2016-10-17 [sunet] intervju
+&%%(diary-block 2017 08 22 2017 08 29) bornhack
+&%%(diary-block 2018 08 16 2018 08 23) bornhack
+2016-10-20 10:00 birgitta
+2016-10-18 17:10 tandläkaren, pk 1911
+2016-11-08 [canceled] gymnasie-elever 10-12 och 13-15
+%%(diary-block 2017 03 23 2017 03 27) tor mtg
+2016-10-24 lunch lukas
+2016-10-24 10:00-12:00 peter @ https://pad.riseup.net/p/A6PuBuYGhL1R
+2016-10-25 10:00-11:00 peter @ https://pad.riseup.net/p/A6PuBuYGhL1R
+2016-11-13 09:00-16:00 [juni] loppis
+2016-10-27 15:00 VC with Reimer et al (H.323 something something)
+2016-10-27 lunch lukas
+2016-10-29 kratta i täby
+2016-10-28 10:00-12:00 stuge @ https://pad.riseup.net/p/dHz914kLPicS
+2016-11-11 fredagsöl
+2016-10-30 10:00 koppen @ skansen
+2016-11-04 12:30 lunch tg @ nero
+2016-11-03 10:00 soc hemma
+2016-11-04 08:00 tandläkaren
+2016-11-30 SWAMID key generation rehearsal
+2016-12-06 SWAMID key generation
+2016-10-31 10:00-12:00 josva @ TUG
+2016-10-31 13:00 spårvägsmuseet
+2016-11-03 jobba hemma
+2016-11-01 10:00-12:00 stuge @ https://pad.riseup.net/p/A6PuBuYGhL1R
+2016-11-20 17:30 abbe & elton
+2016-12-06 13:00 sunet julbord
+2016-11-03 13:00 stuge
+2016-11-04 14:00 stuge
+2016-11-07 10:00 [canceled] birgitta
+2016-11-07 14:00 [canceled] julius
+2016-11-17 13:00 [prel] lunch med benjamin @ YAN
+2016-11-11 13:00 polhemsgatan
+2017-01-16 verify that [www.]adb-centralen.se has been renewed
+2016-12-09 10:00-13:00 EU privacy workshop <Stefania.BURADA@ec.europa.eu>
+2017-11-17 domain appendto.org expires
+2017-11-10 domain appendto.org expires in a week
+2016-11-23 09:00 besök sunnan
+2016-12-11 peppisar i täby
+2016-11-28 grtrd opereras
+2016-11-24 teater!
+2016-12-01 11:30 birgitta
+2017-04-07 most of plausible internal certs expires on apr 16
+2016-12-02 catlfish-0.9.0
+2016-12-03 20:00 tor meetup at wire.com
+2016-12-18 14:00 E&L
+2017-01-26 18:00-20:30 DFRI styrelsemöte @ Götgatan 14, 4tr (Load Impact/Brickchain)
+2017-01-31 ndn all hands KAS
+2017-02-19 13:00-15:00 DFRI årsmöte
+2016-12-21 grtrd julbord
+2016-12-08 15:00-16:00 CT VC https://nordunet.zoom.us/j/999151966
+2017-02-06 [tor] ED reports to the board, for review
+2017-02-14 18:00 [tor] conf call, ED review https://www.uberconference.com/ssteele05<https://www.uberconference.com/ssteele05> Optional dial in number: 857-216-6112 PIN: 66328
+2016-12-17 heidi & mika
+2017-03-24 [tor] board meetings
+2016-12-14 14:15-14:45 JRAT6 VC https://nordunet.zoom.us/j/999151966
+2017-02-22 11:00-18:00 VR avdelningsdag + middag
+2016-12-30 maatuska keys expire in a week
+%%(diary-block 2017 02 21 2017 02 22) CT days
+2017-01-04 hemma
+2017-01-31 [prel] catlfish 0.10
+2017-01-19 lots of adbc certs expire
+2017-01-12 lots of adbc certs expire in a week
+2017-01-11 talpedagog
+2017-01-11 osa johan ang lunch fredag
+2017-01-13 [prel] lunch m johan @ farsta
+2017-01-13 fredagsöl
+2017-01-19 10:00 soc
+2017-01-25 [grtrd] styrelesemöte
+2017-01-25 jra2t6 vc
+2017-03-21 cph: hack on test framework with ahf
+2017-03-19 verify that www.adb-centralen.cert has been renewed (expires apr 16)
+2017-01-20 14:00-16:00 Tor @ SJF
+%%(diary-block 2017 05 17 2017 05 18) SIF
+2017-01-18 {jabber,imap}.adbc and expires (at 00:12)
+2017-10-24 smtp.adbc expires
+2017-01-24 13:00 dfri ekonomi med jenny
+2017-04-17 23:27 jabber.adb-centralen.se expirerar
+2017-03-17 förnya {jabber,imap,smtp}.adb-centralen.se (le @ ioctl)
+2017-01-22 verify that webmail.adbc has had its cert renewed
+2017-02-13 17:30-19:30 ISOC IPv6 @ sunet
+2017-01-26 10:00 [musse] talpedagog
+2017-02-03 13:00 birgitta, filma
+2017-01-25 tjejerna till farsta
+2017-02-01 14:30 [juni] utv.samtal
+2017-01-30 17:00 lärka, lena
+2017-01-29 14:00 lukas, terese, karla på lek + middag
+2017-01-25 14:15 VC
+2017-02-07 15:00 cryptech chat
+2017-03-01 10:30-11:00 VR "registeruppdraget"
+%%(diary-block 2017 03 24 2017 03 26) EDRi GA
+2017-02-22 [lärka] matteprov, derivata
+2017-05-02 [prel] DFRI picnic/mingel
+2017-01-30 budgetförslag till medlem@
+2017-01-31 16:00 cryptech, phil & peter @ mumble.stuge.se
+2017-02-08 14:15 jra2t6 vc
+2017-02-11 Noor 6 år
+2017-02-04 inflyttningsfest martin
+2017-02-06 gk kommer till stockholm
+2017-02-02 14:00-15:00 sunet cert scripts
+2017-01-31 15:45 test mumble
+2017-02-03 ledig
+2017-03-30 [juni] koncert, globen
+2017-02-20 15:00 birgitta
+2017-02-12 lukas, therese och karla
+2017-03-11 nalen med juni
+2017-02-13 09:30 pysslingen
+2017-02-13 13:00-14:00 Marika Alneng, tfn
+2017-02-14 15:00 Maria Häll NDN->VR
+2017-02-16 22:00-22:40 Biella
+2017-02-14 13:00 jenny fridhemsplan
+2017-02-23 sofia & philip på middag
+2017-02-16 [tor board] deliver three community names
+2017-06-14 13:00-22:00 sunet all hands
+%%(diary-block 2017 04 05 2017 04 06) netnod spring meeting
+2017-04-15 påskafton
+2017-02-28 17:30 DFRI social @ mondo tapas
+2017-04-04 18:00 DFRI styrelsemöte
+2017-03-03 Fredagsöl
+2017-03-08 16:00-18:00 VFF @ globala gymnasiet
+2017-03-08 14:15-15:15 jra2t6 VC
+&%%(diary-block 2017 05 29 2017 06 02) TNC17
+&%%(diary-block 2017 02 24 2017 03 03) B
+&%%(diary-block 2017 03 10 2017 03 17) B
+&%%(diary-block 2017 03 28 2017 04 07) B
+&%%(diary-block 2017 04 21 2017 05 05) B
+2017-02-28 18:00-19:00 Tor board ED review https://www.uberconference.com/ssteele05 PIN 66328
+2017-03-02 sofia & philip på middag
+2017-03-09 18:00 ISOC-SE årsmöte
+2017-03-08 OSA ISOC-SE https://www.eventbrite.com/e/arsmote-isoc-se-9-mars-2017-tickets-31962022269
+2017-05-02 SNUS årsmöte
+2017-03-06 11:30 Bangladeshi lunch @ ndn
+2017-03-06 09:00-09:30 nima @ jabber
+2017-04-28 remissvar TDV inne
+2017-03-21 08:21-13:32 sthlm->cph
+2017-03-22 11:37-16:22 cph->hamburg
+2017-03-22 16:46-18:35 hamburg->osnabrück
+2017-03-22 19:53-23:01 osnabrück->amsterdam
+2017-03-08 09:00 nima
+&%%(diary-block 2017 09 15 2017 09 17) BalcCon @ Novi Sad, Vojvodina, Serbia
+2017-07-01 BalcCon CfP deadline https://2k17.balccon.org/index.php?title=BalCCon2k17_CfP
+2017-06-24 BalcCon Cfp deadline in a week
+2017-03-07 13:00-14:00 Annika Palm, VR, V. Järnvägsg 3, plan 5, Kameleonten
+&%%(diary-block 2017 05 13 2017 05 14) PI in Sthlm
+2017-03-14 Lena på middag
+2017-03-16 Liss+Pian på middag
+2017-03-09 09:00 Nima
+2017-04-05 18:00-22:00 netnod social
+2017-06-15 09:00-16:00 SWAMID, OIDC
+2017-03-13 heidi, mika, helen på middag
+2017-03-28 19:00-20:30 TRANS session @IETF98
+2017-03-30 21:20-23:30 SAAG @IETF98
+2017-03-16 11:15 YAN med pac
+2017-04-05 16:45 prata netnod
+2017-04-07 lunch med tg
+2017-06-12 19:00-21:00 [Tor] Board meeting
+2017-04-23 14:00 våfflor hos E&L
+2017-04-07 fredagsöl
+2017-04-05 08:30 fsk, björnen
+2017-04-30 wira
+&%%(diary-block 2017 06 12 2017 06 18) gunner's infrastructure summit, Montreal
+2017-07-07 16:25-19:30 [Lärka] Rom->ARN (Norwegian)
+2017-06-26 06:20-11:32 [Lärka] Stockholm->KPH (SJ)
+2017-04-26 18:30 Scoutresan, möte Rehnsgatan
+2017-05-16 18:00 DFRI styrelsemöte (pawal)
+2017-05-03 14:15 jra2t6 vc
+2017-04-24 13:00-14:00 VR personalmöte (Valen)
+2017-04-25 13:00-14:30 VR: Välkommen till VR (Albatrossen)
+2017-05-04 09:00-11:45 VR:s verksamhet (Valen)
+2017-05-05 09:00-11:45 VR: Att arbeta i staten och VR (Valen)
+2017-05-08 09:00-10:45 VR: Ett ärendes gång (Valen)
+2017-05-09 09:00-11:45 VR: Policyer och riktlinjer (Valen)
+2017-04-22 stephanie & walid på middag
+2018-04-17 PGP key expires
+2018-04-10 PGP key expires in a week
+2017-06-16 CN=*.ct.nordu.net expires
+2017-06-09 CN=*.ct.nordu.net expires in a week
+2017-07-16 22:26 CN=imap.adb-centralen.se expires
+2017-07-09 CN=imap.adb-centralen.se expires in a week
+2017-07-09 CN=jabber.adb-centralen.se expires in a week
+2017-07-09 CN=smtp.adb-centralen.se expires in a week
+2017-04-20 22:00 biella on wire
+2017-04-26 07:00 Lämna bilen, Missionsvägen 60 (infart via stora båtvarvsgränd)
+2017-06-07 20:00-21:00 styrelsemöte bitcoinföreningen
+2017-04-24 21:00 fråga andol om dfri-intern@
+%%(diary-block 2017 05 17 2017 05 18) [juni] klassressa finnhamn
+2017-06-09 [juni] avslutning
+2017-04-25 14:00 CC vote ending
+2017-05-05 fredagsöl
+2017-06-01 10:00 soc hemma (filma)
+&*-*-10 [DFRI] send warning (expired)
+&*-*-20 [DFRI] member handling (renew, remind, remove)
+2017-10-12 10:00-12:00 [Tor] Public board meeting, Montreal
+2017-10-12 08:00-10:00 [Tor] Closed board meeting, Montreal
+2017-05-02 13:30 [sunet] massage
+2017-05-30 [juni] niornas bal
+&%%(diary-block 2017 05 12 2017 05 18) B
+&%%(diary-block 2017 05 26 2017 06 01) B
+&%%(diary-block 2017 06 09 2017 06 15) B
+&%%(diary-block 2017 06 23 2017 06 29) B
+&%%(diary-block 2017 06 26 2017 07 07) [lärka] tågluff
+&%%(diary-block 2017 07 03 2017 07 16) B
+&%%(diary-block 2017 07 08 2017 07 16) Semester
+2017-06-07 213200 SEK (depå 01-010 813 692)
+2017-04-27 hämta bilen, ta med servicebok
+2017-06-20 maatuska keys expire
+2017-06-13 maatuska keys expire in a week
+2017-06-06 maatuska keys expire in two weeks
+2017-05-16 13:30 BVC
+%%(diary-block 2017 10 11 2017 10 15) tor meeting, montreal
+2017-05-06 14:00 kalas musse
+2017-05-11 20:00 [tor] IRC meeting w/ Tommy Collison, new writer/editor
+2017-05-11 09:00 ct meeting w/ jerry and david
+2017-05-29 VR-dagen, hasselbacken
+2017-05-05 12:30 CT pre-meeting with jerry https://nordunet.zoom.us/j/6787886284
+2017-06-14 14:15 jra2t6
+2017-05-06 12:00-14:00 farstabadet
+2017-05-13 17:00 calle 30 i jakan
+2017-05-14 bröderna lindgren i sickla
+2017-05-20 wira
+2017-05-21 kanske wira
+&%%(diary-block 2017 05 25 2017 05 28) höjda
+2017-05-11 19:00-21:00 [Tor] Board meeting https://www.uberconference.com/ssteele05 Optional dial in number: 857-216-6112 PIN: 66328
+2017-06-03 sthlm maraton
+2017-05-13 trähantverkstjosan, subtopia (alby?)
+2017-06-09 IPEN workshop Vienna
+2017-05-18 middag linda & geko
+2017-06-09 11:00 watch ZSK rollover
+2017-06-12 14:00-14:25 [sunet] massage
+2017-05-31 public seminar at LiU about facial recognition software trial study
+2017-05-17 12:00 lunch lena
+2017-06-08 09:00 ergonom
+&%%(diary-block 2017 07 18 2017 07 21) PETS
+2017-10-05 18:00 [DFRI] Styrelsemöte
+2017-11-07 18:00 [DFRI] Styrelsemöte
+2017-12-14 18:00 [DFRI] Styrelsemöte
+2017-06-20 18:00 [DFRI] multimöte @ shanti soft corner (linda)
+2017-05-18 09:00 Moomin @ Sunet
+2017-06-01 17:30 http://siju.se/seminarier/nar-utgor-dynamiska-ip-adresser-personuppgifter/
+2017-06-20 FOSS 0x13
+2017-05-23 20:00 comm. dir. chat, IRC
+2017-05-31 16:00-16:30 [musse] utv.samtal m. ann-sofie
+2017-06-19 08:15 tandhyg. pk 1911; 070-415 38 22
+2017-05-31 18:00-21:00 ICMP @ UI
+%%(diary-block 2017 06 09 2017 06 11) Malmö?
+2017-05-30 discontinue bof@
+2017-08-15 remissvar sou-101736 inne
+2017-08-01 2w: remissvar sou-101736 inne
+2017-08-19 lukas & therese gifter sig
+&%%(diary-block 2017 06 02 2017 06 06) höjda
+2017-06-07 08:45 [musse] avslutningsutflykt
+2017-06-19 13:00 birgitta visar film
+2017-06-13 17:00 etta & benjamin student
+2017-07-07 IETF99 early bird registration cut-off
+2017-06-02 12:00 lunch johan @ YAN
+2017-06-09 10:45-12:00 [juni] avslutning i A46
+&%%(diary-block 2017 06 24 2017 06 25) EDRi Vienna
+2017-06-19 15:00-16:00 sunet/tpo funding w/ leif, shari, tommy @ wire
+2017-06-28 14:15-15:15 JRA2-T6 VC
+2017-06-15 13:15-13:45 tpulls & leif
+&%%(diary-block 2017 07 04 2017 07 05) GEANT thing in Zurich https://eventr.geant.org/events/2644
+2017-07-09 Badturen!
+2017-06-19 russian duma round table discussions on the banning of circumvention tools
+2017-06-26 16:00 tor & leif
+2017-06-29 13:00 soc & Isatou
+2017-06-26 13:00 VC with Ivana @ zoom 999-151-966
+2017-06-27 wira
+2017-07-03 DFRI deklaration inne
+2018-02-06 CN=www.ct.nordu.net expires in a week
+2017-06-30 14:00 ola @ mumble (calyx)
+%%(diary-block 2017 10 02 2017 10 05) GEANT symposium
+%%(diary-block 2017 10 16 2017 10 19) SUNET-dagarna @ KTH
+%%(diary-block 2017 07 17 2017 07 19) liss på höjda
+&%%(diary-block 2017 07 24 2017 08 06) jobba
+&2017-07-10 v.28
+&2017-07-17 v.29
+&2017-07-24 v.30
+&2017-07-31 v.31
+&2017-08-07 v.32
+&2017-08-14 v.33
+2017-07-03 15:00 chat with nick (xmpp?)
+2017-07-14 CN=dfri.se expires
+2017-07-07 CN=dfri.se expires in a week
+2017-07-05 15:00 julius @ wire
+2017-07-06 tidrapportering!
+2017-07-06 broschyrer från körskolan!
+2017-07-06 boka bord! warung 08-42053698
+2017-09-13 paypal ensuring web pki integrity meetup san jose
+%%(diary-block 2017 09 25 2017 09 30) grtrd i lisbon
+2017-08-28 HSM upgrade
+2017-07-26 14:15 jra2t6 VC
+%%(diary-block 2017 09 20 2017 09 21) Cryptech f2f i Stockholm
+2017-08-01 10:00 ds-08
+2017-07-31 middag med simon
+&%%(diary-block 2017 11 11 2017 11 17) IETF100 Singapore
+&%%(diary-block 2018 03 17 2018 03 23) IETF101 London
+&%%(diary-block 2018 07 14 2018 07 20) IETF102 Montreal
+2017-09-06 position paper for paypal
+2017-08-30 1w to position paper for paypal
+%%(diary-block 2017 08 05 2017 08 10) malmö
+2017-10-10 09:55-12:05 ARN-FRA
+2017-10-10 14:00-16:00 FRA-YUL
+2017-10-15 16:50-06:15 YUL-ZRH
+2017-10-15 10:30-12:50 ZRH-ARN
+2017-08-28 20:00-22:00 [tor board] meeting @ wire (fallback https://www.uberconference.com/ssteele05<https://www.uberconference.com/ssteele05 66328)
+&2017-08-21 [grtrd] 14-22
+&2017-08-24 [grtrd] 18:30-07:30
+2017-11-30 maatuska cert expires
+2017-11-23 maatuska cert expires in a week
+2017-10-04 cryptoparty
+2017-08-31 09:00 fuktkontroll
+2017-09-01 Fredagsöl
+%%(diary-block 2017 10 06 2017 10 09) Freedom not Fear 2017
+2017-09-29 16:00 oktavilla 10 år repslagarg. 17b
+2017-09-13 lunch med christian
+&%%(diary-block 2017 11 11 2017 12 13) map semester
+%%(diary-block 2017 11 21 2017 11 22) jra2t6 f2f @ prague
+2017-10-04 11:00-12:50 network monitoring & security
+2017-09-04 21:00 badminton
+2017-08-31 11:00 ct vc @ zoom
+%%(diary-block 2017 11 02 2017 11 03) CT days @ Google NYC
+2017-09-29 CT deliverable document (D8.4)
+2017-09-10 bussen firar rosa
+2017-09-06 09:30-10:00 sunet onsdagsmöte
+2017-10-04 09:30-10:00 sunet onsdagsmöte
+2017-11-08 09:30-10:00 sunet onsdagsmöte
+2017-12-05 sunet all hands
+2017-09-07 lunch med lena
+2017-09-16 veteranrally ngnstans runt s-tälje
+2017-09-06 14:15-15:15 jra2t6
+2017-09-20 14:15-15:15 jra2t6
+2017-09-12 11:45 YAN
+2017-10-16 adbc certs expire
+2017-10-09 adbc certs expire in a week

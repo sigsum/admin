@@ -9,6 +9,8 @@ Legend                                                      (emacs -*-org-*- mod
 
 * RSN (within a week)
 ** CT
+- - sunet-ops ticket updated with current status
+- o f2f in november availability communicated to list
 - - ndn portal updated according to [[gnus:nnimap%2Bsunet:INBOX#0FA5F222-2CCA-4E37-A92F-E3046E71FE64@nordu.net][Email from Jonny Lundin: Re: CT log]]
 - - benchreport branches merged
   o map/catlfish/benchreport
@@ -19,8 +21,13 @@ Legend                                                      (emacs -*-org-*- mod
     [[file:p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml][file:~/p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml]]
 ** TPI
 ** Tor
+- * get a .ca eta
+- o find out what's up with the signing infra [fre]
+- o sida visit (arma + flexlibris) confirmed with marcin
+- - hbsd/fbsd config writeup sent to phoul
 - - TorPerf set up on siv
-- - new tb build system set up on flow
+- * new tb build system set up on flow
+  [[file:usr/src/tor/tor-browser-build/README][file:~/usr/src/tor/tor-browser-build/README]]
 - - sunet publishing tor work
   [[gnus:nnimap%2Bndn:INBOX#871t1ectpj.fsf@nordberg.se][Email to Emma Almroth: Blogserie om SUNET:s arbete me]]
 ** IETF / W3C
@@ -32,12 +39,16 @@ Legend                                                      (emacs -*-org-*- mod
 - - benno mail "Help DNSSEC Trans client"
 - - ekr mail "Interested in gaol?"
 ** Sysadm
+- - toripv6dev moved to sunet iias, under sunet noc responsibility
 - - ns.adbc knot1 -> knot2
 - - flow.nordu.net reinstalled
 - - tor.nordu.net reinstalled
 - - DKIM signing for adb-centralen.se
 ** DFRI
 - * backup!
+- - KB invoice payed
+- - OBE invoice payed
+- - https://wiki.freebsd.org/NetworkPerformanceTuning
 - - ns# pkg install -r dfrirepo knot2 (2.3.3 -> 2.5.2)
 - - DKIM signing for dfri.se
 - - RK emailed about "hemlig dataavläsning"
@@ -56,6 +67,18 @@ Legend                                                      (emacs -*-org-*- mod
 - . new machine racked and installed
 - - hbsd installed on machine from jn
 ** Misc
+- * restore ~/.bashrc from backup
+- o profile created on sunet's travel agency
+  - [[file:sunet/Fo%CC%88retagsresor%20-%20profilblankett1_.pdf][file:~/sunet/Företagsresor - profilblankett1_.pdf]] -> foretag@lingmerths.se
+- budapest
+  . budapest hotel booked, oct 3-5
+  o budapest flights booked, oct 3-5
+  o https://eventr.geant.org/events/2564
+- - prague november 21-22 flights and hotel booked
+  - ARN-prague direkt med norweigan landar först 14:20
+  - prague-ARN 14:50-16:45 finns
+  - venue: CESNET, near metro station Dejvicka (~30m from airport)
+- o mobilt bankid set up on iphone
 - - "ISC Passive DNS Architecture" reviewed (see [[file:sunet/sunet.org::*ISC%20passive%20DNS][ISC passive DNS]])
 * Soon (within a month)
 ** TPI
@@ -160,7 +183,6 @@ Legend                                                      (emacs -*-org-*- mod
 ** Sysadm
 - - glog.ct.ndn shut down
 - - gaol needs new internal certs
-- - toripv6dev moved to sunet iias, under sunet noc responsibility
 - - onionperf running https://github.com/robgjansen/onionperf
 - - fix [[file:p/adb-centralen/src/spam-edu-from-banksy.sh][file:~/p/adb-centralen/src/spam-edu-from-banksy.sh]] for dovecot and cron it on imap.adbc
 - - stuff resurrected from mm:~linus, the repos f.ex.
@@ -315,9 +337,10 @@ x Jul 15-22, Prague, IETF99
 x Aug 21-30, Bornholm, Bornhack
 x Sep 10-16, Oslo, ESORICS
 x Sep 13, San Jose, WebPKI @ PayPal
-? Oct 01-06, Budapest, GEANT Symposium
+- Oct 01-06, Budapest, GEANT Symposium (at least Oct 3+4)
 - Oct 09-16, Montreal, Tor
 ? Nov 11-18, Singapore, IETF100
+- Nov 21-22, Prague, JRA2T6 f2f
 ** 2016
 - Jan 20-22, CPH, all hands
 - Feb 26-01, Valencia, Tor dev

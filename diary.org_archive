@@ -426,3 +426,261 @@ libradsec 5h -> jra3t1 5
     - docbook2x-man: 0.5
 - jra2t6
   - gossip poc: 1.5
+
+* week 40
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-10-04 Tue 15:00
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_CATEGORY: diary
+  :END:
+- tor
+  - misc: 0.5
+- ndn
+  - admin: 0.5
+- sunet
+  - misc: 1
+- jra2t6
+  - admin: 
+
+* week 4
+  CLOCK: [2017-01-25 Wed 12:15]--[2017-01-25 Wed 12:27] =>  0:12
+  CLOCK: [2017-01-25 Wed 11:58]--[2017-01-25 Wed 12:15] =>  0:17 x
+  CLOCK: [2017-01-25 Wed 11:50]--[2017-01-25 Wed 11:57] =>  0:07 x
+  CLOCK: [2017-01-25 Wed 11:11]--[2017-01-25 Wed 11:50] =>  0:39 x
+  CLOCK: [2017-01-25 Wed 10:25]--[2017-01-25 Wed 11:11] =>  0:46 x
+  CLOCK: [2017-01-25 Wed 08:52]--[2017-01-25 Wed 09:17] =>  0:25 x
+  CLOCK: [2017-01-24 Tue 15:44]--[2017-01-24 Tue 15:48] =>  0:04 -
+  CLOCK: [2017-01-24 Tue 14:28]--[2017-01-24 Tue 14:36] =>  0:08 -
+  CLOCK: [2017-01-24 Tue 12:33]--[2017-01-24 Tue 12:48] =>  0:15 -
+  CLOCK: [2017-01-24 Tue 10:56]--[2017-01-24 Tue 11:06] =>  0:10 -
+  CLOCK: [2017-01-23 Mon 12:32]--[2017-01-23 Mon 12:50] =>  0:18 -
+  CLOCK: [2017-01-23 Mon 12:30]--[2017-01-23 Mon 12:32] =>  0:02 -
+  CLOCK: [2017-01-23 Mon 12:12]--[2017-01-23 Mon 12:30] =>  0:18 -
+  CLOCK: [2017-01-23 Mon 11:37]--[2017-01-23 Mon 11:44] =>  0:07 -
+  CLOCK: [2017-01-23 Mon 11:35]--[2017-01-23 Mon 11:37] =>  0:02 -
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2017-01-25 Wed 12:27
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_CATEGORY: diary
+  :END:
+- dfri
+  - ek admin: 2.5
+  - swb: 0.25
+  - sysadm: 0.25
+- jra2t6
+  - erlmerge: 8
+  - ietf: 1
+- misc
+  - social: 1
+  - email, mixed: 2.5
+  - lunch break: 1.75
+  - sysadm: 0.25
+- tor
+  - hs interview prep: 1.75
+  - hs interview: 1
+  - cryptech+tor: 0.25
+- sunet
+  - meeting: 1
+  - gitlab: 0.25
+
+* week 4
+  CLOCK: [2017-01-27 Fri 23:12]--[2017-01-27 Fri 23:44] =>  0:32
+  CLOCK: [2017-01-27 Fri 16:28]--[2017-01-27 Fri 17:12] =>  0:44
+  CLOCK: [2017-01-27 Fri 16:10]--[2017-01-27 Fri 16:28] =>  0:18 x
+  CLOCK: [2017-01-27 Fri 15:56]--[2017-01-27 Fri 16:10] =>  0:14 x
+  CLOCK: [2017-01-27 Fri 15:11]--[2017-01-27 Fri 15:56] =>  0:45 x
+  CLOCK: [2017-01-27 Fri 14:28]--[2017-01-27 Fri 15:10] =>  0:42 x
+  CLOCK: [2017-01-27 Fri 14:06]--[2017-01-27 Fri 14:27] =>  0:21 x
+  CLOCK: [2017-01-27 Fri 13:42]--[2017-01-27 Fri 14:06] =>  0:24 x
+  CLOCK: [2017-01-27 Fri 13:39]--[2017-01-27 Fri 13:42] =>  0:03 -
+  CLOCK: [2017-01-27 Fri 13:12]--[2017-01-27 Fri 13:39] =>  0:27 x
+  CLOCK: [2017-01-27 Fri 12:56]--[2017-01-27 Fri 13:10] =>  0:14 x
+  CLOCK: [2017-01-27 Fri 12:46]--[2017-01-27 Fri 12:56] =>  0:10 -
+  CLOCK: [2017-01-27 Fri 11:54]--[2017-01-27 Fri 12:45] =>  0:51 x
+  CLOCK: [2017-01-27 Fri 11:15]--[2017-01-27 Fri 11:53] =>  0:38 x
+  CLOCK: [2017-01-27 Fri 11:01]--[2017-01-27 Fri 11:14] =>  0:13 x
+  CLOCK: [2017-01-27 Fri 10:31]--[2017-01-27 Fri 11:01] =>  0:30 -
+  CLOCK: [2017-01-27 Fri 09:40]--[2017-01-27 Fri 10:22] =>  0:42 x
+  CLOCK: [2017-01-25 Wed 12:15]--[2017-01-25 Wed 12:28] =>  0:13 -
+  CLOCK: [2017-01-24 Tue 15:44]--[2017-01-24 Tue 15:48] =>  0:04 -
+  CLOCK: [2017-01-24 Tue 14:28]--[2017-01-24 Tue 14:36] =>  0:08 -
+  CLOCK: [2017-01-24 Tue 12:33]--[2017-01-24 Tue 12:48] =>  0:15 -
+  CLOCK: [2017-01-24 Tue 10:56]--[2017-01-24 Tue 11:06] =>  0:10 -
+  CLOCK: [2017-01-23 Mon 12:32]--[2017-01-23 Mon 12:50] =>  0:18 -
+  CLOCK: [2017-01-23 Mon 12:30]--[2017-01-23 Mon 12:32] =>  0:02 -
+  CLOCK: [2017-01-23 Mon 12:12]--[2017-01-23 Mon 12:30] =>  0:18 -
+  CLOCK: [2017-01-23 Mon 11:37]--[2017-01-23 Mon 11:44] =>  0:07 -
+  CLOCK: [2017-01-23 Mon 11:35]--[2017-01-23 Mon 11:37] =>  0:02 -
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2017-01-28 Sat 13:29
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_CATEGORY: diary
+  :END:
+- dfri
+  - ek admin: 2.5
+  - swb: 0.25
+  - sysadm: 1.25
+  - board: 3.25
+- jra2t6
+  - erlmerge: 14.5
+  - configmgmt: 2
+  - ietf: 1
+- misc
+  - social: 2.5
+  - email, mixed: 3.25
+  - lunch break: 3.25
+  - sysadm: 1
+- tor
+  - hs interview prep: 1.75
+  - hs interview: 1
+  - cryptech+tor: 0.25
+- sunet
+  - meeting: 1
+  - gitlab: 0.25
+
+* week 5
+  CLOCK: [2017-01-31 Tue 12:29]--[2017-01-31 Tue 13:06] =>  0:37 x
+  CLOCK: [2017-01-31 Tue 11:30]--[2017-01-31 Tue 12:26] =>  0:56 x
+  CLOCK: [2017-01-31 Tue 11:11]--[2017-01-31 Tue 11:30] =>  0:19 x
+  CLOCK: [2017-01-31 Tue 10:50]--[2017-01-31 Tue 11:11] =>  0:21 x
+  CLOCK: [2017-01-31 Tue 10:40]--[2017-01-31 Tue 10:47] =>  0:07 x
+  CLOCK: [2017-01-31 Tue 10:05]--[2017-01-31 Tue 10:40] =>  0:35 x
+  CLOCK: [2017-01-30 Mon 11:34]--[2017-01-30 Mon 11:38] =>  0:04 -
+  CLOCK: [2017-01-30 Mon 09:58]--[2017-01-30 Mon 10:03] =>  0:05 -
+  CLOCK: [2017-01-30 Mon 08:37]--[2017-01-30 Mon 08:43] =>  0:06 -
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2017-01-31 Tue 13:07
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_CATEGORY: diary
+  :END:
+- jra2t6
+  - erlmerge: 9.75
+- misc
+  - email, mixed: 1.5
+  - social: 0.25
+  - advocacy, privacy: 0.5
+- sunet
+  - cert: 0.25
+- off
+  - lunch-break: 1.25
+- tor
+  - iaas: 0.5
+- cryptech
+  - tamper: 0.25
+
+* week 5
+  CLOCK: [2017-02-01 Wed 15:35]--[2017-02-01 Wed 17:41] =>  2:06 x
+  CLOCK: [2017-02-01 Wed 13:59]--[2017-02-01 Wed 14:15] =>  0:16 x
+  CLOCK: [2017-02-01 Wed 13:49]--[2017-02-01 Wed 13:59] =>  0:10 -
+  CLOCK: [2017-02-01 Wed 13:44]--[2017-02-01 Wed 13:49] =>  0:05 -
+  CLOCK: [2017-02-01 Wed 11:05]--[2017-02-01 Wed 11:11] =>  0:06 -
+  CLOCK: [2017-02-01 Wed 10:18]--[2017-02-01 Wed 10:24] =>  0:06 -
+  CLOCK: [2017-01-31 Tue 14:23]--[2017-01-31 Tue 14:27] =>  0:04 -
+  CLOCK: [2017-01-30 Mon 11:34]--[2017-01-30 Mon 11:38] =>  0:04 -
+  CLOCK: [2017-01-30 Mon 09:58]--[2017-01-30 Mon 10:03] =>  0:05 -
+  CLOCK: [2017-01-30 Mon 08:37]--[2017-01-30 Mon 08:43] =>  0:06 -
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2017-02-01 Wed 17:54
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_CATEGORY: diary
+  :END:
+- jra2t6
+  - erlmerge: 16.5
+- misc
+  - email, mixed: 2
+  - social: 0.75
+  - advocacy, privacy: 0.5
+  - admin: 0.25
+- sunet
+  - cert: 0.25
+  - meeting: 1
+- off
+  - lunch-break: 2.5
+- tor
+  - iaas: 0.5
+  - cryptech-hsm: 1
+- cryptech
+  - tamper: 0.25
+
+* week 6
+  CLOCK: [2017-02-06 Mon 08:25]--[2017-02-06 Mon 08:58] =>  0:33
+  CLOCK: [2017-02-06 Mon 07:50]--[2017-02-06 Mon 08:15] =>  0:25
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2017-02-06 Mon 08:57
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_CATEGORY: diary
+  :END:
+- jra2t6
+  - erlmerge: 0.5
+  - releng:
+
+* week 6
+  CLOCK: [2017-02-07 Tue 00:15]--[2017-02-07 Tue 02:30] =>  2:15
+  CLOCK: [2017-02-06 Mon 14:58]--[2017-02-06 Mon 17:27] =>  2:29 erlmerge
+  CLOCK: [2017-02-06 Mon 14:42]--[2017-02-06 Mon 14:58] =>  0:16 tor signing
+  CLOCK: [2017-02-06 Mon 13:40]--[2017-02-06 Mon 14:42] =>  1:02 erlmerge
+  CLOCK: [2017-02-06 Mon 13:30]--[2017-02-06 Mon 13:40] =>  0:10 erlmerge
+  CLOCK: [2017-02-06 Mon 13:28]--[2017-02-06 Mon 13:30] =>  0:02 misc
+  CLOCK: [2017-02-06 Mon 13:23]--[2017-02-06 Mon 13:27] =>  0:04 misc
+  CLOCK: [2017-02-06 Mon 13:14]--[2017-02-06 Mon 13:23] =>  0:09 misc
+  CLOCK: [2017-02-06 Mon 12:12]--[2017-02-06 Mon 13:14] =>  1:02 erlmerge
+  CLOCK: [2017-02-06 Mon 12:06]--[2017-02-06 Mon 12:12] =>  0:06 misc
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2017-02-07 Tue 02:29
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_CATEGORY: diary
+  :END:
+- jra2t6
+  - erlmerge: 0.5
+  - releng:
+- misc
+  - email and such: 0.5
+  - lunch: 1
+- tor
+  - iaas: 1
+
+* week 6
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2017-02-07 Tue 09:18
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_CATEGORY: diary
+  :END:
+- jra2t6
+  - erlmerge: 7.5
+  - releng:
+- misc
+  - email and such: 0.5
+  - lunch: 1
+  - no-idea: 0.25
+- tor
+  - iaas: 1
+  - signing: 0.5
+
+* sunet
+  CLOCK: [2017-04-26 Wed 12:43]--[2017-04-26 Wed 12:46] =>  0:03
+  CLOCK: [2017-04-26 Wed 10:02]--[2017-04-26 Wed 12:41] =>  2:39
+  imap server
+  CLOCK: [2017-04-26 Wed 09:30]--[2017-04-26 Wed 10:02] =>  0:32
+  meeting
+  CLOCK: [2017-04-26 Wed 09:10]--[2017-04-26 Wed 09:30] =>  0:52
+  social
+  CLOCK: [2017-04-26 Wed 08:36]--[2017-04-26 Wed 09:10] =>  0:34
+  imap server
+  CLOCK: [2017-04-26 Wed 08:15]--[2017-04-26 Wed 08:33] =>  0:18
+  nya vr.se
+  CLOCK: [2017-04-25 Tue 12:40]--[2017-04-25 Tue 15:05] =>  2:25
+  sunet: meeting
+ CLOCK: [2017-04-25 Tue 11:29]--[2017-04-25 Tue 11:37] =>  0:08
+ CLOCK: [2017-04-25 Tue 10:55]--[2017-04-25 Tue 11:02] =>  0:07
+ misc
+ CLOCK: [2017-04-25 Tue 10:00]--[2017-04-25 Tue 10:38] =>  0:38
+ CLOCK: [2017-04-24 Mon 16:10]--[2017-04-24 Mon 17:04] =>  0:54
+ sunet: admin
+ CLOCK: [2017-04-24 Mon 13:00]--[2017-04-24 Mon 14:00] =>  1:00
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2017-04-26 Wed 12:46
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_OLPATH: week 17 (approx)
+  :ARCHIVE_CATEGORY: diary
+  :END:
+ sunet: vr, meeting

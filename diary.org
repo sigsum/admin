@@ -1,44 +1,377 @@
 `C-c C-x C-i' for starting a clock.
-`C-c C-x C-i' for stopping the clock.
+`C-c C-x C-o' for stopping the clock.
 `C-c C-x C-d' for showing times.
+`C-c C-x C-q' for canceling a timer.
 `C-c C-y' for updating time on line.
 
-* week 38
-  CLOCK: [2016-09-23 Fri 16:12]
-  CLOCK: [2016-09-23 Fri 13:51]--[2016-09-23 Fri 14:31] =>  0:40
-  CLOCK: [2016-09-23 Fri 13:05]--[2016-09-23 Fri 13:27] =>  0:22
-  CLOCK: [2016-09-22 Thu 12:03]--[2016-09-22 Thu 12:34] =>  0:31
-  CLOCK: [2016-09-22 Thu 11:44]--[2016-09-22 Thu 12:02] =>  0:18
-  CLOCK: [2016-09-21 Wed 12:13]--[2016-09-21 Wed 15:17] =>  3:04
-  CLOCK: [2016-09-21 Wed 08:55]--[2016-09-21 Wed 10:24] =>  1:29
-  CLOCK: [2016-09-21 Wed 08:52]--[2016-09-21 Wed 08:55] =>  0:03
-  CLOCK: [2016-09-21 Wed 08:24]--[2016-09-21 Wed 08:52] =>  0:28
-- tor
-  - misc: 2.5
-  - travel prep: 5 + 
-- ndn
-  - misc: 4.75
-- jra3t4
-  - radsecproxy: 4.25
+* week 35
+tue: vacation
+* week 34
+thu: vab
+* week 30
+* week 29 vacation
+* week 28 vacation
+* week 27
+* week 26
+* week 25 (2017-06-19--25)
+vacation: 2d (mon, tue)
+* week 22 (0529--0604)
+sick: 16h (wed, thu)
+* week 19
+flex: -4h
+** jra2t6
+   CLOCK: [2017-05-10 Wed 13:25]--[2017-05-10 Wed 15:01] =>  1:36
+   CLOCK: [2017-05-09 Tue 21:20]--[2017-05-09 Tue 21:48] =>  0:28
+   CLOCK: [2017-05-09 Tue 16:13]--[2017-05-09 Tue 16:49] =>  0:36
+   CLOCK: [2017-05-09 Tue 14:36]--[2017-05-09 Tue 15:36] =>  1:00
+   CLOCK: [2017-05-09 Tue 12:45]--[2017-05-09 Tue 13:00] =>  0:15
+   CLOCK: [2017-05-09 Tue 10:01]--[2017-05-09 Tue 11:01] =>  1:00
+   ietf
+   CLOCK: [2017-05-09 Tue 09:01]--[2017-05-09 Tue 09:25] =>  0:24
+   hsm
+   CLOCK: [2017-05-09 Tue 01:18]--[2017-05-09 Tue 01:35] =>  0:17
+   CLOCK: [2017-05-09 Tue 00:08]--[2017-05-09 Tue 01:09] =>  1:01
+   CLOCK: [2017-05-08 Mon 13:34]--[2017-05-08 Mon 15:49] =>  2:15
+   CLOCK: [2017-05-08 Mon 11:00]--[2017-05-08 Mon 12:54] =>  1:54
+   CLOCK: [2017-05-08 Mon 10:27]--[2017-05-08 Mon 10:49] =>  0:22
+   CLOCK: [2017-05-08 Mon 09:45]--[2017-05-08 Mon 10:08] =>  0:23
+   ietf
+** sunet
+   CLOCK: [2017-05-10 Wed 16:05]--[2017-05-10 Wed 16:46] =>  0:41
+   sysadmin
+   CLOCK: [2017-05-10 Wed 15:01]--[2017-05-10 Wed 15:15] =>  0:14
+   CLOCK: [2017-05-10 Wed 09:45]--[2017-05-10 Wed 10:15] =>  0:30
+   meeting
+   CLOCK: [2017-05-09 Tue 14:00]--[2017-05-09 Tue 14:36] =>  0:36
+   misc
+   CLOCK: [2017-05-09 Tue 13:00]--[2017-05-09 Tue 13:30] =>  0:30
+   sysadmin
+   CLOCK: [2017-05-09 Tue 09:41]--[2017-05-09 Tue 10:01] =>  0:20
+   CLOCK: [2017-05-09 Tue 09:25]--[2017-05-09 Tue 09:40] =>  0:15
+   misc
+* week 18
+flex: -4h
+** jra2t6
+   CLOCK: [2017-05-05 Fri 13:43]--[2017-05-05 Fri 13:47] =>  0:04
+   misc
+   CLOCK: [2017-05-05 Fri 12:29]--[2017-05-05 Fri 13:43] =>  1:14
+   CLOCK: [2017-05-05 Fri 11:40]--[2017-05-05 Fri 12:03] =>  0:23
+   meeting
+   CLOCK: [2017-05-04 Thu 14:20]--[2017-05-04 Thu 14:30] =>  0:10
+   gossip
+   CLOCK: [2017-05-03 Wed 13:35]--[2017-05-03 Wed 17:13] =>  3:38
+   meeting, presentation making
+** sunet
+   CLOCK: [2017-05-05 Fri 13:49]--[2017-05-05 Fri 13:58] =>  0:09
+   admin
+   CLOCK: [2017-05-05 Fri 09:13]--[2017-05-05 Fri 09:18] =>  0:05
+   misc
+   CLOCK: [2017-05-04 Thu 15:12]--[2017-05-04 Thu 16:34] =>  1:22
+   CLOCK: [2017-05-04 Thu 14:49]--[2017-05-04 Thu 15:09] =>  0:20
+   sysadmin
+   CLOCK: [2017-05-04 Thu 14:37]--[2017-05-04 Thu 14:47] =>  0:10
+   CLOCK: [2017-05-04 Thu 13:28]--[2017-05-04 Thu 14:05] =>  0:37
+   admin
+   CLOCK: [2017-05-04 Thu 12:53]--[2017-05-04 Thu 13:11] =>  0:18
+   misc
+   CLOCK: [2017-05-04 Thu 09:00]--[2017-05-04 Thu 11:45] =>  2:45
+   meeting
+   CLOCK: [2017-05-03 Wed 12:04]--[2017-05-03 Wed 13:35] =>  1:31
+   CLOCK: [2017-05-03 Wed 09:55]--[2017-05-03 Wed 11:25] =>  1:30
+   sysadmin
+   CLOCK: [2017-05-03 Wed 09:30]--[2017-05-03 Wed 09:55] =>  0:00
+   meeting
+   CLOCK: [2017-05-03 Wed 09:06]--[2017-05-03 Wed 09:30] =>  0:24
+   social
+   CLOCK: [2017-05-02 Tue 13:11]--[2017-05-02 Tue 17:10] =>  3:59
+   sysadmin
+   CLOCK: [2017-05-02 Tue 12:50]--[2017-05-02 Tue 13:11] =>  0:21
+   admin
+* week 17 (approx)
+- fri 8h vab (28 apr)
+** dfri
+   CLOCK: [2017-04-27 Thu 13:48]--[2017-04-27 Thu 14:04] =>  0:16
+   hemlig dataavläsning
+   CLOCK: [2017-04-27 Thu 13:38]--[2017-04-27 Thu 13:48] =>  0:10
+   hermes, edri
+   CLOCK: [2017-04-25 Tue 22:31]--[2017-04-25 Tue 23:06] =>  0:35
+   remiss
+  CLOCK: [2017-04-25 Tue 11:53]--[2017-04-25 Tue 12:09] =>  0:16
+  dfri: admin
+  CLOCK: [2017-04-25 Tue 11:11]--[2017-04-25 Tue 11:19] =>  0:08
+  dfri: remiss
+  CLOCK: [2017-04-25 Tue 10:38]--[2017-04-25 Tue 10:49] =>  0:11
+  dfri
+  CLOCK: [2017-04-24 Mon 21:46]--[2017-04-24 Mon 22:21] =>  0:35
+  dfri: admin
+  CLOCK: [2017-04-24 Mon 14:27]--[2017-04-24 Mon 15:36] =>  1:09
+  dfri
+  CLOCK: [2017-04-23 Sun 22:43]--[2017-04-23 Sun 22:51] =>  0:08
+  dfri, abuse handling
+  CLOCK: [2017-04-23 Sun 22:13]--[2017-04-23 Sun 22:26] =>  0:13
+  dfri, admin
+  CLOCK: [2017-04-23 Sun 11:46]--[2017-04-23 Sun 12:14] =>  0:28
+  dfri, admin, taxes
+** jra2t6
+   CLOCK: [2017-04-27 Thu 16:34]--[2017-04-27 Thu 16:41] =>  0:07
+   CLOCK: [2017-04-27 Thu 15:22]--[2017-04-27 Thu 16:18] =>  0:56
+   CLOCK: [2017-04-27 Thu 14:36]--[2017-04-27 Thu 15:05] =>  0:29
+   CLOCK: [2017-04-27 Thu 14:05]--[2017-04-27 Thu 14:29] =>  0:24
+   docu: manual
+** priv
+   CLOCK: [2017-04-27 Thu 11:59]--[2017-04-27 Thu 12:33] =>  0:34
+   homedrop
+   CLOCK: [2017-04-25 Tue 15:30]--[2017-04-25 Tue 16:49] =>  1:19
+   sysadmin: web
+  CLOCK: [2017-04-25 Tue 11:02]--[2017-04-25 Tue 11:11] =>  0:09
+  CLOCK: [2017-04-25 Tue 10:49]--[2017-04-25 Tue 10:55] =>  0:06
+  CLOCK: [2017-04-24 Mon 17:04]--[2017-04-24 Mon 17:27] =>  0:23
+  CLOCK: [2017-04-24 Mon 15:36]--[2017-04-24 Mon 15:59] =>  0:23
+  misc
+  CLOCK: [2017-04-23 Sun 11:25]--[2017-04-23 Sun 11:45] =>  0:20
+  sysadmin
+** sunet
+   CLOCK: [2017-04-27 Thu 15:09]--[2017-04-27 Thu 15:22] =>  0:13
+   CLOCK: [2017-04-26 Wed 13:15]--[2017-04-26 Wed 17:00] =>  3:45
+   CLOCK: [2017-04-26 Wed 10:02]--[2017-04-26 Wed 12:43] =>  2:41
+   imap server
+   CLOCK: [2017-04-26 Wed 09:30]--[2017-04-26 Wed 10:02] =>  0:32
+   meeting
+   CLOCK: [2017-04-26 Wed 09:10]--[2017-04-26 Wed 09:30] =>  0:52
+   social
+   CLOCK: [2017-04-26 Wed 08:36]--[2017-04-26 Wed 09:10] =>  0:34
+   imap server
+   CLOCK: [2017-04-26 Wed 08:15]--[2017-04-26 Wed 08:33] =>  0:18
+   nya vr.se
+   CLOCK: [2017-04-25 Tue 12:40]--[2017-04-25 Tue 15:05] =>  2:25
+   sunet: meeting
+  CLOCK: [2017-04-25 Tue 11:29]--[2017-04-25 Tue 11:37] =>  0:08
+  CLOCK: [2017-04-25 Tue 10:55]--[2017-04-25 Tue 11:02] =>  0:07
+  misc
+  CLOCK: [2017-04-25 Tue 10:00]--[2017-04-25 Tue 10:38] =>  0:38
+  CLOCK: [2017-04-24 Mon 16:10]--[2017-04-24 Mon 17:04] =>  0:54
+  sunet: admin
+  CLOCK: [2017-04-24 Mon 13:00]--[2017-04-24 Mon 14:00] =>  1:00
+  sunet: vr, meeting
+** tor
+   CLOCK: [2017-04-27 Thu 11:00]--[2017-04-27 Thu 11:05] =>  0:05
+   CLOCK: [2017-04-27 Thu 10:17]--[2017-04-27 Thu 10:56] =>  0:39
+   CLOCK: [2017-04-25 Tue 23:06]--[2017-04-25 Tue 23:19] =>  0:13
+  CLOCK: [2017-04-25 Tue 12:13]--[2017-04-25 Tue 15:04] =>  2:51
+  CLOCK: [2017-04-25 Tue 11:37]--[2017-04-25 Tue 11:53] =>  0:16
+  CLOCK: [2017-04-25 Tue 11:19]--[2017-04-25 Tue 11:29] =>  0:10
+  CLOCK: [2017-04-24 Mon 15:59]--[2017-04-24 Mon 16:05] =>  0:06
+  CLOCK: [2017-04-23 Sun 22:51]--[2017-04-23 Sun 23:06] =>  0:15
+  CLOCK: [2017-04-23 Sun 22:38]--[2017-04-23 Sun 22:43] =>  0:05
+* week 16 (2017-04-17)
+- mon 0h
+- jra2t6 
+  - ops 6
+  - ietf 2
+* week 15 (2017-04-10)
+- thu 6h; fri 0h
+* week 14 (2017-04-03)
+- needs fixing in agresso!
+- jra2t6 30h
+* week 11
+- jra2t6 (ct) 22
+  - misc 7
+- sunet
+  - admin 0.5
+  - misc 1
+* week 10
+- jra2t6 (ct) 21
+  - dev 17
+- jra3t4 (radsecproxy) 3
+  - patches 0.5
+* week 9
+- jra2t6 (ct) 30
+  - dev 12.5
+  - review 2.25
+  - docu 2.25
+  - ops 9.5
+- jra3t4 (radsecproxy) 3
+  - openssl-versions 0
+  - patches 2
+- sunet 5
+  - admin 1.75
+  - social 0.5
+  - sysadmin 1
+  - meeting 1.5
+- tor 1.5
+  - ed-review 1.5
+* week 8
+- jra2-t6 19.5
+  - ops 12.5
+  - devel 3
+  - meeting 4
+- sunet 12
+  - admin 4.5
+  - hgd 0.5
+  - meeting 7
+* week 7
+- jra2t6 19 + 4
+  - sysadmin: 2
+  - demo: 2.25
+  - gaol: 2
+  - misc: 0.5
+  - design: 2.5
+  - service monitoring: 0.5
+  - operations: 7.75
+  - dev: 1
+- sunet 8
+  - email and misc: 2.25
+  - privacy: 1
+  - admin: 2.75
+  - social: 0.5
+  - meeting: 0.5
+  - unknown: 0.75
+- tor 4
+  - misc: 0.75
+  - sunet-iaas: 3.25
+- lunch 1
+- dfri 1.5
+  - misc: 0.25
+  - sysadm: 1
+  - admin: 0.25
+- tor-board 2.5
+  - board: 2.5
+* week 6
+- jra2t6 40
+  - erlmerge: 18
+  - planning/meeting: 2.5
+  - design: 1
+  - testing: 12.75
+  - releng: 5.75
+- misc 2.5
+  - email and such: 0.5
+  - lunch: 1.75
+  - no-idea: 0.25
+- tor 2.5
+  - iaas: 1
+  - signing: 0.5
+  - interview: 1
+- sunet 0.5
+  - meeting: 0.5
+* week 5
+- jra2t6 27
+  - erlmerge: 26.25
+- misc 5.25
+  - email, mixed: 3
+  - social: 0.75
+  - advocacy, privacy: 0.5
+  - admin: 0.25
+  - no-idea: 0.75
+- sunet 3
+  - cert confusion: 1.5
+  - meeting: 1
+  - admin: 0.5
+- off 3.25
+  - lunch-break: 3.25
+- tor 2
+  - iaas: 0.5
+  - cryptech-hsm: 1
+- cryptech 0.25
+  - tamper: 0.25
+* week 4
+- dfri (7.25)
+  - ek admin: 2.5
+  - swb: 0.25
+  - sysadm: 1.25
+  - board: 3.25
+- jra2t6 (20.5)
+  - erlmerge: 17.5
+  - configmgmt: 2
+  - ietf: 1
+- misc (9)
+  - social: 2.5
+  - email, mixed: 3.25
+  - sysadm: 1
+  - no-idea: 2.25
+- off (3.25)
+  - break: 3.25
+- tor (3)
+  - hs interview prep: 1.75
+  - hs interview: 1
+  - cryptech+tor: 0.25
+- sunet (1.25)
+  - meeting: 1
+  - gitlab: 0.25
+* week 3
 - jra2t6
+  - erlmerge: 15
+* week 47
+- jra2t6
+  - ops: 7
+- tor
+  - hsm fundraising: 1
+* week 42
+- jra3t4 4.5
+  - bugs: 1.5
+  - packaging: 3
+- jra2t6 0.5
+  - operations: 0.5
+- pat.leave 8
+- sunet 4
+  - laptop sysadm: 4
+
+I think that upgrading a jail to a new release (freebsd-update -r)
+doesn't really work. Look at how /usr/include/xlocale/_strings.h is
+missing from jails installed in an older release than 10.3.
+* week 41
+- tor
+  - tcp attack: 3.5
+  - misc: 0.5
+- jra2t6
+  - key generation: 16
+- ndn
+  - misc: 1
+- jra3t4
+  - bugs: 0.25
+* week 40
+- tor: 1
+  - misc: 1.25
+- ndn: 5
+  - admin: 3.5
+  - misc: 1
+- sunet: 8
+  - misc: 3.5
+  - interview: 4
+- jra2t6: 8
+  - admin: 1
+  - misc: 2.25
+  - key generation: 4
+- jra3t4: 1
+  - misc: 0.75
+* week 39
+tor dev
+* week 38
+- tor 8
+  - misc: 2.5
+  - travel prep: 6
+- ndn 5
+  - misc: 4.75
+- jra3t4 4
+  - radsecproxy: 4.25
+- jra2t6 1
   - slides: 0.5
 * week 37
-- tor
+- tor 6
   - misc: 4
   - moz call: 1
   - tb builds: 1.5
-- sunet
+- sunet 9
   - misc: 1
   - h2020: 2
   - sjf tor: 5.5
-- ndn
+- ndn 5
   - misc: 2
   - travel expenses: 3.5
-- jra3t4
+- jra3t4 5
   - radsecproxy
     - openssl-1.1: 3
     - docbook2x-man: 1.5
-- jra2t6
+- jra2t6 2
   - gossip poc: 1.5
   - dfn-cert: 0.75
 
