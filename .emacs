@@ -43,8 +43,6 @@
 (require 'smime)
 
 (require 'magit)
-;(load "/usr/share/emacs/site-lisp/magit/rebase-mode.el")
-(load "rebase-mode.el")
 (global-set-key "\C-xg" 'magit-status)
 
 ;; Fun.
@@ -78,9 +76,9 @@
 ;(require 'mailcrypt)
 
 ;; lfe-mode
-(add-to-list 'load-path "~/usr/src/lfe/emacs")
-(require 'lfe-start)
-(add-to-list 'auto-mode-alist '("\\.lfe\\'" . lfe-mode))
+;(add-to-list 'load-path "~/usr/src/lfe/emacs")
+;(require 'lfe-start)
+;(add-to-list 'auto-mode-alist '("\\.lfe\\'" . lfe-mode))
 
 ;; TAGS, generate it with `etags -I --members'.  `--members' doesn't seem
 ;; to be default contrary to what the fine manual says (etags (GNU Emacs 22.1)).
@@ -275,8 +273,7 @@
 ;(standard-display-european t)
 ;(set-language-environment "Latin-1")
 
-;; This font is nice, at least on 1920x1200.
-(set-default-font "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1")
+(set-frame-font "-misc-fixed-medium-r-normal--15-*-75-75-c-90-iso8859-15")
 
 ;; a sentence can end with a single space or double space -- match
 ;; both, but don't strip extra space when doing M-q.

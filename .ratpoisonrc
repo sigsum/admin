@@ -1,17 +1,17 @@
-# ~/.ratpoisonrc
-definekey top C-M-l exec ~/bin/xlock.sh
+definekey top C-M-l exec xscreensaver-command -lock
+definekey top C-M-i exec setxkbmap -option caps:ctrl_modifier us
+definekey top C-M-u exec setxkbmap -option caps:ctrl_modifier se
 definekey top C-M-x exec xterm
-definekey top C-M-u exec ~/bin/keyboardmap.sh se
-definekey top C-M-i exec ~/bin/keyboardmap.sh us
-
 definekey root C-i focus
-definekey root g gnext
-definekey root G gselect
+definekey root g next
 
+exec setxkbmap -option caps:ctrl_modifier us
+exec xset r on
+exec xset r rate 255 128
+exec xscreensaver -no-splash
 exec redshift -l 59:18
+
 hsplit
 exec xterm
 focus
-exec xscreensaver -no-splash
-#exec gpg-agent emacs
 exec emacs

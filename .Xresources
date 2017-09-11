@@ -1,24 +1,7 @@
 ! This is ~/.Xresources
-! Usage:
-!   xrdb -merge ~/.Xresources
+! Usage: xrdb -merge ~/.Xresources
 
-Emacs*verticalScrollBars: false
-Emacs*geometry: 80x77+0+0
-Emacs*font: -*-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*
-!Emacs*font: *-fixed-medium-r-normal--*-120-*
-!Emacs*foreground: green
-!Emacs*foreground: black
-!Emacs*background: white
-
-XTerm*visualBell:       true
+! this makes M-BACKSPACE work as intented in xterm:
 XTerm*EightBitInput: false
-XTerm*EightBitOutput: true
 XTerm*background: black
 XTerm*foreground: green
-
-XAlarm.confirm: False
-XAlarm.Warning: ""
-
-xscreensaver.timeout: 5
-
-!vncviewer.grabKeyboard: true

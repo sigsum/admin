@@ -1,8 +1,8 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.30 for linus on Wed Jan 20 17:17:59 2016.
-# http://www.jwz.org/xscreensaver/
+# Written by xscreensaver-demo 5.36 for linus on Mon Sep 11 13:54:55 2017.
+# https://www.jwz.org/xscreensaver/
 
-timeout:	0:05:00
+timeout:	0:10:00
 cycle:		0:10:00
 lock:		False
 lockTimeout:	0:00:00
@@ -37,8 +37,8 @@ imageDirectory:
 mode:		blank
 selected:	-1
 
-textMode:	literal
-textLiteral:	
+textMode:	date
+textLiteral:	XScreenSaver
 textFile:	
 textProgram:	fortune
 textURL:	http://planet.debian.org/rss20.xml
@@ -72,6 +72,7 @@ programs:								      \
 				goop -root				    \n\
 				grav -root				    \n\
 				ifs -root				    \n\
+				unicode -root				    \n\
 - GL: 				jigsaw -root				    \n\
 				julia -root				    \n\
 -				kaleidescope -root			    \n\
@@ -197,7 +198,7 @@ programs:								      \
 				popsquares -root			    \n\
 - GL: 				surfaces -root				    \n\
 				xanalogtv -root				    \n\
--				abstractile -root			    \n\
+				abstractile -root			    \n\
 				anemotaxis -root			    \n\
 - GL: 				antinspect -root			    \n\
 				fireworkx -root				    \n\
@@ -243,15 +244,29 @@ programs:								      \
 - GL: 				companioncube -root			    \n\
 - GL: 				hilbert -root				    \n\
 - GL: 				tronbit -root				    \n\
-				unicode -root				    \n\
 - GL: 				geodesic -root				    \n\
 				hexadrop -root				    \n\
 - GL: 				kaleidocycle -root			    \n\
 - GL: 				quasicrystal -root			    \n\
 - GL: 				unknownpleasures -root			    \n\
+				binaryring -root			    \n\
+- GL: 				cityflow -root				    \n\
+- GL: 				geodesicgears -root			    \n\
 - GL: 				projectiveplane -root			    \n\
+- GL: 				romanboy -root				    \n\
 				tessellimage -root			    \n\
 - GL: 				winduprobot -root			    \n\
+- GL: 				splitflap -root				    \n\
+- GL: 				cubestack -root				    \n\
+- GL: 				cubetwist -root				    \n\
+- GL: 				discoball -root				    \n\
+- GL: 				dymaxionmap -root			    \n\
+- GL: 				energystream -root			    \n\
+- GL: 				hexstrut -root				    \n\
+- GL: 				hydrostat -root				    \n\
+- GL: 				raverhoop -root				    \n\
+- GL: 				splodesic -root				    \n\
+- GL: 				unicrud -root				    \n\
 
 
 pointerPollTime:    0:00:05
