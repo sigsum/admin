@@ -1,6 +1,6 @@
 #! /bin/sh
 
-PPTRAVEL=~/tstick/.priv/passphrases-travel.gpg
+PPTRAVEL=~/tstick/.priv/passphrases20.gpg
 PP10=~/ostick/.priv/passphrases10.gpg
 
 file=$PP10
