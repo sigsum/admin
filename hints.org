@@ -761,6 +761,7 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - cloc -- count lines of code (loc)
 - xwd | xwdtopnm | pnmtopng -- screenshot
 - testdisk -- restore partition table (from memory?)
+- forensics-full: forensics-all, forensics-extra and forensics-extra-gui
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -1436,6 +1437,9 @@ emacs[0x8059cb0]
 /lib/i386-linux-gnu/i686/cmov/libc.so.6(__libc_start_main+0xf3)[0xb5a04a63]
 emacs[0x805a76f]
 Segmentation fault
+** colours
+Get rid of syntax highlighting in all buffers:
+  (global-font-lock-mode -1)
 * Telia homerun
 user: 46703714984
 pw: ds5XVDEir5
@@ -1866,17 +1870,12 @@ Good resources:
 - WPA_SUPPLICANT(8)
 - WPA_SUPPLICANT.CONF(5)
 - ? /sbin/iw help
-** ratpoison
+** non-gnome/kde window managers
+- use update-alternatives --config x-window-manager to select what
+  /etc/alternatives/x-window-manager should point at
 - key rate
   # after every boot or suspend/resume
   xset r on; xset r rate 255 128
-- mount usb stick
-  see tool:/root/mount-stick.sh, which boils down to
-    cryptsetup luksOpen /dev/$1 $2
-    mount /dev/mapper/$2 ~linus/$2
-  and
-    umount /dev/mapper/$1
-    cryptsetup luksClose $1
 - lock screen
   # Requires 'xscreensaver -no-splash &' at X startup
   /usr/bin/xscreensaver-command -lock
@@ -1955,6 +1954,13 @@ sudo update-rc.d <daemon> enable|disable
 
 ** deb mirrors
 speglar.simnet.is
+** mount usb stick
+  see tool:/root/mount-stick.sh, which boils down to
+    cryptsetup luksOpen /dev/$1 $2
+    mount /dev/mapper/$2 ~linus/$2
+  and
+    umount /dev/mapper/$1
+    cryptsetup luksClose $1
 * Virtualization with qemu-kvm / libvirt
 ** vm's on tool
 Active
@@ -3074,17 +3080,18 @@ might be a good tool for handling pgp signing
 ** Yubikey NEO
 - Max 2048 bit keys.
 - For PGP, use GPG 2.0.22 or newer.
-*** Big picture
+*** Big picture (Debian jessie, gpg-agent started manually)
 - pcscd is the PC/SC Smart Card Daemon
   - run by root, as a normal service
 - gpg-agent is the interface for both gpg2 and ssh
   - started from ~/.xsession
 - scdaemon is how gpg2 talks to the card
   - started by gpg-agent
+*** Debian stretch, gpg-agent started by systemd
+/etc/X11/Xsession.d/90gpg-agent
 *** Trouble shooting
 - NEO doesn't blink after insertion
 sudo service pcscd restart
-
 *** Recipe for setting up a NEO on a Debian (jessie/sid) system
 Based on https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd
 
@@ -3569,6 +3576,8 @@ struct addrinfo
 
   server:
   openvpn --server 10.30.0.0 255.255.255.0 --proto udp --kepalive 10 60 --ca nordberg-ca.crt --cert banksy.openvpn.crt --key banksy.openvpn.key
+** better anon
+auth-user-pass, maybe
 * routers
 ** m1tug (sunet's mx)
    $ ssh m1tug.sunet.se
@@ -4466,7 +4475,8 @@ ssb>  2048R/08E3FB84  created: 2016-12-27  expires: never
    /mode +q nick
 ** servers
    OFTC (#tor #tor-dev #tor-se #dfri_se) irc.oftc.net 6697 (TLS)
-   SUNET slack (#general #random #devops #nunoc) sunet.irc.slack.com 6697 (TLS)
+   SUNET slack (#general #random #devops #nunoc) sunet.irc.slack.com 6697 (TLS) user:ln5
+   JRA2 slack (#general #ct) jra2.irc.slack.com 6697 (TLS) user:linus
    Baconsvin (#celo #talla) 6nbtgccn5nbcodn3.onion / gff4ixq3takworeuhkubzz4xh2ulytoct4xrpazkiykhupalqlo53ryd.onion / havana.baconsvin.org 6697 (TLS)
    IRCNET (#isp #sthix #sunet) irc.atw-inter.net 6697 (TLS) / open.ircnet.net 6667 / irc.portlane.se 6667
    FREENODE (#sparvnastet #edri #erlang) wolfe.freenode.net 6697 (TLS) / chat.eu.freenode.net 6697
@@ -29582,6 +29592,8 @@ dsa 2048 bits 0.002015s 0.002374s    496.2    421.3
 ./config --prefix=$HOME/usr/openssl11 --shared && make all install
 ** cms
 echo foo | openssl cms -sign -binary -stream -nocerts -nodetach -signer crt -inkey key | openssl cms -verify -stream -certfile crt -nointern -CAfile demoCA/cacert.pem 2>/dev/null || echo ERROR
+** generating DH parameters
+
 * IRC
 ** mansaxel #isp <2011-10-07 Fri>
 <mansaxel> ellajarr
@@ -34574,6 +34586,7 @@ test:
 - /usr/sbin/ntpdc -n -c monlist 193.10.5.86
 - http://nmap.org/nsedoc/scripts/ntp-monlist.html
 * eduroam
+** tryiing various authn methods
                          anon@nordu.net anon@NORDU.NET
 PEAP;MSCHAPv2;linus/ppp: no		no
 PEAP;MSCHAPv2;linus: no
@@ -34586,6 +34599,8 @@ TTLS;MSCHAP;linus: no
 TTLS;PAP;linus/ppp: no
 TTLS;CHAP;linus/ppp: no
 TTLS;CHAP;linus: no
+** ca certs
+https://www.edupki.org/edupki-ca/policies-root-certificate-crl-ocsp/
 * swedish researchers
 [phw <2014-02-26 Wed>] kth: benjamin greschbach, german phd student under sonja buchegger (austrian privacy prof, very good)
 [phw <2014-02-26 Wed>] chalmers: luciano bello (the guy who found the debian rng bug, debian hacker and overall great guy)
@@ -37014,11 +37029,19 @@ _caldavs._tcp SRV 0 0 443 webmail.adb-centralen.se.
 https://www.routerboard.se/prest/126-core-router
 
 - 10G
-  - [[https://www.routerboard.se/prest/ethernet-routrar/273-cloud-core-router-ccr1016-12s-1s.html][CCR1016-12S-1S+]] 8182:-
-  - [[https://www.routerboard.se/prest/ethernet-routrar/249-cloud-core-router-ccr1036-8g-2s.html][CCR1036-8G-2S+]] 11792:-
+  - [[https://www.routerboard.se/prest/ethernet-routrar/273-cloud-core-router-ccr1016-12s-1s.html][CCR1016-12S-1S+]] 8182:- (moms?)
+  - [[https://www.routerboard.se/prest/ethernet-routrar/249-cloud-core-router-ccr1036-8g-2s.html][CCR1036-8G-2S+]] 11792:- (moms?)
+  - [[https://www.routerboard.se/prest/cloud-router-switch/372-cloud-router-switch-317-1g-16srmcrs317-1g-16srm.html][CRS317-1G-16S+RM]] ([[https://mikrotik.com/product/crs317_1g_16s_rm][mikrotik.com]]) 4740:- (ex moms)
 
 ** ubiquiti
 https://www.ubnt.com/products/
 
 - https://www.ubnt.com/edgemax/edgerouter-pro/
 
+* browsing the world wide web
+** FF contextual identities aka container tabs
+about:config privacy.userContext
+* systemd
+** make dirmngr use tor
+cat /usr/lib/systemd/user/dirmngr.service | sed -e 's/^ExecStart=.*/& --use-tor/1' | sudo dd of=/etc/systemd/user/dirmngr.service
+systemctl --user daemon-reload
