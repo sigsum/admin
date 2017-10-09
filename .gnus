@@ -21,10 +21,10 @@
 ;(setq nnimap-authinfo-file "~/.priv/nnimap-authinfo" )
 
 ;; Flyspell and spel checker.
-;(add-hook 'message-mode-hook
-;	  (lambda ()
-;	    (ispell-change-dictionary "svenska") ;"british"
-;	    (flyspell-mode 1)))
+(add-hook 'message-mode-hook
+	  (lambda ()
+	    (ispell-change-dictionary "svenska") ;"british"
+	    (flyspell-mode 1)))
 
 ;; Interaction with planner-el
 ;(require 'planner-gnus)
@@ -107,24 +107,19 @@
       '((".*" (organization nil) ;("^nnimap\\+adbc" (organization nil)
 	 ("From" "Linus Nordberg <linus@nordberg.se>")
 	 (eval
-          (setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 1587 smtpmail-smtp-user "linus")
+          (setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587 smtpmail-smtp-user "linus")
 	  (set (make-local-variable 'message-sendmail-envelope-from) "linus@nordberg.se")))
         ("lists.edri..*" ("From" "Linus Nordberg <linus@dfri.se>"))
 	("lists.tor.internal" ("Reply-To" "tor-internal@lists.torproject.org"))
         ("lists.tor..*" ("From" "Linus Nordberg <linus@torproject.org>"))
         ("lists.tor.\\(board\\|relays\\|talk\\)" ("From" "Linus Nordberg <linus@nordberg.se>"))
-	("lists.pmacct"
-	 ("From" "Linus Nordberg <linus+pmacct@nordberg.se>")
-	 (organization "Sunet"))
-        ("fixme"
-         ("From" "Linus Nordberg <ln+snus@4711.se>")
-         )
+	("lists.pmacct" ("From" "Linus Nordberg <linus+pmacct@nordberg.se>") (organization "Sunet"))
 	("sunet:\\|ndn:\\|lists\\.\\(ct\\|ietf\\.trans\\|radsecproxy\\)"
 	 (organization "Sunet")
 	 ("From" "Linus Nordberg <linus@sunet.se>")
 	 (eval
-          (setq smtpmail-smtp-server "localhost"
-                smtpmail-smtp-service 2587
+          (setq smtpmail-smtp-server "smtp.sunet.se"
+                smtpmail-smtp-service 587
                 smtpmail-smtp-user "linus")
           (set (make-local-variable 'message-sendmail-envelope-from) "linus@sunet.se")))
         ("dfri.abuse"

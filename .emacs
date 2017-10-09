@@ -273,7 +273,12 @@
 ;(standard-display-european t)
 ;(set-language-environment "Latin-1")
 
-(set-frame-font "-misc-fixed-medium-r-normal--15-*-75-75-c-90-iso8859-15")
+;(set-frame-font "-misc-fixed-medium-r-normal--15-*-75-75-c-90-iso8859-15")
+(set-frame-font "-misc-fixed-medium-r-normal--15-*-75-75-c-80-iso8859-15")
+;(set-frame-font "-misc-fixed-medium-r-normal--15-*-75-75-c-70-iso8859-15")
+;(set-frame-font "-misc-fixed-medium-r-normal--14-*-75-75-c-70-iso8859-15")
+;(set-frame-font "-misc-fixed-medium-r-normal--13-*-75-75-c-80-iso8859-15")
+;(set-frame-font "-misc-fixed-medium-r-normal--13-*-75-75-c-70-iso8859-15")
 
 ;; a sentence can end with a single space or double space -- match
 ;; both, but don't strip extra space when doing M-q.
@@ -373,7 +378,7 @@
  '(gnus-agent-plugged-hook (quote (gnus-group-send-queue)))
  '(gnus-agent-synchronize-flags t)
  '(gnus-agent-unplugged-hook nil)
- '(gnus-auto-expirable-newsgroups "adbc:\\(lists\\.\\|sys\\|spam\\)")
+ '(gnus-auto-expirable-newsgroups "adbc:\\(lists\\.\\|sys\\|spam\\)\\|sunet:tickets")
  '(gnus-buttonized-mime-types
    (quote
     ("multipart/encrypted" "multipart/signed" "multipart/alternative")))
@@ -400,17 +405,13 @@
  '(gnus-use-full-window nil)
  '(gnus-user-agent (quote (gnus)))
  '(gnutls-min-prime-bits 2048)
- '(gnutls-trustfiles
-   (quote
-    ("/etc/ssl/certs/ca-certificates.crt" "/etc/pki/tls/certs/ca-bundle.crt" "/etc/ssl/ca-bundle.pem" "/usr/ssl/certs/ca-bundle.crt" "/home/amnesia/Persistent/linus/nordberg-ca.crt")))
- '(gnutls-verify-error (quote (("localhost" (:trustfiles)))))
  '(grep-command "grep -nH -Ed skip -e ")
  '(ido-case-fold t)
  '(ido-create-new-buffer (quote always))
  '(ido-enable-regexp t)
  '(ido-mode (quote buffer) nil (ido))
  '(indent-tabs-mode nil)
- '(ispell-program-name "spell")
+ '(ispell-program-name "/usr/bin/aspell")
  '(jabber-account-list
    (quote
     (("linus@nordu.net/around"
@@ -492,14 +493,9 @@
  '(smtpmail-debug-verb nil)
  '(smtpmail-local-domain nil)
  '(smtpmail-stream-type (quote starttls))
- '(starttls-extra-arguments nil)
- '(starttls-gnutls-program "gnutls-cli")
- '(starttls-use-gnutls t)
  '(tags-revert-without-query t)
  '(tls-checktrust (quote ask))
- '(tls-program
-   (quote
-    ("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h")))
+ '(tls-hostmismatch nil)
  '(tls-untrusted
    "- certificate is NOT trusted\\|Verify return code: \\([^0] \\|.[^ ]\\)")
  '(tool-bar-mode nil)
