@@ -3,7 +3,9 @@ definekey top C-M-i exec setxkbmap -option caps:ctrl_modifier us
 definekey top C-M-u exec setxkbmap -option caps:ctrl_modifier se
 definekey top C-M-x exec xterm
 definekey root C-i focus
-definekey root g next
+definekey root numbersign hsplit 1/3
+definekey root dollar hsplit 660
+definekey root g gnext
 
 exec setxkbmap -option caps:ctrl_modifier us
 exec xset r on
@@ -11,7 +13,7 @@ exec xset r rate 255 128
 exec xscreensaver -no-splash
 exec redshift -l 59:18
 
-hsplit
-exec xterm
-focus
+hsplit 660
 exec emacs
+focus
+exec xterm

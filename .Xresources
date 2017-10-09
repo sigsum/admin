@@ -4,4 +4,7 @@
 ! this makes M-BACKSPACE work as intented in xterm:
 XTerm*EightBitInput: false
 XTerm*background: black
+!XTerm*background: white
 XTerm*foreground: green
+!XTerm*foreground: black
+!XTerm*foreground: white

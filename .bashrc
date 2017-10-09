@@ -71,15 +71,19 @@ esac
 [ -f $crtfile ] && export GIT_SSL_CAINFO=$crtfile
 
 # With LC_CTYPE set, I can paste swedish characters in xterm+bash.
-LC_CTYPE=sv_SE.ISO8859-15; export LC_TYPE
+#LC_CTYPE=sv_SE.ISO8859-15; export LC_TYPE
 LC_PAPER=$LC_CTYPE; export LC_PAPER
 LC_MEASUREMENT=$LC_CTYPE; export LC_MEASUREMENT
-
-#[ -f "${HOME}/.gpg-agent-info" ] && . "${HOME}/.gpg-agent-info"
-#export GPG_TTY=$(tty)
 
 #function dmalloc { eval `command dmalloc -b $*`; }
 ## pastebin
 #sprunge () {
 #    printf '%s%s\n' "$(curl -sF 'sprunge=<-' http://sprunge.us/)" "${*:+?$*}"
 #}
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# pinentry uses this:
+export GPG_TTY=$(tty)
