@@ -94,6 +94,7 @@ alias attilla                   attilla.degroot@atrato-ip.com
 alias authhub			authhub-devel@lists.fedorahosted.org
 alias auto-dbm			auto-dbm@ripe.net
 alias awu                       "Aaron Wu <awu@mozilla.com>"
+alias axel                      axel.moberg@gmail.com
 alias aydin			aydin.yildiz@atrato-ip.com
 alias azet                      "Aaron Zauner <azet@azet.org>"
 alias azm                       anders.4zm
@@ -198,6 +199,7 @@ alias david.bibl                david.jonsson
 alias david.fifield             david@bamsoftware.com
 alias david.jonsson             David.jonsson.vg@gmail.com
 alias david.mirza               "David Mirza <dma@subgraph.com>"
+alias david.s                   david.schmitz
 alias david.schmitz             "David Schmitz <David.Schmitz@lrz.de>"
 alias david.simonsen		"David Simonsen <david@wayf.dk>"
 alias dbe			dan.bellander@naoi.se
@@ -216,6 +218,7 @@ alias dfri-int                  dfri-intern@lists.dfri.se
 alias dfri-noc                  noc.dfri
 alias dfri-tech			dfri-noc, pawal
 alias dgoulet                   "David Goulet <dgoulet@ev0ke.net>"
+alias di                        datainspektionen@datainspektionen.se
 alias dijana                    dijanav@item.ntnu.no
 alias dina                      "Dina Östergren <dina.ostergren@gmail.com>"
 alias dld-wg                    dld-wg@dfri.se
@@ -307,7 +310,8 @@ alias fredrik.reutersward.priv  "Fredrik Reuterswärd <fr@frd.net>"
 alias fredrik.stromberg         "Fredrik Strömberg <stromberg@insto.org>"
 alias fredrik.x			fredrik@localhosted.net
 alias freeradius                freeradius-users@lists.freeradius.org
-alias fresia			"Fresia Pérez <fresia@leadit.se>"
+alias fresia                    "Fresia Pérez <fresia@kth.se>"
+alias fresia.leadit		"Fresia Pérez <fresia@leadit.se>"
 alias fripost                   admin@fripost.org
 alias froo			"Fredrik Söderblom <fredrik@xpd.se>"
 alias ft			ft.priv
@@ -607,6 +611,7 @@ alias lingmerths                foretag@lingmerths.se
 alias linus			linus@nordberg.se
 alias linus.larsson             linus@linuslarsson.se
 alias linus.ndn			linus@nordu.net
+alias linus.staff               linus@staff.sunet.se
 alias linus.tor			linus@torproject.org
 alias linus.tpo                 linus.tor
 alias lise              	lise.bergh@nordberg.se
@@ -870,6 +875,7 @@ alias radsecproxy-pkg.fbsd      m.tsatsenko
 alias radsecproxy-pkg.nbsd      he.netbsd
 alias ragge                     "Ragnar Sundblad <ragge@csc.kth.se>
 alias ralf                      "Ralf Paffrath <paffrath@dfn.de>"
+alias ramy                      ramy.raoof@gmail.com
 alias randy			"Randy Bush <randy@psg.com>"
 alias rasmus                    "Rasmus Dahlberg <rasmus.gd.dahlberg@gmail.com>"
 alias rebecca                   "Rebecca Gomperts <gomperts@womenonwaves.org>"
@@ -882,9 +888,8 @@ alias rese                      lingmerths
 alias revisor                   revisor@dfri.se
 alias rhys			"Rhys Smith <smith@cardiff.ac.uk>"
 alias ricardo                   "Ricardo Noronha <ricardo.noronha@gmail.com>"
-alias richard                   "Richard Binning <anok4u2b4u@gmail.com>"
 alias richard.barnes            "Richard Barnes <rlb@ipv.sx>"
-alias richard.barnes.moz        "Richard Barnes <rbarnes@mozilla.com>"
+alias richard.binning           "Richard Binning <anok4u2b4u@gmail.com>"
 alias rickard.ostman		"Rickard Östman <rickard.ostman@bahnhof.net>"
 alias rikard.linde              "Rikard Linde <rikard.linde@fores.se>"
 alias ripe			auto-dbm
