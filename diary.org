@@ -4,6 +4,13 @@
 `C-c C-x C-q' for canceling a timer.
 `C-c C-y' for updating time on line.
 
+* week 41 (2017-10-09)
+tue-sun: tor meeting
+* week 40 (2017-10-02)
+tue-thu: geant symposium
+* week 39 (2017-09-25)
+* 2017-09-18--24
+fri: vab
 * week 35
 tue: vacation
 * week 34
