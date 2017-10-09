@@ -65,3 +65,15 @@ debian packages
 
 hardware
 - foxwell.com.au, nt301 949:- @ www.24.se
+* service
+** <2017-10-02 Mon>
+bromma bil & motor
+
+extra:
+- bromsbelägg fram slut, skivorna slitna +3850
+- glapp krängningshämmare +3000
+- torkarblad +740
+- dimljus +700
+totalt 15700
+
+tog allt utom torkarblad
