@@ -1,3 +1,7 @@
+machine smtp.sunet.se login linus port 587 password vQLmayn6ghdvVASgVZ
+machine sunet login linus password BIGKqZCGzprTyUdeOuB0
+machine smtp.adb-centralen.se login linus port 587 password p00MPZ1clUk0NU
+machine adbc login linus password p00MPZ1clUk0NU
 machine localhost port 1993 login linus password p00MPZ1clUk0NU
 machine localhost port 10587 login linus password p00MPZ1clUk0NU
 machine localhost port 1587 login linus password p00MPZ1clUk0NU
