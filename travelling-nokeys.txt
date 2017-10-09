@@ -8,7 +8,7 @@ If you're eager to reach me by email and don't want to send
 unencrypted email, please download and use the following temporary
 key, signed by my ordinary one:
 
-  https://www.dfri.se/wiki/users/linus/A7412747AA695FC2.asc
+  https://www.dfri.se/wiki/users/linus/F0338CDCCD933B26DE9034F3467CCA999692DC96.asc
 
 More info can be found at
 
