@@ -9,6 +9,9 @@ Legend                                                      (emacs -*-org-*- mod
 
 * RSN (within a week)
 ** CT
+- o [[file:p/ct/doc/GN4-2_Deliverable-D8.4.%20Certificate%20Transparency%20Log%20Production%20Service_v1.docx][file:~/p/ct/doc/GN4-2_Deliverable-D8.4. Certificate Transparency Log Production Service_v1.docx]]
+- o stud -> docker.sunet.se/library/hitch for plausible
+- o bring all plausible nodes up to running catlfish-dev:latest -- config file changes needed
 - - sunet-ops ticket updated with current status
 - o f2f in november availability communicated to list
 - - ndn portal updated according to [[gnus:nnimap%2Bsunet:INBOX#0FA5F222-2CCA-4E37-A92F-E3046E71FE64@nordu.net][Email from Jonny Lundin: Re: CT log]]
@@ -17,11 +20,15 @@ Legend                                                      (emacs -*-org-*- mod
   o map/plop/benchreport2
   - map/catlfish/submission-fix
 ** Radsecproxy
+- - v6only patch by ralf
 - - "--enable-fticks" removed from documentation
     [[file:p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml][file:~/p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml]]
 ** TPI
 ** Tor
-- * get a .ca eta
+- . get a .ca eta
+- o talk to shari about tor servers
+  https://blog.torproject.org/tor-heart-torserversnet
+- o talk to moritz about emerald onions
 - o find out what's up with the signing infra [fre]
 - o sida visit (arma + flexlibris) confirmed with marcin
 - - hbsd/fbsd config writeup sent to phoul
@@ -31,23 +38,33 @@ Legend                                                      (emacs -*-org-*- mod
 - - sunet publishing tor work
   [[gnus:nnimap%2Bndn:INBOX#871t1ectpj.fsf@nordberg.se][Email to Emma Almroth: Blogserie om SUNET:s arbete me]]
 ** IETF / W3C
-- - [[file:usr/share/ietf/internet-drafts/draft-tenoever-hrpc-anonymity-00.txt][draft-tenoever-hrpc-anonymity-00]] read
-- - support for v1 logs added back to gossip-draft
-- - gossip draft shepherd writeup notes addressed
+- * support for v1 logs added back to gossip-draft [fri]
+- * gossip draft shepherd writeup notes addressed [fri]
   - https://datatracker.ietf.org/doc/draft-ietf-trans-gossip/shepherdwriteup/
+- - gossip draft updated with comments from rasmus
+  - [[gnus:nnimap%2Bsunet:INBOX#CAHVAv2Yt0W9zRgsM%3DhRvcm-DvXJZ%2BNZ8cvpp%3D237FcwqyVAWVw@mail.gmail.com][Email from Rasmus Dahlberg: {Comments} Gossiping in CT (dr]]
+  - [[gnus:nnimap%2Bsunet:INBOX#CAHVAv2Y2ip-Mb7in4rDDYUBow4k3%3DswhgKVBMYmoV_xYkebEfA@mail.gmail.com][Email from Rasmus Dahlberg: Gossip-draft]]
+- - [[file:usr/share/ietf/internet-drafts/draft-tenoever-hrpc-anonymity-00.txt][draft-tenoever-hrpc-anonymity-00]] read
 - - paf mail "Logga DS i root"
 - - benno mail "Help DNSSEC Trans client"
 - - ekr mail "Interested in gaol?"
 ** Sysadm
-- - toripv6dev moved to sunet iias, under sunet noc responsibility
+- . toripv6dev moved to sunet iias, under sunet noc responsibility, hooked up to tpo ldap [oct 8]
+- - is ifplugd(8) a good idea?
 - - ns.adbc knot1 -> knot2
+- - CAA records added for adbc (depends on: upgrade to knot2)
+adb-centralen.se. 3600 CAA 0 issue "letsencrypt.org"
+adb-centralen.se. 3600 CAA 0 issuewild ";"
+adb-centralen.se. 3600 CAA 0 iodef "mailto:hostmaster@adb-centralen.se"
 - - flow.nordu.net reinstalled
 - - tor.nordu.net reinstalled
 - - DKIM signing for adb-centralen.se
+  - opendkim has a fbsd package
 ** DFRI
 - * backup!
-- - KB invoice payed
-- - OBE invoice payed
+- o KB [[file:p/dfri/dfriadm/fakturor/2017/kustbandet-23497.pdf][invoice]] payed [ons]
+- o CAA records for dfri.se
+- o OBE invoice payed
 - - https://wiki.freebsd.org/NetworkPerformanceTuning
 - - ns# pkg install -r dfrirepo knot2 (2.3.3 -> 2.5.2)
 - - DKIM signing for dfri.se
@@ -56,9 +73,10 @@ Legend                                                      (emacs -*-org-*- mod
   - [[file:hints.org::*@teirdes%20re%20http:/www.dagensjuridik.se/2017/06/vanliga-telefonappar-hindrar-hemlig-avlyssning-vi-behover-nya-tekniska-och-legala-mojlighete][@teirdes re]]
   - [[https://www.dfri.se/inlaga-om-regler-for-beslag-och-husrannsakan/]]
 - . flattr account discontinued
-- - using [[https://www.knot-dns.cz/docs/2.3/html/reference.html#policy-section][zone.dnssec-policy]] instead of "DNSSEC policy settings in KASP database"
+- o using [[https://www.knot-dns.cz/docs/2.3/html/reference.html#policy-section][zone.dnssec-policy]] instead of "DNSSEC policy settings in KASP database"
   - [[gnus:nnimap%2Badbc:sent-mail.2017-05#87r2zwwx9h.fsf@nordberg.se][Email to noc@dfri.net: Fortfarande trassel med DNS]]
   - [[file:usr/share/ietf/in-notes/rfc6781.txt][file:~/usr/share/ietf/in-notes/rfc6781.txt]]
+- - look at times on files in ns:/var/db/knot/kasp/keys [oct 5]
 - - sebastian gjerding contacted re https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
   - sebastian_@jabber.ccc.de 33218b6023ae3157381def0b0c78a99ef63c1162
   - "1 country, Sweden, said it was not able to disclose the requested information, because the authorities have not registered this information in a sufficient detail."
@@ -67,10 +85,11 @@ Legend                                                      (emacs -*-org-*- mod
 - . new machine racked and installed
 - - hbsd installed on machine from jn
 ** Misc
-- * restore ~/.bashrc from backup
+- - copy flogsta:~/usr/src/ to datan, in particular radsecproxy*, tor
+- X restore ~/.bashrc from backup
 - o profile created on sunet's travel agency
-  - [[file:sunet/Fo%CC%88retagsresor%20-%20profilblankett1_.pdf][file:~/sunet/Företagsresor - profilblankett1_.pdf]] -> foretag@lingmerths.se
-- budapest
+  o [[file:sunet/Fo%CC%88retagsresor%20-%20profilblankett1_.pdf][file:~/sunet/Företagsresor - profilblankett1_.pdf]] -> foretag@lingmerths.se
+- o budapest
   . budapest hotel booked, oct 3-5
   o budapest flights booked, oct 3-5
   o https://eventr.geant.org/events/2564
@@ -336,10 +355,10 @@ x May 28-03, Linz, TNC17
 x Jul 15-22, Prague, IETF99
 x Aug 21-30, Bornholm, Bornhack
 x Sep 10-16, Oslo, ESORICS
-x Sep 13, San Jose, WebPKI @ PayPal
-- Oct 01-06, Budapest, GEANT Symposium (at least Oct 3+4)
+x Sep 13-13, San Jose, WebPKI @ PayPal
+- Oct 03-05, Budapest, GEANT Symposium (at least Oct 3+4)
 - Oct 09-16, Montreal, Tor
-? Nov 11-18, Singapore, IETF100
+x Nov 11-18, Singapore, IETF100
 - Nov 21-22, Prague, JRA2T6 f2f
 ** 2016
 - Jan 20-22, CPH, all hands
@@ -404,4 +423,9 @@ X Aug 19-23, San Diego, USENIX Security
 X Nov 07-16, Honolulu, IETF91
 - Oct 14-16, Zurich, CT gossip
 ** 2018
+- Mar 09-15, ?, Tor
+? Mar 16-24, London, IETF101
+? Apr 11-12, Stockholm, Cryptech
+? Jul 13-21, Montreal, IETF102
 ? Aug 15-24, Bornholm, Bornhack
+? Nov 02-10, TBD, IETF103
