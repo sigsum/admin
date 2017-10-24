@@ -20,12 +20,14 @@ Legend                                                      (emacs -*-org-*- mod
   o map/plop/benchreport2
   - map/catlfish/submission-fix
 ** Radsecproxy
-- - v6only patch by ralf
+- * v6only patch by ralf
 - - "--enable-fticks" removed from documentation
     [[file:p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml][file:~/p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml]]
 ** TPI
 ** Tor
-- . get a .ca eta
+- o tell nathan i, and others, heard "cc" when he probably said "pastly"
+- - https://trac.torproject.org/projects/tor/ticket/4847
+- o get a .ca eta
 - o talk to shari about tor servers
   https://blog.torproject.org/tor-heart-torserversnet
 - o talk to moritz about emerald onions
@@ -85,6 +87,14 @@ adb-centralen.se. 3600 CAA 0 iodef "mailto:hostmaster@adb-centralen.se"
 - . new machine racked and installed
 - - hbsd installed on machine from jn
 ** Misc
+- * mtrl expenses
+- * yubikey replacement keys requested
+- * review sent to rasmus
+- - implicit bias link sent to maria hall
+  - http://projectimplicit.org/
+- - saya informed about jack, mothers debt, planned visit at grandma
+  - email sent
+  - called again [friday]
 - - copy flogsta:~/usr/src/ to datan, in particular radsecproxy*, tor
 - X restore ~/.bashrc from backup
 - o profile created on sunet's travel agency
@@ -423,9 +433,11 @@ X Aug 19-23, San Diego, USENIX Security
 X Nov 07-16, Honolulu, IETF91
 - Oct 14-16, Zurich, CT gossip
 ** 2018
-- Mar 09-15, ?, Tor
+- Mar 09-15, Rome, Tor
 ? Mar 16-24, London, IETF101
 ? Apr 11-12, Stockholm, Cryptech
 ? Jul 13-21, Montreal, IETF102
+? Jul 23-29, Barcelona, PETS
 ? Aug 15-24, Bornholm, Bornhack
 ? Nov 02-10, TBD, IETF103
+- Dec 25-30, ?, CCC
