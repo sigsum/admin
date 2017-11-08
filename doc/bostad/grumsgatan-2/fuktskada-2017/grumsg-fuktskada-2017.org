@@ -1,0 +1,75 @@
+Info
+- Länsförsäkringar ärende 28-24294-17]]
+
+Kontaktpersoner
+- Berit Eklund, ordf. Utö3, +46 70 444 33 87, +46 8 88 77 98
+- Eva Göthe, Driftia, 08-744 44 33 (växel)
+- Larry Koont, Torkab larry.koont@torkab.se, 08-771 11 11, 073-532 30 33
+
+Tidslinje
+- [[gnus:nnimap%2Badbc:INBOX#AMSPR03MB615ED58D64DBFE1BD765B0AD8940@AMSPR03MB615.eurprd03.prod.outlook.com][Email from Gertrud Kleberg: Fwd: Ev fuktskada LGH 2-1904]]
+- [[gnus:nnimap%2Badbc:INBOX#AMSPR03MB61549054FC198C496095519D8640@AMSPR03MB615.eurprd03.prod.outlook.com][Email from Gertrud Kleberg: Fwd: Skada; 28-24294-17]]
+- [[gnus:nnimap%2Badbc:sent-mail.2017-10#87shf1iwxa.fsf@nordberg.se][Email to styrelsen@uto3.se: Nästa steg, fuktskada 2-1904]]
+- [[gnus:nnimap%2Badbc:sent-mail.2017-09#87h8vulvs2.fsf@nordberg.se][Email to styrelsen@uto3.se: Fuktskada i lgh 2-1904]]
+- 2017-10-06 gertrud i tfn Länsförsäkringar (LF) 
+  - skada som uppkommer vid avslutat arbete hanteras annorlunda än vid
+    pågående; LF tror att det var avslutat, Linus tror att det var
+    under pågående, det var gertrud som pratade med LF, kanske
+    missförstånd
+  - skicka in besiktningsprotokoll till LF och bifoga
+    ev. mejlkonversation med entreprenören
+- 2017-10-06 mejl till LF
+  - [[gnus:nnimap%2Badbc:sent-mail.2017-10#874lrcv7oi.fsf@nordberg.se][Email to skador stockholm: Ärende 28-24294-17]]
+- 2017-10-17 Larry Koont, Torkab, besökte lgh
+  - kan börja om 2-3 veckor
+  - några dagar för att riva, tomt övre rum, nedre kan man bygga vägg
+    i, 1,5m
+  - 2-6 veckor tork
+  - upp till 3 veckor återställning
+- 2017-10-30 [[gnus:nnimap%2Badbc:sent-mail.2017-10#87d154qqbu.fsf@nordberg.se][mejlade]] Larry
+- 2017-11-01 stig från "rör och installation" (073 517 7116) ringer om
+  byte av element
+- 2017-11-01 börjar riva i övre rummet
+- 2017-11-02 tror att dom blir klara med rivning idag
+- 2017-11-02 pratar med stig på r&i som skall samordna med torkab
+- 2017-11-03 torkab ser ut att ha gjort klart i båda rummen -- byggt
+  vägg i nedre rummet och frilagt väggen; rivit upp drygt halva golvet
+  i övre rummet
+- 2017-11-06 polygon på besök i lgh
+  - mäter upp nedre rummet som torrt och övre rummet som fuktigt, även
+    där det inte är rivet
+  - kontaktar torkab och meddelar att resten behöver rivas upp
+  - sätter in en fläkt i övre rummet, 1,3kW "men ni blir kompenserade"
+- 2017-11-06 Larry Koont ringer
+  - meddelar att Polygon skall komma
+  - får info om vad polygon sagt
+  - beställer en målare till nedre rummet, förhoppningsvis till slutet
+    av nästa vecka
+- 2017-11-07 larry mejlar
+  - vill att vi skall skriva på ett [[file:torkab-kostngodk-2017-11-07.pdf][kostnadsgodkännande]] på 18,3k SEK
+  - dels är åldersavdraget för nedre rummet fel och
+  - dels är det för mycket jobb (ex: ommålning tak, 2xspackling,
+    5xstrykning)
+  - fråga: skall vi verkligen betala arbete också? A: verkar så enligt
+    internet
+  - vårt svar till larry: [[gnus:nnimap%2Badbc:sent-mail.2017-11#8760amw8wi.fsf@nordberg.se][Email to Larry Koont: Re: Kostnadskalkyl för påskrif]]
+  - Sarita.oster@lansforsakringar.se är enl. automatsvar på semester,
+    ring 08 562 836 40
+- 2017-11-08 larry ringer
+  - sade att det hade blivit fel, vi skall inte ha något åldersavdrag
+    i nedre rummet
+  - skickar [[file:torkab-kostngodk-2017-11-08.pdf][nytt kostnadsgodkännande]] per mejl
+  - vi skriver på och skickar in under veckan
+  - larry skickar en målare att kolla på medre rummet så får vi göra
+    upp med honom om vad som skall göras
+  - matta kan vi välja hos stig eriksson golv, älvsjö, uffe c 070 815
+    37 91
+  - riva vidare först nästa vecka
+
+Övriga noteringar
+- elementbytet
+  - stig från rör och installation
+  - vill byta radiatorn "med plan framsida", ytterligare ett sådant
+    skall bytas akut (grumsgatan 3), senare skall ytterligare 150
+    stycken bytas enl. beställning från föreningen
+
