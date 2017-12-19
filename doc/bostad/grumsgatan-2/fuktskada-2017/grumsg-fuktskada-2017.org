@@ -62,14 +62,41 @@ Tidslinje
   - vi skriver på och skickar in under veckan
   - larry skickar en målare att kolla på medre rummet så får vi göra
     upp med honom om vad som skall göras
-  - matta kan vi välja hos stig eriksson golv, älvsjö, uffe c 070 815
-    37 91
+  - matta kan vi välja hos stig eriksson golv, älvsjö, uffe
+    0708-153791
   - riva vidare först nästa vecka
 - 2017-11-09 målare (johan?) kom på besök
   - spacklade en första gång, tog med sig ett doslock för färgprov
   - han målar endast ytterväggen 
 - 2017-11-09 [[gnus:nnimap%2Badbc:sent-mail.2017-11#87wp2zop9l.fsf@nordberg.se][mejlade]] Larry om rivninga av temporära väggen
   - automatsvar säger att han är ledig, åter tisdag
+- 2017-11-16 [[gnus:nnimap%2Badbc:INBOX#DB6PR10MB0328B2530CBD06654738B1D8E82E0@DB6PR10MB0328.EURPRD10.PROD.OUTLOOK.COM][Email from Larry Koont: SV: kostnadskalkyl ny]]
+  - "Det blir under nästa vecka då vi har killar som förhoppnings är
+    tillbaka från skjukdom"
+- 2017-11-20 samma två som rev sist dök up vid 08:30 och rev klart
+  golvet och tillfälliga väggen i rummet på plan 9
+- 2017-11-22 polygon borrade för mätning, kan ej mäta direkt pga
+  friktionsvärme, återkommer mån 27/11 09:00
+- 2017-11-27 polygon mätte och konstaterade att det är torrt i både
+  golv och vägg; tog med sig fläkten
+- 2017-12-01 larry i tfn
+  - beställning lagd i måndags på han som skall gjuta golvet ("mange")
+  - mattvaruhuset stuvsta kan ha golv också
+- 2017-12-07 matta vald, larry informerad
+- 2017-12-12 mange och håkan (?) gjöt golv, kommer tillbaka imorgon
+  och flytspacklar, tork min 5 dagar
+  - matta: marmoleum real, 2.5mm, colour 3219
+- 2017-12-12 larry tfn: har skickat info om matta till golvläggare som
+  skall höra av sig, men inte säkert han hinner innan julledighet
+- 2017-12-13 spacklingen väntar till imorgon
+- 2017-12-13 uffe, stig erikssons golv, ringde och sade att det var en
+  veckas leveranstid på mattan så han ville ut och mäta men ev. räcker
+  dom mått han fått av larry
+- 2017-12-14 flytspacklat golvet
+- 2017-12-19 uffe, golv, ringde och sade att dom skulle komma in
+  imorgon mitt på dagen och lägga mattan; dom skulle mäta fukt innan,
+  så vi inte stänger in ny fukt nu;vi skulle stänga fönstret idag så
+  att det inte är för kallt
 
 Övriga noteringar
 - elementbytet
