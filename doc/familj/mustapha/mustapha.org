@@ -5,7 +5,7 @@ Mustapha Jafuneh
 Familjevårdshandläggare: annika.frendberg@stockholm.se 08-50801297
 Barnhandläggare: Saya Amin <saya.amin@stockholm.se> 08-50801997 0761201997
 * pågående ärenden
-- 2016-11-15 Tandläkaren om höger framtand
+** 2016-11-15 Tandläkaren om höger framtand
   - Marie bedömmer efter röntgen att den skall dras ut för att undvika
     infektion. Det är en mörk rand ovanför mjölktanden, i gränsen mot
     den permanenta.
@@ -14,8 +14,7 @@ Barnhandläggare: Saya Amin <saya.amin@stockholm.se> 08-50801997 0761201997
   - <2017-04-06 Thu> Marie säger att Eastman prioriterat ner ärendet
     och föreslår att vi tittar på det igen vid nästa ordinarie
     kontroll i Oktober. Vi har då förtur på Eastman om det behövs.
-
-- <2017-08-31 Thu> FSK: ser på "mina sidor"
+** <2017-08-31 Thu> FSK: ser på "mina sidor"
   - att VAB den 28/4 är borta
     - var tog den vägen?
     - jag anmäler ny idag och ansöker "bakåt"
@@ -27,6 +26,13 @@ Barnhandläggare: Saya Amin <saya.amin@stockholm.se> 08-50801997 0761201997
     - eller inte! lärka är ju 18 och musse är inte mitt i den meningen
   - ett beslut från 21/6 om sjukpenninggrundande inkomst: ok
     - 336k baserat på årsinkomst 692k (egentligen 648k)
+** PUT
+- saya per tfn med grtrd 2017-11-30
+  - kan inte påbörja överflyttning innan put finns
+  - musse får en god man med uppdrag att stödja i kontakt med
+    myndighet, för att ansöka om put
+  - kommer att handläggas fort pga barn utan aktiva vårdnadshavare
+** medborgarskap
 * avslutade ärenden
 - <2016-10-07 Fri> "Mattias" på Kontaktcenter Stockholm, per tfn 
 08-508 00 508
@@ -46,14 +52,15 @@ L & J går på Lenas hemförsäkring.
 
 - <2017-06-08 Thu> söker saya angående umgänge och medborgarskap
   - lämnat meddelande
-* vårdnadsöverflytt
+* info om vårdnadsöverflytt
 - https://www.familjehemmet.se/vardnadsoverflyttning.php
   - familjhemmet blir "särskilt förordnad vårdnadshavare" och juridiskt
     ansvarigt för barnet
   - blir vanligtvis även förmyndare men utan försörjningsplikt
   - oförändrad arvsrätt -- barnet ärver fortfarande sina biologiska
     föräldrar
-  - regleras i [[https://lagen.nu/1949:381#K6][6 kap. föräldrabalken]] (FB) och [[https://lagen.nu/1990:52#P13S3][LVU]]
+  - regleras i [[https://lagen.nu/1949:381#K6][6 kap. föräldrabalken]] (FB) och [[https://lagen.nu/1990:52#P13S3][LVU]] men även
+    Socialtjänstlagen ([[https://lagen.nu/2001:453][SoL]]) är relevant
 * föreningar
 - http://faco.nu/ intresseförening för familjehem, jourhem, förstärkta
   familjehem och kontaktfamiljer/personer
@@ -63,3 +70,5 @@ L & J går på Lenas hemförsäkring.
 - Kontaktperson Uppland
 enl. http://faco.nu/wp-content/uploads/2013/10/AM06-5.pdf: Annika
 Nygren, tel: 070-767 88 82
+* info till soc
+- [[gnus:nnimap%2Badbc:sent-mail.2017-10#87h8ugqqgw.fsf@nordberg.se][Email to Saya Amin: Lite mer info]]
