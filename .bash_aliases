@@ -37,6 +37,7 @@ alias tunnel-rs3web='ssh -NfL 4783:localhost:80 rs3.dfri.net'
 alias tunnel-rs4web='ssh -NfL 4784:localhost:80 rs4.dfri.net'
 alias tunnel-slime='ssh -Nf -L 4711:localhost:4711 lntest.nordberg.se'
 alias tunnel-sieve='ssh -Nf -L 4190:imap.adb-centralen.se:4190 ioctl.adb-centralen.se'
+alias onionshare=~/usr/src/onionshare/dev_scripts/onionshare
 alias xmpp='xmpp-client'
 alias xmpp-ndn='xmpp-client -config-file ~/tstick/.xmpp-client.ndn'
 alias ydl-tor='youtube-dl --proxy socks5://127.0.0.1:9050/'
