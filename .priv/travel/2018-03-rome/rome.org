@@ -1,0 +1,21 @@
+* general
+- https://trac.torproject.org/projects/tor/wiki/org/meetings/2018Rome
+* travel
+- Expedia
+  - Itinerary #: 7323355140608
+  - 287.12 USD
+  - ln+expedia@4711.se
+  - Booked 2018-01-18 using Chrome on Nexus5x from home
+- Fri 2018-03-09 11:45 ARN T5 14:55 FCO
+  - Norwegian
+  - Booking id: UQCGZ9
+  - Ticket #: 3287077482988
+  - Seat 01C
+- Fri 2018-03-16 12:20 FCO T3 15:35 ARN T5
+  - SAS
+  - Booking id: UQCH2J
+  - Ticket #: 1177077486458
+* hotel
+TBD (in tor block)
+* venue
+http://www.moodhotels.it/eng/life-hotel-roma/meeting-rooms-rome.html
