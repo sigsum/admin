@@ -5,17 +5,23 @@
   - Itinerary #: 7323355140608
   - 287.12 USD
   - ln+expedia@4711.se
-  - Booked 2018-01-18 using Chrome on Nexus5x from home
+  - Booked 2018-01-18 using Chrome on Nexus5x, from home
 - Fri 2018-03-09 11:45 ARN T5 14:55 FCO
   - Norwegian
   - Booking id: UQCGZ9
   - Ticket #: 3287077482988
+  - 1374.42 SEK
   - Seat 01C
 - Fri 2018-03-16 12:20 FCO T3 15:35 ARN T5
   - SAS
   - Booking id: UQCH2J
   - Ticket #: 1177077486458
+  - 930.89 SEK
 * hotel
-TBD (in tor block)
+- email from jon, mar 5
+We have 3 hotels reserved for our Rome meeting: Rome Life, Rome Times,
+and Rome Glam hotels. You room has been reserved in the Rome Life
+Hotel. Via Palermo, 10, 00184 Roma.
+http://www.moodhotels.it/eng/life-hotel-roma/index.html
 * venue
 http://www.moodhotels.it/eng/life-hotel-roma/meeting-rooms-rome.html
