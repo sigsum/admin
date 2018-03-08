@@ -1,67 +1,73 @@
-* info om musse
+* Info om Musse
 Mustapha Jafuneh
 20130505-3074
-* kontaktinfo soc
+* Kontaktinfo soc
 Familjevårdshandläggare: annika.frendberg@stockholm.se 08-50801297
 Barnhandläggare: Saya Amin <saya.amin@stockholm.se> 08-50801997 0761201997
-* pågående ärenden
-** 2016-11-15 Tandläkaren om höger framtand
-  - Marie bedömmer efter röntgen att den skall dras ut för att undvika
-    infektion. Det är en mörk rand ovanför mjölktanden, i gränsen mot
-    den permanenta.
-  - <2016-11-29 Tue> Marie meddelar att hon skickat remiss till
-    Eastman. Dom har 2 mån väntetid.
-  - <2017-04-06 Thu> Marie säger att Eastman prioriterat ner ärendet
-    och föreslår att vi tittar på det igen vid nästa ordinarie
-    kontroll i Oktober. Vi har då förtur på Eastman om det behövs.
-** <2017-08-31 Thu> FSK: ser på "mina sidor"
-  - att VAB den 28/4 är borta
-    - var tog den vägen?
-    - jag anmäler ny idag och ansöker "bakåt"
-  - att nordunet fortfarande står som arb.givare
-    - hur ändrar jag till vetenskapsrådet?
-    - fixat per tfn <2017-08-31 Thu>
-  - att juni listas som enda barn i "min profil"
-    - bör vara tre st
-    - eller inte! lärka är ju 18 och musse är inte mitt i den meningen
-  - ett beslut från 21/6 om sjukpenninggrundande inkomst: ok
-    - 336k baserat på årsinkomst 692k (egentligen 648k)
-** PUT
+* Ärenden med soc
+** Pågående ärenden
+*** 2016-11-15 Tandläkaren om höger framtand
+   - Marie bedömmer efter röntgen att den skall dras ut för att undvika
+     infektion. Det är en mörk rand ovanför mjölktanden, i gränsen mot
+     den permanenta.
+   - <2016-11-29 Tue> Marie meddelar att hon skickat remiss till
+     Eastman. Dom har 2 mån väntetid.
+   - <2017-04-06 Thu> Marie säger att Eastman prioriterat ner ärendet
+     och föreslår att vi tittar på det igen vid nästa ordinarie
+     kontroll i Oktober. Vi har då förtur på Eastman om det behövs.
+*** FSK: ser på "mina sidor" <2017-08-31 Thu>
+   - att VAB den 28/4 är borta
+     - var tog den vägen?
+     - jag anmäler ny idag och ansöker "bakåt"
+   - att nordunet fortfarande står som arb.givare
+     - hur ändrar jag till vetenskapsrådet?
+     - fixat per tfn <2017-08-31 Thu>
+   - att juni listas som enda barn i "min profil"
+     - bör vara tre st
+     - eller inte! lärka är ju 18 och musse är inte mitt i den meningen
+   - ett beslut från 21/6 om sjukpenninggrundande inkomst: ok
+     - 336k baserat på årsinkomst 692k (egentligen 648k)
+*** PUT
 - saya per tfn med grtrd 2017-11-30
   - kan inte påbörja överflyttning innan put finns
   - musse får en god man med uppdrag att stödja i kontakt med
     myndighet, för att ansöka om put
   - kommer att handläggas fort pga barn utan aktiva vårdnadshavare
-** medborgarskap
-* avslutade ärenden
-- <2016-10-07 Fri> "Mattias" på Kontaktcenter Stockholm, per tfn 
+  - beslut senast 2018-02-08
+** Avslutade ärenden
+- Kontaktcenter Stockholm, "Mattias" per tfn <2016-10-07 Fri>
 08-508 00 508
 Skicka in ansökan via blankett.
 Bifoga intyg från socialtjänsten att barnet bor hos er.
 
-- <2016-11-02 Wed> Länsförsäkringar
+- Länsförsäkringar <2016-11-02 Wed>
 Hemförsäkringen täcker alla som är skrivna på adressen den gäller för.
 L & J går på Lenas hemförsäkring.
 
-- <2017-05-09 Tue> söker annika för frågan om medborgarskap inför möte 1/6
+- Söker Annika för frågan om medborgarskap inför möte 1/6 <2017-05-09 Tue>
   - verkar gå trögt att få till umgänge
   - hur påverkar det arbetet för medborgarskap?
   - kan vi komma överens om ett måldatum för när medborgarskapet är
     klart?
   - är det något vi kan förbereda inför mötet 1/7?
 
-- <2017-06-08 Thu> söker saya angående umgänge och medborgarskap
+- Söker Saya angående umgänge och medborgarskap <2017-06-08 Thu> 
   - lämnat meddelande
-* info om vårdnadsöverflytt
+* Vårdnadsöverflytt
 - https://www.familjehemmet.se/vardnadsoverflyttning.php
-  - familjhemmet blir "särskilt förordnad vårdnadshavare" och juridiskt
-    ansvarigt för barnet
+  - familjhemmet blir "särskilt förordnad vårdnadshavare" och
+    juridiskt ansvarigt för barnet
   - blir vanligtvis även förmyndare men utan försörjningsplikt
   - oförändrad arvsrätt -- barnet ärver fortfarande sina biologiska
     föräldrar
   - regleras i [[https://lagen.nu/1949:381#K6][6 kap. föräldrabalken]] (FB) och [[https://lagen.nu/1990:52#P13S3][LVU]] men även
     Socialtjänstlagen ([[https://lagen.nu/2001:453][SoL]]) är relevant
-* föreningar
+- rättsfal länkade från https://lagen.nu/1949:381#K6
+  - https://lagen.nu/dom/rh/2015:60
+  - https://lagen.nu/dom/nja/2014s307
+  - https://lagen.nu/dom/nja/1993s666
+  - https://lagen.nu/dom/nja/1993s226
+* Föreningar
 - http://faco.nu/ intresseförening för familjehem, jourhem, förstärkta
   familjehem och kontaktfamiljer/personer
 - tidning: http://faco.nu/familjehemsnytt/
@@ -70,5 +76,156 @@ L & J går på Lenas hemförsäkring.
 - Kontaktperson Uppland
 enl. http://faco.nu/wp-content/uploads/2013/10/AM06-5.pdf: Annika
 Nygren, tel: 070-767 88 82
-* info till soc
-- [[gnus:nnimap%2Badbc:sent-mail.2017-10#87h8ugqqgw.fsf@nordberg.se][Email to Saya Amin: Lite mer info]]
+* Info lämnad till soc
+- [[gnus:nnimap%2Badbc:sent-mail.2017-10#87h8ugqqgw.fsf@nordberg.se][Email to Saya Amin: Lite mer info]] 2017-10-30
+* Medborgarskap
+- Har M Gambianskt medborgarskap? Är M statslös?
+- Vad krävs för att M skall kunna få svenskt medborgarskap?
+  - Underskrift av bägge vårdnadshavare
+  - Krävs det att mamman har svenskt medborgarskap för att M skall
+    kunna få det?
+- [[https://lagen.nu/2005:716][Utlänningslagen]]
+- [[https://lagen.nu/2001:82][Lag om svenskt medborgarskap]]  
+- Telefonsamtal med Migrationsverket <2018-01-19 Fri>
+  - <2018-01-19 Fri 13:44> "det är 18 före i kön"
+  - talar med Emelie Andersson, efter 20 min i kö
+  - jag beskriver fallet
+  - bekräftar ej medborgarskap och ej UT
+  - Vad krävs för att M skall kunna få svenskt medborgarskap?
+  - PUT en förutsättning pga 3 krav: under 18, ha PUT, bott i sverige
+  i minst 3 år
+  - vet inte hur det uppfattas att han inte haft PUT under så lång tid
+  men kan ringa och fråga en expert
+  - inget solklart svar pga bedömningsfråga men det hänger på om
+  bioföräldrar hade PUT vid födelsetillfälle men annars från annan
+  v-havande "legaliserar barnets vistelse", dvs ansökan om UT
+  
+  - anmälan för barn under 18 vs. ansökan för vuxna
+  - anmäl inte om / sök isf inte innan tre år (ex.vis 2021-01-19)
+  - legalisera vistelsen så fort som möjligt
+  - när får vi räkna hemvist ifrån? 
+  - om föräldrarna hade tillstånd 
+  - personen är illegalt i sverige, har skickat brev till "dom" 2
+  dagar efter födelse (föräldrarna, info finns i arkiv men inte
+  tillgängligt nu)
+  - bekräftar medborgare i gambia
+  - råd: kontrollera processen agn PUT
+  - råd ang medborgarskap: vänta 3 år efter ansökan om PUT
+  - el. mejla kontakt och ange Emelie Andersson (finns bara en på
+  enheten med det namnet)
+
+- [[https://www.migrationsverket.se/Privatpersoner/Bli-svensk-medborgare/Medborgarskap-for-vuxna/Testa-om-du-kan-bli-svensk-medborgare.html][Testa om du kan bli svensk medborgare]]  
+  - Det vanligaste är att ett barn under 18 år blir svensk medborgare
+  i samband med att en förälder ansöker om svenskt medborgarskap. Då
+  behövs ingen separat ansökan för barnet, det omfattas av förälderns
+  ansökan.
+  - Naturligtvis kan även en separat ansökan lämnas in för ett barn. I
+  dagsläget kan medborgarskapsguiden tyvärr inte ge svar på de regler
+  som gäller i så fall. Vi hänvisar i stället till våra vanliga sidor
+  med information om svenskt medborgarskap för barn.
+- Blanketter hos Migrationsverket  
+  - [[https://www.migrationsverket.se/download/18.2bbf7de914c17a2ed26f21/1485556224657/mbl_318011_sv.pdf][Anmälan om svenskt medborgarskap för barn som bor i Sverige]] 
+    (7 § lagen om svenskt medborgarskap)
+  - [[https://www.migrationsverket.se/download/18.2bbf7de914c17a2ed26f20/1485556224668/mbl_317011_sv.pdf][Ansökan om svenskt medborgarskap för barn under 18 år]]
+    (11 § lagen om svenskt medborgarskap)
+  - [[https://www.migrationsverket.se/download/18.2bbf7de914c17a2ed26f22/1485556224640/mbl_319011_sv.pdf][Anmälan om svenskt medborgarskap för statslöst barn som är fött i och bor i Sverige]]
+    (6 § lagen om svenskt medborgarskap) 
+- Om bio-mamman blir svensk medborgare och har ensam vårdnad
+  (alt. bio-pappan har medborgarskap) blir M svensk medborgare enl
+  https://lagen.nu/2001:82#P10S1
+** Från Erik: Noteringar 26/1 2017
+Samtal med Linus:
+
+Målet är att söka och få permanent uppehållstillstånd, PUT, för Musse.
+För att sedan kunna ansöka om / anmäla medborgarskap och pass.
+
+”Fakta”
+Musse är född 5/10 2013 - 41/2 år
+Det är ovisst om Biologiska mamman (bima) har PUT idag
+Likaså ovisst om hon hade det vid Musses födelse
+Biologiska pappan (bipa) har brittiskt medborgarskap (?)
+Han har inte svenskt PUT
+När Musse föddes skickade soc ett brev till bima
+Idag har M inte PUT
+M är omhändertagen enl LVU sedan …. ?
+M har varit aktuell hos Soc sedan födseln - mamman placerades före födseln, sedan tills m M
+Soc (fam-vårds-enheten Rinkeby-Kista sdn) är vårdandsghavare
+Linus o Gertrud är familjehem för M
+Soc skulle ha ansökt om PUT genast efter omhändertagandet! Erkänd miss!
+
+I nov-dec 2017 har Soc / barnhandläggaren dragit igång ärende för att
+ansöka om God Man (för vem? M eller Biomamma?) med specifikt uppdrag
+att ordna uppehållstillstånd för Musse. Inget beslut än.
+Soc => SDN => ÖFN => Sth Tingsrätt
+
+Plan A:
+GM hjälper bima att 
+få ensam vårdnad för M
+ansöka om PUT
+Efter 3 år kan man anmäla medborgarskap
+Enl kontakt med Migrationsverket, Mig, kan det finnas en möjlighet att korta tiden före medborgarskap om Soc skriver om sin miss till Mig !!??
+
+Plan B:
+Vårdnasdsöverflyttning
+Kan normalt tidigast ske efter 3 års familjehemsplacering
+Ärende under beredning hos Soc. Goda förutsättningar både bio-fld-krit och fam-hem-krit
+Kan också ta lång tid och är ovanligt att förekomma före 3-år
+
+- UPDATE svarade med korrigeringar: [[gnus:nnimap%2Badbc:sent-mail.2018-01#877es4olxb.fsf@nordberg.se][Email to ERIK NORDBERG: Re: Noteringar 26/1 2017]]
+** Info om god man
+- [[https://lagen.nu/2017:310][Lag (2017:310) om framtidsfullmakter]]
+- [[https://lagen.nu/1949:381][Föräldrabalk (1949:381)]]
+- [[https://lagen.nu/2001:453][Socialtjänstlagen (SoL)]]
+- [[https://lagen.nu/1990:52][Lag (1990:52) med särskilda bestämmelser om vård av unga (LVU)]]
+- Enl lagen.nu (https://lagen.nu/1949:381#K11) "avser ett förordnande
+  om god man samtliga av förmyndarens uppgfiter" och "Det finns inga
+  möjligheter att begränsa uppdraget till att enbart gälla vissa
+  angelägenheter." och länkar till https://lagen.nu/dom/nja/1983s170
+- https://lagen.nu/1949:381#K11P12S1 säger att "Föreslår den enskilde
+  en viss person som god man eller förvaltare, ska den personen
+  förordnas, om han eller hon är lämplig och vill åta sig uppdraget."
+- samtal med kontaktcenter stockholm, överförmyndarnämnden per tfn
+  <2018-01-26 Fri>
+  - frågar om jag (familjehem) kan bli god man
+  - "spontant nej men låt mig fråga"
+  - nej pga "man kan inte kontrollera sig själv", oavsett att ärendet
+    inte handlar om familjehemmet (verkligen!)
+  - min pappa då? går bra, dvs "det kan ni föreslå"
+  - handläggningstid typiskt 90 dagar om man inte har ett förslag, "så
+    kan gå fortare om ni har en, men det beror ju på ärendet också"
+* Noteringar från samtal
+** saya, linus tfn <2018-02-01 Thu>
+- har biomamman PUT? ja, har inga papper på det och tror inte att vi
+  har rätt att få ut info om detta från MIG men hon har t.ex. haft
+  försörjningsstöd och då görs kontroller
+- hur går processen med god man?
+  - beslut skickat till överförmyndarnämnden (ÖFN) den 2017-12-28,
+    flera kontakter efter det, senast 2018-01-10 då dom sade "ni
+    behöver inte höra av er innan beslut den 2018-02-08"
+  - saya skickar in kompletterande uppgifter till ÖFN med förslag på
+    god man (Erik N.)
+  - återkoppling från soc senast 2018-02-12 (pga utbildning under
+    veckan 2018-02-05--09)
+- processen med påskyndad vårdnadsöverflyttning på is efter att
+  juridiska sagt att medborgarskapsfrågan inte är skäl nog för detta
+- en punkt på dagordningen för mötet den 2018-02-15 är om och hur
+  gertrud och jag skall driva frågan om medborgarskap i våra kontakter
+  med biofamiljen
+
+Ovan skickat [[gnus:nnimap%2Badbc:sent-mail.2018-02#87fu6kn5af.fsf@nordberg.se][per mejl]] samma dag.
+** TODO Erik
+- erik pratat med MS
+- förslag på ombud vi kan önska hos MIG ([[gnus:nnimap%2Badbc:INBOX#41AC83D9-F92A-4882-8818-853E20743A59@nordberg.se][mejl]]):
+  Några namn på duktiga jurister som tar uppdrag som offentligt biträde:
+  Anna Massarsch: anna.m@insulander-advokat.se
+  johanna.eriksson.ahlen@redcross.se
+  anna-pia.beier@sweref.org (Rådgivningbyrån för asylsökande och flyktingar)
+- [[gnus:nnimap%2Badbc:INBOX#5B6E71F6-F0CC-4821-8120-0679DB2A2CAB@nordberg.se][tillägg]]: Lise förordar namn nr 1, Anna Massarsch. Lise känner väl
+  till henne och vet att hon är riktigt bra.
+** saya, gertrud, tfn <2018-02-13 Tue>
+Saya ringer til gertrud och berättar att inget besked ännu kommit från
+Överförmyndarnämnden. Saya har fått namn och nr till handläggare, men
+denna svarar inte på tel. Personer Saya pratar med kan inte heller se
+varför ärendet inte gått vidare till Tingsrätt för beslut. Nästa steg
+är att få tag på handl och ge Erik Nordberg som förslag som god man
+inför ett beslut i Tingsrätten.
