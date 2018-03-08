@@ -759,9 +759,11 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - festival -- voice synthesis
 - hping3 -- network research and attack tool
 - cloc -- count lines of code (loc)
+- sloc -- count lines of code
 - xwd | xwdtopnm | pnmtopng -- screenshot
 - testdisk -- restore partition table (from memory?)
 - forensics-full: forensics-all, forensics-extra and forensics-extra-gui
+- tshark -- 
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -1146,6 +1148,17 @@ In magit: 'r b' to start a rewrite from HEAD, pick the commit and
     that "you can sign blah blah" but that completely misses the
     point, even with signatures you still have these weak references
     that can be attacked
+** 3-way merge
+- proprietary tool, used by ximin: p4merge
+- free software: kdiff3
+- git config
+  [merge]
+    conflictstyle = diff3
+    tool = kdiff3
+  [mergetool]
+    keepBackup = false
+    keepTemporaries = false
+    prompt = false
 * Movie / video
 ** Carnivale
 Start VLC.
@@ -1961,6 +1974,15 @@ speglar.simnet.is
   and
     umount /dev/mapper/$1
     cryptsetup luksClose $1
+** dirmngr, for gpg
+- systemctl --user restart dirmngr.socket
+- https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=849845 has info on
+  how dirmngr used to fail due to AAAA records and more
+** ssh-agent autostarting
+datan:~% egrep ssh-agent /etc/*/* 2>/dev/null
+/etc/X11/Xsession.options:use-ssh-agent
+
+See Xsessoin(5) and Xsession.options(5) for more.
 * Virtualization with qemu-kvm / libvirt
 ** vm's on tool
 Active
@@ -1992,6 +2014,8 @@ default              inactive   no
 $ sudo virt-install --connect qemu:///system --virt-type kvm --name debian1 --ram 2048 --disk path=/u/vm/debian1-0.img,size=2 --graphics vnc --cdrom /u/iso/debian-7.0.0-amd64-DVD-1.iso --os-variant=debianwheezy
 # then install an os, reboot the vm, then shut it down
 $ sudo virsh start test
+** starting a tails vm
+sudo virt-install --connect qemu:///system --virt-type kvm --name tails --memory 2048 --graphics vnc --cdrom ~linus/u/iso/tails-amd64-3.2.iso --disk none
 ** adding a disk
 root@tool:/u/vm# truncate --size=6G /u/vm/debian0-2.img
 root@tool:/u/vm# virsh attach-disk --config test /u/vm/debian0-2.img vdb  # --config makes this change persistent over reboots
@@ -3348,6 +3372,28 @@ Q - quit
 
 Your selection? q
 % scdaemon[24641]: scdaemon (GnuPG) 2.0.26 stopped
+** 4k key on a yubikey 4
+*** testing
+**** generate key on computer
+mkdir ~/tmp/pgptest
+gpg --homedir ~/tmp/pgptest --full-generate-key
+1
+4096
+0
+y
+Test key
+test@example.com
+<enter>
+o
+testkey		# passphrase
+testkey
+
+
+**** configure yubikey
+root@datan:~# ykpersonalize
+Firmware version 4.2.8 Touch level 773 Program sequence 1
+A slot must be chosen with -1 or -2.
+
 * wiki
 - ikiwiki is supposed to be nice.  Uploading text files (markdown!)
   using git f.ex.
@@ -3766,7 +3812,7 @@ auth-user-pass, maybe
 This example is using a 100MB partition made with "Disk Utility 2.32.1".
 *** Short version
     time badblocks -vswt random /dev/sdb1 # -c 10240
-    cryptsetup --use-random luksFormat --cipher aes-xts-plain64 /dev/sdb1
+    cryptsetup --use-random luksFormat --cipher aes-xts-plain64 --hash sha256 --iter-time 3000 /dev/sdb1
     cryptsetup luksOpen /dev/sdb1 kaka
     mkfs.ext4 /dev/mapper/kaka
     cryptsetup luksClose /dev/mapper/kaka
@@ -4352,6 +4398,11 @@ touch för dessa även om denne någon sniffat mitt admin-lösenord.
         /usr/share/doc/libykclient-dev/changelog.gz
         /usr/share/doc/libykclient-dev/changelog.Debian.gz
         /usr/lib/libykclient.so
+
+- apt install yubikey-neo-manager gives you GUI program
+  /usr/bin/neoman which is using libykneomgr, ykpers(onalize) and
+  libu2f-host.
+
 ** Making a static key
 $ HISTFILE=/dev/null sudo bash -
 # ykpersonalize -y -1 -oappend-cr -ostatic-ticket -ostrong-pw1 -ostrong-pw2 -oman-update -a$(~linus/src/hexpw.py) >/dev/null || echo FAIL
@@ -4408,7 +4459,7 @@ https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd):
 
 yubikey-personalization - Personalization tool for Yubikey OTP tokens
 yubikey-personalization-gui - Graphical personalization tool for YubiKey tokens
-** Generating a key on a NEO <2016-12-27 Tue>
+** Generating a PGP key on a NEO <2016-12-27 Tue>
 $ gpg2 --card-edit
 gpg/card> generate
 [...]
@@ -4451,7 +4502,143 @@ ssb>  2048R/813C6BD2  created: 2016-12-27  expires: never
                       card-no: 0006 03035366
 ssb>  2048R/08E3FB84  created: 2016-12-27  expires: never
                       card-no: 0006 03035366
+** Importing a PGP key to a NEO
+https://developers.yubico.com/PGP/Importing_keys.html
+https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd#generate-key-outside-card
+$ gpg --full-gen-key
+$ gpg --expert --edit-key $keyid # addkey; 8 S E A Q 4096 0 y y
+$ gpg --list-key $keyid
+pub   rsa4096 2018-02-17 [SC]
+      83727C5FE992F9B0A804D182224D5A7209FACB69
+uid           [ultimate] Test key <test@example.com>
+sub   rsa4096 2018-02-17 [E]
+sub   rsa4096 2018-02-17 [A]
 
+Backup key to file.
+*** serial 0x3f6d8b (04156811)
+Reader ...........: 1050:0405:X:0
+Application ID ...: D2760001240102010006041568110000
+Version ..........: 2.1
+Manufacturer .....: Yubico
+Serial number ....: 04156811
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Sex ..............: unspecified
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: not forced
+Key attributes ...: rsa4096 rsa4096 rsa4096
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 0 3
+Signature counter : 2
+Signature key ....: 8C4C D511 095E 982E B0EF  BFA2 1E8B F349 2329 1265
+      created ....: 2010-05-07 15:05:41
+Encryption key....: 0A6E F2A1 805A EFFB 6FDA  D0F3 46B3 10F8 DA94 5B54
+      created ....: 2017-04-17 07:16:39
+Authentication key: 8C4C D511 095E 982E B0EF  BFA2 1E8B F349 2329 1265
+      created ....: 2010-05-07 15:05:41
+General key info..: pub  rsa4096/1E8BF34923291265 2010-05-07 Linus Nordberg <linus@nordberg.se>
+sec>  rsa4096/1E8BF34923291265  created: 2010-05-07  expires: never     
+                                card-no: 0006 04156811
+ssb   rsa4096/95FA5E5B5681169D  created: 2010-05-07  expires: 2011-05-07
+ssb   rsa4096/066FB4CAD564A6A9  created: 2011-04-25  expires: 2012-04-24
+ssb   rsa4096/DEF09E0491BE3F46  created: 2012-04-23  expires: 2013-04-23
+ssb   rsa4096/8318304C153E576C  created: 2013-04-23  expires: 2014-04-23
+ssb   rsa4096/76BD0D3E2293E1E1  created: 2014-04-23  expires: 2015-04-23
+ssb   rsa4096/39D965713B249393  created: 2015-04-20  expires: 2016-04-19
+ssb   rsa4096/9CFD365BB5F7D1B1  created: 2016-04-14  expires: 2017-04-14
+ssb>  rsa4096/46B310F8DA945B54  created: 2017-04-17  expires: 2018-04-17
+                                card-no: 0006 04156811
+*** serial 0x3f6d9c
+** authenticating ssh using yk4 and gpg-agent
+datan:~% ssh-add -l
+4096 SHA256:LZKqbsLHD7QSwjg9DGvdrrw8Vd6lMWH3EPu5abPtMvM cardno:000604156811 (RSA)
+
+datan:~% ssh ioctl.adb-centralen.se
+sign_and_send_pubkey: signing failed: agent refused operation
+
+Feb 18 11:09:31 datan gpg-agent[2878]: DBG: detected card with S/N D2760001240102010006041568110000
+Feb 18 11:09:31 datan gpg-agent[2878]: scdaemon[2880]: app_auth failed: Invalid ID
+Feb 18 11:09:31 datan gpg-agent[2878]: smartcard signing failed: Invalid ID
+Feb 18 11:09:31 datan gpg-agent[2878]: ssh sign request failed: Invalid ID <SCD>
+
+datan:~% ssh-add -s $(dpkg -L opensc-pkcs11 | grep \/opensc-pkcs11.so\$ | head -n1)
+Enter passphrase for PKCS#11: 
+Could not add card "/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so": agent refused operation
+
+Problem solved by using a separat key for authentication. I suppose
+having the same key for signing and authn is not supported (by gpg?).
+
+Touch works to, after `yubitouch/yubitouch.sh aut on` -- yubikey
+blinking and if I don't touch it within 20s, ssh times out with
+"sign_and_send_pubkey: signing failed: agent refused operation ".
+
+Qeustion is if we should "fix" the authn touch. I think so.
+
+Next question is if we should require touch for signing and decryption
+too.
+
+** troubleshooting
+- yubico-piv-tool can't find reader
+datan:~% yubico-piv-tool --verbose -a list-readers
+error: SCardListReaders failed, rc=8010002e
+Failed to connect to reader.
+
+Eject and insert Yubikey.
+
+Mar 05 09:18:14 datan kernel: usb 1-6: USB disconnect, device number 2
+Mar 05 09:18:14 datan systemd[1]: smartcard.target: Unit not needed anymore. Stopping.
+Mar 05 09:18:14 datan systemd[1]: Stopped target Smart Card.
+Mar 05 09:18:14 datan gpg-agent[1819]: scdaemon[1821]: DBG: Removal of a card: 0
+Mar 05 09:18:20 datan kernel: usb 1-6: new full-speed USB device number 7 using xhci_hcd
+Mar 05 09:18:20 datan kernel: usb 1-6: New USB device found, idVendor=1050, idProduct=0404
+Mar 05 09:18:20 datan kernel: usb 1-6: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+Mar 05 09:18:20 datan kernel: usb 1-6: Product: Yubikey 4 CCID
+Mar 05 09:18:20 datan kernel: usb 1-6: Manufacturer: Yubico
+Mar 05 09:18:20 datan mtp-probe[2188]: checking bus 1, device 7: "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-6"
+Mar 05 09:18:20 datan mtp-probe[2188]: bus: 1, device: 7 was not an MTP device
+Mar 05 09:18:20 datan systemd[1]: Reached target Smart Card.
+
+datan:~% yubico-piv-tool -a list-readers
+Yubico Yubikey 4 CCID 00 00
+
+This seems to work "for a while" before going back to failing again,
+often (always?) with a bunch of the following kernel log entries:
+
+Mar 05 10:07:32 datan kernel: xhci_hcd 0000:00:14.0: WARN Event TRB for slot 10 ep 4 with no TDs queued?
+** locked PIN (tl;dr solution: gpg --change-pin)
+- probably entered the wrong PIN too many times
+
+Mar 05 09:44:48 datan gpg-agent[1819]: scdaemon[1821]: verify CHV2 failed: PIN blocked
+Mar 05 09:44:48 datan gpg-agent[1819]: scdaemon[1821]: app_auth failed: PIN blocked
+Mar 05 09:44:48 datan kernel: xhci_hcd 0000:00:14.0: WARN Event TRB for slot 10 ep 4 with no TDs queued?
+Mar 05 09:44:48 datan gpg-agent[1819]: smartcard signing failed: PIN blocked
+Mar 05 09:44:48 datan gpg-agent[1819]: ssh sign request failed: PIN blocked <SCD>
+
+this is what gpg --card-status reports about retry counters:
+PIN retry counter : 0 0 3
+- tried to unblock pin
+datan:~% yubico-piv-tool -a unblock-pin
+Enter puk:  # entered old pgpg key passphrase (with final char) plus YKII
+Retrieving puk failed.
+- retry counter still "0 0 3"
+- trying to give --pin on command line
+datan:~% unset HISTFILE
+datan:~% yubico-piv-tool -a verify-pin --pin='<redacted>' -a unblock-pin
+Maximum 8 digits of PIN supported.
+Pin code verification failed: 'Wrong buffer size'
+
+datan:~% gpg --change-pin
+gpg: OpenPGP card no. D2760001240102010006041568110000 detected
+
+1 - change PIN
+2 - unblock PIN
+3 - change Admin PIN
+4 - set the Reset Code
+Q - quit
+
+Your selection? 2 # entered admin PIN and new PIN (twice)
+PIN unblocked and new PIN set.
 * YubiHSM
 ** <2011-03-17 Thu>
    NO_CFG> sysinfo
@@ -4476,10 +4663,10 @@ ssb>  2048R/08E3FB84  created: 2016-12-27  expires: never
 ** servers
    OFTC (#tor #tor-dev #tor-se #dfri_se) irc.oftc.net 6697 (TLS)
    SUNET slack (#general #random #devops #nunoc) sunet.irc.slack.com 6697 (TLS) user:ln5
-   JRA2 slack (#general #ct) jra2.irc.slack.com 6697 (TLS) user:linus
-   Baconsvin (#celo #talla) 6nbtgccn5nbcodn3.onion / gff4ixq3takworeuhkubzz4xh2ulytoct4xrpazkiykhupalqlo53ryd.onion / havana.baconsvin.org 6697 (TLS)
+   Baconsvin (#celo #talla) 6nbtgccn5nbcodn3.onion / gff4ixq3takworeuhkubzz4xh2ulytoct4xrpazkiykhupalqlo53ryd.onion / havana.baconsvin.org 6697 (TLS) / sha256:1a1da5f1ed8630159bbe1f7d045cb6823cd4caeadbf0a2a44e0e13d297b7ef14
    IRCNET (#isp #sthix #sunet) irc.atw-inter.net 6697 (TLS) / open.ircnet.net 6667 / irc.portlane.se 6667
    FREENODE (#sparvnastet #edri #erlang) wolfe.freenode.net 6697 (TLS) / chat.eu.freenode.net 6697
+   JRA2 slack (#general #ct) jra2.irc.slack.com 6697 (TLS) user:linus
 
    DALNET (Michiel-5580) irc.terahertz.net 6697
    Telecomix (#telekompaketet) irc.telecomix.org 9999 (ssl)
@@ -29051,7 +29238,7 @@ echo WITH_PKGNG=yes >> /etc/make.conf
 Now, portmaster -L should show packages installed by pkg (i think)
 ** bhyve for virtualisation
 https://wiki.freebsd.org/bhyve
-cat /var/run/dmesg.boot | egrep POPCNT
+cat /var/run/dmesg.boot | egrep POPCNT || echo sorry
 sudo kldload vmm
 echo vmm_load=YES >> /boot/loader.conf
 fetch ftp://ftp.freebsd.org/pub/FreeBSD/snapshots/VM-IMAGES/11.0-CURRENT/amd64/Latest/FreeBSD-11.0-CURRENT-amd64.raw.xz
@@ -29588,8 +29775,11 @@ dsa 2048 bits 0.002015s 0.002374s    496.2    421.3
  409 bit ecdh (nistb409)   0.0087s    115.6
  571 bit ecdh (nistb571)   0.0189s     53.0
 
-** Building from git, on debian jessie
+** Building from git, on debian jessie, stretch
 ./config --prefix=$HOME/usr/openssl11 --shared && make all install
+
+Add `--debug' to change CFLAGS -O3 to -O0 and -g, not pass -DNDEBUG
+and possibly more.
 ** cms
 echo foo | openssl cms -sign -binary -stream -nocerts -nodetach -signer crt -inkey key | openssl cms -verify -stream -certfile crt -nointern -CAfile demoCA/cacert.pem 2>/dev/null || echo ERROR
 ** generating DH parameters
@@ -30493,12 +30683,28 @@ Caroline af Ugglas
 Nanne Grönvall
 * Backup
 ** Cross-platform
-- https://en.wikipedia.org/wiki/Duplicity_%28software%29
+- [[https://en.wikipedia.org/wiki/Duplicity_%2528software%2529][duplicity]]
+  - supports revisions through --restore-time TODO: verify this
 - bacula
 - [[https://en.wikipedia.org/wiki/BackupPC][backuppc]]
   - weasel likes it; perl
+- borg (borgbackup)
+  - does deduplication
+  - support for multiple revisions through unique naming of each
+    archive (presumably by using {utcnow})
+  - testing on local debian (datan)
+    apt install borgbackup borgbackup-doc
+    borg init bup/test
+    borg create ~/bup/test::doc ~/doc
+  - testing on fbsd-10.3 (amnesia)
+    pkg install py36-borgbackup
+    easy_install-3.6 msgpack-python
+    borg init /tmp/bup
+    borg create /tmp/bup::test .
+    borg check /tmp/bup::test
 - https://obnam.org/
   - weasel would look at it; python
+  - retired aug 2017
 ** FreeBSD
 *** UFS
 Use dump/restore.
@@ -30767,6 +30973,7 @@ https://en.bitcoin.it/wiki/Accounts_explained
 https://en.bitcoin.it/wiki/API_reference_(JSON-RPC)
 https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list
 
+bitcoin-cli settxfee <BTC/kB> # see 'getwalletinfo' for current setting
 HISTFILE= bash -
 bitcoin-cli walletpassphrase <passphrase> 10
 bitcoin-cli sendfrom <account> <btc-address> <amount>
@@ -31047,8 +31254,12 @@ appear.
     "iscompressed" : true,
     "account" : ""
 }
+** fees
+- 2017-12-05 bc settxfee 0.001 (~98 sat/byte)
+  0.00272 => 8.3% fee
 ** clients
-- electrum: lightweight client, python, qt; this is what wiretapped is using
+- electrum: lightweight client, python, qt; this is what wiretapped is
+  using
 - sx
   http://sx.dyne.org/
   https://github.com/leif/sx
@@ -32862,6 +33073,18 @@ I see a couple of solutions.
 
 3. Add --fingerprint to gnutls-cli, making it not verify CNAME but the
    server public key fingerprint instead.
+
+4. Add '127.0.0.1 imap.adb-centralen.se' to /etc/hosts, run socat on
+   127.0.0.1:9993, relaying to imap.adbc via tor and point gnus at
+   imap.adb-centralen.se:9993.
+
+   An alternative place for the lies about hostname to IP address
+   mappings would be in local unbound.
+
+   Drawback: ssh to imap.adb-centralen.se won't work (except over Tor
+   so perhaps not such big of a deal).
+
+5. Like #4 but have iptables do the redirect instead of socat.
 * text
 ** Övervakningen urholkar säkerheten
 - xxx
@@ -34648,6 +34871,9 @@ apt-get install imagemagick
 convert IMG_2749.JPG -resize 25% envelope.png
 ** Converting SVG to PNG
 
+** latex beamer
+apt install latex-beamer texlive-latex-extra
+pdflatex file.tex	# generates file.pdf
 * misc
 * lawicel
 ** [[gnus:nnimap%2Badbc:INBOX#0E9248B096194D0DA2BA71472E9B91D8@INTSERV7B][order 35657]] <2014-03-10 Mon>
@@ -35827,7 +36053,7 @@ vpn username=ln, pw=sheuTai6
 * computers
 vardagsrumsdata, lundberg: Intel NUC DN2820FYKH med Ubuntu + Kodi (f.d. XBMC)
 Alt., för youtube och netflix: chromecast
-* gentoo, hardened gentoo
+* gentoo / hardened gentoo
 Installation related notes moved to [[file:p/hgd/hgd.org][file:~/p/hgd/hgd.org]].
 - equery b $(which vi)   -- like dpkg -S
 - eselect locale list; eselect locale set 240 # en_US
@@ -35895,6 +36121,16 @@ received headers actually provide some useful functionality.
   - salsa20/12, salsa20/20 ("full salsa20")
 ** block ciphers
 ** key exchange
+** hash-based signatures
+- https://www.imperialviolet.org/2013/07/18/hashsig.html
+  - see links at the bottom of that post for more
+- https://eprint.iacr.org/2017/349.pdf
+- could opam do it?
+- Talked briefly to paul selkirk in sthlm <2018-03-01 Thu> who's
+  implementing draft-mcgrew-hash-sigs for cryptech (on the ARM). He's
+  going to do a writeup on the experience of implementing from draft
+  (-8?) and send to cryptech-tech@ and later also for CFRG, supposedly
+  in time for IETF London.
 * web.nordu.net (software.nordu.net)
 ** TODO cosmos + puppet [0/8]
 - [ ] docker.io (manually installed)
@@ -36615,6 +36851,100 @@ https://copperhead.co/android/docs/install
     # on jessie since they're too old (4.2.2+git20130529-5.1). On sid
     # (unstable) they're at 5.1.1r29 which also is too old, according
     # to the copperheados instructions.
+*** smashed on 2017-11-08
+- (1) decrypt using usb keyboard then adb
+- (2) fiddle with the hw as suggested
+- (3) fastboot flash twrp, then enter recovery mode, then adb
+  ("fastboot flash recovery twrp.img")
+
+- <2017-11-11 Sat> got access using adb (and a borrowed screen)
+Had to enable "USB debugging" in settings -> system -> developer
+datan:nexus5x% cd ~/data/nexus5x
+datan:nexus5x% time adb backup -apk -obb -noshared -all -system -f backup.dat # ska11eper
+Now unlock your device and confirm the backup operation...
+real    1m56.852s
+datan:nexus5x% adb shell ls -lR sdcard/ > ls-lR.sdcard
+datan:nexus5x% adb shell du -sh sdcard/
+13G     sdcard/
+datan:nexus5x% adb shell du -sh sdcard/DCIM
+12G     sdcard/DCIM
+datan:nexus5x% adb shell du -s sdcard/* | sort -n
+4       sdcard/Alarms
+4       sdcard/EditedOnlinePhotos
+4       sdcard/Notifications
+4       sdcard/Podcasts
+4       sdcard/Ringtones
+8       sdcard/CalendarEvents
+10528   sdcard/regalandroid
+16104   sdcard/Threema
+19536   sdcard/Music
+39656   sdcard/Pictures
+42032   sdcard/Download
+81552   sdcard/Movies
+545596  sdcard/Android
+12368452        sdcard/DCIM
+datan:nexus5x% adb shell tar cf - sdcard/ | tar tvf -
+lrwxrwxrwx root/root         0 1970-01-01 01:00 sdcard -> /storage/self/primary
+datan:nexus5x% adb shell tar cf - /storage/self/primary | tar tvf -
+removing leading '/' from member names
+lrwxrwxrwx root/root         0 1970-01-01 01:00 storage/self/primary -> /mnt/user/0/primary
+datan:nexus5x% adb shell tar cf - /mnt/user/0/primary | tar tvf -
+removing leading '/' from member names
+lrwxrwxrwx root/root         0 1970-01-01 01:00 mnt/user/0/primary -> /storage/emulated/0
+datan:nexus5x% adb shell tar cf - /storage/emulated/0 | tar tvf -
+removing leading '/' from member names
+drwxrwx--x root/sdcard_rw    0 2017-09-11 19:34 storage/emulated/0/
+drwxrwx--x root/sdcard_rw    0 2016-09-05 00:19 storage/emulated/0/Music/
+-rw-rw---- root/sdcard_rw 20000283 2016-09-05 00:19 storage/emulated/0/Music/1-Pilot.mp3
+drwxrwx--x root/sdcard_rw        0 1970-10-13 09:38 storage/emulated/0/Podcasts/
+drwxrwx--x root/sdcard_rw        0 1970-10-13 09:38 storage/emulated/0/Ringtones/
+drwxrwx--x root/sdcard_rw        0 1970-10-13 09:38 storage/emulated/0/Alarms/
+drwxrwx--x root/sdcard_rw        0 1970-10-13 09:38 storage/emulated/0/Notifications/
+drwxrwx--x root/sdcard_rw        0 2017-09-10 16:52 storage/emulated/0/Pictures/
+drwxrwx--x root/sdcard_rw        0 2017-11-05 10:25 storage/emulated/0/Pictures/Screenshots/
+-rw-rw---- root/sdcard_rw   303563 2016-08-04 00:16 storage/emulated/0/Pictures/Screenshots/Screenshot_20160804-001601.png
+-rw-rw---- root/sdcard_rw  1336070 2017-06-02 16:09 storage/emulated/0/Pictures/Screenshots/Screenshot_20170602-160952.png
+-rw-rw---- root/sdcard_rw   167183 2016-08-04 11:33 storage/emulated/0/Pictures/Screenshots/Screenshot_20160804-113346.png
+-rw-rw---- root/sdcard_rw  1271739 2017-06-03 08:31 storage/emulated/0/Pictures/Screenshots/Screenshot_20170603-083120.png
+-rw-rw---- root/sdcard_rw    76632 2017-11-01 20:47 storage/emulated/0/Pictures/Screenshots/Screenshot_20171101-204703.png
+-rw-rw---- root/sdcard_rw  1241290 2017-06-02 08:04 storage/emulated/0/Pictures/Screenshots/Screenshot_20170602-080439.png
+-rw-rw---- root/sdcard_rw  1333351 2017-06-02 11:21 storage/emulated/0/Pictures/Screenshots/Screenshot_20170602-112119.png
+-rw-rw---- root/sdcard_rw  1447221 2017-06-03 21:22 storage/emulated/0/Pictures/Screenshots/Screenshot_20170603-212236.png
+-rw-rw---- root/sdcard_rw  1303013 2017-06-05 00:41 storage/emulated/0/Pictures/Screenshots/Screenshot_20170605-004120.png
+^C
+datan:nexus5x% time adb shell tar cf - /storage/emulated/0 | xz > sdcard.tar.xz
+real    110m46.425s
+datan:nexus5x% ls -lh
+total 13G
+-rw-r----- 1 linus linus  79M Nov 11 23:41 backup.dat
+-rw-r--r-- 1 linus linus 482K Nov 11 23:42 ls-lR.sdcard
+-rw-r--r-- 1 linus linus  13G Nov 12 01:37 sdcard.tar.xz
+datan:nexus5x% time xz -t sdcard.tar.xz
+real    9m29.062s
+
+# making threema backups (id photographed), encrypted in key
+adb pull sdcard/Threema/Backups/threema-backup_8WTERSCW_1510448816422_1.zip
+datan:nexus5x% ls -l threema-backup_8WTERSCW_1510448816422_1.zip
+-rw-r--r-- 1 linus linus 1563863 Nov 12 02:09 threema-backup_8WTERSCW_1510448816422_1.zip
+
+# exporting contacts to Downloads/contacts.vcf
+datan:nexus5x% adb pull sdcard/Download/contacts.vcf
+datan:nexus5x% cat contacts.vcf | egrep '^BEGIN:VCARD' | wc -l
+149
+
+# should take non-sdcard too
+
+
+datan:nexus5x% adb shell ls -lR > ls-lR.root
+datan:nexus5x% wc -l ls-lR.root 
+191085 ls-lR.root
+datan:nexus5x% time adb shell tar cf - / > root.tar
+real    1m12.302s
+datan:nexus5x% tar tvf root.tar | wc -l
+tar: Skipping to next header
+tar: Unexpected EOF in archive
+tar: Error is not recoverable: exiting now
+5639
 * threema id
 ln5: 8WTERSCW
 hjerturr: DP447BD9
@@ -36748,6 +37078,10 @@ capath="/usr/share/keys/hbsd-update/trusted"
 # NOTE: Replace the branch variable with whatever branch you normally use. Check your existing hbsd-update.conf file.
 branch="hardened/current/master"
 baseurl="http://t3a73imee26zfb3d.onion/HardenedBSD/updates/pub/HardenedBSD/updates/${branch}/$(uname -m)"
+** pledge on fbsd
+non-working patch from joe, porting pledge from openbsd:
+[[file:ln.pledge.feb20.2018.against.e1dcbe61327ee8c2650f9ca1db60f5b12d848aa4.diff][file:~/ln.pledge.feb20.2018.against.e1dcbe61327ee8c2650f9ca1db60f5b12d848aa4.diff]]
+the kernel doesn't link correctly
 * hoerbert
 239 euro
 reference 9.742.308
@@ -36860,26 +37194,7 @@ vad gäller i vilken jurisdiktion data lagras?
 ** foo
 Nä det har ju varit en eskalerande ökning sedan första dag ett det här va.
 Nu ska jag sätta mig och slå mig ner innan ...
-* vita bussen
-drift: 3l diesel / mil á 14 kr => 42 kr/mil
-slitage: samma som drift: 42 kr/mil (enl.ök.m. anders: 50 kr/mil)
-wira -> KBV t.o.r.: ca 10 mil => 900 kr
-* lukas bröllop
-[[http://siggestagard.se/wp/sv/pa-garden/hitta-hit/][siggesta gård]], värmdö, (59.3725915, 18.5278724)
-37 km från KBV
-(wira->KBV 53 km)
-totalt 18 mil
-3 l/mil á 14 kr => 756 kr
-slitage (samma som drift): 756 kr
-totalt 1512 kr
-
-uppdaterad kalkyl:
-wira->farsta 65 km
-farsta->älvsjö 10 km
-älvsjö->siggesta 40 km
-totalt 115 km => 23 mil
-23 mil á 42+50 kr => 2116 kr
-* lisbeth söderqvist
+* lisbeth söderqvist @ VR
 alice -99 natsam @ globala
 ella (?) -01 söker natsam @ globala
 * oauth
@@ -36997,13 +37312,19 @@ skriva.
 - non-working board, for legal stuff
 - due in 1-1,5 months; need to go to BCN for signing papers
 - compensating for lost income
-* distributed bugtracking / ticketing
-- be (bugseverywhere.org); seems dead
-- roundup https://en.wikipedia.org/wiki/Roundup_%28issue_tracker%29
+* distributed bugtracking / ticketing / issue tracking, or at least offline
+- be (bugseverywhere.org); seems dead since 2013
+- [[http://roundup-tracker.org/][roundup]] ([[https://en.wikipedia.org/wiki/Roundup_%2528issue_tracker%2529][wikipedia entry]]); 1.5.1 released in 2016; on sourceforge;
+  used by Python; does it really have offline capabilities?
 - https://about.gitlab.com/features; heavy; requires js
 - http://syncwith.us/sd/
 - https://en.wikipedia.org/wiki/Fossil_(software); might not integrate with git
 - https://distix.eu/
+- [[http://www.ditrack.org/][DITrack;]] latest release in 2008, for subversion
+- http://www.cs.unb.ca/%7Ebremner/blog/posts/git-issue-trackers/
+  lists a collection of tools
+- [[https://github.com/chilts/cil][cil]] file based; perl
+- [[https://github.com/jeffWelling/ticgit][TicGit-ng]]; no progress since 2013; ruby
 * lfe
 $ git clone https://github.com/rvirding/lfe
 $ cd lfe/
@@ -37016,7 +37337,7 @@ $ make install PREFIX=$HOME/usr
 (add-to-list 'auto-mode-alist '("\\.lfe\\'" . lfe-mode))
 
 M-x run-lfe
-* calendar
+* calendar @ adb-centralen.se
 https://webmail.adb-centralen.se/rpc.php
 
 curl-tor -v https://webmail.adb-centralen.se/.well-known/caldav
@@ -37024,6 +37345,33 @@ curl-tor -v https://webmail.adb-centralen.se/.well-known/caldav
 < Location: https://webmail.adb-centralen.se/rpc.php
 
 _caldavs._tcp SRV 0 0 443 webmail.adb-centralen.se.
+** instructions for the manual
+*** iphone, to be confirmed
+1. Skapa konto
+- starta inställningar
+- välj "Konton och lösenord"
+- välj "Lägg till konto"
+- välj "Annat"
+- under "KALENDRAR" välj "Lägg till CalDAV-konto"
+- fyll i
+  - Server: webmail.adb-centralen.se
+  - Användarnamn: <ditt användarnamn utan domännamn, t.ex. "fia">
+  - Lösenord: <ditt lösenord>
+  - Beskrivning: <valfri text>
+
+2. Lägg till kalender
+- starta kalender-appen
+- välj "Kalendrar" längst ner i mitten
+- välj "Lägg till kalender" längst ner till vänster
+- ange ett kalendernamn, välj själv en text
+- välj konto webmail.adb-centralen.se
+
+Om det inte fungerar, kolla hur ditt konto ser ut (Inställningar->Konton
+och Lösenord). Det borde vara såhär:
+- Avancerat:
+  - Använd SSL: På
+  - Port: 443
+  - Konto-URL: https://webmail.adb-centralen.se/rpc.php/principals/<användarnamn>/
 * switching/routing hardware/software
 ** mikrotik.com
 https://www.routerboard.se/prest/126-core-router
@@ -37045,3 +37393,2424 @@ about:config privacy.userContext
 ** make dirmngr use tor
 cat /usr/lib/systemd/user/dirmngr.service | sed -e 's/^ExecStart=.*/& --use-tor/1' | sudo dd of=/etc/systemd/user/dirmngr.service
 systemctl --user daemon-reload
+** reloading gpg-agent
+systemctl --user reload gpg-agent
+* ocaml
+** installation on debian (stretch)
+sudo apt install ocaml tuareg-mode ocaml-mode # FIXME: ocaml-mode doing any good?
+sudo apt install opam opam-docs
+opam init
+. ~/.opam/opam-init/init.sh
+opam switch install list
+opam switch install $NEW-VERSION   # 4.05.0 on 2017-10-31
+. ~/.opam/opam-init/init.sh
+opam install merlin
+opam install ocaml-manual	# ~/.opam/<switch>/doc/ocaml-manual/
+opam install odig odoc && odig odoc	# ~/.opam/<switch>/var/cache/odig/odoc/
+** emacs
+M-x run-ocaml
+or
+M-x tuareg-run-ocaml  ; C-c C-s in a buffer with a .ml file
+
+merlin is helping out too
+$ opam install merlin  # follow instructions including 'user-setup'
+
+- C-c t next to a function will have merlin show documentation for
+  that function.
+** books
+- [[file:doc/books/ocaml%20from%20the%20very%20beginning.pdf][file:~/doc/books/ocaml from the very beginning.pdf]]
+- [[file:doc/books/more%20ocaml.pdf][file:~/doc/books/more ocaml.pdf]]
+- [[file:doc/books/introduction%20to%20objective%20caml.pdf][file:~/doc/books/introduction to objective caml.pdf]]
+** documentation
+- ocp-browser
+$ opam install ocp-browser
+$ ocp-browser  
+  SPC to expand entry with '>'
+  M-<key in upper right> to set filter
+** compiling, building
+- ocamlbuild
+- jbuilder -- jane street?
+- topkg -- using ocamlbuild
+** reading list, code
+- joe
+  - 1. https://github.com/TimKnast/opam-signing/tree/master/ochecksum
+  - 2. https://github.com/TimKnast/ocaml-rdseed/
+  - 3. https://github.com/cfcs/scramlkb
+** projects
+*** simple web framework, based on `opium`
+- ~/src/httpd2.ml
+*** tlsping
+**** DONE build failure <2017-10-31 Tue>
+Update: Solution: Add dependency on ppx_cstruct somewhere
+Update 2: ocaml-tls was missing the dependency, fixed now <2017-11-01 Wed>
+
+datan:tlsping% opam pin add socks --dev -k git 'https://github.com/cfcs/ocaml-socks#master'
+[NOTE] Package socks is already git-pinned to https://github.com/cfcs/ocaml-socks#master.
+       This will erase any previous custom definition.
+Proceed ? [Y/n] n
+datan:tlsping% opaml pin add ocaml-tls --dev -k git 'https://github.com/cfcs/ocaml-tls#expose_engine_state'
+Package ocaml-tls does not exist, create as a NEW package ? [Y/n] y
+ocaml-tls is now git-pinned to https://github.com/cfcs/ocaml-tls#expose_engine_state
+
+[ocaml-tls] https://github.com/cfcs/ocaml-tls#expose_engine_state updated
+[ocaml-tls] Installing new package description from
+https://github.com/cfcs/ocaml-tls#expose_engine_state
+
+ocaml-tls needs to be installed.
+The following actions will be performed:
+  ∗  install ptime     0.8.3                  [required by ocaml-tls]
+  ∗  install ocaml-tls *    
+===== ∗  2 =====
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[ocaml-tls] https://github.com/cfcs/ocaml-tls#expose_engine_state already up-to-date
+[default] https://opam.ocaml.org/archives/ptime.0.8.3+opam.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+∗  installed ptime.0.8.3
+[ERROR] The compilation of ocaml-tls failed at "ocaml pkg/pkg.ml build --pinned true --tests false
+        --with-lwt true --with-mirage false".
+
+#=== ERROR while installing ocaml-tls.~unknown ================================#
+# opam-version 1.2.2
+# os           linux
+# command      ocaml pkg/pkg.ml build --pinned true --tests false --with-lwt true --with-mirage false
+# path         /home/linus/.opam/4.05.0/build/ocaml-tls.~unknown
+# compiler     4.05.0
+# exit-code    1
+# env-file     /home/linus/.opam/4.05.0/build/ocaml-tls.~unknown/ocaml-tls-16525-90b366.env
+# stdout-file  /home/linus/.opam/4.05.0/build/ocaml-tls.~unknown/ocaml-tls-16525-90b366.out
+# stderr-file  /home/linus/.opam/4.05.0/build/ocaml-tls.~unknown/ocaml-tls-16525-90b366.err
+### stdout ###
+# ocamlfind ocamldep -package 'cstruct nocrypto result x509 sexplib' -modules lib/tracing.mli > lib/tracing.mli.depends
+# ocamlfind ocamlc -c -g -bin-annot -safe-string -package 'cstruct nocrypto result x509 sexplib' -w +A-4-9-41-42-44-45 -color always -I lib -I lwt -o lib/tracing.cmi lib/tracing.mli
+# ocamlfind ocamldep -package 'cstruct nocrypto result x509 sexplib' -modules lib/tracing.ml > lib/tracing.ml.depends
+# ocamlfind ocamldep -package ppx_sexp_conv -package 'cstruct nocrypto result x509 sexplib' -modules lib/ciphersuite.ml > lib/ciphersuite.ml.depends
+# ocamlfind ocamldep -package cstruct.ppx -package 'cstruct nocrypto result x509 sexplib' -modules lib/packet.ml > lib/packet.ml.depends
+# + ocamlfind ocamldep -package cstruct.ppx -package 'cstruct nocrypto result x509 sexplib' -modules lib/packet.ml > lib/packet.ml.depends
+# ocamlfind: Package `ppx_cstruct' not found - required by `cstruct.ppx'
+# Command exited with code 2.
+### stderr ###
+# [...]
+# pkg.ml: [WARNING] file opam: opam field "doc" undefined or unsupported
+# pkg.ml: [WARNING] file opam: opam field "license" undefined or unsupported
+# pkg.ml: [WARNING] file opam: opam field "dev-repo" undefined or unsupported
+# pkg.ml: [ERROR] cmd ['ocamlbuild' '-use-ocamlfind' '-classic-display' '-j' '4' '-tag' 'debug'
+#      '-build-dir' '_build' 'opam' 'pkg/META' 'CHANGES.md' 'LICENSE.md'
+#      'README.md' 'lib/tls.cmi' 'lib/tls.a' 'lib/tls.cmxs' 'lib/tls.cmxa'
+#      'lib/tls.cma' 'lib/tls.cmx' 'lwt/tls-lwt.a' 'lwt/tls-lwt.cmxs'
+#      'lwt/tls-lwt.cmxa' 'lwt/tls-lwt.cma' 'lwt/x509_lwt.cmx'
+#      'lwt/x509_lwt.cmi' 'lwt/x509_lwt.mli' 'lwt/tls_lwt.cmx'
+#      'lwt/tls_lwt.cmi' 'lwt/tls_lwt.mli']: exited with 10
+
+
+
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  ∗  install ocaml-tls ~unknown
+The following changes have been performed
+  ∗  install ptime 0.8.3
+[NOTE] Pinning command successful, but your installed packages may be out of sync.
+
+The former state can be restored with:
+    opam switch import "~/.opam/4.05.0/backup/state-20170931154300.export"
+
+**** DONE build failure <2017-10-31 Tue>
+Update: ocaml-tls need a more recent nocrypto -- pin to #master (fixed in tlsping/readme.md)
+
+datan:tlsping% opam pin add ocaml-tls --dev -k git 'https://github.com/cfcs/ocaml-tls#expose_engine_state'
+[NOTE] Package ocaml-tls is already git-pinned to https://github.com/cfcs/ocaml-tls#expose_engine_state.
+       This will erase any previous custom definition.
+Proceed ? [Y/n] y
+
+[ocaml-tls] https://github.com/cfcs/ocaml-tls#expose_engine_state updated
+[ocaml-tls] Installing new package description from
+https://github.com/cfcs/ocaml-tls#expose_engine_state
+
+ocaml-tls needs to be installed.
+The following actions will be performed:
+  ∗  install ocaml-tls *
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[ocaml-tls] https://github.com/cfcs/ocaml-tls#expose_engine_state already up-to-date
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[ERROR] The compilation of ocaml-tls failed at "ocaml pkg/pkg.ml build --pinned true --tests false
+        --with-lwt true --with-mirage false".
+
+#=== ERROR while installing ocaml-tls.~unknown ================================#
+# opam-version 1.2.2
+# os           linux
+# command      ocaml pkg/pkg.ml build --pinned true --tests false --with-lwt true --with-mirage false
+# path         /home/linus/.opam/4.05.0/build/ocaml-tls.~unknown
+# compiler     4.05.0
+# exit-code    1
+# env-file     /home/linus/.opam/4.05.0/build/ocaml-tls.~unknown/ocaml-tls-16994-ad8886.env
+# stdout-file  /home/linus/.opam/4.05.0/build/ocaml-tls.~unknown/ocaml-tls-16994-ad8886.out
+# stderr-file  /home/linus/.opam/4.05.0/build/ocaml-tls.~unknown/ocaml-tls-16994-ad8886.err
+### stdout ###
+# [...]
+# ocamlfind ocamlc -c -g -bin-annot -safe-string -package 'cstruct nocrypto result x509 sexplib' -w +A-4-9-41-42-44-45 -color always -I lib -I lwt -o lib/config.cmi lib/config.mli
+# ocamlfind ocamldep -package ppx_sexp_conv -package 'cstruct nocrypto result x509 sexplib' -modules lib/config.ml > lib/config.ml.depends
+# ocamlfind ocamldep -package 'cstruct nocrypto result x509 sexplib' -modules lib/engine.mli > lib/engine.mli.depends
+# ocamlfind ocamldep -package ppx_sexp_conv -package 'cstruct nocrypto result x509 sexplib' -modules lib/state.ml > lib/state.ml.depends
+# ocamlfind ocamlc -c -g -bin-annot -safe-string -package ppx_sexp_conv -for-pack Tls -package 'cstruct nocrypto result x509 sexplib' -w +A-4-9-41-42-44-45 -color always -I lib -I lwt -o lib/state.cmo lib/state.ml
+# ocamlfind ocamlc -c -g -bin-annot -safe-string -package 'cstruct nocrypto result x509 sexplib' -w +A-4-9-41-42-44-45 -color always -I lib -I lwt -o lib/engine.cmi lib/engine.mli
+# + ocamlfind ocamlc -c -g -bin-annot -safe-string -package 'cstruct nocrypto result x509 sexplib' -w +A-4-9-41-42-44-45 -color always -I lib -I lwt -o lib/engine.cmi lib/engine.mli
+# File "lib/engine.mli", line 181, characters 14-34:
+# Error: Unbound type constructor Nocrypto.Hash.digest
+# Command exited with code 2.
+### stderr ###
+# [...]
+# pkg.ml: [WARNING] file opam: opam field "doc" undefined or unsupported
+# pkg.ml: [WARNING] file opam: opam field "license" undefined or unsupported
+# pkg.ml: [WARNING] file opam: opam field "dev-repo" undefined or unsupported
+# pkg.ml: [ERROR] cmd ['ocamlbuild' '-use-ocamlfind' '-classic-display' '-j' '4' '-tag' 'debug'
+#      '-build-dir' '_build' 'opam' 'pkg/META' 'CHANGES.md' 'LICENSE.md'
+#      'README.md' 'lib/tls.cmi' 'lib/tls.a' 'lib/tls.cmxs' 'lib/tls.cmxa'
+#      'lib/tls.cma' 'lib/tls.cmx' 'lwt/tls-lwt.a' 'lwt/tls-lwt.cmxs'
+#      'lwt/tls-lwt.cmxa' 'lwt/tls-lwt.cma' 'lwt/x509_lwt.cmx'
+#      'lwt/x509_lwt.cmi' 'lwt/x509_lwt.mli' 'lwt/tls_lwt.cmx'
+#      'lwt/tls_lwt.cmi' 'lwt/tls_lwt.mli']: exited with 10
+
+
+
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  ∗  install ocaml-tls ~unknown
+No changes have been performed
+[NOTE] Pinning command successful, but your installed packages may be out of sync.
+
+*** ocaml-tlsclient
+** security
+*** hannes on ocaml security
+General remarks about OCaml security: integer overflows are everywhere          |                        
+(see astring / stdlib concat recently [0,1] -- but we also had a CVE [2]        |                        
+(if you ship code with <4.03, you're screwed) -- and the null byte thing        |                        
+[3] (there's apart from in Changes.md no notion of it)).  I'd prefer to         |                        
+have a) regression tests and b) mark old ones as broken and                     |                        
+uninstallable (see e.g. what I did to mirage-fs-unix / mirage-net-xen           |                        
+[4] (using available)) c) send a public announcement to caml-list about         |                        
+it -- I'm sure there are more integer overflows to come.                        |                        
+                                                                                |                        
+To improve security in OCaml, let's find a general solution to integer          |                        
+overflows -- rust and python do it right: have fast fixed width integers        |                        
+and the default (at least in python) promotes to larger representation          |                        
+(bignums) on over/underflow.  Be explicit about wrapping behaviour (I           |                        
+started to work on usane [5] for that reason).                                  |                        
+                                                                                |                        
+Furthermore, collect security issues in OCaml and its libraries (to have        |                        
+transparency what happened so far), and collect best practises / common         |                        
+pitfalls.  I'm pretty convinced that memory safety brings you somewhere,        |                        
+but there's more to achieve (integer overflows are another low-hanging          |                        
+fruit).  It won't be me to do so (at least not this year), a nice start         |                        
+would be to translate the french report [6] (compile everything with            |                        
+safe_string).  Raise awareness of resource usages (hashtables are evil).        |                        
+                                                                                |                        
+                                                                                |                        
+General remarks about "open web security": if you rely on a set of CAs,         |                        
+as done in your browser + web + let's encrypt, you're doing it wrong            |                        
+(weakest link, there have been misbehaving CAs on record, there will be         |                        
+more).  In case you like security, find a mechanism that you can use            |                        
+(e.g. run your own CA if you have control over both sides).  This open          |                        
+web security is not strong, but rather optimistic (similar to ssh).             |                        
+Certificate transparency might help (but doesn't protect the first one          |                        
+connecting to a malicious host).                                                |                        
+                                                                                |                        
+I don't claim to know much about security, but I've seen enough failing.        |                        
+ I'm still very busy with signing packages (no X.509, no CA structure,          |                        
+no PGP web of trust).                                                           |                        
+                                                                                |                        
+Discussing security issues is important, and while PoC are appreciated,         |                        
+the discussion should be open up for claims / theoretical attacks.  And         |                        
+security alone is useless, you need to define your threat model (state          |                        
+actors vs neighbour usually makes a big difference).                            |                        
+                                                                                |                        
+0: https://github.com/dbuenzli/astring/issues/9                                 |                        
+1: https://github.com/ocaml/ocaml/pull/805                                      |                        
+2: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8869               |                        
+3: http://caml.inria.fr/mantis/view.php?id=6945                                 |                        
+4:                                                                              |                        
+https://github.com/ocaml/opam-repository/blob/master/packages/mirage-net-xen/mirage-net-xen.1.4.0/opam#L$
+5: https://github.com/hannesm/usane                                             |                        
+6:                                                                              |                        
+http://www.ssi.gouv.fr/uploads/IMG/pdf/LaFoSec_-_Etat_des_lieux_des_langages_fonctionnels.pdf            
+                                                                                |                        
+--> pls also exceptions and polymorphic compare!                                |                        
+--> f[]ck encoding issues (and adhoc unicode parsing)                           |                        
+--> use 4.03! safe_string!                                                      |                        
+--> non-tail recursion (https://github.com/ocaml/ocaml/pull/181)                |                        
+--> hashtbl                                                                     |                        
+--> assertions             
+** upgrading packages
+opam update
+opam upgrade
+
+*** pinning
+Example of situation which arised when building tlsping back in oct
+-17. Unpinning them.
+
+datan:~% opam pin list
+nocrypto.0.5.4    git  https://github.com/mirleft/ocaml-nocrypto#master
+socks.~unknown    git  https://github.com/cfcs/ocaml-socks#master
+tls.0.8.0         git  https://github.com/cfcs/ocaml-tls#expose_engine_state
+
+**** opam pin remove tls
+tls is now unpinned from git https://github.com/cfcs/ocaml-tls#expose_engine_state
+The following actions will be performed:
+  ↻  recompile tls              0.8.0
+  ⊘  remove    jackline         0.1.0
+  ↻  recompile conduit-lwt-unix 1.0.2         [uses tls]
+  ↻  recompile cohttp-lwt-unix  0.99.0        [uses conduit-lwt-unix]
+  ↻  recompile opium            0.16.0        [uses cohttp-lwt-unix]
+===== ↻  4   ⊘  1 =====
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default] https://opam.ocaml.org/archives/opium.0.16.0+opam.tar.gz downloaded
+[default] https://opam.ocaml.org/archives/conduit-lwt-unix.1.0.2+opam.tar.gz downloaded
+[default] https://opam.ocaml.org/archives/cohttp-lwt-unix.0.99.0+opam.tar.gz downloaded
+[default] https://opam.ocaml.org/archives/tls.0.8.0+opam.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+⊘  removed   jackline.0.1.0
+⊘  removed   opium.0.16.0
+⊘  removed   cohttp-lwt-unix.0.99.0
+⊘  removed   conduit-lwt-unix.1.0.2
+⊘  removed   tls.0.8.0
+∗  installed tls.0.8.0
+∗  installed conduit-lwt-unix.1.0.2
+∗  installed cohttp-lwt-unix.0.99.0
+∗  installed opium.0.16.0
+Done.
+
+**** opam pin remove nocrypto
+nocrypto is now unpinned from git https://github.com/mirleft/ocaml-nocrypto#master
+The following actions will be performed:
+  ↻  recompile nocrypto         0.5.4
+  ↻  recompile x509             0.5.3         [uses nocrypto]
+  ↻  recompile otr              0.3.3         [uses nocrypto]
+  ↻  recompile erm_xmpp         0.3           [uses nocrypto]
+  ↻  recompile tls              0.8.0         [uses nocrypto]
+  ↻  recompile conduit-lwt-unix 1.0.2         [uses tls]
+  ↻  recompile cohttp-lwt-unix  0.99.0        [uses conduit-lwt-unix]
+  ↻  recompile opium            0.16.0        [uses cohttp-lwt-unix]
+===== ↻  8 =====
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[cohttp-lwt-unix] Archive in cache
+[conduit-lwt-unix] Archive in cache
+[opium] Archive in cache
+[default] https://opam.ocaml.org/archives/otr.0.3.3+opam.tar.gz downloaded
+[tls] Archive in cache
+[erm_xmpp] https://github.com/hannesm/xmpp.git#otr already up-to-date
+[default] https://opam.ocaml.org/archives/x509.0.5.3+opam.tar.gz downloaded
+[default] https://opam.ocaml.org/archives/nocrypto.0.5.4+opam.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+⊘  removed   opium.0.16.0
+⊘  removed   cohttp-lwt-unix.0.99.0
+⊘  removed   conduit-lwt-unix.1.0.2
+⊘  removed   otr.0.3.3
+⊘  removed   tls.0.8.0
+⊘  removed   erm_xmpp.0.3
+⊘  removed   x509.0.5.3
+⊘  removed   nocrypto.0.5.4
+∗  installed nocrypto.0.5.4
+∗  installed otr.0.3.3
+∗  installed x509.0.5.3
+∗  installed erm_xmpp.0.3
+∗  installed tls.0.8.0
+∗  installed conduit-lwt-unix.1.0.2
+∗  installed cohttp-lwt-unix.0.99.0
+∗  installed opium.0.16.0
+Done.
+
+**** opam pin remove socks
+socks is now unpinned from git https://github.com/cfcs/ocaml-socks#master
+The following actions will be performed:
+  ⊘  remove socks ~unknown
+Do you want to continue ? [Y/n] y
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+⊘  removed   socks.~unknown
+Done.
+**** opam update
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[xmpp-dev] https://github.com/hannesm/xmpp-opam.git already up-to-date
+[default] synchronized from https://opam.ocaml.org
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[erm_xml] https://github.com/hannesm/xml.git already up-to-date
+[erm_xmpp] https://github.com/hannesm/xmpp.git#otr already up-to-date
+
+Updates available for 4.05.0, apply them with 'opam upgrade':
+===== ↻  35   ↗  56 =====
+**** opam upgrade
+...
+===== ↻  35   ↗  56 =====
+...
+**** opam install jackline
+The following actions will be performed:
+  ∗  install jackline 0.1.0
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[jackline] https://github.com/hannesm/jackline.git updated
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+∗  installed jackline.0.1.0
+Done.
+** troubleshooting
+*** missing implementations for MODULE__
+this program:
+* ratpoison
+- notifications
+  apt install libnotify-bin dunst
+- renumber / move a window
+C-t : number <new>
+* jackline
+- ~/.config/ocaml-xmpp-client/config.sexp
+* onionshare
+* video (vlc) on HDMI
+xrandr --auto
+
+This will stop suspend from happening at lid close -- perform
+`xrandr --listproviders` to restore normal functionality.
+* distributed issue trackers, or at least off-line
+* 2018
+What's the 2018 plan?
+
+Top runners:
+** remote attestation for some kind of servers (vpn, tor?)
+- phone with fredrik on the evening of 2018-01-04
+  - mullvad is willing to pay for improvements on mullvad
+    infrastructure, a kind of PXE boot eventually offering remote
+    attestation (not intel SGX!)
+  - short time frame: want to be able to, when a new server is being
+    handed to us (ssh access), i) clear the disk, 2) install a very
+    minimal linux which downloads an image, kexec into a new kernel
+  - must be reproducibly built and more, providing wireguard,
+    openvpn+plugins, metrics and monitoring functions
+** tor bandwidth authorities
+** tor ipv6
+** ocaml and mirageos hacking
+** running internet services for people who should run them themselves
+** HSM for tor directory authorities
+* pq safe
+- fredrik mullvad on phone 2018-01-04 mentioned implementing [[https://en.wikipedia.org/wiki/McEliece_cryptosystem][McEliece]],
+  from 1978, in rust
+* interesting projects
+See [[*Ideas][Ideas]] too.
+** open hardware r/o usb-sticka (fredrik mullvad)
+Kanske med HSM-funktionalitet med "fil-interface", baserat på USB
+armory?
+- https://github.com/inversepath/usbarmory/wiki
+- https://inversepath.com/usbarmory
+- http://hackerwarehouse.com/product/usb-armory/
+- https://www.crowdsupply.com/inverse-path/usb-armory
+
+You could run a remotely attestated system a la XXX on an armory.
+
+TODO: connect this idea with "homething" (homedrop)
+** make fbsd vm iso command verify downloaded iso
+* wireguard
+* Núbi Ferskur <neubyi@4711.se>
+- uses ln+neubyi@4711.se some places (github)
+* robur.io
+** d.robur.io (forum)
+
+
+# do once
+sudo ( echo '127.0.0.2 d.robur.io' >> /etc/hosts; )
+mkselfsigned.sh 2048
+openssl pkcs12 -export -in selfsigned.crt.pem -inkey selfsigned.key.pem -name selfsigned -out my-roburio.p12
+firefox --safe-mode --no-remote --private-window about:config # proxy(all)=nonexistent; exception:d.robur.io
+
+# do every session (unless socat survives over sessions)
+socat TCP4-LISTEN:8001,bind=127.0.0.2,reuseaddr,fork SOCKS4A:localhost:d.robur.io:443,socksport=9050
+socat OPENSSL-LISTEN:8000,cert=$HOME/tstick/keys/x509/roburio/selfsigned.crt.pem,key=$HOME/tstick/keys/x509/roburio/selfsigned.key.pem,verify=0,bind=127.0.0.2,reuseaddr,fork OPENSSL:127.0.0.2:8001,commonname=d.robur.io,cert=$HOME/tstick/keys/x509/roburio/roburio-crt.pem,key=$HOME/tstick/keys/x509/roburio/roburio-key.pem
+firefox --safe-mode --no-remote --private-window https://d.robur.io:8000/login
+
+*** socat SIGSEGV
+# if first socat keeps segfaulting (after SSL read it seems), rebuild
+# with -g and without -O and run it under gdb
+
+**** socat under gdb
+2018/03/02 23:11:53 socat[29621] E SSL_read(): Success
+2018/03/02 23:11:53 socat[28882] E exiting on signal 11
+[Inferior 1 (process 28882) exited with code 0213]
+(gdb) bt
+No stack.
+(gdb)
+
+grep reveals that 
+- xioread_openssl() sees SSL_read() -> -1, SSL_get_error() ->
+  SSL_ERROR_SYSCALL and errno == 0
+
+1. Why does SSL_read() fail?
+2. Are we segfaulting in the error handling code?
+**** socat -d -d -d -d
+datan:~% socat -d -d -d -d OPENSSL-LISTEN:8000,cert=$HOME/tstick/keys/x509/roburio/selfsigned.crt.pem,key=$HOME/tstick/keys/x509/roburio/selfsigned.key.pem,verify=0,bind=127.0.0.2,reuseaddr,fork OPENSSL:127.0.0.2:8001,commonname=d.robur.io,cert=$HOME/tstick/keys/x509/roburio/roburio-crt.pem,key=$HOME/tstick/keys/x509/roburio/roburio-key.pem
+...
+2018/03/03 07:59:25 socat|32109| N childdied(): handling signal 17
+2018/03/03 07:59:25 socat|32109| I childdied(signum=17)
+2018/03/03 07:59:25 socat|32109| D waitpid(-1, 0x7ffc235695dc, 1)
+2018/03/03 07:59:25 socat|32109| D waitpid(, {0}, ) -> 32114
+2018/03/03 07:59:25 socat|32109| I childdied(17): cannot identify child 32114
+2018/03/03 07:59:25 socat|32109| D saving pid in diedunknown1
+2018/03/03 07:59:25 socat|32109| I waitpid(): child 32114 exited with status 0
+2018/03/03 07:59:25 socat|32109| D waitpid(-1, 0x7ffc235695dc, 1)
+2018/03/03 07:59:25 socat|32109| D waitpid(, {0}, ) -> -1
+2018/03/03 07:59:25 socat|32109| I waitpid(-1, {}, WNOHANG): No child processes
+2018/03/03 07:59:25 socat|32109| I childdied() finished
+2018/03/03 07:59:25 socat|32109| D select -> (, 0x48, 0x0, 0x0, NULL/0.000000), -1
+2018/03/03 07:59:25 socat|32109| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 07:59:38 socat|32109| D select -> (, 0x40, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 07:59:38 socat|32109| D accept(6, 0x7ffc2356a670, 0x7ffc2356a66c)
+2018/03/03 07:59:38 socat|32109| I accept(6, {2, AF=2 127.0.0.2:60606}, 16) -> 7
+2018/03/03 07:59:38 socat|32109| D fcntl(7, 2, 1)
+2018/03/03 07:59:38 socat|32109| D fcntl() -> 0
+2018/03/03 07:59:38 socat|32109| D getpeername(7, 0x7ffc2356a3e0, 0x7ffc2356a36c{16})
+2018/03/03 07:59:38 socat|32109| D getpeername(, {AF=2 127.0.0.2:60606}, {16}) -> 0
+2018/03/03 07:59:38 socat|32109| D getsockname(7, 0x7ffc2356a370, 0x7ffc2356a368{16})
+2018/03/03 07:59:38 socat|32109| D getsockname(, {AF=2 127.0.0.2:8000}, {16}) -> 0
+2018/03/03 07:59:38 socat|32109| N accepting connection from AF=2 127.0.0.2:60606 on AF=2 127.0.0.2:8000
+2018/03/03 07:59:38 socat|32109| I permitting connection from AF=2 127.0.0.2:60606
+2018/03/03 07:59:38 socat|32109| D sigprocmask(0, 0x7ffc2356a0e0, 0x0)
+2018/03/03 07:59:38 socat|32109| D sigprocmask() -> 0
+2018/03/03 07:59:38 socat|32109| D fork()
+2018/03/03 07:59:38 socat|32109| D fork() -> 32242
+2018/03/03 07:59:38 socat|32109| N forked off child process 32242
+2018/03/03 07:59:38 socat|32109| I close(7)
+2018/03/03 07:59:38 socat|32109| D close()  -> 0
+2018/03/03 07:59:38 socat|32109| D sigprocmask(1, 0x7ffc2356a0e0, 0x0)
+2018/03/03 07:59:38 socat|32109| D sigprocmask() -> 0
+2018/03/03 07:59:38 socat|32109| I still listening
+2018/03/03 07:59:38 socat|32109| N listening on AF=2 127.0.0.2:8000
+2018/03/03 07:59:38 socat|32109| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 07:59:38 socat|32242| D fork() -> 0
+2018/03/03 07:59:38 socat|32242| D getpid()
+2018/03/03 07:59:38 socat|32242| D getpid() -> 32242
+2018/03/03 07:59:38 socat|32242| I just born: child process 32242
+2018/03/03 07:59:38 socat|32242| D setenv("SOCAT_PID", "0", 1)
+2018/03/03 07:59:38 socat|32242| D setenv() -> 0
+2018/03/03 07:59:38 socat|32242| D getpid()
+2018/03/03 07:59:38 socat|32242| D getpid() -> 32242
+2018/03/03 07:59:38 socat|32242| D sigprocmask(1, 0x7ffc2356a0e0, 0x0)
+2018/03/03 07:59:38 socat|32242| D sigprocmask() -> 0
+2018/03/03 07:59:38 socat|32242| I just born: child process 32242
+2018/03/03 07:59:38 socat|32242| D setenv("SOCAT_PID", "32242", 1)
+2018/03/03 07:59:38 socat|32242| D setenv() -> 0
+2018/03/03 07:59:38 socat|32242| I close(6)
+2018/03/03 07:59:38 socat|32242| D close()  -> 0
+2018/03/03 07:59:38 socat|32242| D setenv("SOCAT_SOCKADDR", "127.0.0.2", 1)
+2018/03/03 07:59:38 socat|32242| D setenv() -> 0
+2018/03/03 07:59:38 socat|32242| D setenv("SOCAT_SOCKPORT", "8000", 1)
+2018/03/03 07:59:38 socat|32242| D setenv() -> 0
+2018/03/03 07:59:38 socat|32242| D setenv("SOCAT_PEERADDR", "127.0.0.2", 1)
+2018/03/03 07:59:38 socat|32242| D setenv() -> 0
+2018/03/03 07:59:38 socat|32242| D setenv("SOCAT_PEERPORT", "60606", 1)
+2018/03/03 07:59:38 socat|32242| D setenv() -> 0
+2018/03/03 07:59:38 socat|32242| D SSL_new(0x56429e7d7f40)
+2018/03/03 07:59:38 socat|32242| D SSL_new() -> 0x56429e7dced0
+2018/03/03 07:59:38 socat|32242| D SSL_set_fd(0x56429e7dced0, 7)
+2018/03/03 07:59:38 socat|32242| D SSL_set_fd() -> 1
+2018/03/03 07:59:38 socat|32242| D SSL_accept(0x56429e7dced0)
+2018/03/03 07:59:38 socat|32242| D SSL_accept() -> 1
+2018/03/03 07:59:38 socat|32242| N no peer certificate and no check
+2018/03/03 07:59:38 socat|32242| N SSL connection using ECDHE-RSA-AES128-GCM-SHA256
+2018/03/03 07:59:38 socat|32242| D SSL_get_current_compression(0x56429e7dced0)
+2018/03/03 07:59:38 socat|32242| D SSL_get_current_compression() -> NULL
+2018/03/03 07:59:38 socat|32242| D SSL_get_current_expansion(0x56429e7dced0)
+2018/03/03 07:59:38 socat|32242| D SSL_get_current_expansion() -> NULL
+2018/03/03 07:59:38 socat|32242| N SSL connection compression "none"
+2018/03/03 07:59:38 socat|32242| N SSL connection expansion "none"
+2018/03/03 07:59:38 socat|32242| D calloc(1, 808)
+2018/03/03 07:59:38 socat|32242| D calloc() -> 0x56429e7ee4b0
+2018/03/03 07:59:38 socat|32242| D malloc(1024)
+2018/03/03 07:59:38 socat|32242| D malloc() -> 0x56429e7ebdb0
+2018/03/03 07:59:38 socat|32242| I setting option "openssl-commonname" to "d.robur.io"
+2018/03/03 07:59:38 socat|32242| I setting option "openssl-certificate" to "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem"
+2018/03/03 07:59:38 socat|32242| I setting option "openssl-key" to "/home/linus/tstick/keys/x509/roburio/roburio-key.pem"
+2018/03/03 07:59:38 socat|32242| D SSL_load_error_strings()
+2018/03/03 07:59:38 socat|32242| D SSL_load_error_strings() ->
+2018/03/03 07:59:38 socat|32242| D SSL_library_init()
+2018/03/03 07:59:38 socat|32242| D SSL_library_init() -> 1
+2018/03/03 07:59:38 socat|32242| D TLSv1_2_client_method()
+2018/03/03 07:59:38 socat|32242| D TLSv1_2_client_method() -> 0x7f996947ce80
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_new(0x7f996947ce80)
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_new() -> 0x56429e7ec1c0
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_set_tmp_dh(0x56429e7ec1c0, 0x56429e7ecdd0)
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_set_tmp_dh() -> 1
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_use_certificate_chain_file(0x56429e7ec1c0, "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem")
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_use_certificate_chain_file() -> 1
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_use_PrivateKey_file(0x56429e7ec1c0, "/home/linus/tstick/keys/x509/roburio/roburio-key.pem", 1)
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_use_PrivateKey_file() -> 1
+2018/03/03 07:59:38 socat|32242| D BIO_new_file("/home/linus/tstick/keys/x509/roburio/roburio-crt.pem", "r")
+2018/03/03 07:59:38 socat|32242| D BIO_new_file() -> 0x56429e7efcd0
+2018/03/03 07:59:38 socat|32242| D PEM_read_bio_DHparams(0x56429e7efcd0, 0x0, 0x0, 0x0)
+2018/03/03 07:59:38 socat|32242| D PEM_read_bio_DHparams() -> NULL
+2018/03/03 07:59:38 socat|32242| I PEM_read_bio_DHparams(0x56429e7efcd0, NULL, NULL, NULL): error
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_set_cipher_list(0x56429e7ec1c0, "HIGH:-NULL:-PSK:-aNULL")
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_set_cipher_list() -> 1
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_set_verify(0x56429e7ec1c0, 3, 0x0)
+2018/03/03 07:59:38 socat|32242| D SSL_CTX_set_verify() ->
+2018/03/03 07:59:38 socat|32242| D getaddrinfo("127.0.0.2", NULL, {5,2,1,6,0,0x0,0x0,0x0}, 0x7ffc2356a418)
+2018/03/03 07:59:38 socat|32242| D getaddrinfo(,,,{{AF=2 127.0.0.2:0, }) -> 0
+2018/03/03 07:59:38 socat|32242| D malloc(512)
+2018/03/03 07:59:38 socat|32242| D malloc() -> 0x56429e7ef4b0
+2018/03/03 07:59:38 socat|32242| N opening connection to AF=2 127.0.0.2:8001
+2018/03/03 07:59:38 socat|32242| I starting connect loop
+2018/03/03 07:59:38 socat|32242| D socket(2, 1, 6)
+2018/03/03 07:59:38 socat|32242| I socket(2, 1, 6) -> 8
+2018/03/03 07:59:38 socat|32242| D fcntl(8, 2, 1)
+2018/03/03 07:59:38 socat|32242| D fcntl() -> 0
+2018/03/03 07:59:38 socat|32242| D connect(8, {2,AF=2 127.0.0.2:8001}, 16)
+2018/03/03 07:59:38 socat|32242| D connect() -> 0
+2018/03/03 07:59:38 socat|32242| D getsockname(8, 0x7ffc2356a460, 0x7ffc2356a45c{112})
+2018/03/03 07:59:38 socat|32242| D getsockname(, {AF=2 127.0.0.2:34630}, {16}) -> 0
+2018/03/03 07:59:38 socat|32242| N successfully connected from local address AF=2 127.0.0.2:34630
+2018/03/03 07:59:38 socat|32242| D SSL_new(0x56429e7ec1c0)
+2018/03/03 07:59:38 socat|32242| D SSL_new() -> 0x56429e7e19b0
+2018/03/03 07:59:38 socat|32242| D SSL_set_fd(0x56429e7e19b0, 8)
+2018/03/03 07:59:38 socat|32242| D SSL_set_fd() -> 1
+2018/03/03 07:59:38 socat|32242| D SSL_connect(0x56429e7e19b0)
+2018/03/03 07:59:40 socat|32242| D SSL_connect() -> 1
+2018/03/03 07:59:40 socat|32242| D SSL_get_verify_result(0x56429e7e19b0)
+2018/03/03 07:59:40 socat|32242| D SSL_get_verify_result() -> 0
+2018/03/03 07:59:40 socat|32242| I peer certificate is trusted
+2018/03/03 07:59:40 socat|32242| D malloc(16)
+2018/03/03 07:59:40 socat|32242| D malloc() -> 0x56429e7edca0
+2018/03/03 07:59:40 socat|32242| I SSL peer cert subject: "CN = d.robur.io"
+2018/03/03 07:59:40 socat|32242| D setenv("SOCAT_OPENSSL_X509_SUBJECT", "CN = d.robur.io", 1)
+2018/03/03 07:59:40 socat|32242| D setenv() -> 0
+2018/03/03 07:59:40 socat|32242| D SSL peer cert subject entry: commonName="d.robur.io"
+2018/03/03 07:59:40 socat|32242| D setenv("SOCAT_OPENSSL_X509_COMMONNAME", "d.robur.io", 2)
+2018/03/03 07:59:40 socat|32242| D setenv() -> 0
+2018/03/03 07:59:40 socat|32242| D malloc(59)
+2018/03/03 07:59:40 socat|32242| D malloc() -> 0x56429e8045d0
+2018/03/03 07:59:40 socat|32242| I SSL peer cert issuer: "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3��BV"
+2018/03/03 07:59:40 socat|32242| D setenv("SOCAT_OPENSSL_X509_ISSUER", "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3", 1)
+2018/03/03 07:59:40 socat|32242| D setenv() -> 0
+2018/03/03 07:59:40 socat|32242| D setenv("SOCAT_OPENSSL_X509V3_SUBJECTALTNAME_DNS", "d.robur.io", 2)
+2018/03/03 07:59:40 socat|32242| D setenv() -> 0
+2018/03/03 07:59:40 socat|32242| D commonName "d.robur.io" has no wildcard
+2018/03/03 07:59:40 socat|32242| D commonName "d.robur.io" matches peername "d.robur.io"
+2018/03/03 07:59:40 socat|32242| N trusting certificate, commonName matches
+2018/03/03 07:59:40 socat|32242| N SSL connection using DHE-RSA-AES256-CCM
+2018/03/03 07:59:40 socat|32242| D SSL_get_current_compression(0x56429e7e19b0)
+2018/03/03 07:59:40 socat|32242| D SSL_get_current_compression() -> NULL
+2018/03/03 07:59:40 socat|32242| D SSL_get_current_expansion(0x56429e7e19b0)
+2018/03/03 07:59:40 socat|32242| D SSL_get_current_expansion() -> NULL
+2018/03/03 07:59:40 socat|32242| N SSL connection compression "none"
+2018/03/03 07:59:40 socat|32242| N SSL connection expansion "none"
+2018/03/03 07:59:40 socat|32242| I resolved and opened all sock addresses
+2018/03/03 07:59:40 socat|32242| D malloc(16385)
+2018/03/03 07:59:40 socat|32242| D malloc() -> 0x56429e7f0890
+2018/03/03 07:59:40 socat|32242| N starting data transfer loop with FDs |7,7| and |8,8|
+2018/03/03 07:59:40 socat|32242| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 07:59:40 socat|32242| D select(9, &0x180, &0x180, &0x0, NULL/0.000000)
+2018/03/03 07:59:40 socat|32242| D select -> (, 0x80, 0x180, 0x0, NULL/0.000000), 3
+2018/03/03 07:59:40 socat|32242| D SSL_read(0x56429e7dced0, 0x56429e7f0890, 8192)
+2018/03/03 07:59:40 socat|32242| D SSL_read() -> 0
+2018/03/03 07:59:40 socat|32242| N socket 1 (fd 7) is at EOF
+2018/03/03 07:59:40 socat|32242| D SSL_shutdown(0x56429e7e19b0)
+2018/03/03 07:59:40 socat|32242| D SSL_shutdown() -> 0
+2018/03/03 07:59:40 socat|32242| D data loop: sock1->eof=2, sock2->eof=0, closing=1, wasaction=1, total_to={0.000000}
+2018/03/03 07:59:40 socat|32242| D select(9, &0x100, &0x0, &0x0, &0.500000)
+2018/03/03 07:59:40 socat|32242| D select -> (, 0x100, 0x0, 0x0, &0.332778), 1
+2018/03/03 07:59:40 socat|32242| D SSL_read(0x56429e7e19b0, 0x56429e7f0890, 8192)
+2018/03/03 07:59:40 socat|32242| D SSL_read() -> -1
+2018/03/03 07:59:40 socat|32242| E SSL_read(): Success
+2018/03/03 07:59:40 socat|32242| N exit(1)
+2018/03/03 07:59:40 socat|32242| D starting xioexit()
+2018/03/03 07:59:40 socat|32242| D SSL_shutdown(0x56429e7dced0)
+2018/03/03 07:59:40 socat|32242| D SSL_shutdown() -> -1
+2018/03/03 07:59:40 socat|32242| D SSL_free(0x56429e7dced0)
+2018/03/03 07:59:40 socat|32242| D SSL_free() -> void
+2018/03/03 07:59:40 socat|32242| I close(7)
+2018/03/03 07:59:40 socat|32242| D close()  -> 0
+2018/03/03 07:59:40 socat|32242| D SSL_shutdown(0x56429e7e19b0)
+2018/03/03 07:59:40 socat|32109| N socat_signal(): handling signal 11
+2018/03/03 07:59:40 socat|32109| E exiting on signal 11
+2018/03/03 07:59:40 socat|32109| N exit(139)
+2018/03/03 07:59:40 socat|32109| D starting xioexit()
+2018/03/03 07:59:40 socat|32109| I close(6)
+2018/03/03 07:59:40 socat|32109| D close()  -> 0
+2018/03/03 07:59:40 socat|32109| D finished xioexit()
+**** another one
+2018/03/03 09:12:13 socat[1292| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:13 socat[1292| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:12:13 socat[1292| D SSL_read() -> 0
+2018/03/03 09:12:13 socat[1292| N socket 2 (fd 8) is at EOF
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown() -> 0
+2018/03/03 09:12:13 socat[1292| D data loop: sock1->eof=0, sock2->eof=2, closing=1, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:13 socat[1292| D select(8, &0x80, &0x0, &0x0, &0.500000)
+2018/03/03 09:12:13 socat[1292| D select -> (, 0x80, 0x0, 0x0, &0.499693), 1
+2018/03/03 09:12:13 socat[1292| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:12:13 socat[1292| D SSL_read() -> 0
+2018/03/03 09:12:13 socat[1292| N socket 1 (fd 7) is at EOF
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown(0x563553542140)
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown() -> 1
+2018/03/03 09:12:13 socat[1292| N socket 2 (fd 8) is at EOF
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown() -> -1
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown() -> -1
+2018/03/03 09:12:13 socat[1292| D SSL_free(0x56355353ced0)
+2018/03/03 09:12:13 socat[1292| D SSL_free() -> void
+2018/03/03 09:12:13 socat[1292| I close(7)
+2018/03/03 09:12:13 socat[1292| D close()  -> 0
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown(0x563553542140)
+2018/03/03 09:12:13 socat[1292| D SSL_shutdown() -> 1
+2018/03/03 09:12:13 socat[1292| D SSL_free(0x563553542140)
+2018/03/03 09:12:13 socat[1292| D SSL_free() -> void
+2018/03/03 09:12:13 socat[1292| I close(8)
+2018/03/03 09:12:13 socat[1292| D close()  -> 0
+2018/03/03 09:12:13 socat[1292| N exiting with status 0
+2018/03/03 09:12:13 socat[1292| D exit(0)
+2018/03/03 09:12:13 socat[1292| D starting xioexit()
+2018/03/03 09:12:13 socat[1292| D finished xioexit()
+2018/03/03 09:12:13 socat[854| N childdied(): handling signal 17
+2018/03/03 09:12:13 socat[854| I childdied(signum=17)
+2018/03/03 09:12:13 socat[854| D waitpid(-1, 0x7ffd7117771c, 1)
+2018/03/03 09:12:13 socat[854| D waitpid(, {0}, ) -> 1292
+2018/03/03 09:12:13 socat[854| I childdied(17): cannot identify child 1292
+2018/03/03 09:12:13 socat[854| D saving pid in diedunknown4
+2018/03/03 09:12:13 socat[854| I waitpid(): child 1292 exited with status 0
+2018/03/03 09:12:13 socat[854| D waitpid(-1, 0x7ffd7117771c, 1)
+2018/03/03 09:12:13 socat[854| D waitpid(, {0}, ) -> 0
+2018/03/03 09:12:13 socat[854| I waitpid(-1, {}, WNOHANG): no child has exited
+2018/03/03 09:12:13 socat[854| I childdied() finished
+2018/03/03 09:12:13 socat[854| D select -> (, 0x48, 0x0, 0x0, NULL/0.000000), -1
+2018/03/03 09:12:13 socat[854| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:12:15 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:15 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:12:15 socat[1294| D SSL_read() -> 452
+2018/03/03 09:12:15 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 452)
+2018/03/03 09:12:15 socat[1294| D SSL_write() -> 452
+2018/03/03 09:12:15 socat[1294| I transferred 452 bytes from 8 to 7
+2018/03/03 09:12:15 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:12:15 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:12:15 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:15 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:12:15 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:15 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:15 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:12:16 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:16 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:12:16 socat[1294| D SSL_read() -> 1589
+2018/03/03 09:12:16 socat[1294| D SSL_write(0x563553542140, 0x56355354f210, 1589)
+2018/03/03 09:12:16 socat[1294| D SSL_write() -> 1589
+2018/03/03 09:12:16 socat[1294| I transferred 1589 bytes from 7 to 8
+2018/03/03 09:12:16 socat[1294| D SSL_pending(0x56355353ced0)
+2018/03/03 09:12:16 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:12:16 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:16 socat[1294| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:12:16 socat[1294| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:16 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:16 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:12:39 socat[1300| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:39 socat[1300| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:12:39 socat[1300| D SSL_read() -> 0
+2018/03/03 09:12:39 socat[1300| N socket 2 (fd 8) is at EOF
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown() -> 0
+2018/03/03 09:12:39 socat[1300| D data loop: sock1->eof=0, sock2->eof=2, closing=1, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:39 socat[1300| D select(8, &0x80, &0x0, &0x0, &0.500000)
+2018/03/03 09:12:39 socat[1300| D select -> (, 0x80, 0x0, 0x0, &0.499746), 1
+2018/03/03 09:12:39 socat[1300| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:12:39 socat[1300| D SSL_read() -> 0
+2018/03/03 09:12:39 socat[1300| N socket 1 (fd 7) is at EOF
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown(0x563553542140)
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown() -> 1
+2018/03/03 09:12:39 socat[1300| N socket 2 (fd 8) is at EOF
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown() -> -1
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown() -> -1
+2018/03/03 09:12:39 socat[1300| D SSL_free(0x56355353ced0)
+2018/03/03 09:12:39 socat[1300| D SSL_free() -> void
+2018/03/03 09:12:39 socat[1300| I close(7)
+2018/03/03 09:12:39 socat[1300| D close()  -> 0
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown(0x563553542140)
+2018/03/03 09:12:39 socat[1300| D SSL_shutdown() -> 1
+2018/03/03 09:12:39 socat[1300| D SSL_free(0x563553542140)
+2018/03/03 09:12:39 socat[1300| D SSL_free() -> void
+2018/03/03 09:12:39 socat[1300| I close(8)
+2018/03/03 09:12:39 socat[1300| D close()  -> 0
+2018/03/03 09:12:39 socat[1300| N exiting with status 0
+2018/03/03 09:12:39 socat[1300| D exit(0)
+2018/03/03 09:12:39 socat[1300| D starting xioexit()
+2018/03/03 09:12:39 socat[1300| D finished xioexit()
+2018/03/03 09:12:39 socat[854| N childdied(): handling signal 17
+2018/03/03 09:12:39 socat[854| I childdied(signum=17)
+2018/03/03 09:12:39 socat[854| D waitpid(-1, 0x7ffd7117771c, 1)
+2018/03/03 09:12:39 socat[854| D waitpid(, {0}, ) -> 1300
+2018/03/03 09:12:39 socat[854| I childdied(17): cannot identify child 1300
+2018/03/03 09:12:39 socat[854| D saving pid in diedunknown1
+2018/03/03 09:12:39 socat[854| I waitpid(): child 1300 exited with status 0
+2018/03/03 09:12:39 socat[854| D waitpid(-1, 0x7ffd7117771c, 1)
+2018/03/03 09:12:39 socat[854| D waitpid(, {0}, ) -> 0
+2018/03/03 09:12:39 socat[854| I waitpid(-1, {}, WNOHANG): no child has exited
+2018/03/03 09:12:39 socat[854| I childdied() finished
+2018/03/03 09:12:39 socat[854| D select -> (, 0x48, 0x0, 0x0, NULL/0.000000), -1
+2018/03/03 09:12:39 socat[854| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:12:41 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:41 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:12:41 socat[1294| D SSL_read() -> 452
+2018/03/03 09:12:41 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 452)
+2018/03/03 09:12:41 socat[1294| D SSL_write() -> 452
+2018/03/03 09:12:41 socat[1294| I transferred 452 bytes from 8 to 7
+2018/03/03 09:12:41 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:12:41 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:12:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:41 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:12:41 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:41 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:12:41 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:41 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:12:41 socat[1294| D SSL_read() -> 1589
+2018/03/03 09:12:41 socat[1294| D SSL_write(0x563553542140, 0x56355354f210, 1589)
+2018/03/03 09:12:41 socat[1294| D SSL_write() -> 1589
+2018/03/03 09:12:41 socat[1294| I transferred 1589 bytes from 7 to 8
+2018/03/03 09:12:41 socat[1294| D SSL_pending(0x56355353ced0)
+2018/03/03 09:12:41 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:12:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:41 socat[1294| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:12:41 socat[1294| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:12:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:12:41 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:13:07 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:13:07 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:13:07 socat[1294| D SSL_read() -> 452
+2018/03/03 09:13:07 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 452)
+2018/03/03 09:13:07 socat[1294| D SSL_write() -> 452
+2018/03/03 09:13:07 socat[1294| I transferred 452 bytes from 8 to 7
+2018/03/03 09:13:07 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:13:07 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:13:07 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:13:07 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:13:07 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:13:07 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:13:07 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:13:41 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:13:41 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:13:41 socat[1294| D SSL_read() -> 1570
+2018/03/03 09:13:41 socat[1294| D SSL_write(0x563553542140, 0x56355354f210, 1570)
+2018/03/03 09:13:41 socat[1294| D SSL_write() -> 1570
+2018/03/03 09:13:41 socat[1294| I transferred 1570 bytes from 7 to 8
+2018/03/03 09:13:41 socat[1294| D SSL_pending(0x56355353ced0)
+2018/03/03 09:13:41 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:13:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:13:41 socat[1294| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:13:41 socat[1294| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:13:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:13:41 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:13:42 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:13:42 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:13:42 socat[1294| D SSL_read() -> 551
+2018/03/03 09:13:42 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 551)
+2018/03/03 09:13:42 socat[1294| D SSL_write() -> 551
+2018/03/03 09:13:42 socat[1294| I transferred 551 bytes from 8 to 7
+2018/03/03 09:13:42 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:13:42 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:13:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:13:42 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:13:42 socat[1294| D select -> (, 0x100, 0x80, 0x0, NULL/0.000000), 2
+2018/03/03 09:13:42 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:13:42 socat[1294| D SSL_read() -> 20
+2018/03/03 09:13:42 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 20)
+2018/03/03 09:13:42 socat[1294| D SSL_write() -> 20
+2018/03/03 09:13:42 socat[1294| I transferred 20 bytes from 8 to 7
+2018/03/03 09:13:42 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:13:42 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:13:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:13:42 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:13:42 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:13:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:13:42 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:14:41 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:14:41 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:14:41 socat[1294| D SSL_read() -> 1570
+2018/03/03 09:14:41 socat[1294| D SSL_write(0x563553542140, 0x56355354f210, 1570)
+2018/03/03 09:14:41 socat[1294| D SSL_write() -> 1570
+2018/03/03 09:14:41 socat[1294| I transferred 1570 bytes from 7 to 8
+2018/03/03 09:14:41 socat[1294| D SSL_pending(0x56355353ced0)
+2018/03/03 09:14:41 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:14:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:14:41 socat[1294| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:14:41 socat[1294| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:14:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:14:41 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:14:42 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:14:42 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:14:42 socat[1294| D SSL_read() -> 547
+2018/03/03 09:14:42 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 547)
+2018/03/03 09:14:42 socat[1294| D SSL_write() -> 547
+2018/03/03 09:14:42 socat[1294| I transferred 547 bytes from 8 to 7
+2018/03/03 09:14:42 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:14:42 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:14:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:14:42 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:14:42 socat[1294| D select -> (, 0x100, 0x80, 0x0, NULL/0.000000), 2
+2018/03/03 09:14:42 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:14:42 socat[1294| D SSL_read() -> 13
+2018/03/03 09:14:42 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 13)
+2018/03/03 09:14:42 socat[1294| D SSL_write() -> 13
+2018/03/03 09:14:42 socat[1294| I transferred 13 bytes from 8 to 7
+2018/03/03 09:14:42 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:14:42 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:14:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:14:42 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:14:42 socat[1294| D select -> (, 0x100, 0x80, 0x0, NULL/0.000000), 2
+2018/03/03 09:14:42 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:14:42 socat[1294| D SSL_read() -> 20
+2018/03/03 09:14:42 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 20)
+2018/03/03 09:14:42 socat[1294| D SSL_write() -> 20
+2018/03/03 09:14:42 socat[1294| I transferred 20 bytes from 8 to 7
+2018/03/03 09:14:42 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:14:42 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:14:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:14:42 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:14:42 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:14:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:14:42 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:15:41 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:15:41 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:15:41 socat[1294| D SSL_read() -> 1570
+2018/03/03 09:15:41 socat[1294| D SSL_write(0x563553542140, 0x56355354f210, 1570)
+2018/03/03 09:15:41 socat[1294| D SSL_write() -> 1570
+2018/03/03 09:15:41 socat[1294| I transferred 1570 bytes from 7 to 8
+2018/03/03 09:15:41 socat[1294| D SSL_pending(0x56355353ced0)
+2018/03/03 09:15:41 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:15:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:15:41 socat[1294| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:15:41 socat[1294| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:15:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:15:41 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:15:42 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:15:42 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:15:42 socat[1294| D SSL_read() -> 547
+2018/03/03 09:15:42 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 547)
+2018/03/03 09:15:42 socat[1294| D SSL_write() -> 547
+2018/03/03 09:15:42 socat[1294| I transferred 547 bytes from 8 to 7
+2018/03/03 09:15:42 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:15:42 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:15:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:15:42 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:15:42 socat[1294| D select -> (, 0x100, 0x80, 0x0, NULL/0.000000), 2
+2018/03/03 09:15:42 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:15:42 socat[1294| D SSL_read() -> 13
+2018/03/03 09:15:42 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 13)
+2018/03/03 09:15:42 socat[1294| D SSL_write() -> 13
+2018/03/03 09:15:42 socat[1294| I transferred 13 bytes from 8 to 7
+2018/03/03 09:15:42 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:15:42 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:15:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:15:42 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:15:42 socat[1294| D select -> (, 0x100, 0x80, 0x0, NULL/0.000000), 2
+2018/03/03 09:15:42 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:15:42 socat[1294| D SSL_read() -> 20
+2018/03/03 09:15:42 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 20)
+2018/03/03 09:15:42 socat[1294| D SSL_write() -> 20
+2018/03/03 09:15:42 socat[1294| I transferred 20 bytes from 8 to 7
+2018/03/03 09:15:42 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:15:42 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:15:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:15:42 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:15:42 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:15:42 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:15:42 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:16:41 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:16:41 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:16:41 socat[1294| D SSL_read() -> 1570
+2018/03/03 09:16:41 socat[1294| D SSL_write(0x563553542140, 0x56355354f210, 1570)
+2018/03/03 09:16:41 socat[1294| D SSL_write() -> 1570
+2018/03/03 09:16:41 socat[1294| I transferred 1570 bytes from 7 to 8
+2018/03/03 09:16:41 socat[1294| D SSL_pending(0x56355353ced0)
+2018/03/03 09:16:41 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:16:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:16:41 socat[1294| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:16:41 socat[1294| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:16:41 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:16:41 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:16:42 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:16:42 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:16:43 socat[1294| D SSL_read() -> 547
+2018/03/03 09:16:43 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 547)
+2018/03/03 09:16:43 socat[1294| D SSL_write() -> 547
+2018/03/03 09:16:43 socat[1294| I transferred 547 bytes from 8 to 7
+2018/03/03 09:16:43 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:16:43 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:16:43 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:16:43 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:16:43 socat[1294| D select -> (, 0x100, 0x80, 0x0, NULL/0.000000), 2
+2018/03/03 09:16:43 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:16:43 socat[1294| D SSL_read() -> 13
+2018/03/03 09:16:43 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 13)
+2018/03/03 09:16:43 socat[1294| D SSL_write() -> 13
+2018/03/03 09:16:43 socat[1294| I transferred 13 bytes from 8 to 7
+2018/03/03 09:16:43 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:16:43 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:16:43 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:16:43 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:16:43 socat[1294| D select -> (, 0x100, 0x80, 0x0, NULL/0.000000), 2
+2018/03/03 09:16:43 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:16:43 socat[1294| D SSL_read() -> 20
+2018/03/03 09:16:43 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 20)
+2018/03/03 09:16:43 socat[1294| D SSL_write() -> 20
+2018/03/03 09:16:43 socat[1294| I transferred 20 bytes from 8 to 7
+2018/03/03 09:16:43 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:16:43 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:16:43 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:16:43 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:16:43 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:16:43 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:16:43 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:17:38 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:17:38 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:17:38 socat[1294| D SSL_read() -> 1589
+2018/03/03 09:17:38 socat[1294| D SSL_write(0x563553542140, 0x56355354f210, 1589)
+2018/03/03 09:17:38 socat[1294| D SSL_write() -> 1589
+2018/03/03 09:17:38 socat[1294| I transferred 1589 bytes from 7 to 8
+2018/03/03 09:17:38 socat[1294| D SSL_pending(0x56355353ced0)
+2018/03/03 09:17:38 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:17:38 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:17:38 socat[1294| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:17:38 socat[1294| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:17:38 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:17:38 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:03 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:03 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:18:03 socat[1294| D SSL_read() -> 452
+2018/03/03 09:18:03 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 452)
+2018/03/03 09:18:03 socat[1294| D SSL_write() -> 452
+2018/03/03 09:18:03 socat[1294| I transferred 452 bytes from 8 to 7
+2018/03/03 09:18:03 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:18:03 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:18:03 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:03 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:18:03 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:03 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:03 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:03 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:03 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:18:03 socat[1294| D SSL_read() -> 1589
+2018/03/03 09:18:03 socat[1294| D SSL_write(0x563553542140, 0x56355354f210, 1589)
+2018/03/03 09:18:03 socat[1294| D SSL_write() -> 1589
+2018/03/03 09:18:03 socat[1294| I transferred 1589 bytes from 7 to 8
+2018/03/03 09:18:03 socat[1294| D SSL_pending(0x56355353ced0)
+2018/03/03 09:18:03 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:18:03 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:03 socat[1294| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:18:03 socat[1294| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:03 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:03 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:29 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:29 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:18:29 socat[1294| D SSL_read() -> 452
+2018/03/03 09:18:29 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 452)
+2018/03/03 09:18:29 socat[1294| D SSL_write() -> 452
+2018/03/03 09:18:29 socat[1294| I transferred 452 bytes from 8 to 7
+2018/03/03 09:18:29 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:18:29 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:18:29 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:29 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:18:29 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:29 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:29 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:29 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:29 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:18:29 socat[1294| D SSL_read() -> 1548
+2018/03/03 09:18:29 socat[1294| D SSL_write(0x563553542140, 0x56355354f210, 1548)
+2018/03/03 09:18:29 socat[1294| D SSL_write() -> 1548
+2018/03/03 09:18:29 socat[1294| I transferred 1548 bytes from 7 to 8
+2018/03/03 09:18:29 socat[1294| D SSL_pending(0x56355353ced0)
+2018/03/03 09:18:29 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:18:29 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:29 socat[1294| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:18:29 socat[1294| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:29 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:29 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:30 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:30 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:18:30 socat[1294| D SSL_read() -> 498
+2018/03/03 09:18:30 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 498)
+2018/03/03 09:18:30 socat[1294| D SSL_write() -> 498
+2018/03/03 09:18:30 socat[1294| I transferred 498 bytes from 8 to 7
+2018/03/03 09:18:30 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:18:30 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:18:30 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:30 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:18:30 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:30 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:30 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:55 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:55 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:18:55 socat[1294| D SSL_read() -> 12
+2018/03/03 09:18:55 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 12)
+2018/03/03 09:18:55 socat[1294| D SSL_write() -> 12
+2018/03/03 09:18:55 socat[1294| I transferred 12 bytes from 8 to 7
+2018/03/03 09:18:55 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:18:55 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:18:55 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:55 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:18:55 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:55 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:55 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:55 socat[1294| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:55 socat[1294| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+2018/03/03 09:18:55 socat[1294| D SSL_read() -> 5
+2018/03/03 09:18:55 socat[1294| D SSL_write(0x56355353ced0, 0x56355354f210, 5)
+2018/03/03 09:18:55 socat[1294| D SSL_write() -> 5
+2018/03/03 09:18:55 socat[1294| I transferred 5 bytes from 8 to 7
+2018/03/03 09:18:55 socat[1294| D SSL_pending(0x563553542140)
+2018/03/03 09:18:55 socat[1294| D SSL_pending() -> 0
+2018/03/03 09:18:55 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:55 socat[1294| D select(9, &0x180, &0x80, &0x0, NULL/0.000000)
+2018/03/03 09:18:55 socat[1294| D select -> (, 0x0, 0x80, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:55 socat[1294| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:55 socat[1294| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:55 socat[1294| D select -> (, 0x80, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:55 socat[1294| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:18:55 socat[1294| D SSL_read() -> 0
+2018/03/03 09:18:55 socat[1294| N socket 1 (fd 7) is at EOF
+2018/03/03 09:18:55 socat[1294| D SSL_shutdown(0x563553542140)
+2018/03/03 09:18:55 socat[1294| D SSL_shutdown() -> 0
+2018/03/03 09:18:55 socat[1294| D data loop: sock1->eof=2, sock2->eof=0, closing=1, wasaction=1, total_to={0.000000}
+2018/03/03 09:18:55 socat[1294| D select(9, &0x100, &0x0, &0x0, &0.500000)
+2018/03/03 09:18:55 socat[854| D select -> (, 0x40, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:55 socat[854| D accept(6, 0x7ffd71178790, 0x7ffd7117878c)
+2018/03/03 09:18:55 socat[854| I accept(6, {2, AF=2 127.0.0.2:33266}, 16) -> 7
+2018/03/03 09:18:55 socat[854| D fcntl(7, 2, 1)
+2018/03/03 09:18:55 socat[854| D fcntl() -> 0
+2018/03/03 09:18:55 socat[854| D getpeername(7, 0x7ffd71178500, 0x7ffd7117848c{16})
+2018/03/03 09:18:55 socat[854| D getpeername(, {AF=2 127.0.0.2:33266}, {16}) -> 0
+2018/03/03 09:18:55 socat[854| D getsockname(7, 0x7ffd71178490, 0x7ffd71178488{16})
+2018/03/03 09:18:55 socat[854| D getsockname(, {AF=2 127.0.0.2:8000}, {16}) -> 0
+2018/03/03 09:18:55 socat[854| N accepting connection from AF=2 127.0.0.2:33266 on AF=2 127.0.0.2:8000
+2018/03/03 09:18:55 socat[854| I permitting connection from AF=2 127.0.0.2:33266
+2018/03/03 09:18:55 socat[854| D sigprocmask(0, 0x7ffd71178200, 0x0)
+2018/03/03 09:18:55 socat[854| D sigprocmask() -> 0
+2018/03/03 09:18:55 socat[854| D fork()
+2018/03/03 09:18:55 socat[854| D fork() -> 1519
+2018/03/03 09:18:55 socat[854| N forked off child process 1519
+2018/03/03 09:18:55 socat[854| I close(7)
+2018/03/03 09:18:55 socat[854| D close()  -> 0
+2018/03/03 09:18:55 socat[854| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:18:55 socat[854| D sigprocmask() -> 0
+2018/03/03 09:18:55 socat[854| I still listening
+2018/03/03 09:18:55 socat[854| N listening on AF=2 127.0.0.2:8000
+2018/03/03 09:18:55 socat[854| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:55 socat[1519| D fork() -> 0
+2018/03/03 09:18:55 socat[1519| D getpid()
+2018/03/03 09:18:55 socat[1519| D getpid() -> 1519
+2018/03/03 09:18:55 socat[1519| I just born: child process 1519
+2018/03/03 09:18:55 socat[1519| D setenv("SOCAT_PID", "0", 1)
+2018/03/03 09:18:55 socat[1519| D setenv() -> 0
+2018/03/03 09:18:55 socat[1519| D getpid()
+2018/03/03 09:18:55 socat[1519| D getpid() -> 1519
+2018/03/03 09:18:55 socat[1519| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:18:55 socat[1519| D sigprocmask() -> 0
+2018/03/03 09:18:55 socat[1519| I just born: child process 1519
+2018/03/03 09:18:55 socat[1519| D setenv("SOCAT_PID", "1519", 1)
+2018/03/03 09:18:55 socat[1519| D setenv() -> 0
+2018/03/03 09:18:55 socat[1519| I close(6)
+2018/03/03 09:18:55 socat[1519| D close()  -> 0
+2018/03/03 09:18:55 socat[1519| D setenv("SOCAT_SOCKADDR", "127.0.0.2", 1)
+2018/03/03 09:18:55 socat[1519| D setenv() -> 0
+2018/03/03 09:18:55 socat[1519| D setenv("SOCAT_SOCKPORT", "8000", 1)
+2018/03/03 09:18:55 socat[1519| D setenv() -> 0
+2018/03/03 09:18:55 socat[1519| D setenv("SOCAT_PEERADDR", "127.0.0.2", 1)
+2018/03/03 09:18:55 socat[1519| D setenv() -> 0
+2018/03/03 09:18:55 socat[1519| D setenv("SOCAT_PEERPORT", "33266", 1)
+2018/03/03 09:18:55 socat[1519| D setenv() -> 0
+2018/03/03 09:18:55 socat[1519| D SSL_new(0x563553537f40)
+2018/03/03 09:18:55 socat[1519| D SSL_new() -> 0x56355353ced0
+2018/03/03 09:18:55 socat[1519| D SSL_set_fd(0x56355353ced0, 7)
+2018/03/03 09:18:55 socat[1519| D SSL_set_fd() -> 1
+2018/03/03 09:18:55 socat[1519| D SSL_accept(0x56355353ced0)
+2018/03/03 09:18:56 socat[1519| D SSL_accept() -> 1
+2018/03/03 09:18:56 socat[1519| N no peer certificate and no check
+2018/03/03 09:18:56 socat[1519| N SSL connection using ECDHE-RSA-AES128-GCM-SHA256
+2018/03/03 09:18:56 socat[1519| D SSL_get_current_compression(0x56355353ced0)
+2018/03/03 09:18:56 socat[1519| D SSL_get_current_compression() -> NULL
+2018/03/03 09:18:56 socat[1519| D SSL_get_current_expansion(0x56355353ced0)
+2018/03/03 09:18:56 socat[1519| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:18:56 socat[1519| N SSL connection compression "none"
+2018/03/03 09:18:56 socat[1519| N SSL connection expansion "none"
+2018/03/03 09:18:56 socat[1519| D calloc(1, 808)
+2018/03/03 09:18:56 socat[1519| D calloc() -> 0x56355354eec0
+2018/03/03 09:18:56 socat[1519| D malloc(1024)
+2018/03/03 09:18:56 socat[1519| D malloc() -> 0x56355354bdb0
+2018/03/03 09:18:56 socat[1519| I setting option "openssl-commonname" to "d.robur.io"
+2018/03/03 09:18:56 socat[1519| I setting option "openssl-certificate" to "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem"
+2018/03/03 09:18:56 socat[1519| I setting option "openssl-key" to "/home/linus/tstick/keys/x509/roburio/roburio-key.pem"
+2018/03/03 09:18:56 socat[1519| D SSL_load_error_strings()
+2018/03/03 09:18:56 socat[1519| D SSL_load_error_strings() ->
+2018/03/03 09:18:56 socat[1519| D SSL_library_init()
+2018/03/03 09:18:56 socat[1519| D SSL_library_init() -> 1
+2018/03/03 09:18:56 socat[1519| D TLSv1_2_client_method()
+2018/03/03 09:18:56 socat[1519| D TLSv1_2_client_method() -> 0x7fc644a72e80
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_new(0x7fc644a72e80)
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_new() -> 0x56355354c1c0
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_set_tmp_dh(0x56355354c1c0, 0x56355354ce50)
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_set_tmp_dh() -> 1
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_use_certificate_chain_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem")
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_use_certificate_chain_file() -> 1
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_use_PrivateKey_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-key.pem", 1)
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_use_PrivateKey_file() -> 1
+2018/03/03 09:18:56 socat[1519| D BIO_new_file("/home/linus/tstick/keys/x509/roburio/roburio-crt.pem", "r")
+2018/03/03 09:18:56 socat[1519| D BIO_new_file() -> 0x56355354d3d0
+2018/03/03 09:18:56 socat[1519| D PEM_read_bio_DHparams(0x56355354d3d0, 0x0, 0x0, 0x0)
+2018/03/03 09:18:56 socat[1519| D PEM_read_bio_DHparams() -> NULL
+2018/03/03 09:18:56 socat[1519| I PEM_read_bio_DHparams(0x56355354d3d0, NULL, NULL, NULL): error
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_set_cipher_list(0x56355354c1c0, "HIGH:-NULL:-PSK:-aNULL")
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_set_cipher_list() -> 1
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_set_verify(0x56355354c1c0, 3, 0x0)
+2018/03/03 09:18:56 socat[1519| D SSL_CTX_set_verify() ->
+2018/03/03 09:18:56 socat[1519| D getaddrinfo("127.0.0.2", NULL, {5,2,1,6,0,0x0,0x0,0x0}, 0x7ffd71178538)
+2018/03/03 09:18:56 socat[1519| D getaddrinfo(,,,{{AF=2 127.0.0.2:0, }) -> 0
+2018/03/03 09:18:56 socat[1519| D malloc(512)
+2018/03/03 09:18:56 socat[1519| D malloc() -> 0x56355354eb10
+2018/03/03 09:18:56 socat[1519| N opening connection to AF=2 127.0.0.2:8001
+2018/03/03 09:18:56 socat[1519| I starting connect loop
+2018/03/03 09:18:56 socat[1519| D socket(2, 1, 6)
+2018/03/03 09:18:56 socat[1519| I socket(2, 1, 6) -> 8
+2018/03/03 09:18:56 socat[1519| D fcntl(8, 2, 1)
+2018/03/03 09:18:56 socat[1519| D fcntl() -> 0
+2018/03/03 09:18:56 socat[1519| D connect(8, {2,AF=2 127.0.0.2:8001}, 16)
+2018/03/03 09:18:56 socat[1519| D connect() -> 0
+2018/03/03 09:18:56 socat[1519| D getsockname(8, 0x7ffd71178580, 0x7ffd7117857c{112})
+2018/03/03 09:18:56 socat[1519| D getsockname(, {AF=2 127.0.0.2:35522}, {16}) -> 0
+2018/03/03 09:18:56 socat[1519| N successfully connected from local address AF=2 127.0.0.2:35522
+2018/03/03 09:18:56 socat[1519| D SSL_new(0x56355354c1c0)
+2018/03/03 09:18:56 socat[1519| D SSL_new() -> 0x563553542140
+2018/03/03 09:18:56 socat[1519| D SSL_set_fd(0x563553542140, 8)
+2018/03/03 09:18:56 socat[1519| D SSL_set_fd() -> 1
+2018/03/03 09:18:56 socat[1519| D SSL_connect(0x563553542140)
+2018/03/03 09:18:56 socat[1294| D select -> (, 0x0, 0x0, 0x0, &0.000000), 0
+2018/03/03 09:18:56 socat[1294| I poll timed out (no data within 0.500000 seconds)
+2018/03/03 09:18:56 socat[1294| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:18:56 socat[1294| D SSL_shutdown() -> 1
+2018/03/03 09:18:56 socat[1294| D SSL_free(0x56355353ced0)
+2018/03/03 09:18:56 socat[1294| D SSL_free() -> void
+2018/03/03 09:18:56 socat[1294| I close(7)
+2018/03/03 09:18:56 socat[1294| D close()  -> 0
+2018/03/03 09:18:56 socat[1294| D SSL_shutdown(0x563553542140)
+2018/03/03 09:18:59 socat[854| D select -> (, 0x40, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:18:59 socat[854| D accept(6, 0x7ffd71178790, 0x7ffd7117878c)
+2018/03/03 09:18:59 socat[854| I accept(6, {2, AF=2 127.0.0.2:33272}, 16) -> 7
+2018/03/03 09:18:59 socat[854| D fcntl(7, 2, 1)
+2018/03/03 09:18:59 socat[854| D fcntl() -> 0
+2018/03/03 09:18:59 socat[854| D getpeername(7, 0x7ffd71178500, 0x7ffd7117848c{16})
+2018/03/03 09:18:59 socat[854| D getpeername(, {AF=2 127.0.0.2:33272}, {16}) -> 0
+2018/03/03 09:18:59 socat[854| D getsockname(7, 0x7ffd71178490, 0x7ffd71178488{16})
+2018/03/03 09:18:59 socat[854| D getsockname(, {AF=2 127.0.0.2:8000}, {16}) -> 0
+2018/03/03 09:18:59 socat[854| N accepting connection from AF=2 127.0.0.2:33272 on AF=2 127.0.0.2:8000
+2018/03/03 09:18:59 socat[854| I permitting connection from AF=2 127.0.0.2:33272
+2018/03/03 09:18:59 socat[854| D sigprocmask(0, 0x7ffd71178200, 0x0)
+2018/03/03 09:18:59 socat[854| D sigprocmask() -> 0
+2018/03/03 09:18:59 socat[854| D fork()
+2018/03/03 09:18:59 socat[854| D fork() -> 1521
+2018/03/03 09:18:59 socat[854| N forked off child process 1521
+2018/03/03 09:18:59 socat[854| I close(7)
+2018/03/03 09:18:59 socat[854| D close()  -> 0
+2018/03/03 09:18:59 socat[854| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:18:59 socat[854| D sigprocmask() -> 0
+2018/03/03 09:18:59 socat[854| I still listening
+2018/03/03 09:18:59 socat[854| N listening on AF=2 127.0.0.2:8000
+2018/03/03 09:18:59 socat[854| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:18:59 socat[1521| D fork() -> 0
+2018/03/03 09:18:59 socat[1521| D getpid()
+2018/03/03 09:18:59 socat[1521| D getpid() -> 1521
+2018/03/03 09:18:59 socat[1521| I just born: child process 1521
+2018/03/03 09:18:59 socat[1521| D setenv("SOCAT_PID", "0", 1)
+2018/03/03 09:18:59 socat[1521| D setenv() -> 0
+2018/03/03 09:18:59 socat[1521| D getpid()
+2018/03/03 09:18:59 socat[1521| D getpid() -> 1521
+2018/03/03 09:18:59 socat[1521| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:18:59 socat[1521| D sigprocmask() -> 0
+2018/03/03 09:18:59 socat[1521| I just born: child process 1521
+2018/03/03 09:18:59 socat[1521| D setenv("SOCAT_PID", "1521", 1)
+2018/03/03 09:18:59 socat[1521| D setenv() -> 0
+2018/03/03 09:18:59 socat[1521| I close(6)
+2018/03/03 09:18:59 socat[1521| D close()  -> 0
+2018/03/03 09:18:59 socat[1521| D setenv("SOCAT_SOCKADDR", "127.0.0.2", 1)
+2018/03/03 09:18:59 socat[1521| D setenv() -> 0
+2018/03/03 09:18:59 socat[1521| D setenv("SOCAT_SOCKPORT", "8000", 1)
+2018/03/03 09:18:59 socat[1521| D setenv() -> 0
+2018/03/03 09:18:59 socat[1521| D setenv("SOCAT_PEERADDR", "127.0.0.2", 1)
+2018/03/03 09:18:59 socat[1521| D setenv() -> 0
+2018/03/03 09:18:59 socat[1521| D setenv("SOCAT_PEERPORT", "33272", 1)
+2018/03/03 09:18:59 socat[1521| D setenv() -> 0
+2018/03/03 09:18:59 socat[1521| D SSL_new(0x563553537f40)
+2018/03/03 09:18:59 socat[1521| D SSL_new() -> 0x56355353ced0
+2018/03/03 09:18:59 socat[1521| D SSL_set_fd(0x56355353ced0, 7)
+2018/03/03 09:18:59 socat[1521| D SSL_set_fd() -> 1
+2018/03/03 09:18:59 socat[1521| D SSL_accept(0x56355353ced0)
+2018/03/03 09:18:59 socat[1521| D SSL_accept() -> 1
+2018/03/03 09:18:59 socat[1521| N no peer certificate and no check
+2018/03/03 09:18:59 socat[1521| N SSL connection using ECDHE-RSA-AES128-GCM-SHA256
+2018/03/03 09:18:59 socat[1521| D SSL_get_current_compression(0x56355353ced0)
+2018/03/03 09:18:59 socat[1521| D SSL_get_current_compression() -> NULL
+2018/03/03 09:18:59 socat[1521| D SSL_get_current_expansion(0x56355353ced0)
+2018/03/03 09:18:59 socat[1521| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:18:59 socat[1521| N SSL connection compression "none"
+2018/03/03 09:18:59 socat[1521| N SSL connection expansion "none"
+2018/03/03 09:18:59 socat[1521| D calloc(1, 808)
+2018/03/03 09:18:59 socat[1521| D calloc() -> 0x56355354eec0
+2018/03/03 09:18:59 socat[1521| D malloc(1024)
+2018/03/03 09:18:59 socat[1521| D malloc() -> 0x56355354bdb0
+2018/03/03 09:18:59 socat[1521| I setting option "openssl-commonname" to "d.robur.io"
+2018/03/03 09:18:59 socat[1521| I setting option "openssl-certificate" to "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem"
+2018/03/03 09:18:59 socat[1521| I setting option "openssl-key" to "/home/linus/tstick/keys/x509/roburio/roburio-key.pem"
+2018/03/03 09:18:59 socat[1521| D SSL_load_error_strings()
+2018/03/03 09:18:59 socat[1521| D SSL_load_error_strings() ->
+2018/03/03 09:18:59 socat[1521| D SSL_library_init()
+2018/03/03 09:18:59 socat[1521| D SSL_library_init() -> 1
+2018/03/03 09:18:59 socat[1521| D TLSv1_2_client_method()
+2018/03/03 09:18:59 socat[1521| D TLSv1_2_client_method() -> 0x7fc644a72e80
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_new(0x7fc644a72e80)
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_new() -> 0x56355354c1c0
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_set_tmp_dh(0x56355354c1c0, 0x56355354ce50)
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_set_tmp_dh() -> 1
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_use_certificate_chain_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem")
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_use_certificate_chain_file() -> 1
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_use_PrivateKey_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-key.pem", 1)
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_use_PrivateKey_file() -> 1
+2018/03/03 09:18:59 socat[1521| D BIO_new_file("/home/linus/tstick/keys/x509/roburio/roburio-crt.pem", "r")
+2018/03/03 09:18:59 socat[1521| D BIO_new_file() -> 0x56355354d3d0
+2018/03/03 09:18:59 socat[1521| D PEM_read_bio_DHparams(0x56355354d3d0, 0x0, 0x0, 0x0)
+2018/03/03 09:18:59 socat[1521| D PEM_read_bio_DHparams() -> NULL
+2018/03/03 09:18:59 socat[1521| I PEM_read_bio_DHparams(0x56355354d3d0, NULL, NULL, NULL): error
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_set_cipher_list(0x56355354c1c0, "HIGH:-NULL:-PSK:-aNULL")
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_set_cipher_list() -> 1
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_set_verify(0x56355354c1c0, 3, 0x0)
+2018/03/03 09:18:59 socat[1521| D SSL_CTX_set_verify() ->
+2018/03/03 09:18:59 socat[1521| D getaddrinfo("127.0.0.2", NULL, {5,2,1,6,0,0x0,0x0,0x0}, 0x7ffd71178538)
+2018/03/03 09:18:59 socat[1521| D getaddrinfo(,,,{{AF=2 127.0.0.2:0, }) -> 0
+2018/03/03 09:18:59 socat[1521| D malloc(512)
+2018/03/03 09:18:59 socat[1521| D malloc() -> 0x56355354eb10
+2018/03/03 09:18:59 socat[1521| N opening connection to AF=2 127.0.0.2:8001
+2018/03/03 09:18:59 socat[1521| I starting connect loop
+2018/03/03 09:18:59 socat[1521| D socket(2, 1, 6)
+2018/03/03 09:18:59 socat[1521| I socket(2, 1, 6) -> 8
+2018/03/03 09:18:59 socat[1521| D fcntl(8, 2, 1)
+2018/03/03 09:18:59 socat[1521| D fcntl() -> 0
+2018/03/03 09:18:59 socat[1521| D connect(8, {2,AF=2 127.0.0.2:8001}, 16)
+2018/03/03 09:18:59 socat[1521| D connect() -> 0
+2018/03/03 09:18:59 socat[1521| D getsockname(8, 0x7ffd71178580, 0x7ffd7117857c{112})
+2018/03/03 09:18:59 socat[1521| D getsockname(, {AF=2 127.0.0.2:35528}, {16}) -> 0
+2018/03/03 09:18:59 socat[1521| N successfully connected from local address AF=2 127.0.0.2:35528
+2018/03/03 09:18:59 socat[1521| D SSL_new(0x56355354c1c0)
+2018/03/03 09:18:59 socat[1521| D SSL_new() -> 0x563553542140
+2018/03/03 09:18:59 socat[1521| D SSL_set_fd(0x563553542140, 8)
+2018/03/03 09:18:59 socat[1521| D SSL_set_fd() -> 1
+2018/03/03 09:18:59 socat[1521| D SSL_connect(0x563553542140)
+2018/03/03 09:20:15 socat[854| D select -> (, 0x40, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:20:15 socat[854| D accept(6, 0x7ffd71178790, 0x7ffd7117878c)
+2018/03/03 09:20:15 socat[854| I accept(6, {2, AF=2 127.0.0.2:33278}, 16) -> 7
+2018/03/03 09:20:15 socat[854| D fcntl(7, 2, 1)
+2018/03/03 09:20:15 socat[854| D fcntl() -> 0
+2018/03/03 09:20:15 socat[854| D getpeername(7, 0x7ffd71178500, 0x7ffd7117848c{16})
+2018/03/03 09:20:15 socat[854| D getpeername(, {AF=2 127.0.0.2:33278}, {16}) -> 0
+2018/03/03 09:20:15 socat[854| D getsockname(7, 0x7ffd71178490, 0x7ffd71178488{16})
+2018/03/03 09:20:15 socat[854| D getsockname(, {AF=2 127.0.0.2:8000}, {16}) -> 0
+2018/03/03 09:20:15 socat[854| N accepting connection from AF=2 127.0.0.2:33278 on AF=2 127.0.0.2:8000
+2018/03/03 09:20:15 socat[854| I permitting connection from AF=2 127.0.0.2:33278
+2018/03/03 09:20:15 socat[854| D sigprocmask(0, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:15 socat[854| D sigprocmask() -> 0
+2018/03/03 09:20:15 socat[854| D fork()
+2018/03/03 09:20:15 socat[854| D fork() -> 1567
+2018/03/03 09:20:15 socat[854| N forked off child process 1567
+2018/03/03 09:20:15 socat[854| I close(7)
+2018/03/03 09:20:15 socat[854| D close()  -> 0
+2018/03/03 09:20:15 socat[854| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:15 socat[854| D sigprocmask() -> 0
+2018/03/03 09:20:15 socat[854| I still listening
+2018/03/03 09:20:15 socat[854| N listening on AF=2 127.0.0.2:8000
+2018/03/03 09:20:15 socat[854| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:20:15 socat[1567| D fork() -> 0
+2018/03/03 09:20:15 socat[1567| D getpid()
+2018/03/03 09:20:15 socat[1567| D getpid() -> 1567
+2018/03/03 09:20:15 socat[1567| I just born: child process 1567
+2018/03/03 09:20:15 socat[1567| D setenv("SOCAT_PID", "0", 1)
+2018/03/03 09:20:15 socat[1567| D setenv() -> 0
+2018/03/03 09:20:15 socat[1567| D getpid()
+2018/03/03 09:20:15 socat[1567| D getpid() -> 1567
+2018/03/03 09:20:15 socat[1567| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:15 socat[1567| D sigprocmask() -> 0
+2018/03/03 09:20:15 socat[1567| I just born: child process 1567
+2018/03/03 09:20:15 socat[1567| D setenv("SOCAT_PID", "1567", 1)
+2018/03/03 09:20:15 socat[1567| D setenv() -> 0
+2018/03/03 09:20:15 socat[1567| I close(6)
+2018/03/03 09:20:15 socat[1567| D close()  -> 0
+2018/03/03 09:20:15 socat[1567| D setenv("SOCAT_SOCKADDR", "127.0.0.2", 1)
+2018/03/03 09:20:15 socat[1567| D setenv() -> 0
+2018/03/03 09:20:15 socat[1567| D setenv("SOCAT_SOCKPORT", "8000", 1)
+2018/03/03 09:20:15 socat[1567| D setenv() -> 0
+2018/03/03 09:20:15 socat[1567| D setenv("SOCAT_PEERADDR", "127.0.0.2", 1)
+2018/03/03 09:20:15 socat[1567| D setenv() -> 0
+2018/03/03 09:20:15 socat[1567| D setenv("SOCAT_PEERPORT", "33278", 1)
+2018/03/03 09:20:15 socat[1567| D setenv() -> 0
+2018/03/03 09:20:15 socat[1567| D SSL_new(0x563553537f40)
+2018/03/03 09:20:15 socat[1567| D SSL_new() -> 0x56355353ced0
+2018/03/03 09:20:15 socat[1567| D SSL_set_fd(0x56355353ced0, 7)
+2018/03/03 09:20:15 socat[1567| D SSL_set_fd() -> 1
+2018/03/03 09:20:15 socat[1567| D SSL_accept(0x56355353ced0)
+2018/03/03 09:20:15 socat[1567| D SSL_accept() -> 1
+2018/03/03 09:20:15 socat[1567| N no peer certificate and no check
+2018/03/03 09:20:15 socat[1567| N SSL connection using ECDHE-RSA-AES128-GCM-SHA256
+2018/03/03 09:20:15 socat[1567| D SSL_get_current_compression(0x56355353ced0)
+2018/03/03 09:20:15 socat[1567| D SSL_get_current_compression() -> NULL
+2018/03/03 09:20:15 socat[1567| D SSL_get_current_expansion(0x56355353ced0)
+2018/03/03 09:20:15 socat[1567| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:20:15 socat[1567| N SSL connection compression "none"
+2018/03/03 09:20:15 socat[1567| N SSL connection expansion "none"
+2018/03/03 09:20:15 socat[1567| D calloc(1, 808)
+2018/03/03 09:20:15 socat[1567| D calloc() -> 0x56355354eec0
+2018/03/03 09:20:15 socat[1567| D malloc(1024)
+2018/03/03 09:20:15 socat[1567| D malloc() -> 0x56355354bdb0
+2018/03/03 09:20:15 socat[1567| I setting option "openssl-commonname" to "d.robur.io"
+2018/03/03 09:20:15 socat[1567| I setting option "openssl-certificate" to "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem"
+2018/03/03 09:20:15 socat[1567| I setting option "openssl-key" to "/home/linus/tstick/keys/x509/roburio/roburio-key.pem"
+2018/03/03 09:20:15 socat[1567| D SSL_load_error_strings()
+2018/03/03 09:20:15 socat[1567| D SSL_load_error_strings() ->
+2018/03/03 09:20:15 socat[1567| D SSL_library_init()
+2018/03/03 09:20:15 socat[1567| D SSL_library_init() -> 1
+2018/03/03 09:20:15 socat[1567| D TLSv1_2_client_method()
+2018/03/03 09:20:15 socat[1567| D TLSv1_2_client_method() -> 0x7fc644a72e80
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_new(0x7fc644a72e80)
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_new() -> 0x56355354c1c0
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_set_tmp_dh(0x56355354c1c0, 0x56355354ce50)
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_set_tmp_dh() -> 1
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_use_certificate_chain_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem")
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_use_certificate_chain_file() -> 1
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_use_PrivateKey_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-key.pem", 1)
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_use_PrivateKey_file() -> 1
+2018/03/03 09:20:15 socat[1567| D BIO_new_file("/home/linus/tstick/keys/x509/roburio/roburio-crt.pem", "r")
+2018/03/03 09:20:15 socat[1567| D BIO_new_file() -> 0x56355354d3d0
+2018/03/03 09:20:15 socat[1567| D PEM_read_bio_DHparams(0x56355354d3d0, 0x0, 0x0, 0x0)
+2018/03/03 09:20:15 socat[1567| D PEM_read_bio_DHparams() -> NULL
+2018/03/03 09:20:15 socat[1567| I PEM_read_bio_DHparams(0x56355354d3d0, NULL, NULL, NULL): error
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_set_cipher_list(0x56355354c1c0, "HIGH:-NULL:-PSK:-aNULL")
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_set_cipher_list() -> 1
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_set_verify(0x56355354c1c0, 3, 0x0)
+2018/03/03 09:20:15 socat[1567| D SSL_CTX_set_verify() ->
+2018/03/03 09:20:15 socat[1567| D getaddrinfo("127.0.0.2", NULL, {5,2,1,6,0,0x0,0x0,0x0}, 0x7ffd71178538)
+2018/03/03 09:20:15 socat[1567| D getaddrinfo(,,,{{AF=2 127.0.0.2:0, }) -> 0
+2018/03/03 09:20:15 socat[1567| D malloc(512)
+2018/03/03 09:20:15 socat[1567| D malloc() -> 0x56355354eb10
+2018/03/03 09:20:15 socat[1567| N opening connection to AF=2 127.0.0.2:8001
+2018/03/03 09:20:15 socat[1567| I starting connect loop
+2018/03/03 09:20:15 socat[1567| D socket(2, 1, 6)
+2018/03/03 09:20:15 socat[1567| I socket(2, 1, 6) -> 8
+2018/03/03 09:20:15 socat[1567| D fcntl(8, 2, 1)
+2018/03/03 09:20:15 socat[1567| D fcntl() -> 0
+2018/03/03 09:20:15 socat[1567| D connect(8, {2,AF=2 127.0.0.2:8001}, 16)
+2018/03/03 09:20:15 socat[1567| D connect() -> 0
+2018/03/03 09:20:15 socat[1567| D getsockname(8, 0x7ffd71178580, 0x7ffd7117857c{112})
+2018/03/03 09:20:15 socat[1567| D getsockname(, {AF=2 127.0.0.2:35534}, {16}) -> 0
+2018/03/03 09:20:15 socat[1567| N successfully connected from local address AF=2 127.0.0.2:35534
+2018/03/03 09:20:15 socat[1567| D SSL_new(0x56355354c1c0)
+2018/03/03 09:20:15 socat[1567| D SSL_new() -> 0x563553542140
+2018/03/03 09:20:15 socat[1567| D SSL_set_fd(0x563553542140, 8)
+2018/03/03 09:20:15 socat[1567| D SSL_set_fd() -> 1
+2018/03/03 09:20:15 socat[1567| D SSL_connect(0x563553542140)
+2018/03/03 09:20:22 socat[854| D select -> (, 0x40, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:20:22 socat[854| D accept(6, 0x7ffd71178790, 0x7ffd7117878c)
+2018/03/03 09:20:22 socat[854| I accept(6, {2, AF=2 127.0.0.2:33284}, 16) -> 7
+2018/03/03 09:20:22 socat[854| D fcntl(7, 2, 1)
+2018/03/03 09:20:22 socat[854| D fcntl() -> 0
+2018/03/03 09:20:22 socat[854| D getpeername(7, 0x7ffd71178500, 0x7ffd7117848c{16})
+2018/03/03 09:20:22 socat[854| D getpeername(, {AF=2 127.0.0.2:33284}, {16}) -> 0
+2018/03/03 09:20:22 socat[854| D getsockname(7, 0x7ffd71178490, 0x7ffd71178488{16})
+2018/03/03 09:20:22 socat[854| D getsockname(, {AF=2 127.0.0.2:8000}, {16}) -> 0
+2018/03/03 09:20:22 socat[854| N accepting connection from AF=2 127.0.0.2:33284 on AF=2 127.0.0.2:8000
+2018/03/03 09:20:22 socat[854| I permitting connection from AF=2 127.0.0.2:33284
+2018/03/03 09:20:22 socat[854| D sigprocmask(0, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:22 socat[854| D sigprocmask() -> 0
+2018/03/03 09:20:22 socat[854| D fork()
+2018/03/03 09:20:22 socat[854| D fork() -> 1623
+2018/03/03 09:20:22 socat[854| N forked off child process 1623
+2018/03/03 09:20:22 socat[854| I close(7)
+2018/03/03 09:20:22 socat[854| D close()  -> 0
+2018/03/03 09:20:22 socat[854| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:22 socat[854| D sigprocmask() -> 0
+2018/03/03 09:20:22 socat[854| I still listening
+2018/03/03 09:20:22 socat[854| N listening on AF=2 127.0.0.2:8000
+2018/03/03 09:20:22 socat[854| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:20:22 socat[1623| D fork() -> 0
+2018/03/03 09:20:22 socat[1623| D getpid()
+2018/03/03 09:20:22 socat[1623| D getpid() -> 1623
+2018/03/03 09:20:22 socat[1623| I just born: child process 1623
+2018/03/03 09:20:22 socat[1623| D setenv("SOCAT_PID", "0", 1)
+2018/03/03 09:20:22 socat[1623| D setenv() -> 0
+2018/03/03 09:20:22 socat[1623| D getpid()
+2018/03/03 09:20:22 socat[1623| D getpid() -> 1623
+2018/03/03 09:20:22 socat[1623| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:22 socat[1623| D sigprocmask() -> 0
+2018/03/03 09:20:22 socat[1623| I just born: child process 1623
+2018/03/03 09:20:22 socat[1623| D setenv("SOCAT_PID", "1623", 1)
+2018/03/03 09:20:22 socat[1623| D setenv() -> 0
+2018/03/03 09:20:22 socat[1623| I close(6)
+2018/03/03 09:20:22 socat[1623| D close()  -> 0
+2018/03/03 09:20:22 socat[1623| D setenv("SOCAT_SOCKADDR", "127.0.0.2", 1)
+2018/03/03 09:20:22 socat[1623| D setenv() -> 0
+2018/03/03 09:20:22 socat[1623| D setenv("SOCAT_SOCKPORT", "8000", 1)
+2018/03/03 09:20:22 socat[1623| D setenv() -> 0
+2018/03/03 09:20:22 socat[1623| D setenv("SOCAT_PEERADDR", "127.0.0.2", 1)
+2018/03/03 09:20:22 socat[1623| D setenv() -> 0
+2018/03/03 09:20:22 socat[1623| D setenv("SOCAT_PEERPORT", "33284", 1)
+2018/03/03 09:20:22 socat[1623| D setenv() -> 0
+2018/03/03 09:20:22 socat[1623| D SSL_new(0x563553537f40)
+2018/03/03 09:20:22 socat[1623| D SSL_new() -> 0x56355353ced0
+2018/03/03 09:20:22 socat[1623| D SSL_set_fd(0x56355353ced0, 7)
+2018/03/03 09:20:22 socat[1623| D SSL_set_fd() -> 1
+2018/03/03 09:20:22 socat[1623| D SSL_accept(0x56355353ced0)
+2018/03/03 09:20:22 socat[1623| D SSL_accept() -> 1
+2018/03/03 09:20:22 socat[1623| N no peer certificate and no check
+2018/03/03 09:20:22 socat[1623| N SSL connection using ECDHE-RSA-AES128-GCM-SHA256
+2018/03/03 09:20:22 socat[1623| D SSL_get_current_compression(0x56355353ced0)
+2018/03/03 09:20:22 socat[1623| D SSL_get_current_compression() -> NULL
+2018/03/03 09:20:22 socat[1623| D SSL_get_current_expansion(0x56355353ced0)
+2018/03/03 09:20:22 socat[1623| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:20:22 socat[1623| N SSL connection compression "none"
+2018/03/03 09:20:22 socat[1623| N SSL connection expansion "none"
+2018/03/03 09:20:22 socat[1623| D calloc(1, 808)
+2018/03/03 09:20:22 socat[1623| D calloc() -> 0x56355354eec0
+2018/03/03 09:20:22 socat[1623| D malloc(1024)
+2018/03/03 09:20:22 socat[1623| D malloc() -> 0x56355354bdb0
+2018/03/03 09:20:22 socat[1623| I setting option "openssl-commonname" to "d.robur.io"
+2018/03/03 09:20:22 socat[1623| I setting option "openssl-certificate" to "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem"
+2018/03/03 09:20:22 socat[1623| I setting option "openssl-key" to "/home/linus/tstick/keys/x509/roburio/roburio-key.pem"
+2018/03/03 09:20:22 socat[1623| D SSL_load_error_strings()
+2018/03/03 09:20:22 socat[1623| D SSL_load_error_strings() ->
+2018/03/03 09:20:22 socat[1623| D SSL_library_init()
+2018/03/03 09:20:22 socat[1623| D SSL_library_init() -> 1
+2018/03/03 09:20:22 socat[1623| D TLSv1_2_client_method()
+2018/03/03 09:20:22 socat[1623| D TLSv1_2_client_method() -> 0x7fc644a72e80
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_new(0x7fc644a72e80)
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_new() -> 0x56355354c1c0
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_set_tmp_dh(0x56355354c1c0, 0x56355354ce50)
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_set_tmp_dh() -> 1
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_use_certificate_chain_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem")
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_use_certificate_chain_file() -> 1
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_use_PrivateKey_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-key.pem", 1)
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_use_PrivateKey_file() -> 1
+2018/03/03 09:20:22 socat[1623| D BIO_new_file("/home/linus/tstick/keys/x509/roburio/roburio-crt.pem", "r")
+2018/03/03 09:20:22 socat[1623| D BIO_new_file() -> 0x56355354d3d0
+2018/03/03 09:20:22 socat[1623| D PEM_read_bio_DHparams(0x56355354d3d0, 0x0, 0x0, 0x0)
+2018/03/03 09:20:22 socat[1623| D PEM_read_bio_DHparams() -> NULL
+2018/03/03 09:20:22 socat[1623| I PEM_read_bio_DHparams(0x56355354d3d0, NULL, NULL, NULL): error
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_set_cipher_list(0x56355354c1c0, "HIGH:-NULL:-PSK:-aNULL")
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_set_cipher_list() -> 1
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_set_verify(0x56355354c1c0, 3, 0x0)
+2018/03/03 09:20:22 socat[1623| D SSL_CTX_set_verify() ->
+2018/03/03 09:20:22 socat[1623| D getaddrinfo("127.0.0.2", NULL, {5,2,1,6,0,0x0,0x0,0x0}, 0x7ffd71178538)
+2018/03/03 09:20:22 socat[1623| D getaddrinfo(,,,{{AF=2 127.0.0.2:0, }) -> 0
+2018/03/03 09:20:22 socat[1623| D malloc(512)
+2018/03/03 09:20:22 socat[1623| D malloc() -> 0x56355354eb10
+2018/03/03 09:20:22 socat[1623| N opening connection to AF=2 127.0.0.2:8001
+2018/03/03 09:20:22 socat[1623| I starting connect loop
+2018/03/03 09:20:22 socat[1623| D socket(2, 1, 6)
+2018/03/03 09:20:22 socat[1623| I socket(2, 1, 6) -> 8
+2018/03/03 09:20:22 socat[1623| D fcntl(8, 2, 1)
+2018/03/03 09:20:22 socat[1623| D fcntl() -> 0
+2018/03/03 09:20:22 socat[1623| D connect(8, {2,AF=2 127.0.0.2:8001}, 16)
+2018/03/03 09:20:22 socat[1623| D connect() -> 0
+2018/03/03 09:20:22 socat[1623| D getsockname(8, 0x7ffd71178580, 0x7ffd7117857c{112})
+2018/03/03 09:20:22 socat[1623| D getsockname(, {AF=2 127.0.0.2:35540}, {16}) -> 0
+2018/03/03 09:20:22 socat[1623| N successfully connected from local address AF=2 127.0.0.2:35540
+2018/03/03 09:20:22 socat[1623| D SSL_new(0x56355354c1c0)
+2018/03/03 09:20:22 socat[1623| D SSL_new() -> 0x563553542140
+2018/03/03 09:20:22 socat[1623| D SSL_set_fd(0x563553542140, 8)
+2018/03/03 09:20:22 socat[1623| D SSL_set_fd() -> 1
+2018/03/03 09:20:22 socat[1623| D SSL_connect(0x563553542140)
+2018/03/03 09:20:38 socat[854| D select -> (, 0x40, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:20:38 socat[854| D accept(6, 0x7ffd71178790, 0x7ffd7117878c)
+2018/03/03 09:20:38 socat[854| I accept(6, {2, AF=2 127.0.0.2:33292}, 16) -> 7
+2018/03/03 09:20:38 socat[854| D fcntl(7, 2, 1)
+2018/03/03 09:20:38 socat[854| D fcntl() -> 0
+2018/03/03 09:20:38 socat[854| D getpeername(7, 0x7ffd71178500, 0x7ffd7117848c{16})
+2018/03/03 09:20:38 socat[854| D getpeername(, {AF=2 127.0.0.2:33292}, {16}) -> 0
+2018/03/03 09:20:38 socat[854| D getsockname(7, 0x7ffd71178490, 0x7ffd71178488{16})
+2018/03/03 09:20:38 socat[854| D getsockname(, {AF=2 127.0.0.2:8000}, {16}) -> 0
+2018/03/03 09:20:38 socat[854| N accepting connection from AF=2 127.0.0.2:33292 on AF=2 127.0.0.2:8000
+2018/03/03 09:20:38 socat[854| I permitting connection from AF=2 127.0.0.2:33292
+2018/03/03 09:20:38 socat[854| D sigprocmask(0, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:38 socat[854| D sigprocmask() -> 0
+2018/03/03 09:20:38 socat[854| D fork()
+2018/03/03 09:20:38 socat[854| D fork() -> 1626
+2018/03/03 09:20:38 socat[854| N forked off child process 1626
+2018/03/03 09:20:38 socat[854| I close(7)
+2018/03/03 09:20:38 socat[854| D close()  -> 0
+2018/03/03 09:20:38 socat[854| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:38 socat[854| D sigprocmask() -> 0
+2018/03/03 09:20:38 socat[854| I still listening
+2018/03/03 09:20:38 socat[854| N listening on AF=2 127.0.0.2:8000
+2018/03/03 09:20:38 socat[854| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+tls client process born
+2018/03/03 09:20:38 socat[1626| D fork() -> 0
+2018/03/03 09:20:38 socat[1626| D getpid()
+2018/03/03 09:20:38 socat[1626| D getpid() -> 1626
+2018/03/03 09:20:38 socat[1626| I just born: child process 1626
+2018/03/03 09:20:38 socat[1626| D setenv("SOCAT_PID", "0", 1)
+2018/03/03 09:20:38 socat[1626| D setenv() -> 0
+2018/03/03 09:20:38 socat[1626| D getpid()
+2018/03/03 09:20:38 socat[1626| D getpid() -> 1626
+2018/03/03 09:20:38 socat[1626| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:38 socat[1626| D sigprocmask() -> 0
+2018/03/03 09:20:38 socat[1626| I just born: child process 1626
+2018/03/03 09:20:38 socat[1626| D setenv("SOCAT_PID", "1626", 1)
+2018/03/03 09:20:38 socat[1626| D setenv() -> 0
+2018/03/03 09:20:38 socat[1626| I close(6)
+2018/03/03 09:20:38 socat[1626| D close()  -> 0
+2018/03/03 09:20:38 socat[1626| D setenv("SOCAT_SOCKADDR", "127.0.0.2", 1)
+2018/03/03 09:20:38 socat[1626| D setenv() -> 0
+2018/03/03 09:20:38 socat[1626| D setenv("SOCAT_SOCKPORT", "8000", 1)
+2018/03/03 09:20:38 socat[1626| D setenv() -> 0
+2018/03/03 09:20:38 socat[1626| D setenv("SOCAT_PEERADDR", "127.0.0.2", 1)
+2018/03/03 09:20:38 socat[1626| D setenv() -> 0
+2018/03/03 09:20:38 socat[1626| D setenv("SOCAT_PEERPORT", "33292", 1)
+2018/03/03 09:20:38 socat[1626| D setenv() -> 0
+2018/03/03 09:20:38 socat[1626| D SSL_new(0x563553537f40)
+2018/03/03 09:20:38 socat[1626| D SSL_new() -> 0x56355353ced0
+2018/03/03 09:20:38 socat[1626| D SSL_set_fd(0x56355353ced0, 7)
+2018/03/03 09:20:38 socat[1626| D SSL_set_fd() -> 1
+2018/03/03 09:20:38 socat[1626| D SSL_accept(0x56355353ced0)
+2018/03/03 09:20:38 socat[1626| D SSL_accept() -> 1
+2018/03/03 09:20:38 socat[1626| N no peer certificate and no check
+2018/03/03 09:20:38 socat[1626| N SSL connection using ECDHE-RSA-AES128-GCM-SHA256
+2018/03/03 09:20:38 socat[1626| D SSL_get_current_compression(0x56355353ced0)
+2018/03/03 09:20:38 socat[1626| D SSL_get_current_compression() -> NULL
+2018/03/03 09:20:38 socat[1626| D SSL_get_current_expansion(0x56355353ced0)
+2018/03/03 09:20:38 socat[1626| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:20:38 socat[1626| N SSL connection compression "none"
+2018/03/03 09:20:38 socat[1626| N SSL connection expansion "none"
+2018/03/03 09:20:38 socat[1626| D calloc(1, 808)
+2018/03/03 09:20:38 socat[1626| D calloc() -> 0x56355354eec0
+2018/03/03 09:20:38 socat[1626| D malloc(1024)
+2018/03/03 09:20:38 socat[1626| D malloc() -> 0x56355354bdb0
+2018/03/03 09:20:38 socat[1626| I setting option "openssl-commonname" to "d.robur.io"
+2018/03/03 09:20:38 socat[1626| I setting option "openssl-certificate" to "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem"
+2018/03/03 09:20:38 socat[1626| I setting option "openssl-key" to "/home/linus/tstick/keys/x509/roburio/roburio-key.pem"
+2018/03/03 09:20:38 socat[1626| D SSL_load_error_strings()
+2018/03/03 09:20:38 socat[1626| D SSL_load_error_strings() ->
+2018/03/03 09:20:38 socat[1626| D SSL_library_init()
+2018/03/03 09:20:38 socat[1626| D SSL_library_init() -> 1
+2018/03/03 09:20:38 socat[1626| D TLSv1_2_client_method()
+2018/03/03 09:20:38 socat[1626| D TLSv1_2_client_method() -> 0x7fc644a72e80
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_new(0x7fc644a72e80)
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_new() -> 0x56355354c1c0
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_set_tmp_dh(0x56355354c1c0, 0x56355354ce50)
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_set_tmp_dh() -> 1
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_use_certificate_chain_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem")
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_use_certificate_chain_file() -> 1
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_use_PrivateKey_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-key.pem", 1)
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_use_PrivateKey_file() -> 1
+2018/03/03 09:20:38 socat[1626| D BIO_new_file("/home/linus/tstick/keys/x509/roburio/roburio-crt.pem", "r")
+2018/03/03 09:20:38 socat[1626| D BIO_new_file() -> 0x56355354d3d0
+2018/03/03 09:20:38 socat[1626| D PEM_read_bio_DHparams(0x56355354d3d0, 0x0, 0x0, 0x0)
+2018/03/03 09:20:38 socat[1626| D PEM_read_bio_DHparams() -> NULL
+2018/03/03 09:20:38 socat[1626| I PEM_read_bio_DHparams(0x56355354d3d0, NULL, NULL, NULL): error
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_set_cipher_list(0x56355354c1c0, "HIGH:-NULL:-PSK:-aNULL")
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_set_cipher_list() -> 1
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_set_verify(0x56355354c1c0, 3, 0x0)
+2018/03/03 09:20:38 socat[1626| D SSL_CTX_set_verify() ->
+2018/03/03 09:20:38 socat[1626| D getaddrinfo("127.0.0.2", NULL, {5,2,1,6,0,0x0,0x0,0x0}, 0x7ffd71178538)
+2018/03/03 09:20:38 socat[1626| D getaddrinfo(,,,{{AF=2 127.0.0.2:0, }) -> 0
+2018/03/03 09:20:38 socat[1626| D malloc(512)
+2018/03/03 09:20:38 socat[1626| D malloc() -> 0x56355354eb10
+2018/03/03 09:20:38 socat[1626| N opening connection to AF=2 127.0.0.2:8001
+2018/03/03 09:20:38 socat[1626| I starting connect loop
+2018/03/03 09:20:38 socat[1626| D socket(2, 1, 6)
+2018/03/03 09:20:38 socat[1626| I socket(2, 1, 6) -> 8
+2018/03/03 09:20:38 socat[1626| D fcntl(8, 2, 1)
+2018/03/03 09:20:38 socat[1626| D fcntl() -> 0
+2018/03/03 09:20:38 socat[1626| D connect(8, {2,AF=2 127.0.0.2:8001}, 16)
+2018/03/03 09:20:38 socat[1626| D connect() -> 0
+2018/03/03 09:20:38 socat[1626| D getsockname(8, 0x7ffd71178580, 0x7ffd7117857c{112})
+2018/03/03 09:20:38 socat[1626| D getsockname(, {AF=2 127.0.0.2:35548}, {16}) -> 0
+2018/03/03 09:20:38 socat[1626| N successfully connected from local address AF=2 127.0.0.2:35548
+2018/03/03 09:20:38 socat[1626| D SSL_new(0x56355354c1c0)
+2018/03/03 09:20:38 socat[1626| D SSL_new() -> 0x563553542140
+2018/03/03 09:20:38 socat[1626| D SSL_set_fd(0x563553542140, 8)
+2018/03/03 09:20:38 socat[1626| D SSL_set_fd() -> 1
+2018/03/03 09:20:38 socat[1626| D SSL_connect(0x563553542140)
+2018/03/03 09:20:38 socat[854| D select -> (, 0x40, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:20:38 socat[854| D accept(6, 0x7ffd71178790, 0x7ffd7117878c)
+2018/03/03 09:20:38 socat[854| I accept(6, {2, AF=2 127.0.0.2:33298}, 16) -> 7
+2018/03/03 09:20:38 socat[854| D fcntl(7, 2, 1)
+2018/03/03 09:20:38 socat[854| D fcntl() -> 0
+2018/03/03 09:20:38 socat[854| D getpeername(7, 0x7ffd71178500, 0x7ffd7117848c{16})
+2018/03/03 09:20:38 socat[854| D getpeername(, {AF=2 127.0.0.2:33298}, {16}) -> 0
+2018/03/03 09:20:38 socat[854| D getsockname(7, 0x7ffd71178490, 0x7ffd71178488{16})
+2018/03/03 09:20:38 socat[854| D getsockname(, {AF=2 127.0.0.2:8000}, {16}) -> 0
+2018/03/03 09:20:38 socat[854| N accepting connection from AF=2 127.0.0.2:33298 on AF=2 127.0.0.2:8000
+2018/03/03 09:20:38 socat[854| I permitting connection from AF=2 127.0.0.2:33298
+2018/03/03 09:20:38 socat[854| D sigprocmask(0, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:38 socat[854| D sigprocmask() -> 0
+2018/03/03 09:20:38 socat[854| D fork()
+2018/03/03 09:20:38 socat[854| D fork() -> 1628
+2018/03/03 09:20:38 socat[854| N forked off child process 1628
+2018/03/03 09:20:38 socat[854| I close(7)
+2018/03/03 09:20:38 socat[854| D close()  -> 0
+2018/03/03 09:20:38 socat[854| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:38 socat[854| D sigprocmask() -> 0
+2018/03/03 09:20:38 socat[854| I still listening
+2018/03/03 09:20:38 socat[854| N listening on AF=2 127.0.0.2:8000
+2018/03/03 09:20:38 socat[854| D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 09:20:38 socat[1628| D fork() -> 0
+2018/03/03 09:20:38 socat[1628| D getpid()
+2018/03/03 09:20:38 socat[1628| D getpid() -> 1628
+2018/03/03 09:20:38 socat[1628| I just born: child process 1628
+2018/03/03 09:20:38 socat[1628| D setenv("SOCAT_PID", "0", 1)
+2018/03/03 09:20:38 socat[1628| D setenv() -> 0
+2018/03/03 09:20:38 socat[1628| D getpid()
+2018/03/03 09:20:38 socat[1628| D getpid() -> 1628
+2018/03/03 09:20:38 socat[1628| D sigprocmask(1, 0x7ffd71178200, 0x0)
+2018/03/03 09:20:38 socat[1628| D sigprocmask() -> 0
+2018/03/03 09:20:38 socat[1628| I just born: child process 1628
+2018/03/03 09:20:38 socat[1628| D setenv("SOCAT_PID", "1628", 1)
+2018/03/03 09:20:38 socat[1628| D setenv() -> 0
+2018/03/03 09:20:38 socat[1628| I close(6)
+2018/03/03 09:20:38 socat[1628| D close()  -> 0
+2018/03/03 09:20:38 socat[1628| D setenv("SOCAT_SOCKADDR", "127.0.0.2", 1)
+2018/03/03 09:20:38 socat[1628| D setenv() -> 0
+2018/03/03 09:20:38 socat[1628| D setenv("SOCAT_SOCKPORT", "8000", 1)
+2018/03/03 09:20:38 socat[1628| D setenv() -> 0
+2018/03/03 09:20:38 socat[1628| D setenv("SOCAT_PEERADDR", "127.0.0.2", 1)
+2018/03/03 09:20:38 socat[1628| D setenv() -> 0
+2018/03/03 09:20:38 socat[1628| D setenv("SOCAT_PEERPORT", "33298", 1)
+2018/03/03 09:20:38 socat[1628| D setenv() -> 0
+2018/03/03 09:20:38 socat[1628| D SSL_new(0x563553537f40)
+2018/03/03 09:20:38 socat[1628| D SSL_new() -> 0x56355353ced0
+2018/03/03 09:20:38 socat[1628| D SSL_set_fd(0x56355353ced0, 7)
+2018/03/03 09:20:38 socat[1628| D SSL_set_fd() -> 1
+2018/03/03 09:20:38 socat[1628| D SSL_accept(0x56355353ced0)
+2018/03/03 09:20:38 socat[1628| D SSL_accept() -> 1
+2018/03/03 09:20:38 socat[1628| N no peer certificate and no check
+2018/03/03 09:20:38 socat[1628| N SSL connection using ECDHE-RSA-AES128-GCM-SHA256
+2018/03/03 09:20:38 socat[1628| D SSL_get_current_compression(0x56355353ced0)
+2018/03/03 09:20:38 socat[1628| D SSL_get_current_compression() -> NULL
+2018/03/03 09:20:38 socat[1628| D SSL_get_current_expansion(0x56355353ced0)
+2018/03/03 09:20:38 socat[1628| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:20:38 socat[1628| N SSL connection compression "none"
+2018/03/03 09:20:38 socat[1628| N SSL connection expansion "none"
+2018/03/03 09:20:38 socat[1628| D calloc(1, 808)
+2018/03/03 09:20:38 socat[1628| D calloc() -> 0x56355354eec0
+2018/03/03 09:20:38 socat[1628| D malloc(1024)
+2018/03/03 09:20:38 socat[1628| D malloc() -> 0x56355354bdb0
+2018/03/03 09:20:38 socat[1628| I setting option "openssl-commonname" to "d.robur.io"
+2018/03/03 09:20:38 socat[1628| I setting option "openssl-certificate" to "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem"
+2018/03/03 09:20:38 socat[1628| I setting option "openssl-key" to "/home/linus/tstick/keys/x509/roburio/roburio-key.pem"
+2018/03/03 09:20:38 socat[1628| D SSL_load_error_strings()
+2018/03/03 09:20:38 socat[1628| D SSL_load_error_strings() ->
+2018/03/03 09:20:38 socat[1628| D SSL_library_init()
+2018/03/03 09:20:38 socat[1628| D SSL_library_init() -> 1
+2018/03/03 09:20:38 socat[1628| D TLSv1_2_client_method()
+2018/03/03 09:20:38 socat[1628| D TLSv1_2_client_method() -> 0x7fc644a72e80
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_new(0x7fc644a72e80)
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_new() -> 0x56355354c1c0
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_set_tmp_dh(0x56355354c1c0, 0x56355354ce50)
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_set_tmp_dh() -> 1
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_use_certificate_chain_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem")
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_use_certificate_chain_file() -> 1
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_use_PrivateKey_file(0x56355354c1c0, "/home/linus/tstick/keys/x509/roburio/roburio-key.pem", 1)
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_use_PrivateKey_file() -> 1
+2018/03/03 09:20:38 socat[1628| D BIO_new_file("/home/linus/tstick/keys/x509/roburio/roburio-crt.pem", "r")
+2018/03/03 09:20:38 socat[1628| D BIO_new_file() -> 0x56355354d3d0
+2018/03/03 09:20:38 socat[1628| D PEM_read_bio_DHparams(0x56355354d3d0, 0x0, 0x0, 0x0)
+2018/03/03 09:20:38 socat[1628| D PEM_read_bio_DHparams() -> NULL
+2018/03/03 09:20:38 socat[1628| I PEM_read_bio_DHparams(0x56355354d3d0, NULL, NULL, NULL): error
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_set_cipher_list(0x56355354c1c0, "HIGH:-NULL:-PSK:-aNULL")
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_set_cipher_list() -> 1
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_set_verify(0x56355354c1c0, 3, 0x0)
+2018/03/03 09:20:38 socat[1628| D SSL_CTX_set_verify() ->
+2018/03/03 09:20:38 socat[1628| D getaddrinfo("127.0.0.2", NULL, {5,2,1,6,0,0x0,0x0,0x0}, 0x7ffd71178538)
+2018/03/03 09:20:38 socat[1628| D getaddrinfo(,,,{{AF=2 127.0.0.2:0, }) -> 0
+2018/03/03 09:20:38 socat[1628| D malloc(512)
+2018/03/03 09:20:38 socat[1628| D malloc() -> 0x56355354eb10
+2018/03/03 09:20:38 socat[1628| N opening connection to AF=2 127.0.0.2:8001
+2018/03/03 09:20:38 socat[1628| I starting connect loop
+2018/03/03 09:20:38 socat[1628| D socket(2, 1, 6)
+2018/03/03 09:20:38 socat[1628| I socket(2, 1, 6) -> 8
+2018/03/03 09:20:38 socat[1628| D fcntl(8, 2, 1)
+2018/03/03 09:20:38 socat[1628| D fcntl() -> 0
+2018/03/03 09:20:38 socat[1628| D connect(8, {2,AF=2 127.0.0.2:8001}, 16)
+2018/03/03 09:20:38 socat[1628| D connect() -> 0
+2018/03/03 09:20:38 socat[1628| D getsockname(8, 0x7ffd71178580, 0x7ffd7117857c{112})
+2018/03/03 09:20:38 socat[1628| D getsockname(, {AF=2 127.0.0.2:35554}, {16}) -> 0
+2018/03/03 09:20:38 socat[1628| N successfully connected from local address AF=2 127.0.0.2:35554
+2018/03/03 09:20:38 socat[1628| D SSL_new(0x56355354c1c0)
+2018/03/03 09:20:38 socat[1628| D SSL_new() -> 0x563553542140
+2018/03/03 09:20:38 socat[1628| D SSL_set_fd(0x563553542140, 8)
+2018/03/03 09:20:38 socat[1628| D SSL_set_fd() -> 1
+2018/03/03 09:20:38 socat[1628| D SSL_connect(0x563553542140)
+2018/03/03 09:20:56 socat[1519| D SSL_connect() -> -1
+2018/03/03 09:20:56 socat[1519| E SSL_connect(): Success
+2018/03/03 09:20:56 socat[1519| N exit(1)
+2018/03/03 09:20:56 socat[1519| D starting xioexit()
+2018/03/03 09:20:56 socat[1519| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:20:56 socat[1519| D SSL_shutdown() -> 0
+2018/03/03 09:20:56 socat[1519| D SSL_free(0x56355353ced0)
+2018/03/03 09:20:56 socat[1519| D SSL_free() -> void
+2018/03/03 09:20:56 socat[1519| I close(7)
+2018/03/03 09:20:56 socat[1519| D close()  -> 0
+2018/03/03 09:20:56 socat[1519| D SSL_shutdown(0x563553542140)
+2018/03/03 09:20:56 socat[854| N socat_signal(): handling signal 11
+2018/03/03 09:20:56 socat[854| E exiting on signal 11
+2018/03/03 09:20:56 socat[854| N exit(139)
+2018/03/03 09:20:56 socat[854| D starting xioexit()
+2018/03/03 09:20:56 socat[854| I close(6)
+2018/03/03 09:20:56 socat[854| D close()  -> 0
+2018/03/03 09:20:56 socat[854| D finished xioexit()
+2018/03/03 09:20:59 socat[1521| D SSL_connect() -> -1
+2018/03/03 09:21:15 socat[1628| D SSL_connect() -> 1
+2018/03/03 09:21:15 socat[1628| D SSL_get_verify_result(0x563553542140)
+2018/03/03 09:21:15 socat[1628| D SSL_get_verify_result() -> 0
+2018/03/03 09:21:15 socat[1628| I peer certificate is trusted
+2018/03/03 09:21:15 socat[1628| D malloc(16)
+2018/03/03 09:21:15 socat[1628| D malloc() -> 0x56355354e1b0
+2018/03/03 09:21:15 socat[1628| I SSL peer cert subject: "CN = d.robur.io"
+2018/03/03 09:21:15 socat[1628| D setenv("SOCAT_OPENSSL_X509_SUBJECT", "CN = d.robur.io", 1)
+2018/03/03 09:21:15 socat[1628| D setenv() -> 0
+2018/03/03 09:21:15 socat[1628| D SSL peer cert subject entry: commonName="d.robur.io"
+2018/03/03 09:21:15 socat[1628| D setenv("SOCAT_OPENSSL_X509_COMMONNAME", "d.robur.io", 2)
+2018/03/03 09:21:15 socat[1628| D setenv() -> 0
+2018/03/03 09:21:15 socat[1628| D malloc(59)
+2018/03/03 09:21:15 socat[1628| D malloc() -> 0x5635535637b0
+2018/03/03 09:21:15 socat[1628| I SSL peer cert issuer: "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3VS5V"
+2018/03/03 09:21:15 socat[1628| D setenv("SOCAT_OPENSSL_X509_ISSUER", "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3", 1)
+2018/03/03 09:21:15 socat[1628| D setenv() -> 0
+2018/03/03 09:21:15 socat[1628| D setenv("SOCAT_OPENSSL_X509V3_SUBJECTALTNAME_DNS", "d.robur.io", 2)
+2018/03/03 09:21:15 socat[1628| D setenv() -> 0
+2018/03/03 09:21:15 socat[1628| D commonName "d.robur.io" has no wildcard
+2018/03/03 09:21:15 socat[1628| D commonName "d.robur.io" matches peername "d.robur.io"
+2018/03/03 09:21:15 socat[1628| N trusting certificate, commonName matches
+2018/03/03 09:21:15 socat[1628| N SSL connection using DHE-RSA-AES256-CCM
+2018/03/03 09:21:15 socat[1628| D SSL_get_current_compression(0x563553542140)
+2018/03/03 09:21:15 socat[1628| D SSL_get_current_compression() -> NULL
+2018/03/03 09:21:15 socat[1628| D SSL_get_current_expansion(0x563553542140)
+2018/03/03 09:21:15 socat[1628| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:21:15 socat[1628| N SSL connection compression "none"
+2018/03/03 09:21:15 socat[1628| N SSL connection expansion "none"
+2018/03/03 09:21:15 socat[1628| I resolved and opened all sock addresses
+2018/03/03 09:21:15 socat[1628| D malloc(16385)
+2018/03/03 09:21:15 socat[1628| D malloc() -> 0x56355354f210
+2018/03/03 09:21:15 socat[1628| N starting data transfer loop with FDs [7,7| and [8,8|
+2018/03/03 09:21:15 socat[1628| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:20:56 socat[1628| N socat_signal(): finishing signal 11
+2018/03/03 09:20:56 socat[1628| D exit(139)
+2018/03/03 09:20:56 socat[1628| N childdied(): handling signal 17
+2018/03/03 09:20:56 socat[1628| I childdied(signum=17)
+2018/03/03 09:20:56 socat[1628| D waitpid(-1, 0x7ffd71176f5c, 1)
+2018/03/03 09:20:56 socat[1628| D waitpid(, {35584}, ) -> 1519
+2018/03/03 09:20:56 socat[1628| I childdied(17): cannot identify child 1519
+2018/03/03 09:20:56 socat[1628| D saving pid in diedunknown2
+2018/03/03 09:20:56 socat[1628| I waitpid(): child 1519 exited with status 139
+2018/03/03 09:20:56 socat[1628| D waitpid(-1, 0x7ffd71176f5c, 1)
+2018/03/03 09:20:56 socat[1628| D waitpid(, {35584}, ) -> 0
+2018/03/03 09:20:56 socat[1628| I waitpid(-1, {}, WNOHANG): no child has exited
+2018/03/03 09:20:56 socat[1628| I childdied() finished
+2018/03/03 09:20:59 socat[1628| N socat_signal(): handling signal 11
+2018/03/03 09:20:59 socat[1628| E exiting on signal 11
+2018/03/03 09:20:59 socat[1628| N exit(139)
+2018/03/03 09:21:15 socat[1628| D starting xioexit()
+2018/03/03 09:21:15 socat[1628| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:21:15 socat[1628| D SSL_shutdown() -> 0
+2018/03/03 09:21:15 socat[1628| D SSL_free(0x56355353ced0)
+2018/03/03 09:21:15 socat[1628| D SSL_free() -> void
+2018/03/03 09:21:15 socat[1628| I close(7)
+2018/03/03 09:21:15 socat[1628| D close()  -> 0
+2018/03/03 09:21:15 socat[1628| D SSL_shutdown(0x563553542140)
+2018/03/03 09:21:15 socat[1628| D SSL_shutdown() -> 0
+2018/03/03 09:21:15 socat[1628| D SSL_free(0x563553542140)
+2018/03/03 09:21:15 socat[1628| D SSL_free() -> void
+2018/03/03 09:21:15 socat[1628| I close(8)
+2018/03/03 09:21:15 socat[1628| D close()  -> 0
+2018/03/03 09:21:15 socat[1628| D finished xioexit()
+2018/03/03 09:21:16 socat[1623| D SSL_connect() -> 1
+2018/03/03 09:21:16 socat[1623| D SSL_get_verify_result(0x563553542140)
+2018/03/03 09:21:16 socat[1623| D SSL_get_verify_result() -> 0
+2018/03/03 09:21:16 socat[1623| I peer certificate is trusted
+2018/03/03 09:21:16 socat[1623| D malloc(16)
+2018/03/03 09:21:16 socat[1623| D malloc() -> 0x56355354e1b0
+2018/03/03 09:21:16 socat[1623| I SSL peer cert subject: "CN = d.robur.io"
+2018/03/03 09:21:16 socat[1623| D setenv("SOCAT_OPENSSL_X509_SUBJECT", "CN = d.robur.io", 1)
+2018/03/03 09:21:16 socat[1623| D setenv() -> 0
+2018/03/03 09:21:16 socat[1623| D SSL peer cert subject entry: commonName="d.robur.io"
+2018/03/03 09:21:16 socat[1623| D setenv("SOCAT_OPENSSL_X509_COMMONNAME", "d.robur.io", 2)
+2018/03/03 09:21:16 socat[1623| D setenv() -> 0
+2018/03/03 09:21:16 socat[1623| D malloc(59)
+2018/03/03 09:21:16 socat[1623| D malloc() -> 0x5635535637b0
+2018/03/03 09:21:16 socat[1623| I SSL peer cert issuer: "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3VS5V"
+2018/03/03 09:21:16 socat[1623| D setenv("SOCAT_OPENSSL_X509_ISSUER", "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3", 1)
+2018/03/03 09:21:16 socat[1623| D setenv() -> 0
+2018/03/03 09:21:16 socat[1623| D setenv("SOCAT_OPENSSL_X509V3_SUBJECTALTNAME_DNS", "d.robur.io", 2)
+2018/03/03 09:21:16 socat[1623| D setenv() -> 0
+2018/03/03 09:21:16 socat[1623| D commonName "d.robur.io" has no wildcard
+2018/03/03 09:21:16 socat[1623| D commonName "d.robur.io" matches peername "d.robur.io"
+2018/03/03 09:21:16 socat[1623| N trusting certificate, commonName matches
+2018/03/03 09:21:16 socat[1623| N SSL connection using DHE-RSA-AES256-CCM
+2018/03/03 09:21:16 socat[1623| D SSL_get_current_compression(0x563553542140)
+2018/03/03 09:21:16 socat[1623| D SSL_get_current_compression() -> NULL
+2018/03/03 09:21:16 socat[1623| D SSL_get_current_expansion(0x563553542140)
+2018/03/03 09:21:16 socat[1623| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:21:16 socat[1623| N SSL connection compression "none"
+2018/03/03 09:21:16 socat[1623| N SSL connection expansion "none"
+2018/03/03 09:21:16 socat[1623| I resolved and opened all sock addresses
+2018/03/03 09:21:16 socat[1623| D malloc(16385)
+2018/03/03 09:21:16 socat[1623| D malloc() -> 0x56355354f210
+2018/03/03 09:21:16 socat[1623| N starting data transfer loop with FDs [7,7| and [8,8|
+2018/03/03 09:21:16 socat[1623| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:20:59 socat[1623| N socat_signal(): finishing signal 11
+2018/03/03 09:20:59 socat[1623| D exit(139)
+2018/03/03 09:21:16 socat[1623| D select(9, &0x180, &0x180, &0x0, NULL/0.000000)
+2018/03/03 09:21:16 socat[1623| D select -> (, 0x80, 0x180, 0x0, NULL/0.000000), 3
+2018/03/03 09:21:16 socat[1623| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:21:16 socat[1623| D SSL_read() -> 1589
+2018/03/03 09:21:16 socat[1623| D SSL_write(0x563553542140, 0x56355354f210, 1589)
+2018/03/03 09:21:16 socat[1623| D SSL_write() -> 1589
+2018/03/03 09:21:16 socat[1623| I transferred 1589 bytes from 7 to 8
+2018/03/03 09:21:16 socat[1623| D SSL_pending(0x56355353ced0)
+2018/03/03 09:21:16 socat[1623| D SSL_pending() -> 0
+2018/03/03 09:21:16 socat[1623| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:21:16 socat[1623| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:21:16 socat[1623| D select -> (, 0x80, 0x100, 0x0, NULL/0.000000), 2
+2018/03/03 09:21:16 socat[1623| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:21:16 socat[1623| D SSL_read() -> 0
+2018/03/03 09:21:16 socat[1623| N socket 1 (fd 7) is at EOF
+2018/03/03 09:21:16 socat[1623| D SSL_shutdown(0x563553542140)
+2018/03/03 09:21:16 socat[1623| D SSL_shutdown() -> 0
+2018/03/03 09:21:16 socat[1623| D data loop: sock1->eof=2, sock2->eof=0, closing=1, wasaction=1, total_to={0.000000}
+2018/03/03 09:21:16 socat[1623| D select(9, &0x100, &0x0, &0x0, &0.500000)
+1626 init handshake with destination, via socat #2
+2018/03/03 09:21:16 socat[1626| D SSL_connect() -> 1
+2018/03/03 09:21:16 socat[1626| D SSL_get_verify_result(0x563553542140)
+2018/03/03 09:21:16 socat[1626| D SSL_get_verify_result() -> 0
+2018/03/03 09:21:16 socat[1626| I peer certificate is trusted
+2018/03/03 09:21:16 socat[1626| D malloc(16)
+2018/03/03 09:21:16 socat[1626| D malloc() -> 0x56355354e1b0
+2018/03/03 09:21:16 socat[1626| I SSL peer cert subject: "CN = d.robur.io"
+2018/03/03 09:21:16 socat[1626| D setenv("SOCAT_OPENSSL_X509_SUBJECT", "CN = d.robur.io", 1)
+2018/03/03 09:21:16 socat[1626| D setenv() -> 0
+2018/03/03 09:21:16 socat[1626| D SSL peer cert subject entry: commonName="d.robur.io"
+2018/03/03 09:21:16 socat[1626| D setenv("SOCAT_OPENSSL_X509_COMMONNAME", "d.robur.io", 2)
+2018/03/03 09:21:16 socat[1626| D setenv() -> 0
+2018/03/03 09:21:16 socat[1626| D malloc(59)
+2018/03/03 09:21:16 socat[1626| D malloc() -> 0x5635535637b0
+2018/03/03 09:21:16 socat[1626| I SSL peer cert issuer: "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3VS5V"
+2018/03/03 09:21:16 socat[1626| D setenv("SOCAT_OPENSSL_X509_ISSUER", "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3", 1)
+2018/03/03 09:21:16 socat[1626| D setenv() -> 0
+2018/03/03 09:21:16 socat[1626| D setenv("SOCAT_OPENSSL_X509V3_SUBJECTALTNAME_DNS", "d.robur.io", 2)
+2018/03/03 09:21:16 socat[1626| D setenv() -> 0
+2018/03/03 09:21:16 socat[1626| D commonName "d.robur.io" has no wildcard
+2018/03/03 09:21:16 socat[1626| D commonName "d.robur.io" matches peername "d.robur.io"
+2018/03/03 09:21:16 socat[1626| N trusting certificate, commonName matches
+2018/03/03 09:21:16 socat[1626| N SSL connection using DHE-RSA-AES256-CCM
+2018/03/03 09:21:16 socat[1626| D SSL_get_current_compression(0x563553542140)
+2018/03/03 09:21:16 socat[1626| D SSL_get_current_compression() -> NULL
+2018/03/03 09:21:16 socat[1626| D SSL_get_current_expansion(0x563553542140)
+2018/03/03 09:21:16 socat[1626| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:21:16 socat[1626| N SSL connection compression "none"
+2018/03/03 09:21:16 socat[1626| N SSL connection expansion "none"
+2018/03/03 09:21:16 socat[1626| I resolved and opened all sock addresses
+2018/03/03 09:21:16 socat[1626| D malloc(16385)
+2018/03/03 09:21:16 socat[1626| D malloc() -> 0x56355354f210
+2018/03/03 09:21:16 socat[1626| N starting data transfer loop with FDs [7,7| and [8,8|
+2018/03/03 09:21:16 socat[1626| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:21:16 socat[1626| D select(9, &0x180, &0x180, &0x0, NULL/0.000000)
+2018/03/03 09:21:16 socat[1626| D select -> (, 0x80, 0x180, 0x0, NULL/0.000000), 3
+2018/03/03 09:21:16 socat[1626| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:21:16 socat[1626| D SSL_read() -> 931
+2018/03/03 09:21:16 socat[1626| D SSL_write(0x563553542140, 0x56355354f210, 931)
+2018/03/03 09:21:16 socat[1626| D SSL_write() -> 931
+2018/03/03 09:21:16 socat[1626| I transferred 931 bytes from 7 to 8
+2018/03/03 09:21:16 socat[1626| D SSL_pending(0x56355353ced0)
+2018/03/03 09:21:16 socat[1626| D SSL_pending() -> 0
+2018/03/03 09:21:16 socat[1626| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:21:16 socat[1626| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:21:16 socat[1626| D select -> (, 0x0, 0x100, 0x0, NULL/0.000000), 1
+2018/03/03 09:21:16 socat[1626| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:21:16 socat[1626| D select(9, &0x180, &0x0, &0x0, NULL/0.000000)
+1623
+2018/03/03 09:21:16 socat[1623| D select -> (, 0x100, 0x0, 0x0, &0.420345), 1
+2018/03/03 09:21:16 socat[1623| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+1626
+2018/03/03 09:21:16 socat[1626| D select -> (, 0x100, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 09:21:16 socat[1626| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+1567
+2018/03/03 09:21:16 socat[1567| D SSL_connect() -> 1
+2018/03/03 09:21:16 socat[1567| D SSL_get_verify_result(0x563553542140)
+2018/03/03 09:21:16 socat[1567| D SSL_get_verify_result() -> 0
+2018/03/03 09:21:16 socat[1567| I peer certificate is trusted
+2018/03/03 09:21:16 socat[1567| D malloc(16)
+2018/03/03 09:21:16 socat[1567| D malloc() -> 0x56355354e1b0
+2018/03/03 09:21:16 socat[1567| I SSL peer cert subject: "CN = d.robur.io"
+2018/03/03 09:21:16 socat[1567| D setenv("SOCAT_OPENSSL_X509_SUBJECT", "CN = d.robur.io", 1)
+2018/03/03 09:21:16 socat[1567| D setenv() -> 0
+2018/03/03 09:21:16 socat[1567| D SSL peer cert subject entry: commonName="d.robur.io"
+2018/03/03 09:21:16 socat[1567| D setenv("SOCAT_OPENSSL_X509_COMMONNAME", "d.robur.io", 2)
+2018/03/03 09:21:16 socat[1567| D setenv() -> 0
+2018/03/03 09:21:16 socat[1567| D malloc(59)
+2018/03/03 09:21:16 socat[1567| D malloc() -> 0x5635535637b0
+2018/03/03 09:21:16 socat[1567| I SSL peer cert issuer: "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3VS5V"
+2018/03/03 09:21:16 socat[1567| D setenv("SOCAT_OPENSSL_X509_ISSUER", "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3", 1)
+2018/03/03 09:21:16 socat[1567| D setenv() -> 0
+2018/03/03 09:21:16 socat[1567| D setenv("SOCAT_OPENSSL_X509V3_SUBJECTALTNAME_DNS", "d.robur.io", 2)
+2018/03/03 09:21:16 socat[1567| D setenv() -> 0
+2018/03/03 09:21:16 socat[1567| D commonName "d.robur.io" has no wildcard
+2018/03/03 09:21:16 socat[1567| D commonName "d.robur.io" matches peername "d.robur.io"
+2018/03/03 09:21:16 socat[1567| N trusting certificate, commonName matches
+2018/03/03 09:21:16 socat[1567| N SSL connection using DHE-RSA-AES256-CCM
+2018/03/03 09:21:16 socat[1567| D SSL_get_current_compression(0x563553542140)
+2018/03/03 09:21:16 socat[1567| D SSL_get_current_compression() -> NULL
+2018/03/03 09:21:16 socat[1567| D SSL_get_current_expansion(0x563553542140)
+2018/03/03 09:21:16 socat[1567| D SSL_get_current_expansion() -> NULL
+2018/03/03 09:21:16 socat[1567| N SSL connection compression "none"
+2018/03/03 09:21:16 socat[1567| N SSL connection expansion "none"
+2018/03/03 09:21:16 socat[1567| I resolved and opened all sock addresses
+2018/03/03 09:21:16 socat[1567| D malloc(16385)
+2018/03/03 09:21:16 socat[1567| D malloc() -> 0x56355354f210
+2018/03/03 09:21:16 socat[1567| N starting data transfer loop with FDs [7,7| and [8,8|
+2018/03/03 09:21:16 socat[1567| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:21:16 socat[1567| D select(9, &0x180, &0x180, &0x0, NULL/0.000000)
+2018/03/03 09:21:16 socat[1567| D select -> (, 0x80, 0x180, 0x0, NULL/0.000000), 3
+2018/03/03 09:21:16 socat[1567| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:21:16 socat[1567| D SSL_read() -> 1589
+2018/03/03 09:21:16 socat[1567| D SSL_write(0x563553542140, 0x56355354f210, 1589)
+2018/03/03 09:21:16 socat[1567| D SSL_write() -> 1589
+2018/03/03 09:21:16 socat[1567| I transferred 1589 bytes from 7 to 8
+2018/03/03 09:21:16 socat[1567| D SSL_pending(0x56355353ced0)
+2018/03/03 09:21:16 socat[1567| D SSL_pending() -> 0
+2018/03/03 09:21:16 socat[1567| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 09:21:16 socat[1567| D select(9, &0x180, &0x100, &0x0, NULL/0.000000)
+2018/03/03 09:21:16 socat[1567| D select -> (, 0x80, 0x100, 0x0, NULL/0.000000), 2
+2018/03/03 09:21:16 socat[1567| D SSL_read(0x56355353ced0, 0x56355354f210, 8192)
+2018/03/03 09:21:16 socat[1567| D SSL_read() -> 0
+2018/03/03 09:21:16 socat[1567| N socket 1 (fd 7) is at EOF
+2018/03/03 09:21:16 socat[1567| D SSL_shutdown(0x563553542140)
+2018/03/03 09:21:16 socat[1567| D SSL_shutdown() -> 0
+2018/03/03 09:21:16 socat[1567| D data loop: sock1->eof=2, sock2->eof=0, closing=1, wasaction=1, total_to={0.000000}
+2018/03/03 09:21:16 socat[1567| D select(9, &0x100, &0x0, &0x0, &0.500000)
+2018/03/03 09:21:16 socat[1567| D select -> (, 0x100, 0x0, 0x0, &0.457945), 1
+2018/03/03 09:21:16 socat[1567| D SSL_read(0x563553542140, 0x56355354f210, 8192)
+1623
+2018/03/03 09:21:16 socat[1623| D SSL_read() -> -1
+2018/03/03 09:21:16 socat[1623| E SSL_read(): Success
+2018/03/03 09:21:16 socat[1623| N exit(1)
+2018/03/03 09:21:16 socat[1623| D starting xioexit()
+2018/03/03 09:21:16 socat[1623| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:21:16 socat[1623| D SSL_shutdown() -> 1
+2018/03/03 09:21:16 socat[1623| D SSL_free(0x56355353ced0)
+2018/03/03 09:21:16 socat[1623| D SSL_free() -> void
+2018/03/03 09:21:16 socat[1623| I close(7)
+2018/03/03 09:21:16 socat[1623| D close()  -> 0
+2018/03/03 09:21:16 socat[1623| D SSL_shutdown(0x563553542140)
+1567
+2018/03/03 09:21:16 socat[1567| D SSL_read() -> -1
+2018/03/03 09:21:16 socat[1567| E SSL_read(): Success
+2018/03/03 09:21:16 socat[1567| N exit(1)
+2018/03/03 09:21:16 socat[1567| D starting xioexit()
+2018/03/03 09:21:16 socat[1567| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:21:16 socat[1567| D SSL_shutdown() -> 1
+2018/03/03 09:21:16 socat[1567| D SSL_free(0x56355353ced0)
+2018/03/03 09:21:16 socat[1567| D SSL_free() -> void
+2018/03/03 09:21:16 socat[1567| I close(7)
+2018/03/03 09:21:16 socat[1567| D close()  -> 0
+2018/03/03 09:21:16 socat[1567| D SSL_shutdown(0x563553542140)
+1626
+2018/03/03 09:21:16 socat[1626| D SSL_read() -> -1
+2018/03/03 09:21:16 socat[1626| I nonblocking operation did not complete
+xioread_openssl(): errno=EAGAIN -> -1 => xioread() -> -1 => xiotransfer() -> -1
+2018/03/03 09:21:16 socat[1626| D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+_socat() socat.c:774
+2018/03/03 09:21:16 socat[1626| N socat_signal(): handling signal 11
+2018/03/03 09:21:16 socat[1626| E exiting on signal 11
+2018/03/03 09:21:16 socat[1626| N exit(139)
+2018/03/03 09:21:16 socat[1626| D starting xioexit()
+2018/03/03 09:21:16 socat[1626| D SSL_shutdown(0x56355353ced0)
+2018/03/03 09:21:16 socat[1626| D SSL_shutdown() -> 0
+2018/03/03 09:21:16 socat[1626| D SSL_free(0x56355353ced0)
+2018/03/03 09:21:16 socat[1626| D SSL_free() -> void
+2018/03/03 09:21:16 socat[1626| I close(7)
+2018/03/03 09:21:16 socat[1626| D close()  -> 0
+2018/03/03 09:21:16 socat[1626| D SSL_shutdown(0x563553542140)
+2018/03/03 09:21:16 socat[1626| D SSL_shutdown() -> 0
+2018/03/03 09:21:16 socat[1626| D SSL_free(0x563553542140)
+2018/03/03 09:21:16 socat[1626| D SSL_free() -> void
+2018/03/03 09:21:16 socat[1626| I close(8)
+2018/03/03 09:21:16 socat[1626| D close()  -> 0
+2018/03/03 09:21:16 socat[1626| D finished xioexit()
+*** yet another
+Conclusion: EOF on connecting socket results in double SSL_shutdown()
+on listening socket, which segfaults for some reason.
+
+SSL_shutdown calls ERR_put_error (via macro SSLerr) which segfaults.
+
+This helps with debugging:
+  $ gdb -ex "set follow-fork-mode child" --args socat ...
+
+NOTE: Work around the bug by in sycSSL_shutdown() wrap everything in
+if (!SSL_in_init(ssl)){}.
+
+NOTE2: Linking with an openssl-1.1.0f built with -O0 -g makes the bug
+not show.
+
+
+datan:~% socat -d -d -d -d OPENSSL-LISTEN:8000,cert=$HOME/tstick/keys/x509/roburio/selfsigned.crt.pem,key=$HOME/tstick/keys/x509/roburio/selfsigned.key.pem,verify=0,bind=127.0.0.2,reuseaddr,fork OPENSSL:127.0.0.2:8001,commonname=d.robur.io,cert=$HOME/tstick/keys/x509/roburio/roburio-crt.pem,key=$HOME/tstick/keys/x509/roburio/roburio-key.pem
+2018/03/03 17:52:34 |3123] D getpid()
+2018/03/03 17:52:34 |3123] D getpid() -> 3123
+2018/03/03 17:52:34 |3123] D setenv("SOCAT_PID", "3123", 1)
+2018/03/03 17:52:34 |3123] D setenv() -> 0
+2018/03/03 17:52:34 |3123] D setenv("SOCAT_PPID", "3123", 1)
+2018/03/03 17:52:34 |3123] D setenv() -> 0
+2018/03/03 17:52:34 |3123] I socat by Gerhard Rieger and contributors - see www.dest-unreach.org
+2018/03/03 17:52:34 |3123] I This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit. (http://www.openssl.org/)
+2018/03/03 17:52:34 |3123] I This product includes software written by Tim Hudson (tjh@cryptsoft.com)
+2018/03/03 17:52:34 |3123] D socat version 1.7.3.2 on Mar  2 2018 14:13:08
+2018/03/03 17:52:34 |3123] D setenv("SOCAT_VERSION", "1.7.3.2", 1)
+2018/03/03 17:52:34 |3123] D setenv() -> 0
+2018/03/03 17:52:34 |3123] D running on Linux version #1 SMP Debian 4.9.82-1+deb9u2 (2018-02-21), release 4.9.0-6-amd64, machine x86_64
+
+2018/03/03 17:52:34 |3123] D argv[0]: "socat"
+2018/03/03 17:52:34 |3123] D argv[1]: "-d"
+2018/03/03 17:52:34 |3123] D argv[2]: "-d"
+2018/03/03 17:52:34 |3123] D argv[3]: "-d"
+2018/03/03 17:52:34 |3123] D argv[4]: "-d"
+2018/03/03 17:52:34 |3123] D argv[5]: "OPENSSL-LISTEN:8000,cert=/home/linus/tstick/keys/x509/roburio/selfsigned.crt.pem,key=/home/linus/tstick/keys/x509/roburio/selfsigned.key.pem,verify=0,bind=127.0.0.2,reuseaddr,fork"
+2018/03/03 17:52:34 |3123] D argv[6]: "OPENSSL:127.0.0.2:8001,commonname=d.robur.io,cert=/home/linus/tstick/keys/x509/roburio/roburio-crt.pem,key=/home/linus/tstick/keys/x509/roburio/roburio-key.pem"
+2018/03/03 17:52:34 |3123] D sigaction(1, 0x7ffd20585dc0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D sigaction(2, 0x7ffd20585dc0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D sigaction(3, 0x7ffd20585dc0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D sigaction(4, 0x7ffd20585dc0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D sigaction(6, 0x7ffd20585dc0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D sigaction(7, 0x7ffd20585dc0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D sigaction(8, 0x7ffd20585dc0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D sigaction(11, 0x7ffd20585dc0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D sigaction(15, 0x7ffd20585dc0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D signal(13, 0x1)
+2018/03/03 17:52:34 |3123] D signal() -> 0x0
+2018/03/03 17:52:34 |3123] D atexit(0x55f1866eca04)
+2018/03/03 17:52:34 |3123] D atexit() -> 0
+2018/03/03 17:52:34 |3123] D calloc(1, 808)
+2018/03/03 17:52:34 |3123] D calloc() -> 0x55f187128500
+2018/03/03 17:52:34 |3123] D malloc(1024)
+2018/03/03 17:52:34 |3123] D malloc() -> 0x55f187128870
+2018/03/03 17:52:34 |3123] I setting option "openssl-certificate" to "/home/linus/tstick/keys/x509/roburio/selfsigned.crt.pem"
+2018/03/03 17:52:34 |3123] I setting option "openssl-key" to "/home/linus/tstick/keys/x509/roburio/selfsigned.key.pem"
+2018/03/03 17:52:34 |3123] I setting option "openssl-verify" to 0
+2018/03/03 17:52:34 |3123] I setting option "bind" to "127.0.0.2"
+2018/03/03 17:52:34 |3123] I setting option "so-reuseaddr" to 1
+2018/03/03 17:52:34 |3123] I setting option "fork" to 1
+2018/03/03 17:52:34 |3123] D SSL_load_error_strings()
+2018/03/03 17:52:34 |3123] D SSL_load_error_strings() ->
+2018/03/03 17:52:34 |3123] D SSL_library_init()
+2018/03/03 17:52:34 |3123] D SSL_library_init() -> 1
+2018/03/03 17:52:34 |3123] D TLSv1_2_server_method()
+2018/03/03 17:52:34 |3123] D TLSv1_2_server_method() -> 0x7fa25ca77200
+2018/03/03 17:52:34 |3123] D SSL_CTX_new(0x7fa25ca77200)
+2018/03/03 17:52:34 |3123] D SSL_CTX_new() -> 0x55f187145f40
+2018/03/03 17:52:34 |3123] D SSL_CTX_set_tmp_dh(0x55f187145f40, 0x55f187146e20)
+2018/03/03 17:52:34 |3123] D SSL_CTX_set_tmp_dh() -> 1
+2018/03/03 17:52:34 |3123] D SSL_CTX_use_certificate_chain_file(0x55f187145f40, "/home/linus/tstick/keys/x509/roburio/selfsigned.crt.pem")
+2018/03/03 17:52:34 |3123] D SSL_CTX_use_certificate_chain_file() -> 1
+2018/03/03 17:52:34 |3123] D SSL_CTX_use_PrivateKey_file(0x55f187145f40, "/home/linus/tstick/keys/x509/roburio/selfsigned.key.pem", 1)
+2018/03/03 17:52:34 |3123] D SSL_CTX_use_PrivateKey_file() -> 1
+2018/03/03 17:52:34 |3123] D BIO_new_file("/home/linus/tstick/keys/x509/roburio/selfsigned.crt.pem", "r")
+2018/03/03 17:52:34 |3123] D BIO_new_file() -> 0x55f187147410
+2018/03/03 17:52:34 |3123] D PEM_read_bio_DHparams(0x55f187147410, 0x0, 0x0, 0x0)
+2018/03/03 17:52:34 |3123] D PEM_read_bio_DHparams() -> NULL
+2018/03/03 17:52:34 |3123] I PEM_read_bio_DHparams(0x55f187147410, NULL, NULL, NULL): error
+2018/03/03 17:52:34 |3123] D SSL_CTX_set_cipher_list(0x55f187145f40, "HIGH:-NULL:-PSK:-aNULL")
+2018/03/03 17:52:34 |3123] D SSL_CTX_set_cipher_list() -> 1
+2018/03/03 17:52:34 |3123] D SSL_CTX_set_verify(0x55f187145f40, 0, 0x0)
+2018/03/03 17:52:34 |3123] D SSL_CTX_set_verify() ->
+2018/03/03 17:52:34 |3123] D getaddrinfo("127.0.0.2", NULL, {5,2,1,6,0,0x0,0x0,0x0}, 0x7ffd20585a98)
+2018/03/03 17:52:34 |3123] D getaddrinfo(,,,{{AF=2 127.0.0.2:0, }) -> 0
+2018/03/03 17:52:34 |3123] D malloc(896)
+2018/03/03 17:52:34 |3123] D malloc() -> 0x55f187148c90
+2018/03/03 17:52:34 |3123] D sigaction(17, 0x7ffd205854d0, 0x0)
+2018/03/03 17:52:34 |3123] D sigaction() -> 0
+2018/03/03 17:52:34 |3123] D socket(2, 1, 6)
+2018/03/03 17:52:34 |3123] I socket(2, 1, 6) -> 6
+2018/03/03 17:52:34 |3123] D fcntl(6, 2, 1)
+2018/03/03 17:52:34 |3123] D fcntl() -> 0
+2018/03/03 17:52:34 |3123] D setsockopt(6, 1, 2, {0x1}, 4)
+2018/03/03 17:52:34 |3123] D setsockopt() -> 0
+2018/03/03 17:52:34 |3123] D bind(6, AF=2 127.0.0.2:8000, 16)
+2018/03/03 17:52:34 |3123] D bind() -> 0
+2018/03/03 17:52:34 |3123] D getsockname(6, 0x7ffd20585c10, 0x7ffd205855a0{16})
+2018/03/03 17:52:34 |3123] D getsockname(, {AF=2 127.0.0.2:8000}, {16}) -> 0
+2018/03/03 17:52:34 |3123] D listen(6, 5)
+2018/03/03 17:52:34 |3123] D listen() -> 0
+2018/03/03 17:52:34 |3123] I starting accept loop
+2018/03/03 17:52:34 |3123] N listening on AF=2 127.0.0.2:8000
+2018/03/03 17:52:34 |3123] D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+2018/03/03 17:52:45 |3123] D select -> (, 0x40, 0x0, 0x0, NULL/0.000000), 1
+2018/03/03 17:52:45 |3123] D accept(6, 0x7ffd20585b40, 0x7ffd20585b3c)
+2018/03/03 17:52:45 |3123] I accept(6, {2, AF=2 127.0.0.2:33388}, 16) -> 7
+2018/03/03 17:52:45 |3123] D fcntl(7, 2, 1)
+2018/03/03 17:52:45 |3123] D fcntl() -> 0
+2018/03/03 17:52:45 |3123] D getpeername(7, 0x7ffd205858b0, 0x7ffd2058583c{112})
+2018/03/03 17:52:45 |3123] D getpeername(, {AF=2 127.0.0.2:33388}, {16}) -> 0
+2018/03/03 17:52:45 |3123] D getsockname(7, 0x7ffd20585840, 0x7ffd20585838{112})
+2018/03/03 17:52:45 |3123] D getsockname(, {AF=2 127.0.0.2:8000}, {16}) -> 0
+2018/03/03 17:52:45 |3123] N accepting connection from AF=2 127.0.0.2:33388 on AF=2 127.0.0.2:8000
+2018/03/03 17:52:45 |3123] I permitting connection from AF=2 127.0.0.2:33388
+2018/03/03 17:52:45 |3123] D sigprocmask(0, 0x7ffd205855b0, 0x0)
+2018/03/03 17:52:45 |3123] D sigprocmask() -> 0
+2018/03/03 17:52:45 |3123] D fork()
+2018/03/03 17:52:45 |3123] D fork() -> 3294
+2018/03/03 17:52:45 |3123] N forked off child process 3294
+2018/03/03 17:52:45 |3123] I close(7)
+2018/03/03 17:52:45 |3123] D close()  -> 0
+2018/03/03 17:52:45 |3123] D sigprocmask(1, 0x7ffd205855b0, 0x0)
+2018/03/03 17:52:45 |3123] D sigprocmask() -> 0
+2018/03/03 17:52:45 |3123] I still listening
+2018/03/03 17:52:45 |3123] N listening on AF=2 127.0.0.2:8000
+2018/03/03 17:52:45 |3123] D select(7, &0x48, &0x0, &0x0, NULL/0.000000)
+3294
+2018/03/03 17:52:45 |3294] D fork() -> 0
+2018/03/03 17:52:45 |3294] D getpid()
+2018/03/03 17:52:45 |3294] D getpid() -> 3294
+2018/03/03 17:52:45 |3294] I just born: child process 3294
+2018/03/03 17:52:45 |3294] D setenv("SOCAT_PID", "0", 1)
+2018/03/03 17:52:45 |3294] D setenv() -> 0
+2018/03/03 17:52:45 |3294] D getpid()
+2018/03/03 17:52:45 |3294] D getpid() -> 3294
+2018/03/03 17:52:45 |3294] D sigprocmask(1, 0x7ffd205855b0, 0x0)
+2018/03/03 17:52:45 |3294] D sigprocmask() -> 0
+2018/03/03 17:52:45 |3294] I just born: child process 3294
+2018/03/03 17:52:45 |3294] D setenv("SOCAT_PID", "3294", 1)
+2018/03/03 17:52:45 |3294] D setenv() -> 0
+2018/03/03 17:52:45 |3294] I close(6)
+2018/03/03 17:52:45 |3294] D close()  -> 0
+2018/03/03 17:52:45 |3294] D setenv("SOCAT_SOCKADDR", "127.0.0.2", 1)
+2018/03/03 17:52:45 |3294] D setenv() -> 0
+2018/03/03 17:52:45 |3294] D setenv("SOCAT_SOCKPORT", "8000", 1)
+2018/03/03 17:52:45 |3294] D setenv() -> 0
+2018/03/03 17:52:45 |3294] D setenv("SOCAT_PEERADDR", "127.0.0.2", 1)
+2018/03/03 17:52:45 |3294] D setenv() -> 0
+2018/03/03 17:52:45 |3294] D setenv("SOCAT_PEERPORT", "33388", 1)
+2018/03/03 17:52:45 |3294] D setenv() -> 0
+2018/03/03 17:52:45 |3294] D SSL_new(0x55f187145f40)
+2018/03/03 17:52:45 |3294] D SSL_new() -> 0x55f18714aed0
+2018/03/03 17:52:45 |3294] D SSL_set_fd(0x55f18714aed0, 7)
+2018/03/03 17:52:45 |3294] D SSL_set_fd() -> 1
+2018/03/03 17:52:45 |3294] D SSL_accept(0x55f18714aed0)
+2018/03/03 17:52:45 |3294] D SSL_accept() -> 1
+2018/03/03 17:52:45 |3294] N no peer certificate and no check
+2018/03/03 17:52:45 |3294] N SSL connection using ECDHE-RSA-AES128-GCM-SHA256
+2018/03/03 17:52:45 |3294] D SSL_get_current_compression(0x55f18714aed0)
+2018/03/03 17:52:45 |3294] D SSL_get_current_compression() -> NULL
+2018/03/03 17:52:45 |3294] D SSL_get_current_expansion(0x55f18714aed0)
+2018/03/03 17:52:45 |3294] D SSL_get_current_expansion() -> NULL
+2018/03/03 17:52:45 |3294] N SSL connection compression "none"
+2018/03/03 17:52:45 |3294] N SSL connection expansion "none"
+2018/03/03 17:52:45 |3294] D calloc(1, 808)
+2018/03/03 17:52:45 |3294] D calloc() -> 0x55f187159db0
+2018/03/03 17:52:45 |3294] D malloc(1024)
+2018/03/03 17:52:45 |3294] D malloc() -> 0x55f18715a0e0
+2018/03/03 17:52:45 |3294] I setting option "openssl-commonname" to "d.robur.io"
+2018/03/03 17:52:45 |3294] I setting option "openssl-certificate" to "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem"
+2018/03/03 17:52:45 |3294] I setting option "openssl-key" to "/home/linus/tstick/keys/x509/roburio/roburio-key.pem"
+2018/03/03 17:52:45 |3294] D SSL_load_error_strings()
+2018/03/03 17:52:45 |3294] D SSL_load_error_strings() ->
+2018/03/03 17:52:45 |3294] D SSL_library_init()
+2018/03/03 17:52:45 |3294] D SSL_library_init() -> 1
+2018/03/03 17:52:45 |3294] D TLSv1_2_client_method()
+2018/03/03 17:52:45 |3294] D TLSv1_2_client_method() -> 0x7fa25ca76e80
+2018/03/03 17:52:45 |3294] D SSL_CTX_new(0x7fa25ca76e80)
+2018/03/03 17:52:45 |3294] D SSL_CTX_new() -> 0x55f18715c4b0
+2018/03/03 17:52:45 |3294] D SSL_CTX_set_tmp_dh(0x55f18715c4b0, 0x55f18715a890)
+2018/03/03 17:52:45 |3294] D SSL_CTX_set_tmp_dh() -> 1
+2018/03/03 17:52:45 |3294] D SSL_CTX_use_certificate_chain_file(0x55f18715c4b0, "/home/linus/tstick/keys/x509/roburio/roburio-crt.pem")
+2018/03/03 17:52:45 |3294] D SSL_CTX_use_certificate_chain_file() -> 1
+2018/03/03 17:52:45 |3294] D SSL_CTX_use_PrivateKey_file(0x55f18715c4b0, "/home/linus/tstick/keys/x509/roburio/roburio-key.pem", 1)
+2018/03/03 17:52:45 |3294] D SSL_CTX_use_PrivateKey_file() -> 1
+2018/03/03 17:52:45 |3294] D BIO_new_file("/home/linus/tstick/keys/x509/roburio/roburio-crt.pem", "r")
+2018/03/03 17:52:45 |3294] D BIO_new_file() -> 0x55f18715bdc0
+2018/03/03 17:52:45 |3294] D PEM_read_bio_DHparams(0x55f18715bdc0, 0x0, 0x0, 0x0)
+2018/03/03 17:52:45 |3294] D PEM_read_bio_DHparams() -> NULL
+2018/03/03 17:52:45 |3294] I PEM_read_bio_DHparams(0x55f18715bdc0, NULL, NULL, NULL): error
+2018/03/03 17:52:45 |3294] D SSL_CTX_set_cipher_list(0x55f18715c4b0, "HIGH:-NULL:-PSK:-aNULL")
+2018/03/03 17:52:45 |3294] D SSL_CTX_set_cipher_list() -> 1
+2018/03/03 17:52:45 |3294] D SSL_CTX_set_verify(0x55f18715c4b0, 3, 0x0)
+2018/03/03 17:52:45 |3294] D SSL_CTX_set_verify() ->
+2018/03/03 17:52:45 |3294] D getaddrinfo("127.0.0.2", NULL, {5,2,1,6,0,0x0,0x0,0x0}, 0x7ffd205858e8)
+2018/03/03 17:52:45 |3294] D getaddrinfo(,,,{{AF=2 127.0.0.2:0, }) -> 0
+2018/03/03 17:52:45 |3294] D malloc(512)
+2018/03/03 17:52:45 |3294] D malloc() -> 0x55f18715dc40
+2018/03/03 17:52:45 |3294] N opening connection to AF=2 127.0.0.2:8001
+2018/03/03 17:52:45 |3294] I starting connect loop
+2018/03/03 17:52:45 |3294] D socket(2, 1, 6)
+2018/03/03 17:52:45 |3294] I socket(2, 1, 6) -> 8
+2018/03/03 17:52:45 |3294] D fcntl(8, 2, 1)
+2018/03/03 17:52:45 |3294] D fcntl() -> 0
+2018/03/03 17:52:45 |3294] D connect(8, {2,AF=2 127.0.0.2:8001}, 16)
+2018/03/03 17:52:45 |3294] D connect() -> 0
+2018/03/03 17:52:45 |3294] D getsockname(8, 0x7ffd20585930, 0x7ffd2058592c{112})
+2018/03/03 17:52:45 |3294] D getsockname(, {AF=2 127.0.0.2:35644}, {16}) -> 0
+2018/03/03 17:52:45 |3294] N successfully connected from local address AF=2 127.0.0.2:35644
+2018/03/03 17:52:45 |3294] D SSL_new(0x55f18715c4b0)
+2018/03/03 17:52:45 |3294] D SSL_new() -> 0x55f18714fbc0
+2018/03/03 17:52:45 |3294] D SSL_set_fd(0x55f18714fbc0, 8)
+2018/03/03 17:52:45 |3294] D SSL_set_fd() -> 1
+2018/03/03 17:52:45 |3294] D SSL_connect(0x55f18714fbc0)
+2018/03/03 17:52:47 |3294] D SSL_connect() -> 1
+2018/03/03 17:52:47 |3294] D SSL_get_verify_result(0x55f18714fbc0)
+2018/03/03 17:52:47 |3294] D SSL_get_verify_result() -> 0
+2018/03/03 17:52:47 |3294] I peer certificate is trusted
+2018/03/03 17:52:47 |3294] D malloc(16)
+2018/03/03 17:52:47 |3294] D malloc() -> 0x55f187170560
+2018/03/03 17:52:47 |3294] I SSL peer cert subject: "CN = d.robur.io"
+2018/03/03 17:52:47 |3294] D setenv("SOCAT_OPENSSL_X509_SUBJECT", "CN = d.robur.io", 1)
+2018/03/03 17:52:47 |3294] D setenv() -> 0
+2018/03/03 17:52:47 |3294] D SSL peer cert subject entry: commonName="d.robur.io"
+2018/03/03 17:52:47 |3294] D setenv("SOCAT_OPENSSL_X509_COMMONNAME", "d.robur.io", 2)
+2018/03/03 17:52:47 |3294] D setenv() -> 0
+2018/03/03 17:52:47 |3294] D malloc(59)
+2018/03/03 17:52:47 |3294] D malloc() -> 0x55f1871725d0
+2018/03/03 17:52:47 |3294] I SSL peer cert issuer: "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3��U"
+2018/03/03 17:52:47 |3294] D setenv("SOCAT_OPENSSL_X509_ISSUER", "C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3", 1)
+2018/03/03 17:52:47 |3294] D setenv() -> 0
+2018/03/03 17:52:47 |3294] D setenv("SOCAT_OPENSSL_X509V3_SUBJECTALTNAME_DNS", "d.robur.io", 2)
+2018/03/03 17:52:47 |3294] D setenv() -> 0
+2018/03/03 17:52:47 |3294] D commonName "d.robur.io" has no wildcard
+2018/03/03 17:52:47 |3294] D commonName "d.robur.io" matches peername "d.robur.io"
+2018/03/03 17:52:47 |3294] N trusting certificate, commonName matches
+2018/03/03 17:52:47 |3294] N SSL connection using DHE-RSA-AES256-CCM
+2018/03/03 17:52:47 |3294] D SSL_get_current_compression(0x55f18714fbc0)
+2018/03/03 17:52:47 |3294] D SSL_get_current_compression() -> NULL
+2018/03/03 17:52:47 |3294] D SSL_get_current_expansion(0x55f18714fbc0)
+2018/03/03 17:52:47 |3294] D SSL_get_current_expansion() -> NULL
+2018/03/03 17:52:47 |3294] N SSL connection compression "none"
+2018/03/03 17:52:47 |3294] N SSL connection expansion "none"
+2018/03/03 17:52:47 |3294] I resolved and opened all sock addresses
+2018/03/03 17:52:47 |3294] D malloc(16385)
+2018/03/03 17:52:47 |3294] D malloc() -> 0x55f18715e580
+2018/03/03 17:52:47 |3294] N starting data transfer loop with FDs [7,7] and [8,8]
+2018/03/03 17:52:47 |3294] D data loop: sock1->eof=0, sock2->eof=0, closing=0, wasaction=1, total_to={0.000000}
+2018/03/03 17:52:47 |3294] D select(9, &0x180, &0x180, &0x0, NULL/0.000000)
+2018/03/03 17:52:47 |3294] D select -> (, 0x80, 0x180, 0x0, NULL/0.000000), 3
+2018/03/03 17:52:47 |3294] D SSL_read(0x55f18714aed0, 0x55f18715e580, 8192)
+2018/03/03 17:52:47 |3294] D SSL_read() -> 0
+2018/03/03 17:52:47 |3294] N socket 1 (fd 7) is at EOF
+2018/03/03 17:52:47 |3294] D SSL_shutdown(0x55f18714fbc0)
+socat.c:1056:_socat(): shutting down connecting socket (2), 0x55f18714fbc0, bc listening socket (1) is EOF
+2018/03/03 17:52:47 |3294] D SSL_shutdown() -> 0
+"close notify" sent
+2018/03/03 17:52:47 |3294] D data loop: sock1->eof=2, sock2->eof=0, closing=1, wasaction=1, total_to={0.000000}
+2018/03/03 17:52:47 |3294] D select(9, &0x100, &0x0, &0x0, &0.500000)
+2018/03/03 17:52:47 |3294] D select -> (, 0x100, 0x0, 0x0, &0.457019), 1
+2018/03/03 17:52:47 |3294] D SSL_read(0x55f18714fbc0, 0x55f18715e580, 8192)
+reading from connecting socket (2) which was just shut down
+2018/03/03 17:52:47 |3294] D SSL_read() -> -1
+2018/03/03 17:52:47 |3294] E SSL_read(): Success
+2018/03/03 17:52:47 |3294] N exit(1)
+2018/03/03 17:52:47 |3294] D starting xioexit()
+2018/03/03 17:52:47 |3294] D SSL_shutdown(0x55f18714aed0)
+2018/03/03 17:52:47 |3294] D SSL_shutdown() -> -1
+
+shutting down listening socket (1) fails in xioclose1() with SSL_ERROR_SYSCALL (not seen here) and errno=104 (ECONNRESET)
+
+2018/03/03 17:52:47 |3294] D SSL_free(0x55f18714aed0)
+2018/03/03 17:52:47 |3294] D SSL_free() -> void
+2018/03/03 17:52:47 |3294] I close(7)
+closing socket 1 (listening socket)
+2018/03/03 17:52:47 |3294] D close()  -> 0
+2018/03/03 17:52:47 |3294] D SSL_shutdown(0x55f18714fbc0)
+sslcls.c:322:sycSSL_shutdown(): shutting down 0x55f18714fbc0 again
+segfaulting in SSL_shutdown()?
+
+3123 is parent:
+2018/03/03 17:52:47 |3123] N socat_signal(): handling signal 11
+2018/03/03 17:52:47 |3123] E exiting on signal 11
+2018/03/03 17:52:47 |3123] N exit(139)
+2018/03/03 17:52:47 |3123] D starting xioexit()
+2018/03/03 17:52:47 |3123] I close(6)
+2018/03/03 17:52:47 |3123] D close()  -> 0
+2018/03/03 17:52:47 |3123] D finished xioexit()
+d
+** #robur @ baconsvin (irc)
+$ cat .emacs.neubyi.el
+(setq
+ erc-email-userid "neubyi"
+ erc-nick '("")
+ erc-user-full-name "Núbi"
+ erc-pals nil
+ erc-notify-list nil
+ erc-autojoin-mode t
+ erc-autojoin-channels-alist '(("baconsvin.org" "#robur")))
+(defun neubyi-erc-bacon ()
+  (let ((my-tls-program '("gnutls-cli --strict-tofu -p %p %h")))
+    (setq tls-program my-tls-program)
+    (erc-tls :server "6nbtgccn5nbcodn3.onion" :port 6697 :nick "neubyi")))
+
+$ emacs -q -l .emacs.neubyi.el -f neubyi-erc-bacon
+
+** prereqs
+$ cat ~/bin/mkselfsigned.sh
+#! /bin/sh
+
+KEYSIZE=4096
+[ -n "$1" ] && KEYSIZE="$1"
+
+read -p "countryName: " countryName
+read -p "stateOrProvinceName: " stateOrProvinceName
+read -p "organizationName: " organizationName
+read -p "commonName: " commonName
+read -p "O (org): " org
+
+openssl req -x509 -nodes -newkey rsa:$KEYSIZE -subj "/countryName=${countryName}/stateOrProvinceName=${stateOrProvinceName}/organizationName=${organizationName}/commonName=${commonName}/O=${org}"
+$
+* LUKS
+cryptsetup luksAddKey /dev/loop0 --iter-time 3000
+* home network debugging <2018-03-08 Thu>
+--------------------
+Normal:
+Mar 07 11:39:30 datan dhclient[15789]: DHCPREQUEST of 192.168.10.219 on wlp4s0 to 192.168.10.1 port 67
+Mar 07 11:39:30 datan dhclient[15789]: DHCPACK of 192.168.10.219 from 192.168.10.1
+Mar 07 11:39:31 datan dhclient[15789]: bound to 192.168.10.219 -- renewal in 15316 seconds.
+
+Strange:
+Mar 07 22:19:33 datan dhclient[14545]: DHCPDISCOVER on wlp4s0 to 255.255.255.255 port 67 interval 7
+DHCPREQUEST of 192.168.0.101 on wlp4s0 to 255.255.255.255 port 67
+DHCPOFFER of 192.168.0.101 from 192.168.0.254
+DHCPACK of 192.168.0.101 from 192.168.0.254
+bound to 192.168.0.101 -- renewal in 25 seconds.
+
+Arp table:
+? (192.168.0.254) at 18:d6:c7:9c:39:21 [ether] on wlp4s0
+
+HTTP:
+TP-LINK AC750 WiFi Range Extender RE210
+admin/admin over http
+
+Fixing on the extender:
+change dhcp auto -> off
+new pw: admin/Q5ODYxcrlVLigr
+
+Info on the extender:
+LAN MAC 18-D6-C7-9C-39-20
+
