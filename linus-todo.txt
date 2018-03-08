@@ -9,81 +9,123 @@ Legend                                                      (emacs -*-org-*- mod
 
 * RSN (within a week)
 ** CT
-- - sunet-ops ticket updated with current status
+- - make sure we return an SCT for a real cert, rather than a precert,
+  even if the cert was first submitted as a precert, see
+  https://www.mail-archive.com/trans@ietf.org/msg02709.html
+- X surfnet added to plausible
+- X production log set up for verifying the procedures
+- o sunet-ops ticket updated with current status
 - - ndn portal updated according to [[gnus:nnimap%2Bsunet:INBOX#0FA5F222-2CCA-4E37-A92F-E3046E71FE64@nordu.net][Email from Jonny Lundin: Re: CT log]]
-- - benchreport branches merged
+- o benchreport branches merged
   o map/catlfish/benchreport
   o map/plop/benchreport2
-  - map/catlfish/submission-fix
+  o map/catlfish/submission-fix
 ** Radsecproxy
 - * v6only patch by ralf
 - - "--enable-fticks" removed from documentation
     [[file:p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml][file:~/p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml]]
 ** TPI
 ** Tor
-- * new tb build system set up on flow
+- - new tb build system set up on flow
   [[file:usr/src/tor/tor-browser-build/README][file:~/usr/src/tor/tor-browser-build/README]]
 - - https://trac.torproject.org/projects/tor/ticket/4847
 - - hbsd/fbsd config writeup sent to phoul
 - - TorPerf set up on siv
 - - sunet publishing tor work
   [[gnus:nnimap%2Bndn:INBOX#871t1ectpj.fsf@nordberg.se][Email to Emma Almroth: Blogserie om SUNET:s arbete me]]
+- o pkg -j maatuska upgrade
+- o maatuska running 0.3.1.8
 ** IETF / W3C
-- * support for v1 logs added back to gossip-draft [fri]
-- * gossip draft shepherd writeup notes addressed [fri]
+- o support for v1 logs added back to gossip-draft
+- o gossip draft shepherd writeup notes addressed
   - https://datatracker.ietf.org/doc/draft-ietf-trans-gossip/shepherdwriteup/
-- - gossip draft updated with comments from rasmus
+- . gossip draft updated with comments from rasmus
   - [[gnus:nnimap%2Bsunet:INBOX#CAHVAv2Yt0W9zRgsM%3DhRvcm-DvXJZ%2BNZ8cvpp%3D237FcwqyVAWVw@mail.gmail.com][Email from Rasmus Dahlberg: {Comments} Gossiping in CT (dr]]
   - [[gnus:nnimap%2Bsunet:INBOX#CAHVAv2Y2ip-Mb7in4rDDYUBow4k3%3DswhgKVBMYmoV_xYkebEfA@mail.gmail.com][Email from Rasmus Dahlberg: Gossip-draft]]
 - - [[file:usr/share/ietf/internet-drafts/draft-tenoever-hrpc-anonymity-00.txt][draft-tenoever-hrpc-anonymity-00]] read
-- - paf mail "Logga DS i root"
-- - benno mail "Help DNSSEC Trans client"
-- - ekr mail "Interested in gaol?"
+- X paf mail "Logga DS i root"
+- X benno mail "Help DNSSEC Trans client"
+- X ekr mail "Interested in gaol?"
 ** Sysadm
+- . is [[https://linux.die.net/man/8/ifplugd][ifplugd(8)]] (Linux) a good idea?
+  - <2018-01-18 Thu> installed and configured for enp0s31f6 and wlp4s0
 - . toripv6dev moved to sunet iias, under sunet noc responsibility, hooked up to tpo ldap [oct 8]
-- - is ifplugd(8) a good idea?
 - - ns.adbc knot1 -> knot2
 - - CAA records added for adbc (depends on: upgrade to knot2)
-adb-centralen.se. 3600 CAA 0 issue "letsencrypt.org"
-adb-centralen.se. 3600 CAA 0 issuewild ";"
-adb-centralen.se. 3600 CAA 0 iodef "mailto:hostmaster@adb-centralen.se"
+    adb-centralen.se. 3600 CAA 0 issue "letsencrypt.org"
+    adb-centralen.se. 3600 CAA 0 issuewild ";"
+    adb-centralen.se. 3600 CAA 0 iodef "mailto:hostmaster@adb-centralen.se"
+- - kdc replaced with openldap
+  - fluffypw updating both kdc and ldap
+  - users asked to change their pw
+  - services using ldap first, kdc second:
+    - pam @ imap.adbc, for dovecot
+    - submission smtpd @ smtp.adbc
+  - verified that all active users have an ldap record
+  - kdc shut down
+  - services configured to use ldap only
 - - flow.nordu.net reinstalled
 - - tor.nordu.net reinstalled
 - - DKIM signing for adb-centralen.se
   - opendkim has a fbsd package
 ** DFRI
+- o print [[https://dfri.se/wiki/protokoll/arsmote-2018.txt]]
+- o print [[https://dfri.se/wiki/protokoll/bm-20180211/][konstituerande möte protokoll]]
+- o print remissyttrande
+  o mindre luft mellan rubrik (section) och stycke
+  - mer luft mellan datum och titel
+  - kursiva citat
+- - reinstall mail.dfri.se in a new jail
+- pawal access
+ o pawal sudo to root @ mail
+ o pawal sudo jexec linkable @ anastasia # for btc
+ - writeup on btc handling
+ - pw for btc wallet
+- o pawal on git-commit lists for admin and open repo
+- X bump fee on obe payment [sun 2/12]
 - * backup!
 - - https://wiki.freebsd.org/NetworkPerformanceTuning
 - - ns# pkg install -r dfrirepo knot2 (2.3.3 -> 2.5.2)
 - - DKIM signing for dfri.se
-- - RK emailed about "hemlig dataavläsning"
+- X RK emailed about "hemlig dataavläsning"
   - http://www.dagensjuridik.se/2017/06/vanliga-telefonappar-hindrar-hemlig-avlyssning-vi-behover-nya-tekniska-och-legala-mojlighete
   - [[file:hints.org::*@teirdes%20re%20http:/www.dagensjuridik.se/2017/06/vanliga-telefonappar-hindrar-hemlig-avlyssning-vi-behover-nya-tekniska-och-legala-mojlighete][@teirdes re]]
   - [[https://www.dfri.se/inlaga-om-regler-for-beslag-och-husrannsakan/]]
 - . flattr account discontinued
-- - sebastian gjerding contacted re https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
+- X sebastian gjerding contacted re https://www.information.dk/udland/2017/02/europes-exports-of-spy-tech-to-authoritarian-countries-revealed
   - sebastian_@jabber.ccc.de 33218b6023ae3157381def0b0c78a99ef63c1162
   - "1 country, Sweden, said it was not able to disclose the requested information, because the authorities have not registered this information in a sufficient detail."
 - . clean out joel from all places DFRI
 - . TOT report published
-- . new machine racked and installed
-- - hbsd installed on machine from jn
+- o new machine racked and installed
+- - hbsd installed on machine from jn (going to sto2, new lethe)
 ** Misc
-- * mtrl expenses
-- * yubikey replacement keys requested
-- * review sent to rasmus
-- - implicit bias link sent to maria hall
+- * verify that the following is working with a newly booted 'datan'
+  and no access to YKII
+  - ssh ioctl
+  - ssh rs0-1
+  - send signed email
+  - read encrypted email
+- - friskvårdsbidrag 2800:-
+- - cv updated and fredrik (mullvad) informed
+- - copy flogsta:~/usr/src/ to datan, in particular radsecproxy*, tor
+- o mtrl expenses
+- o yubikey replacement keys requested
+- o review sent to rasmus
+- X implicit bias link sent to maria hall
   - http://projectimplicit.org/
-- - saya informed about jack, mothers debt, planned visit at grandma
+- o saya informed about jack, mothers debt, planned visit at grandma
   - email sent
   - called again [friday]
-- - copy flogsta:~/usr/src/ to datan, in particular radsecproxy*, tor
-- - prague november 21-22 flights and hotel booked
+- X prague november 21-22 flights and hotel booked
   - ARN-prague direkt med norweigan landar först 14:20
   - prague-ARN 14:50-16:45 finns
   - venue: CESNET, near metro station Dejvicka (~30m from airport)
-- - "ISC Passive DNS Architecture" reviewed (see [[file:sunet/sunet.org::*ISC%20passive%20DNS][ISC passive DNS]])
+- X "ISC Passive DNS Architecture" reviewed (see [[file:sunet/sunet.org::*ISC%20passive%20DNS][ISC passive DNS]])
 * Soon (within a month)
+** Tor
+- - [[https://github.com/TheTorProject/bwscanner][bwscanner]] evaluated [2018-01-31]
+- - [[file:usr/src/tor/torspec/proposals/283-ipv6-in-micro-consensus.txt][prop-283 (ipv6-in-micro-consensus)]] read
 ** TPI
 ** Dev
 - - 
@@ -332,7 +374,17 @@ adb-centralen.se. 3600 CAA 0 iodef "mailto:hostmaster@adb-centralen.se"
     (2); 4. distribute the first 6 octets of the hash (3) to the
     member
 * Travel
-2017
+** 2018
+- Mar 09-15, Rome, Tor
+? Mar 06-19, Marrakech, ocaml
+? Mar 16-24, London, IETF101
+? Apr 11-12, Stockholm, Cryptech
+? Jul 13-21, Montreal, IETF102
+? Jul 23-29, Barcelona, PETS
+? Aug 15-24, Bornholm, Bornhack
+? Nov 02-10, Bangkok, IETF103
+? Dec 25-30, ?, CCC
+** 2017
 - Mar 20-28, Amsterdam, Tor
 x Mar 24-31, Chicago, IETF98
 x May 28-03, Linz, TNC17
@@ -406,12 +458,3 @@ X Jul 14-18, Berlin, OKFestival
 X Aug 19-23, San Diego, USENIX Security
 X Nov 07-16, Honolulu, IETF91
 - Oct 14-16, Zurich, CT gossip
-** 2018
-- Mar 09-15, Rome, Tor
-? Mar 16-24, London, IETF101
-? Apr 11-12, Stockholm, Cryptech
-? Jul 13-21, Montreal, IETF102
-? Jul 23-29, Barcelona, PETS
-? Aug 15-24, Bornholm, Bornhack
-? Nov 02-10, TBD, IETF103
-- Dec 25-30, ?, CCC

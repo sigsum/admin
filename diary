@@ -2,7 +2,7 @@
 %%(diary-anniversary 1980 2 10) Erinn
 %%(diary-anniversary 2017 2 10) Mango
 %%(diary-anniversary 1990 2 11) asn
-%%(diary-anniversary 1982 3 12) hannes (or 13:th?)
+%%(diary-anniversary 1982 3 12) hannes
 %%(diary-anniversary 2017 03 16) paulo (ndn)
 %%(diary-anniversary 1993 03 18) joe
 %%(diary-anniversary 1979 3 22) Aron
@@ -1912,8 +1912,8 @@
 2017-04-25 14:00 CC vote ending
 2017-05-05 fredagsöl
 2017-06-01 10:00 soc hemma (filma)
-&*-*-27 [DFRI] member handling (renew, remind, remove)
-&*-*-05 [DFRI] send warning (expired)
+*-*-27 [DFRI] member handling (renew, remind, remove)
+*-*-05 [DFRI] send warning (expired)
 2017-10-12 10:00-12:00 [Tor] Public board meeting, Montreal
 2017-10-12 08:00-10:00 [Tor] Closed board meeting, Montreal
 2017-05-02 13:30 [sunet] massage
@@ -1956,8 +1956,8 @@
 2017-06-08 09:00 ergonom
 &%%(diary-block 2017 07 18 2017 07 21) PETS
 2017-10-05 18:00 [DFRI] Styrelsemöte
-2017-11-07 18:00 [DFRI] Styrelsemöte
-2017-12-14 18:00 [DFRI] Styrelsemöte
+2017-11-07 18:00 [DFRI] Styrelsemöte, Wikimedia Sverige, Hantverkargatan 21, vån 2, i konferensrummet
+2017-12-14 18:00 [DFRI] Styrelsemöte @ Wikimedia, Hantverkargatan 21, vån 2
 2017-06-20 18:00 [DFRI] multimöte @ shanti soft corner (linda)
 2017-05-18 09:00 Moomin @ Sunet
 2017-06-01 17:30 http://siju.se/seminarier/nar-utgor-dynamiska-ip-adresser-personuppgifter/
@@ -2067,7 +2067,6 @@
 2017-11-22 ISOC-SE @ waterfront
 2017-09-27 kajsa hämtar
 2017-09-26 14:00-14:25 massage @ sunet
-&%%(diary-block 2018 03 09 2018 03 15) [prel] tor meeting @ rome?
 &%%(diary-block 2018 04 11 2018 04 12) [prel] cryptech @ stockholm?
 2017-09-27 18:00-18:30 [tor board] meeting https://www.uberconference.com/ssteele05
 2017-09-26 12:00-13:30 lunch k-mit
@@ -2085,5 +2084,108 @@
 2017-10-09 09:00 handlingar hos DI
 2017-10-09 12:00-13:30 CT doc VC
 %%(diary-block 2017 11 07 2017 11 08) cybersecurity @ poznan
-2018-01-06 certs for smtp, imap, jabber expires tomorros
+2018-01-06 certs for smtp, imap, jabber expires tomorrow
 2017-12-31 certs for smtp, imap, jabber expires in a week
+2017-12-18 17:00-19:30 [tor board] meeting
+%%(diary-block 2017 10 23 2017 10 24) https://dpforum.se/nordic-privacy-arena/
+2017-10-17 comment on rasmus monitoring
+2017-11-23 https://www.meetup.com/BSD-Users-Stockholm
+2017-11-01 20:00 [tor] community meeting
+2017-10-20 14:15-14:45 [juni] utv.samtal globala
+2017-10-29 CEST -> CET aka "vintertid"
+2018-03-25 CET -> CEST aka "sommartid"
+%%(diary-block 2018 07 23 2018 07 29) PETS @ barcelona
+2017-10-19 21:00-22:00 dirauth stuff
+2017-10-26 16:00 look at knot logs on ns.dfri.se
+2017-10-24 09:00-12:00 ct doc @ zoom
+2017-11-13 08:50-10:20 TRANS @ IETF100 (1550-1720 SST)
+2017-11-09 10:00 sentor
+2017-10-27 12:30 lunch med lena
+2018-03-03 middag med syskon i solna
+2018-01-30 remissvar sou 2017:75 inne
+2018-01-16 remissvar sou 2017:75 inne om två veckor
+2017-11-10 fredagsöl
+2017-11-06 22:00-23:00 gossip call with tjr
+2017-11-28 10:00-11:30 medarbetarsamtal
+2017-11-08 [prel] 21:00 gossip call with tjr
+2017-11-10 13:00 geko
+2018-02-11 DFRI årsmöte
+2018-01-23 18:00 DFRI styrelsemöte
+2018-03-06 DFRI styrelsemöte
+2017-11-20 19:00 pgp nyckelsignering @ UFS Fridhemsplan https://ix.ufs.se/blog/2017/11/06/schema-f%C3%B6r-nyckelsigneringsparty-i-stockholm/
+2018-07-15 mullvad account expires
+2018-07-08 mullvad account expires in a week
+2017-11-17 ct service template + CBA
+2017-12-08 Ensuring Web PKI Integrity 2 @ NYC
+2018-11-10 domain appendto.org expires in a week
+2017-12-05 [juni] matteprov
+2017-11-23 09:45 åke nygren @ digitala biblioteket, odenplan
+2017-11-22 jobba hemma
+2017-11-22 lunch med johan
+2018-02-20 20:55 maatuska keys expire
+2018-02-13 maatuska keys expire in a week
+2018-11-21 x509 certs for plausible-fe1 and -fe2 expires
+2018-11-14 x509 certs for plausible-fe1 and -fe2 expires in a week
+2018-06-22 renew x509 cert for plausible-fe1, 1 year, to get it out of sync with -fe2
+%%(diary-block 2017 12 16 2017 12 17) hundmässa
+2017-12-14 14:30 massage sunet
+2017-12-04 plugga matte med juni
+2017-12-21 skolavslutning
+&%%(diary-block 2017 12 02 2017 12 07) L&J
+&%%(diary-block 2017 12 15 2017 12 21) L&J
+&%%(diary-block 2017 12 29 2018 01 04) L&J
+&%%(diary-block 2018 01 12 2018 01 18) L&J
+&%%(diary-block 2018 01 26 2018 02 01) L&J
+&%%(diary-block 2018 02 09 2018 02 15) L&J
+&%%(diary-block 2018 02 23 2018 03 01) L&J
+&%%(diary-block 2018 03 09 2018 03 15) L&J
+&%%(diary-block 2018 03 23 2018 03 29) L&J
+2017-12-06 12:00-13:00 VC david & ivana
+2017-12-04 14:00-15:00 Åke @ odengatan 55
+2018-04-12 EDRi 15yo party
+2017-12-29 19:00 nyckelsigneringsparty UFS (polhemsg. 38)
+2017-12-07 11:25 lunch med tg
+2017-12-13 13:00 lunch johan i farsta
+2017-12-19 12:30 lunch mattias @ indian street food drottningg 73b
+2017-12-17 E&L förjul
+2017-12-14 11:30-12:30 orosanmälan @ urban deli sveavägen 44
+2018-02-12 nyckelsigneringsparty, pontus falk
+2017-12-20 13:30 CT VC
+2017-12-20 lunch med andol & jn
+2018-01-13 sysadm DFRI
+2018-01-11 gossip draft done by sunday
+2018-01-14 gossip draft done!
+2018-01-10 16:00 träna med lukas
+2018-01-10 13:00 Adolf Fredriks kyrkogata 10 <http://www.citykonditoriet.com/>
+2018-04-07 14:07 x509-cert {jabber,smtp,imap}.adb-centralen.se expirerar
+2018-03-31 x509-cert {jabber,smtp,imap}.adb-centralen.se expirerar om en vecka
+%%(diary-cyclic 7 2018 01 15) 19:00-20:00 tor network team meeting in #tor-meeting
+2018-03-12 tor open board meeting, rome
+2018-01-11 betala sthix
+2018-01-22 11:30-15:00 Sida
+2018-02-15 10:00 soc
+&%%(diary-block 2018 03 06 2018 03 19) ocaml marrakech
+2018-01-20 lukas & terese
+2018-03-10 tor network team premeeting
+2018-01-15 12:00 betala sthix
+2018-01-22 10:43 geko centralen
+2018-02-14 17:00-19:00 tor board mtg, meeting id: 773 728 716
+2018-01-23 15:20 pass, globen (bokn.nr. 4216107243)
+2018-01-16 19:00-20:00 tor network team meeting
+2018-01-28 fullständig kallelse dfri årsmöte
+%%(diary-block 2018 03 09 2018 03 16) tor in rome
+2018-05-30 sunet all hands
+2018-01-29 lunch med christian
+2018-02-02 fredagsöl @ TUG
+2018-02-18 14:00-16:00 dataskydd årsmöte @ prat.dataskydd.net
+2018-02-12 17:30-20:00 ISOC-SE vision
+2018-03-05 17:30-19:00 ISOC-SE årsmöte
+2018-02-22 16:30 möte gk, shari, isa om sida
+2018-04-24 SNUS årsmöte
+%%(diary-block 2018 03 19 2018 03 25) All Digital Week -- The Glass Room Experience
+2019-02-19 x509 cert www.ct.nordu.net expires
+2019-02-12 x509 cert www.ct.nordu.net expires in a week
+2018-02-28 09:00-21:00 kista bibliotek minihackathon
+2018-02-20 16:00 close https://www.systemli.org/poll/#/poll/EckOreFcmI/participation?encryptionKey=lKLv4OBOnc5xNy9G4YFjLY12bGo8P5dFFM7oaEFp
+2018-04-13 03:12 x509 cert dfri.se expires
+2018-04-27 02:16 x509 cert adb-centralen.se expires
