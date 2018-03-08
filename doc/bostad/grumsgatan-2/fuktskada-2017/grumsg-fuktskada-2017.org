@@ -7,6 +7,7 @@ Kontaktpersoner
 - Larry Koont, Torkab larry.koont@torkab.se, 08-771 11 11, 073-532 30 33
 
 Tidslinje
+- 2017-08-10 hittade vatten på golvet
 - [[gnus:nnimap%2Badbc:INBOX#AMSPR03MB615ED58D64DBFE1BD765B0AD8940@AMSPR03MB615.eurprd03.prod.outlook.com][Email from Gertrud Kleberg: Fwd: Ev fuktskada LGH 2-1904]]
 - [[gnus:nnimap%2Badbc:INBOX#AMSPR03MB61549054FC198C496095519D8640@AMSPR03MB615.eurprd03.prod.outlook.com][Email from Gertrud Kleberg: Fwd: Skada; 28-24294-17]]
 - [[gnus:nnimap%2Badbc:sent-mail.2017-10#87shf1iwxa.fsf@nordberg.se][Email to styrelsen@uto3.se: Nästa steg, fuktskada 2-1904]]
@@ -99,8 +100,22 @@ Tidslinje
   att det inte är för kallt
 - 2017-12-20 jocke, golvläggare, var här och mätte 105 och 109 i
   fukt. det får vara max 95 så han kommer tillbaka på fredag morgon.
+- 2017-12-?? klart
+- 2018-03-01 fick faktura från torkab, fakt.nr 45871-100557, förfaller
+  18/3
+- 2018-03-07 skickade [[gnus:nnimap%2Badbc:sent-mail.2018-03#87fu5ce6ml.fsf@nordberg.se][mejl till larry]] om att inget avdrag gjorts för
+  el för fläkt; fick [[gnus:nnimap%2Badbc:INBOX#HE1PR1001MB1402E746EEE0CD85BB723615E8D80@HE1PR1001MB1402.EURPRD10.PROD.OUTLOOK.COM][svar]] från larry att det är LF som vi skall få
+  ersättning från
+- 2018-03-07 skickade [[gnus:nnimap%2Badbc:sent-mail.2018-03#87d10gcqzo.fsf@nordberg.se][mejl till LF]] om ersättning för el
+
+
+
 
 Övriga noteringar
+- ersättning från föreningen
+  - månadsavgift 7568 kr/mån
+  - 4,5 mån obrukbart rum
+  - 1/5 av avgiften i 4,5 mån => 6811 kr
 - elementbytet
   - stig från rör och installation
   - vill byta radiatorn "med plan framsida", ytterligare ett sådant
