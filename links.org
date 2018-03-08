@@ -1,3 +1,365 @@
+physical security hw computer active-mesh https://orwl.org/
+teaching it-security http://www.schartau.se/images/pdf/IT_sakerhetstekniker2__20180209.pdf
+ocaml jbuilder bug beta18 https://github.com/ocaml/dune/issues/567
+readme mirageos https://mirage.io/blog/intro-tcpip
+ikiwiki theme https://github.com/gsliepen/ikistrap
+rump kernel unikernel c++ https://genode.org/
+ccc it security https://www.heise.de/newsticker/meldung/Bundeshack-Chaos-Computer-Club-fordert-Ende-der-Flickschusterei-bei-IT-Sicherheit-3985046.html
+iot firmware update ietf suit wg draft-moran-suit-manifest
+forum software and service https://www.discourse.org/
+enigmail debian https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=891882
+readme hash-sigs https://www.imperialviolet.org/2013/07/18/hashsig.html
+readme https://www.theverge.com/2018/2/27/17054740/palantir-predictive-policing-tool-new-orleans-nopd
+ecc introduction 1 https://trustica.cz/2018/03/01/elliptic-curves-over-finite-fields/
+ecc introduction 0 https://trustica.cz/2018/02/22/introduction-to-elliptic-curves/
+teres openhw laptop https://github.com/OLIMEX/DIY-LAPTOP/raw/master/DOCS/TERES-I-rev1.4.pdf
+openwrt hw mips EUR:36 https://www.olimex.com/Products/OLinuXino/A33/A33-OLinuXino/open-source-hardware https://www.olimex.com/Products/OLinuXino/RT5350F/RT5350F-OLinuXino/resources/RTF5350F-OLinuXino-UM.pdf
+arduino https://www.sparkfun.com/products/14393
+hw buy store https://www.sparkfun.com/
+nfc rfid reader writer SPI SEK:159 https://www.electrokit.com/rfidmodul-med-tva-tags-13-56mhz.55047
+nfc rfid reader writer handheld USD:9 https://www.ebay.com/itm/13Pcs-Handheld-RFID-ID-Card-Copier-Reader-Writer-6-Writable-Tags-6-Cards-Kit/132411151069?epid=2173224428&hash=item1ed451d2dd:g:gr8AAOSwE95aUtUs
+nfc rfid reader writer USB USD:4 https://www.ebay.com/itm/Mini-USB-RFID-125KHZ-ID-EM-Proximity-Card-Reader-Support-Windows-XP-Win7-8-Linux/131904567140?epid=581419864&hash=item1eb61ff764:g:eE4AAOSwHoFXqvQB
+nfc rfid reader writer USD:4 https://www.ebay.com/itm/125Khz-USB-RFID-Contactless-Proximity-Sensor-Smart-ID-Card-Reader-EM4100/400888427441?epid=2133922783&hash=item5d56cff3b1:g:-jsAAOSwBahVA8AT
+nfc rfid reader writer box EUR:40 https://www.olimex.com/Products/Modules/RFID/MOD-RFID1356-BOX/
+nfc rfid reader writer EUR:20 https://www.olimex.com/Products/Modules/RFID/MOD-RFID1356MIFARE/
+arduino robot https://store.arduino.cc/arduino-robot
+arduino robot lib https://www.arduino.cc/en/Reference/RobotLibrary
+arduino programming language reference https://www.arduino.cc/reference/en/
+arduino programming language library https://www.arduino.cc/en/Reference/Libraries
+arduino leonardo https://store.arduino.cc/arduino-leonardo-with-headers
+ipv6 test service https://ipv6alizer.se/
+tool ipv6 https://www.caida.org/tools/measurement/scamper/
+digibib privacy library https://medium.com/digidelat/the-glass-room-experience-all-digital-week-19-25-mars-48934f5cae77
+robot wheel kit https://www.olimex.com/Products/RobotParts/Chassis/ROBOT-4-WHEEL-KIT/
+arduino midi https://www.olimex.com/Products/Duino/Shields/SHIELD-MIDI/open-source-hardware
+arduino lcd https://www.olimex.com/Products/Duino/Shields/SHIELD-LCD16x2/open-source-hardware
+arduino olimex https://www.olimex.com/Products/Duino/AVR/OLIMEXINO-328/open-source-hardware
+linux olimex https://github.com/anarsoul/linux-build/releases
+arm 64bit linux board https://www.olimex.com/Products/OLinuXino/A64/A64-OLinuXino/open-source-hardware
+rpi ocaml https://github.com/dbuenzli/rpi-boot-ocaml
+library privacy glass room hacks https://docs.google.com/document/d/1g_JZYK82tQOxKcHZ9NF0ydY28Xgy6sukuJrYyDGvIr0/edit?usp=sharing
+https://github.com/transparencytoolkit
+tor board report https://pad.riseup.net/p/TorRoundup
+ca https://wiki.mozilla.org/CA:Symantec_Issues
+people:jpbarlow sexism https://web.archive.org/web/20141211003304/http://www.brainwaving.com/2010/07/13/a-ladies-man-and-shameless
+dfri uptime monitor https://stats.uptimerobot.com/9r3o7iNLG
+danish dr org https://data.coop/
+readme crdt https://medium.com/@raphlinus/towards-a-unified-theory-of-operational-transformation-and-crdt-70485876f72f
+readme crdt collaborative-editing https://github.com/google/xi-editor/blob/master/doc/crdt-details.md
+math books used https://kthbok.com/
+math books used https://kthbok.com/book.php?id=68940&type=book
+math su spring18 vt18 http://kurser.math.su.se/course/view.php?id=611
+math su spring18 vt18 http://kurser.math.su.se/pluginfile.php/49689/mod_resource/content/6/Matematik_I_v18.pdf
+math su spring18 vt18 http://kurser.math.su.se/mod/page/view.php?id=33349
+math repetition http://kurser.math.su.se/mod/resource/view.php?id=33341
+math repetition solutions http://kurser.math.su.se/mod/resource/view.php?id=33339
+math repetition http://kurser.math.su.se/mod/resource/view.php?id=33338
+ocaml rpi wiringpi gpio https://github.com/Leonidas-from-XIV/ocaml-wiringpi
+ocaml arduino https://github.com/modlfo/firmata
+ocaml book https://realworldocaml.org/v1/en/html/index.html
+mullvad servers https://mullvad.net/en/guides/our-vpn-servers/
+ocaml http web https://github.com/inhabitedtype/httpaf
+ocaml http web https://github.com/inhabitedtype/ocaml-webmachine
+ocaml http web https://github.com/mirage/ocaml-cohttp
+readme ocaml https://github.com/hannesm/arp
+readme ocaml http://erratique.ch/software/ptime
+onionmx meeting poll https://www.systemli.org/poll/#/poll/EckOreFcmI/evaluation?encryptionKey=lKLv4OBOnc5xNy9G4YFjLY12bGo8P5dFFM7oaEFp
+poll service doodle https://www.systemli.org/poll/
+privacy sweden 1177 google search health https://www.privateinternetaccess.com/blog/2018/02/swedish-public-healthcare-portal-is-sending-your-symptoms-to-google
+math book https://www.bokus.com/bok/9789147112449/linjar-algebra-grundkurs/
+math book https://www.bokus.com/bok/9789144068299/ovningar-i-analys-i-en-variabel/
+math book https://www.bokus.com/bok/9789144067650/analys-i-en-variabel/
+math https://www.math.su.se/utbildning/kurser/matematik-i
+ricochet spec criticism https://github.com/Yawning/ricochet/blob/master/ricochet.go
+dfri http://www.votewatch.eu/blog/cybersecurity-showdown-at-the-european-parliament-where-do-meps-stand-on-encryption/
+wl twitter dm leak https://theintercept.com/2018/02/14/julian-assange-wikileaks-election-clinton-trump/
+network packet processing http://www.dpdk.org/
+fastnemon https://github.com/pavel-odintsov/fastnetmon
+klepikov bogatov russia tor relay operator http://libertarian-party.ru/news/na-dmitriya-klepikova-zavedeno-ugolovnoe-delo
+klepikov bogatov russia tor relay operator https://zona.media/news/2018/02/12/klepikov-tor
+filesharing encrypted pastebin https://github.com/Upload/Up1
+tor bridges devel https://trac.torproject.org/projects/tor/ticket/7349
+math pi https://en.wikipedia.org/wiki/Bailey%E2%80%93Borwein%E2%80%93Plouffe_formula
+https://github.com/alco/porcelain
+libsodium erlang port https://github.com/potatosalad/erlang-libsodium
+ocaml erlang port https://github.com/selectel/alberto
+messaging ietf https://tools.ietf.org/html/draft-barnes-mls-protocol-00
+tor ansible https://medium.com/@nusenu/deploying-tor-relays-with-ansible-6612593fa34d
+tor ansible https://github.com/nusenu/ansible-relayor
+passwordmanager https://www.passwordstore.org/
+mlmmj github https://github.com/iredmail/mlmmj/
+mlmmj web interface https://github.com/tchapi/mlmmj-simple-web-interface
+mlm spam http://arc-spec.org/
+dfri wp theme https://bitbucket.org/andersju/dfri-web
+dld 2017:75 iis https://www.iis.se/docs/Remissvar-Jusdep-datalagring-2017-75-brev.pdf
+dld 2017:75 netnod https://www.netnod.se/sites/default/files/2018-01/Remissvar%20SOU%202017_75.pdf
+dmarc mailman https://dmarc.org/supplemental/mailman-project-mlm-dmarc-reqs.html
+dmarc mailman https://wiki.list.org/DEV/DMARC
+dkim mailman https://wiki.list.org/DEV/DKIM
+bogatov http://tass.com/society/986636
+reproducible builds freebsd https://wiki.freebsd.org/ReproducibleBuilds
+reproducible builds freebsd https://wiki.freebsd.org/PortsReproducibleBuilds
+readme dfinity blockchain file:///home/amnesia/Downloads/dfinity-consensus.pdf
+dmarc dkim spf blacklist lookup test https://mxtoolbox.com/SuperTool.aspx#
+dmarc test https://dmarc.org/resources/deployment-tools/
+dkim test https://tools.sparkpost.com/dkim
+ebnf parser https://github.com/antlr/antlr4
+lagen.nu https://ferenda.readthedocs.io/en/stable/
+remissvar hur och varfor http://www.regeringen.se/49b6b4/contentassets/b682c0e61b4c40c9ab88d227707c47b5/svara-pa-remiss---hur-och-varfor-pm-200302
+quitter.se http://somsants.net/quitter
+aes impl coldboot https://www1.informatik.uni-erlangen.de/tresor
+drd france https://www.laquadrature.net/en/data-retention-french-council-state-defy-ecj
+bittorrent dht twitter https://github.com/lmatteis/peer-tweet
+readme bgp decentralisation https://policyreview.info/articles/analysis/myth-decentralised-internet
+dfri name https://en.wikipedia.org/w/index.php?title=DFRI&diff=prev&oldid=725548031
+english readability http://www.hemingwayapp.com/
+coreboot https://wiki.techinc.nl/index.php/X201/Coreboot
+bhyve libvirt ansible http://www.shellguardians.com/2017/05/centrally-managed-bhyve-infrastructure.html
+bhyve device passthrough https://wiki.freebsd.org/bhyve/pci_passthru
+hbsd builds https://jenkins.hardenedbsd.org/builds/
+english readability https://readable.io/text/
+code C optimization-unstable STACK http://css.csail.mit.edu/stack/
+tor dos-mitigation guard https://trac.torproject.org/projects/tor/ticket/24902
+peerindb dfri https://www.peeringdb.com/net/4291
+bird config http://bird.network.cz/?get_doc&v=20&f=bird.html
+remiss dld drd sou:2017:75 https://pad.riseup.net/p/ftbkTypLjmaK
+mirageos qubes http://roscidus.com/blog/blog/2016/01/01/a-unikernel-firewall-for-qubesos/
+tls client testing tool https://www.howsmyssl.com/
+ct audit https://www.agwa.name/blog/post/how_will_certificate_transparency_logs_be_audited_in_practice
+prepaid sim ygeman sweden https://www.expressen.se/nyheter/anders-ygeman-forbjud-oregistrerade-kontantkort-/
+fpga m2 pcb hsm https://www.crowdsupply.com/rhs-research/nanoevb
+freebsd security meltdown spectre https://reviews.freebsd.org/D13797
+crypto c++ https://github.com/google/crunchy
+weightloss https://00f.net/2017/03/07/weight-loss/
+weightloss https://github.com/arielf/weight-loss
+readme video 34c3 healthcare https://media.ccc.de/v/34c3-8953-think_big_or_care_for_yourself
+readme video 34c3 https://media.ccc.de/v/34c3-9256-lightning_talks_day_2
+readme video 34c3 https://media.ccc.de/v/34c3-9257-lightning_talks_day_3
+readme video 34c3 https://media.ccc.de/v/34c3-9258-lightning_talks_day_4
+readme video 34c3 https://media.ccc.de/v/34c3-8923-ooni_let_s_fight_internet_censorship_together
+readme video 34c3 https://media.ccc.de/v/34c3-8974-practical_mix_network_design
+readme video 34c3 claimchain federated identity management https://media.ccc.de/v/34c3-9094-modern_key_distribution_with_claimchain
+readme video 34c3 https://media.ccc.de/v/34c3-8806-the_seizure_of_the_iuventa
+readme video 34c3 https://media.ccc.de/v/34c3-9275-afro_tech
+readme video 34c3 https://media.ccc.de/v/34c3-9202-openpower_-_the_current_state_of_commercial_openness_in_cpu_development
+readme video 34c3 https://media.ccc.de/v/34c3-9111-public_fpga_based_dma_attacking
+readme video 34c3 https://media.ccc.de/v/34c3-9249-hardening_open_source_development
+readme video 34c3 https://media.ccc.de/v/34c3-9222-the_noise_protocol_framework
+readme video 34c3 https://media.ccc.de/v/34c3-8885-we_should_share_our_secrets
+readme video 34c3 https://media.ccc.de/v/34c3-9295-privacy_shield_-_lipstick_on_a_pig
+readme video 34c3 https://media.ccc.de/v/34c3-8937-briar
+readme video 34c3 https://media.ccc.de/v/34c3-9196-may_contain_dtraces_of_freebsd
+readme video 34c3 https://media.ccc.de/v/34c3-9072-bgp_and_the_rule_of_custom
+readme video 34c3 https://media.ccc.de/v/34c3-9104-how_alice_and_bob_meet_if_they_don_t_like_onions
+readme video 34c3 https://media.ccc.de/v/34c3-8915-how_can_you_trust_formally_verified_software
+readme video 34c3 https://media.ccc.de/v/34c3-9237-reverse_engineering_fpgas
+readme video 34c3 https://media.ccc.de/v/34c3-9297-the_snowden_refugees_under_surveillance_in_hong_kong
+readme video 34c3 https://media.ccc.de/v/34c3-8740-the_internet_in_cuba_a_story_of_community_resilience
+readme video 34c3 https://media.ccc.de/v/34c3-9135-aslr_on_the_line
+readme video 34c3 https://media.ccc.de/v/34c3-9055-science_is_broken
+readme video 34c3 https://media.ccc.de/v/34c3-9075-latticehacks
+readme video 34c3 https://media.ccc.de/v/34c3-9086-protecting_your_privacy_at_the_border
+readme video 34c3 https://media.ccc.de/v/34c3-9279-dprk_consumer_technology
+readme video 34c3 https://media.ccc.de/v/34c3-8735-spy_vs_spy_a_modern_study_of_microphone_bugs_operation_and_detection
+readme video 34c3 https://media.ccc.de/v/34c3-9233-uncovering_british_spies_web_of_sockpuppet_social_media_personas
+readme video 34c3 https://media.ccc.de/v/34c3-8888-security_nightmares_0x12
+readme video 34c3 boot image corebot rom heads nerf https://media.ccc.de/v/34c3-9056-bringing_linux_back_to_server_boot_roms_with_nerf_and_heads
+readme video 34c3 mirageos https://media.ccc.de/v/34c3-8949-library_operating_systems
+readme video 34c3 intel me https://puri.sm/posts/deep-dive-into-intel-me-disablement/
+readme video 34c3 intel me https://media.ccc.de/v/34c3-8782-intel_me_myths_and_reality
+jap onion mixnet https://anon.inf.tu-dresden.de/strafverfolgung/index_en.html
+tor proposals dicsussion https://pad.riseup.net/p/Pxo2fQiiaSWo
+network research tool https://pathspider.net/
+ct paper splitview gossip https://eprint.iacr.org/2016/452.pdf
+surveillance wiretappting internet usa people:rossanderson https://www.lightbluetouchpaper.org/2018/01/03/what-goes-around-comes-around/
+surveillance wiretappting internet usa people:rossanderson https://www.cl.cam.ac.uk/~rja14/Papers/WhatGoesAround.pdf
+claimchain federated identity management https://github.com/nextleap-project/verified-claimchain
+camera surveillance sweden https://www.bra.se/download/18.cba82f7130f475a2f180006311/1371914721855/2008_kameraovervakning_brottsprevention.pdf
+camera surveillance sweden https://www.bra.se/nytt-fran-bra/arkiv/nyheter/2014-06-16-overvakningskameror-har-inte-paverkat-brottsligheten.html
+camera surveillance sweden https://www.dn.se/ledare/tillat-fler-overvakningskameror/
+readme camera surveillance sweden https://www.dn.se/nyheter/politik/fler-overvakningskameror-pa-allman-plats/
+bwauth people:asn https://lists.torproject.org/pipermail/tor-dev/2017-December/012703.html
+usb http://hackerwarehouse.com/product/usb-armory/
+usb https://github.com/inversepath/usbarmory/wiki
+usb https://www.crowdsupply.com/inverse-path/usb-armory
+gpg dns ptr https://dev.gnupg.org/T2928
+drd sweden tele2 https://edri.org/eurojust-no-progress-to-comply-with-cjeu-data-retention-judgements/
+readme journalism  https://theintercept.com/2018/01/03/my-life-as-a-new-york-times-reporter-in-the-shadow-of-the-war-on-terror/
+cpu speculative-execution bug security meltdown spectre https://security.googleblog.com/2018/01/todays-cpu-vulnerability-what-you-need.html
+cpu speculative-execution bug security meltdown spectre https://googleprojectzero.blogspot.ro/2018/01/reading-privileged-memory-with-side.html
+boot image corebot rom heads http://trmm.net/heads
+people:chelseakomlo https://medium.com/@chelsea.komlo/behind-every-serial-abuser-there-are-many-enablers-491bf2303f82
+tor people:arma defcon talk https://www.youtube.com/watch?v=Di7qAVidy1Y
+https://danluu.com/programming-blogs/
+cs blog https://danluu.com/
+cs books https://danluu.com/programming-books/
+barista antifascista https://t.qjym.de/2017/barista/
+readme https://fr24.com/R3DN053/abcde1
+readme tcp/ip https://blog.cloudflare.com/this-is-strictly-a-violation-of-the-tcp-specification/
+onionmx https://www.void.gr/kargig/blog/2014/05/10/smtp-over-hidden-services-with-postfix/
+linux kernel security 0day fix epbf https://bugs.chromium.org/p/project-zero/issues/detail?id=1454&desc=3
+onionbalance tor hs https://github.com/DonnchaC/onionbalance
+rpi3 hw spec https://cdn.sparkfun.com/datasheets/Dev/RaspberryPi/2020826.pdf
+readme ntp dos https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack/
+https://tomrittervg.github.io/bwauth-tools/
+debian openstack https://cdimage.debian.org/cdimage/openstack/current/
+bulletproofs zk protocol https://eprint.iacr.org/2017/1066.pdf
+tpo sysadmin https://wiki.debian.org/NonDSAPorterBoxSetUp
+syria tpo people:linus https://twitter.com/ln4711/status/67476868495982593
+readme mirageos https://mirage.io/wiki/learning
+google encryption application layer alts https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security/
+bwauth tor bwmeassure people:tjr https://tomrittervg.github.io/bwauth-tools/
+security clowns typo https://support.holmsecurity.com/hc/en-us/articles/212963869-What-is-the-difference-between-TPC-and-UDP-
+tor tcpdump video stream https://atlas.torproject.org/#details/3BE23066736921B3B8A65AD79B12C9E3D39879BE
+tor tcpdump video stream https://twitter.com/notdan/status/941116413070270465
+tor tcpdump video stream https://www.twitch.tv/sp00k13z
+freebsd dhclient bug https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=208007
+tor ff mozilla fusion https://wiki.mozilla.org/Security/Fusion
+tor bwscanner bwauth https://www.nrl.navy.mil/itd/chacs/johnson-peerflow-secure-load-balancing-tor
+tor onions https://blog.torproject.org/tor-heart-apt-transport-tor-and-debian-onions
+readme tcp/ip https://www.cl.cam.ac.uk/~pes20/Netsem/index.html
+nexus5x https://www.xda-developers.com/nexus-5x-bootloop-fix-boot-phone/
+readme package system people:hannes https://github.com/hannesm/conex-paper
+btc fee https://estimatefee.com/
+people:jackjafuneh http://www.glasgowlive.co.uk/news/glasgow-news/govanhill-cannabis-raid-leads-man-12151619
+bitcoin info privacy donation https://tachanka.org/wiki/PublicBitcoins
+tails time syncing https://tails.boum.org/contribute/design/Time_syncing/
+tor abuse ban https://www.torproject.org/docs/faq-abuse#Bans
+tails config https://git-tails.immerda.ch/tails/tree/config
+tails tor https://tails.boum.org/contribute/design/Tor_enforcement/
+jakegate reinstating https://twitter.com/OxbloodRuffin/status/938855747466735616
+jakegate reinstating https://twitter.com/cijournalism/status/938769505492365312
+ccc abuse talks https://twitter.com/OxbloodRuffin/status/938801278917971968
+ccc abuse talks https://twitter.com/laripley/status/938582410962309121
+rpi serial http://www.ftdichip.com/Support/Documents/DataSheets/Cables/DS_TTL-232R_RPi.pdf
+latex doc https://github.com/dspinellis/latex-advice
+btc txfee https://btc.com/stats/unconfirmed-tx
+btc txfee https://bitcoinfees.earn.com/
+static cms https://www.getlektor.com/
+web server applications communication sse https://html.spec.whatwg.org/multipage/comms.html#server-sent-events
+pic graph economical bubbles https://pbs.twimg.com/media/DPohFEGXUAAKSHw.jpg
+readme tor dirauth ed25519  https://trac.torproject.org/projects/tor/wiki/doc/DirauthEd25519Keys
+ddos https://www.ntop.org/products/ddos-mitigation/nscrub/
+ddos https://www.ntop.org/products/packet-capture/pf_ring/
+ddos bsd http://prod.sandia.gov/techlib/access-control.cgi/2015/159378r.pdf
+ddos bsd https://www.ntop.org/products/ddos-mitigation/nscrub/
+https://blog.cloudflare.com/introducing-the-bpf-tools/
+https://blog.cloudflare.com/bpf-the-forgotten-bytecode/
+nordunet book http://nordu.net/content/history-nordunet
+readme ethereum plasma https://medium.com/@robertgreenfieldiv/simplifying-the-plasma-whitepaper-3b8a4be2bc57?source=rss------blockchain-5
+library university sweden camera surveillance hack https://sverigesradio.se/sida/artikel.aspx?programid=1646&artikel=6827378
+ct log chrome inclusion process https://www.chromium.org/Home/chromium-security/certificate-transparency/log-policy
+ecaml emacs ocaml https://blag.bcc32.com/categories/ecaml-getting-started/
+bhyve https://github.com/churchers/vm-bhyve
+swedish election sql injection https://alicebobandmallory.com/articles/2010/09/23/did-little-bobby-tables-migrate-to-sweden
+lenovo intel LEN-14963 https://www.intel.com/content/www/us/en/architecture-and-technology/intel-amt-vulnerability-announcement.html
+oneplus phone https://www.tomsguide.com/us/oneplus-data-leak-fix,news-25968.html
+oneplus phone https://www.wired.com/story/oneplus-phones-have-an-unfortunate-backdoor-built-in/
+readme chainiac preso https://www.usenix.org/conference/usenixsecurity17/technical-sessions/presentation/nikitin
+security training https://ssd.eff.org/
+security training https://sec.eff.org/
+funny pic helsinki november https://pbs.twimg.com/media/DN8QAXoXkAA-RNd.jpg
+sou:2017:89 http://www.regeringen.se/rattsdokument/statens-offentliga-utredningar/2017/11/sou-201789/
+json parsing http://seriot.ch/parsing_json.php
+dir:2016:36 http://www.regeringskansliet.se/pressmeddelanden/2017/11/morgan-johansson-tar-emot-betankande-om-hemlig-dataavlasning
+json parsing http://seriot.ch/json/parsing.html
+readme https://www.newyorker.com/news/news-desk/how-a-german-newspaper-became-the-go-to-place-for-leaks-like-the-paradise-papers
+sattelite rpi https://en.wikipedia.org/wiki/Outernet
+tor relay slow https://trac.torproject.org/projects/tor/wiki/doc/MyRelayIsSlow
+shutup email https://web.archive.org/web/20140725003447/https://blog.ageispolis.net/email-headers/
+people:hanifbali https://www.sydsvenskan.se/2017-11-13/moa-berglof-debattstil-som-forgiftar-samtalet
+briar ml https://sourceforge.net/p/briar/mailman/briar-devel/
+hbsd rpi https://hardenedbsd.org/~shawn/rpi3/2017-11-12/
+fra surveilllance paper people:klamberg https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1558843
+fra surveilllance paper people:klamberg https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2169894
+ietf trans wg https://trac.tools.ietf.org/wg/trans/
+readme zk-snarks https://z.cash/blog/snark-explain.html
+readme zk-snarks https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell
+readme zk-snarks http://vitalik.ca/general/2017/11/09/starks_part_1.html
+readme zk-snarks https://medium.com/@VitalikButerin/zk-snarks-under-the-hood-b33151a013f6
+ct bt mozilla https://wiki.mozilla.org/Balrog
+ct bt mozilla https://wiki.mozilla.org/Security/Binary_Transparency
+briar paper https://censorbib.nymity.ch/pdf/Rogers2012a.pdf
+fiber surveillance https://silixa.com/technology/idas/
+spoon theory sickness https://butyoudontlooksick.com/articles/written-by-christine/the-spoon-theory/
+https://learn.equalit.ie/wiki/Np1sec
+privaypass browser privacy protocol https://privacypass.github.io/protocol/
+proof-of-stake paper https://eprint.iacr.org/2016/889.pdf
+btc info https://blockchainbdgpzk.onion/
+ocaml emacs config people:ximin https://github.com/infinity0/l33tutils/tree/master/devel/emacs/site-lisp
+turkey https://arbetet.se/2017/11/08/turkiet-kraver-losenord-av-familjer/
+intel me http://blog.ptsecurity.com/2017/08/disabling-intel-me.html
+readme intel me http://www.zdnet.com/article/minix-intels-hidden-in-chip-operating-system/
+intel me http://www.cs.vu.nl/~ast/intel/
+yubikey bad rsa keygen https://www.yubico.com/keycheck/
+btc info https://coin.dance/
+funny secure id http://www.anuscan.com/
+hannes ocaml company http://robur.io/About
+ct gossip people:rbarnes https://www.ietf.org/mail-archive/web/trans/current/msg02715.html
+https://www.google.com/chrome/browser/privacy/whitepaper.html
+https://www.expressen.se/kvallsposten/avslojar-hackare-kartlade-polisens-telefonavlyssning/
+onion connections graphics https://twitter.com/AlecMuffett/status/926032680055201792
+ansible secrets vaults https://docs.ansible.com/ansible/2.4/playbooks_best_practices.html#best-practices-for-variables-and-vaults
+ansible secrets vaults https://docs.ansible.com/ansible/2.4/vault.html
+funny programming https://blog.toggl.com/wp-content/uploads/2017/10/toggl-if-the-world-was-created-by-a-programmer.jpg
+ocaml web http://rgrinberg.com/posts/introducing-opium/
+security ocaml https://nvd.nist.gov/vuln/detail/CVE-2017-9779
+book ocaml https://www.bokus.com/bok/9781449323912/real-world-ocaml/
+ocaml unsigned integer lib https://github.com/hannesm/usane
+ocaml integer overflow https://github.com/ocaml/ocaml/pull/805
+onions https://en.wikipedia.org/wiki/Onion_Futures_Act
+internet blocking analyzer tool http://netalyzr.icsi.berkeley.edu/
+eduroam service definition https://www.eduroam.org/wp-content/uploads/2016/05/GN3-12-192_eduroam-policy-service-definition_ver28_26072012.pdf
+readme mirageos https://mirage.io/wiki/hello-world
+funny video comedian people:melissamccarthy movie this-is-40 http://www.youtube.com/watch?v=aWqOWRg2VXQ
+readme jackline xmpp ocaml https://hannes.nqsb.io/Posts/Jackline
+ocaml lwt doc http://ocsigen.org/lwt/manual/
+ocaml lwt doc https://mirage.io/wiki/tutorial-lwt
+people:joe https://github.com/cfcs
+ocaml tls https://github.com/cfcs/tlsping/blob/master/tls_ping_client.ml
+people:bjornsoderberg https://libcom.org/library/sac-activist-murdered-fascists
+tor hs onion nyt nytimes https://nytimes3xbfgragh.onion/
+tor onion onionbalance doc https://onionbalance.readthedocs.org
+tor onion eotk https://github.com/alecmuffett/eotk
+bogatov https://rublacklist.net/33106/
+torsocks freebsd https://github.com/freebsd/freebsd-ports/tree/master/net/torsocks
+remiss dld drd sou:2017:75 https://www.bahnhof.se/press/press-releases/2017/10/13/bahnhofs-advokat-ar-kritisk-till-regeringens-nya-utredning-om-datalagring
+remiss dld drd sou:2017:75 http://www.regeringen.se/remisser/2017/10/remiss-sou-201775-datalagring--brottsbekampning-och-integritet
+tor onion services https://medium.com/@alecmuffett/onion-synopsis-for-susan-hennesey-b28a92f0e974
+rape culture pic https://pbs.twimg.com/media/DNLc4CwX4AASCWn.jpg
+readme lisp people:alankey https://www.quora.com/What-did-Alan-Kay-mean-by-Lisp-is-the-greatest-single-programming-language-ever-designed/answer/Alan-Kay-11
+readme tor hs https://twitter.com/josephfcox/status/923867118738853888
+monitoring sw https://prometheus.io/
+nytimes hs https://open.nytimes.com/https-open-nytimes-com-the-new-york-times-as-a-tor-onion-service-e0d0b67b7482?gi=ce8bca84e0e2
+nytimes hs https://www.nytimes3xbfgragh.onion/
+hannes github https://github.com/hannesm/
+tls ocaml https://github.com/mirleft/ocaml-tls
+briar messaging https://code.briarproject.org/akwizgran/briar/tree/master
+strip club interview people:carlgustav https://www.youtube.com/watch?v=43KC_sts94k
+swehack people:linus http://swehackmzys2gpmb.onion/viewtopic.php?f=40&p=16712&sid=0d0906d4718a5eb9146004b6bc2b4cbc#p16712
+readme internet cp debate https://www.intgovforum.org/multilingual/content/the-price-others-pay-%E2%80%93-digital-dumping-%E2%80%93-two-aspects-of-online-child-protection-dc-on-child
+riseup sw https://gitlab.com/riseup/
+filesharing service https://share.riseup.net/
+filesharing service sw riseup https://github.com/Upload/Up1
+secure onion web https://blog.0day.rocks/securing-a-web-hidden-service-89d935ba1c1d?gi=5b422758929
+ct monitor edgecombe plausible https://ct.grahamedgecombe.com/logs/8
+ct monitor sslmate https://sslmate.com/labs/ct_ecosystem/ecosystem.html
+eduroam pki ca https://www.edupki.org/edupki-ca/policies-root-certificate-crl-ocsp/
+security crypto duhk https://blog.cryptographyengineering.com/2017/10/23/attack-of-the-week-duhk/
+captcha https://github.com/isislovecruft/gimp-captcha
+swehack hs http://swehackmzys2gpmb.onion/
+readme doj panel notes people:arma https://lists.torproject.org/pipermail/tor-project/2017-September/001448.html
+swehack people:linus https://swehack.org/viewtopic.php?f=40&t=3146
+readme zcash https://z.cash/blog/cultivating-sapling-faster-zksnarks.html
+readme ipv6 internet history http://apenwarr.ca/log/?m=201708#10
+infineon rsa weakness https://gist.github.com/hannob/ad37d9e9e3cbf3b89bc0a8fc80cb9475
+keep-onionising https://people.torproject.org/~linus/volatile/keep-onionising.jpg
+implicit bias training tor meeting automatic-thinking http://projectimplicit.org/
+tor hs panel doj people:arma https://www.seul.org/~arma/2017-Anonymizing-Technologies---Costs-versus-Benefits.mp4 c42b722be0491d13389b947fb2209c784a54cb1cfe08495293dff8e2e303a3f9
+sexual abuse people:headhntr https://www.theverge.com/2017/10/13/16473996/morgan-marquis-boire-citizen-lab-sexual-assault
+citizenlab sexual abuse people:headhntr https://citizenlab.ca/2017/10/open-letter-sexual-assault/
+web security tips https://smsprivacy.org/pentest-report
+privacy gsm phone mobile https://smsprivacy.org/
 tor metrics statistics people:nusenu https://nusenu.github.io/OrNetStats/
 btc rate SEK https://finance.google.com/finance?&q=BTCSEK
 ct presentation [[gnus:nnimap%2Bsunet:INBOX#CA%2Bra%3Deyout5H%3D7qbNbeuL8i-nHUKCtm-zHBRqN-HtTv-Ou2JvQ@mail.gmail.com][Email from Ivana Golub: {gn4-2-jra2-t6} Fwd: Euro-CASE]]
@@ -155,7 +517,6 @@ vpn sw https://git.zx2c4.com/WireGuard/
 vpn sw https://www.wireguard.com/
 pomodoro emacs https://github.com/lolownia/org-pomodoro
 ssl tls tool https://github.com/google/ssl_logger
-service poll doodle https://framadate.org/
 readme tcp networking code http://www.saminiir.com/lets-code-tcp-ip-stack-5-tcp-retransmission/
 tor article circumvention https://svn.torproject.org/svn/projects/articles/circumvention-features.html
 tor debian package https://www.torproject.org/docs/debian.html.en
@@ -347,7 +708,7 @@ pgp vuln https://github.com/Yubico/ykneo-openpgp
 msb incidenthandling dataskydd.net https://www.msb.se/sv/Om-MSB/Nyheter-och-press/Nyheter/Nyheter-fran-MSB/Kammarratten-i-Goteborg-avslar-ytterligare-tva-overklaganden-angaende-utlamning-av-uppgifter-om-allvarliga-it-incidenter/
 msb incidenthandling dataskydd.net https://dataskydd.net/nyheter/2017/03/18/dataskyddnet-forlorade-mot-msb-i-kammarratten
 dfri people:tomandersson http://www.dagenssamhalle.se/debatt/vi-maste-laera-oss-leva-med-it-saekerhetsrisker-32856
-service dudle doodle https://framadate.org/
+service dudle doodle poll https://framadate.org/
 curves crypto ecc https://moderncrypto.org/mail-archive/curves/2016/000803.html
 blocking azerbaijan https://www.qurium.org/alerts/azerbaijan/deep-packet-inspection-and-internet-censorship-in-azerbaijan/
 tor transport quic https://www.benthamsgaze.org/2016/09/29/quux-a-quic-un-multiplexing-of-the-tor-relay-transport/
@@ -512,7 +873,7 @@ hs tor debian https://blog.torproject.org/blog/debian-and-tor-services-available
 sigint rf radio http://www.sigidwiki.com/wiki/Signal_Identification_Guide
 documentary film https://en.wikipedia.org/wiki/HyperNormalisation_%28film%29
 theknife lyrics https://genius.com/The-knife-ready-to-lose-lyrics
-bitcoin btc rate https://bitcoincharts.com/markets/currency/SEK.html
+btc https://bitcoincharts.com/markets/currency/SEK.html
 edri funding people:mo https://digitalrights.fund/
 autocrypt https://autocrypt.readthedocs.io/
 readme russia disinformation http://www.fiia.fi/se/publication/588/fog_of_falsehood/
@@ -789,7 +1150,6 @@ sunet ki blocking http://www.dn.se/nyheter/karolinska-blockerar-internet-for-for
 nunoc handover https://portal.nordu.net/pages/viewpage.action?pageId=18219241
 phone https://en.wikipedia.org/wiki/Fairphone
 funny TZ http://www.total-knowledge.com/~ilya/mips/ugt.html
-package system people:hannes https://github.com/hannesm/conex-paper
 schleuder pgp ml https://git.codecoop.org/schleuder/schleuder3
 homomorphic encryption privacy research http://cs.au.dk/~orlandi/
 dpki https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust/raw/master/final-documents/dpki.pdf
@@ -1034,7 +1394,6 @@ tor consensus graphs tjr https://consensus-health.torproject.org/graphs.html
 tor consensus graphs munin dgoulet http://ygzf7uqcusp4ayjs.onion
 expect-ct chrome https://docs.google.com/document/d/1VDtHiKa5c96ohP_p-V1k6u83fIh952e_szZVypO4AvQ/
 expect-ct chrome https://codereview.chromium.org/1579063002/
-readme tor dirauth ed25519  https://trac.torproject.org/projects/tor/wiki/doc/DirauthEd25519Keys
 police data breach http://www.computerweekly.com/news/450299647/More-than-2000-police-data-breaches-in-45-years-report-reveals
 tor consensus infographics http://jordan-wright.com/blog/2015/05/14/how-tor-works-part-three-the-consensus/
 readme us encryption policy dhs https://homeland.house.gov/wp-content/uploads/2016/06/Going-Dark-Going-Forward.pdf
@@ -2019,7 +2378,7 @@ debian docker https://wiki.debian.org/Docker
 http2 people:phk https://queue.acm.org/detail.cfm?id=2716278
 dnssec validation http://backreference.org/2010/11/17/dnssec-verification-with-dig/
 bitcoin tor paper http://arxiv.org/abs/1410.6079
-bitcoin hs https://blockchainbdgpzk.onion/
+blockchain.info bitcoin info hs https://blockchainbdgpzk.onion/
 tor nsa https://ritter.vg/blog-tor-nsa-slide-decks.html
 onion ca https://cabforum.org/2015/02/11/ballot-144-validation-rules-dot-onion-names/
 crypto keysizes http://www.ecrypt.eu.org/documents/D.SPA.20.pdf
@@ -3413,7 +3772,6 @@ nsa http://cryptome.org/2014/01/nsa-codenames.htm
 snowden http://www.nytimes.com/2014/01/02/opinion/edward-snowden-whistle-blower.html
 readme nsa people:ggreenwald http://www.democracynow.org/2013/12/30/glenn_greenwald_the_nsa_can_literally 
 linux hw https://www.olimex.com/
-linux hw https://www.olimex.com/
 nsa 30c3 nsa:ant nsa:deitybounce nsa:arkstream nsa:godsurge nsa:bluxbabbitt nsa:ironchef nsa:wagonbeld http://cryptome.org/2013/12/nsa-ant-server.pdf
 readme nsa spiegel 30c3 http://www.spiegel.de/international/world/a-941262.html
 jake 30c3 https://www.youtube.com/watch?v=b0w36GAyZIA
@@ -4093,7 +4451,7 @@ crypto js rsa https://crypto.stanford.edu/sjcl/
 eff fisa people:johnyoung http://cryptome.org/2013/09/nsa-fisa-business-records.htm
 smash the state pic https://gs1.wac.edgecastcdn.net/8019B6/data.tumblr.com/259c277cb6ca0b3ab9a664ecd896c229/tumblr_mex08633Ru1qb2blko1_400.jpg
 ietf perpass https://down.dsg.cs.tcd.ie/misc/perpass.txt
-ttrss http://tt-rss.org/redmine/projects/tt-rss/wiki
+ttrss https://tt-rss.org/redmine/projects/tt-rss/wiki
 crypto backdoor https://threatpost.com/uk-cryptographers-call-for-outing-of-deliberately-weakened-protocols-products/102301
 google pentagon fuel price discount http://blogs.wsj.com/corporate-intelligence/2013/09/13/google-execs-have-developed-a-taste-for-pacific-islands/
 mongodb doc reference http://docs.mongodb.org/manual/reference/
