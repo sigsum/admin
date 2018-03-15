@@ -17,6 +17,7 @@
   - Booking id: UQCH2J
   - Ticket #: 1177077486458
   - 930.89 SEK
+  - Seat 6A
 * hotel
 - email from jon, mar 5
 We have 3 hotels reserved for our Rome meeting: Rome Life, Rome Times,
