@@ -193,7 +193,7 @@ Kan också ta lång tid och är ovanligt att förekomma före 3-år
   - min pappa då? går bra, dvs "det kan ni föreslå"
   - handläggningstid typiskt 90 dagar om man inte har ett förslag, "så
     kan gå fortare om ni har en, men det beror ju på ärendet också"
-* Noteringar från samtal
+* Noteringar från samtal och annan kommunikation
 ** saya, linus tfn <2018-02-01 Thu>
 - har biomamman PUT? ja, har inga papper på det och tror inte att vi
   har rätt att få ut info om detta från MIG men hon har t.ex. haft
@@ -229,3 +229,36 @@ denna svarar inte på tel. Personer Saya pratar med kan inte heller se
 varför ärendet inte gått vidare till Tingsrätt för beslut. Nästa steg
 är att få tag på handl och ge Erik Nordberg som förslag som god man
 inför ett beslut i Tingsrätten.
+** erik, sms 2018-03-21
+- 10:15 tfn med saya; öfn chef anita wirén konstantis kontaktade saya
+  i måndags 2018-03-19 och ville ha kompletterande uppgifter trots att
+  dessa redan fanns med i ansökan
+- 10:22 öfn linn g p svarar inte; lämnar meddelande om att bli
+  uppringd
+** saya, tfn 2018-03-21 12:58-13:25
+- särskilt förordnad vårdnadshavare
+- öfn chefen anita ringde saya i måndags 2018-03-19, ärendet flyttas
+  till ensamkommande
+- 26/3, saya ringer öfn, ringer linus
+- saya går på f-ledighet 2018-04-13 istf som planerat 2018-04-30
+- bokade in möte i kista 2018-04-05 11:00-12:00 med malin, saya, annika
+- saya glad över att erik engagerar sig så redan
+- saya tycker att det är en bra ide att prata med bouba och oumi om
+  PUT och ev möjligheter att få biomamman att 1. ta egen vårdnad
+  och 2. skriva under anmälan om PUT
+** erik 2018-03-22
+- erik har blivit utnämnd till god man för musse! utan restriktioner,
+  vilket inte var vad soc sade att de bad om, men det kan vi leva med
+  nu när det är erik
+- erik kontaktade MIG men ngn Emelie Andersson finns inte där, dock en
+  Emelie Karlsson som är tjänstledig
+- erik behöver biologiska föräldrars namn och personnummer för att
+  kunna fylla i en blankett; kontaktar saya
+** erik 2018-03-23
+- [[gnus:nnimap%2Badbc:INBOX#D12142D0-869E-4158-8480-EFD49812F0B9@nordberg.se][mejl]] om läget -- erik lämnar in ansökan idag, senast kl 15
+** annika 2018-03-23
+- [[gnus:nnimap%2Badbc:INBOX#d975fc98a82a4a0b88f8f4b61418f7c0@WSC01208-N3.ad.stockholm.se][mejl]] om att annika inte kan svara direkt på frågan om ersättning för
+  rättshjälp
+** erik 2018-03-23
+- erik fick in ansökan!
+
