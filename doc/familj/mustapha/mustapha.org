@@ -262,3 +262,8 @@ inför ett beslut i Tingsrätten.
 ** erik 2018-03-23
 - erik fick in ansökan!
 
+** annika om ersättning rättshjälp 2018-03-27
+- [[gnus:nnimap%2Badbc:INBOX#9e7a563b4734417d9e687228fa418e90@WSC01208-N3.ad.stockholm.se][mejl]] säger att vi antagligen får söka rättshjälp via vårt
+  försäkringsbolag
+** erik 2018-03-28
+- [[gnus:nnimap%2Badbc:INBOX#897F995C-DDA6-49DE-85F0-7DB79933A708@nordberg.se][mejl]] med MIG-blanketterna bifogade
