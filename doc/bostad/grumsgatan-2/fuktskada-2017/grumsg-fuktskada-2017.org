@@ -1,5 +1,6 @@
 Info
 - Länsförsäkringar ärende 28-24294-17]]
+- LF28-Skador Skadeadm LF28 <skador.stockholm@lansforsakringar.se>
 
 Kontaktpersoner
 - Berit Eklund, ordf. Utö3, +46 70 444 33 87, +46 8 88 77 98
@@ -107,9 +108,13 @@ Tidslinje
   el för fläkt; fick [[gnus:nnimap%2Badbc:INBOX#HE1PR1001MB1402E746EEE0CD85BB723615E8D80@HE1PR1001MB1402.EURPRD10.PROD.OUTLOOK.COM][svar]] från larry att det är LF som vi skall få
   ersättning från
 - 2018-03-07 skickade [[gnus:nnimap%2Badbc:sent-mail.2018-03#87d10gcqzo.fsf@nordberg.se][mejl till LF]] om ersättning för el
-
-
-
+- 2018-03-08 sände om [[gnus:nnimap%2Badbc:sent-mail.2018-03#87zi3ierbq.fsf@nordberg.se][mejlet]] om ersättning för el till ny address
+- 2018-03-08 skickade [[gnus:nnimap+adbc:sent-mail.2018-03#87fu5aebwz.fsf@nordberg.se][mejl]] till styrelsen med [[file:brev-uto-ersattning.pdf][brev-uto-ersattning.pdf]]
+- 2018-03-09 postade [[file:brev-uto-ersattning.pdf][brev-uto-ersattning.pdf]]
+- 2018-03-12 fick [[gnus:nnimap%2Badbc:INBOX#90d1fa73bdfd4b8cb85856d48d88fb0a@E75L0002.lfad.lfnet.se][svar]] från LF som hänvisar till föreningens
+  fastighetsförsäkring; vi får skriva ytterligare ett brev till
+  föreningen
+- 2018-06-11 skickade [[gnus:nnimap+adbc:sent-mail.2018-06#87d0wyjnkq.fsf@nordberg.se][mejl]] till styrelsen med [[file:brev2-uto-ersattning.pdf][brev2-uto-ersattning.pdf]]
 
 Övriga noteringar
 - ersättning från föreningen
