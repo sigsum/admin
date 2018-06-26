@@ -15,22 +15,23 @@ Legend                                                      (emacs -*-org-*- mod
 - X surfnet added to plausible
 - X production log set up for verifying the procedures
 - o sunet-ops ticket updated with current status
-- - ndn portal updated according to [[gnus:nnimap%2Bsunet:INBOX#0FA5F222-2CCA-4E37-A92F-E3046E71FE64@nordu.net][Email from Jonny Lundin: Re: CT log]]
+- X ndn portal updated according to [[gnus:nnimap%2Bsunet:INBOX#0FA5F222-2CCA-4E37-A92F-E3046E71FE64@nordu.net][Email from Jonny Lundin: Re: CT log]]
 - o benchreport branches merged
   o map/catlfish/benchreport
   o map/plop/benchreport2
   o map/catlfish/submission-fix
 ** Radsecproxy
-- * v6only patch by ralf
-- - "--enable-fticks" removed from documentation
+- X v6only patch by ralf
+- X "--enable-fticks" removed from documentation
     [[file:p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml][file:~/p/radsecproxy/radsecproxy/radsecproxy.conf.5.xml]]
 ** TPI
 ** Tor
+- o bwscanner ticket filed on 'aggregate' not finding enough data
 - - new tb build system set up on flow
   [[file:usr/src/tor/tor-browser-build/README][file:~/usr/src/tor/tor-browser-build/README]]
 - - https://trac.torproject.org/projects/tor/ticket/4847
 - - hbsd/fbsd config writeup sent to phoul
-- - TorPerf set up on siv
+- X TorPerf set up on siv
 - - sunet publishing tor work
   [[gnus:nnimap%2Bndn:INBOX#871t1ectpj.fsf@nordberg.se][Email to Emma Almroth: Blogserie om SUNET:s arbete me]]
 - o pkg -j maatuska upgrade
@@ -64,26 +65,34 @@ Legend                                                      (emacs -*-org-*- mod
   - verified that all active users have an ldap record
   - kdc shut down
   - services configured to use ldap only
-- - flow.nordu.net reinstalled
+- o flow.nordu.net reinstalled
 - - tor.nordu.net reinstalled
 - - DKIM signing for adb-centralen.se
-  - opendkim has a fbsd package
+  o opendkim has a fbsd package
+    - what about https://www.freshports.org/mail/opendkim/?
 ** DFRI
+- * backups running!
+  - hbsd package of borgbackup available
+- - hbsd installed on machine from jn (going to sto2 to become the new lethe)
+- - mikrotik for kn7 configured
+- - poudriere continously building packages
+  - fbsd
+  - hbsd
+- - mail.dfri.se reinstalled in a new jail
+  - amnesia2 running as a vm on amnesia
 - o print [[https://dfri.se/wiki/protokoll/arsmote-2018.txt]]
 - o print [[https://dfri.se/wiki/protokoll/bm-20180211/][konstituerande möte protokoll]]
 - o print remissyttrande
   o mindre luft mellan rubrik (section) och stycke
   - mer luft mellan datum och titel
   - kursiva citat
-- - reinstall mail.dfri.se in a new jail
-- pawal access
- o pawal sudo to root @ mail
- o pawal sudo jexec linkable @ anastasia # for btc
- - writeup on btc handling
- - pw for btc wallet
+- - pawal access
+  o pawal sudo to root @ mail
+  o pawal sudo jexec linkable @ anastasia # for btc
+  - writeup on btc handling
+  - pw for btc wallet
 - o pawal on git-commit lists for admin and open repo
 - X bump fee on obe payment [sun 2/12]
-- * backup!
 - - https://wiki.freebsd.org/NetworkPerformanceTuning
 - - ns# pkg install -r dfrirepo knot2 (2.3.3 -> 2.5.2)
 - - DKIM signing for dfri.se
@@ -98,17 +107,16 @@ Legend                                                      (emacs -*-org-*- mod
 - . clean out joel from all places DFRI
 - . TOT report published
 - o new machine racked and installed
-- - hbsd installed on machine from jn (going to sto2, new lethe)
 ** Misc
-- * verify that the following is working with a newly booted 'datan'
+- - friskvårdsbidrag 2800:-
+- . copy flogsta:~/usr/src/ to datan, in particular radsecproxy*, tor
+- o verify that the following is working with a newly booted 'datan'
   and no access to YKII
   - ssh ioctl
   - ssh rs0-1
   - send signed email
   - read encrypted email
-- - friskvårdsbidrag 2800:-
-- - cv updated and fredrik (mullvad) informed
-- - copy flogsta:~/usr/src/ to datan, in particular radsecproxy*, tor
+- X cv updated and fredrik (mullvad) informed
 - o mtrl expenses
 - o yubikey replacement keys requested
 - o review sent to rasmus
@@ -376,12 +384,16 @@ Legend                                                      (emacs -*-org-*- mod
 * Travel
 ** 2018
 - Mar 09-15, Rome, Tor
-? Mar 06-19, Marrakech, ocaml
-? Mar 16-24, London, IETF101
+x Mar 06-19, Marrakech, ocaml
+x Mar 16-24, London, IETF101
 ? Apr 11-12, Stockholm, Cryptech
-? Jul 13-21, Montreal, IETF102
+? Apr 22-23, Gothenburg, FOSS-NORTH
+x Jul 13-21, Montreal, IETF102
 ? Jul 23-29, Barcelona, PETS
 ? Aug 15-24, Bornholm, Bornhack
+? Sep 13-17, Vojvodina, BalCCon
+? Sep 28?-04?, New Mexico, Tor
+? Oct 02-11, Marrakesh, MirageOS
 ? Nov 02-10, Bangkok, IETF103
 ? Dec 25-30, ?, CCC
 ** 2017
@@ -458,3 +470,5 @@ X Jul 14-18, Berlin, OKFestival
 X Aug 19-23, San Diego, USENIX Security
 X Nov 07-16, Honolulu, IETF91
 - Oct 14-16, Zurich, CT gossip
+** 2019
+? Mar 05-14, Marrakech, MirageOS

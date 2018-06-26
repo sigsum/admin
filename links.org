@@ -1,3 +1,178 @@
+riscv gdb wip https://github.com/jim-wilson/riscv-linux-native-gdb/tree/jimw-riscv-linux-gdb
+riscv fedora https://fedoraproject.org/wiki/Architectures/RISC-V
+hifive-unleashed kicad https://forums.sifive.com/t/hifive-unleashed-in-kicad/1230
+sifive forum https://forums.sifive.com/
+riscv coreboot hifive-unleashed https://forums.sifive.com/t/ddr-controller-configuration-register-values-for-hifive-unleashed/1334/4
+riscv coreboot hifive-unleashed https://review.coreboot.org/#/c/coreboot/+/25792/
+riscv coreboot hifive-unleashed https://forums.sifive.com/t/coreboot-or-u-boot/1186
+wireguard jason ludvig conflict https://lists.zx2c4.com/pipermail/wireguard/2018-March/002448.html
+wireguard debian https://wiki.debian.org/Wireguard
+wireguard debian package https://packages.debian.org/search?keywords=wireguard
+dfri links newletter https://pad.riseup.net/p/i84DXjUvK9uI-keep
+eu complaint drd https://pad.exegetes.eu.org/p/g.qj8SznotBbAHJLoJ$Letter%20Complaint%20EU%20Commission
+lenovo x280 https://www.dustin.se/product/5011069504/thinkpad-x280
+crypto ec readme series https://trustica.cz/en/category/ecc/
+doh wg https://datatracker.ietf.org/wg/doh/about/
+dfri picture https://sandas04.deviantart.com/art/Surveillance-328357763
+dovecot index files https://wiki.dovecot.org/IndexFiles
+trees https://salsa.debian.org/debian/trees
+music people:keithjarret https://en.wikipedia.org/wiki/The_Melody_at_Night,_with_You
+readme riscv debian https://people.debian.org/~mafm/posts/2017/20170422_debian-gnulinux-port-for-risc-v-64-bit-riscv64/
+riscv debian https://people.debian.org/~mafm/posts/2018/20180608_talk-about-the-debian-gnulinux-riscv64-port-at-risc-v-workshop/
+self-hosting https://github.com/Kickball/awesome-selfhosted
+tiling wm emacs https://github.com/ch11ng/exwm
+antifascist documentary movie https://www.youtube.com/watch?v=XYHnd4boUoM
+infrastructure-network text https://pad.riseup.net/p/about-us-infrastructure-survey-0938262-keep
+funny domain name https://penisland.net/
+cf tor hs dns https://blog.cloudflare.com/welcome-hidden-resolver/
+readme time utc post https://zachholman.com/talk/utc-is-enough-for-everyone-right
+lego buy https://new.webhallen.com/se/product/270566-LEGO-Boost-Kreativ-verktygslada-17101
+lego http://www.greatballcontraption.com/wiki/Main_Page
+video talk bintrans debian https://saimei.ftp.acc.umu.se/pub/debian-meetings/2018/miniconf-hamburg/2018-05-19/software_transparency.webm
+readme bintrans binary transparency https://arxiv.org/abs/1711.07278
+readme keytrans https://security.googleblog.com/2017/01/security-through-transparency.html
+ct javascript https://github.com/fotisl/ctutils
+ansible tor https://github.com/nusenu/ansible-relayor
+orbot bug https://trac.torproject.org/projects/tor/ticket/26126
+wifi mesh routing bmx7 https://github.com/bmx-routing/bmx7
+wifi mesh https://www.libremesh.org/howitworks.html
+wifi mesh routing babel [[file:usr/share/ietf/in-notes/rfc7298.txt][file:~/usr/share/ietf/in-notes/rfc7298.txt]]
+wifi mesh routing babel [[file:usr/share/ietf/in-notes/rfc7557.txt][file:~/usr/share/ietf/in-notes/rfc7557.txt]]
+wifi mesh routing babel [[file:usr/share/ietf/in-notes/rfc6126.txt][file:~/usr/share/ietf/in-notes/rfc6126.txt]]
+wifi mesh routing babel https://datatracker.ietf.org/wg/babel/charter/
+wifi mesh protocol l2 https://www.open-mesh.org/projects/batman-adv/wiki/Doc-overview
+wifi mesh distro https://gluon.readthedocs.io/en/v2017.1.x/
+ecuador spying people:assange https://www.theguardian.com/world/2018/may/15/revealed-ecuador-spent-millions-julian-assange-spy-operation-embassy-london
+gpg efail https://lists.gnupg.org/pipermail/gnupg-users/2018-May/060334.html
+gdpr orgs https://gdprchecklist.io/
+gdpr orgs https://techblog.bozho.net/gdpr-practical-guide-developers/
+gdpr orgs https://pad.riseup.net/p/GDPR-FAQ-keep
+gdpr orgs https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/
+gdpr orgs https://www.twobirds.com/~/media/pdfs/gdpr-pdfs/bird--bird--guide-to-the-general-data-protection-regulation.pdf?la=en
+gdpr orgs https://pagefair.com/blog/2018/granular-gdpr-consent/
+gdpr orgs https://www.eugdpr.org/the-regulation.html
+gdpr orgs https://litmus.com/blog/5-things-you-must-know-about-email-consent-under-gdpr
+signal desktop 0day https://twitter.com/ortegaalfredo/status/995017143002509313
+readme ocaml cryptocurrency zk-snark https://codaprotocol.com/
+signal mac privacy https://motherboard.vice.com/en_us/article/kzke7z/signal-disappearing-messages-are-stored-indefinitely-on-mac-hard-drives
+readme privacy face-recognition https://www.wired.com/story/facial-recognition-tech-creepy-works-or-not/
+ff webrtc tcp https://trac.torproject.org/projects/tor/ticket/16221
+bios upgrade https://wiki.gentoo.org/wiki/BIOS_Update#Using_SystemRescueCD_to_boot_FreeDOS
+manual motherboard unlinkable https://www.manualshelf.com/manual/supermicro/x8sti-f/user-s-manual-1-2.html
+system rescue cd bios update https://wiki.gentoo.org/wiki/BIOS_Update
+system rescue cd http://www.system-rescue-cd.org/
+zfs postgresql https://people.freebsd.org/~seanc/postgresql/scale15x-2017-postgresql_zfs_best_practices.pdf
+php vuln https://bugs.php.net/bug.php?id=70172&edit=1
+fbsd libressl issues https://wiki.freebsd.org/LibreSSL/2.7
+hbsd libressl issues https://github.com/HardenedBSD/hardenedbsd-ports/issues?q=is%3Aissue+is%3Aopen+label%3ALibreSSL
+books people:joe https://anubis.0x90.dk/~apache2/pdfs/
+readme email notmuc alot https://two-wrongs.com/current-email-solution-gpg-agent-offlineimap-notmuch-alot-msmtp
+https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge#Bridge_VLAN_Filtering
+https://wiki.mikrotik.com/wiki/Manual:Securing_Your_Router
+eduroam statistics MAC-addresses https://monitor.eduroam.org/f_ticks_stats.php?gtype=stats&gtime=2018-05-02%2013:00:00::2018-05-03%2014:00:00&obid=all&country=se
+drums kids https://trumslagaren.se/
+dns tor https://tools.ietf.org/html/rfc7901
+reading list surveillance society https://gist.github.com/ciphercharly/756fdf5e087eacaeedc8bf54c7bb0a33
+accounting sw https://fribok.org/
+mumble minimalistic murmur http://umurmur.net/
+freedombone http://yjxlc3imv7obva4grjae6u3qw527koaytrgjgdp364hmthrst3jodiid.onion/
+restic doc https://restic.readthedocs.io/en/latest/
+https://en.wikipedia.org/wiki/Pomodoro_Technique
+facebook friend-permissions https://www.cbsnews.com/news/aleksandr-kogan-the-link-between-cambridge-analytica-and-facebook/
+sdr https://osmocom.org/projects/osmo-fl2k/wiki
+hbsd updates latest http://updates.hardenedbsd.org/pub/HardenedBSD/updates/hardened/11-stable/master/amd64/update-latest.txt
+hbsd updates http://updates.hardenedbsd.org/pub/HardenedBSD/updates/hardened/11-stable/master/amd64/
+hbsd installation media http://installer.hardenedbsd.org/hardened_11_stable_master-LAST/
+translation service https://www.deepl.com/translator
+tuf update https://github.com/theupdateframework/specification/blob/master/tuf-spec.md
+emacs https://github.com/emacs-tw/awesome-emacs
+tor mobile interview people:ahf https://www.version2.dk/artikel/dansk-tor-udvikler-saadan-vil-vi-goere-lettere-at-vaere-anonym-paa-mobilen-1084911
+tunnel udp tcp https://github.com/wangyu-/udp2raw-tunnel
+readme ocaml https://gist.github.com/linse/ad6e41aa9f8385d71c63331e14c71c70
+readme dns encryption odns https://odns.cs.princeton.edu/
+readme dns encryption odns https://www.techrepublic.com/article/oblivious-dns-could-protect-your-internet-traffic-against-snooping/
+readme threema crypto whitepaper https://threema.ch/press-files/cryptography_whitepaper.pdf
+threema code https://github.com/o3ma
+backup software go https://github.com/restic/restic
+bugtracker https://github.com/mantisbt/mantisbt
+readme https://www.qurium.org/alerts/azerbaijan/corruption_censorship_and_a_dpi_vendor
+ddos tord http://www.nscrub.com/
+readme security exploit broadcom nexus5 https://bugs.chromium.org/p/project-zero/issues/detail?id=1046#c2
+alpine linux phone https://postmarketos.org/
+phone os firware bootloader mediatek https://postmarketos.org/blog/2018/04/14/lowlevel/
+fbsd jail bhyve management https://www.bsdstore.ru/en/about.html
+buy drone racer SEK:2400 http://xn--drnarbutiken-5ib.se/produkt/vusion-houseracer-125-fpv-rtf/
+buy drone racer SEK:3000 http://xn--drnarbutiken-5ib.se/produkt/walkera-rodeo-110-rtf/
+buy drone racer hubsan SEK:1700 http://xn--drnarbutiken-5ib.se/produkt/hubsan-racing-drone-rtf-fpv/
+readme web fingerprinting tracking http://randomwalker.info/publications/OpenWPM_1_million_site_tracking_measurement.pdf
+yubihsm rust https://github.com/tendermint/yubihsm-rs/
+verilog code sample https://github.com/chipforge/Verilog-for-Dummies
+https://media.ccc.de/v/7JW9KH
+monitoring alerts metrics https://prometheus.io/
+riscv debian https://wiki.debian.org/InstallingDebianOn/SiFive/HiFiveUnleashed
+swedish isp ip-addresses tele2 http://www.dagensjuridik.se/2018/04/internetoperator-vinner-behover-inte-lamna-ut-namn-bakom-ip-nummer-efter-illegal-fildelning
+ansible fbsd jail https://bsdploy.readthedocs.io/en/latest/
+git hosting https://gitea.io/en-US/
+git hosting https://gogs.io
+funny pic vi emacs https://tse3.mm.bing.net/th?id=OIP.F9r2pHY0ijINTQqAt7evwwHaEH&pid=15.1
+debian riscv https://wiki.debian.org/RISC-V
+debian riscv https://buildd.debian.org/status/architecture.php?a=riscv64&suite=sid
+git hosting sw https://gitea.io/en-us/
+tor hs tool https://github.com/nogoegst/onionize
+readme crypto ecc https://trustica.cz/en/2018/03/29/elliptic-curves-point-at-infinity/
+db48 upgrade https://wiki.freebsd.org/Ports/BerkeleyDBCleanup
+dovecot upgrade https://wiki2.dovecot.org/Upgrading/2.3
+hornet onion-routing https://arxiv.org/pdf/1507.05724.pdf
+books library imperial-library-of-trantor galactic-library http://kx5thpx2olielkihfyo4jgjqfb7zx7wxr3sd4xzt26ochei4m6f7tayd.onion/
+books library imperial-library-of-trantor galactic-library http://worrydream.com/AlligatorEggs/
+funny paper game untyped lambda calculus http://worrydream.com/AlligatorEggs/
+freebsd security https://vez.mrsk.me/freebsd-defaults.txt
+traceroute http://movingpackets.net/2017/10/06/misinterpreting-traceroute
+traceroute https://dublin-traceroute.net/README.md
+ipv6 privacy https://www.internetsociety.org/resources/deploy360/2014/privacy-extensions-for-ipv6-slaac/
+ipv6 security https://www.internetsociety.org/deploy360/ipv6/security/
+ipv6 privacy https://www.internetsociety.org/blog/2015/02/ipv6-security-myth-5-privacy-addresses-fix-everything/
+tor onion hosting https://onioncontainers.com/
+pax https://pax.grsecurity.net/docs/
+pomodoro book http://baomee.info/pdf/technique/1.pdf
+math book people:shafarevich https://www.bokus.com/bok/9783642379550/basic-algebraic-geometry-1-basic-algebraic-geometry-1/ 
+emacs caldav http://www.ict4g.net/adolfo/notes/2015/01/04/emacs-caldav.html
+emacs proxy https://debbugs.gnu.org/cgi/bugreport.cgi?bug=11788
+pleroma setup-guide https://i2p.rocks/blog/the-magical-world-of-pleroma-setting-up-your-instance.html
+ostatus mastodon https://git.pleroma.social/pleroma/pleroma
+mathematician https://en.wikipedia.org/wiki/Igor_Shafarevich
+book privay https://www.bokus.com/bok/9780822359388/dark-matters/
+bhyve dedicated device guest https://wiki.freebsd.org/bhyve/pci_passthru
+bhyve wiki https://wiki.freebsd.org/BHyVe
+stable hbsd installer images https://installer.hardenedbsd.org/hardened_11_stable_master-LAST/
+latest hbsd installer images https://jenkins.hardenedbsd.org/builds/HardenedBSD-11-STABLE-amd64-LATEST/ISO-IMAGES/
+rng https://github.com/waywardgeek/infnoise
+rng https://github.com/alwynallan/redoubler
+lenovo laptop upgrade https://hackaday.com/2018/03/12/new-guts-make-old-thinkpads-new/
+web-agent https://github.com/huginn/huginn
+phone copperheados https://copperhead.co/android/
+phone librem-5 https://puri.sm/shop/librem-5/
+bitcoin append-only log poisonous data https://www.theguardian.com/technology/2018/mar/20/child-abuse-imagery-bitcoin-blockchain-illegal-content
+yubihsm https://www.yubico.com/products/yubihsm/
+safe-harbour thesis people:monastrindberg http://uu.diva-portal.org/smash/get/diva2:931350/FULLTEXT01.pdf
+privacy swedish https://datadetox.se/
+reading-list congestion-control people:dawuud https://gist.github.com/david415/7ea8ddb48efbf17573f2491bdd033e3e
+tor filiol https://arxiv.org/pdf/1803.05201.pdf
+readme tree-hashing sakura https://keccak.team/files/Sakura.pdf
+readme tree-hashing sakura https://news.ycombinator.com/item?id=16572793
+quic implementation https://github.com/ngtcp2/ngtcp2
+ocaml beginner resource https://try.ocamlpro.com/
+without-people-youre-nothing people:joestrummer https://www.youtube.com/watch?v=uUaXKIiKy18
+the-future-is-unwritten pic https://commons.wikimedia.org/wiki/File:The_future_is_unwritten.jpg
+the-future-is-unwritten pic https://4.bp.blogspot.com/_1xwGYR_diz4/TSwFwuUzzDI/AAAAAAAADBc/pWt5QYMOvw4/s1600/futureIsUnwritten_joeStrummer.jpg
+buy hw shop nfc proxmark http://proxmark3.tictail.com/
+tor ipv6 https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/IPv6Features
+tor ipv6 https://trac.torproject.org/projects/tor/wiki/org/meetings/2017Montreal/IPv6Hackfest
+tor ipv6 https://trac.torproject.org/projects/tor/ticket/24403
+zeromq zmq message-queue http://zeromq.org/
+readme persistant-data fp ocaml db mirageos https://mirage.io/blog/introducing-irmin
+libraries privacy https://www.mynewsdesk.com/se/stockholms_stadsbibliotek/pressreleases/integritet-paa-internet-med-biblioteket-2436834
+share! tech history radio internet politics war http://idlewords.com/talks/ancient_web.htm
 physical security hw computer active-mesh https://orwl.org/
 teaching it-security http://www.schartau.se/images/pdf/IT_sakerhetstekniker2__20180209.pdf
 ocaml jbuilder bug beta18 https://github.com/ocaml/dune/issues/567
@@ -786,7 +961,7 @@ readme http://www.nyteknik.se/opinion/hog-tid-att-rensa-i-alternativa-fakta-om-i
 readme protobufs https://medium.com/@marin_m/how-i-found-a-5-000-google-maps-xss-by-fiddling-with-protobuf-963ee0d9caff
 free speech https://xkcd.com/1357/
 dld drd sweden http://www.nyteknik.se/digitalisering/kammarratten-underkanner-datalagring-6830821
-readme pax mprotect https://pax.grsecurity.net/docs/mprotect.txt
+readme pax mprotect https://pax.grsecurity.net/docs/mprotect.txt4
 tor traffic dist https://munin.torproject.org/torproject.org/aroides.torproject.org/ip_38_229_72_16.html
 tor traffic dist https://munin.torproject.org/torproject.org/archeotrichon.torproject.org/ip_154_35_132_70.html
 tor traffic dist sunet https://munin.torproject.org/torproject.org/weschniakowii.torproject.org/index.html#network
@@ -1195,7 +1370,7 @@ readme security research http://zesty.ca/pubs/icics-2002-uidss.pdf
 onion https://github.com/alecmuffett/the-onion-diaries/blob/master/building-proof-of-concept.md
 erlang http://beam-wisdoms.clau.se/en/latest/
 ff cert pinning bug http://seclists.org/dailydave/2016/q3/51
-yubikey https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd
+yubikey howto doc https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd
 funny research anonymous reviewer https://www.kickstarter.com/projects/972533097/monument-to-an-anonymous-peer-reviewer
 privacy social-graphs mp3 dp5 https://arxiv.org/abs/1609.02987
 pgp key https://gitweb.torproject.org/tor-browser-spec.git/tree/processes/KeyGeneration

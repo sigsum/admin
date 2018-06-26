@@ -664,6 +664,9 @@ network={
 ** devices
 *** GL.iNet 6416
 [[gnus:nnimap%2Badbc:junk#20160212183918.GC988@loar][Email from lunar@torproject.org: Re: {valencia2016} A local Eth]]
+** iwconfig to set up insecure session
+sudo killall wpa_supplicant
+sudo iwconfig $DEVICE essid $SSID
 * libevent
 ** dns issues in tor
 todo
@@ -1317,6 +1320,8 @@ until after that has been done.
 Subscribing people:
 /usr/local/bin/mlmmj-sub -L /usr/local/mlmmj/lists.adb-centralen.se/LIST -a ADDRESS-TO-SUBSCRIBE
 * Emacs
+** calendar, caldav
+- TODO read http://www.ict4g.net/adolfo/notes/2015/01/04/emacs-caldav.html
 ** horizontal scrolling (sideways, right, left)
 When Emacs refuses to scroll sideways:
 (setq auto-hscroll-mode t)
@@ -1453,6 +1458,56 @@ Segmentation fault
 ** colours
 Get rid of syntax highlighting in all buffers:
   (global-font-lock-mode -1)
+** building my own emacs
+- building emacs from git
+  - 2018-04-09 emacs-26.1-rc1
+  - 2018-05-29 emacs-26.1
+- dependencies, not using elpa
+  - magit
+    - dash
+      - https://github.com/magnars/dash.el/releases
+      - alt? savannah
+      - 2.14.1 <2018-05-04 Fri>
+      - cp dash.el ~/usr/share/emacs/site-lisp/
+    - magit-popup
+      - https://github.com/magit/magit-popup
+      - v2.12.3 <2018-05-04 Fri>
+      - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp"
+      - cp magit-popup.el* magit-popup-autoloads.el $HOME/usr/share/emacs/site-lisp/
+    - with-editor
+      - https://github.com/magit/with-editor
+      - v2.7.2 <2018-05-04 Fri>
+      - make
+      - cp with-editor.el* with-editor-autoloads.el ~/usr/share/emacs/site-lisp/
+    - ghub
+      - https://github.com/magit/ghub
+      - v2.0.0 <2018-05-04 Fri>
+      - make
+      - cp ghub.el* ghub-autoloads.el ~/usr/share/emacs/site-lisp/
+    - https://github.com/magit/magit
+    - 2.12.1 <2018-05-04 Fri>
+    - set up load-path in config.mk
+      LOAD_PATH  = -L $$HOME/usr/src/magit/lisp
+      LOAD_PATH += -L $$HOME/usr/share/emacs/site-lisp
+    - make DESTDIR=$HOME test # 1 unexpected failure <2018-05-04 Fri>
+    - make DESTDIR=$HOME install # installed to /home/linus/usr/local/share/emacs/site-lisp/magit
+  - markdown-mode
+    - https://github.com/jrblevin/markdown-mode
+    - master as of <2018-05-09 Wed>
+    - make update	# installs to ~/.emacs.d/site-lisp/
+*** old elpa config
+;; Do this early -- other requirements might depend on it. See
+;; variable package-archives for configured archives.
+(require 'package)
+(package-initialize)
+
+ '(package-archives
+   (quote
+    (("melpa" . "https://melpa.org/packages/")
+     ("marmalade" . "https://marmalade-repo.org/packages/")
+     ("gnu" . "https://elpa.gnu.org/packages/"))))
+ '(package-check-signature t)
+ '(package-selected-packages (quote (dash)))
 * Telia homerun
 user: 46703714984
 pw: ds5XVDEir5
@@ -1678,7 +1733,7 @@ mod_vcard_odbc.erl:408:                                         ?ERR_SERVICE_UNA
 * Kundnummer
 - cdon.com: 3325399
 * IMAP
-** imap.nordberg.se
+** imap.nordberg.se, connecting to
 maatuska:share% openssl s_client -connect imap.nordberg.se:993
 CONNECTED(00000003)
 depth=1 /C=SE/L=Stockholm/O=Mail.Nordberg/CN=Mail.Nordberg CA/emailAddress=hostmaster@nordberg.se
@@ -1761,7 +1816,7 @@ verify return:0
 3 OK [CAPABILITY IMAP4 IMAP4rev1 LITERAL+ ID LOGINDISABLED ACL RIGHTS=kxte QUOTA MAILBOX-REFERRALS NAMESPACE UIDPLUS NO_ATOMIC_RENAME UNSELECT CHILDREN MULTIAPPEND BINARY SORT SORT=MODSEQ THREAD=ORDEREDSUBJECT THREAD=REFERENCES ANNOTATEMORE CATENATE CONDSTORE IDLE X-NETSCAPE URLAUTH] User logged in
 4 ID NIL
  * ID ("name" "Cyrus IMAPD" "version" "v2.3.11 2007/12/10 14:48:14" "vendor" "Project Cyrus" "support-url" "http://cyrusimap.web.cmu.edu" "os" "FreeBSD" "os-version" "6.3-RELEASE-p12" "environment" "Built w/Cyrus SASL 2.1.22; Running w/Cyrus SASL 2.1.23; Built w/Sleepycat Software: Berkeley DB 4.1.25: (December 19, 2002); Running w/Sleepycat Software: Berkeley DB 4.1.25: (December 19, 2002); Built w/OpenSSL 0.9.7e-p1 25 Oct 2004; Running w/OpenSSL 0.9.7e-p1 25 Oct 2004; CMU Sieve 2.3; TCP Wrappers; mmap = shared; lock = fcntl; nonblock = fcntl; idle = idled")
-** kerio.nordu.net
+** kerio.nordu.net, connecting to
 $ openssl s_client -connect kerio.nordu.net:993
 CONNECTED(00000003)
 depth=2 /C=US/O=GTE Corporation/OU=GTE CyberTrust Solutions, Inc./CN=GTE CyberTrust Global Root
@@ -1828,6 +1883,14 @@ SSL-Session:
   CAPABILITY IMAP4 IMAP4rev1 IDLE ACL LITERAL+ UIDPLUS QUOTA ID SORT
   ANNOTATE ANNOTATEMORE STATUS-COUNTERS UNSELECT LISTEXT NAMESPACE
   XLIST AUTH=CRAM-MD5 AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5
+** authenticating
+$ echo -en "\0molgan\0Phait0ai" | base64
+AG1vbGdhbgBQaGFpdDBhaQ==
+$ gnutls-cli -p 993 imap.adb-centralen.se
+[...]
+\* OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN] Dovecot ready.
+. authenticate plain AG1vbGdhbgBQaGFpdDBhaQ==
+. OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY LITERAL+ NOTIFY SPECIAL-USE] Logged in
 * Travel
 There are three types of travelling.
 1. Within Sweden
@@ -1975,6 +2038,7 @@ speglar.simnet.is
     umount /dev/mapper/$1
     cryptsetup luksClose $1
 ** dirmngr, for gpg
+- see [[*make%20dirmngr%20use%20tor][make dirmngr use tor]] for how to make dirmngr use tor
 - systemctl --user restart dirmngr.socket
 - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=849845 has info on
   how dirmngr used to fail due to AAAA records and more
@@ -1983,6 +2047,9 @@ datan:~% egrep ssh-agent /etc/*/* 2>/dev/null
 /etc/X11/Xsession.options:use-ssh-agent
 
 See Xsessoin(5) and Xsession.options(5) for more.
+** packages
+- apt install debscripts
+  - rmadison <package> -- show package versions in each archive
 * Virtualization with qemu-kvm / libvirt
 ** vm's on tool
 Active
@@ -2005,17 +2072,19 @@ Packets from the VM comes in on vnet0 and goes to virbr0 IIRC. There are
 ACCEPT rules in the FORWARD chain letting them out on whatever i/f has
 default gateway (but no rules letting them reach the host machine, which
 is great).
-** creating a vm
+** creating a vm, once per host system
 $ sudo apt-get install qemu-kvm libvirt-bin virtinst
 $ sudo virsh net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              inactive   no
-$ sudo virt-install --connect qemu:///system --virt-type kvm --name debian1 --ram 2048 --disk path=/u/vm/debian1-0.img,size=2 --graphics vnc --cdrom /u/iso/debian-7.0.0-amd64-DVD-1.iso --os-variant=debianwheezy
+** creating a vm, per vm
+virt-install --virt-type kvm --name debian-buster --ram 512 --disk size=20 --graphics none --location http://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ --extra-args console=ttyS0,115200 --os-variant debiantesting
 # then install an os, reboot the vm, then shut it down
 $ sudo virsh start test
+$ sudo virsh console test	# TODO: how can I do this without being root? ("error: failed to get domain 'test'")
 ** starting a tails vm
-sudo virt-install --connect qemu:///system --virt-type kvm --name tails --memory 2048 --graphics vnc --cdrom ~linus/u/iso/tails-amd64-3.2.iso --disk none
+sudo virt-install --connect qemu:///system --virt-type kvm --name tails --memory 2048 --graphics vnc --disk none --cdrom ~linus/u/iso/tails-amd64-3.2.iso
 ** adding a disk
 root@tool:/u/vm# truncate --size=6G /u/vm/debian0-2.img
 root@tool:/u/vm# virsh attach-disk --config test /u/vm/debian0-2.img vdb  # --config makes this change persistent over reboots
@@ -2132,6 +2201,14 @@ mount /dev/nbd0p1 /mnt/image
 "virsh undefine <name>" will remove a vm from "virsh list --all" and
 you can create a vm with that name again. Note that it does not remove
 the image file created by virt-install.
+** setting timezone (time zone, tz)
+dpkg-reconfigure tzdata
+* Ubuntu
+- upgrading to new release (like 16.04 LTS) will not upgrade the
+  kernel; try this
+apt install linux-image-generic
+update-initramfs -k all -c && update-grub
+reboot
 * mgv.nordberg.se
 ** kernel crash <2010-02-09 Tue>
 Feb  9 13:35:08 mgv kernel: Fatal trap 12: page fault while in kernel mode
@@ -2273,6 +2350,7 @@ portmaster -d benchmarks/ttcp
 receiver-host: ttcp -s -r -f m
 transmitter-host: ttcp -s -t -f m receiver-host
 *** iperf
+NOTE: there's iperf3 too -- a server is running on fd.sunet.se (tcp)
 much like ttcp, claims to be more modern
 portmaster -d benchmarks/iperf
 
@@ -2857,22 +2935,6 @@ apt-get install divxenc
 *** Copying a DVD
 dd if=/dev/acd0 of=file.iso bs=1m
 growisofs -dvd-compat -Z /dev/cd0=file.iso
-* Travel
-** Midsommar 2010
-- Swedbuss Express till Götene
-- Kinnekukllebanan till Trolmen
-** Sthlm --> Gbg 2010-07-01
-Ditt beställningsnummer är: CZD1913H
-
-Stockholm C - Göteborg C
-torsdag, 1 juli, 17:10
---------------------------------------------------------------------------
-17:10 Stockholm C - 20:17 Göteborg C
-SJ, X2000, 443
-
-
-Linus Nordberg:
-Vagn 3, plats 4, Fönster, Tyst avdelning
 * Hardware
 ** Computers
 *** Fujitsu Siemens Lifebook S Series, S7110
@@ -3053,6 +3115,51 @@ key 1    # 1 was for 4096R/5681169D  created: 2010-05-07
 revkey   # 2 (Key is superseded); might want to do this after the expiration date
 save
 torsocks gpg --send-key <keyid>
+*** on-card version, yubikey 4
+# FIXME: Add instruction on how to get the outgoing subkey onto the
+# keyring, on disk. Without access to the outgoing key, all old
+# encrypted email are made inaccessible. That's not acceptable.
+umask 077
+cd /dev/shm
+mkdir gpgtmp
+cd gpgtmp
+cat > gpg.conf <<EOF
+default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+personal-digest-preferences SHA512
+cert-digest-algo SHA512
+EOF
+export GNUPGHOME=$PWD
+gpg --homedir ~/.gnupg --export $keyid | gpg --import
+gpg --edit-key $keyid
+addkey  # 6 (RSA encrypt only); 4096 (keysize); 1y (validity)
+# NOTE: Don't forget to touch the yubikey, for signing of the new subkey.
+key N	# Select the key to be revoked, ie the current key.
+revkey	# 2 (Key is superseded)
+save
+# mount your encrypted backup disk on /mnt
+gpg --export-secret-subkeys --armor > /mnt/pgp/gpg-secret-subkeys.backup
+gpg --export --armor $keyid > /mnt/pgp/gpg-public-${keyid}.backup
+cp /mnt/pgp/gpg-public-${keyid}.backup ~/gpg-public-${keyid}.backup
+sudo umount /mnt
+gpg --send-key $keyid
+# Move new subkey to card. This will overwrite the current
+# subkey. You'll not be able to decrypt messages encrypted in the
+# current subkey. Tough luck. Ask people to kindy honour that you've
+# revoked your current key and reencrypt in new subkey.
+gpg --edit-key $keyid
+key N	# pick the newly created key
+keytocard
+save
+yubitouch/yubitouch.sh dec fix
+# erase temp space and import public key to ordinary keyring
+shred -zun 13 /dev/shm/gpgtmp/*/*
+shred -zun 13 /dev/shm/gpgtmp/*
+cd
+rm -r /dev/shm/gpgtmp/
+unset GNUPGHOME
+gpg --import gpg-public-${keyid}.backup
+gpg --card-status	# this seems to be what creates the necessary "stub key file" under .gnupg/private-keys-v1.d/ named from the keygrip of the key (gpg --list-key --with-keygrip $keyid)
+gpg --list-key -v $keyid
 ** splitting a key
 For backup purposes a copy of the secret primary and subkey has been
 split into five shares.  Three shares are required to reassemble the
@@ -3101,299 +3208,6 @@ Sign your message with the same key as this message is encrypted in.
 supposedly good for handling pgp signing
 ** monkeysign
 might be a good tool for handling pgp signing
-** Yubikey NEO
-- Max 2048 bit keys.
-- For PGP, use GPG 2.0.22 or newer.
-*** Big picture (Debian jessie, gpg-agent started manually)
-- pcscd is the PC/SC Smart Card Daemon
-  - run by root, as a normal service
-- gpg-agent is the interface for both gpg2 and ssh
-  - started from ~/.xsession
-- scdaemon is how gpg2 talks to the card
-  - started by gpg-agent
-*** Debian stretch, gpg-agent started by systemd
-/etc/X11/Xsession.d/90gpg-agent
-*** Trouble shooting
-- NEO doesn't blink after insertion
-sudo service pcscd restart
-*** Recipe for setting up a NEO on a Debian (jessie/sid) system
-Based on https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd
-
-**** Install software
-apt-get install gpgsm scdaemon pcscd 
-**** Set Yubikey in CCID plus HID mode
-root@flogsta:~# uname -a
-Linux flogsta 3.14-1-686-pae #1 SMP Debian 3.14.9-1 (2014-06-30) i686 GNU/Linux
-root@flogsta:~# ykpersonalize -m82
-Firmware version 3.2.0 Touch level 1541 Program sequence 1
-
-The USB mode will be set to: 0x82
-
-Commit? (y/n) [n]: y
-**** Generate key on host machine
-flogsta:~% umask 077
-flogsta:~% cd /dev/shm/ && mkdir k; cd k
-flogsta:k% export GNUPGHOME=$PWD
-
-flogsta:k% gpg2 --gen-key
-
-FIXME: replace
-
-gpg (GnuPG) 2.0.25; Copyright (C) 2013 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
-gpg: keyring `/dev/shm/k/secring.gpg' created
-gpg: keyring `/dev/shm/k/pubring.gpg' created
-Please select what kind of key you want:
-   (1) RSA and RSA (default)
-   (2) DSA and Elgamal
-   (3) DSA (sign only)
-   (4) RSA (sign only)
-Your selection? 4
-RSA keys may be between 1024 and 4096 bits long.
-What keysize do you want? (2048)
-Requested keysize is 2048 bits
-Please specify how long the key should be valid.
-         0 = key does not expire
-      <n>  = key expires in n days
-      <n>w = key expires in n weeks
-      <n>m = key expires in n months
-      <n>y = key expires in n years
-Key is valid for? (0)
-Key does not expire at all
-Is this correct? (y/N) y
-
-GnuPG needs to construct a user ID to identify your key.
-
-Real name: Linus Nordberg
-Email address: linus@nordu.net
-Comment:
-You selected this USER-ID:
-    "Linus Nordberg <linus@nordu.net>"
-
-Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
-You need a Passphrase to protect your secret key.
-
-You don't want a passphrase - this is probably a *bad* idea!
-I will do it anyway.  You can change your passphrase at any time,
-using this program with the option "--edit-key".
-
-We need to generate a lot of random bytes. It is a good idea to perform
-some other action (type on the keyboard, move the mouse, utilize the
-disks) during the prime generation; this gives the random number
-generator a better chance to gain enough entropy.
-gpg: /dev/shm/k/trustdb.gpg: trustdb created
-gpg: key 8845E49C marked as ultimately trusted
-public and secret key created and signed.
-
-gpg: checking the trustdb
-gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
-gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
-pub   2048R/8845E49C 2014-08-20
-      Key fingerprint = 67EF 6286 E101 4289 0FCC  4447 1B6D 0C99 8845 E49C
-uid       [ultimate] Linus Nordberg <linus@nordu.net>
-
-Note that this key cannot be used for encryption.  You may want to use
-the command "--edit-key" to generate a subkey for this purpose.
-
-flogsta:k% gpg --armor --export 8845E49C > ~/public-key-on-NEO.asc
-
-
-unset GNUPGHOME
-
-*** How 0xF64A60A0 (linus (SUNET hw key) <linus@nordu.net>) was created
-flogsta:src% gpg2 --card-edit
-
-scdaemon[24265]: updating slot 0 status: 0x0000->0x0007 (0->1)
-scdaemon[24265]: reading public key failed: Card error
-scdaemon[24265]: reading public key failed: Card error
-scdaemon[24265]: reading public key failed: Card error
-Application ID ...: D2760001240102000000000000010000
-Version ..........: 2.0
-Manufacturer .....: test card
-Serial number ....: 00000001
-Name of cardholder: [not set]
-Language prefs ...: [not set]
-Sex ..............: unspecified
-URL of public key : [not set]
-Login data .......: [not set]
-Signature PIN ....: forced
-Key attributes ...: 2048R 2048R 2048R
-Max. PIN lengths .: 127 127 127
-PIN retry counter : 3 3 3
-Signature counter : 0
-Signature key ....: [none]
-Encryption key....: [none]
-Authentication key: [none]
-General key info..: [none]
-
-gpg/card> admin
-Admin commands are allowed
-
-gpg/card> generate
-
-Please note that the factory settings of the PINs are
-   PIN = `123456'     Admin PIN = `12345678'
-You should change them using the command --change-pin
-
-scdaemon[24265]: 2 Admin PIN attempts remaining before card is permanently locked
-scdaemon[24265]: DBG: asking for PIN '|A|Please enter the Admin PIN%0A[remaining attempts: 2]'
-scdaemon[24265]: DBG: asking for PIN '||Please enter the PIN'
-Please specify how long the key should be valid.
-         0 = key does not expire
-      <n>  = key expires in n days
-      <n>w = key expires in n weeks
-      <n>m = key expires in n months
-      <n>y = key expires in n years
-Key is valid for? (0)
-Key does not expire at all
-Is this correct? (y/N) y
-
-GnuPG needs to construct a user ID to identify your key.
-
-Real name: linus
-Email address: linus@nordu.net
-Comment: SUNET hw key
-You selected this USER-ID:
-    "linus (SUNET hw key) <linus@nordu.net>"
-
-Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
-scdaemon[24265]: generating new key
-scdaemon[24265]: please wait while key is being generated ...
-scdaemon[24265]: key generation completed (26 seconds)
-scdaemon[24265]: signatures created so far: 0
-scdaemon[24265]: generating new key
-scdaemon[24265]: please wait while key is being generated ...
-scdaemon[24265]: key generation completed (6 seconds)
-scdaemon[24265]: signatures created so far: 1
-scdaemon[24265]: signatures created so far: 2
-scdaemon[24265]: generating new key
-scdaemon[24265]: please wait while key is being generated ...
-scdaemon[24265]: key generation completed (22 seconds)
-scdaemon[24265]: signatures created so far: 3
-scdaemon[24265]: signatures created so far: 4
-gpg: key F64A60A0 marked as ultimately trusted
-public and secret key created and signed.
-
-gpg: checking the trustdb
-gpg: Note: signatures using the MD5 algorithm are rejected
-gpg: 3 marginal(s) needed, 1 complete(s) needed, classic trust model
-gpg: depth: 0  valid:  14  signed: 132  trust: 0-, 0q, 0n, 0m, 0f, 14u
-gpg: depth: 1  valid: 132  signed: 129  trust: 70-, 2q, 11n, 15m, 34f, 0u
-gpg: depth: 2  valid:  50  signed:  69  trust: 28-, 0q, 15n, 6m, 1f, 0u
-gpg: depth: 3  valid:   2  signed:   6  trust: 0-, 0q, 0n, 2m, 0f, 0u
-gpg: next trustdb check due at 2015-04-13
-pub   2048R/F64A60A0 2015-04-08
-      Key fingerprint = DA19 92F6 AD67 6BF6 3B99  2383 8CE5 2C9B F64A 60A0
-uid       [ultimate] linus (SUNET hw key) <linus@nordu.net>
-sub   2048R/FDB31F21 2015-04-08
-sub   2048R/D38E26C6 2015-04-08
-
-
-gpg/card> list
-
-Application ID ...: D2760001240102000000000000010000
-Version ..........: 2.0
-Manufacturer .....: test card
-Serial number ....: 00000001
-Name of cardholder: [not set]
-Language prefs ...: [not set]
-Sex ..............: unspecified
-URL of public key : [not set]
-Login data .......: [not set]
-Signature PIN ....: forced
-Key attributes ...: 2048R 2048R 2048R
-Max. PIN lengths .: 127 127 127
-PIN retry counter : 3 3 3
-Signature counter : 5
-Signature key ....: DA19 92F6 AD67 6BF6 3B99  2383 8CE5 2C9B F64A 60A0
-      created ....: 2015-04-08 09:08:32
-Encryption key....: 93B5 473E 9A1E 12E5 EE69  87C1 FFCA 822F D38E 26C6
-      created ....: 2015-04-08 09:08:32
-Authentication key: 45D1 F30F 62C6 F342 9F88  57BC 8289 6B29 FDB3 1F21
-      created ....: 2015-04-08 09:08:32
-General key info..:
-pub  2048R/F64A60A0 2015-04-08 linus (SUNET hw key) <linus@nordu.net>
-sec>  2048R/F64A60A0  created: 2015-04-08  expires: never
-                      card-no: 0000 00000001
-ssb>  2048R/FDB31F21  created: 2015-04-08  expires: never
-                      card-no: 0000 00000001
-ssb>  2048R/D38E26C6  created: 2015-04-08  expires: never
-                      card-no: 0000 00000001
-
-gpg/card> % scdaemon[24265]: scdaemon (GnuPG) 2.0.26 stopped
-gpg2 --list-key FDB31F21
-pub   2048R/F64A60A0 2015-04-08
-uid       [ultimate] linus (SUNET hw key) <linus@nordu.net>
-sub   2048R/FDB31F21 2015-04-08
-sub   2048R/D38E26C6 2015-04-08
-
-% gpg2 --finger F64A60A0
-pub   2048R/F64A60A0 2015-04-08
-      Key fingerprint = DA19 92F6 AD67 6BF6 3B99  2383 8CE5 2C9B F64A 60A0
-uid       [ultimate] linus (SUNET hw key) <linus@nordu.net>
-sub   2048R/FDB31F21 2015-04-08
-sub   2048R/D38E26C6 2015-04-08
-
-% gpg2 -a --export F64A60A0 > ~/.gnupg/SUNET-hwkey.asc
-% gpg2 --change-pin
-scdaemon[24641]: updating slot 0 status: 0x0000->0x0007 (0->1)
-gpg: OpenPGP card no. D2760001240102000000000000010000 detected
-
-1 - change PIN
-2 - unblock PIN
-3 - change Admin PIN
-4 - set the Reset Code
-Q - quit
-
-Your selection? 1
-scdaemon[24641]: DBG: asking for PIN '||Please enter the PIN'
-scdaemon[24641]: DBG: asking for PIN '|N|New PIN'
-PIN changed.
-
-1 - change PIN
-2 - unblock PIN
-3 - change Admin PIN
-4 - set the Reset Code
-Q - quit
-
-Your selection? 3
-scdaemon[24641]: 3 Admin PIN attempts remaining before card is permanently locked
-scdaemon[24641]: DBG: asking for PIN '|A|Please enter the Admin PIN'
-scdaemon[24641]: DBG: asking for PIN '|AN|New Admin PIN'
-PIN changed.
-
-1 - change PIN
-2 - unblock PIN
-3 - change Admin PIN
-4 - set the Reset Code
-Q - quit
-
-Your selection? q
-% scdaemon[24641]: scdaemon (GnuPG) 2.0.26 stopped
-** 4k key on a yubikey 4
-*** testing
-**** generate key on computer
-mkdir ~/tmp/pgptest
-gpg --homedir ~/tmp/pgptest --full-generate-key
-1
-4096
-0
-y
-Test key
-test@example.com
-<enter>
-o
-testkey		# passphrase
-testkey
-
-
-**** configure yubikey
-root@datan:~# ykpersonalize
-Firmware version 4.2.8 Touch level 773 Program sequence 1
-A slot must be chosen with -1 or -2.
-
 * wiki
 - ikiwiki is supposed to be nice.  Uploading text files (markdown!)
   using git f.ex.
@@ -4325,6 +4139,7 @@ GRUB_RECORDFAIL_TIMEOUT=0
 * skivspelare
   Veteran hi fi, Karlbergsv. 62, 08-300846, miroslaw@simplyblack.net.
 * yubikey
+See unfinished [[file:doc/yubikey.md][file:~/doc/yubikey.md]] too.
 ** hardware
 - yubikey 4 has an SLE 78CLFX3000P:
   https://twitter.com/lrvick/status/695664752215793664
@@ -4340,12 +4155,13 @@ aes-256 363 cykler
 *** john on touch <2016-02-24 Wed>
 encrypted [[gnus:nnimap%2Badbc:INBOX#56CCE081.1070703@binary.to][Email from John Van de Meulebrouck Brendgard: Angående touch på yubikey]]
 
-Jag har låtit undersöka om jag kan reproducera problemen jag nämnde att
-jag hade med https://gist.github.com/a-dma/797e4fa2ac4b5c9024ccDet verkar dock lite svårt för den nyare som du fick fungerade utan
-problem för mig att sätta touch på. Den verkar även ha en nyare version
-av firmwaren än vad jag har testat förut:
+Jag har låtit undersöka om jag kan reproducera problemen jag nämnde
+att jag hade med https://gist.github.com/a-dma/797e4fa2ac4b5c9024ccDet
+verkar dock lite svårt för den nyare som du fick fungerade utan
+problem för mig att sätta touch på. Den verkar även ha en nyare
+version av firmwaren än vad jag har testat förut: 
 gpg-connect-agent --hex "scd apdu 00 f1 00 00" /bye
-D[0000]  04 02 08 90 00
+D[0000] 04 02 08 90 00
 
 Medan min vanliga produktionsnykel har:
 gpg-connect-agent --hex "scd apdu 00 f1 00 00" /bye
@@ -4407,7 +4223,7 @@ touch för dessa även om denne någon sniffat mitt admin-lösenord.
 $ HISTFILE=/dev/null sudo bash -
 # ykpersonalize -y -1 -oappend-cr -ostatic-ticket -ostrong-pw1 -ostrong-pw2 -oman-update -a$(~linus/src/hexpw.py) >/dev/null || echo FAIL
 NOTE: use -o-append-cr to make the yubikey not send the final cr/lf, perhaps in slot 2
-*** tool:~% cat src/hexpw.py
+*** cat src/hexpw.py
 #! /usr/bin/python
     
     def hexify(data):
@@ -4569,14 +4385,17 @@ Could not add card "/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so": agent refused o
 Problem solved by using a separat key for authentication. I suppose
 having the same key for signing and authn is not supported (by gpg?).
 
-Touch works to, after `yubitouch/yubitouch.sh aut on` -- yubikey
+Touch works to, after `yubitouch/yubitouch.sh aut on` [0]. Yubikey
 blinking and if I don't touch it within 20s, ssh times out with
 "sign_and_send_pubkey: signing failed: agent refused operation ".
 
-Qeustion is if we should "fix" the authn touch. I think so.
+[0] https://github.com/a-dma/yubitouch
+
+Qeustion is if we should fixate ("fix") the authn touch. Downside is
+when you might want to invoke ssh many times from a script.
 
 Next question is if we should require touch for signing and decryption
-too.
+too. Indeed we should. This should be set to "fix" (not only "on").
 
 ** troubleshooting
 - yubico-piv-tool can't find reader
@@ -4639,6 +4458,303 @@ Q - quit
 
 Your selection? 2 # entered admin PIN and new PIN (twice)
 PIN unblocked and new PIN set.
+** Yubikey NEO
+- Max 2048 bit keys.
+- For PGP, use GPG 2.0.22 or newer.
+*** Big picture (Debian jessie, gpg-agent started manually)
+- pcscd is the PC/SC Smart Card Daemon
+  - run by root, as a normal service
+- gpg-agent is the interface for both gpg2 and ssh
+  - started from ~/.xsession
+- scdaemon is how gpg2 talks to the card
+  - started by gpg-agent
+*** Debian stretch, gpg-agent started by systemd
+/etc/X11/Xsession.d/90gpg-agent
+*** Trouble shooting
+- NEO doesn't blink after insertion
+sudo service pcscd restart
+*** Recipe for setting up a NEO on a Debian (jessie/sid) system
+Based on https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd
+
+**** Install software
+apt-get install gpgsm scdaemon pcscd 
+**** Set Yubikey in CCID plus HID mode
+root@flogsta:~# uname -a
+Linux flogsta 3.14-1-686-pae #1 SMP Debian 3.14.9-1 (2014-06-30) i686 GNU/Linux
+root@flogsta:~# ykpersonalize -m82
+Firmware version 3.2.0 Touch level 1541 Program sequence 1
+
+The USB mode will be set to: 0x82
+
+Commit? (y/n) [n]: y
+**** Generate key on host machine
+flogsta:~% umask 077
+flogsta:~% cd /dev/shm/ && mkdir k; cd k
+flogsta:k% export GNUPGHOME=$PWD
+
+flogsta:k% gpg2 --gen-key
+
+FIXME: replace
+
+gpg (GnuPG) 2.0.25; Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+gpg: keyring `/dev/shm/k/secring.gpg' created
+gpg: keyring `/dev/shm/k/pubring.gpg' created
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection? 4
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048)
+Requested keysize is 2048 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0)
+Key does not expire at all
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: Linus Nordberg
+Email address: linus@nordu.net
+Comment:
+You selected this USER-ID:
+    "Linus Nordberg <linus@nordu.net>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
+You need a Passphrase to protect your secret key.
+
+You don't want a passphrase - this is probably a *bad* idea!
+I will do it anyway.  You can change your passphrase at any time,
+using this program with the option "--edit-key".
+
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: /dev/shm/k/trustdb.gpg: trustdb created
+gpg: key 8845E49C marked as ultimately trusted
+public and secret key created and signed.
+
+gpg: checking the trustdb
+gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+pub   2048R/8845E49C 2014-08-20
+      Key fingerprint = 67EF 6286 E101 4289 0FCC  4447 1B6D 0C99 8845 E49C
+uid       [ultimate] Linus Nordberg <linus@nordu.net>
+
+Note that this key cannot be used for encryption.  You may want to use
+the command "--edit-key" to generate a subkey for this purpose.
+
+flogsta:k% gpg --armor --export 8845E49C > ~/public-key-on-NEO.asc
+
+
+unset GNUPGHOME
+
+*** How 0xF64A60A0 (linus (SUNET hw key) <linus@nordu.net>) was created
+flogsta:src% gpg2 --card-edit
+
+scdaemon[24265]: updating slot 0 status: 0x0000->0x0007 (0->1)
+scdaemon[24265]: reading public key failed: Card error
+scdaemon[24265]: reading public key failed: Card error
+scdaemon[24265]: reading public key failed: Card error
+Application ID ...: D2760001240102000000000000010000
+Version ..........: 2.0
+Manufacturer .....: test card
+Serial number ....: 00000001
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Sex ..............: unspecified
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: forced
+Key attributes ...: 2048R 2048R 2048R
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 3 3
+Signature counter : 0
+Signature key ....: [none]
+Encryption key....: [none]
+Authentication key: [none]
+General key info..: [none]
+
+gpg/card> admin
+Admin commands are allowed
+
+gpg/card> generate
+
+Please note that the factory settings of the PINs are
+   PIN = `123456'     Admin PIN = `12345678'
+You should change them using the command --change-pin
+
+scdaemon[24265]: 2 Admin PIN attempts remaining before card is permanently locked
+scdaemon[24265]: DBG: asking for PIN '|A|Please enter the Admin PIN%0A[remaining attempts: 2]'
+scdaemon[24265]: DBG: asking for PIN '||Please enter the PIN'
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0)
+Key does not expire at all
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: linus
+Email address: linus@nordu.net
+Comment: SUNET hw key
+You selected this USER-ID:
+    "linus (SUNET hw key) <linus@nordu.net>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
+scdaemon[24265]: generating new key
+scdaemon[24265]: please wait while key is being generated ...
+scdaemon[24265]: key generation completed (26 seconds)
+scdaemon[24265]: signatures created so far: 0
+scdaemon[24265]: generating new key
+scdaemon[24265]: please wait while key is being generated ...
+scdaemon[24265]: key generation completed (6 seconds)
+scdaemon[24265]: signatures created so far: 1
+scdaemon[24265]: signatures created so far: 2
+scdaemon[24265]: generating new key
+scdaemon[24265]: please wait while key is being generated ...
+scdaemon[24265]: key generation completed (22 seconds)
+scdaemon[24265]: signatures created so far: 3
+scdaemon[24265]: signatures created so far: 4
+gpg: key F64A60A0 marked as ultimately trusted
+public and secret key created and signed.
+
+gpg: checking the trustdb
+gpg: Note: signatures using the MD5 algorithm are rejected
+gpg: 3 marginal(s) needed, 1 complete(s) needed, classic trust model
+gpg: depth: 0  valid:  14  signed: 132  trust: 0-, 0q, 0n, 0m, 0f, 14u
+gpg: depth: 1  valid: 132  signed: 129  trust: 70-, 2q, 11n, 15m, 34f, 0u
+gpg: depth: 2  valid:  50  signed:  69  trust: 28-, 0q, 15n, 6m, 1f, 0u
+gpg: depth: 3  valid:   2  signed:   6  trust: 0-, 0q, 0n, 2m, 0f, 0u
+gpg: next trustdb check due at 2015-04-13
+pub   2048R/F64A60A0 2015-04-08
+      Key fingerprint = DA19 92F6 AD67 6BF6 3B99  2383 8CE5 2C9B F64A 60A0
+uid       [ultimate] linus (SUNET hw key) <linus@nordu.net>
+sub   2048R/FDB31F21 2015-04-08
+sub   2048R/D38E26C6 2015-04-08
+
+
+gpg/card> list
+
+Application ID ...: D2760001240102000000000000010000
+Version ..........: 2.0
+Manufacturer .....: test card
+Serial number ....: 00000001
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Sex ..............: unspecified
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: forced
+Key attributes ...: 2048R 2048R 2048R
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 3 3
+Signature counter : 5
+Signature key ....: DA19 92F6 AD67 6BF6 3B99  2383 8CE5 2C9B F64A 60A0
+      created ....: 2015-04-08 09:08:32
+Encryption key....: 93B5 473E 9A1E 12E5 EE69  87C1 FFCA 822F D38E 26C6
+      created ....: 2015-04-08 09:08:32
+Authentication key: 45D1 F30F 62C6 F342 9F88  57BC 8289 6B29 FDB3 1F21
+      created ....: 2015-04-08 09:08:32
+General key info..:
+pub  2048R/F64A60A0 2015-04-08 linus (SUNET hw key) <linus@nordu.net>
+sec>  2048R/F64A60A0  created: 2015-04-08  expires: never
+                      card-no: 0000 00000001
+ssb>  2048R/FDB31F21  created: 2015-04-08  expires: never
+                      card-no: 0000 00000001
+ssb>  2048R/D38E26C6  created: 2015-04-08  expires: never
+                      card-no: 0000 00000001
+
+gpg/card> % scdaemon[24265]: scdaemon (GnuPG) 2.0.26 stopped
+gpg2 --list-key FDB31F21
+pub   2048R/F64A60A0 2015-04-08
+uid       [ultimate] linus (SUNET hw key) <linus@nordu.net>
+sub   2048R/FDB31F21 2015-04-08
+sub   2048R/D38E26C6 2015-04-08
+
+% gpg2 --finger F64A60A0
+pub   2048R/F64A60A0 2015-04-08
+      Key fingerprint = DA19 92F6 AD67 6BF6 3B99  2383 8CE5 2C9B F64A 60A0
+uid       [ultimate] linus (SUNET hw key) <linus@nordu.net>
+sub   2048R/FDB31F21 2015-04-08
+sub   2048R/D38E26C6 2015-04-08
+
+% gpg2 -a --export F64A60A0 > ~/.gnupg/SUNET-hwkey.asc
+% gpg2 --change-pin
+scdaemon[24641]: updating slot 0 status: 0x0000->0x0007 (0->1)
+gpg: OpenPGP card no. D2760001240102000000000000010000 detected
+
+1 - change PIN
+2 - unblock PIN
+3 - change Admin PIN
+4 - set the Reset Code
+Q - quit
+
+Your selection? 1
+scdaemon[24641]: DBG: asking for PIN '||Please enter the PIN'
+scdaemon[24641]: DBG: asking for PIN '|N|New PIN'
+PIN changed.
+
+1 - change PIN
+2 - unblock PIN
+3 - change Admin PIN
+4 - set the Reset Code
+Q - quit
+
+Your selection? 3
+scdaemon[24641]: 3 Admin PIN attempts remaining before card is permanently locked
+scdaemon[24641]: DBG: asking for PIN '|A|Please enter the Admin PIN'
+scdaemon[24641]: DBG: asking for PIN '|AN|New Admin PIN'
+PIN changed.
+
+1 - change PIN
+2 - unblock PIN
+3 - change Admin PIN
+4 - set the Reset Code
+Q - quit
+
+Your selection? q
+% scdaemon[24641]: scdaemon (GnuPG) 2.0.26 stopped
+
+** Putting a 4096 bit key on a Yubikey 4
+$ gpg --full-gen-key
+
+FIXME
+
+$ gpg --edit-key --expert $keyid
+gpg> addkey
+*** testing
+**** generate key on computer
+mkdir ~/tmp/pgptest
+gpg --homedir ~/tmp/pgptest --full-generate-key
+1
+4096
+0
+y
+Test key
+test@example.com
+<enter>
+o
+testkey		# passphrase
+testkey
+**** configure yubikey
+root@datan:~# ykpersonalize
+Firmware version 4.2.8 Touch level 773 Program sequence 1
+A slot must be chosen with -1 or -2.
 * YubiHSM
 ** <2011-03-17 Thu>
    NO_CFG> sysinfo
@@ -4981,8 +5097,7 @@ chmod g+r ${OUTDIR}/K${ZONE}*.private
 
 ZONE=$1
 
-dig @193.10.5.87 dnskey $ZONE | dnssec-dsfromkey -1 -f - $ZONE
-dig @193.10.5.87 dnskey $ZONE | dnssec-dsfromkey -2 -f - $ZONE
+drill -s $ZONE dnskey @193.10.5.87
 [root@ns /usr/local/etc/knot]# 
 
 When adding DS to parent zone, use digest type 2 (SHA256):
@@ -5026,6 +5141,77 @@ Sen lägga till det här för våra zoner:
 allow-transfer {
   key "dfri-tsig";
 };
+** dns over tls
+datan:src% cat ~/.stubby.yml
+# See ~linus/usr/src/stubby/stubby.yml.example for documentation of
+# config otions.
+ 
+resolution_type: GETDNS_RESOLUTION_STUB
+dnssec_return_status: GETDNS_EXTENSION_TRUE
+tls_authentication: GETDNS_AUTHENTICATION_REQUIRED
+tls_query_padding_blocksize: 128
+edns_client_subnet_private: 1
+round_robin_upstreams: 1
+idle_timeout: 60000
+ 
+dns_transport_list:
+  - GETDNS_TRANSPORT_TLS
+ 
+listen_addresses:
+  - 127.0.0.1@1053
+ 
+upstream_recursive_servers:
+  - address_data: 171.25.193.138
+    tls_auth_name: "dnscrypt.dfri.se"
+    tls_pubkey_pinset:
+      - digest: "sha256"
+        value: jYdlj5TtGuGsJkFhKf7MIc1oNAF3UriX0gRqv0gFuYI=
+
+datan:~% LD_LIBRARY_PATH=$HOME/usr/lib stubby -l
+[22:03:54.585051] STUBBY: Read config from file /home/linus/.stubby.yml
+[22:03:54.585382] STUBBY: DNSSEC Validation is ON
+[22:03:54.585390] STUBBY: Transport list is:
+[22:03:54.585394] STUBBY:   - TLS
+[22:03:54.585399] STUBBY: Privacy Usage Profile is Strict (Authentication required)
+[22:03:54.585403] STUBBY: (NOTE a Strict Profile only applies when TLS is the ONLY transport!!)
+[22:03:54.585406] STUBBY: Starting DAEMON....
+[22:04:04.675328] STUBBY: 171.25.193.138                           : Conn opened: TLS - Strict Profile
+[22:04:04.761307] STUBBY: 171.25.193.138                           : Verify passed : TLS
+[22:05:17.036665] STUBBY: 171.25.193.138                           : Conn closed: TLS - Resps=    12, Timeouts  =     0, Curr_auth =Success, Keepalive(ms)= 60000
+[22:05:17.036720] STUBBY: 171.25.193.138                           : Upstream   : TLS - Resps=    12, Timeouts  =     0, Best_auth =Success
+[22:05:17.036740] STUBBY: 171.25.193.138                           : Upstream   : TLS - Conns=     1, Conn_fails=     0, Conn_shuts=      0, Backoffs     =     0
+
+datan:src% dig @localhost:1053 dfri.se
+;; WARNING: response timeout for ::1@1053(UDP)
+
+;; ->>HEADER<<- opcode: QUERY; status: NOERROR; id: 1906
+;; Flags: qr rd ra; QUERY: 1; ANSWER: 2; AUTHORITY: 0; ADDITIONAL: 1
+
+;; EDNS PSEUDOSECTION:
+;; Version: 0; flags: do; UDP size: 4096 B; ext-rcode: NOERROR
+
+;; QUESTION SECTION:
+;; dfri.se.                     IN      A
+
+;; ANSWER SECTION:
+dfri.se.                31971   IN      A       171.25.193.19
+dfri.se.                31971   IN      RRSIG   A 8 2 86400 20180615121556 20180601104556 25494 dfri.se. eFH6gQBuzBGD2Leu4Yn0eoOOkXpP/crOICXzC5b8+0ERKyy6Za1q8AgPWMPCaTGimsKJ4Vct32Bh3P0AewMd9H5k7LLFQfp4w6hgb300qwvEAEjUy9uWbhW+HJCmymT2F4WYb2UKohPrzrMApKpGmg+ESIRxfRRxFWq6wJP6WwwnQ+V4RTenkNCFRYTLvoT7ADcQgpJK1UOVHxQSRv/bZQspe8LdD1eXHucrTd5kc4D5xycYLaAhN4XB92q70ZXnzViP0epNUDWD82CSDHG58sLZSTG+gbcenEYrxvWSGVRyExKmDlZRFVXWSnZdGSt36Kjg9rtQt6aNlslVQXY3YQ==
+
+;; Received 361 B
+;; Time 2018-06-06 14:31:24 CEST
+;; From 127.0.0.1@1053(UDP) in 182.2 ms
+** stub resolvers and SOCKS
+- stubby / getdns
+  - missing
+- unbound
+  - missing
+- C implementations
+  - [[file:usr/src/curl/lib/socks.h][file:~/usr/src/curl/lib/socks.h]]
+  - tor
+  - socat
+  - openssh
+  - polipo
+  - privoxy
 * i18n
   LANG=sv_SE.UTF-8
 * laptop
@@ -5459,7 +5645,7 @@ KAS VPN 109.105.106.4 dk-kas-fw.nordu.net
    Vid tidpunkten ännu ej födda har hunnit tagit sin första öl på krogen.
 
    Annars var det väl ingenting särskilt som hände.
-** eudroam and statistics
+** eduroam and statistics
    <2011-03-31 Thu>
    What I was aiming for when bringing up the key/salt scheme was to
    minimise the negative effects on privacy that the existence of an
@@ -29290,6 +29476,8 @@ and the offending line (in configure.ac) is PKG_CHECK_MODULES()
 Solution: pkg install pkgconf
 ** pkg
 - pkg which -- like debian dpkg -S
+- repository FreeBSD contains packages for wrong OS version
+  - 
 * EuroBonus
 EBB609964226
 * No-phone sig
@@ -29783,7 +29971,6 @@ and possibly more.
 ** cms
 echo foo | openssl cms -sign -binary -stream -nocerts -nodetach -signer crt -inkey key | openssl cms -verify -stream -certfile crt -nointern -CAfile demoCA/cacert.pem 2>/dev/null || echo ERROR
 ** generating DH parameters
-
 * IRC
 ** mansaxel #isp <2011-10-07 Fri>
 <mansaxel> ellajarr
@@ -30705,6 +30892,9 @@ Nanne Grönvall
 - https://obnam.org/
   - weasel would look at it; python
   - retired aug 2017
+- restic
+  - pkg install restic; apt install restic
+  - dd if=/dev/random of=restic-pw bs=32 count=1 && restic init -p restic-pw -r /tmp/buptest
 ** FreeBSD
 *** UFS
 Use dump/restore.
@@ -35563,7 +35753,7 @@ server:/etc/docker/certs.d/docker.sunet.se/client.cert.
   - FF: Edit -> Preferences -> Advanced -> Certificates -> View
     Certificates -> Your Certificates -> Import
     ~linus/ostick/startcom-linus@nordberg.se-20150109.p12
-* pgp fp
+* pgp fp's
 hannes@mehnert.org
 hannes@berlin.ccc.de
 0xdf7c28ee 11b5 4642 49b5 bd85 8fff 6328 bc89 6588
@@ -36790,21 +36980,53 @@ Name]+unsubscribe@googlegroups.com.
   - filter machine, filtering machinery, filma
 - database
   - https://github.com/comtihon/mongodb-erlang
-* MUA
-- notmuch https://notmuchmail.org/ for indexing, has an emacs UI
+* notmuch
+- https://notmuchmail.org/ for indexing, has an emacs UI
 - getmail (or offlineimap) for pulling mail to a local maildir
   repository
   - [[http://pyropus.ca/software/getmail/][getmail]] is 4.7kloc python, seems mature
   - [[http://www.offlineimap.org/][offlineimap]] is 8.7kloc python
-  - mbsync/isync
+  - mbsync is 14kloc C; apt install isync
+  - dsync from dovecot
+  - [[http://www.muchsync.org/][muchsync]] is 3.2kloc C++
 - notmuch emacs mode will use Message and hopefully smtpmail for
   sending (yes, see https://notmuchmail.org/emacstips/)
+- as of <2018-05-04 Fri> [[https://git.notmuchmail.org/git/notmuch][git]] has 0.26.2 and debian stable has 0.23.7-3
 ** notmuch test failures <2017-05-29 Mon>
 Notmuch test suite complete.
 651/800 tests passed.
 2 broken tests failed as expected.
 36 tests failed.
 111 tests skipped.
+** building 0.26.2 <2018-05-04 Fri>
+sudo apt install libxapian-dev libgmime-2.6-dev libtalloc-dev zlib1g-dev dtach
+ ./configure --prefix=$HOME/usr
+make all check install
+
+*** 948/956 tests passed.
+7 broken tests failed as expected.
+1 test failed.
+
+T310-emacs: Testing emacs interface
+ BROKEN Reply within emacs to message from self
+nil
+ FAIL   Rendering HTML mail with images
+        cat OUTPUT && grep -q smiley OUTPUT
+Notmuch Test Suite <test_suite@notmuchmail.org> (2001-01-05) (inbox)
+Subject: HTML mail with images
+To: Notmuch Test Suite <test_suite@notmuchmail.org>
+Date: Fri, 05 Jan 2001 15:43:44 +0000
+
+[ multipart/related ]
+[ text/html ]
+!!! Bodypart handler `notmuch-show-insert-part-text/html' threw an error:
+!!! Symbol’s function definition is void: libxml-parse-html-region
+!!! Bodypart handler `notmuch-show-insert-part-*/*' threw an error:
+!!! Symbol’s function definition is void: libxml-parse-html-region
+[ image/gif (hidden) ]
+
+
+
 * EDRi supporter (20 EUR/month)
 IBAN BE32733021502102
 - 2015-10-28 20 EUR
@@ -37082,6 +37304,27 @@ baseurl="http://t3a73imee26zfb3d.onion/HardenedBSD/updates/pub/HardenedBSD/updat
 non-working patch from joe, porting pledge from openbsd:
 [[file:ln.pledge.feb20.2018.against.e1dcbe61327ee8c2650f9ca1db60f5b12d848aa4.diff][file:~/ln.pledge.feb20.2018.against.e1dcbe61327ee8c2650f9ca1db60f5b12d848aa4.diff]]
 the kernel doesn't link correctly
+** erlang, erl, beam
+- erl runs beam.smp, which mmaps with MAP_32BIT, so disable disallow_map32bit
+- in #hardenedbsd <2018-03-28 Wed>
+  <dmilith> yup, BEAM vm can't handle ASLR, MPROTECT and MAP_32bit IIRC
+
+
+$ cat /usr/local/etc/secadm.rules
+secadm {
+  pax {
+#    path = "/usr/local/lib/erlang/bin/erl",
+    path = "/usr/local/lib/erlang/erts-8.3.5.4/bin/beam.smp",
+#    pageexec: false,
+#    mprotect: false,
+#    segvguard: false,
+
+#    shlibrandom: false,
+#    aslr: false,
+    disallow_map32bit: false,
+  }
+}
+
 * hoerbert
 239 euro
 reference 9.742.308
@@ -37318,7 +37561,8 @@ skriva.
   used by Python; does it really have offline capabilities?
 - https://about.gitlab.com/features; heavy; requires js
 - http://syncwith.us/sd/
-- https://en.wikipedia.org/wiki/Fossil_(software); might not integrate with git
+- [[https://www.fossil-scm.org/index.html/doc/trunk/www/index.wiki][Fossil]]; ticketing, wiki "technotes" (events); written in C; web
+  interface requires js
 - https://distix.eu/
 - [[http://www.ditrack.org/][DITrack;]] latest release in 2008, for subversion
 - http://www.cs.unb.ca/%7Ebremner/blog/posts/git-issue-trackers/
@@ -37647,7 +37891,6 @@ http://www.ssi.gouv.fr/uploads/IMG/pdf/LaFoSec_-_Etat_des_lieux_des_langages_fon
 ** upgrading packages
 opam update
 opam upgrade
-
 *** pinning
 Example of situation which arised when building tlsping back in oct
 -17. Unpinning them.
@@ -37656,7 +37899,6 @@ datan:~% opam pin list
 nocrypto.0.5.4    git  https://github.com/mirleft/ocaml-nocrypto#master
 socks.~unknown    git  https://github.com/cfcs/ocaml-socks#master
 tls.0.8.0         git  https://github.com/cfcs/ocaml-tls#expose_engine_state
-
 **** opam pin remove tls
 tls is now unpinned from git https://github.com/cfcs/ocaml-tls#expose_engine_state
 The following actions will be performed:
@@ -37764,9 +38006,459 @@ The following actions will be performed:
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ∗  installed jackline.0.1.0
 Done.
+
+NOTE: you'd have to 
+  opam repo add xmpp-dev https://github.com/hannesm/xmpp-opam.git
+before jackline is made available.
 ** troubleshooting
 *** missing implementations for MODULE__
 this program:
+** packaging for debian
+from talking to ximin <2018-03-11 Sun>
+- first, topkg needs to be packaged
+  - base the package on the ocamlbuild package
+  - first try apt source ocamlbuild
+    - nope, it's not in stable
+  - then try debcheckout ocamlbuild
+    - will need apt install devscripts for debcheckout(1)
+    - debcheckout ocamlbuild
+  - in the ocamlbuild directory, try 'dh build --no-act'
+- then, package your stuff, get help from the [[https://lists.debian.org/debian-ocaml-maint/][debian-ocaml-maint ML]]
+
+** opam upgrade
+*** breakage <2018-05-04 Fri>
+**** opam upgrade
+The following actions will be performed:
+  ↻  recompile base                    v0.10.0                  [upstream changes]
+  ↗  upgrade   opam-file-format        2.0.0~beta5 to 2.0.0~rc2
+  ↗  upgrade   ocamlfind               1.7.3-1 to 1.8.0
+  ↻  recompile stdio                   v0.10.0                  [uses base]
+  ↻  recompile opam-format             2.0.0~rc                 [uses opam-file-format]
+  ↻  recompile zarith                  1.7                      [uses ocamlfind]
+  ↻  recompile ppx_tools               5.1+4.06.0               [uses ocamlfind]
+  ↻  recompile ocp-build               1.99.20-beta             [uses ocamlfind]
+  ↻  recompile ocaml-migrate-parsetree 1.0.7                    [uses ocamlfind]
+  ↻  recompile merlin                  3.0.5                    [uses ocamlfind]
+  ↻  recompile base-bytes              base                     [uses ocamlfind]
+  ↻  recompile asn1-combinators        0.2.0                    [uses ocamlfind]
+  ↻  recompile ppx_tools_versioned     5.1                      [uses ocamlfind]
+  ↻  recompile ppx_ast                 v0.10.0                  [uses ocaml-migrate-parsetree]
+  ↻  recompile stringext               1.5.0                    [uses base-bytes]
+  ↻  recompile ocp-indent              1.6.1                    [uses base-bytes, ocp-build]
+  ↻  recompile decompress              0.7                      [uses ocamlfind]
+  ↻  recompile cppo                    1.6.4                    [uses base-bytes]
+  ↻  recompile base64                  2.2.0                    [uses base-bytes]
+  ↻  recompile ppx_cstruct             3.2.1                    [uses ocaml-migrate-parsetree]
+  ↻  recompile ppx_core                v0.10.0                  [uses base]
+  ↻  recompile ocp-index               1.1.5                    [uses ocp-build]
+          For ocp-browser, please also install package lambda-term
+  ↻  recompile ocplib-endian           1.0                      [uses ocamlfind]
+  ↻  recompile lwt                     3.3.0                    [uses ocamlfind]
+          For the PPX, please install package lwt_ppx
+          For the Camlp4 syntax, please install package lwt_camlp4
+  ↻  recompile cppo_ocamlbuild         1.6.0                    [uses cppo]
+  ↻  recompile ppx_optcomp             v0.10.0                  [uses ppx_core]
+  ↻  recompile user-setup              0.6                      [uses ocamlfind]
+  ↻  recompile notty                   0.2.1                    [uses ocamlfind]
+  ↻  recompile lwt_log                 1.0.0                    [uses lwt]
+  ↻  recompile logs                    0.6.2                    [uses ocamlfind]
+  ↻  recompile cstruct-lwt             3.2.1                    [uses lwt]
+  ↻  recompile ppx_deriving            4.2.1                    [uses ocamlfind]
+  ↻  recompile ppx_driver              v0.10.2                  [uses ocaml-migrate-parsetree]
+  ↻  recompile bos                     0.2.0                    [uses ocamlfind]
+  ↻  recompile ppx_metaquot            v0.10.0                  [uses ocaml-migrate-parsetree]
+  ↻  recompile fieldslib               v0.10.0                  [uses base]
+  ↻  recompile webbrowser              0.6.1                    [uses ocamlfind]
+  ↻  recompile ppx_type_conv           v0.10.0                  [uses ocaml-migrate-parsetree]
+  ↻  recompile topkg-care              0.9.1                    [uses ocamlfind]
+  ↻  recompile ppx_sexp_conv           v0.10.0                  [uses ocaml-migrate-parsetree]
+  ↻  recompile ppx_fields_conv         v0.10.0                  [uses ocaml-migrate-parsetree]
+  ↻  recompile uri                     1.9.6                    [uses base-bytes]
+  ↻  recompile nocrypto                0.5.4                    [uses ocamlfind]
+  ↻  recompile ipaddr                  2.8.0                    [uses base-bytes]
+  ↗  upgrade   git                     1.11.3 to 1.11.5
+  ↻  recompile cohttp                  1.1.0                    [uses stringext, base64, fieldslib]
+  ↻  recompile x509                    0.6.1                    [uses ocamlfind]
+  ↻  recompile otr                     0.3.4                    [uses ocamlfind]
+  ↻  recompile erm_xmpp                0.3                      [uses ocamlfind]
+  ↻  recompile conduit                 1.1.0                    [uses ipaddr]
+  ↻  recompile cohttp-lwt              1.0.2                    [uses cohttp, lwt]
+  ↻  recompile tls                     0.9.1                    [uses ocamlfind]
+  ↻  recompile conduit-lwt             1.1.0                    [uses lwt]
+  ↻  recompile jackline                0.1.0                    [uses ocamlfind]
+  ↻  recompile conduit-lwt-unix        1.1.0                    [uses ipaddr]
+  ↻  recompile cohttp-lwt-unix         1.0.2                    [uses lwt]
+  ↻  recompile sds                     ~dev*                    [uses ocamlfind]
+===== ↻  54   ↗  3 =====
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[asn1-combinators.0.2.0] found in cache
+[base.v0.10.0] found in cache
+[base64.2.2.0] found in cache
+[bos.0.2.0] found in cache
+[cohttp.1.1.0] found in cache
+[cohttp-lwt.1.0.2] found in cache
+[cohttp-lwt-unix.1.0.2] found in cache
+[conduit.1.1.0] found in cache
+[conduit-lwt.1.1.0] found in cache
+[conduit-lwt-unix.1.1.0] found in cache
+[cppo.1.6.4] found in cache
+[cppo_ocamlbuild.1.6.0] found in cache
+[cstruct-lwt.3.2.1] found in cache
+[decompress.0.7] found in cache
+[fieldslib.v0.10.0] found in cache
+[ipaddr.2.8.0] found in cache
+[jackline.0.1.0] no changes from git+https://github.com/hannesm/jackline.git
+[logs.0.6.2] found in cache
+[erm_xmpp.0.3] no changes from git+https://github.com/hannesm/xmpp.git#otr
+[lwt.3.3.0] found in cache
+[lwt_log.1.0.0] found in cache
+[merlin.3.0.5] found in cache
+[nocrypto.0.5.4] found in cache
+[notty.0.2.1] found in cache
+[ocaml-migrate-parsetree.1.0.7] found in cache
+[ocamlfind.1.7.3-1] found in cache
+[ocp-build.1.99.20-beta] found in cache
+[ocp-indent.1.6.1] found in cache
+[ocp-index.1.1.5] found in cache
+[ocplib-endian.1.0] found in cache
+[git.1.11.5] downloaded from cache at https://opam.ocaml.org/2.0/cache
+[opam-format.2.0.0~rc] found in cache
+[otr.0.3.4] found in cache
+[ppx_ast.v0.10.0] found in cache
+[ppx_core.v0.10.0] found in cache
+[ppx_cstruct.3.2.1] found in cache
+[ppx_deriving.4.2.1] found in cache
+[ppx_driver.v0.10.2] found in cache
+[ppx_fields_conv.v0.10.0] found in cache
+[ppx_metaquot.v0.10.0] found in cache
+[ppx_optcomp.v0.10.0] found in cache
+[ppx_sexp_conv.v0.10.0] found in cache
+[ppx_tools.5.1+4.06.0] found in cache
+[ppx_tools_versioned.5.1] found in cache
+[ppx_type_conv.v0.10.0] found in cache
+[stdio.v0.10.0] found in cache
+[stringext.1.5.0] found in cache
+[tls.0.9.1] found in cache
+[opam-file-format.2.0.0~rc2] downloaded from cache at https://opam.ocaml.org/2.0/cache
+[topkg-care.0.9.1] found in cache
+[uri.1.9.6] found in cache
+[user-setup.0.6] found in cache
+[webbrowser.0.6.1] found in cache
+[x509.0.6.1] found in cache
+[zarith.1.7] found in cache
+[ocamlfind.1.8.0] downloaded from cache at https://opam.ocaml.org/2.0/cache
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+⊘  removed   lwt_log.1.0.0
+⊘  removed   topkg-care.0.9.1
+⊘  removed   opam-format.2.0.0~rc
+⊘  removed   opam-file-format.2.0.0~beta5
+⊘  removed   user-setup.0.6
+[NOTE] While removing merlin.3.0.5: not removing non-empty directories:
+         - share/emacs/site-lisp
+
+⊘  removed   merlin.3.0.5
+⊘  removed   ocp-index.1.1.5
+⊘  removed   ocp-indent.1.6.1
+⊘  removed   ocp-build.1.99.20-beta
+⊘  removed   webbrowser.0.6.1
+⊘  removed   bos.0.2.0
+∗  installed opam-file-format.2.0.0~rc2
+∗  installed opam-format.2.0.0~rc
+⊘  removed   git.1.11.3
+⊘  removed   decompress.0.7
+⊘  removed   jackline.0.1.0
+⊘  removed   erm_xmpp.0.3
+⊘  removed   notty.0.2.1
+⊘  removed   ocplib-endian.1.0
+⊘  removed   otr.0.3.4
+⊘  removed   sds.~dev
+⊘  removed   cohttp-lwt-unix.1.0.2
+⊘  removed   cohttp-lwt.1.0.2
+⊘  removed   cohttp.1.1.0
+⊘  removed   base64.2.2.0
+⊘  removed   conduit-lwt-unix.1.1.0
+⊘  removed   conduit-lwt.1.1.0
+⊘  removed   conduit.1.1.0
+⊘  removed   ipaddr.2.8.0
+⊘  removed   logs.0.6.2
+⊘  removed   ppx_fields_conv.v0.10.0
+⊘  removed   fieldslib.v0.10.0
+⊘  removed   tls.0.9.1
+⊘  removed   ppx_cstruct.3.2.1
+⊘  removed   uri.1.9.6
+⊘  removed   stringext.1.5.0
+⊘  removed   x509.0.6.1
+⊘  removed   asn1-combinators.0.2.0
+⊘  removed   nocrypto.0.5.4
+⊘  removed   cstruct-lwt.3.2.1
+⊘  removed   lwt.3.3.0
+⊘  removed   ppx_deriving.4.2.1
+⊘  removed   cppo_ocamlbuild.1.6.0
+⊘  removed   cppo.1.6.4
+⊘  removed   base-bytes.base
+⊘  removed   ppx_sexp_conv.v0.10.0
+⊘  removed   ppx_tools.5.1+4.06.0
+⊘  removed   ppx_tools_versioned.5.1
+⊘  removed   ppx_type_conv.v0.10.0
+⊘  removed   ppx_metaquot.v0.10.0
+⊘  removed   ppx_driver.v0.10.2
+⊘  removed   ppx_optcomp.v0.10.0
+⊘  removed   ppx_core.v0.10.0
+⊘  removed   ppx_ast.v0.10.0
+⊘  removed   ocaml-migrate-parsetree.1.0.7
+⊘  removed   stdio.v0.10.0
+⊘  removed   base.v0.10.0
+⊘  removed   zarith.1.7
+⊘  removed   ocamlfind.1.7.3-1
+∗  installed base.v0.10.0
+[ERROR] The compilation of stdio failed at "/home/linus/.opam/4.06.1/bin/jbuilder build -p stdio -j 4".
+∗  installed ocamlfind.1.8.0
+∗  installed base-bytes.base
+∗  installed base64.2.2.0
+∗  installed cppo.1.6.4
+∗  installed cppo_ocamlbuild.1.6.0
+∗  installed decompress.0.7
+∗  installed ocaml-migrate-parsetree.1.0.7
+∗  installed merlin.3.0.5
+∗  installed ocplib-endian.1.0
+∗  installed ppx_tools.5.1+4.06.0
+∗  installed ocp-build.1.99.20-beta
+∗  installed ppx_ast.v0.10.0
+∗  installed stringext.1.5.0
+∗  installed zarith.1.7
+∗  installed ocp-indent.1.6.1
+∗  installed asn1-combinators.0.2.0
+∗  installed ppx_deriving.4.2.1
+∗  installed ppx_tools_versioned.5.1
+∗  installed ocp-index.1.1.5
+∗  installed ppx_cstruct.3.2.1
+[WARNING] Errors in /home/linus/.opam/4.06.1/.opam-switch/build/user-setup.0.6/user-setup.install, some
+          fields have been ignored:
+            - At /home/linus/.opam/4.06.1/.opam-switch/build/user-setup.0.6/user-setup.install:2:0:
+              Invalid field share-root
+
+∗  installed user-setup.0.6
+∗  installed lwt.3.3.0
+∗  installed lwt_log.1.0.0
+∗  installed cstruct-lwt.3.2.1
+∗  installed logs.0.6.2
+∗  installed notty.0.2.1
+∗  installed bos.0.2.0
+∗  installed webbrowser.0.6.1
+∗  installed topkg-care.0.9.1
+
+#=== ERROR while compiling stdio.v0.10.0 ======================================#
+# context      2.0.0~rc | linux/x86_64 | ocaml-base-compiler.4.06.1 | https://opam.ocaml.org/2.0#c989e75f
+# path         ~/.opam/4.06.1/.opam-switch/build/stdio.v0.10.0
+# command      ~/.opam/4.06.1/bin/jbuilder build -p stdio -j 4
+# exit-code    1
+# env-file     ~/.opam/log/stdio-14545-b446b1.env
+# output-file  ~/.opam/log/stdio-14545-b446b1.out
+### output ###
+# Error: External library "sexplib" not found.
+# -> required by "src/jbuild (context default)"
+# Hint: try: jbuilder external-lib-deps --missing -p stdio @install
+
+
+
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+┌─ The following actions were aborted
+│ ∗  install cohttp           1.1.0
+│ ∗  install cohttp-lwt       1.0.2
+│ ∗  install cohttp-lwt-unix  1.0.2
+│ ∗  install conduit          1.1.0
+│ ∗  install conduit-lwt      1.1.0
+│ ∗  install conduit-lwt-unix 1.1.0
+│ ∗  install erm_xmpp         0.3
+│ ∗  install fieldslib        v0.10.0
+│ ∗  install git              1.11.5
+│ ∗  install ipaddr           2.8.0
+│ ∗  install jackline         0.1.0
+│ ∗  install nocrypto         0.5.4
+│ ∗  install otr              0.3.4
+│ ∗  install ppx_core         v0.10.0
+│ ∗  install ppx_driver       v0.10.2
+│ ∗  install ppx_fields_conv  v0.10.0
+│ ∗  install ppx_metaquot     v0.10.0
+│ ∗  install ppx_optcomp      v0.10.0
+│ ∗  install ppx_sexp_conv    v0.10.0
+│ ∗  install ppx_type_conv    v0.10.0
+│ ∗  install sds              ~dev
+│ ∗  install tls              0.9.1
+│ ∗  install uri              1.9.6
+│ ∗  install x509             0.6.1
+└─
+┌─ The following actions failed
+│ λ  build stdio v0.10.0
+└─
+┌─ The following changes have been performed
+│ ⊘  remove    cohttp                  1.1.0
+│ ⊘  remove    cohttp-lwt              1.0.2
+│ ⊘  remove    cohttp-lwt-unix         1.0.2
+│ ⊘  remove    conduit                 1.1.0
+│ ⊘  remove    conduit-lwt             1.1.0
+│ ⊘  remove    conduit-lwt-unix        1.1.0
+│ ⊘  remove    erm_xmpp                0.3
+│ ⊘  remove    fieldslib               v0.10.0
+│ ⊘  remove    git                     1.11.3
+│ ⊘  remove    ipaddr                  2.8.0
+│ ⊘  remove    jackline                0.1.0
+│ ⊘  remove    nocrypto                0.5.4
+│ ⊘  remove    otr                     0.3.4
+│ ⊘  remove    ppx_core                v0.10.0
+│ ⊘  remove    ppx_driver              v0.10.2
+│ ⊘  remove    ppx_fields_conv         v0.10.0
+│ ⊘  remove    ppx_metaquot            v0.10.0
+│ ⊘  remove    ppx_optcomp             v0.10.0
+│ ⊘  remove    ppx_sexp_conv           v0.10.0
+│ ⊘  remove    ppx_type_conv           v0.10.0
+│ ⊘  remove    sds                     ~dev
+│ ⊘  remove    stdio                   v0.10.0
+│ ⊘  remove    tls                     0.9.1
+│ ⊘  remove    uri                     1.9.6
+│ ⊘  remove    x509                    0.6.1
+│ ↻  recompile asn1-combinators        0.2.0
+│ ↻  recompile base                    v0.10.0
+│ ↻  recompile base-bytes              base
+│ ↻  recompile base64                  2.2.0
+│ ↻  recompile bos                     0.2.0
+│ ↻  recompile cppo                    1.6.4
+│ ↻  recompile cppo_ocamlbuild         1.6.0
+│ ↻  recompile cstruct-lwt             3.2.1
+│ ↻  recompile decompress              0.7
+│ ↻  recompile logs                    0.6.2
+│ ↻  recompile lwt                     3.3.0
+│ ↻  recompile lwt_log                 1.0.0
+│ ↻  recompile merlin                  3.0.5
+│ ↻  recompile notty                   0.2.1
+│ ↻  recompile ocaml-migrate-parsetree 1.0.7
+│ ↻  recompile ocp-build               1.99.20-beta
+│ ↻  recompile ocp-indent              1.6.1
+│ ↻  recompile ocp-index               1.1.5
+│ ↻  recompile ocplib-endian           1.0
+│ ↻  recompile opam-format             2.0.0~rc
+│ ↻  recompile ppx_ast                 v0.10.0
+│ ↻  recompile ppx_cstruct             3.2.1
+│ ↻  recompile ppx_deriving            4.2.1
+│ ↻  recompile ppx_tools               5.1+4.06.0
+│ ↻  recompile ppx_tools_versioned     5.1
+│ ↻  recompile stringext               1.5.0
+│ ↻  recompile topkg-care              0.9.1
+│ ↻  recompile user-setup              0.6
+│ ↻  recompile webbrowser              0.6.1
+│ ↻  recompile zarith                  1.7
+│ ↗  upgrade   ocamlfind               1.7.3-1 to 1.8.0
+│ ↗  upgrade   opam-file-format        2.0.0~beta5 to 2.0.0~rc2
+└─
+
+=-=- user-setup.0.6 installed successfully =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=> To setup or update your editors, run 'opam user-setup install'.
+
+The former state can be restored with:
+    opam switch import "/home/linus/.opam/4.06.1/.opam-switch/backup/state-20180504120549.export"
+Or you can retry to install your package selection with:
+    opam install --restore
+*** trying to resolve this <2018-05-08 Tue>
+**** opam update
+ 
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[xmpp-dev] synchronised from git+https://github.com/hannesm/xmpp-opam.git
+[WARNING] The repository 'xmpp-dev' at git+https://github.com/hannesm/xmpp-opam.git doesn't have a
+          'repo' file, and might not be compatible with this version of opam.
+[default] synchronised from https://opam.ocaml.org/2.0
+[NOTE] Repository at git+https://github.com/hannesm/xmpp-opam.git doesn't define its version, assuming
+       it's 1.2.
+ 
+=-=- Upgrading repositories from older opam format =-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Upgrading repository "xmpp-dev"...
+
+=-=- Synchronising development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[NOTE] Ignoring uncommitted changes in /home/linus/usr/src/ocaml-letsencrypt (`--working-dir' not
+       active).
+[NOTE] Ignoring uncommitted changes in /home/linus/p/simple-drop/ocaml/sds (`--working-dir' not active).
+[letsencrypt.0.1] no changes from git+file:///home/linus/usr/src/ocaml-letsencrypt#master
+[sds.~dev] no changes from git+file:///home/linus/p/simple-drop/ocaml/sds#master
+[erm_xml.0.3.1] no changes from git+https://github.com/hannesm/xml.git
+Now run 'opam upgrade' to apply any package updates.
+**** opam pin remove jbuilder
+Ok, jbuilder is no longer pinned to https://github.com/ocaml/dune/releases/download/1.0+beta17/jbuilder-1.0.beta17.tbz (version 1.0+beta17)
+Everything as up-to-date as possible (run with --verbose to show unavailable upgrades).
+The following would require downgrades or uninstalls, but you may upgrade them explicitly:
+  - jbuilder.1.0+beta20
+Nothing to do.
+**** opam install stdio
+The following actions will be performed:
+  ↗  upgrade   jbuilder         1.0+beta17 to 1.0+beta20 [required by stdio]
+  ∗  install   sexplib0         v0.11.0                  [required by base]
+  ∗  install   parsexp          v0.11.0                  [required by sexplib]
+  ↗  upgrade   base             v0.10.0 to v0.11.0       [required by stdio]
+  ↗  upgrade   sexplib          v0.10.0 to v0.11.0       [uses jbuilder]
+  ∗  install   stdio            v0.11.0
+  ↻  recompile cstruct          3.2.1                    [uses jbuilder]
+  ↻  recompile ppx_cstruct      3.2.1                    [uses jbuilder]
+  ↻  recompile mstruct          1.4.0                    [uses jbuilder]
+  ↻  recompile hex              1.2.0                    [uses jbuilder]
+  ↻  recompile cstruct-lwt      3.2.1                    [uses jbuilder]
+  ↻  recompile asn1-combinators 0.2.0                    [uses cstruct]
+  ↻  recompile ezjsonm          0.5.0                    [uses jbuilder]
+===== ∗  3   ↻  7   ↗  3 =====
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[asn1-combinators.0.2.0] found in cache
+[cstruct.3.2.1] found in cache
+[cstruct-lwt.3.2.1] found in cache
+[ezjsonm.0.5.0] found in cache
+[hex.1.2.0] found in cache
+[mstruct.1.4.0] found in cache
+[parsexp.v0.11.0] downloaded from cache at https://opam.ocaml.org/2.0/cache
+[ppx_cstruct.3.2.1] found in cache
+[jbuilder.1.0+beta20] downloaded from cache at https://opam.ocaml.org/2.0/cache
+[base.v0.11.0] downloaded from cache at https://opam.ocaml.org/2.0/cache
+[sexplib.v0.11.0] downloaded from cache at https://opam.ocaml.org/2.0/cache
+[sexplib0.v0.11.0] downloaded from cache at https://opam.ocaml.org/2.0/cache
+[stdio.v0.11.0] downloaded from cache at https://opam.ocaml.org/2.0/cache
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+⊘  removed   asn1-combinators.0.2.0
+⊘  removed   base.v0.10.0
+⊘  removed   cstruct-lwt.3.2.1
+⊘  removed   ezjsonm.0.5.0
+⊘  removed   hex.1.2.0
+⊘  removed   mstruct.1.4.0
+⊘  removed   ppx_cstruct.3.2.1
+⊘  removed   cstruct.3.2.1
+⊘  removed   sexplib.v0.10.0
+⊘  removed   jbuilder.1.0+beta17
+∗  installed jbuilder.1.0+beta20
+∗  installed sexplib0.v0.11.0
+∗  installed parsexp.v0.11.0
+∗  installed sexplib.v0.11.0
+∗  installed cstruct.3.2.1
+∗  installed cstruct-lwt.3.2.1
+∗  installed hex.1.2.0
+∗  installed base.v0.11.0
+∗  installed asn1-combinators.0.2.0
+∗  installed mstruct.1.4.0
+∗  installed ppx_cstruct.3.2.1
+∗  installed ezjsonm.0.5.0
+∗  installed stdio.v0.11.0
+Done.
+**** opam install --restore
+Packages to be restored: { git, jackline, nocrypto, sds, x509 }
+
+Somewehre in here results in
+
+  ↘  downgrade sexplib               v0.11.0 to v0.9.3
+          [required by sds, jackline, nocrypto, x509]
+
+  ↘  downgrade base                  v0.11.0 to v0.9.4
+          [uses sexplib]
+
+
 * ratpoison
 - notifications
   apt install libnotify-bin dunst
@@ -39751,7 +40443,6 @@ segfaulting in SSL_shutdown()?
 2018/03/03 17:52:47 |3123] I close(6)
 2018/03/03 17:52:47 |3123] D close()  -> 0
 2018/03/03 17:52:47 |3123] D finished xioexit()
-d
 ** #robur @ baconsvin (irc)
 $ cat .emacs.neubyi.el
 (setq
@@ -39813,4 +40504,271 @@ new pw: admin/Q5ODYxcrlVLigr
 
 Info on the extender:
 LAN MAC 18-D6-C7-9C-39-20
+
+* community anycast services
+** talking to nicoo <2018-03-08 Thu>
+- AS112
+- discussing anycasting tor things, like for bootstrapping a client
+- probably a lot of community work to be done in order to get
+  something similar, but active, up and working
+- funding will be an issue
+- more long term probably necessary, 3-5 years
+- vesnas name came up in discussions about RIPE funding
+- infrastructure initiative, nicoo will apply for membership for his
+  local (gratz) dyi isp
+
+* tips'n'tricks
+- sum a column of numbers in a shell
+$ printf "1\n2\n" | paste -sd + | bc
+3
+* congestion control
+- from chatting with dawuud
+  - [[https://reproducingnetworkresearch.wordpress.com/2012/06/04/tcp-daytona/][tcp daytona]]
+  - van jacobson [[http://ee.lbl.gov/papers/congavoid.pdf][congestion avoidance and control]]
+  - AQM algorithms; (sally floyd); CoDel, stochastic, fair blue
+  - book: tannenbaum (maybe)
+- various resources
+  - https://en.wikipedia.org/wiki/Congestion_control
+- RFC's by Floyd
+  - 2914 Congestion Control Principles [BCP][update: RFC7141]
+  - RFC7567 Recommendations on Queue Management and Congestion [update: RFC7141]
+    Avoidance in the Internet
+  - 3426 General Architectural and Policy Considerations
+  - 5033 Specifying New Congestion Control Algorithms [BCP]
+  - 3390 Increasing TCP's Initial Window
+  - 2481 A Proposal to add Explicit Congestion Notification (ECN) to IP
+  - 3168 The Addition of Explicit Congestion Notification (ECN) to IP
+  - 4774 Specifying Alternate Semantics for the Explicit Congestion
+    Notification (ECN) Field
+  - 3238 IAB Architectural and Policy Considerations for Open
+    Pluggable Edge Services
+  - 4782 Quick-Start for TCP and IP
+  - 5290 Comments on the Usefulness of Simple Best-Effort Traffic
+  - 5690 Adding Acknowledgement Congestion Control to TCP
+- other RFC's
+  - 1144 Compressing TCP/IP Headers for Low-Speed Serial Links
+  - 1185 TCP Extension for High-Speed Paths
+  - 7323  TCP Extensions for High Performance
+* mastodon
+** sync with twitter
+* Crypto, learning
+** "HMAC stuff" (merkle-damgård) <2018-03-22 Thu>
+- related to https://trac.torproject.org/projects/tor/ticket/25576
+- http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.134.8430
+- http://cseweb.ucsd.edu/~mihir/papers/hmac-new.html
+** quantum collision resistance <2018-03-22 Thu>
+- https://eprint.iacr.org/2016/508.pdf
+- https://eprint.iacr.org/2017/282.pdf
+- https://131002.net/data/papers/AK09.pdf
+- https://keccak.team/obsolete/Keccak-main-2.1.pdf
+- https://keccak.team/files/Keccak-reference-3.0.pdf
+- https://keccak.team/files/CSF-0.1.pdf
+* Syncing mastodon <-> twitter
+
+** MatodonToTwitter
+- https://github.com/AmauryCarrade/MastodonToTwitter
+  - python3, 712 loc
+  - threw an exception, see below, after a couple of hours
+  - let's not use this
+*** exception
+Exception in thread Mastodon -> Twitter:
+Traceback (most recent call last):
+  File "/home/_m2t/.local/lib/python3.6/site-packages/urllib3/response.py", line 543, in _update_chunk_length
+    self.chunk_left = int(line, 16)
+ValueError: invalid literal for int() with base 16: b''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/_m2t/.local/lib/python3.6/site-packages/urllib3/response.py", line 302, in _error_catcher
+    yield
+  File "/home/_m2t/.local/lib/python3.6/site-packages/urllib3/response.py", line 598, in read_chunked
+    self._update_chunk_length()
+  File "/home/_m2t/.local/lib/python3.6/site-packages/urllib3/response.py", line 547, in _update_chunk_length
+    raise httplib.IncompleteRead(line)
+http.client.IncompleteRead: IncompleteRead(0 bytes read)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/requests/models.py", line 745, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "/home/_m2t/.local/lib/python3.6/site-packages/urllib3/response.py", line 432, in stream
+    for line in self.read_chunked(amt, decode_content=decode_content):
+  File "/home/_m2t/.local/lib/python3.6/site-packages/urllib3/response.py", line 626, in read_chunked
+    self._original_response.close()
+  File "/usr/local/lib/python3.6/contextlib.py", line 99, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/home/_m2t/.local/lib/python3.6/site-packages/urllib3/response.py", line 320, in _error_catcher
+    raise ProtocolError('Connection broken: %r' % e, e)
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(0 bytes read)', IncompleteRead(0 bytes read))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/home/_m2t/MastodonToTwitter/mtt/mastodon_to_twitter.py", line 228, in run
+    self.mastodon_api.stream_user(TootsListener(self), async=False)
+  File "<decorator-gen-65>", line 2, in stream_user
+  File "/usr/local/lib/python3.6/site-packages/mastodon/Mastodon.py", line 57, in wrapper
+    return function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/mastodon/Mastodon.py", line 1389, in stream_user
+    return self.__stream('/api/v1/streaming/user', listener, async=async)
+  File "/usr/local/lib/python3.6/site-packages/mastodon/Mastodon.py", line 1730, in __stream
+    listener.handle_stream(r)
+  File "/usr/local/lib/python3.6/site-packages/mastodon/streaming.py", line 46, in handle_stream
+    for chunk in response.iter_content(chunk_size = 1):
+  File "/usr/local/lib/python3.6/site-packages/requests/models.py", line 748, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(0 bytes read)', IncompleteRead(0 bytes read))
+
+** mastodon-twitter-sync
+- https://github.com/klausi/mastodon-twitter-sync
+  - rust, 866 loc
+- running it since 2018-03-25 for dfri
+- panic 2018-03-26, not reproducible
+Date: Mon, 26 Mar 2018 12:50:22 +0200 (CEST)
+thread 'main' panicked at 'called `Result::unwrap()` on an `Err`
+value: Serde(ErrorImpl { code: ExpectedSomeValue, line: 1, column: 1
+})', src/libcore/result.rs:906:4
+note: Run with `RUST_BACKTRACE=1` for a backtrace.
+** mastodon-bot
+- https://github.com/yogthos/mastodon-bot
+  - node.js
+* ansible
+- ansible $(hostname) -m setup		# list facts
+- ansible-inventory --host=$(hostname)  # list variables
+- ansible-inventory --graph       # map of what groups nodes belong to
+* risc-v
+- https://www.sifive.com/products/hifive-unleashed
+** NOTES
+*** stuge <2018-04-07 Sat>
+inte upphetsad av sifive (usa) och deras affärsmodell
+
+soc:en inte så öppen även om risc-v är det
+
+sifive gör inte öppen hw direkt
+
+finns andra projekt, t.ex. lowrisc (cambridge) men siktar inte på att
+tjäna pengar
+
+toolchain funkar, linux funkar
+
+en eth-port, en strömanslutning, on/off, reset, mUSB console, 4xLED,
+GPIO, ingen SATA, mSD slot, 32MB flash, 8G RAM
+
+bättre än x86 vad gäller öppenet
+
+utvecklingskort börjar skeppas i juni, men peter tror inte på det pga
+nytt företag som har för lite kapacitet, så om dom är duktiga (eller
+rika) så kan man beställa 100 st till jul (och få dom levererade). har
+dom fel kapacitet så tar det ytterligare 6 mån (juni 2019) innan dom
+kan skeppa 100 kort till vem som helst.
+
+wim vandeputte kommer nog göra detta, mejla honom, wim.vandeputte@gmail.com
+
+* pledge on hbsd
+** joe <2018-05-02 Wed>
+https://github.com/cfcs/hardenedBSD-stable/tree/hardened/12-current/pledge
+made some progress with the pledge patch, and enlisted help from stefan
+it's not really *useful* yet, but there's a skeleton, and it can check
+PLEDGE_CHOWN and the open() flags
+:)
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+#include <sys/pledge.h>
+#include <errno.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+int
+main()
+{
+  int foo = 0;
+  struct stat bar;
+  const char **paths = NULL;
+  foo = pledge(PLEDGE_STDIO | PLEDGE_RPATH, paths);
+  printf("hello %0x - %d\n", foo, errno);
+  open("/etc/passwd", O_WRONLY|O_APPEND);
+}
+cc hello.c -o pledge && ktrace ./pledge ; echo $?
+and then kdump to see results
+oh it's still uploading the branch
+https://github.com/sg2342/freebsd/commits/hardened/12-pledge/master
+* mailing list archive software
+- http://mlmmj.org/docs/readme-archives/
+- https://www.freshports.org/www/hypermail/
+- https://www.freshports.org/www/mhonarc/
+- https://www.freshports.org/mail/lurker/
+- https://www.freshports.org/mail/archivesmtp/
+* gdpr / dataskyddsförordningen, linus
+- [ ] fotokungen.com
+  - [[gnus:nnimap+adbc:INBOX#20180525101908.C1160A8135@imap.adb-centralen.se][Email from kundservice: Ännu ett mail om GDPR]]
+  - [[gnus:nnimap+adbc:sent-mail.2018-05#87fu2gqaoa.fsf@nordberg.se][Email to kundservice: Begäran om radering av data]]
+- [X] WG Film
+  - unsuscribed at https://wgfilm.us15.list-manage.com/unsubscribe?u=993050156c5edec77b13d3b10&id=9fd28ed78c&e=e4579ad1ff&c=f693520586
+- [ ] [[gnus:nnimap+adbc:INBOX#227359a8-a4f7-4ff6-80d2-45015ffc38c7@las1s04mta821.xt.local][Email from Seatwave: INTEGRITETSSKYDD. NÅGOT PERSON]]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+* rsvp / meetup / evenbrite self-hosted alternatives
+- https://github.com/agiliq/opentavern
+- WP: http://www.wpbeginner.com/plugins/best-rsvp-plugins-for-wordpress/
+- other cms's: grav, pagekit
+* mullvad
+** fredrik voice <2018-06-15 Fri>
+- "transparent servers"
+- tillgänglighet
+  - 225 hårda timmar, 45 kalenderdagar
+- ersättning
+  - pengar
+    - säkkonsult i gbg: 1250-1500 (ex moms)
+    - vid volym om 225h vill fredrik betala 500-1000 (ex moms) och är
+      ok med mitt 500-1500 ex moms
+  - annat
+    - office space: david nyss kommit till epicenter
+  - form
+    - fakturera el anställd spelar ingen roll för mullvad
+
+- FS är i sverige fram till 4/7 och 30/7-30/8
+- linus jobba 25-29/6, 4-12/7, 18-25/7
+
+- enskild firma, AB el. ett bolag som fakturerar åt dig
+  - nästan ingen fördel med enskild, längre
+  - AB: verksamt.se, 50k SEK på ett konto; inte löpande bokföring,
+    årsredov själv, kontakta bokföringsfirma (tex pwc.se) och betala
+    10-15k SEK per år för årsredov. m.m. plus ytterligare 10k SEK per
+    år för löpande
+
+- hörs igen ons (20:e) el tors (21:a)
+* $company
+** name
+Verkligen Data AB
+Alldeles Data AB
+Mera Data AB
+--
+Precis Data AB
+Fullkomlig Data AB
+Klar Data AB
+Faktisk Data AB
+Faktiskt Data AB
+4711 Data AB
+Vettig Data AB
+Vettigare Data AB
+Viktig Data AB
+Fungerande Data AB
+Hel Data AB
+Sansad Data AB
+Rimlig Data AB
+** rate per hour
+- 710 SEK/h corresponds to 54k/month at 5h/day (ignoring costs for
+  sick leave <= 2w) at 100%, ie 172h/month (which is totally
+  unrealistic)
 
