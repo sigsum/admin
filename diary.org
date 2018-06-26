@@ -7,9 +7,73 @@
 follow = read email, irc, tickets, blog posts in order to follow the
 progress
 
-* 2018
-  CLOCK: [2018-01-19 Fri 09:41]--[2018-01-19 Fri 10:16] =>  0:35
-  bintrans spec
+* time budget, made <2018-06-15 Fri>
+- Summer 2018 (jun-aug)
+  - jun has 5d left
+  - jul has ~10d iirc (made this 17d later)
+  - aug is vacation
+  - summary, available: 15d (75h) (22d/110h)
+- Fall 2018 (sep-dec) 
+  - has 18-3 weeks, ie 75 days
+  - Tor+cryptech eats 28 days, leaving ~45 days
+  - DFRI email rough estimate says 5+5+5 days = 15 days, leaving 30
+    days (150h) for RISCv
+
+* week 26 2018-06-25--07-01
+** verkligen
+*** admin
+    :LOGBOOK:
+    CLOCK: [2018-06-25 Mon 21:17]--[2018-06-25 Mon 23:20] =>  2:03
+    :END:
+** mullvad
+*** risc-v debian system running in a vm
+  :LOGBOOK:
+  CLOCK: [2018-06-25 Mon 13:20]--[2018-06-25 Mon 13:46] =>  0:26
+  CLOCK: [2018-06-25 Mon 12:52]--[2018-06-25 Mon 13:17] =>  0:25
+  CLOCK: [2018-06-25 Mon 12:20]--[2018-06-25 Mon 12:45] =>  0:25
+  CLOCK: [2018-06-25 Mon 11:09]--[2018-06-25 Mon 11:35] =>  0:26
+  CLOCK: [2018-06-25 Mon 10:35]--[2018-06-25 Mon 11:00] =>  0:25
+  CLOCK: [2018-06-25 Mon 10:05]--[2018-06-25 Mon 10:31] =>  0:26
+  CLOCK: [2018-06-25 Mon 09:29]--[2018-06-25 Mon 09:54] =>  0:25
+  :END:
+*** communication, interaction
+    :LOGBOOK:
+    CLOCK: [2018-06-26 Tue 10:14]--[2018-06-26 Tue 10:44] =>  0:30
+    CLOCK: [2018-06-25 Mon 14:34]--[2018-06-25 Mon 15:09] =>  0:35
+    :END:
+*** wireguard running in riscv64 vm
+    :LOGBOOK:
+    CLOCK: [2018-06-26 Tue 23:29]--[2018-06-26 Tue 23:41] =>  0:12
+    CLOCK: [2018-06-26 Tue 23:15]--[2018-06-26 Tue 23:22] =>  0:07
+    CLOCK: [2018-06-26 Tue 22:10]--[2018-06-26 Tue 23:03] =>  0:53
+    CLOCK: [2018-06-26 Tue 17:22]--[2018-06-26 Tue 17:47] =>  0:25
+    CLOCK: [2018-06-26 Tue 15:43]--[2018-06-26 Tue 16:26] =>  0:43
+    CLOCK: [2018-06-26 Tue 14:25]--[2018-06-26 Tue 15:32] =>  1:07
+    CLOCK: [2018-06-26 Tue 11:15]--[2018-06-26 Tue 11:54] =>  0:39
+    CLOCK: [2018-06-25 Mon 16:25]--[2018-06-25 Mon 16:34] =>  0:09
+    CLOCK: [2018-06-25 Mon 15:56]--[2018-06-25 Mon 16:26] =>  0:30
+    CLOCK: [2018-06-25 Mon 15:14]--[2018-06-25 Mon 15:39] =>  0:25
+    :END:
+
+* 2018-06-14--
+** $company (meradata.se?)
+  :LOGBOOK:
+  CLOCK: [2018-06-16 Sat 10:10]--[2018-06-16 Sat 10:36] =>  0:26
+  CLOCK: [2018-06-16 Sat 09:42]--[2018-06-16 Sat 10:07] =>  0:25
+  :END:
+  admin
+** torhsm
+  :LOGBOOK:
+  CLOCK: [2018-06-16 Sat 09:42]--[2018-06-16 Sat 09:44] =>  0:02
+  CLOCK: [2018-06-15 Fri 11:58]--[2018-06-15 Fri 13:41] =>  1:43
+  CLOCK: [2018-06-15 Fri 10:03]--[2018-06-15 Fri 11:21] =>  1:18
+  CLOCK: [2018-06-15 Fri 09:27]--[2018-06-15 Fri 09:55] =>  0:28
+  CLOCK: [2018-06-15 Fri 09:00]--[2018-06-15 Fri 09:10] =>  0:10
+  CLOCK: [2018-06-14 Thu 22:26]--[2018-06-14 Thu 23:00] =>  0:34
+  CLOCK: [2018-06-14 Thu 15:44]--[2018-06-14 Thu 16:03] =>  0:19
+  :END:
+  time estimates
+* 2018-01-01--02-13
 ** dfri
    CLOCK: [2018-02-10 Sat 11:00]--[2018-02-10 Sat 12:15] =>  1:15
    möte mattias axell, pawal
@@ -37,7 +101,6 @@ progress
      CLOCK: [2018-01-21 Sun 16:25]--[2018-01-21 Sun 19:25] =>  3:00
 *** meetings
     CLOCK: [2018-01-23 Tue 17:00]--[2018-01-23 Tue 20:00] =>  3:00
-** home
 ** ietf
 *** gossip
   CLOCK: [2018-01-17 Wed 11:25]--[2018-01-17 Wed 12:10] =>  0:45
@@ -58,7 +121,6 @@ progress
   CLOCK: [2018-01-11 Thu 12:27]--[2018-01-11 Thu 12:53] =>  0:26
   CLOCK: [2018-01-11 Thu 10:38]--[2018-01-11 Thu 11:08] =>  0:30
 ** sunet
-   CLOCK: [2018-02-12 Mon 14:30]--[2018-02-12 Mon 15:01] =>  0:31
 *** sysadmin
   CLOCK: [2018-01-12 Fri 12:07]--[2018-01-12 Fri 12:26] =>  0:19
 *** ct-ops
@@ -69,12 +131,9 @@ progress
     CLOCK: [2018-01-17 Wed 12:36]--[2018-01-17 Wed 12:39] =>  0:03
     CLOCK: [2018-01-17 Wed 10:59]--[2018-01-17 Wed 11:25] =>  0:26
     CLOCK: [2018-01-10 Wed 11:03]--[2018-01-10 Wed 11:34] =>  0:31
-** misc
 *** unknown
-    CLOCK: [2018-01-25 Thu 08:21]--[2018-01-25 Thu 13:33] =>  5:12
+   CLOCK: [2018-02-12 Mon 14:30]--[2018-02-12 Mon 15:01] =>  0:31
 ** tor
-   CLOCK: [2018-02-09 Fri 11:22]--[2018-02-09 Fri 11:46] =>  0:24
-   prop#239
 *** trm -- tor relay measurement
     CLOCK: [2018-02-11 Sun 23:19]--[2018-02-11 Sun 23:47] =>  0:28
     CLOCK: [2018-02-11 Sun 22:04]--[2018-02-11 Sun 22:20] =>  0:16
@@ -129,6 +188,14 @@ progress
     CLOCK: [2018-01-09 Tue 09:08]--[2018-01-09 Tue 10:34] =>  1:26
 *** ops
     CLOCK: [2018-02-12 Mon 21:15]--[2018-02-12 Mon 22:29] =>  1:14
+*** misc
+   CLOCK: [2018-02-09 Fri 11:22]--[2018-02-09 Fri 11:46] =>  0:24
+   prop#239 consensus-hash-chaining
+** misc
+  CLOCK: [2018-01-19 Fri 09:41]--[2018-01-19 Fri 10:16] =>  0:35
+  bintrans spec
+** unknown
+   CLOCK: [2018-01-25 Thu 08:21]--[2018-01-25 Thu 13:33] =>  5:12
 * week 48 2017-11-27
 - tue: 4h work; 4h vab
 - mon: 4h work; 4h sick
