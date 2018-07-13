@@ -11,7 +11,7 @@ exec setxkbmap -option caps:ctrl_modifier us
 exec xset r on
 exec xset r rate 255 128
 exec xscreensaver -no-splash
-exec redshift -l 59:18
+exec redshift -l 59.33:18.07
 
 hsplit 660
 exec emacs
