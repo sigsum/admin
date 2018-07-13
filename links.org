@@ -1,3 +1,13 @@
+funny video security people:jamesmickens https://vimeo.com/135347162
+web server https://caddyserver.com/
+food https://swejoy.se/
+zwiebelfreunde raid riseup https://www.ccc.de/en/updates/2018/hausdurchsuchungen-bei-vereinsvorstanden-der-zwiebelfreunde-und-im-openlab-augsburg
+readme video heads boot https://trmm.net/Heads_33c3
+riscv coreboot hifive-unleashed https://doc.coreboot.org/mainboard/sifive/hifive-unleashed.html
+wireguard nist https://www.wyden.senate.gov/imo/media/doc/Wyden%20Letter%20to%20NIST%20Re%20Gov%20Use%20of%20Secure%20VPNs.pdf
+canon prixma ts6050 driver http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwODM5MzAx&cmp=ABR&lang=EN
+readme gossip ct https://arxiv.org/pdf/1806.08817.pdf
+vyos router linux https://wiki.vyos.net/wiki/Main_Page
 riscv gdb wip https://github.com/jim-wilson/riscv-linux-native-gdb/tree/jimw-riscv-linux-gdb
 riscv fedora https://fedoraproject.org/wiki/Architectures/RISC-V
 hifive-unleashed kicad https://forums.sifive.com/t/hifive-unleashed-in-kicad/1230

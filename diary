@@ -2,6 +2,7 @@
 %%(diary-anniversary 1980 2 10) Erinn
 %%(diary-anniversary 2017 2 10) Mango
 %%(diary-anniversary 1990 2 11) asn
+%%(diary-anniversary 1933 02 21) Nina Simone
 %%(diary-anniversary 1982 3 12) hannes
 %%(diary-anniversary 2017 03 16) paulo (ndn)
 %%(diary-anniversary 1993 03 18) joe
@@ -18,10 +19,12 @@
 %%(diary-anniversary 1989 4 18) Xenia
 %%(diary-anniversary 1933 4 18) Elsie
 %%(diary-anniversary 1992 4 20) DrWhax
+%%(diary-anniversary 2003 04 21) Nina Simone died
 %%(diary-anniversary 2012 4 22) Roger
 %%(diary-anniversary 1999 4 26) Etta
-%%(diary-anniversary 2013 5 5) Mustapha
+%%(diary-anniversary 2013 5 5) Musse
 %%(diary-anniversary 1945 5 10) Erik
+%%(diary-anniversary 2018 05 10) Karsten
 %%(diary-anniversary 1983 5 26) Andreas
 %%(diary-anniversary 1981 5 30) Lundberg
 %%(diary-anniversary 2014 06 12) isis
@@ -33,6 +36,7 @@
 %%(diary-anniversary 2014 7 11) Marianne
 %%(diary-anniversary 2017 07 28) Shari
 %%(diary-anniversary 2014 8 2) Andrea
+%%(diary-anniversary 1978 08 03) Antje
 %%(diary-anniversary 1977 8 30) Nick Mathewson
 %%(diary-anniversary 2002 9 3) Nicks first Tor commit
 %%(diary-anniversary 1968 9 12) leifj
@@ -1912,8 +1916,6 @@
 2017-04-25 14:00 CC vote ending
 2017-05-05 fredagsöl
 2017-06-01 10:00 soc hemma (filma)
-*-*-27 [DFRI] member handling (renew, remind, remove)
-*-*-05 [DFRI] send warning (expired)
 2017-10-12 10:00-12:00 [Tor] Public board meeting, Montreal
 2017-10-12 08:00-10:00 [Tor] Closed board meeting, Montreal
 2017-05-02 13:30 [sunet] massage
@@ -2077,7 +2079,7 @@
 2017-10-02 11:50 checka in
 2017-10-18 fika med peter i farsta
 2017-10-11 christian patchar i sto3
-%%(diary-block 2018 06 10 2018 06 14) TNC18 @ Trondheim
+&%%(diary-block 2018 06 10 2018 06 14) TNC18 @ Trondheim
 2017-11-30 TNC18 CFP deadline
 2017-11-23 TNC18 CFP deadline in a week
 2017-10-09 16:00 biella and ramy
@@ -2142,7 +2144,6 @@
 &%%(diary-block 2018 03 23 2018 03 29) L&J
 2017-12-06 12:00-13:00 VC david & ivana
 2017-12-04 14:00-15:00 Åke @ odengatan 55
-2018-04-12 EDRi 15yo party
 2017-12-29 19:00 nyckelsigneringsparty UFS (polhemsg. 38)
 2017-12-07 11:25 lunch med tg
 2017-12-13 13:00 lunch johan i farsta
@@ -2160,7 +2161,7 @@
 2018-04-07 14:07 x509-cert {jabber,smtp,imap}.adb-centralen.se expirerar
 2018-03-31 x509-cert {jabber,smtp,imap}.adb-centralen.se expirerar om en vecka
 %%(diary-cyclic 7 2018 01 15) 19:00-20:00 tor network team meeting in #tor-meeting
-2018-03-12 tor open board meeting, rome
+2018-03-13 11:00 tor open board meeting, rome
 2018-01-11 betala sthix
 2018-01-22 11:30-15:00 Sida
 2018-02-15 10:00 soc
@@ -2189,3 +2190,39 @@
 2018-02-20 16:00 close https://www.systemli.org/poll/#/poll/EckOreFcmI/participation?encryptionKey=lKLv4OBOnc5xNy9G4YFjLY12bGo8P5dFFM7oaEFp
 2018-04-13 03:12 x509 cert dfri.se expires
 2018-04-27 02:16 x509 cert adb-centralen.se expires
+2018-03-21 21:00 boka om dfri 11/4 https://framadate.org/16Ti3o8f4ojgW8NppoezK5P8/admin
+2018-07-01 balccon CFP deadline
+%%(diary-block 2018 09 14 2018 09 16) https://2k18.balccon.org/
+2018-04-06 x509 cert dfri.se expires in a week
+2018-04-30 fbsd port databases/db48 expires -- save those bitcoins https://www.freshports.org/databases/db48/
+2018-04-16 databases/db48 expires in two weeks
+2018-04-06 fredagsöl
+2018-04-08 17:00 last chance to vote on CoC and SoV
+2018-04-05 three more days to vote on CoC and SoV
+2018-04-16 19:00 nyckelsignering IX @ polhemsgatan 38
+2018-04-17 18:00-19:30 DFRI styrelsemöte
+2018-07-05 x509 certs for smtp, jabber, xmpp expires
+2018-06-28 x509 certs for smtp, jabber, xmpp expires in a week
+2018-04-23 18:00-20:00 https://www.goto10.se/evenemang/etisk-hackning-finns-det/
+%%(diary-block 2018 08 02 2018 08 12) geko har stuga: Tuves scoutgård, Västra Röd 256, 463 93 Västerlanda
+2018-05-22 18:00-19:30 DFRI styrelsemöte
+2018-06-11 DFRI styrelsemöte
+2019-01-16 x509 cert plausible-fe3.ct.nordu.net expires in hours
+2019-01-09 x509 cert plausible-fe3.ct.nordu.net expires in about a week
+2019-04-17 x509 certs plausible-f{e{1,2},0}.ct.nordu.net expires tomorrow morning
+2019-04-10 x509 certs plausible-f{e{1,2},0}.ct.nordu.net expires in about a week
+2018-07-13 x509 cert siv.sunet.se expires
+2018-07-06 x509 cert siv.sunet.se expires in a week
+2018-07-02 x509 cert dfri.se expires
+2018-06-25 x509 cert dfri.se expires in a week
+2018-06-20 16:00 ISOC board meeting forum at https://isoc.zoom.us/j/476291954
+2018-08-07 maatuska key expires
+2018-07-31 maatuska key expires in a week
+2018-07-24 maatuska key expires in two weeks
+%%(diary-block 2018 08 05 2018 08 10) gbg airbnb
+2018-08-04 susö 50 i furusund
+2018-09-13 x509 certs jabber,smtp,imap expires tomorrow morning
+2018-09-06 x509 certs jabber,smtp,imap expires in a week
+2018-07-19 14:15-15:31 Sunne->Karlstad Värmlandstrafik 200 KBH0164Y (0001)
+2018-07-19 16:10-20:35 Karlstad->Sthlm Swebus 888 8XMRFAT-0 (ombokningsbar!)
+%%(diary-block 2018 10 02 2018 10 03) cryptech @ sunet

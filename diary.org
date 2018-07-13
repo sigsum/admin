@@ -19,6 +19,94 @@ progress
   - DFRI email rough estimate says 5+5+5 days = 15 days, leaving 30
     days (150h) for RISCv
 
+* week 29 2018-07-16--22
+** mullvad
+*** measurement and optimisation
+    :LOGBOOK:
+    CLOCK: [2018-07-13 Fri 16:10]--[2018-07-13 Fri 16:21] =>  0:11
+    :END:
+
+* week 28 2018-07-09--15
+** verkligen
+** mullvad
+Fakturerat (#3) t.o.m. 2018-07-12: 13h
+*** communication, interaction, reporting
+    CLOCK: [2018-07-09 Mon 10:27]--[2018-07-09 Mon 10:37] =>  0:10
+    phone fredrik, riscv optimisation
+*** wireguard protocol
+    :LOGBOOK:
+    CLOCK: [2018-07-11 Wed 14:30]--[2018-07-11 Wed 15:03] =>  0:33
+    CLOCK: [2018-07-11 Wed 09:06]--[2018-07-11 Wed 10:49] =>  1:43
+    client key rotation
+    CLOCK: [2018-07-10 Tue 23:28]--[2018-07-10 Tue 23:59] =>  0:31
+    client key rotation
+    CLOCK: [2018-07-10 Tue 14:58]--[2018-07-10 Tue 15:59] =>  1:01
+    protocol analysis
+    CLOCK: [2018-07-10 Tue 13:33]--[2018-07-10 Tue 14:08] =>  0:35
+    CLOCK: [2018-07-10 Tue 11:21]--[2018-07-10 Tue 12:01] =>  0:40
+    CLOCK: [2018-07-09 Mon 10:42]--[2018-07-09 Mon 10:53] =>  0:11
+    phone with fredrik
+    :END:
+*** MS3 benchmarking
+    :LOGBOOK:
+    CLOCK: [2018-07-12 Thu 11:21]--[2018-07-12 Thu 12:42] =>  1:21
+    documentation
+    
+    CLOCK: [2018-07-12 Thu 10:48]--[2018-07-12 Thu 11:19] =>  0:31
+    CLOCK: [2018-07-12 Thu 09:20]--[2018-07-12 Thu 10:29] =>  1:09
+    CLOCK: [2018-07-12 Thu 08:30]--[2018-07-12 Thu 08:50] =>  0:20
+    routing performance
+
+    CLOCK: [2018-07-11 Wed 14:03]--[2018-07-11 Wed 14:30] =>  0:27
+    CLOCK: [2018-07-09 Mon 14:57]--[2018-07-09 Mon 15:57] =>  1:00
+    CLOCK: [2018-07-09 Mon 14:49]--[2018-07-09 Mon 14:54] =>  0:05
+    CLOCK: [2018-07-09 Mon 13:24]--[2018-07-09 Mon 14:48] =>  1:24
+    :END:
+* week 27 2018-07-02--08
+** mullvad
+Fakturerat (#3): 13h
+*** communication, interaction, reporting
+    :LOGBOOK:
+    CLOCK: [2018-07-08 Sun 17:07]--[2018-07-08 Sun 17:34] =>  0:27
+    status report fredrik
+    CLOCK: [2018-07-03 Tue 11:23]--[2018-07-03 Tue 12:32] =>  1:09
+    :END:
+    wireguard protocol discussions w/ fredrik
+*** wireguard protocol
+    :LOGBOOK:
+    CLOCK: [2018-07-05 Thu 14:54]--[2018-07-05 Thu 15:10] =>  0:16
+    writing up meeting notes
+    CLOCK: [2018-07-05 Thu 14:28]--[2018-07-05 Thu 14:44] =>  0:16
+    discussion with david
+    CLOCK: [2018-07-05 Thu 13:06]--[2018-07-05 Thu 14:28] =>  1:22
+    voice with fredrik
+    CLOCK: [2018-07-04 Wed 15:23]--[2018-07-04 Wed 15:32] =>  0:09
+    CLOCK: [2018-07-04 Wed 13:36]--[2018-07-04 Wed 13:56] =>  0:20
+    CLOCK: [2018-07-04 Wed 10:39]--[2018-07-04 Wed 10:50] =>  0:11
+    :END:
+*** wireguard running on hifive unleashed
+    :LOGBOOK:
+    CLOCK: [2018-07-04 Wed 14:01]--[2018-07-04 Wed 14:38] =>  0:37
+    ipv6
+    :END:
+*** MS3 benchmarking
+    :LOGBOOK:
+    CLOCK: [2018-07-08 Sun 16:03]--[2018-07-08 Sun 16:47] =>  0:44
+    running tests
+    CLOCK: [2018-07-08 Sun 15:19]--[2018-07-08 Sun 15:57] =>  0:38
+    CLOCK: [2018-07-08 Sun 14:40]--[2018-07-08 Sun 15:06] =>  0:26
+    CLOCK: [2018-07-08 Sun 13:55]--[2018-07-08 Sun 14:28] =>  0:33
+    benchmarking test rig setup
+    CLOCK: [2018-07-06 Fri 13:08]--[2018-07-06 Fri 15:28] =>  2:20
+    CLOCK: [2018-07-06 Fri 11:51]--[2018-07-06 Fri 11:56] =>  0:05
+    CLOCK: [2018-07-06 Fri 11:18]--[2018-07-06 Fri 11:38] =>  0:20
+    CLOCK: [2018-07-05 Thu 15:33]--[2018-07-05 Thu 16:33] =>  1:00
+    ip and wg config on board
+    CLOCK: [2018-07-04 Wed 15:40]--[2018-07-04 Wed 15:47] =>  0:07
+    CLOCK: [2018-07-04 Wed 14:54]--[2018-07-04 Wed 15:21] =>  0:27
+    CLOCK: [2018-07-04 Wed 14:38]--[2018-07-04 Wed 14:44] =>  0:06
+    :END:
+
 * week 26 2018-06-25--07-01
 ** verkligen
 *** admin
@@ -26,6 +114,7 @@ progress
     CLOCK: [2018-06-25 Mon 21:17]--[2018-06-25 Mon 23:20] =>  2:03
     :END:
 ** mullvad
+Fakturerat (#3): 25h
 *** risc-v debian system running in a vm
   :LOGBOOK:
   CLOCK: [2018-06-25 Mon 13:20]--[2018-06-25 Mon 13:46] =>  0:26
@@ -36,13 +125,19 @@ progress
   CLOCK: [2018-06-25 Mon 10:05]--[2018-06-25 Mon 10:31] =>  0:26
   CLOCK: [2018-06-25 Mon 09:29]--[2018-06-25 Mon 09:54] =>  0:25
   :END:
-*** communication, interaction
+*** communication, interaction, reporting
     :LOGBOOK:
+    CLOCK: [2018-07-01 Sun 07:09]--[2018-07-01 Sun 07:20] =>  0:11
+    CLOCK: [2018-06-29 Fri 13:15]--[2018-06-29 Fri 14:12] =>  0:57
+    CLOCK: [2018-06-29 Fri 10:06]--[2018-06-29 Fri 10:26] =>  0:20
+    CLOCK: [2018-06-27 Wed 16:10]--[2018-06-27 Wed 16:59] =>  0:49
+    CLOCK: [2018-06-27 Wed 09:53]--[2018-06-27 Wed 09:56] =>  0:03
     CLOCK: [2018-06-26 Tue 10:14]--[2018-06-26 Tue 10:44] =>  0:30
     CLOCK: [2018-06-25 Mon 14:34]--[2018-06-25 Mon 15:09] =>  0:35
     :END:
 *** wireguard running in riscv64 vm
     :LOGBOOK:
+    CLOCK: [2018-06-27 Wed 09:58]--[2018-06-27 Wed 10:26] =>  0:28
     CLOCK: [2018-06-26 Tue 23:29]--[2018-06-26 Tue 23:41] =>  0:12
     CLOCK: [2018-06-26 Tue 23:15]--[2018-06-26 Tue 23:22] =>  0:07
     CLOCK: [2018-06-26 Tue 22:10]--[2018-06-26 Tue 23:03] =>  0:53
@@ -54,6 +149,32 @@ progress
     CLOCK: [2018-06-25 Mon 15:56]--[2018-06-25 Mon 16:26] =>  0:30
     CLOCK: [2018-06-25 Mon 15:14]--[2018-06-25 Mon 15:39] =>  0:25
     :END:
+Quite some time spent on trying to build the wg kernel module
+(wireguard-dkms) on target, failing badly.
+
+*** wireguard running on hifive unleashed
+    :LOGBOOK:
+    CLOCK: [2018-06-30 Sat 12:44]--[2018-06-30 Sat 14:12] =>  1:28
+    CLOCK: [2018-06-29 Fri 14:22]--[2018-06-29 Fri 16:24] =>  2:02
+    CLOCK: [2018-06-29 Fri 11:49]--[2018-06-29 Fri 12:04] =>  0:15
+    CLOCK: [2018-06-29 Fri 10:26]--[2018-06-29 Fri 11:37] =>  1:11
+    CLOCK: [2018-06-28 Thu 15:59]--[2018-06-28 Thu 16:29] =>  0:30
+    CLOCK: [2018-06-28 Thu 14:47]--[2018-06-28 Thu 15:58] =>  1:11
+    CLOCK: [2018-06-28 Thu 14:03]--[2018-06-28 Thu 14:25] =>  0:22
+    CLOCK: [2018-06-28 Thu 12:29]--[2018-06-28 Thu 12:44] =>  0:15
+    CLOCK: [2018-06-28 Thu 11:30]--[2018-06-28 Thu 12:23] =>  0:53
+    CLOCK: [2018-06-28 Thu 11:01]--[2018-06-28 Thu 11:15] =>  0:14
+    CLOCK: [2018-06-28 Thu 10:45]--[2018-06-28 Thu 10:56] =>  0:11
+    CLOCK: [2018-06-27 Wed 17:02]--[2018-06-27 Wed 17:20] =>  0:18
+    CLOCK: [2018-06-27 Wed 15:20]--[2018-06-27 Wed 15:52] =>  0:32
+    CLOCK: [2018-06-27 Wed 15:00]--[2018-06-27 Wed 15:18] =>  0:18
+    CLOCK: [2018-06-27 Wed 14:32]--[2018-06-27 Wed 14:52] =>  0:20
+    CLOCK: [2018-06-27 Wed 13:26]--[2018-06-27 Wed 14:27] =>  1:01
+    CLOCK: [2018-06-27 Wed 11:09]--[2018-06-27 Wed 11:37] =>  0:28
+    CLOCK: [2018-06-27 Wed 10:31]--[2018-06-27 Wed 11:04] =>  0:33
+    :END:
+Including setting up build environment for compiling the kernel and
+generating a boot image.
 
 * 2018-06-14--
 ** $company (meradata.se?)

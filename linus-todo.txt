@@ -392,7 +392,7 @@ x Jul 13-21, Montreal, IETF102
 ? Jul 23-29, Barcelona, PETS
 ? Aug 15-24, Bornholm, Bornhack
 ? Sep 13-17, Vojvodina, BalCCon
-? Sep 28?-04?, New Mexico, Tor
+? Sep 28?-04?, Mexico City, Tor
 ? Oct 02-11, Marrakesh, MirageOS
 ? Nov 02-10, Bangkok, IETF103
 ? Dec 25-30, ?, CCC

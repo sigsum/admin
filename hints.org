@@ -1464,33 +1464,36 @@ Get rid of syntax highlighting in all buffers:
   - 2018-05-29 emacs-26.1
 - dependencies, not using elpa
   - magit
-    - dash
-      - https://github.com/magnars/dash.el/releases
-      - alt? savannah
-      - 2.14.1 <2018-05-04 Fri>
-      - cp dash.el ~/usr/share/emacs/site-lisp/
-    - magit-popup
-      - https://github.com/magit/magit-popup
-      - v2.12.3 <2018-05-04 Fri>
-      - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp"
-      - cp magit-popup.el* magit-popup-autoloads.el $HOME/usr/share/emacs/site-lisp/
-    - with-editor
-      - https://github.com/magit/with-editor
-      - v2.7.2 <2018-05-04 Fri>
-      - make
-      - cp with-editor.el* with-editor-autoloads.el ~/usr/share/emacs/site-lisp/
-    - ghub
-      - https://github.com/magit/ghub
-      - v2.0.0 <2018-05-04 Fri>
-      - make
-      - cp ghub.el* ghub-autoloads.el ~/usr/share/emacs/site-lisp/
     - https://github.com/magit/magit
     - 2.12.1 <2018-05-04 Fri>
-    - set up load-path in config.mk
+    - set up load-path:
+      cat > config.mk <<EOF
       LOAD_PATH  = -L $$HOME/usr/src/magit/lisp
       LOAD_PATH += -L $$HOME/usr/share/emacs/site-lisp
-    - make DESTDIR=$HOME test # 1 unexpected failure <2018-05-04 Fri>
+      EOF
+    - make DESTDIR=$HOME test # 1 unexpected failure <2018-05-04 Fri>: magit-status:file-sections
     - make DESTDIR=$HOME install # installed to /home/linus/usr/local/share/emacs/site-lisp/magit
+    - dependencies, not using elpa
+      - dash
+        - https://github.com/magnars/dash.el/releases
+        - alt? savannah
+        - 2.14.1 <2018-05-04 Fri>
+        - cp dash.el ~/usr/share/emacs/site-lisp/
+      - magit-popup
+        - https://github.com/magit/magit-popup
+        - v2.12.3 <2018-05-04 Fri>
+        - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp"
+        - cp magit-popup.el* magit-popup-autoloads.el $HOME/usr/share/emacs/site-lisp/
+      - with-editor
+        - https://github.com/magit/with-editor
+        - v2.7.2 <2018-05-04 Fri>
+        - make
+        - cp with-editor.el* with-editor-autoloads.el ~/usr/share/emacs/site-lisp/
+      - ghub
+        - https://github.com/magit/ghub
+        - v2.0.0 <2018-05-04 Fri>
+        - make
+        - cp ghub.el* ghub-autoloads.el ~/usr/share/emacs/site-lisp/
   - markdown-mode
     - https://github.com/jrblevin/markdown-mode
     - master as of <2018-05-09 Wed>
@@ -2047,8 +2050,8 @@ datan:~% egrep ssh-agent /etc/*/* 2>/dev/null
 /etc/X11/Xsession.options:use-ssh-agent
 
 See Xsessoin(5) and Xsession.options(5) for more.
-** packages
-- apt install debscripts
+** package handling
+- apt install devscripts
   - rmadison <package> -- show package versions in each archive
 * Virtualization with qemu-kvm / libvirt
 ** vm's on tool
@@ -2942,7 +2945,7 @@ Serial no: YK2K196412
 
 [[http://www.pchub.com/uph/category/88-12-10128-0-0/Cooling-Fan-.html][Fan:]] [[http://www.pchub.com/uph/laptop/88-43699-12108/Fujitsu-LifeBook-A6120-Cooling-Fan-.html%3F][MCF-S6055AM05]]
 * Books
-** Buy these
+** Buy these [/]
 - [X] [[http://books.google.com/books%3Fid%3DmVIA-CQHDjEC][Kerberos: the definitive guide]]
 - [X] [[http://diveintopython.org/][Dive Into Python]]
 - [X] [django book]
@@ -2952,6 +2955,17 @@ Serial no: YK2K196412
 - [X] Stross "Halting State"
 - [ ] Walter Tevis "Mockingbird"
 - [X] Stephenson "Anathem"
+- [ ] Sapiens
+https://www.adlibris.com/se/bok/sapiens-9780099590088
+- [ ] Reinventing organisations
+https://www.adlibris.com/se/bok/reinventing-organizations-9782960133509
+Om du vill få en intro till boken så har han en inspelad presentation:
+https://www.youtube.com/watch?v=gcS04BI2sbk&t=10s
+- [ ] Listening society
+https://www.amazon.com/Listening-Society-Metamodern-Politics-Guides/dp/8799973901/ref=sr_1_1?ie=UTF8&qid=1528976993&sr=8-1&keywords=listening+society
+Deras hemsida/blogg: https://metamoderna.org/
+- [ ] Spiral dynamics
+https://www.adlibris.com/se/bok/spiral-dynamics-mastering-values-leadership-and-change-9781405133562
 * Gustav Vasa
 ** 2001C
 jvlycke@comhem.se,
@@ -37635,7 +37649,7 @@ https://www.ubnt.com/products/
 about:config privacy.userContext
 * systemd
 ** make dirmngr use tor
-cat /usr/lib/systemd/user/dirmngr.service | sed -e 's/^ExecStart=.*/& --use-tor/1' | sudo dd of=/etc/systemd/user/dirmngr.service
+   cat /usr/lib/systemd/user/dirmngr.service | sed -e 's/^ExecStart=.*/& --use-tor/1' | sudo dd of=/etc/systemd/user/dirmngr.service
 systemctl --user daemon-reload
 ** reloading gpg-agent
 systemctl --user reload gpg-agent
@@ -38510,6 +38524,626 @@ You could run a remotely attestated system a la XXX on an armory.
 TODO: connect this idea with "homething" (homedrop)
 ** make fbsd vm iso command verify downloaded iso
 * wireguard
+** protocol
+- https://www.wireguard.com/papers/wireguard.pdf
+- http://www.noiseprotocol.org/noise.html
+** lack of identity forward secrecy
+- http://www.noiseprotocol.org/noise.html#identity-hiding
+*** irc Sept 2017
+<A1> wireguard doesn't provide anonymity for the user
+<A1> that is bullshit
+<A1> who would want a vpn client where a passive observer can identify you?
+<A1> http://www.noiseprotocol.org/noise.html#identity-hiding
+<A1> it uses Noise_IK
+<A1> so your identity is
+<A1> Encrypted to responder's static public key, without forward secrecy. If
+      an attacker learns the responder's private key they can decrypt the
+      initiator's public key.
+<A1> so if your vpn provider is ever compromised, they can correlate all your
+      connections						        [16:03]
+<A1> your long-term pk ("static" key) is encrypted:		        [16:05]
+<A1> let Hi = HASH(server.static_pk) in
+      AEAD(KDF2(DH(sender.ephemeral_sk,server.static_pk)),0,sender.static_pk,
+      HASH(Hi || sender.ephemeral_pk))				        [16:08]
+<A2> but we already have authenticated DH, as done in OTR.... why o why?
+								        [16:13]
+<A1> A2: doesn't the OTR AKE also allow an active attacker to learn your
+      identify?							        [16:22]
+<A1> identity*
+<A2> A1: does it?						        [16:26]
+<A2> A1: you're switching threat models too fast, above you had a passive
+	 attacker						        [16:27]
+<A1> I was under the impression it did, I'll have to go look it up :)
+<A1> yes							        [16:29]
+<A1> OTR is definitely better than that
+<A1> noise has a mode that doesn't allow active probers to learn your
+      identity either
+<A1> wireugard just opted to not use that			        [16:30]
+<A2> A1: certainly you sign with the long-term secret in OTR.  so yes,
+	 unless you use one DSA long-term key _per_ contact  / connection, an
+	 active attacker can find out your fingerprint
+<A1> which smells like the author doesn't care, because they seem competent
+      in other regards						        [16:31]
+<A1> A2: yes. this is already given away for free in jabber, but for IRC
+      I think it would be more elegant to not disclose it to active probers
+								        [16:32]
+<A2> A1: you can also have some clients which actively ask for user input
+	 "should I answer this OTR key exchange (from a@b.xmpp)?  if yes, with
+	 which key?"						        [16:34]
+<A1> yes
+<A2> but from a passive observation you don't learn the long-term keyid
+	 used for that connection
+<A1> but for that question to be cryptographically verified a.b@xmpp would
+      have to revea their identity				        [16:35]
+<A1> if two irc nicks Alice and Bob talk one day, then next day they're
+      called Charlie and Dorothy, they wouldn't be able to find each other
+      again (cryptographically speakng) without one of them revealing the
+      signing key they used on day one				        [16:36]
+<A1> I feel like this property is often overlooked by people who make
+      protocols							        [16:40]
+<A1> anyway
+<A2> since usually you want to verify that alice is alice, or alice is now
+	 charlie - i suspect its usually ok to reveal your signing key
+								        [16:43]
+<A2> already in xmpp - you cannot tell whether a@b today is the same
+	 person as a@b tomorrow.  servers and accounts may be compromised
+<A1> yes, but if you have one key per account it doesn't matter        [16:44]
+<A1> then you can just send your key for that account to *
+<A2> true
+<A1> it only matters if you change accounts, keeping the same signing key,
+      and want to prevent non-friends from linking you to the old account
+								        [16:45]
+<A1> which would be a cool feature for OTR+jabber, but I don't think that use
+      case is very common
+<A1> but
+<A1> this wireguard stuff is a bit too raid-friendly for my taste      [16:46]
+<A1> I'll try to see how far I can get with openvpn instead
+\* A1 had hoped to not have to dive into that
+<A1> I just want $a_vpn_client
+<A1> tbh :P							        [16:47]
+<A1> ideally something I can convince the ipredator people to run a server
+      for
+
+<A1> wireguard is also good as long as the server's private key doesn't leak
+<A2> since the keying is done _upfront_, and the shared secret is only
+	 later transmitted					        [17:27]
+<A1> this is a ridiculous "if and only if" that doesn't have to be
+<A1> what?
+<A2> and the tls session can have forward secrecy
+<A1> yes but if I do HMAC(my_static_key, TLS_packet) to key my connection
+<A1> my connection has an ephemeral key, but that fact that my static key was
+      used (and subsequently that I'm the person who initiated that
+      connection) is leaked with every single attempt to connect        [17:28]
+<A2> uhm, no!?
+<A2> given the fact that tls_packet is not constant, but your static key
+	 is, the hmac computation will not be reversible to your key, or will
+	 it?							        [17:29]
+<A2> and then this hmac is only transferred over the already-authenticated
+	 (c-s only) tls session, no?
+<A1> yes it will						        [17:35]
+<A1> no
+<A1> tls packets are transmitted plaintext
+<A1> accompanied by a hmac
+<A1> computed with a static key
+<A1> ahhh ok had a chat with the wireguard developer now	        [17:55]
+<A1> he is open to having some sort of initial add-on protocol to get
+      identity hiding						        [17:56]
+<A1>      --tls-auth file [direction]				        [18:00]
+<A1>               Add an additional layer of HMAC authentication on top of
+      the TLS
+<A1>               control  channel  to mitigate DoS attacks and attacks on
+      the TLS
+<A1>               stack.
+<A1>               --tls-auth does this by signing every TLS control channel
+      packet							        [18:01]
+<A1>               with an HMAC signature, including packets which are sent
+      before
+<A1>               the  TLS  level  has had a chance to authenticate the
+      peer.
+<A1> ok, back to wireguard then I guess			        [18:03]
+<A1> it seems like I need to modify the server regardless
+<A1> would rather write a wireguard server than follow a PR to openvpn
+      through
+<A2> ic - well, i suspect ipsec has this already builtin :)	        [18:06]
+
+*** irc June 2018
+with openvpn there's an ephemeral key protecting your identity (via TLS)
+if you're not using client certificates, but user/pw auth :)
+in wireguard your long-term identity key is paired with the server's
+long-term identity key and that is used to send your ephemeral public key
+so if I record all your traffic, then go bust down your door (you being
+the server) and I get your long-term key, then I can deanonymize all the
+recorded sessions and correlate which user had which sessions
+to me, that's in direct conflict with how I want a VPN to operate :p
+it boils down to wg using Noise IK instead of Noise XK, to save a
+pass/roundtrip (I forget which)
+<A2> hmm, why not then a shared secret and no kex?  this would lead to
+     a minimal rtt (more honestly: how's this design better than a
+     shared secret?)
+<A2>: it still has forward secrecy for the contents of the session,
+      just not your identity
+<A3>: well and an extra pass would still be a huge improvement over
+      openvpn which as something like 5 or 6 roundtrips, here' you'd have 2
+iirc the wg protocol gives the server the ability to reply with data
+after receiving the first msg from the client, and the client after the
+first msg from the server
+with Noise XK the client would be able to reply with data after
+receiving the first answer from the server, but the server would not be
+able to reply until receiving the second message from the client
+I think realistically most VPNs don't really start spitting data at you
+until the client has sent something, so I'm not sure that the perceived
+slow-down is actually a valid concern
+in openvpn I guess you have the tls overhead (is that 3 roundtrips or so
+to get a working connection?) and then the auth/config, which I think is
+also at least one extra roundtrip, perhaps two
+so with Noise IK the client would be able to send data after 0 RTT, and
+same for the server. With noise XK that's raised to 1 RTT
+but in practice I think the 0 RTT claim is meaningless, so I have a
+feeling it was mostly an academic jerk-off thing
+anyway if you don't care about client indistinguishability this doesn't
+really matter, but if you run a large vpn provider where one of the
+goals is to have some notion of privacy through the shared anonymity
+set, I think it's pretty bad
+so ie Mullvad deploying wireguard is retarded imho
+but using it for your home network is probably fine
+*** more irc in june 2018
+2018-07-02
+<ln5> A1: did you talk to jason of wireguard about the possibility of fixing
+      the issue with client static key not being encrypted with forward
+      secrecy some time ago? istr he wasn't all against adding something on
+      top of wg or something					        [22:00]
+<ln5> "upgrading" (securely) to XI would be sweet
+<ln5> err XK
+<A1> ln5: he was all against adding sometihng on top of wg	        [22:06]
+<A1> I mean there's a really easy solution which is to run wireguard inside
+     openvpn							        [22:07]
+<A1> then you get the same security properties as openvpn :)
+<A1> ln5: iirc he didn't think it was an issue, and didn't think that the
+     confusion/overhead of making a wg variant would be worth it
+<ln5> i payed 10k SEK ex vat
+<ln5> A1: larg(ish) vpn providers with anonymity as a sales argument should
+      worry about worsening the police-raiding story, no?	        [22:10]
+<A2> i don't get this? he is focused on having a very fast handshake? how
+     many handshakes do you make? is it one for each connection over wg or is
+     it just ONE between you and the server?			        [22:11]
+<A1> ln5: yes, I think they should
+<A1> A2: one between you and the server, and then one again every time you
+     timeout I guess						        [22:12]
+<A1> which happens after a minute or so iirc
+<A1> A2: they have a REKEY_TIMEOUT constant,
+     https://www.wireguard.com/protocol/			        [22:18]
+<A1> but basically yes we're talking about 1 roundtrip before client can
+     send, every time the connection to the server times out, which doesn't
+     happen often. vs 1 roundtrip before client can send	        [22:19]
+<A1> (and 0 RTT before server can send vs 1 RTT before server can send, but
+     idk how common that actually is)				        [22:20]
+<A1> I believe there's also a consideration re: being able to keep no state
+     for unauthenticated clients, to fend off DDoS, but imho that is not
+     worth sacrificing anonymity for
+<A1> I think that is the main point jason doesn't like about noise IX  [22:21]
+<A1> ln5: but yes, large-ish VPN providers using it is pretty stupid imho,
+     but then again it's not like large-ish vpn providers give a fuck usually
+     :(							        [22:22]
+<ln5> A1: the one mentioned, mullvad, actually do give plenty of fucks about
+      user anonymity. i'm trying to help them understand this issue. i'll look
+      into how much work it'd be to hack up a poc on the attack of getting
+      hold of client's public part of static key given a pcap with a wg
+      handshake and the server's private part of static key.	        [22:28]
+<ln5> REKEY_TIMEOUT is 5s according to
+      https://www.wireguard.com/papers/wireguard.pdf		        [22:29]
+<ln5> but i would guess that REKEY-AFTER-TIME is more interesting. defined as
+      120s.							        [22:30]
+<ln5> fwiw, i think the value of not keeping state for unauthd clients is high
+								        [22:34]
+<ln5> i'd be interested in finding a way for a client to be able to choose IX,
+      or of equivalent identity hiding properties for the initiator, given
+      that the server plays along				        [22:36]
+<A1> yeah, I mean Noise provides a way to do that		        [22:40]
+<A1> but given that jason is not interested in implementating that, I kind of
+     see it as a dead end
+<A1> maybe these people would :) https://tunsafe.com/		        [22:41]
+
+<A3> A1: I see thanks (re: openvpn vs wireguard) isn't it also the idea
+     that all messages in wireguard do not require a state?	        [12:20]
+<A1> A3: maybe, I don't know :)				        [12:25]
+<ln5> A3: no keys? that seems... hard! :)			        [13:28]
+<A1> ln5: well you could amortize the state cost by having a temporary master
+     key that you change every n seconds			        [13:30]
+<A1> like they used to do in SSL with the rsa stuff		        [13:31]
+<A1> and then everyone encrypts to that, so you don't need to have a secret
+     key on the server for each client
+<A1> :p							        [13:32]
+<A3> ln5: I didn't say no key, I meant that wireguard does not expect you
+     to perform a sequence or request/responces to achieve somthing
+								        [13:38]
+<A3> *responses
+<A1> well it does expect you to send a hello package before you send more
+      stuff							        [13:39]
+<ln5> A1: what key does the server use for encrypting to the client?   [13:42]
+<A1> ln5: the ephemeral public key provided by the client in the first
+     "hello" message
+<ln5> A3: it uses ecdh in a 1-rtt handshake to establish ephemeral keys,
+      timing out after 2 min
+<A3> A1: https://www.wireguard.com/papers/wireguard.pdf section 5.4, for
+     reference						        [13:43]
+<A3> ln5: yes, indeed. Now the question is if protecting against the
+     attack that A1 described changes this			        [13:44]
+<A1> A3: what am I looking for?
+<A3> sorry I didn't mean to send the link specifically to you       [13:45]
+<A1> ln5: it changes it in the sense that for UNauthenticated clients wg
+     doesn't have to keep any state
+<A3> it was more of "here's a reference to what we are talking about"
+<A1> (with the current design)
+<A1> for authenticated clients the wg server does have to keep state in the
+     current design
+<ln5> doesn't it keep a timestamp, for replay attacks?		        [13:46]
+<A1> for the problem of authenticating a client without first establishing a
+     ECDH-rpotected tunnel, you need some kind of zkp
+<ln5> ah, only in handshake initiator->respondent
+<A1> the ecdh-tunnel-with-ephemeral-key-then-signing is the simplest solution
+     in my mind, but it does require you to keep a pk for each
+     unauthenticated peer as well as yourserver keypair generated for that
+     tunnel							        [13:47]
+<ln5> A1: err, i misread you as "server doesn't have to keep state for
+      authenticated clients"					        [13:48]
+<A1> as for "forward-anonymous zkp" I find it intuitively hard to come up
+     with a way for that to work
+<A1> so I think that the easiest would be to have a global "initation key
+     pair" that the server refreshes every 5 min or whatever would limit the
+     amount of state you keep for unauthenticated clients is the best you can
+     do, but that still requires keeping a tuple of (src-ip, src-port,
+     src-public-key) for unauthenticated clients		        [13:51]
+<A1> alternatively you can switch the protocol around so the first "hello"
+     message just asks the server for th ecurrent "initiation key pair", and
+     the second hello message from the client responds with an ephemeral pk
+     and some encrypted stuff that contains the identity proof	        [13:52]
+<A1> but all of these solutions has the server reply to messages from
+     unauthenticated peers, which is something jason wants to avoid to
+     prevent being a source of amplification attacks I believe, and to avoid
+     people scanning for wireguard servers			        [13:54]
+<A1> so it does muddy the waters :(
+<ln5> was thinking of (ab)using the cookie reply to get an optional 2-rtt
+      handshake, with an empty public key in the first cli->srv packet, but
+      idk							        [13:56]
+<ln5> guess it'd be a too big change for jason to consider anyway
+<A1> yes, don't think it fits is idea				        [13:57]
+<A1> his*
+<A1> which by extension leads me to the conclusion that wg is ill-fit for a
+     large vpn provider. it's great if you have a home vpn and your identity
+     is not considered identifying information per se		        [13:58]
+<ln5> rotating client server static key would mitigate this, but how avoid
+      linking between keyN and keyN+1?				        [14:33]
+<ln5> rotating server static key would help but the protocol allows for one
+      and only one key, so deployment mess			        [14:34]
+<A1> ln5: yeah, my proposal would be to have an ephemeral key that was only
+     used for the auth of the client				        [14:40]
+<A1> but then it's kind of a different protocol
+<ln5> i might be able to get mullvad to implement server side changes for
+      (optional) authn forward secrecy. client side is more complicated.
+								        [15:24]
+<A1> I can't think of a wya to fix this on the server-side	        [15:25]
+<ln5> i think they might be willing to expose themselves to some more dos risk
+      if they can get this, unclear how much ofc
+<ln5> oh, i was being unclear. _optional_ client side changes is ok, just not
+      _mandatory_.						        [15:26]
+<A1> the DDoS risk with wg is different from the threat of DDoS of openvpn, I
+     think it might make sense to compare the two
+<ln5> so you want the server side changes to also support sotck clients
+<ln5> make sense or not make sense?
+<A1> with OpenVPN the DDoS risk from attackers who spoof src-ip is "send ACK
+     packet to fake src-ip", ie not very big			        [15:27]
+<A1> with WG the DDoS risk from attackers who spoof src-ip is "send
+     server-reply to fake src-ip", ie not very big either.
+<ln5> ah, you mean using vpn servers for amplification attacks? sure    [15:28]
+<A1> I'm not sure exactly what the numbers are, but I think that wg has a
+     little bit overhead in their UDP packet compared to openvpn's TCP ACK
+<ln5> wg keep stressing how each packet later in the sequence is smaller than
+      the previous
+<ln5> making it less great for amplification attacks
+<A1> yes but you need a handshake to get it to respond at all	        [15:29]
+<A1> otoh for cpu-based DDoS wireguard will do an ecdhe for each incoming
+     hello packet in order to determine if it can respond or not, which takes
+     up more cpu than openvpn's initial stuff does
+<ln5> yup, still potentitally painful for a vpn provider with good user
+      anonymity :)
+<ln5> A1: that's where their cookie response is useful		        [15:30]
+<A1> right
+<ln5> when under load, the server can just send a cheap cookie back and the
+      client will have to come back later
+<A1> the name of the game of replication stuff is to always emit less than
+     the client sent you					        [15:31]
+<ln5> yup
+<A1> so that leaves enough room for fiddling wit hthe protocol
+<A1> ln5: but in any case this requires modifying the wg client and server,
+     not sure who would be doing that				        [15:33]
+<A1> I mean someone has to write the code
+
+*** dkg to micah
+10:59:33 < dkg> micah: talking to zx2c4 over on #wireguard about design tradeoffs:
+11:00:31 < dkg> 17:43 < dkg> the two critiques i've heard of wireguard's protocol that i think are sensible (i.e. not a complaint about NIH, or an attempt to work in some vanity dreams) are:
+11:00:34 < dkg> 17:44 < dkg>  a) no clear plan for switching to a new protocol if a flaw is found in the underlying crypto beyond "make a new protocol, and either have a flag day or listen on a new port"
+11:00:38 < dkg> 17:45 < dkg>  b) the non-PFSness of the initial packet flow means that theft of the server's long-term secret makes it possible to retroactively associate captured traffic streams with specific clients.
+11:00:42 < dkg> 17:45 < dkg> (non-PFSness == lack of forward secrecy)
+11:00:45 < dkg> 17:46 < dkg> the argument for (a) might well be that "make a new protocol and use a new port" is simple+good enough
+11:00:48 < dkg> 17:46 < dkg> and the argument for (b) might well be that the latency win is worth the privacy loss
+--
+11:00:51 < dkg> 17:47 < dkg> i think reasonable people can argue both ways, and while i might have made a different decision than jason had i been the one making them, i'm not convinced that a protocol
+11:01:17 < dkg>  with lots of options to satisfy 
+11:01:18 < dkg>              everyone's different tastes would be better.
+11:01:18 < dkg> 17:47 < dkg> we already have a "lots of options" approach, which is ipsec, and it has foundered in deployment (in no small part due to the complexity of the configuration space.
+11:01:21 < dkg> 10:41 < zx2c4> dkg: the actual reason has less to do with latency and more to do with simplifying the state machine as much as possible. one round trip means the whole state machine stays really basic, so you can implement 
+11:01:25 < dkg>                it without introducing too many vulnerabilities
+11:01:27 < dkg> 0:52 < zx2c4> dkg: most competent programmers hear that and scoff, "but more round trips isnt that much harder to implement. you just have to...." since everyone imagines they can implement "obvious" quasi-complex 
+11:01:31 < dkg>                algorithms in a bug free manner, but...
+11:01:34 < dkg> 10:54 < dkg> zx2c4: oh, i hear you :)
+11:01:36 < dkg> 10:55 < dkg> zx2c4: that said, forward secrecy for the client identity could be a really important property for some use cases, and it's sad that wireguard doesn't offer it.
+11:01:40 < dkg> 10:56 < dkg> again, i'm not saying you've made the wrong choices, just that they're tough choices.
+11:01:43 < dkg> 10:57 < zx2c4> yea i hear you
+11:02:01 < dkg> wow, my paste didn't work very well there.  sorry about the weird linebreaks
+11:02:20 < dkg> anyway, i just thought you'd want to know since (b) was a point you'd raised.
+*** chatting with dkg 2018-07-10
+[Tis Jul 10 2018]
+<ln5> hi! since you seem interested in wireguard, have you thought about the
+      lack of forward secrecy wrt identity hiding?		        [22:32]
+<ln5> wg uses noise IK which means that wg is not very well suited for a large
+      vpn provider with anonymity in mind			        [22:33]
+<ln5> a raid on the provider rendering a copy of (or capability of decrypting
+      using) the server static key will enable an attacker who's recorded
+      handshakes to link all the sessions of a given client static key (ie
+      user)							        [22:34]
+<dkg> yes, i've thought about that				        [22:35]
+<dkg> i've also raised it with jason (wireguard upstream)
+<dkg> lemme see whether i can find his feedback…
+<dkg> here's me sharing it with micah:
+      https://share.riseup.net/#H96hWLTS51tj3oGUGswnNw		        [22:39]
+<ln5> thanks. that confirms my understanding of the situation, good.    [22:42]
+<ln5> and after spending some time today trying to figure out how hard it'd be
+      to have _optional_ XK, i really understand the "keep the state machine
+      simple" argument.						        [22:44]
+<dkg> true that :)
+<ln5> it's beyond my competence to design that scheme, is my conclusion
+<ln5> but i REALLY want wg to be useful for users with this demand      [22:45]
+<dkg> i think as a mechanism, wireguard is nice and clean and simple -- the
+      only outstanding question i have is whether we could design something
+      like a key rotation/authentication scheme that could be cleanly overlaid
+<dkg> i understand the goal, for sure
+<ln5> yes, that is my second approach -- rotating client static keys
+<ln5> using a "key cache"
+<dkg> or rotating server static keys				        [22:46]
+<dkg> since you could limit the forward secrecy concerns that way
+<ln5> pre-generating a set of client keys and "uploading" them, and keeping
+      track, and not using the same key in two flows, and probably with a ttl
+      too
+<ln5> yes, that seems obvious but also very hard to make practical, as far as
+      i've thought about it
+<dkg> your proposal smells a lot like TLS session resumption keys
+<ln5> the client key cache thing?				        [22:47]
+<dkg> (not a bad thing, just noting convergent design)
+<ln5> i don't know tls
+<ln5> i'll give the "rotating server static keys" another shot at some point
+								        [22:48]
+<dkg> i don't know about being able to avoid using the same key in two flows
+      -- that sounds hard to match with the current setup
+<ln5> i'll also try to figure out if the pre-shared symmetric key scheme could
+      be useful
+<dkg> but i definitely think we could make a very easy/simple
+      client-key-registration scheme
+<ln5> a client of some sort, user space, would have to be the one detecting
+      new flows and rotating
+<ln5> yes, that							        [22:49]
+<dkg> the trouble is that there are concurrent flows
+<ln5> oh, ah
+<dkg> unless you mean something different by "flow" than i mean
+<dkg> that might be
+<ln5> i've heard that jason is not against the idea of "usre space hooks"
+      somewhere in the protocol, which would be useful
+<ln5> four-tuple combinations					        [22:50]
+<dkg> that's going to be complicated
+<ln5> src ip+port + dest ip+port
+<ln5> to detect? yes
+<dkg> and i don't think you'd even want it, because it would allow an attacker
+      to distinguish your flows from each other
+<ln5> so simply a ttl might be easier
+<ln5> assuming the attacker sees my ip headers, that's alread given, no?
+<dkg> nope, the attacker just sees your connection to the VPN	        [22:51]
+<dkg> so they can't tell that you've got 4 flows running concurrent within the
+      tunnel
+<ln5> ah oh sorry, i didn't mean flows _in_the_tunnel_
+<ln5> i meant vpn connections
+<dkg> gotcha
+<ln5> so when you roam
+<dkg> i understand now
+<dkg> yes, that's easier to do					        [22:52]
+<ln5> but ttl is easier and perhaps enough
+<dkg> and i don't think it'd be hard to write as a user-space daemon on both
+      sides
+<ln5> right
+<ln5> this will keep the wg protocol intact, which is a HUGE win
+<dkg> yep
+<dkg> if you want to spec this out, we could probably write something really
+      simple -- it's a question of state management more than anything  [22:53]
+<ln5> try figuring out the cookie reply and mac1 built out of other-side
+      static key and see if you can make it sound in an XK
+      scheme. it's... headach.
+<dkg> the network protocol side of things is trivial -- it's just a new flow
+      inside the tunnel to a service on the VPN endpoint
+<dkg> a cleartext service even
+<ln5> bc within the vpn tunnel? ok				        [22:54]
+<ln5> i worry about linkability between keys
+<ln5> through traffic analysis
+<ln5> care needs to be taken for how these keys are distributed to, i'm
+      assuming more than one, vpn server as well		        [22:55]
+<ln5> good part is that vpn servers don't need to pair keys with any type of
+      user identifying data, if done right -- they just have a huge pool of
+      valid keys. but hmm, wait. they need to pair them with an "in-tunnel IP
+      address", no?						        [22:56]
+<ln5> so unless i'm wrong, there needs to be a link _forward_ in time, but
+      that might be ok						        [22:57]
+<ln5> god i'm tired! my family has a puppie since a week. she's adorable and
+      unbearable at the same time!
+<dkg> right -- the vpn servers hold a map of pubkeys→in-tunnel-IP
+<dkg> wow -- puppies! :)					        [22:58]
+<ln5> fascinating thing
+<ln5> so much love
+<dkg> and a pack mentality :)
+<dkg> i saw a super fuzzy puppy yesterday
+<ln5> and happniess. the 5yo small human has grown a lot in a weak!
+<dkg> i'm sure -- having another creature to relate to every day is a big
+      deal.							        [22:59]
+<ln5> "a pack mentality"?
+<dkg> well, dogs are very hierarchical
+<ln5> yes, a bit like a small sibling
+<ln5> this is the breed: https://en.wikipedia.org/wiki/Bull_terrier
+<dkg> so many of them really feel the need for a "boss" 
+<ln5> must be the craziest anarchist of a dog there is
+<ln5> yes, that's weird
+<dkg> (one of the reasons i like cats is that most of them seem to think the
+      whole "boss" thing is kind of ridiculous)			        [23:00]
+<ln5> haha yes
+<ln5> this breed is called "the cat of the dogs"
+<dkg> nice :)
+<ln5> that's why we got it
+<ln5> personality and anarchy
+<ln5> good stuff
+<dkg> :)
+<ln5> and unberable, ofc
+<dkg> naturally
+<ln5> never a dull moment! that's my motto
+<dkg> but having to boss it around is pretty miserable too	        [23:01]
+<ln5> that's not very nice
+<dkg> yeah, but some dogs seem to really respond emotionally to that -- to
+      knowing their "place" in the pack
+<dkg> there's a whole thing about how to walk with unruly dogs called
+      "trooping"
+<ln5> i've heard so. and that they become calm and happy when someone's
+      running everyting so they don't have to.
+<dkg> right
+<dkg> d/s in the animal kingdom :P				        [23:02]
+<ln5> trooping, looking that up
+<ln5> dominant/submissive?
+<dkg> right
+<ln5> ok
+<dkg> it's not just dogs that have this tendency :/
+<ln5> true							        [23:03]
+<dkg> ok, so i'm thinking that the server needs a list of keys per allowed-IP
+<dkg> and the client needs its own list of keys
+<dkg> when the client decides to make a new key, it should be able to register
+      it with the server					        [23:04]
+<dkg> and somehow the old keys should be discarded
+<ln5> that last part is important, yes
+<dkg> the registration event can be verified just by the fact that we already
+      have an encrypted channel
+<ln5> right
+<ln5> so authentication should b esimple
+<dkg> trivial, even :)
+<ln5> client authn to server, that is				        [23:05]
+<dkg> right
+<ln5> trivial is the right word
+<dkg> so the questions i see are:
+<dkg>  a) how do the peers know when a given key is done?
+<dkg>  b) can the server force the client to change keys, or is this strictly
+      up to the client?
+<ln5> for a i've been thinking new vpn connection means new key _and_ a
+      maximum lifetime of a key					        [23:07]
+<ln5> for b i don't know why a server would want to force a key change
+<ln5> it'd be good if server side could support both vanilla clients and this
+      scheme with as little fuzz as possible			        [23:08]
+<dkg> do you mind if i loop micah in?				        [23:10]
+<ln5> please do!						        [23:22]
+
+*** email thread with dkg and micah
+<2018-07-11 Wed> 
+- [[gnus:nnimap+adbc:INBOX#87y3eiivuu.fsf@fifthhorseman.net][Email from Daniel Kahn Gillmor: wireguard identity forward sec]]
+- [[gnus:nnimap+adbc:sent-mail.2018-07#87in5m41co.fsf@nordberg.se][Email to Daniel Kahn Gillmor: Re: wireguard identity forward]]
+*** private chatt with joe <2018-07-11 Wed>
+client key rotation is problematic from a purity perspective in that it
+still leaves open a window for deanonymization
+but it maintains the "no unauthenticated state" invariant
+
+<O- have any of you talked to jason, or what is the plan?
+-O> i worry mostly about linkability between client keys
+-O> no, but we will, as soon as we 've got something we believe in
+-O> i might find funding for implementing it too, so that part is also important
+<O- I suggested client key rotation to him, he didn't like the idea when I talked to him
+-O> ok, good info
+-O> perhaps he just didn't want that in wg proper?
+<O- so just warning you that you might have to make a "hostile fork"
+<O- what would the alternative be?
+-O> building this on top of wg, with some help from "user space events" kinda
+-O> i'm debating with myself wether it'd take a new message type for "here's a new pubkey for me" messages
+<O- so like a magic packet to address x means "here's my new key"?
+-O> or if this could be done in plain text payload, relayed to user space
+-O> and _from_ address y, ofc
+<O- and the same for the client-side to receive an ACK?
+<O- and then hooking the client kernel layer2 subsystem to pick it up and report it back to userspace to change the wg config?
+<O- I think this sounds really messy compared to changing the client/server
+-O> you mean messy compared to change the wg protocol or the wg kernel implementation?
+<O- yes
+<O- the latter
+-O> which one?
+-O> ok, good
+-O> i'm with you on that one, so far, but haven't thought about it much yet
+<O- I agree that a protocol change is not needed
+-O> i worry about race stuff between userland and kernel too
+<O- yes
+-O> so would prefer that kernel authenticates requests and performs changes and then informs userland and, when needed, the peer (over the network)
+-O> so that's what i'm going for atm
+<O- patching the kernel module would make that cleaner
+-O> yes, and then asking jason for taking the patch
+-O> to take*
+-O> what's the window for deanonymization? linking keyN to keyN+1?
+<O- yes
+<O- like
+<O- especially if the server gets seized, then continues to operate for some time
+-O> isn't that a case where PFS doesn't help either?
+<O- true
+<O- maybe I'm silly :P
+-O> silly re what?
+-O> the continues to operate case needs more than PFS
+<O- I struggle to come up with a realistic scenario for my concern
+-O> well, a server (or client!) logging "key X now changed to key Y" would ruin everything
+<O- ah yes right
+<O- so
+-O> and perhaps just "at $date, i changed the key for client at IP:PORT"
+-O> together with traffic analysis
+-O> so i'm trying to enumerate those concerns to give implementation advice
+-O> more people than the set of people who might be able to get it right, i mean
+<O- I think it would still be a welcome improvement
+<O- I'd finish my wg implementation in ocaml at least, if there was consensus for such a thing
+-O> an optional XK handshake?
+<O- been working on the socks library lately
+<O- yes
+<O- well I would make it mandatory, but :p
+-O> making it optional, protocol level, would in theory make it possible to be useful for providers determined to support "vanilla wg"
+<O- yes
+-O> but making a mandatory variant and call it something else than wireguard is ofc an option too
+-O> but a different one
+<O- wg-safe
+<O- :)
+<O- wg-actually-secure
+-O> anonwg
+-O> wg-for-those-who-care
+-O> wireguarding-your-privacy
+<O- wg-pfs
+<O- wg-fitting-for-modern-use
+-O> "it's just identity, relax" :)
+<O- :D
+<O- the-wg-that-fbi-doesn't-liek
+-O> the commercial blurb over at wiregaurd.com/protocol is pretty misleading wrt PFS IMO
+<O- yes
+<O- I think we could pitch this to that wg provider too
+<O- the one I linked to in #celo the other day
+-O> the swede with the windows implementation?
+-O> he's a spotify person iiuc
+<O- yes
+<O- they seem like they would care and/or like to have a marketing point over vanilla wireguard
+-O> there's a bitter fight over open vs closed source here
+-O> which seems unresolved afaict
+<O- I think ipredator might also be happy to use a secure version of wiregurad
+<O- wireguard*
+
+
+
 * Núbi Ferskur <neubyi@4711.se>
 - uses ln+neubyi@4711.se some places (github)
 * robur.io
@@ -40772,3 +41406,22 @@ Rimlig Data AB
   sick leave <= 2w) at 100%, ie 172h/month (which is totally
   unrealistic)
 
+* 3d printing
+** modelling software
+- blender/stable 2.78.a+dfsg0-4 amd64
+  Very fast and versatile 3D modeller/renderer
+- freecad/stable 0.16+dfsg2-3 amd64
+  Extensible Open Source CAx program (alpha)
+
+** companies, services
+- https://www.shapeways.com/
+- 3dverkstan.se
+- http://3id.se/kontakt.php
+- http://www.3dskaparna.se/
+- http://www.prototal.se/se/start
+
+** material
+- PLA
+enklast att printa med hemma
+- ABS
+måste vädras
