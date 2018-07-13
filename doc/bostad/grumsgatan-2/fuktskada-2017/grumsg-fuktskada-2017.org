@@ -115,6 +115,9 @@ Tidslinje
   fastighetsförsäkring; vi får skriva ytterligare ett brev till
   föreningen
 - 2018-06-11 skickade [[gnus:nnimap+adbc:sent-mail.2018-06#87d0wyjnkq.fsf@nordberg.se][mejl]] till styrelsen med [[file:brev2-uto-ersattning.pdf][brev2-uto-ersattning.pdf]]
+- 2018-07-13 Fredrik Nyblom säger i FB-gruppen att han skall titta på
+  det om vi skickar om det.
+- 2018-07-13 skickade [[gnus:nnimap+adbc:sent-mail.2018-07#87y3efxk1o.fsf@nordberg.se][mejl]] till styrelsen, att. Fredrik Nyblom
 
 Övriga noteringar
 - ersättning från föreningen
