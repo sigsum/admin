@@ -2096,7 +2096,7 @@
 2017-10-20 14:15-14:45 [juni] utv.samtal globala
 2017-10-29 CEST -> CET aka "vintertid"
 2018-03-25 CET -> CEST aka "sommartid"
-%%(diary-block 2018 07 23 2018 07 29) PETS @ barcelona
+&%%(diary-block 2018 07 23 2018 07 29) PETS @ barcelona
 2017-10-19 21:00-22:00 dirauth stuff
 2017-10-26 16:00 look at knot logs on ns.dfri.se
 2017-10-24 09:00-12:00 ct doc @ zoom
@@ -2160,7 +2160,7 @@
 2018-01-10 13:00 Adolf Fredriks kyrkogata 10 <http://www.citykonditoriet.com/>
 2018-04-07 14:07 x509-cert {jabber,smtp,imap}.adb-centralen.se expirerar
 2018-03-31 x509-cert {jabber,smtp,imap}.adb-centralen.se expirerar om en vecka
-%%(diary-cyclic 7 2018 01 15) 19:00-20:00 tor network team meeting in #tor-meeting
+&%%(diary-cyclic 7 2018 01 15) 19:00-20:00 tor network team meeting in #tor-meeting
 2018-03-13 11:00 tor open board meeting, rome
 2018-01-11 betala sthix
 2018-01-22 11:30-15:00 Sida
@@ -2219,10 +2219,14 @@
 2018-08-07 maatuska key expires
 2018-07-31 maatuska key expires in a week
 2018-07-24 maatuska key expires in two weeks
-%%(diary-block 2018 08 05 2018 08 10) gbg airbnb
+%%(diary-block 2018 08 05 2018 08 10) gbg @ gk
 2018-08-04 susö 50 i furusund
 2018-09-13 x509 certs jabber,smtp,imap expires tomorrow morning
 2018-09-06 x509 certs jabber,smtp,imap expires in a week
 2018-07-19 14:15-15:31 Sunne->Karlstad Värmlandstrafik 200 KBH0164Y (0001)
 2018-07-19 16:10-20:35 Karlstad->Sthlm Swebus 888 8XMRFAT-0 (ombokningsbar!)
 %%(diary-block 2018 10 02 2018 10 03) cryptech @ sunet
+2018-07-21 11:00-16:00 dfri @ sunet
+2018-08-20 17:00-18:30 tor board
+2019-01-20 mullvad account expires
+2019-01-13 mullvad account expires in a week
