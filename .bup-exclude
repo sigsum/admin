@@ -1,4 +1,6 @@
 /.cache
+/.ccache
+/.config/bwscanner/measurements
 /.gnupg
 /.mozilla
 /flogsta
