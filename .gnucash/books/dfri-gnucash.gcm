@@ -102,7 +102,7 @@ num_width=86
 reconcile_width=18
 balance_width=90
 transfer_width=223
-debit_width=90
+debit_width=156
 credit_width=90
 
 [Register 9f74c9ed9918b53153cb602c708e4949]
@@ -127,10 +127,10 @@ credit_width=90
 date_width=98
 num_width=133
 reconcile_width=28
-balance_width=106
+balance_width=154
 transfer_width=294
-debit_width=41
-credit_width=106
+debit_width=154
+credit_width=154
 
 [Register 372837ad141040a69e428c3d549779b4]
 date_width=82
@@ -507,12 +507,21 @@ transfer_width=223
 debit_width=90
 credit_width=90
 
+[Register bf0713f73abd8979460d605cba0372a4]
+date_width=98
+num_width=168
+reconcile_width=18
+balance_width=122
+transfer_width=309
+debit_width=122
+credit_width=134
+
 [Window 1]
-PageCount=4
+PageCount=2
 FirstPage=1
-PageOrder=4;3;1;2;
-WindowPosition=640;0;
-WindowGeometry=1278;1078;
+PageOrder=2;1;
+WindowPosition=660;0;
+WindowGeometry=1258;1078;
 WindowMaximized=false
 ToolbarVisible=true
 SummarybarVisible=true
@@ -524,7 +533,7 @@ PageName=Accounts
 AccountTypes=-1
 ShowHidden=false
 ShowZeroTotal=true
-SelectedAccount=Assets:Current Assets:Online BTC wallet
+SelectedAccount=Assets:Current Assets:Handkassa Linus
 OpenAccount1=Assets
 OpenAccount2=Assets:Current Assets
 OpenAccount3=Expenses
@@ -536,21 +545,5 @@ PageType=GncPluginPageRegister
 PageName=Swedb Företagskonto
 RegisterType=Account
 AccountName=Assets:Current Assets:Swedb Företagskonto
-RegisterStyle=Ledger
-DoubleLineMode=false
-
-[Page 3]
-PageType=GncPluginPageRegister
-PageName=Online BTC wallet
-RegisterType=Account
-AccountName=Assets:Current Assets:Online BTC wallet
-RegisterStyle=Ledger
-DoubleLineMode=false
-
-[Page 4]
-PageType=GncPluginPageRegister
-PageName=Donationer
-RegisterType=Account
-AccountName=Income:Donationer
 RegisterStyle=Ledger
 DoubleLineMode=false

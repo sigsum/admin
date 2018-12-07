@@ -1,8 +1,56 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Options for saved report "Assets Over Time", based on template "e9cf815f79db44bcb637d0295093ae3d"
+(let ()
+ (define (options-gen)
+  (let ((options (gnc:report-template-new-options/report-guid "e9cf815f79db44bcb637d0295093ae3d" "Assets Over Time")))
+
+; Section: General
+
+(let ((option (gnc:lookup-option options
+                                 "General"
+                                 "End Date")))
+  ((lambda (option) (if option ((gnc:option-setter option) '(relative . today)))) option))
+
+(let ((option (gnc:lookup-option options
+                                 "General"
+                                 "Report's currency")))
+  ((lambda (option) (if option ((gnc:option-setter option) "SEK"))) option))
+
+
+; Section: Accounts
+
+
+; Section: Display
+
+
+; Section: __report
+
+  options))
+ (gnc:define-report 
+  'version 1
+  'name "Assets Over Time"
+  'report-guid "b27001db848bd7652f11ccb8aa409f40"
+  'parent-type "e9cf815f79db44bcb637d0295093ae3d"
+  'options-generator options-gen
+  'menu-path (list gnc:menuname-custom)
+  'renderer (gnc:report-template-renderer/report-guid "e9cf815f79db44bcb637d0295093ae3d" "Assets Over Time")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Options for saved report "Balance Sheet", based on template "c4173ac99b2b448289bf4d11c731af13"
 (let ()
  (define (options-gen)
   (let ((options (gnc:report-template-new-options/report-guid "c4173ac99b2b448289bf4d11c731af13" "Balance Sheet")))
+
+; Section: General
+
+(let ((option (gnc:lookup-option options
+                                 "General"
+                                 "Balance Sheet Date")))
+  ((lambda (option) (if option ((gnc:option-setter option) '(relative . end-cal-year)))) option))
+
+
+; Section: Accounts
+
 
 ; Section: Display
 
@@ -11,24 +59,13 @@
 
 (let ((option (gnc:lookup-option options
                                  "Commodities"
-                                 "Report's currency")))
-  ((lambda (option) (if option ((gnc:option-setter option) "SEK"))) option))
-
-(let ((option (gnc:lookup-option options
-                                 "Commodities"
                                  "Show Exchange Rates")))
   ((lambda (option) (if option ((gnc:option-setter option) #t))) option))
 
-
-; Section: Accounts
-
-
-; Section: General
-
 (let ((option (gnc:lookup-option options
-                                 "General"
-                                 "Balance Sheet Date")))
-  ((lambda (option) (if option ((gnc:option-setter option) '(relative . end-prev-year)))) option))
+                                 "Commodities"
+                                 "Report's currency")))
+  ((lambda (option) (if option ((gnc:option-setter option) "SEK"))) option))
 
   options))
  (gnc:define-report 
@@ -46,33 +83,6 @@
  (define (options-gen)
   (let ((options (gnc:report-template-new-options/report-guid "0b81a3bdfd504aff849ec2e8630524bc" "Income Statement")))
 
-; Section: Entries
-
-
-; Section: Display
-
-(let ((option (gnc:lookup-option options
-                                 "Display"
-                                 "Omit zero balance figures")))
-  ((lambda (option) (if option ((gnc:option-setter option) #t))) option))
-
-
-; Section: Commodities
-
-(let ((option (gnc:lookup-option options
-                                 "Commodities"
-                                 "Report's currency")))
-  ((lambda (option) (if option ((gnc:option-setter option) "SEK"))) option))
-
-
-; Section: Accounts
-
-(let ((option (gnc:lookup-option options
-                                 "Accounts"
-                                 "Accounts")))
-  ((lambda (option) (if option ((gnc:option-setter option) '("a3dc14d90ceba5fc57022c7b97081b49" "26d72d9d70047ee2cf7762790a662000" "dc995c413ca55d30a77fb0419473a0b3" "8cfc616d6b326f59a396228bb7948dcd" "3399f5cc8b20e0684c194116f1264137" "dfe651cbc91b15a60ced4cb00b5b4e30" "4303cec348cae4ae63c9a6a2a3d765e9" "76c7a09a73ffa70a8f3708eb84f9bd31" "294bfc9a2e27744e5fac996ecbe41f6a" "c74930228d1b1c2aa1d2b131476d11a2" "d0a1769592c2469ba24fe19805ef0e35" "f0577fd4bc4b655cc782307fe0fafb15" "e798f3b5b736ee65644661638127fe6d" "e0c102b6927f1507243ef0f4bf805ca7" "1352ac51dc7aae27ecd0e2a02a807f50" "8deaaf5341cfd263b69ff1a5e41ecf5e" "b1036128c930323b56a0376e9447c9b7" "0dd6fbbd0ca56b39add8194e0acec56b" "baf4493e4f682056556002fc8ce754c5" "5477fd672f00a1eb7f8e13ad596dab57" "d35cc5572a5ba958ac6a0306162dc42f" "c23b3fc82fc53d4f2687699d9893ff99" "05a31b507762f6e48e96af8397285346" "c0e7f604cf84178f22bf6d4b510d5838" "ec436b29f1496619f01b527200838bb4" "a78238be0c9fa67b87cfdf4a20455f3e" "6c0f0fc9db6e8899d3feb62d556c3038")))) option))
-
-
 ; Section: General
 
 (let ((option (gnc:lookup-option options
@@ -85,6 +95,33 @@
                                  "Start Date")))
   ((lambda (option) (if option ((gnc:option-setter option) '(relative . start-prev-year)))) option))
 
+
+; Section: Accounts
+
+(let ((option (gnc:lookup-option options
+                                 "Accounts"
+                                 "Accounts")))
+  ((lambda (option) (if option ((gnc:option-setter option) '("a3dc14d90ceba5fc57022c7b97081b49" "26d72d9d70047ee2cf7762790a662000" "dc995c413ca55d30a77fb0419473a0b3" "8cfc616d6b326f59a396228bb7948dcd" "3399f5cc8b20e0684c194116f1264137" "dfe651cbc91b15a60ced4cb00b5b4e30" "4303cec348cae4ae63c9a6a2a3d765e9" "76c7a09a73ffa70a8f3708eb84f9bd31" "294bfc9a2e27744e5fac996ecbe41f6a" "c74930228d1b1c2aa1d2b131476d11a2" "d0a1769592c2469ba24fe19805ef0e35" "f0577fd4bc4b655cc782307fe0fafb15" "e798f3b5b736ee65644661638127fe6d" "e0c102b6927f1507243ef0f4bf805ca7" "1352ac51dc7aae27ecd0e2a02a807f50" "8deaaf5341cfd263b69ff1a5e41ecf5e" "b1036128c930323b56a0376e9447c9b7" "0dd6fbbd0ca56b39add8194e0acec56b" "baf4493e4f682056556002fc8ce754c5" "5477fd672f00a1eb7f8e13ad596dab57" "d35cc5572a5ba958ac6a0306162dc42f" "c23b3fc82fc53d4f2687699d9893ff99" "05a31b507762f6e48e96af8397285346" "c0e7f604cf84178f22bf6d4b510d5838" "ec436b29f1496619f01b527200838bb4" "a78238be0c9fa67b87cfdf4a20455f3e" "6c0f0fc9db6e8899d3feb62d556c3038")))) option))
+
+
+; Section: Display
+
+(let ((option (gnc:lookup-option options
+                                 "Display"
+                                 "Omit zero balance figures")))
+  ((lambda (option) (if option ((gnc:option-setter option) #t))) option))
+
+
+; Section: Entries
+
+
+; Section: Commodities
+
+(let ((option (gnc:lookup-option options
+                                 "Commodities"
+                                 "Report's currency")))
+  ((lambda (option) (if option ((gnc:option-setter option) "SEK"))) option))
+
   options))
  (gnc:define-report 
   'version 1
@@ -94,4 +131,38 @@
   'options-generator options-gen
   'menu-path (list gnc:menuname-custom)
   'renderer (gnc:report-template-renderer/report-guid "0b81a3bdfd504aff849ec2e8630524bc" "Income Statement")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Options for saved report "Income/Expense Chart", based on template "80769921e87943adade887b9835a7685"
+(let ()
+ (define (options-gen)
+  (let ((options (gnc:report-template-new-options/report-guid "80769921e87943adade887b9835a7685" "Income/Expense Chart")))
+
+; Section: General
+
+(let ((option (gnc:lookup-option options
+                                 "General"
+                                 "End Date")))
+  ((lambda (option) (if option ((gnc:option-setter option) '(relative . today)))) option))
+
+(let ((option (gnc:lookup-option options
+                                 "General"
+                                 "Report's currency")))
+  ((lambda (option) (if option ((gnc:option-setter option) "SEK"))) option))
+
+
+; Section: Accounts
+
+
+; Section: Display
+
+  options))
+ (gnc:define-report 
+  'version 1
+  'name "Income/Expense Chart"
+  'report-guid "f087273aad326fb2282d7f97f482a489"
+  'parent-type "80769921e87943adade887b9835a7685"
+  'options-generator options-gen
+  'menu-path (list gnc:menuname-custom)
+  'renderer (gnc:report-template-renderer/report-guid "80769921e87943adade887b9835a7685" "Income/Expense Chart")))
 
