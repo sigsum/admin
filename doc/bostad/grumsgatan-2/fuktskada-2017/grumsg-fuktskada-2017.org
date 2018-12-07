@@ -118,6 +118,9 @@ Tidslinje
 - 2018-07-13 Fredrik Nyblom säger i FB-gruppen att han skall titta på
   det om vi skickar om det.
 - 2018-07-13 skickade [[gnus:nnimap+adbc:sent-mail.2018-07#87y3efxk1o.fsf@nordberg.se][mejl]] till styrelsen, att. Fredrik Nyblom
+- 2018-09-26 fick [[gnus:nnimap+adbc:INBOX#WC20180926190025.733C23@uto3.se][mejl]] från styrelsen där de meddelar att de inte
+  kommer att betala ut någon ersättning
+- 2018-12-07 fick [[gnus:nnimap+adbc:INBOX#e47589a4cf454a259376bc695b8257a2@E75L0005.lfad.lfnet.se][mejl]] från LF som vill veta mer om ärendet
 
 Övriga noteringar
 - ersättning från föreningen
