@@ -50,7 +50,37 @@
 ** fonder
 *** Corp bond Eur Lux
 - årlig avg 0,75%
+- 2017-04-27 +100k @ 16,10
 *** Etisk Europa Lux
 - årlig avg 1,5%
+- 2017-05-07 +100k @ 33,23
 *** Etisk Global Index Lux
 - årlig avg 0,45%
+- 2017-04-27 +100k @ 11,70
+*** Företagsobl flex sek
+- årlig avg 0,70%
+- 2017-11-08 +100k @ 147,58
+*** Hållbarhet Sverige Lux
+- årlig avg 1,36%
+- 2017-11-08 +100k @ 82,35
+** historik
+|      datum | typ      |  värde |
+|------------+----------+--------|
+| 2018-10-25 | v-papper | 194730 |
+| 2018-10-25 | fonder   | 579078 |
+| 2018-11-18 | v-papper | 194810 |
+| 2018-11-18 | fonder   | 581981 |
+| 2018-11-21 | v-papper | 194260 |
+| 2018-11-21 | fonder   | 576936 |
+| 2018-11-23 | v-papper | 194560 |
+| 2018-11-23 | fonder   | 575618 |
+| 2018-11-29 | v-papper | 195080 |
+| 2018-11-29 | fonder   | 580981 |
+| 2018-11-30 | v-papper | 194090 |
+| 2018-11-30 | fonder   | 585317 |
+| 2018-12-05 | v-papper | 193800 |
+| 2018-12-05 | fonder   | 584478 |
+|            |          |        |
+* Skatteverket
+** deklaration för inkomstår 2017
+2018-05-01 22:42 Kvittens-id 20180501224032196905190499412072
