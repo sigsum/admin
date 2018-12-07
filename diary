@@ -2204,7 +2204,7 @@
 2018-07-05 x509 certs for smtp, jabber, xmpp expires
 2018-06-28 x509 certs for smtp, jabber, xmpp expires in a week
 2018-04-23 18:00-20:00 https://www.goto10.se/evenemang/etisk-hackning-finns-det/
-%%(diary-block 2018 08 02 2018 08 12) geko har stuga: Tuves scoutgård, Västra Röd 256, 463 93 Västerlanda
+%%(diary-block 2018 08 02 2018 08 12) geko har stuga: Tuves scoutgård, Västra Röd 256, 463 93 Västerlanda https://www.openstreetmap.org/#map=12/58.1021/12.0506
 2018-05-22 18:00-19:30 DFRI styrelsemöte
 2018-06-11 DFRI styrelsemöte
 2019-01-16 x509 cert plausible-fe3.ct.nordu.net expires in hours
