@@ -18,19 +18,14 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-PATH=$HOME/bin:$PATH; export PATH
 GOPATH=$HOME/usr/go; export GOPATH
-PATH=$HOME/usr/bin:$PATH:$GOPATH/bin; export PATH
+PATH=$HOME/bin:$HOME/usr/bin:$HOME/.local/bin:$GOPATH/bin:$PATH; export PATH
+
 WORKON_HOME=$HOME/.virtualenvs; export WORKON_HOME
 PROJECT_HOME=$HOME/p/python; export PROJECT_HOME
-. /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+#. /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 GNUPGHOME=$HOME/.gnupg; export GNUPGHOME
-if [ -f "${GNUPGHOME}/gpg-agent-info-$(hostname)" ]; then
-    . "${GNUPGHOME}/gpg-agent-info-$(hostname)"
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-    export SSH_AGENT_PID
-fi
-GPG_TTY=$(tty); export GPG_TTY
 
+# OPAM configuration
+. /home/linus/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true

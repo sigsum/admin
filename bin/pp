@@ -1,12 +1,1 @@
-#! /bin/sh
-
-PPTRAVEL=~/tstick/.priv/passphrases20.gpg
-PP10=~/ostick/.priv/passphrases10.gpg
-
-file=$PP10
-[ -n "$2" ] && { file=$1; shift; }
-if [ -n "$1" ]; then
-    gpg -d -o - $file | egrep -i "$1"
-else
-    gpg -d -o - $file | less -i
-fi
+/home/linus/src/pp
