@@ -10,6 +10,9 @@
 (require 'starttls)
 (require 'smtpmail)
 
+;; Enable topic mode
+(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+
 ;; Select backend
 (setq gnus-select-method '(nnml ""))
 ;; For gods sake, don't forget to snarf ssl.el (from the w3 package)
@@ -32,9 +35,6 @@
 
 ;; C-x m runs gnus.
 (setq mail-user-agent 'gnus-user-agent)
-
-;; We don't like text/html.
-(add-to-list 'mm-discouraged-alternatives "text/html")
 
 ;; (Delayed Articles)
 (gnus-delay-initialize)
@@ -103,34 +103,7 @@
 
 ;; Posting styles, first match applies.
 ;; Use (signature-file "~/.signature") for whole file.
-(setq gnus-posting-styles
-      '((".*" (organization nil) ;("^nnimap\\+adbc" (organization nil)
-	 ("From" "Linus Nordberg <linus@nordberg.se>")
-	 (eval
-          (setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587 smtpmail-smtp-user "linus")
-	  (set (make-local-variable 'message-sendmail-envelope-from) "linus@nordberg.se")))
-        ("lists.edri..*" ("From" "Linus Nordberg <linus@dfri.se>"))
-	("lists.tor.internal" ("Reply-To" "tor-internal@lists.torproject.org"))
-        ("lists.tor..*" ("From" "Linus Nordberg <linus@torproject.org>"))
-        ("lists.tor.\\(board\\|relays\\|talk\\)" ("From" "Linus Nordberg <linus@nordberg.se>"))
-	("lists.pmacct" ("From" "Linus Nordberg <linus+pmacct@nordberg.se>") (organization "Sunet"))
-	("sunet:\\|ndn:\\|lists\\.\\(ct\\|ietf\\.trans\\|radsecproxy\\)"
-	 (organization "Sunet")
-	 ("From" "Linus Nordberg <linus@sunet.se>")
-	 (eval
-          (setq smtpmail-smtp-server "smtp.sunet.se"
-                smtpmail-smtp-service 587
-                smtpmail-smtp-user "linus")
-          (set (make-local-variable 'message-sendmail-envelope-from) "linus@sunet.se")))
-        ("dfri.abuse"
-	 ("From" "DFRI Abuse Team <abuse@dfri.net>")
-	 (eval
-	  (setq smtpmail-smtp-server "localhost"
-                smtpmail-smtp-service 10587
-                smtpmail-smtp-user "linus")
-	  (set (make-local-variable 'message-sendmail-envelope-from) "abuse@dfri.net")))))
-
-(setq message-send-mail-function 'smtpmail-send-it)
+;; Moved to .emacs
 
 ;; Archiving
 (setq gnus-message-archive-group

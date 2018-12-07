@@ -17,24 +17,18 @@
 ;(add-to-list 'load-path "/usr/share/emacs23/site-lisp/golang-mode")
 ;(require 'gnus-load)
 
-;; Do this early -- other requirements might depend on it.
-(require 'package)
-;; The default is using http rather than https.
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")))
-;; nice, but no thanks until there's https
-;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(package-initialize)
-
 (require 'tls)
 ;(require 'jabber)
 (require 'appt)                         ;calendar needs this
 
-;(add-to-list 'load-path "~/usr/share/emacs/site-lisp")
+(add-to-list 'load-path "~/.emacs.d/site-lisp") ; for markdown-mode
+(add-to-list 'load-path "~/usr/share/emacs/site-lisp")
 ;(require 'notmuch)
+(add-to-list 'load-path "~/usr/local/share/emacs/site-lisp/magit")
+(require 'magit)
+(global-set-key "\C-xg" 'magit-status)
 
 (setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
-;(setq load-path (cons "~/.emacs.d/elpa/erlang-2.4.1" load-path))
-;(require 'erlang-start)
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
 ;; another smime.el (from site-lisp/semi/?) is loaded.
@@ -42,18 +36,20 @@
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
 
-(require 'magit)
-(global-set-key "\C-xg" 'magit-status)
-
 ;; Fun.
 ;(autoload 'lpmud "lpmud" "Run LP-MUD in Emacs" t)
 ;; Twitter stuff.
 ;(load-file "~/.twitter.el")
 
-;; http://jblevins.org/projects/markdown-mode/
-(autoload 'markdown-mode "markdown-mode.el"
-  "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.mdwn$" . markdown-mode))
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.creole\\'" . markdown-mode))
+(autoload 'gfm-mode "markdown-mode" "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.pp\\'" . ruby-mode))
 
 ;; sieve
 (autoload 'sieve-mode "sieve-mode")
@@ -327,7 +323,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(Info-additional-directory-list (quote ("~/usr/share/info")))
+ '(Info-additional-directory-list (quote ("~/usr/share/info" "~/usr/local/share/info")))
  '(add-log-keep-changes-together t)
  '(browse-url-browser-function (quote w3m))
  '(calendar-today-visible-hook (quote (calendar-mark-today)))
@@ -351,6 +347,15 @@
  '(display-time-24hr-format t)
  '(display-time-day-and-date t)
  '(display-time-format "%Y-%m-%d %H:%M")
+ '(display-time-world-list
+   (quote
+    (("America/Los_Angeles" "Seattle")
+     ("America/New_York" "New York")
+     ("Europe/London" "London")
+     ("Europe/Stockholm" "Stockholm")
+     ("Asia/Calcutta" "Bangalore")
+     ("Asia/Tokyo" "Tokyo")
+     ("Australia/Melbourne" "Melbourne"))))
  '(erc-autojoin-channels-alist
    (quote
     (("luth.se" "#isp" "#sunet" "#sthix")
@@ -379,6 +384,7 @@
  '(gnus-agent-synchronize-flags t)
  '(gnus-agent-unplugged-hook nil)
  '(gnus-auto-expirable-newsgroups "adbc:\\(lists\\.\\|sys\\|spam\\)\\|sunet:tickets")
+ '(gnus-blocked-images ".*")
  '(gnus-buttonized-mime-types
    (quote
     ("multipart/encrypted" "multipart/signed" "multipart/alternative")))
@@ -391,6 +397,45 @@
  '(gnus-inhibit-images t)
  '(gnus-keep-same-level (quote best))
  '(gnus-play-startup-jingle t)
+ '(gnus-posting-styles
+   (quote
+    ((".*"
+      (organization nil)
+      ("From" "Linus Nordberg <linus@nordberg.se>")
+      (eval
+       (setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 9587 smtpmail-smtp-user "linus")
+       (set
+        (make-local-variable
+         (quote message-sendmail-envelope-from))
+        "linus@nordberg.se")))
+     ("lists.\\(edri\\|infrastructure\\)"
+      ("From" "Linus Nordberg <linus@dfri.se>"))
+     ("lists.tor.project"
+      ("Reply-To" "tor-project@lists.torproject.org"))
+     ("lists.tor..*"
+      ("From" "Linus Nordberg <linus@torproject.org>"))
+     ("lists.tor.\\(board\\|relays\\|talk\\)"
+      ("From" "Linus Nordberg <linus@nordberg.se>"))
+     ("lists.pmacct"
+      ("From" "Linus Nordberg <linus+pmacct@nordberg.se>")
+      (organization "Sunet"))
+     ("sunet:\\|ndn:\\|lists\\.\\(ct\\|ietf\\.trans\\|radsecproxy\\)"
+      (organization "Sunet")
+      ("From" "Linus Nordberg <linus@sunet.se>")
+      (eval
+       (setq smtpmail-smtp-server "smtp.sunet.se" smtpmail-smtp-service 8587 smtpmail-smtp-user "linus")
+       (set
+        (make-local-variable
+         (quote message-sendmail-envelope-from))
+        "linus@sunet.se")))
+     ("dfri.abuse"
+      ("From" "DFRI Abuse Team <abuse@dfri.net>")
+      (eval
+       (setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 10587 smtpmail-smtp-user "linus")
+       (set
+        (make-local-variable
+         (quote message-sendmail-envelope-from))
+        "abuse@dfri.net"))))))
  '(gnus-select-article-hook (quote (gnus-agent-fetch-selected-article)))
  '(gnus-simplify-ignored-prefixes "^(SV|VB):")
  '(gnus-simplify-subject-functions
@@ -432,8 +477,7 @@
  '(jabber-show-resources nil)
  '(menu-bar-mode nil)
  '(message-beginning-of-line nil)
- '(message-citation-line-format "On %a, %b %d %Y, %N wrote:
-")
+ '(message-citation-line-format "On %a, %b %d %Y, %N wrote:\n")
  '(message-citation-line-function (quote message-insert-formatted-citation-line))
  '(message-cite-function (quote message-cite-original))
  '(message-default-charset (quote utf-8))
@@ -450,20 +494,35 @@
  '(mm-coding-system-priorities (quote (utf-8)))
  '(mm-decrypt-option nil)
  '(mm-default-directory nil)
- '(mm-discouraged-alternatives (quote ("text/html" "multipart/related")))
+ '(mm-discouraged-alternatives (quote ("text/html" "text/richtext" "multipart/related")))
  '(mm-enable-external (quote ask))
  '(mm-encrypt-option nil)
+ '(mm-html-blocked-images ".*")
+ '(mm-html-inhibit-images t)
  '(mm-sign-option nil)
+ '(mm-text-html-renderer (quote html2text))
  '(mm-url-use-external t)
  '(mm-verify-option (quote known))
  '(mm-w3m-safe-url-regexp "")
  '(mml-secure-cache-passphrase nil)
+ '(mml-secure-key-preferences
+   (quote
+    ((OpenPGP
+      (sign)
+      (encrypt
+       ("leifj@sunet.se" "22FB87637245CAA0999A8C61F09C7C16D6CC6677")
+       ("micah@riseup.net" "4777535FE5471562626077B58CBF9A322861A790")
+       ("arma@mit.edu" "F65CE37F04BA5B360AE6EE17C218525819F78451")
+       ("linus@nordberg.se" "8C4CD511095E982EB0EFBFA21E8BF34923291265")))
+     (CMS
+      (sign)
+      (encrypt)))))
+ '(mml-secure-openpgp-always-trust nil)
+ '(mml-secure-openpgp-encrypt-to-self t)
+ '(mml-secure-openpgp-signers (quote ("0x1E8BF34923291265")))
  '(mml-secure-passphrase-cache-expiry 0)
- '(mml2015-always-trust nil)
  '(mml2015-cache-passphrase t)
- '(mml2015-encrypt-to-self t)
  '(mml2015-passphrase-cache-expiry 60)
- '(mml2015-signers (quote ("0x23291265")))
  '(nnimap-dont-close nil)
  '(nnimap-split-download-body nil)
  '(nnmail-extra-headers (quote (Keywords To Newsgroups Cc)))
@@ -479,11 +538,6 @@
  '(ps-print-header nil)
  '(ps-printer-name "")
  '(ps-printer-name-option nil)
- '(safe-local-variable-values
-   (quote
-    ((Base . 10)
-     (Package . INVITE)
-     (Syntax . COMMON-LISP))))
  '(scheme-program-name "gsi")
  '(scroll-bar-mode nil)
  '(smime-CA-directory "~/ssl/CAs")
@@ -625,18 +679,24 @@
   (insert #xe9))
 
 (defun iso-danish-odieresis-insert nil
-  "insert eacute."
+  "insert oslash."
   (interactive)
   (insert #xf8))
 
 (defun iso-danish-ae-insert nil
-  "insert eacute."
+  "insert ae."
   (interactive)
   (insert #xe6))
+
+(defun iso-section-insert nil           ; paragraph sign
+  "insert section."
+  (interactive)
+  (insert #xa7))
 
 ;; ø - "\370"; Ø - "\330"
 ;; æ - "\346"; Æ - "\306"
 ;; ü - "\374"
+;; § - "\247"
 ;;---------------------------------------------------------------------------
 
 ;;; Emacs/W3 Configuration
@@ -653,7 +713,6 @@
 ;; verify 4 levels of ssl certificates
 ;(setq ssl-certificate-verification-policy 4)
 
-;; w3m
 ; (add-to-list 'load-path "~/usr/share/emacs/site-lisp/w3m")
 
 ;(require 'octet)
@@ -663,107 +722,14 @@
 ;                     '("-o" "http_proxy=http://proxy.hogege.com:8000/")))
 ;(setq w3m-no-proxy-domains '("local.com" "neighbor.com"))
 
-;; Common Lisp hacking with Slime!
-(setq load-path (cons "/usr/local/share/emacs/site-lisp/slime" load-path))
-(setq load-path (cons "/usr/local/share/emacs/site-lisp/slime/contrib" load-path))
-;(require 'slime-autoloads)
-(setq slime-lisp-implementations
-     `((sbcl ("/usr/bin/sbcl"))
-       (clisp ("/usr/bin/clisp"))))
-(add-hook 'lisp-mode-hook
-           (lambda ()
-             (cond ((not (featurep 'slime))
-                    (require 'slime)
-                    (normal-mode)))
-	     (require 'slime-fancy)
-	     (require 'slime-typeout-frame)
-	     (require 'slime-asdf)
-	     (require 'slime-tramp)))
-(eval-after-load "slime"
-  '(slime-setup '(slime-fancy slime-banner)))
-(when nil	      ;TRAMP disabled due to trouble with local files.
-  (push (slime-create-filename-translator
-	 :machine-instance "lntest.nordberg.se"
-	 :remote-host "banksy.nordberg.se#60226"
-	 :username "linus")
-	slime-filename-translations))
-(global-set-key "\C-cs" 'slime-selector)
-;; Local copy of the CLHS, supplied by the devel/clisp-hyperspec port
-;; or hyperspec debian/ubuntu package
-;; Invoke in SLIME with `C-c C-d h', HTML version in web browser.
-(setq common-lisp-hyperspec-root "file:/usr/share/doc/hyperspec/")
-;; Or, C-M-h for the Info version (configure common-lisp-hyperspec-root above).
-(global-set-key [(control meta h)]
-		'(lambda ()
-		   (interactive)
-		   (ignore-errors
-		     (info (concatenate 'string "(gcl) "
-					(thing-at-point 'symbol))))))
+;(load-file "~/.emacs.ocaml.el")
+;(load-file "~/.emacs.slime.el")
+;(load-file "~/.emacs.clojure.el")
+;(load-file "~/.emacs.haskell.el")
+;(load-file "~/.emacs.apache.el")
+;(load-file "~/.emacs.krb5.el")
 
-; clojure
-;(add-to-list 'load-path "/u/src/clojure-mode")
-;(require 'clojure-mode)
-;(add-to-list 'load-path "/u/src/swank-clojure")
-;; Chicken and egg: Want to do (swank-clojure-config (setq FOO BAR))
-;; but we need to load swank-clojure for this.  That won't work unless
-;; swank-clojure-jar-path is set though.  For now, just setq
-;; swank-clojure-jar-path.
-;(setq swank-clojure-jar-path "/opt/local/var/macports/software/clojure/1.0.0_1/opt/local/share/java/clojure/lib/clojure.jar")
-; (setq swank-clojure-extra-classpaths (list "~/.clojure/clojure-contrib.jar")))
-;(require 'swank-clojure-autoload)
 
-;; haskell
-(setq auto-mode-alist
-      (append auto-mode-alist
-              '(("\\.[hg]s$"  . haskell-mode)
-                ("\\.hi$"     . haskell-mode)
-                ("\\.l[hg]s$" . literate-haskell-mode))))
-(autoload 'haskell-mode "haskell-mode"
-   "Major mode for editing Haskell scripts." t)
-(autoload 'literate-haskell-mode "haskell-mode"
-   "Major mode for editing literate Haskell scripts." t)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-(add-hook 'haskell-mode-hook 'turn-on-font-lock)
-;;
-;(require 'haskell-mode)
-;(define-key haskell-mode-map [?\C-c ?h] 'hoogle-lookup)
-
-;(require 'hoogle)			; ~linus/lisp/hoogle.el
-
-(autoload 'apache-mode "apache-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.htaccess\\'"   . apache-mode))
-(add-to-list 'auto-mode-alist '("httpd\\.conf\\'"  . apache-mode))
-(add-to-list 'auto-mode-alist '("srm\\.conf\\'"    . apache-mode))
-(add-to-list 'auto-mode-alist '("access\\.conf\\'" . apache-mode))
-(add-to-list 'auto-mode-alist 
-	     '("sites-\\(available\\|enabled\\)/" . apache-mode))
-
-(defconst krb5-c-style
-  '("bsd" 
-    (c-cleanup-list
-     brace-elseif-brace brace-else-brace defun-close-semi)
-    (c-comment-continuation-stars . "* ")
-    (c-electric-pound-behavior alignleft)
-    (c-hanging-braces-alist
-     (brace-list-open)
-     (class-open after)
-     (substatement-open after)
-     (block-close . c-snug-do-while)
-     (extern-lang-open after))
-    (c-hanging-colons-alist
-     (case-label after)
-     (label after))
-    (c-hanging-comment-starter-p)
-    (c-hanging-comment-ender-p)
-    (c-indent-comments-syntactically-p . t)
-    (c-label-minimum-indentation . 0)
-    (c-special-indent-hook)))
-(defun krb5-c-hook ()
-  (c-add-style "krb5" krb5-c-style t))
-;;(add-hook 'c-mode-common-hook 'krb5-c-hook)
 
 ;; AUC TeX
 ;(load "auctex.el" nil t t)
@@ -777,8 +743,16 @@
 ;; stupid european-calendar-style entry. Update: Maybe. Still have trouble.
 (calendar-set-date-style 'iso)
 
-(add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
+(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+;; ## end of OPAM user-setup addition for emacs / base ## keep this line
+
+;; Disable richtext 'x-display' decoding, see
+;; https://www.gnu.org/software/emacs/news/NEWS.25.3
+(eval-after-load "enriched"
+  '(defun enriched-decode-display-prop (start end &optional param)
+     (list start end)))
 
 ;; don't activate the debugger automagically when errors are
 ;; encountered
