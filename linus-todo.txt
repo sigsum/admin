@@ -382,17 +382,23 @@ Legend                                                      (emacs -*-org-*- mod
     (2); 4. distribute the first 6 octets of the hash (3) to the
     member
 * Travel
+** 2019
+- Jan 30-4, Brussels, FOSDEM
+? Apr 6-11, Gothenburg, foss-north
+- May ??-??, Greece, Tor
+? May ??-??, Sauve, Linus 50
+? Aug 20-25, ?, CCC Camp
 ** 2018
 - Mar 09-15, Rome, Tor
 x Mar 06-19, Marrakech, ocaml
 x Mar 16-24, London, IETF101
-? Apr 11-12, Stockholm, Cryptech
-? Apr 22-23, Gothenburg, FOSS-NORTH
+x Apr 11-12, Stockholm, Cryptech
+x Apr 22-23, Gothenburg, FOSS-NORTH
 x Jul 13-21, Montreal, IETF102
-? Jul 23-29, Barcelona, PETS
-? Aug 15-24, Bornholm, Bornhack
-? Sep 13-17, Vojvodina, BalCCon
-? Sep 28?-04?, Mexico City, Tor
+x Jul 23-29, Barcelona, PETS
+x Aug 15-24, Bornholm, Bornhack
+x Sep 13-17, Vojvodina, BalCCon
+x Sep 28?-04?, Mexico City, Tor
 ? Oct 02-11, Marrakesh, MirageOS
 ? Nov 02-10, Bangkok, IETF103
 ? Dec 25-30, ?, CCC

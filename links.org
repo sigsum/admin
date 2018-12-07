@@ -1,3 +1,131 @@
+funny oom linux https://lwn.net/Articles/104185/
+readme darkweb hitmen kill-for-hire https://www.wired.co.uk/article/kill-list-dark-web-hitmen
+dns service https://dnsflagday.net/
+dns service https://ednscomp.isc.org/ednscomp
+nomad vs k8s https://www.nomadproject.io/intro/vs/kubernetes.html
+nomad cluster-mgmt scheduling orchestration k8s https://www.nomadproject.io/
+bgp monitoring archiving https://labs.ripe.net/Members/vastur/bgplay-v2-integrated-in-ripestat
+internet freedom of expression people:larue https://blog.torproject.org/un-special-rapporteur-anonymity-gateway-free-expression
+riseup onions https://riseup.net/en/security/network-security/tor#riseups-tor-onion-services
+ct dfn vc https://framadate.org/TTZRoJdE1KscU5gD2WRQunrc/admin
+sina brother https://www.gofundme.com/qt39p5-one-love
+security debian unstable suite https://security-tracker.debian.org/tracker/status/release/unstable
+readme debian package mangement https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_tracking_literal_unstable_literal_with_some_packages_from_literal_experimental_literal
+fbsd hbsd poudriere replacement ada https://github.com/jrmarino/synth
+swedish police man on encryption https://www.svt.se/nyheter/lokalt/blekinge/sakerheten-pa-internet-allt-viktigare
+swedish police man on encryption https://sverigesradio.se/sida/artikel.aspx?programid=125&artikel=5627193
+tor calendar https://storm.torproject.org/grain/SCymtcXMFmMQ488JthhzgZ/
+performance monitoring https://github.com/netdata/netdata
+security exploits exploit-db https://github.com/offensive-security/exploitdb
+security exploits https://www.exploit-db.com/local/
+windows security swb people:nex https://github.com/securitywithoutborders/hardentools
+protonmail hack https://www.reddit.com/r/ProtonMail/comments/9xovso/dont_believe_everything_you_read_online_about/
+protonmail hack https://pastebin.com/bwvqHhbA
+debian lts https://www.freexian.com/services/debian-lts.html
+debian lts https://wiki.debian.org/LTS/Using
+cloud services sweden http://www.esamverka.se/nyheter/nyheter/2018-11-12-esam-ser-risker-med-molntjanster-i-offentlig-sektor.html
+cloud services sweden http://www.esamverka.se/stod-och-vagledning/rattsliga-uttalanden/rojande-och-molntjanster.html
+readme bgp llgr bfd routing https://blog.apnic.net/2018/11/06/bgp-llgr-robust-and-reactive-bgp-sessions/
+jinja templating http://jinja.pocoo.org/docs/2.9/templates/
+human rights language http://australianprogress.org.au/wp-content/uploads/2018/10/A-Brilliant-Way-of-Living-Our-Lives-How-to-Talk-About-Human-Rights.pdf
+multihoming ilnp freebsd https://pdfs.semanticscholar.org/c9ff/283a783d425d7e97284d1b691aeba51665ad.pdf
+dfri uptimerobot https://stats.uptimerobot.com/9r3o7iNLG
+google home insecurity https://jerrygamblin.com/2018/10/29/google-home-insecurity/
+read us antifa infiltration https://communemag.com/alt-right-new-york/
+dns delgation check https://salsa.debian.org/dsa-team/mirror/dsa-misc/blob/master/scripts/dns-providers/delegation-check
+readme puppet styleguide http://docs.puppetlabs.com/guides/style_guide.html
+tor web history people:linus https://gitweb.torproject.org/project/web/webwml.git/commit/?id=3b4f921
+tor web history people:linus https://gitweb.torproject.org/project/web/webwml.git/commit/?id=02b69e8
+tor ldap help https://db.torproject.org/doc-general.html
+readme https://www.passwordstore.org/
+readme https://gamozolabs.github.io/fuzzing/2018/10/14/vectorized_emulation.html
+google berlin https://qz.com/1435550/google-abandons-plan-to-build-a-new-kreuzberg-campus-in-berlin/
+tor bwscanner fbsd hbsd port https://www.freshports.org/net/py-sbws
+security gcc stack pax https://twitter.com/grsecurity/status/1054495379977392128
+readme tor brasshorn https://motherboard.vice.com/en_us/article/d3qqj7/sim-card-forces-data-through-tor-brass-horn-communications
+security gcc stack https://seclists.org/oss-sec/2018/q4/83
+debian dns https://dsa.debian.org/dsablog/2014/The_Debian_DNS_universe/
+debian dns https://dsa.debian.org/Pics/blog/2014/debian-dns.png
+tor services https://trac.torproject.org/projects/tor/wiki/org/operations/Infrastructure#Userfacingservices
+selfhosted email https://thehelm.com/
+funny https://en.wikipedia.org/wiki/Tom_Lehrer
+freebsd network tuning https://wiki.freebsd.org/NetworkPerformanceTuning
+linux security https://outflux.net/
+linux security http://kernsec.org/wiki/index.php/Main_Page
+readme security people:schneier https://www.nytimes.com/2018/10/11/opinion/internet-hacking-cybersecurity-iot.html
+readme privacy ledger zexe dpc https://eprint.iacr.org/2018/962.pdf
+keyboard https://shop.keyboard.io/
+tor tpa sysadmin https://help.torproject.org/tsa/doc/accounts/
+tor tpa sysadmin https://trac.torproject.org/projects/tor/wiki/org/operations/Infrastructure/git.torproject.org
+tor tpa sysadmin https://help.torproject.org/tsa/doc/admins/
+book https://www.akpress.org/emergentstrategy.html
+funny git skånska https://github.com/ErikGartner/git-pa-skanska/blob/master/README.md
+readme audio https://soundcloud.com/endoftheworldshow/the-apocalypse-we-live-in-state-violence-and-repression
+pets funding https://nlnet.nl/news/2018/20181201-call-en.html
+hw openbmc https://www.raptorcs.com/TALOSII/
+readme bmc implant supermicro https://www.lightbluetouchpaper.org/2018/10/05/making-sense-of-the-supermicro-motherboard-attack/
+readme bmc implant supermicro https://krebsonsecurity.com/2018/10/supply-chain-security-is-the-whole-enchilada-but-whos-willing-to-pay-for-it/
+unbound statistics https://www.nlnetlabs.nl/documentation/unbound/howto-statistics/
+tmux terminal sharing program https://tmate.io/
+tor macos https://www.torproject.org/docs/tor-doc-osx.html.en
+sysadmin questions https://github.com/trimstray/test-your-sysadmin-skills
+privacy kids toys cure53 https://www.bbc.com/news/technology-44382135
+readme privacy https://store.mcsweeneys.net/products/mcsweeney-s-issue-54-the-end-of-trust
+readme video packaging https://media.ccc.de/v/ASG2018-204-path-agnostic_binaries_co-installable_libraries_and_how_to_have_nice_things
+ipv6 metrics https://stats.labs.apnic.net/IPv6/SE
+lenovo bios https://www.cyberciti.biz/faq/update-lenovo-bios-from-linux-usb-stick-pen/
+tor research https://blog.torproject.org/tors-open-research-topics-2018-edition
+data protection guide https://privacyinternational.org/data-protection-guide
+rpi gpio interface circuits great https://elinux.org/RPi_GPIO_Interface_Circuits
+rpi gpio functions https://elinux.org/RPi_BCM2835_GPIOs
+rpi gpio https://matt.ucc.asn.au/mirror/electron/GPIO-Pads-Control2.pdf
+rpi bcm2835 peripherals https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf
+rpi gpio sw https://www.raspberrypi.org/documentation/usage/gpio/python/README.md
+rpi gpio pinout https://pinout.xyz/
+rpi gpio https://www.raspberrypi.org/documentation/usage/gpio/README.md
+rpi gpio https://www.raspberrypi.org/documentation/hardware/raspberrypi/gpio/README.md
+rpi gpio great https://elinux.org/RPi_Low-level_peripherals
+rpi gpio http://www.mosaic-industries.com/embedded-systems/microcontroller-projects/raspberry-pi/gpio-pin-electrical-specifications
+readme onion alt-svc https://medium.com/@alecmuffett/different-ways-to-add-tor-onion-addresses-to-your-website-39106e2506f9
+readme cloudflare onion https://blog.cloudflare.com/cloudflare-onion-service/
+dns test tool https://ednscomp.isc.org/ednscomp/
+roughtime https://github.com/cloudflare/roughtime/blob/master/ecosystem.config
+https://medium.com/onlyoffice/onlyoffice-vs-collabora-a-critical-comparison-18a5ba0dee62
+people:torvalds https://lkml.org/lkml/2018/9/16/167
+trunnel go https://github.com/mmcloughlin/trunnel
+readme mailcrypt dovecot https://wiki.dovecot.org/Plugins/MailCrypt
+raidz https://calomel.org/zfs_raid_speed_capacity.html
+https://www.nybooks.com/daily/2018/09/13/edward-snowden-reconsidered/
+readme ecc https://blog.trailofbits.com/2018/08/01/bluetooth-invalid-curve-points/
+growsmarter iops https://växer.stockholm/tema/hallbara-och-smarta-losningar/growsmarter/datainsamling-mater-passerande
+buy hw http://ggsp.se/
+netboot https://ipxe.org/
+ricochet https://cwtch.im/cwtch.pdf
+tb vuln ff automount file https://www.wearesegment.com/research/tormoil-deanonymize-tor-browser-users-with-automount/
+https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/ict-24-2018-2019.html
+nextcloud clustering https://bayton.org/2017/06/experimenting-with-clustering-and-data-replication-in-nextcloud-with-mariadb-galera-and-syncthing/
+wireguard kmod hiding https://git.zx2c4.com/blind-operator-mode/about/
+readme wireguard https://eprint.iacr.org/2018/080
+tor service owners https://trac.torproject.org/projects/tor/wiki/org/operations/Infrastructure
+digitalrightsfund software https://github.com/muesli/polly/issues
+email services temporary https://10minutemail.net/
+readme im tor onion https://cwtch.im/
+readme cia http://thephilosophicalsalon.com/the-cia-reads-french-theory-on-the-intellectual-labor-of-dismantling-the-cultural-left/
+x86 mov turing-complete https://www.cl.cam.ac.uk/~sd601/papers/mov.pdf
+sociology cost people:ingvarnilsson report https://www.ideerforlivet.se/globalassets/pdf/rapporter/130301-soc_inv_1301.pdf
+sociology cost people:ingvarnilsson people:anderswadeskog summary http://www.socioekonomi.se/Texter/Ideer/16-siding_low.pdf
+sociology cost people:ingvarnilsson people:anderswadeskog report http://socialanatet.se/det-ar-battre-att-stamma-i-backen-an-i-an-prislapp-pa-unga-i-utanforsskap/
+sextortion https://www.eff.org/deeplinks/2018/07/sextortion-scam-what-do-if-you-get-latest-phishing-spam-demanding-bitcoin
+tor tpi policies documents minutes https://gitweb.torproject.org/company/policies.git/plain/corpdocs/index.html
+readme webautn https://www.imperialviolet.org/2018/03/27/webauthn.html
+readme tor onion vanguard https://github.com/mikeperry-tor/vanguards
+ipsec people:pwouter https://nohats.ca/wordpress/blog/2015/10/17/66-of-vpns-are-not-in-fact-broken/
+people:russhousley nsa ietf https://www.cio.com.au/article/190589/security_top_concern_new_ietf_chair/
+dns service https://zonemaster.iis.se/
+minecraft server like bukkit https://www.spigotmc.org/
+readme riscv http://www.eejournal.com/article/risc-v-aims-for-world-domination/
+security intel fw https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00112.html
+emacs netsec https://lists.gnu.org/archive/html/emacs-devel/2018-07/msg00547.html
 funny video security people:jamesmickens https://vimeo.com/135347162
 web server https://caddyserver.com/
 food https://swejoy.se/
@@ -287,6 +415,7 @@ reproducible builds freebsd https://wiki.freebsd.org/PortsReproducibleBuilds
 readme dfinity blockchain file:///home/amnesia/Downloads/dfinity-consensus.pdf
 dmarc dkim spf blacklist lookup test https://mxtoolbox.com/SuperTool.aspx#
 dmarc test https://dmarc.org/resources/deployment-tools/
+dkim test https://mxtoolbox.com/dkim.aspx
 dkim test https://tools.sparkpost.com/dkim
 ebnf parser https://github.com/antlr/antlr4
 lagen.nu https://ferenda.readthedocs.io/en/stable/
@@ -1342,7 +1471,7 @@ reproducible build linux kernel https://packages.debian.org/sid/source/linux
 reproducible build linux kernel https://tests.reproducible-builds.org/debian/rb-pkg/unstable/amd64/linux.html
 hw rng paper https://eprint.iacr.org/2016/884.pdf
 service doodle poll https://framadate.org/
-time service tz http://time.is/
+time service tz timezone http://time.is/
 https://reproducible-builds.org/
 tor tpi finance docs https://www.torproject.org/about/findoc/
 jakegate https://www.theguardian.com/technology/2016/oct/11/jacob-appelbaum-tor-project-sexual-assault-allegations
@@ -3280,7 +3409,7 @@ tdv people:amel https://www.iis.se/blogg/vad-var-det-vi-sa-fra/
 pic drawing http://www.onlamp.com/pub/a/onlamp/2007/06/21/in-praise-of-pic.html?page=1
 readme tor http://motherboard.vice.com/read/tor-is-being-used-as-a-safe-haven-for-victims-of-cyberstalking
 netnod members http://www.netnod.se/ix/members
-readme people:frankrieger http://frank.geekheim.de/?page_id=128
+we-lost-the-war people:frankrieger http://frank.geekheim.de/?page_id=128
 surveillance theater sweden http://www.uppsalastadsteater.se/2034-2/
 readme nsa lea https://www.eff.org/deeplinks/2014/05/how-nsa-transforming-law-enforcement
 erlang code https://medium.com/p/b5936dceb5e4
@@ -3927,7 +4056,7 @@ freebsd disk encryption https://www.dan.me.uk/blog/2012/05/05/full-disk-encrypti
 surveillance sweden https://www.idg.se/2.1085/1.540970/att-avlyssna-eller-inte-avlyssna-det-ar-inte-ens-en-fraga
 crypto sidechannel people:molnar people:wheeler http://www.cs.berkeley.edu/~daw/papers/pcmodel-long.pdf
 nsa people:russhousley ietf http://www.heise.de/netze/meldung/Internet-Engineering-Task-Force-bekommt-neue-Fuehrungsriege-160240.html
-nsa people:russhousley ietf https://web.archive.org/web/20150412005518/http://www.networkworld.com/article/2293176/lan-wan/q-a--security-top-concern-for-new-ietf-chair.html https://www.networkworld.com/news/2007/073007-ietf-qa.html 
+nsa people:russhousley ietf https://web.archive.org/web/20150412005518/http://www.networkworld.com/article/2293176/lan-wan/q-a--security-top-concern-for-new-ietf-chair.html https://www.networkworld.com/news/2007/073007-ietf-qa.html
 nsa people:russhousley ietf http://www.centr.org/system/files/agenda/attachment/centr-report-ietf86-20130325.pdf
 nsa people:russhousley ietf iab http://www.centr.org/system/files/share/centr-report-ietf87-20130812_0.pdf
 crypto howto list practical https://bettercrypto.org/static/applied-crypto-hardening.pdf
@@ -5117,7 +5246,7 @@ sweden intergrity saml eleg http://www.newsmill.se/artikel/2012/04/24/ny-standar
 nginx src http://hg.nginx.org/nginx/
 funny pic moped https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-ash3/164915_395407900577742_671721899_n.jpg
 tool sysadmin https://github.com/joeyh/etckeeper
-dfri routing he http://bgp.he.net/AS198093 
+dfri routing he http://bgp.he.net/AS198093
 eu tor http://parltrack.euwiki.org/dossier/2012/0340%28COD%29
 surveillance internet usa http://news.cnet.com/8301-13578_3-57581161-38/u.s-gives-big-secret-push-to-internet-surveillance/
 ohm http://www.h-online.com/security/news/item/Dispute-over-police-presence-at-OHM-hacker-festival-1849264.html

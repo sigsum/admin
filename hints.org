@@ -1162,6 +1162,8 @@ In magit: 'r b' to start a rewrite from HEAD, pick the commit and
     keepBackup = false
     keepTemporaries = false
     prompt = false
+** What tags include a given commit?
+git tag --contains <commit>
 * Movie / video
 ** Carnivale
 Start VLC.
@@ -1462,16 +1464,20 @@ Get rid of syntax highlighting in all buffers:
 - building emacs from git
   - 2018-04-09 emacs-26.1-rc1
   - 2018-05-29 emacs-26.1
+  - 2018-10-31 c3cf85b1c1 (branch emacs-26)
+  - ?configure?
+  - make && make install
 - dependencies, not using elpa
   - magit
     - https://github.com/magit/magit
     - 2.12.1 <2018-05-04 Fri>
+    - TODO 2.13.0 <2018-10-31 Wed>
     - set up load-path:
       cat > config.mk <<EOF
       LOAD_PATH  = -L $$HOME/usr/src/magit/lisp
       LOAD_PATH += -L $$HOME/usr/share/emacs/site-lisp
       EOF
-    - make DESTDIR=$HOME test # 1 unexpected failure <2018-05-04 Fri>: magit-status:file-sections
+    - make DESTDIR=$HOME clean test # 1 unexpected failure <2018-05-04 Fri>: magit-status:file-sections
     - make DESTDIR=$HOME install # installed to /home/linus/usr/local/share/emacs/site-lisp/magit
     - dependencies, not using elpa
       - dash
@@ -1482,11 +1488,14 @@ Get rid of syntax highlighting in all buffers:
       - magit-popup
         - https://github.com/magit/magit-popup
         - v2.12.3 <2018-05-04 Fri>
+        - v2.12.4 <2018-08-29 Wed>
         - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp"
         - cp magit-popup.el* magit-popup-autoloads.el $HOME/usr/share/emacs/site-lisp/
       - with-editor
         - https://github.com/magit/with-editor
         - v2.7.2 <2018-05-04 Fri>
+        - v2.7.4 <2018-08-29 Wed>
+        - v2.8.0 <2018-10-31 Wed>
         - make
         - cp with-editor.el* with-editor-autoloads.el ~/usr/share/emacs/site-lisp/
       - ghub
@@ -1497,6 +1506,7 @@ Get rid of syntax highlighting in all buffers:
   - markdown-mode
     - https://github.com/jrblevin/markdown-mode
     - master as of <2018-05-09 Wed>
+    - a1e1ecc3 (master as of <2018-10-31 Wed>)
     - make update	# installs to ~/.emacs.d/site-lisp/
 *** old elpa config
 ;; Do this early -- other requirements might depend on it. See
@@ -2053,6 +2063,10 @@ See Xsessoin(5) and Xsession.options(5) for more.
 ** package handling
 - apt install devscripts
   - rmadison <package> -- show package versions in each archive
+** infrastructure
+- <2018-10-25 Thu>
+torsocks ldapsearch -h db.debian.org -x -b dc=debian,dc=org 'host=*' hostname | grep '^hostname:.*debian.org$' | wc -l
+185
 * Virtualization with qemu-kvm / libvirt
 ** vm's on tool
 Active
@@ -2087,12 +2101,18 @@ virt-install --virt-type kvm --name debian-buster --ram 512 --disk size=20 --gra
 $ sudo virsh start test
 $ sudo virsh console test	# TODO: how can I do this without being root? ("error: failed to get domain 'test'")
 ** starting a tails vm
-sudo virt-install --connect qemu:///system --virt-type kvm --name tails --memory 2048 --graphics vnc --disk none --cdrom ~linus/u/iso/tails-amd64-3.2.iso
+sudo virt-install --connect qemu:///system --virt-type kvm --name tails --memory 2048 --graphics vnc --disk none --cdrom ~linus/u/iso/tails-amd64-3.8.iso
+sudo virsh destroy tails
+sudo virsh undefine tails
 ** adding a disk
-root@tool:/u/vm# truncate --size=6G /u/vm/debian0-2.img
-root@tool:/u/vm# virsh attach-disk --config test /u/vm/debian0-2.img vdb  # --config makes this change persistent over reboots
+root@tool:/u/vm# truncate --size=6G /u/vm/debian0-2.img # or /var/lib/libvirt/images
+# alternatively (but without preallocation=full, the guest sees a very small device for some reason)
+#  qemu-img create -f qcow2 -o "size=20G,preallocation=full" /u/vm/debian0-2.qcow2
+# WARNING: that command hangs for at least a minute, utilizing some CPU and seemingly lots of IO
+root@tool:/u/vm# chmod 600 /u/vm/debian0-2.img
+root@tool:/u/vm# virsh attach-disk $guest /u/vm/debian0-2.img vdb --config # --config makes this change persistent over reboots; consider --live too
 Disk attached successfully
-root@tool:/u/vm# virsh domblklist test   # list domain blocks
+root@tool:/u/vm# virsh domblklist $guest   # list domain blocks
 Target     Source
 ------------------------------------------------
 vda        /u/vm/test.img
@@ -2204,6 +2224,9 @@ mount /dev/nbd0p1 /mnt/image
 "virsh undefine <name>" will remove a vm from "virsh list --all" and
 you can create a vm with that name again. Note that it does not remove
 the image file created by virt-install.
+
+You might have to 'virt destroy' a vm if it's not shutting down
+properly.
 ** setting timezone (time zone, tz)
 dpkg-reconfigure tzdata
 * Ubuntu
@@ -2945,27 +2968,27 @@ Serial no: YK2K196412
 
 [[http://www.pchub.com/uph/category/88-12-10128-0-0/Cooling-Fan-.html][Fan:]] [[http://www.pchub.com/uph/laptop/88-43699-12108/Fujitsu-LifeBook-A6120-Cooling-Fan-.html%3F][MCF-S6055AM05]]
 * Books
-** Buy these [/]
+** Buy these [9/13]
 - [X] [[http://books.google.com/books%3Fid%3DmVIA-CQHDjEC][Kerberos: the definitive guide]]
 - [X] [[http://diveintopython.org/][Dive Into Python]]
 - [X] [django book]
 - [X] [tdd in django]
 - [X] Stevens x 3
-- [ ] Vinge "A Deepness In The Sky"
+- [X] Vinge "A Deepness In The Sky"
 - [X] Stross "Halting State"
 - [ ] Walter Tevis "Mockingbird"
 - [X] Stephenson "Anathem"
-- [ ] Sapiens
-https://www.adlibris.com/se/bok/sapiens-9780099590088
+- [X] Sapiens
+  https://www.adlibris.com/se/bok/sapiens-9780099590088
 - [ ] Reinventing organisations
-https://www.adlibris.com/se/bok/reinventing-organizations-9782960133509
-Om du vill få en intro till boken så har han en inspelad presentation:
-https://www.youtube.com/watch?v=gcS04BI2sbk&t=10s
+  https://www.adlibris.com/se/bok/reinventing-organizations-9782960133509
+  Om du vill få en intro till boken så har han en inspelad presentation:
+  https://www.youtube.com/watch?v=gcS04BI2sbk&t=10s
 - [ ] Listening society
-https://www.amazon.com/Listening-Society-Metamodern-Politics-Guides/dp/8799973901/ref=sr_1_1?ie=UTF8&qid=1528976993&sr=8-1&keywords=listening+society
-Deras hemsida/blogg: https://metamoderna.org/
+  https://www.amazon.com/Listening-Society-Metamodern-Politics-Guides/dp/8799973901/ref=sr_1_1?ie=UTF8&qid=1528976993&sr=8-1&keywords=listening+society
+  Deras hemsida/blogg: https://metamoderna.org/
 - [ ] Spiral dynamics
-https://www.adlibris.com/se/bok/spiral-dynamics-mastering-values-leadership-and-change-9781405133562
+  https://www.adlibris.com/se/bok/spiral-dynamics-mastering-values-leadership-and-change-9781405133562
 * Gustav Vasa
 ** 2001C
 jvlycke@comhem.se,
@@ -3018,6 +3041,8 @@ Example, 1600 pixels wide:
 ** copying off of SD cards <2013-12-22 Sun>
 sudo mount /dev/sdb1 /mnt
 cd ~/pics && rsync -av /mnt/DCIM/ s110/
+** removing exif data
+exiftool -all= FILE
 * OTR
 ** fingerprints
 primary (mcabber): 5A31FB5E 3A66941B F3ED9A8E 181B5CC4 0AD417C1
@@ -3639,7 +3664,7 @@ auth-user-pass, maybe
 ** usb disk
 This example is using a 100MB partition made with "Disk Utility 2.32.1".
 *** Short version
-    time badblocks -vswt random /dev/sdb1 # -c 10240
+    badblocks -vswt random /dev/sdb1 # -c 10240
     cryptsetup --use-random luksFormat --cipher aes-xts-plain64 --hash sha256 --iter-time 3000 /dev/sdb1
     cryptsetup luksOpen /dev/sdb1 kaka
     mkfs.ext4 /dev/mapper/kaka
@@ -3955,6 +3980,9 @@ Connecting to '2001:6b0:8::85:5222'...
 - Cipher: AES-128-GCM
 - MAC: AEAD
 - Compression: NULL
+*** using s_client instead
+openssl s_client -starttls xmpp -xmpphost adb-centralen.se -connect jabber.adb-centralen.se:5222     
+openssl s_client -starttls xmpp-server -xmpphost adb-centralen.se -connect jabber.adb-centralen.se:5269
 * Ethernet trouble with erl <--> oleg
   Sometimes when erl is connected to oleg using a crossed cable, packets
   just don't leave erl.
@@ -4410,7 +4438,9 @@ when you might want to invoke ssh many times from a script.
 
 Next question is if we should require touch for signing and decryption
 too. Indeed we should. This should be set to "fix" (not only "on").
-
+** changing ssh key passphrase in gpg-agent
+- https://blogs.gentoo.org/marecki/2017/03/17/changing-the-passphrase-for-ssh-keys-in-gpg-agent/
+  echo passwd $KEYGRIP | gpg-connect-agent
 ** troubleshooting
 - yubico-piv-tool can't find reader
 datan:~% yubico-piv-tool --verbose -a list-readers
@@ -5085,9 +5115,14 @@ identify <password> ln5
 cert add <sha1 fpr>
 ** umode
 https://www.oftc.net/CallerId/ helps when ppl are spamming you in PM
-/mode ln5 +G
-/mode ln5 -G
-with +G, you'll get messages in "initial buffer"
+- /mode ln5 +G
+- /mode ln5 -G
+with +G, you'll get notifications about PM in "initial buffer"
+use the second command to remove +G
+
+- /mode ln5 +Gj
+might be even better, requiring users to both share a channel with you
+and be registered with nickserv in order to be able to PM you
 * DNS
 ** DNSSEC
 ns.adb-centralen.se uses knot for DNSSEC.
@@ -5226,6 +5261,8 @@ dfri.se.                31971   IN      RRSIG   A 8 2 86400 20180615121556 20180
   - openssh
   - polipo
   - privoxy
+** sunet open resolver
+89.32.32.32
 * i18n
   LANG=sv_SE.UTF-8
 * laptop
@@ -29492,6 +29529,15 @@ Solution: pkg install pkgconf
 - pkg which -- like debian dpkg -S
 - repository FreeBSD contains packages for wrong OS version
   - 
+** missing leap-seconds.lists
+- Symptom
+Checking for rejected mail hosts:
+Certificate verification failed for /C=US/ST=Arizona/L=Scottsdale/O=Starfield Technologies, Inc./CN=Starfield Root Certificate Authority - G2
+5000810137096:error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed:/usr/src/crypto/openssl/ssl/s3_clnt.c:1269:
+fetch: https://www.ietf.org/timezones/data/leap-seconds.list: Authentication error
+
+- Cure
+pkg install ca_root_nss && service ntpd onefetch
 * EuroBonus
 EBB609964226
 * No-phone sig
@@ -30857,6 +30903,29 @@ cu
 - RFC6164 Using 127-Bit IPv6 Prefixes on Inter-Router Links
 - RFC6890 Special-Purpose IP Address Registries
 - [[file:usr/share/ietf/in-notes/rfc7721.txt][RFC7721]] Security and Privacy Considerations for IPv6 Address Generation Mechanisms
+** FreeBSD specific
+- https://lists.freebsd.org/pipermail/freebsd-net/2016-December/046657.html
+ A FreeBSD router box must have an IPv6 address on each interface if
+ you want to reach the router from a client (and vice versa).
+ Currently FreeBSD does not properly support an IPv6 GUA on an
+ interface and a route of the GUA's prefix on another interface
+ without an GUA at the same time, which is often seen on a dedicated
+ router box like Cisco.  This is partly because FreeBSD's NDP and
+ routing table assume that an on-link prefix is interface-local, not
+ node-local across multiple interfaces.
+
+ A practical workaround is using an LLA (i.e. fe80::1 or something)
+ for communication between the router and the clients.
+- https://lists.freebsd.org/pipermail/freebsd-net/2016-December/046753.html
+ auto_linklocal does not work on the second loopback interface because
+ multiple loopback interface support for IPv6 is incomplete at this
+ moment.  You need to add fe80::1%lo1 (or similar) manually if you
+ want an LLA.
+
+ The ifconfig_IF_ipv6 line determines whether the interface uses IPv6
+ or not.  So if you drop it, all of inet6 configuration such as
+ ifconfig_IF_aliasN="inet6..." will be ignored.
+
 * Adresser snail mail
 ** Daniel Melin
 Diligensvägen 35
@@ -31095,7 +31164,7 @@ Nationella telesamverkansgruppen
 ** wiki
 ln5/<see passphrases10> (ln5+cryptopartyorg@4711.se)
 * minecraft / mojang
-u/p: ln+mojang@4711.se/RRR0gn0tudju!
+u/p: ln+mojang@4711.se/RRR0gn0tudju! (ln4711)
 name: l n
 date of birth: 1970-01-01
 Street 12345, City
@@ -31105,6 +31174,8 @@ Street 12345, City
 - visualvm is the one java troubleshooter, capable of instrumenting
 
 http://forums.bukkit.org/threads/optimize-java-for-minecraft-in-a-extreme-way-p-need-feedback-thx-i-am-back.25994/
+** snakedesert
+bluesnake.snakedesert.se
 ** bukkit (snakedesert)
 t -- enter commands
 /permissions group players <group>           -- list users in group
@@ -33000,7 +33071,7 @@ Aug 19 21:12:11 tool kernel: [88441.448643] colord-sane[432]: segfault at 35 ip 
 * otr fp
 osman nokdok@jabber.ccc.de d636464e fa7a720 27c20111 703ce5a1 ff0534a0
 jake old not used ioerrror@jabber.ccc.de: 067508ccc60422e58544e2cd9b4d1d0fa0a1be23
-
+ola@bini.ec c072 82ef dd7c cec1 74cb 27af 1095 835f 1a63 c02f
 * Crypto Explorers!
 ** Abstract
 [[gnus:nnimap%2Badbc:INBOX#F1A58D9C-D004-4CDC-B107-8640BB7EB616@newamerica.net][Email from James Losey: Re: Encrypted]]
@@ -35691,6 +35762,9 @@ home.elis.nu etu
 33bits.eu pettter
 totoro.hack.org
 mumble.calyxinstitute.org 64738
+** mumble.adb-centralen.se
+[root@murmur ~]# openssl x509 -sha256 -fingerprint -noout -in /usr/local/etc/umurmur/cert.pem 
+SHA256 Fingerprint=6D:90:8F:D1:55:D7:D4:2D:90:47:D4:85:1A:7E:DE:7C:B9:4A:CE:E8:C6:E3:18:5B:34:9F:83:37:A1:0B:E3:2B
 * leap.se
 ** tor dev valencia
 <2015-03-06 Fri> met with meskio / ruben
@@ -36271,17 +36345,17 @@ hashclash attack reduces 2^80 to 2^61
 - "firewallvm" having a direct feed to pulseaudio decompression
   running as root in dom0
 - by default EVERYTHING is logged to dom0 permanent storage
-** vt-d and vt-x
-<joe> vt-d: d for "directed IO" (IBM POWER term, IBM was the first to have an
-      IO MMU. feature is called IOMMU on AMD)
-<joe> vt-x: virtualization eXtensions, or perhaps it's related to virtualized
-      execution (pages being +x), not sure
-<joe> so vt-x is the general thing that allows certain ASIDs to operate in
-      ring 0 without accessing each other or the hypervisor (==run as a vm)
-<joe> and vt-d allows you to "mmap" DMA access for PCI devices into specific
-      VMs to prevent them from fucking over the entire machine.
-<joe> why they can't be limited to the advertised DMA memory mapping range is
-      a mystery to me, but intel didn't want it so.         
+** joe on vt-d and vt-x
+<A1> vt-d: d for "directed IO" (IBM POWER term, IBM was the first to have an
+     IO MMU. feature is called IOMMU on AMD)
+<A1> vt-x: virtualization eXtensions, or perhaps it's related to virtualized
+     execution (pages being +x), not sure
+<A1> so vt-x is the general thing that allows certain ASIDs to operate in
+     ring 0 without accessing each other or the hypervisor (==run as a vm)
+<A1> and vt-d allows you to "mmap" DMA access for PCI devices into specific
+     VMs to prevent them from fucking over the entire machine.
+<A1> why they can't be limited to the advertised DMA memory mapping range is
+     a mystery to me, but intel didn't want it so.         
 ** chromebook 201
 <xee5Aexa> cat >/etc/dracut.conf.d/nopat_make_x201_work.conf <<EOF
 <xee5Aexa> kernel_cmdline+=" nopat"
@@ -37040,7 +37114,6 @@ Date: Fri, 05 Jan 2001 15:43:44 +0000
 [ image/gif (hidden) ]
 
 
-
 * EDRi supporter (20 EUR/month)
 IBAN BE32733021502102
 - 2015-10-28 20 EUR
@@ -37595,7 +37668,7 @@ $ make install PREFIX=$HOME/usr
 (add-to-list 'auto-mode-alist '("\\.lfe\\'" . lfe-mode))
 
 M-x run-lfe
-* calendar @ adb-centralen.se
+* calendar @ adb-centralen.se / caldav
 https://webmail.adb-centralen.se/rpc.php
 
 curl-tor -v https://webmail.adb-centralen.se/.well-known/caldav
@@ -39053,8 +39126,10 @@ but using it for your home network is probably fine
 
 *** email thread with dkg and micah
 <2018-07-11 Wed> 
-- [[gnus:nnimap+adbc:INBOX#87y3eiivuu.fsf@fifthhorseman.net][Email from Daniel Kahn Gillmor: wireguard identity forward sec]]
-- [[gnus:nnimap+adbc:sent-mail.2018-07#87in5m41co.fsf@nordberg.se][Email to Daniel Kahn Gillmor: Re: wireguard identity forward]]
+- [[gnus:nnimap+adbc:INBOX#87y3eiivuu.fsf@fifthhorseman.net][dkg 1, start of thread]] (jul 10 -18)
+- [[gnus:nnimap+adbc:sent-mail.2018-07#87in5m41co.fsf@nordberg.se][linus 1]]
+- [[gnus:nnimap+adbc:INBOX#87fu0pinxh.fsf@fifthhorseman.net][dkg 2]]
+- [[gnus:nnimap+adbc:INBOX#87pnzrgr4z.fsf@fifthhorseman.net][dkg systemd microservice outline]] (jul 13 -18)
 *** private chatt with joe <2018-07-11 Wed>
 client key rotation is problematic from a purity perspective in that it
 still leaves open a window for deanonymization
@@ -41425,3 +41500,127 @@ Rimlig Data AB
 enklast att printa med hemma
 - ABS
 måste vädras
+* denise mejlkapad
+<2018-07-19 Thu>
+
+From: dennis ohlson <ohlsonharsemester@hotmail.com>
+Subject: Akut hjälp!
+Date: Thu, 19 Jul 2018 09:38:05 +0000 (4 hours, 36 minutes, 47 seconds ago)
+
+contact email address: denise@4711.se
+fördelsenummer 19681122
+postkod 16932
+
+nytt pw: Silopen 5 e snel!
+
+** skickat
+Cecilia Nordström <cissi.nordstrom@gmail.com> Mötesanteckningar från eftermöte 23 november 2016 justerat 22 januari 
+Gunilla Thyni <gunilla.thyni@gmail.com> majblomme möte
+Lillemor Emring <lillemor.emring@majblomman.se> Lokalföreningsträffar
+
+* signal apk
+https://signal.org/android/apk/	# enable a shitload of js
+mkdir -p tmp/apkunpack; cd tmp/apkunpack
+7z -x ~/tb-dl/Signal-website-release-4.23.4.apk
+cat META-INF/CERT.RSA | keytool -printcert | egrep SHA256:
+# from website: 29:F3:4E:5F:27:F2:11:B4:24:BC:5B:F9:D6:71:62:C0 EA:FB:A2:DA:35:AF:35:C1:64:16:FC:44:62:76:BA:26 
+cat ~/tb-dl/Signal-website-release-4.23.4.apk | adb shell dd of=storage/emulated/0/Download/Signal-website-release-4.23.4.apk
+* ads
+** CarbonAds / BuySellAds
+- https://carbonads.net/
+* nextcloud
+** how to debug
+** DONE quota and group admin settings don't bite
+Solved: using apache with mod_php instead of lighttpd with fastcgi and
+php-fpm makes this problem go away.
+
+FF console:
+TypeError: result.data is undefined[Learn More]  users.js:627:7
+	UserList._updateQuota/< https://nc3.adb-centralen.se:8443/settings/js/users/users.js:627:7
+	n.Callbacks/j https://nc3.adb-centralen.se:8443/core/vendor/core.js:2:26920
+	n.Callbacks/k.fireWith https://nc3.adb-centralen.se:8443/core/vendor/core.js:2:27738
+	x https://nc3.adb-centralen.se:8443/core/vendor/core.js:4:11251
+	.send/b/< https://nc3.adb-centralen.se:8443/core/vendor/core.js:4:14765
+
+called from core.js which has lines of length 32k characters so hmm
+** DONE user authentication
+Enabling app user_external and configuring a OC_User_IMAP user_backend
+in config.php pointing at imap.adb-centralen.se seems to have the
+effect that knowledge about a user name at imap.adb-centralen, without
+the domain name, grants access to _any_ Nextcloud user with a user
+name equal to it, disregarding the domain name.
+
+In effect, this means that we have a flat name space for user names
+and must not create users with left-hand-of-the-at-sign equal to any
+user at imap.adbc, ie the kdc.
+
+I _suspect_ that if imap.adbc stopped trying to authn 'user' when
+passed 'user@domain', this would not be a problem. Still indicates
+that the second field in 'arguments' in the user_backends array
+doesn't do what I thought it would do.
+
+  'user_backends' => array (
+      array ('class'     => 'OC_User_IMAP',
+             'arguments' => array ('{imap.adb-centralen.se:993/imap/ssl/readonly/novalidate-cert}', 'adb-centralen.se')),
+      array ('class'     => 'OC_User_IMAP',
+             'arguments' => array ('{imap.adb-centralen.se:993/imap/ssl/readonly/novalidate-cert}', 'nordberg.se')),
+  ),
+
+Reading code explains the mystery. The domain name is _stripped_ from
+the user name by the user_external app and since imap.adbc happily
+authenticates 'user' if there's a 'user/imap' in the KDC, we're better
+off not configuring a domain name.
+* authn/authz
+- leif on what to use
+  - om du har 1 tjänst (mail) så bygg ngt eget; 17 tjänster - alla
+    opensource - kör [[https://www.internet2.edu/products-services/trust-identity/comanage/][comanage]]
+  - [comanage] är ldap+mgmt-gui+idp
+  - och där har du färdiga integrationer med mailman osv "på hyllan"
+  - detta är i princip vad halva heathers bolag [http://sphericalcowgroup.com/] sysslar med
+
+* EU funding
+- jean-luc dorel
+** mo explaining <2018-11-28 Wed>
+- ICT24 is split into two parts
+- one is RIA, Research and Innovation Action, which was awarded to
+  dyne, nlnet, and geant consortias
+- the other is CSA, Coordination and Support Actions 'Technology
+  Strategy & Policy': will engage leading-edge Internet stakeholders
+  and will identify emerging research trends and policy needs, through
+  a continuous public online consultation, open stakeholder
+  engagement, fora and debates, and data analysis
+- "These activities could partially be implemented through small
+  prizes; the maximum budget the project can devote to prizes is Euro
+  300.000."
+- Technology Harvest & Transfer': will support 'R&I Actions' and their
+  third parties in ensuring the best use of the outcomes created by
+  delivering specific exploitation strategies, including follow-up
+  investment opportunities, industry relations, IPR/knowledge
+  transfers, tech-transfer services to digital innovation hubs,
+  mentoring / coaching services and linkage to national IPR
+  exploitation programmes, in a most innovative and effective way.  so
+  there were two areas one could have applied for (and can apply in
+  the future) in "support actions"
+- one such support action is the ngi.eu portal
+- and the awards https://awards.ngi.eu/
+- strategy&policy, which is this one
+- and "technology harvest"
+- i know almost nobody from these two areas
+- i only recognize one person from the award committee
+- but i will probably learn a bit more at the commission "ICT
+  Exhibition" thing next week in vienna
+- "ICT 2018, the key European ICT research and innovation event
+  organised by the EuropeanCommission, will take place in Vienna on
+  4-6 December 2018"
+- it's the key!
+- i need to be there, responsible for the PANORAMIX mixnet project
+  booth
+** meeting, phone <2018-11-30 Fri>
+- sharing info about the new program
+- agile and focused, small teams, channeling through intermediaries
+- 21M EUR to four entities in three projects (privacy, ledger,
+  discoverability & identity)
+- calls opening tomorrow, first on privacy; narrative is "european
+  values, openness, colabaoraeion, protection of private life,
+  transparency, [some more]"; "human centric internet, serving humans"
+- the discoverability and identity call might be easier
