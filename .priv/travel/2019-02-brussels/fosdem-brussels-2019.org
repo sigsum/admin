@@ -1,0 +1,6 @@
+* flights
+SAS
+bokningsref OIB9FV
+e-biljettnummer 117-2457880363
+2019-01-30 15:10 ARN T5 - BRU 17:20 8A
+2019-02-04 10:00 BRU - ARN 12:10 5A
