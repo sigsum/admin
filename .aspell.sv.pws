@@ -1,4 +1,4 @@
-personal_ws-1.1 sv 132 
+personal_ws-1.1 sv 134 
 transparens
 tork
 spärrningarna
@@ -47,6 +47,7 @@ SOU
 sponsorer.
 Kleberg
 DNS
+expirerar
 anonymiseringstjänster
 datalagringsdirektiv
 mejla
@@ -91,6 +92,7 @@ nåbara
 paketerat
 EU:s
 datalagringsdirektivet
+signeringsnyckeln
 suppleanter
 sugen
 substantiell
