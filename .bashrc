@@ -85,6 +85,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# This effectively makes gpg-agent the only ssh-agent. Not so good.
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # pinentry uses this:
