@@ -1,3 +1,71 @@
+fosdem2019 brussels tor https://pad.riseup.net/p/tor-netteam-hackweek-2019.1-keep
+fosdem2019 brussels tor https://blog.torproject.org/events/fosdem-brussels
+vr sunet agresso https://navet.vr.se/nyhetsarkiv/nyheter/2018/fortydligandefortsattredovisaarbetstidiagresso.5.7586920916622dac33718b85.html
+tor relay torrelayguide https://trac.torproject.org/projects/tor/wiki/TorRelayGuide
+tor onion v3onion authn https://matt.traudt.xyz/p/FgbdRTFr.html
+debian endianess architecture https://wiki.debian.org/ArchitectureSpecificsMemo
+arm hw https://www.olimex.com/Products/OLinuXino/A64/A64-OLinuXino/open-source-hardware
+readme fbi mlk https://www.rollingstone.com/politics/politics-features/mlk-amazon-fbi-781327/
+readme webauthn u2f fido people:agl https://www.imperialviolet.org/2018/03/27/webauthn.html
+dkim spf dmarc https://www.linode.com/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/
+dkim check service https://www.port25.com/authentication-checker/
+wireguard whitepaper https://www.wireguard.com/papers/wireguard.pdf
+readme paper privacy women southasia https://www.usenix.org/conference/soups2018/presentation/sambasivan
+signal android apk dl download https://signal.org/android/apk/
+sharing encrypted https://github.com/Upload/Up1
+overwatch strategy video https://www.youtube.com/watch?v=NYKXP3HMySc
+overwatch strategy video https://www.youtube.com/channel/UCDrfc_LU0llSRI7icBFoBnw
+wg dkg idfs https://0xacab.org/dkg/wg-key-rotation
+readme puppetdb https://puppet.com/docs/puppetdb/6.0/connect_puppet_apply.html
+readme tor funding https://techcrunch.com/2019/01/11/tor-lessens-reliance-us-grants/?guccounter=1
+mlmmj administration mailng list https://github.com/iredmail/mlmmjadmin/
+apple ct policy https://support.apple.com/en-us/HT205280
+apple ct log program https://support.apple.com/en-us/HT209255
+fosdem pgp keysigning https://fosdem.org/2019/keysigning/2
+dfri verksamhetsberättelse 2016 https://www.dfri.se/wp-content/uploads/2017/01/Verksamhetsberattelse-2016.pdf
+tor releases https://trac.torproject.org/projects/tor/wiki/org/teams/NetworkTeam/CoreTorReleases
+code-review software https://github.com/dpc/crev
+tor support mail list https://lists.torproject.org/cgi-bin/mailman/listinfo/wtf
+overwatch subreddit https://www.reddit.com/r/Overwatch
+overwatch wiki https://overwatch.wiki.fextralife.com/
+overwatch controls https://overwatch.wiki.fextralife.com/Controls
+overwatch mercy neptuno video https://www.youtube.com/results?search_query=overwatch+neptuno+mercy
+overwatch mercy video https://www.youtube.com/results?search_query=overwatch+vale+mercy
+overwatch mercy video https://www.youtube.com/results?search_query=overwatch+aspen+mercy
+overwatch mercy video https://www.youtube.com/results?search_query=overwatch+eeveea+mercy
+tor https://www.wired.com/story/tor-anonymity-easier-than-ever/
+overwatch porn https://kotaku.com/inside-the-surprisingly-big-overwatch-porn-scene-1778229605
+overwatch porn https://mega.nz/#F!NAMABSjb!QQ3MUG9aaLBvU79upCND1A!oRtUUYyb
+puppet roles profiles https://puppet.com/docs/pe/2019.0/the_roles_and_profiles_method.html
+puppet freebsd icinga monitoring https://forge.puppet.com/icinga/icinga2
+puppet freebsd port pkg https://forge.puppet.com/ptomulik/portsng
+mysql mariadb backup https://mariadb.com/kb/en/library/mariabackup-options/
+callofcthulhu rollplay boardgame https://www.chaosium.com/content/FreePDFs/CoC/CHA23131%20Call%20of%20Cthulhu%207th%20Edition%20Quick-Start%20Rules.pdf
+callofcthulhu rollplay boardgame https://www.chaosium.com/content/FreePDFs/CoC%207/CHA23135-Conv%20-%20Call%20of%20Cthulhu%207th%20Edition%20Conversion%20Guidelines.pdf
+https://puppet.com/docs/puppet/4.8/index.html
+https://puppet.com/docs/puppet/4.8/lang_summary.html
+https://puppet.com/docs/puppet/4.8/style_guide.html#the-puppet-language-style-guide
+readme puppet stdlib https://forge.puppet.com/puppetlabs/stdlib
+repro amd64 essential https://tests.reproducible-builds.org/debian/unstable/amd64/pkg_set_essential.html
+tor vpn https://matt.traudt.xyz/p/mRikAa4h.html
+readme fbsd virtual systems https://clonos.tekroutine.com/
+hsm https://www.nitrokey.com/products/nitrohsm
+grsec publish https://www.openwall.com/lists/kernel-hardening/2018/12/18/6
+bios compromise-p people:drwhax https://paste.debian.net/1056456
+readme privacy apps phone https://www.nytimes.com/interactive/2018/12/10/business/location-data-privacy-apps.html
+browser tips https://riseup.net/better-web-browsing
+debian apt tor https://bits.debian.org/2016/08/debian-and-tor-services-available-as-onion-services.html
+drums people:bonham https://www.youtube.com/watch?v=lWnhz1ZcF74
+debian transition https://ben.jrtc27.com/html/riscv64-libffi.html
+browser concurrent connections https://www.browserscope.org/?category=network&v=top
+tor swag https://trac.torproject.org/projects/tor/wiki/org/teams/CommunityTeam/SwagForVolunteers
+readme puppet bcp https://puppet.com/blog/best-practices-for-building-puppet-modules
+cloud terraform (provision) vault (secure) consul (connect) nomad (run) https://www.hashicorp.com/
+pwstore pws passwordmanager https://github.com/weaselp/pwstore/
+mlmmj web archive https://git.cryptomilk.org/projects/mlmmj-webarchiver.git
+australia encryption ban https://www.wsws.org/en/articles/2018/10/10/data-o10.html
+rpi3 rpi2 debian image https://github.com/drtyhlpr/rpi23-gen-image
+readme security beliefs https://sci-hub.tw/10.1007/978-3-030-04762-7_4
 funny oom linux https://lwn.net/Articles/104185/
 readme darkweb hitmen kill-for-hire https://www.wired.co.uk/article/kill-list-dark-web-hitmen
 dns service https://dnsflagday.net/
