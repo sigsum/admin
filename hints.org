@@ -755,6 +755,7 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - tcpkill (from the dsniff package)
 - xpra -- screen for X11
 - ncdu -- ncurses disk utility
+- duc -- disk usage analyser, with a database
 - getent -- get entries from NSS libraries (name service)
 - gobby -- p2p live editing
 - notmuch -- email address indexing
@@ -1465,13 +1466,15 @@ Get rid of syntax highlighting in all buffers:
   - 2018-04-09 emacs-26.1-rc1
   - 2018-05-29 emacs-26.1
   - 2018-10-31 c3cf85b1c1 (branch emacs-26)
+  - 2018-12-25 9578c2aa (branch emacs-26)
   - ?configure?
   - make && make install
 - dependencies, not using elpa
   - magit
     - https://github.com/magit/magit
     - 2.12.1 <2018-05-04 Fri>
-    - TODO 2.13.0 <2018-10-31 Wed>
+    - 2.13.0 <2018-10-31 Wed>
+    - 2.13.1 <2018-12-25 Tue>
     - set up load-path:
       cat > config.mk <<EOF
       LOAD_PATH  = -L $$HOME/usr/src/magit/lisp
@@ -1489,6 +1492,7 @@ Get rid of syntax highlighting in all buffers:
         - https://github.com/magit/magit-popup
         - v2.12.3 <2018-05-04 Fri>
         - v2.12.4 <2018-08-29 Wed>
+        - v2.12.5 <2018-12-25 Tue>
         - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp"
         - cp magit-popup.el* magit-popup-autoloads.el $HOME/usr/share/emacs/site-lisp/
       - with-editor
@@ -1501,7 +1505,9 @@ Get rid of syntax highlighting in all buffers:
       - ghub
         - https://github.com/magit/ghub
         - v2.0.0 <2018-05-04 Fri>
-        - make
+        - NOT-INSTALLED v3.1.0 <2018-12-25 Tue>
+          - ghub.el:970:1:Error: Cannot open load file: No such file or directory, ghub-graphql
+        - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp"
         - cp ghub.el* ghub-autoloads.el ~/usr/share/emacs/site-lisp/
   - markdown-mode
     - https://github.com/jrblevin/markdown-mode
@@ -2096,6 +2102,7 @@ Name                 State      Autostart
 -----------------------------------------
 default              inactive   no
 ** creating a vm, per vm
+# NOTE: pointing out debian stable dist but says 'debiantesting'
 virt-install --virt-type kvm --name debian-buster --ram 512 --disk size=20 --graphics none --location http://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ --extra-args console=ttyS0,115200 --os-variant debiantesting
 # then install an os, reboot the vm, then shut it down
 $ sudo virsh start test
@@ -3786,6 +3793,16 @@ This example is using a 100MB partition made with "Disk Utility 2.32.1".
    Aug 29 08:41:02 42 kernel: [253822.725770] mount.crypt[11548]: segfault at 0 ip 0000000000406ede sp 00007fff30e313a0 error 4 in mount.crypt[400000+9000]
    Aug 29 09:18:13 42 kernel: [256053.496891] mount.crypt[14639]: segfault at 0 ip 0000000000406ede sp 00007fffbdbc1750 error 4 in mount.crypt[400000+9000]
    Aug 29 09:18:26 42 kernel: [256066.816528] mount.crypt[14737]: segfault at 0 ip 0000000000406ede sp 00007fff5cd545f0 error 4 in mount.crypt[400000+9000]
+** backing up luks header
+cryptsetup luksHeaderBackup /dev/sda5 --header-backup-file /mnt/datan.sda5.header-backup
+** changing key
+luksDump # slot 0 in use
+luksAddKey /dev/sda5 --iter-time 3000 # adding slot 1
+: reboot and test new passphrase in slot 1
+luksKillSlot /dev/sda5 0
+luksHeaderBackup /dev/sda5 --header-backup-file /mnt/datan.sda5.slot-1-only.header-backup
+: reboot and verify that the old passphrase doesn't work any longer
+: consider shredding all old luks header backups containing slot 0
 * blog post ideas
 ** Google phone
    Sorry, I just doxed you
@@ -4510,6 +4527,7 @@ PIN unblocked and new PIN set.
   - run by root, as a normal service
 - gpg-agent is the interface for both gpg2 and ssh
   - started from ~/.xsession
+  - can be restarted with 'echo /bye | gpg-connect-agent' (?)
 - scdaemon is how gpg2 talks to the card
   - started by gpg-agent
 *** Debian stretch, gpg-agent started by systemd
@@ -4799,6 +4817,14 @@ testkey
 root@datan:~# ykpersonalize
 Firmware version 4.2.8 Touch level 773 Program sequence 1
 A slot must be chosen with -1 or -2.
+** using ssh-agent instead of gpg-agent
+- gpg-agent might run out of memory if you use it a lot, see
+  https://dev.gnupg.org/T3530
+- make sure you don't have the following (or similar) in .bashrc (or similar)
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  since that will make gpg-agent the only usable ssh-agent
+- ssh-agent bash -
+  ssh-add -s $(dpkg -L opensc-pkcs11 | grep \/opensc-pkcs11.so\$ | head -n1)
 * YubiHSM
 ** <2011-03-17 Thu>
    NO_CFG> sysinfo
@@ -31175,7 +31201,7 @@ Street 12345, City
 
 http://forums.bukkit.org/threads/optimize-java-for-minecraft-in-a-extreme-way-p-need-feedback-thx-i-am-back.25994/
 ** snakedesert
-bluesnake.snakedesert.se
+mc.snakedesert.se
 ** bukkit (snakedesert)
 t -- enter commands
 /permissions group players <group>           -- list users in group
@@ -31198,6 +31224,10 @@ coursera.org "Fnoi Albrektsson" ln+coursera@4711.se BA1NjZUt
   example: https://openexchangerates.org/api/latest.json?app_id=81637de8fad44051a376885b4bb60ba1
   "free plan" (can't change base currency from USD)
   NOTE: to get SEK/EUR, one can simply calculate SEK/USD / EUR/USD
+- sony playstation network
+  - username sorandomgomg
+  - birth 2000-01-01
+  - town/district/zip S/D/12345
 * mud
 proj% tt++
 * tpb
@@ -37412,6 +37442,38 @@ secadm {
   }
 }
 
+** kernel crash on service wireguard restart
+UPDATE: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=225438
+
+... after adding one or more peers, two of which didn't have their
+allowed-ip's (looked only at v4) in the routing table, ie didn't point
+at wg0
+
+Jan 14 10:59:54 kcmp syslogd: kernel boot file is /boot/kernel/kernel
+Jan 14 10:59:54 kcmp kernel: [3244639] ifa_maintain_loopback_route: deletion failed for interface wg0: 3
+Jan 14 10:59:54 kcmp kernel: [3244639] panic: Bad link elm 0xfffff8001cd45200 next->prev != elm
+Jan 14 10:59:54 kcmp kernel: [3244639] cpuid = 2
+Jan 14 10:59:54 kcmp kernel: [3244639] __HardenedBSD_version = 1100056 __FreeBSD_version = 1102504
+Jan 14 10:59:54 kcmp kernel: [3244639] version = FreeBSD 11.2-STABLE-HBSD #0 : Wed Dec  5 02:56:01 UTC 2018
+Jan 14 10:59:54 kcmp kernel: [3244639]     root@updater-01:/usr/obj/usr/src/sys/HARDENEDBSD
+Jan 14 10:59:54 kcmp kernel: [3244639] KDB: stack backtrace:
+Jan 14 10:59:54 kcmp kernel: [3244639] #0 0xffffffff80aac827 at kdb_backtrace+0x67
+Jan 14 10:59:54 kcmp kernel: [3244639] #1 0xffffffff80a69cfc at vpanic+0x17c
+Jan 14 10:59:54 kcmp kernel: [3244639] #2 0xffffffff80a69d83 at panic+0x43
+Jan 14 10:59:54 kcmp kernel: [3244639] #3 0xffffffff80c65b5e at in6_unlink_ifa+0x22e
+Jan 14 10:59:54 kcmp kernel: [3244639] #4 0xffffffff80b4da3d at if_purgeaddrs+0xdd
+Jan 14 10:59:54 kcmp kernel: [3244639] #5 0xffffffff80b5cb41 at tunclose+0x1a1
+Jan 14 10:59:54 kcmp kernel: [3244639] #6 0xffffffff80936657 at devfs_close+0x307
+Jan 14 10:59:54 kcmp kernel: [3244639] #7 0xffffffff8105d0a3 at VOP_CLOSE_APV+0xd3
+Jan 14 10:59:54 kcmp kernel: [3244639] #8 0xffffffff80b348df at vn_close1+0xef
+Jan 14 10:59:54 kcmp kernel: [3244639] #9 0xffffffff80b33690 at vn_closefile+0x50
+Jan 14 10:59:54 kcmp kernel: [3244639] #10 0xffffffff8093709c at devfs_close_f+0x2c
+Jan 14 10:59:54 kcmp kernel: [3244639] #11 0xffffffff80a1b025 at closef+0x1f5
+Jan 14 10:59:54 kcmp kernel: [3244639] #12 0xffffffff80a18390 at closefp+0xa0
+Jan 14 10:59:54 kcmp kernel: [3244639] #13 0xffffffff80ee0bf9 at amd64_syscall+0x759
+Jan 14 10:59:54 kcmp kernel: [3244639] #14 0xffffffff80ebc28d at fast_syscall_common+0x101
+Jan 14 10:59:54 kcmp kernel: [3244639] Uptime: 37d13h17m19s
+Jan 14 10:59:54 kcmp kernel: [3244639] Dumping 6171 out of 24508 MB:..1%..11%..21%..31%..41%..51%..61%..71%..81%..91%Copyright (c) 2013-2018 The HardenedBSD Project.
 * hoerbert
 239 euro
 reference 9.742.308
@@ -37631,6 +37693,8 @@ skriva.
 ** reconnect ssh tunnels
 - `autossh -M 0 -o "ServerAliveInterval 20"` for port forwarding
 - see also ControlMaster in SSH_CONFIG(5)
+** sudo over ssh
+ssh -t $host sudo $command
 * cosmos + puppet @ sunet
 - initiating hiera secrets 
   /var/cache/cosmos/model/pre-tasks.d/040hiera-gpg --force
@@ -38545,7 +38609,6 @@ Somewehre in here results in
   ↘  downgrade base                  v0.11.0 to v0.9.4
           [uses sexplib]
 
-
 * ratpoison
 - notifications
   apt install libnotify-bin dunst
@@ -39216,9 +39279,6 @@ but it maintains the "no unauthenticated state" invariant
 -O> which seems unresolved afaict
 <O- I think ipredator might also be happy to use a secure version of wiregurad
 <O- wireguard*
-
-
-
 * Núbi Ferskur <neubyi@4711.se>
 - uses ln+neubyi@4711.se some places (github)
 * robur.io
@@ -41519,12 +41579,13 @@ Gunilla Thyni <gunilla.thyni@gmail.com> majblomme möte
 Lillemor Emring <lillemor.emring@majblomman.se> Lokalföreningsträffar
 
 * signal apk
-https://signal.org/android/apk/	# enable a shitload of js
+go to https://signal.org/android/apk/	# enable a shitload of js
+download the apk and put it in ~/u/apk/
 mkdir -p tmp/apkunpack; cd tmp/apkunpack
-7z -x ~/tb-dl/Signal-website-release-4.23.4.apk
-cat META-INF/CERT.RSA | keytool -printcert | egrep SHA256:
-# from website: 29:F3:4E:5F:27:F2:11:B4:24:BC:5B:F9:D6:71:62:C0 EA:FB:A2:DA:35:AF:35:C1:64:16:FC:44:62:76:BA:26 
-cat ~/tb-dl/Signal-website-release-4.23.4.apk | adb shell dd of=storage/emulated/0/Download/Signal-website-release-4.23.4.apk
+7z x ~/u/apk/Signal-website-release-${VERSION}.apk
+cat META-INF/SIGNAL_S.RSA | keytool -printcert | egrep SHA256:
+# from website: 29:F3:4E:5F:27:F2:11:B4:24:BC:5B:F9:D6:71:62:C0 EA:FB:A2:DA:35:AF:35:C1:64:16:FC:44:62:76:BA:26
+adb install ~/u/apk/Signal-website-release-${VERSION}.apk
 * ads
 ** CarbonAds / BuySellAds
 - https://carbonads.net/
@@ -41624,3 +41685,59 @@ off not configuring a domain name.
   values, openness, colabaoraeion, protection of private life,
   transparency, [some more]"; "human centric internet, serving humans"
 - the discoverability and identity call might be easier
+* rpi
+** debian on rpi3
+git clone https://github.com/drtyhlpr/rpi23-gen-image
+cd rpi23-gen-image
+sudo apt install debootstrap debian-archive-keyring qemu-user-static binfmt-support dosfstools rsync bmap-tools whois git bc psmisc dbus sudo
+sudo apt install crossbuild-essential-arm64
+sudo apt install lsof apt-cacher-ng
+
+time CONFIG_TEMPLATE=adbc-rpi3b+-stretch sudo ./rpi23-gen-image.sh
+real    25m11.154s
+: didn't get any other image file than kernel8.img and i was hoping for a qcow2:
+
+time script -c 'CONFIG_TEMPLATE=adbc-rpi3b+-buster ./rpi23-gen-image.sh' build.$(date +%s).log
+real    25m35.833s
+root@datan:/home/linus/usr/src/rpi23-gen-image# find images/buster -name \*.img -ls
+ 25440018  13184 -rw-------   1 root     root     13497048 Dec 10 08:02 images/buster/build/chroot/boot/firmware/kernel8.img
+ 19542325 314388 -rw-r--r--   1 root     root     508204032 Dec 10 08:03 images/buster/2018-12-10-arm64-CURRENT-rpi3P-buster-arm64.img
+
+mkdir -p ~/usr/src/raspberrypi
+git clone https://github.com/raspberrypi/linux ~/usr/src/raspberrypi/linux
+ln -s ~linus/p/rpi-images/image-templ/adbc-rpi3b+-buster templates/
+time script -c "CONFIG_TEMPLATE=adbc-rpi3b+-buster HOSTNAME=kexec.verkligendata.se ~linus/usr/src/rpi23-gen-image/rpi23-gen-image.sh" build.$(date +%s).log
+* signal
+- https://signal.org/android/apk/
+
+datan:~% unzip -p Signal-website-release-4.30.8.apk META-INF/SIGNAL_S.RSA | keytool -printcert
+Owner: CN=Whisper Systems, OU=Research and Development, O=Whisper Systems, L=Pittsburgh, ST=PA, C=US
+Issuer: CN=Whisper Systems, OU=Research and Development, O=Whisper Systems, L=Pittsburgh, ST=PA, C=US
+Serial number: 4bfbebba
+Valid from: Tue May 25 17:24:42 CEST 2010 until: Tue May 16 17:24:42 CEST 2045
+Certificate fingerprints:
+         MD5:  D9:0D:B3:64:E3:2F:A3:A7:BD:A4:C2:90:FB:65:E3:10
+         SHA1: 45:98:9D:C9:AD:87:28:C2:AA:9A:82:FA:55:50:3E:34:A8:87:93:74
+         SHA256: 29:F3:4E:5F:27:F2:11:B4:24:BC:5B:F9:D6:71:62:C0:EA:FB:A2:DA:35:AF:35:C1:64:16:FC:44:62:76:BA:26
+Signature algorithm name: SHA1withRSA
+Subject Public Key Algorithm: 1024-bit RSA key
+Version: 3
+* password managers
+** pws
+- https://github.com/weaselp/pwstore/
+- has access control with FIXME
+* 4g, 3g, gsm, mobile networks
+** dongle
+- ericsson: huawei e1750
+* gaming laptop
+- GPU: GTX 1060 or 1050 Ti
+- lenovo legion y530
+  - https://www.pcmag.com/roundup/363278/the-best-cheap-gaming-laptops
+* overwatch
+** PC
+DRSCHMTRLNG#2190
+
+- to get more fps, at least 60 fps
+  - game settings, resolution 150% -> 100%
+  - pros play on 80%
+- the dream is 144 FPS together with a 144 Hz monitor
