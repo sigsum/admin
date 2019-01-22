@@ -79,6 +79,8 @@ alias anna                      anna_mansson@yahoo.se
 alias anna.globala              "Anna Högfors-Lindståhl <anna.lindstahl@stockholm.se>"
 alias anna-linda                "Anna Linda Hultström <annalindahultstrom@gmail.com>"
 alias anne			anne@nordu.net
+alias anne-lie                  annelie
+alias annelie                   "Anne-Lie Lokko <anne-lie@addfriends.se>"
 alias annika.frendberg          annika.frendberg@stockholm.se
 alias annika.mattsson		"annika mattsson <annika99999@hotmail.com>"
 alias annika.ohlin              annika.ohlin@sfr.fr
@@ -140,6 +142,7 @@ alias bleidl                    bruce@subgraph.com
 alias bmksodermalm              "Tränare och styrelsemedlemmar BMK Södermalm <bmksodermalm@gmail.com>"
 alias bo                        "Bo Danner Henriksen" <bo@nordu.net>"
 alias bof                       tor-bof
+alias bogatov                   dmitry.bogatov
 alias bogdan                    "Bogdan Manolea /ApTI <bogdan.manolea@apti.ro>"
 alias boklm                     boklm@mars-attacks.org
 alias bol                       fredrik@mikker.se
@@ -238,10 +241,12 @@ alias dijana                    dijanav@item.ntnu.no
 alias dina                      "Dina Östergren <dina.ostergren@gmail.com>"
 alias dld-wg                    dld-wg@dfri.se
 alias dkg                       dkg@fifthhorseman.net
+alias dkim-test                 auth-results@verifier.port25.com
 alias dmarby                    dmarby.mullvad
 alias dmarby.priv               david@dmarby.se
 alias dmarby.mullvad            "David Marby <david@mullvad.net>"
-alias dmitri                    "Dmitry Belyavsky <beldmit@gmail.com>"
+alias dmitri.belyavsky          "Dmitry Belyavsky <beldmit@gmail.com>"
+alias dmitry.bogatov            "Dmitry Bogatov <KAction@debian.org>"
 alias dnssec-trans              dnssec-transparency@lists.sunet.se
 alias dol                       "Василий Долматов <dol@reedcat.net>"
 alias dr			dr@4711.se
@@ -261,6 +266,7 @@ alias ehj.eu                    "JOSEFSSON Erik <erik.josefsson@europarl.europa.
 alias einar                     "Einar Nygård <einar.nygard@gmail.com>"
 alias einar.scouterna           einar
 alias ekonomi                   ekonomi@dfri.se
+alias el                        el@sunet.se
 alias elijah                    elijah@riseup.net
 alias elijah.leap               "Elijah Sparrow <elijah@leap.se>"
 alias elisabet                  "Elisabet Rundqvist <elisabet.rundqvist@protonmail.com>"
@@ -345,6 +351,7 @@ alias fripost                   admin@fripost.org
 alias froo			"Fredrik Söderblom <fredrik@xpd.se>"
 alias ft			ft.priv
 alias ft.priv                   "Fredrik Thulin <fredrik@thulin.net>"
+alias fundraising               fundraising@torproject.org
 alias fuzzel			jeroen
 alias gasser                    linus.gasser@epfl.ch
 alias geko                      koppen.tor
@@ -564,6 +571,7 @@ alias juni			juni@nordberg.se
 alias juni.aikido               anna-linda
 alias juni.gitarr               lars.z
 alias juni.skolan               erik.svensson
+alias jurgen                    "Jürgen Brauckmann <brauckmann@dfn-cert.de>"
 alias juris                     juris@torservers.net
 alias jwalck                    "Jonatan Walck <jonatan@walck.se>"
 alias kajsa                     "Kajsa Pehrsson <kajsa42@gmail.com>"
@@ -918,7 +926,7 @@ alias peter.krantz              Peter.Krantz@kb.se
 alias peter.skoldberg           "Peter Sköldberg <peter.skoldberg@gmail.com>"
 alias peter.stuge               peter@stuge.se
 alias peter.xpd                 peter.norin
-alias pettai	 		pettai@nordu.net
+alias pettai	 		pettai@sunet.se
 alias petter.ljunggren		petter@tresta.se
 alias petter.salminen           "Petter Salminen <petsal@kth.se>"
 alias phil                      "Phil Roberts <roberts@dkey.org>"
@@ -978,7 +986,8 @@ alias rob.jansen                 rob.jansen.edu
 alias rob.jansen.edu            "Rob Jansen <jansen@cs.umn.edu>"
 alias rob.jansen.mil            "Rob Jansen <rob.g.jansen@nrl.navy.mil>"
 alias rodrigo           	rodrigo@hidalgo.se
-alias roger.dingledine		"Roger Dingledine <arma@mit.edu>"
+alias roger.dingledine.mit	"Roger Dingledine <arma@mit.edu>"
+alias roger.dingledine.tpo	"Roger Dingledine <arma@torproject.org>"
 alias roger			roger.dingledine
 alias roland                    roland.hedberg
 alias roland.hedberg		"Roland Hedberg <roland@catalogix.se>"
@@ -1014,6 +1023,7 @@ alias sarah.cortes.lewis        "Sarah Cortes <sarah@lewis.is>"
 alias sarah.c                   sarah.cortes
 alias sarah.cortes              sarah.cortes.lewis
 alias sara.ndn			"Sara Naldal <sara@nordu.net>"
+alias sarah.tor                 sstevenson
 alias saya                      "Saya Amin <saya.amin@stockholm.se>"
 alias schneier                  "Bruce Schneier <schneier@schneier.com>"
 alias sean                      "Sean Turner <turners@ieca.com>"
@@ -1058,6 +1068,7 @@ alias sparvnastet               sparvnastet@lists.riseup.net
 alias sparvnastet.kassor        mathias.tervo
 alias spe                       stefan.petersen
 alias sra                       rob.austein
+alias sstevenson                sstevenson@torproject.org
 alias staffan.jonson            "Staffan Jonson <staffan.jonson@iis.se>"
 alias staffan.nordberg          "Staffan Lundin" <staffan.lundin@gmail.com>"
 alias staffan.ulfberg          	staffan@ulfberg.se
