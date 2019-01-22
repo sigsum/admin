@@ -133,7 +133,6 @@ Nygren, tel: 070-767 88 82
 - Om bio-mamman blir svensk medborgare och har ensam vårdnad
   (alt. bio-pappan har medborgarskap) blir M svensk medborgare enl
   https://lagen.nu/2001:82#P10S1
-
 - Bokning av tid hos MIG för fotografering
   - https://www.migrationsverket.se/tidsbokning
   - inga tider i solna (flyttar till sumpan i aug 2018), hallonbergen
@@ -218,7 +217,7 @@ Kan också ta lång tid och är ovanligt att förekomma före 3-år
   med biofamiljen
 
 Ovan skickat [[gnus:nnimap%2Badbc:sent-mail.2018-02#87fu6kn5af.fsf@nordberg.se][per mejl]] samma dag.
-** TODO Erik
+** Erik
 - erik pratat med MS
 - förslag på ombud vi kan önska hos MIG ([[gnus:nnimap%2Badbc:INBOX#41AC83D9-F92A-4882-8818-853E20743A59@nordberg.se][mejl]]):
   Några namn på duktiga jurister som tar uppdrag som offentligt biträde:
