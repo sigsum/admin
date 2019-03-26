@@ -5,7 +5,10 @@ e-biljettnummer 117-2457880363
 2019-01-30 15:10 ARN T5 - BRU 17:20 8A
 2019-02-04 10:00 BRU - ARN 12:10 5A
 
-* hotel and venue info from gaba <2019-01-22 Tue>
+* hotel info
+Penta Hotels City Centre
+Chaussée de Charleroi 38, 1060 Bruxelles, Belgium
+** from gaba <2019-01-22 Tue>
 The name of the hotel is Penta Hotels City Centre.
 https://www.pentahotels.com/destination/belgium/brussels-city-centreAddress: Chaussée de Charleroi 38, 1060 Bruxelles, Belgium
 
@@ -14,8 +17,29 @@ Breakfast is provided with your room. There will be 3 meeting rooms,
 there will be coffee and snacks available in the meeting rooms, and
 lunch will be catered. We still need to decide at what time do breaks
 and do lunch but I'm guessing 12pm would be ok.
+** from the hotel web site
+We're within walking distance of the Grand Place, Royal Palace and Avenue Louise. 
 
+Nearest airport: International Brussels Airport (BRU) (15 km).
 
-cheers,
-gaba
+We’re a 10 min walk from the south and north rail stations (Eurostar & Thalys) with direct links to-and-from Brussels Airport.
+
+Nearest train station: Midi/South (2.5km)
+Nearest metro station: Louise (0.5km)
+Nearest tram station: Stephanie (0.27km)
 +1 503 415 0030 is my signal number
+* venue
+Université libre de Bruxelles
+Campus du Solbosch
+Avenue Franklin D. Roosevelt 50
+1050 Bruxelles
+Belgium
+
+According to OpenStreetMap it's a 4.1 km walk (0h49m) from the hotel:
+https://www.openstreetmap.org/#map=14/50.8240/4.3656
+
+https://www.fosdem.org/2019/practical/transportation/
+* prep [3/3]
+- [X] this file printed
+- [X] https://ksp.fosdem.org/files/ksp-fosdem2019.txt printed
+- [X] laptop backed up
