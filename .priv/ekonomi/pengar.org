@@ -108,6 +108,7 @@ Use 'C-*' to update the current row.
 | 2019-02-11 |   195260 |     -100 | 595650 |      166 | 790910 |       66 |     29613 |
 | 2019-04-11 |   201720 |     6460 | 620574 |    24924 | 822294 |    31384 |     60997 |
 | 2019-04-11 |   202430 |      710 | 630924 |    10350 | 833354 |    11060 |     72057 |
+| 2019-05-02 |   203290 |      860 | 641017 |    10093 | 844307 |    10953 |     83010 |
 
 #+TBLFM: $3=$-1-@-1$-1::$5=$-1-@-1$-1::$6=$2+$4::$7=$-1-@-1$-1::$8=$6-@3$6
 * Skatteverket
@@ -117,4 +118,8 @@ Use 'C-*' to update the current row.
 *** kontrolluppgifter
 - VR: bruttolön 168975; avdragen skatt 34202
 - verkligendata: bruttolön 79125; avdragen skatt 15624
-203177 49826
+- SEB: ränta v-papper 3926.67; avdragen skatt 1178
+- SEB: schablonintäkter (fonder) 2030
+summa inkomst tjänst 248100
+summa inkomst kapital 5957
+summa inbetald skatt 51004
