@@ -8,3 +8,7 @@ XTerm*background: black
 XTerm*foreground: green
 !XTerm*foreground: black
 !XTerm*foreground: white
+
+! This makes xterm use the X clipboard (I think). Among other things,
+! it really makes pass -c so much better!
+XTerm*selectToClipboard: true
