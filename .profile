@@ -29,3 +29,6 @@ GNUPGHOME=$HOME/.gnupg; export GNUPGHOME
 
 # OPAM configuration
 . /home/linus/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+[ -d "$HOME/.cache/rebar3/bin" ] && PATH="$PATH:$HOME/.cache/rebar3/bin"
+export PATH
