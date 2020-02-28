@@ -14,27 +14,31 @@
 ;(setq load-path (cons "/usr/share/emacs/site-lisp/gnus" load-path))
 
 (add-to-list 'load-path "~/lisp")
-;(add-to-list 'load-path "/usr/share/emacs23/site-lisp/golang-mode")
 ;(require 'gnus-load)
 
-(require 'tls)
-;(require 'jabber)
-(require 'appt)                         ;calendar needs this
-
-(add-to-list 'load-path "~/.emacs.d/site-lisp") ; for markdown-mode
 (add-to-list 'load-path "~/usr/share/emacs/site-lisp")
+
+(add-to-list 'load-path "~/.emacs.d/site-lisp") ; for markdown-mode, ox-reveal
 ;(require 'notmuch)
 (add-to-list 'load-path "~/usr/local/share/emacs/site-lisp/magit")
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
-(setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
+;(setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
+
+(autoload 'go-mode "go-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
 ;; another smime.el (from site-lisp/semi/?) is loaded.
 ;; 2012-09-19: upgrading emacs to 24.2 and gnus doesn't seem to carry smime.el
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
+
+(require 'ox-reveal)
+(require 'tls)
+;(require 'jabber)
+(require 'appt)                         ;calendar needs this
 
 ;; Fun.
 ;(autoload 'lpmud "lpmud" "Run LP-MUD in Emacs" t)
@@ -133,10 +137,10 @@
 ;(require 'gambit)
 
 ;; Erlang
-;(add-to-list 'load-path "/usr/local/lib/erlang/lib/tools-2.6.1/emacs" t)
-;(setq erlang-root-dir "/usr/local/lib/erlang")
-;(add-to-list 'exec-path "/usr/local/lib/erlang/bin" t)
-;(require 'erlang-start)
+(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.9/emacs" t)
+(setq erlang-root-dir "/usr/lib/erlang")
+;(add-to-list 'exec-path "/usr/lib/erlang/bin" t)
+(require 'erlang-start)
 
 ;; BBDB
 ;(require 'bbdb)
@@ -200,6 +204,11 @@
 ;; This isn't a variable that's used, is it?
 ;; (setq default-c-style 'GNU)
 ;; There's a c-default-style though.
+(defun maybe-linux-style ()
+  (when (and buffer-file-name
+             (string-match "wg-dynamic" buffer-file-name))
+    (c-set-style "linux")))
+(add-hook 'c-mode-hook 'maybe-linux-style)
 (setq add-log-mailing-address nil)
 (setq default-major-mode 'text-mode)
 (setq require-final-newline t)
@@ -363,12 +372,14 @@
      ("freenode.net" "#sparvnastet" "#edri" "#krbdev")
      ("telecomix.org" "#telecomix"))))
  '(erc-autojoin-mode t)
+ '(erc-disable-ctcp-replies t)
  '(erc-hide-list nil)
  '(erc-join-buffer (quote window-noselect))
  '(erc-keywords (quote ("dfri")))
  '(erc-netsplit-mode t)
- '(erc-notify-list nil t)
+ '(erc-notify-list nil)
  '(erc-pals (quote ("arma" "nickm")))
+ '(erc-paranoid t)
  '(erc-prompt-for-channel-key nil)
  '(erc-server-reconnect-timeout 10)
  '(erc-show-channel-key-p nil)
@@ -377,6 +388,7 @@
    (quote
     ("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE" "333" "353")))
  '(erc-track-shorten-aggressively t)
+ '(erc-truncate-mode t)
  '(global-font-lock-mode t nil (font-lock))
  '(gnus-agent-go-online t)
  '(gnus-agent-handle-level 2)
@@ -403,11 +415,11 @@
       (organization nil)
       ("From" "Linus Nordberg <linus@nordberg.se>")
       (eval
-       (setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 9587 smtpmail-smtp-user "linus")
+       (setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587 smtpmail-smtp-user "linus")
        (set
-        (make-local-variable
-         (quote message-sendmail-envelope-from))
-        "linus@nordberg.se")))
+	(make-local-variable
+	 (quote message-sendmail-envelope-from))
+	"linus@nordberg.se")))
      ("lists.\\(edri\\|infrastructure\\)"
       ("From" "Linus Nordberg <linus@dfri.se>"))
      ("lists.tor.project"
@@ -423,19 +435,19 @@
       (organization "Sunet")
       ("From" "Linus Nordberg <linus@sunet.se>")
       (eval
-       (setq smtpmail-smtp-server "smtp.sunet.se" smtpmail-smtp-service 8587 smtpmail-smtp-user "linus")
+       (setq smtpmail-smtp-server "smtp.sunet.se" smtpmail-smtp-service 587 smtpmail-smtp-user "linus")
        (set
-        (make-local-variable
-         (quote message-sendmail-envelope-from))
-        "linus@sunet.se")))
+	(make-local-variable
+	 (quote message-sendmail-envelope-from))
+	"linus@sunet.se")))
      ("dfri.abuse"
       ("From" "DFRI Abuse Team <abuse@dfri.net>")
       (eval
-       (setq smtpmail-smtp-server "localhost" smtpmail-smtp-service 10587 smtpmail-smtp-user "linus")
+       (setq smtpmail-smtp-server "mail.dfri.se" smtpmail-smtp-service 10587 smtpmail-smtp-user "linus@mail.dfri.se")
        (set
-        (make-local-variable
-         (quote message-sendmail-envelope-from))
-        "abuse@dfri.net"))))))
+	(make-local-variable
+	 (quote message-sendmail-envelope-from))
+	"abuse@dfri.net"))))))
  '(gnus-select-article-hook (quote (gnus-agent-fetch-selected-article)))
  '(gnus-simplify-ignored-prefixes "^(SV|VB):")
  '(gnus-simplify-subject-functions
@@ -455,7 +467,6 @@
  '(ido-create-new-buffer (quote always))
  '(ido-enable-regexp t)
  '(ido-mode (quote buffer) nil (ido))
- '(indent-tabs-mode nil)
  '(ispell-program-name "/usr/bin/aspell")
  '(jabber-account-list
    (quote
@@ -477,7 +488,8 @@
  '(jabber-show-resources nil)
  '(menu-bar-mode nil)
  '(message-beginning-of-line nil)
- '(message-citation-line-format "On %a, %b %d %Y, %N wrote:\n")
+ '(message-citation-line-format "On %a, %b %d %Y, %N wrote:
+")
  '(message-citation-line-function (quote message-insert-formatted-citation-line))
  '(message-cite-function (quote message-cite-original))
  '(message-default-charset (quote utf-8))
@@ -510,6 +522,8 @@
     ((OpenPGP
       (sign)
       (encrypt
+       ("laurent@capas.se" "9A9ECB89712A500531632B851AB2C50C742CD68F")
+       ("interminable@riseup.net" "C6405588EC7F4963E340EC6314AD01883268C34C")
        ("leifj@sunet.se" "22FB87637245CAA0999A8C61F09C7C16D6CC6677")
        ("micah@riseup.net" "4777535FE5471562626077B58CBF9A322861A790")
        ("arma@mit.edu" "F65CE37F04BA5B360AE6EE17C218525819F78451")
@@ -532,6 +546,8 @@
  '(org-agenda-include-diary t)
  '(org-clock-persist (quote history))
  '(org-export-html-postamble nil)
+ '(org-odt-preferred-output-format "pdf")
+ '(org-use-sub-superscripts nil)
  '(ps-n-up-margin 18)
  '(ps-n-up-printing 1)
  '(ps-paper-type (quote a4))
