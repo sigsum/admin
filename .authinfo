@@ -1,3 +1,4 @@
+machine mail.dfri.se login linus@mail.dfri.se port 10587 password 9vER4ZyqZViwprseucmvj5
 machine smtp.sunet.se login linus port 587 password vQLmayn6ghdvVASgVZ
 machine smtp.sunet.se login linus port 8587 password vQLmayn6ghdvVASgVZ
 machine sunet login linus password BIGKqZCGzprTyUdeOuB0
