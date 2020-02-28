@@ -98,7 +98,7 @@ name_width=289
 
 [Register f0577fd4bc4b655cc782307fe0fafb15]
 date_width=98
-num_width=86
+num_width=152
 reconcile_width=18
 balance_width=90
 transfer_width=223
@@ -517,11 +517,11 @@ debit_width=122
 credit_width=134
 
 [Window 1]
-PageCount=2
+PageCount=6
 FirstPage=1
-PageOrder=2;1;
-WindowPosition=660;0;
-WindowGeometry=1258;1078;
+PageOrder=4;6;1;5;3;2;
+WindowPosition=0;0;
+WindowGeometry=658;1078;
 WindowMaximized=false
 ToolbarVisible=true
 SummarybarVisible=true
@@ -545,5 +545,34 @@ PageType=GncPluginPageRegister
 PageName=Swedb Företagskonto
 RegisterType=Account
 AccountName=Assets:Current Assets:Swedb Företagskonto
+RegisterStyle=Ledger
+DoubleLineMode=false
+
+[Page 3]
+PageType=GncPluginPageReport
+PageName=Transaction Report
+SchemeOptions=(let ((options (gnc:report-template-new-options/report-guid "2fe3b9833af044abb929a88d5a59620f" "Transaction Report"))) (let ((option (gnc:lookup-option options                                  "Accounts"                                  "Accounts")))   ((lambda (option) (if option ((gnc:option-setter option) '("7cd0e833868a18a7c7a120931598b8ce" "c6e677678e6df8638eb234f78aa98c6c" "cc86704341549846ab43c035021290e0" "97bf3ce41ae02cf0265f25534d15a48d" "3d2e3b777daa550604f41b68193e6905" "e0938354be512f7f4b656026d37fdcd7" "92b77c1d44771f90cc9834f514c71046" "2d38d4ace572a403ed7479813ba1698d" "9241ecfafad7a3d8987fadc69087ed62" "03c1ce2ab49341bfe4b3ad1e2dc94a53" "cbfeed20cb0babaa019b0b98d331ba83" "bf0713f73abd8979460d605cba0372a4" "9f74c9ed9918b53153cb602c708e4949" "93a60bc6c630999677992222198403d9" "372837ad141040a69e428c3d549779b4" "4fdc1046afcc0952a92b30ea627329de" "a3dc14d90ceba5fc57022c7b97081b49" "26d72d9d70047ee2cf7762790a662000" "dc995c413ca55d30a77fb0419473a0b3" "8cfc616d6b326f59a396228bb7948dcd" "3399f5cc8b20e0684c194116f1264137" "dfe651cbc91b15a60ced4cb00b5b4e30" "4303cec348cae4ae63c9a6a2a3d765e9" "76c7a09a73ffa70a8f3708eb84f9bd31" "294bfc9a2e27744e5fac996ecbe41f6a" "c74930228d1b1c2aa1d2b131476d11a2" "d0a1769592c2469ba24fe19805ef0e35" "f0577fd4bc4b655cc782307fe0fafb15" "239edce92e99f0dd1fa6ca928bea1ef1" "ac4d649b05107abecf8f6e8348d5de32" "582dc2be887fb900a9bca025e7c9633b" "e798f3b5b736ee65644661638127fe6d" "e0c102b6927f1507243ef0f4bf805ca7" "1352ac51dc7aae27ecd0e2a02a807f50" "8deaaf5341cfd263b69ff1a5e41ecf5e" "b1036128c930323b56a0376e9447c9b7" "0dd6fbbd0ca56b39add8194e0acec56b" "baf4493e4f682056556002fc8ce754c5" "5477fd672f00a1eb7f8e13ad596dab57" "d35cc5572a5ba958ac6a0306162dc42f" "c23b3fc82fc53d4f2687699d9893ff99" "05a31b507762f6e48e96af8397285346" "c0e7f604cf84178f22bf6d4b510d5838" "ec436b29f1496619f01b527200838bb4" "a78238be0c9fa67b87cfdf4a20455f3e" "f6e40e3848e789e63124eceec10e83ad" "6c0f0fc9db6e8899d3feb62d556c3038" "df0b2f61b3072990bdbbf2f3a8bb2e92")))) option)) (let ((option (gnc:lookup-option options                                  "Sorting"                                  "Primary Key")))   ((lambda (option) (if option ((gnc:option-setter option) 'date))) option)) (if (defined? 'gnc:restore-report-by-guid-with-custom-template)   (gnc:restore-report-by-guid-with-custom-template 0 "2fe3b9833af044abb929a88d5a59620f" "Transaction Report" "" options)   (gnc:restore-report-by-guid 0 "2fe3b9833af044abb929a88d5a59620f" "Transaction Report" options)) )
+
+[Page 4]
+PageType=GncPluginPageRegister
+PageName=Trafik
+RegisterType=Account
+AccountName=Expenses:Trafik
+RegisterStyle=Ledger
+DoubleLineMode=false
+
+[Page 5]
+PageType=GncPluginPageRegister
+PageName=Medlemsavgifter
+RegisterType=Account
+AccountName=Income:Medlemsavgifter
+RegisterStyle=Ledger
+DoubleLineMode=false
+
+[Page 6]
+PageType=GncPluginPageRegister
+PageName=Handkassa Linus
+RegisterType=Account
+AccountName=Assets:Current Assets:Handkassa Linus
 RegisterStyle=Ledger
 DoubleLineMode=false
