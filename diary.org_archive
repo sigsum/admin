@@ -684,3 +684,16 @@ libradsec 5h -> jra3t1 5
   :ARCHIVE_CATEGORY: diary
   :END:
  sunet: vr, meeting
+
+* sysadmin
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-01-14 Mon 11:28
+  :ARCHIVE_FILE: ~/diary.org
+  :ARCHIVE_OLPATH: week 3 2019-01-14--20/tpi
+  :ARCHIVE_CATEGORY: diary
+  :END:
+  :LOGBOOK:
+  CLOCK: [2019-01-14 Mon 11:20]--[2019-01-14 Mon 11:27] =>  0:07
+  CLOCK: [2019-01-14 Mon 09:51]--[2019-01-14 Mon 10:52] =>  1:01
+  upgrades
+  :END:
