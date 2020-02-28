@@ -2,11 +2,14 @@ lists\.admin 28177 28177
 INBOX\.lists\.ietf\.perpass 70 94
 INBOX\.lists\.libtech 2234 2238
 INBOX\.lists\.tor\.relays 2144 2168
+sent-mail\.2019-04 185 185
+lists\.tor\.internal 15770 15772
 sent-mail\.2018-02 212 212
 lists\.cryptech\.tech 2741 2741
+lists\.tor\.board 366 367
 INBOX\.lists\.tor\.assistants 15699 21437
 lists\.ietf\.trans 2818 2818
 INBOX\.lists\.tor\.bugs 33422 33434
-junk 98749 98750
-INBOX 40521 137985
+junk 98749 102471
+INBOX 40521 161588
 INBOX\.sys 89804 89895
