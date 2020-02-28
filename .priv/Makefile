@@ -7,5 +7,3 @@ passphrases20.gpg: passphrases20
 passphrases20: 
 	gpg -do - passphrases20.gpg | head -1 > $@
 	gpg -do - passphrases10.gpg | egrep --text '^t ' >> $@
-
-	
