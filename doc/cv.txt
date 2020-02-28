@@ -68,11 +68,10 @@ Sunet/NORDUnet  Software Engineer
 --------------
 May 09 -        Design, development and maintenance of security        
 Present         software, including Certificate Transparency (design   
-                and implementation of a CT log server, standardisation
-                of a CT Gossip protocol), Tor (adding support for IPv6),
-                Kerberos (OTP support in MIT Kerberos), radsecproxy
-                (RADIUS over TLS) and libradsec (for Project
-                Moonshot).
+                and implementation of a CT log server, design of a CT
+                Gossip protocol), Tor (IPv6 support), Kerberos (OTP
+                support), radsecproxy (RADIUS over TLS) and libradsec
+                (for Project Moonshot).
 
                 Design and development of a file sharing system with
                 federated identity management based on BitTorrent.
