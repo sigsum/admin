@@ -422,17 +422,19 @@ above. Important for bash and xterm to be happy about _input_.
 - NUNOC at SUNET B1ahBl4h
 - eduroam
   - android:
-    - PEAP
-    - userid: linus/ppp
-    - anon userid: anon@NORDU.NET
+    - WPA_EAP
+    - eap=PEAP
+    - phase2=MSCHAPV2
+    - userid: linus@sunet.se
+    - anon userid: anonymous@SUNET.SE
   - iPhone: 
     - WPA2 Enterprise (select "Other network")
     - linus/ppp@NORDU.NET (case sensitive?)
   - wpa_supplicant: 
         key_mgmt=WPA-EAP
         eap=PEAP
-        anonymous_identity="anonymous@NORDU.NET"
-        identity="linus/ppp"
+        anonymous_identity="anonymous@SUNET.SE"
+        identity="linus@sunet.se"
         password="<password>"
         phase1="peapver=0"
         phase2="auth=MSCHAPV2
@@ -629,6 +631,8 @@ Wiphy phy0
 	Driver supports a userspace MPM
 
 ** wpa-supplicant
+- start / restart
+systemctl restart wpa_supplicant@wlp4s0
 - sample wpa2 config
 network={
         ssid="ietf-hotel"
@@ -768,6 +772,10 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
 - testdisk -- restore partition table (from memory?)
 - forensics-full: forensics-all, forensics-extra and forensics-extra-gui
 - tshark -- 
+- dstat -- system resource statistics
+  - https://redmine.koumbit.net/projects/koumbit-scripts/repository/revisions/master/entry/alternc_dstat/dstat_apache.py
+- slurm, iftop -- network load monitor
+- lnav -- log file navigator
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -1165,6 +1173,8 @@ In magit: 'r b' to start a rewrite from HEAD, pick the commit and
     prompt = false
 ** What tags include a given commit?
 git tag --contains <commit>
+** failing git clone: fsck error in packed object, index-pack failed
+git clone --config=fetch.fsckobjects=false URL
 * Movie / video
 ** Carnivale
 Start VLC.
@@ -1461,15 +1471,27 @@ Segmentation fault
 ** colours
 Get rid of syntax highlighting in all buffers:
   (global-font-lock-mode -1)
-** building my own emacs
+** building our own emacs
 - building emacs from git
-  - 2018-04-09 emacs-26.1-rc1
-  - 2018-05-29 emacs-26.1
-  - 2018-10-31 c3cf85b1c1 (branch emacs-26)
-  - 2018-12-25 9578c2aa (branch emacs-26)
-  - ?configure?
+  - [X] 2018-04-09 emacs-26.1-rc1
+  - [X] 2018-05-29 emacs-26.1
+  - [X] 2018-10-31 c3cf85b1c1 (branch emacs-26)
+  - [X] 2018-12-25 9578c2aa (branch emacs-26)
+  - [X] 2019-06-13 emacs-26.2
+  - [X] 2019-09-13 emacs-26.3
+  - sh autogen.sh
+  - ./configure --prefix=$HOME/usr --without-xml2
   - make && make install
 - dependencies, not using elpa
+  - go-mode.el
+    - https://github.com/dominikh/go-mode.el
+    - master <2019-10-13 Sun>
+    - (add-to-list 'load-path "/place/where/you/put/it/")
+      (autoload 'go-mode "go-mode" nil t)
+      (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+    - cp go-guru.el go-mode.el go-rename.el ~/usr/share/emacs/site-lisp/
+  - rfcview
+    - (cd ~/usr/share/emacs/site-lisp && curl -O http://www.loveshack.ukfsn.org/emacs/rfcview.el;)
   - magit
     - https://github.com/magit/magit
     - 2.12.1 <2018-05-04 Fri>
@@ -1481,25 +1503,28 @@ Get rid of syntax highlighting in all buffers:
       LOAD_PATH += -L $$HOME/usr/share/emacs/site-lisp
       EOF
     - make DESTDIR=$HOME clean test # 1 unexpected failure <2018-05-04 Fri>: magit-status:file-sections
-    - make DESTDIR=$HOME install # installed to /home/linus/usr/local/share/emacs/site-lisp/magit
+    - make DESTDIR=$HOME install # installed to /home/linus/usr/local/share/emacs/site-lisp/magit; info installed in ~/usr/local/share/info/ with a pointer to it in ~/usr/src/magit/Documentation/dir
     - dependencies, not using elpa
-      - dash
+      - dash.el
         - https://github.com/magnars/dash.el/releases
         - alt? savannah
         - 2.14.1 <2018-05-04 Fri>
+        - 2.16.0 <2019-06-13 Thu>
         - cp dash.el ~/usr/share/emacs/site-lisp/
       - magit-popup
         - https://github.com/magit/magit-popup
         - v2.12.3 <2018-05-04 Fri>
         - v2.12.4 <2018-08-29 Wed>
         - v2.12.5 <2018-12-25 Tue>
-        - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp"
+	- v2.13.0 <2019-06-13 Thu>
+        - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp" clean all
         - cp magit-popup.el* magit-popup-autoloads.el $HOME/usr/share/emacs/site-lisp/
       - with-editor
         - https://github.com/magit/with-editor
         - v2.7.2 <2018-05-04 Fri>
         - v2.7.4 <2018-08-29 Wed>
         - v2.8.0 <2018-10-31 Wed>
+	- v2.8.3 <2019-06-13 Thu>
         - make
         - cp with-editor.el* with-editor-autoloads.el ~/usr/share/emacs/site-lisp/
       - ghub
@@ -1507,13 +1532,28 @@ Get rid of syntax highlighting in all buffers:
         - v2.0.0 <2018-05-04 Fri>
         - NOT-INSTALLED v3.1.0 <2018-12-25 Tue>
           - ghub.el:970:1:Error: Cannot open load file: No such file or directory, ghub-graphql
+        - NOT-INSTALLED v3.2.0 <2019-06-13 Thu>
+          - ghub.el:970:1:Error: Cannot open load file: No such file or directory, ghub-graphql
         - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp"
         - cp ghub.el* ghub-autoloads.el ~/usr/share/emacs/site-lisp/
   - markdown-mode
     - https://github.com/jrblevin/markdown-mode
     - master as of <2018-05-09 Wed>
-    - a1e1ecc3 (master as of <2018-10-31 Wed>)
+    - master as of <2018-10-31 Wed> (a1e1ecc3)
+    - master as of <2019-06-13 Thu> (115f77d)
     - make update	# installs to ~/.emacs.d/site-lisp/
+  - erlang mode
+    - ?
+  - org-mode
+    - https://orgmode.org/org-mode.git
+    - https://orgmode.org/org.html#Installation
+    - make help
+    - release_9.2.6 <2019-11-12 Tue>
+    - make DESTDIR=$HOME all install
+  - org-reveal
+    - git clone https://github.com/yjwen/org-reveal
+    - 460101aa2c4c957ebc2348b8754765b63310d337 as of <2019-11-13 Wed>
+    - cp ox-reveal.el ~/.emacs.d/site-lisp/
 *** old elpa config
 ;; Do this early -- other requirements might depend on it. See
 ;; variable package-archives for configured archives.
@@ -2112,12 +2152,12 @@ sudo virt-install --connect qemu:///system --virt-type kvm --name tails --memory
 sudo virsh destroy tails
 sudo virsh undefine tails
 ** adding a disk
-root@tool:/u/vm# truncate --size=6G /u/vm/debian0-2.img # or /var/lib/libvirt/images
-# alternatively (but without preallocation=full, the guest sees a very small device for some reason)
+root@tool:/u/vm# truncate --size=6G /var/lib/libvirt/images/name.qcow2
+# alternatively (but without preallocation=full, the guest sees a very small device for some reason):
 #  qemu-img create -f qcow2 -o "size=20G,preallocation=full" /u/vm/debian0-2.qcow2
 # WARNING: that command hangs for at least a minute, utilizing some CPU and seemingly lots of IO
 root@tool:/u/vm# chmod 600 /u/vm/debian0-2.img
-root@tool:/u/vm# virsh attach-disk $guest /u/vm/debian0-2.img vdb --config # --config makes this change persistent over reboots; consider --live too
+root@tool:/u/vm# virsh attach-disk $guest /u/vm/debian0-2.img vdb --configq # --config makes this change persistent over reboots; consider --live too
 Disk attached successfully
 root@tool:/u/vm# virsh domblklist $guest   # list domain blocks
 Target     Source
@@ -2375,6 +2415,9 @@ sudo wicd-ncurses		# configure connection
 **** iperf
 **** pktgen
 linux kernel module from the bifrost people
+**** tcpdump
+# NOTE: -i any is linux only
+tcpdump -pni any not port 4722 | awk '{print $3}' | head -n 10000 | sort | uniq -c
 *** tcpreplay 
 from a .pcap.
 ** performance measurement / benchmark
@@ -2995,7 +3038,10 @@ Serial no: YK2K196412
   https://www.amazon.com/Listening-Society-Metamodern-Politics-Guides/dp/8799973901/ref=sr_1_1?ie=UTF8&qid=1528976993&sr=8-1&keywords=listening+society
   Deras hemsida/blogg: https://metamoderna.org/
 - [ ] Spiral dynamics
+  https://www.bokus.com/bok/9781405133562/spiral-dynamics/
   https://www.adlibris.com/se/bok/spiral-dynamics-mastering-values-leadership-and-change-9781405133562
+- [ ] https://www.bokus.com/bok/9780857426000/anarchys-brief-summer/
+  recommended by hannesm <2019-11-12 Tue>
 * Gustav Vasa
 ** 2001C
 jvlycke@comhem.se,
@@ -3040,6 +3086,9 @@ dcraw -- convert NEF (which is TIFF) to PPM
 denef -- doesn't handle D90 NEF's, it seems
 
 Example, 1600 pixels wide:
+** resizing
+https://www.debian-administration.org/article/62/Working_with_images_from_the_command_line
+convert -resize 300x200 in.jpg out.jpg  # part of imagemagick
 ** c ?
 ~/Photos/2010/06/25/img_0070.jpg
 ~/Photos/2010/06/25/img_0075.jpg
@@ -3050,6 +3099,10 @@ sudo mount /dev/sdb1 /mnt
 cd ~/pics && rsync -av /mnt/DCIM/ s110/
 ** removing exif data
 exiftool -all= FILE
+** rotating a picture
+mogrify -rotate 90 FILE
+** displaying a picture
+display FILE
 * OTR
 ** fingerprints
 primary (mcabber): 5A31FB5E 3A66941B F3ED9A8E 181B5CC4 0AD417C1
@@ -3162,50 +3215,148 @@ revkey   # 2 (Key is superseded); might want to do this after the expiration dat
 save
 torsocks gpg --send-key <keyid>
 *** on-card version, yubikey 4
+# We create a new subkey in a temporary GNUPGHOME, we back the secret
+# key up to external media, we move the new subkey onto our Yubikey
+# and we erase the temporary GNUPGHOME.
+
 # FIXME: Add instruction on how to get the outgoing subkey onto the
 # keyring, on disk. Without access to the outgoing key, all old
 # encrypted email are made inaccessible. That's not acceptable.
+
+# You might want to do most of this with your computer disconnected
+# from any networks to lower the risk of exposing new key material.
+
+# NOTE: linus' key id -- change this
+export KEYID=8C4CD511095E982EB0EFBFA21E8BF34923291265
+
+# First, as root, make sure we've got good randomness in the system
+# apt install rng-tools5
+# cat /etc/conf.d/rngd
+#DEVICE=/dev/ttyUSB0
+#STEP=64
+#NO_DRNG=1
+#WATERMARK=2048
+# insert entropy source in USB slot
+systemctl restart rngd
+
+# set up temporary GNUPGHOME
 umask 077
-cd /dev/shm
-mkdir gpgtmp
-cd gpgtmp
+cd /dev/shm && mkdir gpgtmp && cd gpgtmp
 cat > gpg.conf <<EOF
 default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
 personal-digest-preferences SHA512
 cert-digest-algo SHA512
 EOF
 export GNUPGHOME=$PWD
-gpg --homedir ~/.gnupg --export $keyid | gpg --import
-gpg --edit-key $keyid
+# tell gpg-agent about our new home
+systemctl --user restart gpg-agent
+gpg --homedir ~/.gnupg --export $KEYID | gpg --import
+# generate stubs for secret keys
+gpg --card-status
+
+# generate a new subkey and revoke the old subkey
+gpg --edit-key $KEYID
+# 2019-05-01: the addkey comamnd gives "Need the secret key to do this."
+# At least one reason for this is that changes to a key needs to be signed.
+# So we need to either
+# 1) add something to the temporary GNUPGHOME which makes gpg go to the
+#    yubikey for signing or 
+# 2) stop using a temporary GNUPGHOME when creating a new subkey.
+# Update: We're doing option 1 above when we restart gpg-agent
+# When picking a passphrase for the new key, add a static yubikey string
+# from a yubikey that you do _not_ travel with. This passphrase is what will
+# be protecting your subkey in a year from now when it gets copied to disk.
+# A "disk" which will probably travel.
 addkey  # 6 (RSA encrypt only); 4096 (keysize); 1y (validity)
-# NOTE: Don't forget to touch the yubikey, for signing of the new subkey.
-key N	# Select the key to be revoked, ie the current key.
+# NOTE: Don't forget to touch the yubikey, for signing the new subkey!
+key N	# Select the key to be revoked, ie the outgoing key.
 revkey	# 2 (Key is superseded)
 save
-# mount your encrypted backup disk on /mnt
+
+# Back up all secret subkeys _on_disk_, including the newly created
+# subkey, before moving the new key to the yubikey.
+# Do: mount your encrypted backup disk on /mnt
+# TODO: consider adding --export-options backup
+# TODO: consider just backing up private-keys-v1.d/$KEYGRIP.key
 gpg --export-secret-subkeys --armor > /mnt/pgp/gpg-secret-subkeys.backup
-gpg --export --armor $keyid > /mnt/pgp/gpg-public-${keyid}.backup
+gpg --export --armor $KEYID > /mnt/pgp/gpg-public-${keyid}.backup
 cp /mnt/pgp/gpg-public-${keyid}.backup ~/gpg-public-${keyid}.backup
 sudo umount /mnt
-gpg --send-key $keyid
-# Move new subkey to card. This will overwrite the current
-# subkey. You'll not be able to decrypt messages encrypted in the
-# current subkey. Tough luck. Ask people to kindy honour that you've
-# revoked your current key and reencrypt in new subkey.
-gpg --edit-key $keyid
+
+# Restore the outgoing encryption subkey to disk so we can decrypt
+# emails sent up until now even after we've generated a new subkey.
+# TODO: how?
+# But even more important than incoming emails: Any password-store
+# like files are encrypted in your outgoing key and need to be
+# reencrypted in your new key.
+
+# Moving new subkey to card.
+# This will overwrite the current subkey.
+gpg --edit-key $KEYID
+# move new subkey to card
 key N	# pick the newly created key
 keytocard
 save
-yubitouch/yubitouch.sh dec fix
-# erase temp space and import public key to ordinary keyring
+
+# configure the yubikey to require touch for decrypting ("dec"), needs
+# to be done each and every time for some reason. Note that you'll need
+# the admin PIN of the yubikey for this operation.
+~linus/usr/src/yubitouch/yubitouch.sh dec fix
+
+# import public key to ordinary keyring
+export GNUPGHOME=$HOME/.gnupg
+systemctl --user restart gpg-agent
+# If gpg --card-status complains that it can't find the card, kill the
+# process 'gpg-agent --homedir /dev/shm/gpgtmp' and try again
+gpg --card-status
+gpg --import ~/gpg-public-${keyid}.backup
+# --card-status seems to be what creates the necessary "stub key file"
+# under .gnupg/private-keys-v1.d/ named from the keygrip of the key
+# (gpg --list-key --with-keygrip $KEYID)
+gpg --card-status	
+gpg --list-key -v $KEYID
+
+# erase temp space
 shred -zun 13 /dev/shm/gpgtmp/*/*
 shred -zun 13 /dev/shm/gpgtmp/*
 cd
 rm -r /dev/shm/gpgtmp/
+
+# Connect to the network again and send key to public keyservers and
+# possibly other keyrings.
+gpg --send-key $KEYID
+
+*** restoring an old subkey to disk
+# set up temporary GNUPGHOME
+umask 077
+cd /dev/shm && mkdir gpgtmp && cd gpgtmp
+cat > gpg.conf <<EOF
+default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+personal-digest-preferences SHA512
+cert-digest-algo SHA512
+EOF
+export GNUPGHOME=$PWD
+systemctl --user restart gpg-agent
+gpg --card-status
+
+# import previous subkey to temporary keyring
+cat /mnt/pgp/gpg-secret-subkeys.<PREVIOUS-BACKUP>.backup | gpg --import
+# /dev/shm/gpgtmp/private-keys-v1.d/ should now contain one file, named
+# <keygrip>.key, where <keygrip> is what's shown in the output of
+# gpg --with-keygrip -v --list-sec
+
+# Import from temp to real gpgdir.
+# Copy subkey file from temp gpg dir to real gpg dir, to replace the
+# "shadowed-private-key" with a "protected-private-key" file.
 unset GNUPGHOME
-gpg --import gpg-public-${keyid}.backup
-gpg --card-status	# this seems to be what creates the necessary "stub key file" under .gnupg/private-keys-v1.d/ named from the keygrip of the key (gpg --list-key --with-keygrip $keyid)
-gpg --list-key -v $keyid
+systemctl --user restart gpg-agent
+gpg --homedir /dev/shm/gpgtmp --export-secret-subkeys | gpg --import
+cp ~/.gnupg/private-keys-v1.d/$KEYGRIP.key ~/.gnupg/private-keys-v1.d.BAK/
+cp /dev/shm/gpgtmp/private-keys-v1.d/$KEYGRIP.key ~/.gnupg/private-keys-v1.d/
+
+# The outgoing subkey should now be listed without a > ("ssb", not "ssb>").
+gpg -v --list-sec $KEYID
+
 ** splitting a key
 For backup purposes a copy of the secret primary and subkey has been
 split into five shares.  Three shares are required to reassemble the
@@ -4189,6 +4340,8 @@ GRUB_RECORDFAIL_TIMEOUT=0
           may merge them into grsec
 <ioerror> micah: it would be so amazing if the debian kernel team built a                                                                                                
           grsec enabled kernel
+** block devices
+lsblk -o +UUID
 * gdb
 ** debug program made by libtool
    M-x gdb
@@ -4825,6 +4978,13 @@ A slot must be chosen with -1 or -2.
   since that will make gpg-agent the only usable ssh-agent
 - ssh-agent bash -
   ssh-add -s $(dpkg -L opensc-pkcs11 | grep \/opensc-pkcs11.so\$ | head -n1)
+** OATH TOTP
+sudo apt install yubikey-manager
+ykman oath add CRED-NAME	# add '--device SERIAL' if >1 yubikey attached
+ykman code CRED-NAME		# use 'ykman list' to get serial numbers
+
+Yubikeys in use for OATH, serial number:
+- 3037390
 * YubiHSM
 ** <2011-03-17 Thu>
    NO_CFG> sysinfo
@@ -5123,22 +5283,26 @@ Example banning:
 #! /bin/sh
 
 [ -d demoCA ] || { mkdir -p demoCA/private; mkdir demoCA/newcerts; echo 01 > demoCA/serial; touch demoCA/index.txt; }
+[ -n "$1" ] && { NAME="$1"; shift; }
+[ -z "${NAME}" ] && { echo "usage: $0 FILENAME"; exit 1; }
+openssl req -newkey rsa:2048 -nodes -keyout ${NAME}.key -out ${NAME}.req
+chmod 600 ${NAME}.key
+openssl ca -selfsign -keyfile ${NAME}.key -in ${NAME}.req -extensions v3_ca -out ${NAME}.crt
+rm ${NAME}.req
 
-openssl req -newkey rsa:2048 -nodes -keyout $1.key -out $1.req
-chmod 600 $1.key
-openssl ca -selfsign -keyfile $1.key -in $1.req -extensions v3_ca -out $1.crt
-rm $1.req
-
-openssl x509 -fingerprint -sha1 -noout -in $1.crt
-openssl x509 -fingerprint -sha256 -noout -in $1.crt
+openssl x509 -fingerprint -sha1 -noout -in ${NAME}.crt
+openssl x509 -fingerprint -sha256 -noout -in ${NAME}.crt
+openssl x509 -fingerprint -sha512 -noout -in ${NAME}.crt
 *** ERC config
 (custom-set-variables
  '(tls-program
    (quote
     ("openssl s_client -connect %h:%p -tls1 -no_ssl2 -no_ssl3 -cert ~/.priv/ln5.crt -key ~/.priv/ln5.key"))))
-*** /q nickserv
+*** nickserv
+emacs --no-init-file --load .emacs.erc.el -f my-erc-oftc
+/q nickserv
 identify <password> ln5
-cert add <sha1 fpr>
+cert add
 ** umode
 https://www.oftc.net/CallerId/ helps when ppl are spamming you in PM
 - /mode ln5 +G
@@ -5217,64 +5381,58 @@ allow-transfer {
   key "dfri-tsig";
 };
 ** dns over tls
-datan:src% cat ~/.stubby.yml
-# See ~linus/usr/src/stubby/stubby.yml.example for documentation of
-# config otions.
- 
+
+git clone https://github.com/getdnsapi/getdns.git && cd getdns
+git submodule update --init
+libtoolize -ci
+autoreconf -fi
+./configure --prefix=$HOME/usr
+make all install
+
+datan:getdns% cat ~/usr/etc/stubby/stubby.yml
 resolution_type: GETDNS_RESOLUTION_STUB
-dnssec_return_status: GETDNS_EXTENSION_TRUE
-tls_authentication: GETDNS_AUTHENTICATION_REQUIRED
-tls_query_padding_blocksize: 128
-edns_client_subnet_private: 1
-round_robin_upstreams: 1
-idle_timeout: 60000
- 
 dns_transport_list:
   - GETDNS_TRANSPORT_TLS
- 
+tls_authentication: GETDNS_AUTHENTICATION_REQUIRED
+tls_query_padding_blocksize: 256
+edns_client_subnet_private : 1
+idle_timeout: 10000
 listen_addresses:
   - 127.0.0.1@1053
- 
+  -  0::1@1053
+round_robin_upstreams: 1
 upstream_recursive_servers:
   - address_data: 171.25.193.138
-    tls_auth_name: "dnscrypt.dfri.se"
+    tls_auth_name: "dot.dfri.se"
     tls_pubkey_pinset:
       - digest: "sha256"
-        value: jYdlj5TtGuGsJkFhKf7MIc1oNAF3UriX0gRqv0gFuYI=
+        value: 4mJAi0enpDQZ9t/gMJnA1y+8DHce8PrQQwTN1pnn0j4=
 
-datan:~% LD_LIBRARY_PATH=$HOME/usr/lib stubby -l
-[22:03:54.585051] STUBBY: Read config from file /home/linus/.stubby.yml
-[22:03:54.585382] STUBBY: DNSSEC Validation is ON
-[22:03:54.585390] STUBBY: Transport list is:
-[22:03:54.585394] STUBBY:   - TLS
-[22:03:54.585399] STUBBY: Privacy Usage Profile is Strict (Authentication required)
-[22:03:54.585403] STUBBY: (NOTE a Strict Profile only applies when TLS is the ONLY transport!!)
-[22:03:54.585406] STUBBY: Starting DAEMON....
-[22:04:04.675328] STUBBY: 171.25.193.138                           : Conn opened: TLS - Strict Profile
-[22:04:04.761307] STUBBY: 171.25.193.138                           : Verify passed : TLS
-[22:05:17.036665] STUBBY: 171.25.193.138                           : Conn closed: TLS - Resps=    12, Timeouts  =     0, Curr_auth =Success, Keepalive(ms)= 60000
-[22:05:17.036720] STUBBY: 171.25.193.138                           : Upstream   : TLS - Resps=    12, Timeouts  =     0, Best_auth =Success
-[22:05:17.036740] STUBBY: 171.25.193.138                           : Upstream   : TLS - Conns=     1, Conn_fails=     0, Conn_shuts=      0, Backoffs     =     0
+datan:getdns% LD_LIBRARY_PATH=$HOME/usr/lib stubby -l
+[08:18:11.591159] STUBBY: Read config from file /home/linus/usr/etc/stubby/stubby.yml
+[08:18:11.593209] STUBBY: DNSSEC Validation is OFF
+[08:18:11.593248] STUBBY: Transport list is:
+[08:18:11.593261] STUBBY:   - TLS
+[08:18:11.593275] STUBBY: Privacy Usage Profile is Strict (Authentication required)
+[08:18:11.593287] STUBBY: (NOTE a Strict Profile only applies when TLS is the ONLY transport!!)
+[08:18:11.593305] STUBBY: Starting DAEMON....
 
-datan:src% dig @localhost:1053 dfri.se
-;; WARNING: response timeout for ::1@1053(UDP)
-
-;; ->>HEADER<<- opcode: QUERY; status: NOERROR; id: 1906
-;; Flags: qr rd ra; QUERY: 1; ANSWER: 2; AUTHORITY: 0; ADDITIONAL: 1
-
+datan:~% dig @127.0.0.1@1053 dfri.se
+;; ->>HEADER<<- opcode: QUERY; status: NOERROR; id: 14522
+;; Flags: qr rd ra; QUERY: 1; ANSWER: 1; AUTHORITY: 0; ADDITIONAL: 1
+ 
 ;; EDNS PSEUDOSECTION:
-;; Version: 0; flags: do; UDP size: 4096 B; ext-rcode: NOERROR
-
+;; Version: 0; flags: ; UDP size: 4096 B; ext-rcode: NOERROR
+ 
 ;; QUESTION SECTION:
 ;; dfri.se.                     IN      A
-
+ 
 ;; ANSWER SECTION:
-dfri.se.                31971   IN      A       171.25.193.19
-dfri.se.                31971   IN      RRSIG   A 8 2 86400 20180615121556 20180601104556 25494 dfri.se. eFH6gQBuzBGD2Leu4Yn0eoOOkXpP/crOICXzC5b8+0ERKyy6Za1q8AgPWMPCaTGimsKJ4Vct32Bh3P0AewMd9H5k7LLFQfp4w6hgb300qwvEAEjUy9uWbhW+HJCmymT2F4WYb2UKohPrzrMApKpGmg+ESIRxfRRxFWq6wJP6WwwnQ+V4RTenkNCFRYTLvoT7ADcQgpJK1UOVHxQSRv/bZQspe8LdD1eXHucrTd5kc4D5xycYLaAhN4XB92q70ZXnzViP0epNUDWD82CSDHG58sLZSTG+gbcenEYrxvWSGVRyExKmDlZRFVXWSnZdGSt36Kjg9rtQt6aNlslVQXY3YQ==
-
-;; Received 361 B
-;; Time 2018-06-06 14:31:24 CEST
-;; From 127.0.0.1@1053(UDP) in 182.2 ms
+dfri.se.                86400   IN      A       171.25.193.19
+ 
+;; Received 59 B
+;; Time 2019-09-19 10:18:28 CEST
+;; From 127.0.0.1@1053(UDP) in 349.8 ms
 ** stub resolvers and SOCKS
 - stubby / getdns
   - missing
@@ -5736,7 +5894,6 @@ KAS VPN 109.105.106.4 dk-kas-fw.nordu.net
 testing HQ class bot system??Description
 ??http://pastebin.com/raw/eXFsbBVF??In action
 ??https://youtu.be/TR4JcFHfdrM??Jabber ??mad13@dukgo.com
-* miredo
 * RIPE
 ** Links, hints, howto
 *** whois(1)
@@ -29553,8 +29710,9 @@ and the offending line (in configure.ac) is PKG_CHECK_MODULES()
 Solution: pkg install pkgconf
 ** pkg
 - pkg which -- like debian dpkg -S
-- repository FreeBSD contains packages for wrong OS version
-  - 
+- pkg -vv -- shows settings, including configured repos
+- pkg query "%R %o" | sort | awk '/^Hard/{print $2}' -- print pkgs installed from repo matching ^Hard
+- pkg install -r altrepo pkg -- install pkg from altrepo
 ** missing leap-seconds.lists
 - Symptom
 Checking for rejected mail hosts:
@@ -29729,6 +29887,9 @@ A tool that does something like this.
 - jag byter (o)regelbundet telefon med andra personer
   - vi länkas tyvärr; är många länkar ett tillräckligt skydd?
 - ladda ner din profil över tor (valfritt)
+** self-correcting code
+- [self-inspect] allows for analysis and change of running code
+- detect anomalies and correct the code
 * FRA
 http://klamberg.blogspot.com/2008/08/media.html
 http://maps.google.com/maps?q=R%C3%B6rvik,+onsala&hl=en&ie=UTF8&ll=57.4148,11.934875&spn=0.002889,0.009645&sll=57.231573,14.578171&sspn=0.011614,0.038581&vpsrc=6&doflg=ptk&t=h&z=17
@@ -31211,6 +31372,118 @@ t -- enter commands
 To make a new player be in the right group for playing ("user"), do
 
 /permissions player setgroup <player> user 
+** spigot game admin
+- https://minecraft.gamepedia.com/Commands
+
+- list                 -- list connected users
+- [[https://minecraft.gamepedia.com/Commands/whitelist][whitelist]]
+  - list
+  - add <player>
+
+
+** spigot sysadmin, mincore @ kcmp.adbc
+- https://www.spigotmc.org/wiki/spigot-installation/
+- https://www.spigotmc.org/wiki/buildtools/
+*** upgrading 1.14.4 to 1.15 <2019-12-12 Thu>
+[root@mincore ~]# su - spigot
+$ cd build
+$ time java -jar BuildTools.jar --rev 1.15
+Loading BuildTools version: git-BuildTools-f247d7a-103 (#103)
+Java Version: Java 8
+git version 2.24.0
+BuildTools
+unconfigured@null.spigotmc.org
+Attempting to build version: '1.15' use --rev <version> to override
+Found version
+{
+        "name": "2510",
+        "description": "Jenkins build 2510",
+        "refs": {
+             "BuildData": "f845c6ee8a6d41562c71dc218c7d5b7b9eeb03d6",
+             "Bukkit": "333b9f02897384708573682fa35605d71a78a4db",
+             "CraftBukkit": "73698cf88d612147dc42808a8ae83f931315cae7",
+             "Spigot": "f39a89ef2d9083acae5a1e09d5991409213b0a89"
+        },
+        "toolsVersion": 101,
+        "javaVersions": [52, 57]
+}
+
+Pulling updates for /usr/home/spigot/build/BuildData/.git
+Successfully fetched updates!
+Checked out: f845c6ee8a6d41562c71dc218c7d5b7b9eeb03d6
+Pulling updates for /usr/home/spigot/build/Bukkit/.git
+Successfully fetched updates!
+Checked out: 333b9f02897384708573682fa35605d71a78a4db
+Pulling updates for /usr/home/spigot/build/CraftBukkit/.git
+Successfully fetched updates!
+Checked out: 73698cf88d612147dc42808a8ae83f931315cae7
+Pulling updates for /usr/home/spigot/build/Spigot/.git
+Successfully fetched updates!
+Checked out: f39a89ef2d9083acae5a1e09d5991409213b0a89
+Attempting to build Minecraft with details: VersionInfo(minecraftVersion=1.15, accessTransforms=bukkit-1.15.at, classMappings=bukkit-1.15-cl.csrg, memberMappings=bukkit-1.15-members.csrg, packageMappings=package.srg, minecraftHash=9320057153cdc411166ed78759a78a92, classMapCommand=java -jar BuildData/bin/SpecialSource-2.jar map --only . --only net/minecraft --auto-lvt BASIC --auto-member SYNTHETIC -e BuildData/mappings/bukkit-1.15.exclude -i {0} -m {1} -o {2}, memberMapCommand=java -jar BuildData/bin/SpecialSource-2.jar map --only . --only net/minecraft --auto-member LOGGER --auto-member TOKENS -i {0} -m {1} -o {2}, finalMapCommand=java -jar BuildData/bin/SpecialSource.jar --only . --only net/minecraft -i {0} --access-transformer {1} -m {2} -o {3}, decompileCommand=java -jar BuildData/bin/fernflower.jar -dgs=1 -hdc=0 -asc=1 -udv=0 -rsy=1 -aoa=1 {0} {1}, serverUrl=https://launcher.mojang.com/v1/objects/e9f105b3c5c7e85c7b445249a93362a22f62442d/server.jar, toolsVersion=101)
+Starting download of https://launcher.mojang.com/v1/objects/e9f105b3c5c7e85c7b445249a93362a22f62442d/server.jar
+Downloaded file: work/minecraft_server.1.15.jar with hash: 9320057153cdc411166ed78759a78a92
+...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Spigot-API 1.15-R0.1-SNAPSHOT ...................... SUCCESS [  9.700 s]
+[INFO] Spigot-Parent dev-SNAPSHOT ......................... SUCCESS [  0.079 s]
+[INFO] Spigot 1.15-R0.1-SNAPSHOT .......................... SUCCESS [ 23.846 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  33.772 s
+[INFO] Finished at: 2019-12-12T10:51:18+01:00
+[INFO] ------------------------------------------------------------------------
+ 
+Success! Everything compiled successfully. Copying final .jar files now.
+Copying spigot-1.15-R0.1-SNAPSHOT.jar to /usr/home/spigot/build/./spigot-1.15.jar
+  - Saved as ./spigot-1.15.jar
+      346.14 real       392.62 user       191.27 sys
+
+[spigot@mincore ~/build]$ cp spigot-1.15.jar ../run/jutu/
+
+>stop
+
+[spigot@mincore ~/build]$ cd ../run/jutu/
+[spigot@mincore ~/run/jutu]$ ln -sf spigot-1.15.jar spigot.jar
+[spigot@mincore ~/run/jutu]$ ls -l spigot.jar 
+lrwxr-xr-x  1 spigot  spigot  15 Dec 12 11:00 spigot.jar -> spigot-1.15.jar
+
+$ crontab -l
+@reboot /home/spigot/run/jutu/start.sh
+$ ~/run/jutu/start.sh
+$ screen -r
+*** 1.15 -> 1.15.1 <2019-12-29 Sun>
+$ java -jar BuildTools.jar --rev 1.15.1
+Loading BuildTools version: git-BuildTools-f247d7a-103 (#103)
+...
+\**** Your BuildTools is out of date and will not build the requested version. Please grab a new copy from https://www.spigotmc.org/go/buildtools-dl
+
+$ curl -LO https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar 
+Loading BuildTools version: git-BuildTools-0e60cdb-105 (#105)
+...
+$ cp spigot-1.15.1.jar ../run/jutu/
+$ cd ../run/jutu/
+> stop
+$ ln -sf spigot-1.15.1.jar spigot.jar 
+$ exit
+$ ~/run/jutu/start.sh
+$ screen -r
+
+*** 1.15.1 -> 1.15.2 <2020-01-26 Sun>
+: as user spigot @ mincore
+cd ~/build/
+java -jar BuildTools.jar --rev 1.15.2
+cp spigot-1.15.2.jar ../run/jutu/
+cd ../run/jutu/
+: stop the server using 'stop' in the console
+ln -sf spigot-1.15.2.jar spigot.jar
+: exit until 'screen is terminating'
+~/run/jutu/start.sh
+screen -r
+
 * passwords
 https://segate.sunet.se/ linus@nordu.net S2qaEn2TTa4G
 fb "Lord Berusning" HeligaGudsModerVilketHugg! (born 1975-02-11)
@@ -31730,9 +32003,25 @@ being zero is being done earlier in that function:
     }
 
 but then sadly ignored.
+*** update <2019-10-24 Thu>
+- count changed from 8 bit unsigned to 16 bit unsigned in commit 4ec67cf8
+Author: Valentin Bartenev <vbart@nginx.com>
+Date:   Mon Aug 31 23:25:16 2015 +0300
+
+    Added protection against r->main->count overflow by subrequests.
+    
+    This overflow has become possible after the change in 06e850859a26,
+    since concurrent subrequests are not limited now and each of them is
+    counted in r->main->count.
+
+- git show 06e850859a26 --
+fatal: bad revision '06e850859a26'
+
 ** source code analysis
 - rats has no debian package afaict
 - flawfinder knows C and C++
+- frama-c
+- nccgen (apt install ncc)
 * GlobaLeaks
 ** Trojkan
 http://kfucyoi2kkgt524e.onion/
@@ -31742,7 +32031,7 @@ lpq -al
 lpstat -l
 lp -i <job#> -H restart
 * email
-** losing flags
+** gnus losing IMAP flags
 <2013-06-11 Tue> early morning
 - up to "a couple of days" before 2013-06-07, all ticks (exclamation
   marks in gnus) disappeared in INBOX
@@ -32454,6 +32743,15 @@ Apr  4 11:05:51 lnmail saslauthd[1856]: do_auth         : auth failure: [user=li
 ** tor friendly email providers
 mailbox.org
 bitmessage.ch
+** mailing lists
+*** DMARC and ARC
+- [[gnus:nnimap+adbc:lists.misc#1b844002-d290-90da-19d8-a09d11f3c319@andreasschulze.de][Email from A. Schulze: Re: {mlmmj} List server DKIM]]
+  - do DKIM validation
+  - modify a message
+  - DKIM sign the message as MLMMJ entity
+  - ARC seal these data
+  - hope, Bob trust your ARC seal
+
 * Carbon X1
 alex: 14,4 kSEK
 * interesting plot
@@ -32711,6 +33009,10 @@ bluetooth = Disable
 Try passing idle=halt to the kernel.
 Should increase power consumption but shut the noise off.
 See [[*x60][x60]] for more on this.
+** on a server
+"X11 LGA1151 series"
+- https://doc.coreboot.org/mainboard/supermicro/x11-lga1151-series/x11-lga1151-series.html
+- https://www.system-transparency.org/
 * bios-extract
 bios-extract will pull apart factory.bin files
 * flashrom
@@ -35158,6 +35460,7 @@ julf@penet.fi
 - sus: vi har inte rekommenderat ngn speciell tjanst
 * presentations, creating them
 ** Emacs org mode
+*** Beamer
 Generating a PDF from an org mode file requires pdflatex(1) and some
 extra fonts:
 
@@ -35174,6 +35477,10 @@ For scaling images, imagemagick can be used
 
 apt-get install imagemagick
 convert IMG_2749.JPG -resize 25% envelope.png
+*** non-beamer
+- https://orgmode.org/worg/org-tutorials/non-beamer-presentations.html
+
+
 ** Converting SVG to PNG
 
 ** latex beamer
@@ -35740,9 +36047,6 @@ http://sverigesradio.se/sida/artikel.aspx?programid=1637&artikel=5934692
   #+LATEX_CLASS_OPTIONS: [a4paper]
   #+LATEX_HEADER: \usepackage{parskip}
   - C-c C-e l o
-* pictures
-https://www.debian-administration.org/article/62/Working_with_images_from_the_command_line
-convert -resize 300x200 in.jpg out.jpg  # part of imagemagick
 * flogsta messing up
 ** sdd fuckup
 flogsta:~% find . -name fisk\*
@@ -37284,7 +37588,13 @@ tar: Skipping to next header
 tar: Unexpected EOF in archive
 tar: Error is not recoverable: exiting now
 5639
-* threema id
+* threema
+- https://threema.ch/press-files/2_documentation/cryptography_whitepaper.pdf
+- no end-to-end forward secrecy in the chat protocol, only for
+  transport between client and server
+- does the chat protocol have forward secrecy for identity?
+
+** threema id's
 ln5: 8WTERSCW
 hjerturr: DP447BD9
 * randomness from noisy diode
@@ -37741,6 +38051,16 @@ curl-tor -v https://webmail.adb-centralen.se/.well-known/caldav
 
 _caldavs._tcp SRV 0 0 443 webmail.adb-centralen.se.
 ** instructions for the manual
+*** android, with 2FA enabled on nextcloud
+using a browser, go to
+https://clown.adb-centralen.se/index.php/settings/user/security and
+create a new app password. chose a good app name, like "dav5x@pixel3"
+
+install dav5x
+create new account
+pick login with url and username
+set base url to https://clown.adb-centralen.se
+enter username and app password from web page
 *** iphone, to be confirmed
 1. Skapa konto
 - starta inställningar
@@ -37790,6 +38110,9 @@ about:config privacy.userContext
 systemctl --user daemon-reload
 ** reloading gpg-agent
 systemctl --user reload gpg-agent
+** disabling a service without deinstalling its package
+systemctl --now disable SERVICE
+
 * ocaml
 ** installation on debian (stretch)
 sudo apt install ocaml tuareg-mode ocaml-mode # FIXME: ocaml-mode doing any good?
@@ -38175,6 +38498,18 @@ from talking to ximin <2018-03-11 Sun>
     - debcheckout ocamlbuild
   - in the ocamlbuild directory, try 'dh build --no-act'
 - then, package your stuff, get help from the [[https://lists.debian.org/debian-ocaml-maint/][debian-ocaml-maint ML]]
+
+** installing opam
+<2019-02-27 Wed>
+datan:opam% git remote -v
+origin  https://github.com/ocaml/opam (fetch)
+origin  https://github.com/ocaml/opam (push)
+
+git checkout 2.0.3
+./configure --prefix $HOME/usr
+make lib-ext
+make
+make install
 
 ** opam upgrade
 *** breakage <2018-05-04 Fri>
@@ -38615,8 +38950,18 @@ Somewehre in here results in
 - renumber / move a window
 C-t : number <new>
 * jackline
-- ~/.config/ocaml-xmpp-client/config.sexp
+- https://github.com/hannesm/jackline
+- installation
+    opam repo add xmpp-dev https://github.com/hannesm/xmpp-opam.git
+    opam update
+    opam install jackline
+- configuration
+  ~/.config/ocaml-xmpp-client/config.sexp
+- [X] bitlbee (3.5.1) + irssi see HTML when jackline sends any of '";
+  UPDATE: seems like both of them might have trouble, and it's only
+  with OTR: https://bugs.bitlbee.org/ticket/690
 * onionshare
+
 * video (vlc) on HDMI
 xrandr --auto
 
@@ -41409,6 +41754,8 @@ note: Run with `RUST_BACKTRACE=1` for a backtrace.
 - ansible $(hostname) -m setup		# list facts
 - ansible-inventory --host=$(hostname)  # list variables
 - ansible-inventory --graph       # map of what groups nodes belong to
+- ansible-playbook --inventory /usr/local/etc/ansible/hosts --limit $(hostname) --vault-password-file /usr/local/etc/vault/vault_common_secret /var/cache/ansible/site.yaml
+  ansible-playbook 
 * risc-v
 - https://www.sifive.com/products/hifive-unleashed
 ** NOTES
@@ -41582,7 +41929,7 @@ Lillemor Emring <lillemor.emring@majblomman.se> Lokalföreningsträffar
 go to https://signal.org/android/apk/	# enable a shitload of js
 download the apk and put it in ~/u/apk/
 mkdir -p tmp/apkunpack; cd tmp/apkunpack
-7z x ~/u/apk/Signal-website-release-${VERSION}.apk
+7z x ~/u/apk/Signal-SOMETHING-${VERSION}.apk
 cat META-INF/SIGNAL_S.RSA | keytool -printcert | egrep SHA256:
 # from website: 29:F3:4E:5F:27:F2:11:B4:24:BC:5B:F9:D6:71:62:C0 EA:FB:A2:DA:35:AF:35:C1:64:16:FC:44:62:76:BA:26
 adb install ~/u/apk/Signal-website-release-${VERSION}.apk
@@ -41631,6 +41978,9 @@ Reading code explains the mystery. The domain name is _stripped_ from
 the user name by the user_external app and since imap.adbc happily
 authenticates 'user' if there's a 'user/imap' in the KDC, we're better
 off not configuring a domain name.
+** subscriber only content?
+https://docs.nextcloud.com/server/stable/admin_manual/installation/deployment_recommendations.html -> 
+https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html
 * authn/authz
 - leif on what to use
   - om du har 1 tjänst (mail) så bygg ngt eget; 17 tjänster - alla
@@ -41687,27 +42037,10 @@ off not configuring a domain name.
 - the discoverability and identity call might be easier
 * rpi
 ** debian on rpi3
-git clone https://github.com/drtyhlpr/rpi23-gen-image
-cd rpi23-gen-image
-sudo apt install debootstrap debian-archive-keyring qemu-user-static binfmt-support dosfstools rsync bmap-tools whois git bc psmisc dbus sudo
-sudo apt install crossbuild-essential-arm64
-sudo apt install lsof apt-cacher-ng
-
-time CONFIG_TEMPLATE=adbc-rpi3b+-stretch sudo ./rpi23-gen-image.sh
-real    25m11.154s
-: didn't get any other image file than kernel8.img and i was hoping for a qcow2:
-
-time script -c 'CONFIG_TEMPLATE=adbc-rpi3b+-buster ./rpi23-gen-image.sh' build.$(date +%s).log
-real    25m35.833s
-root@datan:/home/linus/usr/src/rpi23-gen-image# find images/buster -name \*.img -ls
- 25440018  13184 -rw-------   1 root     root     13497048 Dec 10 08:02 images/buster/build/chroot/boot/firmware/kernel8.img
- 19542325 314388 -rw-r--r--   1 root     root     508204032 Dec 10 08:03 images/buster/2018-12-10-arm64-CURRENT-rpi3P-buster-arm64.img
-
-mkdir -p ~/usr/src/raspberrypi
-git clone https://github.com/raspberrypi/linux ~/usr/src/raspberrypi/linux
-ln -s ~linus/p/rpi-images/image-templ/adbc-rpi3b+-buster templates/
-time script -c "CONFIG_TEMPLATE=adbc-rpi3b+-buster HOSTNAME=kexec.verkligendata.se ~linus/usr/src/rpi23-gen-image/rpi23-gen-image.sh" build.$(date +%s).log
+see [[file:p/rpi-images/rpi-images.org][file:~/p/rpi-images/rpi-images.org]]
+but also https://salsa.debian.org/raspi-team/image-specs.git
 * signal
+** on android
 - https://signal.org/android/apk/
 
 datan:~% unzip -p Signal-website-release-4.30.8.apk META-INF/SIGNAL_S.RSA | keytool -printcert
@@ -41741,3 +42074,456 @@ DRSCHMTRLNG#2190
   - game settings, resolution 150% -> 100%
   - pros play on 80%
 - the dream is 144 FPS together with a 144 Hz monitor
+* tmux
+* ola 2019-04
+<A1> it seems related to a (supposed) "blackmail ring" targeted at Moreno,                                                                              
+     as leverage for protecting julian
+<A1> wapo said: "Authorities haven’t presented any charges against Bini                                                                                 
+     but the official said they are looking into whether he was part of a                                                                               
+     possible effort by Assange and Wikileaks to blackmail President Lenin                                                                              
+     Moreno."
+* softhsm2
+ 1083  apt install softhsm2
+ 1088  mkdir /var/lib/softhsm/tokens
+ 1093  softhsm2-util --init-token --free --label tlab0
+ 1094  softhsm2-util --show-slots
+ 1096  ls -l /etc/softhsm/softhsm2.conf
+ 1097  adduser linus softhsm
+ 1098  getent passwd linus
+ 1099  getent group softhsm
+ 1100  p11tool --list-tokens
+* yubikeys and pkcs#11
+$ sudo apt install yubico-piv-tool
+$ sudo systemctl restart pcscd # sometimes needed
+$ yubico-piv-tool -a version
+Application version 4.2.8 found.
+$ yubico-piv-tool -a list-readers
+Yubico Yubikey 4 CCID 00 00
+* joe armstrong
+./.linus.linus/cur/1214377194.R506d962eQ101633.imap.adb-centralen.se,S=3942,W=4043:2,SRb
+[[file:data/joe.txt][file:~/data/joe.txt]]
+* otrv4 vs. omemo
+- https://otr.cypherpunks.ca/
+- https://www.otr.im/
+- https://github.com/otrv4
+- [[https://datatracker.ietf.org/meeting/103/materials/slides-103-pearg-otrv4-slides-01][PEARG presentation on OTRv4 at IETF 103]]
+- [[https://conversations.im/omemo/audit.pdf][OMEMO audit]]
+
+** ola and sofias slides from fosdem
+Difference with OMEMO
+
+OTRv4 is agnostic: can work over any protocol, even asynchronous
+
+OTRv4 has better deniability properties
+
+OTRv4 has a well defined specification
+
+OMEMO supports transcript synchronizing between devices
+
+** https://www.reddit.com/r/crypto/comments/aum964/otr_version_4/eh9p72a/
+OMEMO and OTRv4 use the double-ratchet algorithm; but are not only
+that per-se. As far as I remember, OMEMO uses X3DH as the AKE, which
+gives the protocol partial offline deniability but no online
+deniability; and it gives partial forward secrecy (in regards to the
+AKE). In contrast, OTRv4 uses two DAKES (one for online conversations
+and one for offline conversations) which gives full offline
+deniability for both cases, full online deniability for online
+conversations and partial online deniability for offline
+conversations, and the same for forward secrecy.
+
+OMEMO only works over XMPP, as well. OTRv4 can be used over any
+messaging protocol, including email (as it now supports offline
+conversations).
+* random number in shell, 0-9 inclusive
+- bash
+echo $(( $RANDOM % 10 ))
+- /bin/sh
+expr $(cat /dev/urandom | tr -cd 0-9 | head -c 5) % 10
+
+** testing randomness
+datan:~% dd if=/dev/urandom bs=10000 count=1 2>/dev/null | ent -b -t
+0,File-bits,Entropy,Chi-square,Mean,Monte-Carlo-Pi,Serial-Correlation
+1,80000,0.999997,0.288800,0.499050,3.178872,0.004646
+
+datan:~% dd if=/dev/urandom bs=10000 count=1 2>/dev/null | ent -t
+0,File-bytes,Entropy,Chi-square,Mean,Monte-Carlo-Pi,Serial-Correlation
+1,10000,7.980211,272.972800,128.132500,3.094838,-0.003836
+
+datan:~% for n in $(seq 10000); do printf \\x$(expr $(cat /dev/urandom | tr -cd 0-9 | head -c 5) % 10); done | ent -b -t
+0,File-bits,Entropy,Chi-square,Mean,Monte-Carlo-Pi,Serial-Correlation
+1,80000,0.692948,31558.256450,0.185963,4.000000,0.094170
+
+datan:~% for n in $(seq 10000); do printf \\x$(expr $(cat /dev/urandom | tr -cd 0-9 | head -c 10) % 10); done | ent -b -t 
+0,File-bits,Entropy,Chi-square,Mean,Monte-Carlo-Pi,Serial-Correlation
+1,80000,0.696556,31217.508450,0.187663,4.000000,0.096151
+
+datan:~% for n in $(seq 10000); do printf \\x$(( $RANDOM % 10 )); done | ent -b -t
+0,File-bits,Entropy,Chi-square,Mean,Monte-Carlo-Pi,Serial-Correlation
+1,80000,0.692549,31595.952200,0.185775,4.000000,0.100406
+* screen closing millions of fd
+48798: 0.000020571 getrlimit(RLIMIT_NOFILE,{ cur=3772233,max=3772233 }) = 0 (0x0)
+48798: 0.000021138 close(3772232)                ERR#9 'Bad file descriptor'
+48798: 0.000020827 close(3772231)                ERR#9 'Bad file descriptor'
+48798: 0.000020460 close(3772230)                ERR#9 'Bad file descriptor'
+48798: 0.000019977 close(3772229)                ERR#9 'Bad file descriptor'
+48798: 0.000020870 close(3772228)                ERR#9 'Bad file descriptor'
+48798: 0.000020888 close(3772227)                ERR#9 'Bad file descriptor'
+48798: 0.000021454 close(3772226)                ERR#9 'Bad file descriptor'
+48798: 0.000021004 close(3772225)                ERR#9 'Bad file descriptor'
+48798: 0.000021234 close(3772224)                ERR#9 'Bad file descriptor'
+48798: 0.000020214 close(3772223)                ERR#9 'Bad file descriptor'
+48798: 0.000020961 close(3772222)                ERR#9 'Bad file descriptor'
+...
+* NTS, NTP
+- https://datatracker.ietf.org/wg/ntp/documents/
+
+** overview
+- NTS-KE server generates cookies for a given client
+- cookies include a s2c key used for 
+- cookies are encrypted in a key available to NTS-KE and all NTP
+  servers that are being useful for a given client
+
+*** draft 20
+
+- 5.2.
+
+   "The purpose of the cookie extension field is to enable the server
+  to offload storage of session state onto the client."
+
+- 6.
+
+   "Servers should periodically (e.g., once daily) generate a new pair
+   (I,K) and immediately switch to using these values for all newly-
+   generated cookies.  Immediately following each such key rotation,
+   servers should securely erase any keys generated two or more rotation
+   periods prior.  Servers should continue to accept any cookie
+   generated using keys that they have not yet erased, even if those
+   keys are no longer current.  Erasing old keys provides for forward
+   secrecy, limiting the scope of what old information can be stolen if
+   a master key is somehow compromised.  Holding on to a limited number
+   of old keys allows clients to seamlessly transition from one
+   generation to the next without having to perform a new NTS-KE
+   handshake."
+
+  Rotating daily and keeping one old key allows for clients which
+  connect at least once every 24h to keep running without having to go
+  back to the NTS-KE.
+* DoH, DoT, threat intelligence
+- Defending peoples privacy by looking at their DNS data: If I can save N desktop computers per day from being compromised by looking at the requests arriving at my corporate DNS resolver, should I not do it?
+- I'm competent enough to not spill this data. I can think of no other side effects of looking at anonymised DNS data. No IP addresses involved, only domain names and timestamps.
+
+https://www.us-cert.gov/tlp
+
+* cups
+** debian
+root@datan:~# adduser --system --no-create-home --ingroup lpadmin --disabled-login lpadmin
+root@datan:~# passwd lpadmin
+$ firefox http://localhost:631/
+* briar / bramble
+** briar-headless
+provides a restfull http api, for our curl pleasures
+
+cd ~/usr/src/briar/briar
+./gradlew --configure-on-demand briar-headless:jar
+java -jar briar-headless/build/libs/briar-headless.jar
+
+Nickname: ln5t1
+Password: chaek5Au
+
+alias curl-briar='curl -s -H "Authorization: Bearer $(cat ~/.briar/auth_token)"'
+
+curl-briar http://127.0.0.1:7000/v1/contacts
+[]
+
+curl-briar http://127.0.0.1:7000/v1/contacts/add/link
+{"link":"briar://abpyrbl4pifawthsutpj5trto3z6ljpbap6t5mwsww4ghehg2igsa"}
+
+printf '{"link": "briar://ablciurkfxaod5gxab4lx5ij4z3fwbrrieuimb6gif5vg64dlzdcs", "alias": "ln5"}' | 
+  curl-briar -d @- http://127.0.0.1:7000/v1/contacts/add/pending | json_pp
+{
+   "alias" : "ln5",
+   "timestamp" : 1573475594502,
+   "pendingContactId" : "PRqYARI8kcX7xvp5nFQIXgA+C+CdTHJVQ4Tndk55RWA="
+}
+
+curl-briar http://127.0.0.1:7000/v1/contacts/add/pending
+[]
+
+curl-briar http://127.0.0.1:7000/v1/contacts | json_pp
+[
+   {
+      "contactId" : 1,
+      "handshakePublicKey" : "ViRSKi3A4fTXAHi79QnmdlsGMUEohgfGQXtTe4NeRik=",
+      "verified" : false,
+      "author" : {
+         "formatVersion" : 1,
+         "name" : "ln5",
+         "id" : "razea754Kl+e/JZVtQF8laKn8LePAbRWdhS6Zqy1C0k=",
+         "publicKey" : "pDGz+e5NrnSDfmAioKcZbeIFLicKAsEagkIJaoqKU6k="
+      }
+   }
+]
+
+curl-briar http://127.0.0.1:7000/v1/messages/1 | json_pp
+[
+   {
+      "contactId" : 1,
+      "seen" : true,
+      "groupId" : "JcrJ7yZRJ6FPJvvDJbq+/TBTE9S3tgHOCTYQO1RpDV8=",
+      "read" : false,
+      "id" : "fcVgB4nq4cRBAjYu/ZsDLXm2T8J1RD6i/gGMB1rbRsE=",
+      "text" : "Hej hej",
+      "local" : false,
+      "sent" : false,
+      "timestamp" : 1573475627689,
+      "type" : "PrivateMessage"
+   }
+]
+
+echo '{"text": "ack"}' | curl-briar -d@- http://127.0.0.1:7000/v1/messages/1 | json_pp
+{
+   "sent" : false,
+   "read" : true,
+   "type" : "PrivateMessage",
+   "text" : "ack",
+   "contactId" : 1,
+   "groupId" : "JcrJ7yZRJ6FPJvvDJbq+/TBTE9S3tgHOCTYQO1RpDV8=",
+   "local" : true,
+   "seen" : false,
+   "timestamp" : 1573476149498,
+   "id" : "gcZjllXsdyJFrXdTw3l1TuT6EsDx5Hd2C/LeLKeQJ+4="
+}
+* ganeti -- vm cluster management
+* feedback on uppsala presentation
+- conclusion
+- orientation during
+- repeating the question
+- panopticon -- black cameras and speed limit cameras
+- technical part is too hard
+- bullet points, maybe _one_ black bullet at the time?
+* C programming
+** Finding the bugs
+*** afl
+  todo
+*** clang -fsanitize for use-after-free and such
+CFLAGS="-g -fsanitize=address -Wstrict-aliasing"
+LDFLAGS=-fsanitize=address,undefined
+*** splint for static analysis
+*** unsorted
+- flawfinder
+- frama-c
+- nccgen (apt install ncc)
+* moxie on decentralisation <2020-01-02 Thu>
+- evolving rapidly is in contradiction with decentralisation
+- once you decentralise a protocol it becomes extremely hard to change 
+- decentralisation == privacy; censorship resistence; availability; control
+- the notion that privacy equals data (including metadata) ownership
+is an antiquated notion from a time when computers were for computer
+people
+- metadata protection requires new techniques
+- "signal has no visibility into ..."
+- anonymous credential scheme, ZKP
+- i can publish the server side state of my account
+- p2p is not necessarily privacy preserving
+- censorship
+  - if a thing is user discoverable it's going to be censor
+    discoverable
+* dkim
+** debugging failing signatures <2020-02-10 Mon>
+[root@smtp /]# cat /tmp/dkim.14521C66481.Uua5YL 
+from:Linus Nordberg <linus@nordberg.se>
+to:echo@sunet.se
+subject:dkim test 0
+date:Mon, 10 Feb 2020 21:13:47 +0100
+dkim-signature:v=1; a=rsa-sha256; c=relaxed/simple; d=nordberg.se; s=smtp; t=1581365632; bh=frcCV1k9oG9oKj3dpUqdJg1PxRT2RSN/XKdLCPjaYaY=; h=From:To:Subject:Date; z=From:=20Linus=20Nordberg=20<linus@nordberg.se>|To:=20echo@sunet.s e|Subject:=20dkim=20test=200|Date:=20Mon,=2010=20Feb=202020=2021:1 3:47=20+0100; b=
+
+* fomu
+Feb 17 23:19:26 datan kernel: usb 1-6.2: new full-speed USB device number 117 using xhci_hcd
+Feb 17 23:19:26 datan kernel: usb 1-6.2: New USB device found, idVendor=1209, idProduct=5bf0
+Feb 17 23:19:26 datan kernel: usb 1-6.2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+Feb 17 23:19:26 datan kernel: usb 1-6.2: Product: Fomu PVT running DFU Bootloader v1.9.1
+Feb 17 23:19:26 datan kernel: usb 1-6.2: Manufacturer: Foosn
+
+(After setting up dev environment as described on
+https://workshop.fomu.im/en/latest/requirements.html, basically
+download
+https://github.com/im-tomu/fomu-toolchain/releases/download/v1.5.3/fomu-toolchain-linux_x86_64-v1.5.3.tar.gz
+from four vantage points and verify the .sha512 file.)
+
+datan:~% export PATH=~/usr/src/fomu/fomu-toolchain-linux_x86_64-v1.5.3/bin:$PATH
+datan:~% dfu-util -l
+dfu-util 0.9
+
+Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+Copyright 2010-2019 Tormod Volden and Stefan Schmidt
+This program is Free Software and has ABSOLUTELY NO WARRANTY
+Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+
+Found DFU: [1209:5bf0] ver=0101, devnum=117, cfg=1, intf=0, path="1-6.2", alt=0, name="Fomu PVT running DFU Bootloader v1.9.1", serial="UNKNOWN"
+
+datan:fomu-workshop% dfu-util -D micropython-fomu.dfu 
+dfu-util 0.9
+
+Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+Copyright 2010-2019 Tormod Volden and Stefan Schmidt
+This program is Free Software and has ABSOLUTELY NO WARRANTY
+Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+
+Match vendor ID from file: 1209
+Match product ID from file: 5bf0
+Opening DFU capable USB device...
+ID 1209:5bf0
+Run-time device DFU version 0101
+Claiming USB DFU Interface...
+Setting Alternate Setting #0 ...
+Determining device status: state = dfuIDLE, status = 0
+dfuIDLE, continuing
+DFU mode device DFU version 0101
+Device returned transfer size 1024
+Copying data from PC to DFU device
+Download        [=========================] 100%       136164 bytes
+Download done.
+state(7) = dfuMANIFEST, status(0) = No error condition is present
+state(8) = dfuMANIFEST-WAIT-RESET, status(0) = No error condition is present
+Done!
+
+datan:fomu-workshop% ls -l /dev/ttyACM*
+crw-rw---- 1 root dialout 166, 0 Feb 18 00:29 /dev/ttyACM0
+
+$ screen /dev/ttyACM0
+MicroPython v1.10-308-g421dcd2 on 2020-01-03; fomu with vexriscv
+>>> print('hello world')
+hello world
+
+>>> import fomu
+>>> rgb = fomu.rgb()
+>>> dir(rgb)
+['mode', 'read_raw', 'write_raw']
+>>> rgb.mode("error")
+>>> rgb.mode("ok")
+Traceback (most recent call last):
+n <module>tdin>", line 1, i
+TypeError: unrecognized mode "ok". must be one of idle, done, writing, or error
+>>> rgb.mode("done")
+>>> rgb.mode("idle")
+
+>>> dir(fomu)
+['rgb', 'spi']
+>>> spi = fomu.spi()
+>>> dir(spi)
+['id']
+>>> hex(spi.id())
+'0xc8144015'
+
+>>> import machine
+>>> machine.mem32[0xe0007000]
+1
+>>> machine.mem32[0xe0007004]
+9
+>>> machine.mem32[0xe0007008]
+1
+>>> chr(machine.mem32[0xe0007028])
+'P'
+
+datan:fomu-workshop%  wishbone-tool 0xe0007000
+INFO [wishbone_tool::bridge::usb] opened USB device device 118 on bus 001
+Value at e0007000: 00000001
+datan:fomu-workshop%  wishbone-tool 0xe0007004
+INFO [wishbone_tool::bridge::usb] opened USB device device 118 on bus 001
+Value at e0007004: 00000009
+datan:fomu-workshop%  wishbone-tool 0xe0007008
+INFO [wishbone_tool::bridge::usb] opened USB device device 118 on bus 001
+Value at e0007008: 00000001
+
+datan:fomu-workshop%  wishbone-tool 0x10000000
+INFO [wishbone_tool::bridge::usb] opened USB device device 118 on bus 001
+Value at 10000000: 100027b7
+datan:fomu-workshop%  wishbone-tool 0x10000000 0x12345678
+INFO [wishbone_tool::bridge::usb] opened USB device device 118 on bus 001
+datan:fomu-workshop%  wishbone-tool 0x10000000
+INFO [wishbone_tool::bridge::usb] opened USB device device 118 on bus 001
+Value at 10000000: 12345678
+
+datan:fomu-workshop%  wishbone-tool 0xe0006000 0xac
+INFO [wishbone_tool::bridge::usb] opened USB device device 118 on bus 001
+INFO [wishbone_tool::bridge::usb] waiting for target device
+<hanging>
+
+
+datan:riscv-blink% make
+...
+datan:riscv-blink% dfu-util -D riscv-blink.dfu 
+dfu-util 0.9
+
+Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+Copyright 2010-2019 Tormod Volden and Stefan Schmidt
+This program is Free Software and has ABSOLUTELY NO WARRANTY
+Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+
+Match vendor ID from file: 1209
+Match product ID from file: 70b1
+Opening DFU capable USB device...
+ID 1209:5bf0
+Run-time device DFU version 0101
+Claiming USB DFU Interface...
+Setting Alternate Setting #0 ...
+Determining device status: state = dfuIDLE, status = 0
+dfuIDLE, continuing
+DFU mode device DFU version 0101
+Device returned transfer size 1024
+Copying data from PC to DFU device
+Download        [=========================] 100%         4408 bytes
+Download done.
+state(7) = dfuMANIFEST, status(0) = No error condition is present
+state(8) = dfuMANIFEST-WAIT-RESET, status(0) = No error condition is present
+Done!
+
+datan:riscv-blink% wishbone-tool -s gdb
+INFO [wishbone_tool::bridge::usb] opened USB device device 125 on bus 001
+INFO [wishbone_tool::server] accepting connections on 127.0.0.1:1234
+
+datan:riscv-blink% riscv64-unknown-elf-gdb riscv-blink.elf -ex 'target remote localhost:1234'
+GNU gdb (SiFive GDB 8.3.0-2019.08.0) 8.3
+Copyright (C) 2019 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "--host=x86_64-pc-linux-gnu --target=riscv64-unknown-elf".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://github.com/sifive/freedom-tools/issues>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+ 
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from riscv-blink.elf...
+Remote debugging using localhost:1234
+0x20040030 in timer0_value_read () at ./include/generated/csr.h:258
+258             return r;
+(gdb) bt
+#0  0x20040030 in timer0_value_read () at ./include/generated/csr.h:258
+#1  0x20040098 in msleep (ms=ms@entry=80) at ./include/hw/common.h:41
+#2  0x200402f0 in main () at ./src/main.c:52
+
+* win32
+LISTBOX? https://docs.microsoft.com/en-us/windows/win32/controls/create-a-simple-list-box
+COMBOBOX? https://msdn.microsoft.com/library/bb775791(v=vs.85).aspx
+
+** first focus in a dialogue
+If the control you want to have initial focus doesn't have WS_TABSTOP,
+this is how to give it focus.
+
+DlgProc() {
+  switch(Message) {
+  case WM_INITDIALOG:
+    ...
+    SetFocus(hwndList);
+    return FALSE;		/* Don't set default input focus. */
+  }
+  ...
+}
+
+** sengind a message to a control in a dialogue
+SendDlgItemMessageA(hwnd, IDL_USERS, LB_ADDSTRING, ...)
