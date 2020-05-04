@@ -1472,7 +1472,7 @@ Segmentation fault
 Get rid of syntax highlighting in all buffers:
   (global-font-lock-mode -1)
 ** building our own emacs
-- building emacs from git
+*** building emacs from git
   - [X] 2018-04-09 emacs-26.1-rc1
   - [X] 2018-05-29 emacs-26.1
   - [X] 2018-10-31 c3cf85b1c1 (branch emacs-26)
@@ -1482,17 +1482,16 @@ Get rid of syntax highlighting in all buffers:
   - sh autogen.sh
   - ./configure --prefix=$HOME/usr --without-xml2
   - make && make install
-- dependencies, not using elpa
-  - go-mode.el
+*** go-mode.el
     - https://github.com/dominikh/go-mode.el
     - master <2019-10-13 Sun>
     - (add-to-list 'load-path "/place/where/you/put/it/")
       (autoload 'go-mode "go-mode" nil t)
       (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
     - cp go-guru.el go-mode.el go-rename.el ~/usr/share/emacs/site-lisp/
-  - rfcview
+*** rfcview
     - (cd ~/usr/share/emacs/site-lisp && curl -O http://www.loveshack.ukfsn.org/emacs/rfcview.el;)
-  - magit
+*** magit
     - https://github.com/magit/magit
     - 2.12.1 <2018-05-04 Fri>
     - 2.13.0 <2018-10-31 Wed>
@@ -1536,24 +1535,34 @@ Get rid of syntax highlighting in all buffers:
           - ghub.el:970:1:Error: Cannot open load file: No such file or directory, ghub-graphql
         - make LOAD_PATH="-L $HOME/usr/share/emacs/site-lisp"
         - cp ghub.el* ghub-autoloads.el ~/usr/share/emacs/site-lisp/
-  - markdown-mode
+*** markdown-mode
     - https://github.com/jrblevin/markdown-mode
     - master as of <2018-05-09 Wed>
     - master as of <2018-10-31 Wed> (a1e1ecc3)
     - master as of <2019-06-13 Thu> (115f77d)
     - make update	# installs to ~/.emacs.d/site-lisp/
-  - erlang mode
+*** erlang mode
     - ?
-  - org-mode
+*** org-mode
     - https://orgmode.org/org-mode.git
     - https://orgmode.org/org.html#Installation
     - make help
     - release_9.2.6 <2019-11-12 Tue>
     - make DESTDIR=$HOME all install
-  - org-reveal
+*** org-reveal, for presentations
     - git clone https://github.com/yjwen/org-reveal
     - 460101aa2c4c957ebc2348b8754765b63310d337 as of <2019-11-13 Wed>
     - cp ox-reveal.el ~/.emacs.d/site-lisp/
+*** yaml-mode
+- git clone https://github.com/yoshiki/yaml-mode
+- v0.0.13 <2020-03-12 Thu>
+- make PREFIX=$HOME/usr
+- make install PREFIX=$HOME/usr
+- ~/.emacs
+    (require 'yaml-mode)
+    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+    (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
 *** old elpa config
 ;; Do this early -- other requirements might depend on it. See
 ;; variable package-archives for configured archives.
@@ -2143,7 +2152,7 @@ Name                 State      Autostart
 default              inactive   no
 ** creating a vm, per vm
 # NOTE: pointing out debian stable dist but says 'debiantesting'
-virt-install --virt-type kvm --name debian-buster --ram 512 --disk size=20 --graphics none --location http://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ --extra-args console=ttyS0,115200 --os-variant debiantesting
+virt-install --virt-type kvm --name debian-buster --memory 512 --disk size=20 --graphics none --location http://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ --extra-args console=ttyS0,115200 --os-variant debiantesting
 # then install an os, reboot the vm, then shut it down
 $ sudo virsh start test
 $ sudo virsh console test	# TODO: how can I do this without being root? ("error: failed to get domain 'test'")
@@ -3816,7 +3825,7 @@ auth-user-pass, maybe
 * telia hemma
   https://www.bredbandswebben.se/kundwebb/logon.asp
   pM79B2x48 / q76f2GmC
-* dm-crypt
+* dm-crypt / luks / LUKS
 ** packages
    sudo apt-get install cryptsetup
 ** usb disk
@@ -4352,339 +4361,41 @@ lsblk -o +UUID
   Veteran hi fi, Karlbergsv. 62, 08-300846, miroslaw@simplyblack.net.
 * yubikey
 See unfinished [[file:doc/yubikey.md][file:~/doc/yubikey.md]] too.
-** hardware
+** Hardware
 - yubikey 4 has an SLE 78CLFX3000P:
   https://twitter.com/lrvick/status/695664752215793664
   http://www.infineon.com/cms/en/product/security-and-smart-card-solutions/security-controllers/sle78/SLE+78CLFX3000P/productType.html?productType=db3a30433f764301013f995084a85d3b#ispnTab11
-** notes
-*** klali on yk4, feb 2016
-- using 3des and not aes
-des 18 cykler
-3des 51 cykler
-aes-128 263 cykler
-aes-192 313 cykler
-aes-256 363 cykler
-*** john on touch <2016-02-24 Wed>
-encrypted [[gnus:nnimap%2Badbc:INBOX#56CCE081.1070703@binary.to][Email from John Van de Meulebrouck Brendgard: Angående touch på yubikey]]
-
-Jag har låtit undersöka om jag kan reproducera problemen jag nämnde
-att jag hade med https://gist.github.com/a-dma/797e4fa2ac4b5c9024ccDet
-verkar dock lite svårt för den nyare som du fick fungerade utan
-problem för mig att sätta touch på. Den verkar även ha en nyare
-version av firmwaren än vad jag har testat förut: 
-gpg-connect-agent --hex "scd apdu 00 f1 00 00" /bye
-D[0000] 04 02 08 90 00
-
-Medan min vanliga produktionsnykel har:
-gpg-connect-agent --hex "scd apdu 00 f1 00 00" /bye
-D[0000]  04 02 07 90 00
-
-Jag testade därefter om problemen kvarstår på den äldre versionen och
-det gjorde de tills det att jag återställde firmwaren - då gick det på
-första försöket.
-
-Oavsett om det går eller ej så kan man "autentisera sig" genom att byta
-admin lösenord med gpg2 --card-edit -> admin -> passwd -> "3 - change
-Admin PIN" (går att sätta till samma om man vill) och modifiera skriptet
-så att det inte försöker autentisera dig (eftersom du redan har gjort
-det), alternativt ta ut godbitarna såsom t ex:
-Sätt touch på sig:
-gpg-connect-agent --hex "scd apdu 00 da 00 D6 02 01 20" /bye
-
-Sätt touch på dec:
-gpg-connect-agent --hex "scd apdu 00 da 00 D7 02 01 20" /bye
-
-Sätt touch på aut:
-gpg-connect-agent --hex "scd apdu 00 da 00 D8 02 01 20" /bye
-
-Jag har satt fixed touch (02 istället för 01 i kommandona ovan) på sig
-och dec eftersom jag inte vill att någon ska kunna ta bort kravet på
-touch för dessa även om denne någon sniffat mitt admin-lösenord.
-** host software
-  - [X] libykclient-dev - Yubikey client library development files
-  - [X] libykclient3 - Yubikey client library runtime
-  - [ ] libykpers-1-1 - Personalization tool for Yubikey OTP tokens
-  - [ ] libykpers-1-dev - Personalization tool for Yubikey OTP tokens
-  - [ ] libyubikey-dev - Yubikey OTP library development files
-  - [ ] libyubikey0 - Yubikey OTP handling library runtime
-  - [ ] yubikey-personalization - Personalization tool for Yubikey OTP tokens
-  - [ ] yubikey-server-c - Yubikey validation server
-
-        root@42:~# dpkg -L libykclient-dev
-        /.
-        /usr
-        /usr/lib
-        /usr/lib/libykclient.a
-        /usr/include
-        /usr/include/ykclient.h
-        /usr/bin
-        /usr/bin/ykclient
-        /usr/share
-        /usr/share/doc
-        /usr/share/doc/libykclient-dev
-        /usr/share/doc/libykclient-dev/copyright
-        /usr/share/doc/libykclient-dev/changelog.gz
-        /usr/share/doc/libykclient-dev/changelog.Debian.gz
-        /usr/lib/libykclient.so
-
-- apt install yubikey-neo-manager gives you GUI program
-  /usr/bin/neoman which is using libykneomgr, ykpers(onalize) and
-  libu2f-host.
-
-** Making a static key
-$ HISTFILE=/dev/null sudo bash -
-# ykpersonalize -y -1 -oappend-cr -ostatic-ticket -ostrong-pw1 -ostrong-pw2 -oman-update -a$(~linus/src/hexpw.py) >/dev/null || echo FAIL
-NOTE: use -o-append-cr to make the yubikey not send the final cr/lf, perhaps in slot 2
-*** cat src/hexpw.py
-#! /usr/bin/python
-    
-    def hexify(data):
-    s = ''
-    for c in data:
-    s = s + '%02x' % ord(c)
-    return s
-    
-    def main():
-    print hexify(file('/dev/random').read(16))
-    
-    main()
-** basic info
-Documentation can be found at
-
-  https://www.yubico.com/support/documentation/
-
-and in particular the user manual at
-
-  https://www.yubico.com/wp-content/uploads/2015/03/YubiKeyManual_v3.4.pdf
-
-
-Yubikey 4 doesn't have a JavaCard like the manual says. It has a
-"secure element" from Infinion (SLE78).
-
-Quick guide on how to get started using SSH keys on a Debian system
-(based on
-https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd):
-
-    sudo apt-get install gnupg2 scdaemon
-
-    cat >> $GNUPGHOME/gpg-agent.conf <<EOF
-    scdaemon-program /usr/lib/gnupg2/scdaemon
-    enable-ssh-support
-    write-env-file "$GNUPGHOME/gpg-agent-info-$(hostname)"
-    EOF
-
-    cat >> $HOME/.profile <<EOF
-    if [ -f "${GNUPGHOME}/gpg-agent-info-$(hostname)" ]; then
-        . "${GNUPGHOME}/gpg-agent-info-$(hostname)"
-        export GPG_AGENT_INFO
-        export SSH_AUTH_SOCK
-        export SSH_AGENT_PID
-    fi
-    GPG_TTY=$(tty); export GPG_TTY
-    EOF
-
-    ykpersonalize -m82		# requires yuibkey to be inserted
-
-yubikey-personalization - Personalization tool for Yubikey OTP tokens
-yubikey-personalization-gui - Graphical personalization tool for YubiKey tokens
-** Generating a PGP key on a NEO <2016-12-27 Tue>
-$ gpg2 --card-edit
-gpg/card> generate
-[...]
-
-pub   2048R/1983D15A 2016-12-27
-      Key fingerprint = 1310 BE34 91E9 80C7 2D14  C209 4F4A C7C1 1983 D15A
-uid       [ultimate] Linus Nordberg <linus@nordberg.se>
-sub   2048R/813C6BD2 2016-12-27
-sub   2048R/08E3FB84 2016-12-27
-
-
-
-gpg/card> list
-
-Application ID ...: D2760001240102000006030353660000
-Version ..........: 2.0
-Manufacturer .....: Yubico
-Serial number ....: 03035366
-Name of cardholder: [not set]
-Language prefs ...: [not set]
-Sex ..............: unspecified
-URL of public key : [not set]
-Login data .......: [not set]
-Signature PIN ....: not forced
-Key attributes ...: 2048R 2048R 2048R
-Max. PIN lengths .: 127 127 127
-PIN retry counter : 3 3 3
-Signature counter : 5
-Signature key ....: 1310 BE34 91E9 80C7 2D14  C209 4F4A C7C1 1983 D15A
-      created ....: 2016-12-27 00:26:14
-Encryption key....: BAC2 ADE0 AD9D 12F4 094F  A777 0561 55F4 08E3 FB84
-      created ....: 2016-12-27 00:26:14
-Authentication key: 3762 7C9D F990 34D2 BB1D  CAEF 470B 053D 813C 6BD2
-      created ....: 2016-12-27 00:26:14
-General key info..:
-pub  2048R/1983D15A 2016-12-27 Linus Nordberg <linus@nordberg.se>
-sec>  2048R/1983D15A  created: 2016-12-27  expires: never
-                      card-no: 0006 03035366
-ssb>  2048R/813C6BD2  created: 2016-12-27  expires: never
-                      card-no: 0006 03035366
-ssb>  2048R/08E3FB84  created: 2016-12-27  expires: never
-                      card-no: 0006 03035366
-** Importing a PGP key to a NEO
-https://developers.yubico.com/PGP/Importing_keys.html
-https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd#generate-key-outside-card
-$ gpg --full-gen-key
-$ gpg --expert --edit-key $keyid # addkey; 8 S E A Q 4096 0 y y
-$ gpg --list-key $keyid
-pub   rsa4096 2018-02-17 [SC]
-      83727C5FE992F9B0A804D182224D5A7209FACB69
-uid           [ultimate] Test key <test@example.com>
-sub   rsa4096 2018-02-17 [E]
-sub   rsa4096 2018-02-17 [A]
-
-Backup key to file.
-*** serial 0x3f6d8b (04156811)
-Reader ...........: 1050:0405:X:0
-Application ID ...: D2760001240102010006041568110000
-Version ..........: 2.1
-Manufacturer .....: Yubico
-Serial number ....: 04156811
-Name of cardholder: [not set]
-Language prefs ...: [not set]
-Sex ..............: unspecified
-URL of public key : [not set]
-Login data .......: [not set]
-Signature PIN ....: not forced
-Key attributes ...: rsa4096 rsa4096 rsa4096
-Max. PIN lengths .: 127 127 127
-PIN retry counter : 3 0 3
-Signature counter : 2
-Signature key ....: 8C4C D511 095E 982E B0EF  BFA2 1E8B F349 2329 1265
-      created ....: 2010-05-07 15:05:41
-Encryption key....: 0A6E F2A1 805A EFFB 6FDA  D0F3 46B3 10F8 DA94 5B54
-      created ....: 2017-04-17 07:16:39
-Authentication key: 8C4C D511 095E 982E B0EF  BFA2 1E8B F349 2329 1265
-      created ....: 2010-05-07 15:05:41
-General key info..: pub  rsa4096/1E8BF34923291265 2010-05-07 Linus Nordberg <linus@nordberg.se>
-sec>  rsa4096/1E8BF34923291265  created: 2010-05-07  expires: never     
-                                card-no: 0006 04156811
-ssb   rsa4096/95FA5E5B5681169D  created: 2010-05-07  expires: 2011-05-07
-ssb   rsa4096/066FB4CAD564A6A9  created: 2011-04-25  expires: 2012-04-24
-ssb   rsa4096/DEF09E0491BE3F46  created: 2012-04-23  expires: 2013-04-23
-ssb   rsa4096/8318304C153E576C  created: 2013-04-23  expires: 2014-04-23
-ssb   rsa4096/76BD0D3E2293E1E1  created: 2014-04-23  expires: 2015-04-23
-ssb   rsa4096/39D965713B249393  created: 2015-04-20  expires: 2016-04-19
-ssb   rsa4096/9CFD365BB5F7D1B1  created: 2016-04-14  expires: 2017-04-14
-ssb>  rsa4096/46B310F8DA945B54  created: 2017-04-17  expires: 2018-04-17
-                                card-no: 0006 04156811
-*** serial 0x3f6d9c
-** authenticating ssh using yk4 and gpg-agent
-datan:~% ssh-add -l
-4096 SHA256:LZKqbsLHD7QSwjg9DGvdrrw8Vd6lMWH3EPu5abPtMvM cardno:000604156811 (RSA)
-
-datan:~% ssh ioctl.adb-centralen.se
-sign_and_send_pubkey: signing failed: agent refused operation
-
-Feb 18 11:09:31 datan gpg-agent[2878]: DBG: detected card with S/N D2760001240102010006041568110000
-Feb 18 11:09:31 datan gpg-agent[2878]: scdaemon[2880]: app_auth failed: Invalid ID
-Feb 18 11:09:31 datan gpg-agent[2878]: smartcard signing failed: Invalid ID
-Feb 18 11:09:31 datan gpg-agent[2878]: ssh sign request failed: Invalid ID <SCD>
-
-datan:~% ssh-add -s $(dpkg -L opensc-pkcs11 | grep \/opensc-pkcs11.so\$ | head -n1)
-Enter passphrase for PKCS#11: 
-Could not add card "/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so": agent refused operation
-
-Problem solved by using a separat key for authentication. I suppose
-having the same key for signing and authn is not supported (by gpg?).
-
-Touch works to, after `yubitouch/yubitouch.sh aut on` [0]. Yubikey
-blinking and if I don't touch it within 20s, ssh times out with
-"sign_and_send_pubkey: signing failed: agent refused operation ".
-
-[0] https://github.com/a-dma/yubitouch
-
-Qeustion is if we should fixate ("fix") the authn touch. Downside is
-when you might want to invoke ssh many times from a script.
-
-Next question is if we should require touch for signing and decryption
-too. Indeed we should. This should be set to "fix" (not only "on").
-** changing ssh key passphrase in gpg-agent
-- https://blogs.gentoo.org/marecki/2017/03/17/changing-the-passphrase-for-ssh-keys-in-gpg-agent/
-  echo passwd $KEYGRIP | gpg-connect-agent
-** troubleshooting
-- yubico-piv-tool can't find reader
-datan:~% yubico-piv-tool --verbose -a list-readers
-error: SCardListReaders failed, rc=8010002e
-Failed to connect to reader.
-
-Eject and insert Yubikey.
-
-Mar 05 09:18:14 datan kernel: usb 1-6: USB disconnect, device number 2
-Mar 05 09:18:14 datan systemd[1]: smartcard.target: Unit not needed anymore. Stopping.
-Mar 05 09:18:14 datan systemd[1]: Stopped target Smart Card.
-Mar 05 09:18:14 datan gpg-agent[1819]: scdaemon[1821]: DBG: Removal of a card: 0
-Mar 05 09:18:20 datan kernel: usb 1-6: new full-speed USB device number 7 using xhci_hcd
-Mar 05 09:18:20 datan kernel: usb 1-6: New USB device found, idVendor=1050, idProduct=0404
-Mar 05 09:18:20 datan kernel: usb 1-6: New USB device strings: Mfr=1, Product=2, SerialNumber=0
-Mar 05 09:18:20 datan kernel: usb 1-6: Product: Yubikey 4 CCID
-Mar 05 09:18:20 datan kernel: usb 1-6: Manufacturer: Yubico
-Mar 05 09:18:20 datan mtp-probe[2188]: checking bus 1, device 7: "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-6"
-Mar 05 09:18:20 datan mtp-probe[2188]: bus: 1, device: 7 was not an MTP device
-Mar 05 09:18:20 datan systemd[1]: Reached target Smart Card.
-
-datan:~% yubico-piv-tool -a list-readers
-Yubico Yubikey 4 CCID 00 00
-
-This seems to work "for a while" before going back to failing again,
-often (always?) with a bunch of the following kernel log entries:
-
-Mar 05 10:07:32 datan kernel: xhci_hcd 0000:00:14.0: WARN Event TRB for slot 10 ep 4 with no TDs queued?
-** locked PIN (tl;dr solution: gpg --change-pin)
-- probably entered the wrong PIN too many times
-
-Mar 05 09:44:48 datan gpg-agent[1819]: scdaemon[1821]: verify CHV2 failed: PIN blocked
-Mar 05 09:44:48 datan gpg-agent[1819]: scdaemon[1821]: app_auth failed: PIN blocked
-Mar 05 09:44:48 datan kernel: xhci_hcd 0000:00:14.0: WARN Event TRB for slot 10 ep 4 with no TDs queued?
-Mar 05 09:44:48 datan gpg-agent[1819]: smartcard signing failed: PIN blocked
-Mar 05 09:44:48 datan gpg-agent[1819]: ssh sign request failed: PIN blocked <SCD>
-
-this is what gpg --card-status reports about retry counters:
-PIN retry counter : 0 0 3
-- tried to unblock pin
-datan:~% yubico-piv-tool -a unblock-pin
-Enter puk:  # entered old pgpg key passphrase (with final char) plus YKII
-Retrieving puk failed.
-- retry counter still "0 0 3"
-- trying to give --pin on command line
-datan:~% unset HISTFILE
-datan:~% yubico-piv-tool -a verify-pin --pin='<redacted>' -a unblock-pin
-Maximum 8 digits of PIN supported.
-Pin code verification failed: 'Wrong buffer size'
-
-datan:~% gpg --change-pin
-gpg: OpenPGP card no. D2760001240102010006041568110000 detected
-
-1 - change PIN
-2 - unblock PIN
-3 - change Admin PIN
-4 - set the Reset Code
-Q - quit
-
-Your selection? 2 # entered admin PIN and new PIN (twice)
-PIN unblocked and new PIN set.
-** Yubikey NEO
-- Max 2048 bit keys.
-- For PGP, use GPG 2.0.22 or newer.
-*** Big picture (Debian jessie, gpg-agent started manually)
+** Overview software stack (Debian jessie, gpg-agent started manually)
 - pcscd is the PC/SC Smart Card Daemon
   - run by root, as a normal service
 - gpg-agent is the interface for both gpg2 and ssh
   - started from ~/.xsession
   - can be restarted with 'echo /bye | gpg-connect-agent' (?)
-- scdaemon is how gpg2 talks to the card
+- scdaemon is how gpg2 talks to the card (pcsd?)
   - started by gpg-agent
 *** Debian stretch, gpg-agent started by systemd
-/etc/X11/Xsession.d/90gpg-agent
+datan:~% cat /etc/X11/Xsession.d/90gpg-agent
+# On systems with systemd running, we expect the agent to be launched
+# via systemd's user mode (see
+# /usr/lib/systemd/user/gpg-agent.{socket,service} and
+# systemd.unit(5)).  This allows systemd to clean up the agent
+# automatically at logout.
+ 
+# If systemd is absent from your system, or you do not permit it to
+# run in user mode, then you may need to manually launch gpg-agent
+# from your session initialization with something like "gpgconf
+# --launch gpg-agent"
+ 
+# Nonetheless, ssh and older versions of gpg require environment
+# variables to be set in order to find the agent, so we will set those
+# here.
+ 
+agent_sock=$(gpgconf --list-dirs agent-socket)
+export GPG_AGENT_INFO=${agent_sock}:0:1
+if [ -n "$(gpgconf --list-options gpg-agent | \
+      awk -F: '/^enable-ssh-support:/{ print $10 }')" ]; then
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+fi
 *** Trouble shooting
 - NEO doesn't blink after insertion
 sudo service pcscd restart
@@ -4945,6 +4656,331 @@ Q - quit
 Your selection? q
 % scdaemon[24641]: scdaemon (GnuPG) 2.0.26 stopped
 
+** notes
+*** klali on yk4, feb 2016
+- using 3des and not aes
+des 18 cykler
+3des 51 cykler
+aes-128 263 cykler
+aes-192 313 cykler
+aes-256 363 cykler
+*** john on touch <2016-02-24 Wed>
+encrypted [[gnus:nnimap%2Badbc:INBOX#56CCE081.1070703@binary.to][Email from John Van de Meulebrouck Brendgard: Angående touch på yubikey]]
+
+Jag har låtit undersöka om jag kan reproducera problemen jag nämnde
+att jag hade med https://gist.github.com/a-dma/797e4fa2ac4b5c9024ccDet
+verkar dock lite svårt för den nyare som du fick fungerade utan
+problem för mig att sätta touch på. Den verkar även ha en nyare
+version av firmwaren än vad jag har testat förut: 
+gpg-connect-agent --hex "scd apdu 00 f1 00 00" /bye
+D[0000] 04 02 08 90 00
+
+Medan min vanliga produktionsnykel har:
+gpg-connect-agent --hex "scd apdu 00 f1 00 00" /bye
+D[0000]  04 02 07 90 00
+
+Jag testade därefter om problemen kvarstår på den äldre versionen och
+det gjorde de tills det att jag återställde firmwaren - då gick det på
+första försöket.
+
+Oavsett om det går eller ej så kan man "autentisera sig" genom att byta
+admin lösenord med gpg2 --card-edit -> admin -> passwd -> "3 - change
+Admin PIN" (går att sätta till samma om man vill) och modifiera skriptet
+så att det inte försöker autentisera dig (eftersom du redan har gjort
+det), alternativt ta ut godbitarna såsom t ex:
+Sätt touch på sig:
+gpg-connect-agent --hex "scd apdu 00 da 00 D6 02 01 20" /bye
+
+Sätt touch på dec:
+gpg-connect-agent --hex "scd apdu 00 da 00 D7 02 01 20" /bye
+
+Sätt touch på aut:
+gpg-connect-agent --hex "scd apdu 00 da 00 D8 02 01 20" /bye
+
+Jag har satt fixed touch (02 istället för 01 i kommandona ovan) på sig
+och dec eftersom jag inte vill att någon ska kunna ta bort kravet på
+touch för dessa även om denne någon sniffat mitt admin-lösenord.
+** host software
+  - [X] libykclient-dev - Yubikey client library development files
+  - [X] libykclient3 - Yubikey client library runtime
+  - [ ] libykpers-1-1 - Personalization tool for Yubikey OTP tokens
+  - [ ] libykpers-1-dev - Personalization tool for Yubikey OTP tokens
+  - [ ] libyubikey-dev - Yubikey OTP library development files
+  - [ ] libyubikey0 - Yubikey OTP handling library runtime
+  - [ ] yubikey-personalization - Personalization tool for Yubikey OTP tokens
+  - [ ] yubikey-server-c - Yubikey validation server
+
+        root@42:~# dpkg -L libykclient-dev
+        /.
+        /usr
+        /usr/lib
+        /usr/lib/libykclient.a
+        /usr/include
+        /usr/include/ykclient.h
+        /usr/bin
+        /usr/bin/ykclient
+        /usr/share
+        /usr/share/doc
+        /usr/share/doc/libykclient-dev
+        /usr/share/doc/libykclient-dev/copyright
+        /usr/share/doc/libykclient-dev/changelog.gz
+        /usr/share/doc/libykclient-dev/changelog.Debian.gz
+        /usr/lib/libykclient.so
+
+- apt install yubikey-neo-manager gives you GUI program
+  /usr/bin/neoman which is using libykneomgr, ykpers(onalize) and
+  libu2f-host.
+
+** Making a static key
+$ HISTFILE=/dev/null sudo bash -
+# ykpersonalize -y -1 -oappend-cr -ostatic-ticket -ostrong-pw1 -ostrong-pw2 -oman-update -a$(~linus/src/hexpw.py) >/dev/null || echo FAIL
+NOTE: use -o-append-cr to make the yubikey not send the final cr/lf, perhaps in slot 2
+*** cat src/hexpw.py
+#! /usr/bin/python
+    
+    def hexify(data):
+    s = ''
+    for c in data:
+    s = s + '%02x' % ord(c)
+    return s
+    
+    def main():
+    print hexify(file('/dev/random').read(16))
+    
+    main()
+** basic info
+Documentation can be found at
+
+  https://www.yubico.com/support/documentation/
+
+and in particular the user manual at
+
+  https://www.yubico.com/wp-content/uploads/2015/03/YubiKeyManual_v3.4.pdf
+
+
+Yubikey 4 doesn't have a JavaCard like the manual says. It has a
+"secure element" from Infinion (SLE78).
+
+Quick guide on how to get started using SSH keys on a Debian system
+(based on
+https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd):
+
+    sudo apt-get install gnupg2 scdaemon
+
+    cat >> $GNUPGHOME/gpg-agent.conf <<EOF
+    scdaemon-program /usr/lib/gnupg2/scdaemon
+    enable-ssh-support
+    write-env-file "$GNUPGHOME/gpg-agent-info-$(hostname)"
+    EOF
+
+    cat >> $HOME/.profile <<EOF
+    if [ -f "${GNUPGHOME}/gpg-agent-info-$(hostname)" ]; then
+        . "${GNUPGHOME}/gpg-agent-info-$(hostname)"
+        export GPG_AGENT_INFO
+        export SSH_AUTH_SOCK
+        export SSH_AGENT_PID
+    fi
+    GPG_TTY=$(tty); export GPG_TTY
+    EOF
+
+    ykpersonalize -m82		# requires yuibkey to be inserted
+
+yubikey-personalization - Personalization tool for Yubikey OTP tokens
+yubikey-personalization-gui - Graphical personalization tool for YubiKey tokens
+** Generating a PGP key on a NEO <2016-12-27 Tue>
+$ gpg2 --card-edit
+gpg/card> generate
+[...]
+
+pub   2048R/1983D15A 2016-12-27
+      Key fingerprint = 1310 BE34 91E9 80C7 2D14  C209 4F4A C7C1 1983 D15A
+uid       [ultimate] Linus Nordberg <linus@nordberg.se>
+sub   2048R/813C6BD2 2016-12-27
+sub   2048R/08E3FB84 2016-12-27
+
+
+
+gpg/card> list
+
+Application ID ...: D2760001240102000006030353660000
+Version ..........: 2.0
+Manufacturer .....: Yubico
+Serial number ....: 03035366
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Sex ..............: unspecified
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: not forced
+Key attributes ...: 2048R 2048R 2048R
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 3 3
+Signature counter : 5
+Signature key ....: 1310 BE34 91E9 80C7 2D14  C209 4F4A C7C1 1983 D15A
+      created ....: 2016-12-27 00:26:14
+Encryption key....: BAC2 ADE0 AD9D 12F4 094F  A777 0561 55F4 08E3 FB84
+      created ....: 2016-12-27 00:26:14
+Authentication key: 3762 7C9D F990 34D2 BB1D  CAEF 470B 053D 813C 6BD2
+      created ....: 2016-12-27 00:26:14
+General key info..:
+pub  2048R/1983D15A 2016-12-27 Linus Nordberg <linus@nordberg.se>
+sec>  2048R/1983D15A  created: 2016-12-27  expires: never
+                      card-no: 0006 03035366
+ssb>  2048R/813C6BD2  created: 2016-12-27  expires: never
+                      card-no: 0006 03035366
+ssb>  2048R/08E3FB84  created: 2016-12-27  expires: never
+                      card-no: 0006 03035366
+** Importing a PGP key to a NEO
+https://developers.yubico.com/PGP/Importing_keys.html
+https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd#generate-key-outside-card
+$ gpg --full-gen-key
+$ gpg --expert --edit-key $keyid # addkey; 8 S E A Q 4096 0 y y
+$ gpg --list-key $keyid
+pub   rsa4096 2018-02-17 [SC]
+      83727C5FE992F9B0A804D182224D5A7209FACB69
+uid           [ultimate] Test key <test@example.com>
+sub   rsa4096 2018-02-17 [E]
+sub   rsa4096 2018-02-17 [A]
+
+Backup key to file.
+*** serial 0x3f6d8b (04156811)
+Reader ...........: 1050:0405:X:0
+Application ID ...: D2760001240102010006041568110000
+Version ..........: 2.1
+Manufacturer .....: Yubico
+Serial number ....: 04156811
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Sex ..............: unspecified
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: not forced
+Key attributes ...: rsa4096 rsa4096 rsa4096
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 0 3
+Signature counter : 2
+Signature key ....: 8C4C D511 095E 982E B0EF  BFA2 1E8B F349 2329 1265
+      created ....: 2010-05-07 15:05:41
+Encryption key....: 0A6E F2A1 805A EFFB 6FDA  D0F3 46B3 10F8 DA94 5B54
+      created ....: 2017-04-17 07:16:39
+Authentication key: 8C4C D511 095E 982E B0EF  BFA2 1E8B F349 2329 1265
+      created ....: 2010-05-07 15:05:41
+General key info..: pub  rsa4096/1E8BF34923291265 2010-05-07 Linus Nordberg <linus@nordberg.se>
+sec>  rsa4096/1E8BF34923291265  created: 2010-05-07  expires: never     
+                                card-no: 0006 04156811
+ssb   rsa4096/95FA5E5B5681169D  created: 2010-05-07  expires: 2011-05-07
+ssb   rsa4096/066FB4CAD564A6A9  created: 2011-04-25  expires: 2012-04-24
+ssb   rsa4096/DEF09E0491BE3F46  created: 2012-04-23  expires: 2013-04-23
+ssb   rsa4096/8318304C153E576C  created: 2013-04-23  expires: 2014-04-23
+ssb   rsa4096/76BD0D3E2293E1E1  created: 2014-04-23  expires: 2015-04-23
+ssb   rsa4096/39D965713B249393  created: 2015-04-20  expires: 2016-04-19
+ssb   rsa4096/9CFD365BB5F7D1B1  created: 2016-04-14  expires: 2017-04-14
+ssb>  rsa4096/46B310F8DA945B54  created: 2017-04-17  expires: 2018-04-17
+                                card-no: 0006 04156811
+*** serial 0x3f6d9c
+** authenticating ssh using yk4 and gpg-agent
+datan:~% ssh-add -l
+4096 SHA256:LZKqbsLHD7QSwjg9DGvdrrw8Vd6lMWH3EPu5abPtMvM cardno:000604156811 (RSA)
+
+datan:~% ssh ioctl.adb-centralen.se
+sign_and_send_pubkey: signing failed: agent refused operation
+
+Feb 18 11:09:31 datan gpg-agent[2878]: DBG: detected card with S/N D2760001240102010006041568110000
+Feb 18 11:09:31 datan gpg-agent[2878]: scdaemon[2880]: app_auth failed: Invalid ID
+Feb 18 11:09:31 datan gpg-agent[2878]: smartcard signing failed: Invalid ID
+Feb 18 11:09:31 datan gpg-agent[2878]: ssh sign request failed: Invalid ID <SCD>
+
+datan:~% ssh-add -s $(dpkg -L opensc-pkcs11 | grep \/opensc-pkcs11.so\$ | head -n1)
+Enter passphrase for PKCS#11: 
+Could not add card "/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so": agent refused operation
+
+Problem solved by using a separat key for authentication. I suppose
+having the same key for signing and authn is not supported (by gpg?).
+
+Touch works to, after `yubitouch/yubitouch.sh aut on` [0]. Yubikey
+blinking and if I don't touch it within 20s, ssh times out with
+"sign_and_send_pubkey: signing failed: agent refused operation ".
+
+[0] https://github.com/a-dma/yubitouch
+
+Qeustion is if we should fixate ("fix") the authn touch. Downside is
+when you might want to invoke ssh many times from a script.
+
+Next question is if we should require touch for signing and decryption
+too. Indeed we should. This should be set to "fix" (not only "on").
+** changing ssh key passphrase in gpg-agent
+- https://blogs.gentoo.org/marecki/2017/03/17/changing-the-passphrase-for-ssh-keys-in-gpg-agent/
+  echo passwd $KEYGRIP | gpg-connect-agent
+** troubleshooting
+*** yubico-piv-tool can't find reader
+datan:~% yubico-piv-tool --verbose -a list-readers
+error: SCardListReaders failed, rc=8010002e
+Failed to connect to reader.
+
+Eject and insert Yubikey.
+
+Mar 05 09:18:14 datan kernel: usb 1-6: USB disconnect, device number 2
+Mar 05 09:18:14 datan systemd[1]: smartcard.target: Unit not needed anymore. Stopping.
+Mar 05 09:18:14 datan systemd[1]: Stopped target Smart Card.
+Mar 05 09:18:14 datan gpg-agent[1819]: scdaemon[1821]: DBG: Removal of a card: 0
+Mar 05 09:18:20 datan kernel: usb 1-6: new full-speed USB device number 7 using xhci_hcd
+Mar 05 09:18:20 datan kernel: usb 1-6: New USB device found, idVendor=1050, idProduct=0404
+Mar 05 09:18:20 datan kernel: usb 1-6: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+Mar 05 09:18:20 datan kernel: usb 1-6: Product: Yubikey 4 CCID
+Mar 05 09:18:20 datan kernel: usb 1-6: Manufacturer: Yubico
+Mar 05 09:18:20 datan mtp-probe[2188]: checking bus 1, device 7: "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-6"
+Mar 05 09:18:20 datan mtp-probe[2188]: bus: 1, device: 7 was not an MTP device
+Mar 05 09:18:20 datan systemd[1]: Reached target Smart Card.
+
+datan:~% yubico-piv-tool -a list-readers
+Yubico Yubikey 4 CCID 00 00
+
+This seems to work "for a while" before going back to failing again,
+often (always?) with a bunch of the following kernel log entries:
+
+Mar 05 10:07:32 datan kernel: xhci_hcd 0000:00:14.0: WARN Event TRB for slot 10 ep 4 with no TDs queued?
+*** ssh hanging after "rekey after <N> blocks"
+gpg-agent (2.2.12) might hang under certain circumstances, f.ex. if
+~/.gnupg/ disappears (or is it only when ~/.gnupg/ becomes read-only?)
+
+Restarting with echo /bye | gpg-connect-agent doesn't do anything
+interesting and a plain kill fails too. kill -9 was the trick for me.
+** locked PIN (tl;dr solution: gpg --change-pin)
+- probably entered the wrong PIN too many times
+
+Mar 05 09:44:48 datan gpg-agent[1819]: scdaemon[1821]: verify CHV2 failed: PIN blocked
+Mar 05 09:44:48 datan gpg-agent[1819]: scdaemon[1821]: app_auth failed: PIN blocked
+Mar 05 09:44:48 datan kernel: xhci_hcd 0000:00:14.0: WARN Event TRB for slot 10 ep 4 with no TDs queued?
+Mar 05 09:44:48 datan gpg-agent[1819]: smartcard signing failed: PIN blocked
+Mar 05 09:44:48 datan gpg-agent[1819]: ssh sign request failed: PIN blocked <SCD>
+
+this is what gpg --card-status reports about retry counters:
+PIN retry counter : 0 0 3
+- tried to unblock pin
+datan:~% yubico-piv-tool -a unblock-pin
+Enter puk:  # entered old pgpg key passphrase (with final char) plus YKII
+Retrieving puk failed.
+- retry counter still "0 0 3"
+- trying to give --pin on command line
+datan:~% unset HISTFILE
+datan:~% yubico-piv-tool -a verify-pin --pin='<redacted>' -a unblock-pin
+Maximum 8 digits of PIN supported.
+Pin code verification failed: 'Wrong buffer size'
+
+datan:~% gpg --change-pin
+gpg: OpenPGP card no. D2760001240102010006041568110000 detected
+
+1 - change PIN
+2 - unblock PIN
+3 - change Admin PIN
+4 - set the Reset Code
+Q - quit
+
+Your selection? 2 # entered admin PIN and new PIN (twice)
+PIN unblocked and new PIN set.
+** Yubikey NEO
+- Max 2048 bit keys.
+- For PGP, use GPG 2.0.22 or newer.
 ** Putting a 4096 bit key on a Yubikey 4
 $ gpg --full-gen-key
 
@@ -4981,7 +5017,7 @@ A slot must be chosen with -1 or -2.
 ** OATH TOTP
 sudo apt install yubikey-manager
 ykman oath add CRED-NAME	# add '--device SERIAL' if >1 yubikey attached
-ykman code CRED-NAME		# use 'ykman list' to get serial numbers
+ykman oath code CRED-NAME	# use 'ykman list' to get serial numbers
 
 Yubikeys in use for OATH, serial number:
 - 3037390
@@ -35479,7 +35515,11 @@ apt-get install imagemagick
 convert IMG_2749.JPG -resize 25% envelope.png
 *** non-beamer
 - https://orgmode.org/worg/org-tutorials/non-beamer-presentations.html
-
+*** reveal / org-reveal
+https://orgmode.org/worg/org-tutorials/non-beamer-presentations.html#orgf3f53d3
+https://opensource.com/article/18/2/how-create-slides-emacs-org-mode-and-revealjs
+https://github.com/yjwen/org-reveal/
+https://revealjs.com/
 
 ** Converting SVG to PNG
 
@@ -37599,7 +37639,8 @@ ln5: 8WTERSCW
 hjerturr: DP447BD9
 * randomness from noisy diode
 see [[file:p/hwrand/hwrand.org][file:~/p/hwrand/hwrand.org]]
-* luks
+* luks / LUKS
+cryptsetup luksAddKey /dev/loop0 --iter-time 3000
 ** debian
 root@flogsta:~# blkid /dev/sda5
 /dev/sda5: UUID="57e32d35-d85e-413a-a82e-00d993e51764" TYPE="crypto_LUKS" PARTUUID="0008a5cd-05"
@@ -41589,8 +41630,6 @@ read -p "O (org): " org
 
 openssl req -x509 -nodes -newkey rsa:$KEYSIZE -subj "/countryName=${countryName}/stateOrProvinceName=${stateOrProvinceName}/organizationName=${organizationName}/commonName=${commonName}/O=${org}"
 $
-* LUKS
-cryptsetup luksAddKey /dev/loop0 --iter-time 3000
 * home network debugging <2018-03-08 Thu>
 --------------------
 Normal:
@@ -42527,3 +42566,232 @@ DlgProc() {
 
 ** sengind a message to a control in a dialogue
 SendDlgItemMessageA(hwnd, IDL_USERS, LB_ADDSTRING, ...)
+* spam fighting
+- spamassassin or rspamd?
+
+** rspamd rule for rejecting HTML email
+https://www.irccloud.com/pastebin/lSr8Ekhd
+
+krantz /etc/rspamd # cat rspamd.local.lua 
+rspamd_config.HTML_MESSAGE = {
+  callback = function(task)
+    local parts = task:get_text_parts()
+    if parts then
+      for i,p in ipairs(parts) do
+        if p:is_html() then
+          task:set_pre_result('reject', 'Message rejected. This mailing list does not allow HTML emails. Please try again without HTML.')
+          return 1
+        end
+      end
+    end
+    return 0
+  end,
+  score = 100,
+  description = 'HTML included in message',
+* text AI
+** semantic understanding
+*** demo at https://swepol.research.peltarion.com/
+new public managament might not solve our problems in health care
+right away but we need to give it a chance. we might have to suffer a
+bit, but in the long run it's going to be all right.
+* privacy issue in linux <2020-03-23 Mon>
+<aranea> zx2c4: Btw, on the topic of surprising iproute2 commands, check out     
+         ip tcp_metrics.                                                [11:19]
+<aranea> Turns out linux has a 16384 slot hash table into which all ips with     
+         which a host had tcp connections are entered.                  [11:20]
+<aranea> no expiration timer
+<aranea> That's a fun fact for everyone who thinks their service isn't logging   
+         any ips.
+<watom> they seems to expire though                                     [11:26]
+<aranea> Only when they're replaced by newer entries, I think.          [11:27]
+<watom> even on idle                                                    [11:28]
+<watom> the worst part is that can run as normal user...
+<aranea> The oldest entry on my irc bouncer vm is 23 days old.
+<watom> maybe you communicate all the time with that entry?             [11:30]
+* tetrinet
+** gtetrinet
+*** build
+ sudo apt install libgtk-3-dev libgconf2-dev libpopt-dev
+
+ git clone https://github.com/trams242/gtetrinet
+ cd gtetrinet
+ sh autogen.sh
+ ./configure --prefix=$HOME/usr
+ make all install
+ ~/usr/games/gtetrinet
+
+ git remote add tatankat https://github.com/tatankat/gtetrinet
+ git fetch tatankat
+ git checkout tatankat/gtk3
+ make clean all install
+ ~/usr/games/gtetrinet
+** tetrinet-0.11 "tetrinet for linux"
+- [[file:usr/src/tetrinet-0.11/server.c::static%20int%20server_parse(int%20player,%20char%20*buf)][server handling incoming client dat
+* kaffemaskin
+- 1 x Rancilio Silvia Ångrör, Gen2  / 199 kr
+  - inköpt april -20
+* albatross
+** clients
+- cmd line utilities: [[file:usr/src/albatross/client][file:~/usr/src/albatross/client]]
+- cmd line options: [[file:usr/src/albatross/command-line/albatross_cli.ml][file:~/usr/src/albatross/command-line/albatross_cli.ml]]
+- protocol: [[file:usr/src/albatross/src/vmm_commands.ml][file:~/usr/src/albatross/src/vmm_commands.ml]]
+* end violence
+** <2020-04-28 Tue>
+- end violence, ansökan
+- christoffer (CR); rasmus (rahm?) (RR)
+- RR: startat upp flera företag, upphandlat tekniska lösningar;
+  arbetat i stiftelsevärlden, driver skola finansierad av "henning
+  persson-stiftelsen"
+- ide om struktur: ideell förening, med syfte att minska sexuella
+  övergrepp online; projeknamn "nox", inom denna sturkture, en
+  onlineklinik som erbjuder KBT, "main initiator" av nox blir CR
+- ligger inte under karolinska eller KI
+- RR har jobbat med olika byåer; trodde grebban.se vore bra för
+  utveckla teknik, men de har inte tillräckligt seniora utvecklar,
+  meddelar dom häromdagen; men kan göra publik web och branding
+- delar, ekonomiskt: juridiken "legal", handlas upp;
+  "brand"/varumärke; (viss) utveckling av terapiprotokoll; tekniken
+- allt ska finansieras som konsultverksamhet
+- preventit betraktas som en stängd beta, som nu ska bli en egen
+  onlineklinik; när nox är klart ska man vara redo att trycka "go" på
+  kliniken
+- linus roll: tekniskt arbete
+- max 48 mån projekttid; max 750k EUR (av totalt 12.5M EUR); vill ha
+  "tredje-land"
+- end violence-kategorin (den sista av fyra): bidra till att minska
+  antalet offer
+- max 3% el 7% får vara indirekta kostnader; karolinska een overhead är 22%
+- "sirius" heter strukturen (den ideella föreningen), "international
+  NGO based in sweden", ideell förening; har idag två medlemmar -- RR
+  and CR; "global prevention"; när projekt "nox" är klart ska man
+  kunna starta upp en svensk vårdgivare, registrerad hos IVO;
+  vårdgivaren är tänkt att vara ett av sirius helägt AB ("Nox AB")
+- nox ab finansieras av 1) stiftelser 2) sälja vård till
+  kriminalvården eller andra 3) patienter köper sin egen vård
+- flera alternativ skulle kunna vara a) pornografiföretag vill
+  finansiera liksom spelföretag; 
+- budget; 7 items, i storleksordning, fallande (alla priser exkl. moms)
+  - terapiutveckling: 6 olike terapier: potential offenders, ongoing
+    offenders, convicted offenders vardera uppdelat på unga vuxna
+    (ansvarig: anette birgersson, USA) och vuxna; videoproduktion är
+    en stor kostnad; 223k EUR
+  - teknik: frontend; backend; privacy; 126.4k EUR
+  - test och validering: 80k EUR
+  - comms & brand: 52k EUR
+  - overhead: PM, reporting, accounting; 42k EUR
+  - legal: explore regulatory issues and prepare for IVO; 36k EUR
+  - advocacy: mandated by end violence; 33k EUR
+- tidslinje: 12m utveckling, 6m test
+- health ministry, paying for help line services
+
+** <2020-04-29 Wed>
+- form för ersättning
+  - 
+
+- budget, EUR exkl. moms
+  - comms and brand 52k
+    - max 50k till webbyrån i gbg
+  - 126400 teknik; linus?
+  - 80k test; linus?
+  - är det ok för linus att stå på de raderna i budgeten?
+
+- AI, i framtiden, för automatisk kategorisering av patienter (för
+  sortering i olika protokoll)
+
+- tidslinjer
+  - annosera under sommaren, påbärja under hösten
+
+- kolla eppendix 5
+* git-bug
+** build
+debian@buster:~/go/src/github.com/MichaelMure/git-bug$ date
+Sun 03 May 2020 06:48:44 PM CEST
+debian@buster:~$ go version
+go version go1.14 linux/amd64
+debian@buster:~$ go get github.com/MichaelMure/git-bug
+go/src/github.com/MichaelMure/git-bug/graphql/graph/gen_graph.go:22:2: cannot find package "github.com/vektah/gqlparser/ast" in any of:
+        /usr/lib/go-1.14/src/github.com/vektah/gqlparser/ast (from $GOROOT)
+        /home/debian/go/src/github.com/vektah/gqlparser/ast (from $GOPATH)
+debian@buster:~$ go get github.com/vektah/gqlparser
+debian@buster:~$ go get github.com/MichaelMure/git-bug
+# github.com/MichaelMure/git-bug/bridge/gitlab
+go/src/github.com/MichaelMure/git-bug/bridge/gitlab/gitlab.go:55:15: assignment mismatch: 1 variable but gits
+go/src/github.com/MichaelMure/git-bug/bridge/gitlab/gitlab.go:55:34: cannot use httpClient (type *http.Client
+go/src/github.com/MichaelMure/git-bug/bridge/gitlab/gitlab.go:55:52: cannot use token.Value (type string) ast
+debian@buster:~$ cd go/src/github.com/MichaelMure/git-bug/
+debian@buster:~/go/src/github.com/MichaelMure/git-bug$ make install
+go generate
+go: downloading github.com/mattn/go-isatty v0.0.12
+go: downloading github.com/gorilla/mux v1.7.4
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading github.com/phayes/freeport v0.0.0-20171002181615-b8543db493a5
+go: downloading github.com/go-errors/errors v1.0.2
+go: downloading github.com/xanzy/go-gitlab v0.29.0
+go: downloading github.com/99designs/gqlgen v0.10.3-0.20200209012558-b7a58a1c0e4b
+go: downloading github.com/MichaelMure/go-term-text v0.2.8
+go: downloading golang.org/x/sync v0.0.0-20190423024810-112230192c58
+go: downloading golang.org/x/text v0.3.2
+go: downloading github.com/araddon/dateparse v0.0.0-20190622164848-0fb0a474d195
+go: downloading github.com/spf13/cobra v0.0.7
+go: downloading github.com/fatih/color v1.9.0
+go: downloading github.com/cheekybits/genny v0.0.0-20170328200008-9127e812e1e9
+go: downloading golang.org/x/oauth2 v0.0.0-20181106182150-f42d05182288
+go: downloading golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
+go: downloading github.com/shurcooL/githubv4 v0.0.0-20190601194912-068505affed7
+go: downloading github.com/spf13/pflag v1.0.3
+go: downloading github.com/blang/semver v3.5.1+incompatible
+go: downloading github.com/vektah/gqlparser v1.3.1
+go: downloading github.com/mattn/go-colorable v0.1.4
+go: downloading github.com/mattn/go-runewidth v0.0.9
+go: downloading github.com/dustin/go-humanize v1.0.0
+go: downloading github.com/shurcooL/graphql v0.0.0-20181231061246-d48a9a75455f
+go: downloading golang.org/x/time v0.0.0-20191024005414-555d28b269f0
+go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+go: downloading github.com/hashicorp/go-cleanhttp v0.5.1
+go: downloading github.com/awesome-gocui/gocui v0.6.1-0.20191115151952-a34ffb055986
+go: downloading github.com/hashicorp/go-retryablehttp v0.6.4
+go: downloading github.com/google/go-querystring v1.0.0
+go: downloading github.com/hashicorp/golang-lru v0.5.4
+go: downloading github.com/mitchellh/mapstructure v1.1.2
+go: downloading golang.org/x/sys v0.0.0-20200116001909-b77594299b42
+go: downloading github.com/agnivade/levenshtein v1.0.1
+go: downloading github.com/skratchdot/open-golang v0.0.0-20190402232053-79abb63cd66e
+go: downloading github.com/gorilla/websocket v1.4.0
+go: downloading github.com/awesome-gocui/termbox-go v0.0.0-20190427202837-c0aef3d18bcc
+go: downloading github.com/cpuguy83/go-md2man/v2 v2.0.0
+go: downloading gopkg.in/yaml.v2 v2.2.2
+go: downloading github.com/russross/blackfriday/v2 v2.0.1
+go: downloading github.com/shurcooL/sanitized_anchor_name v1.0.0
+Generating Markdown documentation ...
+Generating manpage ...
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+WARNING: go-md2man does not handle node type HTMLSpan
+Generating Bash completion file ...
+Generating PowerShell completion file ...
+Generating ZSH completion file ...
+go build -ldflags "-X github.com/MichaelMure/git-bug/commands.GitCommit=966edfc2324e6526d9ee02b843c288124eea.
