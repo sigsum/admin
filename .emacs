@@ -40,6 +40,10 @@
 ;(require 'jabber)
 (require 'appt)                         ;calendar needs this
 
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
 ;; Fun.
 ;(autoload 'lpmud "lpmud" "Run LP-MUD in Emacs" t)
 ;; Twitter stuff.
@@ -420,8 +424,14 @@
 	(make-local-variable
 	 (quote message-sendmail-envelope-from))
 	"linus@nordberg.se")))
-     ("lists.\\(edri\\|infrastructure\\)"
-      ("From" "Linus Nordberg <linus@dfri.se>"))
+     ("lists.\\(dfri\\|edri\\|infrastructure\\)\\|dfri.abuse"
+      ("From" "Linus Nordberg <linus@dfri.se>")
+      (eval
+       (setq smtpmail-smtp-server "mail.dfri.se" smtpmail-smtp-user "linus@dfri.se")
+       (set
+	(make-local-variable
+	 (quote message-sendmail-envelope-from))
+	"linus@dfri.se")))
      ("lists.tor.project"
       ("Reply-To" "tor-project@lists.torproject.org"))
      ("lists.tor..*"
@@ -443,7 +453,6 @@
      ("dfri.abuse"
       ("From" "DFRI Abuse Team <abuse@dfri.net>")
       (eval
-       (setq smtpmail-smtp-server "mail.dfri.se" smtpmail-smtp-service 10587 smtpmail-smtp-user "linus@mail.dfri.se")
        (set
 	(make-local-variable
 	 (quote message-sendmail-envelope-from))
@@ -522,6 +531,7 @@
     ((OpenPGP
       (sign)
       (encrypt
+       ("leifj@mnt.se" "8AA09281A412FC6BE50AEEE4D73AD6430AD478D6")
        ("laurent@capas.se" "9A9ECB89712A500531632B851AB2C50C742CD68F")
        ("interminable@riseup.net" "C6405588EC7F4963E340EC6314AD01883268C34C")
        ("leifj@sunet.se" "22FB87637245CAA0999A8C61F09C7C16D6CC6677")
