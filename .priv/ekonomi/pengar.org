@@ -123,3 +123,23 @@ Use 'C-*' to update the current row.
 summa inkomst tjänst 248100
 summa inkomst kapital 5957
 summa inbetald skatt 51004
+** deklaration för inkomstår 2019
+*** kontrolluppgifter
+- VR
+  - bruttolön 133374; avdraen saktt: 19480
+- Verkligen Data
+  - bruttolön 292645; avdragen skatt: 60038
+- FK
+- SEB
+  - VP utdelning 3700
+  - VP prel.skatt 1100
+  - fonder schablonintäkter 2236
+
+summa beskattnigsbar inkomts: 426019
+summa inbetald prelskatt: 80618
+
+kommunal- och landstingsskatt 29,820%
+begravningsavg 0,065%
+
+summa skatt 98215
+att betala 17587
