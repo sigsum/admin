@@ -1,3 +1,132 @@
+CT log breach https://threatpost.com/salt-bugs-full-rce-root-cloud-servers/155383/
+bug-tracker https://github.com/MichaelMure/git-bug
+ircd https://github.com/ahf/ircd-pony
+dnssec transparency list https://lists.sunet.se/listinfo/dnssec-transparency
+tor ipv6 extend https://github.com/torproject/tor/pull/1864
+tor ipv6 extend https://trac.torproject.org/projects/tor/ticket/33817
+coreboot measured boot https://doc.coreboot.org/security/vboot/measured_boot.html
+radare2 for patching binaries
+tetrinet http://tnet.slumserv.net/tetrinet-clients-download-1.php
+ganeti https://help.torproject.org/tsa/howto/ganeti/
+ip hash https://iphashes.com/
+readme betrusted os xobs https://xobs.io/xous-support-tooling/
+jetrix tetrinet http://gtetrinet.sourceforge.net/tetrinet.txt
+jetrix tetrinet https://github.com/ebourg/jetrix
+jetrix tetrinet http://jetrix.sourceforge.net/
+intel TXT https://www.intel.com/content/www/us/en/architecture-and-technology/trusted-execution-technology/trusted-execution-technology-security-paper.html
+measured boot https://mjg59.dreamwidth.org/48897.html
+readme trusted measured boot https://wiki.gentoo.org/wiki/Trusted_Boot
+boot https://firmwaresecurity.com/tag/measured-boot/
+coreboot st https://doc.coreboot.org/mainboard/supermicro/x11-lga1151-series/x11-lga1151-series.html
+security vuln linux ebpf https://www.thezdi.com/blog/2020/4/8/cve-2020-8835-linux-kernel-privilege-escalation-via-improper-ebpf-program-verification
+publish rewrite https://gitlab.com/anarcat/pubpaste
+servering alkohol https://tillstand.stockholm/tillstand-regler-och-tillsyn/servering-av-alkohol/tillfallig-servering-av-alkohol-under-en-begransad-tid/
+msb corona https://sverigesradio.se/artikel/7455184
+msb corona https://www.tv4play.se/program/nyheterna/12581443
+msb corona https://sverigesradio.se/artikel/7452337
+msb corona https://sverigesradio.se/artikel/7453839
+https://www.onetransistor.eu/2017/08/ch341a-mini-programmer-schematic.html
+readme mumble people:anarcat https://anarc.at/blog/2020-04-09-mumble-dreams/
+ipen workshop poll private https://nuudel.digitalcourage.de/IPENonline2020/vote/krGqVfJzFU6db5fm#edit
+ipen workshop poll public https://nuudel.digitalcourage.de/IPENonline2020
+chacha20 spec https://cr.yp.to/chacha/chacha-20080128.pdf
+chacha20 poly1305 composition https://eprint.iacr.org/2014/613.pdf
+rng entropy paper fortuna https://www.schneier.com/academic/paperfiles/fortuna.pdf
+rng entropy paper https://eprint.iacr.org/2014/167
+readme corona tracking ccc https://www.ccc.de/en/updates/2020/contact-tracing-requirements
+proximity-tracking privacy https://medium.com/@jaromil/decentralized-privacy-preserving-proximity-tracing-cryptography-made-easy-af0a6ae48640
+proximity-tracking privacy https://github.com/DP-3T/documents
+data-retention NAT sweden dld drd https://www.pts.se/sv/nyheter/internet/2020/operatorer-ska-lagra-uppgifter-for-brottsbekampande-andamal/
+webrtc security privacy ietf https://tools.ietf.org/wg/rtcweb/
+webrtc ice-tcp firefox https://blog.mozilla.org/webrtc/active-ice-tcp-punch-firewalls-directly/
+webrtc torbrowser https://trac.torproject.org/projects/tor/ticket/16221
+covid-19 data https://rys.io/covid/
+emacs autocrypt pgp https://git.sr.ht/~zge/autocrypt
+covid-19 surveillance people:landau https://www.lawfareblog.com/location-surveillance-counter-covid-19-efficacy-what-matters
+covid-19 surveillance edri https://edri.org/covid19-edri-coronavirus-fundamentalrights/
+covid-19 surveillance people:beijmo https://www.aftonbladet.se/kultur/a/y3MjpA/digital-koll-pa-virus--och-pa-dig
+covid-19 surveillance https://www.theguardian.com/commentisfree/2020/mar/20/south-korea-rapid-intrusive-measures-covid-19
+hda https://www.nyteknik.se/sakerhet/polisen-vi-kan-utveckla-vara-egna-hackerverktyg-6991286
+covid-19 surveillance https://www.zdnet.com/article/us-israel-south-korea-and-china-look-at-intrusive-surveillance-solutions-for-tracking-covid-19/
+https://git.zx2c4.com/pubkey-hash-table/tree/linearprobe.c
+siphash https://git.zx2c4.com/pubkey-hash-table/tree/hashtable.c
+vconf https://bigbluebutton.org/
+ansible fbsd https://github.com/tykling/ansible-roles
+coturn ansible fbsd https://github.com/tykling/ansible-roles/commit/d54ff4cc0cc8f1d6c9653c7df7949fa2910e4326
+emacs charts https://francismurillo.github.io/2017-04-15-Exploring-Emacs-chart-Library/
+whiteboard collab-tools https://excalidraw.com/
+whiteboard collab-tools https://github.com/excalidraw/excalidraw
+edge-ai https://wire19.com/what-is-edge-ai/
+edge-ai https://www.imagimob.com/blog/what-is-edge-ai
+edge-ai http://www.edgeai.info/
+remote tabletop gaming https://store.steampowered.com/app/286160/Tabletop_Simulator/
+readme https://spotlightproject.gitlab.io/
+vconf project https://gitlab.com/billowconf/billowconf
+readme vconf software project https://writefreely.debian.social/paddatrapper/remote-conference-software
+ricochet audit https://ricochet.im/files/ricochet-ncc-audit-2016-01.pdf
+https://github.com/blueprint-freespeech/ricochet-refresh
+mullvad HDA LEK https://mullvad.net/en/help/lagen-om-hemlig-dataavlasning/
+readme virtualization https://wiki.xenproject.org/wiki/Understanding_the_Virtualization_Spectrum
+xen https://github.com/mirage/mini-os
+covid19 https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf
+self-hosting tools https://github.com/awesome-selfhosted/awesome-selfhosted
+unikernel https://www.includeos.org/technology.html
+albatross mirageos https://github.com/hannesm/albatross
+vmm https://github.com/rust-vmm/community
+idp https://zotum.net/search?tag=Zot
+https://www.vinnova.se/e/civic-tech/digitala-tjanster-for-2019-04507/
+https://jami.net/why-is-jami-truly-distributed/
+game https://veloren.net/
+readme vpn https://dn42.eu/Home
+svenska dagbladet hs http://cnhuql7wj2ga5iv7.onion/
+wifi ap hw https://www.tp-link.com/us/home-networking/wifi-router/archer-c7/
+skatteregler import https://www4.skatteverket.se/rattsligvagledning/edition/2020.2/329396.html
+skatteregler import https://www.skatteverket.se/foretagochorganisationer/moms/kopavarorochtjanster/inkopfranlanderutanforeu/kopavarorfranlanderutanforeu.4.361dc8c15312eff6fd37208.html
+bokföring handel utanför eu https://support.speedledger.se/hc/sv/articles/202561729-Handel-utanf%C3%B6r-EU
+mumble tor https://github.com/digitalautonomy/wahay
+ulug uppsala mars https://base10.com/events/mitigating-mass-surveillance-tools-and-techniques
+dane users ml archive https://mail.sys4.de/pipermail/dane-users/
+ocaml javascript irmin gtd https://github.com/talex5/cuekeeper
+telegram protocol https://core.telegram.org/mtproto
+telegram faq https://core.telegram.org/techfaq#q-why-did-you-go-for-a-custom-protocol
+whatsapp whitepaper https://scontent.whatsapp.net/v/t61.22868-34/68135620_760356657751682_6212997528851833559_n.pdf/WhatsApp-Security-Whitepaper.pdf?_nc_sid=41cc27&_nc_oc=AQlhBndcZ7QlJdBz_CS5AXEQgOAbV11kMIiKRkL-YHOwid9KhvGo3yLj3lIbScUV5Kud2aSjH6FDUjo1oQ5GY8c7&_nc_ht=scontent.whatsapp.net&oh=587f77b037d819976778e934e3a9334e&oe=5E6B9DED
+readme fossil scm https://fossil-scm.org/home/doc/trunk/www/fossil-v-git.wiki
+readme virutalization https://www.usenix.org/conference/nsdi20/presentation/agache
+readme virutalization https://aws.amazon.com/about-aws/whats-new/2018/11/firecracker-lightweight-virtualization-for-serverless-computing/
+readme virutalization https://en.wikipedia.org/wiki/Popek_and_Goldberg_virtualization_requirements
+readme solo5 https://github.com/Solo5/solo5/blob/master/docs/architecture.md
+debian packaging https://www.decadent.org.uk/ben/talks/intro-debian-package.html
+wireguard wg ocaml https://github.com/janestreet/noise-wireguard-ocaml
+ocaml dns resolver https://nlnet.nl/project/Robur
+wireguard cryptographic-proof formal-assurance paper cryptoverif https://hal.inria.fr/hal-02100345
+https://in-toto.io/
+readme boot https://cacm.acm.org/magazines/2020/3/243026-securing-the-boot-process/abstract
+st https://www.system-transparency.org/
+nso pegasus https://www.documentcloud.org/documents/4599753-NSO-Pegasus.html
+intel security http://blog.ptsecurity.com/2020/03/intelx86-root-of-trust-loss-of-trust.html
+fabric configuration management cm http://docs.fabfile.org/
+fabric configuration management cm https://www.fabfile.org/
+tor onion-services child-protection study 80 percent https://www.wired.com/2014/12/80-percent-dark-web-visits-relate-pedophilia-study-finds/
+tor onion-services child-protection https://www.lawfareblog.com/tor-hidden-services-are-failed-technology-harming-children-dissidents-and-journalists
+debian mirror tor hs lxpizzamm6twgep2.onion
+farsight-security dns dnsdb vixie https://www.youtube.com/watch?v=FrGZczZ8tyU&t=0m33s
+readme intel https://arstechnica.com/information-technology/2020/03/5-years-of-intel-cpus-and-chipsets-have-a-concerning-flaw-thats-unfixable
+readme load-balancing routing freebsd bhyve https://www.jasonvanpatten.com/2019/05/17/load-balancers-be-damned-routing-on-the-server/
+dmarc report parsing http://www.taugh.com/rddmarc/
+dmarc report parsing https://github.com/techsneeze/dmarcts-report-parser
+dmarc report parsing http://www.techsneeze.com/how-parse-dmarc-reports-imap/
+bsd install script https://github.com/boxcutter/bsd
+https://bestpractices.coreinfrastructure.org/en/projects
+matrix spec https://matrix.org/docs/spec/
+matrix https://github.com/matrix-org
+matrix riot https://github.com/vector-im/
+matrix client qt https://gitlab.com/b0/spectral
+matrix client https://github.com/quotient-im/Quaternion
+matrix client https://github.com/Nheko-Reborn/nheko
+https://libreho.st/
+dmarc https://wiki.list.org/x/17891458
+mailman ml dmarc https://wiki.list.org/DEV/DMARC
+bredbandskollen https://github.com/librespeed
 hda beslut https://www.riksdagen.se/sv/dokument-lagar/arende/betankande/hemlig-dataavlasning_H701JuU19
 hda JuU betänkande https://data.riksdagen.se/fil/8AB041AD-9F29-4602-8630-1AB528FA4673
 hda prop https://data.riksdagen.se/fil/15D8000B-E02E-4482-ADFC-576C81E7B1B2
@@ -88,7 +217,6 @@ spigot installation https://www.spigotmc.org/wiki/spigot-installation/
 minecraft server https://www.spigotmc.org/
 readme https://en.wikipedia.org/wiki/Antifragility
 readme presentations https://teachtogether.tech/
-selfhosted https://github.com/awesome-selfhosted/awesome-selfhosted
 wireless sw https://mynewt.apache.org/
 LPS sw https://github.com/Decawave
 LPS loligo positioning https://hackaday.io/project/7183/
@@ -122,7 +250,7 @@ web wiki markdown https://gohugo.io
 rb repro freebsd https://jenkins.debian.net/view/reproducible/job/reproducible_freebsd/
 rb repro freebsd https://tests.reproducible-builds.org/freebsd/freebsd.html
 hw trammel https://www.youtube.com/watch?v=lt8YKm9CQ34
-hw SPI trammel https://trmm.net/Spispy
+radme hw SPI boot people:trammel https://trmm.net/Spispy
 routing https://whois.ipip.net
 readme hackingteam https://citizenlab.ca/2012/10/backdoors-are-forever-hacking-team-and-the-targeting-of-dissent/
 bbc hs onionservice https://www.bbcnewsv2vjtpsuy.onion
@@ -3604,7 +3732,6 @@ nsa grid list https://projects.propublica.org/nsa-grid/
 readme privacy http://www.theguardian.com/world/2014/aug/03/internet-death-privacy-google-facebook-alex-preston
 gaza bildt http://www.dn.se/debatt/varje-losning-maste-utga-fran-att-blockaden-havs/
 tor funding usg gupta billings http://miniver.blogspot.co.uk/2014/07/how-secure-is-tor.html
-readme dnssec transparency http://blog.huque.com/2014/07/dnssec-key-transparency.html
 sweden poverty beggars http://arbetaren.se/artiklar/det-syns-ju-att-tiggaren-fejkar/
 drones swedish http://arbetaren.se/artiklar/nar-kriget-blir-ett-datorspel/
 israel usa weapon amnesty http://www.democracynow.org/2014/8/1/amnesty_international_us_should_stop_arming
