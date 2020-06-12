@@ -50,6 +50,9 @@
 - likviddag 2017-06-08
 - inkköpspris 112.200 inkl. kurtage
 - förfallodag 2020-06-08
+- inlöst 2020-06-06 107.467,84
+- förlust 4732.16
+
 ** fonder
 *** Corp bond Eur Lux
 - årlig avg 0,75%
