@@ -3,6 +3,8 @@
 /.config/bwscanner/measurements
 /.gnupg
 /.mozilla
+/.opam,bak
+/.opam.bak2
 /flogsta
 /flogsta-root
 /ostick
