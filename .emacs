@@ -24,10 +24,17 @@
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
+;; Disabled this _and_ removed the lyskom directory bc
+;;   eval-buffer: Loading ‘/home/linus/usr/share/emacs/site-lisp/lyskom/wid-edit.el’: old-style backquotes detected!
+(autoload 'lyskom "lyskom" "Start LysKOM" t)
+
 ;(setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
 
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+
+(autoload 'nov-mode "nov" nil t)
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
 ;; another smime.el (from site-lisp/semi/?) is loaded.
@@ -36,7 +43,7 @@
 (require 'smime)
 
 (require 'ox-reveal)
-(require 'tls)
+;; deprecated in 27.1: (require 'tls)
 ;(require 'jabber)
 (require 'appt)                         ;calendar needs this
 
@@ -145,6 +152,10 @@
 (setq erlang-root-dir "/usr/lib/erlang")
 ;(add-to-list 'exec-path "/usr/lib/erlang/bin" t)
 (require 'erlang-start)
+
+;; Rust
+;(autoload 'rust-mode "rust-mode" nil t)
+(require 'rust-mode)
 
 ;; BBDB
 ;(require 'bbdb)
