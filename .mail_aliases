@@ -10,10 +10,10 @@ alias abtin			"Abtin Khoshnood <abtin.khoshnood@outlook.com>"
 alias accounting                accounting@torproject.org
 alias adam                      "Adam Lynn <lynna@rfa.org>"
 alias adbc-sys			hostmaster@adb-centralen.se
-alias adbc-users-all   		adbc-users-dns, adbc-users-mail, adbc-users-jabber, adbc-users-calendar
-alias adbc-users-calendar       grtrd, kugg
-alias adbc-users-dns		iha, jl, bjorn.fahller, tege, staffan.ulfberg, rodrigo, dfri-noc
-alias adbc-users-jabber		iha, lai, rom, tobbe, lena, cadar.gmail, pelle, juni, larka, hesse, atoth, peter.norin, froo, grtrd, jajo, jbn, jn, christian, joachim.strombergson, tord
+alias adbc-users-all   		adbc-users-dns, adbc-users-mail, adbc-users-jabber, adbc-users-clown
+alias adbc-users-clown       	grtrd, kugg, larka, juni, lena, erik
+alias adbc-users-dns		iha, jl, bjorn.fahller, tege, staffan.ulfberg, dfri-noc, andol
+alias adbc-users-jabber		lai, tobbe, lena, juni, larka, hesse, peter.norin, froo, grtrd, jbn, jn, christian, tord, pjotr
 alias adbc-users-mail		erik.n, lise, fabbe, fia, fredrik, lena, marianne, micke, molgan, simon, sofia, larka, juni, jn, mobil@9999.se, jbn
 alias ade			adrian.bolero
 alias adminor	   		alexander.adminor
@@ -57,6 +57,7 @@ alias alison2			interminable@riseup.net
 alias alistair                  "alistair alexander <Alistair@tacticaltech.org>"
 alias allegra                   "Allegra Searle-LeBel <allegra@allegrabliss.com>"
 alias allison			"Allison Parks <allisonkateparks@gmail.com>"
+alias ama			"Anne-Marie Achrenius <ama@chalmers.se>"
 alias amel			amel.priv
 alias amel.priv			"Anne-Marie Eklund Löwinder <amel@lowinder.se>"
 alias amelia                    amelia.cc
@@ -70,6 +71,7 @@ alias anders.4zm		"Anders Sundman <anders@4zm.org>"
 alias anders.haven		anders@haven-project.org
 alias anders.nilsson            Anders Nilsson <anders.nilsson@umu.se>
 alias anders.olausson		"Anders Olausson <anders@spacedump.se>"
+alias anders.schioler		"Anders Schiöler <anders.schioler@ericastiftelsen.se>"
 alias anders.spacedump		anders.olausson
 alias anders.thoresson          "Anders Thoresson <anders@thoresson.net>"
 alias anders.w                  anders@wastfelt.se
@@ -466,7 +468,8 @@ alias helle                     helle@nordu.net
 alias help.tor                  help@rt.torproject.org
 alias henke                     "Henrik Frihammar <henrik.frihammar@gmail.com>"
 alias henning                   "Henning Olesen <olesen@cmi.aau.dk>"
-alias henrik			"Henrik Levkowetz <henrik@levkowetz.com>"
+alias henrik.levkowetz		"Henrik Levkowetz <henrik@levkowetz.com>"
+alias henrik.vikman		Henrik.Vikman@capio.se
 alias henrik.warnke		henrik.warnke@bredband.net
 alias hesse	 		fredrik@hes.se
 alias he.yan			"He Yan <yanhe@CS.ColoState.EDU>"
@@ -487,6 +490,7 @@ alias iang                      iang@cs.uwaterloo.ca
 alias iha	 		iha@regexp.se
 alias infinity0                 "Ximin Luo <infinity0@gmx.com>"
 alias infobelarus		"Isabel Sommerfeld <infobelarus.sweden@gmail.com>"
+alias infrared			infrared@lists.riseup.net
 alias ingela                    "Ingela Lundin <ingela.lundinx@gmail.com>"
 alias ingenstans		Matkafe.ingenstans@gmail.com
 alias ingimar                   "Ingimar Orn Jonsson <ingimar@hi.is>"
@@ -494,7 +498,7 @@ alias ingrid                    "Ingrid Melve <ingrid.melve@uninett.no>"
 alias intrigeri                 intrigeri@boum.org
 alias ioerror			jake
 alias ip	 		ip@nordu.net
-alias irl                       "Iain R. Learmonth <irl@torproject.org>"
+alias irl                       "Iain R. Learmonth <iain@learmonth.me>"
 alias irush			yair
 alias isa                       isabela@torproject.org
 alias isis                      isis@riseup.net
@@ -545,7 +549,8 @@ alias jenny.ture                jenny.engstrom
 alias jenny.viper.arb           jenny.viper@stockholm.se
 alias jenny.viper               jenny.viper.arb
 alias jenny.viper.priv		jennyviper@hotmail.com
-alias jens.d			Jens Drenhaus <jens.drenhaus@9elements.com>
+alias jens			jens.d
+alias jens.d			"Jens Drenhaus <jens.drenhaus@9elements.com>"
 alias jens.o                    "Jens Östergren <jens.e.ostergren@gmail.com>"
 alias jeroen			"Jeroen Massar <jeroen@unfix.org>"
 alias jerry                     jerry@nordu.net
@@ -594,7 +599,8 @@ alias jojo              	jojo.naslund99@gmail.com
 alias jon.tor.prev              "Jon Selon <jon@torproject.org>"
 alias jon.ulug			"Jon Johnson <hej@jonarvid.se>"
 alias jon.selon			jselon@riseup.net
-alias jonas.gudmundsson 	mobrules73@gmail.com
+alias jonas.gudmundsson 	"Jonas Gudmundsson <mobrules@mobrules.nu>"
+alias jonas.gudmundsson.gmail 	mobrules73@gmail.com
 alias jonatan.edlund            "Jonatan Edlund <jonatan.edlund@svenskakyrkan.se>"
 alias jonas.foyen               "Jonas Nilsson <jonas.nilsson@foyen.se>"
 alias jonas.ndn                 jonas@nordu.net
@@ -758,6 +764,7 @@ alias lord			sofia.lord.gmail
 alias lotta.globala             "Lotta Jankell <lotta.jankell@stockholm.se>"
 alias louise			louiselbj@live.dk
 alias love			"Love Hornquist Astrand <lha@h5l.org>"
+alias lovisa.skolfam		"Lovisa Nobelius <lovisa.nobelius@stockholm.se>"
 alias lucky                     "Lucky Green <shamrock@cypherpunks.to>"
 alias lucy                      lucy.priv
 alias lucy.isoc                 "Lucy Lynch <lynch@isoc.org>"
@@ -1056,6 +1063,7 @@ alias ricardo                   "Ricardo Noronha <ricardo.noronha@gmail.com>"
 alias richard.barnes            "Richard Barnes <rlb@ipv.sx>"
 alias richard.binning           "Richard Binning <anok4u2b4u@gmail.com>"
 alias richard.mullvad           "Richard <richard@mullvad.net>"
+alias richard.msb		richard@ancautus.se
 alias richard.tor		richard@torproject.org
 alias rickard.ostman		"Rickard Östman <rickard.ostman@bahnhof.net>"
 alias rikard.linde              "Rikard Linde <rikard.linde@fores.se>"
@@ -1138,6 +1146,7 @@ alias simone                    simone.fischer-huebner@kau.se
 alias simo			"Simo Sorce <ssorce@redhat.com>"
 alias sina                      "Sina Rabbani <sina@redteam.net>"
 alias sina.cymry                "Sina Rabbani <srabbani@cymru.com>"
+alias siv.skolfam		"Siv Forsström Reinson <siv.forsstrom.reinson@stockholm.se>"
 alias sjf-tor                   sjf-tor@lists.dfri.se
 alias sjm                       Steven.Murdoch@cl.cam.ac.uk
 alias smari                     "Smári McCarthy <smari@immi.is>"
@@ -1146,9 +1155,11 @@ alias smirre                    andreas_smirnakos@hotmail.com
 alias snopyta			support@snopyta.org
 alias snusmumriken              markus.lindholm@gmail.com
 alias sofia.celi		cherenkov@riseup.net
+alias sofia.nordberg.gmail	gaerda.sofia@gmail.com
 alias sofia.lord.gmail          lord.sofia@gmail.com
 alias sofia.lord.yahoo		sofialord@yahoo.se
-alias sofia             	sofia@nordberg.se
+alias sofia.nordberg           	sofia@nordberg.se
+alias sofia             	sofia.nordberg
 alias solix                     sol-ix@lidendata.com
 alias solix.kontakt             kontakt@sol-ix.net
 alias spacedump			anders.olausson
@@ -1219,7 +1230,8 @@ alias tech                      tech@cryptech.is
 alias ted.lemon                 "Ted Lemon <Ted.Lemon@nominum.com>"
 alias ted.hardie                ted.ietf@gmail.com
 alias tege			tg@gmplib.org
-alias teor                      teor2345@gmail.com
+alias teor			teor@riseup.net
+alias teor.gmail                 teor2345@gmail.com
 alias terese                    t.niklasson@m2f.nu
 alias tg                        "Torbjörn Gräslund <torbjorn@kth.se>"
 alias tg.biotech		"Torbjörn Gräslund <torbjorn@biotech.kth.se>"
@@ -1272,6 +1284,8 @@ alias torservers-discuss        partners-discuss@lists.torservers.net
 alias tord                      tord.lundstrom@virtualroad.org
 alias tord.gmail                "Tord Lundström <tord.lundstrom@gmail.com>"
 alias tord.short                t@virtualroad.org
+alias torvalla			info@torvallabil.se
+alias torvalla.sandra		Sandra.Griffel@Torvallabil.se
 alias toste			toste.junestrand@albatross.com
 alias tourn			anartiste1984@riseup.net
 alias tove			tove_bylund@hotmail.com
