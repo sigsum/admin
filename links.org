@@ -1,3 +1,72 @@
+rpi touchscreen kivy https://kivy.org/doc/stable/installation/installation-rpi.html
+rpi touchscreen kivy http://kivypie.mitako.eu/
+rpi touchscreen https://learn.adafruit.com/adafruit-pitft-3-dot-5-touch-screen-for-raspberry-pi/overview
+rpi touchscreen kivy https://raspberrypi.stackexchange.com/questions/65892/using-rpi-touchscreen-as-primary-display-how-to-display-image-on-hdmi
+rpi touchscreen https://www.raspberrypi.org/documentation/hardware/display/README.md
+wordlists https://packetstormsecurity.com/Crackers/wordlists/
+rpi https://elinux.org/RPi_HardwareHistory
+readme https://www.jofreeman.com/joreen/tyranny.htm
+utredning dataskydd https://www.regeringen.se/regeringsuppdrag/2020/09/uppdrag-att-mojliggora-losningar-for-individen-till-kontroll-och-insyn-av-data-om-individen
+synapse matrix ansible https://github.com/spantaleev/matrix-docker-ansible-deploy/blob/master/roles/matrix-synapse/tasks/main.yml
+morphine https://www.oregonpainguidance.org/opioidmedcalculator/
+game https://en.wikipedia.org/wiki/Age_of_Empires_II
+schremsII faq https://edpb.europa.eu/our-work-tools/our-documents/ovrigt/frequently-asked-questions-judgment-court-justice-european-union_en
+QIF financial filr format gnucash https://en.wikipedia.org/wiki/Quicken_Interchange_Format
+ansible https://github.com/ralphbean/lightsaber
+python book people:kushaldas https://pymbook.readthedocs.io/en/latest/
+python book people:kushaldas https://lym.readthedocs.io/en/latest/
+captcha https://www.hcaptcha.com/
+tor dns proxy people:kushaldas https://kushaldas.in/posts/introducing-dns-tor-proxy-a-new-way-to-do-all-of-your-dns-calls-over-tor.html
+funny kids bridge https://xkcd.com/1170/
+privacy spin-bit people:amelia https://datatracker.ietf.org/doc/draft-andersdotter-rrm-for-rrt-in-http3/
+infrared membership process https://0xacab.org/infrared/policy/-/blob/master/new-member-process.md
+irc bouncer web https://www.irccloud.com/
+sunet jenkins https://github.com/SUNET/bootstrap-docker-builds
+readme child-protection https://www.gu.se/forskning/publikation?publicationId=293733
+parted partition alignment https://blog.hqcodeshop.fi/archives/273-GNU-Parted-Solving-the-dreaded-The-resulting-partition-is-not-properly-aligned-for-best-performance.html
+tor onion-location https://community.torproject.org/onion-services/advanced/onion-location/
+paste sw https://gitlab.com/anarcat/pubpaste
+vm http://libguestfs.org/
+readme ocaml virt kvm https://rwmj.wordpress.com/tag/virt-tools/
+us blacklivesmatter protest pics https://www.nytimes3xbfgragh.onion/article/pictures-george-floyd-protests-photos.html
+ssh-agent protocol https://datatracker.ietf.org/doc/draft-miller-ssh-agent/
+readme tor congestion control 2 https://lists.torproject.org/pipermail/tor-dev/2020-June/014343.html
+readme tor congestion control 1 https://lists.torproject.org/pipermail/tor-dev/2020-January/014140.html
+readme networking zine https://jvns.ca/networking-zine-print.pdf
+https://nitter.net/Gettingtrump
+maximator https://doi.org/10.1080/02684527.2020.1743538
+maximator https://www.tandfonline.com/doi/abs/10.1080/02684527.2020.1743538
+readme surveillance https://www.nrk.no/norge/xl/avslort-av-mobilen-1.14911685
+https://wahay.org/about.html
+book ddos https://www.bloomsburycollections.com/book/the-coming-swarm-ddos-actions-hacktivism-and-civil-disobedience-on-the-internet/
+readme reprobuilds people:taviso https://twitter.com/taviso/status/1265030825768185856
+webrtc lightweight https://r-w-x.org/r/chatb.git
+music https://adb-centralen.se/~linus/Shooy9ze/flogsta
+https://www.nytimes3xbfgragh.onion
+debian android https://wiki.debian.org/AndroidTools
+debian android https://guardianproject.info/2017/03/13/build-android-apps-with-debian-apt-install-android-sdk/
+hw pci-e https://en.wikipedia.org/wiki/PCI_Express#Pinout
+hw shenzhen people:bunnie https://www.bunniestudios.com/blog/?p=5689
+tor wine readme people:ahf https://github.com/ahf/tor-win32
+linux secureboot luks tpm https://github.com/noahbliss/mortar
+visualisation sha256 https://github.com/in3rsha/sha256-animation
+graphical diagram graphviz https://github.com/mingrammer/diagrams
+crypto practical primer https://missing.csail.mit.edu/2020/security/
+xkcd entropy correct-horse-battery-staple https://xkcd.com/936/
+https://missing.csail.mit.edu/
+readme review privacy ietf https://tools.ietf.org/html/draft-irtf-pearg-numeric-ids-generation-01
+uefi secure-boot tails https://tails.boum.org/blueprint/UEFI_Secure_boot/
+uefi https://www.tianocore.org/
+antivirus protocol icap https://tools.ietf.org/html/rfc3507
+funding https://www.ngi.eu/ngi-projects/ngi-pointer/
+dns draft people:pwouters https://datatracker.ietf.org/doc/draft-ietf-dnsop-delegation-only/
+readme https://www.theguardian.com/commentisfree/2019/nov/14/im-the-google-whistleblower-the-medical-data-of-millions-of-americans-is-at-risk
+readme https://www.unhcr.org/innovation/wp-content/uploads/2020/04/Space-and-imagination-rethinking-refugees-digital-access_WEB042020.pdf
+ssl tls test service people:ivanristic https://www.ssllabs.com/ssltest/
+https://github.com/alphapapa/magit-todos
+security essay people:dymaxion https://dymaxion.org/essays/pleasestop.html
+readme nextcloud security https://nextcloud.com/blog/nextcloud-11-delivers-verified-security-improvements/
+nextcloud security https://scan.nextcloud.com/
 CT log breach https://threatpost.com/salt-bugs-full-rce-root-cloud-servers/155383/
 bug-tracker https://github.com/MichaelMure/git-bug
 ircd https://github.com/ahf/ircd-pony
@@ -3516,7 +3585,6 @@ tor cloudflare https://github.com/jgrahamc/torhoney
 scanning law https://community.rapid7.com/community/infosec/sonar/blog/2013/10/30/legal-considerations-for-widespread-scanning
 scanning internet https://community.rapid7.com/community/infosec/sonar/blog/2013/09/26/welcome-to-project-sonar
 starttls test https://starttls.info/
-ssl tls test service people:ivanristic https://www.ssllabs.com/ssltest/
 security dram https://www.ece.cmu.edu/~safari/pubs/kim-isca14.pdf
 palestine https://sverigesradio.se/sida/artikel.aspx?programid=83&artikel=4709586
 readme tor bgp paper http://vanbever.eu/pdfs/vanbever_bgp_tor_hotnets_2014.pdf

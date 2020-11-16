@@ -671,6 +671,24 @@ network={
 ** iwconfig to set up insecure session
 sudo killall wpa_supplicant
 sudo iwconfig $DEVICE essid $SSID
+** password cracking
+apt install aircrack-ng
+
+root@rpi3:~# airodump-ng --ivs --write air.1 wlan0 --band abg
+ioctl(SIOCSIWMODE) failed: Operation not supported
+ioctl(SIOCSIWMODE) failed: Operation not supported
+Error setting monitor mode on wlan0
+Failed initializing wireless card(s): wlan0
+
+root@rpi3:~# iw wlan0 interface add mon0 type monitor
+command failed: Operation not supported (-95)
+root@rpi3:~# iwconfig wlan0 mode monitor
+Error for wireless request "Set Mode" (8B06) :
+    SET failed on device wlan0 ; Operation not supported.
+
+'iw list' does not show 'monitor' among the interfaces supported
+modes, so I suppose this chipset simply doesn't support monitoring.
+
 * libevent
 ** dns issues in tor
 todo
@@ -755,6 +773,7 @@ Oh yes, setting the X resource 'XTerm*EightBitInput' to 'false' does
 the trick. Edit or create ~/.Xresources and do xrdb -merge
 ~/.Xresources.
 * tools
+- atop -- top with memory: atop -w $(date +%Y%m%d) & atop -r filename
 - mimms -- mms:// stream downloader
 - tcpkill (from the dsniff package)
 - xpra -- screen for X11
@@ -1479,8 +1498,9 @@ Get rid of syntax highlighting in all buffers:
   - [X] 2018-12-25 9578c2aa (branch emacs-26)
   - [X] 2019-06-13 emacs-26.2
   - [X] 2019-09-13 emacs-26.3
+  - [ ] 2020-10-27 emacs-27.1
   - sh autogen.sh
-  - ./configure --prefix=$HOME/usr --without-xml2
+  - ./configure --prefix=$HOME/usr # up to 2019-09-13: --without-xml2
   - make && make install
 *** go-mode.el
     - https://github.com/dominikh/go-mode.el
@@ -1563,7 +1583,33 @@ Get rid of syntax highlighting in all buffers:
     (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
     (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
-*** old elpa config
+*** rust-mode
+- git clone https://github.com/rust-lang/rust-mode
+- ca7d99c6fd90fc1e636aa9d4020a2f077786a0c3, master as of <2020-10-16 Fri>
+- ~/.emacs
+  ;(autoload 'rust-mode "rust-mode" nil t)
+  (require 'rust-mode)
+- cp rust-mode.el ~/usr/share/emacs/site-lisp/
+
+*** nov.el -- an epub reader
+- git clone https://github.com/wasamasa/nov.el && cd nov.el
+- cp nov.el ~/usr/share/emacs/site-lisp/
+- ~/.emacs
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+**** dependency exsml
+- git clone https://github.com/tali713/esxml && cd esxml
+- cp esxml.el esxml-html.el esxml-form.el esxml-query.el ~/usr/share/emacs/site-lisp/
+
+*** lyskom-elisp-client
+- git clone https://git.lysator.liu.se/lyskom-elisp-client/lyskom-elisp-client.git && cd lyskom-elisp-client
+- make EMACS=emacs
+- cp src/lyskokm.elc ~/usr/share/emacs/site-lisp/
+- ~/.emacs
+  (autoload 'lyskom "lyskom" "Start LysKOM" t)
+
+*** OBSOLETE
+**** old elpa config
 ;; Do this early -- other requirements might depend on it. See
 ;; variable package-archives for configured archives.
 (require 'package)
@@ -2165,8 +2211,10 @@ root@tool:/u/vm# truncate --size=6G /var/lib/libvirt/images/name.qcow2
 # alternatively (but without preallocation=full, the guest sees a very small device for some reason):
 #  qemu-img create -f qcow2 -o "size=20G,preallocation=full" /u/vm/debian0-2.qcow2
 # WARNING: that command hangs for at least a minute, utilizing some CPU and seemingly lots of IO
+# UPDATE <2020-10-31 Sat>: virsh vol-create-as uses qemu-img (and yes it takes some time)
+#  (example: virsh vol-create-as default brk-bup.qcow2 300GB --format qcow2 --prealloc-metadata)
 root@tool:/u/vm# chmod 600 /u/vm/debian0-2.img
-root@tool:/u/vm# virsh attach-disk $guest /u/vm/debian0-2.img vdb --configq # --config makes this change persistent over reboots; consider --live too
+root@tool:/u/vm# virsh attach-disk $guest /u/vm/debian0-2.img vdb --config # --config makes this change persistent over reboots; consider --live too
 Disk attached successfully
 root@tool:/u/vm# virsh domblklist $guest   # list domain blocks
 Target     Source
@@ -3229,36 +3277,34 @@ torsocks gpg --send-key <keyid>
 # and we erase the temporary GNUPGHOME.
 
 # FIXME: Add instruction on how to get the outgoing subkey onto the
-# keyring, on disk. Without access to the outgoing key, all old
+# backup keyring stored on disk. Without access to the outgoing key, all old
 # encrypted email are made inaccessible. That's not acceptable.
 
 # You might want to do most of this with your computer disconnected
-# from any networks to lower the risk of exposing new key material.
+# from any networks to lower the risk of exposing the new key material.
 
-# NOTE: linus' key id -- change this
+# NOTE: linus' key id -- change this for a more general instruction
 export KEYID=8C4CD511095E982EB0EFBFA21E8BF34923291265
+export keyid=8C4CD511
 
 # First, as root, make sure we've got good randomness in the system
 # apt install rng-tools5
-# cat /etc/conf.d/rngd
-#DEVICE=/dev/ttyUSB0
-#STEP=64
-#NO_DRNG=1
-#WATERMARK=2048
-# insert entropy source in USB slot
-systemctl restart rngd
+sudo systemctl stop rngd
+sudo rngd -f -r /dev/ttyUSB0 -d 1 -n 1
+cat /dev/random > /dev/null # yello light should turn on while running
 
 # set up temporary GNUPGHOME
 umask 077
 cd /dev/shm && mkdir gpgtmp && cd gpgtmp
 cat > gpg.conf <<EOF
-default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+default-preference-list SHA512 SHA384 SHA256 AES256 AES192 AES ZLIB BZIP2 ZIP Uncompressed
 personal-digest-preferences SHA512
 cert-digest-algo SHA512
 EOF
 export GNUPGHOME=$PWD
 # tell gpg-agent about our new home
 systemctl --user restart gpg-agent
+# copy pubkey to temporary keyring
 gpg --homedir ~/.gnupg --export $KEYID | gpg --import
 # generate stubs for secret keys
 gpg --card-status
@@ -3282,13 +3328,13 @@ key N	# Select the key to be revoked, ie the outgoing key.
 revkey	# 2 (Key is superseded)
 save
 
-# Back up all secret subkeys _on_disk_, including the newly created
-# subkey, before moving the new key to the yubikey.
-# Do: mount your encrypted backup disk on /mnt
-# TODO: consider adding --export-options backup
-# TODO: consider just backing up private-keys-v1.d/$KEYGRIP.key
-gpg --export-secret-subkeys --armor > /mnt/pgp/gpg-secret-subkeys.backup
-gpg --export --armor $KEYID > /mnt/pgp/gpg-public-${keyid}.backup
+# Back up all secret subkeys to backup disk, including the newly
+# created subkey, before moving the new key to the yubikey.
+# Do: Mount your encrypted backup disk on /mnt
+# TODO: consider adding '--export-options export-backup'
+# TODO: consider backing up only private-keys-v1.d/$KEYGRIP.key
+gpg --export-secret-subkeys --export-options export-backup --armor > /mnt/pgp/gpg-secret-subkeys-${keyid}.backup
+gpg --export --export-options export-backup --armor $KEYID > /mnt/pgp/gpg-public-${keyid}.backup
 cp /mnt/pgp/gpg-public-${keyid}.backup ~/gpg-public-${keyid}.backup
 sudo umount /mnt
 
@@ -3303,7 +3349,7 @@ sudo umount /mnt
 # This will overwrite the current subkey.
 gpg --edit-key $KEYID
 # move new subkey to card
-key N	# pick the newly created key
+key N	# select the newly created key
 keytocard
 save
 
@@ -3335,12 +3381,16 @@ rm -r /dev/shm/gpgtmp/
 # possibly other keyrings.
 gpg --send-key $KEYID
 
-*** restoring an old subkey to disk
+*** restoring an old subkey from backup
+# Note that old subkeys might be more sensitive than you think. It's
+# not just old email but also all copies of password stores encrypted
+# in that key.
+
 # set up temporary GNUPGHOME
 umask 077
 cd /dev/shm && mkdir gpgtmp && cd gpgtmp
 cat > gpg.conf <<EOF
-default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES ZLIB BZIP2 ZIP Uncompressed
 personal-digest-preferences SHA512
 cert-digest-algo SHA512
 EOF
@@ -3365,6 +3415,27 @@ cp /dev/shm/gpgtmp/private-keys-v1.d/$KEYGRIP.key ~/.gnupg/private-keys-v1.d/
 
 # The outgoing subkey should now be listed without a > ("ssb", not "ssb>").
 gpg -v --list-sec $KEYID
+
+*** what we did 2020
+Getting subkeys onto the card works perfectly fine.
+Unable to restore old subkeys using the file gpg-secret-subkeys.20190530.backup
+I've decided to not store subkeys on the card any more. This means that the
+gpg directory needs to move back to ostick, from tstick.
+
+systemctl --user stop gpg-agent
+mv -i ~/tstick/.gnupg ~/ostick/keys/
+ln -sf ~/ostick/keys/.gnupg ~/
+systemctl --user start gpg-agent
+
+gpg --edit-key 8C4CD511095E982EB0EFBFA21E8BF34923291265
+addkey   # 6 (RSA encrypt only); 4096 (keysize); 1y (validity)
+key 1    # 1 was for 4096R/5681169D  created: 2010-05-07
+revkey   # 2 (Key is superseded); might want to do this after the expiration date
+save
+
+New subkey for encryption: rsa4096/2D11AC8BFF2BC4A8
+
+gpg --send-key 8C4CD511095E982EB0EFBFA21E8BF34923291265
 
 ** splitting a key
 For backup purposes a copy of the secret primary and subkey has been
@@ -3414,6 +3485,44 @@ Sign your message with the same key as this message is encrypted in.
 supposedly good for handling pgp signing
 ** monkeysign
 might be a good tool for handling pgp signing
+** missing all keys <2020-09-12 Sat>
+datan:~% gpg --list-keys
+datan:~% gpg --list-secret
+datan:~% ls -lurta $GNUPGHOME/
+total 35213
+drwx------ 2 linus linus     5120 Mar 29  2016 private-keys-v1.d/
+drwx------ 2 linus linus     6144 Mar 29  2016 dirmngr-cache.d/
+drwxr-xr-x 2 linus linus     1024 Mar 29  2016 .~/
+drwx------ 8 linus linus     1024 Mar 29  2016 ./
+drwx------ 5 linus linus     1024 Mar 29  2016 ../
+-rw------- 1 linus linus    84000 Mar 29  2016 trustdb.gpg
+-rw-r--r-- 1 linus linus     2470 Mar 29  2016 SUNET-hwkey.asc
+-rw------- 1 linus linus      901 Mar 29  2016 revocation-certificate.23291265.txt
+-rw-r--r-- 1 linus linus        7 Mar 29  2016 reader_0.status
+-rw------- 1 linus linus      600 Mar 29  2016 random_seed
+-rw------- 1 linus linus   309193 Mar 29  2016 pubring.kbx~
+-rw------- 1 linus linus   311288 Mar 29  2016 pubring.kbx
+-rw-r--r-- 1 linus linus       23 Mar 29  2016 gpgsm.conf
+-rw------- 1 linus linus      986 Dec 27  2016 sshcontrol.OFF
+-rw------- 1 linus linus    76070 Apr 17  2017 secring.gpg
+-rw-r--r-- 1 linus linus    49152 Sep 11  2017 tofu.db
+-rw-r--r-- 1 linus linus        0 Sep 11  2017 .gpg-v21-migrated
+drwx------ 2 linus linus     1024 Sep 14  2017 crls.d/
+drwx------ 2 linus linus     1024 Oct  2  2017 openpgp-revocs.d/
+-rw-r--r-- 1 linus linus        7 Feb 19  2018 reader_1.status
+-rw-r--r-- 1 linus linus      187 Dec 25  2018 gpg-agent.conf
+-rw------- 1 linus linus     9485 Feb  5  2019 gpg.conf
+-rw-r----- 1 linus linus     3296 Feb  6  2019 sshcontrol
+-rw------- 1 linus linus       32 Mar 27  2019 kr.lQmnXF~
+-rw-r--r-- 1 linus linus   261226 Mar 27  2019 kr.lQmnXF
+drwx------ 2 linus linus     1024 Jun  1  2019 private-keys-v1.d.BAK/
+-rw-r--r-- 1 linus linus      512 Jun 30  2019 dirmngr.conf
+-rw-r--r-- 1 linus linus       17 Jun 30  2019 .#lk0x000055f47fdb0b50.datan.28347
+-rw------- 1 linus linus 34918888 Sep  1 09:57 pubring.gpg~
+-rw------- 1 linus linus        0 Sep 10 18:52 pubring.gpg
+datan:~% mv /home/linus/.gnupg/pubring.gpg~ /home/linus/.gnupg/pubring.gpg
+
+All good. Wonder what happened in the morning of Sep 1.
 * wiki
 - ikiwiki is supposed to be nice.  Uploading text files (markdown!)
   using git f.ex.
@@ -3831,9 +3940,9 @@ auth-user-pass, maybe
 ** usb disk
 This example is using a 100MB partition made with "Disk Utility 2.32.1".
 *** Short version
-    badblocks -vswt random /dev/sdb1 # -c 10240
-    cryptsetup --use-random luksFormat --cipher aes-xts-plain64 --hash sha256 --iter-time 3000 /dev/sdb1
-    cryptsetup luksOpen /dev/sdb1 kaka
+    badblocks -vswt random /dev/DEVICE # -c 10240
+    cryptsetup --use-random luksFormat --iter-time 3000 /dev/DEVICE # --cipher aes-xts-plain64 --hash sha256
+    cryptsetup luksOpen /dev/DEVICE kaka
     mkfs.ext4 /dev/mapper/kaka
     cryptsetup luksClose /dev/mapper/kaka
 *** With output NOTE: outdated -- uses aes-cbc!
@@ -3939,7 +4048,7 @@ This example is using a 100MB partition made with "Disk Utility 2.32.1".
       ls /dev/mapper/
       control  _dev_sda3
 ** encrypt whole disk
-   https://wiki.archlinux.org/index.php/System_Encryption_with_
+https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_a_non-root_file_system
 ** segfaulting mount.crypt
    Aug 28 15:33:11 42 kernel: [232615.784435] mount.crypt[14346]: segfault at 0 ip 0000000000406ede sp 00007fff35bc61a0 error 4 in mount.crypt[400000+9000]
    Aug 28 15:34:29 42 kernel: [232693.928103] mount.crypt[14544]: segfault at 0 ip 0000000000406ede sp 00007fff02deec10 error 4 in mount.crypt[400000+9000]
@@ -5340,6 +5449,7 @@ emacs --no-init-file --load .emacs.erc.el -f my-erc-oftc
 identify <password> ln5
 cert add
 ** umode
+*** OFTC
 https://www.oftc.net/CallerId/ helps when ppl are spamming you in PM
 - /mode ln5 +G
 - /mode ln5 -G
@@ -5349,6 +5459,13 @@ use the second command to remove +G
 - /mode ln5 +Gj
 might be even better, requiring users to both share a channel with you
 and be registered with nickserv in order to be able to PM you
+
+*** charybdis, indymedia
+https://www.stack.nl/~jilles/irc/charybdis-oper-guide/charybdis-oper-guide.pdf
+
+- /mode ln5 +R
+User modes for ln5: +RZhi
+
 * DNS
 ** DNSSEC
 ns.adb-centralen.se uses knot for DNSSEC.
@@ -30650,7 +30767,11 @@ Oct 15 19:28:14 lnmail imaps[85329]: open: user simon opened INBOX
 ===>>> Installed x11/xtrans
 
 * tor
-** control port
+** ask for a new circuit over the control port
+echo signal newnym | tor-prompt
+
+ -- OR --
+
 forty711:~# nc -U /var/db/tor/control
 Oct 26 10:31:02.531 [notice] New control connection opened.
 AUTHENTICATE "<pw>"
@@ -30661,6 +30782,9 @@ SIGNAL NEWNYM
 <pw> above is the contents of /var/db/tor/control_auth_cookie in case
 CookieAuthentication 1 is set in torrc.
 It's ASCII hex.  You can hexdump(1) it and massage it in emacs.
+
+** set up a new tor instance on debian
+tor-instance-create(8)
 
 * screen
 ^A-^V --> ö
@@ -31416,10 +31540,9 @@ To make a new player be in the right group for playing ("user"), do
   - list
   - add <player>
 
-
 ** spigot sysadmin, mincore @ kcmp.adbc
-- https://www.spigotmc.org/wiki/spigot-installation/
 - https://www.spigotmc.org/wiki/buildtools/
+- https://www.spigotmc.org/wiki/spigot-installation/
 *** upgrading 1.14.4 to 1.15 <2019-12-12 Thu>
 [root@mincore ~]# su - spigot
 $ cd build
@@ -31517,6 +31640,32 @@ cd ../run/jutu/
 : stop the server using 'stop' in the console
 ln -sf spigot-1.15.2.jar spigot.jar
 : exit until 'screen is terminating'
+~/run/jutu/start.sh
+screen -r
+
+*** 1.15.2 -> 1.16.1 <2020-08-03 Mon>
+su - spigot
+java -jar BuildTools.jar --rev latest
+$ cp spigot-1.16.1.jar ../run/jutu/
+cd ../run/jutu/
+kill 77320 # found not screen
+$ ln -sf spigot-1.16.1.jar spigot.jar
+~/run/jutu/start.sh
+screen -r
+*** 1.16.1 -> 1.16.3 <2020-09-23 Wed>
+ssh mincore.adb-centralen.se
+su -
+su - spigot
+screen -r
+> list
+> say Uppdatering av servern på gång, några minuter kvar!
+cd ~/build
+java -jar BuildTools.jar --rev latest
+cp spigot-1.16.3.jar ../run/jutu/
+cd ../run/jutu
+> stop
+ln -sf spigot-1.16.3.jar spigot.jar
+exit
 ~/run/jutu/start.sh
 screen -r
 
@@ -34547,6 +34696,20 @@ nnimap+adbc:lists.tor.bad-relays error: *nnimap* deleted
     ("gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt -p %p %h" 
      "gnutls-cli --insecure -p %p %h" "gnutls-cli --insecure -p %p %h --protocols ssl3"
      "openssl s_client -connect %h:%p -no_ssl2 -ign_eof")))
+** .authinfo.gpg
+- encrypted in linus' pgp key, by Emacs through opening and saving the file
+datan:~% pgpdump .authinfo.gpg 
+Old: Public-Key Encrypted Session Key Packet(tag 1)(524 bytes)
+        New version(3)
+        Key ID - 0x2D11AC8BFF2BC4A8
+        Pub alg - RSA Encrypt or Sign(pub 1)
+        RSA m^e mod n(4096 bits) - ...
+                -> m = sym alg(1 byte) + checksum(2 bytes) + PKCS-1 block type 02
+New: Symmetrically Encrypted and MDC Packet(tag 18)(405 bytes)
+        Ver 1
+        Encrypted data [sym alg is specified in pub-key encrypted session key]
+                (plain text + MDC SHA1(20 bytes))
+
 * jake on privacy and power
 ** elevate.at 2013
 http://2013.elevate.at/festival/ueber-das-festival/newsmagazin/detail/news/jacob-appelbaum-elevate-open-everything/
@@ -34681,7 +34844,8 @@ former.
 - ann leckie's "Radch" trilogy
 - octavia butler https://en.wikipedia.org/wiki/Lilith%27s_Brood
 ** misc
-[[https://en.wikipedia.org/wiki/The_Sandman_%2528Vertigo%2529][The Sandman]]
+[[https://en.wikipedia.org/wiki/The_Sandman_%2528Vertigo%2529][- The Sandman]]
+- White Fragility, Robin DiAngelo
 * images
 ** mm.adb-centralen.se
 SHA1 (.priv/img) = 706ed9d23d4cdf0309dee44fa9e9dc41eea1b1b9
@@ -39665,6 +39829,204 @@ but it maintains the "no unauthenticated state" invariant
 -O> which seems unresolved afaict
 <O- I think ipredator might also be happy to use a secure version of wiregurad
 <O- wireguard*
+** trouble bringing wg0 up after kernel upgrade
+tl;dr apt remove wireguard wireguard-dkms wireguard-tools && apt install wireguard
+
+Long version:
+
+[#] ip link add wg0 type wireguard
+RTNETLINK answers: Operation not supported
+Unable to access interface: Protocol not supported
+[#] ip link delete dev wg0
+Cannot find device "wg0"
+
+root@datan:~# uname -a
+Linux datan 4.9.0-13-amd64 #1 SMP Debian 4.9.228-1 (2020-07-05) x86_64 GNU/Linux
+
+root@datan:~# modprobe wireguard
+modprobe: FATAL: Module wireguard not found in directory /lib/modules/4.9.0-13-amd64
+
+root@datan:~# dpkg -l wireguard\*
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                                           Version                      Architecture                 Description
++++-==============================================-============================-============================-=================================================================================================
+ii  wireguard                                      0.0.20181119-1               all                          fast, modern, secure kernel VPN tunnel (metapackage)
+ii  wireguard-dkms                                 0.0.20181119-1               all                          fast, modern, secure kernel VPN tunnel (DKMS version)
+un  wireguard-modules                              <none>                       <none>                       (no description available)
+ii  wireguard-tools                                0.0.20181119-1               amd64                        fast, modern, secure kernel VPN tunnel (userland utilities)
+
+root@datan:~# dkms build wireguard/0.0.20181119
+ 
+Kernel preparation unnecessary for this kernel.  Skipping...
+ 
+Building module:
+cleaning build area...
+make -j4 KERNELRELEASE=4.9.0-13-amd64 -C /lib/modules/4.9.0-13-amd64/build M=/var/lib/dkms/wireguard/0.0.20181119/build....(bad exit status: 2)
+Error! Bad return status for module build on kernel: 4.9.0-13-amd64 (x86_64)
+Consult /var/lib/dkms/wireguard/0.0.20181119/build/make.log for more information.
+
+root@datan:~# cat /var/lib/dkms/wireguard/0.0.20181119/build/make.log
+DKMS make.log for wireguard-0.0.20181119 for kernel 4.9.0-13-amd64 (x86_64)
+Wed Jul 29 23:52:45 CEST 2020
+make: Entering directory '/usr/src/linux-headers-4.9.0-13-amd64'
+  LD      /var/lib/dkms/wireguard/0.0.20181119/build/built-in.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/main.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/noise.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/device.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/peer.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/timers.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/queueing.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/send.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/receive.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/socket.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/hashtables.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/allowedips.o
+  CC [M]  /var/lib/dkms/wireguard/0.0.20181119/build/ratelimiter.o
+/var/lib/dkms/wireguard/0.0.20181119/build/socket.c: In function ‘send6’:
+/var/lib/dkms/wireguard/0.0.20181119/build/socket.c:143:18: error: ‘const struct ipv6_stub’ has no member named ‘ipv6_dst_lookup’; did you mean ‘ipv6_dst_lookup_flow’?
+   ret = ipv6_stub->ipv6_dst_lookup(sock_net(sock), sock, &dst,
+                  ^~
+/usr/src/linux-headers-4.9.0-13-common/scripts/Makefile.build:309: recipe for target '/var/lib/dkms/wireguard/0.0.20181119/build/socket.o' failed
+make[3]: *** [/var/lib/dkms/wireguard/0.0.20181119/build/socket.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+/usr/src/linux-headers-4.9.0-13-common/Makefile:1560: recipe for target '_module_/var/lib/dkms/wireguard/0.0.20181119/build' failed
+make[2]: *** [_module_/var/lib/dkms/wireguard/0.0.20181119/build] Error 2
+Makefile:152: recipe for target 'sub-make' failed
+make[1]: *** [sub-make] Error 2
+Makefile:8: recipe for target 'all' failed
+make: *** [all] Error 2
+make: Leaving directory '/usr/src/linux-headers-4.9.0-13-amd64'
+
+root@datan:~# apt-cache policy wireguard-dkms
+wireguard-dkms:
+  Installed: 0.0.20181119-1
+  Candidate: 0.0.20181119-1
+  Version table:
+     1.0.20200712-1 90
+         90 tor+http://vwakviie2ienjx6t.onion/debian unstable/main amd64 Packages
+         90 tor+http://vwakviie2ienjx6t.onion/debian unstable/main i386 Packages
+ *** 0.0.20181119-1 100
+        100 /var/lib/dpkg/status
+root@datan:~# apt-cache policy wireguard
+wireguard:
+  Installed: 0.0.20181119-1
+  Candidate: 0.0.20181119-1
+  Version table:
+     1.0.20200513-1 90
+         90 tor+http://vwakviie2ienjx6t.onion/debian unstable/main amd64 Packages
+         90 tor+http://vwakviie2ienjx6t.onion/debian unstable/main i386 Packages
+ *** 0.0.20181119-1 100
+        100 /var/lib/dpkg/status
+
+root@datan:~# apt remove wireguard wireguard-dkms wireguard-tools
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages will be REMOVED:
+  wireguard wireguard-dkms wireguard-tools
+0 upgraded, 0 newly installed, 3 to remove and 0 not upgraded.
+After this operation, 2,087 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 412501 files and directories currently installed.)
+Removing wireguard (0.0.20181119-1) ...
+Removing wireguard-dkms (0.0.20181119-1) ...
+
+-------- Uninstall Beginning --------
+Module:  wireguard
+Version: 0.0.20181119
+Kernel:  4.9.0-12-amd64 (x86_64)
+-------------------------------------
+
+Status: Before uninstall, this module version was ACTIVE on this kernel.
+
+wireguard.ko:
+ - Uninstallation
+   - Deleting from: /lib/modules/4.9.0-12-amd64/updates/dkms/
+ - Original module
+   - No original module was found for this module on this kernel.
+   - Use the dkms install command to reinstall any previous module version.
+
+depmod....
+
+DKMS: uninstall completed.
+
+------------------------------
+Deleting module version: 0.0.20181119
+completely from the DKMS tree.
+------------------------------
+Done.
+Removing wireguard-tools (0.0.20181119-1) ...
+dpkg: warning: while removing wireguard-tools, directory '/etc/wireguard' not empty so not removed
+Processing triggers for man-db (2.7.6.1-2) ...
+
+root@datan:~# apt install wireguard
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  wireguard-dkms wireguard-tools
+The following NEW packages will be installed:
+  wireguard wireguard-dkms wireguard-tools
+0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+Need to get 348 kB of archives.
+After this operation, 2,106 kB of additional disk space will be used.
+Do you want to continue? [Y/n] 
+Get:1 tor+http://vwakviie2ienjx6t.onion/debian unstable/main amd64 wireguard-dkms all 1.0.20200712-1 [253 kB]
+Get:2 tor+http://vwakviie2ienjx6t.onion/debian unstable/main amd64 wireguard-tools amd64 1.0.20200513-1 [86.2 kB]
+Get:3 tor+http://vwakviie2ienjx6t.onion/debian unstable/main amd64 wireguard all 1.0.20200513-1 [8,052 B]
+Fetched 348 kB in 3s (96.5 kB/s)     
+Selecting previously unselected package wireguard-dkms.
+(Reading database ... 412284 files and directories currently installed.)
+Preparing to unpack .../wireguard-dkms_1.0.20200712-1_all.deb ...
+Unpacking wireguard-dkms (1.0.20200712-1) ...
+Selecting previously unselected package wireguard-tools.
+Preparing to unpack .../wireguard-tools_1.0.20200513-1_amd64.deb ...
+Unpacking wireguard-tools (1.0.20200513-1) ...
+Selecting previously unselected package wireguard.
+Preparing to unpack .../wireguard_1.0.20200513-1_all.deb ...
+Unpacking wireguard (1.0.20200513-1) ...
+Setting up wireguard-dkms (1.0.20200712-1) ...
+Loading new wireguard-1.0.20200712 DKMS files...
+Building for 4.9.0-13-amd64
+Building initial module for 4.9.0-13-amd64
+Done.
+
+wireguard:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/4.9.0-13-amd64/updates/dkms/
+
+depmod...
+
+DKMS: install completed.
+Setting up wireguard-tools (1.0.20200513-1) ...
+wg-quick.target is a disabled or a static unit, not starting it.
+Setting up wireguard (1.0.20200513-1) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+
+root@datan:~# wg-quick up wg0
+[#] ip link add wg0 type wireguard
+[#] wg setconf wg0 /dev/fd/63
+[#] ip -4 address add 10.128.0.12/32 dev wg0
+[#] ip -6 address add fd00:128::12/128 dev wg0
+[#] ip link set mtu 1420 up dev wg0
+[#] wg set wg0 fwmark 51820
+[#] ip -6 route add ::/0 dev wg0 table 51820
+[#] ip -6 rule add not fwmark 51820 table 51820
+[#] ip -6 rule add table main suppress_prefixlength 0
+[#] ip6tables-restore -n
+[#] ip -4 route add 0.0.0.0/0 dev wg0 table 51820
+[#] ip -4 rule add not fwmark 51820 table 51820
+[#] ip -4 rule add table main suppress_prefixlength 0
+[#] sysctl -q net.ipv4.conf.all.src_valid_mark=1
+[#] iptables-restore -n
+root@datan:~# Jul 30 00:12:22 datan kernel: wireguard: WireGuard 1.0.20200712 loaded. See www.wireguard.com for information.
+Jul 30 00:12:22 datan kernel: wireguard: Copyright (C) 2015-2019 Jason A. Donenfeld <Jason@zx2c4.com>. All Rights Reserved.
+
 * Núbi Ferskur <neubyi@4711.se>
 - uses ln+neubyi@4711.se some places (github)
 * robur.io
@@ -41976,7 +42338,6 @@ adb install ~/u/apk/Signal-website-release-${VERSION}.apk
 ** CarbonAds / BuySellAds
 - https://carbonads.net/
 * nextcloud
-** how to debug
 ** DONE quota and group admin settings don't bite
 Solved: using apache with mod_php instead of lighttpd with fastcgi and
 php-fpm makes this problem go away.
@@ -42020,6 +42381,17 @@ off not configuring a domain name.
 ** subscriber only content?
 https://docs.nextcloud.com/server/stable/admin_manual/installation/deployment_recommendations.html -> 
 https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html
+** hints
+- see public basic info, like nextcloud version
+  - curl-tor https://clown.adb-centralen.se/ocs/v1.php/cloud/capabilities -H "OCS-APIRequest: true"
+- security scanner
+  - https://scan.nextcloud.com/
+  - clown: https://scan.nextcloud.com/results/6d6105e6-bac7-4055-9c5e-5bf4b8858132
+  - __Host-Prefix
+    - https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-06#section-4.1.3
+    - solution for clown was to remove an old apacha Alias directive:
+      Alias /nextcloud "/usr/local/www/nextcloud/"
+
 * authn/authz
 - leif on what to use
   - om du har 1 tjänst (mail) så bygg ngt eget; 17 tjänster - alla
@@ -42078,6 +42450,39 @@ https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html
 ** debian on rpi3
 see [[file:p/rpi-images/rpi-images.org][file:~/p/rpi-images/rpi-images.org]]
 but also https://salsa.debian.org/raspi-team/image-specs.git
+** console on serial port
+- ADA fruit cable https://www.adafruit.com/product/954
+- red power, black ground, white RX into USB port, and green TX out of USB port
+- https://pinout.xyz/ says pin 8 UART TX (GPIO 14), pin 10 UART RX (GPIO 15)
+** vmdb2, for building images
+vmdb2 seems somewhat brittle (v0.20 as of oct 2020). F.ex. if there's
+a loopback device that's stuck, perhaps bc someone rm'd the backing
+.img file while a loopback device was attached, vmdb2 won't recognize
+that and instead complain that 'ERROR mkfs: device (for tag): value
+must be string, got None' for some reason (there's no 'INFO
+remembering /dev/mapper/loop0p1 as /boot').
+
+Something in here wants to posix_openpt(3) so devpts better be mounted
+(/dev/pts). Is it eatmydata?
+** missing wifi interface on rpi3b+ -- install firmware-brcm80211
+[   10.420246] brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43455-sdio for chip BCM4345/6
+[   10.435011] usbcore: registered new interface driver brcmfmac
+[   10.450573] brcmfmac mmc1:0001:1: firmware: failed to load brcm/brcmfmac43455-sdio.bin (-2)
+[   10.464327] firmware_class: See https://wiki.debian.org/Firmware for information about missing firmware
+[   10.479190] brcmfmac mmc1:0001:1: Direct firmware load for brcm/brcmfmac43455-sdio.bin failed with error -2
+
+ress 802.11 wireless cards
+
+root@rpi3:~# apt install firmware-brcm80211
+root@rpi3:~# modprobe -r brcmfmac
+root@rpi3:~# modprobe brcmfmac
+root@rpi3:~# iwconfig
+wlan0     IEEE 802.11  ESSID:off/any
+          Mode:Managed  Access Point: Not-Associated
+          Retry short limit:7   RTS thr:off   Fragment thr:off
+          Encryption key:off
+          Power Management:on
+
 * signal
 ** on android
 - https://signal.org/android/apk/
@@ -42098,6 +42503,7 @@ Version: 3
 ** pws
 - https://github.com/weaselp/pwstore/
 - has access control with FIXME
+** pass
 * 4g, 3g, gsm, mobile networks
 ** dongle
 - ericsson: huawei e1750
@@ -42627,6 +43033,10 @@ bit, but in the long run it's going to be all right.
  ~/usr/games/gtetrinet
 ** tetrinet-0.11 "tetrinet for linux"
 - [[file:usr/src/tetrinet-0.11/server.c::static%20int%20server_parse(int%20player,%20char%20*buf)][server handling incoming client dat
+** Mobile-TetriNET
+- sudo apt install python-kivy
+- git clone https://github.com/Smug28/Mobile-TetriNET && cd Mobile-TetriNET
+- written for kivy 1.5.1, debian stretch is at 1.9.1, upstream is at 1.11.0
 * kaffemaskin
 - 1 x Rancilio Silvia Ångrör, Gen2  / 199 kr
   - inköpt april -20
@@ -42795,3 +43205,217 @@ Generating Bash completion file ...
 Generating PowerShell completion file ...
 Generating ZSH completion file ...
 go build -ldflags "-X github.com/MichaelMure/git-bug/commands.GitCommit=966edfc2324e6526d9ee02b843c288124eea.
+* bhyve
+- Tested some things on kallocain.dfri.se
+vm img https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2
+vm create -t debian -i debian-9-openstack-amd64.qcow2 -n "ip=172.16.1.49/24;gateway=172.16.1.1;nameservers=171.25.193.14,171.25.193.69" -C -k ~/.ssh/cloudtest.pub cloudtest9
+vm start cloudtest9; sleep 1; vm console cloudtest9
+
+- Had trouble with Buster though
+  - https://mastodon.social/web/statuses/103880692615792444
+Booting the amd qcow2 image in [0] fails when the rootfs pointed out
+by UUID can't be found. /proc/cmdline looks reasonable. The Debian 9
+cloud image does not have this problem. Ideas?
+[0] https://cdimage.debian.org/cdimage/openstack/current-10/
+* google on contact tracing, <2020-05-19 Tue>
+- [[gnus:nnimap+adbc:INBOX#000000000000e301a005a5b1e53f@google.com][Email from mzubicek@google.com: Invitation: Contact Tracing br]]
+- 33 members present
+- Jens Redmer, Google Germany, presents the technology
+- [13:21] Gary Davis, Global Director of Privacy & Law Enforcement Requests, Apple
+  - we're reacting to requests by health authorities
+  - user must enable "exposure notifications" in their phones
+  - randomized BT id's change every 15 inutes
+  - BT much better from a privacy pov than fine granular geo data
+  - will disable "exposure notifications" on a reginal basis when
+    [after corona, somehow]
+  - we've been sharing with authorities screens showing what we expect
+    apps to do in order to [collect consent] and also example code for
+    apps
+  - this is an API where a government health authority [must say yes please]
+  - one app per country
+  - wanted to ship mid may, we still hope this will hold
+- [13:35] q&a
+  - uptake? effectiveness?
+  - fukami: Will access to other device information also be restricted
+    (like device IDs) for the apps? A: [restrict]
+  - will share presentation / blog post;
+    https://www.apple.com/covid19/contacttracing
+  - a queston on oversight: accountability outside these circles; A:
+    we have documented, which is amazing
+  - how is the geo limitation done? mobile country code
+  - frank rieger: will source code be made available? gary: no
+    decision made
+  - https://www.blog.google/inside-google/company-announcements/apple-and-google-partner-covid-19-contact-tracing-technology
+  - Gus Hosein, PI, clarifying a question
+  - katarzyna: on preventing repurposing;
+  - rejo: how about elderly using this? and LE, can they use the info?
+
+** questions
+- differences to dp-3t?
+* cory robinson
+- emailed me late may, on recommendation from tpulls
+- wants to start an organisation with a noridc perspective on privacy,
+  sort of
+** meeting <2020-05-25 Mon>
+- what's your goal with the organisation?
+- project in france with citizens controlling, including encrypting
+  and storing, their own data
+
+- not competing with myudata or other things
+- nordic values
+- AI; stefan larsson, jonas lindendahl (lund), both privacy
+- legitimacy, long term
+- AI sustainability center
+- "when EFF said use our name"
+- aoir.org
+- goal is to shape policy around nordic values in europe, around DR
+- WASP-HS
+* funding applications
+** NGI Pointer 2020
+Application ID b80cefaa69f69b0c01d8d943 submitted <2020-06-01 Mon 11:52>:
+[[file:doc/ngi-pointer-application-2020.pdf][file:~/doc/ngi-pointer-application-2020.pdf]]
+
+* backup
+** black WD
+root@datan:~# date
+Wed Jun  3 01:41:36 CEST 2020
+root@datan:~# ls -l /mnt/
+total 24600
+drwxr-xr-x 3 root root      4096 May  7  2018 borg
+drwxr-x--- 7 root linus     4096 Feb 17  2018 datan
+-r-------- 1 root root   2068480 Jan 19  2019 datan.sda5.slot-1-only.header-backup
+drwxr-x--- 5 root linus     4096 Apr 23  2017 flogsta
+-r-------- 1 root root  10485760 Dec 25  2016 kingston-blue+white-part1-2016-12-25.img
+-r-------- 1 root root  10485760 Mar 20  2017 kingston-blue+white-part1.2017-03-20.img
+drwx------ 2 root root     16384 Nov  4  2014 lost+found
+drwx------ 4 root root      4096 Aug 16  2016 modermodemet
+-r-------- 1 root root   1052672 Jan 19  2019 ostick.header-backup
+drwxrwx--- 2 root linus     4096 Jun  1  2019 pgp
+drwx------ 4 root root      4096 Apr 27  2018 restic
+drwx------ 3 root root      4096 Dec  4  2014 tool
+-r-------- 1 root root   1052672 Jan 19  2019 tstick.header-backup
+root@datan:~# ls -l /mnt/pgp
+total 1500
+-r-------- 1 linus linus 262497 Apr 11  2018 gpg-public-1E8BF34923291265.20180411.backup
+-rw------- 1 linus linus 346854 May 30  2019 gpg-public-1E8BF34923291265.backup
+-r-------- 1 linus linus 264396 Apr 11  2018 gpg-secret-subkeys.20180411.backup
+-rw------- 1 linus linus 348831 May 30  2019 gpg-secret-subkeys.backup
+-r-------- 1 linus linus 300272 Apr 11  2018 gpg-secret-subkeys-pre-keytocard
+** TRANZIP 3.0 (16GB)
+borg init -e keyfile /mnt/datan/home/linus
+borg create /mnt/datan/home/linus::priv ~/.priv
+* elektricitet
+bergroth i slack <2020-06-26 Fri>
+
+ok, då vill du ha 3x25 eller 3x20 till din lokal. så du kan dra 16A
+till ditt rack
+
+du får ut 7kW på en 3x16A.  Det är vad ett normalt bastu aggregat är
+på.
+
+får du betala någon fast avgift baserat på säkring eller blir det bara
+mätare och du betalar vad du förbrukar?
+
+Det beror ju lite på vad dom har för ström in i huset.  Men om dom
+drar en 5x10mm2 kabel till dig så kan du alltid säkra upp till
+3x40A. Men då måste dom sätta den på en knivsäkrnig eller med propp
+med gänga 3.  På vanliga gänga 2 proppar kan man bara få 25A. Så 3x25A
+är ju enklast i deras ende.
+
+Beställ 3x25 så kan du alltid säkra ner till 3x20A. 25A 17kW, 20A
+14kW, 16A 11kW mon jag räkna rätt i sommar värmen
+
+Sedan drar du fram 13 ell 16a till ditt rack så många du behöver
+* USB
+- dfu-utils -- debian package
+Homepage: http://dfu-util.sourceforge.net
+Description: Device firmware update (DFU) USB programmer
+ dfu-util is a program that implements the host (PC) side of the USB
+ DFU 1.0 and 1.1 (Universal Serial Bus Device Firmware Upgrade) protocol.
+ .
+ DFU is intended to download and upload firmware to devices connected over
+ USB. It ranges from small devices like micro-controller boards up to mobile
+ phones. With dfu-util you are able to download firmware to your device or
+ upload firmware from it.
+* child protection
+** möte med susanne <2020-08-10 Mon>
+- postkodlotteriet, skickat concept note och har gått vidare
+- tanken med en AI-hub är att låta childhood får mer pengar
+  - finanseria susanne; anställa nyexad civing inom datateknik
+    (deltid); finansiera rapporter och analyser även utifrån
+    integritetsfrågor; utveckling av f.a. test
+  - koordinera och spindel i nätet
+- vad menar vi med AI? vill involvera aktörer som specifikt arbetar
+  med AI; varför just AI? tekniskt, analysera bilder
+- https://www.umu.se/personal/virginia-dignum/, leder wallenbergs
+  WASP-HS (humanitites and society)
+- länka forskare och utvecklare
+- "vårt samarbete", är du bekväm med det? ja
+- ansökan är på 11M SEK över fyra år
+- webiq länkade till KTH om "toxicity"
+* surveys
+** Stakeholder Consultation on the Role of Open Source Software (OSS) and Open Source Hardware (OSH)
+https://inno.limequery.com/436575
+name pw: 9oJxZEEgCvvO0mrLyif31IZLWRQeaPbO p7AcG0OXezX0FTOFzv8mQl4uC2V95mbR
+
+* kivy
+** installing on an rpi3 running Buster <2020-11-08 Sun>
+- From https://kivy.org/doc/stable/installation/installation-rpi.html
+
+- Installation
+sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev \
+   pkg-config libgl1-mesa-dev libgles2-mesa-dev \
+   python3-setuptools libgstreamer1.0-dev git-core \
+   gstreamer1.0-plugins-{bad,base,good,ugly} \
+   gstreamer1.0-{omx,alsa} python3-dev libmtdev-dev \
+   xclip xsel libjpeg-dev
+sudo apt install python3-pip
+python3 -m pip install --upgrade --user pip setuptools
+python3 -m pip install --upgrade --user Cython==0.29.10 pillow
+python3 -m pip install --user kivy
+
+- NOTES
+  - should we run a more recent Cython? (0.29.21 is a thing)
+    python3 -m pip install --upgrade --user Cython pillow
+
+- Configuration
+  - https://kivy.org/doc/stable/guide/config.html#configure-kivy
+  - Edit ~/.kivy/config.ini for fixing input
+    mouse = mouse
+    mtdev_%(name)s = probesysfs,provider=mtdev
+    hid_%(name)s = probesysfs,provider=hidinput
+
+- Test it
+(cd /usr/src/kivy/examples/demo/showcase && python3 main.py;)
+
+- not working, trying some additional things
+python3 -m pip install --user pysdl2  # missing sdl2 for python3?
+
+sudo apt install python-setuptools python-dev python-pip  # try using python2
+python -m pip install --upgrade --user pip setuptools
+python -m pip install --upgrade --user Cython pillow
+python -m pip install --user kivy
+
+- Starting an X11 server and Lightdm first
+sudo apt install xinit lightdm && reboot
+: no nothing on screen
+
+- Trying kivy from git master
+cd /usr/src/kivy && python3 -m pip install --user .
+
+
+** writing a simple kivy program
+- https://kivy.org/doc/stable/guide/basic.html#quickstart
+import kivy
+kivy.require('1.11.1')
+from kivy.app import App
+from kivy.uix.label import Label
+class MyApp(App):
+    def build(self):
+        return Label(text='Hello world')
+if __name__ == '__main__':
+    MyApp().run()
+
+- https://kivy.org/doc/stable/gettingstarted/first_app.html
+* ntp
+- ntpq -p
