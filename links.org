@@ -1,3 +1,16 @@
+digital-feudalism https://locusmag.com/2021/01/cory-doctorow-neofeudalism-and-the-digital-manor/
+tor raccoon23 https://archives.seul.org/or/dev/Mar-2012/msg00019.html
+tor raccoon23 https://lists.torproject.org/pipermail/tor-dev/2008-September/002493.html
+programming language https://wiki.portal.chalmers.se/agda/pmwiki.php
+webrtc video-conf sw https://galene.org/
+rasmus blog https://rgdd.medium.com/
+readme https://waitbutwhy.com/2015/12/the-tail-end.html
+tor relay-operator expectations https://gitlab.torproject.org/tpo/network-health/team/-/issues/12
+readme selfhosting https://roarmag.org/essays/win-back-the-internet/
+1. https://www.seguetech.com/waterfall-vs-agile-methodology/
+2. https://www.fool.com/the-blueprint/agile-vs-scrum/
+3. https://en.wikipedia.org/wiki/Lean_startup
+jitsi e2ee https://jitsi.org/blog/e2ee/
 rpi touchscreen kivy https://kivy.org/doc/stable/installation/installation-rpi.html
 rpi touchscreen kivy http://kivypie.mitako.eu/
 rpi touchscreen https://learn.adafruit.com/adafruit-pitft-3-dot-5-touch-screen-for-raspberry-pi/overview
