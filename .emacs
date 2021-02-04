@@ -793,6 +793,32 @@
   '(defun enriched-decode-display-prop (start end &optional param)
      (list start end)))
 
+;; Don't make backups (in .~) for files on remote systems
+(define-minor-mode inhibit-backup-minor-mode
+  "Disable backup creation and auto saving.
+
+With no argument, this command toggles the mode.
+Non-null prefix argument turns on the mode.
+Null prefix argument turns off the mode."
+  ;; The initial value.
+  nil
+  ;; The indicator for the mode line.
+  " Inhibit-backups"
+  ;; The minor mode bindings.
+  nil
+  (if (symbol-value inhibit-backup-minor-mode)
+      (progn
+	(set (make-local-variable 'backup-inhibited) t)
+	(if auto-save-default
+	    (auto-save-mode -1)))
+    (kill-local-variable 'backup-inhibited)
+    (if auto-save-default
+	(auto-save-mode 1))))
+
+(add-to-list 'auto-mode-alist
+ 	     (cons (concat (getenv "HOME") "/clown/") . ('inhibit-backup-minor-mode)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; don't activate the debugger automagically when errors are
 ;; encountered
 (setq debug-on-error nil)
