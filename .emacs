@@ -24,6 +24,8 @@
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
+(require 'elixir-mode)
+
 ;; Disabled this _and_ removed the lyskom directory bc
 ;;   eval-buffer: Loading ‘/home/linus/usr/share/emacs/site-lisp/lyskom/wid-edit.el’: old-style backquotes detected!
 (autoload 'lyskom "lyskom" "Start LysKOM" t)
