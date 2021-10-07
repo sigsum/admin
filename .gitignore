@@ -50,3 +50,14 @@ tor-browser*
 tstick
 u
 usr
+.ccache
+.gradle
+.m2
+.opam .opam,bak .opam.bak2
+.opam*
+.rustup
+.wine
+bup
+.davfs2/cache
+.ssh
+.texlive2016
