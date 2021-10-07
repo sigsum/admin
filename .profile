@@ -8,8 +8,6 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-unset LESSHISTFILE              # don't want less to store history
-
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -18,8 +16,18 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 GOPATH=$HOME/usr/go; export GOPATH
-PATH=$HOME/bin:$HOME/usr/bin:$HOME/.local/bin:$GOPATH/bin:$PATH; export PATH
+PATH=$HOME/usr/bin:$GOPATH/bin:$PATH; export PATH
 
 WORKON_HOME=$HOME/.virtualenvs; export WORKON_HOME
 PROJECT_HOME=$HOME/p/python; export PROJECT_HOME
@@ -28,11 +36,9 @@ PROJECT_HOME=$HOME/p/python; export PROJECT_HOME
 GNUPGHOME=$HOME/.gnupg; export GNUPGHOME
 
 # OPAM configuration
-. /home/linus/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+#. /home/linus/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-[ -d "$HOME/.cache/rebar3/bin" ] && PATH="$PATH:$HOME/.cache/rebar3/bin"
-export PATH
+[ -d "$HOME/.cache/rebar3/bin" ] && PATH="$PATH:$HOME/.cache/rebar3/bin"; export PATH
 
 PATH=$PATH:$HOME/usr/games; export PATH
-
-export PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"; export PATH
