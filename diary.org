@@ -15,7 +15,1240 @@ app https://github.com/netmackan/ATimeTracker .
 
 Starting week 16, we go back to tracking here instead.
 
+** Vacation 2021
+Weeks 27, 28, 29, 31 (2021-07-05--25, 2021-08-02--08)
+
+* week 40 2021-10-04
+** adbc
+   :LOGBOOK:
+   CLOCK: [2021-10-06 Wed 11:26]--[2021-10-06 Wed 11:53] =>  0:27
+   sysadmin: kcmp upgrade
+   CLOCK: [2021-10-05 Tue 07:33]--[2021-10-05 Tue 07:53] =>  0:20
+   sysadmin: stbooted sunet machine
+   :END:
+** agrover
+   :LOGBOOK:
+   CLOCK: [2021-10-05 Tue 09:45]--[2021-10-05 Tue 11:14] =>  1:29
+   samtal med Anders W
+   :END:
+
+** dfri
+   :LOGBOOK:
+   CLOCK: [2021-10-07 Thu 06:37]--[2021-10-07 Thu 06:48] =>  0:11
+   CLOCK: [2021-10-04 Mon 11:08]--[2021-10-04 Mon 11:45] =>  0:37
+   .
+   CLOCK: [2021-10-04 Mon 09:27]--[2021-10-04 Mon 09:47] =>  0:20
+   CLOCK: [2021-10-04 Mon 09:12]--[2021-10-04 Mon 09:22] =>  0:10
+   CLOCK: [2021-10-04 Mon 05:32]--[2021-10-04 Mon 06:17] =>  0:45
+   stboot
+   :END:
+** mullvad
+*** sigsum
+    :LOGBOOK:
+    CLOCK: [2021-10-07 Thu 08:49]
+    CLOCK: [2021-10-06 Wed 15:20]--[2021-10-06 Wed 16:27] =>  1:07
+    CLOCK: [2021-10-06 Wed 11:53]--[2021-10-06 Wed 12:55] =>  1:02
+    sysadmin: stat.vdse: dist-upgrade; more
+    CLOCK: [2021-10-05 Tue 13:00]--[2021-10-05 Tue 14:11] =>  1:11
+    CLOCK: [2021-10-05 Tue 05:07]--[2021-10-05 Tue 05:22] =>  0:15
+    CLOCK: [2021-10-04 Mon 16:21]--[2021-10-04 Mon 17:44] =>  1:23
+    CLOCK: [2021-10-04 Mon 16:01]--[2021-10-04 Mon 16:19] =>  0:18
+    CLOCK: [2021-10-04 Mon 15:41]--[2021-10-04 Mon 15:58] =>  0:17
+    CLOCK: [2021-10-04 Mon 14:02]--[2021-10-04 Mon 15:04] =>  1:02
+    CLOCK: [2021-10-04 Mon 13:38]--[2021-10-04 Mon 13:58] =>  0:20
+    .
+    CLOCK: [2021-10-04 Mon 11:45]--[2021-10-04 Mon 12:40] =>  0:55
+    CLOCK: [2021-10-04 Mon 11:05]--[2021-10-04 Mon 11:07] =>  0:02
+    sysadmin
+    :END:
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-10-05 Tue 14:11]--[2021-10-05 Tue 15:20] =>  1:09
+    CLOCK: [2021-10-05 Tue 11:27]--[2021-10-05 Tue 12:07] =>  0:40
+    CLOCK: [2021-10-05 Tue 09:00]--[2021-10-05 Tue 09:40] =>  0:40
+    os pkg building
+    :END:
+** tor
+*** dirauth
+    :LOGBOOK:
+    CLOCK: [2021-10-04 Mon 15:58]--[2021-10-04 Mon 16:01] =>  0:03
+    CLOCK: [2021-10-04 Mon 15:31]--[2021-10-04 Mon 15:41] =>  0:10
+    CLOCK: [2021-10-04 Mon 08:12]--[2021-10-04 Mon 08:42] =>  0:30
+    CLOCK: [2021-10-04 Mon 04:50]--[2021-10-04 Mon 05:32] =>  0:42
+    :END:
+** verkligen
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-10-04 Mon 10:49]--[2021-10-04 Mon 11:04] =>  0:15
+    :END:
+
+* week 39 2021-09-27
+** agroverificates
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-10-01 Fri 14:03]--[2021-10-01 Fri 14:10] =>  0:07
+    CLOCK: [2021-10-01 Fri 10:42]--[2021-10-01 Fri 11:26] =>  0:44
+    safespring: ok; ingress+egress for free, with good capacity
+    :END:
+
+*** dev
+   :LOGBOOK:
+   CLOCK: [2021-09-30 Thu 14:26]--[2021-09-30 Thu 14:55] =>  0:29
+   looking into the qgis plugin, for downloading satelite data
+   CLOCK: [2021-09-30 Thu 13:45]--[2021-09-30 Thu 14:10] =>  0:25
+   reading up on remote mesaures
+   :END:
+
+** dfri
+*** sysadmin
+   :LOGBOOK:
+   CLOCK: [2021-10-01 Fri 14:11]--[2021-10-01 Fri 14:18] =>  0:07
+   CLOCK: [2021-10-01 Fri 06:30]--[2021-10-01 Fri 09:27] =>  2:57
+   CLOCK: [2021-09-30 Thu 08:52]--[2021-09-30 Thu 09:29] =>  0:37
+   CLOCK: [2021-09-29 Wed 19:20]--[2021-09-29 Wed 19:30] =>  0:10
+   CLOCK: [2021-09-29 Wed 15:20]--[2021-09-29 Wed 15:33] =>  0:13
+   CLOCK: [2021-09-29 Wed 08:28]--[2021-09-29 Wed 08:43] =>  0:15
+   CLOCK: [2021-09-29 Wed 07:35]--[2021-09-29 Wed 07:56] =>  0:21
+   CLOCK: [2021-09-28 Tue 12:53]--[2021-09-28 Tue 13:00] =>  0:07
+   :END:
+** mullvad
+*** misc
+   :LOGBOOK:
+   CLOCK: [2021-09-27 Mon 09:49]--[2021-09-27 Mon 09:51] =>  0:02
+   CLOCK: [2021-09-27 Mon 06:40]--[2021-09-27 Mon 06:55] =>  0:15
+   :END:
+*** sigsum
+    :LOGBOOK:
+    CLOCK: [2021-10-01 Fri 20:11]--[2021-10-01 Fri 21:47] =>  1:36
+    sysadmin: disk failures on many VM's, worst on pause.sigsum.org
+    CLOCK: [2021-09-30 Thu 14:56]--[2021-09-30 Thu 14:58] =>  0:02
+    CLOCK: [2021-09-30 Thu 14:14]--[2021-09-30 Thu 14:23] =>  0:09
+    CLOCK: [2021-09-30 Thu 13:38]--[2021-09-30 Thu 13:41] =>  0:03
+    CLOCK: [2021-09-30 Thu 13:25]--[2021-09-30 Thu 13:28] =>  0:03
+    CLOCK: [2021-09-30 Thu 12:33]--[2021-09-30 Thu 12:46] =>  0:13
+    CLOCK: [2021-09-30 Thu 11:04]--[2021-09-30 Thu 11:12] =>  0:08
+    CLOCK: [2021-09-30 Thu 08:45]--[2021-09-30 Thu 08:52] =>  0:07
+    CLOCK: [2021-09-30 Thu 04:45]--[2021-09-30 Thu 05:30] =>  0:45
+    .
+    CLOCK: [2021-09-29 Wed 19:28]--[2021-09-29 Wed 19:32] =>  0:04
+    CLOCK: [2021-09-29 Wed 12:08]--[2021-09-29 Wed 12:32] =>  0:24
+    CLOCK: [2021-09-29 Wed 11:36]--[2021-09-29 Wed 11:40] =>  0:04
+    CLOCK: [2021-09-29 Wed 10:15]--[2021-09-29 Wed 11:26] =>  1:11
+    golang.so
+    CLOCK: [2021-09-29 Wed 09:41]--[2021-09-29 Wed 09:55] =>  0:14
+    CLOCK: [2021-09-29 Wed 09:06]--[2021-09-29 Wed 09:36] =>  0:30
+    CLOCK: [2021-09-28 Tue 19:45]--[2021-09-28 Tue 19:52] =>  0:07
+    CLOCK: [2021-09-28 Tue 17:00]--[2021-09-28 Tue 17:09] =>  0:09
+    CLOCK: [2021-09-28 Tue 13:00]--[2021-09-28 Tue 13:59] =>  0:59
+    CLOCK: [2021-09-28 Tue 11:17]--[2021-09-28 Tue 11:35] =>  0:18
+    CLOCK: [2021-09-28 Tue 10:55]--[2021-09-28 Tue 10:56] =>  0:01
+    .
+    CLOCK: [2021-09-28 Tue 08:20]--[2021-09-28 Tue 10:11] =>  1:51
+    misc sysadmin
+    CLOCK: [2021-09-27 Mon 21:40]--[2021-09-27 Mon 22:20] =>  0:40
+    pads error hunting: one idea is that var/ is maybe re-created and
+    that there's a race which our slow disk i/o triggers
+    CLOCK: [2021-09-27 Mon 15:04]--[2021-09-27 Mon 17:41] =>  2:37
+    meeting + sysadmin: meet.so and pad errors
+    CLOCK: [2021-09-27 Mon 13:47]--[2021-09-27 Mon 14:00] =>  0:13
+    sysadmin: meet.so
+    CLOCK: [2021-09-27 Mon 10:38]--[2021-09-27 Mon 11:09] =>  0:31
+    CLOCK: [2021-09-27 Mon 10:30]--[2021-09-27 Mon 10:36] =>  0:06
+    :END:
+
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-10-02 Sat 06:20]--[2021-10-02 Sat 08:34] =>  2:14
+    debian repos, package versions
+    CLOCK: [2021-10-02 Sat 05:53]--[2021-10-02 Sat 06:08] =>  0:15
+    distro
+    CLOCK: [2021-10-01 Fri 10:20]--[2021-10-01 Fri 10:42] =>  0:22
+    CLOCK: [2021-10-01 Fri 10:00]--[2021-10-01 Fri 10:10] =>  0:10
+    CLOCK: [2021-10-01 Fri 09:27]--[2021-10-01 Fri 09:59] =>  0:32
+    CLOCK: [2021-09-30 Thu 09:43]--[2021-09-30 Thu 09:55] =>  0:12
+    .
+    CLOCK: [2021-09-29 Wed 08:44]--[2021-09-29 Wed 08:56] =>  0:12
+    CLOCK: [2021-09-29 Wed 07:56]--[2021-09-29 Wed 08:28] =>  0:32
+    moving DFRI to new build system
+    :END:
+
+*** wg
+    :LOGBOOK:
+    CLOCK: [2021-10-02 Sat 06:08]--[2021-10-02 Sat 06:20] =>  0:12
+    catch-up and the obfuscation discussion on list
+    :END:
+
+** sunet
+*** misc
+   :LOGBOOK:
+   CLOCK: [2021-10-01 Fri 14:18]--[2021-10-01 Fri 14:28] =>  0:10
+   CLOCK: [2021-10-01 Fri 10:16]--[2021-10-01 Fri 10:20] =>  0:04
+   CLOCK: [2021-09-30 Thu 09:36]--[2021-09-30 Thu 09:38] =>  0:02
+   :END:
+*** soc
+    :LOGBOOK:
+    CLOCK: [2021-09-30 Thu 09:55]--[2021-09-30 Thu 11:02] =>  1:07
+    CLOCK: [2021-09-30 Thu 09:38]--[2021-09-30 Thu 09:42] =>  0:04
+    :END:
+
+** verkligen
+*** admin
+   :LOGBOOK:
+   CLOCK: [2021-09-27 Mon 21:16]--[2021-09-27 Mon 21:40] =>  0:24
+   CLOCK: [2021-09-27 Mon 20:05]--[2021-09-27 Mon 20:12] =>  0:07
+   :END:
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-10-01 Fri 11:37]--[2021-10-01 Fri 14:03] =>  2:26
+    CLOCK: [2021-09-30 Thu 05:38]--[2021-09-30 Thu 06:38] =>  1:00
+    :END:
+
+*** LN
+    :LOGBOOK:
+    CLOCK: [2021-09-30 Thu 17:18]--[2021-09-30 Thu 17:49] =>  0:31
+    :END:
+
+* week 38 2021-09-20
+** dfri
+*** sysadmin
+   :LOGBOOK:
+   CLOCK: [2021-09-26 Sun 08:25]--[2021-09-26 Sun 08:56] =>  0:31
+   CLOCK: [2021-09-26 Sun 07:37]--[2021-09-26 Sun 08:23] =>  0:46
+   CLOCK: [2021-09-25 Sat 07:53]--[2021-09-25 Sat 08:51] =>  0:58
+   :END:
+
+** mullvad
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-09-23 Thu 12:55]--[2021-09-23 Thu 14:13] =>  1:18
+    os-pkg, meeting w/ bjorn
+    CLOCK: [2021-09-21 Tue 09:30]--[2021-09-21 Tue 09:50] =>  0:20
+    :END:
+
+*** sigsum
+    :LOGBOOK:
+    CLOCK: [2021-09-24 Fri 22:23]--[2021-09-24 Fri 22:33] =>  0:10
+    CLOCK: [2021-09-24 Fri 21:50]--[2021-09-24 Fri 22:15] =>  0:25
+    CLOCK: [2021-09-24 Fri 13:39]--[2021-09-24 Fri 15:56] =>  2:17
+    CLOCK: [2021-09-24 Fri 09:48]--[2021-09-24 Fri 12:35] =>  2:47
+    .
+    CLOCK: [2021-09-23 Thu 16:00]--[2021-09-23 Thu 16:30] =>  0:30
+    CLOCK: [2021-09-23 Thu 14:23]--[2021-09-23 Thu 14:52] =>  0:29
+    CLOCK: [2021-09-23 Thu 12:50]--[2021-09-23 Thu 12:55] =>  0:05
+    CLOCK: [2021-09-23 Thu 11:50]--[2021-09-23 Thu 12:32] =>  0:42
+    CLOCK: [2021-09-23 Thu 09:54]--[2021-09-23 Thu 10:04] =>  0:10
+    CLOCK: [2021-09-23 Thu 08:47]--[2021-09-23 Thu 09:23] =>  0:36
+    CLOCK: [2021-09-22 Wed 15:35]--[2021-09-22 Wed 15:47] =>  0:12
+    CLOCK: [2021-09-22 Wed 13:29]--[2021-09-22 Wed 15:24] =>  1:55
+    sysadmin: listen.so
+    CLOCK: [2021-09-21 Tue 12:59]--[2021-09-21 Tue 13:57] =>  0:58
+    meeting
+    :END:
+
+** sunet
+   :LOGBOOK:
+   CLOCK: [2021-09-23 Thu 10:04]--[2021-09-23 Thu 10:58] =>  0:54
+   work meeting
+   CLOCK: [2021-09-22 Wed 13:03]--[2021-09-22 Wed 13:12] =>  0:09
+   misc
+   CLOCK: [2021-09-20 Mon 14:00]--[2021-09-20 Mon 14:55] =>  0:55
+   soc collector design
+   :END:
+
+** verkligen
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-09-20 Mon 16:34]--[2021-09-20 Mon 18:30] =>  1:56
+    :END:
+
+* week 37 2021-09-13
+** agroverificates
+   :LOGBOOK:
+   CLOCK: [2021-09-15 Wed 10:25]--[2021-09-15 Wed 10:35] =>  0:10
+   misc
+   CLOCK: [2021-09-14 Tue 15:12]--[2021-09-14 Tue 15:46] =>  0:34
+   möte
+   :END:
+
+** dfri
+   :LOGBOOK:
+   CLOCK: [2021-09-18 Sat 15:08]--[2021-09-18 Sat 18:00] =>  2:52
+   CLOCK: [2021-09-14 Tue 20:33]--[2021-09-14 Tue 21:13] =>  0:40
+   :END:
+
+** mullvad
+*** ST / misc
+    :LOGBOOK:
+    CLOCK: [2021-09-17 Fri 09:05]--[2021-09-17 Fri 09:37] =>  0:32
+    CLOCK: [2021-09-16 Thu 15:41]--[2021-09-16 Thu 16:18] =>  0:37
+    .
+    CLOCK: [2021-09-16 Thu 10:07]--[2021-09-16 Thu 11:17] =>  1:10
+    retrospect w/ fredrik
+    :END:
+
+*** sigsum
+    :LOGBOOK:
+    CLOCK: [2021-09-14 Tue 21:15]--[2021-09-14 Tue 22:02] =>  0:47
+    CLOCK: [2021-09-14 Tue 17:45]--[2021-09-14 Tue 18:07] =>  0:22
+    CLOCK: [2021-09-14 Tue 14:56]--[2021-09-14 Tue 15:11] =>  0:15
+    CLOCK: [2021-09-14 Tue 12:53]--[2021-09-14 Tue 14:49] =>  1:56
+    CLOCK: [2021-09-14 Tue 10:44]--[2021-09-14 Tue 10:57] =>  0:13
+    CLOCK: [2021-09-14 Tue 09:49]--[2021-09-14 Tue 10:04] =>  0:15
+    CLOCK: [2021-09-14 Tue 08:31]--[2021-09-14 Tue 09:44] =>  1:13
+    log upgrade, sysadmin, witness upgrade
+    CLOCK: [2021-09-13 Mon 16:00]--[2021-09-13 Mon 16:50] =>  0:50
+    trustfabric meeting
+    CLOCK: [2021-09-13 Mon 11:45]--[2021-09-13 Mon 12:47] =>  1:02
+    web page and misc
+    :END:
+
+** sunet
+   :LOGBOOK:
+   CLOCK: [2021-09-17 Fri 17:08]--[2021-09-17 Fri 17:09] =>  0:01
+   CLOCK: [2021-09-17 Fri 15:31]--[2021-09-17 Fri 17:03] =>  1:32
+   CLOCK: [2021-09-17 Fri 13:12]--[2021-09-17 Fri 15:12] =>  2:00
+   CLOCK: [2021-09-17 Fri 12:28]--[2021-09-17 Fri 13:06] =>  0:38
+   CLOCK: [2021-09-17 Fri 12:15]--[2021-09-17 Fri 12:23] =>  0:08
+   CLOCK: [2021-09-17 Fri 10:45]--[2021-09-17 Fri 11:28] =>  0:43
+   CLOCK: [2021-09-16 Thu 16:18]--[2021-09-16 Thu 16:39] =>  0:21
+   CLOCK: [2021-09-16 Thu 13:27]--[2021-09-16 Thu 14:50] =>  1:23
+   CLOCK: [2021-09-16 Thu 12:33]--[2021-09-16 Thu 13:12] =>  0:39
+   CLOCK: [2021-09-16 Thu 05:30]--[2021-09-16 Thu 06:00] =>  0:30
+   CLOCK: [2021-09-15 Wed 18:09]--[2021-09-15 Wed 18:43] =>  0:34
+   CLOCK: [2021-09-15 Wed 14:08]--[2021-09-15 Wed 15:47] =>  1:39
+   CLOCK: [2021-09-15 Wed 11:31]--[2021-09-15 Wed 13:20] =>  1:49
+   collector
+   CLOCK: [2021-09-15 Wed 09:55]--[2021-09-15 Wed 10:25] =>  0:30
+   leif
+   CLOCK: [2021-09-15 Wed 09:24]--[2021-09-15 Wed 09:55] =>  0:31
+   CLOCK: [2021-09-15 Wed 06:15]--[2021-09-15 Wed 06:28] =>  0:13
+   CLOCK: [2021-09-15 Wed 05:31]--[2021-09-15 Wed 06:05] =>  0:34
+   collector
+   :END:
+
+** verkligen
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-09-16 Thu 08:43]--[2021-09-16 Thu 09:28] =>  0:45
+    :END:
+
+*** sysadmin
+   :LOGBOOK:
+   CLOCK: [2021-09-15 Wed 06:05]--[2021-09-15 Wed 06:15] =>  0:10
+   sysadmin
+   :END:
+
+* week 36 2021-09-06
+** agroverificates
+   :LOGBOOK:
+   CLOCK: [2021-09-06 Mon 10:30]--[2021-09-06 Mon 10:47] =>  0:17
+   CLOCK: [2021-09-06 Mon 08:52]--[2021-09-06 Mon 09:26] =>  0:34
+   reading up
+   :END:
+
+** dfri
+   :LOGBOOK:
+   CLOCK: [2021-09-07 Tue 19:48]--[2021-09-07 Tue 20:13] =>  0:25
+   sysadmin
+   :END:
+
+** mullvad
+*** misc
+    :LOGBOOK:
+    CLOCK: [2021-09-09 Thu 10:00]--[2021-09-09 Thu 11:20] =>  1:20
+    retrospect fredrik: 1. sigsum; 2. stboot integration in mullvad
+    :END:
+
+*** sigsum
+    :LOGBOOK:
+    CLOCK: [2021-09-09 Thu 17:04]--[2021-09-09 Thu 17:10] =>  0:06
+    CLOCK: [2021-09-09 Thu 15:42]--[2021-09-09 Thu 16:02] =>  0:20
+    .
+    CLOCK: [2021-09-09 Thu 09:32]--[2021-09-09 Thu 09:48] =>  0:16
+    CLOCK: [2021-09-08 Wed 13:45]--[2021-09-08 Wed 14:37] =>  0:52
+    CLOCK: [2021-09-08 Wed 12:14]--[2021-09-08 Wed 13:05] =>  0:51
+    CLOCK: [2021-09-08 Wed 11:14]--[2021-09-08 Wed 12:14] =>  1:00
+    CLOCK: [2021-09-07 Tue 20:18]--[2021-09-07 Tue 22:20] =>  2:02
+    sysadmin
+    CLOCK: [2021-09-07 Tue 15:53]--[2021-09-07 Tue 17:13] =>  1:20
+    CLOCK: [2021-09-07 Tue 13:10]--[2021-09-07 Tue 14:37] =>  1:27
+    :END:
+
+*** stboot
+   :LOGBOOK:
+   CLOCK: [2021-09-11 Sat 06:35]--[2021-09-11 Sat 07:40] =>  1:05
+   sysadmin
+   CLOCK: [2021-09-10 Fri 16:54]--[2021-09-10 Fri 17:33] =>  0:39
+   CLOCK: [2021-09-10 Fri 14:28]--[2021-09-10 Fri 15:19] =>  0:51
+   CLOCK: [2021-09-10 Fri 13:38]--[2021-09-10 Fri 14:00] =>  0:22
+   CLOCK: [2021-09-10 Fri 11:42]--[2021-09-10 Fri 12:49] =>  1:07
+   ansible bootstrap
+   CLOCK: [2021-09-07 Tue 11:27]--[2021-09-07 Tue 12:30] =>  1:03
+   sysadmin
+   CLOCK: [2021-09-06 Mon 13:30]--[2021-09-06 Mon 14:24] =>  0:54
+   CLOCK: [2021-09-06 Mon 11:36]--[2021-09-06 Mon 11:55] =>  0:19
+   os-pkg
+   CLOCK: [2021-09-06 Mon 11:00]--[2021-09-06 Mon 11:26] =>  0:26
+   weekly meeting
+   :END:
+
+** tor
+*** dirauth
+   :LOGBOOK:
+   CLOCK: [2021-09-06 Mon 09:45]--[2021-09-06 Mon 10:11] =>  0:26
+   maatuska keys
+   :END:
+
+* week 35 2021-08-30
+** mullvad
+   :LOGBOOK:
+   CLOCK: [2021-08-31 Tue 16:00]--[2021-08-31 Tue 16:13] =>  0:13
+   misc
+   CLOCK: [2021-08-31 Tue 15:40]--[2021-08-31 Tue 15:56] =>  0:16
+   tails
+   CLOCK: [2021-08-31 Tue 13:00]--[2021-08-31 Tue 15:15] =>  2:15
+   sigsum meeting
+   :END:
+
+** sunet
+   :LOGBOOK:
+   CLOCK: [2021-08-30 Mon 13:00]--[2021-08-30 Mon 15:30] =>  2:30
+   meeting
+   :END:
+** verkligen
+   :LOGBOOK:
+   CLOCK: [2021-08-31 Tue 10:33]--[2021-08-31 Tue 10:43] =>  0:10
+   admin
+   :END:
+
+* week 34 2021-08-23
+** dfri
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-08-25 Wed 17:00]--[2021-08-25 Wed 17:10] =>  0:10
+    CLOCK: [2021-08-25 Wed 09:35]--[2021-08-25 Wed 09:56] =>  0:21
+    sysadmin
+    CLOCK: [2021-08-24 Tue 21:15]--[2021-08-24 Tue 21:38] =>  0:23
+    st images
+    CLOCK: [2021-08-24 Tue 19:30]--[2021-08-24 Tue 21:09] =>  1:39
+    meeting
+    :END:
+
+** mullvad
+   :LOGBOOK:
+   CLOCK: [2021-08-27 Fri 15:20]--[2021-08-27 Fri 16:10] =>  0:50
+   CLOCK: [2021-08-27 Fri 14:56]--[2021-08-27 Fri 15:08] =>  0:12
+   CLOCK: [2021-08-27 Fri 14:00]--[2021-08-27 Fri 14:44] =>  0:44
+   CLOCK: [2021-08-27 Fri 13:06]--[2021-08-27 Fri 13:38] =>  0:32
+   CLOCK: [2021-08-27 Fri 10:16]--[2021-08-27 Fri 11:00] =>  0:44
+   .
+   CLOCK: [2021-08-27 Fri 09:54]--[2021-08-27 Fri 10:16] =>  0:22
+   sysadmin
+   CLOCK: [2021-08-26 Thu 15:16]--[2021-08-26 Thu 16:08] =>  0:52
+   CLOCK: [2021-08-25 Wed 17:10]--[2021-08-25 Wed 17:20] =>  0:10
+   CLOCK: [2021-08-25 Wed 09:20]--[2021-08-25 Wed 09:35] =>  0:15
+   misc
+   CLOCK: [2021-08-25 Wed 06:51]--[2021-08-25 Wed 07:00] =>  0:09
+   CLOCK: [2021-08-25 Wed 05:49]--[2021-08-25 Wed 06:06] =>  0:17
+   golang modules
+   CLOCK: [2021-08-24 Tue 16:41]--[2021-08-24 Tue 17:04] =>  0:23
+   CLOCK: [2021-08-24 Tue 15:43]--[2021-08-24 Tue 16:27] =>  0:44
+   sysadmin: mailing list
+   CLOCK: [2021-08-24 Tue 14:56]--[2021-08-24 Tue 15:43] =>  0:47
+   CLOCK: [2021-08-24 Tue 13:00]--[2021-08-24 Tue 14:49] =>  1:49
+   sigsum
+   CLOCK: [2021-08-24 Tue 09:22]--[2021-08-24 Tue 10:19] =>  0:57
+   sysadmin
+   CLOCK: [2021-08-23 Mon 19:08]--[2021-08-23 Mon 19:49] =>  0:41
+   CLOCK: [2021-08-23 Mon 16:54]--[2021-08-23 Mon 17:21] =>  0:27
+   CLOCK: [2021-08-23 Mon 16:18]--[2021-08-23 Mon 16:28] =>  0:10
+   CLOCK: [2021-08-23 Mon 14:40]--[2021-08-23 Mon 14:54] =>  0:14
+   sigsum
+   CLOCK: [2021-08-23 Mon 14:36]--[2021-08-23 Mon 14:40] =>  0:04
+   CLOCK: [2021-08-23 Mon 10:38]--[2021-08-23 Mon 10:58] =>  0:20
+   CLOCK: [2021-08-23 Mon 08:14]--[2021-08-23 Mon 10:24] =>  2:10
+   CLOCK: [2021-08-23 Mon 07:14]--[2021-08-23 Mon 07:34] =>  0:20
+   sysadmin: services
+   :END:
+
+** sunet
+*** misc
+   :LOGBOOK:
+   CLOCK: [2021-08-25 Wed 13:10]--[2021-08-25 Wed 13:40] =>  0:30
+   :END:
+*** soc
+    :LOGBOOK:
+    CLOCK: [2021-08-26 Thu 09:36]--[2021-08-26 Thu 11:35] =>  1:59
+    :END:
+* week 33 2021-08-16
+Monday: VAB
+
+** dfri
+   :LOGBOOK:
+   CLOCK: [2021-08-19 Thu 13:38]--[2021-08-19 Thu 13:39] =>  0:01
+   CLOCK: [2021-08-19 Thu 13:29]--[2021-08-19 Thu 13:37] =>  0:08
+   sysadmin
+   CLOCK: [2021-08-18 Wed 19:30]--[2021-08-18 Wed 21:00] =>  1:30
+   meeting
+   CLOCK: [2021-08-17 Tue 16:20]--[2021-08-17 Tue 16:29] =>  0:09
+   :END:
+
+** mullvad
+   :LOGBOOK:
+   CLOCK: [2021-08-22 Sun 21:01]--[2021-08-22 Sun 23:36] =>  2:35
+   CLOCK: [2021-08-22 Sun 18:12]--[2021-08-22 Sun 18:31] =>  0:19
+   CLOCK: [2021-08-22 Sun 16:39]--[2021-08-22 Sun 17:54] =>  1:15
+   CLOCK: [2021-08-22 Sun 12:26]--[2021-08-22 Sun 13:27] =>  1:01
+   CLOCK: [2021-08-22 Sun 08:21]--[2021-08-22 Sun 10:14] =>  1:53
+   CLOCK: [2021-08-22 Sun 07:21]--[2021-08-22 Sun 07:49] =>  0:28
+   CLOCK: [2021-08-22 Sun 06:20]--[2021-08-22 Sun 06:55] =>  0:35
+   CLOCK: [2021-08-21 Sat 14:32]--[2021-08-21 Sat 16:43] =>  2:11
+   CLOCK: [2021-08-21 Sat 08:23]--[2021-08-21 Sat 10:53] =>  2:30
+   CLOCK: [2021-08-20 Fri 13:38]--[2021-08-20 Fri 16:10] =>  2:32
+   sysadmin: git, gitolite, cgit
+   CLOCK: [2021-08-20 Fri 13:21]--[2021-08-20 Fri 13:26] =>  0:05
+   CLOCK: [2021-08-20 Fri 11:00]--[2021-08-20 Fri 11:51] =>  0:51
+   sigsum
+   CLOCK: [2021-08-20 Fri 10:06]--[2021-08-20 Fri 10:39] =>  0:33
+   CLOCK: [2021-08-19 Thu 11:13]--[2021-08-19 Thu 11:39] =>  0:26
+   CLOCK: [2021-08-19 Thu 10:13]--[2021-08-19 Thu 10:50] =>  0:37
+   sigsum sysadmin
+   CLOCK: [2021-08-19 Thu 08:36]--[2021-08-19 Thu 08:47] =>  0:11
+   misc
+   CLOCK: [2021-08-18 Wed 13:48]--[2021-08-18 Wed 14:21] =>  0:33
+   CLOCK: [2021-08-18 Wed 11:27]--[2021-08-18 Wed 12:27] =>  1:00
+   CLOCK: [2021-08-17 Tue 16:32]--[2021-08-17 Tue 16:42] =>  0:10
+   CLOCK: [2021-08-17 Tue 14:47]--[2021-08-17 Tue 15:03] =>  0:16
+   CLOCK: [2021-08-17 Tue 14:14]--[2021-08-17 Tue 14:25] =>  0:11
+   sigsum sysadmin
+   CLOCK: [2021-08-17 Tue 13:47]--[2021-08-17 Tue 13:55] =>  0:08
+   CLOCK: [2021-08-17 Tue 12:31]--[2021-08-17 Tue 13:43] =>  1:12
+   sigsum sysadmin & meeting
+   CLOCK: [2021-08-17 Tue 09:39]--[2021-08-17 Tue 11:03] =>  1:24
+   st sysadmin vm86
+   CLOCK: [2021-08-16 Mon 16:30]--[2021-08-16 Mon 17:10] =>  0:40
+   sigsum, google meeting
+   :END:
+
+** tor
+   :LOGBOOK:
+   CLOCK: [2021-08-19 Thu 21:02]--[2021-08-19 Thu 21:09] =>  0:07
+   signing infra
+   CLOCK: [2021-08-19 Thu 13:18]--[2021-08-19 Thu 13:29] =>  0:11
+   signing mac
+   :END:
+
+*** dirauth
+    :LOGBOOK:
+    CLOCK: [2021-08-17 Tue 15:22]--[2021-08-17 Tue 15:29] =>  0:07
+    :END:
+
+** verkligen
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-08-21 Sat 13:08]--[2021-08-21 Sat 13:27] =>  0:19
+    CLOCK: [2021-08-17 Tue 15:13]--[2021-08-17 Tue 15:22] =>  0:09
+    :END:
+*** syadmin
+    :LOGBOOK:
+    CLOCK: [2021-08-19 Thu 19:15]--[2021-08-19 Thu 20:15] =>  1:00
+    CLOCK: [2021-08-19 Thu 17:21]--[2021-08-19 Thu 17:56] =>  0:35
+    CLOCK: [2021-08-19 Thu 15:47]--[2021-08-19 Thu 16:16] =>  0:29
+    network stuff
+    CLOCK: [2021-08-19 Thu 13:39]--[2021-08-19 Thu 15:42] =>  2:03
+    CLOCK: [2021-08-19 Thu 13:37]--[2021-08-19 Thu 13:38] =>  0:01
+    new netblock
+    CLOCK: [2021-08-17 Tue 15:29]--[2021-08-17 Tue 16:19] =>  0:50
+    CLOCK: [2021-08-17 Tue 15:03]--[2021-08-17 Tue 15:13] =>  0:10
+    CLOCK: [2021-08-17 Tue 14:25]--[2021-08-17 Tue 14:34] =>  0:09
+    CLOCK: [2021-08-17 Tue 14:05]--[2021-08-17 Tue 14:14] =>  0:09
+    :END:
+
+* week 32 2021-08-09
+** anova
+*** preventit
+   :LOGBOOK:
+   CLOCK: [2021-08-13 Fri 09:30]--[2021-08-13 Fri 09:55] =>  0:25
+   meeting with christoffer
+   CLOCK: [2021-08-12 Thu 16:15]--[2021-08-12 Thu 16:20] =>  0:05
+   video sharing
+   :END:
+** dfri
+   :LOGBOOK:
+   CLOCK: [2021-08-12 Thu 05:48]--[2021-08-12 Thu 06:52] =>  1:04
+   mail delivery
+   :END:
+** mullvad
+   :LOGBOOK:
+   CLOCK: [2021-08-14 Sat 10:00]--[2021-08-14 Sat 10:30] =>  0:30
+   CLOCK: [2021-08-13 Fri 11:01]--[2021-08-13 Fri 11:29] =>  0:28
+   CLOCK: [2021-08-13 Fri 10:23]--[2021-08-13 Fri 10:37] =>  0:14
+   CLOCK: [2021-08-11 Wed 09:20]--[2021-08-11 Wed 10:09] =>  0:49
+   sigsum mailing lists: [[file:p/sigsum/sigsum.org::*Mailing%20lists][Mailing lists]]
+   CLOCK: [2021-08-10 Tue 15:17]--[2021-08-10 Tue 16:10] =>  0:53
+   CLOCK: [2021-08-10 Tue 12:43]--[2021-08-10 Tue 14:51] =>  2:08
+   sigsum
+   CLOCK: [2021-08-10 Tue 10:10]--[2021-08-10 Tue 10:30] =>  0:20
+   :END:
+** sunet
+   :LOGBOOK:
+   CLOCK: [2021-08-09 Mon 13:26]--[2021-08-09 Mon 13:40] =>  0:14
+   CLOCK: [2021-08-09 Mon 11:15]--[2021-08-09 Mon 11:50] =>  0:35
+   SOC
+   :END:
+** verkligen
+*** admin
+   :LOGBOOK:
+   CLOCK: [2021-08-12 Thu 09:57]--[2021-08-12 Thu 11:27] =>  1:30
+   CLOCK: [2021-08-10 Tue 10:31]--[2021-08-10 Tue 10:41] =>  0:10
+   :END:
+
+*** sysadmin
+   :LOGBOOK:
+   CLOCK: [2021-08-13 Fri 06:00]--[2021-08-13 Fri 06:45] =>  0:45
+   CLOCK: [2021-08-12 Thu 09:36]--[2021-08-12 Thu 09:57] =>  0:21
+   CLOCK: [2021-08-12 Thu 09:04]--[2021-08-12 Thu 09:27] =>  0:23
+   CLOCK: [2021-08-11 Wed 14:42]--[2021-08-11 Wed 15:27] =>  0:45
+   CLOCK: [2021-08-11 Wed 11:04]--[2021-08-11 Wed 11:54] =>  0:50
+   CLOCK: [2021-08-11 Wed 09:06]--[2021-08-11 Wed 09:20] =>  0:22
+   :END:
+
+* week 31
+vacation
+
+** anova / preventit
+   :LOGBOOK:
+   CLOCK: [2021-08-02 Mon 11:00]--[2021-08-02 Mon 11:40] =>  0:40
+   :END:
+
+* week 30 2021-07-26
+** dfri
+   :LOGBOOK:
+   CLOCK: [2021-07-29 Thu 11:15]--[2021-07-29 Thu 11:28] =>  0:13
+   CLOCK: [2021-07-29 Thu 09:00]--[2021-07-29 Thu 10:10] =>  1:10
+   sysasdmin revamp, planning and email
+   :END:
+** mullvad
+   :LOGBOOK:
+   CLOCK: [2021-07-28 Wed 13:37]--[2021-07-28 Wed 15:35] =>  1:58
+   CLOCK: [2021-07-28 Wed 13:04]--[2021-07-28 Wed 13:15] =>  0:11
+   CLOCK: [2021-07-28 Wed 11:05]--[2021-07-28 Wed 11:15] =>  0:10
+   CLOCK: [2021-07-28 Wed 09:30]--[2021-07-28 Wed 10:55] =>  1:25
+   CLOCK: [2021-07-27 Tue 20:15]--[2021-07-27 Tue 20:30] =>  0:15
+   CLOCK: [2021-07-27 Tue 15:54]--[2021-07-27 Tue 16:48] =>  0:54
+   CLOCK: [2021-07-27 Tue 15:25]--[2021-07-27 Tue 15:44] =>  0:19
+   CLOCK: [2021-07-27 Tue 13:54]--[2021-07-27 Tue 15:07] =>  1:13
+   CLOCK: [2021-07-26 Mon 14:55]--[2021-07-26 Mon 16:16] =>  1:21
+   CLOCK: [2021-07-26 Mon 13:42]--[2021-07-26 Mon 14:10] =>  0:28
+   CLOCK: [2021-07-26 Mon 13:04]--[2021-07-26 Mon 13:29] =>  0:25
+   CLOCK: [2021-07-26 Mon 11:23]--[2021-07-26 Mon 11:49] =>  0:26
+   sigsum
+   :END:
+** sunet
+   :LOGBOOK:
+   CLOCK: [2021-07-29 Thu 10:30]--[2021-07-29 Thu 11:12] =>  0:42
+   CLOCK: [2021-07-27 Tue 09:25]--[2021-07-27 Tue 11:46] =>  2:21
+   :END:
+** tor
+   :LOGBOOK:
+   CLOCK: [2021-07-28 Wed 18:00]--[2021-07-28 Wed 18:31] =>  0:31
+   all hands, tor vpn
+   CLOCK: [2021-07-26 Mon 16:16]--[2021-07-26 Mon 16:23] =>  0:07
+   CLOCK: [2021-07-26 Mon 14:10]--[2021-07-26 Mon 14:55] =>  0:45
+   talking to isa
+   :END:
+
+* week 29 2021-07-19
+** verkligen
+*** admin
+    :LOGBOOK:
+    löner 1h
+    :END:
+
+* week 25 2021-06-21
+** mullvad
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-06-23 Wed 16:43]--[2021-06-23 Wed 17:07] =>  0:24
+    stboot
+    CLOCK: [2021-06-23 Wed 15:00]--[2021-06-23 Wed 16:02] =>  1:02
+    onion cert
+    CLOCK: [2021-06-23 Wed 13:53]--[2021-06-23 Wed 14:24] =>  0:31
+    CLOCK: [2021-06-23 Wed 13:23]--[2021-06-23 Wed 13:49] =>  0:26
+    CLOCK: [2021-06-23 Wed 10:00]--[2021-06-23 Wed 10:11] =>  0:11
+    CLOCK: [2021-06-23 Wed 09:02]--[2021-06-23 Wed 09:56] =>  0:54
+    sigsum
+    CLOCK: [2021-06-23 Wed 04:15]--[2021-06-23 Wed 08:12] =>  3:57
+    CLOCK: [2021-06-22 Tue 18:33]--[2021-06-22 Tue 18:57] =>  0:24
+    CLOCK: [2021-06-22 Tue 17:20]--[2021-06-22 Tue 17:37] =>  0:17
+    CLOCK: [2021-06-22 Tue 15:05]--[2021-06-22 Tue 15:24] =>  0:19
+    sigsum operations: web server
+    CLOCK: [2021-06-22 Tue 14:35]--[2021-06-22 Tue 14:42] =>  0:07
+    .
+    CLOCK: [2021-06-22 Tue 13:00]--[2021-06-22 Tue 14:35] =>  1:35
+    sigsum meeting
+    CLOCK: [2021-06-22 Tue 11:58]--[2021-06-22 Tue 12:08] =>  0:10
+    sigsum
+    CLOCK: [2021-06-22 Tue 11:17]--[2021-06-22 Tue 11:51] =>  0:34
+    CLOCK: [2021-06-22 Tue 10:34]--[2021-06-22 Tue 11:17] =>  0:43
+    CLOCK: [2021-06-22 Tue 10:00]--[2021-06-22 Tue 10:20] =>  0:20
+    self hosting sigsum
+    CLOCK: [2021-06-21 Mon 20:45]--[2021-06-21 Mon 20:53] =>  0:08
+    register #sigsum @ OFTC
+    CLOCK: [2021-06-21 Mon 18:00]--[2021-06-21 Mon 18:43] =>  0:43
+    more meeting
+    CLOCK: [2021-06-21 Mon 16:59]--[2021-06-21 Mon 18:00] =>  1:01
+    google meeting
+    https://docs.google.com/document/d/1tWaxTuXzjuwMvd74KQdLnmxUIbP5nWw4RZj2g9qiP50/edit#heading=h.gxqbmnreapii
+    notes: https://docs.google.com/document/d/15zSanXsTgCD9PRdkMaZbwSmY-ZR8JXQzheBYBfce7qg/edit#heading=h.vbfi1fbnzrav
+    CLOCK: [2021-06-21 Mon 10:58]--[2021-06-21 Mon 11:43] =>  0:45
+    stboot meeting
+    CLOCK: [2021-06-21 Mon 10:46]--[2021-06-21 Mon 10:51] =>  0:05
+    :END:
+
+** sunet
+*** SOC
+    :LOGBOOK:
+    CLOCK: [2021-06-22 Tue 06:13]--[2021-06-22 Tue 07:10] =>  0:57
+    CLOCK: [2021-06-21 Mon 16:02]--[2021-06-21 Mon 16:42] =>  0:40
+    CLOCK: [2021-06-21 Mon 14:17]--[2021-06-21 Mon 14:54] =>  0:37
+    CLOCK: [2021-06-21 Mon 13:28]--[2021-06-21 Mon 14:01] =>  0:33
+    CLOCK: [2021-06-21 Mon 10:51]--[2021-06-21 Mon 10:58] =>  0:07
+    :END:
+
+** verkligen
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-06-21 Mon 11:44]--[2021-06-21 Mon 11:52] =>  0:08
+    .
+    CLOCK: [2021-06-21 Mon 10:38]--[2021-06-21 Mon 10:45] =>  0:07
+    arbetsgivardeklaration juni (0)
+    CLOCK: [2021-06-21 Mon 10:24]--[2021-06-21 Mon 10:38] =>  0:14
+    fakturering
+    CLOCK: [2021-06-21 Mon 09:20]--[2021-06-21 Mon 10:23] =>  1:03
+    bokslut, årsredovisning
+    :END:
+
+* week 24 2021-06-14
+** dfri
+*** admin
+   :LOGBOOK:
+   CLOCK: [2021-06-14 Mon 09:13]--[2021-06-14 Mon 09:21] =>  0:08
+   domännamn
+   :END:
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-06-16 Wed 16:10]--[2021-06-16 Wed 16:22] =>  0:12
+    CLOCK: [2021-06-16 Wed 11:43]--[2021-06-16 Wed 12:21] =>  0:38
+    ports
+    :END:
+** mullvad
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-06-18 Fri 13:19]--[2021-06-18 Fri 14:06] =>  0:47
+    CLOCK: [2021-06-17 Thu 16:58]--[2021-06-17 Thu 18:46] =>  1:48
+    stboot for poc log
+    CLOCK: [2021-06-17 Thu 16:52]--[2021-06-17 Thu 16:58] =>  0:06
+    domain registration: sigsum.{org,se}
+    CLOCK: [2021-06-17 Thu 14:36]--[2021-06-17 Thu 16:00] =>  1:24
+    stboot for poc log
+    CLOCK: [2021-06-17 Thu 14:31]--[2021-06-17 Thu 14:32] =>  0:01
+    domain registration: sigsum.{org,se}
+    CLOCK: [2021-06-17 Thu 13:41]--[2021-06-17 Thu 14:13] =>  0:32
+    CLOCK: [2021-06-17 Thu 13:11]--[2021-06-17 Thu 13:36] =>  0:25
+    CLOCK: [2021-06-17 Thu 11:19]--[2021-06-17 Thu 12:26] =>  1:07
+    stboot for poc log
+    CLOCK: [2021-06-17 Thu 11:09]--[2021-06-17 Thu 11:19] =>  0:10
+    domain registration: sigsum.{org,se}
+    CLOCK: [2021-06-16 Wed 16:31]--[2021-06-16 Wed 16:58] =>  0:27
+    siglog
+    CLOCK: [2021-06-16 Wed 16:23]--[2021-06-16 Wed 16:31] =>  0:08
+    domain registration: sigsum.{org,se}
+    CLOCK: [2021-06-16 Wed 16:03]--[2021-06-16 Wed 16:09] =>  0:06
+    CLOCK: [2021-06-16 Wed 15:16]--[2021-06-16 Wed 15:32] =>  0:16
+    CLOCK: [2021-06-16 Wed 14:20]--[2021-06-16 Wed 14:31] =>  0:11
+    CLOCK: [2021-06-16 Wed 14:04]--[2021-06-16 Wed 14:16] =>  0:12
+    CLOCK: [2021-06-16 Wed 12:58]--[2021-06-16 Wed 14:02] =>  1:04
+    CLOCK: [2021-06-16 Wed 12:21]--[2021-06-16 Wed 12:49] =>  0:28
+    siglog
+    CLOCK: [2021-06-16 Wed 11:00]--[2021-06-16 Wed 11:43] =>  0:43
+    fikadiskussion
+    CLOCK: [2021-06-16 Wed 08:49]--[2021-06-16 Wed 11:00] =>  2:11
+    CLOCK: [2021-06-15 Tue 18:13]--[2021-06-15 Tue 18:17] =>  0:04
+    CLOCK: [2021-06-15 Tue 18:07]--[2021-06-15 Tue 18:13] =>  0:06
+    CLOCK: [2021-06-15 Tue 17:00]--[2021-06-15 Tue 17:27] =>  0:27
+    siglog
+    CLOCK: [2021-06-15 Tue 16:02]--[2021-06-15 Tue 16:27] =>  0:25
+    siglog (witness)
+    CLOCK: [2021-06-15 Tue 15:37]--[2021-06-15 Tue 15:53] =>  0:16
+    CLOCK: [2021-06-15 Tue 14:40]--[2021-06-15 Tue 15:31] =>  0:51
+    git hosting
+    CLOCK: [2021-06-15 Tue 12:37]--[2021-06-15 Tue 14:30] =>  1:53
+    siglog
+    CLOCK: [2021-06-15 Tue 10:51]--[2021-06-15 Tue 12:13] =>  1:22
+    stboot for poc log
+    CLOCK: [2021-06-15 Tue 10:39]--[2021-06-15 Tue 10:50] =>  0:11
+    siglog
+    CLOCK: [2021-06-15 Tue 05:04]--[2021-06-15 Tue 06:05] =>  1:01
+    CLOCK: [2021-06-15 Tue 04:55]--[2021-06-15 Tue 04:59] =>  0:04
+    siglog (witness)
+    CLOCK: [2021-06-14 Mon 19:20]--[2021-06-14 Mon 19:36] =>  0:16
+    CLOCK: [2021-06-14 Mon 17:18]--[2021-06-14 Mon 17:52] =>  0:34
+    CLOCK: [2021-06-14 Mon 16:56]--[2021-06-14 Mon 17:08] =>  0:12
+    siglog
+    CLOCK: [2021-06-14 Mon 16:35]--[2021-06-14 Mon 16:42] =>  0:07
+    .
+    CLOCK: [2021-06-14 Mon 11:43]--[2021-06-14 Mon 12:32] =>  0:49
+    siglog
+    CLOCK: [2021-06-14 Mon 10:53]--[2021-06-14 Mon 11:39] =>  0:46
+    stboot meeting
+    :END:
+** sunet
+*** SOC
+    :LOGBOOK:
+    CLOCK: [2021-06-18 Fri 11:24]--[2021-06-18 Fri 12:15] =>  0:51
+    collector authn
+    CLOCK: [2021-06-18 Fri 07:05]--[2021-06-18 Fri 07:53] =>  0:48
+    collector text
+    CLOCK: [2021-06-18 Fri 06:35]--[2021-06-18 Fri 07:05] =>  0:30
+    .
+    CLOCK: [2021-06-18 Fri 05:55]--[2021-06-18 Fri 06:35] =>  0:50
+    CLOCK: [2021-06-17 Thu 23:02]--[2021-06-17 Thu 23:13] =>  0:11
+    collector
+    CLOCK: [2021-06-17 Thu 22:45]--[2021-06-17 Thu 22:58] =>  0:13
+    read up on APT34 https://mp.weixin.qq.com/s/o_EVjBVN2sQ1q7cl4rUXoQ
+    CLOCK: [2021-06-17 Thu 21:25]--[2021-06-17 Thu 22:45] =>  1:20
+    CLOCK: [2021-06-17 Thu 19:15]--[2021-06-17 Thu 19:26] =>  0:11
+    CLOCK: [2021-06-17 Thu 10:37]--[2021-06-17 Thu 11:04] =>  0:27
+    CLOCK: [2021-06-17 Thu 07:08]--[2021-06-17 Thu 07:59] =>  0:51
+    http api
+    CLOCK: [2021-06-16 Wed 17:06]--[2021-06-16 Wed 17:39] =>  0:33
+    CLOCK: [2021-06-16 Wed 05:51]--[2021-06-16 Wed 06:38] =>  0:47
+    CLOCK: [2021-06-15 Tue 19:26]--[2021-06-15 Tue 20:10] =>  0:44
+    CLOCK: [2021-06-14 Mon 07:55]--[2021-06-14 Mon 09:12] =>  1:17
+    db
+    CLOCK: [2021-06-14 Mon 05:00]--[2021-06-14 Mon 05:30] =>  0:30
+    collector design
+    :END:
+** tor
+*** child protection
+    :LOGBOOK:
+    CLOCK: [2021-06-14 Mon 18:07]--[2021-06-14 Mon 18:16] =>  0:09
+    CLOCK: [2021-06-14 Mon 17:08]--[2021-06-14 Mon 17:18] =>  0:10
+    CLOCK: [2021-06-14 Mon 16:25]--[2021-06-14 Mon 16:35] =>  0:10
+    CLOCK: [2021-06-14 Mon 12:32]--[2021-06-14 Mon 12:36] =>  0:04
+    CLOCK: [2021-06-14 Mon 09:23]--[2021-06-14 Mon 09:31] =>  0:08
+    :END:
+*** dirauth
+    :LOGBOOK:
+    CLOCK: [2021-06-15 Tue 17:35]--[2021-06-15 Tue 18:05] =>  0:30
+    memory usage tracking on carmeli
+    CLOCK: [2021-06-14 Mon 18:26]--[2021-06-14 Mon 18:32] =>  0:06
+    CLOCK: [2021-06-14 Mon 17:52]--[2021-06-14 Mon 18:00] =>  0:08
+    :END:
+** verkligen
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-06-18 Fri 11:00]--[2021-06-18 Fri 11:10] =>  0:10
+    CLOCK: [2021-06-18 Fri 10:45]--[2021-06-18 Fri 10:54] =>  0:09
+    CLOCK: [2021-06-15 Tue 20:10]--[2021-06-15 Tue 20:21] =>  0:11
+    CLOCK: [2021-06-14 Mon 07:45]--[2021-06-14 Mon 07:55] =>  0:10
+    :END:
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-06-18 Fri 11:10]--[2021-06-18 Fri 11:22] =>  0:12
+    CLOCK: [2021-06-18 Fri 10:30]--[2021-06-18 Fri 10:45] =>  0:15
+    CLOCK: [2021-06-18 Fri 10:05]--[2021-06-18 Fri 10:20] =>  0:15
+    UPS
+    CLOCK: [2021-06-18 Fri 07:53]--[2021-06-18 Fri 08:00] =>  0:07
+    .
+    CLOCK: [2021-06-15 Tue 20:21]--[2021-06-15 Tue 20:30] =>  0:09
+    noisy
+    CLOCK: [2021-06-14 Mon 12:40]--[2021-06-14 Mon 16:25] =>  3:45
+    backup
+    :END:
+
+* week 23 2021-06-07
+** mullvad
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-06-11 Fri 14:43]--[2021-06-11 Fri 16:00] =>  1:17
+    siglog prod infra
+
+    Let it be known that I'm officially done with trying to enjoy so
+    called modern sysadministration. I will from this point on avoid
+    this demotivating and mentally exhausting activity. There's a long
+    way to go but avoiding taking the first step will only prolong the
+    suffering.
+
+    CLOCK: [2021-06-11 Fri 14:10]--[2021-06-11 Fri 14:32] =>  0:22
+    siglog production
+    CLOCK: [2021-06-11 Fri 13:48]--[2021-06-11 Fri 14:10] =>  0:22
+    siglog
+    CLOCK: [2021-06-11 Fri 13:43]--[2021-06-11 Fri 13:48] =>  0:05
+    CLOCK: [2021-06-11 Fri 10:55]--[2021-06-11 Fri 12:33] =>  1:38
+    debugging stboot network failure
+    CLOCK: [2021-06-10 Thu 15:28]--[2021-06-10 Thu 15:45] =>  0:17
+    CLOCK: [2021-06-10 Thu 14:25]--[2021-06-10 Thu 14:27] =>  0:02
+    CLOCK: [2021-06-10 Thu 11:33]--[2021-06-10 Thu 11:43] =>  0:10
+    .
+    CLOCK: [2021-06-09 Wed 14:45]--[2021-06-09 Wed 15:00] =>  0:15
+    CLOCK: [2021-06-09 Wed 14:20]--[2021-06-09 Wed 14:35] =>  0:15
+    siglog doc review
+    CLOCK: [2021-06-08 Tue 13:58]--[2021-06-08 Tue 14:27] =>  0:29
+    .
+    CLOCK: [2021-06-08 Tue 13:02]--[2021-06-08 Tue 13:57] =>  0:55
+    siglog meeting
+    CLOCK: [2021-06-08 Tue 11:42]--[2021-06-08 Tue 11:59] =>  0:17
+    CLOCK: [2021-06-08 Tue 10:27]--[2021-06-08 Tue 10:48] =>  0:21
+    siglog "production"
+    CLOCK: [2021-06-07 Mon 20:47]--[2021-06-07 Mon 21:09] =>  0:22
+    siglog matrix bridging
+    CLOCK: [2021-06-07 Mon 15:30]--[2021-06-07 Mon 15:40] =>  0:10
+    CLOCK: [2021-06-07 Mon 13:59]--[2021-06-07 Mon 15:23] =>  1:24
+    CLOCK: [2021-06-07 Mon 12:48]--[2021-06-07 Mon 13:40] =>  0:52
+    CLOCK: [2021-06-07 Mon 10:51]--[2021-06-07 Mon 11:35] =>  0:44
+    CLOCK: [2021-06-07 Mon 10:07]--[2021-06-07 Mon 10:15] =>  0:08
+    CLOCK: [2021-06-07 Mon 09:51]--[2021-06-07 Mon 10:03] =>  0:12
+    CLOCK: [2021-06-07 Mon 09:39]--[2021-06-07 Mon 09:48] =>  0:09
+    .
+    CLOCK: [2021-06-07 Mon 06:43]--[2021-06-07 Mon 06:51] =>  0:08
+    #siglog
+    CLOCK: [2021-06-07 Mon 06:19]--[2021-06-07 Mon 06:40] =>  0:21
+    siglog matrix bridging
+    CLOCK: [2021-06-07 Mon 05:07]--[2021-06-07 Mon 06:14] =>  1:07
+    siglog v0.1.0
+    CLOCK: [2021-06-07 Mon 04:55]--[2021-06-07 Mon 05:03] =>  0:08
+    :END:
+
+** sunet
+*** SOC
+    :LOGBOOK:
+    CLOCK: [2021-06-13 Sun 09:00]--[2021-06-13 Sun 10:30] =>  1:30
+    collector design
+    CLOCK: [2021-06-10 Thu 12:55]--[2021-06-10 Thu 14:21] =>  1:26
+    CLOCK: [2021-06-10 Thu 11:43]--[2021-06-10 Thu 12:03] =>  0:20
+    CLOCK: [2021-06-10 Thu 11:10]--[2021-06-10 Thu 11:23] =>  0:13
+    :END:
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-06-11 Fri 09:47]--[2021-06-11 Fri 10:42] =>  0:55
+    email, imap2 hosed
+    :END:
+
+** tor
+*** diaruth
+    :LOGBOOK:
+    CLOCK: [2021-06-11 Fri 09:41]--[2021-06-11 Fri 09:46] =>  0:05
+    thu: 1h new keys
+    :END:
+
+* week 22 2021-05-31
+** dfri
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-06-03 Thu 16:25]--[2021-06-16 Wed 16:12] => 311:47
+    :END:
+
+** mullvad
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-06-03 Thu 16:42]--[2021-06-03 Thu 16:46] =>  0:04
+    stfe operations
+    CLOCK: [2021-06-03 Thu 15:17]--[2021-06-03 Thu 16:21] =>  1:04
+    CLOCK: [2021-06-03 Thu 14:05]--[2021-06-03 Thu 14:37] =>  0:32
+    CLOCK: [2021-06-03 Thu 11:26]--[2021-06-03 Thu 11:34] =>  0:08
+    CLOCK: [2021-06-03 Thu 10:05]--[2021-06-03 Thu 10:21] =>  0:16
+    CLOCK: [2021-06-03 Thu 08:15]--[2021-06-03 Thu 09:12] =>  0:57
+    CLOCK: [2021-06-03 Thu 06:09]--[2021-06-03 Thu 07:16] =>  1:07
+    CLOCK: [2021-06-02 Wed 21:53]--[2021-06-02 Wed 23:32] =>  1:39
+    CLOCK: [2021-06-02 Wed 19:35]--[2021-06-02 Wed 20:17] =>  0:42
+    CLOCK: [2021-06-02 Wed 16:42]--[2021-06-02 Wed 18:34] =>  1:52
+    CLOCK: [2021-06-02 Wed 16:28]--[2021-06-02 Wed 16:39] =>  0:11
+    CLOCK: [2021-06-02 Wed 15:25]--[2021-06-02 Wed 15:51] =>  0:26
+    CLOCK: [2021-06-02 Wed 13:54]--[2021-06-02 Wed 15:06] =>  1:12
+    CLOCK: [2021-06-02 Wed 13:09]--[2021-06-02 Wed 13:23] =>  0:14
+    CLOCK: [2021-06-02 Wed 12:43]--[2021-06-02 Wed 13:02] =>  0:19
+    cosigning
+    CLOCK: [2021-06-02 Wed 12:11]--[2021-06-02 Wed 12:28] =>  0:17
+    stfe operations: entropy
+    CLOCK: [2021-06-02 Wed 11:37]--[2021-06-02 Wed 12:11] =>  0:34
+    CLOCK: [2021-06-02 Wed 10:43]--[2021-06-02 Wed 10:45] =>  0:02
+    .
+    CLOCK: [2021-06-02 Wed 07:17]--[2021-06-02 Wed 08:25] =>  1:08
+    CLOCK: [2021-06-02 Wed 07:09]--[2021-06-02 Wed 07:12] =>  0:03
+    CLOCK: [2021-06-02 Wed 06:49]--[2021-06-02 Wed 07:01] =>  0:12
+    CLOCK: [2021-06-02 Wed 06:21]--[2021-06-02 Wed 06:46] =>  0:25
+    CLOCK: [2021-06-02 Wed 05:30]--[2021-06-02 Wed 05:55] =>  0:25
+    CLOCK: [2021-06-01 Tue 17:01]--[2021-06-01 Tue 17:33] =>  0:32
+    CLOCK: [2021-06-01 Tue 15:38]--[2021-06-01 Tue 16:48] =>  1:10
+    cosigning
+    CLOCK: [2021-06-01 Tue 13:00]--[2021-06-01 Tue 14:44] =>  1:44
+    meeting
+    CLOCK: [2021-06-01 Tue 12:28]--[2021-06-01 Tue 12:56] =>  0:28
+    CLOCK: [2021-06-01 Tue 11:48]--[2021-06-01 Tue 12:22] =>  0:34
+    CLOCK: [2021-06-01 Tue 10:05]--[2021-06-01 Tue 10:39] =>  0:34
+    cosigning
+    CLOCK: [2021-06-01 Tue 07:51]--[2021-06-01 Tue 07:59] =>  0:08
+    .
+    CLOCK: [2021-05-31 Mon 14:27]--[2021-05-31 Mon 14:36] =>  0:09
+    CLOCK: [2021-05-31 Mon 14:01]--[2021-05-31 Mon 14:27] =>  0:26
+    CLOCK: [2021-05-31 Mon 13:18]--[2021-05-31 Mon 13:44] =>  0:26
+    cosigning
+    CLOCK: [2021-05-31 Mon 12:50]--[2021-05-31 Mon 13:12] =>  0:22
+    .
+    CLOCK: [2021-05-31 Mon 10:47]--[2021-05-31 Mon 11:13] =>  0:26
+    CLOCK: [2021-05-31 Mon 10:14]--[2021-05-31 Mon 10:40] =>  0:26
+    cosigning
+    :END:
+
+** tor
+*** child protection
+    :LOGBOOK:
+    CLOCK: [2021-06-04 Fri 09:57]--[2021-06-04 Fri 11:53] =>  1:56
+    :END:
+
+** verkligen
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-06-01 Tue 07:59]--[2021-06-01 Tue 08:18] =>  0:19
+    CLOCK: [2021-05-31 Mon 09:23]--[2021-05-31 Mon 10:05] =>  0:42
+    :END:
+*** preventit
+    :LOGBOOK:
+    CLOCK: [2021-06-02 Wed 16:21]--[2021-06-02 Wed 16:25] =>  0:04
+    CLOCK: [2021-06-02 Wed 15:07]--[2021-06-02 Wed 15:20] =>  0:13
+    certificate for onion
+    CLOCK: [2021-06-02 Wed 10:24]--[2021-06-02 Wed 10:43] =>  0:19
+    Onion-Location
+    CLOCK: [2021-06-02 Wed 09:39]--[2021-06-02 Wed 10:22] =>  0:43
+    certificate for onion
+    :END:
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-06-02 Wed 12:31]--[2021-06-02 Wed 12:40] =>  0:09
+    VM entropy
+    CLOCK: [2021-05-31 Mon 06:34]--[2021-05-31 Mon 06:48] =>  0:14
+    :END:
+
+* week 21 2021-05-24
+** dfri
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-05-24 Mon 09:24]--[2021-05-24 Mon 09:29] =>  0:05
+    :END:
+
+** mullvad
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-05-28 Fri 15:33]--[2021-05-28 Fri 16:22] =>  0:49
+    CLOCK: [2021-05-28 Fri 14:29]--[2021-05-28 Fri 15:19] =>  0:50
+    CLOCK: [2021-05-28 Fri 13:09]--[2021-05-28 Fri 13:26] =>  0:17
+    CLOCK: [2021-05-28 Fri 11:36]--[2021-05-28 Fri 12:07] =>  0:31
+    CLOCK: [2021-05-28 Fri 10:45]--[2021-05-28 Fri 11:23] =>  0:38
+    CLOCK: [2021-05-28 Fri 10:10]--[2021-05-28 Fri 10:38] =>  0:28
+    CLOCK: [2021-05-28 Fri 06:52]--[2021-05-28 Fri 07:06] =>  0:14
+    CLOCK: [2021-05-28 Fri 06:26]--[2021-05-28 Fri 06:51] =>  0:25
+    CLOCK: [2021-05-27 Thu 15:07]--[2021-05-27 Thu 15:40] =>  0:33
+    CLOCK: [2021-05-27 Thu 14:30]--[2021-05-27 Thu 15:07] =>  0:37
+    witness signing tool
+    CLOCK: [2021-05-25 Tue 14:00]--[2021-05-25 Tue 14:41] =>  0:41
+    log meeting with georg
+    CLOCK: [2021-05-25 Tue 13:01]--[2021-05-25 Tue 13:27] =>  0:26
+    stfe meeting
+    CLOCK: [2021-05-25 Tue 11:33]--[2021-05-25 Tue 12:15] =>  0:42
+    signing tools and log proto
+    CLOCK: [2021-05-25 Tue 10:44]--[2021-05-25 Tue 11:33] =>  0:02
+    stlog proto
+    CLOCK: [2021-05-24 Mon 16:57]--[2021-05-24 Mon 17:51] =>  0:54
+    stlog meeting
+    CLOCK: [2021-05-24 Mon 13:45]--[2021-05-24 Mon 14:45] =>  1:00
+    stlog
+    CLOCK: [2021-05-24 Mon 09:16]--[2021-05-24 Mon 09:23] =>  0:07
+    :END:
+
+** sunet
+*** soc
+   :LOGBOOK:
+   CLOCK: [2021-05-26 Wed 11:35]--[2021-05-26 Wed 11:40] =>  0:05
+   CLOCK: [2021-05-24 Mon 19:07]--[2021-05-24 Mon 19:20] =>  0:13
+   CLOCK: [2021-05-24 Mon 14:45]--[2021-05-24 Mon 14:53] =>  0:08
+   :END:
+
+** tor
+*** csam
+    :LOGBOOK:
+    CLOCK: [2021-05-28 Fri 09:00]--[2021-05-28 Fri 09:58] =>  0:58
+    :END:
+*** dirauth
+    :LOGBOOK:
+    CLOCK: [2021-05-25 Tue 12:15]--[2021-05-25 Tue 12:18] =>  0:03
+    :END:
+
+** verkligen
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-05-24 Mon 09:33]--[2021-05-24 Mon 09:55] =>  0:22
+    :END:
+
+* week 20 2021-05-17
+** dfri
+   :LOGBOOK:
+   CLOCK: [2021-05-20 Thu 15:42]--[2021-05-20 Thu 16:01] =>  0:19
+   CLOCK: [2021-05-17 Mon 15:47]--[2021-05-17 Mon 16:00] =>  0:13
+   CLOCK: [2021-05-17 Mon 15:02]--[2021-05-17 Mon 15:05] =>  0:03
+   CLOCK: [2021-05-17 Mon 12:59]--[2021-05-17 Mon 13:30] =>  0:31
+   sysadmin
+   :END:
+** mullvad
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-05-20 Thu 14:20]--[2021-05-20 Thu 15:25] =>  1:05
+    CLOCK: [2021-05-20 Thu 08:32]--[2021-05-20 Thu 10:37] =>  2:05
+    tooling and deployment
+    CLOCK: [2021-05-19 Wed 09:30]--[2021-05-19 Wed 10:25] =>  0:55
+    CLOCK: [2021-05-19 Wed 08:48]--[2021-05-19 Wed 09:22] =>  0:34
+    CLOCK: [2021-05-18 Tue 22:42]--[2021-05-18 Tue 22:49] =>  0:07
+    CLOCK: [2021-05-18 Tue 21:27]--[2021-05-18 Tue 21:33] =>  0:06
+    stfe spec
+    CLOCK: [2021-05-18 Tue 12:59]--[2021-05-18 Tue 14:28] =>  1:29
+    meeting stfe
+    CLOCK: [2021-05-17 Mon 11:00]--[2021-05-17 Mon 11:25] =>  0:25
+    meeting stboot
+    :END:
+** sunet
+   :LOGBOOK:
+   CLOCK: [2021-05-18 Tue 21:33]--[2021-05-18 Tue 21:42] =>  0:09
+   :END:
+** tor
+   :LOGBOOK:
+   CLOCK: [2021-05-19 Wed 14:26]--[2021-05-19 Wed 14:56] =>  0:30
+   dirauth
+   :END:
+** verkligen
+*** admin
+   :LOGBOOK:
+   CLOCK: [2021-05-21 Fri 14:39]--[2021-05-21 Fri 14:59] =>  0:20
+   CLOCK: [2021-05-18 Tue 22:49]--[2021-05-18 Tue 22:51] =>  0:02
+   CLOCK: [2021-05-18 Tue 22:36]--[2021-05-18 Tue 22:42] =>  0:06
+   CLOCK: [2021-05-18 Tue 10:52]--[2021-05-18 Tue 11:27] =>  0:35
+   CLOCK: [2021-05-18 Tue 10:38]--[2021-05-18 Tue 10:49] =>  0:11
+   CLOCK: [2021-05-17 Mon 15:05]--[2021-05-17 Mon 15:17] =>  0:12
+   CLOCK: [2021-05-17 Mon 14:47]--[2021-05-17 Mon 15:02] =>  0:15
+   CLOCK: [2021-05-17 Mon 10:00]--[2021-05-17 Mon 10:50] =>  0:50
+   :END:
+*** anova / preventit
+    :LOGBOOK:
+    CLOCK: [2021-05-17 Mon 14:31]--[2021-05-17 Mon 14:47] =>  0:16
+    onion
+    :END:
+
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-05-21 Fri 10:15]--[2021-05-21 Fri 10:23] =>  0:08
+    :END:
+
+* week 19 2021-05-10
+** mullvad
+*** ST
+   :LOGBOOK:
+   CLOCK: [2021-05-11 Tue 13:14]--[2021-05-11 Tue 14:09] =>  0:55
+   weekly stlog meeting
+   CLOCK: [2021-05-10 Mon 11:05]--[2021-05-10 Mon 11:50] =>  0:45
+   weekly stboot meeting
+   :END:
+** sunet
+   :LOGBOOK:
+   CLOCK: [2021-05-11 Tue 12:58]--[2021-05-11 Tue 13:14] =>  0:16
+   :END:
+
+** tor
+   :LOGBOOK:
+   CLOCK: [2021-05-11 Tue 14:47]--[2021-05-11 Tue 14:59] =>  0:12
+   dirauth
+   :END:
+
+** verkligen
+   :LOGBOOK:
+   CLOCK: [2021-05-11 Tue 15:17]--[2021-05-11 Tue 15:26] =>  0:09
+   CLOCK: [2021-05-11 Tue 12:37]--[2021-05-11 Tue 12:58] =>  0:21
+   CLOCK: [2021-05-11 Tue 12:20]--[2021-05-11 Tue 12:31] =>  0:11
+   CLOCK: [2021-05-10 Mon 12:16]--[2021-05-10 Mon 12:19] =>  0:03
+   CLOCK: [2021-05-10 Mon 11:56]--[2021-05-10 Mon 12:16] =>  0:20
+   CLOCK: [2021-05-10 Mon 10:39]--[2021-05-10 Mon 11:05] =>  0:26
+   admin, bokföring
+   :END:
+
+* week 18 2021-05-03
+** dfri
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-05-03 Mon 13:02]--[2021-05-03 Mon 13:48] =>  0:46
+    :END:
+** mullvad
+*** selfhosting
+*** ST
+    :LOGBOOK:
+    CLOCK: [2021-05-07 Fri 14:00]--[2021-05-07 Fri 14:15] =>  0:15
+    meeting
+    CLOCK: [2021-05-07 Fri 13:53]--[2021-05-07 Fri 14:00] =>  0:07
+    stfe api doc
+    CLOCK: [2021-05-07 Fri 13:15]--[2021-05-07 Fri 13:30] =>  0:15
+    .
+    CLOCK: [2021-05-07 Fri 10:40]--[2021-05-07 Fri 10:56] =>  0:16
+    CLOCK: [2021-05-07 Fri 10:33]--[2021-05-07 Fri 10:38] =>  0:05
+    CLOCK: [2021-05-07 Fri 10:16]--[2021-05-07 Fri 10:23] =>  0:07
+    CLOCK: [2021-05-06 Thu 11:03]--[2021-05-06 Thu 12:06] =>  1:03
+    provisioning, deployment
+    CLOCK: [2021-05-05 Wed 12:19]--[2021-05-05 Wed 12:33] =>  0:14
+    CLOCK: [2021-05-05 Wed 09:10]--[2021-05-05 Wed 10:13] =>  1:03
+    design spec
+    CLOCK: [2021-05-04 Tue 16:07]--[2021-05-04 Tue 17:31] =>  1:24
+    CLOCK: [2021-05-04 Tue 14:57]--[2021-05-04 Tue 15:38] =>  0:41
+    CLOCK: [2021-05-04 Tue 14:44]--[2021-05-04 Tue 14:54] =>  0:10
+    CLOCK: [2021-05-04 Tue 14:13]--[2021-05-04 Tue 14:36] =>  0:23
+    api spec
+    CLOCK: [2021-05-04 Tue 13:10]--[2021-05-04 Tue 14:13] =>  1:03
+    meeting
+    CLOCK: [2021-05-04 Tue 10:48]--[2021-05-04 Tue 11:26] =>  0:38
+    CLOCK: [2021-05-03 Mon 14:43]--[2021-05-03 Mon 15:40] =>  0:57
+    CLOCK: [2021-05-03 Mon 13:56]--[2021-05-03 Mon 14:41] =>  0:45
+    CLOCK: [2021-05-03 Mon 11:02]--[2021-05-03 Mon 11:31] =>  0:29
+    meeting
+    CLOCK: [2021-05-03 Mon 09:09]--[2021-05-03 Mon 10:11] =>  1:02
+    :END:
+** tor
+*** dirauth
+    :LOGBOOK:
+    CLOCK: [2021-05-05 Wed 12:33]--[2021-05-05 Wed 13:04] =>  0:31 
+   CLOCK: [2021-05-05 Wed 10:13]--[2021-05-05 Wed 10:28] =>  0:15
+    ipv6 orport reachability
+    CLOCK: [2021-05-04 Tue 10:14]--[2021-05-04 Tue 10:36] =>  0:22
+    sybils
+    :END:
+** verkligen
+   :LOGBOOK:
+   CLOCK: [2021-05-07 Fri 13:30]--[2021-05-07 Fri 13:53] =>  0:23
+   admin
+   CLOCK: [2021-05-07 Fri 10:03]--[2021-05-07 Fri 10:16] =>  0:13
+   VKG network
+   :END:
 * week 17 2021-04-26
+** adbc
+*** sysadmin
+** dfri
+*** admin
+    :LOGBOOK:
+    CLOCK: [2021-04-29 Thu 13:50]--[2021-04-29 Thu 15:03] =>  1:13
+    CLOCK: [2021-04-29 Thu 12:44]--[2021-04-29 Thu 13:20] =>  0:36
+    CLOCK: [2021-04-29 Thu 10:50]--[2021-04-29 Thu 12:40] =>  1:50
+    btc wallet
+    :END:
+*** sysadmin
+    :LOGBOOK:
+    CLOCK: [2021-04-30 Fri 10:02]--[2021-04-30 Fri 10:19] =>  0:17
+    matrix-01
+    :END:
 ** mullvad
 *** selfhosting
     :LOGBOOK:
@@ -26,7 +1259,13 @@ Starting week 16, we go back to tracking here instead.
 
 *** ST
     :LOGBOOK:
-    CLOCK: [2021-04-27 Tue 11:07]
+    CLOCK: [2021-04-30 Fri 14:20]--[2021-04-30 Fri 15:06] =>  0:46
+    CLOCK: [2021-04-30 Fri 12:44]--[2021-04-30 Fri 14:16] =>  1:32
+    CLOCK: [2021-04-30 Fri 10:19]--[2021-04-30 Fri 11:34] =>  1:15
+    CLOCK: [2021-04-30 Fri 09:20]--[2021-04-30 Fri 09:24] =>  0:04
+    .
+    CLOCK: [2021-04-27 Tue 12:37]--[2021-04-27 Tue 13:59] =>  1:22
+    CLOCK: [2021-04-27 Tue 11:07]--[2021-04-27 Tue 12:01] =>  0:54
     CLOCK: [2021-04-26 Mon 16:40]--[2021-04-26 Mon 16:55] =>  0:15
     https://github.com/system-transparency/stfe/blob/design/doc/api.md
     - add a link to wikipedia or RFC3986/STD66 section 2?
@@ -52,6 +1291,24 @@ Starting week 16, we go back to tracking here instead.
     CLOCK: [2021-04-26 Mon 09:23]--[2021-04-26 Mon 09:36] =>  0:13
     bokföring
     :END:
+*** kryptovaluta
+    :LOGBOOK:
+    CLOCK: [2021-04-30 Fri 09:49]--[2021-04-30 Fri 10:02] =>  0:13
+    CLOCK: [2021-04-29 Thu 16:46]--[2021-04-29 Thu 17:10] =>  0:24
+    CLOCK: [2021-04-29 Thu 08:52]--[2021-04-29 Thu 10:26] =>  1:34
+    .
+    CLOCK: [2021-04-28 Wed 13:54]--[2021-04-28 Wed 14:54] =>  1:00
+    CLOCK: [2021-04-28 Wed 09:46]--[2021-04-28 Wed 10:50] =>  1:04
+    bitcoind config
+    CLOCK: [2021-04-27 Tue 21:27]--[2021-04-27 Tue 23:00] =>  1:33
+    btc.adbc
+    :END:
+*** framtid
+    :LOGBOOK:
+    CLOCK: [2021-04-29 Thu 21:42]--[2021-04-29 Thu 22:00] =>  0:18
+    Vinnova-utlysning
+    :END:
+
 *** sysadmin
     :LOGBOOK:
     CLOCK: [2021-04-26 Mon 16:55]--[2021-04-26 Mon 17:23] =>  0:28

@@ -1,7 +1,8 @@
 * current
 ** Saab XBD476
 ** Subaru Forester KBR510
-2009
+årsmodell 2009
+SUBARU Forester III (SH) 2.0 D AWD (SHH) Diesel 147 hk (enligt autodoc.se)
 *** verkstäder
 - Sunne bil & maskin
 0565-135 10
@@ -77,3 +78,17 @@ extra:
 totalt 15700
 
 tog allt utom torkarblad
+* spare parts / reservdelar
+https://www.skruvat.se/
+https://www.autodoc.se/
+
+** spindelled hö bak, övre 2020-05
+- torvalla vill ha 2100 för jobb och 4088 för material
+- denis har hittat själva länkarmen (?) för 2115
+  - https://www.autodoc.se/febest/8702395
+- torvalla uppger följande reservelsnummer
+20252SC000 https://www.autodoc.se/febest/8702395
+20540AA081 ej på autodoc
+901000109 ej på autodoc
+901000182 ej på autodoc
+902350006 x 3 ej på autodoc

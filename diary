@@ -1,4 +1,5 @@
-%%(diary-anniversary 1987 2 4) Runa
+%%(diary-anniversary 1973 01 10) Jonas Gudmundsson
+%%(diary-anniversary 1987 02 04) Runa
 %%(diary-anniversary 1980 2 10) Erinn
 %%(diary-anniversary 2017 2 10) Mango
 %%(diary-anniversary 1990 2 11) asn
@@ -10,6 +11,7 @@
 %%(diary-anniversary 1983 4 1) Jake
 %%(diary-anniversary 1969 4 4) tg
 %%(diary-anniversary 2010 4 6) Moa
+%%(diary-anniversary 1971 4 7) Bergroth
 %%(diary-anniversary 1969 4 9) Ilja
 %%(diary-anniversary 2008 4 9) Julian
 %%(diary-anniversary 1982 4 10) Fia
@@ -20,31 +22,31 @@
 %%(diary-anniversary 1933 4 18) Elsie
 %%(diary-anniversary 1992 4 20) DrWhax
 %%(diary-anniversary 2003 04 21) Nina Simone died
-%%(diary-anniversary 2012 4 22) Roger
-%%(diary-anniversary 1999 4 26) Etta
-%%(diary-anniversary 2013 5 5) Musse
-%%(diary-anniversary 1945 5 10) Erik
+%%(diary-anniversary 2012 04 22) Roger
+%%(diary-anniversary 1999 04 26) Etta
+%%(diary-anniversary 2013 05 5) Musse
+%%(diary-anniversary 1945 05 10) Erik
 %%(diary-anniversary 2018 05 10) Karsten
-%%(diary-anniversary 1983 5 26) Andreas
-%%(diary-anniversary 1981 5 30) Lundberg
+%%(diary-anniversary 1983 05 26) Andreas
+%%(diary-anniversary 1981 05 30) Lundberg
 %%(diary-anniversary 2014 06 12) isis
 %%(diary-anniversary 2015 06 18) isabela
-%%(diary-anniversary 1973 6 29) Johan Ruterhagen
-%%(diary-anniversary 1999 7 2) Lärka
-%%(diary-anniversary 2016 7 8) dkg
+%%(diary-anniversary 1973 06 29) Johan Ruterhagen
+%%(diary-anniversary 1999 07 2) Lärka
+%%(diary-anniversary 2016 07 8) dkg
 %%(diary-anniversary 2011 07 08) DFRI
-%%(diary-anniversary 2014 7 11) Marianne
+%%(diary-anniversary 2014 07 11) Marianne
 %%(diary-anniversary 2017 07 28) Shari
-%%(diary-anniversary 2014 8 2) Andrea
 %%(diary-anniversary 1978 08 03) Antje
-%%(diary-anniversary 1977 8 30) Nick Mathewson
-%%(diary-anniversary 2002 9 3) Nicks first Tor commit
-%%(diary-anniversary 1968 9 12) leifj
+%%(diary-anniversary 1978 08 15) Juni
+%%(diary-anniversary 1977 08 30) Nick Mathewson
+%%(diary-anniversary 2002 09 3) Nicks first Tor commit
+%%(diary-anniversary 1968 09 12) leifj
 %%(diary-anniversary 2003 10 8) tor https://lists.torproject.org/pipermail/tor-dev/2003-October/002185.html
 %%(diary-anniversary 2012 10 15) Lise
 %%(diary-anniversary 1900 10 21) Tok-martin
 %%(diary-anniversary 1944 10 25) Liss
-%%(diary-anniversary 1971 11 3) Simon
+%%(diary-anniversary 1971 11 03) Simon
 %%(diary-anniversary 2014 11 25) Steffe
 %%(diary-anniversary 1965 11 25) Lena
 %%(diary-anniversary 1972 11 29) Sarah

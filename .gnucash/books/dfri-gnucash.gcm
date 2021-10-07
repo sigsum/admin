@@ -517,11 +517,11 @@ debit_width=122
 credit_width=134
 
 [Window 1]
-PageCount=6
+PageCount=7
 FirstPage=1
-PageOrder=4;6;1;5;3;2;
-WindowPosition=0;0;
-WindowGeometry=658;1078;
+PageOrder=7;6;1;4;5;3;2;
+WindowPosition=660;0;
+WindowGeometry=1258;1078;
 WindowMaximized=false
 ToolbarVisible=true
 SummarybarVisible=true
@@ -533,7 +533,7 @@ PageName=Accounts
 AccountTypes=-1
 ShowHidden=false
 ShowZeroTotal=true
-SelectedAccount=Assets:Current Assets:Handkassa Linus
+SelectedAccount=Assets:Current Assets:Online BTC wallet, mBTC
 OpenAccount1=Assets
 OpenAccount2=Assets:Current Assets
 OpenAccount3=Expenses
@@ -571,8 +571,16 @@ DoubleLineMode=false
 
 [Page 6]
 PageType=GncPluginPageRegister
-PageName=Handkassa Linus
+PageName=Online BTC wallet
 RegisterType=Account
-AccountName=Assets:Current Assets:Handkassa Linus
+AccountName=Assets:Current Assets:Online BTC wallet
+RegisterStyle=Ledger
+DoubleLineMode=false
+
+[Page 7]
+PageType=GncPluginPageRegister
+PageName=Online BTC wallet, mBTC
+RegisterType=Account
+AccountName=Assets:Current Assets:Online BTC wallet, mBTC
 RegisterStyle=Ledger
 DoubleLineMode=false

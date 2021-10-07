@@ -5,6 +5,8 @@
 /.mozilla
 /.opam,bak
 /.opam.bak2
+/clown
+/data/gunnebo_2020.tar
 /flogsta
 /flogsta-root
 /ostick

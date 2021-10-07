@@ -8,10 +8,17 @@ Purchased 2020-03 from Teklager
 Model apu2d
 RAM 2G
 SSD 16G
+
+Hostname OpenWrt
+Architecture AMD GX-412TC SOC
+
 *** OS -- OpenWrt
 https://downloads.openwrt.org/releases/19.07.2/targets/x86/64/openwrt-19.07.2-x86-64-combined-ext4.img.gz
 87156fcc2f4f3c19829eae954885806472f7bed7ba8f094c1275279954fecb08
 Linux OpenWrt 4.14.171 #0 SMP Thu Feb 27 21:05:12 2020 x86_64 GNU/Linux
+
+- https://openwrt.org/docs/guide-developer/security
+- https://oldwiki.archive.openwrt.org/doc/devel/security
 
 *** root@OpenWrt:/# dmesg
 [    0.000000] Linux version 4.14.171 (builder@buildhost) (gcc version 7.5.0 (OpenWrt GCC 7.5.0 r10947-65030d81f3)) #0 SMP Thu Feb 27 21:05:12 2020
@@ -528,6 +535,50 @@ Linux OpenWrt 4.14.171 #0 SMP Thu Feb 27 21:05:12 2020 x86_64 GNU/Linux
 [   13.060463] br-lan: port 1(eth1) entered blocking state
 [   13.065737] br-lan: port 1(eth1) entered forwarding state
 [   13.071703] IPv6: ADDRCONF(NETDEV_CHANGE): br-lan: link becomes ready
+
+*** network config
+root@OpenWrt:~# ip ad
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br-wan state UP qlen 1000
+    link/ether 00:0d:b9:53:99:c8 brd ff:ff:ff:ff:ff:ff
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br-lan state UP qlen 1000
+    link/ether 00:0d:b9:53:99:c9 brd ff:ff:ff:ff:ff:ff
+6: br-lan: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+    link/ether 00:0d:b9:53:99:c9 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.1/24 brd 192.168.1.255 scope global br-lan
+       valid_lft forever preferred_lft forever
+    inet6 fdc5:5028:9959::1/60 scope global 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::20d:b9ff:fe53:99c9/64 scope link 
+       valid_lft forever preferred_lft forever
+7: br-wan: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+    link/ether 00:0d:b9:53:99:c8 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.6.39/24 brd 192.168.6.255 scope global br-wan
+       valid_lft forever preferred_lft forever
+    inet6 fe80::20d:b9ff:fe53:99c8/64 scope link 
+       valid_lft forever preferred_lft forever
+8: wlan1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-wan state UP qlen 1000
+    link/ether 04:f0:21:54:37:cc brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::6f0:21ff:fe54:37cc/64 scope link 
+       valid_lft forever preferred_lft forever
+9: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-wan state UP qlen 1000
+    link/ether 04:f0:21:56:00:39 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::6f0:21ff:fe56:39/64 scope link 
+       valid_lft forever preferred_lft forever
+root@OpenWrt:~# brctl show
+bridge name     bridge id               STP enabled     interfaces
+br-lan          7fff.000db95399c9       no              eth1
+br-wan          7fff.000db95399c8       no              eth0
+                                                        wlan1
+                                                        wlan0
+
+*** upgrading software packages
+opkg update && opkg list-upgradable| awk '{print $1}'| tr '\n' ' '| xargs -r opkg upgrade
 
 ** rpi2 B v1.1 2014, transparent case
 ** rpi2 B+ v1.2 2014, black case
@@ -1048,6 +1099,7 @@ Fri Nov 16 10:15:24 CET 2018
 ** Dell 1425, 32-bit (temp loan from leif); office @ TUG
 ** apuapu -- apu1d firewall @home
 Firewall at home.
+
 *** updating base and packages
 - reboot to securelevel -1
 - hbsd-update
@@ -3380,161 +3432,658 @@ pw: hej123
  Intel(R) Pentium(R) 4 CPU 2.80GHz
  RAM DDR-400MHz SDRAM, max 4GB, current 1GB installed (prob. 2x512MB)
 * ADB-Centralen
-** nanosleep.adb-centralen.se -- NUC @ home
-*** system info
-Debian 10.6 (buster) installed <2020-10-12 Mon>.
+** ioctl.adb-centralen.se (2017-09-29) -- VM @ kcmp
+fbsd-10.4 installed 2018-04-24
+*** storage
+[root@ioctl /var/jail]# gpart show
+=>       34  587202493  vtbd0  GPT  (280G)
+         34        222         - free -  (111K)
+        256       1024      1  freebsd-boot  (512K)
+       1280  578812672      2  freebsd-ufs  (276G)
+  578813952    8388574      3  freebsd-swap  (4.0G)
+  587202526          1         - free -  (512B)
+[root@ioctl /var/jail]# gpart status
+   Name  Status  Components
+vtbd0p1      OK  vtbd0
+vtbd0p2      OK  vtbd0
+vtbd0p3      OK  vtbd0
+**** pre migration 2018-04-24
+[root@ioctl ~]# date
+Tue Apr 24 11:28:56 CEST 2018
+[root@ioctl ~]# dmesg|egrep ada[01]
+ada0 at ahcich0 bus 0 scbus0 target 0 lun 0
+ada0: <WDC WD1000DHTZ-04N21V0 04.06A00> ATA8-ACS SATA 3.x device
+ada0: Serial Number WD-WX11E83NW836
+ada0: 600.000MB/s transfers (SATA 3.x, UDMA6, PIO 8192bytes)
+ada0: Command Queueing enabled
+ada0: 953869MB (1953525168 512 byte sectors)
+ada0: Previously was known as ad4
+ada1 at ahcich1 bus 0 scbus1 target 0 lun 0
+ada1: <WDC WD1000DHTZ-04N21V0 04.06A00> ATA8-ACS SATA 3.x device
+ada1: Serial Number WD-WXK1E63ARNTM
+ada1: 600.000MB/s transfers (SATA 3.x, UDMA6, PIO 8192bytes)
+ada1: Command Queueing enabled
+ada1: 953869MB (1953525168 512 byte sectors)
+ada1: Previously was known as ad6
+GEOM: ada0: the secondary GPT table is corrupt or invalid.
+GEOM: ada0: using the primary only -- recovery suggested.
+GEOM: ada1: the secondary GPT table is corrupt or invalid.
+GEOM: ada1: using the primary only -- recovery suggested.
+[root@ioctl ~]# gmirror list
+Geom name: gm0
+State: COMPLETE
+Components: 2
+Balance: load
+Slice: 4096
+Flags: NONE
+GenID: 0
+SyncID: 2
+ID: 2061159505
+Providers:
+1. Name: mirror/gm0
+   Mediasize: 1000204885504 (932G)
+   Sectorsize: 512
+   Stripesize: 4096
+   Stripeoffset: 0
+   Mode: r2w2e3
+Consumers:
+1. Name: ada0
+   Mediasize: 1000204886016 (932G)
+   Sectorsize: 512
+   Stripesize: 4096
+   Stripeoffset: 0
+   Mode: r1w1e1
+   State: ACTIVE
+   Priority: 0
+   Flags: DIRTY
+   GenID: 0
+   SyncID: 2
+   ID: 1873935879
+2. Name: ada1
+   Mediasize: 1000204886016 (932G)
+   Sectorsize: 512
+   Stripesize: 4096
+   Stripeoffset: 0
+   Mode: r1w1e1
+   State: ACTIVE
+   Priority: 0
+   Flags: DIRTY
+   GenID: 0
+   SyncID: 2
+   ID: 294104974
+[root@ioctl ~]# gpart list
+Geom name: mirror/gm0
+modified: false
+state: CORRUPT
+fwheads: 255
+fwsectors: 63
+last: 1953525133
+first: 34
+entries: 128
+scheme: GPT
+Providers:
+1. Name: mirror/gm0p1
+   Mediasize: 65536 (64K)
+   Sectorsize: 512
+   Stripesize: 4096
+   Stripeoffset: 0
+   Mode: r0w0e0
+   rawuuid: 9d833eb0-ed7c-11e3-a679-00259071e325
+   rawtype: 83bd6b9d-7f41-11dc-be0b-001560b84f0f
+   label: (null)
+   length: 65536
+   offset: 20480
+   type: freebsd-boot
+   index: 1
+   end: 167
+   start: 40
+2. Name: mirror/gm0p2
+   Mediasize: 996432343040 (928G)
+   Sectorsize: 512
+   Stripesize: 4096
+   Stripeoffset: 0
+   Mode: r1w1e1
+   rawuuid: 9d841299-ed7c-11e3-a679-00259071e325
+   rawtype: 516e7cb6-6ecf-11d6-8ff8-00022d09712b
+   attrib: bootme
+   label: (null)
+   length: 996432343040
+   offset: 86016
+   type: freebsd-ufs
+   index: 2
+   end: 1946157087
+   start: 168
+3. Name: mirror/gm0p3
+   Mediasize: 3772439040 (3.5G)
+   Sectorsize: 512
+   Stripesize: 4096
+   Stripeoffset: 0
+   Mode: r1w1e0
+   rawuuid: 9d849d08-ed7c-11e3-a679-00259071e325
+   rawtype: 516e7cb5-6ecf-11d6-8ff8-00022d09712b
+   label: (null)
+   length: 3772439040
+   offset: 996432429056
+   type: freebsd-swap
+   index: 3
+   end: 1953525132
+   start: 1946157088
+Consumers:
+1. Name: mirror/gm0
+   Mediasize: 1000204885504 (932G)
+   Sectorsize: 512
+   Stripesize: 4096
+   Stripeoffset: 0
+   Mode: r2w2e3
+[root@ioctl ~]# gpart status mirror/gm0
+        Name   Status  Components
+mirror/gm0p1  CORRUPT  mirror/gm0
+mirror/gm0p2  CORRUPT  mirror/gm0
+mirror/gm0p3  CORRUPT  mirror/gm0
+[root@ioctl ~]# gpart show mirror/gm0
+=>        34  1953525100  mirror/gm0  GPT  (932G) [CORRUPT]
+          34           6              - free -  (3.0K)
+          40         128           1  freebsd-boot  (64K)
+         168  1946156920           2  freebsd-ufs  [bootme]  (928G)
+  1946157088     7368045           3  freebsd-swap  (3.5G)
+  1953525133           1              - free -  (512B)
+[root@ioctl ~]# cat /etc/fstab
+# Device        Mountpoint      FStype  Options Dump    Pass#
+/dev/mirror/gm0p2       /               ufs     rw      1       1
+/dev/mirror/gm0p3       none            swap    sw      0       0
+fdesc /dev/fd fdescfs rw 0 0
 
-model name      : Intel(R) Core(TM) i7-7567U CPU @ 3.50GHz
-root@nanosleep:~# cat /proc/cpuinfo | egrep ^proc | wc -l
-4
+*** jail hints
+- upgrading one jail, base and packages:
+  /root/upgrade-jail.sh [-a] [-r RELEASE] JAILNAME
+- upgrading all jails, base and packages:
+  /root/upgrade-all-jails.sh
+- missing libucl when running pkg?
+mv /usr/sbin/pkg /usr/sbin/pkg.OFF
+- creating new jail (rough guide, missing chflags schg)
+cd /jails
+fetch https://ftp.lysator.liu.se/pub/FreeBSD/releases/amd64/amd64/10.3-RELEASE/MANIFEST
+fetch https://ftp.lysator.liu.se/pub/FreeBSD/releases/amd64/amd64/10.3-RELEASE/base.txz
+egrep base MANIFEST 
+sha256 -c e7c4c961694e34b2b60598d9668a185b5de1c6241bedfc4891cd9ea8fbff2dc4 base.txz 
+mkdir pics
+tar xf base.txz -C pics
+touch pics/boot/loader.conf
+cat >> pics/etc/rc.conf <<EOF
+dumpdev="NO"
+syslogd_flags="-C -4 -ss -vv"
+sendmail_enable=NONE
+EOF
+for f in resolv.conf localtime host.conf ; do cp /etc/$f pics/etc/; done
+dd if=/dev/random of=pics/entropy bs=4k count=1
+sysrc jail_list+=pics
+cat >> /etc/jail.conf <<EOF
+pics {
+        host.hostname = "pics.nordberg.se";
+        ip4.addr = "10.0.8.10";
+}
+EOF
+service jail start pics
+jexec pics newaliases
+pkg -j pics install -y bash
+pkg -j pics upgrade -y
+jexec pics pw user mod root -d /root -s /usr/local/bin/bash
+*** jails running on new ioctl, after migration 2018-04-24 [12/13]
+- [X] ns
+- [X] resolver
+- [X] kdc
+- [X] jabber
+- [X] proj
+- [X] webmail
+- [X] imap
+- [X] spam
+- [X] smtp
+- [X] web
+- [X] git
+- [X] le
+- [ ] btc [copied, not started]
+*** jails, details
+**** webmail (creat)
+ - after upgrading IMP (TODO: automate this!)
+   cat /usr/local/www/horde/imp/lib/Compose.php | egrep -A 5 'Add a Received header'
+   vi /usr/local/www/horde/imp/lib/Compose.php
+   # Comment out the block that starts with
+   # /* Add a Received header for the hop from browser to server. */
+**** spam
+ - <2015-08-26 Wed> installing spamassassin from pkg
+   pkg install spamassassin p5-DBD-mysql # needs p5-DBI
 
-[    1.502390] sd 0:0:0:0: [sda] 1953525168 512-byte logical blocks: (1.00 TB/932 GiB)
-[    1.502246] sd 2:0:0:0: [sdb] 234455040 512-byte logical blocks: (120 GB/112 GiB)
+ - HISTORICAL upgrading packages: mail/spamassassin needs to be built with myslq
+   support and cannot be installed as a package
+   portmaster -d mail/spamassassin
+***** configuration
+ - /usr/local/share/doc/spamassassin/sql/README
+ SpamAssassin will check the global configuration file (ie. any file matching
+ /etc/mail/spamassassin/*.cf) for the following settings:
+   user_scores_dsn               DBI:driver:connection
+   user_scores_sql_username      dbusername
+   user_scores_sql_password      dbpassword
+ - rc.conf
+ spamd_flags="-u spamd -H /var/spool/spamd --allow-tell --sql-config --nouser-config --allowed-ips=smtp.adb-centralen.se,fixme"
+***** notes from moving from banksy
+****** adb-centralen.se, zone
+ accept          A       193.10.5.85
+                 AAAA    2001:6b0:8::85
+ banksy  1h      A       193.10.5.87
+ brk             CNAME   mail
+ cadar           A       193.10.5.90
+ conference      CNAME   jabber
+ creat           A       193.10.5.100
+                 AAAA    2001:6b0:8::100
+ dup2            A       193.10.5.98
+                 AAAA    2001:6b0:8::98
+ execve          A       193.10.5.89
+                 AAAA    2001:6b0:8::89
+ fcntl           A       193.10.5.90
+                 AAAA    2001:6b0:8::90
+ getpid          A       193.10.5.77
+                 AAAA    2001:6b0:8::77
+ imap            A       193.10.5.124
+                 AAAA    2001:6b0:8::124
+ ioctl           A       193.10.5.109
+                 AAAA    2001:6b0:8::109
+ jabber  1h      A       193.10.5.85
+                 AAAA    2001:6b0:8::85
+ kdc             A       193.10.5.128
+                 AAAA    2001:6b0:8::128
+ lnln            A       193.10.5.84
+ mail            A       193.10.5.111
+                 AAAA    2001:6b0:8::111
+ mm              CNAME   modermodemet
+ modermodemet    A       193.10.5.101
+                 AAAA    2001:6b0:8::101
+ proj            A       193.10.5.108
+                 AAAA    2001:6b0:8::108
+ pwd             CNAME   getpid
+ smtp            A       193.10.5.129
+                 AAAA    2001:6b0:8::129
+ ;webmail        1h      CNAME   banksy.nordberg.se.
+ ;www            CNAME   193.10.5.106
+ www     1h      A       193.10.5.127
+ ;               AAAA    2001:6b0:8::127
 
-root@nanosleep:~# lsblk -o +rota
-NAME                       MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT ROTA
-sda                          8:0    0 931.5G  0 disk                1
-sdb                          8:16   0 111.8G  0 disk                0
-├─sdb1                       8:17   0   512M  0 part  /boot/efi     0
-├─sdb2                       8:18   0   244M  0 part  /boot         0
-└─sdb3                       8:19   0 111.1G  0 part                0
-  └─sdb3_crypt             254:0    0   111G  0 crypt               0
-    ├─nanosleep--vg-root   254:1    0  18.1G  0 lvm   /             0
-    ├─nanosleep--vg-var    254:2    0   6.3G  0 lvm   /var          0
-    ├─nanosleep--vg-swap_1 254:3    0  15.9G  0 lvm   [SWAP]        0
-    ├─nanosleep--vg-tmp    254:4    0   1.1G  0 lvm   /tmp          0
-    └─nanosleep--vg-home   254:5    0  69.6G  0 lvm   /home         0
+ _jabber._tcp            SRV 0 0 5269 jabber
+ _xmpp-server._tcp       SRV 0 0 5269 jabber
+ _jabber-client._tcp     SRV 0 0 5222 jabber
+ _xmpp-client._tcp       SRV 0 0 5222 jabber
+ _jabber-ssl-client._tcp SRV 0 0 5223 jabber
+ _xmpp-ssl-client._tcp   SRV 0 0 5223 jabber
 
-*** installing software
-- golang > 1.11 from buster-backports
-  https://wiki.debian.org/Backports
-  sudo apt edit-sources
-  deb http://deb.debian.org/debian buster-backports main contrib non-free
-  sudo apt update
-  sudo apt -t buster-backports install golang-1.14
+ lndns CNAME banksy.nordberg.se.
+ _ssh._tcp.lndns SRV 0 5 60224 banksy.nordberg.se.
 
-- swtpm, only in unstable as of <2020-10-12 Mon>
-  sudo apt install build-essential devscripts equivs libfuse-dev libglib2.0-dev libgmp-dev expect libtasn1-6-dev socat python3-cryptography python3-setuptools python3-twisted libgnutls28-dev gnutls-bin net-tools gawk softhsm2 libseccomp-dev
+ lntest CNAME banksy.nordberg.se.
+ _ssh._tcp.lntest        SRV 0 5 60226 banksy.nordberg.se.
 
-  git clone https://github.com/stefanberger/libtpms && cd libtpms
-  ./autogen.sh --with-tpm2 --with-openssl --prefix=/usr
-  make && make check && sudo make install
-  cd ..
 
-  git clone https://github.com/stefanberger/swtpm && cd swtpm
-  ./autogen.sh && ./configure --prefix=/usr
-  make && make check
-  sudo make install
+ lists                   NS  ns.nordberg.se.
+ lists                   NS  ns.gmplib.org.
+ lists                   NS  ns.fatburen.org.
+****** [root@lnspam /usr/local/etc/mail/spamassassin]# cat sql.cf
+ user_scores_dsn                 DBI:mysql:horde:127.0.0.1
+ user_scores_sql_username        sa
+ user_scores_sql_password        thblPW
 
-- all other packages for system-transparency (as of <2020-10-12 Mon>)
-  sudo apt install gcc-8 docker.io mercurial gpg qemu-system-x86 make bc mtools dosfstools e2tools parted tree bison flex jq libssl-dev libelf-dev libc6-i386
-  sudo apt install libtspi-dev # trousers, for building Debian
-  sudo apt install curl gnat libncurses5-dev pkgconf
+ bayes_store_module Mail::SpamAssassin::BayesStore::MySQL
+ bayes_sql_dsn                      DBI:mysql:sa:127.0.0.1
+ bayes_sql_username                 sa
+ bayes_sql_password                 thblPW
+ [root@lnspam /usr/local/etc/mail/spamassassin]# cat local.cf
+ # This is the right place to customize your installation of SpamAssassin.
+ # See 'perldoc Mail::SpamAssassin::Conf' for details of what can be
+ # tweaked.
 
-- system configuration for building ST
-  : from ~linus/.profile:
-  [ -d "$HOME/go/bin" ] && PATH="$HOME/go/bin:$PATH"
-  [ -d "/usr/lib/go-1.14/bin" ] && PATH="/usr/lib/go-1.14/bin:$PATH"
-  command -v go > /dev/null && go env -w GO111MODULE=off
+ # Note that user prefs and bayes data are in SQL,  see sql.cf.
 
-  sudo usermod -a -G docker linus
+ report_safe 0
+ lock_method flock
+ required_score 4.5
+ use_bayes 1
+ bayes_auto_learn 1
 
-- for building coreboot images
-  cd stboot/coreboot-firmware
-  git clone https://review.coreboot.org/coreboot && cd coreboot
-  make crossgcc-i386 CPUS=$(nproc)
-  cp -vi ../x11ssh-tf.defconfig .config
-  git submodule update --checkout --init
-  make -C util/ifdtool
-  : get original_vendor_bios_dump.bin from p/st/roms/original-vendor-bios
-  util/ifdtool/ifdtool -x original_vendor_bios_dump.bin
-  mkdir -p 3rdparty/blobs/mainboard/supermicro/x11-lga1151-series
-  cp -iv flashregion_0_flashdescriptor.bin 3rdparty/blobs/mainboard/supermicro/x11-lga1151-series/descriptor.bin
-  cp -iv flashregion_2_intel_me.bin 3rdparty/blobs/mainboard/supermicro/x11-lga1151-series/me.bin
-  make menuconfig
-    : no changes
-  BUILD_TIMELESS=1 make
-  build/cbfstool ./build/coreboot.rom add-payload -r COREBOOT -f ../../mixed-firmware/vmlinuz-linuxboot -n fallback/payload -C "console=ttyS0,115200 ro" -I ../../../stboot/initramfs-linuxboot.cpio.gz
+ # We trust ourself.  127/8 seems to be implied.
+ internal_networks       10.0.1/24 193.10.5.87
+ trusted_networks        10.0.1/24 193.10.5.87
 
-- flashing SPI flash using a CH341 # FIXME: move to st.org
+ trusted_networks 85.17.20.242 2001:1af8:40e0:a007:1:85c5:606b:2c25 # jn
+ trusted_networks 171.25.193.17                                     # mail.dfri.se
 
-  datan# sudo ~linus/usr/src/flashrom/flashrom -p ch341a_spi
-    Found Winbond flash chip "W25Q128.V" (16384 kB, SPI) on ch341a_spi.
+ # MX:es are both internal and trusted
+ #internal_networks       212.247.27.200                # server.fatburen.org
+ #internal_networks       195.17.28.218                 # smtp.swox.se
+ #trusted_networks        212.247.27.200                # server.fatburen.org
+ #trusted_networks        195.17.28.51 195.17.28.218    # king & bang
+ #trusted_networks        194.52.231.20                 # smtp.romab.com
 
-  root@datan:~# ~linus/usr/src/flashrom/flashrom -p ch341a_spi --ifd -i bios -w ~linus/p/st/deployments/2020-10-13-vdse/2020-10-14-coreboot-vdse.rom
-  flashrom v1.2-25-ge0fac2e on Linux 4.9.0-13-amd64 (x86_64)
-  flashrom is free software, get the source code at https://flashrom.org
+ bayes_ignore_header X-Bogosity
+ bayes_ignore_header X-Spam-Flag
+ bayes_ignore_header X-Spam-Status
 
-  Using clock_gettime for delay loops (clk_id: 1, resolution: 1ns).
-  Found Winbond flash chip "W25Q128.V" (16384 kB, SPI) on ch341a_spi.
-  Reading ich descriptor... done.
-  Using region: "bios".
-  Reading old flash chip contents... done.
-  Erasing and writing flash chip... Erase/write done.
-  Verifying flash... VERIFIED.
+ score FH_DATE_PAST_20XX 0.0
+ score RCVD_IN_DNSWL_MED 0.0
+ score RCVD_ILLEGAL_IP 0.0
+****** [root@lnspam /usr/local/etc/mail/spamassassin]# ps axuwww|egrep spam
+ root     1889  0.0  2.7 91868 55708  ??  SsJ   4:58PM   0:10.38 /usr/local/bin/spamd -u spamd -H /var/spool/spamd --allow-tell --sql-config --nouser-config --allowed-ips=10.0.1.2,10.0.1.3 -d -r /var/run/spamd/spamd.pid (perl5.8.9)
+ spamd   21161  0.0  3.1 101628 65168  ??  IJ    8:33AM   0:23.84 spamd child (perl5.8.9)
+ spamd   23795  0.0  3.0 97952 62056  ??  IJ    1:46PM   0:03.25 spamd child (perl5.8.9)
+ mysql    1973  0.0  0.1  5192  1440  p1  IJ    4:58PM   0:00.06 /bin/sh /usr/local/bin/mysqld_safe --defaults-extra-file=/usr/local/mysql/my.cnf --user=mysql --datadir=/usr/local/mysql --pid-file=/usr/local/mysql/lnspam.nordberg.se.pid
+ mysql    2027  0.0  1.8 59908 38656  p1  SJ    4:58PM   1:04.27 /usr/local/libexec/mysqld --defaults-extra-file=/usr/local/mysql/my.cnf --basedir=/usr/local --datadir=/usr/local/mysql --user=mysql --log-error=/usr/local/mysql/lnspam.nordberg.se.err --pid-file=/usr/local/mysql/lnspam.nordberg.se.pid
+ root    25118  0.0  0.1  5924  1244  p1  S+J   4:21PM   0:00.06 egrep spam
+****** jn@9999.se> jag hittar det här i SA-konf:
+ jn@9999.se> trusted_networks 85.17.20.242 2001:1af8:40e0:a007:1:85c5:606b:2c25 # jn
+ jn@9999.se> fortf. aktuellt?
+ (Oct 11 16:22:02) jn@9999.se: De är inaktuella. Byt de där två adresserna i SA till 91.109.21.198 och 2a00:c98:2040:a008:1::198 dvs less.junkmail.se.
+****** [root@lnspam /usr/local/etc/mail/spamassassin]# cat /etc/rc.conf
+ hostname="lnspam.nordberg.se"
+ network_interfaces=""
+ rpcbind_enable="NO"
+ cron_flags="$cron_flags -J 15"
+ syslogd_flags="-ss"
 
-- making an STDATA partition on an HDD # FIXME: move to st.org
-  stboot/coreboot-firmware/make_image.sh
-  dd if=stboot/coreboot-firmware/stdata.img of=/dev/sdb bs=1M
+ postfix_enable="YES"
+ sendmail_enable="NO"
+ sendmail_submit_enable="NO"
+ sendmail_outbound_enable="NO"
+ sendmail_msp_queue_enable="NO"
 
-- don't require TXT # FIXME: move to st.org
-  add to run.config: ST_BOOTBALL_ALLOW_NON_TXT=y
-  
-- power consumption
-  38W booted and idling; 42W halted; 7W powered off
+ sshd_enable="YES"
+ mysql_enable=YES
+ mysql_dbdir="/usr/local/mysql"
 
-- bring up network and sshd on fresh Debian
-  ip link set eno0 up
-  ip addr add 192.168.7.82/24 dev eno0
-  ip route add default via 192.168.7.1 dev eno0
+ clamav_clamd_enable="YES"
+ clamav_freshclam_enable="YES"
+ spamd_enable="YES"
+ # Note: `--daemonize' is given in sa-spamd startup script (as -d).
+ # Add `-D bayes,learn' for more debuggin.
+ # Note that we're using global auto-whitelisting here, in ~spamd/.spamassassin/.
+ # See /usr/local/share/doc/p5-Mail-SpamAssassin/sql/README.awl for a possible cure.
+ spamd_flags="-u spamd -H /var/spool/spamd --allow-tell --sql-config --nouser-config --allowed-ips=10.0.1.2,10.0.1.3"
 
-  ssh-keygen -N '' -t rsa -f /etc/ssh/ssh_host_rsa_key
-  ssh-keygen -N '' -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
-  ssh-keygen -N '' -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
-  systemctl start sshd
-  mkdir /root/.ssh
-  chmod 700 /root/.ssh
-  cat > /root/.ssh/authorized_keys
+ # This setuid-with-sql thing is fine as long as there's a local UNIX user matching.  When there's no user, we see
+ #   Sep 20 23:47:34 lnspam spamd[68472]: spamd: handle_user unable to find user: micke 
+ #   Sep 20 23:47:34 lnspam spamd[68472]: spamd: service unavailable: Error fetching user preferences via SQL at /usr/local/bin/spamd line 2017, <GEN19> line 2. 
+ #spamd_flags="-D bayes,learn --allow-tell --setuid-with-sql --nouser-config --allowed-ips=10.0.1.2"
+****** resources
+ https://svn.apache.org/repos/asf/spamassassin/tags/spamassassin_current_release_3.4.x/sql/README
+ https://wiki.apache.org/spamassassin/UsingSQL
+ /usr/local/share/doc/spamassassin/sql/README
+**** smtp
+- nc.verkligendata.se can relay thanks to being included in
+  mynetworks, which is not what we really want
+  - tried using client-certs but failed with relay reject no matter
+    what
+  - TODO consider cleaning up:
+    - client-certs
+    - ca-certs/nc.verkligendata.se.pem
+    - postconf smtpd_tls_ask_ccert
 
-- cache debs -- debootstrapping *often* fails without a cache
-  - sudo apt install apt-cacher-ng
-  - set http_proxy in build-debian.sh
-    export http_proxy=http://$(ip route | awk '/default/ {print $3}'):3142
+ - FIXED upgrading packages: mail/postfix-tls needs to be built with SASL
+   support and cannot be installed as a package:
+     portmaster -d mail/postfix-tls
+   indications of failure of doing this is that MUA:s are not allowed
+   to send email via smtp.adbc and this is logged:
+     smtp postfix/submission/smtpd.*: warning: smtpd_sasl_auth_enable is true, but SASL support is not compiled in
+   UPDATE <2015-04-02 Thu> postfix-tls no longer exists
+ - FIXED starting services: seen "smtp postfix/master[52983]: fatal: bind
+   2001:6b0:8::129 port 25: Can't assign requested address" when
+   restarting the 'smtp' jail, which i think might be a race with
+   setting the alias on the interface in the host. Conclusion: Always
+   double check that postfix master was started and if not start it
+   manually. If annoying anough, add 'sleep 1' to the startup script or
+   fix the real problem.
+   UPDATE <2015-01-17 Sat>: Fixed through net.inet6.ip6.dad_count=0
+***** setting up milter, dkim and dmarc [1/3]
+ - [X] where should dkim signing happen?
+   - smtp.adbc
+   - opendkim
+     - pkg install milter-opendkim; mkdir /var/run/opendkim; chmod 750 /var/run/opendkim; chgrp postfix /var/run/opendkim
+     - vi /usr/local/etc/mail/opendkim.conf
+     - see [[file:~/p/adb-centralen/doc/HOWTO.dkim][file:~/p/adb-centralen/doc/HOWTO.dkim]] for how to add a domain
 
-  With a cache on the host system (nanosleep), we can also manually
-  fetch files that often fail, ie the large files (like the kernel
-  package).
+ - [ ] where should dkim verification happen?
+   - smtp.adbc?
+   - imap.adbc? will milter coexist with our filtering using
+     /usr/local/bin/mail-filter.sh (implementing one filter by invoking
+     spamc)? can we move away from our own shell script and towards a
+     milter based solution invoking spamc? package spamss-milter
+     http://savannah.nongnu.org/projects/spamass-milt perhaps
+ - [ ] opendmarc
+**** git
+***** git config
+- hooks kept in repo
+--- .gitolite.rc        2018-11-19 06:45:51.727350000 +0100
++++ .gitolite.rc.ORIG   2018-11-19 06:45:07.354559000 +0100
+@@ -79,7 +79,7 @@
+         # or you can use this, which lets you put everything in a subdirectory
+         # called "local" in your gitolite-admin repo.  For a SECURITY WARNING
+         # on this, see http://gitolite.com/gitolite/non-core.html#pushcode
+-        LOCAL_CODE                =>  "$rc{GL_ADMIN_BASE}/local",
++        # LOCAL_CODE                =>  "$rc{GL_ADMIN_BASE}/local",
+ 
+     # ------------------------------------------------------------------
+**** MOVED: imap
+ NOTE: imap moved to kcmp spring 2018
+ - dovecot user is uid=10143,gid=10143 in order to be higher than
+   $(doveconf first_valid_uid) which is 500 by default
+ - /etc/krb5.conf
+ [realms]
+         ADB-CENTRALEN.SE = {
+                 kdc = kdc.adb-centralen.se
+                 admin_server = kdc.adb-centralen.se
+         }
 
-  UPDATE: Caching and HTTPS is not such great. Let's see if a newer
-  debos magically works better? UPDATE: Doesn't work, see below for
-  details.
+ [libdefaults]
+         default_realm = ADB-CENTRALEN.SE
+         kdc_timeout = 10
 
-  For now, fetch over HTTP instead of HTTPS, which seems to solve the
-  download errors. apt-cacher-ng works fine too, see
-  /var/cache/apt-cacher-ng on nanosleep.
+ [logging]
+         entity = SYSLOG
+ - getting a keytab, on kdc.adbc
+ kadmin> ank --random-key host/imap.adb-centralen.se@ADB-CENTRALEN.SE
+ kadmin> ext host/imap.adb-centralen.se@ADB-CENTRALEN.SE
+ the keytab file ends up in /etc/krb5.keytab (welp!)
+ - authentication is done through pam
+   - conf.d/10-auth.conf
+     !include auth-static.conf.ext
+   - conf.d/auth-static.conf.ext
+     passdb {
+       driver = pam
+       args = %s
+     }
+     userdb {
+       driver = static
+       args = uid=dovecot gid=dovecot home=/var/db/imap/%u/imap allow_all_users=yes
+     }
+   - /etc/pam.d/imap
+     auth            required        pam_krb5.so             no_warn try_first_pass no_user_check
+     account         required        pam_permit.so
+   - /etc/pam.d/smtp
+     auth            required        pam_krb5.so             no_warn try_first_pass no_user_check
+     account         required        pam_permit.so
+   - /etc/pam.d/sieve
+     auth            required        pam_krb5.so             no_warn try_first_pass no_user_check
+     account         required        pam_permit.so
+   - See PAM_KRB5(8) for no_user_check and possibly more.
+ - spam
+   - 
+ - /usr/local/bin/mail-filter.sh
+ - backup
+   - restic backup /root /etc /usr/local/etc /var/db/dovecot /var/db/imap
+     - restic has one problem and another potential problem
+       - resource heavy -- 40+ threads iirc, not good for our
+         constrained environment
+       - might be sending _all_ the data for every backup, which in the
+         case of the mail store is a bit too big
+   - borg, see [[*borgbackup%20to%20lnbup@flow.nordu.net][borgbackup to lnbup@flow.nordu.net]] for setup
+ export BORG_REPO=bup@bup_flow:borg/$(hostname)
+ borg create --remote-ratelimit 1024 \
+     -e /var/cache \
+     ::{utcnow:%Y-%m-%d} \
+     /etc /usr/local/etc /root /var
+ borg prune --keep-daily=7 --keep-weekly=4 --keep-monthly=-1 --keep-year=-1
+ borg check
 
-  UPDATE Using http://HTTPS///snapshot.debian.org/archive/debian/.../
-  makes apt-cacher-ng fetch over HTTPS, cf
-  https://www.unix-ag.uni-kl.de/~bloch/acng/html/howtos.html#ssluse
+**** NOT-IN-USE: pics
+ pkg install lighttpd letsencrypt.sh piwigo mariadb100-server # php56
+ [configure lighttpd with mod_alias for .well-known/acme-challenge]
+ [configure letsencrypt.sh, see [[file:~/hints.org::*dehydrated%20/%20letsencrypt.sh][dehydrated / letsencrypt.sh]]]
+ [reconfigure lighttpd with tls using new cert]
 
-- building an OS
-  - Q: use more recent debos? see Dockerfile:
-    RUN git remote add stdebos https://github.com/system-transparency/debos && \
-      git fetch stdebos refs/tags/20191115 && git checkout FETCH_HEAD -b 20191115
-    A: github.com/go-debos/debos doesn't have --chroot
+ service mysql-server start
+ /usr/local/bin/mysql_secure_installation
+ mysql --user=root -p
+   create database db_piwigo;
+   create user 'piwigo'@'localhost' identified by '*REDACTED*';
+   grant all on db_piwigo.* to 'piwigo'@'localhost';
+   flush privileges;
 
-- ssh tor onion
-  root@nanosleep:/etc/tor# cat /var/lib/tor/hs_ssh/hostname 
-  v6m5zwuczulk5lpmigesnybbjq5xzohznyv574yoweaui7m3h7sk2wyd.onion
+ after upgrading piwigo, set date.timezone="Europe/Stockholm" in /usr/local/etc/php.ini
+*** upgrading to 10.3-RELEASE [14/14]
+- [X] base
+- [X] ns.adb-centralen.se
+- [X] resolver.adb-centralen.se
+- [X] kdc.adb-centralen.se
+- [X] creat.adb-centralen.se (webmail)
+- [X] spam.adb-centralen.se
+- [X] imap.adb-centralen.se
+- [X] smtp.adb-centralen.se
+- [X] jabber.adb-centralen.se
+- [X] www.adb-centralen.se
+- [X] ct.adb-centralen.se
+- [X] btc.adb-centralen.se
+- [X] git.adb-centralen.se
+- [X] proj.adb-centralen.se
+*** setting up bhyve and creating a vm
+sysrc -f /boot/loader.conf vmm_load=yes nmdm_load=yes if_bridge_load=yes
+reboot
+pkg install vm-bhyve
+mkdir /var/vm
+sysrc vm_enable=yes vm_dir=/var/vm
+vm init
 
-- rebuilding OS and bootball
-  - cd ~/usr/src/st/system-transparency && operating-system/debian/make_debian.sh
-    Debian kernel created at: operating-system/debian/docker/out/debian-buster-amd64.vmlinuz
-    Debian initramfs created at: operating-system/debian/docker/out/debian-buster-amd64.cpio.gz
-  - scripts/create_and_sign_bootball.sh
-    [INFO]: bootballs/ball-2020-10-29-22-44-35.stboot created and signed with example keys.
+# Create a virtual switch for internet access
+vm switch create public
+vm switch nat public on
+vi /etc/pf.conf	# remove the 'include' statement for pf-nat.conf and insert corresponding nat rule(s) directly in pf.conf
+service pf reload
 
-** kcmp.adb-centralen.se -- SuperMicro 1U @ TUG
+# Set up a DHCP server serving VM's
+pkg install -y dnsmasq
+cat /usr/local/etc/dnsmasq.conf.bhyve >> /usr/local/etc/dnsmasq.conf
+sysrc dnsmasq_enable=yes
+service dnsmasq start
+cat >> /etc/pf.conf <<EOF
+pass in on {tap0 bridge0} proto udp from {0.0.0.0/32 172.16.0.0/24} port bootpc to 255.255.255.255/32 port bootps label "DHCP from VM's"
+pass in on bridge0 from 172.16.0.0/24 to any label "outgoing from bhyve vm's"
+EOF
+service pf reload
+# Missing here is pf rules for NAT:ing publicly reachable addresses into vm's.
+# Here's an example from kallocain.dfri.se:/var/jail/_vm/.config/pf-nat.conf:
+# # NOTE: Translation rules are first-match-wins.
+#
+# # Nat for specific vm's with external addresses first.
+# binat pass on $ext_if from 172.16.1.186 to any -> 171.25.193.138
+# binat pass on $ext_if from 172.16.1.172 to any -> 171.25.193.137 
+#
+# # General NAT for vm's without an external address second.
+# nat on $ext_if from {172.16.1.0/24} to any -> ($ext_if) 
+
+# Download an ISO and set up a default VM template
+vm iso http://ftp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/11.1/FreeBSD-11.1-RELEASE-amd64-disc1.iso
+cp /usr/local/share/examples/vm-bhyve/default.conf /var/vm/.templates/
+
+# Create a VM running FreeBSD
+name=testvm
+vm create $name
+vm -f install $name FreeBSD-11.1-RELEASE-amd64-disc1.iso
+vm console $name # install, reboot
+sysrc vm_list+=$name
+
+# Createa VM running Debian
+pkg install grub2-bhyve
+# TODO
+*** installing HardeneDBSD 11.x-STABLE [0/7]
+- [ ] services upgraded [0/1]
+  - [ ] knot 2.x
+- [ ] full backup, 255G (USB HDD or DFRI host?)
+- [ ] base install
+- [ ] disks mirrored
+  for part in $(seq N); do gmirror label p$part /dev/ada0p$part; done;
+  for part in $(seq N); do gmirror insert p$part /dev/ada1p$part; done;
+  sed -i.bak -e 's|^/dev/ada0\(.*\) +|/dev/mirror/\1/g' fstab
+  gpart bootcode -b /boot/pmbr /dev/ada1
+- [ ] /tmp is tmpfs
+- [ ] jails [0/14]
+  - [ ] ns
+  - [ ] resolver
+  - [ ] kdc
+  - [ ] imap
+  - [ ] spam
+  - [ ] smtp
+  - [ ] proj
+  - [ ] www
+  - [ ] webmail
+  - [ ] jabber
+  - [ ] btc
+  - [ ] git
+  - [ ] le
+  - [ ] ct
+- [ ] secadm
+  example: integriforce { path: "/usr/local/bin/tor", hash: FIXME, type: "sha256", mode: "hard" }
+*** backups
+**** borgbackup to lnbup@flow.nordu.net
+pkg install -y py36-borgbackup
+ssh-keygen -t ed25519 -f ~/.ssh/bup-flow # install public key in lnbup@flow
+cat >> /etc/ssh/ssh_config <<EOF
+Host bup_flow
+        hostname flow.sunet.se
+        port 4722
+        user bup
+        identityfile /root/.ssh/bup-flow
+        verifyhostkeydns no
+echo 'BORG_REPO=bup@bup_flow:borg/$(hostname); export BORG_REPO' >> /root/.profile
+. /root/.profile
+BORG_PASSPHRASE= borg init --encryption keyfile
+# NOTE: copy key file to laptop!
+#       datan$ scp root@host:.config/borg/keys/* ~/p/adb-centralen/bup/keys/
+
+See [[file:~/p/adb-centralen/src/bup.sh]] for how to do a backup.
+**** restic backup on lnbup@flow.nordu.net
+cat >> /etc/ssh/ssh_config <<EOF
+Host bup_flow                                                                                                
+        hostname flow.nordu.net                                                                              
+        port 4722                                                                                            
+        user bup                                                                                             
+        identityfile /root/.ssh/bup-flow                                                                     
+EOF
+
+touch restic.pw.bup_flow; chmod 600 restic.pw.bup_flow
+dd if=/dev/random of=restic.pw.bup_flow bs=32 count=1
+restic -p restic.pw.bup_flow -r sftp:bup_flow:$(hostname) init
+restic -p restic.pw.bup_flow -r sftp:bup_flow:$(hostname) backup \
+    /root /etc /usr/local/etc \
+    /var -e /var/vm -e /var/cache \
+    /jails -e /jails/\*.OFF -e /jails/\*/dev
+
+*** upgrading jails to 10.4 <2018-06-05 Tue> [11/11]
+- [X] 193.10.5.87     ns.adb-centralen.se
+- [X] 193.10.5.125    resolver.adb-centralen.se
+- [X] 193.10.5.128    kdc.adb-centralen.se
+- [X] 193.10.5.85     jabber.adb-centralen.se
+- [X] 193.10.5.108    proj.adb-centralen.se
+- [X] 193.10.5.100    creat.adb-centralen.se webmail
+- [X] 10.0.8.30       spam.adb-centralen.se
+- [X] 193.10.5.129    smtp.adb-centralen.se
+- [X] 193.10.5.127    www.adb-centralen.se web
+- [X] 193.10.5.86     git.adb-centralen.se
+- [X] 10.0.8.15       le
+
+** kcmp.adb-centralen.se (2018-04-02) -- SuperMicro 1U @ TUG
 CPU?; year?
 HardenedBSD 11.2-STABLE installed on 2018-04-24.
 Upgraded to 12 around 2019-08.
@@ -3773,7 +4322,6 @@ iocage fetch -fh False -d ${TOPDIR} -r 12-STABLE
 *** active jails
 **** bdflush -- backup server
 **** bounce -- irc shells
-**** clown -- nextcloud
 **** getgid -- gitolite <2019-09-04 Wed>
 pkg install gitolite
 # /usr/local/share/doc/gitolite/README.txt
@@ -4771,7 +5319,70 @@ nextcloud-tasks-php74-0.12.1
 
 This upgrade took 25 minutes, out of which 6 were spent on the backup.
 
-***** 
+***** Nextcloud 18.0.4 -> 18.0.14 <2021-03-15 Mon>
+In order to get to 20.x, we need to upgrade in steps. At least
+according to [0]. The HBSD ports don't do major versions in separate
+ports so it seems tricky to find latest 18 and latest 19. Therefore,
+we use the builtin upgrade thing, aka the Updater, instead.
+
+One immediate crux is that 'www' cannot write to certain parts of the
+file system:
+
+    drwxr-xr-x  2 root  www  3 May  8  2020 /usr/local/www/nextcloud/updater/
+
+So let's change that. It seems like we have a mix in
+/usr/local/www/nextcloud/ when it comes to ownershiop -- a few files
+and directories are owned by 'www' and the rest by 'root'. It seems
+like we can not be conservative and change as little as possible --
+the update procedure needs to change a lot, so let 'www' own it all:
+
+    [root@clown /usr/local/www/nextcloud]# chown -R www .
+
+[0] https://docs.nextcloud.com/server/21/admin_manual/maintenance/upgrade.html
+***** 18.0.14 -> 19.0.9 <2021-03-15 Mon>
+This is a step towards 21. The Updater button for 19 was found under
+Settings -> Administration -> Overview. Update channel was 'stable'.
+
+A backup was taken before starting the upgrade:
+
+    /root/dump-nextcloud-db.sh
+    BUP_RATE_LIMIT=- /usr/local/bin/my_bup.sh
+
+After the upgrade, database stuff was done:
+
+    occ db:add-missing-indices
+    occ db:add-missing-columns
+    occ db:convert-filecache-bigint
+
+***** 19.0.9 -> 20.0.8 <2021-03-15 Mon>
+Same general comments as for 18 -> 19 apply.
+
+In the web based update thingie, the following occured:
+Checking for update of app "mail" in appstore
+Update app "mail" from appstore
+An error occurred.
+
+Running the upgrade once more fixed the issue:
+
+    cd /usr/local/www/nextcloud
+    su -m www -c "php /usr/local/www/nextcloud/occ upgrade"
+    su -m www -c "php /usr/local/www/nextcloud/occ maintenance:mode --off"
+    su -m www -c "php /usr/local/www/nextcloud/occ upgrade"
+
+After the upgrade, database stuff was done:
+
+    occ db:add-missing-indices
+    occ db:add-missing-primary-keys
+    occ db:convert-filecache-bigint
+
+***** TODO upgrade (most of) packages
+The PHP packages need point release upgrades, and a bunch of other
+packages need smaller upgrades too.
+
+MySQL is at 5.6.48 and needs to go to 8 or higher for Nextcloud 21 to
+be happy. So databases/mysql80-server or databases/mariadb105-server.
+
+
 ***** TODO Enabling MySQL 4-byte support
 - https://docs.nextcloud.com/server/18/admin_manual/configuration_database/mysql_4byte_support.html
 - don't forget `--default-character-set=utf8mb4' to mysqldump
@@ -5094,8 +5705,10 @@ INFO: (wg0) 2018/11/17 17:43:50 Starting wireguard-go version 0.0.20181018
 **** adding a client peer
 NOTE: Maybe use this for listing IP addresses in use:
   cat /usr/local/etc/wireguard/wg0.conf | awk '/AllowedIPs/{print $3, $4}' | sort -n
+Or better:
+  wg show wg0 allowed-ips | sort -t . -k 4 -n
 
-wg set wg0 peer $PUBKEY allowed-ips 10.128.0.${NEXTV4}/32,fd00:128::${NEXTV6}/128
+wg set wg0 peer $PUBKEY allowed-ips 10.128.0.${NEXTIP}/32,fd00:128::${NEXTIP}/128
 wg-quick save wg0
 
 # Restarting wireguard on kcmp is currently (<2020-03-11 Wed>)
@@ -5192,752 +5805,447 @@ nextcloud-tasks-php73-0.9.8    Tasks app for Nextcloud
 [root@nextcloud ~]# pkg search nextcloud-php73
 nextcloud-php73-16.0.0         Personal cloud which runs on your own server
 
-** ioctl.adb-centralen.se -- VM @ kcmp
-fbsd-10.4 installed 2018-04-24
-*** storage
-[root@ioctl /var/jail]# gpart show
-=>       34  587202493  vtbd0  GPT  (280G)
-         34        222         - free -  (111K)
-        256       1024      1  freebsd-boot  (512K)
-       1280  578812672      2  freebsd-ufs  (276G)
-  578813952    8388574      3  freebsd-swap  (4.0G)
-  587202526          1         - free -  (512B)
-[root@ioctl /var/jail]# gpart status
-   Name  Status  Components
-vtbd0p1      OK  vtbd0
-vtbd0p2      OK  vtbd0
-vtbd0p3      OK  vtbd0
-**** pre migration 2018-04-24
-[root@ioctl ~]# date
-Tue Apr 24 11:28:56 CEST 2018
-[root@ioctl ~]# dmesg|egrep ada[01]
-ada0 at ahcich0 bus 0 scbus0 target 0 lun 0
-ada0: <WDC WD1000DHTZ-04N21V0 04.06A00> ATA8-ACS SATA 3.x device
-ada0: Serial Number WD-WX11E83NW836
-ada0: 600.000MB/s transfers (SATA 3.x, UDMA6, PIO 8192bytes)
-ada0: Command Queueing enabled
-ada0: 953869MB (1953525168 512 byte sectors)
-ada0: Previously was known as ad4
-ada1 at ahcich1 bus 0 scbus1 target 0 lun 0
-ada1: <WDC WD1000DHTZ-04N21V0 04.06A00> ATA8-ACS SATA 3.x device
-ada1: Serial Number WD-WXK1E63ARNTM
-ada1: 600.000MB/s transfers (SATA 3.x, UDMA6, PIO 8192bytes)
-ada1: Command Queueing enabled
-ada1: 953869MB (1953525168 512 byte sectors)
-ada1: Previously was known as ad6
-GEOM: ada0: the secondary GPT table is corrupt or invalid.
-GEOM: ada0: using the primary only -- recovery suggested.
-GEOM: ada1: the secondary GPT table is corrupt or invalid.
-GEOM: ada1: using the primary only -- recovery suggested.
-[root@ioctl ~]# gmirror list
-Geom name: gm0
-State: COMPLETE
-Components: 2
-Balance: load
-Slice: 4096
-Flags: NONE
-GenID: 0
-SyncID: 2
-ID: 2061159505
-Providers:
-1. Name: mirror/gm0
-   Mediasize: 1000204885504 (932G)
-   Sectorsize: 512
-   Stripesize: 4096
-   Stripeoffset: 0
-   Mode: r2w2e3
-Consumers:
-1. Name: ada0
-   Mediasize: 1000204886016 (932G)
-   Sectorsize: 512
-   Stripesize: 4096
-   Stripeoffset: 0
-   Mode: r1w1e1
-   State: ACTIVE
-   Priority: 0
-   Flags: DIRTY
-   GenID: 0
-   SyncID: 2
-   ID: 1873935879
-2. Name: ada1
-   Mediasize: 1000204886016 (932G)
-   Sectorsize: 512
-   Stripesize: 4096
-   Stripeoffset: 0
-   Mode: r1w1e1
-   State: ACTIVE
-   Priority: 0
-   Flags: DIRTY
-   GenID: 0
-   SyncID: 2
-   ID: 294104974
-[root@ioctl ~]# gpart list
-Geom name: mirror/gm0
-modified: false
-state: CORRUPT
-fwheads: 255
-fwsectors: 63
-last: 1953525133
-first: 34
-entries: 128
-scheme: GPT
-Providers:
-1. Name: mirror/gm0p1
-   Mediasize: 65536 (64K)
-   Sectorsize: 512
-   Stripesize: 4096
-   Stripeoffset: 0
-   Mode: r0w0e0
-   rawuuid: 9d833eb0-ed7c-11e3-a679-00259071e325
-   rawtype: 83bd6b9d-7f41-11dc-be0b-001560b84f0f
-   label: (null)
-   length: 65536
-   offset: 20480
-   type: freebsd-boot
-   index: 1
-   end: 167
-   start: 40
-2. Name: mirror/gm0p2
-   Mediasize: 996432343040 (928G)
-   Sectorsize: 512
-   Stripesize: 4096
-   Stripeoffset: 0
-   Mode: r1w1e1
-   rawuuid: 9d841299-ed7c-11e3-a679-00259071e325
-   rawtype: 516e7cb6-6ecf-11d6-8ff8-00022d09712b
-   attrib: bootme
-   label: (null)
-   length: 996432343040
-   offset: 86016
-   type: freebsd-ufs
-   index: 2
-   end: 1946157087
-   start: 168
-3. Name: mirror/gm0p3
-   Mediasize: 3772439040 (3.5G)
-   Sectorsize: 512
-   Stripesize: 4096
-   Stripeoffset: 0
-   Mode: r1w1e0
-   rawuuid: 9d849d08-ed7c-11e3-a679-00259071e325
-   rawtype: 516e7cb5-6ecf-11d6-8ff8-00022d09712b
-   label: (null)
-   length: 3772439040
-   offset: 996432429056
-   type: freebsd-swap
-   index: 3
-   end: 1953525132
-   start: 1946157088
-Consumers:
-1. Name: mirror/gm0
-   Mediasize: 1000204885504 (932G)
-   Sectorsize: 512
-   Stripesize: 4096
-   Stripeoffset: 0
-   Mode: r2w2e3
-[root@ioctl ~]# gpart status mirror/gm0
-        Name   Status  Components
-mirror/gm0p1  CORRUPT  mirror/gm0
-mirror/gm0p2  CORRUPT  mirror/gm0
-mirror/gm0p3  CORRUPT  mirror/gm0
-[root@ioctl ~]# gpart show mirror/gm0
-=>        34  1953525100  mirror/gm0  GPT  (932G) [CORRUPT]
-          34           6              - free -  (3.0K)
-          40         128           1  freebsd-boot  (64K)
-         168  1946156920           2  freebsd-ufs  [bootme]  (928G)
-  1946157088     7368045           3  freebsd-swap  (3.5G)
-  1953525133           1              - free -  (512B)
-[root@ioctl ~]# cat /etc/fstab
-# Device        Mountpoint      FStype  Options Dump    Pass#
-/dev/mirror/gm0p2       /               ufs     rw      1       1
-/dev/mirror/gm0p3       none            swap    sw      0       0
-fdesc /dev/fd fdescfs rw 0 0
+**** disabling em1 <2021-01-31 Sun>
+We used to jump on kcmp to get to fcntl. This is now done on
+rs0-2.dfri.net.
 
-*** jail hints
-- upgrading one jail, base and packages:
-  /root/upgrade-jail.sh [-a] [-r RELEASE] JAILNAME
-- upgrading all jails, base and packages:
-  /root/upgrade-all-jails.sh
-- missing libucl when running pkg?
-mv /usr/sbin/pkg /usr/sbin/pkg.OFF
-- creating new jail (rough guide, missing chflags schg)
-cd /jails
-fetch https://ftp.lysator.liu.se/pub/FreeBSD/releases/amd64/amd64/10.3-RELEASE/MANIFEST
-fetch https://ftp.lysator.liu.se/pub/FreeBSD/releases/amd64/amd64/10.3-RELEASE/base.txz
-egrep base MANIFEST 
-sha256 -c e7c4c961694e34b2b60598d9668a185b5de1c6241bedfc4891cd9ea8fbff2dc4 base.txz 
-mkdir pics
-tar xf base.txz -C pics
-touch pics/boot/loader.conf
-cat >> pics/etc/rc.conf <<EOF
-dumpdev="NO"
-syslogd_flags="-C -4 -ss -vv"
-sendmail_enable=NONE
-EOF
-for f in resolv.conf localtime host.conf ; do cp /etc/$f pics/etc/; done
-dd if=/dev/random of=pics/entropy bs=4k count=1
-sysrc jail_list+=pics
-cat >> /etc/jail.conf <<EOF
-pics {
-        host.hostname = "pics.nordberg.se";
-        ip4.addr = "10.0.8.10";
-}
-EOF
-service jail start pics
-jexec pics newaliases
-pkg -j pics install -y bash
-pkg -j pics upgrade -y
-jexec pics pw user mod root -d /root -s /usr/local/bin/bash
-*** jails running on new ioctl, after migration 2018-04-24 [12/13]
-- [X] ns
-- [X] resolver
-- [X] kdc
-- [X] jabber
-- [X] proj
-- [X] webmail
-- [X] imap
-- [X] spam
-- [X] smtp
-- [X] web
-- [X] git
-- [X] le
-- [ ] btc [copied, not started]
-*** jails, details
-**** webmail (creat)
- - after upgrading IMP (TODO: automate this!)
-   cat /usr/local/www/horde/imp/lib/Compose.php | egrep -A 5 'Add a Received header'
-   vi /usr/local/www/horde/imp/lib/Compose.php
-   # Comment out the block that starts with
-   # /* Add a Received header for the hop from browser to server. */
-**** spam
- - <2015-08-26 Wed> installing spamassassin from pkg
-   pkg install spamassassin p5-DBD-mysql # needs p5-DBI
+[root@kcmp ~]# sysrc ifconfig_em1
+ifconfig_em1: inet 10.12.0.20/24
+[root@kcmp ~]# sysrc -d ifconfig_em1
+ifconfig_em1: 
+[root@kcmp ~]# ifconfig em1 down
 
- - HISTORICAL upgrading packages: mail/spamassassin needs to be built with myslq
-   support and cannot be installed as a package
-   portmaster -d mail/spamassassin
-***** configuration
- - /usr/local/share/doc/spamassassin/sql/README
- SpamAssassin will check the global configuration file (ie. any file matching
- /etc/mail/spamassassin/*.cf) for the following settings:
-   user_scores_dsn               DBI:driver:connection
-   user_scores_sql_username      dbusername
-   user_scores_sql_password      dbpassword
- - rc.conf
- spamd_flags="-u spamd -H /var/spool/spamd --allow-tell --sql-config --nouser-config --allowed-ips=smtp.adb-centralen.se,fixme"
-***** notes from moving from banksy
-****** adb-centralen.se, zone
- accept          A       193.10.5.85
-                 AAAA    2001:6b0:8::85
- banksy  1h      A       193.10.5.87
- brk             CNAME   mail
- cadar           A       193.10.5.90
- conference      CNAME   jabber
- creat           A       193.10.5.100
-                 AAAA    2001:6b0:8::100
- dup2            A       193.10.5.98
-                 AAAA    2001:6b0:8::98
- execve          A       193.10.5.89
-                 AAAA    2001:6b0:8::89
- fcntl           A       193.10.5.90
-                 AAAA    2001:6b0:8::90
- getpid          A       193.10.5.77
-                 AAAA    2001:6b0:8::77
- imap            A       193.10.5.124
-                 AAAA    2001:6b0:8::124
- ioctl           A       193.10.5.109
-                 AAAA    2001:6b0:8::109
- jabber  1h      A       193.10.5.85
-                 AAAA    2001:6b0:8::85
- kdc             A       193.10.5.128
-                 AAAA    2001:6b0:8::128
- lnln            A       193.10.5.84
- mail            A       193.10.5.111
-                 AAAA    2001:6b0:8::111
- mm              CNAME   modermodemet
- modermodemet    A       193.10.5.101
-                 AAAA    2001:6b0:8::101
- proj            A       193.10.5.108
-                 AAAA    2001:6b0:8::108
- pwd             CNAME   getpid
- smtp            A       193.10.5.129
-                 AAAA    2001:6b0:8::129
- ;webmail        1h      CNAME   banksy.nordberg.se.
- ;www            CNAME   193.10.5.106
- www     1h      A       193.10.5.127
- ;               AAAA    2001:6b0:8::127
+** nanosleep.adb-centralen.se (2020-10-12) -- NUC @ home
+*** system info
+Debian 10.6 (buster) installed <2020-10-12 Mon>.
 
- _jabber._tcp            SRV 0 0 5269 jabber
- _xmpp-server._tcp       SRV 0 0 5269 jabber
- _jabber-client._tcp     SRV 0 0 5222 jabber
- _xmpp-client._tcp       SRV 0 0 5222 jabber
- _jabber-ssl-client._tcp SRV 0 0 5223 jabber
- _xmpp-ssl-client._tcp   SRV 0 0 5223 jabber
+model name      : Intel(R) Core(TM) i7-7567U CPU @ 3.50GHz
+root@nanosleep:~# cat /proc/cpuinfo | egrep ^proc | wc -l
+4
 
- lndns CNAME banksy.nordberg.se.
- _ssh._tcp.lndns SRV 0 5 60224 banksy.nordberg.se.
+[    1.502390] sd 0:0:0:0: [sda] 1953525168 512-byte logical blocks: (1.00 TB/932 GiB)
+[    1.502246] sd 2:0:0:0: [sdb] 234455040 512-byte logical blocks: (120 GB/112 GiB)
 
- lntest CNAME banksy.nordberg.se.
- _ssh._tcp.lntest        SRV 0 5 60226 banksy.nordberg.se.
+root@nanosleep:~# lsblk -o +rota
+NAME                       MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT ROTA
+sda                          8:0    0 931.5G  0 disk                1
+sdb                          8:16   0 111.8G  0 disk                0
+├─sdb1                       8:17   0   512M  0 part  /boot/efi     0
+├─sdb2                       8:18   0   244M  0 part  /boot         0
+└─sdb3                       8:19   0 111.1G  0 part                0
+  └─sdb3_crypt             254:0    0   111G  0 crypt               0
+    ├─nanosleep--vg-root   254:1    0  18.1G  0 lvm   /             0
+    ├─nanosleep--vg-var    254:2    0   6.3G  0 lvm   /var          0
+    ├─nanosleep--vg-swap_1 254:3    0  15.9G  0 lvm   [SWAP]        0
+    ├─nanosleep--vg-tmp    254:4    0   1.1G  0 lvm   /tmp          0
+    └─nanosleep--vg-home   254:5    0  69.6G  0 lvm   /home         0
 
+*** installing software
+- golang > 1.11 from buster-backports
+  https://wiki.debian.org/Backports
+  sudo apt edit-sources
+  deb http://deb.debian.org/debian buster-backports main contrib non-free
+  sudo apt update
+  sudo apt -t buster-backports install golang-1.14
 
- lists                   NS  ns.nordberg.se.
- lists                   NS  ns.gmplib.org.
- lists                   NS  ns.fatburen.org.
-****** [root@lnspam /usr/local/etc/mail/spamassassin]# cat sql.cf
- user_scores_dsn                 DBI:mysql:horde:127.0.0.1
- user_scores_sql_username        sa
- user_scores_sql_password        thblPW
+- swtpm, only in unstable as of <2020-10-12 Mon>
+  sudo apt install build-essential devscripts equivs libfuse-dev libglib2.0-dev libgmp-dev expect libtasn1-6-dev socat python3-cryptography python3-setuptools python3-twisted libgnutls28-dev gnutls-bin net-tools gawk softhsm2 libseccomp-dev
 
- bayes_store_module Mail::SpamAssassin::BayesStore::MySQL
- bayes_sql_dsn                      DBI:mysql:sa:127.0.0.1
- bayes_sql_username                 sa
- bayes_sql_password                 thblPW
- [root@lnspam /usr/local/etc/mail/spamassassin]# cat local.cf
- # This is the right place to customize your installation of SpamAssassin.
- # See 'perldoc Mail::SpamAssassin::Conf' for details of what can be
- # tweaked.
+  git clone https://github.com/stefanberger/libtpms && cd libtpms
+  ./autogen.sh --with-tpm2 --with-openssl --prefix=/usr
+  make && make check && sudo make install
+  cd ..
 
- # Note that user prefs and bayes data are in SQL,  see sql.cf.
+  git clone https://github.com/stefanberger/swtpm && cd swtpm
+  ./autogen.sh && ./configure --prefix=/usr
+  make && make check
+  sudo make install
 
- report_safe 0
- lock_method flock
- required_score 4.5
- use_bayes 1
- bayes_auto_learn 1
+- all other packages for system-transparency (as of <2020-10-12 Mon>)
+  sudo apt install gcc-8 docker.io mercurial gpg qemu-system-x86 make bc mtools dosfstools e2tools parted tree bison flex jq libssl-dev libelf-dev libc6-i386
+  sudo apt install libtspi-dev # trousers, for building Debian
+  sudo apt install curl gnat libncurses5-dev pkgconf
 
- # We trust ourself.  127/8 seems to be implied.
- internal_networks       10.0.1/24 193.10.5.87
- trusted_networks        10.0.1/24 193.10.5.87
+- system configuration for building ST
+  : from ~linus/.profile:
+  [ -d "$HOME/go/bin" ] && PATH="$HOME/go/bin:$PATH"
+  [ -d "/usr/lib/go-1.14/bin" ] && PATH="/usr/lib/go-1.14/bin:$PATH"
+  command -v go > /dev/null && go env -w GO111MODULE=off
 
- trusted_networks 85.17.20.242 2001:1af8:40e0:a007:1:85c5:606b:2c25 # jn
- trusted_networks 171.25.193.17                                     # mail.dfri.se
+  sudo usermod -a -G docker linus
 
- # MX:es are both internal and trusted
- #internal_networks       212.247.27.200                # server.fatburen.org
- #internal_networks       195.17.28.218                 # smtp.swox.se
- #trusted_networks        212.247.27.200                # server.fatburen.org
- #trusted_networks        195.17.28.51 195.17.28.218    # king & bang
- #trusted_networks        194.52.231.20                 # smtp.romab.com
+- for building coreboot images
+  cd stboot/coreboot-firmware
+  git clone https://review.coreboot.org/coreboot && cd coreboot
+  make crossgcc-i386 CPUS=$(nproc)
+  cp -vi ../x11ssh-tf.defconfig .config
+  git submodule update --checkout --init
+  make -C util/ifdtool
+  : get original_vendor_bios_dump.bin from p/st/roms/original-vendor-bios
+  util/ifdtool/ifdtool -x original_vendor_bios_dump.bin
+  mkdir -p 3rdparty/blobs/mainboard/supermicro/x11-lga1151-series
+  cp -iv flashregion_0_flashdescriptor.bin 3rdparty/blobs/mainboard/supermicro/x11-lga1151-series/descriptor.bin
+  cp -iv flashregion_2_intel_me.bin 3rdparty/blobs/mainboard/supermicro/x11-lga1151-series/me.bin
+  make menuconfig
+    : no changes
+  BUILD_TIMELESS=1 make
+  build/cbfstool ./build/coreboot.rom add-payload -r COREBOOT -f ../../mixed-firmware/vmlinuz-linuxboot -n fallback/payload -C "console=ttyS0,115200 ro" -I ../../../stboot/initramfs-linuxboot.cpio.gz
 
- bayes_ignore_header X-Bogosity
- bayes_ignore_header X-Spam-Flag
- bayes_ignore_header X-Spam-Status
+  For debugging stboot, add `uroot.uinitargs=\"-debug\"` to the argument for `-C`.
 
- score FH_DATE_PAST_20XX 0.0
- score RCVD_IN_DNSWL_MED 0.0
- score RCVD_ILLEGAL_IP 0.0
-****** [root@lnspam /usr/local/etc/mail/spamassassin]# ps axuwww|egrep spam
- root     1889  0.0  2.7 91868 55708  ??  SsJ   4:58PM   0:10.38 /usr/local/bin/spamd -u spamd -H /var/spool/spamd --allow-tell --sql-config --nouser-config --allowed-ips=10.0.1.2,10.0.1.3 -d -r /var/run/spamd/spamd.pid (perl5.8.9)
- spamd   21161  0.0  3.1 101628 65168  ??  IJ    8:33AM   0:23.84 spamd child (perl5.8.9)
- spamd   23795  0.0  3.0 97952 62056  ??  IJ    1:46PM   0:03.25 spamd child (perl5.8.9)
- mysql    1973  0.0  0.1  5192  1440  p1  IJ    4:58PM   0:00.06 /bin/sh /usr/local/bin/mysqld_safe --defaults-extra-file=/usr/local/mysql/my.cnf --user=mysql --datadir=/usr/local/mysql --pid-file=/usr/local/mysql/lnspam.nordberg.se.pid
- mysql    2027  0.0  1.8 59908 38656  p1  SJ    4:58PM   1:04.27 /usr/local/libexec/mysqld --defaults-extra-file=/usr/local/mysql/my.cnf --basedir=/usr/local --datadir=/usr/local/mysql --user=mysql --log-error=/usr/local/mysql/lnspam.nordberg.se.err --pid-file=/usr/local/mysql/lnspam.nordberg.se.pid
- root    25118  0.0  0.1  5924  1244  p1  S+J   4:21PM   0:00.06 egrep spam
-****** jn@9999.se> jag hittar det här i SA-konf:
- jn@9999.se> trusted_networks 85.17.20.242 2001:1af8:40e0:a007:1:85c5:606b:2c25 # jn
- jn@9999.se> fortf. aktuellt?
- (Oct 11 16:22:02) jn@9999.se: De är inaktuella. Byt de där två adresserna i SA till 91.109.21.198 och 2a00:c98:2040:a008:1::198 dvs less.junkmail.se.
-****** [root@lnspam /usr/local/etc/mail/spamassassin]# cat /etc/rc.conf
- hostname="lnspam.nordberg.se"
- network_interfaces=""
- rpcbind_enable="NO"
- cron_flags="$cron_flags -J 15"
- syslogd_flags="-ss"
+- flashing SPI flash using a CH341 # FIXME: move to st.org
 
- postfix_enable="YES"
- sendmail_enable="NO"
- sendmail_submit_enable="NO"
- sendmail_outbound_enable="NO"
- sendmail_msp_queue_enable="NO"
+  datan# sudo ~linus/usr/src/flashrom/flashrom -p ch341a_spi
+    Found Winbond flash chip "W25Q128.V" (16384 kB, SPI) on ch341a_spi.
 
- sshd_enable="YES"
- mysql_enable=YES
- mysql_dbdir="/usr/local/mysql"
+  root@datan:~# ~linus/usr/src/flashrom/flashrom -p ch341a_spi --ifd -i bios -w ~linus/p/st/deployments/2020-10-13-vdse/2020-10-14-coreboot-vdse.rom
+  flashrom v1.2-25-ge0fac2e on Linux 4.9.0-13-amd64 (x86_64)
+  flashrom is free software, get the source code at https://flashrom.org
 
- clamav_clamd_enable="YES"
- clamav_freshclam_enable="YES"
- spamd_enable="YES"
- # Note: `--daemonize' is given in sa-spamd startup script (as -d).
- # Add `-D bayes,learn' for more debuggin.
- # Note that we're using global auto-whitelisting here, in ~spamd/.spamassassin/.
- # See /usr/local/share/doc/p5-Mail-SpamAssassin/sql/README.awl for a possible cure.
- spamd_flags="-u spamd -H /var/spool/spamd --allow-tell --sql-config --nouser-config --allowed-ips=10.0.1.2,10.0.1.3"
+  Using clock_gettime for delay loops (clk_id: 1, resolution: 1ns).
+  Found Winbond flash chip "W25Q128.V" (16384 kB, SPI) on ch341a_spi.
+  Reading ich descriptor... done.
+  Using region: "bios".
+  Reading old flash chip contents... done.
+  Erasing and writing flash chip... Erase/write done.
+  Verifying flash... VERIFIED.
 
- # This setuid-with-sql thing is fine as long as there's a local UNIX user matching.  When there's no user, we see
- #   Sep 20 23:47:34 lnspam spamd[68472]: spamd: handle_user unable to find user: micke 
- #   Sep 20 23:47:34 lnspam spamd[68472]: spamd: service unavailable: Error fetching user preferences via SQL at /usr/local/bin/spamd line 2017, <GEN19> line 2. 
- #spamd_flags="-D bayes,learn --allow-tell --setuid-with-sql --nouser-config --allowed-ips=10.0.1.2"
-****** resources
- https://svn.apache.org/repos/asf/spamassassin/tags/spamassassin_current_release_3.4.x/sql/README
- https://wiki.apache.org/spamassassin/UsingSQL
- /usr/local/share/doc/spamassassin/sql/README
-**** smtp
-- nc.verkligendata.se can relay thanks to being included in
-  mynetworks, which is not what we really want
-  - tried using client-certs but failed with relay reject no matter
-    what
-  - TODO consider cleaning up:
-    - client-certs
-    - ca-certs/nc.verkligendata.se.pem
-    - postconf smtpd_tls_ask_ccert
+- making an STDATA partition on an HDD # FIXME: move to st.org
+  stboot/coreboot-firmware/make_image.sh
+  dd if=stboot/coreboot-firmware/stdata.img of=/dev/sdb bs=1M
 
- - FIXED upgrading packages: mail/postfix-tls needs to be built with SASL
-   support and cannot be installed as a package:
-     portmaster -d mail/postfix-tls
-   indications of failure of doing this is that MUA:s are not allowed
-   to send email via smtp.adbc and this is logged:
-     smtp postfix/submission/smtpd.*: warning: smtpd_sasl_auth_enable is true, but SASL support is not compiled in
-   UPDATE <2015-04-02 Thu> postfix-tls no longer exists
- - FIXED starting services: seen "smtp postfix/master[52983]: fatal: bind
-   2001:6b0:8::129 port 25: Can't assign requested address" when
-   restarting the 'smtp' jail, which i think might be a race with
-   setting the alias on the interface in the host. Conclusion: Always
-   double check that postfix master was started and if not start it
-   manually. If annoying anough, add 'sleep 1' to the startup script or
-   fix the real problem.
-   UPDATE <2015-01-17 Sat>: Fixed through net.inet6.ip6.dad_count=0
-***** setting up milter, dkim and dmarc [1/3]
- - [X] where should dkim signing happen?
-   - smtp.adbc
-   - opendkim
-     - pkg install milter-opendkim; mkdir /var/run/opendkim; chmod 750 /var/run/opendkim; chgrp postfix /var/run/opendkim
-     - vi /usr/local/etc/mail/opendkim.conf
-     - see [[file:~/p/adb-centralen/doc/HOWTO.dkim][file:~/p/adb-centralen/doc/HOWTO.dkim]] for how to add a domain
+- don't require TXT # FIXME: move to st.org
+  add to run.config: ST_BOOTBALL_ALLOW_NON_TXT=y
+  
+- power consumption
+  38W booted and idling; 42W halted; 7W powered off
 
- - [ ] where should dkim verification happen?
-   - smtp.adbc?
-   - imap.adbc? will milter coexist with our filtering using
-     /usr/local/bin/mail-filter.sh (implementing one filter by invoking
-     spamc)? can we move away from our own shell script and towards a
-     milter based solution invoking spamc? package spamss-milter
-     http://savannah.nongnu.org/projects/spamass-milt perhaps
- - [ ] opendmarc
-**** git
-***** git config
-- hooks kept in repo
---- .gitolite.rc        2018-11-19 06:45:51.727350000 +0100
-+++ .gitolite.rc.ORIG   2018-11-19 06:45:07.354559000 +0100
-@@ -79,7 +79,7 @@
-         # or you can use this, which lets you put everything in a subdirectory
-         # called "local" in your gitolite-admin repo.  For a SECURITY WARNING
-         # on this, see http://gitolite.com/gitolite/non-core.html#pushcode
--        LOCAL_CODE                =>  "$rc{GL_ADMIN_BASE}/local",
-+        # LOCAL_CODE                =>  "$rc{GL_ADMIN_BASE}/local",
- 
-     # ------------------------------------------------------------------
-**** MOVED: imap
- NOTE: imap moved to kcmp spring 2018
- - dovecot user is uid=10143,gid=10143 in order to be higher than
-   $(doveconf first_valid_uid) which is 500 by default
- - /etc/krb5.conf
- [realms]
-         ADB-CENTRALEN.SE = {
-                 kdc = kdc.adb-centralen.se
-                 admin_server = kdc.adb-centralen.se
-         }
+- bring up network and sshd on fresh Debian
+  ip link set eno0 up
+  ip addr add 192.168.7.82/24 dev eno0
+  ip route add default via 192.168.7.1 dev eno0
 
- [libdefaults]
-         default_realm = ADB-CENTRALEN.SE
-         kdc_timeout = 10
+  ssh-keygen -N '' -t rsa -f /etc/ssh/ssh_host_rsa_key
+  ssh-keygen -N '' -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
+  ssh-keygen -N '' -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
+  systemctl start sshd
+  mkdir /root/.ssh
+  chmod 700 /root/.ssh
+  cat > /root/.ssh/authorized_keys
 
- [logging]
-         entity = SYSLOG
- - getting a keytab, on kdc.adbc
- kadmin> ank --random-key host/imap.adb-centralen.se@ADB-CENTRALEN.SE
- kadmin> ext host/imap.adb-centralen.se@ADB-CENTRALEN.SE
- the keytab file ends up in /etc/krb5.keytab (welp!)
- - authentication is done through pam
-   - conf.d/10-auth.conf
-     !include auth-static.conf.ext
-   - conf.d/auth-static.conf.ext
-     passdb {
-       driver = pam
-       args = %s
-     }
-     userdb {
-       driver = static
-       args = uid=dovecot gid=dovecot home=/var/db/imap/%u/imap allow_all_users=yes
-     }
-   - /etc/pam.d/imap
-     auth            required        pam_krb5.so             no_warn try_first_pass no_user_check
-     account         required        pam_permit.so
-   - /etc/pam.d/smtp
-     auth            required        pam_krb5.so             no_warn try_first_pass no_user_check
-     account         required        pam_permit.so
-   - /etc/pam.d/sieve
-     auth            required        pam_krb5.so             no_warn try_first_pass no_user_check
-     account         required        pam_permit.so
-   - See PAM_KRB5(8) for no_user_check and possibly more.
- - spam
-   - 
- - /usr/local/bin/mail-filter.sh
- - backup
-   - restic backup /root /etc /usr/local/etc /var/db/dovecot /var/db/imap
-     - restic has one problem and another potential problem
-       - resource heavy -- 40+ threads iirc, not good for our
-         constrained environment
-       - might be sending _all_ the data for every backup, which in the
-         case of the mail store is a bit too big
-   - borg, see [[*borgbackup%20to%20lnbup@flow.nordu.net][borgbackup to lnbup@flow.nordu.net]] for setup
- export BORG_REPO=bup@bup_flow:borg/$(hostname)
- borg create --remote-ratelimit 1024 \
-     -e /var/cache \
-     ::{utcnow:%Y-%m-%d} \
-     /etc /usr/local/etc /root /var
- borg prune --keep-daily=7 --keep-weekly=4 --keep-monthly=-1 --keep-year=-1
- borg check
+- cache debs -- debootstrapping *often* fails without a cache
+  - sudo apt install apt-cacher-ng
+  - set http_proxy in build-debian.sh
+    export http_proxy=http://$(ip route | awk '/default/ {print $3}'):3142
 
-**** NOT-IN-USE: pics
- pkg install lighttpd letsencrypt.sh piwigo mariadb100-server # php56
- [configure lighttpd with mod_alias for .well-known/acme-challenge]
- [configure letsencrypt.sh, see [[file:~/hints.org::*dehydrated%20/%20letsencrypt.sh][dehydrated / letsencrypt.sh]]]
- [reconfigure lighttpd with tls using new cert]
+  With a cache on the host system (nanosleep), we can also manually
+  fetch files that often fail, ie the large files (like the kernel
+  package).
 
- service mysql-server start
- /usr/local/bin/mysql_secure_installation
- mysql --user=root -p
-   create database db_piwigo;
-   create user 'piwigo'@'localhost' identified by '*REDACTED*';
-   grant all on db_piwigo.* to 'piwigo'@'localhost';
-   flush privileges;
+  UPDATE: Caching and HTTPS is not such great. Let's see if a newer
+  debos magically works better? UPDATE: Doesn't work, see below for
+  details.
 
- after upgrading piwigo, set date.timezone="Europe/Stockholm" in /usr/local/etc/php.ini
-*** upgrading to 10.3-RELEASE [14/14]
-- [X] base
-- [X] ns.adb-centralen.se
-- [X] resolver.adb-centralen.se
-- [X] kdc.adb-centralen.se
-- [X] creat.adb-centralen.se (webmail)
-- [X] spam.adb-centralen.se
-- [X] imap.adb-centralen.se
-- [X] smtp.adb-centralen.se
-- [X] jabber.adb-centralen.se
-- [X] www.adb-centralen.se
-- [X] ct.adb-centralen.se
-- [X] btc.adb-centralen.se
-- [X] git.adb-centralen.se
-- [X] proj.adb-centralen.se
-*** setting up bhyve and creating a vm
-sysrc -f /boot/loader.conf vmm_load=yes nmdm_load=yes if_bridge_load=yes
-reboot
-pkg install vm-bhyve
-mkdir /var/vm
-sysrc vm_enable=yes vm_dir=/var/vm
-vm init
+  For now, fetch over HTTP instead of HTTPS, which seems to solve the
+  download errors. apt-cacher-ng works fine too, see
+  /var/cache/apt-cacher-ng on nanosleep.
 
-# Create a virtual switch for internet access
-vm switch create public
-vm switch nat public on
-vi /etc/pf.conf	# remove the 'include' statement for pf-nat.conf and insert corresponding nat rule(s) directly in pf.conf
-service pf reload
+  UPDATE Using http://HTTPS///snapshot.debian.org/archive/debian/.../
+  makes apt-cacher-ng fetch over HTTPS, cf
+  https://www.unix-ag.uni-kl.de/~bloch/acng/html/howtos.html#ssluse
 
-# Set up a DHCP server serving VM's
-pkg install -y dnsmasq
-cat /usr/local/etc/dnsmasq.conf.bhyve >> /usr/local/etc/dnsmasq.conf
-sysrc dnsmasq_enable=yes
-service dnsmasq start
-cat >> /etc/pf.conf <<EOF
-pass in on {tap0 bridge0} proto udp from {0.0.0.0/32 172.16.0.0/24} port bootpc to 255.255.255.255/32 port bootps label "DHCP from VM's"
-pass in on bridge0 from 172.16.0.0/24 to any label "outgoing from bhyve vm's"
-EOF
-service pf reload
-# Missing here is pf rules for NAT:ing publicly reachable addresses into vm's.
-# Here's an example from kallocain.dfri.se:/var/jail/_vm/.config/pf-nat.conf:
-# # NOTE: Translation rules are first-match-wins.
-#
-# # Nat for specific vm's with external addresses first.
-# binat pass on $ext_if from 172.16.1.186 to any -> 171.25.193.138
-# binat pass on $ext_if from 172.16.1.172 to any -> 171.25.193.137 
-#
-# # General NAT for vm's without an external address second.
-# nat on $ext_if from {172.16.1.0/24} to any -> ($ext_if) 
+- building an OS
+  - Q: use more recent debos? see Dockerfile:
+    RUN git remote add stdebos https://github.com/system-transparency/debos && \
+      git fetch stdebos refs/tags/20191115 && git checkout FETCH_HEAD -b 20191115
+    A: github.com/go-debos/debos doesn't have --chroot
 
-# Download an ISO and set up a default VM template
-vm iso http://ftp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/11.1/FreeBSD-11.1-RELEASE-amd64-disc1.iso
-cp /usr/local/share/examples/vm-bhyve/default.conf /var/vm/.templates/
+- ssh tor onion
+  root@nanosleep:/etc/tor# cat /var/lib/tor/hs_ssh/hostname 
+  v6m5zwuczulk5lpmigesnybbjq5xzohznyv574yoweaui7m3h7sk2wyd.onion
 
-# Create a VM running FreeBSD
-name=testvm
-vm create $name
-vm -f install $name FreeBSD-11.1-RELEASE-amd64-disc1.iso
-vm console $name # install, reboot
-sysrc vm_list+=$name
+- rebuilding OS and bootball
+  - cd ~/usr/src/st/system-transparency && operating-system/debian/make_debian.sh
+    Debian kernel created at: operating-system/debian/docker/out/debian-buster-amd64.vmlinuz
+    Debian initramfs created at: operating-system/debian/docker/out/debian-buster-amd64.cpio.gz
+  - scripts/create_and_sign_bootball.sh
+    [INFO]: bootballs/ball-2020-10-29-22-44-35.stboot created and signed with example keys.
 
-# Createa VM running Debian
-pkg install grub2-bhyve
-# TODO
-*** installing HardeneDBSD 11.x-STABLE [0/7]
-- [ ] services upgraded [0/1]
-  - [ ] knot 2.x
-- [ ] full backup, 255G (USB HDD or DFRI host?)
-- [ ] base install
-- [ ] disks mirrored
-  for part in $(seq N); do gmirror label p$part /dev/ada0p$part; done;
-  for part in $(seq N); do gmirror insert p$part /dev/ada1p$part; done;
-  sed -i.bak -e 's|^/dev/ada0\(.*\) +|/dev/mirror/\1/g' fstab
-  gpart bootcode -b /boot/pmbr /dev/ada1
-- [ ] /tmp is tmpfs
-- [ ] jails [0/14]
-  - [ ] ns
-  - [ ] resolver
-  - [ ] kdc
-  - [ ] imap
-  - [ ] spam
-  - [ ] smtp
-  - [ ] proj
-  - [ ] www
-  - [ ] webmail
-  - [ ] jabber
-  - [ ] btc
-  - [ ] git
-  - [ ] le
-  - [ ] ct
-- [ ] secadm
-  example: integriforce { path: "/usr/local/bin/tor", hash: FIXME, type: "sha256", mode: "hard" }
-*** backups
-**** borgbackup to lnbup@flow.nordu.net
-pkg install -y py36-borgbackup
-ssh-keygen -t ed25519 -f ~/.ssh/bup-flow # install public key in lnbup@flow
-cat >> /etc/ssh/ssh_config <<EOF
-Host bup_flow
-        hostname flow.sunet.se
-        port 4722
-        user bup
-        identityfile /root/.ssh/bup-flow
-        verifyhostkeydns no
-echo 'BORG_REPO=bup@bup_flow:borg/$(hostname); export BORG_REPO' >> /root/.profile
-. /root/.profile
-BORG_PASSPHRASE= borg init --encryption keyfile
-# NOTE: copy key file to laptop!
-#       datan$ scp root@host:.config/borg/keys/* ~/p/adb-centralen/bup/keys/
+*** nftables and docker
+We're using ferm, which is stomping on all the rulse set up by
+docker. Here's something which might work:
+- add to ferm.conf: interface docker0 ACCEPT;
+- reload ferm and restart docker
+It seems like there are some initial blocked packets, IN=veth638acea
+OUT= PROTO=UDP SPT=5353 DPT=5353, which looks like DNS. The ST build
+process seems happy enough though, so let's do this for now.
 
-See [[file:~/p/adb-centralen/src/bup.sh]] for how to do a backup.
-**** restic backup on lnbup@flow.nordu.net
-cat >> /etc/ssh/ssh_config <<EOF
-Host bup_flow                                                                                                
-        hostname flow.nordu.net                                                                              
-        port 4722                                                                                            
-        user bup                                                                                             
-        identityfile /root/.ssh/bup-flow                                                                     
-EOF
+The longer term solution might be to use nftables directly instead of
+ferm.
 
-touch restic.pw.bup_flow; chmod 600 restic.pw.bup_flow
-dd if=/dev/random of=restic.pw.bup_flow bs=32 count=1
-restic -p restic.pw.bup_flow -r sftp:bup_flow:$(hostname) init
-restic -p restic.pw.bup_flow -r sftp:bup_flow:$(hostname) backup \
-    /root /etc /usr/local/etc \
-    /var -e /var/vm -e /var/cache \
-    /jails -e /jails/\*.OFF -e /jails/\*/dev
+** kexec.adb-centralen.se (2021-02-01) -- VM @ vm86 for KDC
+virt-install --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
+  --virt-type kvm \
+  --graphics none \
+  --autostart \
+  --extra-args console=ttyS0,115200 \
+  --name kexec.adb-centralen.se --memory 512 --vcpus 1 --disk size=10
 
-*** upgrading jails to 10.4 <2018-06-05 Tue> [11/11]
-- [X] 193.10.5.87     ns.adb-centralen.se
-- [X] 193.10.5.125    resolver.adb-centralen.se
-- [X] 193.10.5.128    kdc.adb-centralen.se
-- [X] 193.10.5.85     jabber.adb-centralen.se
-- [X] 193.10.5.108    proj.adb-centralen.se
-- [X] 193.10.5.100    creat.adb-centralen.se webmail
-- [X] 10.0.8.30       spam.adb-centralen.se
-- [X] 193.10.5.129    smtp.adb-centralen.se
-- [X] 193.10.5.127    www.adb-centralen.se web
-- [X] 193.10.5.86     git.adb-centralen.se
-- [X] 10.0.8.15       le
+KDC database migration:
+old-kdc# kadmin -l dump -d cleartext-dumpfile
+new-kdc# kadmin -l merge cleartext-dumpfile
+
+*** disk failure <2021-10-01 Fri>
+[1404038.716038] ata1.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x6 frozen
+[1404038.716128] ata1.00: failed command: FLUSH CACHE
+[1404038.716199] ata1.00: cmd e7/00:00:00:00:00/00:00:00:00:00/a0 tag 0
+                          res 40/00:01:00:00:00/00:00:00:00:00/a0 Emask 0x4 (timeout)
+[1404038.716270] ata1.00: status: { DRDY }
+[1404043.756049] ata1: link is slow to respond, please be patient (ready=0)
+[1404048.736081] ata1: device not ready (errno=-16), forcing hardreset
+[1404048.736102] ata1: soft resetting link
+[1404048.897001] ata1.00: configured for MWDMA2
+[1404048.897003] ata1.00: retrying FLUSH 0xe7 Emask 0x4
+[1404064.032231] ata1.00: qc timeout (cmd 0xe7)
+[1404064.032233] ata1.00: FLUSH failed Emask 0x4
+[1404069.072260] ata1: link is slow to respond, please be patient (ready=0)
+[1404074.052305] ata1: device not ready (errno=-16), forcing hardreset
+[1404074.052340] ata1: soft resetting link
+[1404074.213096] ata1.00: configured for MWDMA2
+[1404074.213098] ata1.00: retrying FLUSH 0xe7 Emask 0x4
+[1404078.883202] ata1: EH complete
+[1404137.020774] ata1.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x6 frozen
+[1404137.020854] ata1.00: failed command: FLUSH CACHE
+[1404137.020930] ata1.00: cmd e7/00:00:00:00:00/00:00:00:00:00/a0 tag 0
+                          res 40/00:01:00:00:00/00:00:00:00:00/a0 Emask 0x4 (timeout)
+[1404137.021011] ata1.00: status: { DRDY }
+[1404138.400802] ata1: soft resetting link
+[1404138.561144] ata1.01: NODEV after polling detection
+[1404138.561847] ata1.00: configured for MWDMA2
+[1404138.561848] ata1.00: retrying FLUSH 0xe7 Emask 0x4
+[1404138.562026] ata1: EH complete
+
+** btc.adb-centralen.se (2021-04-27) -- VM @ vm86.vdse
+*** bitcoind built from source (tag v0.21.0) in april -21
+From config.log:
+
+It was created by Bitcoin Core configure 0.21.0, which was
+generated by GNU Autoconf 2.69.  Invocation command line was
+
+  $ ./configure BDB_LIBS=-L/home/btc/usr/src/bitcoin/db4/lib -ldb_cxx-4.8 BDB_CFLAGS=-I/home/btc/usr/src/bitcoin/db4/include --prefix=/home/btc/usr --without-qt
+
+From Bash history:
+    5  sh contrib/install_db4.sh $(pwd) || echo db4 build fail # Need db4 since we've got old wallets
+...
+   41  export BDB_PREFIX='/home/btc/usr/src/bitcoin/db4'
+   42  ./configure BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include" --prefix=$HOME/usr --without-qt
+
+*** bitcoind v0.21.0 -> v0.22 <2021-10-01 Fri>
+
+sudo apt install clang libdb-dev libdb++-dev
+sudo -iu btc
+cd usr/src/bitcoin
+git fetch
+git checkout v22.0
+make distclean
+sh autogen.sh
+./configure CXX=clang++ CC=clang --prefix=$HOME/usr --without-qt --with-incompatible-bdb
+make # ~20m
+make install
+
+** tkill.adb-centalen.se (2021-05-11) -- VM @ vm86.vdse for torrenting
+VM setup:
+virt-install --name tkill.adb-centralen.se --memory 1024 --disk size=6 --virt-type kvm --graphics none --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ --extra-args console=ttyS0,115200
+virsh edit tkill.adb-centralen.se   # <interface type='network'>
+virsh net-update default add ip-dhcp-host "<host mac='XXX' name='tkill' ip='192.168.122.XXX />" --config --live
+virsh vol-create-as default tkill.adb-centralen.se.vol1.qcow2 64GB --format qcow2 --prealloc-metadata
+virsh attach-disk tkill.adb-centralen.se /var/lib/libvirt/images/tkill.adb-centralen.se.vol1.qcow2 sdb --config --live
+
+transmission-daemon:
+apt install transmission-daemon
+cat > /etc/sysctl.d/20-transmission.conf 
+net.core.wmem_max = 1048576
+net.core.rmem_max = 4194304
+$EDIT /etc/transmission-daemon/settings.json
+    "rpc-whitelist": "127.0.0.1,10.47.11.*",
+    "rpc-whitelist-enabled": true,
+
+IP filter:
+                tcp dport 51413 accept
+                udp dport 51413 accept
+                ip saddr 10.47.11.0/24 tcp dport 9091 accept
+
+Client setup:
+export TR_AUTH=transmission:transmission
+
+** smtp-02.adb-centralen.se (2021-08-??) -- VM @ kcmp for SMTP
+Debian VM @ kcmp replacing smtp.adbc @ ioctl @ kcmp, to be moved to
+"new kcmp" running Debian.
+
+Running Postfix, (milter-)opendkim (http://opendkim.org/), postgrey (http://postgrey.schweikert.ch/)
+
+- opendkim is packaged for debian (2.11.0~beta2-4)
+- postgrey is packaged for debian (1.36-5.2)
 
 * Verkligen Data
-** membarrier.verkligendata.se -- VM @ vm86 running Jitsi
-- https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-quickstart
-- ports, redirected from vm86
-  setup "$2" tcp 45.141.109.3 192.168.122.184 4723 22
-  setup "$2" tcp 45.141.109.3 192.168.122.184 80
-  setup "$2" tcp 45.141.109.3 192.168.122.184 443
-  setup "$2" udp 45.141.109.3 192.168.122.184 3478
-  setup "$2" tcp 45.141.109.3 192.168.122.184 4443
-  setup "$2" tcp 45.141.109.3 192.168.122.184 5349
-  setup "$2" udp 45.141.109.3 192.168.122.184 10000
+** getrandom.verkligendata.se (2019-12-06) -- rpi3 red+white case at VKG
+- donated to Verkligen Data by Linus
+- used for console access in sto2 DFRI
+- possibly same as "rpi3 B+ 2017, black case"
+- debian buster
+- 45.141.109.2/28 (was 192.168.7.92 when used at home, for NoisyDoide wearout testing)
+- 2a07:5cc0:1:1::2/64
+- hostname: getrandom
+- eth0 MAC b8:27:eb:5f:47:ad
+- uuid(1): 80245f24-1a77-11ea-9dc7-fff0ab2a77b4
+- ?uid ff:eb:5f:47:ad:00:01:00:01:23:f7:fc:db:b8:27:eb:5f:47:ad;
+- blkid
+  /dev/mmcblk0p2: LABEL="RASPIROOT" UUID="b8f2865e-b461-4e9b-b09e-c82747a07acf" TYPE="ext4" PARTUUID="7b658673-02"
+*** ubiqiti installation
+- dl
+curl -LO https://dl.ui.com/unifi/5.12.22/unifi_sysvinit_all.deb
+- compare sha256 sums
+https://community.ui.com/releases/UniFi-Network-Controller-5-12-22/263c8b60-def8-4667-85c3-87a6200a6c9b
 
-** bpf.verkligendata.se -- VM @ vm86.vdse from <2020-10-31 Sat>
-For backups, replacing jail bpf @ brk <2020-10-31 Sat>.
+- install dependencies, except mongodb
+root@rpi3:~# apt install binutils default-jre-headless jsvc
 
-*** network setup
-virsh shutdown bpf.verkligendata.se
-cat >> /etc/libvirt/hooks/qemu <<EOF
+- install package
+root@rpi3:~# dpkg --install unifi_sysvinit_all.deb 
 
-if [ "\${1}" = "bpf.verkligendata.se" ]; then
-  setup "$2" tcp 45.141.109.3 192.168.122.45 4722 22
-fi
-EOF
-systemctl restart libvirtd
+Selecting previously unselected package unifi.
+(Reading database ... 23727 files and directories currently installed.)
+Preparing to unpack unifi_sysvinit_all.deb ...
+Unpacking unifi (5.12.22-12966-1) ...
+dpkg: dependency problems prevent configuration of unifi:
+ unifi depends on mongodb-server (>= 2.4.10) | mongodb-10gen (>= 2.4.14) | mongodb-org-server (>= 2.6.0); however:
+  Package mongodb-server is not installed.
+  Package mongodb-10gen is not installed.
+  Package mongodb-org-server is not installed.
+ unifi depends on mongodb-server (<< 1:3.6.0) | mongodb-10gen (<< 3.6.0) | mongodb-org-server (<< 3.6.0); however:
+  Package mongodb-server is not installed.
+  Package mongodb-10gen is not installed.
+  Package mongodb-org-server is not installed.
 
-*** initial setup of storage and borgbackup
-adduser bup
+dpkg: error processing package unifi (--install):
+ dependency problems - leaving unconfigured
+Processing triggers for systemd (241-7~deb10u1) ...
+Errors were encountered while processing:
+ unifi
 
-pvcreate /dev/sdb
-vgcreate bpf-vg /dev/sdb
-lvcreate --name bpf-bup --extents 100%VG bpf-vg
-mkfs.ext4 /dev/bpf-vg/bpf-bup
-mkdir /var/lib/my_bup; chmod 700 /var/lib/my_bup; chown bup:bup /var/lib/my_bup
-echo /dev/bpf-vg/bpf-bup /var/lib/my_bup ext4 rw,noexec,nosuid,nodev >> /etc/fstab
-mount -a
 
-su - bup
-ssh-keygen -t ed25519 -f ~/.ssh/tmpbup
-cat > ~.ssh/config <<EOF
-Host curbpf
-        port 4722
-        user _bup
-        identityfile ~/.ssh/tmpbup
-        hostname 185.97.32.65 
-EOF
-time rsync -av curbpf:/var/db/my_bup/* /var/lib/my_bup/ # started at 23:25 (sat oct 31 2020)
+https://andyfelong.com/2019/03/mongodb-4-0-6-64-bit-on-raspberry-pi-3/
 
-apt install borgbackup
-cat > ~bup/.ssh/authorized_keys <<EOF
-command="borg serve --restrict-to-path /var/lib/my_bup",no-pty,no-agent-forwarding,no-port-forwarding,no-X11-forwarding,no-user-rc ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ9mlCdnc/Dk+32kvrqytS9jeVrqr3O0JiXnDjILIVDC bup
-command="borg serve --restrict-to-path /var/lib/my_bup",no-pty,no-agent-forwarding,no-port-forwarding,no-X11-forwarding,no-user-rc ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDKEByWU73uSCF154W4ui0b3JdWc8DfaP32zBbYsC8gw flow.ndn
-EOF
-
-**** info
-root@bpf:~# lvdisplay 
-  --- Logical volume ---
-  LV Path                /dev/bpf-vg/bpf-bup
-  LV Name                bpf-bup
-  VG Name                bpf-vg
-  LV UUID                Oa4PHX-eJxw-xeGz-voQC-ocWZ-42u3-VeE1ve
-  LV Write Access        read/write
-  LV Creation host, time bpf, 2020-10-31 23:07:35 +0100
-  LV Status              available
-  # open                 0
-  LV Size                <279.44 GiB
-  Current LE             71536
-  Segments               1
-  Allocation             inherit
-  Read ahead sectors     auto
-  - currently set to     256
-  Block device           254:0
-
-root@bpf:~# df -h /var/lib/my_bup/
-Filesystem                    Size  Used Avail Use% Mounted on
-/dev/mapper/bpf--vg-bpf--bup  275G   65M  261G   1% /var/lib/my_bup
-
-bup@bpf:~$ time rsync -av curbpf:/var/db/my_bup/* /var/lib/my_bup/
-sent 442,374 bytes  received 60,714,910,931 bytes  6,112,796.71 bytes/sec
-total size is 60,698,681,223  speedup is 1.00
-
-real    165m32.206s
-user    4m35.407s
-sys     6m39.046s
-bup@bpf:~$ df -h /var/lib/my_bup/
-Filesystem                    Size  Used Avail Use% Mounted on
-/dev/mapper/bpf--vg-bpf--bup  275G   57G  204G  22% /var/lib/my_bup
-
-** vkg-sw0 -- tp-link TL-SG105E 3.0
-Location: VKG
-IP addr: 192.168.33.1/24
-See [[file:~/verkligen/sysadm/vkg-net/vkg-sw0/vkg-sw0.md][file:~/verkligen/sysadm/vkg-net/vkg-sw0/vkg-sw0.md]]
-
-** vm86.verkligendata.se -- Supermicro 1U with X11SSH-TF
+** vm86.verkligendata.se (2020-10-15) -- Supermicro 1U with X11SSH-TF
+Long term loan from Mullvad.
 ST booting, see branch vdse in the system-transparency repository.
 Also see [[file:~/p/st/st.org::*vm86.vdse][vm86.vdse]] for a lot of details.
+
+*** Hardware
+Mullet 1U MRS-362.12, 8xSATA 2.5", 2x10GbaseT, enkel PSU 600W
+X11SSH-TF-O Xeon H4-Skt uATX, Intel C236
+1 x Intel Xeon E3-1270v6 QuadCore HT
+4 x Samsung 16G DDR4 ECC 2666MHz 1.2V UDIMM
+
+2 x Seagate 2.5" HDD 2TB SATA 6Gb/s 512e
+Device Model:     ST2000NX0253
+Serial Number:    W462J7RZ
+LU WWN Device Id: 5 000c50 0c5103b09
+Firmware Version: SN05
+User Capacity:    2,000,398,934,016 bytes [2.00 TB]
+Sector Sizes:     512 bytes logical, 4096 bytes physical
+Rotation Rate:    7200 rpm
+
+2021-08-18 Two more cheap disks
+2 x Seagate 2.5" HDD 2TB SATA
+Model Family:     Seagate Barracuda 2.5 5400
+Device Model:     ST2000LM015-2E8174
+Serial Number:    WDZVJ2BT
+LU WWN Device Id: 5 000c50 0d63b2a09
+Firmware Version: 0001
+Rotation Rate:    5400 rpm
+
+2021-09-08 another disk, SSD for mirror journaling:
+1 x 2.5" Kingston SSD 240GB
+Device Model:     KINGSTON SA400S37240G
+Serial Number:    50026B7380F7CA33
+LU WWN Device Id: 5 0026b7 380f7ca33
+Firmware Version: S3501103
+
+2021-09-11 Another disk, replacing the (thought to be) broken 2T from 2021-08-18:
+1 x 2.5" Seagate HDD 1TB
+Device Model:     ST1000LM049-2GH172
+Serial Number:    WN94MXJ1
+LU WWN Device Id: 5 000c50 0d67e24cd
+Firmware Version: SDM1
+Rotation Rate:    7200 rpm
+
+*** Setting up two new 2T disks <2021-08-18 Wed>
+fdisk /dev/sdc
+g
+n
+-> Created a new partition 1 of type 'Linux filesystem' and of size 1.8 TiB.
+t
+31
+-> Changed type of partition 'Linux filesystem' to 'Linux LVM'.
+w
+
+pvcreate /dev/sdc1 
+vgextend st-vg /dev/sdc1
+
+Then did the same for /dev/sdd.
+
+root@vm86:~# lvextend -L +1T st-vg/vm-images
+  Extending 2 mirror images.
+  Size of logical volume st-vg/vm-images changed from 1.00 TiB (262144 extents) to 2.00 TiB (524288 extents).
+  Logical volume st-vg/vm-images successfully resized.
+
+root@vm86:~# resize2fs /dev/mapper/st--vg-vm--images
+resize2fs 1.44.5 (15-Dec-2018)
+Filesystem at /dev/mapper/st--vg-vm--images is mounted on /vm-images; on-line resizing required
+old_desc_blocks = 128, new_desc_blocks = 256
+
+root@vm86:~# lvs
+  LV         VG    Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  scratch300 st-vg Mwi-a-m--- 300.00g                                    16.47           
+  st-config  st-vg Mwi-aom---  20.00g                                    100.00          
+  vm-images  st-vg Mwi-aom---   2.00t                                    100.00          
+root@vm86:~# df -h /var/lib/libvirt/
+Filesystem      Size  Used Avail Use% Mounted on
+overlay         2.0T  834G  1.1T  44% /var/lib/libvirt
+
+*** buildling and deploying ST image
+**** old style, based on a fall of 2020 version of repo system-transparency
+Branch vdse/hypervisor of system-transparency based on commit 1f89c0c,
+merged into vdse/hypervisor on 2020-10-17.
+
+ssh linus@nanosleep.adb-centralen.se
+cd usr/src/st/system-transparency
+git checkout vdse/hypervisor
+vi operating-system/debian/docker/debos.yaml
+: update debian, see https://snapshot.debian.org/archive/debian/
+git add operating-system/debian/docker/debos.yaml
+git commit -m "debian -> $newdebianversion"
+operating-system/debian/make_debian.sh
+scripts/create_and_sign_bootball.sh
+for f in bootballs/ball-2021*.stboot; do sha256sum $f; done
+
+root@vm86:~# cat >> /root/.ssh/authorized_keys << EOF
+> ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPyghUNRvRxE/F8azzt6zXeajNRwHbVJYFASuOfyWxkI linus@nanosleep
+> EOF
+root@vm86:~# ./remount-stdata.sh 
+
+linus@nanosleep:~/usr/src/st/system-transparency$ scp -o 'identityfile ~/.ssh/vm86' bootballs/$FNAME.stboot root@vm86.verkligendata.se:/stdata/stboot/bootballs/new/
+
+root@vm86:~# sha256sum /stdata/stboot/bootballs/new/ball-2021-08-17-10-44-41.stboot 
+root@vm86:~# reboot
+
+: console on sigwaitinfo:/dev/ttyUSB1
+
+**** Fall -21 style
+TBD
+
+base it on the st-os-pkg repo?
 
 *** network setup for VM's
 We start out with using an ordinary libvirt "virtual network" (as
@@ -5953,6 +6261,27 @@ They can be mixed and matched too, so that "simple VM's" with zero or
 a few and simple services can be NAT:ed with a port or two being
 forwarded to the VM while others can have their own address through
 the bridge interface.
+
+A note on what can happen when fiddling with restarting VM's and
+poking around in the qemu hooks file (/etc/libvirt/hooks/qemu):
+Something is adding REJECT rules for virbr0, which if they appear
+_before_ rules added by the hook earlier might make those rules become
+null and void. 
+Here's an example of a bad situation for 45.141.110.194:4722 -> 192.168.122.45:22:
+
+root@vm86:~# iptables -vv -n -t nat -L PREROUTING; iptables -vv -n -L FORWARD
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+ 1676  100K DNAT       tcp  --  *      *       0.0.0.0/0            45.141.110.194       tcp dpt:4722 to:192.168.122.45:22
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+  12M   40G ACCEPT     all  --  *      virbr0  0.0.0.0/0            192.168.122.0/24     ctstate RELATED,ESTABLISHED
+5310K 1874M ACCEPT     all  --  virbr0 *       192.168.122.0/24     0.0.0.0/0
+    0     0 ACCEPT     all  --  virbr0 virbr0  0.0.0.0/0            0.0.0.0/0
+ 1045 62596 REJECT     all  --  *      virbr0  0.0.0.0/0            0.0.0.0/0            reject-with icmp-port-unreachable
+    0     0 REJECT     all  --  virbr0 *       0.0.0.0/0            0.0.0.0/0            reject-with icmp-port-unreachable
+16398 3227K ACCEPT     tcp  --  *      virbr0  0.0.0.0/0            192.168.122.45       tcp dpt:22
+    0     0 REJECT     all  --  virbr0 *       0.0.0.0/0            0.0.0.0/0            reject-with icmp-port-unreachable
 
 [1] https://wiki.libvirt.org/page/Networking
 [2] https://wiki.libvirt.org/page/Networking#Forwarding_Incoming_Connections
@@ -6028,148 +6357,1527 @@ vnetN interfaces.
 *** creating a VM, manual style
 <see st.org>
 
-** nc.verkligendata.se -- VM @ Tranquillity
-- VM @ tranquillity; 1 VCPU; 1G RAM; 30G SSD
-- Started 2020-04-06
-*** Installing Nextcloud
-pkg install secadm-kmod secadm nextcloud-php74 apache24 mod_php74 mariadb104-server dehydrated
-service mysql-server onestart
-mysql_secure_installation # unix socket; set root pw; remove anon; no remote root; remove test
+*** system boot
+**** no vm's running, virsh list hanging
+Tried first with
+systemctl restart dm-event
 
-# secadm
-cp sic/www/nextcloud/config/secadm.rules /usr/local/etc/
-sysrc secadm_enable=yes
-service secadm restart
+The following commands are still hanging:
+- virsh list
+- systemctl restart libvirt-guests
+- systemctl restart libvirtd
 
-# Apache
-vi /usr/local/etc/apache24/httpd.conf
-scp sic/www/nextcloud/config/nextcloud.conf sic/www/nextcloud/config/all-http.conf /usr/local/etc/apache24/Includes/
-## NOTE: Edit both files -- they're not generic!
+Found this:
+ 1220 ?        Ss     0:00 /bin/sh /usr/lib/libvirt/libvirt-guests.sh stop
 
-FIXME: memcached
+Killed it:
+root@vm86:~# kill 1220
+root@vm86:~# [  487.334280] libvirt-guests.sh[1288]: libvirt-guests is configured not to start any guests on boot
+[  488.838709] virbr0: port 2(vnet1) entered blocking state
+[  488.844034] virbr0: port 2(vnet1) entered disabled state
+[  488.849399] device vnet1 entered promiscuous mode
+[  488.854208] virbr0: port 2(vnet1) entered blocking state
+[  488.859524] virbr0: port 2(vnet1) entered listening state
+[  490.874626] virbr0: port 2(vnet1) entered learning state
+[  492.890843] virbr0: port 2(vnet1) entered forwarding state
+[  492.896343] virbr0: topology change detected, propagating
 
-# PHP
-cd /usr/local/etc
-ln -s php.ini-production php.ini
-cat <<EOF >> php.ini
-opcache.enable=1
-opcache.enable_cli=1
-opcache.interned_strings_buffer=8
-opcache.max_accelerated_files=10000
-opcache.memory_consumption=128
-opcache.save_comments=1
-opcache.revalidate_freq=1
+We can now restart libvirtd:
+systemctl restart libvirtd
+
+But this is still hanging:
+virsh list
+
+Restarting virtlogd made no difference.
+
+Restarting libvirtd again resolved the issue with hanging 'virsh list', grr!
+
+All vm's came up in state paused though, and after a short wihle,
+everyone except munmap had transitioned to shut off.
+
+*** VM's running on vm86
+*** machine id
+What about setting machine id at boot, from kernel command line?
+systemd.machine_id=
+Yes, this would require a unique bootball per host.
+
+*** vm's misbehaving after vm86 boot 
+Two vm's didn't shut down properly witin the 120s time limit at reboot.
+Then at least two vm's didn't start properly at boot.
+
+- getuid.sigsum.org replied to ping but not ssh, and but after virsh destroy and start
+  it _kinda_ worked, but super super slowly, and eventually stuff started working as normal.
+  no response from console.
+- bpf.verkligendata.se did respond to ping (it's vm86 responding) but no sshd and no console, until
+  virsh destroy + start.
+
+libvirtd reports two errors at startup:  
+
+Sep 06 11:54:58 vm86 libvirtd[724]: libvirt version: 5.0.0, package: 4+deb10u1 (Guido Günther <agx@sigxcpu.org> Thu, 05 Dec 2019 00:22:14 +0100)
+Sep 06 11:54:58 vm86 libvirtd[724]: hostname: vm86
+Sep 06 11:54:58 vm86 libvirtd[724]: End of file while reading data: Input/output error
+Sep 06 12:13:10 vm86 dnsmasq-dhcp[847]: DHCPREQUEST(virbr0) 192.168.122.45 52:54:00:cf:a3:7f
+Sep 06 12:13:10 vm86 dnsmasq-dhcp[847]: DHCPACK(virbr0) 192.168.122.45 52:54:00:cf:a3:7f bpf
+Sep 06 12:16:44 vm86 dnsmasq-dhcp[847]: DHCPREQUEST(virbr0) 192.168.122.234 52:54:00:36:ba:f8
+Sep 06 12:16:44 vm86 dnsmasq-dhcp[847]: DHCPACK(virbr0) 192.168.122.234 52:54:00:36:ba:f8 btc
+Sep 06 12:23:21 vm86 libvirtd[724]: internal error: End of file from qemu monitor
+
+*** IP filtering
+Try this:
+
+nft create table inet tempblock
+nft add chain inet tempblock tempinput "{ type filter hook input priority 0; policy accept; }"
+nft add rule inet tempblock tempinput "iifname eno0 tcp dport {5355, 67} log prefix "tempinput DROP: " level info drop"
+
+*** Weird sluggishness after reboot
+On 2021-09-06 vm86 and especially its VM's behaved strangely for a
+long time, see [[*vm's misbehaving after vm86 boot][vm's misbehaving after vm86 boot]] and the day after a
+hint on why was presented by looking at the output from iostat 10 for
+a while. There's been a lot of mirror syncing going on for the
+vm-images LV the last ~20h or so.
+
+root@vm86:~# date; lvs
+Tue Sep  7 10:13:56 UTC 2021
+  LV         VG    Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  scratch300 st-vg Mwi-a-m--- 300.00g                                    100.00          
+  st-config  st-vg Mwi-aom---  20.00g                                    100.00          
+  vm-images  st-vg Mwi-aom---   2.00t                                    97.27           
+
+This is a plausible reason for VM's to behave weirdly, as described.
+
+One conclusion is that software based mirroring doesn't come for free.
+Faster disks would probably be an improvement.
+
+Update <2021-09-07 Tue>: Clean reboot, ie stopping all VM's and
+verifying that volumes where indeed synced, still resulted in all
+volumes starting at Cpy%Sync 0. And the reason is that our mirrors
+don't have log files on disk!
+
+*** l1tf and IOMMU
+<2021-09-07 Tue> Adding l1tf=full,force and intel_iommu=on
+ST_BOOTBALL_OS_CMDLINE="console=tty0 console=ttyS0,115200n8 rw rdinit=/lib/systemd/systemd l1tf=full,force intel_iommu=on"
+
+The l1tf setting removed 4 out of 8 vCPU's.
+L1 Terminal Fault https://access.redhat.com/security/vulnerabilities/L1TF-perf
+
+The IOMMU made this warning go away:
+# virt-host-validate
+...
+  QEMU: Checking if IOMMU is enabled by kernel                               : WARN (IOMMU appears to be disa
+
+*** Converting mirrors from 'mirror' to 'raid1'
+**** Rehearsing on volume st-vg/scratch300. 
+: raid1 needs an additional extent on both physical disks so we'll have to resize things.
+: We will
+: 1. Break the mirror: lvconvert --mirrors 0 st-vg/scratch300
+: 2. MAYBE? Shrink existing file system: e2fsck -f /dev/mapper/st--vg-scratch300 && resize2fs /dev/mapper/st--vg-scratch300 280G
+: 3. Shrink the LV: lvresize --resizefs --size 280G st-vg/scratch300
+: 4. Convert to 'raid1': lvconvert --type raid1 --mirrors 1 st-vg/scratch300
+
+root@vm86:~# lvdisplay st-vg/scratch300
+  --- Logical volume ---
+  LV Path                /dev/st-vg/scratch300
+  LV Name                scratch300
+  VG Name                st-vg
+  LV UUID                67N7Ep-NFpK-UVjn-VpJR-NpeF-KACx-llhM5X
+  LV Write Access        read/write
+  LV Creation host, time vm86, 2020-11-01 12:42:35 +0100
+  LV Status              available
+  # open                 0
+  LV Size                300.00 GiB
+  Current LE             76800
+  Mirrored volumes       2
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           254:8
+
+root@vm86:~# lvconvert --mirrors 0 st-vg/scratch300
+  Logical volume st-vg/scratch300 converted.
+root@vm86:~# lvdisplay st-vg/scratch300
+  --- Logical volume ---
+  LV Path                /dev/st-vg/scratch300
+  LV Name                scratch300
+  VG Name                st-vg
+  LV UUID                67N7Ep-NFpK-UVjn-VpJR-NpeF-KACx-llhM5X
+  LV Write Access        read/write
+  LV Creation host, time vm86, 2020-11-01 12:42:35 +0100
+  LV Status              available
+  # open                 0
+  LV Size                300.00 GiB
+  Current LE             76800
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           254:8
+root@vm86:~# pvs
+  PV         VG    Fmt  Attr PSize  PFree  
+  /dev/sda2  st-vg lvm2 a--  <1.82t      0 
+  /dev/sdb2  st-vg lvm2 a--  <1.82t 300.00g
+  /dev/sdc1  st-vg lvm2 a--  <1.82t  <1.33t
+  /dev/sdd1  st-vg lvm2 a--  <1.82t  <1.33t
+
+: NOTE: probably not necessary thanks to --resizefs below
+root@vm86:~# e2fsck -f /dev/mapper/st--vg-scratch300
+e2fsck 1.44.5 (15-Dec-2018)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/dev/mapper/st--vg-scratch300: 13/19660800 files (0.0% non-contiguous), 1512760/78643200 blocks
+root@vm86:~# resize2fs /dev/mapper/st--vg-scratch300 280G
+resize2fs 1.44.5 (15-Dec-2018)
+Resizing the filesystem on /dev/mapper/st--vg-scratch300 to 73400320 (4k) blocks.
+The filesystem on /dev/mapper/st--vg-scratch300 is now 73400320 (4k) blocks long.
+
+root@vm86:~# lvresize --resizefs --size 280G st-vg/scratch300
+fsck from util-linux 2.33.1
+/dev/mapper/st--vg-scratch300: clean, 13/18350080 files, 1430472/73400320 blocks
+resize2fs 1.44.5 (15-Dec-2018)
+The filesystem is already 73400320 (4k) blocks long.  Nothing to do!
+
+  Size of logical volume st-vg/scratch300 changed from 300.00 GiB (76800 extents) to 280.00 GiB (71680 extents).
+  Logical volume st-vg/scratch300 successfully resized.
+
+root@vm86:~# lvconvert --type raid1 --mirrors 1 st-vg/scratch300 
+Are you sure you want to convert linear LV st-vg/scratch300 to raid1 with 2 images enhancing resilience? [y/n]: y
+WARNING: ext4 signature detected on /dev/st-vg/scratch300_rmeta_1 at offset 1080. Wipe it? [y/n]: y
+  Wiping ext4 signature on /dev/st-vg/scratch300_rmeta_1.
+  Logical volume st-vg/scratch300 successfully converted.
+
+root@vm86:~# lvdisplay st-vg/scratch300
+  --- Logical volume ---
+  LV Path                /dev/st-vg/scratch300
+  LV Name                scratch300
+  VG Name                st-vg
+  LV UUID                67N7Ep-NFpK-UVjn-VpJR-NpeF-KACx-llhM5X
+  LV Write Access        read/write
+  LV Creation host, time vm86, 2020-11-01 12:42:35 +0100
+  LV Status              available
+  # open                 0
+  LV Size                280.00 GiB
+  Current LE             71680
+  Mirrored volumes       2
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           254:8
+
+root@vm86:~# lvs
+  LV         VG    Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  scratch300 st-vg rwi-a-r--- 280.00g                                    1.12
+  st-config  st-vg Mwi-aom---  20.00g                                    100.00
+  vm-images  st-vg Mwi-aom---   2.00t                                    68.78
+
+**** Converting st-vg/vm-images
+root@vm86:~# mount | egrep vm-images
+/dev/mapper/st--vg-vm--images on /vm-images type ext4 (rw,nosuid,nodev,noexec,relatime)
+overlay on /var/lib/libvirt type overlay (rw,relatime,lowerdir=/var/lib/libvirt,upperdir=/vm-images/var/lib/libvirt,workdir=/vm-images/var/lib/libvirt.overlaywork,x-systemd.requires=/vm-images)
+
+root@vm86:~# df -h /var/lib/libvirt/
+Filesystem      Size  Used Avail Use% Mounted on
+overlay         2.0T  896G  1.1T  47% /var/lib/libvirt
+
+root@vm86:~# lvdisplay st-vg/vm-images
+  --- Logical volume ---
+  LV Path                /dev/st-vg/vm-images
+  LV Name                vm-images
+  VG Name                st-vg
+  LV UUID                spCjFT-nVAT-sLWa-Ec7R-x4Qr-ZAV6-uwxkhq
+  LV Write Access        read/write
+  LV Creation host, time vm86, 2020-10-29 21:34:58 +0100
+  LV Status              available
+  # open                 1
+  LV Size                2.00 TiB
+  Current LE             524288
+  Mirrored volumes       2
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           254:2
+
+root@vm86:~# pvs -v
+  PV         VG    Fmt  Attr PSize  PFree   DevSize PV UUID                               
+  /dev/sda2  st-vg lvm2 a--  <1.82t 300.00g  <1.82t IjikPR-SBc6-GMdk-PbjP-THka-ulSm-3YWkNz
+  /dev/sdb2  st-vg lvm2 a--  <1.82t 300.00g  <1.82t j4mtJI-ouhe-wdtu-2ajM-yPkO-txef-BBBprY
+  /dev/sdc1  st-vg lvm2 a--  <1.82t  <1.33t  <1.82t zG8En8-lkA2-qR1U-mEJu-OvvC-Lhgr-5NaLWw
+  /dev/sdd1  st-vg lvm2 a--  <1.82t  <1.33t  <1.82t I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc
+
+root@vm86:~# virsh list | egrep '^ *[0-9]+' | while read n _; do virsh shutdown $n; done; while virsh list; do sleep 2; done
+
+: wait for all VM's to stop
+
+root@vm86:~# umount /var/lib/libvirt
+root@vm86:~# umount /vm-images
+root@vm86:~# lvconvert --mirrors 0 st-vg/vm-images
+  Logical volume st-vg/vm-images converted.
+root@vm86:~# lvs
+  LV        VG    Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  st-config st-vg Mwi-aom--- 20.00g                                    100.00          
+  vm-images st-vg -wi-a-----  2.00t                                                    
+root@vm86:~# lvconvert --type raid1 --mirrors 1 st-vg/vm-images
+Are you sure you want to convert linear LV st-vg/vm-images to raid1 with 2 images enhancing resilience? [y/n]: y
+WARNING: ext4 signature detected on /dev/st-vg/vm-images_rmeta_0 at offset 1080. Wipe it? [y/n]: y
+  Wiping ext4 signature on /dev/st-vg/vm-images_rmeta_0.
+  Logical volume st-vg/vm-images successfully converted.
+root@vm86:~# lvs
+  LV        VG    Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  st-config st-vg Mwi-aom--- 20.00g                                    100.00          
+  vm-images st-vg rwi-a-r---  2.00t                                    0.00            
+
+: Note the attribute changes: 1: (r)aid, not (M)irrored without initial sync and 7: (r)aid, not (m)irror
+
+root@vm86:~# mount -a
+root@vm86:~# ls /var/lib/libvirt/images/
+brk-bup.qcow2                      membarrier.verkligendata.se.qcow2   stat-db.qcow2
+brk.verkligendata.se.qcow2         munmap.verkligendata.se.qcow2       stat.verkligendata.se-1.qcow2
+btc.adb-centralen.se.blocks.qcow2  nc.verkligendata.se.qcow2.REMOVE    stat.verkligendata.se.qcow2.REMOVE
+btc.adb-centralen.se.qcow2         nc_st.qcow2                         tkill.adb-centralen.se.qcow2
+getuid.sigsum.org.qcow2            nice.verkligendata.se.qcow2.REMOVE  tkill.adb-centralen.se.vol1.qcow2
+kexec.adb-centralen.se.qcow2       pause.sigsum.org.qcow2              vm-base.img
+root@vm86:~# pvs
+  PV         VG    Fmt  Attr PSize  PFree   
+  /dev/sda2  st-vg lvm2 a--  <1.82t <300.00g
+  /dev/sdb2  st-vg lvm2 a--  <1.82t   <1.62t
+  /dev/sdc1  st-vg lvm2 a--  <1.82t   <1.33t
+  /dev/sdd1  st-vg lvm2 a--  <1.82t       0 
+root@vm86:~# vgs
+  VG    #PV #LV #SN Attr   VSize  VFree 
+  st-vg   4   2   0 wz--n- <7.28t <3.24t
+
+*** disk failure on newish HDD, 2021-09-11
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#28 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#28 CDB: Read(10) 28 00 00 00 00 00 00 01 00 00
+Sep 11 04:16:51 vm86 kernel: print_req_error: I/O error, dev sdd, sector 0
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#29 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#29 CDB: Read(10) 28 00 00 00 08 00 00 01 00 00
+Sep 11 04:16:51 vm86 kernel: print_req_error: I/O error, dev sdd, sector 2048
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#6 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#6 CDB: Read(10) 28 00 00 00 00 00 00 01 00 00
+Sep 11 04:16:51 vm86 kernel: print_req_error: I/O error, dev sdd, sector 0
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#7 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#7 CDB: Read(10) 28 00 00 00 08 00 00 01 00 00
+Sep 11 04:16:51 vm86 kernel: print_req_error: I/O error, dev sdd, sector 2048
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#8 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#8 CDB: Read(10) 28 00 00 00 00 00 00 01 00 00
+Sep 11 04:16:51 vm86 kernel: print_req_error: I/O error, dev sdd, sector 0
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#9 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#9 CDB: Read(10) 28 00 00 00 08 00 00 01 00 00
+Sep 11 04:16:51 vm86 kernel: print_req_error: I/O error, dev sdd, sector 2048
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#12 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#12 CDB: Read(10) 28 00 00 00 00 00 00 01 00 00
+Sep 11 04:16:51 vm86 kernel: print_req_error: I/O error, dev sdd, sector 0
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#14 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#14 CDB: Read(10) 28 00 00 00 00 00 00 01 00 00
+Sep 11 04:16:51 vm86 kernel: print_req_error: I/O error, dev sdd, sector 0
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#16 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Sep 11 04:16:51 vm86 kernel: sd 3:0:0:0: [sdd] tag#16 CDB: Read(10) 28 00 00 00 08 00 00 01 00 00
+Sep 11 04:16:51 vm86 kernel: print_req_error: I/O error, dev sdd, sector 2048
+
+root@vm86:~# lsblk
+NAME                           MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                              8:0    0   1.8T  0 disk 
+|-sda1                           8:1    0   767M  0 part /stdata
+`-sda2                           8:2    0   1.8T  0 part 
+  |-st--vg-vm--images_rmeta_0  254:0    0     4M  0 lvm  
+  | `-st--vg-vm--images        254:4    0     2T  0 lvm  /vm-images
+  |-st--vg-vm--images_rimage_0 254:1    0     2T  0 lvm  
+  | `-st--vg-vm--images        254:4    0     2T  0 lvm  /vm-images
+  `-st--vg-st--config_mimage_0 254:5    0    20G  0 lvm  
+    `-st--vg-st--config        254:7    0    20G  0 lvm  /st-config
+sdb                              8:16   0   1.8T  0 disk 
+|-sdb1                           8:17   0   767M  0 part 
+`-sdb2                           8:18   0   1.8T  0 part 
+  |-st--vg-vm--images_rimage_1 254:3    0     2T  0 lvm  
+  | `-st--vg-vm--images        254:4    0     2T  0 lvm  /vm-images
+  `-st--vg-st--config_mimage_1 254:6    0    20G  0 lvm  
+    `-st--vg-st--config        254:7    0    20G  0 lvm  /st-config
+sdc                              8:32   0   1.8T  0 disk 
+`-sdc1                           8:33   0   1.8T  0 part 
+  `-st--vg-vm--images_rimage_0 254:1    0     2T  0 lvm  
+    `-st--vg-vm--images        254:4    0     2T  0 lvm  /vm-images
+sdd                              8:48   0   1.8T  0 disk 
+`-sdd1                           8:49   0   1.8T  0 part 
+  |-st--vg-vm--images_rmeta_1  254:2    0     4M  0 lvm  
+  | `-st--vg-vm--images        254:4    0     2T  0 lvm  /vm-images
+  `-st--vg-vm--images_rimage_1 254:3    0     2T  0 lvm  
+    `-st--vg-vm--images        254:4    0     2T  0 lvm  /vm-images
+sde                              8:64   0 223.6G  0 disk 
+root@vm86:~# lvs
+  Couldn't find device with uuid I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc.
+  WARNING: Couldn't find all devices for LV st-vg/vm-images_rmeta_1 while checking used and assumed devices.
+  WARNING: Couldn't find all devices for LV st-vg/vm-images_rimage_1 while checking used and assumed devices.
+  LV        VG    Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  st-config st-vg Mwi-aom--- 20.00g                                    100.00          
+  vm-images st-vg rwi-aor-p-  2.00t                                    100.00          
+root@vm86:~# pvs
+  Error reading device /dev/sdd at 0 length 512.
+  Error reading device /dev/sdd at 0 length 4096.
+  Error reading device /dev/sdd1 at 0 length 4096.
+  Couldn't find device with uuid I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc.
+  WARNING: Couldn't find all devices for LV st-vg/vm-images_rmeta_1 while checking used and assumed devices.
+  WARNING: Couldn't find all devices for LV st-vg/vm-images_rimage_1 while checking used and assumed devices.
+  PV         VG    Fmt  Attr PSize  PFree   
+  /dev/sda2  st-vg lvm2 a--  <1.82t <300.00g
+  /dev/sdb2  st-vg lvm2 a--  <1.82t   <1.62t
+  /dev/sdc1  st-vg lvm2 a--  <1.82t   <1.33t
+  [unknown]  st-vg lvm2 a-m  <1.82t       0 
+root@vm86:~# vgs
+  Couldn't find device with uuid I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc.
+  WARNING: Couldn't find all devices for LV st-vg/vm-images_rmeta_1 while checking used and assumed devices.
+  WARNING: Couldn't find all devices for LV st-vg/vm-images_rimage_1 while checking used and assumed devices.
+  VG    #PV #LV #SN Attr   VSize  VFree 
+  st-vg   4   2   0 wz-pn- <7.28t <3.24t
+
+root@vm86:~# smartctl -i /dev/sdd
+smartctl 6.6 2017-11-05 r4594 [x86_64-linux-4.19.0-17-amd64] (local build)
+Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+
+Short INQUIRY response, skip product id
+A mandatory SMART command failed: exiting. To continue, add one or more '-T permissive' options.
+
+root@vm86:~# smartctl -i /dev/sdc
+smartctl 6.6 2017-11-05 r4594 [x86_64-linux-4.19.0-17-amd64] (local build)
+Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF INFORMATION SECTION ===
+Model Family:     Seagate Barracuda 2.5 5400
+Device Model:     ST2000LM015-2E8174
+Serial Number:    WDZVJ2BT
+LU WWN Device Id: 5 000c50 0d63b2a09
+Firmware Version: 0001
+User Capacity:    2,000,398,934,016 bytes [2.00 TB]
+Sector Sizes:     512 bytes logical, 4096 bytes physical
+Rotation Rate:    5400 rpm
+Form Factor:      2.5 inches
+Device is:        In smartctl database [for details use: -P show]
+ATA Version is:   ACS-3 T13/2161-D revision 3b
+SATA Version is:  SATA 3.1, 6.0 Gb/s (current: 6.0 Gb/s)
+Local Time is:    Sat Sep 11 04:55:43 2021 UTC
+SMART support is: Available - device has SMART capability.
+SMART support is: Enabled
+
+: After reboot, st-vg/vm-images and st-vg/st-config didn't start properly
+
+root@7c8567255c48:~# vgreduce --removemissing st-vg
+  Couldn't find device with uuid I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc.
+  WARNING: Partial LV vm-images needs to be repaired or removed. 
+  WARNING: Partial LV vm-images_rmeta_1 needs to be repaired or removed. 
+  WARNING: Partial LV vm-images_rimage_1 needs to be repaired or removed. 
+  There are still partial LVs in VG st-vg.
+  To remove them unconditionally use: vgreduce --removemissing --force.
+  WARNING: Proceeding to remove empty missing PVs.
+
+root@7c8567255c48:~# lvdisplay st-vg/vm-images
+  Couldn't find device with uuid I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc.
+  --- Logical volume ---
+  LV Path                /dev/st-vg/vm-images
+  LV Name                vm-images
+  VG Name                st-vg
+  LV UUID                spCjFT-nVAT-sLWa-Ec7R-x4Qr-ZAV6-uwxkhq
+  LV Write Access        read/write
+  LV Creation host, time vm86, 2020-10-29 20:34:58 +0000
+  LV Status              NOT available
+  LV Size                2.00 TiB
+  Current LE             524288
+  Mirrored volumes       2
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+
+root@7c8567255c48:~# lvchange -ay --activationmode degraded st-vg/vm-images
+  Couldn't find device with uuid I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc.
+[ 1262.108494] raid6: sse2x1   gen() 13642 MB/s
+[ 1262.180509] raid6: sse2x1   xor() 10615 MB/s
+[ 1262.252490] raid6: sse2x2   gen() 15961 MB/s
+[ 1262.324490] raid6: sse2x2   xor() 12071 MB/s
+[ 1262.396508] raid6: sse2x4   gen() 19165 MB/s
+[ 1262.468492] raid6: sse2x4   xor() 12924 MB/s
+[ 1262.540494] raid6: avx2x1   gen() 24815 MB/s
+[ 1262.612497] raid6: avx2x1   xor() 20048 MB/s
+[ 1262.684509] raid6: avx2x2   gen() 30423 MB/s
+[ 1262.752496] raid6: avx2x2   xor() 21996 MB/s
+[ 1262.824497] raid6: avx2x4   gen() 37568 MB/s
+[ 1262.896522] raid6: avx2x4   xor() 22344 MB/s
+[ 1262.896522] raid6: using algorithm avx2x4 gen() 37568 MB/s
+[ 1262.896523] raid6: .... xor() 22344 MB/s, rmw enabled
+[ 1262.896523] raid6: using avx2x2 recovery algorithm
+[ 1262.897498] async_tx: api initialized (async)
+[ 1262.898224] xor: automatically using best checksumming function   avx       
+[ 1262.940881] device-mapper: raid: Loading target version 1.14.0
+[ 1262.958535] device-mapper: raid: Failed to read superblock of device at position 1
+[ 1262.969068] md/raid1:mdX: active with 1 out of 2 mirrors
+
+root@7c8567255c48:~# lvdisplay st-vg/vm-images
+  Couldn't find device with uuid I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc.
+  --- Logical volume ---
+  LV Path                /dev/st-vg/vm-images
+  LV Name                vm-images
+  VG Name                st-vg
+  LV UUID                spCjFT-nVAT-sLWa-Ec7R-x4Qr-ZAV6-uwxkhq
+  LV Write Access        read/write
+  LV Creation host, time vm86, 2020-10-29 20:34:58 +0000
+  LV Status              available
+  # open                 0
+  LV Size                2.00 TiB
+  Current LE             524288
+  Mirrored volumes       2
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           254:6
+
+root@7c8567255c48:~# lvs
+  Couldn't find device with uuid I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc.
+  LV        VG    Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  st-config st-vg Mwi-aom--- 20.00g                                    6.64            
+  vm-images st-vg rwi-aor-p-  2.00t                                    100.00          
+
+: NOTE: The 'p' is for "partial"
+
+: 2021-09-11: Bought another disk, inserted and rebooted. 
+: But now the "broken" disk is alive again!
+
+root@7c8567255c48:~# lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   1.8T  0 disk 
+├─sda1   8:1    0   767M  0 part /stdata
+└─sda2   8:2    0   1.8T  0 part 
+sdb      8:16   0   1.8T  0 disk 
+├─sdb1   8:17   0   767M  0 part 
+└─sdb2   8:18   0   1.8T  0 part 
+sdc      8:32   0   1.8T  0 disk 
+└─sdc1   8:33   0   1.8T  0 part 
+sdd      8:48   0   1.8T  0 disk 
+└─sdd1   8:49   0   1.8T  0 part 
+sde      8:64   0 931.5G  0 disk 
+sdf      8:80   0 223.6G  0 disk 
+
+root@7c8567255c48:~# pvs -v
+    There are 2 physical volumes missing.
+  PV         VG    Fmt  Attr PSize  PFree    DevSize PV UUID                               
+  /dev/sda2  st-vg lvm2 a--  <1.82t <300.00g  <1.82t IjikPR-SBc6-GMdk-PbjP-THka-ulSm-3YWkNz
+  /dev/sdb2  st-vg lvm2 a--  <1.82t   <1.62t  <1.82t j4mtJI-ouhe-wdtu-2ajM-yPkO-txef-BBBprY
+  /dev/sdc1  st-vg lvm2 a-m  <1.82t   <1.33t  <1.82t zG8En8-lkA2-qR1U-mEJu-OvvC-Lhgr-5NaLWw
+  /dev/sdd1  st-vg lvm2 a-m  <1.82t       0   <1.82t I4vFZu-7ukh-g9jy-3e1I-gflo-9IVc-CCLAPc
+
+root@7c8567255c48:~# smartctl -H /dev/sdd
+smartctl 6.6 2017-11-05 r4594 [x86_64-linux-4.19.0-17-amd64] (local build)
+Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF READ SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+systemctl rescue
+...
+umount -a
+...
+umount: /var/lib/libvirt: target is busy.
+umount -a
+
+root@vm86:~# vgreduce --removemissing --force st-vg
+[ 1220.072073] md/raid1:mdX: dm-2: rescheduling sector 4294967168
+[ 1220.096079] md/raid1:mdX: Disk failure on dm-2, disabling device.
+[ 1220.096079] md/raid1:mdX: Operation continuing on 1 devices.
+[ 1220.107862] md/raid1:mdX: redirecting sector 4294967168 to other mirror: dm-4
+  Wrote out consistent volume group st-vg.
+
+root@vm86:~# lvs
+  Scan of VG st-vg from /dev/sdc1 found metadata seqno 38 vs previous 39.
+  Scan of VG st-vg from /dev/sdc1 found metadata seqno 38 vs previous 39.
+  WARNING: Volume Group st-vg is not consistent.
+  Scan of VG st-vg from /dev/sdc1 found metadata seqno 38 vs previous 39.
+  WARNING: Inconsistent metadata found for VG st-vg - updating to use version 39
+  WARNING: Removing PV /dev/sdc1 (zG8En8-lkA2-qR1U-mEJu-OvvC-Lhgr-5NaLWw) that no longer belongs to VG st-vg
+  LV        VG    Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  st-config st-vg Mwi-a-m--- 20.00g                                    100.00          
+  vm-images st-vg rwi-a-r-r-  2.00t                                    100.00          
+  temp      temp  -wi-a----- <1.13t                                                    
+
+root@vm86:~# lvconvert --repair st-vg/vm-images
+Attempt to replace failed RAID images (requires full device resync)? [y/n]: y
+[ 2156.113078] device-mapper: raid: Device 0 specified for rebuild; clearing superblock
+[ 2156.121990] md/raid1:mdX: active with 1 out of 2 mirrors
+[ 2156.661582] md: recovery of RAID array mdX
+[ 2156.809073] md/raid1:mdX: active with 1 out of 2 mirrors
+[ 2156.844438] md: mdX: recovery interrupted.
+[ 2157.119201] md: recovery of RAID array mdX
+  Faulty devices in st-vg/vm-images successfully replaced.
+
+root@vm86:~# lvs
+  LV        VG    Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  st-config st-vg Mwi-a-m--- 20.00g                                    100.00          
+  vm-images st-vg rwi-a-r---  2.00t                                    0.08            
+  temp      temp  -wi-a----- <1.13t                                                    
+
+*** Creating a libvirt storage pool
+root@vm86:~# virsh pool-define-as cheapo logical --source-name slow --source-format lvm2 --source-dev /dev/sde
+Pool cheapo defined
+
+root@vm86:~# virsh pool-build cheapo
+Pool cheapo built
+
+root@vm86:~# virsh pool-start cheapo
+Pool cheapo started
+
+root@vm86:~# virsh pool-autostart cheapo
+Pool cheapo marked as autostarted
+
+root@vm86:~# virsh pool-info cheapo
+Name:           cheapo
+UUID:           63667313-2f93-4c0b-aab1-c5c9da0a5172
+State:          running
+Persistent:     yes
+Autostart:      yes
+Capacity:       931.51 GiB
+Allocation:     0.00 B
+Available:      931.51 GiB
+
+root@vm86:~# vgdisplay slow
+  --- Volume group ---
+  VG Name               slow
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  1
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                0
+  Open LV               0
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               931.51 GiB
+  PE Size               4.00 MiB
+  Total PE              238467
+  Alloc PE / Size       0 / 0   
+  Free  PE / Size       238467 / 931.51 GiB
+  VG UUID               mw2z58-i3Oh-NRKs-Ei5B-hJPk-HrB9-B7dqiX
+
+root@vm86:~# pvdisplay /dev/sde
+  --- Physical volume ---
+  PV Name               /dev/sde
+  VG Name               slow
+  PV Size               931.51 GiB / not usable 1.71 MiB
+  Allocatable           yes 
+  PE Size               4.00 MiB
+  Total PE              238467
+  Free PE               238467
+  Allocated PE          0
+  PV UUID               ghr9il-LQKa-NWsp-iiwI-zsHS-CiNm-xyhbv9
+
+*** Creating a volume on the new storage pool, cheapo
+root@vm86:~# virsh vol-create-as cheapo tkill.adb-centralen.se-vol2 280G --format qcow2 
+Vol tkill.adb-centralen.se-vol2 created
+
+root@vm86:~# virsh vol-list cheapo --details                                                                
+
+ Name                          Path                                    Type    Capacity     Allocation
+--------------------------------------------------------------------------------------------------------    
+ tkill.adb-centralen.se-vol2   /dev/slow/tkill.adb-centralen.se-vol2   block   280.00 GiB   280.00 GiB
+
+root@vm86:~# virsh domblklist tkill.adb-centralen.se
+ Target   Source
+---------------------------------------------------------------------
+ hda      /var/lib/libvirt/images/tkill.adb-centralen.se.qcow2
+ sdb      /var/lib/libvirt/images/tkill.adb-centralen.se.vol1.qcow2
+
+root@vm86:~# virsh attach-disk tkill.adb-centralen.se /dev/slow/tkill.adb-centralen.se-vol2 sdc --live --confroot@vm86:~# virsh attach-disk tkill.adb-centralen.se /dev/slow/tkill.adb-centralen.se-vol2 sdc --live --config
+Disk attached successfully
+
+: tkill needed a reboot in order for the new disk to show up
+
+lroot@tkill:~# lsblk
+NAME                 MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                    8:0    0  120G  0 disk 
+└─tkill--vol1-vol1   254:2    0  120G  0 lvm  /var/lib/transmission-daemon/downloads
+sdb                    8:16   0  280G  0 disk 
+sdc                    8:32   0    6G  0 disk 
+├─sdc1                 8:33   0  487M  0 part /boot
+├─sdc2                 8:34   0    1K  0 part 
+└─sdc5                 8:37   0  5.5G  0 part 
+  ├─tkill--vg-root   254:0    0  4.6G  0 lvm  /
+  └─tkill--vg-swap_1 254:1    0  976M  0 lvm  [SWAP]
+root@tkill:~# 
+
+*** Manually blocking some crucial ports
+
+for rs in ip ip6; do
+nft add rule $rs filter INPUT "iifname br0 tcp dport 25 counter reject";
+nft add rule $rs filter INPUT "iifname br0 tcp dport 53 counter reject";
+nft add rule $rs filter INPUT "iifname br0 udp dport 53 counter reject";
+nft add rule $rs filter INPUT "iifname br0 tcp dport 5355 counter reject";
+nft add rule $rs filter INPUT "iifname br0 udp dport 5355 counter reject";
+done
+
+** sigwaitinfo.verkligendata.se (2020-11-19) -- red apu2 @ VKG
+*** install
+https://teklager.se/en/knowledge-base/installing-debian-over-serial-console-apu-board/
+
+SeaBIOS (version rel-1.12.1.3-0-g300e8b70)
+
+Press F10 key now for boot menu
+
+Select boot device:
+
+1. USB MSC Drive SanDisk Ultra Fit 1.00
+2. AHCI/0: Hoodisk SSD ATA-11 Hard-Disk (15272 MiBytes)
+3. Payload [setup]
+4. Payload [memtest]
+
+Debian GNU/Linux installer menu (BIOS mode)
+- press H and Enter for the help menu
+- install console=ttyS0,115200n8
+  or, to debug an installation on SSD
+- rescue console=ttyS0,115200n8
+  - C-a n for next "panel" (installer, shell, shell, log) just like screen
+
+--- or ---
+
+<press TAB for editing the kernel command line, add console=ttyS0,115200n8>
+*** boot
+At the Debian boot menu (GRUB), press E and edit the 'linux' line to
+include console=ttyS0,115200n8.
+
+FIXME: make this permanent by reconfiguring GRUB
+
+*** wireguard
+# Install wireguard
+echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sources.list.d/buster-backports.list
+sudo apt update
+
+# Generate keys, set up server and enable autostart
+umask 077
+wg genkey | tee /etc/wireguard/wg0.priv | wg pubkey > /etc/wireguard/wg0.pub
+chmod 644 /etc/wireguard/wg0.pub
+cat > /etc/wireguard/wg0.conf <<EOF
+[Interface]
+Address = 10.47.11.1
+Address = fd00:47:11::1
+ListenPort = 51820
+PrivateKey = $(</etc/wireguard/wg0.priv)
+EOF
+umask 022
+
+TODO: set up NAT
+
+systemctl enable wg-quick@wg0
+systemctl start wg-quick@wg0
+
+# Add peer
+wg set wg0 peer $PEERPUBKEY allowed-ips 10.47.11.${NEXTV4}/32,fd00:47:11::${NEXTV6}/128
+wg-quick save wg0
+
+*** DHCP
+Leases in /var/lib/misc/dnsmasq.leases
+
+journalctl -eu dnsmasq for log
+
+** bpf.verkligendata.se (2020-10-31) -- VM @ vm86.vdse from <2020-10-31 Sat>
+For backups, replacing jail bpf @ brk <2020-10-31 Sat>.
+
+*** network setup
+virsh shutdown bpf.verkligendata.se
+cat >> /etc/libvirt/hooks/qemu <<EOF
+
+if [ "\${1}" = "bpf.verkligendata.se" ]; then
+  setup "$2" tcp 45.141.109.3 192.168.122.45 4722 22
+fi
+EOF
+systemctl restart libvirtd
+
+*** initial setup of storage and borgbackup
+adduser bup
+
+pvcreate /dev/sdb
+vgcreate bpf-vg /dev/sdb
+lvcreate --name bpf-bup --extents 100%VG bpf-vg
+mkfs.ext4 /dev/bpf-vg/bpf-bup
+mkdir /var/lib/my_bup; chmod 700 /var/lib/my_bup; chown bup:bup /var/lib/my_bup
+echo /dev/bpf-vg/bpf-bup /var/lib/my_bup ext4 rw,noexec,nosuid,nodev >> /etc/fstab
+mount -a
+
+su - bup
+ssh-keygen -t ed25519 -f ~/.ssh/tmpbup
+cat > ~.ssh/config <<EOF
+Host curbpf
+        port 4722
+        user _bup
+        identityfile ~/.ssh/tmpbup
+        hostname 185.97.32.65 
+EOF
+time rsync -av curbpf:/var/db/my_bup/* /var/lib/my_bup/ # started at 23:25 (sat oct 31 2020)
+
+apt install borgbackup
+cat > ~bup/.ssh/authorized_keys <<EOF
+command="borg serve --restrict-to-path /var/lib/my_bup",no-pty,no-agent-forwarding,no-port-forwarding,no-X11-forwarding,no-user-rc ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ9mlCdnc/Dk+32kvrqytS9jeVrqr3O0JiXnDjILIVDC bup
+command="borg serve --restrict-to-path /var/lib/my_bup",no-pty,no-agent-forwarding,no-port-forwarding,no-X11-forwarding,no-user-rc ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDKEByWU73uSCF154W4ui0b3JdWc8DfaP32zBbYsC8gw flow.ndn
 EOF
 
-vi php.ini # memory_limit = 512M
+**** info
+root@bpf:~# lvdisplay 
+  --- Logical volume ---
+  LV Path                /dev/bpf-vg/bpf-bup
+  LV Name                bpf-bup
+  VG Name                bpf-vg
+  LV UUID                Oa4PHX-eJxw-xeGz-voQC-ocWZ-42u3-VeE1ve
+  LV Write Access        read/write
+  LV Creation host, time bpf, 2020-10-31 23:07:35 +0100
+  LV Status              available
+  # open                 0
+  LV Size                <279.44 GiB
+  Current LE             71536
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           254:0
 
-## Data cache is probably fixed by default, but do check.
-# pkg install php74-pecl-APCu
-# config/
-#  'memcache.local' => '\OC\Memcache\APCu',
-vi php.ini # apc.enable_cli = 1
+root@bpf:~# df -h /var/lib/my_bup/
+Filesystem                    Size  Used Avail Use% Mounted on
+/dev/mapper/bpf--vg-bpf--bup  275G   65M  261G   1% /var/lib/my_bup
 
-service apach24 restart
+bup@bpf:~$ time rsync -av curbpf:/var/db/my_bup/* /var/lib/my_bup/
+sent 442,374 bytes  received 60,714,910,931 bytes  6,112,796.71 bytes/sec
+total size is 60,698,681,223  speedup is 1.00
 
-# Letsencrypt
-cat <<EOF > /usr/local/etc/dehydrated/domains.txt
-nc.verkligendata.se
+real    165m32.206s
+user    4m35.407s
+sys     6m39.046s
+bup@bpf:~$ df -h /var/lib/my_bup/
+Filesystem                    Size  Used Avail Use% Mounted on
+/dev/mapper/bpf--vg-bpf--bup  275G   57G  204G  22% /var/lib/my_bup
+
+root@7c8567255c48:~# vgdisplay st-vg
+  --- Volume group ---
+  VG Name               st-vg
+  System ID             
+  Format                lvm2
+  Metadata Areas        4
+  Metadata Sequence No  33
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               0
+  Max PV                0
+  Cur PV                4
+  Act PV                2
+  VG Size               <7.28 TiB
+  PE Size               4.00 MiB
+  Total PE              1907340
+  Alloc PE / Size       1058818 / <4.04 TiB
+  Free  PE / Size       848522 / <3.24 TiB
+  VG UUID               G09MB2-vHXu-mdPk-jczj-rIdx-4Gzr-8q537D
+
+root@7c8567255c48:~# vgchange -aay st-vg
+  Refusing activation of partial LV st-vg/vm-images.  Use '--activationmode partial' to override.
+  1 logical volume(s) in volume group "st-vg" now active
+
+root@7c8567255c48:~# vgextend --restoremissing st-vg /dev/sdd1
+  Volume group "st-vg" successfully extended
+
+root@7c8567255c48:~# vgchange -aay st-vg
+[ 1457.691085] raid6: sse2x1   gen() 15306 MB/s
+[ 1457.763072] raid6: sse2x1   xor() 10730 MB/s
+[ 1457.831103] raid6: sse2x2   gen() 18267 MB/s
+[ 1457.903102] raid6: sse2x2   xor() 12490 MB/s
+[ 1457.975102] raid6: sse2x4   gen() 20761 MB/s
+[ 1458.047084] raid6: sse2x4   xor() 13123 MB/s
+[ 1458.119090] raid6: avx2x1   gen() 29773 MB/s
+[ 1458.191090] raid6: avx2x1   xor() 20634 MB/s
+[ 1458.263089] raid6: avx2x2   gen() 36205 MB/s
+[ 1458.335083] raid6: avx2x2   xor() 23038 MB/s
+[ 1458.407090] raid6: avx2x4   gen() 39225 MB/s
+[ 1458.479090] raid6: avx2x4   xor() 23671 MB/s
+[ 1458.483735] raid6: using algorithm avx2x4 gen() 39225 MB/s
+[ 1458.489599] raid6: .... xor() 23671 MB/s, rmw enabled
+[ 1458.495020] raid6: using avx2x2 recovery algorithm
+[ 1458.500707] async_tx: api initialized (async)
+[ 1458.506083] xor: automatically using best checksumming function   avx       
+[ 1458.525086] device-mapper: raid: Loading target version 1.14.0
+[ 1458.537160] md/raid1:mdX: active with 1 out of 2 mirrors
+[ 1458.907083] md: recovery of RAID array mdX
+  2 logical volume(s) in volume group "st-vg" now active
+
+root@7c8567255c48:~# lvs
+  LV        VG    Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  st-config st-vg Mwi-a-m--- 20.00g                                    100.00          
+  vm-images st-vg rwi-a-r-p-  2.00t                                    6.45            
+
+: After reboot, we're back though:
+
+root@7c8567255c48:~# lvs
+[  105.838013] device-mapper: uevent: version 1.0.3
+[  105.843274] device-mapper: ioctl: 4.39.0-ioctl (2018-04-03) initialised: dm-devel@redhat.com
+  LV        VG    Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  st-config st-vg Mwi---m--- 20.00g                                                    
+  vm-images st-vg rwi---r-p-  2.00t                                                    
+root@7c8567255c48:~# vgs
+  VG    #PV #LV #SN Attr   VSize  VFree 
+  st-vg   4   2   0 wz-pn- <7.28t <3.24t
+root@7c8567255c48:~# pvs
+  PV         VG    Fmt  Attr PSize  PFree   
+  /dev/sda2  st-vg lvm2 a--  <1.82t <300.00g
+  /dev/sdb2  st-vg lvm2 a--  <1.82t   <1.62t
+  /dev/sdc1  st-vg lvm2 a-m  <1.82t   <1.33t
+  /dev/sdd1  st-vg lvm2 a--  <1.82t       0 
+
+** membarrier.verkligendata.se (2020-11-15) -- VM @ vm86 running Jitsi
+- https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-quickstart
+
+*** disk error <2021-10-01 Fri>
+[1576010.860427] ata1.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x6 frozen
+[1576010.860522] ata1.00: failed command: FLUSH CACHE
+[1576010.860600] ata1.00: cmd e7/00:00:00:00:00/00:00:00:00:00/a0 tag 0
+                          res 40/00:01:00:00:00/00:00:00:00:00/a0 Emask 0x4 (timeout)
+[1576010.860694] ata1.00: status: { DRDY }
+[1576015.904441] ata1: link is slow to respond, please be patient (ready=0)
+[1576020.888504] ata1: device not ready (errno=-16), forcing hardreset
+[1576020.888524] ata1: soft resetting link
+[1576021.049469] ata1.00: configured for MWDMA2
+[1576021.049471] ata1.00: retrying FLUSH 0xe7 Emask 0x4
+[1576036.176657] ata1.00: qc timeout (cmd 0xe7)
+[1576036.176659] ata1.00: FLUSH failed Emask 0x4
+[1576041.216662] ata1: link is slow to respond, please be patient (ready=0)
+[1576046.196683] ata1: device not ready (errno=-16), forcing hardreset
+[1576046.196704] ata1: soft resetting link
+[1576046.357640] ata1.00: configured for MWDMA2
+[1576046.357641] ata1.00: retrying FLUSH 0xe7 Emask 0x4
+[1576061.108734] ata1: EH complete
+
+** munmap.verkligendata.se (2020-11-29) -- MUD for scoutlokalen.se
+vm86# virt-install --name munmap.verkligendata.se --memory 1024 --vcpus 2 --disk size=30 --graphics none --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ --extra-args console=ttyS0,115200 --virt-type kvm --autostart
+
+munmap# cat > /etc/network/interfaces.d/ens2 <<EOF
+allow-hotplug ens2
+iface ens2 inet static
+        address 45.141.110.197/28
+        gateway 45.141.110.193
+
+iface ens2 inet6 static
+        address 2a07:5cc0:1:1::197/64
+        gateway 2a07:5cc0:1:1::1
 EOF
-sysrc -f /etc/periodic.conf weekly_dehydrated_enable=yes weekly_dehydrated_user="_letsencrypt"
+munmap# systemctl restart ifup@ens2
 
-# Nextcloud
-config/config.php
-# NOTE: should have added `--data-dir /var/db/nextcloud` to the following command:
-cd /usr/local/www/nextcloud && su -m www -c "php ./occ maintenance:install --database mysql --database-name nextcloud --database-user root --admin-user admin38"
-config/config.php
+datan$ ./addhost -l munmap.verkligendata.se
 
-FIXME: email
+*** install evennia
+apt install -y python3-venv python3-setuptools python3-dev gettext
+adduser --disabled-password evennia
+su - evennia
+mkdir skogsmannen
+cd skogsmannen
+git clone -b v0.9.5 https://github.com/evennia/evennia.git
+python3.7 -m venv smenv
+. smenv/bin/activate
+pip install -e evennia
+evennia --init skogsmannen
+(cd evennia/evennia && django-admin compilemessages)
+cd skogsmannen
+vi server/conf/settings.py
+evennia migrate
+evennia start
 
-# Autostart
-sysrc apache24_enable=yes mysql_enable=yes
-service mysql-server start
-service apache24 start
+# FIXME: can't get this to work; use crontab @reboot?
+cat | systemctl --user --fixme <<EOF
+[Unit]
+Description=Skogsmannen MUD
+After=network.target
 
-# Configure NextCloud
-- secure the admin account
-  - install app "Two-Factor U2F"
-  - save backup codes and add U2F device
-- fix up the db
-  - su -m www -c "php /usr/local/www/nextcloud/occ db:add-missing-indices"
-  - su -m www -c "php /usr/local/www/nextcloud/occ db:convert-filecache-bigint"
+[Service]
+Type=simple
+ExecStart= $HOME/skogsmannen/smenv/bin/evennia --gamedir $HOME/skogsmannen/skogsmannen start
 
-** brk.verkligendata.se -- VM @ Tranquillity until <2020-10-31 Sat>
-- VM at tranquillity.se
-   v4: 185.97.32.63/24
-   v6: 2a00:66c0:1:1::63/64
-   interface: vtnet0
-   dns: 185.97.32.6
-   def v4 gw: 185.97.32.1
-   def v6 gw: 2a00:66c0:1:1::1
-*** extra available blocks
-**** 185.97.32.64/28
-     64
-     65 bpf
-     66 recv
-     67 pread
-     68 wait
-     79
-**** 2a00:66c0:1:1::64/124
-     64
-     65 bpf
-     66 recv
-     67 pread
-     68 wait
-     79
-** getrandom.verkligendata.se -- rpi3 red+white case at VKG
-- donated by Linus
-- used for ST-booting and power consumption monitoring at Verkligen Kocksgatan (VKG)
-- possibly same as "rpi3 B+ 2017, black case"
-- debian buster
-- 45.141.109.2/28 (was 192.168.7.92 when used at home, for NoisyDoide wearout testing)
-- 2a07:5cc0:1:1::2/64
-- hostname: getrandom
-- eth0 MAC b8:27:eb:5f:47:ad
-- uuid(1): 80245f24-1a77-11ea-9dc7-fff0ab2a77b4
-- ?uid ff:eb:5f:47:ad:00:01:00:01:23:f7:fc:db:b8:27:eb:5f:47:ad;
-- blkid
-  /dev/mmcblk0p2: LABEL="RASPIROOT" UUID="b8f2865e-b461-4e9b-b09e-c82747a07acf" TYPE="ext4" PARTUUID="7b658673-02"
-*** ubiqiti installation
-- dl
-curl -LO https://dl.ui.com/unifi/5.12.22/unifi_sysvinit_all.deb
-- compare sha256 sums
-https://community.ui.com/releases/UniFi-Network-Controller-5-12-22/263c8b60-def8-4667-85c3-87a6200a6c9b
+** stat.verkligendata.se (2021-03-17) -- VM @ vm86 for stlog-poc
+*** VM setup
+virt-install --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
+  --virt-type kvm \
+  --graphics none \
+  --extra-args console=ttyS0,115200 \
+  --autostart \
+  --name stat.verkligendata.se --memory 2048 --vcpus 4 --disk size=10
 
-- install dependencies, except mongodb
-root@rpi3:~# apt install binutils default-jre-headless jsvc
+virsh vol-create-as default stat-db.qcow2 30GB --format qcow2 --prealloc-metadata
+virsh attach-disk stat.verkligendata.se /var/lib/libvirt/images/stat-db.qcow2 sdb --live --config
 
-- install package
-root@rpi3:~# dpkg --install unifi_sysvinit_all.deb 
+# NOTE: we should maybe have created a new storage pool, virsh pool-create, but doesn't that need its own lvm volume group?
+#   lvcreate --name stat-db --size 30G --type mirror --mirrors 1 --mirrorlog core --nosync st-vg
+#   virsh pool-create-as stat-db-pool logical --source-name /dev/st-vg/stat-db
+#   -> error: unsupported configuration: cannot find logical volume group name '/dev/st-vg/stat-db'
 
-Selecting previously unselected package unifi.
-(Reading database ... 23727 files and directories currently installed.)
-Preparing to unpack unifi_sysvinit_all.deb ...
-Unpacking unifi (5.12.22-12966-1) ...
-dpkg: dependency problems prevent configuration of unifi:
- unifi depends on mongodb-server (>= 2.4.10) | mongodb-10gen (>= 2.4.14) | mongodb-org-server (>= 2.6.0); however:
-  Package mongodb-server is not installed.
-  Package mongodb-10gen is not installed.
-  Package mongodb-org-server is not installed.
- unifi depends on mongodb-server (<< 1:3.6.0) | mongodb-10gen (<< 3.6.0) | mongodb-org-server (<< 3.6.0); however:
-  Package mongodb-server is not installed.
-  Package mongodb-10gen is not installed.
-  Package mongodb-org-server is not installed.
+*** storage setup in VM
+pvcreate /dev/sdb
+vgcreate stat-db-vg /dev/sdb
+lvcreate --name db -l 100%FREE stat-db-vg
+mkfs.ext4 /dev/mapper/stat--db--vg-db
+mkdir /var/db
+printf "UUID=%s\t/var/db\text4\tdefaults\t0\t2\n" $(lsblk -no UUID /dev/mapper/stat--db--vg-db) >> /etc/fstab
+mount /var/db
 
-dpkg: error processing package unifi (--install):
- dependency problems - leaving unconfigured
-Processing triggers for systemd (241-7~deb10u1) ...
-Errors were encountered while processing:
- unifi
+root@stat:~# df -h /var/db
+Filesystem                   Size  Used Avail Use% Mounted on
+/dev/mapper/stat--db--vg-db   28G   45M   26G   1% /var/db
+
+*** trillian + stfe
+NOTE: Add buster-backports, for golang-1.14
+apt install -t buster-backports golang
+apt install mariadb-server
+
+*** disk error <2021-10-01 Fri>
+[1576031.264394] ata1.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x6 frozen
+[1576031.264487] ata1.00: failed command: FLUSH CACHE
+[1576031.264563] ata1.00: cmd e7/00:00:00:00:00/00:00:00:00:00/a0 tag 0
+                          res 40/00:01:00:00:00/00:00:00:00:00/a0 Emask 0x4 (timeout)
+[1576031.264638] ata1.00: status: { DRDY }
+[1576036.304362] ata1: link is slow to respond, please be patient (ready=0)
+[1576041.284517] ata1: device not ready (errno=-16), forcing hardreset
+[1576041.284537] ata1: soft resetting link
+[1576041.445385] ata1.00: configured for MWDMA2
+[1576041.445387] ata1.00: retrying FLUSH 0xe7 Emask 0x4
+[1576056.580611] ata1.00: qc timeout (cmd 0xe7)
+[1576056.580613] ata1.00: FLUSH failed Emask 0x4
+[1576061.020637] ata1: soft resetting link
+[1576061.180977] ata1.01: NODEV after polling detection
+[1576061.181661] ata1.00: configured for MWDMA2
+[1576061.181662] ata1.00: retrying FLUSH 0xe7 Emask 0x4
+[1576061.181866] ata1: EH complete
+
+** stime.verkligendata.se (2021-06-18) -- Supermicro X11SCL-F, Mullvad property
+Delivered 2021-03-18
+Racked VKG 2021-03-21
+RAM 16GB
+BIOS Version 1.5, "10/05/2020"
+
+*** flashing coreboot
+apt install git gcc make pciutils-dev
+git clone https://review.coreboot.org/flashrom && cd flashrom
+make CONFIG_ENABLE_LIBUSB1_PROGRAMMERS=no
+
+Reboot system with `iomem=relaxed`.
+./flashrom -p internal -r current.rom
+
+*** building a new ST ball
+**** Pre upgrading coreboot to Feb/Mar 2021 changes in the build tooling
+ssh linus@nanosleep.adb-centralen.se
+cd ~/usr/src/st/system-transparency
+git checkout vdse/hypervisor
+operating-system/debian/make_debian.sh
+scripts/create_and_sign_bootball.sh
+#scp -o 'identityfile ~/.ssh/vm86' bootballs/ball-2021-04-22-14-07-59.stboot root@vm86.verkligendata.se:/stdata/stboot/bootballs/new/
+
+** getuid.sigsum.org @ vm86 for cgit
+*** VM setup
+virt-install --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
+  --virt-type kvm \
+  --graphics none \
+  --extra-args console=ttyS0,115200 \
+  --autostart \
+  --name getuid.sigsum.org --memory 1024 --vcpus 1 --disk size=30
+
+** pause.sigsum.org (2021-08-23) -- VM @ vm86 for etherpads
+virt-install --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
+  --virt-type kvm \
+  --graphics none \
+  --extra-args console=ttyS0,115200 \
+  --autostart \
+  --name pause.sigsum.org --memory 1024 --vcpus 1 --disk size=30
+
+*** disk crash <2021-10-01 Fri>
+Message from syslogd@pause at Oct  1 12:16:21 ...
+ kernel:[592334.869759] EXT4-fs (dm-0): failed to convert unwritten extents to written extents -- potential data loss!  (inode 1185188, error -30)
+mount|egrep ^C
+root@pause:~# ls -l /dev/dm-0
+brw-rw---- 1 root disk 254, 0 Sep 24 15:44 /dev/dm-0
+root@pause:~# mount|egrep dm-0
+root@pause:~# pvs
+  Error reading device /dev/sda1 at 0 length 4096.
+  Error reading device /dev/sda5 at 0 length 4096.
+root@pause:~# vgs
+root@pause:~# lvs
+root@pause:~# dmesg | less
+-bash: /usr/bin/dmesg: Input/output error
+
+**** journal
+Oct 01 12:14:39 pause kernel: ata1.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x6 frozen
+Oct 01 12:16:21 pause kernel: ata1.00: failed command: FLUSH CACHE
+Oct 01 12:16:21 pause kernel: ata1.00: cmd e7/00:00:00:00:00/00:00:00:00:00/a0 tag 0
+                                       res 40/00:01:00:00:00/00:00:00:00:00/a0 Emask 0x4 (timeout)
+Oct 01 12:16:21 pause kernel: ata1.00: status: { DRDY }
+Oct 01 12:16:21 pause kernel: ata1: link is slow to respond, please be patient (ready=0)
+Oct 01 12:16:21 pause kernel: ata1: device not ready (errno=-16), forcing hardreset
+Oct 01 12:16:21 pause kernel: ata1: soft resetting link
+Oct 01 12:16:21 pause kernel: ata1.00: configured for MWDMA2
+Oct 01 12:16:21 pause kernel: ata1.00: retrying FLUSH 0xe7 Emask 0x4
+Oct 01 12:16:21 pause kernel: ata1.00: qc timeout (cmd 0xe7)
+Oct 01 12:16:21 pause kernel: ata1.00: FLUSH failed Emask 0x4
+Oct 01 12:16:21 pause kernel: ata1: link is slow to respond, please be patient (ready=0)
+Oct 01 12:16:21 pause kernel: ata1: device not ready (errno=-16), forcing hardreset
+Oct 01 12:16:21 pause kernel: ata1: soft resetting link
+Oct 01 12:16:21 pause kernel: ata1.00: configured for MWDMA2
+Oct 01 12:16:21 pause kernel: ata1.00: retrying FLUSH 0xe7 Emask 0x4
+Oct 01 12:16:21 pause kernel: ata1.00: qc timeout (cmd 0xe7)
+Oct 01 12:16:21 pause kernel: ata1.00: FLUSH failed Emask 0x4
+Oct 01 12:16:21 pause kernel: ata1.00: limiting speed to MWDMA2:PIO3
+Oct 01 12:16:21 pause kernel: ata1: link is slow to respond, please be patient (ready=0)
+Oct 01 12:16:21 pause kernel: ata1: device not ready (errno=-16), forcing hardreset
+Oct 01 12:16:21 pause kernel: ata1: soft resetting link
+Oct 01 12:16:21 pause kernel: ata1.00: configured for MWDMA2
+Oct 01 12:16:21 pause kernel: ata1.00: retrying FLUSH 0xe7 Emask 0x4
+Oct 01 12:16:21 pause kernel: ata1.00: qc timeout (cmd 0xe7)
+Oct 01 12:16:21 pause kernel: ata1.00: FLUSH failed Emask 0x4
+Oct 01 12:16:21 pause kernel: ata1.00: disabled
+Oct 01 12:16:21 pause kernel: INFO: task jbd2/dm-0-8:165 blocked for more than 120 seconds.
+Oct 01 12:16:21 pause kernel:       Not tainted 5.10.0-8-amd64 #1 Debian 5.10.46-4
+Oct 01 12:16:21 pause kernel: "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+Oct 01 12:16:21 pause kernel: task:jbd2/dm-0-8     state:D stack:    0 pid:  165 ppid:     2 flags:0x00004000
+Oct 01 12:16:21 pause kernel: Call Trace:
+Oct 01 12:16:21 pause kernel:  __schedule+0x282/0x870
+Oct 01 12:16:21 pause kernel:  ? out_of_line_wait_on_bit_lock+0xb0/0xb0
+Oct 01 12:16:21 pause kernel:  schedule+0x46/0xb0
+Oct 01 12:16:21 pause kernel:  io_schedule+0x42/0x70
+Oct 01 12:16:21 pause kernel:  bit_wait_io+0xd/0x50
+Oct 01 12:16:21 pause kernel:  __wait_on_bit+0x2a/0x90
+Oct 01 12:16:21 pause kernel:  out_of_line_wait_on_bit+0x92/0xb0
+Oct 01 12:16:21 pause kernel:  ? var_wake_function+0x20/0x20
+Oct 01 12:16:21 pause kernel:  jbd2_journal_commit_transaction+0x16b3/0x1ad0 [jbd2]
+Oct 01 12:16:21 pause kernel:  ? sched_clock+0x5/0x10
+Oct 01 12:16:21 pause kernel:  kjournald2+0xab/0x270 [jbd2]
+Oct 01 12:16:21 pause kernel:  ? add_wait_queue_exclusive+0x70/0x70
+Oct 01 12:16:21 pause kernel:  ? load_superblock.part.0+0xb0/0xb0 [jbd2]
+Oct 01 12:16:21 pause kernel:  kthread+0x11b/0x140
+Oct 01 12:16:21 pause kernel:  ? __kthread_bind_mask+0x60/0x60
+Oct 01 12:16:21 pause kernel:  ret_from_fork+0x22/0x30
+Oct 01 12:16:21 pause kernel: ata1: link is slow to respond, please be patient (ready=0)
+Oct 01 12:16:21 pause kernel: ata1: device not ready (errno=-16), forcing hardreset
+Oct 01 12:16:21 pause kernel: ata1: EH complete
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=0s
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Write(10) 2a 00 00 c6 36 60 00 00 38 00
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 12990048 op 0x1:(WRITE) flags 0x0 phys_seg 7 prio class 0
+Oct 01 12:16:21 pause kernel: EXT4-fs warning (device dm-0): ext4_end_bio:345: I/O error 10 writing to inode 1185092 starting block 1498316)
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 1498316
+Oct 01 12:16:21 pause kernel: EXT4-fs warning (device dm-0): ext4_end_bio:345: I/O error 10 writing to inode 1185092 starting block 1498317)
+Oct 01 12:16:21 pause kernel: EXT4-fs warning (device dm-0): ext4_end_bio:345: I/O error 10 writing to inode 1185092 starting block 1498319)
+Oct 01 12:16:21 pause kernel: EXT4-fs warning (device dm-0): ext4_end_bio:345: I/O error 10 writing to inode 1185092 starting block 1498320)
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=162s
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Synchronize Cache(10) 35 00 00 00 00 00 00 00 00 00
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 0 op 0x1:(WRITE) flags 0x800 phys_seg 0 prio class 0
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=0s
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Read(10) 28 00 02 54 f2 78 00 00 08 00
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 39121528 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 1498317
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=0s
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Read(10) 28 00 02 54 f2 78 00 00 08 00
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 1498318
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 1498319
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 39121528 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 1498320
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 1498321
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=0s
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 1498322
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Read(10) 28 00 02 54 f2 78 00 00 08 00
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 39121528 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=0s
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Write(10) 2a 00 00 54 85 80 00 00 08 00
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 5539200 op 0x1:(WRITE) flags 0x800 phys_seg 1 prio class 0
+Oct 01 12:16:21 pause kernel: EXT4-fs warning (device dm-0): ext4_end_bio:345: I/O error 10 writing to inode 1181990 starting block 566960)
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 566960
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=0s
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Read(10) 28 00 02 54 f2 78 00 00 08 00
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 39121528 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=0s
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Write(10) 2a 00 00 b8 50 70 00 00 08 00
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 12079216 op 0x1:(WRITE) flags 0x0 phys_seg 1 prio class 0
+Oct 01 12:16:21 pause kernel: EXT4-fs warning (device dm-0): ext4_end_bio:345: I/O error 10 writing to inode 1183326 starting block 1384462)
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 1384462
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=0s
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Read(10) 28 00 02 54 f2 78 00 00 08 00
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 39121528 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK cmd_age=0s
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 CDB: Read(10) 28 00 02 54 f2 78 00 00 08 00
+Oct 01 12:16:21 pause kernel: blk_update_request: I/O error, dev sda, sector 39121528 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+Oct 01 12:16:21 pause kernel: EXT4-fs warning (device dm-0): ext4_end_bio:345: I/O error 10 writing to inode 1185197 starting block 4754136)
+Oct 01 12:16:21 pause kernel: Buffer I/O error on device dm-0, logical block 4754136
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] Read Capacity(16) failed: Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] Sense not available.
+Oct 01 12:16:21 pause kernel: Aborting journal on device dm-0-8.
+Oct 01 12:16:21 pause kernel: Buffer I/O error on dev dm-0, logical block 3702784, lost sync page write
+Oct 01 12:16:21 pause kernel: JBD2: Error -5 detected when updating journal superblock for dm-0-8.
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] Read Capacity(10) failed: Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] Sense not available.
+Oct 01 12:16:21 pause kernel: Buffer I/O error on dev dm-0, logical block 0, lost sync page write
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] 0 512-byte logical blocks: (0 B/0 B)
+Oct 01 12:16:21 pause kernel: EXT4-fs (dm-0): I/O error while writing superblock
+Oct 01 12:16:21 pause kernel: sda: detected capacity change from 32212254720 to 0
+Oct 01 12:16:21 pause kernel: EXT4-fs error (device dm-0): ext4_journal_check_start:83: Detected aborted journal
+Oct 01 12:16:21 pause kernel: EXT4-fs (dm-0): Remounting filesystem read-only
+Oct 01 12:16:21 pause kernel: sd 0:0:0:0: [sda] tag#0 access beyond end of device
+Oct 01 12:16:21 pause kernel: EXT4-fs warning (device dm-0): ext4_end_bio:345: I/O error 10 writing to inode 1185188 starting block 4751877)
+Oct 01 12:16:21 pause kernel: EXT4-fs (dm-0): failed to convert unwritten extents to written extents -- potential data loss!  (inode 1185188, error -30)
+Oct 01 12:15:01 pause CRON[652070]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Oct 01 12:15:01 pause CRON[652071]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Oct 01 12:15:01 pause CRON[652072]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Oct 01 12:15:01 pause CRON[652073]: (root) CMD (env CRONWAIT=1 /usr/local/bin/ansible-my-wrapper >/dev/null 2>&1)
+Oct 01 12:15:01 pause CRON[652070]: pam_unix(cron:session): session closed for user root
+Oct 01 12:16:00 pause ansible-git[652100]: Invoked with name= dest=/var/cache/ansible version=master verify_commit=True repo= remote=origin force=False clone=True update=True gpg_whitelist=[] accept_hostkey=F>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Input/output error [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Input/output error [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Input/output error [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Input/output error [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Input/output error [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Input/output error [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rs>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-3-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rs>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-3-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rs>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-3-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rs>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-3-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rs>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-3-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/kern.log'[15] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rs>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-3-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-1-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-1-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-1-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-1-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-1-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-1-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-1-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-1-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+Oct 01 12:16:21 pause rsyslogd[385]: action 'action-1-builtin:omfile' (module 'builtin:omfile') message lost, could not be processed. Check for additional error messages before this one. [v8.2102.0 try https:>
+Oct 01 12:16:21 pause rsyslogd[385]: file '/var/log/syslog'[8] write error - see https://www.rsyslog.com/solving-rsyslog-write-errors/ for help OS error: Read-only file system [v8.2102.0 try https://www.rsysl>
+
+*** trying recover of qcow2 file
+  664  virsh shutdown pause.sigsum.org
+  666  virsh destroy pause.sigsum.org
+  675  modprobe nbd
+  676  qemu-nbd -c /dev/nbd0 --read-only /var/lib/libvirt/images/pause.sigsum.org.qcow2 
+  691  vgs
+  692  mount -o ro /dev/pause-vg/root /mnt
+
+root@vm86:~# qemu-nbd -d /dev/nbd0
+root@vm86:~# qemu-nbd -c /dev/nbd0 /var/lib/libvirt/images/pause.sigsum.org.qcow2 
+Failed to set NBD socket
+Disconnect client, due to: Unexpected end-of-file before all bytes were read
+root@vm86:~# fsck /dev/pause-vg/root 
+fsck from util-linux 2.33.1
+e2fsck 1.44.5 (15-Dec-2018)
+fsck.ext2: Input/output error while trying to open /dev/mapper/pause--vg-root
+
+The superblock could not be read or does not describe a valid ext2/ext3/ext4
+filesystem.  If the device is valid and it really contains an ext2/ext3/ext4
+filesystem (and not swap or ufs or something else), then the superblock
+is corrupt, and you might try running e2fsck with an alternate superblock:
+    e2fsck -b 8193 <device>
+ or
+    e2fsck -b 32768 <device>
+
+root@vm86:~# qemu-nbd -c /dev/nbd2 /var/lib/libvirt/images/pause.sigsum.org.qcow2
+root@vm86:~# vgs
+  WARNING: Device mismatch detected for pause-vg/root which is accessing /dev/nbd0p5 instead of /dev/nbd2p5.
+  WARNING: Device mismatch detected for pause-vg/swap_1 which is accessing /dev/nbd0p5 instead of /dev/nbd2p5.
+  VG         #PV #LV #SN Attr   VSize    VFree 
+  pause-vg     1   2   0 wz--n-  <29.52g     0 
+  spinfaster   1   2   0 wz--n-  931.51g 51.51g
+  ssd          1   1   0 wz--n- <223.57g     0 
+  st-vg        4   2   0 wz--n-   <7.28t <3.24t
+root@vm86:~# fsck /dev/pause-vg/root 
+fsck from util-linux 2.33.1
+e2fsck 1.44.5 (15-Dec-2018)
+fsck.ext2: Input/output error while trying to open /dev/mapper/pause--vg-root
+
+The superblock could not be read or does not describe a valid ext2/ext3/ext4
+filesystem.  If the device is valid and it really contains an ext2/ext3/ext4
+filesystem (and not swap or ufs or something else), then the superblock
+is corrupt, and you might try running e2fsck with an alternate superblock:
+    e2fsck -b 8193 <device>
+ or
+    e2fsck -b 32768 <device>
 
 
-https://andyfelong.com/2019/03/mongodb-4-0-6-64-bit-on-raspberry-pi-3/
+** listen.sigsum.org (2021-09-22) -- VM @ vm86 for list archives (and web page)
+virt-install --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
+  --virt-type kvm \
+  --graphics none \
+  --extra-args console=ttyS0,115200 \
+  --autostart \
+  --name listen.sigsum.org --memory 1024 --vcpus 1 --disk size=20
 
-** besk -- Lenovo X270
+*** disk failure <2021-10-01 Fri>
+[768452.245151] ata1.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x6 frozen
+[768452.245266] ata1.00: failed command: FLUSH CACHE
+[768452.245343] ata1.00: cmd e7/00:00:00:00:00/00:00:00:00:00/a0 tag 0
+                         res 40/00:01:00:00:00/00:00:00:00:00/a0 Emask 0x4 (timeout)
+[768452.245441] ata1.00: status: { DRDY }
+[768457.285129] ata1: link is slow to respond, please be patient (ready=0)
+[768457.885210] ata1: soft resetting link
+[768458.045584] ata1.01: NODEV after polling detection
+[768458.046332] ata1.00: configured for MWDMA2
+[768458.046333] ata1.00: retrying FLUSH 0xe7 Emask 0x4
+[768458.046581] ata1: EH complete
+
+** mincore.adb-centralen.se (2021-09-26) -- VM @ vm86 for Minecraft
+virt-install --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
+  --virt-type kvm \
+  --graphics none \
+  --extra-args console=ttyS0,115200 \
+  --autostart \
+  --name mincore.adb-centralen.se --memory 4096 --vcpus 2 --disk size=20
+
+Gave it another vCPU to try to get the load down on vm86. Didn't help.
+
+htop on vm86 reports one core pegged and lists two libvirt-qemu w/
+guest=mincore as constantly utulising 95%-98% while htop on mincore
+reports a load avg of 0.12-0.15 while idling and only two java
+processes, chugging along on 8%-9%.
+
+*** crash <2021-10-01 Fri>
+[12:14:49 ERROR]: --- DO NOT REPORT THIS TO PAPER - THIS IS NOT A BUG OR A CRASH  - git-Paper-279 (MC: 1.17.1) ---
+[12:14:49 ERROR]: The server has not responded for 10 seconds! Creating thread dump
+[12:14:49 ERROR]: ------------------------------
+[12:14:49 ERROR]: Server thread dump (Look for plugins here before reporting to Paper!):
+[12:15:12 ERROR]: ------------------------------
+[12:15:12 ERROR]: Current Thread: Server thread
+[12:15:12 ERROR]:       PID: 21 | Suspended: false | Native: true | State: RUNNABLE
+[12:15:12 ERROR]:       Stack:
+[12:15:27 WARN]: Can't keep up! Is the server overloaded? Running 47653ms or 953 ticks behind
+[12:17:35 ERROR]:               java.base@17-ea/java.io.FileDescriptor.close0(Native Method)
+[12:17:35 ERROR]:               java.base@17-ea/java.io.FileDescriptor.close(FileDescriptor.java:297)
+[12:17:35 ERROR]:               java.base@17-ea/java.io.FileOutputStream$1.close(FileOutputStream.java:390)
+[12:17:35 ERROR]:               java.base@17-ea/java.io.FileDescriptor.closeAll(FileDescriptor.java:355)
+[12:17:35 ERROR]:               java.base@17-ea/java.io.FileOutputStream.close(FileOutputStream.java:388)
+[12:17:35 ERROR]:               java.base@17-ea/java.util.zip.DeflaterOutputStream.close(DeflaterOutputStream.java:240)
+[12:17:35 ERROR]:               java.base@17-ea/java.io.FilterOutputStream.close(FilterOutputStream.java:188)
+[12:17:35 ERROR]:               java.base@17-ea/java.io.FilterOutputStream.close(FilterOutputStream.java:188)
+[12:17:35 ERROR]:               app//net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:103)
+[12:17:35 ERROR]:               app//net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:74)
+[12:17:35 ERROR]:               app//net.minecraft.world.level.saveddata.SavedData.save(SavedData.java:40)
+[12:17:35 ERROR]:               app//net.minecraft.world.level.storage.DimensionDataStorage.lambda$save$0(DimensionDataStorage.java:158)
+[12:17:35 ERROR]:               app//net.minecraft.world.level.storage.WorldPersistentData$$Lambda$4654/0x0000000801c67058.accept(Unknown Source)
+[12:17:35 ERROR]:               java.base@17-ea/java.util.HashMap.forEach(HashMap.java:1425)
+[12:17:35 ERROR]:               app//net.minecraft.world.level.storage.DimensionDataStorage.save(DimensionDataStorage.java:156)
+[12:17:35 ERROR]:               app//net.minecraft.server.level.ServerLevel.saveLevelData(ServerLevel.java:1256)
+[12:17:35 ERROR]:               app//net.minecraft.server.level.ServerLevel.saveIncrementally(ServerLevel.java:1194)
+[12:17:35 ERROR]:               app//net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:1506)
+[12:17:35 ERROR]:               app//net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1274)
+[12:17:35 ERROR]:               app//net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:319)
+[12:17:35 ERROR]:               app//net.minecraft.server.MinecraftServer$$Lambda$3663/0x00000008017c3358.run(Unknown Source)
+[12:17:35 ERROR]:               java.base@17-ea/java.lang.Thread.run(Thread.java:831)
+[12:17:35 ERROR]: ------------------------------
+[12:17:35 ERROR]: --- DO NOT REPORT THIS TO PAPER - THIS IS NOT A BUG OR A CRASH ---
+[12:17:35 ERROR]: ------------------------------
+
+Oct 01 12:14:39 mincore kernel: ata1.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x6 frozen
+Oct 01 12:15:26 mincore kernel: ata1.00: failed command: FLUSH CACHE
+Oct 01 12:15:26 mincore kernel: ata1.00: cmd e7/00:00:00:00:00/00:00:00:00:00/a0 tag 0
+                                         res 40/00:01:00:00:00/00:00:00:00:00/a0 Emask 0x4 (timeout)
+Oct 01 12:15:26 mincore kernel: ata1.00: status: { DRDY }
+Oct 01 12:15:26 mincore kernel: ata1: link is slow to respond, please be patient (ready=0)
+Oct 01 12:15:26 mincore kernel: ata1: device not ready (errno=-16), forcing hardreset
+Oct 01 12:15:26 mincore kernel: ata1: soft resetting link
+Oct 01 12:15:26 mincore kernel: ata1.00: configured for MWDMA2
+Oct 01 12:15:26 mincore kernel: ata1.00: retrying FLUSH 0xe7 Emask 0x4
+Oct 01 12:15:26 mincore kernel: ata1: EH complete
+Oct 01 12:15:01 mincore CRON[200556]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Oct 01 12:15:01 mincore CRON[200555]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Oct 01 12:15:01 mincore CRON[200557]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Oct 01 12:15:01 mincore CRON[200558]: (root) CMD (env CRONWAIT=1 /usr/local/bin/ansible-my-wrapper >/dev/null 2>&1)
+Oct 01 12:15:01 mincore CRON[200555]: pam_unix(cron:session): session closed for user root
+Oct 01 12:16:29 mincore kernel: ata1.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x6 frozen
+Oct 01 12:16:29 mincore kernel: ata1.00: failed command: FLUSH CACHE
+Oct 01 12:16:29 mincore kernel: ata1.00: cmd e7/00:00:00:00:00/00:00:00:00:00/a0 tag 0
+                                         res 40/00:01:00:00:00/00:00:00:00:00/a0 Emask 0x4 (timeout)
+Oct 01 12:16:29 mincore kernel: ata1.00: status: { DRDY }
+Oct 01 12:16:34 mincore kernel: ata1: link is slow to respond, please be patient (ready=0)
+Oct 01 12:16:39 mincore kernel: ata1: device not ready (errno=-16), forcing hardreset
+Oct 01 12:16:39 mincore kernel: ata1: soft resetting link
+Oct 01 12:16:39 mincore kernel: ata1.00: configured for MWDMA2
+Oct 01 12:16:39 mincore kernel: ata1.00: retrying FLUSH 0xe7 Emask 0x4
+Oct 01 12:16:55 mincore kernel: ata1.00: qc timeout (cmd 0xe7)
+Oct 01 12:16:55 mincore kernel: ata1.00: FLUSH failed Emask 0x4
+Oct 01 12:17:00 mincore kernel: ata1: link is slow to respond, please be patient (ready=0)
+Oct 01 12:17:05 mincore kernel: ata1: device not ready (errno=-16), forcing hardreset
+Oct 01 12:17:05 mincore kernel: ata1: soft resetting link
+Oct 01 12:17:05 mincore kernel: ata1.00: configured for MWDMA2
+Oct 01 12:17:05 mincore kernel: ata1.00: retrying FLUSH 0xe7 Emask 0x4
+Oct 01 12:17:20 mincore kernel: ata1.00: qc timeout (cmd 0xe7)
+Oct 01 12:17:20 mincore kernel: ata1.00: FLUSH failed Emask 0x4
+Oct 01 12:17:20 mincore kernel: ata1.00: limiting speed to MWDMA2:PIO3
+Oct 01 12:17:25 mincore kernel: ata1: link is slow to respond, please be patient (ready=0)
+Oct 01 12:17:30 mincore kernel: ata1: device not ready (errno=-16), forcing hardreset
+Oct 01 12:17:30 mincore kernel: ata1: soft resetting link
+Oct 01 12:17:30 mincore kernel: ata1.00: configured for MWDMA2
+Oct 01 12:17:30 mincore kernel: ata1.00: retrying FLUSH 0xe7 Emask 0x4
+Oct 01 12:17:35 mincore kernel: ata1: EH complete
+
+560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x7a593a7c
+
+root@vm86:/dev/shm/tmp# qemu-img convert -p -O raw /var/lib/libvirt/images/pause.sigsum.org.qcow2 pause.raw
+root@vm86:/dev/shm/tmp# losetup -f pause.raw 
+
+Device       Boot   Start      End  Sectors  Size Id Type
+/dev/loop0p1 *       2048   999423   997376  487M 83 Linux
+/dev/loop0p2      1001470 62912511 61911042 29.5G  5 Extended
+/dev/loop0p5      1001472 62912511 61911040 29.5G 8e Linux LVM
+
+root@vm86:/dev/shm/tmp# losetup -d /dev/loop0
+
+1001470 2/p
+500735.000
+
+root@vm86:/dev/shm/tmp# losetup -f -o 500735K pause.raw 
+root@vm86:/dev/shm/tmp# vgs
+  /dev/loop0: Label for sector 1 found at sector 3 - ignoring.
+  VG         #PV #LV #SN Attr   VSize    VFree 
+  spinfaster   1   2   0 wz--n-  931.51g 51.51g
+  ssd          1   1   0 wz--n- <223.57g     0 
+  st-vg        4   2   0 wz--n-   <7.28t <3.24t
+root@vm86:/dev/shm/tmp# losetup -d /dev/loop0
+root@vm86:/dev/shm/tmp# losetup -f -o 500736K pause.raw 
+root@vm86:/dev/shm/tmp# vgs
+  WARNING: Device mismatch detected for pause-vg/root which is accessing /dev/nbd0p5 instead of /dev/loop0.
+  WARNING: Device mismatch detected for pause-vg/swap_1 which is accessing /dev/nbd0p5 instead of /dev/loop0.
+  VG         #PV #LV #SN Attr   VSize    VFree 
+  pause-vg     1   2   0 wz--n-  <29.52g     0 
+  spinfaster   1   2   0 wz--n-  931.51g 51.51g
+  ssd          1   1   0 wz--n- <223.57g     0 
+  st-vg        4   2   0 wz--n-   <7.28t <3.24t
+root@vm86:/dev/shm/tmp# fsck /dev/pause-vg/root 
+fsck from util-linux 2.33.1
+e2fsck 1.44.5 (15-Dec-2018)
+fsck.ext2: Input/output error while trying to open /dev/mapper/pause--vg-root
+
+The superblock could not be read or does not describe a valid ext2/ext3/ext4
+filesystem.  If the device is valid and it really contains an ext2/ext3/ext4
+filesystem (and not swap or ufs or something else), then the superblock
+is corrupt, and you might try running e2fsck with an alternate superblock:
+    e2fsck -b 8193 <device>
+ or
+    e2fsck -b 32768 <device>
+
+(none of the -b options give any better result)
+
+** meet.sigsum.org (2021-09-27) -- VM @ vm86 for Jitsi
+virt-install --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
+  --virt-type kvm \
+  --graphics none \
+  --extra-args console=ttyS0,115200 \
+  --autostart \
+  --name meet.sigsum.org --memory 2048 --vcpus 2 --disk size=20
+
+NOTE: Using Jitsi's quick install and not run Ansible
+
+*** ip filtering
+apt install nftables
+cat > /etc/nftables.conf <<EOF
+#!/usr/sbin/nft -f
+flush ruleset
+table inet filter {
+	chain input {
+		type filter hook input priority 0; policy drop;
+		ct state invalid drop; ct state related,established accept;
+		iifname lo accept
+		ip protocol icmp limit rate 4/second accept
+	        ip6 nexthdr icmpv6 icmpv6 type { nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert } limit rate 4/second accept
+
+		tcp dport 4722 accept
+		tcp dport {80, 443} accept
+
+		# jitsi: "general network video/audio communications"
+		udp dport 10000 accept
+		# jitsi: "for quering the stun server"
+		udp dport 3478 accept
+		# jitsi: "for fallback network video/audio communications over TCP"
+		tcp dport 5349 accept
+	}
+	chain forward {
+		type filter hook forward priority 0; policy accept;
+	}
+	chain output {
+		type filter hook output priority 0; policy accept;
+	}
+}
+EOF
+systemctl restart nftables
+
+*** installing jitsi stuff
+- instructions from https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-quickstart
+
+apt install gnupg2 nginx-full sudo apt-transport-https curl
+curl https://download.jitsi.org/jitsi-key.gpg.key | sh -c 'gpg --dearmor > /usr/share/keyrings/jitsi-keyring.gpg'
+echo 'deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/' | tee /etc/apt/sources.list.d/jitsi-stable.list > /dev/null
+apt update
+apt install jitsi-meet
+/usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh
+
+- cert and key end up in /etc/letsencrypt/live/meet.sigsum.org/{fullchain,privkey}.pem
+
+so the first invokation of install-letsencrypt-cert.sh might fail
+
+and you will need to edit
+/etc/nginx/sites-available/meet.sigsum.org.conf to point at the right
+cert and key path
+
+*** misc other stuff
+- atop for logging 
+
+apt install atop
+cat > /etc/default/atop <<EOF
+LOGOPTS="-R"
+LOGINTERVAL=60
+LOGGENERATIONS=90
+EOF
+systemctl restart atop
+
+- unattended upgrades
+
+apt install unattended-upgrades
+
+- some more privacy in nginx logs
+
+vi /etc/nginx/nginx.conf
+http {
+...
+        map $remote_addr $remote_addr_anon {
+            ~(?P<ip>\d+\.\d+)\.    $ip.0.0;
+            ~(?P<ip>[^:]+:[^:]+):  $ip::;
+            default                0.0.0.0;
+        }
+        log_format srcaddrprivacy '$remote_addr_anon  - $remote_user [$time_local] '
+                    '"$request" $status $body_bytes_sent '
+                    '"$http_referer" "$http_user_agent"';
+
+        access_log /var/log/nginx/access.log srcaddrprivacy;
+...
+}
+
+** besk -- Lenovo X270 from 2018-07
 - purchase date: 2018-07-??
 - [[https://psref.lenovo.com/syspool/Sys/PDF/datasheet/ThinkPad_X270_datasheet_EN.pdf][datasheet]], [[https://www.thinkwiki.org/wiki/X270_Detailed_Hardware_Information][thinkwiki]]
 - 256GB SSD (nvme0)
@@ -6255,9 +7963,124 @@ CPU: Intel Core i5-7300HQ @ 2.50Ghz
 RAM: 8 GB
 Device ID: 2D54D9E9-821C-4716-A4EA-30E61A1C0F97
 Windows Product ID: 00325-96300-65112-AAOEM
-** NEXT LAPTOP
-- min 16G RAM, 256G SSD <2020-03-11 Wed>
 
+** vkg-sw0 -- tp-link TL-SG105E 3.0
+Location: VKG
+IP addr: 192.168.33.1/24
+See [[file:~/verkligen/sysadm/vkg-net/vkg-sw0/vkg-sw0.md][file:~/verkligen/sysadm/vkg-net/vkg-sw0/vkg-sw0.md]]
+
+** vkg-sw1 -- netgear prosafe gigabit 8 port VPN firewall FVS318G
+<2020-11-20 Fri>
+System Name: 	FVS318G
+Firmware Version: 	3.0.7-34
+MAC Address: 	e0:46:9a:b7:b0:03
+
+192.168.1.1
+- exposing no open TCP ports on port 8 AFAICT <2021-09-09 Thu>
+- lots of open ports on physical port 2 though: 23, 80, 443, 49152
+ssh vm86.verkligendata.se ip ad add 192.168.1.10/24 dev eno1
+ssh -NfL 4904:192.168.1.1:443 vm86.verkligendata.se
+ssh vm86.verkligendata.se ip ad del 192.168.1.10/24 dev eno1
+
+upgrading fw
+- https://kb.netgear.com/25701/FVS318G-Firmware-Version-3-1-1-18
+  Last Updated:11/28/2016 | Article ID: 25701 
+- Firmware Version: 	3.1.1-18
+
+** DECOMMISSIONED
+*** nc.verkligendata.se -- VM @ Tranquillity
+ - VM @ tranquillity; 1 VCPU; 1G RAM; 30G SSD
+ - Started 2020-04-06
+**** Installing Nextcloud
+ pkg install secadm-kmod secadm nextcloud-php74 apache24 mod_php74 mariadb104-server dehydrated
+ service mysql-server onestart
+ mysql_secure_installation # unix socket; set root pw; remove anon; no remote root; remove test
+
+ # secadm
+ cp sic/www/nextcloud/config/secadm.rules /usr/local/etc/
+ sysrc secadm_enable=yes
+ service secadm restart
+
+ # Apache
+ vi /usr/local/etc/apache24/httpd.conf
+ scp sic/www/nextcloud/config/nextcloud.conf sic/www/nextcloud/config/all-http.conf /usr/local/etc/apache24/Includes/
+ ## NOTE: Edit both files -- they're not generic!
+
+ FIXME: memcached
+
+ # PHP
+ cd /usr/local/etc
+ ln -s php.ini-production php.ini
+ cat <<EOF >> php.ini
+ opcache.enable=1
+ opcache.enable_cli=1
+ opcache.interned_strings_buffer=8
+ opcache.max_accelerated_files=10000
+ opcache.memory_consumption=128
+ opcache.save_comments=1
+ opcache.revalidate_freq=1
+ EOF
+
+ vi php.ini # memory_limit = 512M
+
+ ## Data cache is probably fixed by default, but do check.
+ # pkg install php74-pecl-APCu
+ # config/
+ #  'memcache.local' => '\OC\Memcache\APCu',
+ vi php.ini # apc.enable_cli = 1
+
+ service apach24 restart
+
+ # Letsencrypt
+ cat <<EOF > /usr/local/etc/dehydrated/domains.txt
+ nc.verkligendata.se
+ EOF
+ sysrc -f /etc/periodic.conf weekly_dehydrated_enable=yes weekly_dehydrated_user="_letsencrypt"
+
+ # Nextcloud
+ config/config.php
+ # NOTE: should have added `--data-dir /var/db/nextcloud` to the following command:
+ cd /usr/local/www/nextcloud && su -m www -c "php ./occ maintenance:install --database mysql --database-name nextcloud --database-user root --admin-user admin38"
+ config/config.php
+
+ FIXME: email
+
+ # Autostart
+ sysrc apache24_enable=yes mysql_enable=yes
+ service mysql-server start
+ service apache24 start
+
+ # Configure NextCloud
+ - secure the admin account
+   - install app "Two-Factor U2F"
+   - save backup codes and add U2F device
+ - fix up the db
+   - su -m www -c "php /usr/local/www/nextcloud/occ db:add-missing-indices"
+   - su -m www -c "php /usr/local/www/nextcloud/occ db:convert-filecache-bigint"
+
+*** brk.verkligendata.se -- VM @ Tranquillity until <2020-10-31 Sat>
+ - VM at tranquillity.se
+    v4: 185.97.32.63/24
+    v6: 2a00:66c0:1:1::63/64
+    interface: vtnet0
+    dns: 185.97.32.6
+    def v4 gw: 185.97.32.1
+    def v6 gw: 2a00:66c0:1:1::1
+**** extra available blocks
+***** 185.97.32.64/28
+      64
+      65 bpf
+      66 recv
+      67 pread
+      68 wait
+      79
+***** 2a00:66c0:1:1::64/124
+      64
+      65 bpf
+      66 recv
+      67 pread
+      68 wait
+      79
 * DFRI
 NOTE: See ~/p/dfri/dfriadm/sysadmin/hosts for an updated list.
 ** tex.dfri.se -- 1U Fujitsu PRIMERGY RX100 S3
@@ -6350,6 +8173,21 @@ $ geteltorito -o r02uj53d.image r02uj53d.iso
 $ sudo dd if=/u/ISO/Lenovo/r02uj53d.image of=/dev/sdb bs=10M
 Booting off the USB stick.
 Result: UEFI BIOS Version R02ET53W (1.26) 2017-02-20
+
+**** wifi
+- dmesg
+  [   19.572807] iwlwifi 0000:04:00.0: Detected Intel(R) Dual Band Wireless AC 8260, REV=0x208
+- [hw doc]
+- [iwlwifi] says that the microcode to use for 8260 is iwlwifi-8000
+- sudo apt install firmware-iwlwifi # from non-free
+- [iwlfiwi] says that having Bluetooth enabled can be problematic and
+  suggests passing bt_coex_active=0 to the module
+  (iwlwifi.bt_coex_active=0 to the kernel), see GRUB_CMDLINE_LINUX in
+  /etc/default/grub
+
+[hw doc] https://www.intel.com/content/dam/www/public/us/en/documents/product-briefs/dual-band-wireless-ac-8260-brief.pdf
+[iwlwifi] https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi
+
 *** os
 **** hbsd <2017-07-28 Fri>
 - http://installer.hardenedbsd.org/hardened_11_stable_master-LAST/HardenedBSD-11-STABLE-v1100048-amd64-mini-memstick.img
@@ -6991,6 +8829,65 @@ JAILNAME   VERSION    ARCH  METHOD                                              
 **** p11p -- pkcs11 testing
 **** lnbup (jail) -- backups
 **** rb-fbsd12 -- reprodbuilds jail
+
+** gamma.sunet.se / scanner.ct.nordu.net -- Xeon E5-2420, 16GB RAM
+[root@gamma ~]# ifconfig
+bge0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+        options=c019b<RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,VLAN_HWCSUM,TSO4,VLAN_HWTSO,LINKSTATE>
+        ether f0:1f:af:d7:6d:4e
+        hwaddr f0:1f:af:d7:6d:4e
+        inet 130.229.192.11 netmask 0xffffff00 broadcast 130.229.192.255 
+        inet 10.220.0.1 netmask 0xffffffff broadcast 10.220.0.1 
+        nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+        media: Ethernet autoselect (1000baseT <full-duplex>)
+        status: active
+bge1: flags=8802<BROADCAST,SIMPLEX,MULTICAST> metric 0 mtu 1500
+        options=c019b<RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,VLAN_HWCSUM,TSO4,VLAN_HWTSO,LINKSTATE>
+        ether f0:1f:af:d7:6d:4f
+        hwaddr f0:1f:af:d7:6d:4f
+        nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+        media: Ethernet autoselect
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> metric 0 mtu 16384
+        options=680003<RXCSUM,TXCSUM,LINKSTATE,RXCSUM_IPV6,TXCSUM_IPV6>
+        inet6 ::1 prefixlen 128 
+        inet6 fe80::1%lo0 prefixlen 64 scopeid 0x3 
+        inet 127.0.0.1 netmask 0xff000000 
+        nd6 options=21<PERFORMNUD,AUTO_LINKLOCAL>
+        groups: lo 
+mlxen0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+        options=ed07bb<RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,JUMBO_MTU,VLAN_HWCSUM,TSO4,TSO6,LRO,VLAN_HWFILTER,VLAN_HWTSO,LINKSTATE,RXCSUM_IPV6,TXCSUM_IPV6>
+        ether 00:02:c9:52:11:20
+        hwaddr 00:02:c9:52:11:20
+        inet 94.176.225.1 netmask 0xfffffffe broadcast 255.255.255.255 
+        nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+        media: Ethernet autoselect (10Gbase-SR <full-duplex,rxpause,txpause>)
+        status: active
+pflog0: flags=141<UP,RUNNING,PROMISC> metric 0 mtu 33160
+        groups: pflog 
+[root@gamma ~]# date
+Tue Feb  2 22:09:06 CET 2021
+[root@gamma ~]# uptime
+10:09PM  up 855 days, 11:13, 1 user, load averages: 0.42, 0.23, 0.18
+[root@gamma ~]# freebsd-version -ku
+11.2-STABLE-HBSD
+11.2--HBSD
+[root@gamma ~]# uname -a
+FreeBSD gamma.sunet.se 11.2-STABLE-HBSD FreeBSD 11.2-STABLE-HBSD #0 : Thu Sep 27 21:58:43 UTC 2018     root@updater-01:/usr/obj/usr/src/sys/HARDENEDBSD  amd64
+[root@gamma ~]# sockstat -46l
+USER     COMMAND    PID   FD PROTO  LOCAL ADDRESS         FOREIGN ADDRESS      
+root     syslogd    58580 5  udp4   10.220.0.1:514        *:*
+root     sshd       89164 4  tcp6   *:22                  *:*
+root     sshd       89164 5  tcp4   *:22                  *:*
+unbound  unbound    30097 4  udp6   ::1:53                *:*
+unbound  unbound    30097 5  tcp6   ::1:53                *:*
+unbound  unbound    30097 6  udp4   127.0.0.1:53          *:*
+unbound  unbound    30097 7  tcp4   127.0.0.1:53          *:*
+[root@gamma ~]# sysctl hw | head -5
+hw.machine: amd64
+hw.model: Intel(R) Xeon(R) CPU E5-2420 0 @ 1.90GHz
+hw.ncpu: 6
+hw.byteorder: 1234
+hw.physmem: 17092280320
 
 * FUTURE
 ** <next tor machine>

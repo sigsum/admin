@@ -90,3 +90,5 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # pinentry uses this:
 export GPG_TTY=$(tty)
+
+export TR_AUTH=transmission:transmission

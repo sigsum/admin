@@ -1,3 +1,155 @@
+linuxfoundation security funding sos https://security.googleblog.com/2021/10/introducing-secure-open-source-pilot.html
+https://blog.cloudflare.com/cloudflare-for-offices/
+mc voice https://modrepo.de/minecraft/voicechat/wiki/?t=setup
+ln 1https://github.com/lnd-routing
+ln https://github.com/accumulator/charge-lnd
+minecraft server paper https://paper.readthedocs.io/en/latest/
+minecraft jvm tuning https://aikar.co/2018/07/02/tuning-the-jvm-g1gc-garbage-collector-flags-for-minecraft/
+bluetooth BT security https://asset-group.github.io/disclosures/braktooth/
+http://0pointer.net/blog/authenticated-boot-and-disk-encryption-on-linux.html
+tor https://github.com/toralf/torutils/blob/master/key-expires.py
+movie the_notebook people:arma https://www.imdb.com/title/tt2324384/?ref_=fn_al_tt_2
+tpa wiki https://gitlab.torproject.org/tpo/tpa/team
+tor tpa https://gitlab.torproject.org/tpo/tpa
+usb https://www.beyondlogic.org/usbnutshell/usb1.shtml
+nusenu tor relay contact info proposal https://lists.torproject.org/pipermail/tor-relays/2020-July/018643.html
+tor agile-vs-waterfall nusenu people:mikeperry https://lists.torproject.org/pipermail/tor-relays/2020-October/018964.html
+seagate smartmontools http://www.users.on.net/~fzabkar/HDD/Seagate_SER_RRER_HEC.html
+ripe https://www.ripe.net/manage-ips-and-asns/db/support/documentation/upd-ref-manual
+p4 arga-tanten https://www.youtube.com/watch?v=GGvwcHBxSak
+https://gitlab.com/open-data-knowledge-sharing/e-leg/wiki
+port-knocking https://cipherdyne.org/fwknop/
+people:jens-rantil meditation tergar https://tergar.org/communities-and-practice-groups/find-a-center-or-group/stockholm-practice-group/
+nsa redaction https://jensrantil.github.io/post/how-to-partially-declassify-nsa-docs/
+LN privacy https://www.coindesk.com/tech/2020/04/21/researchers-surface-privacy-vulnerabilities-in-bitcoin-lightning-network-payments/
+btc https://bitcoinops.org/en/newsletters/
+base45 qr-code https://datatracker.ietf.org/doc/draft-faltstrom-base45/
+https://github.com/tfpauly/privacy-proxy/blob/main/draft-private-access-tokens.md
+emacs http://pragmaticemacs.com/emacs/advanced-undoredo-with-undo-tree/
+crypto blind-signatures https://www.ietf.org/archive/id/draft-wood-cfrg-rsa-blind-signatures-00.txt
+tor chelseamanning harryhalpin https://www.forbes.com/sites/michaeldelcastillo/2021/08/25/chelsea-manning-is-back-and-hacking-again-only-this-time-for-a-bitcoin-based-privacy-startup/?sh=4b7a6c586e69
+arm security cheri https://developer.arm.com/architectures/cpu-architecture/a-profile/morello
+security cheri https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/
+readme cymru netflow https://www.vice.com/en/article/jg84yy/data-brokers-netflow-data-team-cymru
+readme https://pad.riseup.net/p/gbH_QwUk-1_JbijdqUzB
+book electronics https://designingelectronics.gumroad.com/l/AInRo
+USB testing benchmarking https://antmicro.com/blog/2019/12/testing-usb-cores-with-python-and-cocotb/
+covid19 microcovid risk https://github.com/microcovid/microcovid
+covid19 microcovid risk https://www.microcovid.org
+dnssec https://rick.eng.br/dnssecstat/
+corona19 covid-19 https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1007566/S1335_Long_term_evolution_of_SARS-CoV-2.pdf
+git https://git-scm.com/docs/git-switch/2.23.0
+git https://git-scm.com/docs/git-restore
+git https://www.git-scm.com/book/en/v2/Git-Tools-Rerere
+notes scribbling http://xournal.sourceforge.net/
+security spyware https://citizenlab.ca/2021/07/hooking-candiru-another-mercenary-spyware-vendor-comes-into-focus/
+tor onion ddos prevention https://github.com/onionltd/EndGame
+us state dept securedrop http://he5dybnt7sr6cm32xt77pazmtm65flqy6irivtflruqfc5ep7eiodiad.onion/
+us state dept securedrop https://www.hackread.com/us-govt-new-website-ransomware-help-victims
+https://github.com/google/trillian-examples/tree/master/serverless
+ascii art charts https://textik.com/
+readme APT34 chinese https://mp.weixin.qq.com/s/o_EVjBVN2sQ1q7cl4rUXoQ
+music https://www.allaboutjazz.com/modern-answers-to-old-problems-ernest-ranglin-telarc-records-review-by-ed-kopp.php?width=600
+ip-reputation dfri https://scamalytics.com/ip/isp/foreningen-digitala-fri-och-rattigheter
+readme china internet https://www.ft.com/content/ba94c2bc-6e27-11ea-9bca-bf503995cd6f
+readme web cookies https://web.dev/samesite-cookies-explained/
+nginx off-by-one security bug https://marc.info/?l=full-disclosure&m=162204773302268&w=2
+tlog https://research.swtch.com/tlog
+game https://multirpg.net/
+music people:dcf https://archive.org/details/Aestivo
+conti ransomware http://continewsnv5otx5kaoje7krkto2qbu3gtqef22mnr7eaxw3y6ncz3ad.onion/
+ransomware leak http://ransomwr3tsydeii4q43vazm7wofla5ujdajquitomtd47cxjtfgwyyd.onion/
+ahmia search http://msydqstlz2kzerdg.onion/
+torch search http://torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion/
+chainiac epfl logging software https://www.usenix.org/sites/default/files/conference/protected-files/usenixsecurity17_slides_nikitin.pdf
+readme rsa hack https://www.wired.com/story/the-full-story-of-the-stunning-rsa-hack-can-finally-be-told/
+freenode drama https://gist.github.com/aaronmdjones/1a9a93ded5b7d162c3f58bdd66b8f491
+email tls test service https://ssl-tools.net/mailservers/
+harica onion dv cert https://gitlab.torproject.org/-/snippets/74
+tpb thepiratebay http://piratebayztemzmv.onion/
+btc inherit https://bitcoin.stackexchange.com/questions/38692/estate-planning-how-can-i-ensure-my-bitcoins-are-inheritable
+rust security https://doc.rust-lang.org/nomicon/
+tor reachability https://bridges.torproject.org/scan
+https://www.darkreading.com/application-security/linux-foundation-debuts-sigstore-project-for-software-signing/d/d-id/1340360
+https://www.zdnet.com/article/linux-foundation-announces-new-open-source-software-signing-service/
+ed25519 clamping https://www.jcraige.com/an-explainer-on-ed25519-clamping
+domainfronting cloudflare design tor meeting people:dcf http://meetbot.debian.net/tor-meeting/2021/tor-meeting.2021-04-29-16.00.log.html
+btc https://api.coindesk.com/v1/bpi/currentprice/SEK.json
+readme eth2 https://ethos.dev/beacon-chain/
+https://www.google.com/finance/quote/BTC-EUR
+tor quic https://lists.torproject.org/pipermail/tor-dev/2018-March/013026.html
+turbotunnel obfuscation people:dcf https://www.bamsoftware.com/sec/turbotunnel.html
+permobas https://www.melin.org/2014/06/21/koper-du-modem-far-du-problem.html
+pku sweden privacy https://www.nyteknik.se/samhalle/polisen-far-inte-anvanda-pku-registret-6895723
+raas ransomware-as-a-service https://zvelo.com/raas-ransomware-as-a-service/
+nft etherum https://github.com/asn-d6/nftreasure
+onion routing patent tor https://patents.google.com/patent/US6266704B1/en
+https://github.com/mikeperry-tor/vanguards/blob/master/README_SECURITY.md
+https://github.com/mikeperry-tor/vanguards/blob/master/README_TECHNICAL.md
+wg-dynamic https://github.com/mdlayher/wgipam
+csam campaign https://www.patrick-breyer.de/en/posts/message-screening/
+keyboard https://en.wikipedia.org/wiki/Chorded_keyboard
+https://jedisct1.github.io/minisign/
+https://z.cash/technology/zksnarks/
+https://blog.mozilla.org/warner/2011/11/29/ed25519-keys/
+child tweet US https://nitter.eu/MikaelThalen/status/1376653334396903428
+onionbalance https://gitlab.torproject.org/tpo/core/onionbalance
+tor exitlist https://lists.torproject.org/pipermail/tor-project/2020-March/002759.html
+https://check.torproject.org/exit-addresses
+random entropy https://www.2uo.de/myths-about-urandom/
+FE NSA sweden https://www.fokus.se/2020/11/amerikanskt-spionage-mot-svensk-forsvarsindustri-tog-dansk-hjalp/
+FE NSA sweden https://www.expressen.se/nyheter/uppgifter-usa-spionerade-pa-svensk-forsvarsindustri/
+FE NSA sweden https://www.svt.se/nyheter/utrikes/rapport-danska-underrattelsetjansten-har-spionerat-pa-danskarna
+FE NSA sweden https://efolket.eu/nyheten-som-forsvann-den-danska-spionskandalen/
+FE NSA sweden https://schlaug.blogspot.com/2020/11/kara-regering-och-ovriga-naiva.html
+privacy http://fibbing.net/
+key-derivation kdf https://csrc.nist.gov/publications/detail/sp/800-108/final
+key-derivation kdf https://csrc.nist.gov/csrc/media/projects/cryptographic-algorithm-validation-program/documents/kbkdf800-108/kbkdfvs.pdf
+rnd random systemd boot https://systemd.io/RANDOM_SEEDS/
+font game https://www.coderelay.io/fontemon.html
+readme solarwind https://www.nytimes.com/2021/03/07/us/politics/microsoft-solarwinds-hack-russia-china.html
+readme translog https://rgdd.medium.com/observations-from-a-trillian-play-date-451bccc0aac6
+sparse merkletree people:rrgd https://www.esat.kuleuven.be/cosic/publications/article-2695.pdf
+sparse merkletree https://justjjy.com/An-optimized-compact-sparse-merkle-tree
+https://datatracker.ietf.org/wg/gnap/about/
+LE CSEM https://www.europol.europa.eu/crime-areas-and-trends/crime-areas/child-sexual-exploitation
+LE CSA internet report https://www.iicsa.org.uk/publications/investigation/internet
+eu CSA https://ec.europa.eu/home-affairs/sites/homeaffairs/files/what-we-do/policies/european-agenda-security/20200724_com-2020-607-commission-communication_en.pdf
+eu public-consultation CSA https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/12726-Child-sexual-abuse-online-detection-removal-and-reporting-/public-consultation
+tor panel people:rogerdingledine people:susanhennessey https://www.youtube.com/watch?v=eqHEsAT656Q
+docu people:adamcurtis https://www.youtube.com/watch?v=MHFrhIAj0ME
+tiling wm https://github.com/project-repo/cagebreak
+tiling wm https://wiki.archlinux.org/index.php/Cagebreak
+tor csam https://prostasia.org/blog/should-the-tor-network-be-shut-down/
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7266414/
+tor csam https://www.lawfareblog.com/tor-hidden-services-are-failed-technology-harming-children-dissidents-and-journalists
+orchestration https://tech.immerda.ch/2021/02/continuously-building-our-container-image-chain/
+confcall sw https://github.com/digitalautonomy/wahay
+onion x509 dv cert https://www.harica.gr/Products/ServerCertificate
+EdDSA https://tools.ietf.org/html/rfc8032
+pkcs1 https://tools.ietf.org/html/rfc8017
+ssh rsa pubkeys https://tools.ietf.org/html/rfc8332
+ECC crypto montgomery https://eprint.iacr.org/2017/212.pdf
+ed25519 x25519 https://blog.filippo.io/using-ed25519-keys-for-encryption/
+preventit https://www.bbc.com/news/world-35981490
+preventit people:rahm http://dok.slso.sll.se/CPF/Forskning/artikel/Rahm_13%20avril.pdf
+tor police swedish research https://su.diva-portal.org/smash/record.jsf?pid=diva2%3A1279078&dswid=6272
+chat javascript https://github.com/DanWin/le-chat-php
+readme PoW PoS https://www.bitdegree.org/crypto/tutorials/proof-of-work-vs-proof-of-stake#proof-of-stake-how-are-transactions-verified
+emailasaa lisp https://codescene.com/
+network https://github.com/cilium/ebpf
+network https://www.iovisor.org/technology/xdp
+ST stboot https://docs.google.com/document/d/1wifvErs3X85eDGQ1mwhfbfYxIYLk8tI9SdkQjGcViWE/edit
+svd https://kundservice.svd.se/Vara-produkter/SvD-som-PDF/
+CT gossip https://docs.google.com/document/d/1G1Jy8LJgSqJ-B673GnTYIG4b7XRw2ZLtvvSlrqFcl4A/
+SOU:2021:1 https://www.regeringen.se/rattsliga-dokument/statens-offentliga-utredningar/2021/01/sou-20211/
+pgp https://sequoia-pgp.org/community
+eu nis nis2 dns https://ec.europa.eu/digital-single-market/en/news/proposal-directive-measures-high-common-level-cybersecurity-across-union
+security NAT-bypass https://github.com/samyk/slipstream
+fbsd network epoch panic bug https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=230996#c13
+https://michael-prokop.at/computer/images/vi-emacs-final.png
+ml mailing list archive https://public-inbox.org/README.html
+bintrans story https://www.crowdstrike.com/blog/sunspot-malware-technical-analysis/
 digital-feudalism https://locusmag.com/2021/01/cory-doctorow-neofeudalism-and-the-digital-manor/
 tor raccoon23 https://archives.seul.org/or/dev/Mar-2012/msg00019.html
 tor raccoon23 https://lists.torproject.org/pipermail/tor-dev/2008-September/002493.html

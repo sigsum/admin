@@ -32,3 +32,7 @@ GNUPGHOME=$HOME/.gnupg; export GNUPGHOME
 
 [ -d "$HOME/.cache/rebar3/bin" ] && PATH="$PATH:$HOME/.cache/rebar3/bin"
 export PATH
+
+PATH=$PATH:$HOME/usr/games; export PATH
+
+export PATH="$HOME/.cargo/bin:$PATH"

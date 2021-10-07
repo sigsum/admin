@@ -146,3 +146,34 @@ begravningsavg 0,065%
 
 summa skatt 98215
 att betala 17587
+** deklaration för inkomtsår 2020
+- Skatteverket (se [[file:Skatt/2020%20skatteutr%C3%A4knig.pdf][file:~/.priv/ekonomi/Skatt/2020 skatteuträknig.pdf]])
+  OBS innan avdrag för 
+
+  - kommunal skatt 29,82%
+  - förvärvsinkomst 603764
+  - kapitalinkomst 6349
+  - summa skatt 167042 (27,6%)
+  - avdragen skatt 130846 (21,6%)
+
+- K10
+  - Andelar: 500
+
+*** kontrolluppgifter
+|                | inkomst | avdragen skatt |   avdr/ink |  25.7% |   diff | not                     |
+|----------------+---------+----------------+------------+--------+--------+-------------------------|
+| Verkligen Data |  193045 |          43319 | 0.22439846 |  49667 |  -6348 | kolla skattetabell igen |
+| VR             |   96656 |          13321 | 0.13781866 |  24868 | -11547 | taget från lönespec dec |
+| Staden, lön    |  156904 |          47069 | 0.29998598 |  40368 |   6701 |                         |
+| FK             |   90048 |          25210 | 0.27996180 |  23167 |   2043 |                         |
+| SEB, ränta     |    3648 |           1094 | 0.29989035 |    938 |    156 |                         |
+| SEB, schablon  |    2701 |                |          0 |    694 |   -694 |                         |
+| SUMMA          |  543002 |         130013 | 0.23943374 | 139705 |  -9692 |                         |
+|----------------+---------+----------------+------------+--------+--------+-------------------------|
+#+TBLFM: @>$2=vsum(@I+1..@-1)::@>$3=vsum(@I+1..@-1)::@5$2=20100+23316+25728+5628+7236+8040::@5$3=5627+6528+7203+1575+2026+2251::$4=$3/$2::$5=floor($2*.257284)::$6=$3-$5
+
+
+* Cryptocurrency
+- <2021-04-28 Wed>
+btc@btc:~$ bitcoin-cli getbalance
+4.61425433

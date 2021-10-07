@@ -15,3 +15,7 @@
         fsckobjects = true
 [receive]
         fsckobjects = true
+[diff "key"]
+    textconv = gpg --batch --no-tty --show-keys <
+[diff "pgp"]
+    textconv = gpg --batch --no-tty --decrypt <

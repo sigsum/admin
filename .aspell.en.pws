@@ -1,10 +1,11 @@
-personal_ws-1.1 en 212 
+personal_ws-1.1 en 224 
 Packeting
 Biella
 debugable
 Bagueros
 APIs
 TCP
+VFAT
 EAP
 Dev
 redistributable
@@ -12,6 +13,7 @@ STHs
 STH's
 Kerberos
 sudo
+userspace
 RSA
 refactoring
 CrypTech
@@ -23,6 +25,7 @@ TGT
 checksum
 UDP
 unlinkability
+SPI
 SCT's
 CRK
 PKINIT
@@ -34,9 +37,11 @@ CSS
 DNS
 TLS
 linux
+netmask
 SSL
 sth
 DoS
+boolean
 Raoof
 erlang
 gdb
@@ -45,6 +50,7 @@ implementers
 TPI
 trunnel
 cvs
+TPM
 Gothenburg
 Ramy's
 TOTP
@@ -54,6 +60,8 @@ SVN
 EPP
 resolvers
 backend
+submitter's
+submitters
 cryptographic
 URI
 NetBSD
@@ -73,6 +81,7 @@ VPN
 GMP
 beneficials
 IdP
+parsers
 crypto
 subtokens
 acceptor
@@ -80,6 +89,7 @@ GPL
 temporality
 kinit
 reusability
+dhcp
 DHCP
 linkability
 GSS
@@ -171,9 +181,11 @@ tunneling
 Abt
 WG
 untrusted
+YAML
 VM
 OCSP
 torproject
+sigsum
 misconfigured
 PKI
 NTP
