@@ -24,7 +24,7 @@
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
-(require 'elixir-mode)
+;(require 'elixir-mode)
 
 ;; Disabled this _and_ removed the lyskom directory bc
 ;;   eval-buffer: Loading ‘/home/linus/usr/share/emacs/site-lisp/lyskom/wid-edit.el’: old-style backquotes detected!
@@ -44,7 +44,9 @@
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
 
-(require 'ox-reveal)
+;; for markdown-mode, maybe?
+;(require 'ox-reveal)
+
 ;; deprecated in 27.1: (require 'tls)
 ;(require 'jabber)
 (require 'appt)                         ;calendar needs this
@@ -153,11 +155,11 @@
 (add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.9/emacs" t)
 (setq erlang-root-dir "/usr/lib/erlang")
 ;(add-to-list 'exec-path "/usr/lib/erlang/bin" t)
-(require 'erlang-start)
+;(require 'erlang-start)
 
 ;; Rust
 ;(autoload 'rust-mode "rust-mode" nil t)
-(require 'rust-mode)
+;(require 'rust-mode)
 
 ;; BBDB
 ;(require 'bbdb)
@@ -767,7 +769,7 @@
 
 
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
-(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+;(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
 
 ;; Disable richtext 'x-display' decoding, see
