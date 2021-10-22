@@ -15,30 +15,3 @@ if [ -n "$BASH_VERSION" ]; then
 	. "$HOME/.bashrc"
     fi
 fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-GOPATH=$HOME/usr/go; export GOPATH
-PATH=$HOME/usr/bin:$GOPATH/bin:$PATH; export PATH
-
-WORKON_HOME=$HOME/.virtualenvs; export WORKON_HOME
-PROJECT_HOME=$HOME/p/python; export PROJECT_HOME
-#. /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-
-GNUPGHOME=$HOME/.gnupg; export GNUPGHOME
-
-# OPAM configuration
-#. /home/linus/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
-[ -d "$HOME/.cache/rebar3/bin" ] && PATH="$PATH:$HOME/.cache/rebar3/bin"; export PATH
-
-PATH=$PATH:$HOME/usr/games; export PATH
-PATH="$HOME/.cargo/bin:$PATH"; export PATH

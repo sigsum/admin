@@ -136,10 +136,27 @@ LC_MEASUREMENT=$LC_CTYPE; export LC_MEASUREMENT
 #}
 
 # This effectively makes gpg-agent the only ssh-agent. Not so good.
-#export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # pinentry uses this:
 #export GPG_TTY=$(tty)
 
 export TR_AUTH=transmission:QlYnyQvUbpziM3qMIrMsBQHuEfceYDCl
 
+# For pass(1), on Wayland+Sway+foot. Default xclip "selection" is
+# clipboard but that clipboard is not the same clipboard as what
+# Wayland (or Sway, or foot) is using. Using primary makes it possible
+# to paste with middle mouse button though and that will have to do.
+export PASSWORD_STORE_X_SELECTION=primary
+
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[ -d "$HOME/.local/bin" ] &&  PATH="$HOME/.local/bin:$PATH"
+[ -d "$HOME/usr/games" ] && export PATH="$PATH:$HOME/usr/games" # For gtetrinet
+[ -d "$HOME/.cache/rebar3/bin" ] && export PATH="$PATH:$HOME/.cache/rebar3/bin"
+[ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
+[ -d "$GOPATH/bin" ] && export PATH="$GOPATH/bin:$PATH"
+[ -r "$HOME/.opam/opam-init/init.sh ] && source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
+
+export GOPATH="$HOME/usr/go"
+export WORKON_HOME="$HOME/.virtualenvs"
+export GNUPGHOME="$HOME/.gnupg"
