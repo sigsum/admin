@@ -6087,6 +6087,20 @@ Running Postfix, (milter-)opendkim (http://opendkim.org/), postgrey (http://post
 - opendkim is packaged for debian (2.11.0~beta2-4)
 - postgrey is packaged for debian (1.36-5.2)
 
+** dup.adb-centralen.se (2021-10-19) -- VM @ vmsplice for DNS authoritative
+virt-install \
+  --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
+  --virt-type kvm \
+  --graphics none \
+  --extra-args console=ttyS0,115200 \
+  --autostart \
+  --os-variant debian9 \
+  --network bridge=br0 \
+  --name dup.adb-centralen.se --memory 1024 --vcpus 1 --disk size=20
+
+193.10.5.76/24 (TODO: fix PTR)
+
+
 * Verkligen Data
 ** getrandom.verkligendata.se (2019-12-06) -- rpi3 red+white case at VKG
 - donated to Verkligen Data by Linus
@@ -6147,7 +6161,8 @@ X11SSH-TF-O Xeon H4-Skt uATX, Intel C236
 1 x Intel Xeon E3-1270v6 QuadCore HT
 4 x Samsung 16G DDR4 ECC 2666MHz 1.2V UDIMM
 
-2 x Seagate 2.5" HDD 2TB SATA 6Gb/s 512e
+*** Storage
+Initial: 2 x Seagate 2.5" HDD 2TB SATA 6Gb/s 512e
 Device Model:     ST2000NX0253
 Serial Number:    W462J7RZ
 LU WWN Device Id: 5 000c50 0c5103b09
@@ -6179,6 +6194,11 @@ Serial Number:    WN94MXJ1
 LU WWN Device Id: 5 000c50 0d67e24cd
 Firmware Version: SDM1
 Rotation Rate:    7200 rpm
+
+root@vm86:~# date > /tmp/vm86-fdisklist.txt; for f in a b c d e f; do printf "\n# sd$f\n" >> /tmp/vm86-fdisklist.txt; fdisk -lo 'Device,Start,End,Sectors,Size,Type,Type-UUID,Attrs,Name,UUID' 
+/dev/sd$f >> /tmp/vm86-fdisklist.txt; done
+
+See [[file:~/p/st/deployments/verkligen/vm86-fdisklist.txt][file:~/p/st/deployments/verkligen/vm86-fdisklist.txt]]
 
 *** Setting up two new 2T disks <2021-08-18 Wed>
 fdisk /dev/sdc
@@ -7018,6 +7038,20 @@ nft add rule $rs filter INPUT "iifname br0 udp dport 5355 counter reject";
 done
 
 ** sigwaitinfo.verkligendata.se (2020-11-19) -- red apu2 @ VKG
+APU2
+
+4G RAM
+16G SSD
+
+*** Storage
+Device Model:     Hoodisk SSD
+Serial Number:    L7DTC7A11208568
+Firmware Version: SBFM01.3
+User Capacity:    16,013,942,784 bytes [16.0 GB]
+Sector Size:      512 bytes logical/physical
+Rotation Rate:    Solid State Device
+Form Factor:      mSATA
+
 *** install
 https://teklager.se/en/knowledge-base/installing-debian-over-serial-console-apu-board/
 
@@ -7071,14 +7105,32 @@ TODO: set up NAT
 systemctl enable wg-quick@wg0
 systemctl start wg-quick@wg0
 
+Since we're filtering both INPUT and FORWARD, allow for wg:
+
+NAT is done in an ip postrouting chain:
+table ip nat {
+        chain postrouting {
+                type nat hook postrouting priority 100; policy accept;
+                ip saddr 10.47.11.0/24 ip daddr != 10.47.11.0/24 masquerade
+        }
+}
+
 # Add peer
 wg set wg0 peer $PEERPUBKEY allowed-ips 10.47.11.${NEXTV4}/32,fd00:47:11::${NEXTV6}/128
 wg-quick save wg0
 
-*** DHCP
+**** old stuff
+Once we were adding 10.47.11.0/24 dev wg0 when for some reason we didn't a route like
+
+    10.47.11.11 dev wg0 scope link
+
+for the .11 peer. This "fixed itself" after a reboot. Not sure if this
+will repeat for newly added peers. Please update.
+
+*** DHCP by dnsmasq
 Leases in /var/lib/misc/dnsmasq.leases
 
-journalctl -eu dnsmasq for log
+journalctl -u dnsmasq | awk '/DHCPACK/{print $8, $9}' | sort | uniq -c
 
 ** bpf.verkligendata.se (2020-10-31) -- VM @ vm86.vdse from <2020-10-31 Sat>
 For backups, replacing jail bpf @ brk <2020-10-31 Sat>.
@@ -7614,7 +7666,6 @@ is corrupt, and you might try running e2fsck with an alternate superblock:
     e2fsck -b 8193 <device>
  or
     e2fsck -b 32768 <device>
-
 
 ** listen.sigsum.org (2021-09-22) -- VM @ vm86 for list archives (and web page)
 virt-install --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
@@ -8889,7 +8940,149 @@ hw.ncpu: 6
 hw.byteorder: 1234
 hw.physmem: 17092280320
 
-* FUTURE
+** vmsplice.adb-centralen.se
+root@4c255a9c6946:~# fdisk -lo 'device,Start,End,Sectors,Size,Type,Type-UUID,Attrs,Name,UUID' /dev/sda
+Disk /dev/sda: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors
+Disk model: HGST HUS722T1TAL
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 7D1789D4-A01F-11EA-8C85-00259071E325
+
+Device       Start        End    Sectors   Size Type Type-UUID                            Attrs Name UUID
+/dev/sda1     2048    2099199    2097152     1G Linu 0FC63DAF-8483-4772-8E79-3D69D8477DE4       STDATA
+                                                                                                     E228E3AB-4850-CA44-A019-0E34CCE96A24
+/dev/sda2  2099200 1953525127 1951425928 930.5G Linu E6D6D379-F507-44C2-A23C-238F2A3DF928            774377B5-697C-C34A-90E0-AADBDCBCB9B1
+root@4c255a9c6946:~# date
+Wed Oct 13 10:54:55 UTC 2021
+
+besk:verkligen% sha256sum 2020-10-15-coreboot-vdse.rom 
+9f3cb5e8271914c012a3e484d8ec658a4823c36eb6a1129a61ed7ff18ac26dea  2020-10-15-coreboot-vdse.rom
+root@besk:~# flashrom -p ch341a_spi --ifd -i bios -w ~linus/p/st/deployments/verkligen/2020-10-15-coreboot-vdse.rom
+
+*** kvm setup
+cat > /stdata/etc/network/interfaces.d/br0 <<EOF
+auto br0
+
+iface br0 inet static
+    address 193.10.5.101/24
+    gateway 193.10.5.1
+    dns-nameserver 193.10.5.125
+    dns-search adb-centralen.se
+    bridge_ports eno0
+    bridge_stp off
+    bridge_waitport 0
+    bridge_fd 0
+    
+iface br0 inet6 static
+    address 2001:6b0:8::101/64
+    gateway 2001:6b0:8::1
+    autoconf 0
+EOF
+cp /stdata/etc/network/interfaces.d/br0 /etc/network/interfaces.d/
+
+cat > /stdata/etc/network/interfaces.d/eno0 <<EOF
+allow-auto eno0
+allow-hotplug eno0
+
+iface eno0 inet static
+    address 0.0.0.0/32
+EOF
+cp /stdata/etc/network/interfaces.d/eno0 /etc/network/interfaces.d/
+
+systemctl restart networking
+*** kcmp in a VM
+
+curl -LO https://ci-01.nyi.hardenedbsd.org/pub/hardenedbsd/12-stable/amd64/amd64/BUILD-LATEST/bootonly.iso.xz
+curl -LO https://ci-01.nyi.hardenedbsd.org/pub/hardenedbsd/12-stable/amd64/amd64/BUILD-LATEST/bootonly.iso.xz.asc
+xz -d bootonly.iso.xz
+
+virt-install \
+  --virt-type kvm \
+  --graphics none \
+  --os-variant freebsd11.2 \
+  --cdrom bootonly.iso \
+  --name kcmp.adb-centralen.se --memory 4096 --vcpus 2 --disk size=40
+
+*** 2021-10-13 first boot
+linus@nanosleep:~/usr/src/st/system-transparency.HISTORICAL$ openssl x509 -noout -fingerprint -sha256 -in keys/signing_keys/root.cert  
+SHA256 Fingerprint=5F:BB:A8:F4:7F:18:6F:15:FA:99:2A:60:A9:62:7B:B6:38:F2:64:95:82:23:41:08:51:FE:8E:36:CE:31:B5:51
+linus@nanosleep:~/usr/src/st/system-transparency.HISTORICAL$ openssl x509 -noout -text -in keys/signing_keys/root.cert  | egrep Before\|After
+            Not Before: Oct 13 20:18:31 2020 GMT
+            Not After : Aug  3 20:18:31 2023 GMT
+
+$ date -d @1602777665
+Thu 15 Oct 2020 06:01:05 PM CEST
+
+**** 2021/10/13 11:44:52 Welcome to u-root!
+                              _
+   _   _      _ __ ___   ___ | |_
+  | | | |____| '__/ _ \ / _ \| __|
+  | |_| |____| | | (_) | (_) | |_
+   \__,_|    |_|  \___/ \___/ \__|
+
+stboot: 2021/10/13 11:44:52
+  _____ _______   _____   ____   ____________
+ / ____|__   __|  |  _ \ / __ \ / __ \__   __|
+| (___    | |     | |_) | |  | | |  | | | |
+ \___ \   | |     |  _ <| |  | | |  | | | |
+ ____) |  | |     | |_) | |__| | |__| | | |
+|_____/   |_|     |____/ \____/ \____/  |_|
+
+stboot: 2021/10/13 11:44:52 Host variables: {
+  "minimal_signatures_match": 1,
+  "fingerprints": [
+    "5fbba8f47f186f15fa992a60a9627bb638f264958223410851fe8e36ce31b551"
+  ],
+  "build_timestamp": 1602777665,
+  "boot_mode": "LocalStorage"
+}
+stboot: 2021/10/13 11:44:52 Search data partition with label STDATA ...
+stboot: 2021/10/13 11:44:52 Skip /dev/sda: Bad GPT signature
+stboot: 2021/10/13 11:44:52 Found data partition on /dev/sdb , partition 1
+stboot: 2021/10/13 11:44:52 data partition /dev/sdb1 mounted at data
+stboot: 2021/10/13 11:44:52 Systemtime: 2021-10-13 11:44:53 +0000 UTC
+stboot: 2021/10/13 11:44:52 TXT self tests are not implementet yet.
+stboot: 2021/10/13 11:44:52 WARNING: No TXT Support!
+stboot: 2021/10/13 11:44:52 TXT is supported on this platform
+stboot: 2021/10/13 11:44:52 Bootballs to be processed:
+stboot: 2021/10/13 11:44:52 data/stboot/bootballs/new/ball-2021-09-13-06-23-19.stboot
+stboot: 2021/10/13 11:44:52 Opening bootball data/stboot/bootballs/new/ball-2021-09-13-06-23-19.stboot
+stboot: 2021/10/13 11:44:54 Fingerprint of boot ball's root certificate:
+stboot: 2021/10/13 11:44:54 5fbba8f47f186f15fa992a60a9627bb638f264958223410851fe8e36ce31b551
+stboot: 2021/10/13 11:44:54 OK!
+stboot: 2021/10/13 11:44:54 Bootball config: {
+  "label": "System Transparency with Debian Buster",
+  "kernel": "boot/debian-buster-amd64.vmlinuz",
+  "initramfs": "boot/debian-buster-amd64.cpio.gz",
+  "cmdline": "console=tty0 console=ttyS0,115200n8 rw rdinit=/lib/systemd/systemd l1tf=full,force intel_iommu=on",
+  "tboot": "boot/tboot.gz",
+  "tboot_args": "",
+  "acms": [
+    "boot/acms/2nd_gen_i5_i7_SINIT_51.BIN",
+    "boot/acms/3rd_gen_i5_i7_RACM-SINIT_67.bin",
+    "boot/acms/3rd_gen_i5_i7_SINIT_67.BIN",
+    "boot/acms/4th_gen_i5_i7_SINIT_75.BIN",
+    "boot/acms/5th_gen_i5_i7_SINIT_79.BIN",
+    "boot/acms/6th_7th_gen_i5_i7-SINIT_79.bin",
+    "boot/acms/6th_gen_i5_i7_SINIT_71.BIN",
+    "boot/acms/7th_8th_gen_i5_i7-SINIT_81.bin",
+    "boot/acms/GM45_GS45_PM45_SINIT_51.BIN",
+    "boot/acms/Q35_SINIT_51.BIN",
+    "boot/acms/Q45_Q43_SINIT_51.BIN",
+    "boot/acms/Xeon-5600-3500-SINIT-v1.1.bin",
+    "boot/acms/Xeon-E7-8800-4800-2800-SINIT-v1.1.bin",
+    "boot/acms/i5_i7_DUAL_SINIT_51.BIN",
+    "boot/acms/i7_QUAD_SINIT_51.BIN"
+  ],
+  "allow_non_txt": true
+}
+stboot: 2021/10/13 11:44:55 Signatures: 1 found, 1 valid, 1 required
+stboot: 2021/10/13 11:44:55 Bootball passed verification
+
+
+* future
 ** <next tor machine>
 CPU:    AMD Phenom II X6 1090T               1500:-
 Planka: ASUS M4A89GTD PRO/USB3, Socket-AM3   1250:-
