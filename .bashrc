@@ -155,7 +155,7 @@ export PASSWORD_STORE_X_SELECTION=primary
 [ -d "$HOME/.cache/rebar3/bin" ] && export PATH="$PATH:$HOME/.cache/rebar3/bin"
 [ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
 [ -d "$GOPATH/bin" ] && export PATH="$GOPATH/bin:$PATH"
-[ -r "$HOME/.opam/opam-init/init.sh ] && source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
+[ -r "$HOME/.opam/opam-init/init.sh" ] && source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
 
 export GOPATH="$HOME/usr/go"
 export WORKON_HOME="$HOME/.virtualenvs"
