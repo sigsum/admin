@@ -3,7 +3,6 @@
 .cache
 .caff
 .compiz
-.config
 .emacs.d
 .easytag
 .gimp-2.8
@@ -37,7 +36,6 @@
 .virt-manager
 .w3m
 .xsession-errors
-bin
 forty711
 maatuska
 ostick
