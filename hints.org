@@ -3564,6 +3564,9 @@ drwx------ 2 linus linus     1024 Jun  1  2019 private-keys-v1.d.BAK/
 datan:~% mv /home/linus/.gnupg/pubring.gpg~ /home/linus/.gnupg/pubring.gpg
 
 All good. Wonder what happened in the morning of Sep 1.
+** disecting an encrypted file
+gpg --list-packets FILE
+
 * wiki
 - ikiwiki is supposed to be nice.  Uploading text files (markdown!)
   using git f.ex.
@@ -5550,6 +5553,7 @@ User modes for ln5: +RZhi
 
 * DNS
 ** DNSSEC
+*** authoritative
 ns.adb-centralen.se uses knot for DNSSEC.
 
 Two handy scripts for creating ZSK and KSK for a zone and getting DS
@@ -5582,8 +5586,44 @@ adb-centralen.se. IN DS 3787 8 2 AAD386D929CB8432EA2E365C1872EA779F488C46C48B5F2
 
 In this example, the keytag is 3787, the algorithm is 8 (RSA/SHA-256)
 and the digest type is 2 (SHA-256).
-** dig
-*** segfault
+*** verifying
+$ [ /etc/unbound/root.key ] || sudo ln -s /var/lib/unbound/root.key /etc/unbound/
+$ sudo apt install ldnsutils
+$ drill -TD www.adb-centralen.se
+;; Number of trusted keys: 1
+;; Domain: .
+[T] . 172800 IN DNSKEY 256 3 8 ;{id = 14748 (zsk), size = 2048b}
+. 172800 IN DNSKEY 257 3 8 ;{id = 20326 (ksk), size = 2048b}
+Checking if signing key is trusted:
+New key: .      172800  IN      DNSKEY  256 3 8 AwEAAY+oUaY0b7Z45vRD1ef/GykZqgHJtfdzRcnQNvGVQAqlH22QChtG+n1EMugw7T/6uDBAGlRIkXASdtHXhxStb9lPpyQe5/JIuMIlg+NhxKxEJ5e3J9SSPCavvDhH/BPrBCJwn8b68QAWRjVW6Rgdx63pUm7lfsimiWGMfplHNvcZWgVbKA9OI2o2lU8rT8n7zuwtlZPNpDLSI5GzrJgIiKR2Id16fmAgTJBOw14Xye/t4/BxTdxeMiiVFwA4KUV2VeqspHKSHFOz+lUIIqBRknEmYpSvnxnyi0n1n4tGnGP8z6ZwRACi1Rw0nCu7BGOU9M6LpInRoW/W4KXLODr6xqU= ;{id = 14748 (zsk), size = 2048b}
+        Trusted key: .  86400   IN      DNSKEY  257 3 8 AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexTBAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq7HrxRixHlFlExOLAJr5emLvN7SWXgnLh4+B5xQlNVz8Og8kvArMtNROxVQuCaSnIDdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLrjyBxWezF0jLHwVN8efS3rCj/EWgvIWgb9tarpVUDK/b58Da+sqqls3eNbuv7pr+eoZG+SrDK6nWeL3c6H5Apxz7LjVc1uTIdsIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6+cn8HFRm+2hM8AnXGXws9555KrUB5qihylGa8subX2Nn6UwNR1AkUTV74bU= ;{id = 20326 (ksk), size = 2048b}
+        Trusted key: .  172800  IN      DNSKEY  256 3 8 AwEAAY+oUaY0b7Z45vRD1ef/GykZqgHJtfdzRcnQNvGVQAqlH22QChtG+n1EMugw7T/6uDBAGlRIkXASdtHXhxStb9lPpyQe5/JIuMIlg+NhxKxEJ5e3J9SSPCavvDhH/BPrBCJwn8b68QAWRjVW6Rgdx63pUm7lfsimiWGMfplHNvcZWgVbKA9OI2o2lU8rT8n7zuwtlZPNpDLSI5GzrJgIiKR2Id16fmAgTJBOw14Xye/t4/BxTdxeMiiVFwA4KUV2VeqspHKSHFOz+lUIIqBRknEmYpSvnxnyi0n1n4tGnGP8z6ZwRACi1Rw0nCu7BGOU9M6LpInRoW/W4KXLODr6xqU= ;{id = 14748 (zsk), size = 2048b}
+Key is now trusted!
+        Trusted key: .  172800  IN      DNSKEY  257 3 8 AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexTBAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq7HrxRixHlFlExOLAJr5emLvN7SWXgnLh4+B5xQlNVz8Og8kvArMtNROxVQuCaSnIDdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLrjyBxWezF0jLHwVN8efS3rCj/EWgvIWgb9tarpVUDK/b58Da+sqqls3eNbuv7pr+eoZG+SrDK6nWeL3c6H5Apxz7LjVc1uTIdsIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6+cn8HFRm+2hM8AnXGXws9555KrUB5qihylGa8subX2Nn6UwNR1AkUTV74bU= ;{id = 20326 (ksk), size = 2048b}
+[T] se. 86400 IN DS 59407 8 2 67a8e06fcefdd9397f77f26c41ade4ec142f299bcfa1827f0ef8fd87f2f63022 
+;; Domain: se.
+[T] se. 3600 IN DNSKEY 256 3 8 ;{id = 17395 (zsk), size = 2048b}
+se. 3600 IN DNSKEY 257 3 8 ;{id = 59407 (ksk), size = 2048b}
+Checking if signing key is trusted:
+New key: se.    3600    IN      DNSKEY  256 3 8 AwEAAakdcovWQRXevg3eMXRqAGLSRIszCPOeI4fEpXPJioBaQgr3eF5fMHZ9QgCb59Af8feTMPfU8FD0Bo2GXiryA7rDNaHM8Xg9bVaCwuC+/eeC6+laDyYTDHbS05kaUiZe+m/6jPVdJBZn4AYcST3AzO8KHL7vbkkjo+AMdtinl81s0POk5h+Y6czzJBdGg7svWyQf7cPf4NxK25vrLTtyg9VsJjnGClg0zejwbBTbcEuEybCoFS36uWnRz2Zx2uYv1ob/FGkBYrWY0hAHeUOcUOkZYlSQ+Cd3bwEup+C0Bw7fLvlgbFLiRl6MHOotyhOMaG1ujZ5aTzdecQZ82JTzK6k= ;{id = 17395 (zsk), size = 2048b}
+        Trusted key: .  86400   IN      DNSKEY  257 3 8 AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexTBAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq7HrxRixHlFlExOLAJr5emLvN7SWXgnLh4+B5xQlNVz8Og8kvArMtNROxVQuCaSnIDdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLrjyBxWezF0jLHwVN8efS3rCj/EWgvIWgb9tarpVUDK/b58Da+sqqls3eNbuv7pr+eoZG+SrDK6nWeL3c6H5Apxz7LjVc1uTIdsIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6+cn8HFRm+2hM8AnXGXws9555KrUB5qihylGa8subX2Nn6UwNR1AkUTV74bU= ;{id = 20326 (ksk), size = 2048b}
+        Trusted key: .  172800  IN      DNSKEY  256 3 8 AwEAAY+oUaY0b7Z45vRD1ef/GykZqgHJtfdzRcnQNvGVQAqlH22QChtG+n1EMugw7T/6uDBAGlRIkXASdtHXhxStb9lPpyQe5/JIuMIlg+NhxKxEJ5e3J9SSPCavvDhH/BPrBCJwn8b68QAWRjVW6Rgdx63pUm7lfsimiWGMfplHNvcZWgVbKA9OI2o2lU8rT8n7zuwtlZPNpDLSI5GzrJgIiKR2Id16fmAgTJBOw14Xye/t4/BxTdxeMiiVFwA4KUV2VeqspHKSHFOz+lUIIqBRknEmYpSvnxnyi0n1n4tGnGP8z6ZwRACi1Rw0nCu7BGOU9M6LpInRoW/W4KXLODr6xqU= ;{id = 14748 (zsk), size = 2048b}
+        Trusted key: .  172800  IN      DNSKEY  257 3 8 AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexTBAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq7HrxRixHlFlExOLAJr5emLvN7SWXgnLh4+B5xQlNVz8Og8kvArMtNROxVQuCaSnIDdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLrjyBxWezF0jLHwVN8efS3rCj/EWgvIWgb9tarpVUDK/b58Da+sqqls3eNbuv7pr+eoZG+SrDK6nWeL3c6H5Apxz7LjVc1uTIdsIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6+cn8HFRm+2hM8AnXGXws9555KrUB5qihylGa8subX2Nn6UwNR1AkUTV74bU= ;{id = 20326 (ksk), size = 2048b}
+        Trusted key: se.        3600    IN      DNSKEY  256 3 8 AwEAAakdcovWQRXevg3eMXRqAGLSRIszCPOeI4fEpXPJioBaQgr3eF5fMHZ9QgCb59Af8feTMPfU8FD0Bo2GXiryA7rDNaHM8Xg9bVaCwuC+/eeC6+laDyYTDHbS05kaUiZe+m/6jPVdJBZn4AYcST3AzO8KHL7vbkkjo+AMdtinl81s0POk5h+Y6czzJBdGg7svWyQf7cPf4NxK25vrLTtyg9VsJjnGClg0zejwbBTbcEuEybCoFS36uWnRz2Zx2uYv1ob/FGkBYrWY0hAHeUOcUOkZYlSQ+Cd3bwEup+C0Bw7fLvlgbFLiRl6MHOotyhOMaG1ujZ5aTzdecQZ82JTzK6k= ;{id = 17395 (zsk), size = 2048b}
+Key is now trusted!
+        Trusted key: se.        3600    IN      DNSKEY  257 3 8 AwEAAccqQMsh1rhvB3IWXmWZpCrug9MEGCKGteLIvwppyHeHgeBBm3M0p5FV9ImquvxFCnBd6Eey3Vf8SzoTodZ3YrGF9WFve7bmie2MIBhFDoCep16v9lon0ZsKrOvoCkPbTT0iFCdrbdyikYcCfvvh303anvQeTCf3jy+bHOTleaqVaNRJiGv5NBsPKpfnnqBpqqKyZymSpwQXHtTeyv7iWwGl3cfP3U6sp711WvKkXy7Y2DJnC5T5owHWUy1ZPl4s+9DtuC2A9AWhOpDicguHYRfmyscjCbPOB8/tO5j+uECo67i7JjsiLjQTRyHuigUUBRag3Z3FaTXZBg/myaoUL0U= ;{id = 59407 (ksk), size = 2048b}
+[T] adb-centralen.se. 3600 IN DS 20942 8 2 fe58727bfbb6f5929343ecb68ff0dd40cf4d3eec6b9c9f82325fe6925154cd59 
+;; Domain: adb-centralen.se.
+[T] adb-centralen.se. 3600 IN DNSKEY 257 3 8 ;{id = 20942 (ksk), size = 2048b}
+adb-centralen.se. 3600 IN DNSKEY 256 3 8 ;{id = 62758 (zsk), size = 2048b}
+[T] Existence denied: www.adb-centralen.se. DS
+;; No ds record for delegation
+;; Domain: www.adb-centralen.se.
+;; No DNSKEY record found for www.adb-centralen.se.
+[T] www.adb-centralen.se.       3600    IN      A       193.10.5.127
+;;[S] self sig OK; [B] bogus; [T] trusted
+
+** dig segfaulting
     Running a shell in Emacs runing under usewithtor:
 
     42:~% dig -x 109.123.119.163
@@ -5600,21 +5640,19 @@ and the digest type is 2 (SHA-256).
     Segmentation fault
     42:~% 
 ** TSIG
-*** this is how?
-[[gnus:nnimap%2Badbc:INBOX#87vbur1kid.fsf@nordberg.se][Email to Patrik Wallstrom: TSIG]]
-Verkar det här vettigt på master (ns.dfri.se)?
+To generate a shared secret for TSIG:
 
-dnssec-keygen -a HMAC-SHA256 -b 512 -n HOST tsigkey
-printf "key \"dfri-tsig\" {\n algorithm HMAC-SHA256;\n secret
-\"%s\";\n};\n" $(egrep ^Key Ktsigkey.*.private | cut -d\ -f 2) >
-named.tsigkeys.conf
-printf "include \"/etc/namedb/named.tsigkeys.conf\";\n" >> /etc/namedb/named.conf
+    $ dnssec-keygen -a hmac-sha256 -b 256 -n HOST <name>
 
-Sen lägga till det här för våra zoner:
+where <name> is a string. Suggested form for the name is
 
-allow-transfer {
-  key "dfri-tsig";
-};
+  <our-end>-<their-end>
+
+For example
+
+  adb-centralen.se-fatburen.org
+
+Keys end up in a file on the form K<name>.<some-numbers>.key and .private.
 ** dns over tls
 
 git clone https://github.com/getdnsapi/getdns.git && cd getdns
@@ -5682,6 +5720,9 @@ dfri.se.                86400   IN      A       171.25.193.19
   - privoxy
 ** sunet open resolver
 89.32.32.32
+** Using DNSCheck utan JavaScript
+https://github.com/dotse/zonemaster/blob/master/docs/documentation/installation.md
+
 * i18n
   LANG=sv_SE.UTF-8
 * laptop
@@ -31099,6 +31140,9 @@ linus@nordu.net xapie6Yaeghi
 - sugar
 - red wine (portuguese ofc!)
 * Firefox
+** Settings
+browser.ctrlTab.recentlyUsedOrder = false
+
 ** Add-ons
 Torbutton
   about:config:extensions.torbutton.resize_windows -> false
@@ -36609,23 +36653,6 @@ SHA256 Fingerprint=6D:90:8F:D1:55:D7:D4:2D:90:47:D4:85:1A:7E:DE:7C:B9:4A:CE:E8:C
 <2015-03-06 Fri> met with meskio / ruben
 * document formats and converting
 - unoconv (libreoffice)
-* dns
-** TSIG
-To generate a shared secret for TSIG:
-
-    $ dnssec-keygen -a hmac-sha256 -b 256 -n HOST <name>
-
-where <name> is a string. Suggested form for the name is
-
-  <our-end>-<their-end>
-
-For example
-
-  adb-centralen.se-fatburen.org
-
-Keys end up in a file on the form K<name>.<some-numbers>.key and .private.
-** DNSCheck utan JS
-https://github.com/dotse/zonemaster/blob/master/docs/documentation/installation.md
 * services
 ** POTS conf call / voice bridge
 - +46 8 500 050 00
@@ -40217,7 +40244,7 @@ but it maintains the "no unauthenticated state" invariant
 -O> which seems unresolved afaict
 <O- I think ipredator might also be happy to use a secure version of wiregurad
 <O- wireguard*
-** trouble bringing wg0 up after kernel upgrade
+** trouble bringing wg0 up after kernel upgrade (kcmp)
 tl;dr apt remove wireguard wireguard-dkms wireguard-tools && apt install wireguard
 
 Long version:
@@ -40416,6 +40443,11 @@ root@datan:~# Jul 30 00:12:22 datan kernel: wireguard: WireGuard 1.0.20200712 lo
 Jul 30 00:12:22 datan kernel: wireguard: Copyright (C) 2015-2019 Jason A. Donenfeld <Jason@zx2c4.com>. All Rights Reserved.
 
 ** adding new peer on kcmp
+wg set wg0 peer $PUBKEY allowed-ips 10.128.0.${NEXTIP}/32,fd00:128::${NEXTIP}/128
+wg-quick save wg0
+
+Use this for finding the next free IP address?
+wg show wg0 allowed-ips | sort -t . -k 4 -n
 
 * Núbi Ferskur <neubyi@4711.se>
 - uses ln+neubyi@4711.se some places (github)
@@ -44098,3 +44130,12 @@ There's a default .cplayrc in the program, see PLAYERS.
 3. https://app.element.io/ (doesn't work in tor browser) -> channel
    info -> "Add widgets, bridges & bots"; click click
 4. OFTC: Respond to a MatrixBridge bot PM:ing
+* unbound, local
+** debian, bullseye
+Try
+
+    sudo apt install resolvconf
+
+which will symlink /etc/resolv.conf to /run/resolvconf/resolv.conf
+which will be set up in a complicated way with help from a plethora of
+scripts in /etc/resolvconf/.

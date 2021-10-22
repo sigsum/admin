@@ -1,3 +1,7 @@
+roleplaying online https://roll20.net/
+former-namecoin-p https://handshake.org/
+readme https://www.theguardian.com/technology/2021/oct/14/leave-no-trace-how-a-teenage-hacker-lost-himself-online
+people:linus https://seclists.org/bugtraq/1998/Jan/62
 linuxfoundation security funding sos https://security.googleblog.com/2021/10/introducing-secure-open-source-pilot.html
 https://blog.cloudflare.com/cloudflare-for-offices/
 mc voice https://modrepo.de/minecraft/voicechat/wiki/?t=setup
