@@ -18,6 +18,31 @@ Starting week 16, we go back to tracking here instead.
 ** Vacation 2021
 Weeks 27, 28, 29, 31 (2021-07-05--25, 2021-08-02--08)
 
+* week 43 2021-10-25
+** mullvad
+*** sigsum
+   :LOGBOOK:
+   CLOCK: [2021-10-27 Wed 09:01]--[2021-10-27 Wed 09:10] =>  0:09
+   .
+   CLOCK: [2021-10-26 Tue 16:32]--[2021-10-26 Tue 17:44] =>  1:12
+   CLOCK: [2021-10-26 Tue 16:08]--[2021-10-26 Tue 16:24] =>  0:16
+   sysadmin
+   CLOCK: [2021-10-26 Tue 13:03]--[2021-10-26 Tue 13:41] =>  0:38
+   meeting
+   CLOCK: [2021-10-25 Mon 14:00]--[2021-10-25 Mon 14:36] =>  0:36
+   sysadmin
+   :END:
+*** st
+    :LOGBOOK:
+    CLOCK: [2021-10-27 Wed 11:50]--[2021-10-27 Wed 11:56] =>  0:06
+    CLOCK: [2021-10-27 Wed 09:32]--[2021-10-27 Wed 09:39] =>  0:07
+    :END:
+** sunet
+*** soc
+    :LOGBOOK:
+    CLOCK: [2021-10-27 Wed 10:15]--[2021-10-27 Wed 11:45] =>  1:30
+    :END:
+
 * week 42 2021-10-19
 ** mullvad
 *** sigsum
@@ -28,6 +53,14 @@ Weeks 27, 28, 29, 31 (2021-07-05--25, 2021-08-02--08)
 *** ST
     :LOGBOOK:
     CLOCK: [2021-10-19 Tue 09:58]--[2021-10-19 Tue 10:46] =>  0:48
+    :END:
+
+** sunet
+*** soc
+    :LOGBOOK:
+    CLOCK: [2021-10-27 Wed 13:17]--[2021-10-27 Wed 14:37] =>  1:20
+    CLOCK: [2021-10-22 Fri 10:44]--[2021-10-22 Fri 11:17] =>  0:33
+    CLOCK: [2021-10-22 Fri 10:20]--[2021-10-22 Fri 10:40] =>  0:20
     :END:
 
 * week 41 2021-10-11
@@ -999,7 +1032,7 @@ vacation
     :END:
 
 ** tor
-*** diaruth
+*** dirauth
     :LOGBOOK:
     CLOCK: [2021-06-11 Fri 09:41]--[2021-06-11 Fri 09:46] =>  0:05
     thu: 1h new keys
@@ -1815,18 +1848,18 @@ NOTE: Diff is -0:03
    :END:
 
 ** nox
-   :LOGBOOK:
-   CLOCK: [2021-01-15 Fri 14:00]--[2021-01-15 Fri 14:08] =>  0:08
-   weprotect political material
-   CLOCK: [2021-01-13 Wed 12:00]--[2021-01-13 Wed 12:36] =>  0:36
-   meeting with funders, EU
-   CLOCK: [2021-01-13 Wed 10:00]--[2021-01-13 Wed 11:10] =>  1:10
-   "dark web"
-   CLOCK: [2021-01-13 Wed 06:40]--[2021-01-13 Wed 06:57] =>  0:17
-   EU application
-   CLOCK: [2021-01-12 Tue 09:15]--[2021-01-12 Tue 09:43] =>  0:28
-   möte med christoffer ang EU-ansökan
-   :END:
+    :LOGBOOK:
+    CLOCK: [2021-01-15 Fri 14:00]--[2021-01-15 Fri 14:08] =>  0:08
+    weprotect political material
+    CLOCK: [2021-01-13 Wed 12:00]--[2021-01-13 Wed 12:36] =>  0:36
+    meeting with funders, EU
+    CLOCK: [2021-01-13 Wed 10:00]--[2021-01-13 Wed 11:10] =>  1:10
+    "dark web"
+    CLOCK: [2021-01-13 Wed 06:40]--[2021-01-13 Wed 06:57] =>  0:17
+    EU application
+    CLOCK: [2021-01-12 Tue 09:15]--[2021-01-12 Tue 09:43] =>  0:28
+    möte med christoffer ang EU-ansökan
+    :END:
 
 ** sunet
    :LOGBOOK:
