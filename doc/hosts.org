@@ -6098,8 +6098,120 @@ virt-install \
   --network bridge=br0 \
   --name dup.adb-centralen.se --memory 1024 --vcpus 1 --disk size=20
 
-193.10.5.76/24 (TODO: fix PTR)
+193.10.5.76/24 2001:6b0:8::76/64
 
+See ansible for knot config.
+
+*** Keys and zones
+[root@ns ~]# service knot stop
+Stopping knot.
+Waiting for PIDS: 46525.
+[root@ns ~]# date
+Fri Oct 22 10:13:55 CEST 2021
+[root@ns ~]# sysrc knot_enable=no
+knot_enable: yes -> no
+
+[root@kcmp ~]# i stop ns
+* Stopping ns
+  + Executing prestop OK
+  + Stopping services OK
+  + Removing devfs_ruleset: 1004 OK
+  + Removing jail process OK
+  + Executing poststop OK
+
+**** List of all keys on original ns.adbc, as of <2021-10-22 Fri>
+[root@ns ~]# date; for zone in /usr/local/etc/knot/zones/*.zone; do printf "# $(basename $zone)\n"; keymgr $(basename $zone .zone) list iso; done
+fri Oct 22 10:12:55 CEST 2021
+# 0_28.109.141.45.in-addr.arpa.zone
+# 1.0.0.0.1.0.0.0.0.c.c.5.7.0.a.2.ip6.arpa.zone
+# 192_28.110.141.45.in-addr.arpa.zone
+# 224_28.67.227.46.in-addr.arpa.zone
+# 4711.se.zone
+bfdeca05e7231616e838ecce6d1bd4707b495e55 ksk=no  zsk=yes tag=20928 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-20T08:14:45Z ready=1970-01-01T00:00:00Z active=2021-10-20T10:14:45Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+fc31ca7ef687433c617b8674f568539195418768 ksk=yes zsk=no  tag=59116 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-11-27T15:49:46Z ready=2018-11-27T15:49:46Z active=2018-12-02T15:24:55Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# adb-centralen.se.zone
+0f123384e294ca4c2b6ad7bf0d3d0580eda69c97 ksk=yes zsk=no  tag=20942 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-12-02T14:35:52Z ready=2018-12-02T14:35:52Z active=2018-12-02T15:25:23Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+595c7dd5a2a9cd8ea3a589191d1f6941a3854aaa ksk=no  zsk=yes tag=57570 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-20T09:35:53Z ready=1970-01-01T00:00:00Z active=2021-10-20T11:35:54Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# freeolabini.se.zone
+f5f95eb5f66d63d80296b993351c2e33e4f17d67 ksk=yes zsk=no  tag=48064 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2019-04-14T20:56:48Z ready=2019-04-14T20:56:48Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+f7ae541b0834878b977edfb314ba141757d81fc6 ksk=no  zsk=yes tag=61153 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-03T06:56:50Z ready=1970-01-01T00:00:00Z active=2021-10-03T08:56:50Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# hbernstone.se.zone
+# klutt.se.zone
+# lists.adb-centralen.se.zone
+# lists.sigsum.org.zone
+# mail.nordberg.se.zone
+3c647022f43f6996326437e33a521de0e61e372a ksk=no  zsk=yes tag=58845 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-20T09:27:29Z ready=1970-01-01T00:00:00Z active=2021-10-20T11:27:29Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+d1117e9558f9c49a633531a9dc94f081a5a81754 ksk=yes zsk=no  tag=37985 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-12-02T15:27:29Z ready=2018-12-02T15:27:29Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# mikadako.com.zone
+# mobrules.nu.zone
+# noisydiode.se.zone
+151cba2305d4a79bd70190b4c4abaf7218ca36c4 ksk=no  zsk=yes tag=32869 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-09-24T06:55:36Z ready=1970-01-01T00:00:00Z active=2021-09-24T08:55:36Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+18bbc559b51e48c3cd994ca21ba5a97c20464251 ksk=yes zsk=no  tag=39464 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2019-12-02T12:55:26Z ready=2019-12-02T12:55:26Z active=2019-12-02T12:55:26Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# nordberg.se.zone
+41bdce6afa7dd7b8fd384e56bbfcc6d51e376c85 ksk=no  zsk=yes tag=57588 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-20T09:35:52Z ready=1970-01-01T00:00:00Z active=2021-10-20T11:35:52Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+b5648fd1e224554bf9bbc55863715c71f57b0886 ksk=yes zsk=no  tag=06977 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-12-02T14:35:52Z ready=2018-12-02T14:35:52Z active=2018-12-02T15:22:16Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# scoutlokalen.se.zone
+5c2e4a3617a3b1cc12bfb6dc13751d686e094c19 ksk=no  zsk=yes tag=60973 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-04T21:50:31Z ready=1970-01-01T00:00:00Z active=2021-10-05T22:50:31Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+9903538805afbd3a939d1944950cde4f8c14562d ksk=yes zsk=no  tag=63577 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2020-11-29T12:50:31Z ready=2020-11-29T12:50:31Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# siglog.se.zone
+58b49fb84b9e0fc69639e41cd537fd57245c9489 ksk=yes zsk=no  tag=50189 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-06-15T15:18:53Z ready=2021-06-15T15:18:53Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+8f88b9b245305712be4ced5c5ea990d5c04dc75b ksk=no  zsk=yes tag=11854 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-13T21:18:53Z ready=1970-01-01T00:00:00Z active=2021-10-13T23:18:53Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# sigsum.org.zone
+831c65ca316a467661ab33b90ef12d94c6eeaebb ksk=yes zsk=no  tag=41287 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-06-16T14:26:01Z ready=2021-06-16T14:26:01Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+d10be2e2dfe7e23acbb243e3695c1f5169259681 ksk=no  zsk=yes tag=54225 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-14T20:26:01Z ready=1970-01-01T00:00:00Z active=2021-10-14T22:26:01Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# sigsum.se.zone
+7e96843982b683da0c45d85a59d274c3e190f0d1 ksk=yes zsk=no  tag=09481 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-06-16T14:29:40Z ready=2021-06-16T14:29:40Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+c863f3d61483bd33a38dd0381cc682d557a0746b ksk=no  zsk=yes tag=20853 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-14T20:29:40Z ready=1970-01-01T00:00:00Z active=2021-10-14T22:29:40Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# verkligendata.se.zone
+49b6dad61e74cc84ce2174628a2920134626dbca ksk=yes zsk=no  tag=65500 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-12-02T14:35:52Z ready=2018-12-02T14:35:52Z active=2018-12-02T16:27:17Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+97ef93b3e29098459ed91836880e071d3f2d94f1 ksk=no  zsk=yes tag=53959 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-09-29T21:35:52Z ready=1970-01-01T00:00:00Z active=2021-09-30T22:35:52Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+
+**** List after migration to dup.adbc
+root@dup:~# date; for zone in /var/lib/knot/primary/*.zone; do printf "# $(basename $zone)\n"; keymgr $(basename $zone .zone) list iso; done
+Fri Oct 22 11:30:20 CEST 2021
+# 0_28.109.141.45.in-addr.arpa.zone
+# 1.0.0.0.1.0.0.0.0.c.c.5.7.0.a.2.ip6.arpa.zone
+# 192_28.110.141.45.in-addr.arpa.zone
+# 224_28.67.227.46.in-addr.arpa.zone
+# 4711.se.zone
+bfdeca05e7231616e838ecce6d1bd4707b495e55 ksk=no  zsk=yes tag=20928 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-20T08:14:45Z ready=1970-01-01T00:00:00Z active=2021-10-20T10:14:45Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+fc31ca7ef687433c617b8674f568539195418768 ksk=yes zsk=no  tag=59116 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-11-27T15:49:46Z ready=2018-11-27T15:49:46Z active=2018-12-02T15:24:55Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# adb-centralen.se.zone
+0f123384e294ca4c2b6ad7bf0d3d0580eda69c97 ksk=yes zsk=no  tag=20942 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-12-02T14:35:52Z ready=2018-12-02T14:35:52Z active=2018-12-02T15:25:23Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+595c7dd5a2a9cd8ea3a589191d1f6941a3854aaa ksk=no  zsk=yes tag=57570 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-20T09:35:53Z ready=1970-01-01T00:00:00Z active=2021-10-20T11:35:54Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# freeolabini.se.zone
+f5f95eb5f66d63d80296b993351c2e33e4f17d67 ksk=yes zsk=no  tag=48064 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2019-04-14T20:56:48Z ready=2019-04-14T20:56:48Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+f7ae541b0834878b977edfb314ba141757d81fc6 ksk=no  zsk=yes tag=61153 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-03T06:56:50Z ready=1970-01-01T00:00:00Z active=2021-10-03T08:56:50Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# hbernstone.se.zone
+# klutt.se.zone
+# lists.adb-centralen.se.zone
+# lists.sigsum.org.zone
+# mail.nordberg.se.zone
+3c647022f43f6996326437e33a521de0e61e372a ksk=no  zsk=yes tag=58845 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-20T09:27:29Z ready=1970-01-01T00:00:00Z active=2021-10-20T11:27:29Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+d1117e9558f9c49a633531a9dc94f081a5a81754 ksk=yes zsk=no  tag=37985 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-12-02T15:27:29Z ready=2018-12-02T15:27:29Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# mikadako.com.zone
+# mobrules.nu.zone
+# noisydiode.se.zone
+151cba2305d4a79bd70190b4c4abaf7218ca36c4 ksk=no  zsk=yes tag=32869 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-09-24T06:55:36Z ready=1970-01-01T00:00:00Z active=2021-09-24T08:55:36Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+18bbc559b51e48c3cd994ca21ba5a97c20464251 ksk=yes zsk=no  tag=39464 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2019-12-02T12:55:26Z ready=2019-12-02T12:55:26Z active=2019-12-02T12:55:26Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# nordberg.se.zone
+41bdce6afa7dd7b8fd384e56bbfcc6d51e376c85 ksk=no  zsk=yes tag=57588 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-20T09:35:52Z ready=1970-01-01T00:00:00Z active=2021-10-20T11:35:52Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+b5648fd1e224554bf9bbc55863715c71f57b0886 ksk=yes zsk=no  tag=06977 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-12-02T14:35:52Z ready=2018-12-02T14:35:52Z active=2018-12-02T15:22:16Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# scoutlokalen.se.zone
+5c2e4a3617a3b1cc12bfb6dc13751d686e094c19 ksk=no  zsk=yes tag=60973 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-04T21:50:31Z ready=1970-01-01T00:00:00Z active=2021-10-05T22:50:31Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+9903538805afbd3a939d1944950cde4f8c14562d ksk=yes zsk=no  tag=63577 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2020-11-29T12:50:31Z ready=2020-11-29T12:50:31Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# siglog.se.zone
+58b49fb84b9e0fc69639e41cd537fd57245c9489 ksk=yes zsk=no  tag=50189 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-06-15T15:18:53Z ready=2021-06-15T15:18:53Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+8f88b9b245305712be4ced5c5ea990d5c04dc75b ksk=no  zsk=yes tag=11854 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-13T21:18:53Z ready=1970-01-01T00:00:00Z active=2021-10-13T23:18:53Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# sigsum.org.zone
+831c65ca316a467661ab33b90ef12d94c6eeaebb ksk=yes zsk=no  tag=41287 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-06-16T14:26:01Z ready=2021-06-16T14:26:01Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+d10be2e2dfe7e23acbb243e3695c1f5169259681 ksk=no  zsk=yes tag=54225 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-14T20:26:01Z ready=1970-01-01T00:00:00Z active=2021-10-14T22:26:01Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# sigsum.se.zone
+7e96843982b683da0c45d85a59d274c3e190f0d1 ksk=yes zsk=no  tag=09481 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-06-16T14:29:40Z ready=2021-06-16T14:29:40Z active=1970-01-01T00:00:00Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+c863f3d61483bd33a38dd0381cc682d557a0746b ksk=no  zsk=yes tag=20853 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-10-14T20:29:40Z ready=1970-01-01T00:00:00Z active=2021-10-14T22:29:40Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+# verkligendata.se.zone
+49b6dad61e74cc84ce2174628a2920134626dbca ksk=yes zsk=no  tag=65500 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2018-12-02T14:35:52Z ready=2018-12-02T14:35:52Z active=2018-12-02T16:27:17Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
+97ef93b3e29098459ed91836880e071d3f2d94f1 ksk=no  zsk=yes tag=53959 algorithm=8  size=2048 public-only=no  pre-active=1970-01-01T00:00:00Z publish=2021-09-29T21:35:52Z ready=1970-01-01T00:00:00Z active=2021-09-30T22:35:52Z retire-active=1970-01-01T00:00:00Z retire=1970-01-01T00:00:00Z post-active=1970-01-01T00:00:00Z revoke=1970-01-01T00:00:00Z remove=1970-01-01T00:00:00Z
 
 * Verkligen Data
 ** getrandom.verkligendata.se (2019-12-06) -- rpi3 red+white case at VKG
@@ -7927,6 +8039,20 @@ http {
         access_log /var/log/nginx/access.log srcaddrprivacy;
 ...
 }
+
+** ns.verkligendata.se (2021-10-22) -- VM @ vm86 for DNS authoritative
+virt-install \
+  --location https://ftp.acc.umu.se/debian/dists/stable/main/installer-amd64/ \
+  --virt-type kvm \
+  --graphics none \
+  --extra-args console=ttyS0,115200 \
+  --autostart \
+  --os-variant debian9 \
+  --network bridge=br0 \
+  --name ns.verkligendata.se --memory 1024 --vcpus 1 --disk size=20
+
+91.223.231.3/24
+2001:67c:8a4::
 
 ** besk -- Lenovo X270 from 2018-07
 - purchase date: 2018-07-??
