@@ -38624,6 +38624,28 @@ RSA/SHA1 for host and user authentication for a single destination host:
         HostkeyAlgorithms +ssh-rsa
 	PubkeyAcceptedAlgorithms +ssh-rsa
 
+** verifying host key using DNS
+tl;dr recent changes in glibc makes it necessary to have 'options trust-ad' in /etc/resolv.conf
+
+
+Looking at openssh-8.4p1 from Debian source package openssh (openssh_8.4p1-5).
+
+
+verify_host_key() [sshconnect.c] calls verify_host_key_dns() and looks
+for DNS_VERIFY_SECURE being set in the flags argument upon return.
+
+verify_host_key_dns() [dns.c] performs the DNS lookup. When
+fingerprints->rri_flags & RRSET_VALIDATED is true, "found %d secure
+fingerprints in DNS" is printed and DNS_VERIFY_SECURE is set in flags.
+
+The DNS lookup is done by getrrsetbyname() [getrrsetbyname-ldns.c or
+getrrsetbyname.c?] which will "turn on DNSSEC if required", which is
+if RES_USE_DNSSEC is true at compile time and RRSET_FORCE_EDNS0 is set
+in flags.
+
+
+
+
 * cosmos + puppet @ sunet
 - initiating hiera secrets 
   /var/cache/cosmos/model/pre-tasks.d/040hiera-gpg --force
