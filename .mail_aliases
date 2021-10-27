@@ -1048,6 +1048,7 @@ alias phw                       "Philipp Winter <phw@torproject.org>"
 alias phw.kau                   "Philipp Winter <philwint@kau.se>"
 alias pierre                    "Pierre Phaneuf <pphaneuf@google.com>"
 alias pili			pili@torproject.org
+alias ping			ping@sunet.se
 alias pinter                    "Paul Pintér <Paul.Pinter@polisen.se>"
 alias pjotr                     peter.michanek
 alias pligis			pliiiggis@telia.com
@@ -1059,8 +1060,7 @@ alias pwouters                  "Paul Wouters <paul@cypherpunks.ca>"
 alias qbi                       "Jens Kubieziel <jens@kubieziel.de>"
 alias quite                     daniel@lublin.se
 alias raaz			"Raazesh Sainudiin <raazesh.sainudiin@math.uu.se>"
-alias rachel                    "Rachel Greenstadt <greenstadt@gmail.com>"
-alias radext			radext@ietf.org
+alias rabbirob			"Rabbi Rob Thomasalias radext			radext@ietf.org
 alias radsecproxy		radsecproxy@lists.nordu.net
 alias radsecproxy-bugs          radsecproxy-bugs@nordu.net
 alias radsecproxy-pkg           radsecproxy-pkg.debian, radsecproxy-pkg.fbsd, radsecproxy-pkg.nbsd
