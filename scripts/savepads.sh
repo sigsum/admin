@@ -30,7 +30,7 @@ function main() {
 		curl "$src" > "$dst" 2>/dev/null ||
 			die_with_error "must fetch $pad"
 
-		grep "$match" "$dst" ||
+		grep -q "$match" "$dst" ||
 			die_with_error "expected \"$match\" to be in $src"
 
 		find "$dir" -type f -mtime +$age_days -regextype posix-extended -regex "^.*[0-9]{6}-[0-9]{6}_$pad$" -delete
