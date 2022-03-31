@@ -9,7 +9,7 @@
 #
 # Crontab at the 16th minute every three hours:
 #
-#     16 */3 * * * /some/path/sigsum-savepads >>/some/log/file 2>&1 
+#     16 */3 * * * /path/to/savepads.sh /path/to/download/dir >>/some/log/file 2>&1
 #
 
 set -eu
