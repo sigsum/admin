@@ -12,12 +12,12 @@ set -eu
 
 URL="$1"; shift
 
-torconf=
-echo "$URL" | grep -q \\.onion && torconf="-x socks4a://127.0.0.1:9050/"
+curl="curl"
+echo "$URL" | grep -q \\.onion && curl="$curl -x socks4a://127.0.0.1:9050/"
 
 function testurl() {
     family="-$1"
-    response=$(curl "$family" -L -s -w "%{http_code}" "$torconf" "$URL")
+    response=$($curl "$family" -L -s -w "%{http_code}" "$URL")
     http_code=$(tail -n1 <<< "$response")
 
     if [[ "$http_code" != 200 ]]; then
