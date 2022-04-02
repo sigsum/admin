@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -euE
+trap 'bye $?' EXIT
+
+URL=https://pad.sigsum.org/p
+
+LETTERS="a-f"
+NUMBERS="0-9"
+GROUP_SEP="-"
+
+NUM_LETTERS=2
+NUM_NUMBERS=2
+
+function main() {
+	group_num=$1; shift
+
+	name=""
+	for i in `seq 1 $group_num`; do
+		name="$name$(new_group $LETTERS $NUM_LETTERS)"
+		name="$name$(new_group $NUMBERS $NUM_NUMBERS)"
+		name="$name$GROUP_SEP"
+	done
+
+	echo $URL/${name::-${#GROUP_SEP}}
+}
+
+function new_group() {
+	echo -n $(tr -dc $1 </dev/urandom | head -c $2)
+}
+
+function bye() {
+	if [[ $1 != 0 ]]; then
+		echo "Usage: new-pad NUM_GROUPS" >&2
+	fi
+
+	return $1
+}
+
+main $@
