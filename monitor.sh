@@ -4,11 +4,15 @@ links=("https://poc.sigsum.org/crocodile-icefish/sigsum/v0/get-tree-head-cosigne
 
 for url in ${links[@]};
 do
-echo $url
+echo $url #this is for testing purpose. To be removed in thhe final code.
   response=$(curl -s -w "%{http_code}" $url)
   http_code=$(tail -n1 <<< "$response")
   if [[ "$http_code" != 200 ]]; then
-    echo $url is down. status_code $http_code
+    echo Fatal. $url is down. status_code $http_code
+    domain_name=$(echo $url | awk -F[/:] '{print $4}')
+    echo domain=$domain_name
+    dig_response=$(dig $domain_name)
+    echo $dig_response #this is for testing purpose. To be removed in thhe final code.
   else
     echo $url is working.  status_code $http_code
    fi
