@@ -15,7 +15,7 @@ echo $url #this is for testing purpose. To be removed in thhe final code.
     # 2. Check if we can ping the ip address
     ip_address=$(dig +short $domain_name)
     echo $dig_response #this is for testing purpose. To be removed in thhe final code.
-    ping_response=$(ping $ip_address)
+    #ping_response=$(ping $ip_address)
   else
     echo $url is working.  status_code $http_code
    fi
