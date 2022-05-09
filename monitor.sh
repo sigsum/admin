@@ -10,9 +10,12 @@ echo $url #this is for testing purpose. To be removed in thhe final code.
   if [[ "$http_code" != 200 ]]; then
     echo Fatal. $url is down. status_code $http_code
     domain_name=$(echo $url | awk -F[/:] '{print $4}')
-    echo domain=$domain_name
-    dig_response=$(dig $domain_name)
+    echo $domain_name
+    # 1. Find IP address via dig
+    # 2. Check if we can ping the ip address
+    ip_address=$(dig +short $domain_name)
     echo $dig_response #this is for testing purpose. To be removed in thhe final code.
+    ping_response=$(ping $ip_address)
   else
     echo $url is working.  status_code $http_code
    fi
