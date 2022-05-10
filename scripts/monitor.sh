@@ -32,18 +32,33 @@ function get_tree_size() {
 
 function main() {
 
+  # Used the current poc log pub_key from https://git.sigsum.org/log-go/tree/README.md
   log_pub_key=4791eff3bfc17f352bcc76d4752b38c07882093a5935a84577c63de224b0f6b3
   log_pub_key_hash=$(echo $log_pub_key | sigsum-debug key hash)
-
+  # Calling all get_methods
   safe_methods
+  # Creates a new temporary directory for the test run
   log_dir=$(mktemp -d)
+  # Storing `get-leaves` output in `res`
   res=$(curl -s https://poc.sigsum.org/crocodile-icefish/sigsum/v0/get-leaves/0/1)
+  # Converting `$res` in an array spliting by space
+  # To see the whole array try : `echo ${resarray[*]}`
   resarray=($res)
-  export ${resarray[0]}  # getting the shard_hint value
+  # Exporting the first value of the resarray, shard_hint value
+  export ${resarray[0]}
+  # Exporting the `shard_hint` value in `ssrv_shard_start`
   export ssrv_shard_start=$shard_hint
-  export seed_value=`date +%s` # getting the message
+  # Everytime message in add_leaf has to unique. Using the `date +%s`` for that.
+  # Exporting the value of date +%s command in seed_value (tobe used as message)
+  export seed_value=`date +%s`
+  # Generated all the following private, public and hash of public key via sigsum-debug tool.
+  # See `sigsum-debug key help`
+  # `./priv` contains the private key of the signer/submitter
   cli_priv=`cat ./priv`
+  # `./pub` contains the public key of the signer/submitter
+  # `./pub`, the public key has to be added to the log first time before trying the code.
   cli_pub=`cat ./pub`
+  # `./pubhash` contains the hash public key of the signer/submitter
   cli_key_hash=`cat ./pubhash`
   cli_domain_hint=_sigsum_v0.sigsum.org
   log_url=https://poc.sigsum.org/crocodile-icefish/sigsum/v0
