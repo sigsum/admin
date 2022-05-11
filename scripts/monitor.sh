@@ -1,8 +1,10 @@
- #!/bin/bash
+#!/bin/bash
 
 # Need to add cleanup function to remove the log_dir in the next phase (if required).
 # trap cleanup EXIT
 
+env -i
+set -x
 
 function safe_methods() {
 
@@ -31,7 +33,6 @@ function get_tree_size() {
 }
 
 function main() {
-
   # Used the current poc log pub_key from https://git.sigsum.org/log-go/tree/README.md
   log_pub_key=4791eff3bfc17f352bcc76d4752b38c07882093a5935a84577c63de224b0f6b3
   log_pub_key_hash=$(echo $log_pub_key | sigsum-debug key hash)
@@ -115,7 +116,6 @@ function check_inclusion_proof() {
 		return
 	fi
 
-	# TODO: verify inclusion proof
 	pass $desc
 }
 
