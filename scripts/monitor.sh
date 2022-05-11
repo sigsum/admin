@@ -87,16 +87,16 @@ function check_add_leaf() {
   cat $log_dir/req |
     curl -s -w "%{http_code}" --data-binary @- $log_url/add-leaf \
         >$log_dir/rsp
+
   status_code=$(tail -n1 < $log_dir/rsp)
-  api=add_leaf
+  api=$log_url/add-leaf
+
   if [ $status_code == 202 ]; then
     msg="Info: $api request is Accepted with status_code $http_code"
-    echo $msg #| mail -s "Info: $api Accepted" anwesha@verkligendata.se
-    # Acceptance Message
+    echo $msg
   elif [ $status_code != 200 ]; then
-    msg="Warning: $api is down with status_code $status_code"
-    echo $msg #| mail -s "Warning: $api is down" anwesha@verkligendata.se
-    # Failure message
+    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning:$api is down with status_code $status_code" # Failure message
+    fail "$msg" # calling the fail function
     return
   fi
 
@@ -138,15 +138,17 @@ function check_add_cosignature() {
 	cat $log_dir/req |
 		curl -s -w "%{http_code}" --data-binary @- $log_url/add-cosignature \
 		>$log_dir/rsp
+  status_code=$(tail -n1 < $log_dir/rsp)
+  api=$log_url/add-cosignature
 
-    status_code=$(tail -n1 < $log_dir/rsp)
-    if [ "$status_code" != 200 ]; then
-      msg="Warning: $log_url/add-cosignature is down. status_code $status_code"
-      echo $msg #| mail -s "Warning: $domain_name is down" anwesha@verkligendata.se
-    else
-      echo $log_url/add-cosignature is working.  status_code $status_code
-      return
-    fi
+  if [ "$status_code" != 200 ]; then
+  msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning:$api is down with status_code $status_code"
+  fail "$msg"
+  else
+  msg="Success: $api is working with status_code $status_code."
+  echo "$msg"
+  return
+  fi
 
 	pass $desc
 }
@@ -164,7 +166,7 @@ function pass() {
 }
 
 function fail() {
-	echo -e "\e[37m$(date +"%y-%m-%d %H:%M:%S %Z")\e[0m [\e[91mFAIL\e[0m] $@" >&2
+  echo $1 |  mail -s "Warning: $api is down" anwesha@verkligendata.se
 }
 
 function keys() {
