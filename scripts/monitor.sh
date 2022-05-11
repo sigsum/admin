@@ -14,8 +14,8 @@ function safe_methods() {
     http_code=$(tail -n1 <<< "$response")
     domain_name=$(echo $url | awk -F[/:] '{print $4}')
     if [ $http_code != 200 ]; then
-      msg="Warning: $url is down. status_code $http_code"
-      echo $msg | mail -s "Warning: $domain_name is down" anwesha@verkligendata.se
+      msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $url is down. status_code $http_code"
+      fail "$msg"
     else
       echo $url is working.  status_code $http_code
     fi
@@ -62,17 +62,14 @@ function main() {
   cli_key_hash=`cat ./pubhash`
   cli_domain_hint=_sigsum_v0.sigsum.org
   log_url=https://poc.sigsum.org/crocodile-icefish/sigsum/v0
-  get_tree_size
   check_add_leaf $seed_value
-  api=add-leaf
   wit1_priv=`cat wit1_priv`
   wit1_pub=`cat wit1_pub`
   wit1_key_hash=`cat wit1_pubhash`
-  old_tree_size=$tree_size
   # We don't know how much to sleep
   sleep 480
   get_tree_size
-  test_inclusion_proof $tree_size $seed_value $old_tree_size
+  check_inclusion_proof $tree_size $seed_value
   check_add_cosignature $wit1_key_hash $wit1_priv
 }
 
@@ -95,7 +92,7 @@ function check_add_leaf() {
     msg="Info: $api request is Accepted with status_code $http_code"
     echo $msg
   elif [ $status_code != 200 ]; then
-    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning:$api is down with status_code $status_code" # Failure message
+    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $api is down with status_code $status_code" # Failure message
     fail "$msg" # calling the fail function
     return
   fi
@@ -103,26 +100,18 @@ function check_add_leaf() {
   pass $desc
 }
 
-function test_inclusion_proof() {
-	desc="GET get-inclusion-proof (tree_size $1, data \"$2\", index $3)"
+function check_inclusion_proof() {
+	desc="GET get-inclusion-proof (tree_size $1, data \"$2\")"
 	signature=$(echo $2 | sigsum-debug leaf sign -k $cli_priv -h $ssrv_shard_start)
 	leaf_hash=$(echo $2 | sigsum-debug leaf hash -k $cli_key_hash -s $signature -h $ssrv_shard_start)
 	curl -s -w "%{http_code}" $log_url/get-inclusion-proof/$1/$leaf_hash >$log_dir/rsp
   cp $log_dir/rsp $log_dir/rsp_get_inclusion_proof
   status_code=$(tail -n1 < $log_dir/rsp)
+  api=$log_url/get-inclusion-proof
 
 	if [[ $status_code != 200 ]]; then
-		fail "$desc: http status code $status_code  "
-		return
-	fi
-
-	if ! keys "leaf_index" "inclusion_path"; then
-		fail "$desc: ascii keys in response $(debug_response)"
-		return
-	fi
-
-	if [[ $(value_of leaf_index) != $3 ]]; then
-		fail "$desc: wrong leaf index $(value_of leaf_index)"
+    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $api is down with status_code $status_code" # Failure message
+    fail "$msg" # calling the fail function
 		return
 	fi
 
@@ -142,11 +131,11 @@ function check_add_cosignature() {
   api=$log_url/add-cosignature
 
   if [ "$status_code" != 200 ]; then
-  msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning:$api is down with status_code $status_code"
-  fail "$msg"
+    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning:$api is down with status_code $status_code"
+    fail "$msg"
   else
-  msg="Success: $api is working with status_code $status_code."
-  echo "$msg"
+    msg="Success: $api is working with status_code $status_code."
+    echo "$msg"
   return
   fi
 
