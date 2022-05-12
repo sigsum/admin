@@ -105,10 +105,11 @@ function check_inclusion_proof() {
 	desc="GET get-inclusion-proof (tree_size $1, data \"$2\")"
 	signature=$(echo $2 | sigsum-debug leaf sign -k $cli_priv -h $ssrv_shard_start)
 	leaf_hash=$(echo $2 | sigsum-debug leaf hash -k $cli_key_hash -s $signature -h $ssrv_shard_start)
-	curl -s -w "%{http_code}" $log_url/get-inclusion-proof/$1/$leaf_hash >$log_dir/rsp
+  api=$log_url/get-inclusion-proof/$1/$leaf_hash
+	curl -s -w "%{http_code}" $api >$log_dir/rsp
   cp $log_dir/rsp $log_dir/rsp_get_inclusion_proof
   status_code=$(tail -n1 < $log_dir/rsp)
-  api=$log_url/get-inclusion-proof
+
 
 	if [[ $status_code != 200 ]]; then
     msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $api is down with status_code $status_code" # Failure message
