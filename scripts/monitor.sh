@@ -15,6 +15,7 @@ function safe_methods() {
     response=$(curl -s -w "%{http_code}" $url)
     http_code=$(tail -n1 <<< "$response")
     domain_name=$(echo $url | awk -F[/:] '{print $4}')
+    api=$url
     if [ $http_code != 200 ]; then
       msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $url is down. status_code $http_code"
       fail "$msg"
