@@ -155,7 +155,7 @@ function pass() {
 }
 
 function fail() {
-  echo $1 |  mail -s "Warning: $api is down" anwesha@verkligendata.se
+  echo $1 |  mail -s "Warning: $api is down" sigsum-log-monitor@lists.sigsum.org
 }
 
 function keys() {
