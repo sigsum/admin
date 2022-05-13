@@ -69,7 +69,7 @@ function main() {
   wit1_pub=`cat wit1_pub`
   wit1_key_hash=`cat wit1_pubhash`
   # We don't know how much to sleep
-  sleep 480
+  sleep 900
   get_tree_size
   check_inclusion_proof $tree_size $seed_value
   check_add_cosignature $wit1_key_hash $wit1_priv
