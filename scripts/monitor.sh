@@ -6,6 +6,43 @@
 env -i
 set -x
 
+function check_dns_ping() {
+	response=$(dig +short poc.sigsum.org)
+  ip_addr=$(echo $response | tail -1 | cut -d' ' -f 2)
+  ping -c 1 $ip_addr
+  if [ $? -ne 0 ]; then
+    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Failure: Can not reach IPv4"
+    full_msg="$msg $response"
+    fail "$full_msg"
+  fi
+
+}
+
+function check_ipv6_dns_ping() {
+	response=$(dig +short poc.sigsum.org AAAA)
+  ip_addr=$(echo $response | tail -1 | cut -d' ' -f 2)
+  ping -c 1 $ip_addr
+  if [ $? -ne 0 ]; then
+    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Failure: Can not reach IPv4"
+    full_msg="$msg $response"
+    fail "$full_msg"
+  fi
+
+}
+
+function check_ipv6() {
+  response=$(curl -6 -s -w '%{http_code}' https://poc.sigsum.org/crocodile-icefish/sigsum/v0/get-tree-head-cosigned)
+  http_code=$(tail -n1 <<< "$response")
+  if [ $http_code != 200 ]; then
+  msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: Connection over IPv6 failed. status_code $http_code"
+      fail "$msg"
+      check_ipv6_dns_ping
+  else
+      echo Connection over IPv6 is working. status_code $http_code
+  fi
+
+}
+
 function safe_methods() {
 
   links=("https://poc.sigsum.org/crocodile-icefish/sigsum/v0/get-tree-head-cosigned" "https://poc.sigsum.org/crocodile-icefish/sigsum/v0/get-tree-head-to-cosign" "https://poc.sigsum.org/crocodile-icefish/sigsum/v0/get-leaves/0/1" "https://poc.sigsum.org/crocodile-icefish/sigsum/v0/get-consistency-proof/1/3")
@@ -19,6 +56,7 @@ function safe_methods() {
     if [ $http_code != 200 ]; then
       msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $url is down. status_code $http_code"
       fail "$msg"
+      check_dns_ping
     else
       echo $url is working.  status_code $http_code
     fi
@@ -37,6 +75,8 @@ function main() {
   # Used the current poc log pub_key from https://git.sigsum.org/log-go/tree/README.md
   log_pub_key=4791eff3bfc17f352bcc76d4752b38c07882093a5935a84577c63de224b0f6b3
   log_pub_key_hash=$(echo $log_pub_key | sigsum-debug key hash)
+  # Checking the connection over IPv6
+  check_ipv6
   # Calling all get_methods
   safe_methods
   # Creates a new temporary directory for the test run
@@ -115,6 +155,7 @@ function check_inclusion_proof() {
 	if [[ $status_code != 200 ]]; then
     msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $api is down with status_code $status_code" # Failure message
     fail "$msg" # calling the fail function
+    check_dns_ping
 		return
 	fi
 
