@@ -11,7 +11,7 @@ function check_dns_ping() {
   ip_addr=$(echo $response | tail -1 | cut -d' ' -f 2)
   ping -c 1 $ip_addr
   if [ $? -ne 0 ]; then
-    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Failure: Can not reach IPv4"
+    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Failure: Can not reach IPv4 $ip_addr"
     full_msg="$msg $response"
     fail "$full_msg"
   fi
@@ -23,7 +23,7 @@ function check_ipv6_dns_ping() {
   ip_addr=$(echo $response | tail -1 | cut -d' ' -f 2)
   ping -c 1 $ip_addr
   if [ $? -ne 0 ]; then
-    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Failure: Can not reach IPv4"
+    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Failure: Can not reach IPv6 $ip_addr"
     full_msg="$msg $response"
     fail "$full_msg"
   fi
