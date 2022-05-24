@@ -11,7 +11,7 @@ function check_dns_ping() {
   ip_addr=$(echo $response | tail -1 | cut -d' ' -f 2)
   ping -c 1 $ip_addr
   if [ $? -ne 0 ]; then
-    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Failure: Can not reach IPv4 $ip_addr"
+    msg="$(date +"%y-%m-%dT%H:%M:%S%z") Failure: Can not reach IPv4 $ip_addr"
     full_msg="$msg $response"
     fail "$full_msg"
   fi
@@ -23,7 +23,7 @@ function check_ipv6_dns_ping() {
   ip_addr=$(echo $response | tail -1 | cut -d' ' -f 2)
   ping -c 1 $ip_addr
   if [ $? -ne 0 ]; then
-    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Failure: Can not reach IPv6 $ip_addr"
+    msg="$(date +"%y-%m-%dT%H:%M:%S%z") Failure: Can not reach IPv6 $ip_addr"
     full_msg="$msg $response"
     fail "$full_msg"
   fi
@@ -34,7 +34,7 @@ function check_ipv6() {
   response=$(curl -6 -s -w '%{http_code}' https://poc.sigsum.org/crocodile-icefish/sigsum/v0/get-tree-head-cosigned)
   http_code=$(tail -n1 <<< "$response")
   if [ $http_code != 200 ]; then
-  msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: Connection over IPv6 failed. status_code $http_code"
+  msg="$(date +"%y-%m-%dT%H:%M:%S%z") Warning: Connection over IPv6 failed. status_code $http_code"
       fail "$msg"
       check_ipv6_dns_ping
   else
@@ -54,7 +54,7 @@ function safe_methods() {
     domain_name=$(echo $url | awk -F[/:] '{print $4}')
     api=$url
     if [ $http_code != 200 ]; then
-      msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $url is down. status_code $http_code"
+      msg="$(date +"%y-%m-%dT%H:%M:%S%z") Warning: $url is down. status_code $http_code"
       fail "$msg"
       check_dns_ping
     else
@@ -134,7 +134,7 @@ function check_add_leaf() {
     msg="Info: $api request is Accepted with status_code $http_code"
     echo $msg
   elif [ $status_code != 200 ]; then
-    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $api is down with status_code $status_code" # Failure message
+    msg="$(date +"%y-%m-%dT%H:%M:%S%z") Warning: $api is down with status_code $status_code" # Failure message
     fail "$msg" # calling the fail function
     return
   fi
@@ -153,7 +153,7 @@ function check_inclusion_proof() {
 
 
 	if [[ $status_code != 200 ]]; then
-    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning: $api is down with status_code $status_code" # Failure message
+    msg="$(date +"%y-%m-%dT%H:%M:%S%z") Warning: $api is down with status_code $status_code" # Failure message
     fail "$msg" # calling the fail function
     check_dns_ping
 		return
@@ -174,7 +174,7 @@ function check_add_cosignature() {
   api=$log_url/add-cosignature
 
   if [ "$status_code" != 200 ]; then
-    msg="$(date +"%y-%m-%d %H:%M:%S %Z") Warning:$api is down with status_code $status_code"
+    msg="$(date +"%y-%m-%dT%H:%M:%S%z") Warning:$api is down with status_code $status_code"
     fail "$msg"
   else
     msg="Success: $api is working with status_code $status_code."
@@ -186,15 +186,15 @@ function check_add_cosignature() {
 }
 
 function info() {
-	echo -e "\e[37m$(date +"%y-%m-%d %H:%M:%S %Z")\e[0m [\e[94mINFO\e[0m] $@" >&2
+	echo -e "\e[37m$(date +"%y-%m-%dT%H:%M:%S%z")\e[0m [\e[94mINFO\e[0m] $@" >&2
 }
 
 function warn() {
-	echo -e "\e[37m$(date +"%y-%m-%d %H:%M:%S %Z")\e[0m [\e[93mWARN\e[0m] $@" >&2
+	echo -e "\e[37m$(date +"%y-%m-%dT%H:%M:%S%z")\e[0m [\e[93mWARN\e[0m] $@" >&2
 }
 
 function pass() {
-	echo -e "\e[37m$(date +"%y-%m-%d %H:%M:%S %Z")\e[0m [\e[32mPASS\e[0m] $@" >&2
+	echo -e "\e[37m$(date +"%y-%m-%dT%H:%M:%S%z")\e[0m [\e[32mPASS\e[0m] $@" >&2
 }
 
 function fail() {
