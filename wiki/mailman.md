@@ -46,3 +46,23 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> email.utils.getaddresses([s])
 [('12 45678901234567890123456789012345678901 3456789012345678901234 678901234', 'testing@lists.sigsum.org')]
 ```
+
+
+2022-08-05 in #mailman@Libera.Chat
+```
+<ln5> hi all, have anyone of you experienced erroneous moderation due to
+      implicit destination when posting with To: "long string with spaces, 76
+      chars will do" <list address>?				        [09:05]
+<ln5> i tracked it down to mailman/src/mailman/rules/implicit_dest.py and
+      verified that mail.utils.getaddresses() at least doesn't get things
+      wrong, so i guess it might be the msg.get_all(header, []) that's borken
+								        [09:07]
+<ln5> now, to debug this what's a decent option? simply editing
+      /usr/lib/python3/dist-packages/mailman/rules/implicit_dest.py (i'm on
+      debian11, with the mailman3 package installed) and adding print()'s? or
+      what do you suggest?					        [09:10]
+<ln5> to further incite you to care about this, the case is a real one: the
+      dmarc mitigation strategy of rewriting the address part of From: to the
+      list address and composing a fullname part indiciating whoe the sender
+      is can generate a From: header which is then used as To: in a reply
+```
