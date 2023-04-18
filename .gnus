@@ -68,12 +68,6 @@
       mail-source-directory (concat nnml-directory "Incoming/")
       mail-source-delete-incoming t)
 
-(setq gnus-ignored-from-addresses
-      '("linus@\\(swox\\|nordberg\\|dfri\\|sunet\\).se"
-	"linus@swox.com"
-	"linus@\\(nordu\\|dfri\\).net"
-        "linus@torproject.org"
-        "linus.nordberg@.*"))
 (setq gnus-extra-headers '(Keywords To Newsgroups)
       nnmail-extra-headers '(Keywords To Newsgroups))
 ;try some day: (setq gnus-fetch-old-headers 'some)

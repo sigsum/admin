@@ -146,8 +146,9 @@ begravningsavg 0,065%
 
 summa skatt 98215
 att betala 17587
+
 ** deklaration för inkomtsår 2020
-- Skatteverket (se [[file:Skatt/2020%20skatteutr%C3%A4knig.pdf][file:~/.priv/ekonomi/Skatt/2020 skatteuträknig.pdf]])
+- Skatteverket (se [[file:Skatt/2020 skatteuträknig.pdf][file:~/.priv/ekonomi/Skatt/2020 skatteuträknig.pdf]])
   OBS innan avdrag för 
 
   - kommunal skatt 29,82%
@@ -158,6 +159,14 @@ att betala 17587
 
 - K10
   - Andelar: 500
+
+Uppdatering 2022-05-01: Enligt [1] kan jag dra av den del av
+omkostnadsersättningen som överstiger 5000 kr. Enligt Skatteverkets
+e-tjänst (kvitens) så drog jag av 64190 kr vid 2.4 Övriga
+utgifter. Det är samma belopp som anges under 2.1
+Kostnadsersättningar. 64190 motsvarar 5349 kr/mån.
+
+[1] https://www.skatteverket.se/privat/skatter/arbeteochinkomst/inkomster/familjehem.4.515a6be615c637b9aa413ed5.html
 
 *** kontrolluppgifter
 |                | inkomst | avdragen skatt |   avdr/ink |  25.7% |   diff | not                     |
@@ -171,6 +180,49 @@ att betala 17587
 | SUMMA          |  543002 |         130013 | 0.23943374 | 139705 |  -9692 |                         |
 |----------------+---------+----------------+------------+--------+--------+-------------------------|
 #+TBLFM: @>$2=vsum(@I+1..@-1)::@>$3=vsum(@I+1..@-1)::@5$2=20100+23316+25728+5628+7236+8040::@5$3=5627+6528+7203+1575+2026+2251::$4=$3/$2::$5=floor($2*.257284)::$6=$3-$5
+
+** deklaration för inkomstår 2021
+
+- Bilaga K4
+  - Försäljning av värdepapper SEB 1703K, förlust -12848.
+  - SEB har redovisat en inkomst från utlandet på 27276 EUR den
+    2021-10-22 (270411 kr enl [2]) så jag redovisar en vinst på 269083
+    kr (anskaffningsvärde 1328 SEK [4]) kr baserat på försäljning av
+    0,64 BTC till en kurs av 422k SEK/BTC. Skatten på detta uppgår
+    till 80725 kr.
+
+- Bilaga K10: Andelar 500, 500. Förenklad, ingen utdelning.
+
+- Kostnadsersättningar, 1.2 på deklarationsblanketten, anges till
+  45480 vilket motsvarar 3790 kr/mån. Jag för över det beloppet till
+  2.4 i enlighet med [1]
+
+- Total kvarskatt uppgår till 101321 kr som är SKV tillhanda
+  2022-05-02. Den del som överstiger 30000 kr kommer jag att få betala
+  16,25% årsränta från den 2022-02-12 på, enligt [5]. Det rör sig om
+  ca 1000 kr/mån så borde landa runt 3000 kr.
+
+[1] https://www.skatteverket.se/privat/skatter/arbeteochinkomst/inkomster/familjehem.4.515a6be615c637b9aa413ed5.html
+[2] [[file:2021-10-22 SEB Bitstamp.pdf][file:~/.priv/ekonomi/2021-10-22 SEB Bitstamp.pdf]]
+[3] [[file:~/clown/Linus/Ekonomi/Sparande/2021-09-01-bitstamp-transactions.pdf][file:~/clown/Linus/Ekonomi/Sparande/2021-09-01-bitstamp-transactions.pdf]]
+[4] 0,64 BTC köpt den 2014-12-18 till en kurs av 305 USD/BTC [3] där
+    USD köptes den 2013-07-09 för 6,802 USD/SEK.
+[5] https://www.skatteverket.se/privat/skatter/skattekontobetalaochfatillbaka/rantapaskattekontot.4.18e1b10334ebe8bc80002582.html?q=r%C3%A4nta+p%C3%A5+belopp+%C3%B6ver
+
+*** förtryckta kontrolluppgifter
+|                | inkomst | avdragen skatt |   avdr/ink | 29.82% av ink | diff avdr/25,7 | not          |
+|----------------+---------+----------------+------------+---------------+----------------+--------------|
+| Verkligen Data |  224215 |          53712 | 0.23955578 |         66860 |         -13148 |              |
+| VR             |  101318 |          13100 | 0.12929588 |         30213 |         -17113 |              |
+| Staden, lön    |  145592 |          43672 | 0.29996154 |         43415 |            257 | 12132 kr/mån |
+| FK             |   89307 |          25002 | 0.27995566 |         26631 |          -1629 |              |
+| SEB, ränta     |         |                |        0/0 |             0 |              0 |              |
+| SEB, schablon  |         |                |        0/0 |             0 |              0 |              |
+| SUMMA          |  560432 |         135486 | 0.24175279 |        167120 |         -31634 |              |
+|----------------+---------+----------------+------------+---------------+----------------+--------------|
+#+TBLFM: @>$2=vsum(@I+1..@-1)::@>$3=vsum(@I+1..@-1)::$4=$3/$2::$5=floor($2*.2982)::$6=$3-$5
+
+29,82% är min kommunalskatt.
 
 
 * Cryptocurrency

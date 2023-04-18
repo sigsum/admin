@@ -1,1 +1,36 @@
-/home/linus/src/pp
+#! /bin/sh
+set -eu
+
+PP2019=~/ostick/.priv/pp2019.gpg
+PPT=~/tstick/.priv/ppt.gpg
+
+MYKEY=8C4CD511095E982EB0EFBFA21E8BF34923291265
+MYFILE=${PP2019}
+
+# Bonus points for keeping $MYFILE on an encrypted file system which can
+# easily be detached from your computer, like on a USB stick.
+
+edit_flag=0
+[ $# -ge 1 ] && [ "$1" = "-e" ] && { edit_flag=1; shift 1; }
+
+file=${MYFILE}
+[ $# -ge 2 ] && [ "$1" = "-f" ] && { file="$2"; shift 2; }
+[ -e "$file" ] || exit 1
+
+TMPFILE=$(mktemp /dev/shm/pp.XXXXXXXXXXXX)
+cleanup() {
+    [ -e ${TMPFILE} ] && shred -zun 13 ${TMPFILE}
+}
+trap cleanup EXIT
+
+if [ $edit_flag -eq 1 ]; then
+    cp "${file}" "${file}.BAK"
+    gpg -d "${file}" > ${TMPFILE}
+    vi ${TMPFILE}
+    gpg -er ${MYKEY} -o - ${TMPFILE} > "${file}"
+    shred -zun 13 ${TMPFILE}
+elif [ $# -ge 1 ]; then
+    gpg -d -o - "$file" | egrep -i "$1"
+else
+    gpg -d -o - "$file" | less -i
+fi

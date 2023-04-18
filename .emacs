@@ -18,9 +18,10 @@
 
 (add-to-list 'load-path "~/usr/share/emacs/site-lisp")
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp") ; for markdown-mode, ox-reveal
+(require 'redtick)
+
+;(add-to-list 'load-path "~/.emacs.d/site-lisp") ; for markdown-mode, ox-reveal
 ;(require 'notmuch)
-(add-to-list 'load-path "~/usr/local/share/emacs/site-lisp/magit")
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
@@ -33,10 +34,10 @@
 ;(setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
 
 (autoload 'go-mode "go-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(add-to-list 'auto-mode-alist '("\\.go" . go-mode))
 
 (autoload 'nov-mode "nov" nil t)
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+(add-to-list 'auto-mode-alist '("\\.epub" . nov-mode))
 
 ;; On my fbsd-8.2, SMIME in gnus doesn't work, presumably because
 ;; another smime.el (from site-lisp/semi/?) is loaded.
@@ -44,16 +45,13 @@
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
 (require 'smime)
 
-;; for markdown-mode, maybe?
-;(require 'ox-reveal)
-
 ;; deprecated in 27.1: (require 'tls)
 ;(require 'jabber)
 (require 'appt)                         ;calendar needs this
 
 (require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml" . yaml-mode))
 
 ;; Fun.
 ;(autoload 'lpmud "lpmud" "Run LP-MUD in Emacs" t)
@@ -61,28 +59,22 @@
 ;(load-file "~/.twitter.el")
 
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.creole\\'" . markdown-mode))
-(autoload 'gfm-mode "markdown-mode" "Major mode for editing GitHub Flavored Markdown files" t)
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
-(add-to-list 'auto-mode-alist '("\\.pp\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.mdwn" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.mkd" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.creole" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.pp" . ruby-mode))
 
 ;; sieve
 (autoload 'sieve-mode "sieve-mode")
-(setq auto-mode-alist (cons '("\\.s\\(v\\|iv\\|ieve\\)\\'" . sieve-mode)
+(setq auto-mode-alist (cons '("\\.s\\(v\\|iv\\|ieve\\)" . sieve-mode)
 			    auto-mode-alist))
 
 ;; rfcview
 (autoload 'rfcview-mode "rfcview" nil t)
 (add-to-list 'auto-mode-alist
-	     '("/rfc[0-9]+\\.txt\\(\\.gz\\)?\\'" . rfcview-mode))
-
-;; yaml
-;(require 'yaml-mode)
-;(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+	     '("/rfc[0-9]+\\.txt\\(\\.gz\\)?" . rfcview-mode))
 
 ;; EasyPG for PGP
 (require 'epg)
@@ -93,7 +85,7 @@
 ;; lfe-mode
 ;(add-to-list 'load-path "~/usr/src/lfe/emacs")
 ;(require 'lfe-start)
-;(add-to-list 'auto-mode-alist '("\\.lfe\\'" . lfe-mode))
+;(add-to-list 'auto-mode-alist '("\\.lfe" . lfe-mode))
 
 ;; TAGS, generate it with `etags -I --members'.  `--members' doesn't seem
 ;; to be default contrary to what the fine manual says (etags (GNU Emacs 22.1)).
@@ -133,7 +125,7 @@
     ret))
 
 ;; org-mode
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.org" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (add-hook 'org-mode-hook 'turn-on-font-lock)
@@ -142,7 +134,7 @@
 ;; nxml
 ;(load-library "nxml/rng-auto.el")
 ;(setq auto-mode-alist
-;      (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
+;      (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)" . nxml-mode)
 ;	    auto-mode-alist))
 
 ;; Gambit-C
@@ -351,7 +343,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(Info-additional-directory-list '("~/usr/share/info" "~/usr/local/share/info"))
+ '(Info-additional-directory-list '("~/usr/share/info"))
  '(add-log-keep-changes-together t)
  '(browse-url-browser-function 'w3m)
  '(calendar-today-visible-hook '(calendar-mark-today))
@@ -418,6 +410,8 @@
    '((message-this-is-mail nil nil)
      (message-this-is-news nil t)))
  '(gnus-group-use-permanent-levels 2)
+ '(gnus-ignored-from-addresses
+   '("linus@(swox|nordberg|dfri|sunet|glasklarteknik|tillitis)\\.se" "linus@swox\\.com" "linus@(nordu|dfri)\\.net" "linus@(sigsum|torproject)\\.org" "ln.*@4711\\.se" "linus\\.nordberg@.*"))
  '(gnus-inhibit-images t)
  '(gnus-keep-same-level 'best)
  '(gnus-play-startup-jingle t)
@@ -426,20 +420,37 @@
       (organization nil)
       ("From" "Linus Nordberg <linus@nordberg.se>")
       (eval
-       (setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587 smtpmail-smtp-user "linus")
+       (setq smtpmail-smtp-server "smtp2.adb-centralen.se" smtpmail-smtp-service 465 smtpmail-smtp-user "linus")
        (set
 	(make-local-variable 'message-sendmail-envelope-from)
 	"linus@nordberg.se")))
-     ("lists.\\(dfri\\|edri\\|infrastructure\\)\\|dfri.abuse"
-      ("From" "Linus Nordberg <linus@dfri.se>")
+     ("verkligen"
+      ("From" "Linus Nordberg <linus@verkligendata.se>"))
+     ("sigsum:"
+      (organization "Sigsum")
+      ("From" "Linus Nordberg <linus@sigsum.org>")
       (eval
-       (setq smtpmail-smtp-server "mail.dfri.se" smtpmail-smtp-user "linus@dfri.se")
+       (setq smtpmail-smtp-server "mail.sigsum.org" smtpmail-smtp-service 465 smtpmail-smtp-user "linus@sigsum.org")
        (set
-	(make-local-variable 'message-sendmail-envelope-from) "linus@dfri.se")))
+	(make-local-variable 'message-sendmail-envelope-from)
+	"linus@sigsum.org")))
+     ("glasklar:"
+      (organization "Glasklar Teknik AB")
+      ("From" "Linus Nordberg <linus@glasklarteknik.se>")
+      (eval
+       (setq smtpmail-smtp-server "mail.glasklarteknik.se" smtpmail-smtp-service 465 smtpmail-smtp-user "linus@glasklarteknik.se")
+       (set
+	(make-local-variable 'message-sendmail-envelope-from)
+	"linus@glasklarteknik.se")))
      ("lists.tor.project"
       ("Reply-To" "tor-project@lists.torproject.org"))
      ("lists.tor..*"
-      ("From" "Linus Nordberg <linus@torproject.org>"))
+      ("From" "Linus Nordberg <linus@torproject.org>")
+      (eval
+       (setq smtpmail-smtp-server "submission.torproject.org" smtpmail-smtp-service 465 smtpmail-smtp-user "linus")
+       (set
+	(make-local-variable 'message-sendmail-envelope-from)
+	"linus@torproject.org")))
      ("lists.tor.\\(board\\|relays\\|talk\\)"
       ("From" "Linus Nordberg <linus@nordberg.se>"))
      ("lists.pmacct"
@@ -449,7 +460,7 @@
       (organization "Sunet")
       ("From" "Linus Nordberg <linus@sunet.se>")
       (eval
-       (setq smtpmail-smtp-server "smtp.sunet.se" smtpmail-smtp-service 587 smtpmail-smtp-user "linus")
+       (setq smtpmail-smtp-server "smtp.sunet.se" smtpmail-smtp-service 465 smtpmail-smtp-user "linus")
        (set
 	(make-local-variable 'message-sendmail-envelope-from)
 	"linus@sunet.se")))
@@ -457,10 +468,15 @@
       ("From" ":DFRI Abuse Team <abuse@dfri.net>")
       (eval
        (setq smtpmail-smtp-server "mail.dfri.se" smtpmail-smtp-user "linus@dfri.se")
-       (set (make-local-variable 'message-sendmail-envelope-from) "abuse@dfri.net")
-       (set (make-local-variable 'message-user-fqdn) "dfri.net")
-       (set (make-local-variable 'user-mail-address) "abuse@dfri.net"))))
-   nil nil "The setting of user-mail-address was thought to fix the domain part of Message-ID but doesn't seem to work.")
+       (set
+	(make-local-variable 'message-sendmail-envelope-from)
+	"abuse@dfri.net")
+       (set
+	(make-local-variable 'message-user-fqdn)
+	"dfri.net")
+       (set
+	(make-local-variable 'user-mail-address)
+	"abuse@dfri.net")))))
  '(gnus-select-article-hook '(gnus-agent-fetch-selected-article))
  '(gnus-simplify-ignored-prefixes "^(SV|VB):")
  '(gnus-simplify-subject-functions '(gnus-simplify-subject-re gnus-simplify-subject-fuzzy))
@@ -496,6 +512,7 @@
  '(jabber-roster-line-format " %c %-25n %u %-8s  %S")
  '(jabber-show-offline-contacts nil)
  '(jabber-show-resources nil)
+ '(lsp-keymap-prefix "s-o")
  '(menu-bar-mode nil)
  '(message-beginning-of-line nil)
  '(message-citation-line-format "On %a, %b %d %Y, %N wrote:
@@ -511,7 +528,7 @@
  '(message-subject-re-regexp
    "^[ 	]*\\(\\([Rr][Ee]\\|[Ss][Vv]\\)\\(\\[[0-9]*\\]\\)*:[ 	]*\\)*[ 	]*")
  '(mm-automatic-display
-   '("text/plain" "text/x-verbatim" "text/x-vcard" "message/delivery-status" "multipart/.*" "message/rfc822" "text/x-patch" "text/dns" "application/pgp-signature" "application/emacs-lisp" "application/x-emacs-lisp" "application/x-pkcs7-signature" "application/pkcs7-signature" "application/x-pkcs7-mime" "application/pkcs7-mime" "application/pgp\\'" "text/x-org"))
+   '("text/plain" "text/x-verbatim" "text/x-vcard" "message/delivery-status" "multipart/.*" "message/rfc822" "text/x-patch" "text/dns" "application/pgp-signature" "application/emacs-lisp" "application/x-emacs-lisp" "application/x-pkcs7-signature" "application/pkcs7-signature" "application/x-pkcs7-mime" "application/pkcs7-mime" "application/pgp" "text/x-org"))
  '(mm-coding-system-priorities '(utf-8))
  '(mm-decrypt-option nil)
  '(mm-default-directory nil)
@@ -523,13 +540,15 @@
  '(mm-sign-option nil)
  '(mm-text-html-renderer 'html2text)
  '(mm-url-use-external t)
- '(mm-verify-option 'known)
+ '(mm-verify-option nil)
  '(mm-w3m-safe-url-regexp "")
  '(mml-secure-cache-passphrase nil)
  '(mml-secure-key-preferences
    '((OpenPGP
       (sign)
       (encrypt
+       ("sus.andersson@farad.se" "5DFD974CE626111C1634C15162708A26DF29FF70")
+       ("andreas@arrakis.se" "0BC9D806BF9E6D12CEC9D514E6B300BA2E5258E2")
        ("leifj@mnt.se" "8AA09281A412FC6BE50AEEE4D73AD6430AD478D6")
        ("laurent@capas.se" "9A9ECB89712A500531632B851AB2C50C742CD68F")
        ("interminable@riseup.net" "C6405588EC7F4963E340EC6314AD01883268C34C")
@@ -557,6 +576,11 @@
  '(org-export-html-postamble nil)
  '(org-odt-preferred-output-format "pdf")
  '(org-use-sub-superscripts nil)
+ '(package-archives
+   '(("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")))
+ '(package-selected-packages
+   '(redtick erlang org-clock-csv rfc-mode lsp-mode yaml-mode tabbar spinner session pod-mode muttrc-mode mutt-alias lv initsplit htmlize ht graphviz-dot-mode folding f eproject diminish dash-functional csv-mode company color-theme-modern browse-kill-ring boxquote bm bar-cursor apache-mode))
  '(ps-n-up-margin 18)
  '(ps-n-up-printing 1)
  '(ps-paper-type 'a4)
@@ -565,13 +589,12 @@
  '(ps-printer-name-option nil)
  '(scheme-program-name "gsi")
  '(scroll-bar-mode nil)
- '(smime-CA-directory "~/ssl/CAs")
- '(smime-certificate-directory "/home/linus/ssl/certs/")
+ '(smime-CA-directory nil)
  '(smime-keys nil)
  '(smtpmail-debug-info nil)
  '(smtpmail-debug-verb nil)
  '(smtpmail-local-domain nil)
- '(smtpmail-stream-type 'starttls)
+ '(smtpmail-stream-type 'ssl)
  '(tags-revert-without-query t)
  '(tls-checktrust 'ask)
  '(tls-hostmismatch nil)
@@ -802,6 +825,8 @@ Null prefix argument turns off the mode."
 
 (add-to-list 'auto-mode-alist
  	     (cons (concat (getenv "HOME") "/clown/") . ('inhibit-backup-minor-mode)))
+(add-to-list 'auto-mode-alist
+ 	     (cons (concat (getenv "HOME") "/glasklar/nc/") . ('inhibit-backup-minor-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; don't activate the debugger automagically when errors are

@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+#HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -126,8 +126,12 @@ esac
 
 # With LC_CTYPE set, I can paste swedish characters in xterm+bash.
 #LC_CTYPE=sv_SE.ISO8859-15; export LC_TYPE
-LC_PAPER=$LC_CTYPE; export LC_PAPER
-LC_MEASUREMENT=$LC_CTYPE; export LC_MEASUREMENT
+# Update 2023-01-26: Not needed for pasting Swedish characters in foot+bash. 
+#LC_PAPER=$LC_CTYPE; export LC_PAPER
+#LC_MEASUREMENT=$LC_CTYPE; export LC_MEASUREMENT
+
+# With LC_TIME=C I fix AM/PM ("Thu 26 Jan 2023 04:42:57 PM CET")
+LC_TIME=C; export LC_TIME
 
 #function dmalloc { eval `command dmalloc -b $*`; }
 ## pastebin
@@ -149,14 +153,18 @@ export TR_AUTH=transmission:QlYnyQvUbpziM3qMIrMsBQHuEfceYDCl
 # to paste with middle mouse button though and that will have to do.
 export PASSWORD_STORE_X_SELECTION=primary
 
+export GOPATH="$HOME/usr/go"
+export WORKON_HOME="$HOME/.virtualenvs"
+export GNUPGHOME="$HOME/.gnupg"
+export EDITOR=/bin/emacs
+
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[ -d "$HOME/usr/bin" ] && export PATH="$HOME/usr/bin:$PATH"
 [ -d "$HOME/.local/bin" ] &&  PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/usr/games" ] && export PATH="$PATH:$HOME/usr/games" # For gtetrinet
 [ -d "$HOME/.cache/rebar3/bin" ] && export PATH="$PATH:$HOME/.cache/rebar3/bin"
 [ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
+#[ -d "/usr/lib/go-1.18/bin" ] && export PATH="$PATH:/usr/lib/go-1.18/bin"
+[ -d "/usr/lib/go-1.19/bin" ] && export PATH="$PATH:/usr/lib/go-1.19/bin"
 [ -d "$GOPATH/bin" ] && export PATH="$GOPATH/bin:$PATH"
 [ -r "$HOME/.opam/opam-init/init.sh" ] && source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
-
-export GOPATH="$HOME/usr/go"
-export WORKON_HOME="$HOME/.virtualenvs"
-export GNUPGHOME="$HOME/.gnupg"

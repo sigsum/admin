@@ -19,3 +19,19 @@
     textconv = gpg --batch --no-tty --show-keys <
 [diff "pgp"]
     textconv = gpg --batch --no-tty --decrypt <
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[sendemail]
+	envelopeSender = auto
+
+# Mullvad
+[url "ssh://git@github.com/mullvad/mpt-priv"]
+     insteadOf = https://github.com/mullvad/mpt-priv
+
+# TorProject.org
+[url "ssh://git@gitlab.torproject.org/"]
+     pushInsteadOf = https://gitlab.torproject.org/
+[url "ssh://git@git-rw.torproject.org/"]
+     pushInsteadOf = https://git.torproject.org/

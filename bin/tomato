@@ -6,6 +6,9 @@ if [ `which xalarm` ]; then
     xalarm -nowarn -t +0:25 "$MSG" && /bin/date
 elif [ `which sanduhr` ]; then
     sanduhr --message="$MSG" "+25 min" & /bin/date
+elif [ "$DESKTOP_SESSION" = "sway" ]; then
+    (sleep 1500; swaynag -m '' -s "$MSG")&
+    /bin/date
 else
     echo "$0: alarm program not found"
 fi

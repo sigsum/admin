@@ -35,9 +35,6 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
-#
-# Example configuration:
-#
 exec swayidle -w \
          timeout 600 'swaylock -e -f -c 000000' \
          timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -220,10 +217,12 @@ bar {
 include /etc/sway/config.d/*
 
 # Testing stuff
-bindsym $mod+Shift+m exec swaynag -m 'Hey hey hey!'
+#bindsym $mod+Shift+m exec swaynag -m 'Hey hey hey!'
 
 # Linus settings
 bindsym $mod+m workspace main
+bindsym $mod+Shift+m move container to workspace main
+
 bindsym $mod+Space workspace back_and_forth
 workspace_auto_back_and_forth yes
 bindsym $mod+n workspace next
@@ -241,3 +240,5 @@ bindsym Control+Alt+u input "type:keyboard" xkb_switch_layout 1
 
 bindsym Control+Alt+l exec swaylock -efc 000000
 bindswitch lid:on exec swaylock -efc 000000
+
+workspace main

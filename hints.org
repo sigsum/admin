@@ -170,6 +170,65 @@ http://jan.newmarch.name/go/
 ** misc tips and tricks
 rm -rf $GOPATH/pkg  # remove all cached compiled packages
 cd SRC && go test -i && go build   # rebuild cache and compile SRC
+go test -coverprofile=cov.out && go tool cover -html=cov.out && rm cov.out
+** emacs
+- go-mode from MELPA
+*** LSP, config from mc
+(require 'package)
+(setq package-enable-at-startup nil)
+(setq package-archives
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+       ("melpa" . "https://melpa.org/packages/")))
+
+(package-initialize)
+
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(use-package lsp-mode
+  :commands lsp
+  :config
+  (setq lsp-diagnostics-provider :none)
+  :custom
+  (lsp-auto-guess-root nil)
+  (lsp-auto-guess-root t)
+  (lsp-prefer-flymake nil))
+
+(use-package company
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1))
+
+(use-package go-mode
+  :mode "\\(\\.go\\)\\'"
+  :init
+  (progn
+    (setq gofmt-command "goimports")
+    (eldoc-mode -1))
+  :config
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (add-hook 'go-mode-hook 'company-mode)
+  (add-hook 'go-mode-hook #'lsp)
+  :bind (
+         ("C-c i . go-goto-imports")))
+
+** a REPL
+- gore
+  go install github.com/x-motemen/gore/cmd/gore@latest
+- emacs
+  gorepl-mode from MELPA
+
+This is the slowest REPL I've seen ever. It also behaves weirdly,
+f.ex. printing a string once results in the line to print. Printing a
+line a second time prints the first line and then the line to print.
+
+** LSP
+- language server
+  sudo apt install gopls
+- emacs
+  pls-mode from MELPA
+
 * pond
 ** try it out in 2012
 (Sat Dec 08 17:04:52 +0100 2012) ioerrror@jabber.ccc.de: keyex with me?
@@ -396,7 +455,7 @@ Generating locales (this might take a while)...
   sv_SE.UTF-8... done
 $ LANG=sv_SE.utf8 python -c 'print u"\u00e4"'
 Ã¤
-tool:mcabber-0.10.1% LANG=sv_SE.ISO-8859-15 python -c 'print u"\u00e4"'
+$ LANG=sv_SE.ISO-8859-15 python -c 'print u"\u00e4"'
 ä
 
 And since my problem is solved here, I won't finish this text today either!
@@ -408,6 +467,9 @@ Update <2014-05-06 Tue>: Debian (at least modern, like jessie) seem to
 set a couple of LC_ environment variables which might be missing. Do
 the /etc/locale.gen and /usr/sbin/locale-gen trick desribed
 above. Important for bash and xterm to be happy about _input_.
+
+Update <2023-01-26 Thu>: The manual page LOCALE(1) can be a useful resource.
+
 * wifi / * wlan
 ** Networks
 - bolibompa @ kåks: WrongProdukt
@@ -799,6 +861,7 @@ the trick. Edit or create ~/.Xresources and do xrdb -merge
   - https://redmine.koumbit.net/projects/koumbit-scripts/repository/revisions/master/entry/alternc_dstat/dstat_apache.py
 - slurm, iftop -- network load monitor
 - lnav -- log file navigator
+- swaks -- swiss army knife smtp, for smtp/email testing
 ** netcat
 There are more than one.
 - *Hobbit*'s nc http://www.securityfocus.com/tools/137
@@ -2027,7 +2090,7 @@ SSL-Session:
   CAPABILITY IMAP4 IMAP4rev1 IDLE ACL LITERAL+ UIDPLUS QUOTA ID SORT
   ANNOTATE ANNOTATEMORE STATUS-COUNTERS UNSELECT LISTEXT NAMESPACE
   XLIST AUTH=CRAM-MD5 AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5
-** authenticating
+** SASL authenticating
 $ echo -en "\0molgan\0Phait0ai" | base64
 AG1vbGdhbgBQaGFpdDBhaQ==
 $ gnutls-cli -p 993 imap.adb-centralen.se
@@ -2127,7 +2190,7 @@ sudo echo mem > /sys/power/state
 - /etc/gdm3/Init/Default
 - /etc/dbus-1/system.d/gdm.conf
 - /etc/xdg/autostart
-** making a package
+** packaging / making a package
 - http://www.debian.org/doc/manuals/maint-guide/start.en.html
 - sudo apt-get install build-essential debhelper dh-make fakeroot
 - debhelper(7) with dh_make for creating a new package from scratch
@@ -2170,6 +2233,7 @@ EOF
 usermod -a -G <group> <user>
 ** disabling a service
 sudo update-rc.d <daemon> enable|disable
+sudo systemctl disable --now SERVICE
 
 ** deb mirrors
 speglar.simnet.is
@@ -2190,7 +2254,7 @@ datan:~% egrep ssh-agent /etc/*/* 2>/dev/null
 /etc/X11/Xsession.options:use-ssh-agent
 
 See Xsessoin(5) and Xsession.options(5) for more.
-** package handling
+** apt / package handling
 - apt install devscripts
   - rmadison <package> -- show package versions in each archive
 - apt-get install package
@@ -2201,7 +2265,143 @@ See Xsessoin(5) and Xsession.options(5) for more.
 - <2018-10-25 Thu>
 torsocks ldapsearch -h db.debian.org -x -b dc=debian,dc=org 'host=*' hostname | grep '^hostname:.*debian.org$' | wc -l
 185
-* Virtualization with qemu-kvm / libvirt
+** default application
+
+** networking
+*** ifupdown
+NOTE: no longer being actively maintained, maybe (spring 2022)
+
+/etc/network/interfaces
+/etc/network/interfaces.d/
+
+Disabled on laptop (besk) <2022-03-29 Tue>:
+systemctl disable --now ifup@enp0s31f6
+systemctl disable --now ifup@wlp3s0
+systemctl disable --now ifupdown-pre 
+systemctl disable --now wg-quick@wg-vkg
+mv /etc/network/interfaces /etc/network/interfaces.OFF
+mv /etc/network/interfaces.d/wlp3s0 /etc/network/interfaces.d/wlp3s0.OFF
+
+*** systemd-networkd
+SYSTEMD-NETWORKD.SERVICE(8)
+SYSTEMD.NETWORK(5)
+SYSTEMD.NETDEV(5)
+NETWORKCTL(1)
+
+**** setting up wired and wg <2022-03-29 Tue>
+root@besk:/etc/systemd/network# ls -l
+total 12
+-rw-r----- 1 root systemd-network 252 Mar 29 09:38 10-wg-vkg.netdev
+-rw-r--r-- 1 root root            365 Mar 29 09:52 10-wg-vkg.network
+-rw-r--r-- 1 root root             37 Mar 29 11:10 10-wired.network
+
+root@besk:/etc/systemd/network# for f in *; do echo "# $f"; cat $f | sed -e 's/^PrivateKey=.*/PrivateKey=REDACTED/g'; done
+# 10-wg-vkg.netdev
+[NetDev]
+Name=wg-vkg
+Kind=wireguard
+
+[WireGuard]
+PrivateKey=REDACTED
+FirewallMark=0x4711
+
+[WireGuardPeer]
+PublicKey=Vc5dOP79fi2/Fp2q0xj31zAvgc1UgR3P1saF9xYPmh4=
+AllowedIPs=0.0.0.0/0,::/0
+Endpoint=91.223.231.1:51820
+
+# 10-wg-vkg.network
+[Match]
+Name = wg-vkg
+
+[Network]
+Address = 10.47.11.11/32
+Address = fd00:47:11::11/128
+#DNS = 10.47.11.1
+#DNSDefaultRoute=true
+#Domains=~.
+
+[RoutingPolicyRule]
+FirewallMark=0x4711
+InvertRule=true
+Table=1001
+Priority = 10
+Family = both
+
+[Route]
+Gateway = 10.47.11.1
+GatewayOnLink = yes
+Table = 1001
+
+[Route]
+Gateway = fd00:47:11::1
+GatewayOnLink = yes
+Table = 1001
+
+# 10-wired.network
+[Match]
+Name=en*
+
+[Network]
+DHCP=yes
+
+**** setting up wireless and wg <2022-03-30 Wed>
+
+TODO add basic config
+
+**** trouble adding wg routing policy rules after suspend+resume
+workaround:
+ip link delete wg-vkg; systemctl restart systemd-networkd
+
+Mar 30 06:43:47 besk systemd-networkd[197407]: wg-vkg: Re-configuring with /etc/systemd/network/25-wg-vkg.network
+Mar 30 06:43:47 besk systemd-networkd[197407]: wg-vkg: Could not add rule: File exists
+Mar 30 06:43:47 besk systemd-networkd[197407]: wg-vkg: Could not set routing policy rule: File exists
+Mar 30 06:43:47 besk systemd-networkd[197407]: wg-vkg: Failed
+
+UPDATE: v4 route missing as well, table 1001
+
+## when working
+root@besk:/etc/systemd/network# ip -6 r 
+::1 dev lo proto kernel metric 256 pref medium
+fd00:47:11::11 dev wg-vkg proto kernel metric 256 pref medium
+fe80::/64 dev enp0s31f6 proto kernel metric 256 linkdown pref medium
+fe80::/64 dev wlp3s0 proto kernel metric 256 pref medium
+
+root@besk:/etc/systemd/network# ip -6 r show table all
+default via fd00:47:11::1 dev wg-vkg table 1001 proto static metric 1024 onlink pref medium
+::1 dev lo proto kernel metric 256 pref medium
+fd00:47:11::11 dev wg-vkg proto kernel metric 256 pref medium
+fe80::/64 dev enp0s31f6 proto kernel metric 256 linkdown pref medium
+fe80::/64 dev wlp3s0 proto kernel metric 256 pref medium
+local ::1 dev lo table local proto kernel metric 0 pref medium
+local fd00:47:11::11 dev wg-vkg table local proto kernel metric 0 pref medium
+local fe80::e54:15ff:fe1a:e4ba dev wlp3s0 table local proto kernel metric 0 pref medium
+local fe80::8e16:45ff:fe22:9b11 dev enp0s31f6 table local proto kernel metric 0 pref medium
+multicast ff00::/8 dev enp0s31f6 table local proto kernel metric 256 linkdown pref medium
+multicast ff00::/8 dev wlp3s0 table local proto kernel metric 256 pref medium
+multicast ff00::/8 dev wg-vkg table local proto kernel metric 256 pref medium
+
+## after suspend+resume, not working
+root@besk:/etc/systemd/network# ip -6 r 
+::1 dev lo proto kernel metric 256 pref medium
+fd00:47:11::11 dev wg-vkg proto kernel metric 256 pref medium
+fe80::/64 dev enp0s31f6 proto kernel metric 256 linkdown pref medium
+fe80::/64 dev wlp3s0 proto kernel metric 256 pref medium
+
+root@besk:/etc/systemd/network# ip -6 r show table all
+::1 dev lo proto kernel metric 256 pref medium
+fd00:47:11::11 dev wg-vkg proto kernel metric 256 pref medium
+fe80::/64 dev enp0s31f6 proto kernel metric 256 linkdown pref medium
+fe80::/64 dev wlp3s0 proto kernel metric 256 pref medium
+local ::1 dev lo table local proto kernel metric 0 pref medium
+local fd00:47:11::11 dev wg-vkg table local proto kernel metric 0 pref medium
+local fe80::e54:15ff:fe1a:e4ba dev wlp3s0 table local proto kernel metric 0 pref medium
+local fe80::8e16:45ff:fe22:9b11 dev enp0s31f6 table local proto kernel metric 0 pref medium
+multicast ff00::/8 dev enp0s31f6 table local proto kernel metric 256 linkdown pref medium
+multicast ff00::/8 dev wlp3s0 table local proto kernel metric 256 pref medium
+multicast ff00::/8 dev wg-vkg table local proto kernel metric 256 pref medium
+
+* virsh / virtualization with qemu-kvm / libvirt
 ** vm's on tool
 Active
 - test (debian0) (root/r00tm3)
@@ -2240,6 +2440,9 @@ sudo virt-install --connect qemu:///system --virt-type kvm --name tails --memory
 sudo virsh destroy tails
 sudo virsh undefine tails
 ** adding a disk
+: virsh domblklist $vm
+: virsh attach-disk $vm /var/lib/libvirt/images/$file.img vdb --live --config
+
 root@tool:/u/vm# truncate --size=6G /var/lib/libvirt/images/name.qcow2
 # alternatively (but without preallocation=full, the guest sees a very small device for some reason):
 #  qemu-img create -f qcow2 -o "size=20G,preallocation=full" /u/vm/debian0-2.qcow2
@@ -2366,6 +2569,29 @@ You might have to 'virt destroy' a vm if it's not shutting down
 properly.
 ** setting timezone (time zone, tz)
 dpkg-reconfigure tzdata
+** moving a VM to another kvm host
+# in VM
+my_bup.sh
+vi /etc/systemd/network/FILE # update network settings if needed
+shutdown -h now
+
+# on oldkvm
+virsh autostart --disable $DOMAIN
+while true; do virsh list | egrep -q $DOMAIN || break; sleep 1; done
+: figure out which disks to tranfser
+virsh domblklist $DOMAIN
+: for all LV's, convert to qcow2 image files and send to newkvm
+qemu-img dd -f raw -O qcow2 bs=1M if=/dev/VG/LV | ssh newkvm dd bs=1M of=/var/lib/libvirt/images/$NAME.qcow2
+: for all relevant qcow2 image files, copy
+scp /var/lib/libvirt/images/$NAME.qcow2 newkvm:/var/lib/libvirt/images/
+:
+virsh dumpxml $DOMAIN | ssh newkvm tee /root/$DOMAIN.xml
+
+# on newkvm
+: 
+vi /root/$DOMAIN.xml
+
+
 * Ubuntu
 - upgrading to new release (like 16.04 LTS) will not upgrade the
   kernel; try this
@@ -3564,8 +3790,76 @@ drwx------ 2 linus linus     1024 Jun  1  2019 private-keys-v1.d.BAK/
 datan:~% mv /home/linus/.gnupg/pubring.gpg~ /home/linus/.gnupg/pubring.gpg
 
 All good. Wonder what happened in the morning of Sep 1.
-** disecting an encrypted file
+** disecting an encrypted file, like pgpdump does
 gpg --list-packets FILE
+
+** wkd
+Example publishing:
+sudo apt install python3-gnupg
+git clone https://gitlab.com/Martin_/generate-openpgpkey-hu-3.git
+cd generate-openpgpkey-hu-3
+./generate-openpgpkey-hu-3 --address linus@nordberg.se 
+
+scp hu/enny6arzmz1ynd1jbkgy9f6dbysuf3oc listen.sigsum.org:
+ssh listen.sigsum.org "sudo mv ~linus/enny6arzmz1ynd1jbkgy9f6dbysuf3oc /var/www/www.glasklarteknik.se/.well-known/openpgpkey/hu/"
+
+scp hu/enny6arzmz1ynd1jbkgy9f6dbysuf3oc www.adb-centralen.se:
+[root@www ~]# mv ~linus/enny6arzmz1ynd1jbkgy9f6dbysuf3oc /usr/local/www/lighttpd/vhosts/nordberg.se/.well-known/openpgpkey/hu/
+
+besk:~% gpg --homedir "$(mktemp -d)" --verbose --locate-keys linus@nordberg.se
+gpg: keybox '/tmp/tmp.q6jvjU00Ui/pubring.kbx' created
+gpg: /tmp/tmp.q6jvjU00Ui/trustdb.gpg: trustdb created
+gpg: using pgp trust model
+gpg: error retrieving 'linus@nordberg.se' via Local: No public key
+gpg: no running Dirmngr - starting '/usr/bin/dirmngr'
+gpg: waiting for the dirmngr to come up ... (5s)
+gpg: connection to dirmngr established
+gpg: pub  rsa4096/1E8BF34923291265 2010-05-07  Linus Nordberg <linus@nordberg.se>
+gpg: key 1E8BF34923291265/9DC3E9C66DDABD48: removed multiple subkey binding
+gpg: key 1E8BF34923291265: public key "Linus Nordberg <linus@nordberg.se>" imported
+gpg: no running gpg-agent - starting '/usr/bin/gpg-agent'
+gpg: waiting for the agent to come up ... (5s)
+gpg: connection to agent established
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg: 0 keys processed (0 validity counts cleared)
+gpg: no ultimately trusted keys found
+gpg: auto-key-locate found fingerprint 8C4CD511095E982EB0EFBFA21E8BF34923291265
+gpg: automatically retrieved 'linus@nordberg.se' via WKD
+pub   rsa4096 2010-05-07 [SC]
+      8C4CD511095E982EB0EFBFA21E8BF34923291265
+uid           [ unknown] Linus Nordberg <linus@nordberg.se>
+sub   rsa4096 2010-05-07 [E] [revoked: 2011-04-25]
+sub   rsa4096 2011-04-25 [E] [revoked: 2012-04-25]
+sub   rsa4096 2012-04-23 [E] [revoked: 2013-04-30]
+sub   rsa4096 2013-04-23 [E] [revoked: 2014-04-23]
+sub   rsa4096 2014-04-23 [E] [revoked: 2016-04-14]
+sub   rsa4096 2015-04-20 [E] [revoked: 2017-04-17]
+sub   rsa4096 2016-04-14 [E] [revoked: 2017-04-17]
+sub   rsa4096 2017-04-17 [E] [revoked: 2018-04-11]
+sub   rsa4096 2018-02-17 [A]
+sub   rsa4096 2019-05-30 [E] [revoked: 2020-06-03]
+sub   rsa4096 2018-04-11 [E] [revoked: 2019-05-30]
+sub   rsa4096 2020-06-03 [E] [expires: 2023-05-17]
+
+Example fetching:
+gpg --auto-key-locate clear,wkd --locate-key mail@kushaldas.in
+** extending a subkey's expiry date
+Instead of creating a new subkey, extend the expiry date on the existing one.
+Seems like we did that 2021 for rsa4096/2D11AC8BFF2BC4A8.
+Here's what we did in May 2022:
+
+besk:~% gpg --edit-key linus@tor
+gpg> key 12
+gpg> expire
+Key is valid for? (0) 1y
+Is this correct? (y/N) y
+: touch yubikey
+ssb* rsa4096/2D11AC8BFF2BC4A8
+     created: 2020-06-03  expires: 2023-05-17  usage: E
+gpg> save
+besk:~% gpg --send-key 8C4CD511095E982EB0EFBFA21E8BF34923291265
+gpg: sending key 1E8BF34923291265 to hkps://keys.openpgp.org
 
 * wiki
 - ikiwiki is supposed to be nice.  Uploading text files (markdown!)
@@ -4420,6 +4714,13 @@ btc@btc:~$ crontab -l
 btc@btc:~$ ~/usr/bin/bitcoind-start
 Bitcoin Core starting
 
+** debugging
+virsh start --console domain
+# 'e' for edit; add console=ttyS0 to kernel command line
+
+Maybe do
+  systemctl enable getty@ttyS0
+in system once up to always start console on /dev/ttyS0.
 * SIM
 ** blau.de
 *** first
@@ -4570,6 +4871,7 @@ See unfinished [[file:doc/yubikey.md][file:~/doc/yubikey.md]] too.
   - can be restarted with 'echo /bye | gpg-connect-agent' (?)
 - scdaemon is how gpg2 talks to the card (pcsd?)
   - started by gpg-agent
+
 *** Debian stretch, gpg-agent started by systemd
 datan:~% cat /etc/X11/Xsession.d/90gpg-agent
 # On systems with systemd running, we expect the agent to be launched
@@ -4593,9 +4895,11 @@ if [ -n "$(gpgconf --list-options gpg-agent | \
       awk -F: '/^enable-ssh-support:/{ print $10 }')" ]; then
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 fi
+
 *** Trouble shooting
 - NEO doesn't blink after insertion
 sudo service pcscd restart
+
 *** Recipe for setting up a NEO on a Debian (jessie/sid) system
 Based on https://github.com/SUNET/eduid-docs/blob/master/token-setup.mkd
 
@@ -4930,7 +5234,7 @@ touch för dessa även om denne någon sniffat mitt admin-lösenord.
 
 ** Making a static key
 $ HISTFILE=/dev/null sudo bash -
-# ykpersonalize -y -1 -oappend-cr -ostatic-ticket -ostrong-pw1 -ostrong-pw2 -oman-update -a$(~linus/src/hexpw.py) >/dev/null || echo FAIL
+# ykpersonalize -y -1 -oappend-cr -ostatic-ticket -ostrong-pw1 -ostrong-pw2 -oman-update -a$(dd if=/dev/urandom bs=16 count=1 iflag=fullblock 2>/dev/null | base16) >/dev/null || echo FAIL
 NOTE: use -o-append-cr to make the yubikey not send the final cr/lf, perhaps in slot 2
 *** cat src/hexpw.py
 #! /usr/bin/env python3
@@ -5197,6 +5501,8 @@ o
 testkey		# passphrase
 testkey
 **** configure yubikey
+sudo apt install yubikey-personalization
+
 root@datan:~# ykpersonalize
 Firmware version 4.2.8 Touch level 773 Program sequence 1
 A slot must be chosen with -1 or -2.
@@ -5209,12 +5515,65 @@ A slot must be chosen with -1 or -2.
 - ssh-agent bash -
   ssh-add -s $(dpkg -L opensc-pkcs11 | grep \/opensc-pkcs11.so\$ | head -n1)
 ** OATH TOTP
-sudo apt install yubikey-manager
-ykman oath add CRED-NAME	# add '--device SERIAL' if >1 yubikey attached
-ykman oath code CRED-NAME	# use 'ykman list' to get serial numbers
+: sudo apt install yubikey-manager
+NOTE: Add '--device SERIAL' if >1 yubikey attached
+: ykman oath code CRED-NAME	# use 'ykman list' to get serial numbers
+: ykman oath accounts add CRED-NAME
 
 Yubikeys in use for OATH, serial number:
 - 3037390
+** PIV
+besk:~% ykls
+Reader:  Yubico YubiKey OTP+FIDO+CCID 00 00
+Version: 5.1.2
+Serial:  10124574
+
+besk:~% ykman piv reset
+WARNING! This will delete all stored PIV data and restore factory settings. Proceed? [y/N]: y
+Resetting PIV data...
+Success! All PIV data have been cleared from the YubiKey.
+Your YubiKey now has the default PIN, PUK and Management Key:
+        PIN:    123456
+        PUK:    12345678
+        Management Key: 010203040506070801020304050607080102030405060708
+
+besk:~% ssh-agent -d -P /usr/lib/x86_64-linux-gnu/\* &
+SSH_AUTH_SOCK=/tmp/ssh-eXm2mCPv2wJV/agent.84803; export SSH_AUTH_SOCK;
+besk:~% SSH_AUTH_SOCK=/tmp/ssh-eXm2mCPv2wJV/agent.84803; export SSH_AUTH_SOCK;
+
+: https://developers.yubico.com/PIV/Guides/SSH_with_PIV_and_PKCS11.html
+besk:pivtest% time yubico-piv-tool -s 9a -a generate -o public.pem
+Successfully generated a new private key.
+
+real    0m20.573s
+user    0m0.005s
+sys     0m0.010s
+
+: YUVBICO-PIV-TOOL(1)
+:        -A, --algorithm=ENUM
+:              What algorithm to use   (possible  values="RSA1024",  "RSA2048",
+:              "ECCP256", "ECCP384" default=`RSA2048')
+
+besk:pivtest% yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=SSH key/" -i public.pem -o cert.pem
+Enter PIN: 
+Successfully verified PIN.
+Successfully generated a new self signed certificate.
+besk:pivtest% yubico-piv-tool -a import-certificate -s 9a -i cert.pem
+Successfully imported a new certificate.
+besk:pivtest% ssh-keygen -D /usr/lib/x86_64-linux-gnu/libykcs11.so -e
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzaq9MMhtkBrsAwEitO5h9MIrMOgAwTcoFatKm71HeoucFoMYlL8VsqAb8u86QX06313z9NCb2pjP8U8u5kOQ620ZPgjSNBSTPv0AsdAmfpcKsLInB1PIMASLa88GhDhGOBFYf7Xd7g2xcjUIJbH+z2SPHMBrMtyqOfDluc9gguGWAQ07L2q+b3/V6c+i2kVOVgRzHzjC5VEstzfTOXrYfUq3n5wMzgBh2P5sNrWus6yyRtNMdWo9pOZz4ba01vD/Q9Df0FTQw5N92GfJ7zvwPNw7yOI/oSwUp4xpfYnk7WUzZJUe/9AmDViKWgceZTaWRoe20PrnZJcIoKO9yTqmT Public key for PIV Authentication
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDFW43puTxTaYKI/tpw/FyIeEEloh17hI6TNq1nK0yrRb6y4NWcG6Fo1Wv4Y1yDy4M4YrdkroM3N47IYIDmAfh1qq72bqfVdsXBJa2qnp3ctX7pjiq0P5kN958goCign7OxIl+vOPtzRvTHkzDd+tCG4MnGcpmv+ySXBYeH3WFFb4GGykMI3N4Eo6bWpiCWScoMj8WdpwuQLI1piVvkl2dQTH4vyKrZJaQCDntQ84hPQ+HPdG/FcKC4yP4FaxIA9WG/mWcAGFovRv/LtXg6mtkp+RKiVW5gdLlipFWcN6knsjKUSl0ykRbj/us4dIyqhwgQHxI+3ZOOJsGtm/ORyglv Public key for PIV Attestation
+
+besk:pivtest% ssh-add -v -s /usr/lib/x86_64-linux-gnu/libykcs11.so 
+Enter passphrase for PKCS#11: 
+Card added: /usr/lib/x86_64-linux-gnu/libykcs11.so
+besk:pivtest% ssh-add -l
+2048 SHA256:2Fbaa/g/2uvDRxyKsQaC4IUx8HQcTveHcye+JPFfABY Public key for PIV Authentication (RSA)
+2048 SHA256:Xk7dUop5/qjwucmsUduwTtG9hgBmOE/jD3UJh+wqlVY Public key for PIV Attestation (RSA)
+
+: Now, for signing let's try ssh-keygen -Y sign.
+: We could also try using gpg-connect-agent and this: https://www.gnupg.org/documentation/manuals/gnupg/Agent-PKSIGN.html
+
 * YubiHSM
 ** <2011-03-17 Thu>
    NO_CFG> sysinfo
@@ -5554,8 +5913,13 @@ User modes for ln5: +RZhi
 * DNS
 ** DNSSEC
 *** authoritative
-ns.adb-centralen.se uses knot for DNSSEC.
+dup.adb-centralen.se and ns.verkligendata.se use knot for DNSSEC.
 
+Enable DNSSEC in knot.conf and us keymgr to get DS record for parent:
+
+    Z=zone.tld keymgr $Z ds
+
+**** Old knot stuff
 Two handy scripts for creating ZSK and KSK for a zone and getting DS
 for a zone:
 
@@ -5622,6 +5986,63 @@ adb-centralen.se. 3600 IN DNSKEY 256 3 8 ;{id = 62758 (zsk), size = 2048b}
 ;; No DNSKEY record found for www.adb-centralen.se.
 [T] www.adb-centralen.se.       3600    IN      A       193.10.5.127
 ;;[S] self sig OK; [B] bogus; [T] trusted
+
+*** expired DS signature <2022-04-18 Mon>
+besk:~% drill -DT ns.verkligendata.se
+;; Number of trusted keys: 1
+;; Domain: .
+[T] . 172800 IN DNSKEY 256 3 8 ;{id = 47671 (zsk), size = 2048b}
+. 172800 IN DNSKEY 257 3 8 ;{id = 20326 (ksk), size = 2048b}
+Checking if signing key is trusted:
+New key: .      172800  IN      DNSKEY  256 3 8 AwEAAak/ZU9wDNQD7XTAGTDkn32UR8I6auRDekbGky+yyWKdUHmwAJv90YHCUTib8aVBgNgbxkeeZGRx3W4+XhMZbfUr5fMwmD3u9P2yzJpbRtjGNM/XZvzGs9HHNymz3Bp851anHZfNy6pJud265/XMKzFlAY8sMJjum0hvx/DuCDELLyhsvdfOD9rHM93UXO0bcAjvI8tjZsGI+Pfp9KdxF9vS/sAzpFXKsldix+e6xv8rRS6WPg2LAooxF+eO5DgFSilYmnyCK4VPJ7ntjD/8m0bs128ZT1eY3oXCbojDv59lLAgrdGSbcVxQF2KHoUHDmkOC5BzG/1xRtW4v/3y4/H8= ;{id = 47671 (zsk), size = 2048b}
+        Trusted key: .  86400   IN      DNSKEY  257 3 8 AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexTBAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq7HrxRixHlFlExOLAJr5emLvN7SWXgnLh4+B5xQlNVz8Og8kvArMtNROxVQuCaSnIDdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLrjyBxWezF0jLHwVN8efS3rCj/EWgvIWgb9tarpVUDK/b58Da+sqqls3eNbuv7pr+eoZG+SrDK6nWeL3c6H5Apxz7LjVc1uTIdsIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6+cn8HFRm+2hM8AnXGXws9555KrUB5qihylGa8subX2Nn6UwNR1AkUTV74bU= ;{id = 20326 (ksk), size = 2048b}
+        Trusted key: .  172800  IN      DNSKEY  256 3 8 AwEAAak/ZU9wDNQD7XTAGTDkn32UR8I6auRDekbGky+yyWKdUHmwAJv90YHCUTib8aVBgNgbxkeeZGRx3W4+XhMZbfUr5fMwmD3u9P2yzJpbRtjGNM/XZvzGs9HHNymz3Bp851anHZfNy6pJud265/XMKzFlAY8sMJjum0hvx/DuCDELLyhsvdfOD9rHM93UXO0bcAjvI8tjZsGI+Pfp9KdxF9vS/sAzpFXKsldix+e6xv8rRS6WPg2LAooxF+eO5DgFSilYmnyCK4VPJ7ntjD/8m0bs128ZT1eY3oXCbojDv59lLAgrdGSbcVxQF2KHoUHDmkOC5BzG/1xRtW4v/3y4/H8= ;{id = 47671 (zsk), size = 2048b}
+Key is now trusted!
+        Trusted key: .  172800  IN      DNSKEY  257 3 8 AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexTBAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq7HrxRixHlFlExOLAJr5emLvN7SWXgnLh4+B5xQlNVz8Og8kvArMtNROxVQuCaSnIDdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLrjyBxWezF0jLHwVN8efS3rCj/EWgvIWgb9tarpVUDK/b58Da+sqqls3eNbuv7pr+eoZG+SrDK6nWeL3c6H5Apxz7LjVc1uTIdsIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6+cn8HFRm+2hM8AnXGXws9555KrUB5qihylGa8subX2Nn6UwNR1AkUTV74bU= ;{id = 20326 (ksk), size = 2048b}
+[T] se. 86400 IN DS 59407 8 2 67a8e06fcefdd9397f77f26c41ade4ec142f299bcfa1827f0ef8fd87f2f63022
+;; Domain: se.
+[T] se. 3600 IN DNSKEY 256 3 8 ;{id = 22966 (zsk), size = 2048b}
+se. 3600 IN DNSKEY 257 3 8 ;{id = 59407 (ksk), size = 2048b}
+Checking if signing key is trusted:
+New key: se.    3600    IN      DNSKEY  256 3 8 AwEAAbJFdExyUHWqFbNhSayxGeBodTm4IYRZ3WWo32T+C6m9I4vN3Cc+uPC+wZpghLoUPIfl0q9kAUpnc1BZgo6try10HWSs/n2EQucV817bmMz4hDBVZm+khlcjvfbO7ZUEXWVH5zKrr/3/WVCSGa+4TRGhIUmjgF8bSr8guIAZbh1pvqnlGfSJnV1lRygMF1qeszZUhlGvbImUVs4A1MW17Dmw3nnHEOpqkngMaHVbznrfwa6YG9W2rfWjb2NQ5pJII2wxA1NS4OsOXjcP963lpTQ7Y+qKD1NFPoicYV7hGWfwcUrbJu7eSJmbSuex3fQ3H0ejVICtJ45mqMXpB9e19PE= ;{id = 22966 (zsk), size = 2048b}
+        Trusted key: .  86400   IN      DNSKEY  257 3 8 AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexTBAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq7HrxRixHlFlExOLAJr5emLvN7SWXgnLh4+B5xQlNVz8Og8kvArMtNROxVQuCaSnIDdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLrjyBxWezF0jLHwVN8efS3rCj/EWgvIWgb9tarpVUDK/b58Da+sqqls3eNbuv7pr+eoZG+SrDK6nWeL3c6H5Apxz7LjVc1uTIdsIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6+cn8HFRm+2hM8AnXGXws9555KrUB5qihylGa8subX2Nn6UwNR1AkUTV74bU= ;{id = 20326 (ksk), size = 2048b}
+        Trusted key: .  172800  IN      DNSKEY  256 3 8 AwEAAak/ZU9wDNQD7XTAGTDkn32UR8I6auRDekbGky+yyWKdUHmwAJv90YHCUTib8aVBgNgbxkeeZGRx3W4+XhMZbfUr5fMwmD3u9P2yzJpbRtjGNM/XZvzGs9HHNymz3Bp851anHZfNy6pJud265/XMKzFlAY8sMJjum0hvx/DuCDELLyhsvdfOD9rHM93UXO0bcAjvI8tjZsGI+Pfp9KdxF9vS/sAzpFXKsldix+e6xv8rRS6WPg2LAooxF+eO5DgFSilYmnyCK4VPJ7ntjD/8m0bs128ZT1eY3oXCbojDv59lLAgrdGSbcVxQF2KHoUHDmkOC5BzG/1xRtW4v/3y4/H8= ;{id = 47671 (zsk), size = 2048b}
+        Trusted key: .  172800  IN      DNSKEY  257 3 8 AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexTBAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq7HrxRixHlFlExOLAJr5emLvN7SWXgnLh4+B5xQlNVz8Og8kvArMtNROxVQuCaSnIDdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLrjyBxWezF0jLHwVN8efS3rCj/EWgvIWgb9tarpVUDK/b58Da+sqqls3eNbuv7pr+eoZG+SrDK6nWeL3c6H5Apxz7LjVc1uTIdsIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6+cn8HFRm+2hM8AnXGXws9555KrUB5qihylGa8subX2Nn6UwNR1AkUTV74bU= ;{id = 20326 (ksk), size = 2048b}
+        Trusted key: se.        3600    IN      DNSKEY  256 3 8 AwEAAbJFdExyUHWqFbNhSayxGeBodTm4IYRZ3WWo32T+C6m9I4vN3Cc+uPC+wZpghLoUPIfl0q9kAUpnc1BZgo6try10HWSs/n2EQucV817bmMz4hDBVZm+khlcjvfbO7ZUEXWVH5zKrr/3/WVCSGa+4TRGhIUmjgF8bSr8guIAZbh1pvqnlGfSJnV1lRygMF1qeszZUhlGvbImUVs4A1MW17Dmw3nnHEOpqkngMaHVbznrfwa6YG9W2rfWjb2NQ5pJII2wxA1NS4OsOXjcP963lpTQ7Y+qKD1NFPoicYV7hGWfwcUrbJu7eSJmbSuex3fQ3H0ejVICtJ45mqMXpB9e19PE= ;{id = 22966 (zsk), size = 2048b}
+Key is now trusted!
+        Trusted key: se.        3600    IN      DNSKEY  257 3 8 AwEAAccqQMsh1rhvB3IWXmWZpCrug9MEGCKGteLIvwppyHeHgeBBm3M0p5FV9ImquvxFCnBd6Eey3Vf8SzoTodZ3YrGF9WFve7bmie2MIBhFDoCep16v9lon0ZsKrOvoCkPbTT0iFCdrbdyikYcCfvvh303anvQeTCf3jy+bHOTleaqVaNRJiGv5NBsPKpfnnqBpqqKyZymSpwQXHtTeyv7iWwGl3cfP3U6sp711WvKkXy7Y2DJnC5T5owHWUy1ZPl4s+9DtuC2A9AWhOpDicguHYRfmyscjCbPOB8/tO5j+uECo67i7JjsiLjQTRyHuigUUBRag3Z3FaTXZBg/myaoUL0U= ;{id = 59407 (ksk), size = 2048b}
+[T] verkligendata.se. 3600 IN DS 60262 8 4 025a9dd740d09195de84c589d3879bf900cf7162722b300da2665e48492e26192b9505f9667f83a4871c70856e8bd825
+verkligendata.se. 3600 IN DS 60262 8 2 b63f8ebba1f7c256efabc8868daa194bed13ef7d63637bf6695661cb6a601d7f
+;; Domain: verkligendata.se.
+[T] verkligendata.se. 86400 IN DNSKEY 256 3 8 ;{id = 6090 (zsk), size = 2048b}
+verkligendata.se. 86400 IN DNSKEY 257 3 8 ;{id = 60262 (ksk), size = 2048b}
+[B] Error verifying denial of existence for ns.verkligendata.se. DS: DNSSEC signature has expired
+;; No ds record for delegation
+;; Domain: ns.verkligendata.se.
+;; No DNSKEY record found for ns.verkligendata.se.
+[B] ns.verkligendata.se.        7200    IN      A       91.223.231.3
+;; Error: DNSSEC signature has expired
+;;[S] self sig OK; [B] bogus; [T] trusted
+
+root@ns:~# journalctl -eu knot | egrep verkligen.\*DNSSEC   
+Apr 09 18:23:06 ns knotd[522]: info: [verkligendata.se.] DNSSEC, signing zone
+
+root@ns:~# knotc zone-status verkligendata.se
+[verkligendata.se.] role: master | serial: 2022040400 | transaction: open | freeze: no | load: not scheduled | refresh: not scheduled | update: not scheduled | expiration: not scheduled | journal flush: not scheduled | backup/restore: not scheduled | notify: not scheduled | DNSSEC re-sign: running | NSEC3 resalt: not scheduled | DS check: not scheduled | DS push: not scheduled
+
+root@ns:~# export Z=verkligendata.se
+root@ns:~# knotc zone-diff $Z
+root@ns:~# knotc zone-abort $Z
+OK
+root@ns:~# knotc zone-status $Z
+[verkligendata.se.] role: master | serial: 2022041800 | transaction: none | freeze: no | load: not scheduled | refresh: not scheduled | update: not scheduled | expiration: not scheduled | journal flush: not scheduled | backup/restore: not scheduled | notify: not scheduled | DNSSEC re-sign: +6D23h59m52s | NSEC3 resalt: not scheduled | DS check: not scheduled | DS push: not scheduled
+root@ns:~# journalctl -eu knot | egrep verkligen.\*DNSSEC 
+Apr 18 11:54:44 ns knotd[522]: notice: [verkligendata.se.] DNSSEC, KSK submission, waiting for confirmation
+Apr 18 11:54:44 ns knotd[522]: info: [verkligendata.se.] DNSSEC, key, tag 60262, algorithm RSASHA256, KSK, public, ready, active+
+Apr 18 11:54:44 ns knotd[522]: info: [verkligendata.se.] DNSSEC, key, tag  6090, algorithm RSASHA256, public, active
+Apr 18 11:54:44 ns knotd[522]: info: [verkligendata.se.] DNSSEC, signing started
+Apr 18 11:54:45 ns knotd[522]: info: [verkligendata.se.] DNSSEC, successfully signed
+Apr 18 11:54:45 ns knotd[522]: info: [verkligendata.se.] DNSSEC, next signing at 2022-04-25T11:54:44+0200
 
 ** dig segfaulting
     Running a shell in Emacs runing under usewithtor:
@@ -5722,6 +6143,15 @@ dfri.se.                86400   IN      A       171.25.193.19
 89.32.32.32
 ** Using DNSCheck utan JavaScript
 https://github.com/dotse/zonemaster/blob/master/docs/documentation/installation.md
+** DNSViz
+dnsviz probe $ZONE | dnsviz graph -T html -o $ZONE.html
+
+** Frobbit
+Q: what's "Ns name master" and when should I use it?
+Master ska du bara använda om Frobbit kör slavtjänst, och det är den IP-adress vi ska göra XFR från.
+
+** Problem resolving imap.adbc
+... and other adb-centralen.se names. Please add output from drill -DT here.
 
 * i18n
   LANG=sv_SE.UTF-8
@@ -31144,21 +31574,26 @@ linus@nordu.net xapie6Yaeghi
 browser.ctrlTab.recentlyUsedOrder = false
 
 ** Add-ons
-Torbutton
-  about:config:extensions.torbutton.resize_windows -> false
-NoScript
-  General: Scripts Globally Allowed: off 
-  Appearance: Contextual -> Temporarily allow: checked
-                            Revoke Temporary Permissions: checked
-  Notifications: Show message about blocked scripts: unchecked
-HTTPS-Everywhere
+- Torbutton
+  - about:config:extensions.torbutton.resize_windows -> false
+- NoScript
+  - General: Scripts Globally Allowed: off 
+  - Appearance: Contextual -> Temporarily allow: checked
+                              Revoke Temporary Permissions: checked
+  - Notifications: Show message about blocked scripts: unchecked
+- HTTPS-Everywhere
 # not in TBB:
+- Cookie AutoDelete (CAD) https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/
+# previously used
 RequestPolicy
   Advanced: Miscellaneous -> Allow permanent: checked
 Cookie Whitelist, With Buttons
 Adblock Plus
 ?BetterPrivacy
-# try out
+# maybe try these out, 2022
+Decentraleyes
+
+# maybe try these out, old
 privacy badger
 uBlock Origin
 Vanilla Cookie manager
@@ -31430,7 +31865,7 @@ Babben Larsson
 Thomas di Leva
 Caroline af Ugglas
 Nanne Grönvall
-* Backup
+* Backup tools and software
 ** Cross-platform
 - [[https://en.wikipedia.org/wiki/Duplicity_%2528software%2529][duplicity]]
   - supports revisions through --restore-time TODO: verify this
@@ -31674,7 +32109,8 @@ To make a new player be in the right group for playing ("user"), do
 - op <player>		-- make <player> an operator
 - difficulty peaceful/easy/medium/hard	-- default is 'easy'
 
-** spigot sysadmin, mincore @ kcmp.adbc
+** spigot/paper sysadmin
+mincore @ kcmp.adbc
 - https://www.spigotmc.org/wiki/buildtools/
 - https://www.spigotmc.org/wiki/spigot-installation/
 
@@ -31844,7 +32280,9 @@ java -jar BuildTools.jar --rev latest
 
 This jail (mincore) is too old. Let's move to a new VM.
 
-** Moving to new VM, using tmux instead of screen
+** syadmin with paper in new VM, using tmux instead of screen
+mincore @ vm86.verkligendata.se
+
 $ sudo -iu spigot
 $ mkdir run/jutu
 $ cat > run/jutu/start.sh <<EOF
@@ -31871,17 +32309,72 @@ tar cf /tmp/jutu.tar -C ~spigot/run/jutu eula.txt whitelist.json server.properti
 
 ~/run/jutu/start.sh
 
-*** switching to papermc
+*** Switching to papermc
 - https://papermc.io/downloads
 cd run/jutu
 curl -LO https://papermc.io/api/v2/projects/paper/versions/1.17.1/builds/279/downloads/paper-1.17.1-279.jar
 ln -s paper-1.17.1-279.jar paper.jar
 vi start.sh
-: s/spigot/jar/1
+: s/spigot/paper/1
 
 Startup was super fast.
 Memory consumption went down from ~6G to 4G.
 No lagging reported on the console.
+
+*** paper 1.17.1-279 -> -358 <2021-11-02 Tue>
+> stop
+cd run/jutu
+curl -LO https://papermc.io/api/v2/projects/paper/versions/1.17.1/builds/358/downloads/paper-1.17.1-358.jar
+ln -sf paper-1.17.1-358.jar paper.jar
+./start-in-tmux.sh
+tmux a
+
+*** paper 1.17.1-358 -> 1.17.1-399 due to the Log4J vuln <2021-12-12 Sun>
+: already in a tmux session, no server running due to load
+cd ~/run/jutu
+curl -LO https://papermc.io/api/v2/projects/paper/versions/1.17.1/builds/399/downloads/paper-1.17.1-399.jar
+ln -sf paper-1.17.1-399.jar paper.jar
+./start.sh
+...
+[11:27:00 INFO]: This server is running Paper version git-Paper-399 (MC: 1.17.1) (Implementing API version 1.17.1-R0.1-SNAPSHOT) (Git: d4318a6 on ver/1.17.1)
+...
+
+*** running paper under lazymc <2021-12-12 Sun>
+env LAZYMC_VERSION=v0.2.6 curl -o lazymc -L https://github.com/timvisee/lazymc/releases/download/$LAZYMC_VERSION/lazymc-$LAZYMC_VERSION-linux-x64
+chmod +x lazymc
+./lazymc config generate
+sed -ie 's/^command = .*/command = \".\/start.sh\"/' lazymc.toml
+./lazymc start
+*** paper -> 1.18.1 2022-01-10
+*** lazymc 0.2.6 -> 0.2.7 <2022-02-05 Sat>
+export LAZYMC_VERSION=v0.2.7
+curl -o lazymc -L https://github.com/timvisee/lazymc/releases/download/$LAZYMC_VERSION/lazymc-$LAZYMC_VERSION-linux-x64
+spigot@mincore:~/run/jutu$ ./lazymc --version
+lazymc 0.2.6
+# Huh?
+spigot@mincore:~/run/jutu$ ls -l lazymc
+-rwxr-xr-x 1 spigot spigot 6723112 Feb  5 20:04 lazymc
+# Something's weird here. Can't figure this out.
+# Generated a new config file, fixed the command= line and gave up on
+# understanding this mystery.
+
+*** paper 1.18.1 #144 -> #186
+curl -LO https://papermc.io/api/v2/projects/paper/versions/1.18.1/builds/186/downloads/paper-1.18.1-186.jar
+ln -sf paper-1.18.1-186.jar spigot.jar
+./start.sh
+
+*** lazymc 0.2.7 -> 0.2.8 <2023-02-11 Sat>
+cd run/jutu
+export LAZYMC_VERSION=v0.2.8
+curl -o lazymc -L https://github.com/timvisee/lazymc/releases/download/$LAZYMC_VERSION/lazymc-$LAZYMC_VERSION-linux-x64
+./lazymc --version
+lazymc 0.2.8
+
+*** paper 1.18.1 -> 1.19.3 #393 <2023-02-11 Sat>
+cd run/jutu
+curl -LO https://api.papermc.io/v2/projects/paper/versions/1.19.3/builds/393/downloads/paper-1.19.3-393.jar
+ln -sf paper-1.19.3-393.jar spigot.jar
+./lazymc start
 
 * passwords
 https://segate.sunet.se/ linus@nordu.net S2qaEn2TTa4G
@@ -32553,6 +33046,10 @@ lpq -al
 lpstat -l
 lp -i <job#> -H restart
 * email
+** tools
+- swaks -- swiss army knife smtp
+  swaks -t ln@4711.se -f molgan@adb-centralen.se --protocol SSMTPA -au molgan -ap 'Allan tar Kakan i 1200 baud!' --server mx-01.verkligendata.se
+  swaks -t ln@4711.se -f molgan@adb-centralen.se --protocol SSMTPA -tlsos -p 587 -au molgan -ap 'Allan tar Kakan i 1200 baud!' --server mx-01.verkligendata.se
 ** gnus losing IMAP flags
 <2013-06-11 Tue> early morning
 - up to "a couple of days" before 2013-06-07, all ticks (exclamation
@@ -33273,6 +33770,24 @@ bitmessage.ch
   - DKIM sign the message as MLMMJ entity
   - ARC seal these data
   - hope, Bob trust your ARC seal
+
+** STARTTLS -> ssl
+~/.emacs:
+(smtpmail-stream-type 'starttls) -> (smtpmail-stream-type 'ssl)
+
+gnus-posting-styles:
+       (setq smtpmail-smtp-server "smtp.adb-centralen.se" smtpmail-smtp-service 587 smtpmail-smtp-user "linus")
+       (setq smtpmail-smtp-server "smtp.sunet.se" smtpmail-smtp-service 587 smtpmail-smtp-user "linus")
+
+s/587/465/g
+
+** DMARC
+*** DMARC alignment
+https://support.google.com/a/answer/10032169#alignment
+
+SPF uses envelope from for authn and compares that with the header From: address.
+
+DKIM uses the header From: address for authn and compares that with DKIM d=domain.
 
 * Carbon X1
 alex: 14,4 kSEK
@@ -35910,6 +36425,13 @@ linus larsson
 clive, libquvi -- uses curl to download video from youtube and more,
 supposedly parsing flash (unclear to me how dangerous it is to run on
 data from teh internets)
+
+** VIDEO_TS
+https://www.davidgrant.ca/create_iso_and_dvd_video_ts_folder_linux
+
+sudo apt install genisoimage
+mkisofs -dvd-video -o movie.iso dir-with-VIDEO_TS-folder && rm -r dir-with-VIDEO_TS-folder
+
 * zfs
 increase the size of a volume : FIXME
 * ipsec
@@ -37198,10 +37720,21 @@ vpn username=ln, pw=sheuTai6
 vardagsrumsdata, lundberg: Intel NUC DN2820FYKH med Ubuntu + Kodi (f.d. XBMC)
 Alt., för youtube och netflix: chromecast
 * gentoo / hardened gentoo
-Installation related notes moved to [[file:p/hgd/hgd.org][file:~/p/hgd/hgd.org]].
-- equery b $(which vi)   -- like dpkg -S
-- eselect locale list; eselect locale set 240 # en_US
-- dispatch-conf -- update configuration files
+- NOTE: Installation related notes moved to [[file:p/hgd/hgd.org][file:~/p/hgd/hgd.org]].
+- https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet
+
+emerge -av --update --deep --changed-use @world
+emerge -s			# search for packages
+euse -i <flag>
+euse -i | egrep <flag>
+equery uses <package-name>	# emerge -a app-portage/gentoolkit
+equery list \*         		# list installed packages
+ls /var/db/pkg			# list installed packages
+equery b $(which vi)   		# like dpkg -S
+eselect locale list; eselect locale set 240 # en_US
+dispatch-conf          		# update configuration files
+emerge -av app-portage/gentoolkit	# install equery
+ebuild `equery w <pkg>` prepare		# like apt source
 * sha-1 deprecation, danish researchers
 alexander brandbyge
 lars embøll nielssen
@@ -38400,7 +38933,9 @@ reference 9.742.308
 ** nagios
 ssh root@monitor.sunet.se cat NAGIOSADM
 https://monitor.sunet.se/
-* docker
+* docker / podman
+** running podman 3.0.1 on Debian Bullseye
+
 ** looking at container contents from the host
 *** example
 linus@f0:~/usr/share/logs/dotltest$ docker ps -a | egrep dotl
@@ -38422,6 +38957,24 @@ erlang_log       sasl_log                    signing-ndn1-console.log.1  signing
 erlang.pipe.1.r  signing-ndn1                signing-ndn1-console.log.2  signing-ndn1-debug.log.0  signing-ndn1-debug.log.4  signing-ndn1-error.log.3
 erlang.pipe.1.w  signing-ndn1.config         signing-ndn1-console.log.3  signing-ndn1-debug.log.1  signing-ndn1-error.log.0  signing-ndn1-error.log.4
 log              signing-ndn1-console.log.0  signing-ndn1-console.log.4  signing-ndn1-debug.log.2  signing-ndn1-error.log.1
+** snapshoting a container
+besk:~% podman ps
+CONTAINER ID  IMAGE                           COMMAND     CREATED            STATUS                PORTS               
+      NAMES
+cec790957eeb  docker.io/library/ubuntu:focal  /k/pod-ubu  About an hour ago  Up About an hour ago  127.0.0.1:8000->8000
+/tcp  thirsty_dewdney
+besk:~% podman container commit cec790957eeb
+Getting image source signatures
+Copying blob b40ed86654e5 skipped: already exists  
+Copying blob 80718f748ad7 done  
+Copying config 64f4b20d79 done  
+Writing manifest to image destination
+Storing signatures
+64f4b20d79a5ef10d340863edc8ef3bbdeea44d544ea46aad614fb2d9cacdcb0
+besk:~% podman images
+REPOSITORY                TAG     IMAGE ID      CREATED        SIZE
+<none>                    <none>  64f4b20d79a5  2 minutes ago  1.02 GB
+docker.io/library/ubuntu  focal   a0ce5a295b63  4 days ago     75.2 MB
 * the mit tweet
 https://twitter.com/ln4711/status/843403483676131328
 
@@ -38645,6 +39198,60 @@ in flags.
 
 
 
+** signing data with c25519 keys on a Yubikey
+$ sudo apt install libfido2-dev
+$ ./configure --prefix=$HOME/usr --with-security-key-builtin --disable-strip CFLAGS="-g -O0"
+$ make install
+$ ssh-agent -d -P /usr/lib/x86_64-linux-gnu/\* &
+$ env SSH_SK_HELPER=~/usr/libexec/ssh-sk-helper ssh-keygen -t ed25519-sk -w ~/usr/lib/libfido2.so 
+Provider "/home/linus/usr/lib/libfido2.so" dlsym(sk_api_version) failed: /home/linus/usr/lib/libfido2.so: undefined symbol: sk_api_version
+$ env SSH_SK_HELPER=~/usr/libexec/ssh-sk-helper ssh-keygen -t ed25519-sk
+: touching yubikey
+Your identification has been saved in /home/linus/tmp/fidotest/sk
+Your public key has been saved in /home/linus/tmp/fidotest/sk.pub
+The key fingerprint is:
+SHA256:373a4zB/GYlwf8oEIvk4ZPpFxpPZ8WWi1EQX+Z2TqsQ linus@besk
+
+besk:fidotest% cat sk | egrep -v ^--- | base64 -d | hd
+00000000  6f 70 65 6e 73 73 68 2d  6b 65 79 2d 76 31 00 00  |openssh-key-v1..|
+00000010  00 00 04 6e 6f 6e 65 00  00 00 04 6e 6f 6e 65 00  |...none....none.|
+00000020  00 00 00 00 00 00 01 00  00 00 4a 00 00 00 1a 73  |..........J....s|
+00000030  6b 2d 73 73 68 2d 65 64  32 35 35 31 39 40 6f 70  |k-ssh-ed25519@op|
+00000040  65 6e 73 73 68 2e 63 6f  6d 00 00 00 20 86 d5 bd  |enssh.com... ...|
+00000050  58 10 2f 93 50 4f ea c5  d8 ed 12 a7 51 7f ed cc  |X./.PO......Q...|
+00000060  38 06 19 d8 d9 06 77 e7  29 88 df 8a bb 00 00 00  |8.....w.).......|
+00000070  04 73 73 68 3a 00 00 00  f0 fb 09 86 f6 fb 09 86  |.ssh:...........|
+00000080  f6 00 00 00 1a 73 6b 2d  73 73 68 2d 65 64 32 35  |.....sk-ssh-ed25|
+00000090  35 31 39 40 6f 70 65 6e  73 73 68 2e 63 6f 6d 00  |519@openssh.com.|
+000000a0  00 00 20 86 d5 bd 58 10  2f 93 50 4f ea c5 d8 ed  |.. ...X./.PO....|
+000000b0  12 a7 51 7f ed cc 38 06  19 d8 d9 06 77 e7 29 88  |..Q...8.....w.).|
+000000c0  df 8a bb 00 00 00 04 73  73 68 3a 01 00 00 00 80  |.......ssh:.....|
+000000d0  ed 2d 0d 54 08 34 c5 02  47 02 12 86 b1 c0 3a ef  |.-.T.4..G.....:.|
+000000e0  e1 9c c5 a8 cd ca 9d 52  fe 35 ef 0f a3 39 6d 3f  |.......R.5...9m?|
+000000f0  14 15 e6 58 c0 9a a7 2a  c6 22 72 af 1a ee 86 3d  |...X...*."r....=|
+00000100  e8 08 93 30 91 71 f3 b4  dc 84 c4 2e f8 89 28 eb  |...0.q........(.|
+00000110  1c 9c ed 6d 79 bc 74 cc  9a 76 ac bd a1 73 7a 10  |...my.t..v...sz.|
+00000120  ce a1 58 03 a8 ee 87 2b  88 d7 21 15 22 52 79 35  |..X....+..!."Ry5|
+00000130  19 8f 9a 62 31 6f 98 60  67 16 0c 70 8c 04 87 66  |...b1o.`g..p...f|
+00000140  10 61 ad 0a e8 16 cc 1d  8d 62 46 86 df eb 83 c7  |.a.......bF.....|
+00000150  00 00 00 00 00 00 00 0a  6c 69 6e 75 73 40 62 65  |........linus@be|
+00000160  73 6b 01 02 03 04 05 06  07                       |sk.......|
+00000169
+
+besk:fidotest% ssh-add sk
+Identity added: sk (linus@besk)
+besk:fidotest% ssh-add -l
+256 SHA256:373a4zB/GYlwf8oEIvk4ZPpFxpPZ8WWi1EQX+Z2TqsQ linus@besk (ED25519-SK)
+
+$ echo foo | ssh-keygen -Y sign -f ~/tmp/fidotest/sk.pub -n tree_leaf:v0:0@sigsum.org
+Signing data on standard input
+-----BEGIN SSH SIGNATURE-----
+U1NIU0lHAAAAAQAAAEoAAAAac2stc3NoLWVkMjU1MTlAb3BlbnNzaC5jb20AAAAghtW9WB
+Avk1BP6sXY7RKnUX/tzDgGGdjZBnfnKYjfirsAAAAEc3NoOgAAABl0cmVlX2xlYWY6djA6
+MEBzaWdzdW0ub3JnAAAAAAAAAAZzaGE1MTIAAABnAAAAGnNrLXNzaC1lZDI1NTE5QG9wZW
+5zc2guY29tAAAAQPm5EVbTpU+jipDMJo+ObIEXg2V7kM8oS2uw1HAk814ROwI3O9Wlv7lY
+Ko2195ZFA8XUWpuMc+0fqyyXLcVN+gUBAAAABg==
+-----END SSH SIGNATURE-----
 
 * cosmos + puppet @ sunet
 - initiating hiera secrets 
@@ -38753,6 +39360,33 @@ systemctl --user daemon-reload
 systemctl --user reload gpg-agent
 ** disabling a service without deinstalling its package
 systemctl --now disable SERVICE
+
+** run getty on ttyS0, great for KVM and virsh console
+: systemctl enable --now serial-getty@ttyS0
+** single user mode, but enough for lvm stuff
+at boot:
+linux /vmlinuz-VERSION ... console=ttyS0,115200 systemd.unit=rescue.target
+
+from a running system:
+systemctl isolate rescue.target
+** dns / resolver
+When /etc/resolv.conf is a symlink to
+/run/systemd/resolve/stub-resolv.conf and resolving doesn't work,
+configure an upstream resolver using resolvectl. Example:
+
+[root@build-03 ~]# ls -l /etc/resolv.conf 
+lrwxrwxrwx. 1 root root 37 Oct 14 13:16 /etc/resolv.conf -> /run/systemd/resolve/stub-resolv.conf
+[root@build-03 ~]# resolvectl dns enp1s0 91.223.231.161
+[root@build-03 ~]# resolvectl status
+Global
+       Protocols: LLMNR=resolve -mDNS -DNSOverTLS DNSSEC=no/unsupported
+resolv.conf mode: stub
+
+Link 2 (enp1s0)
+    Current Scopes: DNS LLMNR/IPv4 LLMNR/IPv6
+         Protocols: +DefaultRoute +LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+Current DNS Server: 91.223.231.161
+       DNS Servers: 91.223.231.161  
 
 * ocaml
 ** installation on debian (stretch)
@@ -39603,6 +40237,16 @@ C-t : number <new>
   UPDATE: seems like both of them might have trouble, and it's only
   with OTR: https://bugs.bitlbee.org/ticket/690
 * onionshare
+** installing <2022-05-18 Wed>
+Tried going the poetry way but python3-poetry won't install in Bullseye:
+ python3-poetry : Depends: python3-pkginfo (>= 1.7.0) but 1.4.2-3 is to be installed
+
+pip install --user onionshare-cli
+which onionshare-cli 
+> /home/linus/.local/bin/onionshare-cli
+
+** flatpak
+flatpak run org.onionshare.OnionShare
 
 * video (vlc) on HDMI
 xrandr --auto
@@ -40266,7 +40910,7 @@ but it maintains the "no unauthenticated state" invariant
 -O> which seems unresolved afaict
 <O- I think ipredator might also be happy to use a secure version of wiregurad
 <O- wireguard*
-** trouble bringing wg0 up after kernel upgrade (kcmp)
+** kcmp: trouble bringing wg0 up after kernel upgrade
 tl;dr apt remove wireguard wireguard-dkms wireguard-tools && apt install wireguard
 
 Long version:
@@ -40464,12 +41108,77 @@ root@datan:~# wg-quick up wg0
 root@datan:~# Jul 30 00:12:22 datan kernel: wireguard: WireGuard 1.0.20200712 loaded. See www.wireguard.com for information.
 Jul 30 00:12:22 datan kernel: wireguard: Copyright (C) 2015-2019 Jason A. Donenfeld <Jason@zx2c4.com>. All Rights Reserved.
 
-** adding new peer on kcmp
-wg set wg0 peer $PUBKEY allowed-ips 10.128.0.${NEXTIP}/32,fd00:128::${NEXTIP}/128
-wg-quick save wg0
-
-Use this for finding the next free IP address?
+** adding a new peer on "server"
+*** sigwaitinfo
+# Finding the next free IP address
 wg show wg0 allowed-ips | sort -t . -k 4 -n
+
+export PUBKEY=
+export NEXTIP=
+wg set wg0 peer $PUBKEY allowed-ips 10.47.11.${NEXTIP}/32,fd00:47:11::${NEXTIP}/128
+
+wg-quick save wg0
+ip route add 10.47.11.${NEXTIP}/32 dev wg0
+ip -6 route add fd00:47:11::${NEXTIP}/128 dev wg0
+
+# Info to user
+ - pubkey: Vc5dOP79fi2/Fp2q0xj31zAvgc1UgR3P1saF9xYPmh4=
+ - endpoints
+   - 91.223.231.1:51820
+   -  [2001:67c:8a4:1::1]:51820
+ - tunnel addrs
+   - 10.47.11.${NEXTIP}/32
+   - fd00:47:11::${NEXTIP}/128
+ - networks: 
+   - 45.141.110.192/28
+   - 46.227.67.224/28
+   - 91.223.231.0/24
+   - 2a07:5cc0:1:1::/64
+   - 2001:67c:8a4::/48
+
+*** kcmp
+wg set wg0 peer $PUBKEY allowed-ips 10.128.0.${NEXTIP}/32,fd00:128::${NEXTIP}/128
+
+** besk: adding a new "server"
+NOTE: This is not for a default gateway, which needs fwmark and FIXME as well
+
+export WGNAME=wg-NAME
+export WGROUTE=<list of prefixes to route via the server>
+export WGENDPOINT=<server's addr:port>
+export WGTUNADDRV4=<tunnel ipv4 address, including mask>
+export WGTUNADDRV6=<tunnel ipv6 address, including mask>
+
+cd /etc/wireguard
+umask 027
+wg genkey | tee $WGNAME.private.key | wg pubkey > $WGNAME.public.key
+umask 0022
+chgrp systemd-network $WGNAME.*.key
+ls -l $WGNAME.*.key
+
+cat > /etc/systemd/network/25-${WGNAME}.netdev <<EOF
+[NetDev]
+Name=$WGNAME
+Kind=wireguard
+
+[WireGuard]
+PrivateKeyFile=/etc/wireguard/${WGNAME}.private.key
+
+[WireGuardPeer]
+PublicKeyFile=/etc/wireguard/${WGNAME}.public.key
+AllowedIPs=$WGROUTE
+Endpoint=$WGENDPOINT
+EOF
+
+cat > /etc/systemd/network/25-${WGNAME}.network <<EOF
+[Match]
+Name=$WGNAME
+
+[Network]
+Address=$WGTUNADDRV4=
+Address=$WGTUNADDRV6=
+Tunnel=$WGNAME
+Gateway=fixme
+EOF
 
 * Núbi Ferskur <neubyi@4711.se>
 - uses ln+neubyi@4711.se some places (github)
@@ -42601,6 +43310,13 @@ note: Run with `RUST_BACKTRACE=1` for a backtrace.
 - ansible-inventory --graph       # map of what groups nodes belong to
 - ansible-playbook --inventory /usr/local/etc/ansible/hosts --limit $(hostname) --vault-password-file /usr/local/etc/vault/vault_common_secret /var/cache/ansible/site.yaml
   ansible-playbook 
+
+** command and notify
+command: some_command
+regsiter: r
+changed-when: r.stdout_lines[0] is match("something changed")
+notify: some handler
+
 * risc-v
 - https://www.sifive.com/products/hifive-unleashed
 ** NOTES
@@ -42795,7 +43511,7 @@ TypeError: result.data is undefined[Learn More]  users.js:627:7
 	.send/b/< https://nc3.adb-centralen.se:8443/core/vendor/core.js:4:14765
 
 called from core.js which has lines of length 32k characters so hmm
-** DONE user authentication
+** DONE user authentication through IMAP
 Enabling app user_external and configuring a OC_User_IMAP user_backend
 in config.php pointing at imap.adb-centralen.se seems to have the
 effect that knowledge about a user name at imap.adb-centralen, without
@@ -42822,6 +43538,7 @@ Reading code explains the mystery. The domain name is _stripped_ from
 the user name by the user_external app and since imap.adbc happily
 authenticates 'user' if there's a 'user/imap' in the KDC, we're better
 off not configuring a domain name.
+
 ** subscriber only content?
 https://docs.nextcloud.com/server/stable/admin_manual/installation/deployment_recommendations.html -> 
 https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html
@@ -42835,6 +43552,30 @@ https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html
     - https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-06#section-4.1.3
     - solution for clown was to remove an old apacha Alias directive:
       Alias /nextcloud "/usr/local/www/nextcloud/"
+
+** davfs mounting
+- Assuming SERVER=dns-name-for-nextcloud-server, MOUNTPOINT=local-path, USERNAME=nextcloud-username, do
+
+    sudo apt install davfs2
+    sudo echo "https://$SERVER/remote.php/dav/files/$USER/ $MOUNTPOINT davfs user,rw,noauto 0 0" >> /etc/fstab
+    mkdir -m 0700 ~/.davfs2
+    
+    : create an access token at https://$SERVER/index.php/settings/user/security -> Create new app password
+    echo "https://$SERVER/remote.php/dav/files/$USERNAME/ $USERNAME $(cat token)" >> ~/.davfs2/secrets
+
+    mount $MOUNTPOINT
+
+- https://docs.nextcloud.com/server/20/user_manual/en/files/access_webdav.html
+
+*** example
+/etc/fstab:
+    https://clown.adb-centralen.se/remote.php/dav/files/linus/ /home/linus/clown davfs user,rw,noauto 0 0
+
+~linus/.davfs2/secrets:
+https://clown.adb-centralen.se/remote.php/dav/files/linus/ linus REDACTED-SIKRIT-TOKEN
+
+** config.php
+- https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html
 
 * authn/authz
 - leif on what to use
@@ -42943,6 +43684,88 @@ Certificate fingerprints:
 Signature algorithm name: SHA1withRSA
 Subject Public Key Algorithm: 1024-bit RSA key
 Version: 3
+** on desktop
+sudo apt install flatpak
+flatpak remote-add --user flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak run org.signal.Signal
+flatpak update org.signal.Signal
+
+*** Failing upgrade
+besk:~% flatpak update org.signal.Signal 
+Looking for updates…
+
+
+        ID                                              Branch            Op           Remote            Download
+ 1. [✓] org.freedesktop.Platform.GL.default             21.08             u            flathub             6.3 MB / 131.2 MB
+ 2. [✓] org.freedesktop.Platform.Locale                 21.08             u            flathub            17.6 kB / 325.8 MB
+ 3. [✓] org.freedesktop.Platform.VAAPI.Intel            21.08             u            flathub           568.6 kB / 11.7 MB
+ 4. [✓] org.freedesktop.Platform                        21.08             u            flathub             4.4 MB / 199.6 MB
+ 5. [✓] org.signal.Signal                               stable            u            flathub           127.5 MB / 152.4 MB
+
+Updates complete.
+besk:~% flatpak run org.signal.Signal 
+[2 preload-host-spawn-strategy] Running: /app/bin/zypak-helper child - /app/Signal/signal-desktop --type=zygote --enable-crashpad
+Set Windows Application User Model ID (AUMID) { appUserModelId: 'org.whispersystems.signal-desktop' }
+NODE_ENV production
+NODE_CONFIG_DIR /app/Signal/resources/app.asar/config
+NODE_CONFIG {}
+ALLOW_CONFIG_MUTATIONS undefined
+HOSTNAME undefined
+NODE_APP_INSTANCE undefined
+SUPPRESS_NO_CONFIG_WARNING undefined
+SIGNAL_ENABLE_HTTP undefined
+userData: /home/linus/.var/app/org.signal.Signal/config/Signal
+config/get: Successfully read user config file
+config/get: Successfully read ephemeral config file
+LaunchProcess: failed to execvp:
+xdg-settings
+LaunchProcess: failed to execvp:
+xdg-settings
+[2:0227/140507.319704:ERROR:bus.cc(393)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+libva error: vaGetDriverNameByIndex() failed with unknown libva error, driver_name = (null)
+[47:0227/140507.465634:ERROR:sandbox_linux.cc(376)] InitializeSandbox() called with multiple threads in process gpu-process.
+[2:0227/140507.479800:ERROR:bus.cc(393)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2:0227/140507.479846:ERROR:bus.cc(393)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2:0227/140507.479879:ERROR:bus.cc(393)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+(node:81) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `exe --trace-deprecation ...` to show where the warning was created)
+
+(No Signal window created.)
+
+besk:~% xdg-settings 
+xdg-settings: no operation given
+Try 'xdg-settings --help' for more information.
+besk:~% ls -l /run/dbus/system_bus_socket
+srw-rw-rw- 1 root root 0 Feb 27 13:54 /run/dbus/system_bus_socket=
+besk:~% flatpak run org.signal.Signal 
+[2 preload-host-spawn-strategy] Running: /app/bin/zypak-helper child - /app/Signal/signal-desktop --type=zygote --enable-crashpad
+Set Windows Application User Model ID (AUMID) { appUserModelId: 'org.whispersystems.signal-desktop' }
+NODE_ENV production
+NODE_CONFIG_DIR /app/Signal/resources/app.asar/config
+NODE_CONFIG {}
+ALLOW_CONFIG_MUTATIONS undefined
+HOSTNAME undefined
+NODE_APP_INSTANCE undefined
+SUPPRESS_NO_CONFIG_WARNING undefined
+SIGNAL_ENABLE_HTTP undefined
+userData: /home/linus/.var/app/org.signal.Signal/config/Signal
+config/get: Successfully read user config file
+config/get: Successfully read ephemeral config file
+LaunchProcess: failed to execvp:
+xdg-settings
+LaunchProcess: failed to execvp:
+xdg-settings
+[2:0227/140753.356382:ERROR:bus.cc(393)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2:0227/140753.473206:ERROR:bus.cc(393)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2:0227/140753.473268:ERROR:bus.cc(393)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2:0227/140753.473296:ERROR:bus.cc(393)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+libva error: vaGetDriverNameByIndex() failed with unknown libva error, driver_name = (null)
+[47:0227/140753.501304:ERROR:sandbox_linux.cc(376)] InitializeSandbox() called with multiple threads in process gpu-process.
+(node:80) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `exe --trace-deprecation ...` to show where the warning was created)
+
+(All working as expected. The two outputs are identical, apart from numbers looking like time maybe, and some line order.)
+
 * password managers
 ** pws
 - https://github.com/weaselp/pwstore/
@@ -43226,6 +44049,8 @@ to:echo@sunet.se
 subject:dkim test 0
 date:Mon, 10 Feb 2020 21:13:47 +0100
 dkim-signature:v=1; a=rsa-sha256; c=relaxed/simple; d=nordberg.se; s=smtp; t=1581365632; bh=frcCV1k9oG9oKj3dpUqdJg1PxRT2RSN/XKdLCPjaYaY=; h=From:To:Subject:Date; z=From:=20Linus=20Nordberg=20<linus@nordberg.se>|To:=20echo@sunet.s e|Subject:=20dkim=20test=200|Date:=20Mon,=2010=20Feb=202020=2021:1 3:47=20+0100; b=
+
+** what does "key; unprotected" mean in Authentication-Results: header?
 
 * fomu
 Feb 17 23:19:26 datan kernel: usb 1-6.2: new full-speed USB device number 117 using xhci_hcd
@@ -43558,98 +44383,197 @@ bit, but in the long run it's going to be all right.
 
 - kolla eppendix 5
 * git-bug
-** build
-debian@buster:~/go/src/github.com/MichaelMure/git-bug$ date
-Sun 03 May 2020 06:48:44 PM CEST
-debian@buster:~$ go version
-go version go1.14 linux/amd64
-debian@buster:~$ go get github.com/MichaelMure/git-bug
-go/src/github.com/MichaelMure/git-bug/graphql/graph/gen_graph.go:22:2: cannot find package "github.com/vektah/gqlparser/ast" in any of:
-        /usr/lib/go-1.14/src/github.com/vektah/gqlparser/ast (from $GOROOT)
-        /home/debian/go/src/github.com/vektah/gqlparser/ast (from $GOPATH)
-debian@buster:~$ go get github.com/vektah/gqlparser
-debian@buster:~$ go get github.com/MichaelMure/git-bug
-# github.com/MichaelMure/git-bug/bridge/gitlab
-go/src/github.com/MichaelMure/git-bug/bridge/gitlab/gitlab.go:55:15: assignment mismatch: 1 variable but gits
-go/src/github.com/MichaelMure/git-bug/bridge/gitlab/gitlab.go:55:34: cannot use httpClient (type *http.Client
-go/src/github.com/MichaelMure/git-bug/bridge/gitlab/gitlab.go:55:52: cannot use token.Value (type string) ast
-debian@buster:~$ cd go/src/github.com/MichaelMure/git-bug/
-debian@buster:~/go/src/github.com/MichaelMure/git-bug$ make install
-go generate
-go: downloading github.com/mattn/go-isatty v0.0.12
-go: downloading github.com/gorilla/mux v1.7.4
-go: downloading github.com/pkg/errors v0.9.1
-go: downloading github.com/phayes/freeport v0.0.0-20171002181615-b8543db493a5
-go: downloading github.com/go-errors/errors v1.0.2
-go: downloading github.com/xanzy/go-gitlab v0.29.0
-go: downloading github.com/99designs/gqlgen v0.10.3-0.20200209012558-b7a58a1c0e4b
-go: downloading github.com/MichaelMure/go-term-text v0.2.8
-go: downloading golang.org/x/sync v0.0.0-20190423024810-112230192c58
-go: downloading golang.org/x/text v0.3.2
-go: downloading github.com/araddon/dateparse v0.0.0-20190622164848-0fb0a474d195
-go: downloading github.com/spf13/cobra v0.0.7
-go: downloading github.com/fatih/color v1.9.0
-go: downloading github.com/cheekybits/genny v0.0.0-20170328200008-9127e812e1e9
-go: downloading golang.org/x/oauth2 v0.0.0-20181106182150-f42d05182288
-go: downloading golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
-go: downloading github.com/shurcooL/githubv4 v0.0.0-20190601194912-068505affed7
-go: downloading github.com/spf13/pflag v1.0.3
-go: downloading github.com/blang/semver v3.5.1+incompatible
-go: downloading github.com/vektah/gqlparser v1.3.1
-go: downloading github.com/mattn/go-colorable v0.1.4
-go: downloading github.com/mattn/go-runewidth v0.0.9
-go: downloading github.com/dustin/go-humanize v1.0.0
-go: downloading github.com/shurcooL/graphql v0.0.0-20181231061246-d48a9a75455f
-go: downloading golang.org/x/time v0.0.0-20191024005414-555d28b269f0
-go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
-go: downloading github.com/hashicorp/go-cleanhttp v0.5.1
-go: downloading github.com/awesome-gocui/gocui v0.6.1-0.20191115151952-a34ffb055986
-go: downloading github.com/hashicorp/go-retryablehttp v0.6.4
-go: downloading github.com/google/go-querystring v1.0.0
-go: downloading github.com/hashicorp/golang-lru v0.5.4
-go: downloading github.com/mitchellh/mapstructure v1.1.2
-go: downloading golang.org/x/sys v0.0.0-20200116001909-b77594299b42
-go: downloading github.com/agnivade/levenshtein v1.0.1
-go: downloading github.com/skratchdot/open-golang v0.0.0-20190402232053-79abb63cd66e
-go: downloading github.com/gorilla/websocket v1.4.0
-go: downloading github.com/awesome-gocui/termbox-go v0.0.0-20190427202837-c0aef3d18bcc
-go: downloading github.com/cpuguy83/go-md2man/v2 v2.0.0
-go: downloading gopkg.in/yaml.v2 v2.2.2
-go: downloading github.com/russross/blackfriday/v2 v2.0.1
-go: downloading github.com/shurcooL/sanitized_anchor_name v1.0.0
-Generating Markdown documentation ...
-Generating manpage ...
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-WARNING: go-md2man does not handle node type HTMLSpan
-Generating Bash completion file ...
-Generating PowerShell completion file ...
-Generating ZSH completion file ...
-go build -ldflags "-X github.com/MichaelMure/git-bug/commands.GitCommit=966edfc2324e6526d9ee02b843c288124eea.
+** building
+*** build 2020-05
+ debian@buster:~/go/src/github.com/MichaelMure/git-bug$ date
+ Sun 03 May 2020 06:48:44 PM CEST
+ debian@buster:~$ go version
+ go version go1.14 linux/amd64
+ debian@buster:~$ go get github.com/MichaelMure/git-bug
+ go/src/github.com/MichaelMure/git-bug/graphql/graph/gen_graph.go:22:2: cannot find package "github.com/vektah/gqlparser/ast" in any of:
+         /usr/lib/go-1.14/src/github.com/vektah/gqlparser/ast (from $GOROOT)
+         /home/debian/go/src/github.com/vektah/gqlparser/ast (from $GOPATH)
+ debian@buster:~$ go get github.com/vektah/gqlparser
+ debian@buster:~$ go get github.com/MichaelMure/git-bug
+ # github.com/MichaelMure/git-bug/bridge/gitlab
+ go/src/github.com/MichaelMure/git-bug/bridge/gitlab/gitlab.go:55:15: assignment mismatch: 1 variable but gits
+ go/src/github.com/MichaelMure/git-bug/bridge/gitlab/gitlab.go:55:34: cannot use httpClient (type *http.Client
+ go/src/github.com/MichaelMure/git-bug/bridge/gitlab/gitlab.go:55:52: cannot use token.Value (type string) ast
+ debian@buster:~$ cd go/src/github.com/MichaelMure/git-bug/
+ debian@buster:~/go/src/github.com/MichaelMure/git-bug$ make install
+ go generate
+ go: downloading github.com/mattn/go-isatty v0.0.12
+ go: downloading github.com/gorilla/mux v1.7.4
+ go: downloading github.com/pkg/errors v0.9.1
+ go: downloading github.com/phayes/freeport v0.0.0-20171002181615-b8543db493a5
+ go: downloading github.com/go-errors/errors v1.0.2
+ go: downloading github.com/xanzy/go-gitlab v0.29.0
+ go: downloading github.com/99designs/gqlgen v0.10.3-0.20200209012558-b7a58a1c0e4b
+ go: downloading github.com/MichaelMure/go-term-text v0.2.8
+ go: downloading golang.org/x/sync v0.0.0-20190423024810-112230192c58
+ go: downloading golang.org/x/text v0.3.2
+ go: downloading github.com/araddon/dateparse v0.0.0-20190622164848-0fb0a474d195
+ go: downloading github.com/spf13/cobra v0.0.7
+ go: downloading github.com/fatih/color v1.9.0
+ go: downloading github.com/cheekybits/genny v0.0.0-20170328200008-9127e812e1e9
+ go: downloading golang.org/x/oauth2 v0.0.0-20181106182150-f42d05182288
+ go: downloading golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
+ go: downloading github.com/shurcooL/githubv4 v0.0.0-20190601194912-068505affed7
+ go: downloading github.com/spf13/pflag v1.0.3
+ go: downloading github.com/blang/semver v3.5.1+incompatible
+ go: downloading github.com/vektah/gqlparser v1.3.1
+ go: downloading github.com/mattn/go-colorable v0.1.4
+ go: downloading github.com/mattn/go-runewidth v0.0.9
+ go: downloading github.com/dustin/go-humanize v1.0.0
+ go: downloading github.com/shurcooL/graphql v0.0.0-20181231061246-d48a9a75455f
+ go: downloading golang.org/x/time v0.0.0-20191024005414-555d28b269f0
+ go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+ go: downloading github.com/hashicorp/go-cleanhttp v0.5.1
+ go: downloading github.com/awesome-gocui/gocui v0.6.1-0.20191115151952-a34ffb055986
+ go: downloading github.com/hashicorp/go-retryablehttp v0.6.4
+ go: downloading github.com/google/go-querystring v1.0.0
+ go: downloading github.com/hashicorp/golang-lru v0.5.4
+ go: downloading github.com/mitchellh/mapstructure v1.1.2
+ go: downloading golang.org/x/sys v0.0.0-20200116001909-b77594299b42
+ go: downloading github.com/agnivade/levenshtein v1.0.1
+ go: downloading github.com/skratchdot/open-golang v0.0.0-20190402232053-79abb63cd66e
+ go: downloading github.com/gorilla/websocket v1.4.0
+ go: downloading github.com/awesome-gocui/termbox-go v0.0.0-20190427202837-c0aef3d18bcc
+ go: downloading github.com/cpuguy83/go-md2man/v2 v2.0.0
+ go: downloading gopkg.in/yaml.v2 v2.2.2
+ go: downloading github.com/russross/blackfriday/v2 v2.0.1
+ go: downloading github.com/shurcooL/sanitized_anchor_name v1.0.0
+ Generating Markdown documentation ...
+ Generating manpage ...
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ WARNING: go-md2man does not handle node type HTMLSpan
+ Generating Bash completion file ...
+ Generating PowerShell completion file ...
+ Generating ZSH completion file ...
+ go build -ldflags "-X github.com/MichaelMure/git-bug/commands.GitCommit=966edfc2324e6526d9ee02b843c288124eea.
+*** build <2022-01-11 Tue>
+ besk:git-bug% [ -d "/usr/lib/go-1.17/bin" ] && export PATH="$PATH:/usr/lib/go-1.17/bin"
+ besk:git-bug% make build
+ go generate
+ go: downloading github.com/99designs/gqlgen v0.10.3-0.20200209012558-b7a58a1c0e4b
+ go: downloading github.com/MichaelMure/go-term-text v0.3.1
+ go: downloading github.com/araddon/dateparse v0.0.0-20190622164848-0fb0a474d195
+ go: downloading github.com/gorilla/mux v1.8.0
+ go: downloading github.com/phayes/freeport v0.0.0-20171002181615-b8543db493a5
+ go: downloading github.com/pkg/errors v0.9.1
+ go: downloading github.com/skratchdot/open-golang v0.0.0-20190402232053-79abb63cd66e
+ go: downloading github.com/spf13/cobra v1.3.0
+ go: downloading github.com/blevesearch/bleve v1.0.14
+ go: downloading github.com/go-git/go-billy/v5 v5.3.1
+ go: downloading github.com/hashicorp/golang-lru v0.5.4
+ go: downloading golang.org/x/crypto v0.0.0-20210817164053-32db794688a5
+ go: downloading github.com/fatih/color v1.13.0
+ go: downloading github.com/awesome-gocui/gocui v0.6.1-0.20191115151952-a34ffb055986
+ go: downloading github.com/stretchr/testify v1.7.0
+ go: downloading golang.org/x/text v0.3.7
+ go: downloading github.com/99designs/keyring v1.1.6
+ go: downloading github.com/go-git/go-git/v5 v5.4.2
+ go: downloading golang.org/x/sys v0.0.0-20211205182925-97ca703d548d
+ go: downloading github.com/mattn/go-runewidth v0.0.12
+ go: downloading github.com/vektah/gqlparser v1.3.1
+ go: downloading github.com/shurcooL/githubv4 v0.0.0-20190601194912-068505affed7
+ go: downloading golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8
+ go: downloading golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
+ go: downloading github.com/xanzy/go-gitlab v0.54.1
+ go: downloading github.com/mattn/go-colorable v0.1.12
+ go: downloading github.com/davecgh/go-spew v1.1.1
+ go: downloading github.com/pmezard/go-difflib v1.0.0
+ go: downloading gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+ go: downloading golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1
+ go: downloading github.com/awesome-gocui/termbox-go v0.0.0-20190427202837-c0aef3d18bcc
+ go: downloading github.com/go-errors/errors v1.0.1
+ go: downloading github.com/dvsekhvalnov/jose2go v0.0.0-20200901110807-248326c1351b
+ go: downloading github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2
+ go: downloading github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c
+ go: downloading github.com/mitchellh/go-homedir v1.1.0
+ go: downloading github.com/mtibben/percent v0.2.1
+ go: downloading github.com/ProtonMail/go-crypto v0.0.0-20210428141323-04723f9f07d7
+ go: downloading github.com/imdario/mergo v0.3.12
+ go: downloading github.com/sergi/go-diff v1.1.0
+ go: downloading github.com/emirpasic/gods v1.12.0
+ go: downloading github.com/rivo/uniseg v0.1.0
+ go: downloading github.com/shurcooL/graphql v0.0.0-20181231061246-d48a9a75455f
+ go: downloading github.com/cheekybits/genny v0.0.0-20170328200008-9127e812e1e9
+ go: downloading github.com/mitchellh/mapstructure v1.4.3
+ go: downloading github.com/gorilla/websocket v1.4.2
+ go: downloading github.com/agnivade/levenshtein v1.0.1
+ go: downloading github.com/google/go-querystring v1.1.0
+ go: downloading github.com/hashicorp/go-cleanhttp v0.5.2
+ go: downloading github.com/hashicorp/go-retryablehttp v0.6.8
+ go: downloading golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e
+ go: downloading go.etcd.io/bbolt v1.3.5
+ go: downloading github.com/steveyen/gtreap v0.1.0
+ go: downloading github.com/RoaringBitmap/roaring v0.4.23
+ go: downloading github.com/blevesearch/zap/v11 v11.0.14
+ go: downloading github.com/blevesearch/zap/v12 v12.0.14
+ go: downloading github.com/blevesearch/zap/v13 v13.0.6
+ go: downloading github.com/blevesearch/zap/v14 v14.0.5
+ go: downloading github.com/blevesearch/zap/v15 v15.0.3
+ go: downloading github.com/couchbase/vellum v1.0.2
+ go: downloading github.com/golang/protobuf v1.5.2
+ go: downloading github.com/go-git/gcfg v1.5.0
+ go: downloading github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
+ go: downloading golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d
+ go: downloading github.com/glycerine/go-unsnap-stream v0.0.0-20181221182339-f9677308dec2
+ go: downloading github.com/tinylib/msgp v1.1.0
+ go: downloading github.com/blevesearch/mmap-go v1.0.2
+ go: downloading github.com/golang/snappy v0.0.3
+ go: downloading github.com/willf/bitset v1.1.10
+ go: downloading github.com/kevinburke/ssh_config v0.0.0-20201106050909-4977a11b4351
+ go: downloading github.com/xanzy/ssh-agent v0.3.0
+ go: downloading gopkg.in/warnings.v0 v0.1.2
+ go: downloading google.golang.org/protobuf v1.27.1
+ go: downloading github.com/blevesearch/snowballstem v0.9.0
+ go: downloading github.com/blevesearch/segment v0.9.0
+ go: downloading github.com/philhofer/fwd v1.0.0
+ go: downloading github.com/blevesearch/go-porterstemmer v1.0.3
+ go: downloading github.com/cpuguy83/go-md2man/v2 v2.0.1
+ go: downloading gopkg.in/yaml.v2 v2.4.0
+ go: downloading github.com/cpuguy83/go-md2man v1.0.10
+ go: downloading github.com/russross/blackfriday/v2 v2.1.0
+ go: downloading github.com/russross/blackfriday v1.5.2
+ Generating documentation ...
+   - Markdown: ok
+   - ManPage: ok
+ Generating completion files ...
+   - PowerShell: ok
+   - Fish: ok
+   - ZSH: ok
+   - Bash: ok
+ go build -ldflags "-X github.com/MichaelMure/git-bug/commands.GitCommit=6c89148ee3acfd3365422e6092a0fae1c9b0d0f9 -X github.com/MichaelMure/git-bug/commands.GitLastTag=0.7.1 -X github.com/MichaelMure/git-bug/commands.GitExactTag=undefined" .
+
+** playing with git-bug for sigsum
+
 * bhyve
 - Tested some things on kallocain.dfri.se
 vm img https://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2
@@ -43720,7 +44644,7 @@ cloud image does not have this problem. Ideas?
 Application ID b80cefaa69f69b0c01d8d943 submitted <2020-06-01 Mon 11:52>:
 [[file:doc/ngi-pointer-application-2020.pdf][file:~/doc/ngi-pointer-application-2020.pdf]]
 
-* backup
+* backups
 ** black WD
 root@datan:~# date
 Wed Jun  3 01:41:36 CEST 2020
@@ -43749,6 +44673,76 @@ total 1500
 ** TRANZIP 3.0 (16GB)
 borg init -e keyfile /mnt/datan/home/linus
 borg create /mnt/datan/home/linus::priv ~/.priv
+** 3 x Kingston DataTraveler (128G) <2022-01-24 Mon>
+$ for n in 1 2; do for f in af b3 4c; do rm kdt22.$n.$f; touch kdt22.$n.$f; chmod 600 kdt22.$n.$f; dd if=/dev/random bs=16 count=1 iflag=fullblock | base16 -o kdt22.$n.$f; truncate -s 32 kdt22.$n.$f; done; done
+$ wc -c kdt22.*
+ 32 kdt22.1.4c
+ 32 kdt22.1.af
+ 32 kdt22.1.b3
+ 32 kdt22.2.4c
+ 32 kdt22.2.af
+ 32 kdt22.2.b3
+
+root@besk:~# ls -l /dev/disk/by-id/usb-Kingston_DataTraveler_3.0_E0D55E6*:0
+lrwxrwxrwx 1 root root 9 Jan 24 10:18 /dev/disk/by-id/usb-Kingston_DataTraveler_3.0_E0D55E625BFFF5A1E8A608AF-0:0 -> ../../sdb
+lrwxrwxrwx 1 root root 9 Jan 24 10:18 /dev/disk/by-id/usb-Kingston_DataTraveler_3.0_E0D55E6CE776F5A1E84908B3-0:0 -> ../../sdc
+lrwxrwxrwx 1 root root 9 Jan 24 10:24 /dev/disk/by-id/usb-Kingston_DataTraveler_3.0_E0D55E6CE7A5F5A1E856094C-0:0 -> ../../sda
+
+- GPT and two partitions: 256M and the rest
+: For each serial, do
+: export serial=E0D55E6...
+: export DEVICE=/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_${serial}-0:0
+echo mklabel gpt | parted $DEVICE
+echo mkpart primary 1 256 | parted $DEVICE
+echo mkpart primary 256 -1 | parted $DEVICE
+sleep 1
+mkfs.ext4 ${DEVICE}-part1
+cryptsetup luksFormat ${DEVICE}-part2
+cryptsetup luksOpen ${DEVICE}-part2 $serial
+mkfs.ext4 /dev/mapper/$serial
+
+# echo p | parted /dev/sda      
+GNU Parted 3.4
+Using /dev/sda
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted) p                                                                
+Model: Kingston DataTraveler 3.0 (scsi)
+Disk /dev/sda: 124GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End    Size   File system  Name     Flags
+ 1      1049kB  256MB  255MB               primary
+ 2      256MB   124GB  123GB               primary
+
+: For each serial in E0D55E625BFFF5A1E8A608AF E0D55E6CE776F5A1E84908B3 E0D55E6CE7A5F5A1E856094C, do
+export serial=E0D55E6...
+export DEVICE=/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_${serial}-0:0
+export MMP=/mnt/kdt22/$serial/meta
+export BMP=/mnt/kdt22/$serial/bup
+
+cryptsetup luksOpen ${DEVICE}-part2 $serial
+[ -d $BMP ] || mkdir -p $BMP
+mount /dev/mapper/$serial $BMP
+export BORG_REPO=$BMP/borg/$(hostname -f)
+mkdir -p $BORG_REPO
+BORG_PASSPHRASE= borg init --encryption keyfile
+borg key export $BORG_REPO FIXME/borgkey.$serial
+/root/bup-borg.sh $(echo $BMP | sed s,/,,1)	# ~1h without borg check
+umount $BMP
+cryptsetup luksClose $serial
+
+[ -d $MMP ] || mkdir -p $MMP
+mount $DEVICE-part1 $MMP
+for S in E0D55E625BFFF5A1E8A608AF E0D55E6CE776F5A1E84908B3 E0D55E6CE7A5F5A1E856094C; do
+  cryptsetup luksHeaderBackup /dev/disk/by-id/usb-Kingston_DataTraveler_3.0_${S}-0:0-part2 --header-backup-file $MMP/luksheader-backup-$S
+done
+[ $serial = E0D55E625BFFF5A1E8A608AF ] && cp -v kdt22.1.b3 kdt22.2.4c borgkey.E0D55E6CE776F5A1E84908B3 borgkey.E0D55E6CE7A5F5A1E856094C $MMP/
+[ $serial = E0D55E6CE776F5A1E84908B3 ] && cp -v kdt22.2.af kdt22.1.4c borgkey.E0D55E625BFFF5A1E8A608AF borgkey.E0D55E6CE7A5F5A1E856094C $MMP/
+[ $serial = E0D55E6CE7A5F5A1E856094C ] && cp -v kdt22.1.af kdt22.2.b3 borgkey.E0D55E625BFFF5A1E8A608AF borgkey.E0D55E6CE776F5A1E84908B3 $MMP/
+umount $MMP
+
 * elektricitet
 bergroth i slack <2020-06-26 Fri>
 
@@ -43926,7 +44920,6 @@ Buffer size: 6.83ms
 Sampling at 1200000 S/s.
 Output at 200000 Hz.
 ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
-
 
 
 * Harry Martinson -- Låt inte sorgen glömma sitt ärende
@@ -44147,11 +45140,74 @@ cplay -d debuglog.txt is a good choice for when things don't work.
 There's a default .cplayrc in the program, see PLAYERS.
 * matrix
 ** bridging to OFTC
+0. OFTC: /msg chanserv op #channel nick
 1. OFTC: /mode #channel +e *!*@2001:470:1af1:101::/64
-2. OFTC: /msg chanserv op #channel nick
-3. https://app.element.io/ (doesn't work in tor browser) -> channel
+3. https://app.element.io/ (NOTE: doesn't work in tor browser) -> channel
    info -> "Add widgets, bridges & bots"; click click
 4. OFTC: Respond to a MatrixBridge bot PM:ing
+5. OFTC: /msg chanserv deop #channel nick
+
+** proxies
+- pantalaimon, python, package for debian
+
+** clients
+- ement for Emacs, https://github.com/alphapapa/ement.el
+- gomuks, terminal
+- app.element.io in a browser
+*** Element the electron app
+**** running with flatpak <2023-02-09 Thu>
+ besk:~% flatpak run im.riot.Riot
+ /home/linus/.var/app/im.riot.Riot/config/Element exists: yes
+ /home/linus/.var/app/im.riot.Riot/config/Riot exists: no
+ LaunchProcess: failed to execvp:
+ xdg-settings
+ [3:0209/095910.751137:ERROR:bus.cc(399)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+ [3:0209/095910.751232:ERROR:bus.cc(399)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+ libEGL warning: wayland-egl: could not open /dev/dri/card0 (No such file or directory)
+ Starting auto update with base URL: https://packages.element.io/desktop/update/
+ Auto update not supported on this platform
+ Fetching translation json for locale: en_EN
+ Changing application language to en-us
+ Fetching translation json for locale: en-us
+ Resetting the UI components after locale change
+ Resetting the UI components after locale change
+ [3:0209/095910.965616:ERROR:bus.cc(562)] Failed to get the ownership of org.kde.StatusNotifierItem-3-1: org.freedesktop.DBus.Error.ServiceUnknown
+ [45:0209/095911.031144:ERROR:gpu_init.cc(523)] Passthrough is not supported, GL is egl, ANGLE is 
+ [45:0209/095911.045602:ERROR:viz_main_impl.cc(186)] Exiting GPU process due to errors during initialization
+ [66:0209/095911.177604:ERROR:command_buffer_proxy_impl.cc(128)] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
+ Changing application language to en-us
+ Fetching translation json for locale: en-us
+ Resetting the UI components after locale change
+
+ No window popping up.
+ Allowing more things (Flatseal), like X11 and X11 fallback plus two DBus things.
+
+ besk:~% flatpak run im.riot.Riot
+ /home/linus/.var/app/im.riot.Riot/config/Element exists: yes
+ /home/linus/.var/app/im.riot.Riot/config/Riot exists: no
+ LaunchProcess: failed to execvp:
+ xdg-settings
+ libEGL warning: wayland-egl: could not open /dev/dri/card0 (No such file or directory)
+ Starting auto update with base URL: https://packages.element.io/desktop/update/
+ Auto update not supported on this platform
+ Fetching translation json for locale: en_EN
+ Changing application language to en-us
+ Fetching translation json for locale: en-us
+ [47:0209/101436.955044:ERROR:gpu_init.cc(523)] Passthrough is not supported, GL is egl, ANGLE is 
+ Resetting the UI components after locale change
+ [47:0209/101436.967223:ERROR:viz_main_impl.cc(186)] Exiting GPU process due to errors during initialization
+ Resetting the UI components after locale change
+ libEGL warning: wayland-egl: could not open /dev/dri/card0 (No such file or directory)
+ [92:0209/101437.044397:ERROR:gpu_init.cc(523)] Passthrough is not supported, GL is egl, ANGLE is 
+ [92:0209/101437.053192:ERROR:viz_main_impl.cc(186)] Exiting GPU process due to errors during initialization
+ [60:0209/101437.100730:ERROR:command_buffer_proxy_impl.cc(128)] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
+ Changing application language to en-us
+ Fetching translation json for locale: en-us
+ Resetting the UI components after locale change
+
+ Element window showing up plus a notification icon in the top bar.
+
+
 * unbound, local
 ** debian, bullseye
 Try
@@ -44161,3 +45217,885 @@ Try
 which will symlink /etc/resolv.conf to /run/resolvconf/resolv.conf
 which will be set up in a complicated way with help from a plethora of
 scripts in /etc/resolvconf/.
+* freedesktop
+besk:~% xdg-settings get default-web-browser
+firefox-esr.desktop
+* smartmontools / smartctl
+** Error rates
+Seagate is doing something different than other manufacturers wrt Seek
+Error Rate, Raw Read Error Rate, and Hardware ECC Recovered SMART
+attributes: http://www.users.on.net/~fzabkar/HDD/Seagate_SER_RRER_HEC.html
+
+** Temperature
+A quick survey shows that HDD's can run at temperatures up to 55 C and
+SSD's up to 70 C.
+
+Ref: 
+- https://www.seagate.com/www-content/product-content/enterprise-hdd-fam/enterprise-capacity-2-5-hdd/en-us/docs/ent-capacity-2-5-hdd-ds1719-8-1602gb.pdf
+- https://www.seagate.com/www-content/product-content/seagate-laptop-fam/barracuda_25/en-us/docs/100807728a.pdf
+* random bytes
+# 32 printable octets without whitespace
+cat /dev/random | tr -dc '[:print:]' | tr -d '[:space:]' | fold -w 32 | head -1
+
+# entropy available
+$ cat /proc/sys/kernel/random/entropy_avail 
+3684
+* benchmarking disks
+** fio
+apt install fio
+cd /var/lib/libvirt/images
+date
+fio /usr/share/doc/fio/examples/fio-rand-RW.fio
+
+** bonnie++
+sudo apt install bonnie++
+sudo mkdir /path/to/filesystem/bonnie
+sudo chown nobody /path/to/filesystem/bonnie
+sudo bonnie++ -u nobody -d /path/to/filesystem/bonnie
+
+*** vmsplice <2021-12-27 Mon>
+ root@vmsplice:~# bonnie++ -u nobody -d /var/lib/libvirt/images/bonnie/
+ Using uid:65534, gid:65534.
+ Writing a byte at a time...done
+ Writing intelligently...done
+ Rewriting...done
+ Reading a byte at a time...done
+ Reading intelligently...done
+ start 'em...done...done...done...done...done...
+ Create files in sequential order...done.
+ Stat files in sequential order...done.
+ Delete files in sequential order...done.
+ Create files in random order...done.
+ Stat files in random order...done.
+ Delete files in random order...done.
+ Version  1.98       ------Sequential Output------ --Sequential Input- --Random-
+                     -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks--
+ Name:Size etc        /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+ vmsplice     31928M  674k  97  121m   6 71.4m   8 1610k  97  156m  12 426.7   9
+ Latency             12015us   14155ms    2041ms    9617us     207ms     154ms
+ Version  1.98       ------Sequential Create------ --------Random Create--------
+ vmsplice            -Create-- --Read--- -Delete-- -Create-- --Read--- -Delete--
+               files  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+                  16 16384  28 +++++ +++ +++++ +++ +++++ +++ +++++ +++ +++++ +++
+ Latency                49us     286us    1013us    1332us      15us    1394us
+ 1.98,1.98,vmsplice,1,1640634814,31928M,,8192,5,674,97,123503,6,73093,8,1610,97,160079,12,426.7,9,16,,,,,31768,28,+++++,+++,+++++,+++,+++++,+++,+++++,+++,+++++,+++,12015us,14155ms,2041ms,9617us,207ms,154ms,49us,286us,1013us,1332us,15us,1394
+ us
+ root@vmsplice:~# date
+ Mon Dec 27 20:12:10 UTC 2021
+
+* discord
+user: gsmilj / #4414
+email: ln+discord@4711.se
+
+* redshift
+~/.ratpoisonrc: exec redshift -l 59.33:18.07
+* sway
+- swaymsg move workspace to right
+- copy/paste and vt100/220 control characters, what's that?
+* APU
+** booting Sunet's red APU with external flash ROM
+PCEngines apu2
+coreboot build 20170228
+4080 MB ECC DRAM
+
+SeaBIOS (version rel-1.10.0.1)
+
+Press F10 key now for boot menu
+
+Select boot device:
+
+1. ata0-0: SATA SSD ATA-11 Hard-Disk (15272 MiBytes)
+2. Payload [memtest]
+3. Payload [setup]
+* nethack
+** graffiti
+"|hev ?ay that tne wal|s in shops ?re nade o? ext a ha?d matcri?l."
+"If vou ?hc?ght the Wiza?d va? |ad, just wait ti|l vou m e? the Warlorc!"
+* nät och BY/RU/UA
+** morre, LM, linus <2022-03-02 Wed>
+morre: en utvecklare i BY; bett kontakter signal
+linus: läget med bryggor
+* mobile.telia.net <-> VKG not working
+** wireguard
+root@sigwaitinfo:~# tcpdump -ni enp1s0 -x -vv host 95.193.0.189 
+tcpdump: listening on enp1s0, link-type EN10MB (Ethernet), capture size 262144 bytes
+16:36:27.470311 IP (tos 0x0, ttl 57, id 49259, offset 0, flags [DF], proto UDP (17), length 176)
+    95.193.0.189.10460 > 91.223.231.1.51820: [udp sum ok] UDP, length 148
+        0x0000:  4500 00b0 c06b 4000 3911 dd72 5fc1 00bd
+        0x0010:  5bdf e701 28dc ca6c 009c 5683 0100 0000
+        0x0020:  0f7c 5cea 7247 b998 7dec bf10 ab0a 9418
+        0x0030:  177a eaa7 1c63 300b fddb 3452 6bbd 3f4c
+        0x0040:  b7bb 3e76 49b1 7883 4c81 da7e 28aa e0e4
+        0x0050:  f327 4b00 bc90 1a5e b8a4 e681 c62a 3d4e
+        0x0060:  d36b efd4 3932 ff94 876f e8fa 4cdd b234
+        0x0070:  1217 8eea a414 a710 b6ac 9c11 5eb5 adc5
+        0x0080:  70a4 f9d5 22f4 fc68 f055 6731 d5d7 230f
+        0x0090:  5824 e3c7 e899 8371 f70e fad6 ee98 160e
+        0x00a0:  0000 0000 0000 0000 0000 0000 0000 0000
+16:36:27.473759 IP (tos 0x88, ttl 64, id 39662, offset 0, flags [none], proto UDP (17), length 120)
+    91.223.231.1.51820 > 95.193.0.189.10460: [bad udp cksum 0xa3d4 -> 0xefd3!] UDP, length 92
+        0x0000:  4588 0078 9aee 0000 4011 3ba0 5bdf e701
+        0x0010:  5fc1 00bd ca6c 28dc 0064 a3d4 0200 0000
+        0x0020:  6a47 cfa8 0f7c 5cea d0da 53e2 4642 11f5
+        0x0030:  ad5d b0d2 a33a 8f45 e6cb e4be db39 e7aa
+        0x0040:  afe9 0f9c 10cf d769 afa5 9e0f 1f21 a323
+        0x0050:  1e77 b73c 2a8d 4bbf a8ba 8726 f97c e4c0
+        0x0060:  be13 aed9 8c29 2950 0000 0000 0000 0000
+        0x0070:  0000 0000 0000 0000
+16:36:32.709301 IP (tos 0x0, ttl 57, id 49949, offset 0, flags [DF], proto UDP (17), length 176)
+    95.193.0.189.10460 > 91.223.231.1.51820: [udp sum ok] UDP, length 148
+        0x0000:  4500 00b0 c31d 4000 3911 dac0 5fc1 00bd
+        0x0010:  5bdf e701 28dc ca6c 009c 3013 0100 0000
+        0x0020:  8d7c b85f e591 87d3 c498 6ab2 08fa 3686
+        0x0030:  60b8 95bf 2fac 9970 ac7f ded6 cf50 69ac
+        0x0040:  0b08 531a 71b5 0d08 eee7 8c6f 1397 c551
+        0x0050:  998a 72c0 3f45 8b5e ec8e 0995 c4af 0bb3
+        0x0060:  35e9 4a67 7dd4 ecff 623c 2c82 2235 e7e0
+        0x0070:  0fef 2241 f275 4a66 2813 48ab a41d 103f
+        0x0080:  e3b9 a9c8 3d2c 2dc9 ae89 481c da2b dc1f
+        0x0090:  27d0 c81f 5c30 5643 08ad 8bc4 2f32 9edd
+        0x00a0:  0000 0000 0000 0000 0000 0000 0000 0000
+16:36:32.713719 IP (tos 0x88, ttl 64, id 39992, offset 0, flags [none], proto UDP (17), length 120)
+    91.223.231.1.51820 > 95.193.0.189.10460: [bad udp cksum 0xa3d4 -> 0x1f0b!] UDP, length 92
+        0x0000:  4588 0078 9c38 0000 4011 3a56 5bdf e701
+        0x0010:  5fc1 00bd ca6c 28dc 0064 a3d4 0200 0000
+        0x0020:  7535 ea02 8d7c b85f 9f32 ff16 56e4 a6f7
+        0x0030:  cab1 34b5 4d58 9a0b 33de 76c0 568d bd26
+        0x0040:  521c c407 46a1 0f6c c967 9048 8cd4 7630
+        0x0050:  f2a5 6fb9 eed7 176b 3e48 e0ff 0986 ca51
+        0x0060:  a154 78cb 24a4 fdad 0000 0000 0000 0000
+        0x0070:  0000 0000 0000 0000
+^C
+4 packets captured
+6 packets received by filter
+0 packets dropped by kernel
+
+** https
+root@sigwaitinfo:~# tcpdump -ni enp1s0 -x -vv host 95.193.0.189
+tcpdump: listening on enp1s0, link-type EN10MB (Ethernet), capture size 262144 bytes
+16:38:37.010336 IP (tos 0x0, ttl 57, id 48794, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10546 > 46.227.67.227.443: Flags [S], cksum 0x3387 (correct), seq 1790544532, win 65535, options [mss 1400,sackOK,TS val 3274923521 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c be9a 4000 3906 afdd 5fc1 00bd
+        0x0010:  2ee3 43e3 2932 01bb 6ab9 8a94 0000 0000
+        0x0020:  a002 ffff 3387 0000 0204 0578 0402 080a
+        0x0030:  c333 5e01 0000 0000 0103 0308
+16:38:37.011965 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0x7dae (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849523954 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 7dae 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 48f2 c333 5e01 0103 0307
+16:38:37.149948 IP (tos 0x0, ttl 57, id 4322, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10518 > 46.227.67.227.443: Flags [S], cksum 0xe479 (correct), seq 3338501344, win 65535, options [mss 1400,sackOK,TS val 3274923674 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 10e2 4000 3906 5d96 5fc1 00bd
+        0x0010:  2ee3 43e3 2916 01bb c6fd 7ce0 0000 0000
+        0x0020:  a002 ffff e479 0000 0204 0578 0402 080a
+        0x0030:  c333 5e9a 0000 0000 0103 0308
+16:38:37.151068 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0x5627 (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849524093 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 5627 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 497d c333 5e9a 0103 0307
+16:38:37.415324 IP (tos 0x0, ttl 57, id 39522, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10468 > 46.227.67.227.443: Flags [S], cksum 0xdea0 (correct), seq 2602479052, win 65535, options [mss 1400,sackOK,TS val 3274923928 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 9a62 4000 3906 d415 5fc1 00bd
+        0x0010:  2ee3 43e3 28e4 01bb 9b1e adcc 0000 0000
+        0x0020:  a002 ffff dea0 0000 0204 0578 0402 080a
+        0x0030:  c333 5f98 0000 0000 0103 0308
+16:38:37.416284 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0xa9ca (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849524358 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 a9ca 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 4a86 c333 5f98 0103 0307
+16:38:38.013905 IP (tos 0x0, ttl 57, id 48795, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10546 > 46.227.67.227.443: Flags [S], cksum 0x2f9a (correct), seq 1790544532, win 65535, options [mss 1400,sackOK,TS val 3274924526 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c be9b 4000 3906 afdc 5fc1 00bd
+        0x0010:  2ee3 43e3 2932 01bb 6ab9 8a94 0000 0000
+        0x0020:  a002 ffff 2f9a 0000 0204 0578 0402 080a
+        0x0030:  c333 61ee 0000 0000 0103 0308
+16:38:38.014896 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0x79c4 (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849524956 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 79c4 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 4cdc c333 5e01 0103 0307
+16:38:38.179679 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0x5223 (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849525121 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 5223 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 4d81 c333 5e9a 0103 0307
+16:38:38.187716 IP (tos 0x0, ttl 57, id 4323, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10518 > 46.227.67.227.443: Flags [S], cksum 0xe084 (correct), seq 3338501344, win 65535, options [mss 1400,sackOK,TS val 3274924687 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 10e3 4000 3906 5d95 5fc1 00bd
+        0x0010:  2ee3 43e3 2916 01bb c6fd 7ce0 0000 0000
+        0x0020:  a002 ffff e084 0000 0204 0578 0402 080a
+        0x0030:  c333 628f 0000 0000 0103 0308
+16:38:38.189939 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0x5218 (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849525132 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 5218 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 4d8c c333 5e9a 0103 0307
+16:38:38.421866 IP (tos 0x0, ttl 57, id 39523, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10468 > 46.227.67.227.443: Flags [S], cksum 0xdaba (correct), seq 2602479052, win 65535, options [mss 1400,sackOK,TS val 3274924926 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 9a63 4000 3906 d414 5fc1 00bd
+        0x0010:  2ee3 43e3 28e4 01bb 9b1e adcc 0000 0000
+        0x0020:  a002 ffff daba 0000 0204 0578 0402 080a
+        0x0030:  c333 637e 0000 0000 0103 0308
+16:38:38.422863 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0xa5dc (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849525364 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 a5dc 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 4e74 c333 5f98 0103 0307
+16:38:39.043824 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0x75bf (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849525985 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 75bf 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 50e1 c333 5e01 0103 0307
+16:38:39.427595 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0xa1ef (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849526369 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 a1ef 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 5261 c333 5f98 0103 0307
+16:38:40.183746 IP (tos 0x0, ttl 57, id 48796, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10546 > 46.227.67.227.443: Flags [S], cksum 0x2728 (correct), seq 1790544532, win 65535, options [mss 1400,sackOK,TS val 3274926688 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c be9c 4000 3906 afdb 5fc1 00bd
+        0x0010:  2ee3 43e3 2932 01bb 6ab9 8a94 0000 0000
+        0x0020:  a002 ffff 2728 0000 0204 0578 0402 080a
+        0x0030:  c333 6a60 0000 0000 0103 0308
+16:38:40.183746 IP (tos 0x0, ttl 57, id 4324, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10518 > 46.227.67.227.443: Flags [S], cksum 0xd8b3 (correct), seq 3338501344, win 65535, options [mss 1400,sackOK,TS val 3274926688 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 10e4 4000 3906 5d94 5fc1 00bd
+        0x0010:  2ee3 43e3 2916 01bb c6fd 7ce0 0000 0000
+        0x0020:  a002 ffff d8b3 0000 0204 0578 0402 080a
+        0x0030:  c333 6a60 0000 0000 0103 0308
+16:38:40.184661 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0x4a4e (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849527126 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 4a4e 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 5556 c333 5e9a 0103 0307
+16:38:40.184749 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0x714a (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849527126 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 714a 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 5556 c333 5e01 0103 0307
+16:38:40.609757 IP (tos 0x0, ttl 57, id 39524, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10468 > 46.227.67.227.443: Flags [S], cksum 0xd22e (correct), seq 2602479052, win 65535, options [mss 1400,sackOK,TS val 3274927114 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 9a64 4000 3906 d413 5fc1 00bd
+        0x0010:  2ee3 43e3 28e4 01bb 9b1e adcc 0000 0000
+        0x0020:  a002 ffff d22e 0000 0204 0578 0402 080a
+        0x0030:  c333 6c0a 0000 0000 0103 0308
+16:38:40.610741 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0x9d50 (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849527552 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 9d50 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 5700 c333 5f98 0103 0307
+16:38:42.211780 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0x695f (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849529153 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 695f 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 5d41 c333 5e01 0103 0307
+16:38:42.212037 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0x4262 (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849529154 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 4262 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 5d42 c333 5e9a 0103 0307
+16:38:42.627807 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0x956f (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849529569 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 956f 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 5ee1 c333 5f98 0103 0307
+16:38:44.220333 IP (tos 0x0, ttl 57, id 48797, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10546 > 46.227.67.227.443: Flags [S], cksum 0x1752 (correct), seq 1790544532, win 65535, options [mss 1400,sackOK,TS val 3274930742 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c be9d 4000 3906 afda 5fc1 00bd
+        0x0010:  2ee3 43e3 2932 01bb 6ab9 8a94 0000 0000
+        0x0020:  a002 ffff 1752 0000 0204 0578 0402 080a
+        0x0030:  c333 7a36 0000 0000 0103 0308
+16:38:44.220333 IP (tos 0x0, ttl 57, id 4325, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10518 > 46.227.67.227.443: Flags [S], cksum 0xc8de (correct), seq 3338501344, win 65535, options [mss 1400,sackOK,TS val 3274930741 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 10e5 4000 3906 5d93 5fc1 00bd
+        0x0010:  2ee3 43e3 2916 01bb c6fd 7ce0 0000 0000
+        0x0020:  a002 ffff c8de 0000 0204 0578 0402 080a
+        0x0030:  c333 7a35 0000 0000 0103 0308
+16:38:44.221330 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0x3a89 (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849531163 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 3a89 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 651b c333 5e9a 0103 0307
+16:38:44.221352 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0x6185 (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849531163 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 6185 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 651b c333 5e01 0103 0307
+16:38:44.641702 IP (tos 0x0, ttl 57, id 39525, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10468 > 46.227.67.227.443: Flags [S], cksum 0xc258 (correct), seq 2602479052, win 65535, options [mss 1400,sackOK,TS val 3274931168 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 9a65 4000 3906 d412 5fc1 00bd
+        0x0010:  2ee3 43e3 28e4 01bb 9b1e adcc 0000 0000
+        0x0020:  a002 ffff c258 0000 0204 0578 0402 080a
+        0x0030:  c333 7be0 0000 0000 0103 0308
+16:38:44.642585 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0x8d90 (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849531584 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 8d90 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 66c0 c333 5f98 0103 0307
+16:38:48.323774 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0x517f (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849535265 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 517f 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 7521 c333 5e01 0103 0307
+16:38:48.324055 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0x2a82 (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849535266 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 2a82 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 7522 c333 5e9a 0103 0307
+16:38:48.835663 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0x7d2f (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849535777 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 7d2f 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 7721 c333 5f98 0103 0307
+16:38:52.338261 IP (tos 0x0, ttl 57, id 4326, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10518 > 46.227.67.227.443: Flags [S], cksum 0xa934 (correct), seq 3338501344, win 65535, options [mss 1400,sackOK,TS val 3274938847 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 10e6 4000 3906 5d92 5fc1 00bd
+        0x0010:  2ee3 43e3 2916 01bb c6fd 7ce0 0000 0000
+        0x0020:  a002 ffff a934 0000 0204 0578 0402 080a
+        0x0030:  c333 99df 0000 0000 0103 0308
+16:38:52.338262 IP (tos 0x0, ttl 57, id 48798, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10546 > 46.227.67.227.443: Flags [S], cksum 0xf7a9 (correct), seq 1790544532, win 65535, options [mss 1400,sackOK,TS val 3274938846 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c be9e 4000 3906 afd9 5fc1 00bd
+        0x0010:  2ee3 43e3 2932 01bb 6ab9 8a94 0000 0000
+        0x0020:  a002 ffff f7a9 0000 0204 0578 0402 080a
+        0x0030:  c333 99de 0000 0000 0103 0308
+16:38:52.339054 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0x1ad3 (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849539281 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 1ad3 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 84d1 c333 5e9a 0103 0307
+16:38:52.339142 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0x41cf (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849539281 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 41cf 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 84d1 c333 5e01 0103 0307
+16:38:52.749312 IP (tos 0x0, ttl 57, id 39526, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10468 > 46.227.67.227.443: Flags [S], cksum 0xa2ae (correct), seq 2602479052, win 65535, options [mss 1400,sackOK,TS val 3274939274 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 9a66 4000 3906 d411 5fc1 00bd
+        0x0010:  2ee3 43e3 28e4 01bb 9b1e adcc 0000 0000
+        0x0020:  a002 ffff a2ae 0000 0204 0578 0402 080a
+        0x0030:  c333 9b8a 0000 0000 0103 0308
+16:38:52.750314 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0x6de4 (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849539692 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 6de4 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 866c c333 5f98 0103 0307
+16:39:00.355632 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0x227f (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849547297 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 227f 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 a421 c333 5e01 0103 0307
+16:39:00.355706 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0xfb82 (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849547297 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 fb82 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 a421 c333 5e9a 0103 0307
+16:39:00.867743 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0x4e2f (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849547809 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 4e2f 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 a621 c333 5f98 0103 0307
+16:39:09.190310 IP (tos 0x0, ttl 57, id 48799, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10484 > 46.227.67.227.443: Flags [S], cksum 0xb610 (correct), seq 1790544532, win 65535, options [mss 1400,sackOK,TS val 3274955701 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c be9f 4000 3906 afd8 5fc1 00bd
+        0x0010:  2ee3 43e3 28f4 01bb 6ab9 8a94 0000 0000
+        0x0020:  a002 ffff b610 0000 0204 0578 0402 080a
+        0x0030:  c333 dbb5 0000 0000 0103 0308
+16:39:09.190310 IP (tos 0x0, ttl 57, id 39527, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10522 > 46.227.67.227.443: Flags [S], cksum 0x624d (correct), seq 2602479052, win 65535, options [mss 1400,sackOK,TS val 3274955701 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 9a67 4000 3906 d410 5fc1 00bd
+        0x0010:  2ee3 43e3 291a 01bb 9b1e adcc 0000 0000
+        0x0020:  a002 ffff 624d 0000 0204 0578 0402 080a
+        0x0030:  c333 dbb5 0000 0000 0103 0308
+16:39:09.190535 IP (tos 0x0, ttl 57, id 4327, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10486 > 46.227.67.227.443: Flags [S], cksum 0x677e (correct), seq 3338501344, win 65535, options [mss 1400,sackOK,TS val 3274955701 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 10e7 4000 3906 5d91 5fc1 00bd
+        0x0010:  2ee3 43e3 28f6 01bb c6fd 7ce0 0000 0000
+        0x0020:  a002 ffff 677e 0000 0204 0578 0402 080a
+        0x0030:  c333 dbb5 0000 0000 0103 0308
+16:39:09.191356 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10484: Flags [S.], cksum 0x1f92 (correct), seq 2320866517, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849556133 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f4 8a55 9cd5 6ab9 8a95
+        0x0020:  a012 fe88 1f92 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 c6a5 c333 dbb5 0103 0307
+16:39:09.191423 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10522: Flags [S.], cksum 0x4a7f (correct), seq 3910516580, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849556133 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 291a e915 bf64 9b1e adcd
+        0x0020:  a012 fe88 4a7f 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 c6a5 c333 dbb5 0103 0307
+16:39:09.191479 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10486: Flags [S.], cksum 0xc37d (correct), seq 3496371270, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849556133 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f6 d066 6446 c6fd 7ce1
+        0x0020:  a012 fe88 c37d 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 c6a5 c333 dbb5 0103 0307
+16:39:10.211758 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10486: Flags [S.], cksum 0xbf81 (correct), seq 3496371270, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849557153 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f6 d066 6446 c6fd 7ce1
+        0x0020:  a012 fe88 bf81 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 caa1 c333 dbb5 0103 0307
+16:39:10.212039 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10522: Flags [S.], cksum 0x4682 (correct), seq 3910516580, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849557154 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 291a e915 bf64 9b1e adcd
+        0x0020:  a012 fe88 4682 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 caa2 c333 dbb5 0103 0307
+16:39:10.212189 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10484: Flags [S.], cksum 0x1b95 (correct), seq 2320866517, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849557154 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f4 8a55 9cd5 6ab9 8a95
+        0x0020:  a012 fe88 1b95 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 caa2 c333 dbb5 0103 0307
+16:39:12.227498 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10484: Flags [S.], cksum 0x13b6 (correct), seq 2320866517, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849559169 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f4 8a55 9cd5 6ab9 8a95
+        0x0020:  a012 fe88 13b6 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 d281 c333 dbb5 0103 0307
+16:39:12.227799 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10522: Flags [S.], cksum 0x3ea3 (correct), seq 3910516580, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849559169 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 291a e915 bf64 9b1e adcd
+        0x0020:  a012 fe88 3ea3 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 d281 c333 dbb5 0103 0307
+16:39:12.227846 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10486: Flags [S.], cksum 0xb7a1 (correct), seq 3496371270, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849559169 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f6 d066 6446 c6fd 7ce1
+        0x0020:  a012 fe88 b7a1 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 d281 c333 dbb5 0103 0307
+16:39:16.483724 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10486: Flags [S.], cksum 0xa701 (correct), seq 3496371270, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849563425 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f6 d066 6446 c6fd 7ce1
+        0x0020:  a012 fe88 a701 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 e321 c333 dbb5 0103 0307
+16:39:16.483838 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10522: Flags [S.], cksum 0x2e03 (correct), seq 3910516580, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849563425 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 291a e915 bf64 9b1e adcd
+        0x0020:  a012 fe88 2e03 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 e321 c333 dbb5 0103 0307
+16:39:16.483875 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10518: Flags [S.], cksum 0xbc81 (correct), seq 3024021480, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849563426 ecr 3274923674,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2916 b43e e7e8 c6fd 7ce1
+        0x0020:  a012 fe88 bc81 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 e322 c333 5e9a 0103 0307
+16:39:16.483898 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10484: Flags [S.], cksum 0x0316 (correct), seq 2320866517, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849563425 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f4 8a55 9cd5 6ab9 8a95
+        0x0020:  a012 fe88 0316 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 e321 c333 dbb5 0103 0307
+16:39:16.483940 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10546: Flags [S.], cksum 0xe37d (correct), seq 2864585082, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849563426 ecr 3274923521,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2932 aabe 197a 6ab9 8a95
+        0x0020:  a012 fe88 e37d 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 e322 c333 5e01 0103 0307
+16:39:16.995710 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10468: Flags [S.], cksum 0x0f2f (correct), seq 1611850127, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849563937 ecr 3274923928,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28e4 6012 e18f 9b1e adcd
+        0x0020:  a012 fe88 0f2f 0000 0204 05b4 0402 080a
+        0x0030:  a9d8 e521 c333 5f98 0103 0307
+16:39:24.675756 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10484: Flags [S.], cksum 0xe315 (correct), seq 2320866517, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849571617 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f4 8a55 9cd5 6ab9 8a95
+        0x0020:  a012 fe88 e315 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 0321 c333 dbb5 0103 0307
+16:39:24.675951 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10522: Flags [S.], cksum 0x0e02 (correct), seq 3910516580, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849571618 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 291a e915 bf64 9b1e adcd
+        0x0020:  a012 fe88 0e02 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 0322 c333 dbb5 0103 0307
+16:39:24.675995 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10486: Flags [S.], cksum 0x8700 (correct), seq 3496371270, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849571618 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f6 d066 6446 c6fd 7ce1
+        0x0020:  a012 fe88 8700 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 0322 c333 dbb5 0103 0307
+16:39:40.803680 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10486: Flags [S.], cksum 0x4801 (correct), seq 3496371270, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849587745 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f6 d066 6446 c6fd 7ce1
+        0x0020:  a012 fe88 4801 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 4221 c333 dbb5 0103 0307
+16:39:40.803788 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10522: Flags [S.], cksum 0xcf02 (correct), seq 3910516580, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849587745 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 291a e915 bf64 9b1e adcd
+        0x0020:  a012 fe88 cf02 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 4221 c333 dbb5 0103 0307
+16:39:40.803922 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10484: Flags [S.], cksum 0xa414 (correct), seq 2320866517, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849587746 ecr 3274955701,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28f4 8a55 9cd5 6ab9 8a95
+        0x0020:  a012 fe88 a414 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 4222 c333 dbb5 0103 0307
+16:39:41.599479 IP (tos 0x0, ttl 57, id 48800, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10534 > 46.227.67.227.443: Flags [S], cksum 0x3733 (correct), seq 1790544532, win 65535, options [mss 1400,sackOK,TS val 3274988128 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c bea0 4000 3906 afd7 5fc1 00bd
+        0x0010:  2ee3 43e3 2926 01bb 6ab9 8a94 0000 0000
+        0x0020:  a002 ffff 3733 0000 0204 0578 0402 080a
+        0x0030:  c334 5a60 0000 0000 0103 0308
+16:39:41.599479 IP (tos 0x0, ttl 57, id 4328, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10432 > 46.227.67.227.443: Flags [S], cksum 0xe908 (correct), seq 3338501344, win 65535, options [mss 1400,sackOK,TS val 3274988128 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 10e8 4000 3906 5d90 5fc1 00bd
+        0x0010:  2ee3 43e3 28c0 01bb c6fd 7ce0 0000 0000
+        0x0020:  a002 ffff e908 0000 0204 0578 0402 080a
+        0x0030:  c334 5a60 0000 0000 0103 0308
+16:39:41.599479 IP (tos 0x0, ttl 57, id 39528, offset 0, flags [DF], proto TCP (6), length 60)
+    95.193.0.189.10456 > 46.227.67.227.443: Flags [S], cksum 0xe3e3 (correct), seq 2602479052, win 65535, options [mss 1400,sackOK,TS val 3274988128 ecr 0,nop,wscale 8], length 0
+        0x0000:  4500 003c 9a68 4000 3906 d40f 5fc1 00bd
+        0x0010:  2ee3 43e3 28d8 01bb 9b1e adcc 0000 0000
+        0x0020:  a002 ffff e3e3 0000 0204 0578 0402 080a
+        0x0030:  c334 5a60 0000 0000 0103 0308
+16:39:41.600531 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10456: Flags [S.], cksum 0x1e23 (correct), seq 1145410446, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849588542 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28d8 4445 938e 9b1e adcd
+        0x0020:  a012 fe88 1e23 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 453e c334 5a60 0103 0307
+16:39:41.600574 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10432: Flags [S.], cksum 0xcc51 (correct), seq 342432353, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849588542 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28c0 1469 1a61 c6fd 7ce1
+        0x0020:  a012 fe88 cc51 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 453e c334 5a60 0103 0307
+16:39:41.600653 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10534: Flags [S.], cksum 0x0a32 (correct), seq 1554637418, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849588542 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2926 5ca9 e26a 6ab9 8a95
+        0x0020:  a012 fe88 0a32 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 453e c334 5a60 0103 0307
+16:39:42.627707 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10534: Flags [S.], cksum 0x062f (correct), seq 1554637418, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849589569 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2926 5ca9 e26a 6ab9 8a95
+        0x0020:  a012 fe88 062f 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 4941 c334 5a60 0103 0307
+16:39:42.627901 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10432: Flags [S.], cksum 0xc84e (correct), seq 342432353, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849589569 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28c0 1469 1a61 c6fd 7ce1
+        0x0020:  a012 fe88 c84e 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 4941 c334 5a60 0103 0307
+16:39:42.627947 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10456: Flags [S.], cksum 0x1a1f (correct), seq 1145410446, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849589570 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28d8 4445 938e 9b1e adcd
+        0x0020:  a012 fe88 1a1f 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 4942 c334 5a60 0103 0307
+16:39:44.643712 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10456: Flags [S.], cksum 0x1240 (correct), seq 1145410446, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849591585 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28d8 4445 938e 9b1e adcd
+        0x0020:  a012 fe88 1240 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 5121 c334 5a60 0103 0307
+16:39:44.643949 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10432: Flags [S.], cksum 0xc06d (correct), seq 342432353, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849591586 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28c0 1469 1a61 c6fd 7ce1
+        0x0020:  a012 fe88 c06d 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 5122 c334 5a60 0103 0307
+16:39:44.644079 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10534: Flags [S.], cksum 0xfe4d (correct), seq 1554637418, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849591586 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2926 5ca9 e26a 6ab9 8a95
+        0x0020:  a012 fe88 fe4d 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 5122 c334 5a60 0103 0307
+16:39:48.739718 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10534: Flags [S.], cksum 0xee4e (correct), seq 1554637418, ack 1790544533, win 65160, options [mss 1460,sackOK,TS val 2849595681 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 2926 5ca9 e26a 6ab9 8a95
+        0x0020:  a012 fe88 ee4e 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 6121 c334 5a60 0103 0307
+16:39:48.739891 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10432: Flags [S.], cksum 0xb06e (correct), seq 342432353, ack 3338501345, win 65160, options [mss 1460,sackOK,TS val 2849595681 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28c0 1469 1a61 c6fd 7ce1
+        0x0020:  a012 fe88 b06e 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 6121 c334 5a60 0103 0307
+16:39:48.739936 IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    46.227.67.227.443 > 95.193.0.189.10456: Flags [S.], cksum 0x023f (correct), seq 1145410446, ack 2602479053, win 65160, options [mss 1460,sackOK,TS val 2849595682 ecr 3274988128,nop,wscale 7], length 0
+        0x0000:  4500 003c 0000 4000 3f06 6878 2ee3 43e3
+        0x0010:  5fc1 00bd 01bb 28d8 4445 938e 9b1e adcd
+        0x0020:  a012 fe88 023f 0000 0204 05b4 0402 080a
+        0x0030:  a9d9 6122 c334 5a60 0103 0307
+^C
+81 packets captured
+81 packets received by filter
+0 packets dropped by kernel
+* json
+- jq
+* brute force attacks on our email infra
+These are slightly suspicious, based on info level postfix logs from
+smtp.adbc matching SASL:
+
+141.98.10.0/24 LT-HOSTBALTIC-10
+141.98.11.0/24 LT-HOSTBALTIC-11
+5.34.205.0/24 ORG-SL1132-RIPE; Spaceshipnetworks LTD; Khreshhatik St., 14D, Kyiv (Kiev), UA
+* ifupdown
+interfaces(8)
+ifup(8)
+
+# To disable
+systemctl disable --now ifupdown-pre
+
+FIXME: configure here?
+EnvironmentFile=-/etc/default/networking
+ExecStart=/bin/sh -c 'if [ "$CONFIGURE_INTERFACES" != "no" ] && [ -n "$(ifquery --read-environment --list --exclude=lo)" ] && [ -x /bin/udevadm ]; then udevadm settle; fi'
+root@besk:~# 
+* monitoring
+- apt install lm-sensors && sensors
+- apt install netdata && touch /etc/netdata/.opt-out-from-anonymous-statistics # note: scary daemon binding to 8125 and 19999
+* cmus
+A music player.
+
+** help
+7 for help view
+
+** adding music to the library
+- 5 for browser view
+- navigate to a file
+- a to add
+
+** creating a playlist and adding to it
+3 for playlist view
+: pl-create NAME
+<select the new playlist using SPACE>
+1
+<navigate to something>
+y
+
+* static yubikey used for
+- LUKS 
+  - tstick
+  - ostick
+  - FDE laptop
+- unix pw
+  - root laptop
+  - linus laptop
+- gpg encryption key passphrase
+- yubikey smartcard PIN
+more?
+* notes
+** <2022-07-08 Fri>
+root@besk:~# apt remove libntfs-3g883
+...
+The following packages will be REMOVED:
+  libntfs-3g883 ntfs-3g
+...
+apt remove W: Possible missing firmware /lib/firmware/i915/skl_huc_2.0.0.bin for module i915
+* list listening ports using ss(1)
+: ss -tulpn | awk '/^(tcp|udp) +LISTEN +[0-9]+ +[0-9]+ +(0\.0\.0\.0|\[::\]):[0-9]+/'
+* gitlab
+: gitlab-ctl status
+** reading logs
+gitlab-ctl tail
+** upgrading
+: gitlab-ctl upgrade-check
+
+: apt update && apt upgrade
+: false && gitlab-ctl reconfigure  # this seems to be performed by apt upgrade
+: gitlab-ctl status
+
+** certs manually copied to /etc/gitlab/ssl/$HOSTNAME.{crt,key} reverted
+Where $HOSTNAME is the domain name in `external_url` IIUC.
+
+gitlab-ctl reconfigure results in the cert and key being reverted from
+some sort of backup or so:
+
+:        * file[gitlab-01.sigsum.org SSL new crt] action create[2022-08-22T19:44:02+02:00] INFO: file[gitlab-01.sigsum.org SSL new crt] backed up to /opt/gitlab/embedded/cookbooks/cache/backup/etc/gitlab/ssl/gitlab-01.sigsum.org.crt.chef-20220822194402.311393        
+: [2022-08-22T19:44:02+02:00] INFO: file[gitlab-01.sigsum.org SSL new crt] updated file contents /etc/gitlab/ssl/gitlab-01.sigsum.org.crt
+
+But this resolved itself after stopping nginx, copying the certs,
+starting nginx (I think, unless i actually stopped and started all the
+things.)
+
+** stopping and starting a single service
+: gitlab-ctl stop nginx
+: gitlab-ctl start nginx
+
+There's also `restart` and omitting the service (`nginx` here) will
+affect all gitlab services.
+
+* mailcow
+** tailing the postfix logs
+: docker-compose logs --tail 30 -f postfix-mailcow
+
+** amending postfix main.cf
+: vi /opt/mailcow-dockerized/data/conf/postfix/extra.cf
+: docker-compose restart postfix-mailcow
+
+** allowing for using mailcow as a relayhost
+1. Add IP address(es) to `mynetworks`
+   (`/opt/mailcow-dockerized/data/conf/postfix/extra.cf`) and restart
+   the postfix container.
+2. Add hostname to "Forwarding hosts" in the Mailcow UI (Configuration
+   -> Forwarding Hosts). Choose Spam filter "Inactive".
+
+TODO: Once Sigsum is on its own netblock, just add that instead of
+individual hosts.
+* postgresql / pgsql
+** installing on debian
+echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+apt update
+apt install postgresql
+
+** running a client "as root"
+: sudo -iu postgres psql
+* netdata
+* BMC / IPMI
+On the host itself:
+apt install ipmitool
+ipmitool user list
+ipmitool user set password 2
+ipmitool user test 2 20
+
+* selinux
+- https://github.com/fedora-selinux/selinux-policy
+
+** semanage
+[root@build-03 ~]# semanage port -a -t ssh_port_t -p tcp 4722
+[root@build-03 ~]# semanage port -l | egrep ssh
+ssh_port_t                     tcp      4722, 22
+
+* fedora
+- https://bodhi.fedoraproject.org/
+* borg backup
+** restore
+
+*** Example, tee.sigsum.org
+- ssh config
+Host bup.adb-centralen.se
+    User _bup
+    Port 4722
+    IdentityFile ~/.ssh/keys/bup-adbc
+
+- borg key
+: besk:~% pass-sigsum bup/bup_adb_centralen_se__var_db_my_bup_tee_sigsum_org > ~/.config/borg/keys/bup_adb_centralen_se__var_db_my_bup_tee_sigsum_org
+
+- list backups
+besk:~% env SSH_AUTH_SOCK= BORG_KEY_FILE=~/.config/borg/keys/bup_adb_centralen_se__var_db_my_bup_tee_sigsum_org borg list bup.adb-centralen.se:/var/db/my_bup/tee.sigsum.org
+
+- restore using borg extract
+: besk:tee.sigsum.org% env SSH_AUTH_SOCK= BORG_KEY_FILE=~/.config/borg/keys/bup_adb_centralen_se__var_db_my_bup_tee_sigsum_org borg extract bup.adb-centralen.se:/var/db/my_bup/tee.sigsum.org::2022-10-21T02:40:31Z
+
+NOTE: Do this as root, possibly in a container, to have ownership and
+group settings restored as well.
+
+* lvm
+** restore a lost VG
+Get /etc/lvm/backup/VG-NAME from a backup of the system and put it in
+FILE on the system where the restore is being performed.
+
+: vgcfgrestore -f FILE VG-NAME
+
+* samba
+: apt install -y samba smbclient
+
+
+** set up for shares used by IPMI
+```
+--- /etc/samba/smb.conf 2022-10-24 15:49:03.880692650 +0200
++++ /home/linus/smb.conf        2022-10-24 15:49:32.049296673 +0200
+@@ -96,6 +96,8 @@
+ # to anonymous connections
+    map to guest = bad user
+ 
++security = user
++min protocol = NT1
+ ########## Domains ###########
+ 
+ #
+@@ -234,3 +236,14 @@
+ # to the drivers directory for these users to have write rights in it
+ ;   write list = root, @lpadmin
+ 
++[public]
++  path = /var/lib/sambashares/iso
++  public = yes
++  guest account = readonly
++  guest ok = yes
++  load printers = no
++  printable = no
++  writable = no
++  force directory mode = 0666
++  browseable = yes
++
+```
+
+: mkdir -p /var/lib/sambashares/iso
+: chgrp linus /var/lib/sambashares/iso
+: chmod g+w /var/lib/sambashares/iso
+
+* containers
+- buildah
+- skopeo
+- podman
+* transmission-remote
+besk:~% echo $TR_AUTH 
+transmission:QlYnyQvUbpziM3qMIrMsBQHuEfceYDCl
+besk:~% alias tunnel-transmission='ssh -NfL 9091:localhost:9091 tkill.adb-centralen.se'
+besk:~% tunnel-transmission
+besk:~% transmission-remote localhost -ne -l | tail -1
+Sum:            140.8 GB               0.0     0.0
+* anti-censorship
+- https://forum.torproject.net/c/support/censorship-circumvention/15
+- https://snowflake.torproject.org
+- https://gitweb.torproject.org/torspec.git/tree/pt-spec.txt
+- https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/wikis/Technical%20Overview
+
+* sandboxing
+- firejail
+* flatpak
+- bwrap
+  apt install bubblewrap
+- flatseal
+  flatpak run com.github.tchx84.Flatseal
+
+* booting
+** redfish
+- https://www.dmtf.org/standards/redfish
+- https://uefi.org/sites/default/files/resources/13_Jason_HPE_redfish%20implementation_FINAL.pdf
+- https://github.com/openbmc/docs/blob/master/REDFISH-cheatsheet.md
+- https://www.supermicro.com/en/solutions/management-software/redfish

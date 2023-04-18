@@ -3,7 +3,7 @@
 "INBOX.lists.libtech" 2234 2238
 "INBOX.lists.tor.relays" 2144 2168
 "sent-mail.2019-04" 185 185
-"lists.tor.internal" 15770 15772
+"lists.tor.internal" 17354 17390
 "sent-mail.2018-02" 212 212
 "lists.cryptech.tech" 2741 2741
 "lists.tor.board" 366 367
@@ -11,6 +11,6 @@
 "lists.ietf.trans" 2818 2818
 "INBOX.lists.tor.bugs" 33422 33434
 "junk" 98749 112952
-"INBOX" 40521 179757
+"INBOX" 40521 193749
 "INBOX.sys" 89804 89895
 "lists.cryptech.core" 1944 1948

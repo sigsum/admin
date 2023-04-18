@@ -1,4 +1,4 @@
-personal_ws-1.1 en 226 
+personal_ws-1.1 en 238 
 ABFAB
 ACTA
 API
@@ -27,6 +27,7 @@ EAP
 EDRi
 EE
 EFF's
+EFI
 EPP
 EWMA
 FIXME
@@ -34,6 +35,8 @@ FOSDEM
 GMP
 GPL
 GSS
+GitLab
+Glasklar
 Gothenburg
 HSM
 HSM's
@@ -48,6 +51,7 @@ ISP
 IdP
 IdP's
 Isabela
+Jitsi
 KDC
 Kerberos
 MITM
@@ -59,6 +63,7 @@ Merkle
 Mittenzwei
 NAI
 NGO
+NIST
 NORDUnet
 NTP
 NetBSD
@@ -72,6 +77,7 @@ OTP
 OTP's
 OTR
 OpenBSD
+OpenSSH
 PKCS
 PKI
 PKINIT
@@ -81,6 +87,7 @@ POSTing
 PPC
 PRNG
 Packeting
+PoC
 QUIC
 QUIC's
 RSA
@@ -111,6 +118,7 @@ TPI
 TPM
 Timestamps
 UDP
+UEFI
 UNINETT
 URI
 URL's
@@ -160,6 +168,7 @@ funder
 funders
 gdb
 implementers
+initramfs
 internet
 interoperability
 json
@@ -179,6 +188,7 @@ netmask
 parallelise
 parsers
 pre
+preimage
 proxying
 reachability
 redistributable
@@ -200,6 +210,7 @@ sid
 sigsum
 sociogram
 sociograms
+stateful
 sth
 struct
 submitter's
@@ -221,6 +232,7 @@ unlinkability
 unproportional
 untrusted
 userspace
+verifier
 verifiers
 verifyable
 versioning

@@ -1,3 +1,171 @@
+https://theworld.com/~reinhold/diceware.html
+sd-boot systemd https://github.com/systemd/systemd/labels/sd-boot%2Fsd-stub%2Fbootctl
+sd-boot systemd https://github.com/systemd/systemd/issues/12716
+booting http uefi https://www.redhat.com/sysadmin/uefi-http-boot-libvirt
+childprotection strategy https://www.weprotect.org/about-us/2023-2025-strategy/
+eu wallet sunet https://sunet.se/om-sunet/aktuellt/nyheter/sunet-ar-med-och-utvecklar-eus-digitala-identitetsplanbok
+signal cc2 https://www.bbc.com/news/technology-64584001
+signal cc2 https://www.youtube.com/watch?v=YIqpmcvkErA
+https://www.dasharo.com/
+https://www.youtube.com/user/RedLetterMedia
+fashion politics iran joojooazad http://www.joojooazad.com/
+fashion politics iran joojooazad https://hodakatebi.com/
+fashion politics iran joojooazad https://www.teenvogue.com/story/unbuttoned-hoda-katebi
+fashion politics iran joojooazad https://www.youtube.com/watch?v=fNwzxPpRVoA
+uefi boot security https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-21894
+uefi boot security blacklotus https://www.bleepingcomputer.com/news/security/malware-dev-claims-to-sell-new-blacklotus-windows-uefi-bootkit/
+uefi boot security blacklotus https://www.welivesecurity.com/2023/03/01/blacklotus-uefi-bootkit-myth-confirmed/
+readme privacy chatgpt https://theconversation.com/chatgpt-is-a-data-privacy-nightmare-if-youve-ever-posted-online-you-ought-to-be-concerned-199283
+pad https://safenote.co/
+chat https://abload.de/
+nosql funny https://howfuckedismydatabase.com/nosql/fault-tolerance.png
+chatcontrol css https://www.patrick-breyer.de/en/posts/messaging-and-chat-control/
+snowflake-p people:isa https://vimeo.com/773360105/69b834e816
+snowflake people:serene https://serene.cx/snowflake/
+snowflake people:serene https://vimeo.com/775093213/a0c8208817
+snowflake https://www.forbes.com/sites/johanmoreno/2023/02/08/as-the-internet-freedom-project-expands-snowflake-becomes-snowstorm/
+preventit https://6wvybf7ub3xk5ow66wt7os3aovbzoo2eei6vjirvhvvkmqg4alnezzid.onion/sites/preventit/register
+readme internet-governance https://berjon.com/internet-transition/
+tor state-of-the-onion people:micah torpvn https://www.youtube.com/watch?v=uSyBZ7GIzJY&t=2335s
+preventit report https://europepmc.org/article/MED/36573073?javascript_support=no
+preventit https://news.ki.se/reduced-use-of-child-sexual-abuse-material-after-online-cbt
+readme tor markeplace russia https://www.vice.com/en/article/wxnmg5/russia-darknet-market-wars
+security physical keys locks https://github.com/MaximeBeasse/KeyDecoder
+music player https://github.com/navidrome/navidrome
+application-fw linux https://github.com/evilsocket/opensnitch
+hacktivism history leaks https://enlacehacktivista.org/
+cellebrite hack https://files.enlacehacktivista.org/cellebrite/
+msab hack https://files.enlacehacktivista.org/msab.tar.zst
+bintrans bt https://www.semanticscholar.org/paper/Contour%3A-A-Practical-System-for-Binary-Transparency-Al-Bassam-Meiklejohn/cb4f23e7c51b2c700c635454047ea68ff6a3b3f3 https://arxiv.org/pdf/1712.08427.pdf
+polylog policy-transparency st https://research.google/pubs/pub51673/
+nsa cfrg chair https://mailarchive.ietf.org/arch/msg/cfrg/_K4f_0jUSOoHIKdwj39YqZNvrY0/
+snowflake proxy stats https://collector.torproject.org/recent/snowflakes/
+apple CSAM EU https://www-wired-com.cdn.ampproject.org/c/s/www.wired.com/story/apple-photo-scanning-csam-communication-safety-messages/amp
+monitoring onion https://tech.michaelaltfield.net/2021/03/12/monitoring-tor-onion-websites-uptime-alerts/
+tpm https://github.com/tpm2-software/tpm2-totp
+tpm https://github.com/google/go-attestation
+tpm https://trustedcomputinggroup.org/resource/tpm-library-specification/
+tpm https://ericchiang.github.io/post/tpm-keys/
+web3 https://escapingtech.com/tech/opinions/why-web3-doesnt-exist.html
+dmarc dkim spf https://www.learndmarc.com/
+readme kidsonline safety security https://www.dailydot.com/debug/kids-online-safety-act-less-safe/
+repro ocaml robur https://blog.osau.re/articles/reproducible.html
+weather forecast ascii https://wttr.in/
+conntrack linux network https://blog.cloudflare.com/conntrack-tales-one-thousand-and-one-flows/
+tor relay https://blog.torproject.org/lifecycle-of-a-new-relay/
+blog people:mjg59 https://mjg59.dreamwidth.org/
+security tailscale rebinding https://emily.id.au/tailscale
+ukraine https://liveuamap.com/
+foss floss infrastructure https://opensourceinfra.org/
+BIOS password https://dogber1.blogspot.com/2009/05/table-of-reverse-engineered-bios.html
+OPRF people:boneh https://eprint.iacr.org/2020/1532.pdf
+crypto online course people:boneh https://crypto.stanford.edu/~dabo/courses/OnlineCrypto/
+recharging life for computer programmers filippo https://www.recurse.com/
+devops rag https://www.youtube.com/watch?v=yDcaRklX7q4
+https://cats.m0le.eu/
+readme sou:202252 https://www.regeringen.se/rattsliga-dokument/statens-offentliga-utredningar/2022/10/sou-202252
+cyber warfare ukraine russia sect https://www.youtube.com/watch?v=jtbYx-9rwgA
+netlink go https://github.com/cilium/cilium/blob/master/pkg/datapath/linux/devices_test.go
+netfilter conntrack https://git.kernel.org/pub/scm/linux/kernel/git/pablo/nf-next.git/tree/Documentation/networking/nf_conntrack-sysctl.rst
+snowflake iran https://github.com/net4people/bbs/issues/127
+snowflake iran https://forum.torproject.net/t/two-layered-access/4783
+snowflake iran https://github.com/InternetForIran/InternetForIran
+snowflake iran https://forum.torproject.net/t/iran-circumventing-censorship-with-tor/4590
+snowflake iran https://news.yahoo.com/iranian-tech-activists-detail-tech-161327435.html?guccounter=1
+gaming https://openmw.org/en/
+snowflake https://gitlab.torproject.org/tpo/anti-censorship/team/-/wikis/Survival-Guides/Snowflake-Bridge-Survival-Guide
+tor AC iran https://forum.torproject.net/t/iran-circumventing-censorship-with-tor/4590
+snowflake NAT https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/wikis/NAT-matching
+anticensorship iran https://www.theguardian.com/world/2022/sep/22/iran-blocks-capitals-internet-access-as-amini-protests-grow
+readme email https://ucsdnews.ucsd.edu/pressrelease/IMC2021_savage
+obe presence https://www.peeringdb.com/asn/3399
+https://pyrsia.io/
+funny packages https://nitter.hu/DennisCode/status/1474972713861091329#m
+email SRS https://github.com/roehling/postsrsd
+readme paper censorship https://groups.google.com/g/traffic-obf/c/FsituuArZcQ
+readme paper censorship https://www.bamsoftware.com/papers-of-others/Tan2015a/Tan2015a.en.html
+javascript js https://www.fuzzmap.io/?welcome=1 
+readme false-positive csam https://news.yahoo.com/dad-took-photos-naked-toddler-142928196.html
+ldap https://ldap.com/basic-ldap-concepts/
+routing shelikhoo https://bgp.tools/as/205088
+ipv4 address space https://datatracker.ietf.org/doc/html/rfc6890
+ipv4 address space https://www.rfc-editor.org/rfc/rfc6598
+tor check https://gitlab.torproject.org/tpo/network-health/team/-/wikis/metrics/exit-list-check/home
+sr vma people:rom https://nitter.net/mitt_nya_nym/status/1550024199594459142 https://nitter.net/mitt_nya_nym/status/1550045525721993216 https://nitter.net/mitt_nya_nym/status/1550116354975338500 https://nitter.net/mitt_nya_nym/status/1550116920325599243
+readme precursor video https://www.bunniestudios.com/blog/?p=6336
+email testing https://www.mail-tester.com/
+bornhack streaming 2022 http://xgsobitduxv7gcc5qlveigwiku7qcjn5exf4ayusw4mwq7kfrapmrjyd.onion/
+dnssec https://letsdns.org/
+onionshare vuln https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1014966
+tor hs dark.fail darkfailenbsdla5mal2mxn2uz66od5vtzd5qozslagrfzachha3f3id.onion
+knot https://lists.nic.cz/hyperkitty/list/knot-dns-users@lists.nic.cz/
+police hacking planting evidence india https://www.wired.com/story/modified-elephant-planted-evidence-hacking-police/
+funny forklift german https://www.youtube.com/watch?v=IAHzP4umE4M
+fripost https://sverigesradio.se/artikel/4467614
+dpi russia sandvine procera https://www.bloomberg.com/news/articles/2022-06-03/sandvine-pulls-back-from-russia-as-us-eu-tighten-control-on-technology-it-sells
+funny musk hard-drive https://hard-drive.net/hard-drive-apologizes-to-elon-musk-for-dunking-on-him-too-hard/
+nra thoughts-and-prayers https://nitter.net/TheGoodLiars/status/1531019935308304386
+dane bcp https://mail.sys4.de/pipermail/dane-users/2018-February/000440.html
+snowflake dtls vuln security pion https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-29222
+the specials https://www.bbc.com/news/uk-england-47147069
+tor russia https://www.vice.com/en/article/3ab33v/russia-reverses-decision-on-blocking-tor-projects-website
+crypto csam css https://arxiv.org/abs/2110.07450
+crypto csam css https://www.lawfareblog.com/law-and-policy-client-side-scanning
+crypto csam css https://www.lawfareblog.com/bugs-our-pockets-risks-client-side-scanning
+ai privacy https://plot4.ai/library
+nextcloud tor https://autonomia.digital/2019/12/05/nextcloud-tor.html
+router hw https://docs.netgate.com/pfsense/en/latest/solutions/sg-8860-1u/index.html
+tpm https://diy.viktak.com/2022/04/home-made-tpm2-0-module.html
+funny point https://adb-centralen.se/~linus/miss-the-point.png
+coreboot supermicro x11sch https://www.supermicro.com/en/products/motherboard/X11SCH-F
+unbound https://kb.menandmice.com/display/MM/Unbound+request-list+demystified
+film movie turkmenistan https://www.dvfilm.ch/en/movies/documentaries/shadow-of-the-holy-book
+email http://nolisting.org/
+tor anticensorship https://pad.riseup.net/p/tor-anti-censorship-keep
+rand entropy https://www.pcg-random.org/
+dkim privacy https://rya.nc/dkim-privates.html
+https://www.nytimesn7cgmftshazwhfgzm37qxb44r64ytbb2dj3x62d2lljsciiyd.onion/2022/03/28/technology/nokia-russia-surveillance-system-sorm.html
+nytimes onion https://www.nytimesn7cgmftshazwhfgzm37qxb44r64ytbb2dj3x62d2lljsciiyd.onion/
+internet governence blocking joint-statement https://techpolicy.press/towards-the-multistakeholder-imposition-of-internet-sanctions/
+russia internet https://www.washingtonpost.com/technology/2022/03/04/russia-ukraine-internet-cogent-cutoff/
+tor russia blocking https://forum.torproject.net/t/tor-blocked-in-russia-how-to-circumvent-censorship/982/
+go game https://senseis.xmp.net/
+cloud china ms windows https://docs.microsoft.com/en-us/microsoft-365/admin/services-in-china/services-in-china?view=o365-21vianet
+vpn https://www.nytimes.com/wirecutter/reviews/best-vpn-service/
+boot https://psichologyanswers.com/library/lecture/read/29890-what-is-a-protective-mbr
+nethack rng https://nethackwiki.com/wiki/Random_number_generator
+betrusted noisydoide https://betrusted.io/avalanche-noise
+minetest minecraft education https://www.ocsmag.com/mining-for-education/
+readme https://blog.cryptographyengineering.com/2020/11/16/ok-google-please-publish-your-dkim-secret-keys/
+google fonts privacy germany schremsII https://teddit.net/r/gdpr/comments/sg8sll/no_legitimate_interest_for_using_google_fonts_on/
+browser https://www.netsurf-browser.org/
+nso pegasus https://www.bleepingcomputer.com/news/security/finnish-diplomats-phones-infected-with-nso-group-pegasus-spyware/
+security polkit argv https://ryiron.wordpress.com/2013/12/16/argv-silliness/
+fralagen https://centrumforrattvisa.se/centrum-for-rattvisa-mot-sverige/
+people:guiminhai https://www.euronews.com/2019/12/09/sweden-charges-former-ambassador-to-china-over-unauthorised-gin-minhai-meetings
+people:guiminhai https://www.theguardian.com/world/2019/dec/09/swedish-diplomat-anna-lindstedt-faces-trial-for-trying-to-free-china-dissident-gui-minhai
+tor sefnit botnet https://www.dailydot.com/debug/tor-botnet-microsoft-malware-remove/
+tor sefnit botnet https://thehackernews.com/2014/01/microsoft-remotely-deleted-tor-browser.html
+puppet epp https://puppet.com/docs/puppet/7/lang_template_epp.html
+translog people:tpulls https://www.diva-portal.org/smash/get/diva2:808057/FULLTEXT01.pdf
+translog people:tpulls https://link.springer.com/chapter/10.1007/978-3-319-45741-3_7
+ntp hw https://www.meinberg.se/products/tid-server/network-time-server-lantime-m300-gps.htm
+selfhosting web3 decentralisation people:moxie https://moxie.org/2022/01/07/web3-first-impressions.html
+debian pkg signing https://wiki.debian.org/SecureApt
+linux-rng https://lwn.net/Articles/832027/
+linux-rng https://www.chronox.de/lrng.html
+linux-rng https://lkml.org/lkml/2020/9/21/157
+i/o performance https://www.ibm.com/docs/en/aix/7.2?topic=management-logical-volume-disk-io-performance
+python gpg https://johnnycanencrypt.readthedocs.io/en/latest/
+rc3 2021 https://streaming.media.ccc.de/rc3/
+tpm https://blog.scrt.ch/
+OPGP yubikey openpgp https://gnupg.org/ftp/specs/OpenPGP-smart-card-application-3.4.pdf
+rng https://csrc.nist.gov/Projects/Random-Bit-Generation/Documentation-and-Software
+rng https://csrc.nist.gov/CSRC/media/Publications/conference-paper/1999/10/21/proceedings-of-the-22nd-nissc-1999/documents/papers/p24.pdf
+ct tor https://blog.torproject.org/tor-certificate-transparency/
+chromebook secureboot https://docs.google.com/presentation/d/14haBMrbpc2zlgdWmiaTlp_iDG_A8t5PTTXFMz5kqHSM/present#slide=id.g11a5e5b4cf_0_353
+fpga lattice https://radiona.org/ulx3s/
+readme self-hosting https://anarc.at/blog/2018-03-12-cost-of-hosting/
 https://github.com/ahf/passphrase-identity
 repro-build https://github.com/kpcyrd/rebuilderd
 tor cymru Netflow https://www.vice.com/en/article/jg84yy/data-brokers-netflow-data-team-cymru
