@@ -8,9 +8,70 @@ follow = read email, irc, tickets, blog posts in order to follow the
 progress
 
 * April 2023
-** tue
-- [ ] informed kai about morten working with him from TBD and for at least four weeks
+** sat
 
+- TTL for git.adbc lowered to 120 (was 21600, 6h) at 09:14
+- pushed the following repos from git.adbc to git.sigsum.org
+  linus/hwrand
+  
+linus/linus
+linus/noisydiode
+linus/p/st
+linus/src
+linus/st-config
+linus/tor
+
+
+** <2023-04-21 Fri>
+- [ ] informed kai about morten working with him from TBD and for at least four weeks
+- stpki/sthsm discussed with philipp [[file:usr/src/st/project/documentation/archive/2023-04-21-stpki.md][file:~/usr/src/st/project/documentation/archive/2023-04-21-stpki.md]]
+  - does stpki really need yubihsm sdk and connector?
+  - README says 1.15 while go.mod says 1.20
+  - let's try to set the structure now
+  - put the "production" yubihsm key where rgdd and ln5 ca reach it but nobody else
+  - what about key rotation? how many keys? admin keys? wrapping and backup
+  - authz questions
+    - domains: glasklar, st, sigsum
+    - one admin user per domain
+    - separate user for signing only
+    - wrap key
+  - shim review can wait until after may 10
+- worked on ST roadmap and asked for review from zaolin, jens and kfreds 
+  - https://pad.sigsum.org/p/mw1oVwTaMiSifIsM8YAD
+  - [[file:usr/src/st/project/documentation/archive/2023-04-20-roadmap.md][file:~/usr/src/st/project/documentation/archive/2023-04-20-roadmap.md]]
+- ringt och mejlat "bosse" på Bellalite om indirekt belysning
+  - textat lagge om att han kunde fakturera nu om han vill, direkt VDAB
+- betalat fakturor
+- gjort löner
+- fakturerat mullvad för löner
+- pratat med pontus, skolan
+
+- [ ] published road map
+  - [[file:usr/src/st/project/documentation/archive/2023-04-20-roadmap.md][file:~/usr/src/st/project/documentation/archive/2023-04-20-roadmap.md]]
+
+- leguin setup
+  - tor browser installed
+  - network manager seems to be able to set up wifi
+  - installed drill and dnssec valiation seems to work
+    - but hmm, the stub resolver sent requests to what i got from DHCP
+    - so installed unbound and configured systemd-resolved with
+      DNS=127.0.0.1
+      DNSStubListener=no
+      DNSSEC=yes
+    - but I worry that we do DNSSEC validation twice now
+  - configured nftables, by uninstalling firewalld
+    - found a (mostly harmless) bug in nftables.conf -- no point in
+      allowin udp dpt 51820 in bc that's not where wg packets come in
+  - configured wg using systemd-networkd
+
+** <2023-04-20 Thu>
+glasklar meetup
+
+** <2023-04-19 Wed>
+glasklar meetup
+
+** <2023-04-18 Tue>
+- glasklar meetup
 - städat lokalen
 - träffat Sassa i lokalen
   - 10 spottar till att börja med, 60 om inte galet dyrt, annars funkar nog 45

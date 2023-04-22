@@ -2253,7 +2253,7 @@ speglar.simnet.is
 datan:~% egrep ssh-agent /etc/*/* 2>/dev/null
 /etc/X11/Xsession.options:use-ssh-agent
 
-See Xsessoin(5) and Xsession.options(5) for more.
+See Xsession(5) and Xsession.options(5) for more.
 ** apt / package handling
 - apt install devscripts
   - rmadison <package> -- show package versions in each archive
@@ -3794,7 +3794,7 @@ All good. Wonder what happened in the morning of Sep 1.
 gpg --list-packets FILE
 
 ** wkd
-Example publishing:
+*** Example publishing
 sudo apt install python3-gnupg
 git clone https://gitlab.com/Martin_/generate-openpgpkey-hu-3.git
 cd generate-openpgpkey-hu-3
@@ -3842,8 +3842,9 @@ sub   rsa4096 2019-05-30 [E] [revoked: 2020-06-03]
 sub   rsa4096 2018-04-11 [E] [revoked: 2019-05-30]
 sub   rsa4096 2020-06-03 [E] [expires: 2023-05-17]
 
-Example fetching:
+*** Fetching Example
 gpg --auto-key-locate clear,wkd --locate-key mail@kushaldas.in
+
 ** extending a subkey's expiry date
 Instead of creating a new subkey, extend the expiry date on the existing one.
 Seems like we did that 2021 for rsa4096/2D11AC8BFF2BC4A8.
@@ -4752,6 +4753,7 @@ TryExec=ratpoison
 Icon=
 Type=Application
 EOF
+
 - make sure ssh-agent is started (and session-dbus is not) by editing
   /etc/X11/Xsession.options
 
@@ -41108,52 +41110,23 @@ root@datan:~# wg-quick up wg0
 root@datan:~# Jul 30 00:12:22 datan kernel: wireguard: WireGuard 1.0.20200712 loaded. See www.wireguard.com for information.
 Jul 30 00:12:22 datan kernel: wireguard: Copyright (C) 2015-2019 Jason A. Donenfeld <Jason@zx2c4.com>. All Rights Reserved.
 
-** adding a new peer on "server"
-*** sigwaitinfo
-# Finding the next free IP address
-wg show wg0 allowed-ips | sort -t . -k 4 -n
-
-export PUBKEY=
-export NEXTIP=
-wg set wg0 peer $PUBKEY allowed-ips 10.47.11.${NEXTIP}/32,fd00:47:11::${NEXTIP}/128
-
-wg-quick save wg0
-ip route add 10.47.11.${NEXTIP}/32 dev wg0
-ip -6 route add fd00:47:11::${NEXTIP}/128 dev wg0
-
-# Info to user
- - pubkey: Vc5dOP79fi2/Fp2q0xj31zAvgc1UgR3P1saF9xYPmh4=
- - endpoints
-   - 91.223.231.1:51820
-   -  [2001:67c:8a4:1::1]:51820
- - tunnel addrs
-   - 10.47.11.${NEXTIP}/32
-   - fd00:47:11::${NEXTIP}/128
- - networks: 
-   - 45.141.110.192/28
-   - 46.227.67.224/28
-   - 91.223.231.0/24
-   - 2a07:5cc0:1:1::/64
-   - 2001:67c:8a4::/48
-
-*** kcmp
-wg set wg0 peer $PUBKEY allowed-ips 10.128.0.${NEXTIP}/32,fd00:128::${NEXTIP}/128
-
-** besk: adding a new "server"
-NOTE: This is not for a default gateway, which needs fwmark and FIXME as well
-
+** laptop: adding a new "server"
 export WGNAME=wg-NAME
-export WGROUTE=<list of prefixes to route via the server>
-export WGENDPOINT=<server's addr:port>
-export WGTUNADDRV4=<tunnel ipv4 address, including mask>
-export WGTUNADDRV6=<tunnel ipv6 address, including mask>
 
 cd /etc/wireguard
+chgrp systemd-network .
+chmod g+rX .
 umask 027
 wg genkey | tee $WGNAME.private.key | wg pubkey > $WGNAME.public.key
 umask 0022
 chgrp systemd-network $WGNAME.*.key
 ls -l $WGNAME.*.key
+
+export WGPUBKEY=<pubkey of server>
+export WGROUTE=<list of prefixes to route via the server>
+export WGENDPOINT=<server's addr:port>
+export WGTUNADDRV4=<tunnel ipv4 address, including mask>
+export WGTUNADDRV6=<tunnel ipv6 address, including mask>
 
 cat > /etc/systemd/network/25-${WGNAME}.netdev <<EOF
 [NetDev]
@@ -41164,7 +41137,7 @@ Kind=wireguard
 PrivateKeyFile=/etc/wireguard/${WGNAME}.private.key
 
 [WireGuardPeer]
-PublicKeyFile=/etc/wireguard/${WGNAME}.public.key
+PublicKey=$WGPUBKEY
 AllowedIPs=$WGROUTE
 Endpoint=$WGENDPOINT
 EOF
@@ -41179,6 +41152,65 @@ Address=$WGTUNADDRV6=
 Tunnel=$WGNAME
 Gateway=fixme
 EOF
+
+systemctl restart systemd-networkd
+networkctl
+
+*** NOTE: For a default gateway, set WGROUTE=0.0.0.0,::/0 and add 
+- .netdev:
+[WireGuard]
+FirewallMark=0x4711
+
+- .network: remove Tunnel and Gateway from [Network]
+[RoutingPolicyRule]
+FirewallMark=0x4711
+InvertRule=true
+Table=1001
+Priority=10
+Family=both
+
+[Route]
+Gateway=10.47.11.1
+GatewayOnLink=yes
+Table=1001
+
+[Route]
+Gateway=fd00:47:11::1
+GatewayOnLink=yes
+Table=1001
+
+
+** adding a new peer on "server"
+*** sigwaitinfo
+# Finding the next free IP address
+wg show wg0 allowed-ips | sort -t . -k 4 -n
+
+export NEXTIP=
+export PUBKEY=
+wg set wg0 peer $PUBKEY allowed-ips 10.47.11.${NEXTIP}/32,fd00:47:11::${NEXTIP}/128
+wg-quick save wg0
+ip route add 10.47.11.${NEXTIP}/32 dev wg0
+ip -6 route add fd00:47:11::${NEXTIP}/128 dev wg0
+
+# Info to user
+cat <<EOF
+ - pubkey: Vc5dOP79fi2/Fp2q0xj31zAvgc1UgR3P1saF9xYPmh4=
+ - endpoints
+   - 91.223.231.1:51820
+   - [2001:67c:8a4:1::1]:51820
+ - tunnel addrs
+   - 10.47.11.${NEXTIP}/32
+   - fd00:47:11::${NEXTIP}/128
+ - networks: 
+   - 45.141.110.192/28
+   - 46.227.67.224/28
+   - 91.223.231.0/24
+   - 2a07:5cc0:1:1::/64
+   - 2001:67c:8a4::/48
+EOF
+
+*** kcmp
+wg set wg0 peer $PUBKEY allowed-ips 10.128.0.${NEXTIP}/32,fd00:128::${NEXTIP}/128
 
 * Núbi Ferskur <neubyi@4711.se>
 - uses ln+neubyi@4711.se some places (github)
