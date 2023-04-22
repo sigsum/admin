@@ -23,7 +23,7 @@ alias ssh-add-all-keys='(cd ~/tstick/keys/ssh/ && ssh-add adbc dfri)'
 alias startx='startx & vlock'
 alias tailf='less -nUEX +F'
 #alias tb=~/sandboxed-tor-browser
-alias tb='~/tor-browser_en-US/Browser/start-tor-browser --detach'
+alias tb='~/tor-browser/Browser/start-tor-browser --detach'
 alias tm='transmission-remote localhost -ne'
 #alias tunnel-adbc-imap='socat tcp-listen:9993,fork,reuseaddr socks4a:localhost:yz3q4zimbfeiolrv.onion:993,socksport=9050&'
 alias tunnel-adbc-imap='socat tcp-listen:9993,fork,reuseaddr socks4a:localhost:imap.adb-centralen.se:993,socksport=9050&'
