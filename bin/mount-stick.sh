@@ -1,1 +1,0 @@
-../src/mount-stick.sh
