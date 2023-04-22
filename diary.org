@@ -10,17 +10,33 @@ progress
 * April 2023
 ** sat
 
-- TTL for git.adbc lowered to 120 (was 21600, 6h) at 09:14
-- pushed the following repos from git.adbc to git.sigsum.org
+- TTL for CNAME git.adbc lowered to 120 (was 21600, 6h) at 09:14
+  - the idea is to simply point git.adbc to git.sigsum
+  - but the gitolite config made me change my mind and instead cherry-pick a few repos, see below
+  - TTL set back to 21600 and a new CNAME ansible.adbc pointing at getuid.sigsum was created, with TTL 3600
+- pushed the following repos from git.adbc to git.sigsum.org, but note that they have not been removed from git.adbc
+  adbc/ansible
   linus/hwrand
-  
-linus/linus
-linus/noisydiode
-linus/p/st
-linus/src
-linus/st-config
-linus/tor
+  linus/linus
+  linus/noisydiode
+  linus/p/st
+  linus/src
+  linus/st-config
+  linus/tor
+- changed ssh_config pushed by ansible to point ansible-git to ansible.adbc instead of git.adbc
+  - pushed to *both* remotes, adbc and sigsum
+  - ran the wrapper on dup, saw the change in ssh_config, tested ssh ansible-git and ran the wrapper again
+    - "hello adbc-ansible, this is git@getuid running gitolite3 3.6.12-1 (Debian) on git 2.30.2"
+    - thanks to sshfp records for getuid.sigsum, this works fine
+  - verified the following systems
+    dup
+    kcmp
+  - getgid.adbc hasn't run ansible since 2021-03-29, ansible-pull is not installed
 
+- readahead: created directories for april through june
+   506  for f in 05 06; do mkdir /var/db/noisydiode.local/rev11_n2/2023/$f && chown -R _ndAC01TGFO:_ndAC01TGFO /var/db/noisydiode.local/rev11_n2/2023/$f; done
+   507  for f in 04 05 06; do mkdir /var/db/noisydiode.local/rev10_n1/2023/$f && chown -R _ndAC01TGFP:_ndAC01TGFP  /var/db/noisydiode.local/rev10_n1/2023/$f; done
+- recv: restarted gather for rev11_n2
 
 ** <2023-04-21 Fri>
 - [ ] informed kai about morten working with him from TBD and for at least four weeks
