@@ -1,1 +1,0 @@
-../src/tails-start.sh
