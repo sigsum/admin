@@ -13,12 +13,12 @@
 ;; PGP working correctly.
 ;(setq load-path (cons "/usr/share/emacs/site-lisp/gnus" load-path))
 
-(add-to-list 'load-path "~/lisp")
+;(add-to-list 'load-path "~/lisp")
 ;(require 'gnus-load)
 
-(add-to-list 'load-path "~/usr/share/emacs/site-lisp")
+;(add-to-list 'load-path "~/usr/share/emacs/site-lisp")
 
-(require 'redtick)
+;(require 'redtick)
 
 ;(add-to-list 'load-path "~/.emacs.d/site-lisp") ; for markdown-mode, ox-reveal
 ;(require 'notmuch)
@@ -29,7 +29,7 @@
 
 ;; Disabled this _and_ removed the lyskom directory bc
 ;;   eval-buffer: Loading ‘/home/linus/usr/share/emacs/site-lisp/lyskom/wid-edit.el’: old-style backquotes detected!
-(autoload 'lyskom "lyskom" "Start LysKOM" t)
+;(autoload 'lyskom "lyskom" "Start LysKOM" t)
 
 ;(setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
 
@@ -43,7 +43,7 @@
 ;; another smime.el (from site-lisp/semi/?) is loaded.
 ;; 2012-09-19: upgrading emacs to 24.2 and gnus doesn't seem to carry smime.el
 ;(setq load-path (cons "/usr/local/share/emacs/23.4/lisp/gnus" load-path))
-(require 'smime)
+;(require 'smime)
 
 ;; deprecated in 27.1: (require 'tls)
 ;(require 'jabber)
@@ -144,8 +144,8 @@
 ;(require 'gambit)
 
 ;; Erlang
-(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.9/emacs" t)
-(setq erlang-root-dir "/usr/lib/erlang")
+;(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.9/emacs" t)
+;(setq erlang-root-dir "/usr/lib/erlang")
 ;(add-to-list 'exec-path "/usr/lib/erlang/bin" t)
 ;(require 'erlang-start)
 
@@ -290,7 +290,7 @@
 ;(set-language-environment "Latin-1")
 
 ;(set-frame-font "-misc-fixed-medium-r-normal--15-*-75-75-c-90-iso8859-15")
-(set-frame-font "-misc-fixed-medium-r-normal--15-*-75-75-c-80-iso8859-15")
+;(set-frame-font "-misc-fixed-medium-r-normal--15-*-75-75-c-80-iso8859-15")
 ;(set-frame-font "-misc-fixed-medium-r-normal--15-*-75-75-c-70-iso8859-15")
 ;(set-frame-font "-misc-fixed-medium-r-normal--14-*-75-75-c-70-iso8859-15")
 ;(set-frame-font "-misc-fixed-medium-r-normal--13-*-75-75-c-80-iso8859-15")
@@ -668,10 +668,10 @@
 ;; for buffers visitng files of the same name, make the
 ;; buffer name have something to do with the path to the file
 ;; instead of just tacking a number to the end
-(require 'uniquify)
-(toggle-uniquify-buffer-names)
-(setq uniquify-buffer-name-style 'post-forward)
-;(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+;(require 'uniquify)
+;(toggle-uniquify-buffer-names)
+;(setq uniquify-buffer-name-style 'post-forward)
+;;(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 
 ;; Have Swedish characters as Meta-[ ] \
