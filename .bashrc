@@ -29,6 +29,7 @@ if [ -d ~/.bashrc.d ]; then
 		fi
 	done
 fi
+unset rc
 
 ## TODO: move all below into ~/.bashrc.d
 
