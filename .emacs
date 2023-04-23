@@ -366,14 +366,6 @@
  '(display-time-24hr-format t)
  '(display-time-day-and-date t)
  '(display-time-format "%Y-%m-%d %H:%M")
- '(display-time-world-list
-   '(("America/Los_Angeles" "Seattle")
-     ("America/New_York" "New York")
-     ("Europe/London" "London")
-     ("Europe/Stockholm" "Stockholm")
-     ("Asia/Calcutta" "Bangalore")
-     ("Asia/Tokyo" "Tokyo")
-     ("Australia/Melbourne" "Melbourne")))
  '(erc-autojoin-channels-alist
    '(("luth.se" "#isp" "#sunet" "#sthix")
      ("#tor-status" "#epfsug" "#dfri-admin" "#tor-internal" "#tpo-admin" "#torservers" "#tor-dev" "#tor-ipv6" "#hackjunta" "#cryptodotis" "#nottor" "#tor" "#tor-bots" "#dfri_se" "#tor-se" "#libevent")
@@ -580,7 +572,7 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(redtick erlang org-clock-csv rfc-mode lsp-mode yaml-mode tabbar spinner session pod-mode muttrc-mode mutt-alias lv initsplit htmlize ht graphviz-dot-mode folding f eproject diminish dash-functional csv-mode company color-theme-modern browse-kill-ring boxquote bm bar-cursor apache-mode))
+   '(markdown-mode redtick erlang org-clock-csv rfc-mode lsp-mode yaml-mode tabbar spinner session pod-mode muttrc-mode mutt-alias lv initsplit htmlize ht graphviz-dot-mode folding f eproject diminish dash-functional csv-mode company color-theme-modern browse-kill-ring boxquote bm bar-cursor apache-mode))
  '(ps-n-up-margin 18)
  '(ps-n-up-printing 1)
  '(ps-paper-type 'a4)
@@ -618,7 +610,15 @@
  '(w3m-no-proxy-domains '("localhost"))
  '(w3m-search-default-engine "google")
  '(w3m-use-cookies t)
- '(w3m-user-agent "Emacs-w3m"))
+ '(w3m-user-agent "Emacs-w3m")
+ '(world-clock-list
+   '(("America/Los_Angeles" "Seattle")
+     ("America/New_York" "New York")
+     ("Europe/London" "London")
+     ("Europe/Stockholm" "Stockholm")
+     ("Asia/Calcutta" "Bangalore")
+     ("Asia/Tokyo" "Tokyo")
+     ("Australia/Melbourne" "Melbourne"))))
 
 ;; Not used:
 ; '(erc-default-coding-system (quote (iso-8859-1 . undecided)))
