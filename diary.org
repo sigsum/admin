@@ -8,8 +8,100 @@ follow = read email, irc, tickets, blog posts in order to follow the
 progress
 
 * April 2023
-** sat
+** <2023-04-23 Sun>
+- vm86 runs ansible branch bookworm which does not have my new ssh key
+  - cherry-picked the commit with new key, plus the commit changing ssh host ansible-git to point at ansible.adbc
+  - pushed branch bookworm to both adbc and sigsum and ran the wrapper on vm86
+- verified new ansible source for the following systems:
+  - vdse: ns, bpf, link, mx-01, ns, sauterad, symlink, vm86
+  - adbc: dup, kexec, nice, prctl, vmsplice
 
+- leguin config
+  - Firefox confign
+    - installed Cookie AutoDelete
+    - configured https everywhere (about:preferences#privacy)
+    - disabled FF data collection
+    - enabled strict tracking protection
+  - created keys in PGP applet on YK5C-31
+    - gpg card-edit
+      Application ID ...: D2760001240100000006163831310000
+      Serial number ....: 16383131
+      gpg/card> admin
+      gpg/card> key-attr # set 4096 bits RSA keys for Sign, Encrypt and Authenticate
+      gpg/card> generate # USER-ID "Linus Nordberg" (no email addr set)
+      gpg: Note: backup of card key saved to '/home/linus/.gnupg/sk_5A71C943F548E0AB.gpg'
+      gpg: revocation certificate stored as '/home/linus/.gnupg/openpgp-revocs.d/54FA51FA8A52FF7CF9BB356E63F559D7BACC2007.rev'
+      gpg/card> passwd # set PIN
+      gpg/card> passwd # set Admin PIN
+    - see [[file:data/YK5C-31.md][file:~/data/YK5C-31.md]] for details on keys
+  - created a key and cert in PIV applet on YK5C-31, for SSH where FIDO2 is not supported server side
+    - https://developers.yubico.com/PIV/Guides/SSH_with_PIV_and_PKCS11.html
+    - sudo dnf install yubico-piv-tool
+    - yubico-piv-tool -a set-mgm-key fails with various error messages
+      - a short passphrase ("kaka") gives "Failed decoding new key: Parse error."
+      - a longer passphrase ("allankakak12") gives "Failed decoding new key: Wrong buffer size."
+      - a longer passphrase ("allankaka12") gives "Failed decoding new key: Wrong buffer size."
+      - do we need exactly 8 chars? new error msg: "Failed setting the new key: Argument error."
+    - key and cert generation https://developers.yubico.com/PIV/Guides/SSH_user_certificates.html
+      ssh-keygen -N '' -C user-ca -f ~/.ssh/ca
+      sed 's/^/cert-authority /' ~/.ssh/ca.pub > ~/.ssh/authorized_keys
+      yubico-piv-tool -a generate -s 9c -A RSA2048 --pin-policy=never --touch-policy=always -o public.pem
+      yubico-piv-tool -a selfsign-certificate -s 9c -S "/CN=SSH key/" -i public.pem -o cert.pem
+      yubico-piv-tool -a import-certificate -s 9c -i cert.pem
+      yubico-piv-tool -a status
+      : we now have a one year cert with fpr dd0d8b08604b0702e4a332e82982799812a66f8778153a2b9661f154c1e70167
+      ssh-add -s /usr/lib64/libykcs11.so.2
+      : asking for passphrase, giving "123456"
+      ssh-add -l
+      : shows our new PIV key and also the PGP auth key plus our FIDO2 key
+      ssh-add -L | tail -1 > .ssh/YK5C-31:PIV.pub
+      ssh-keygen -s ~/.ssh/ca -I linus:YK5C-31:PIV -n "${LOGNAME}" ~/.ssh/YK5C-31:PIV.pub 
+      : Signed user key /home/linus/.ssh/YK5C-31:PIV-cert.pub: id "linus:YK5C-31:PIV" serial 0 for linus valid forever
+    - tried replacing .ssh/authorized_keys with $(sed 's/^/cert-authority /' ~/.ssh/ca.pub) on tee.sigsum.org
+      ssh -i .ssh/YK5C-31:PIV-cert.pub tee.sigsum.org
+      : sign_and_send_pubkey: signing failed for RSA "Public key for PIV Attestation": agent refused operation
+    - the 9c slot might be the problem, since it requires PIN every time
+    - created a new key in 9e (after saving pem files for slot 9c in ~/PIV-certs/
+      mkdir -p ~/PIV-certs/YK5C-31/9e; cd ~/PIV-certs/YK5C-31/9e
+      yubico-piv-tool -a generate -s 9e -A RSA2048 --pin-policy=never --touch-policy=always -o public.pem
+      yubico-piv-tool -a selfsign-certificate -s 9e -S "/CN=linus 5C31 PIV SSH key/" -i public.pem -o cert.pem
+      yubico-piv-tool -a import-certificate -s 9e -i cert.pem
+      yubico-piv-tool -a delete-certificate -s 9c
+      yubico-piv-tool -a status
+      : slot 9e now contains a cert with CN=linus 5C31 PIV SSH key
+      : but still no dice
+    - we go back to https://developers.yubico.com/PIV/Guides/SSH_with_PIV_and_PKCS11.html and follow that instead, using slot 9a ("PIV Authentication")
+      mkdir -p ~/PIV-certs/YK5C-31/9a; cd ~/PIV-certs/YK5C-31/9a
+      yubico-piv-tool -a generate -s 9a -A RSA2048 --pin-policy=never --touch-policy=always -o public.pem
+      yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=linus 5C31 PIV SSH key/" -i public.pem -o cert.pem
+      yubico-piv-tool -a import-certificate -s 9a -i cert.pem
+      ssh-keygen -D /usr/lib64/libykcs11.so.2 -e
+      : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9L8oiiE5Kascvm4UaydB2DjYA1tB7XeIdPpnTgdFQoAzi+Bi71cs2dzcZW+hoLOnIom731IaNS/QVnvrbOKaCGFik3sYTeHPicgheWC7H5CsBND8hxBIaECWzG79DHHz6nymqnSuAIv7o6HG5afieqofMi2bNzuQihH2SVVf5dC5WU6PgIYPqdn3z8fU//COZJGUaYVZlMS1Bu16OupKw17Pes2eI3m4KwzEv1/dB/fIDmHd9wktYNNn1oDnvcWo+euM+emrokN4uZ84xKu+mhs43rO/9iaUiawrAa6xCfCQ/iYSX4QsBOIZq/jusFzllBdrtfMRrxBtOgBYbxb7h Public key for PIV Authentication pkcs11:id=%01;object=Public%20key%20for%20PIV%20Authentication;token=YubiKey%20PIV%20%2316383131;manufacturer=Yubico%20(www.yubico.com)?module-path=/usr/lib64/libykcs11.so.2
+      : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDijZxtmxsvp90Eq0+hY6MjqTszoGewDYQlcRoIusSnRRVNW5wr6NUV99otfFnvdWV/hQS7WUTN/UFi3w4AbC4Obloxx10TYcyQMDfGvA7su5GWxl+pLmk8cItjdnYeNqWiszh9sqElf/ds+mF+ZY46UEvwF57y2RTSdnXdTfJZRypL8H0rRjmwy/kaH6zqCRpW7JdqEjykp3UIBFGWVaI81JyQfzVvH00V2UE5z+vCLhdDzNycRAQ3u0mjFRlkokvbaq1Pk4zm7tAkAfcyx2ML7DkWdpGkle7sUE2KzoyWkFI2yhse21GkjObSJTCtDW1XFTc1Rj1ZaKyMu297srzR Public key for Digital Signature pkcs11:id=%02;object=Public%20key%20for%20Digital%20Signature;token=YubiKey%20PIV%20%2316383131;manufacturer=Yubico%20(www.yubico.com)?module-path=/usr/lib64/libykcs11.so.2
+      : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDtN6tq/Ps7ytvepccfAN3ARufa74bM5fGp/cGtmvaFfEPXHZXGTpXdnorihPrxdXmL+QyPSNfuChk5nrnpRiPh5D2Jli9/4Fp0tvoBeLIBghSCYwPzjd8rN0oikH9p5G3mhdbuHG3LwSOMbGsHqqiz7Gut22x2EWHMxmDSPzQFWkFJG164ZLmwTM5qCJjUSbsURwA2CRN8hJ0rX4s4/I75TZKYo5Z47IbbSW5QFwZC2ZaecCPIEN8Wm2XdXz2Jda7m/t5S22a44TTk0xnQuNuWtzM2oqh+7Kkm4ET4VRhY8Dg6LV5kfnWeX0uLk5SOu0ae6cEU5xwVXY9oUd0BzT2d Public key for Card Authentication pkcs11:id=%04;object=Public%20key%20for%20Card%20Authentication;token=YubiKey%20PIV%20%2316383131;manufacturer=Yubico%20(www.yubico.com)?module-path=/usr/lib64/libykcs11.so.2
+      : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDTN0lYaeRosTxFv5M/uJJ9+ElX1IkSnYx7hBx9WJ2AerIh2jSWu4GTr1EXWeuZLeL4bXLJSH/KYA9mRxAKmazQTbcOaG57VVGkF51yxW07/FKt+7SoBZOyWn+TnuvLq+SJ2tBTVzGXYqh0fcpOadmZqyRAPx4a3FfByYs6aEp6boZKqE3/dDOdoOFmZVQC9QpI5ojM7Gfa7WYMeEbBoeFHt2SWwPA3uieLhZZfUYle3OkHyPomGirKpfBJur5yTng9/NSg4V3/bIrIVENedC/Ns0vv5p9vEFBAzHGjV7bgM0T9yn4rT15PsaHVStqjqZ5pKyw3hpUV+aSELY1qkYox Public key for PIV Attestation pkcs11:id=%19;object=Public%20key%20for%20PIV%20Attestation;token=YubiKey%20PIV%20%2316383131;manufacturer=Yubico%20(www.yubico.com)?module-path=/usr/lib64/libykcs11.so.2
+      ssh-add -D
+      ssh-add -s /usr/lib64/libykcs11.so.2
+      ssh-add -L
+      : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDijZxtmxsvp90Eq0+hY6MjqTszoGewDYQlcRoIusSnRRVNW5wr6NUV99otfFnvdWV/hQS7WUTN/UFi3w4AbC4Obloxx10TYcyQMDfGvA7su5GWxl+pLmk8cItjdnYeNqWiszh9sqElf/ds+mF+ZY46UEvwF57y2RTSdnXdTfJZRypL8H0rRjmwy/kaH6zqCRpW7JdqEjykp3UIBFGWVaI81JyQfzVvH00V2UE5z+vCLhdDzNycRAQ3u0mjFRlkokvbaq1Pk4zm7tAkAfcyx2ML7DkWdpGkle7sUE2KzoyWkFI2yhse21GkjObSJTCtDW1XFTc1Rj1ZaKyMu297srzR Public key for Digital Signature
+      : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDTN0lYaeRosTxFv5M/uJJ9+ElX1IkSnYx7hBx9WJ2AerIh2jSWu4GTr1EXWeuZLeL4bXLJSH/KYA9mRxAKmazQTbcOaG57VVGkF51yxW07/FKt+7SoBZOyWn+TnuvLq+SJ2tBTVzGXYqh0fcpOadmZqyRAPx4a3FfByYs6aEp6boZKqE3/dDOdoOFmZVQC9QpI5ojM7Gfa7WYMeEbBoeFHt2SWwPA3uieLhZZfUYle3OkHyPomGirKpfBJur5yTng9/NSg4V3/bIrIVENedC/Ns0vv5p9vEFBAzHGjV7bgM0T9yn4rT15PsaHVStqjqZ5pKyw3hpUV+aSELY1qkYox Public key for PIV Attestation
+    - lai mentioned opensc and i did this and got it working with the "PIV AUTH pubkey (RSA)" key
+	leguin:9a% ssh-add -s /usr/lib64/opensc-pkcs11.so
+	Enter passphrase for PKCS#11:
+	Card added: /usr/lib64/opensc-pkcs11.so
+	leguin:9a% ssh-add -L
+	ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDijZxtmxsvp90Eq0+hY6MjqTszoGewDYQlcRoIusSnRRVNW5wr6NUV99otfFnvdWV/hQS7WUTN/UFi3w4AbC4Obloxx10TYcyQMDfGvA7su5GWxl+pLmk8cItjdnYeNqWiszh9sqElf/ds+mF+ZY46UEvwF57y2RTSdnXdTfJZRypL8H0rRjmwy/kaH6zqCRpW7JdqEjykp3UIBFGWVaI81JyQfzVvH00V2UE5z+vCLhdDzNycRAQ3u0mjFRlkokvbaq1Pk4zm7tAkAfcyx2ML7DkWdpGkle7sUE2KzoyWkFI2yhse21GkjObSJTCtDW1XFTc1Rj1ZaKyMu297srzR Public key for Digital Signature
+	ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDTN0lYaeRosTxFv5M/uJJ9+ElX1IkSnYx7hBx9WJ2AerIh2jSWu4GTr1EXWeuZLeL4bXLJSH/KYA9mRxAKmazQTbcOaG57VVGkF51yxW07/FKt+7SoBZOyWn+TnuvLq+SJ2tBTVzGXYqh0fcpOadmZqyRAPx4a3FfByYs6aEp6boZKqE3/dDOdoOFmZVQC9QpI5ojM7Gfa7WYMeEbBoeFHt2SWwPA3uieLhZZfUYle3OkHyPomGirKpfBJur5yTng9/NSg4V3/bIrIVENedC/Ns0vv5p9vEFBAzHGjV7bgM0T9yn4rT15PsaHVStqjqZ5pKyw3hpUV+aSELY1qkYox Public key for PIV Attestation
+	ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9L8oiiE5Kascvm4UaydB2DjYA1tB7XeIdPpnTgdFQoAzi+Bi71cs2dzcZW+hoLOnIom731IaNS/QVnvrbOKaCGFik3sYTeHPicgheWC7H5CsBND8hxBIaECWzG79DHHz6nymqnSuAIv7o6HG5afieqofMi2bNzuQihH2SVVf5dC5WU6PgIYPqdn3z8fU//COZJGUaYVZlMS1Bu16OupKw17Pes2eI3m4KwzEv1/dB/fIDmHd9wktYNNn1oDnvcWo+euM+emrokN4uZ84xKu+mhs43rO/9iaUiawrAa6xCfCQ/iYSX4QsBOIZq/jusFzllBdrtfMRrxBtOgBYbxb7h PIV AUTH pubkey
+    - cleaned up most of the stuff generated in ~/.ssh by moving it into ~/.ssh/OBSOLETE
+    - added new PIV key to adbc Ansible and verified access to
+      sigwaitinfo, bounce, kcmp, ioctl, smtp, getrandom
+  - tl;dr adding SSH keys to agent
+    ssh-add -s /usr/lib64/opensc-pkcs11.so
+    ssh-add ~/.ssh/linus:YK5C-31
+  - bounce.adbc is not running ansible since 2020-09-16 (missing ansible-pull)            
+
+** <2023-04-22 Sat>
 - TTL for CNAME git.adbc lowered to 120 (was 21600, 6h) at 09:14
   - the idea is to simply point git.adbc to git.sigsum
   - but the gitolite config made me change my mind and instead cherry-pick a few repos, see below
@@ -28,15 +120,27 @@ progress
   - ran the wrapper on dup, saw the change in ssh_config, tested ssh ansible-git and ran the wrapper again
     - "hello adbc-ansible, this is git@getuid running gitolite3 3.6.12-1 (Debian) on git 2.30.2"
     - thanks to sshfp records for getuid.sigsum, this works fine
-  - verified the following systems
-    dup
-    kcmp
+  - verified the following systems: dup, kcmp
   - getgid.adbc hasn't run ansible since 2021-03-29, ansible-pull is not installed
 
 - readahead: created directories for april through june
    506  for f in 05 06; do mkdir /var/db/noisydiode.local/rev11_n2/2023/$f && chown -R _ndAC01TGFO:_ndAC01TGFO /var/db/noisydiode.local/rev11_n2/2023/$f; done
    507  for f in 04 05 06; do mkdir /var/db/noisydiode.local/rev10_n1/2023/$f && chown -R _ndAC01TGFP:_ndAC01TGFP  /var/db/noisydiode.local/rev10_n1/2023/$f; done
 - recv: restarted gather for rev11_n2
+
+- leguin config
+  - git clone a bunch of repos, like linus/linus
+  - flatpak
+    - sudo dnf install fedora-flathub-remote && flatpak remote-add --if-not-exists fedora oci+https://registry.fedoraproject.org && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      - https://pagure.io/fedora-flathub-filter
+      - https://developer.fedoraproject.org/deployment/flatpak/flatpak-usage.html
+    - flatpak install org.signal.Signal
+    - flatpak install im.riot.Riot
+    - flatpak install com.github.com.tchx84.Flatseal # From remote fedora
+  - swedish keyboard input
+  - updated firmware using fwupdmgr
+    - uefi dbx: 211 -> 220
+    - system fw: 1.7.1 -> 2.1.0
 
 ** <2023-04-21 Fri>
 - [ ] informed kai about morten working with him from TBD and for at least four weeks

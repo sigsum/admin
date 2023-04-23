@@ -8,6 +8,31 @@ case $- in
       *) return;;
 esac
 
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS_ID=$ID
+fi
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+	for rc in ~/.bashrc.d/*; do
+		if [ -f "$rc" ]; then
+			. "$rc"
+		fi
+	done
+fi
+unset rc
+
+## TODO: move all below into ~/.bashrc.d
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -17,7 +42,6 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
-#HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -104,13 +128,14 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+# if ! shopt -oq posix; then
+#   if [ -f /usr/share/bash-completion/bash_completion ]; then
+#     . /usr/share/bash-completion/bash_completion
+#   elif [ -f /etc/bash_completion ]; then
+#     . /etc/bash_completion
+#   fi
+# fi
+
 ####################
 # Linus stuff
 if [ $UID = 0 ]; then PROMPTCHAR="#"; else PROMPTCHAR="%"; fi
@@ -140,23 +165,24 @@ LC_TIME=C; export LC_TIME
 #}
 
 # This effectively makes gpg-agent the only ssh-agent. Not so good.
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # pinentry uses this:
 #export GPG_TTY=$(tty)
 
+# TODO: move this secret out of this file
 export TR_AUTH=transmission:QlYnyQvUbpziM3qMIrMsBQHuEfceYDCl
 
 # For pass(1), on Wayland+Sway+foot. Default xclip "selection" is
 # clipboard but that clipboard is not the same clipboard as what
 # Wayland (or Sway, or foot) is using. Using primary makes it possible
 # to paste with middle mouse button though and that will have to do.
-export PASSWORD_STORE_X_SELECTION=primary
+#export PASSWORD_STORE_X_SELECTION=primary
 
 export GOPATH="$HOME/usr/go"
 export WORKON_HOME="$HOME/.virtualenvs"
 export GNUPGHOME="$HOME/.gnupg"
-export EDITOR=/bin/emacs
+export EDITOR=/usr/bin/emacs
 
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/usr/bin" ] && export PATH="$HOME/usr/bin:$PATH"
@@ -164,7 +190,12 @@ export EDITOR=/bin/emacs
 [ -d "$HOME/usr/games" ] && export PATH="$PATH:$HOME/usr/games" # For gtetrinet
 [ -d "$HOME/.cache/rebar3/bin" ] && export PATH="$PATH:$HOME/.cache/rebar3/bin"
 [ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
-#[ -d "/usr/lib/go-1.18/bin" ] && export PATH="$PATH:/usr/lib/go-1.18/bin"
-[ -d "/usr/lib/go-1.19/bin" ] && export PATH="$PATH:/usr/lib/go-1.19/bin"
 [ -d "$GOPATH/bin" ] && export PATH="$GOPATH/bin:$PATH"
 [ -r "$HOME/.opam/opam-init/init.sh" ] && source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
+
+case $OS_ID in
+    debian)
+	[ -d "/usr/lib/go-1.19/bin" ] && export PATH="$PATH:/usr/lib/go-1.19/bin"
+	;;
+esac
+
