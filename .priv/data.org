@@ -1,0 +1,151 @@
+* status 2023-04-14
+- PGP key (on YK-nano) is needed for
+  - encrypted email -- not necessary for the upcoming trip
+  - signing stuff -- not necessary for the upcoming trip
+  - pass -- will need some of these secrets; TODO: move to new passage stores
+    - private
+      - root access
+        - vm86
+    - sigsum
+    - tpa
+  - imap and smtp passphrases in ~/.authinfo.gpg -- TODO: re-encrypt in another key
+
+- SSH keys
+  - main key (on YK-nano)
+    - host access (adbc, sigsum, tpa)
+    - git access
+
+- tstick in ~/.priv/tstick.img (listing only things of *current* interest)
+  - ssh config
+  - SSH keys
+    - adbc for git
+    - github
+    - ndn, ndn-rsa
+  - .priv/passphrases-travel.gpg
+
+- ostick in ~/.priv/ostick.img
+  - .gnupg, current -- should not be needed if we 1) move pass to new
+    passage stores and 2) re-encrypt ~/.authinfo in another key
+
+- YKH1 static passphrase for
+  - besk
+    - login
+    - hdd
+    - root
+    - tstick.img
+    - ostick.img
+  - PGP key PIN
+  - SSH main key PIN
+
+- YKII static passphrase for
+  - offline backups
+  - maatuska
+
+- YK-neo OATH
+  - for access to web services, some required, all ok to bring
+
+* Security keys
+
+| name      | iProduct                 | serial decimal | serial hex | bcdDevice | idProduct                       | ykman list                              |   |
+|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------+---|
+| YKII      | Yubico Yubikey II        |         509124 |    0x7C4C4 |           |                                 |                                         |   |
+| YKH1      | Yubico Yubikey II        |        1077263 |   0x10700F |           |                                 |                                         |   |
+| YKX       | Yubico Yubikey II        |        1077281 |   0x107021 |           |                                 |                                         |   |
+|           | Yubico Yubikey II        |        1077282 |            |      2.23 | 0x0010 Yubikey (v1 or v2)       | YubiKey Standard (2.2.3) [OTP]          |   |
+| YKIII     | Yubikey NEO OTP+CCID     |        1970350 |   0x1E10AE |           |                                 |                                         |   |
+| CT        | Yubikey NEO CCID         |              ? |            |      3.20 | 0x0112 Yubikey NEO(-N) CCID     | -                                       |   |
+|           |                          |        3035366 |            |           |                                 | YubiKey NEO (3.3.3) [OTP+CCID]          |   |
+| YK-neo    | Yubikey NEO OTP+U2F+CCID |        3037390 |   0x2E58CE |           |                                 |                                         |   |
+| YK-nano   | Yubikey 4 CCID           |        4156811 |   0x3F6D8B |           |                                 |                                         |   |
+|           |                          |        4156828 |            |      4.28 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 4 (4.2.8) [OTP+FIDO+CCID]       |   |
+| YK-orange |                          |        4539914 |            |           |                                 | YubiKey 4 (4.2.7) [OTP+FIDO+CCID]       |   |
+|           | YubiKey OTP+FIDO+CCID    |       10124574 |            |      5.12 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.1.2) [OTP+FIDO+CCID] |   |
+| YK5C-31   | YubiKey OTP+FIDO+CCID    |       16383131 |   0xF9FC9B |      5.43 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.4.3) [OTP+FIDO+CCID] |   |
+| YK5C-xx   |                          |                |            |           |                                 |                                         |   |
+|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------+---|
+
+
+* the april/may travel
+
+** plan
+- Travel with a laptop that is not besk, to bring as little as possible
+- [X] which laptop to use? new white laptop with fresh fedora37
+  - new white one with fedora37?
+  - reinstalled besk?
+  - some other hardware with bullseye?
+  - some other hardware with fedora37?
+- leave YK-nano with pgp and ssh keys behind
+- bring YK-neo for OATH-TOTP access to many web services
+- set up and bring new yubikey (YK5C-31) with new
+  - EC key (PIV)
+    - passage stores
+  - ed25519-sk key for SSH (FIDO2 https://developers.yubico.com/SSH/)
+    - shell access to systems needed while away
+    - git access to repos needed while away
+  - pgp key (GPG)
+    - encrypting ~/.authinfo
+
+
+** TODO before travelling on 2023-04-24 [2/9]
+- [X] leguin installed with Fedora-Sway-Live-x86_64-38_Beta-1.3
+- [ ] wg set up
+- [ ] new PGP key
+  - to use for
+    - encrypting ~/.authinfo
+    - signing ansible repos
+  - [ ] on a yubikey or just on disk?
+    - can it coexist with passage key on YK5C-31?
+    - [ ] generate on-device?
+    - [ ] backup where?
+- [-] new SSH key on a yubikey
+  - to add to hosts and git repos needed on the trip
+  - can it coexist with passage key on YK5C-31?
+  - [X] use a  Non-Discoverable ed25519 FIDO2 key (PIV app?)
+    - ssh-keygen -t ed25519-sk
+  - [ ] note that sshd < 8.2p1 will not accept this key, will that be
+    a problem for access to kcmp, git.adbc and more? yes, kcmp is at
+    OpenSSH_7.9p1, so let's either
+    - create an RSA key as well, for those hosts specifically, or
+    - move git.adbc to a linux vm on vm86 and just ignore all other hosts (NOTE: this will not solve access to imap)
+  - [X] maybe operate on besk, for easy deployment of pubkey
+    - no, to avoid exposing the key passphrase to besk
+- [ ] new private passage store, using keys on two fresh yubikeys
+  - yubikeys
+    - YK5C-31 to keep inserted in laptop
+    - YK5C-xx to keep on keychain
+  - https://words.filippo.io/dispatches/passage/
+  - [ ] age or rage installed
+  - [ ] age-plugin-yubikey installed
+    - since the plugin is in rust, we'll need cargo anyway so let's go for rage
+    - sudo apt install cargo pcscd libpcsclite-dev
+    - hmm, cargo --version says 1.46.0 while https://github.com/str4d/age-plugin-yubikey says Rust 1.65+
+    - so let's do this on new laptop with fedora37 instead
+  - [ ] key 1 generated and added to store
+  - [ ] key 2 generated and added to store
+  - [ ] key 2 (?) typed to paper backup or encrypted and printed
+  - [ ] secrets necessary for travel moved from private pass store (besk:~/.password-store/)
+  - [ ] the rest of the secrets on private pass store moved to subdirectory/ies with only YK5C-xx in .age-recipients
+- [ ] new sigsum/glasklar passage store using YK5C-31 and YK5C-xx
+  - [ ] moved secrets from sigsum store (besk:~/p/sigsum/passdb) to
+    new passage store, separating ok-to-travel keys from more
+    sensitive keys
+- [X] update static secret on YKX
+  - back up current secrets on paper
+  - generate new secrets for both banks (so we can use second bank if we blow the first, without needing any config)
+- [ ] remove papers with secret from wallet and bag
+- [ ] remove from keychain
+  - most physical keys
+  - YK5C-xx
+- [ ] make sure to bring
+  - leguin, with charger
+  - YK5C-31
+  - YK-neo (with USB A->C converter)
+  - YKX (with USB A->C converter)
+  - USB hub with
+    - USB-C male contact
+    - 2-4 USB-A female
+    - 1-2 USB-C female
+  - paper backup of
+    - FDE passphrase
+    - linus passphrase
+    - YKX static
