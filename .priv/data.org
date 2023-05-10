@@ -46,27 +46,25 @@
 
 * Security keys
 
-| name      | iProduct                 | serial decimal | serial hex | bcdDevice | idProduct                       | ykman list                              |   |
-|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------+---|
-| YKII      | Yubico Yubikey II        |         509124 |    0x7C4C4 |           |                                 |                                         |   |
-| YKH1      | Yubico Yubikey II        |        1077263 |   0x10700F |           |                                 |                                         |   |
-| YKX       | Yubico Yubikey II        |        1077281 |   0x107021 |           |                                 |                                         |   |
-|           | Yubico Yubikey II        |        1077282 |            |      2.23 | 0x0010 Yubikey (v1 or v2)       | YubiKey Standard (2.2.3) [OTP]          |   |
-| YKIII     | Yubikey NEO OTP+CCID     |        1970350 |   0x1E10AE |           |                                 |                                         |   |
-| CT        | Yubikey NEO CCID         |              ? |            |      3.20 | 0x0112 Yubikey NEO(-N) CCID     | -                                       |   |
-|           |                          |        3035366 |            |           |                                 | YubiKey NEO (3.3.3) [OTP+CCID]          |   |
-| YK-neo    | Yubikey NEO OTP+U2F+CCID |        3037390 |   0x2E58CE |           |                                 |                                         |   |
-| YK-nano   | Yubikey 4 CCID           |        4156811 |   0x3F6D8B |           |                                 |                                         |   |
-|           |                          |        4156828 |            |      4.28 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 4 (4.2.8) [OTP+FIDO+CCID]       |   |
-| YK-orange |                          |        4539914 |            |           |                                 | YubiKey 4 (4.2.7) [OTP+FIDO+CCID]       |   |
-|           | YubiKey OTP+FIDO+CCID    |       10124574 |            |      5.12 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.1.2) [OTP+FIDO+CCID] |   |
-| YK5C-31   | YubiKey OTP+FIDO+CCID    |       16383131 |   0xF9FC9B |      5.43 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.4.3) [OTP+FIDO+CCID] |   |
-| YK5C-xx   |                          |                |            |           |                                 |                                         |   |
-|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------+---|
-
+| name      | iProduct                 | serial decimal | serial hex | bcdDevice | idProduct                       | ykman list                              |
+|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------|
+| YKII      | Yubico Yubikey II        |         509124 |    0x7C4C4 |           |                                 |                                         |
+| YKH1      | Yubico Yubikey II        |        1077263 |   0x10700F |           |                                 |                                         |
+| YKX       | Yubico Yubikey II        |        1077281 |   0x107021 |           |                                 |                                         |
+|           | Yubico Yubikey II        |        1077282 |            |      2.23 | 0x0010 Yubikey (v1 or v2)       | YubiKey Standard (2.2.3) [OTP]          |
+| YKIII     | Yubikey NEO OTP+CCID     |        1970350 |   0x1E10AE |           |                                 |                                         |
+| CT        | Yubikey NEO CCID         |              ? |            |      3.20 | 0x0112 Yubikey NEO(-N) CCID     | -                                       |
+|           |                          |        3035366 |            |           |                                 | YubiKey NEO (3.3.3) [OTP+CCID]          |
+| YK-neo    | Yubikey NEO OTP+U2F+CCID |        3037390 |   0x2E58CE |           |                                 |                                         |
+| YK-nano   | Yubikey 4 CCID           |        4156811 |   0x3F6D8B |           |                                 |                                         |
+|           |                          |        4156828 |            |      4.28 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 4 (4.2.8) [OTP+FIDO+CCID]       |
+| YK-orange |                          |        4539914 |            |           |                                 | YubiKey 4 (4.2.7) [OTP+FIDO+CCID]       |
+|           | YubiKey OTP+FIDO+CCID    |       10124574 |            |      5.12 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.1.2) [OTP+FIDO+CCID] |
+| YK5C-47   | YubiKey OTP+FIDO+CCID    |       15427547 |            |      5.27 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C NFC (5.2.7) [OTP+FIDO+CCID]  |
+| YK5C-31   | YubiKey OTP+FIDO+CCID    |       16383131 |   0xF9FC9B |      5.43 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.4.3) [OTP+FIDO+CCID] |
+|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------|
 
 * the april/may travel
-
 ** plan
 - Travel with a laptop that is not besk, to bring as little as possible
 - [X] which laptop to use? new white laptop with fresh fedora37
@@ -85,47 +83,68 @@
   - pgp key (GPG)
     - encrypting ~/.authinfo
 
-
-** TODO before travelling on 2023-04-24 [2/9]
+** TODO before travelling on 2023-04-24 [6/11]
 - [X] leguin installed with Fedora-Sway-Live-x86_64-38_Beta-1.3
-- [ ] wg set up
-- [ ] new PGP key
+- [X] wg set up
+- [X] netfilter set up
+- [X] new PGP key
   - to use for
     - encrypting ~/.authinfo
     - signing ansible repos
-  - [ ] on a yubikey or just on disk?
+  - [X] on a yubikey or just on disk?
     - can it coexist with passage key on YK5C-31?
-    - [ ] generate on-device?
-    - [ ] backup where?
-- [-] new SSH key on a yubikey
+    - [X] generate on-device?
+      - yes
+    - [X] backup where?
+      - no backup
+- [X] new SSH key on a yubikey
   - to add to hosts and git repos needed on the trip
   - can it coexist with passage key on YK5C-31?
   - [X] use a  Non-Discoverable ed25519 FIDO2 key (PIV app?)
     - ssh-keygen -t ed25519-sk
-  - [ ] note that sshd < 8.2p1 will not accept this key, will that be
+  - [X] note that sshd < 8.2p1 will not accept this key, will that be
     a problem for access to kcmp, git.adbc and more? yes, kcmp is at
     OpenSSH_7.9p1, so let's either
     - create an RSA key as well, for those hosts specifically, or
     - move git.adbc to a linux vm on vm86 and just ignore all other hosts (NOTE: this will not solve access to imap)
   - [X] maybe operate on besk, for easy deployment of pubkey
     - no, to avoid exposing the key passphrase to besk
-- [ ] new private passage store, using keys on two fresh yubikeys
+- [-] new private passage store, using keys on two fresh yubikeys
   - yubikeys
     - YK5C-31 to keep inserted in laptop
-    - YK5C-xx to keep on keychain
+    - YK5C-47 to keep on keychain
   - https://words.filippo.io/dispatches/passage/
-  - [ ] age or rage installed
-  - [ ] age-plugin-yubikey installed
+  - [X] age-plugin-yubikey installed
     - since the plugin is in rust, we'll need cargo anyway so let's go for rage
     - sudo apt install cargo pcscd libpcsclite-dev
     - hmm, cargo --version says 1.46.0 while https://github.com/str4d/age-plugin-yubikey says Rust 1.65+
-    - so let's do this on new laptop with fedora37 instead
-  - [ ] key 1 generated and added to store
-  - [ ] key 2 generated and added to store
-  - [ ] key 2 (?) typed to paper backup or encrypted and printed
+    - so let's do this on new laptop with fedora38 instead
+      - sudo dnf install cargo pcsc-lite-devel
+	- gives rust-1.68.2
+      - cargo install age-plugin-yubikey
+	- bulding 281 crates
+  - [X] key generated on YK5C-31
+    - ran ~/.cargo/bin/age-plugin-yubikey, full output in [[file:age.md][age.md]]
+      - PIN and PUK was being set (8 characters)
+	- seems like the management key was set too, based on PIN
+      - new file: age-yubikey-identity-1f5dda61.txt
+      - new recipient: age1yubikey1qgad8tvv2y97zflqndlnms0ajtk7my54u9299v6ep5jrgpm08rtdjt6sus7
+  - [X] key generated on YK5C-47, see [[file:age.md::Setting up YK5C-47, the large with NFC]]
+  - [X] age or rage installed
+    - cargo install rage
+  - [X] passage installed
+    - see [[file:~/hints.org::*passage][passage]]
+  - private passage store set up
+    mkdir -m 0700 -p ~/.passage/store
+    echo 'export PASSAGE_AGE=$HOME/.cargo/bin/rage' >> ~/bashrc.d/50-passage && . ~/.bashrc.d/50-passage
+  - key in YK5C-31 added
+    age-plugin-yubikey --identity --serial 16383131 --slot 1 >> ~/.passage/identities
+    age-plugin-yubikey --list --serial 16383131 --slot 1 >> ~/.passage/store/.age-recipients
+  - key in YK5C-47 added as a recipient
+    age-plugin-yubikey --list --serial 15427547 --slot 1 >> ~/.passage/store/.age-recipients
   - [ ] secrets necessary for travel moved from private pass store (besk:~/.password-store/)
-  - [ ] the rest of the secrets on private pass store moved to subdirectory/ies with only YK5C-xx in .age-recipients
-- [ ] new sigsum/glasklar passage store using YK5C-31 and YK5C-xx
+  - [ ] the rest of the secrets on private pass store moved to subdirectory/ies with only YK5C-47 in .age-recipients
+- [ ] new sigsum/glasklar passage store using YK5C-31 and YK5C-47
   - [ ] moved secrets from sigsum store (besk:~/p/sigsum/passdb) to
     new passage store, separating ok-to-travel keys from more
     sensitive keys
@@ -135,7 +154,7 @@
 - [ ] remove papers with secret from wallet and bag
 - [ ] remove from keychain
   - most physical keys
-  - YK5C-xx
+  - YK5C-47
 - [ ] make sure to bring
   - leguin, with charger
   - YK5C-31
@@ -149,3 +168,94 @@
     - FDE passphrase
     - linus passphrase
     - YKX static
+* How to use they keys on YK5C-31
+** The keys we're using
+- gpg signature, for signing ansible
+- gpg encryption/decryption, for decrypting ~/.authinfo
+- gpg authentication, not used
+- piv
+
+** The applets
+*** gpg --card-status
+Reader ...........: Yubico YubiKey OTP FIDO CCID 00 00
+Application ID ...: D2760001240100000006163831310000
+Application type .: OpenPGP
+Version ..........: 3.4
+Manufacturer .....: Yubico
+Serial number ....: 16383131
+Name of cardholder: [not set]
+Language prefs ...: [not set]
+Salutation .......:
+URL of public key : [not set]
+Login data .......: [not set]
+Signature PIN ....: not forced
+Key attributes ...: rsa4096 rsa4096 rsa4096
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 0 0 1
+Signature counter : 15
+KDF setting ......: off
+UIF setting ......: Sign=off Decrypt=off Auth=off
+Signature key ....: 54FA 51FA 8A52 FF7C F9BB  356E 63F5 59D7 BACC 2007
+      created ....: 2023-04-23 08:07:32
+Encryption key....: 03F6 2883 E731 A829 00D8  E086 5A71 C943 F548 E0AB
+      created ....: 2023-04-23 08:07:32
+Authentication key: 9060 B23C 66B7 58E6 2643  33D7 B48C 1766 09ED A680
+      created ....: 2023-04-23 08:07:32
+General key info..: pub  rsa4096/63F559D7BACC2007 2023-04-23 Linus Nordberg
+sec>  rsa4096/63F559D7BACC2007  created: 2023-04-23  expires: never
+                                card-no: 0006 16383131
+ssb>  rsa4096/B48C176609EDA680  created: 2023-04-23  expires: never
+                                card-no: 0006 16383131
+ssb>  rsa4096/5A71C943F548E0AB  created: 2023-04-23  expires: never
+                                card-no: 0006 16383131
+*** PIV
+If you get "Failed to connect to yubikey: Error in PCSC call.", restart pcscd: sudo systemctl restart pcscd
+
+
+*** yubico-piv-tool -a status
+Version:        5.4.3
+Serial Number:  16383131
+CHUID:  No data available
+CCC:    No data available
+Slot 9a:
+        Algorithm:      RSA2048
+        Subject DN:     CN=linus 5C31 PIV SSH key
+        Issuer DN:      CN=linus 5C31 PIV SSH key
+        Fingerprint:    4fd527d03dc6b17b108961320895c307301ad886f455fb1c821fb4521ef67d8a
+        Not Before:     Apr 23 10:18:21 2023 GMT
+        Not After:      Apr 22 10:18:21 2024 GMT
+Slot 82:
+        Algorithm:      ECCP256
+        Subject DN:     O=age-plugin-yubikey, OU=0.4.0, CN=passage
+        Issuer DN:      O=age-plugin-yubikey, OU=0.4.0, CN=passage
+        Fingerprint:    7677a15adabdfceaf459b54b437dbec4f519681c83d0fde188ad076404926213
+        Not Before:     Apr 23 15:12:08 2023 GMT
+        Not After:      Dec 31 23:59:59 9999 GMT
+PIN tries left: 3
+
+
+
+
+*** SSH
+For both methods presented below, use the PIV PIN when being prompted
+for a PKCS#11 passphrase.
+
+For FIDO keys, use ssh-add -S (note: capital s) to make ssh-agent uses
+the libykcs11.so.2 library for FIDO keys.
+TODO: Check if this is really needed, or if 
+
+leguin:~% ssh-add .ssh/linus:YK5C-31
+Enter passphrase for .ssh/linus:YK5C-31:
+Identity added: .ssh/linus:YK5C-31 (linus:YK5C-31)
+leguin:~% ssh-add -l
+256 SHA256:l0DNt3W2Glpnl5vsXKSr2h3bbxx3pzYdoVXuYZCXyWQ linus:YK5C-31 (ED25519-SK)
+
+For PIV keys, use ssh-add -s to add the keys provided by the
+opensc-pkcs11.so library.
+
+leguin:~% ssh-add -s /usr/lib64/opensc-pkcs11.so
+Enter passphrase for PKCS#11:
+Card added: /usr/lib64/opensc-pkcs11.so
+leguin:~% ssh-add -l
+2048 SHA256:XShT6OD6OQKjTcny6JpTpa7WYqVesnWTPiFdrwEgVto PIV AUTH pubkey (RSA)
+2048 SHA256:xTvnJRQbsbVaruXg2pxqDfMrQIU0+jBzhBaLirA1P3s SIGN pubkey (RSA)
