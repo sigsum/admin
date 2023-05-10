@@ -7,7 +7,220 @@
 follow = read email, irc, tickets, blog posts in order to follow the
 progress
 
+* May 2023
+Vacation: 2-5, 8-9 -- 6 days (5 glasklar)
+
+** <2023-05-10 Wed>
+- PGP app on yubikeys
+  - inserting old nano with gpg key, aka YK-nano, makes gpg find that one instead of the already plugged YK5C-31
+  - removing old nano makes gpg not find any card
+  - restarting linus' gpg-agent (systemctl --user restart gpg-agent) doesn't change anything
+  - restarting system pcscd (systemctl restart pcscd) makes gpg find YK5C-31 again
+  - inserting old nano again does not change anything this time
+  - can i make gpg or gpg-agent use a certain card?
+- leguin
+  - set TZ by timedatectl set-timezone Europe/Stockholm
+  - install aspell-sv
+- held ST weekly
+  - kai on SMM
+    - disabling SMM, like coreboot does => won't have uefi variables and some other things
+    - SMM is run on the host CPU, other ring0 applications can interrupt into SMM
+    - SMM is like FIXME in riscV
+
+- [ ] pixel 5
+  - cleaned the usb port, maybe it's just dirt
+  - installed calyxos
+  - installed fdroid
+  - maybe installed aurora
+
+** <2023-05-06 Sat>
+- changed default foot font size to 10
+- on the topic of a new phone for M
+  - found https://www.shiftphones.com/en/shiftphone-8-status-page/ through calyxos
+  - talked to nickcalyx about phones, and the fairphone is clunky (thick) and shift6 is quite old
+  - calyxos is targeting some cheap motorola phones, but not yet
+  - i think there's a pixel 4 at home, which i could install calyxos on
+
+** <2023-05-05 Fri>
+- helped rgdd out with getting usb passthrough to tee.so back after hw
+  usb yubihsm eject and insert
+
+** <2023-05-04 Thu>
+- installed jq on symlink.vdse
+- 
+
+** <2023-05-02 Tue>
+- leguin upgrades, seems we're on fedora38 proper now; reboot required when re-login didn't cut it for login-related things (four services iirc)
+- linus deklaration 2022
+  - skatteuträkningen ger 84582 i restskatt
+  - inkomster kr (avdragen skatt, kr)
+    - lön 830238
+      - försäkringskassan 2147 (589)
+      - stockholms kommun 178248 (53472)
+      - vetenskapsrådet 105594 (22385)
+      - verkligen data ab 543249 (134274)
+    - kostnadsersättningar 31596
+      - stockholms kommun 31596
+    - kapital schablon 21215
+      - inte säker på vad det här är, men tror jag såg ngt om det tidigare
+    - ränteinkomster, utdelningar 2413
+  - 25,3% skatt inbetalad under året
+    210720 830238/p
+    .253
+  - lägger man till restskatten så blir det 35,5%, låter inte orimligt alls
+    210720 84582+ 830238/p
+    .355
+  - fyllde i K10 [[file:.priv/ekonomi/2022 K10.pdf][file:~/.priv/ekonomi/2022 K10.pdf]]
+    - allmäna uppgifter
+      - valde förenklingsregeln
+      - antal andelar 500 / 500
+    - förenklingsregeln
+      - utdelning 0
+      - två nollor (i 1.4 och 1.10)
+  - skatteuträkning [[file:.priv/ekonomi/2022 Skatteuträkning.pdf][file:~/.priv/ekonomi/2022 Skatteuträkning.pdf]]
+    - restskatt 84582
+  - kvittens [[file:.priv/ekonomi/2022 Inkomstdeklaration kvittens.pdf][file:~/.priv/ekonomi/2022 Inkomstdeklaration kvittens.pdf]]
+  
+
+- bumps on wires
+  - stumbled over another "bump on the wire", admittedly rather large for a bump
+    https://www.direktronik.se/direktronik/natverk/kvm-switcharextenders/kvm-forlangningip-remote/kvm-switch-over-ip-full-hd/
+  - and here's the kickstarter thing mentioned in Kamel Lobby (Matrix) earlier
+    https://pikvm.org/
+
 * April 2023
+** <2023-04-30 Sun>
+- M testad för covid, negativt, 08:30
+- our emacs crash
+  - looks very much like https://bugzilla.redhat.com/show_bug.cgi?id=2182529
+  - was thinking of building emacs from source (git clone --depth 50 https://git.savannah.gnu.org/git/emacs.git/) but
+    - found Ä200~https://lists.gnu.org/archive/html/bug-gnu-emacs/2022-03/msg01329.htmlÄ201~ reporting something similar in 29.0.90
+    - found Ä200~https://lists.gnu.org/archive/html/bug-gnu-emacs/2023-03/msg00367.htmlÄ201~ reporting the very same bug in 28.2 on arch
+  - and now i doubt that building 28.2 from source would help
+  - we could try running emacs -nw and see if it's bareable, but
+    - cut'n'paste is painful -- control characters are being inserted
+    - switching to another window and back inserts "ÄOÄI" into the file visited
+    - Ctrl-\ needed for tmux is caught by emacs (toggle-input-method)
+    - the latter two problems seem to disappear when running under tmux, but cut'n'paste is still the same
+  - let's also try running emacs under gdb in order to figure out more
+    - that shows to be harder than anticipated -- gdb keep crashing due to corrupt debug files
+- upgraded packages on link.vdse, including kernel so reboot too
+  - mostly to figure out what's new in bullseye, still not sure if the previous kernel (5.10.162-1) has security issues though
+- mail-01 came up after reboot, but with empty mailboxes
+  - /var/vol/vmail1 should be mounted but is not
+root@mail-01:~# tail -1 /etc/fstab
+UUID=315405c3-a0fa-44ae-b071-437762cad598 /var/vol/vmail1 ext4 defaults 0 2
+root@mail-01:~# mount|rg vmail
+root@mail-01:~# 
+  - systemd says it did mount it
+May 01 00:48:13 mail-01 systemd[1]: Finished File System Check on /dev/disk/by-uuid/315405c3-a0fa-44ae-b071-437762cad598.
+May 01 00:48:13 mail-01 systemd[1]: var-vol-vmail1.mount: Directory /var/vol/vmail1 to mount over is not empty, mounting anyway.
+May 01 00:48:13 mail-01 systemd[1]: Mounting /var/vol/vmail1...
+  - after mount -a
+root@mail-01:/opt/mailcow-dockerized# systemctl status var-vol-vmail1.mount
+● var-vol-vmail1.mount - /var/vol/vmail1
+     Loaded: loaded (/etc/fstab; generated)
+     Active: active (mounted) since Mon 2023-05-01 01:30:07 CEST; 15min ago
+      Where: /var/vol/vmail1
+       What: /dev/mapper/vmail-vmail1
+       Docs: man:fstab(5)
+             man:systemd-fstab-generator(8)
+        CPU: 1ms
+  - skimming doc for systemd-fstab-generator, systemd.mount and mount
+    makes me think we should have our own unit file for better control
+    -- we want proper fail
+- secondary log (-01) didn't start as expected
+  - mariadb on -01 won't let sigsum@localhost access the db
+    - also noise in the logfile on -02 about root@localhost and netdata@localhost
+    - mariadb was upgraded 5.10.18 -> 5.10.19
+    - no explanation for this in https://mariadb.com/kb/en/mariadb-10-5-19-changelog/
+    - but this is not the issue
+  - the database has no tree's:
+    root@logsrv-01:~# echo 'select count(*) from Trees' | mariadb ghost_shrimp
+    count(*)
+    0
+  - how did the database become empty?
+    2023-05-01 01:18:11,517 p=5257 u=root n=ansible | TASK [sigsum.ansible.sigsum : check if database exists] ************************
+    2023-05-01 01:18:11,796 p=5257 u=root n=ansible | changed: [logsrv-01.sigsum.org]
+    2023-05-01 01:18:11,804 p=5257 u=root n=ansible | TASK [sigsum.ansible.sigsum : Initiate db without password] ********************
+    2023-05-01 01:18:13,906 p=5257 u=root n=ansible | changed: [logsrv-01.sigsum.org]
+  - the easiest way to get this up is to start over -- it's a secondary after all
+    sudo mv ~sigsum/.config/sigsum/ghost-shrimp/ ~sigsum/.config/sigsum/ghost-shrimp.$(date +%s)
+    sudo ansible-my-wrapper
+    - copy new pubkey to primary
+      root@logsrv-01:~# cat ~sigsum/.config/sigsum/ghost-shrimp/logkey.pub
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAiEEKpWqIQ4qdips2zOoiMLdGm0iS/mGhLYRZBN/Q/L sigsum key
+      root@logsrv-02:~# cat > ~sigsum/.config/sigsum/ghost-shrimp/secondary-pubkey
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAiEEKpWqIQ4qdips2zOoiMLdGm0iS/mGhLYRZBN/Q/L sigsum key
+      root@logsrv-02:~# systemctl restart sigsum-log-primary@ghost-shrimp
+
+** <2023-04-28 Fri>
+- found out we're missing p/adb-centralen at git@so, that's lame
+  - missing the info on how we delisted from that MS disallowlist
+- delisting 91.223.231.12 (mail-01.sigsum.org) from MS S3150
+  - submitting a form at https://olcsupport.office.com/ (found at https://postmaster.live.com/pm/troubleshooting.aspx)
+  - support request number is 7016747580
+  - reply to standard email sent at 13:43 [[file:email-S3150-unblock-attempt.txt][file:~/email-S3150-unblock-attempt.txt]]
+- set leguin tz using timedatectl set-timezone America/Costa_Rica
+- sent pgp fpr to emma, for signing party later today  
+- talked to paul about sauteed -- can/could the service accept onion and return DNS?
+  - a sauteed cert doesn't provide authenticated mapping onion -> DNS, only the other way
+  - would a list of all sauteed onion certs listing a given onion be useful for anything?
+    - if the cert for www.torproject.org lists its onion (TPO.onion), it would show up in a search for TPO.onion
+    - but what would a browser do with a list of DNS names whos owner have chosen to list a given onion in their sauteed cert?
+    - 
+
+- one SEK is about 53 CRC https://www.google.com/finance/quote/SEK-CRC
+- tor CR -- tor network big changes
+  - congestion control
+  - conflux
+    - two paths ("legs") to the destination
+    - send on the one with the lowest RTT
+
+- key signing party
+  - my fpr: 8C4C D511 095E 982E B0EF BFA2 1E8B F349 2329 1265
+  - got the file from emma (originally named ksp-file.txt): [[file:tor-cr-keyfile.txt][file:~/tor-cr-keyfile.txt]]
+  - my fpr matches what's in the file
+  - checksums of the file
+    - SHA256: B507BD7C A7DBD02B C62661CD 3E1705BF 26EF88BA E622B204 2486039B 6DCE37D2
+    - RIPEMD160: 3AE7 0550 2799 33E7 BB1C  37B0 B338 1286 A5E5 0BEB
+  - annotated ~/tor-cr-keyfile-annotated.txt
+
+** <2023-04-26 Wed>
+- resolving doesn't really work well
+  - f.ex. i see blocked outgoing udp to 5353 which sounds like systemd-resolved
+  - disabled systemd-resolved and created a resolv.conf with the following
+    printf "nameserver 127.0.0.1\noptions edns0 trust-ad\n" > /etc/resolv.conf
+  - but at next restart netman had overwritten it of course
+    - printf "[main]\ndns=none\n" > /etc/NetworkManager/conf.d/50-dns.conf
+
+- YK5C-31 PGP
+  - we need it for
+    - 1) decrypting .authinfo
+    - 2) sign adbc ansible
+  - the PIN
+    - might be the "YK5C-31 PGP keys"
+    - is at retry count 0, which means it's being blocked so it doesn't really matter what it is
+  - the admin PIN
+    - is at retry count 1, so we have one single chance of entering it
+    - is not one of
+      - the "YK5C-31 PGP keys"
+      - the unnamed below, on the "*" note      
+  - we can work around some of our needs
+    - 1) change email password by for
+      - adbc: logging in to kexec and run kadmin
+      - sunet: change password on imap2.sunet.se somehow
+      - glasklar: 
+    - 2) log in to each system and update 
+
+** <2023-04-25 Tue>
+- /usr/share/sway/config.d/90-swayidle.conf is where the screenlock is set up
+- /etc/xdg/waybar/config is where the sway-bar / waybar is configured
+  - waybar(5) is useful  
+
+** <2023-04-24 Mon>
+- emacs still crashing one time out of N when starting up, see [[file:emacs-crash.txt][file:~/emacs-crash.txt]]
+
 ** <2023-04-23 Sun>
 - vm86 runs ansible branch bookworm which does not have my new ssh key
   - cherry-picked the commit with new key, plus the commit changing ssh host ansible-git to point at ansible.adbc
@@ -15,7 +228,6 @@ progress
 - verified new ansible source for the following systems:
   - vdse: ns, bpf, link, mx-01, ns, sauterad, symlink, vm86
   - adbc: dup, kexec, nice, prctl, vmsplice
-
 - leguin config
   - Firefox confign
     - installed Cookie AutoDelete
@@ -23,7 +235,7 @@ progress
     - disabled FF data collection
     - enabled strict tracking protection
   - created keys in PGP applet on YK5C-31
-    - gpg card-edit
+    - gpg --card-edit
       Application ID ...: D2760001240100000006163831310000
       Serial number ....: 16383131
       gpg/card> admin
@@ -34,7 +246,7 @@ progress
       gpg/card> passwd # set PIN
       gpg/card> passwd # set Admin PIN
     - see [[file:data/YK5C-31.md][file:~/data/YK5C-31.md]] for details on keys
-  - created a key and cert in PIV applet on YK5C-31, for SSH where FIDO2 is not supported server side
+  - created a key in the PIV applet on YK5C-31, for SSH where FIDO2 is not supported server side
     - https://developers.yubico.com/PIV/Guides/SSH_with_PIV_and_PKCS11.html
     - sudo dnf install yubico-piv-tool
     - yubico-piv-tool -a set-mgm-key fails with various error messages
@@ -97,9 +309,18 @@ progress
     - added new PIV key to adbc Ansible and verified access to
       sigwaitinfo, bounce, kcmp, ioctl, smtp, getrandom
   - tl;dr adding SSH keys to agent
+    ssh-add -s /usr/lib64/libykcs11.so.2
     ssh-add -s /usr/lib64/opensc-pkcs11.so
     ssh-add ~/.ssh/linus:YK5C-31
   - bounce.adbc is not running ansible since 2020-09-16 (missing ansible-pull)            
+  - encrypted .authinfo in new pgp key (in addition to the original key)
+    - email seem to be functional, in gnus
+  - added new pgp key to adbc ansible
+    - didn't wait until new pubring had been distributed, so my test commit signed with new key was not accepted, had to mess around with original key
+    - cherry-picked two commits to branch bookworm, for vm86. phew.
+  - reverted the adding of temp ssh key (third one, the 2k RSA PIV key) to ansible on master instead of bookworm, using new gpg key, sigh
+    - got it back using original gpg key, but whew this is hard
+  - added 325 secrets from besk:~/.pass-store to leguin:~/.passage
 
 ** <2023-04-22 Sat>
 - TTL for CNAME git.adbc lowered to 120 (was 21600, 6h) at 09:14
