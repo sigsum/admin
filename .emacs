@@ -572,7 +572,7 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(markdown-mode redtick erlang org-clock-csv rfc-mode lsp-mode yaml-mode tabbar spinner session pod-mode muttrc-mode mutt-alias lv initsplit htmlize ht graphviz-dot-mode folding f eproject diminish dash-functional csv-mode company color-theme-modern browse-kill-ring boxquote bm bar-cursor apache-mode))
+   '(go-mode rust-mode markdown-mode redtick erlang org-clock-csv rfc-mode lsp-mode yaml-mode tabbar spinner session pod-mode muttrc-mode mutt-alias lv initsplit htmlize ht graphviz-dot-mode folding f eproject diminish dash-functional csv-mode company color-theme-modern browse-kill-ring boxquote bm bar-cursor apache-mode))
  '(ps-n-up-margin 18)
  '(ps-n-up-printing 1)
  '(ps-paper-type 'a4)
