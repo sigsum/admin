@@ -43803,6 +43803,28 @@ libva error: vaGetDriverNameByIndex() failed with unknown libva error, driver_na
 - https://github.com/weaselp/pwstore/
 - has access control with FIXME
 ** pass
+** passage
+Tested on fedora38 with rust-1.68.2.
+
+Install age-plugin-yubikey
+: sudo dnf install cargo pcsc-lite-devel
+: cargo install age-plugin-yubikey
+
+Install rage
+: cargo install rage
+
+Install passage and configure it to use rage
+#+BEGIN_SRC bash -n
+    git -C ~/usr clone https://github.com/FiloSottile/passage
+    make -C ~/usr/passage PREFIX=$HOME/usr WITH_BASHCOMP=yes install
+    cat > ~/.bashrc.d/50-passage.sh 'EOF'
+    export PASSAGE_AGE=$HOME/.cargo/bin/rage
+    if [ -d ~/usr/share/bash-completion/completions/passage ]; then
+        . ~/usr/share/bash-completion/completions/passage
+    fi
+    EOF
+#+END_SRC
+
 * 4g, 3g, gsm, mobile networks
 ** dongle
 - ericsson: huawei e1750
@@ -45324,6 +45346,7 @@ email: ln+discord@4711.se
 * sway
 - swaymsg move workspace to right
 - copy/paste and vt100/220 control characters, what's that?
+  - 
 * APU
 ** booting Sunet's red APU with external flash ROM
 PCEngines apu2
