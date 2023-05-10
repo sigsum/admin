@@ -6,6 +6,7 @@ alias ext='sockstat -46'
 alias grep='grep -E'
 alias less='less -n'
 alias ls='ls -F'
+alias p=passage
 alias pass-dfri='PASSWORD_STORE_DIR=~/p/dfri/passdb pass'
 alias pass-sigsum='env PASSWORD_STORE_DIR=~/p/sigsum/passdb pass'
 alias pass-soc='PASSWORD_STORE_DIR=~/sunet/ops/sakerhetscenter-pass pass'
