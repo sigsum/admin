@@ -1,0 +1,11 @@
+#! /bin/bash
+# -*- shell-script -*-
+
+set -eu
+
+DIR="$HOME/notes/$(date +%Y-%m-%d)"
+mkdir -p "$DIR"
+
+FILE="$DIR/$(date +%H:%M)"
+[[ $# -gt 0 ]] && FILE="${FILE}-$1"
+emacs "$FILE"
