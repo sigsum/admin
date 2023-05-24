@@ -8,7 +8,8 @@ alias less='less -n'
 alias ls='ls -F'
 alias p=passage
 alias pass-dfri='PASSWORD_STORE_DIR=~/p/dfri/passdb pass'
-alias pass-sigsum='env PASSWORD_STORE_DIR=~/p/sigsum/passdb pass'
+#alias pass-sigsum='env PASSWORD_STORE_DIR=~/p/sigsum/passdb pass'
+alias pass-sigsum='env PASSWORD_STORE_DIR=~/glasklar/passdb pass'
 alias pass-soc='PASSWORD_STORE_DIR=~/sunet/ops/sakerhetscenter-pass pass'
 alias pond='$GOPATH/bin/client -cli=true -state-file=$HOME/tstick/.config/pond'
 alias pwd="pwd | sed s,^$HOME,~,"
