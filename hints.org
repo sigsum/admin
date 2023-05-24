@@ -37726,16 +37726,18 @@ Alt., för youtube och netflix: chromecast
 - https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet
 
 emerge -av --update --deep --changed-use @world
+emerge --sync			# update the package tree
 emerge -s			# search for packages
 euse -i <flag>
 euse -i | egrep <flag>
-equery uses <package-name>	# emerge -a app-portage/gentoolkit
+emerge -av app-portage/gentoolkit	# install equery
+equery uses <package-name>	# display USE flag status
+equery files <package-name>	# like dpkg -L
 equery list \*         		# list installed packages
 ls /var/db/pkg			# list installed packages
-equery b $(which vi)   		# like dpkg -S
+equery belongs $(which vi) 	# like dpkg -S
 eselect locale list; eselect locale set 240 # en_US
 dispatch-conf          		# update configuration files
-emerge -av app-portage/gentoolkit	# install equery
 ebuild `equery w <pkg>` prepare		# like apt source
 * sha-1 deprecation, danish researchers
 alexander brandbyge
@@ -46056,6 +46058,10 @@ ssh_port_t                     tcp      4722, 22
 
 * fedora
 - https://bodhi.fedoraproject.org/
+** dnf
+dnf rq -l PKG		# dpkg -L
+dnf rq -f $(which PKG)	# dpkg -S
+
 * borg backup
 ** restore
 
@@ -46154,3 +46160,9 @@ Sum:            140.8 GB               0.0     0.0
 - https://uefi.org/sites/default/files/resources/13_Jason_HPE_redfish%20implementation_FINAL.pdf
 - https://github.com/openbmc/docs/blob/master/REDFISH-cheatsheet.md
 - https://www.supermicro.com/en/solutions/management-software/redfish
+
+* captive portal, how to deal
+on leguin, three things need to be temporarily changed:
+1. networkctl down wg-vkg
+2. vi /etc/nftables/main.conf && systemctl reload nftables  # add an accept rule to the output chain (perhaps dest tcp/443 would be enough?)
+3. cp /etc/resolv.{conf,conf.BAK}

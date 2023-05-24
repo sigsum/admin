@@ -1,3 +1,4 @@
+rubegoldberg video thistooshallpass https://www.youtube.com/watch?v=qybUFnY7Y8w
 https://theworld.com/~reinhold/diceware.html
 sd-boot systemd https://github.com/systemd/systemd/labels/sd-boot%2Fsd-stub%2Fbootctl
 sd-boot systemd https://github.com/systemd/systemd/issues/12716
