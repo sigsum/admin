@@ -1,3 +1,4 @@
+
 `C-c C-x C-i' for starting a clock.
 `C-c C-x C-o' for stopping the clock.
 `C-c C-x C-d' for showing times.
@@ -9,6 +10,703 @@ progress
 
 * May 2023
 Vacation: 2-5, 8-9 -- 6 days (5 glasklar)
+Extra glasklar on Fri 2023-05-12, so -1 glasklar vacation days (4).
+Extra glasklar on Fri 2023-05-19, so -1 glasklar vacation days (3).
+
+** <2023-05-24 Wed>
+- booted new cb311 and found through dmesg that EFI framebuffer
+  (efifb) is being used, so let's try to enable that in our kernel
+  - added CONFIG_FB_EFI=y (and more, see [[file:notes/2023-05-24/08:53-efifb][file:~/notes/2023-05-24/08:53-efifb]])
+  - had to add more EMC drivers to the kernel too, see /home/linus/notes/2023-05-24/14:49-kernel-emc-config
+  - now boots
+- leguin: configured NetworkManager to, for Be55 (mobile), use
+  ip6-privacy=2 (see nm-settings-nmcli(5)) and give it priority 10
+  (default 0, higher gives precedence, see NetworkManager.conf(5))
+- kkbuild: enabled sshd autostart -- rc-update add sshd
+  - rc-service is weird though, saying "Authenticating root." and asking for password; selinux?
+    - Yes, I think so, since something has changed: i no longer see
+      the complaint when logging in over sshd ("A valid context for
+      linus could not be obtained.")
+        kkbuild ~ # ls -lZ $(which sshd)
+        -rwxr-xr-x. 1 root root system_u:object_r:sshd_exec_t 1207600 May 18 17:07 /usr/sbin/sshd
+      Wonder who set that. Did we re-emerge sshd?
+- netboot use case, based on the specific mullvad case we learned about this morning
+  - the user
+    - does not trust the network between the booting system and the web server providing the shim and boot loader (stboot) and
+    - wants to verify each system after boot but before deploying secrets and starting up services
+  - solution 1: deploy you own secureboot keys on every system
+    - UEFI verifies that shim and bootloader is signed by your key -- you're good
+  - solution 2: remote attestation light, ie verify measurement of UEFI shim and stboot only
+    - NOTE: there are two versions of remote attestation light
+      - replaying of the eventlog
+	- gives the actual hashes of the binaries we're interested in (UEFI shim and stboot)
+      - no replaying of the eventlog
+	- TOFU, ie storing a known-good TPM quote remotely when provisioning and using this as a "golden measurement" when verifying
+	- requires new TOFU initialisation whenever anything above the shim changes, including "BIOS settings"
+    - def action: verify attestation, done by operator
+      if replaying_eventlog:
+        - verifies the eventlog against the quote and the device id
+        - parses the eventlog
+	- verifies that the number of EFI boot applications are exactly two (2)
+	- verifies the names of the EFI boot applications
+	- verifies that the hashes are good by looking them up in the release db (see release stage)
+      else:
+        - TODO
+    - release stage
+      - shim and boot loader are built
+      - name, version and hash are stored in a release db
+      - binaries are uploaded to web server(s), for dl by booting system
+    - provisioning stage; actors: operator and system (being provisioned)
+      - keep secure boot enabled, in order to get shim and boot loader measurement into the TPM
+      - system: enroll TPM keys for attestation; send the result,
+        the device id, back to the operator for storage in a device db
+      - system: get quote and eventlog from TPM; send them both to the operator
+	- if not replaying_eventlog_mode: operator stores the quote and the device id in the device db
+      - operator: verify attestation (see above)
+    - operational stage ("running stuff")
+      - TODO
+    - attacks when not verifying anything above UEFI shim
+      - attacker intercepts shim/stboot download and replaces it with
+        a (signed) binary and gain persistence through
+        - main SPI flash
+	  - should be r/o though
+        - option ROM's
+	  - signature by another key than the shim key is verified by
+            SB (TODO: verify which key is being used)
+        - USB drives and disks
+	- BMC, SMM, ME
+        - CMOS, VRAM
+- go version -m BINARY
+
+*** TODO [0/5]
+- [ ] stprov: built kernel, in container
+  podman run can apt install but podman build can not?
+- [ ] make sure we have access to OOB for stime
+- [-] keykeeper [2/3]
+  - [X] flashed mrchromebox "full ROM" on chromebook
+    - tried to disabled write protection (WP), CCD style
+      https://wiki.mrchromebox.tech/Firmware_Write_Protect#Hardware_Write_Protection
+      - log in as chronos
+        sudo gsctool -a -I  # CCD is reported to be in State: Locked
+        sudo gsctool -a -o  # Press the power button when prompted, many times over a time period of minutes
+      - the machine reboots, put it back in developer mode
+	- ESC+Refresh+Power (rebooting)
+	- Ctrl+D Enter Ctrl+D (rebooting)
+	- Ctrl+D Ctrl+Alt+F3
+      - sudo gsctool -a -I  # CCD is reported to be in State: Opened
+      - DONE up to here on <2023-05-16 Tue>
+      - use a "Suzy-Q" cable, but I don't have such a thing
+	- should we order one?
+    - [X] disabled write protection (WP) by removing the battery
+      - there are 10 screws underneath
+      - the bottom comes off with only mild violence
+    - did the CCD unlock dance once more, because it was backed in
+      state locked and i thought firmware-util.sh had warned about
+      that, but looking back at what it said this is unnecessary --
+      all it said was that it's wise to have the FlashAP capability
+      set to Always, and that was already the case
+    - [X] ran the mrchromebox shell script
+      - connect to a wifi network
+      - log in as chronos
+        curl -LO https://mrchromebox.tech/firmware-util.sh
+        echo b0af93081f73ca5d3a48d22851cd1dba6b5271290ac847855aee7c155cece516  firmware-util.sh | sha256sum -c -
+        sudo bash firmware-util.sh
+	: choose 2 to flash full ROM
+	: the USB stick for backing up stock fw needs to have no partitions and have a filesystem, because function list_usb_devices() in https://github.com/MrChromebox/scripts/blob/master/functions.sh doesn't deal with partitions
+  - [X] installed gentoo (stage4) on chromebook
+    - [[file:usr/src/st/project/keykeeper/catalyst/keykeeper/root_overlay/usr/local/keykeeper/doc/install-chromebook.txt][file:~/usr/src/st/project/keykeeper/catalyst/keykeeper/root_overlay/usr/local/keykeeper/doc/install-chromebook.txt]]
+    - 256M ESP, 6G swap
+    - grub unable to use root device, is mmc_block loaded?
+      - trying to make grub load mmc_block by adding to boot options fails, no such file .../efi.../mmc_block.mod iirc
+      - we want /lib/modules/VERSION/kernel/drivers/mmc/core and maybe host/SOMETHING, but do we need an UEFI driver too? no
+    - went back to kkbuild and made a new kernel config
+      cd /usr/src/linux
+      mv .config .config.BAK
+      make defconfig && make menuconfig # Enabling all under Device drivers -> MMC which were all disabled, made them built-in and not modules
+      vi stage4.spec # Pointing out the new kernel config
+    - we later had to add more MMC, see [[*][above]]
+  - [ ] built sthsm provisioning program and included it in stage4
+  - FUTURE: trimmed the kernel down a bit
+  - FUTURE: some selinux usage, if time permits
+- [ ] stboot: made progress on reproducing the slow ospkg download
+  tc qdisc add dev DEV root netem delay 300ms
+  tc qdisc add dev DEV root netem loss 0.5%
+- [ ] st: mirrored on gh
+
+** <2023-05-23 Tue>
+- tillitis hackathon open mic session
+  - nisse talked about his 16bit instruction set
+    - kai mentioned https://developers.google.com/silicon
+  - jens talked about OSFC
+    - October 10-12 in the bay area
+    - CFP in 2-3 weeks
+  - jens talked about the firmare CI service company that he's setting up with other 9e folks
+    - company name is blindspot
+    - service name is FimwareCI
+- [X] need to get the passphrase for admin38 on mail.gtse [1/1]
+  - someone's trying to bruteforce SMTP submission again
+  - cloning the passdb repo is fine
+  - inserting YK-nano is fine, but gpg is missing the proper keygrip
+    for the PGP app key needed
+  - [X] resurrected .gnupg from ostick.img on besk
+- in preparation for the tuesday demo @ mullvad
+  - [-] the ST graph of configuration (input), programs run, and artefacts (output)
+    - [X] stboot build graph DONE <2023-05-17 Wed>
+    - [ ] stboot exuction flow graph
+  - [ ] a plan for network boot demo
+    - a start in today's weekly https://git.glasklar.is/system-transparency/project/documentation/-/blob/main/archive/2023-05-17-meeting-minutes.md
+    - wait for zaolin to come back with his qemu findings
+      - might be done in time for qemu, but let's prepare for a real hw demo too
+  - [ ] a plan for stprov demo
+  - [ ] a plan for sthsm-provision demo
+    - this is zaolins baby, but let's see
+
+*** mullvad meeting/demo
+  - would it make sense to sign hostconfig and have stboot verify it before using it?
+  - could we skip the reboot from provisioning into stboot by kexec:ing stboot? to save time
+    - alternatively, could stboot just simply run stprov?
+  - netboot
+    - requirements
+      - configure in bios
+        - boot mode: UEFI
+        - secure boot enabled
+        - http boot config: boot uri
+        - enable dhcp on one or more of the NIC's
+      - for pxe: shim loaded on secure LAN bc no signature verification
+    - x10's don't have http boot, use pxe
+    - x11's might need fw upgrade in order to have http boot
+      - fwupdmgr?
+    - shim signing
+      - who will sign stboot with a mullvad security policy?
+	- should mullvad get their own code signing key?
+
+  - shim: Mullvad can start by using stboot signed by Glasklar
+    - ST provides some instructions and maybe tool for verfieying signe stboot
+  - ST can clean up build stuff, and add more to README wrt build instructions
+    - no need for backward compatibility wrt building
+  - ST will fix the super slow download of ospkgs's
+    - up to an hour!
+  - netbooting
+    - philipp helps out at the mullvad office tomorrow wednesday
+
+  - provison mode selector
+    - the press-a-key-before-timeout can wait a while
+
+  - stprov verifying that the basic auth is proper
+    - stprov needs https root(s) for this
+
+  - could we let stboot "drop you in a shell (with stprov in)" for provisioning mode?
+    - "switch_root" is a thing
+    - ap linus: check mpt design, part II; let richard know what part II has
+    - one (!) option would be to have stprov kexec:ing into stboot, maybe
+    - kexec is not reliable, says google (according to philipp) who suffer maybe 1% of "not coming up"
+  - for stboot -> ospkg, don't bother bc the saving from skipping kexec is very low      
+
+** <2023-05-22 Mon>
+- [X] tested stprov https://paste.xinu.at/RFtp7aVykAuj/
+  - task demo:initramfs-stprov generates an initramfs (out/artifacts/stprov.cpio.gz)
+  - task demo:ospkg-stprov turns out/artifacts/stprov.cpio.gz and X
+    into a signed ospkg with stprov in initramfs
+    (out/ospkgs/stprov.zip)
+  - rm out/stboot.iso; task iso-provision turns out/artifacts/stboot.cpio.gz and out/ospkgs/stprov.{json,zip} into out/stboot.iso
+    - note: stprov.{json,zip} are called provision.{json.zip} in the initramfs fs
+  - task qemu:iso sets up the EFI variables file if missing and boots out/stboot.iso with
+    - provision kernel is unhappy with
+      Unable to mount root fs on unknown-block(0,0)
+      - this was fixed by fixing the cmdline (which was missing altogether iirc)
+  - logs in [[file:notes/2023-05-22/11:29-stprov-testing][file:~/notes/2023-05-22/11:29-stprov-testing]]
+  - task clean demo:initramfs-stprov linux:kernel-prebuilt demo:ospkg-stprov iso-provision qemu:iso
+  - running stprov
+    stprov remote static -h x -i 10.0.2.15/27 -g 10.0.2.2 -A
+    [ERROR] stboot: fetching OS package from initramfs failed: open ospkg/https:/stboot:stboot@stpackage.example.org/os-stable.json: no such file or directory
+  - task qemu:clean-efivars will clean up the EFI variables
+- 05:47 YKX (static yubikey) didn't start properly when unlocking laptop
+  - ejected and inserted [[file:notes/2023-05-22/ykx-fail.txt][file:~/notes/2023-05-22/ykx-fail.txt]]
+- wrote ~/bin/note
+- got on the hotel network, through a captive portal
+  - drill (and other programs) insisted on failing to resolv despite /etc/resolv.conf pointing at 127.0.0.1 and systemctl reload unbound
+  - noticed blocked outgoing udp/5353
+  - systemctl restart avahi-daemon solved it, but i don't really understand why
+  - when moving to another network later, without any captive portal, weird resolving issues occured
+    - restarting unbound solved it, but what's happening?
+    - INPUT drop with both SPT=5353 and DPT=5353 listed -- who's using that? we need a better solution for resolving than a static /etc/resolv.conf pointing at 127.0.0.1
+- /usr/lib64/opensc-pkcs11.so might work better than /usr/lib64/libykcs11.so.2 [[file:notes/2023-05-22/06:34 piv and ssh-agent][file:~/notes/2023-05-22/06:34 piv and ssh-agent]]
+- ordered another cb311, "femman", ordernumber 18424834
+  - pickied it up too, together with another chromebook XXX, for rgdd to bring home
+- wrote /root/mount-stick.sh
+- build-03 fails ansible because dnf-automatic won't start because there are no gpg keys for the gitlab runner package
+  May 22 23:19:23 build-03.glasklarteknik.se dnf-automatic[991104]: Public key for gitlab-runner-16.0.0-1.x86_64.rpm is not installed
+  - the [install instructions](https://packages.gitlab.com/runner/gitlab-runner/) says we need pygpgme but that's not in any of our configured repo's
+  - https://git.glasklar.is/glasklar/services/misc/-/issues/7
+- failed at building a container image for building a kernel for stboot
+  - podman build fails apt-get install with network errors while in a podman run --rm -it bash i can apt install
+- [X] bpf disk not full anymore [[file:notes/2023-05-22/06:23 bpf out of disk][file:~/notes/2023-05-22/06:23 bpf out of disk]]
+
+** <2023-05-21 Sun>
+- resurrected {tstick,ostick}.img from backup disk onto leguin
+- found info (from rgdd) about what ST needs for switching to Sigsum signatures
+  https://git.glasklar.is/groups/system-transparency/core/-/milestones/11#tab-issues  
+- created many milestones in gl
+
+** <2023-05-20 Sat>
+- started on a release planning pad https://pad.sigsum.org/p/uMgpUpqVFZSptoqga1ZG
+  - remember that we have this too https://pad.sigsum.org/p/NRzz4f18u2vIAYfKiWh6
+- reviewed stboot!103 https://git.glasklar.is/system-transparency/core/stboot/-/merge_requests/103
+
+** <2023-05-19 Fri>
+- kkbuild kernel build failed yesterday [[file:notes/2023-05-19/kkbuild-kernel-build.txt][file:~/notes/2023-05-19/kkbuild-kernel-build.txt]]
+  - seems like genkernel install stomps on /bin/cpio
+  - maybe related: https://bugs.gentoo.org/895550
+  - bumping stage4.spec version_stamp doesn't help any, supposedly because
+    /var/tmp/catalyst/packages/default/stage4-amd64/app-arch/cpio or
+    /var/tmp/catalyst/packages/default/stage4-amd64/app-alternatives/cpio
+  - fetched a newer seed (ie stage3 tar ball) and created a new portage snapshot for catalyst
+    https://mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/current-install-amd64-minimal/stage3-amd64-hardened-nomultilib-selinux-openrc-20230514T164657Z.tar.xz
+    catalyst -c keykeeper/catalyst.conf --snapshot 20230519
+  - updating the tree is not possible since emerge --sync (emaint -a
+    sync) insists on refreshing pgp keys using wkd which requires TLS
+    with openpgpkey.gentoo.org and TLS doesn't work with that for me,
+    not even in an installed system
+    - Removing the wg tunnel from the mix solves the TLS woes. TODO: Look at MTU.
+    - after reloading nftables, do *restart* virtqemud to get all the rules for VM's back
+  - we do have a real kernel build problem -- the /bin/cpio stomping is a red herring
+    - workdirs/stage4-amd64-keykeeper-23cb.0/var/log/genkernel.log shows that the linker is missing copy_net_ns, unix_get_socket
+    - starting over with kernel configuration
+      make defconfig menuconfig # adding MMC block, making no other changes
+  - the defconfig with only MMC on top gave a kernel which after "loading initramfs" blanks the screen and that's it
+  - emerged gentoo-sources again to figure out what the starting point might be (make defconfig)
+    - found that there's a linux-6.1.28 now
+    - enabled MMC_BLOCK built-in rather than as module
+    - built keykeeper-23cb.5
+    - same same
+  - an idea is to boot installation media on cb, do lsmod and save that to a file on a USB stick
+    - use this for a kernel config
+  - an idea from stuge is to try to log in over the network and get a
+    dmesg from the booted system, to compare with dmesg from the
+    gentoo installation iso kernel
+
+- belysning i taket (spottar)
+  - johans son christoffer/kristoffer var här och kopplade om i
+    dimmern och bytte ev. dimmern; det var felkopplat pga väldigt ny
+    modell av dimmer
+  - 3fas-skenor, globalskenor
+  - grossister som klockwork (johan och son) använder
+    - https://www.hidealite.com/en
+    - https://www.sg-as.com/
+    
+- next week in gbg
+  - philipp arrives monday at 12:30 and jens monday at 18:00
+  - seems like my expectations of a full monday were misaligned with
+    other peoples view, which when i look back at meeting notes from
+    april 24 makes sense -- we say mon lunch to wed evening there
+    [[file:glasklar/nc/Glasklar/archive/2023-04-24-glasklar-weekly.md][file:~/glasklar/nc/Glasklar/archive/2023-04-24-glasklar-weekly.md]]
+
+- R1 and stprov demo
+  - jens calling
+    - not expected R.1. (network booting) to need
+    - network code bug i'm fixing
+    - will provide a stable stboot (0.1.1 probably)
+    - don't want to tag doc/system-transparency bc more doc might be needed
+      - linus will sort out the doc for R1
+    - won't have time to work on the stprov demo
+  - trying to get in touch with philipp, no reply
+  - 12:32 asking jens, philipp and morten to be available for a sync at 13:30
+  - talking to zaolin
+    - problem with testing in qemu, but will be ready for monday
+    - let's delay the shim review submission until next friday
+    - linus will create issues for all the things that needs to get done
+  - to be sorted
+    - shim review submission
+      - philipp, who knows what to do
+      - st-shim-review
+	- build.log
+	- hash of the shim binary
+	- boot loader version (stboot)
+      - sthsm release
+      - stable stboot release
+	- jens
+      - documentation added to stboot
+	- linus
+      - testing
+	- philipp
+	- linus
+      - signing infra
+	- sthsm release
+	- linus
+      - pgp signatures are not needed for the review submission
+    - stprov demo
+      - stprov/stboot/stmgr integration
+	- jens?
+      - testing
+	- linus
+
+- 12:30-12:53 sync meeting https://pad.sigsum.org/p/NRzz4f18u2vIAYfKiWh6 
+
+
+** <2023-05-18 Thu>
+- upgraded clown.adbc to 25.0.6
+  - added missing db indices and performed bigint conversion
+    (cd /var/nextcloud/www; sudo -u www-data php occ db:add-missing-indices)
+    (cd /var/nextcloud/www; sudo -u www-data php occ db:convert-filecache-bigint)
+  - we're stuck on php-7.4.33, which nextcloud warns about
+  - upgraded many packages on the system, plus a reboot
+- moved two AUTH accounts from YK-neo (3037390) to YK5C-31 (16383131)
+  - clown.adbc:admin12, clown.adbc:linus
+  - only 26 more to go :/
+  - lai will provide an ansible role for keycloak
+- selinux on kkbuild
+  - login in over sshd gives: A valid context for linus could not be obtained.
+  - sestatus -v
+    linus@kkbuild ~ $ ls -lZ $(which sshd)
+    -rwxr-xr-x. 1 root root system_u:object_r:unlabeled_t 1207600 May  2 13:29 /usr/sbin/sshd
+- the stage4 we built the other day is larger, 769M, than what I had guessed
+  linus@kkbuild ~ $ ls -lh /var/tmp/catalyst/builds/default/stage4-amd64-keykeeper-23cb.0.tar.bz2*
+  -rw-r--r--. 1 root root 769M May 15 18:26 /var/tmp/catalyst/builds/default/stage4-amd64-keykeeper-23cb.0.tar.bz2
+  -rw-r--r--. 1 root root 458K May 15 18:26 /var/tmp/catalyst/builds/default/stage4-amd64-keykeeper-23cb.0.tar.bz2.CONTENTS.gz
+  -rw-r--r--. 1 root root  834 May 15 18:26 /var/tmp/catalyst/builds/default/stage4-amd64-keykeeper-23cb.0.tar.bz2.DIGESTS
+  -rw-r--r--. 1 root root  118 May 15 18:26 /var/tmp/catalyst/builds/default/stage4-amd64-keykeeper-23cb.0.tar.bz2.sha256
+      
+** <2023-05-17 Wed>
+- jens, ln5 at 09:00
+  - task is for the CI and demo purposes only, plus users looking at
+    task output to understand how to build things
+  - AP jens make sure the GO111MODULE=off is visible in task output
+  - AP ln5 write a task for stprov
+  - AP ln5 rip out the cloning of system-transparency altogether, for Mullvad's build
+
+- mullvad build environment
+  - driven by https://github.com/mullvad/infrastructure-ansible
+    [[file:usr/src/st/mullvad/infrastructure-ansible/inventory/all/group_vars/stbuild/main.yml][file:~/usr/src/st/mullvad/infrastructure-ansible/inventory/all/group_vars/stbuild/main.yml]]
+    [[file:usr/src/st/mullvad/infrastructure-ansible/playbooks/st_build.yml][file:~/usr/src/st/mullvad/infrastructure-ansible/playbooks/st_build.yml]]
+  - what interface should st-utils provide?
+    - the only shell script in st-utils being used is build-initramfs-ubuntu
+    - these are the tasks being run: toolchain, config, mptiso, iso
+
+- tuesday demo @ Mullvad, slack channel communication
+  So let me propose that the Tue session will be us (Jens and me)
+  first presenting a complete description -- with pictures! -- of what
+  configuration goes where and produces what, and then a demo of how
+  to build and run everything (in qemu) on hardware that we bring (a
+  laptop). Then, with configuration and build out of the way we demo
+  network booted stboot and provisioning using stprov (replacing
+  MPT). This effectively means that all you need to do for Tuesday is
+  show up. Sounds good?
+- added bullseye-backports to tee and installed golang-19
+  - learned that 1.19 stops receiving security fixes "in a couple months" according to filippo
+
+- [X] talked to FS https://pad.sigsum.org/p/3yTV4BGyEe_PRXhGLzm8 
+  - morten, all good see pad
+  - [X] about next week in gbg
+    - [X] inform ST (-kai) about gbg week; done <2023-05-17 Wed>
+    - [X] talk to sasko about gbg week
+  - FS too wants hedgedoc
+  - FS wants to blog, in markdown
+    - we are on our way to set up hugo for docs, should be able to add a blog function
+  - FS wants to make the ST web closer to what www.sigsum.org looks like
+
+** <2023-05-16 Tue> [0/0]
+- mounted the second YubiHSM (18952892) in the USB hub sitting in logsrv-01
+- re-attached the first YubiHSM after zaolin reset it, twice
+  - updated [[file:glasklar/nc/System Transparency/YubiHSM/YubiHSM.md][file:~/glasklar/nc/System Transparency/YubiHSM/YubiHSM.md]] with info
+- rebooted logsrv-01 into new kernel
+  - mail-01 was missing that volume again https://git.glasklar.is/glasklar/services/mailcow/-/issues/15
+- installed graphviz for dot(1), for ST dependency graph
+  https://git.glasklar.is/system-transparency/core/system-transparency/-/issues/195
+- attended sigsum weekly
+- Why is `ssh-add -s /usr/lib64/libykcs11.so.2` rejecting both the
+  passphrase I originally thought was "the PKCS#11 passphrase" and the
+  passphrase used for adding ~/.ssh/linus:YK5C-31 which to my surprise
+  worked the other day ([[*<2023-05-13 Sat>][saturday]])? Guess which one was accepted? The
+  one we provided to age-plugin-yubikey. :(
+- Why does `yubico-piv-tool -a status` list two keys (in slots 9a
+  and 82) while `ssh-add -l` (after `ssh-add -s
+  /usr/lib64/libykcs11.so.2) list five keys?  
+- carmeli.adbc
+  root@carmeli:~# apt install emacs-nox python3-pip python3-dev libsqlite3-dev python3-virtualenv autoconf2.13 automake make libevent-dev
+- talked to josh and richard about changes to the build system
+- installed podman and set up an ubuntu image for stboot and mpt iso building Mullvad style
+  - disabling selinux for the container for now, but should instead be using `-v path:path:Z` according to lai
+  - how do we build mpt-priv from within a container without access to github keys?
+    - there's the .gitconfig trick of rewriting `https://github.com` to `ssh:git@github.com` but that won't help in a container
+    - can the same trick be used to replace https:// with file:///? perhaps tricky with the different paths inside and outside the container
+      printf '[url "file:///p/src/"]\n\tinsteadOf = https://github.com/mullvad/\n' >> ~/.gitconfig
+      - but see branch ln5/build-in-container for using work/ instead of src/
+  - cannot push to *any* st-utils branch on gh, and cannot fork
+
+*** ST tooling walkthrough with jens and philipp
+- https://git.glasklar.is/system-transparency/core/system-transparency
+- tooling discussions
+  - jens presents the current situtation
+  - the core/system-transparency repo has no code, no config files, only task files
+    - dependencies: stmgr, uroot
+  - how to demo this
+    - contrib/debos is used by CI
+    - Taskfile.yml is the entrypoint to tasks
+    - tasks/go.yml is the *only* place where version pinning can happen
+  - ran the demo, flawless
+    - log in [[file:notes/2023-05-16 st demo.txt][file:~/notes/2023-05-16 st demo.txt]]
+    - here are the two things you'd want to do again: building the initramfs and creating the efi file
+      GOPATH=/home/linus/usr/src/st/core/system-transparency/cache/go cache/go/bin/u-root -build=bb -uinitcmd="stboot -loglevel=d" -defaultsh="" -uroot-source ./cache/go/src/github.com/u-root/u-root -o out/artifacts/initramfs:incl-hostconfig.cpio.tmp -files out/keys/example_keys/root.cert:etc/trust_policy/ospkg_signing_root.pem -files contrib/initramfs-includes/isrgrootx1.pem:etc/ssl/certs/isrgrootx1.pem -files out/artifacts/host_config.json:etc/host_configuration.json -files out/artifacts/trust_policy.json:etc/trust_policy/trust_policy.json  github.com/u-root/u-root/cmds/core/init system-transparency.org/stboot
+      cache/go/bin/stmgr uki create -format iso -out 'out/stboot.iso' -kernel=out/artifacts/stboot.vmlinuz -initramfs=out/artifacts/stboot.cpio.gz -config='out/artifacts/host_config.json'
+  - now, try do it without the demo task
+    uroot to build initramfs
+    stmgr mkuki
+  - we need the efi file, not the iso
+    - with an sbat file, added to the contrib folder
+  - jens
+    - the multiple dns is solved https://git.glasklar.is/system-transparency/core/stboot/-/merge_requests/99
+    - handing over stprov support in stboot to morten tomorrow
+
+** <2023-05-15 Mon>
+- kkbuild installation
+  - converted /dev/vda2 to LUKS1 and grub is not happy
+  - but the initramfs is not -- "Failed to find LUKS device" and "Could not find the root in ."
+    - running dmesg in the rescue shell shows that the kernel doesn't understand either of dolvm, BOOT_IMAGE= and crypt_root=
+  - zaolin suggests nixos or guix, even if he's a gentoo user
+    - catalyst is quite dead
+  - missing kernel config? device driver->multiple driver support lvm; device mapper; crypt target
+  - genkernel --menuconfig --luks --lvm --install all  # enable lvm, crypt target
+    - made them built-in an not modules (Seurity options -> TRUSTED_KEYS need built-in too)
+    - disabled these too
+      - Virtualization
+      - Device drivers
+	- PCCARD
+	- Parallel port
+	- Macintosh
+	- Remote Controllers
+	- Multimedia
+	- Sound card
+	- Infiniband
+	- Accessibility
+	- Vrtualization drivers
+	- VHOST drivers
+	- Microsoft Surface Platform
+	- Soundwire
+	- PWM
+    - building 6.1.27-gentoo-r1-x86_64
+    - looking into the initramfs
+      xz -cd /boot/initramfs-* | gpio -tv
+  - still "Failed to find LUKS device" and come to think of it, blkid
+    in the rescue shell doesn't list the disk, only sr0, so maybe we
+    do miss driver support for virtualized disks? https://www.kernelconfig.io/config_virtio_blk
+  - genkernel --no-clean --menuconfig --luks --lvm --install all  # enable virtio_blk, virtio_rng
+    - enable Device driver ->
+      - Virtio drivers
+      - Block devices -> Virtio block driver
+  - ok, but no network interfaces -- missing virtio_net (CONFIG_VIRTIO_NET)
+- mkstage4 -- 17:12-18:27
+  lrwxrwxrwx. 1 root root 70 May 15 17:11 stage4-amd64-keykeeper-23cb.0.tar.bz2 -> /var/tmp/catalyst/builds/default/stage4-amd64-keykeeper-23cb.0.tar.bz2
+
+- sthsm
+  - the provisioning command does not create any useful keys
+- R.1., talking to zaolin
+  - stboot needs
+    - tooling to create an EFI file; sbat for cert revocation; we can talk about it at the 11 meeting
+    - documentation could be cribbed from the shim review repo; let's have jens do this
+  - st-shim-review; zaolin is working on this
+  - sthsm; zaolin is working on this
+  - proj/documentation; ln5 will create the structure for the overall documentation
+    - the hugo theme zaolin looked at mid april: https://github.com/google/docsy
+    - let the CI/CD run hugo and push to docs.sto
+- R.1., jens and zaolin
+  - who fixes the tooling to build an EFI file, in stmgr?
+  - stboot version number? does stboot really need a release?
+  - we should release stmgr too, before submitting to shim reveiw
+    - release version?
+  - should we release system-transparency too? yes
+    - add sbat and documentation
+    - release version?
+  - zaolin checks the sbat file
+  - ln5 adds documentation to system-transparency
+  - what about testing in CI/CD
+    - let's not do it for friday, pushing it to a later release
+
+** <2023-05-14 Sun> [0/1]
+- spilled the static secret in YKX slot 2, the one we're not using (yet), to pad.sigsum.org
+  deleted the pad within minutes
+  still, please remember to not use slot 2 as it is
+- spilled my git.glasklar.is password to mail-01, again
+- [ ] setting up a vm for carmeli.sunet.se on vmsplice [6/7]
+  - using old kdc.adbc ip addr: 128.5.10.193.in-addr.arpa.      86400   IN      PTR     kdc.adb-centralen.se.
+  - [ ] changed PTR
+  - [X] added A
+  - [X] added AAAA
+  - [X] changed virt domain name to carmeli.adb-centralen.se
+    virsh domrename carmeli.sunet.se carmeli.adb-centralen.se
+  - [X] unattended upgrades set up
+    apt install -y unattended-upgrades apt-listchanges
+    vi /etc/apt/apt.conf.d/50unattended-upgrades # https://community.torproject.org/relay/setup/guard/debian-ubuntu/updates/
+  - [X] tpo pkg repo set up
+    apt install apt-transport-https
+    echo '' > /etc/apt/sources.list.d/tor.list
+    echo 'deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bullseye main' >> /etc/apt/sources.list.d/tor.list
+    echo 'deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bullseye main' >> /etc/apt/sources.list.d/tor.list
+    wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee /usr/share/keyrings/tor-archive-keyring.gpg >/dev/null
+    apt update && apt install tor deb.torproject.org-keyring
+  - [X] apt install emacs-nox python-pip python-dev libsqlite3-dev python-virtualenv autoconf2.13 automake make libevent-dev
+- kkbuild installation
+  - did the full install-buildmachine.txt dance but failed booting
+    with GRUB not finding disk lvmid/zR9THO-8xyQ-[...]-bASmfE and
+    leaving me with the "grub rescue>" prompt
+    - https://unix.stackexchange.com/questions/298068/system-unbootable-grub-error-disk-lvmid-not-found
+      You will get this error if you're trying to have GRUB unlock a LUKS2 encrypted volume on boot.
+    - so re-encrypt using LUKS1? or maybe just use PBKDF2? https://savannah.gnu.org/bugs/?55093
+      cryptsetup luksAddKey --pbkdf pbkdf2 /dev/vda2
+    - GRUB hanging after "GRUB" -- let's remove the argon2id keyslot
+      cryptsetup luksRemoveKey /dev/vda2
+    - same -- let's reinstall grub on /dev/vda, and also regenerate grub.cfg
+    - back to not finding disk lvmid/zR9THO..., I think we'll have to give up for today (it's 01:10)
+    - i do wonder if a LUKS1 header would make a difference or if there's something else      
+
+** <2023-05-13 Sat>
+- chromebook
+  - looked up a shitload of stuff https://pad.sigsum.org/p/chromebook
+- why does ssh-add -s yubikey-foo.so (for PIV) and ssh-add ~/.ssh/YK5C-31foo accept the same passphrase?
+- nytt pw för kajsa42@gmail.com på Facebook: IngenKattsand!
+  - Kontot är låst sedan idag, meddelas när jag loggar in. Gör inget åt det nu.
+
+*** kkbuild
+sudo dnf install libvirt-daemon-kvm virt-install virt-viewer virt-manager
+virt-manager
+
+**** networking woes
+ip ad ad 192.168.122.10/24 dev enp1s0
+echo -e "nameserver 192.168.122.1\noptions edns0 trust-ad" > /etc/resolv.conf
+
+But things didn't work.
+
+cat /proc/sys/net/ipv4/ip_forward  # this showed to be ok
+dnf install bridge-utils  # not really necessary after all, but nice to have
+
+The problems we had were these:
+
+1. traffic to 192.168.122.0/24 went out on wg-vkg instead of on virbr0
+   solution: exempt all non-default gw routes from the 1001 routing table, see 25-wg-vkg.network
+
+2. dns requests were blocked by nftables, INCOMING
+   solution: allow udp 53 in from 192.168.122.0/24
+
+3. dns responses were blocked by nftables, OUTGOING
+   solution: allow oifname virbr0
+
+Note that unbound access control is not necessary to expand, since
+packets come in over lo, ie 127.0.0.1. I wonder why.
+
+Note also that after reloading nftables, libvirtd needs to be
+restarted (not reloaded) for the extra slew of rules to be added.
+
+But it doesn't stop here! curl https://www.gentoo.org/ hangs in the
+TLS handshake! Other TLS connections work just fine.
+
+[root@leguin ~]# tcpdump -ni wg-vkg host www.gentoo.org
+dropped privs to tcpdump
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on wg-vkg, link-type RAW (Raw IP), snapshot length 262144 bytes
+02:19:49.806196 IP 10.47.11.21.48436 > 151.101.85.91.https: Flags [F.], seq 377259430, ack 1502763265, win 502, options [nop,nop,TS val 4034282445 ecr 3247800149,nop,nop,sack 1 {2889:3222}], length 0
+02:19:49.812990 IP 151.101.85.91.https > 10.47.11.21.48436: Flags [.], ack 1, win 285, options [nop,nop,TS val 3247833749 ecr 4034282445], length 0
+02:19:49.818541 IP 151.101.85.91.https > 10.47.11.21.48436: Flags [F.], seq 3222, ack 1, win 285, options [nop,nop,TS val 3247833754 ecr 4034282445], length 0
+02:19:49.818870 IP 10.47.11.21.48436 > 151.101.85.91.https: Flags [R], seq 377259431, win 0, length 0
+02:19:50.967425 IP 10.47.11.21.36308 > 151.101.85.91.https: Flags [S], seq 2733752939, win 64240, options [mss 1460,sackOK,TS val 4034283606 ecr 0,nop,wscale 7], length 0
+02:19:50.974590 IP 151.101.85.91.https > 10.47.11.21.36308: Flags [S.], seq 468144225, ack 2733752940, win 65535, options [mss 1460,sackOK,TS val 2525826839 ecr 4034283606,nop,wscale 9], length 0
+02:19:50.975021 IP 10.47.11.21.36308 > 151.101.85.91.https: Flags [.], ack 1, win 502, options [nop,nop,TS val 4034283614 ecr 2525826839], length 0
+02:19:50.976383 IP 10.47.11.21.36308 > 151.101.85.91.https: Flags [P.], seq 1:317, ack 1, win 502, options [nop,nop,TS val 4034283615 ecr 2525826839], length 316
+02:19:50.982219 IP 151.101.85.91.https > 10.47.11.21.36308: Flags [.], ack 317, win 285, options [nop,nop,TS val 2525826846 ecr 4034283615], length 0
+02:19:51.018259 IP 151.101.85.91.https > 10.47.11.21.36308: Flags [P.], seq 2889:3222, ack 317, win 285, options [nop,nop,TS val 2525826879 ecr 4034283615], length 333
+02:19:51.018617 IP 10.47.11.21.36308 > 151.101.85.91.https: Flags [.], ack 1, win 502, options [nop,nop,TS val 4034283657 ecr 2525826846,nop,nop,sack 1 {2889:3222}], length 0
+
+*** carmeli.sunet.se
+[root@flow ~]# tail -4 /var/vm/carmeli.sunet.se/vm-bhyve.log         
+May 04 12:09:55: starting bhyve (run 10)
+May 11 16:35:45: bhyve exited with status 137
+May 11 16:35:45: destroying network device tap1
+May 11 16:35:45: stopped
+
+[root@flow ~]# uptime                                                                                                                                                                                                                         
+ 1:06PM  up 831 days,  2:24, 1 user, load averages: 0.11, 0.11, 0.11
+
+[root@flow ~]# vm start carmeli.sunet.se
+Starting carmeli.sunet.se
+  * found guest in /var/vm/carmeli.sunet.se
+  * booting...
+
+** <2023-05-12 Fri> [5/7]
+Glasklar day.
+
+- 1on1 with Fredrik https://pad.sigsum.org/p/rRgKGZi09-RruxTsJwHq
+- gl updates (security)
+- meet updates (pgsql security)
+- reviewed sigsum road map
+- the log key in https://www.sigsum.org/services/ doesn't match what's found on logsrv-02 https://matrix.to/#/!zXmPYdSYJgRHTwMNQU:matrix.org/$yNl4DQWpAMhr0NR8Od19ufBWzgDozMUmTSymMLv390E?via=matrix.org&via=kamel.network&via=archlinux.org
+- figured out how to upgrade fedora to a new release https://docs.fedoraproject.org/en-US/quick-docs/dnf-system-upgrade/
+  - we'll do that on build-03 soon
+- helped with understanding a bit more about a CI build error, python
+- [-] pixel 5 set up for M
+  - [X] cleaned the usb port, maybe it's just dirt
+    - indeed it was! \o/
+  - [ ] installed calyxos
+  - [ ] installed fdroid
+  - [ ] maybe installed aurora
+- gave richard a non-update on reproducing stboot slow download
+- realised there's 4 days left for R.1. "Network booted stboot"
+  - [X] scheduled a meeting with jens and philipp monday
+- [X] ST road map added to archive https://pad.sigsum.org/p/mw1oVwTaMiSifIsM8YAD
+- [X] resurrected the note with besk passphrases  
+- [X] picked up the chromebook
+- [X] stprov sync with fox
+  - status, where are we at?
+  - any risk with release on 2023-05-29?
+- the Acer Chromebook 311 CB311-9H has the board name BOBBA
+  - enter recovery mode from normal mode by pressing ESC+Recovery+Power simulatenously, with the power cable disconnected
+  - enter developer mode from recovery mode by pressing Ctrl+D
+  - after reboot, get a terminal (Developer Console) by pressing Ctrl+Alt+F3 (F3 is the third button on the top row)
+  - log in as root, no pw
+  - enable USB booting by running enable_dev_usb_boot (as root)
+  - from somewhere? boot from USB by pressing Ctrl+U
+- [X] published road map
+  - based on [[file:usr/src/st/project/documentation/archive/2023-04-20-roadmap.md][file:~/usr/src/st/project/documentation/archive/2023-04-20-roadmap.md]]
+- [ ] milestones for R.1., R.2., and R.3. created
+
+** <2023-05-11 Thu>
+- renamed placeholder ST milestone to reflect its purpose
+- pixel3 reinstall
+  - failed at unlocking the boot loader, fastboot -- the "Unlock bootloader" option simply didn't appear
+  - upgrading Android with the hope that this will change
+- F-Droid has a board with Andrew Lewman on it
+  - texted with both mike and arma about it
+  - asked nickcalyx for a voice chat
+- found out about [sweet expressions](https://dwheeler.com/readable/sweet-expressions.html)
+  through [LWN article about accounting software](https://lwn.net/Articles/925782/)
+- thought about HSM infrastructure in https://pad.sigsum.org/p/ojwqSN-vGANIml8Kqq0e
+- 91.223.231.9 is being blocked by MS again
+  - submitting https://olcsupport.office.com/ (found at https://postmaster.live.com/pm/troubleshooting.aspx)
+  - support request number is 7017456060
+  - replied to boilerplate, see [[file:notes/email-S3150-unblock-attempt.txt::2023-05-11 11:54 +0200 -- replied to boilerplate response]]
+  - got message about mitigation around 13:30
+- HSM provisioning setup discussions with nisse
+  - lots of conclusions, will have to write it up somewhere but for
+    now, there are two whiteboard pictures in
+    https://nextcloud.glasklarteknik.se/index.php/f/12590
+  - we want a computer running gentoo or debian, preferably booted by stboot
+  - ST booting a chromebook
+    - https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/custom-firmware/
+    - https://www.chromium.org/chromium-os/2014-firmware-summit/ChromeOS%20firmware%20summit%20-%20Depthcharge.pdf
+    - ordered a cheap chromebook https://www.webhallen.com/se/product/352218-Acer-Chromebook-311-CB311-9H-12-HD-Celeron-N4020-4GB-32GB-Chrome-OS
+- 1on1 with fredrik
+  - to be continued at 15:30-16:30    
+  - kfreds om kai och philipps bakgrund, apropå linus oro för att ST riskerar att skada "user freedom"
+    - TCG startades av MS och IBM, typ 2000, tror jag
+    - DRM-vindar blåste
+    - P&K har jobbat i b2b-världen som konsulter
+    - kai är att anse som open source-fundamentalist
+    - philipp försöker, ofta med framgång, ändra fw från att vara stängt till att vara öppet
+    - trammel beklagade sig senast på vår middag i amsterdam över att
+      TPM eller measurement som teknik började som det gjorde (DRM);
+      den stora frågan är om du kör verified eller measured boot
+    - krypto och hw är de bästa byggklotsarna vi har
+    - behöver i regel inte vare sig bootguard (bränner säkringar i
+      SOC:en som representerar en rsa2048-nyckeln som signerar fw)
+      eller verified
+    - verfied boot orsakar enorma mängder e-waste
 
 ** <2023-05-10 Wed>
 - PGP app on yubikeys
@@ -21,17 +719,16 @@ Vacation: 2-5, 8-9 -- 6 days (5 glasklar)
 - leguin
   - set TZ by timedatectl set-timezone Europe/Stockholm
   - install aspell-sv
+  - configured touchpad -- tap enabled and two-finger tap is right click
+- talked to philipp about sthsm/stpki https://pad.sigsum.org/p/ojwqSN-vGANIml8Kqq0e
 - held ST weekly
   - kai on SMM
     - disabling SMM, like coreboot does => won't have uefi variables and some other things
     - SMM is run on the host CPU, other ring0 applications can interrupt into SMM
     - SMM is like FIXME in riscV
-
-- [ ] pixel 5
-  - cleaned the usb port, maybe it's just dirt
-  - installed calyxos
-  - installed fdroid
-  - maybe installed aurora
+- creating a milestone in gitlab for top-level ST group magically
+  makes all child project milestones appear there, possibly a bug and
+  possibly this one: https://gitlab.com/gitlab-org/gitlab/-/issues/326897
 
 ** <2023-05-06 Sat>
 - changed default foot font size to 10
@@ -363,7 +1060,7 @@ root@mail-01:/opt/mailcow-dockerized# systemctl status var-vol-vmail1.mount
     - uefi dbx: 211 -> 220
     - system fw: 1.7.1 -> 2.1.0
 
-** <2023-04-21 Fri>
+** <2023-04-21 Fri> [0/1]
 - [ ] informed kai about morten working with him from TBD and for at least four weeks
 - stpki/sthsm discussed with philipp [[file:usr/src/st/project/documentation/archive/2023-04-21-stpki.md][file:~/usr/src/st/project/documentation/archive/2023-04-21-stpki.md]]
   - does stpki really need yubihsm sdk and connector?
@@ -386,9 +1083,6 @@ root@mail-01:/opt/mailcow-dockerized# systemctl status var-vol-vmail1.mount
 - gjort löner
 - fakturerat mullvad för löner
 - pratat med pontus, skolan
-
-- [ ] published road map
-  - [[file:usr/src/st/project/documentation/archive/2023-04-20-roadmap.md][file:~/usr/src/st/project/documentation/archive/2023-04-20-roadmap.md]]
 
 - leguin setup
   - tor browser installed
@@ -808,7 +1502,7 @@ From log file:
     - om nej eller "meh": ta inte in M i det jobbet
     - om ja det blir bra: låt M jobba med Kai, utvärdera efter 2-3 veckor
      
-** <2023-04-02 Sun>
+** <2023-04-02 Sun> [1/5]
 
 - Booted ospkg-vdse-hypervisor-2023-04-02T16:04+02:00 in a VM on vm86 using 
   - kernel 6.1.20-vdse, built on vm86 with config config-6.1.20-slimmer
@@ -998,6 +1692,7 @@ EOF
   - stboot succeeds booting the os-pkg but since the demo task assumes
     a systemd system, the ospkg kernel fails when there's no root file
     system found (root= is missing)
+
 - [X] Ticket/task created for
   - wrote system-transparency/tasks/stprov.yml, building ospkg with MPT and an adequate cmdline
 - Pratade med FK som fastställde min årsarbetsinkomst

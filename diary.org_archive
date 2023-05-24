@@ -697,3 +697,52 @@ libradsec 5h -> jra3t1 5
   CLOCK: [2019-01-14 Mon 09:51]--[2019-01-14 Mon 10:52] =>  1:01
   upgrades
   :END:
+
+* [ ] TODO
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-18 Thu 11:02
+:ARCHIVE_FILE: ~/diary.org
+:ARCHIVE_OLPATH: May 2023/<2023-05-18 Thu>
+:ARCHIVE_CATEGORY: diary
+:END:
+- [ ] keykeeper [0/5]
+  - [ ] flashed mrchromebox "full ROM" on chromebook
+    - tried to disabled write protection (WP), CCD style
+      https://wiki.mrchromebox.tech/Firmware_Write_Protect#Hardware_Write_Protection
+      - log in as chronos
+        sudo gsctool -a -I  # CCD is reported to be in State: Locked
+        sudo gsctool -a -o  # Press the power button when prompted, many times over a time period of minutes
+      - the machine reboots, put it back in developer mode
+	- ESC+Refresh+Power (rebooting)
+	- Ctrl+D Enter Ctrl+D (rebooting)
+	- Ctrl+D Ctrl+Alt+F3
+      - sudo gsctool -a -I  # CCD is reported to be in State: Opened
+      - DONE up to here on <2023-05-16 Tue>
+      - use a "Suzy-Q" cable, but I don't have such a thing
+	- should we order one?
+    - [ ] disabled write protection (WP), battery removal style
+    - [ ] ran the mrchromebox shell script
+      - connect to a wifi network
+      - log in as chronos
+        curl -LO https://mrchromebox.tech/firmware-util.sh
+        echo b0af93081f73ca5d3a48d22851cd1dba6b5271290ac847855aee7c155cece516  firmware-util.sh | sha256sum -c -
+        sudo bash firmware-util.sh
+  - [ ] installed gentoo (stage4) on chromebook
+  - [ ] built stpki provisioning program and included it in stage4
+  - [ ] trimmed the kernel down a bit, if time permits
+  - [ ] some selinux usage, if time permits
+- [ ] stboot: made progress on reproducing the slow ospkg download
+  tc qdisc add dev DEV root netem delay 300ms
+  tc qdisc add dev DEV root netem loss 0.5%
+- [ ] st: mirrored on gh
+- [-] in preparation for the tuesday demo @ mullvad [0/4]
+  - [-] the ST graph of configuration (input), programs run, and artefacts (output)
+    - [X] stboot graph
+    - [ ] more graphs?
+  - [ ] a plan for network boot demo
+    - a start in today's weekly https://git.glasklar.is/system-transparency/project/documentation/-/blob/main/archive/2023-05-17-meeting-minutes.md
+    - wait for zaolin to come back with his qemu findings
+  - [ ] a plan for stprov demo
+  - [ ] a plan for stpki demo
+    - this is zaolins baby, but let's see
+
