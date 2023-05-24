@@ -211,7 +211,6 @@ ssb>  rsa4096/5A71C943F548E0AB  created: 2023-04-23  expires: never
 *** PIV
 If you get "Failed to connect to yubikey: Error in PCSC call.", restart pcscd: sudo systemctl restart pcscd
 
-
 *** yubico-piv-tool -a status
 Version:        5.4.3
 Serial Number:  16383131
@@ -232,9 +231,6 @@ Slot 82:
         Not Before:     Apr 23 15:12:08 2023 GMT
         Not After:      Dec 31 23:59:59 9999 GMT
 PIN tries left: 3
-
-
-
 
 *** SSH
 For both methods presented below, use the PIV PIN when being prompted
