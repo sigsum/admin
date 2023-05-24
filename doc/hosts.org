@@ -6551,6 +6551,10 @@ misconfigured.\",\"Code\":0,\"Trace\":[{\"file\":\"/var/nextcloud/www/3rdparty/s
 ** mount2.adb-centralen.se (2022-08-01) -- VM @ vmsplice for monitoring
 mkvm.sh mount2.adb-centralen.se
 
+** carmeli.adb-centralen.se (2023-05-14) -- VM @ vmsplice for tjr's bwauth
+Not managed by Ansible.
+193.10.5.128/24, old kdc.adbc ip addr
+
 * Verkligen Data
 ** bark -- Dell XPS 13 (2022-12)
 DELL XPS 13 9320 CI7-1260P 32/1TB UHD+ 13.4" W11P 1X5GHR3
