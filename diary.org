@@ -9,9 +9,224 @@ follow = read email, irc, tickets, blog posts in order to follow the
 progress
 
 * May 2023
-Vacation: 2-5, 8-9 -- 6 days (5 glasklar)
-Extra glasklar on Fri 2023-05-12, so -1 glasklar vacation days (4).
-Extra glasklar on Fri 2023-05-19, so -1 glasklar vacation days (3).
+Vacation: 2-5, 8-9 -- 6 days (5 of which are Glasklar days)
+ Extra Glasklar on Fri 2023-05-12, so -1 Glasklar vacation days (4).
+ Extra Glasklar on Fri 2023-05-19, so -1 Glasklar vacation days (3).
+ Extra Glasklar on Fri 2023-05-26, so -1 Glasklar vacation days (2).
+
+** <2023-06-01 Thu>
+- var på Christoffers seminarium [[file:notes/2023-06-01/08:41-ki conference.md][file:~/notes/2023-06-01/08:41-ki conference.md]]
+- pratade med Ulrika (?) på Childhood om att bygga Nox, påpekade att
+  öppet är en förutsättning för vissa (jag) att vilja engagera sig
+- åt lunch med Isa och Susanne, dom kom inte så långt men har nu träffats iaf
+
+- old credentials, how to go forward?
+  - using pgp key on leguin requires, apart from YK-neo being inserted
+    - ostick mounted
+  - using ssh key requires
+    - SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  - need pgp key for
+    - pass-sigsum
+    - signing ST tags
+      - update: let's sign with SSH keys instead https://docs.gitlab.com/ee/user/project/repository/ssh_signed_commits/
+  - need ssh key for
+    - ~/p/tor/maatuska/maatuska-update-conf.sh 
+
+- setting git email in all ST and glasklar git repos
+  cd ~/usr/src/st && find project core -name \*.git -type d | (while read -r fn; do dir=$(dirname $fn); git -C $dir config user.email linus@glasklarteknik.se; done)
+  find ~/usr/src/glasklar -name \*.git -type d | (while read -r fn; do dir=$(dirname $fn); git -C $dir config user.email linus@glasklarteknik.se; done)
+
+- git signing using ssh, using gitlab
+
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/linus:YK5C-31
+echo "$(git config --get user.email) namespaces=\"git\" $(ssh-add -L | rg ' +linus:YK5C-31$')" > ~/usr/src/st/allowed_signers
+
+cd ~/usr/src/glasklar/testing
+git config gpg.ssh.allowedSignersFile "~/usr/src/st/allowed_signers"
+git config user.email linus@glasklarteknik.se
+git config commit.gpgsign true
+git config tag.gpgSign true
+
+- mejlade med godel lite till, gav dom en screenshot av den ej fungerande kontrakts-sajten
+
+- 15:12 fredrik
+  - philipp ringde och ville prata om immune
+    - fått erbjudande från binarly.io men binarly är en startup och
+      har inte pengar
+      - 1,5M USD, 24 anställda
+    - philipp & kai är intresserade av att fortsätta att jobba med ST
+  - trevor perrin
+  - mer i https://pad.sigsum.org/p/692wTHYhFu3t36tl2eIZ
+
+- tried, and failed, to boot an SMB-mounted ISO on stime
+  
+** <2023-05-31 Wed>
+- drog ut en tand
+- flyttade ST weekly till 15:30
+- installerade inkscape och konverterade ST-loggan till PNG och använder den på GL
+- seems like the artefacts from the system-transparency ci/cd pipeline
+  does not contain anything bootable, but only the stmgr binary, the
+  signing keys and the os-pkg
+  - maybe we should change that in order to be able to test the very
+    same iso on real hw, or just to reproduce things we might spot in
+    the logs
+- talking to jens
+  - 60% currently
+  - availability 60% for the rest of 2023
+ 
+*** TODO [1/3]
+- [X] keykeeper [2/2] (actually finished much earlier)
+  - [X] flashed mrchromebox "full ROM" on chromebook
+    - tried to disabled write protection (WP), CCD style
+      https://wiki.mrchromebox.tech/Firmware_Write_Protect#Hardware_Write_Protection
+      - log in as chronos
+        sudo gsctool -a -I  # CCD is reported to be in State: Locked
+        sudo gsctool -a -o  # Press the power button when prompted, many times over a time period of minutes
+      - the machine reboots, put it back in developer mode
+	- ESC+Refresh+Power (rebooting)
+	- Ctrl+D Enter Ctrl+D (rebooting)
+	- Ctrl+D Ctrl+Alt+F3
+      - sudo gsctool -a -I  # CCD is reported to be in State: Opened
+      - DONE up to here on <2023-05-16 Tue>
+      - use a "Suzy-Q" cable, but I don't have such a thing
+	- should we order one?
+    - [X] disabled write protection (WP) by removing the battery
+      - there are 10 screws underneath
+      - the bottom comes off with only mild violence
+    - did the CCD unlock dance once more, because it was backed in
+      state locked and i thought firmware-util.sh had warned about
+      that, but looking back at what it said this is unnecessary --
+      all it said was that it's wise to have the FlashAP capability
+      set to Always, and that was already the case
+    - [X] ran the mrchromebox shell script
+      - connect to a wifi network
+      - log in as chronos
+        curl -LO https://mrchromebox.tech/firmware-util.sh
+        echo b0af93081f73ca5d3a48d22851cd1dba6b5271290ac847855aee7c155cece516  firmware-util.sh | sha256sum -c -
+        sudo bash firmware-util.sh
+	: choose 2 to flash full ROM
+	: the USB stick for backing up stock fw needs to have no partitions and have a filesystem, because function list_usb_devices() in https://github.com/MrChromebox/scripts/blob/master/functions.sh doesn't deal with partitions
+  - [X] installed gentoo (stage4) on chromebook
+    - [[file:usr/src/st/project/keykeeper/catalyst/keykeeper/root_overlay/usr/local/keykeeper/doc/install-chromebook.txt][file:~/usr/src/st/project/keykeeper/catalyst/keykeeper/root_overlay/usr/local/keykeeper/doc/install-chromebook.txt]]
+    - 256M ESP, 6G swap
+    - grub unable to use root device, is mmc_block loaded?
+      - trying to make grub load mmc_block by adding to boot options fails, no such file .../efi.../mmc_block.mod iirc
+      - we want /lib/modules/VERSION/kernel/drivers/mmc/core and maybe host/SOMETHING, but do we need an UEFI driver too? no
+    - went back to kkbuild and made a new kernel config
+      cd /usr/src/linux
+      mv .config .config.BAK
+      make defconfig && make menuconfig # Enabling all under Device drivers -> MMC which were all disabled, made them built-in and not modules
+      vi stage4.spec # Pointing out the new kernel config
+    - we later had to add more MMC, see [[*][above]]
+  - FUTURE: trimmed the kernel down a bit
+  - FUTURE: some selinux usage, if time permits
+- [ ] stboot: made progress on reproducing the slow ospkg download
+  tc qdisc add dev DEV root netem delay 300ms
+  tc qdisc add dev DEV root netem loss 0.5%
+  - https://git.glasklar.is/system-transparency/core/stboot/-/issues/123
+  - fox is looking into it this week <2023-05-31 Wed>
+
+- [ ] st: mirrored on gh
+  
+** <2023-05-30 Tue>
+- updated nextcloud-01, and ran db:add-missing-indices
+  - updated all packages too, including libc and systemd, rebooted
+- updated clown (@nice), and ran db:add-missing-indices
+- inför R2-möte med jens
+  - what is left to do?
+    - tagging stmgr (jens)
+    - tagging system-transparency (jens)
+    - tagging project/documentation (linus)
+      - adding documentation regarding stprov (linus)
+    - testing in qemu (jens)
+    - testing on stime (linus)
+    - taring up the release
+    - writing an announcement
+    - posting announcment to system-transparency@lists.so
+- jens on a documentation effort in time before the aug/sep meetup
+  - jens could go to gbg for the two days 24-25/7 and linus could meet up there
+  - we'd have to check with tillitis or mullvad for office space
+  - AP linus: check with Fredrik if that's ok, cost wise
+    - 2 x 3 hotel nights
+    - 1 flight tickets gbg -> dusseldorf
+    - 1 train tickets karlstad or stockholm <-> gothenburg
+- inför R1-möte med philipp
+  - we push R1 to 
+  - why did we have to push the release from may 19 to 27 to 30 and still not make it?
+    - the scope of sthsm is bigger than what glasklar needs right now
+    - linus was too late with code review
+  - sthsm is not ready for release
+    - code review, fixes, documentation, tagging
+    - testing
+    - installation on provisioning system
+  - should we release sthsm-provision separately?
+    - won't have to get all of sthsm-keymgmt in order for release
+    - some code duplication (unless we split out common code to a third repo)
+    - we can sign the shim with unreleased code, but we can not install unreleased code on the provisioning system
+  - meeting notes in [[file:glasklar/Meeting notes/2023-05-30 Philipp.md][file:~/glasklar/Meeting notes/2023-05-30 Philipp.md]]
+- asked zaolin to attend to the bootlab issue (documenting netboot)
+
+
+** Friday
+- [X] PETS flights booked
+- [X] lunch place at södermalm, for saturday
+- shitload of stuff related to R1 & R2 -- too much to keep the diary updated :/
+
+** <2023-05-25 Thu>
+- sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
+- 11:00 talking to philipp
+  - immune might not get sold after all, and regardless it's likely that kai & philipp are available also after september
+  - R.1.
+    - thursday
+      - ln5 reviewing current sthsm code
+      - zaolin finishing sthsm MS https://git.glasklar.is/system-transparency/project/sthsm/-/milestones/1#tab-issues
+    - friday
+      - zaolin updating sthsm based on feedback, then tagging sthsm
+      - ln5 installing signing machine with sthsm
+    - monday
+      - ln5 testing, documenting
+    - tuesday
+      - building and signing shim
+      - testing on real hw
+      - 16:00 creating the MR
+  - re mullvad netbooting
+    - kai is implementing *full* RA (remote attestation), TOFU style ("golden measurement"), right now
+    - plan might be to do the first 100 w/o RA
+    - full RA w/ sigsum hopefully ready for early adopters in september
+  - idea from zaolin
+    - https://github.com/binarly-io are the ones who want to buy immune
+    - their business is to reverse engineer a customer binary
+      - good configuration?
+      - does it have security vulns?
+    - ST with RA could benefit from finding out security config and vulnerability
+    - there's a GPL version detecting only known vulns
+- binarly, mentioned by zaolon
+  - https://binarly.io/ has 
+- nadines dator
+  - det är en iMac, hon kör inte Windows
+  - började med att hon klickade på någon av länkarna på archive(dot)diarna(dot)org/site/detail/public/375/
+  - stäng av safari (cmd-Q)
+  - starta safari och ladda ner firefox
+  - stäng av safari (cmd-Q) igen
+  - uppdatera och starta om datorn
+  - använd firefox istf safari
+  - fabriksåterställ datorn och hämta bilder, dokument m.m. från iCloud
+- leguin: yubihsm-connector configured: /home/linus/notes/2023-05-25/13:22-yubihsm-connector
+- buildling stboot.iso GOROOT is wrong on leguin, set GOROOT=/usr/lib/golang
+  - weird thing is that *sometimes* it's not needed, and initramfs:build clearly uses a good GOROOT
+    [initramfs:build] 14:25:30 Build environment: GOARCH=amd64 GOOS=linux GOROOT=/usr/lib/golang GOPATH=/home/linus/usr/src/st/core/system-transparency/cache/go CGO_ENABLED=0
+- decided to go to PETS, sharing a hotel room with dcf (do bring ear plugs for him!)
+  - lingmerths will buy me the flight tickets ARN-GVA but I forgot to ask for train tickets GVA to Lausanne
+- set new expiration date for my gpg encryption subkey
+- reviewed, tested, and tested again stprov `-I <i/f name>' https://git.glasklar.is/system-transparency/core/stprov/-/merge_requests/1
+  - morten just don't test his stuff, ever :/
+- opened MR for getting the building of a netboot image https://git.glasklar.is/system-transparency/core/system-transparency/-/merge_requests/205
+  - debugged missing console output with the new linuxboot kernel
+- morten thinks that the stprov v1.0.1 MS is within reach for friday lunch
+- 23:09 zaolin is still working on sthsm, and i haven't reviewed a single line of code
+- [X] stprov: built kernel, in container
+  podman run can apt install but podman build can not?
 
 ** <2023-05-24 Wed>
 - booted new cb311 and found through dmesg that EFI framebuffer
@@ -76,62 +291,7 @@ Extra glasklar on Fri 2023-05-19, so -1 glasklar vacation days (3).
         - USB drives and disks
 	- BMC, SMM, ME
         - CMOS, VRAM
-- go version -m BINARY
-
-*** TODO [0/5]
-- [ ] stprov: built kernel, in container
-  podman run can apt install but podman build can not?
-- [ ] make sure we have access to OOB for stime
-- [-] keykeeper [2/3]
-  - [X] flashed mrchromebox "full ROM" on chromebook
-    - tried to disabled write protection (WP), CCD style
-      https://wiki.mrchromebox.tech/Firmware_Write_Protect#Hardware_Write_Protection
-      - log in as chronos
-        sudo gsctool -a -I  # CCD is reported to be in State: Locked
-        sudo gsctool -a -o  # Press the power button when prompted, many times over a time period of minutes
-      - the machine reboots, put it back in developer mode
-	- ESC+Refresh+Power (rebooting)
-	- Ctrl+D Enter Ctrl+D (rebooting)
-	- Ctrl+D Ctrl+Alt+F3
-      - sudo gsctool -a -I  # CCD is reported to be in State: Opened
-      - DONE up to here on <2023-05-16 Tue>
-      - use a "Suzy-Q" cable, but I don't have such a thing
-	- should we order one?
-    - [X] disabled write protection (WP) by removing the battery
-      - there are 10 screws underneath
-      - the bottom comes off with only mild violence
-    - did the CCD unlock dance once more, because it was backed in
-      state locked and i thought firmware-util.sh had warned about
-      that, but looking back at what it said this is unnecessary --
-      all it said was that it's wise to have the FlashAP capability
-      set to Always, and that was already the case
-    - [X] ran the mrchromebox shell script
-      - connect to a wifi network
-      - log in as chronos
-        curl -LO https://mrchromebox.tech/firmware-util.sh
-        echo b0af93081f73ca5d3a48d22851cd1dba6b5271290ac847855aee7c155cece516  firmware-util.sh | sha256sum -c -
-        sudo bash firmware-util.sh
-	: choose 2 to flash full ROM
-	: the USB stick for backing up stock fw needs to have no partitions and have a filesystem, because function list_usb_devices() in https://github.com/MrChromebox/scripts/blob/master/functions.sh doesn't deal with partitions
-  - [X] installed gentoo (stage4) on chromebook
-    - [[file:usr/src/st/project/keykeeper/catalyst/keykeeper/root_overlay/usr/local/keykeeper/doc/install-chromebook.txt][file:~/usr/src/st/project/keykeeper/catalyst/keykeeper/root_overlay/usr/local/keykeeper/doc/install-chromebook.txt]]
-    - 256M ESP, 6G swap
-    - grub unable to use root device, is mmc_block loaded?
-      - trying to make grub load mmc_block by adding to boot options fails, no such file .../efi.../mmc_block.mod iirc
-      - we want /lib/modules/VERSION/kernel/drivers/mmc/core and maybe host/SOMETHING, but do we need an UEFI driver too? no
-    - went back to kkbuild and made a new kernel config
-      cd /usr/src/linux
-      mv .config .config.BAK
-      make defconfig && make menuconfig # Enabling all under Device drivers -> MMC which were all disabled, made them built-in and not modules
-      vi stage4.spec # Pointing out the new kernel config
-    - we later had to add more MMC, see [[*][above]]
-  - [ ] built sthsm provisioning program and included it in stage4
-  - FUTURE: trimmed the kernel down a bit
-  - FUTURE: some selinux usage, if time permits
-- [ ] stboot: made progress on reproducing the slow ospkg download
-  tc qdisc add dev DEV root netem delay 300ms
-  tc qdisc add dev DEV root netem loss 0.5%
-- [ ] st: mirrored on gh
+- go version -m FILE
 
 ** <2023-05-23 Tue>
 - tillitis hackathon open mic session
@@ -341,7 +501,6 @@ Extra glasklar on Fri 2023-05-19, so -1 glasklar vacation days (3).
 	- linus
 
 - 12:30-12:53 sync meeting https://pad.sigsum.org/p/NRzz4f18u2vIAYfKiWh6 
-
 
 ** <2023-05-18 Thu>
 - upgraded clown.adbc to 25.0.6
@@ -785,6 +944,121 @@ Glasklar day.
   - and here's the kickstarter thing mentioned in Kamel Lobby (Matrix) earlier
     https://pikvm.org/
 
+** <2023-05-29 Mon>
+- bokat flyg och tåg mha lingmerths
+- försökt få till ett möte mellan susanne och isa
+
+- started on docs.system-transparency.org
+  - added directory docs.system-transparency.org to the project/documentation repo
+  - setting up docsy https://www.docsy.dev/docs/get-started/other-options/
+    - NOTE: i did not do this because i'm not sure i want to use
+      something that requires npm (for PostCSS and "autoprefixer") to
+      be installed and run in order to build our docs site, but this
+      is how you'd do it
+    git submodule add https://github.com/google/docsy.git themes/docsy
+    cd themes/docsy
+    git checkout v0.6.0
+    echo 'theme = "docsy"' >> config.toml
+    (cd themes/docsy && npm install)
+  - looked briefly at [Shadocs](https://shadocs.netlify.app/) instead
+    - filed https://github.com/jgazeau/shadocs/issues/176 for an incorrect link
+  - installation of shadocs https://shadocs.netlify.app/theme/introduction/
+    git submodule add https://github.com/jgazeau/shadocs.git themes/shadocs
+    git submodule update --init --recursive
+    echo 'theme = "shadocs"' >> config.toml
+    hugo server && firefox http://localhost:1313/
+  - shadocs is horribly ugly imo, so we will have to find a way to
+    change colours and font, added a comment about that to https://git.glasklar.is/system-transparency/project/documentation/-/work_items/3
+
+
+  - `hugo server` will build the site and start a webserver at http://localhost:1313/
+  - we should build the site using `hugo -e devel` to not be indexed by search engines https://www.docsy.dev/docs/deployment/
+
+- build-03: installed the mailx package because cron uses it
+  - added mailx to sigsum/ansible/roles/basics/tasks/pkg.fedora.yml
+    but didn't commit yet, bc pgp key is not (easily available)
+
+- 15:50 pratar med fredrik om de försenade releaserna [[file:glasklar/Meeting notes/2023-05-29 Fredrik.md][file:~/glasklar/Meeting notes/2023-05-29 Fredrik.md]]
+
+- looked around BIOS setup on stime, trying to figure out how to configure for network booting
+  - opened https://git.glasklar.is/glasklar/services/bootlab/-/issues/1
+
+** <2023-05-27 Sat>
+- diarauth conf
+  SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) git -C ~/p/tor clone ssh://git@git-rw.torproject.org/dirauth-conf
+- reviewed sthsm more
+- upgraded mailcow, with 1,5h of suffering, see [[file:notes/2023-05-27/20:16-mailcow empty again][file:~/notes/2023-05-27/20:16-mailcow empty again]]
+
+** <2023-05-26 Fri> [0/1]
+- zaolin sync
+  - will work on documentation, both sthsm and shim review
+  - availability today 13:00-16-30
+  - ln5 will review sthsm and install on HSM provisioning laptop
+- foxboron sync
+  - will resolve stprov issues on the MS, test in qemu using task in
+    the stprov branch of system-transparency, and tag when done
+  - availability today until 1700
+- met with jan penfrat from EDRi 09:30-11:10
+  - an ella with edri would be interested in preventit
+- [-] testing sthsm, branch fix-issues [0/2]
+  - leguin:sthsm% ./sthsm-provision pki provision --config examples/config.yaml --backup ''
+    using the name of the key as password for reset, backup, wrap and
+    glasklar admin: glasklar
+    sigsum admin: sigsum
+    system transparency admin: st
+  - [ ] ticket this: provision info could have better formatting and what does "Unsupported Algorithm" at the end mean?
+  - leguin:sthsm% ./sthsm-provision ca create --common-name=mycn --auth-key-label 'Glasklar Admin Key'
+    Enter password for the (Glasklar Admin Key) key:                                                                       
+    Looking for authentication key...              
+    Stored certificate in yubihsm with ID: 0xdb46
+  - leguin:sthsm% ./sthsm-provision cert list
+    Looking for authentication key...
+    ID:                      0xdb46
+    Label:                   "mycn"
+    Capabilities:            [ExportableUnderWrap None]
+    Delegated Capabilities:  [None]
+  - ./sthsm-keymgmt cert create --common-name=mycert1 --auth-key-label 'Glasklar Admin Key' --caid db46
+  - [ ] missing signing by CA, or is that done by "cert create"?
+    Regardless, using the admin key with sthsm-keymgmt is not proper.
+  - exporting pubkey and certs
+    ./sthsm-keymgmt cert export --pem --out mycn.pem --id db46
+    ./sthsm-keymgmt cert export --pem --out mycert1.pem --id d2b6
+    ./sthsm-keymgmt key public --auth-key-label 'Glasklar Admin Key' --out mycert1.pub --id=8c0e
+
+  - leguin:sthsm% openssl verify -CAfile mycn.pem -x509_strict mycert1.pem
+    mycert1.pem: OK
+  - signing and verifying
+    leguin:sthsm% echo foo > txt
+    leguin:sthsm% ./sthsm-keymgmt sign detached --auth-key-label 'Glasklar Admin Key' --id=8c0e --in=txt
+    Enter password for the (Glasklar Admin Key) key:
+    Looking for authentication key...
+    leguin:sthsm% openssl pkeyutl -verify -in txt -sigfile signature.bin -inkey mycert1.pub -pubin -rawin
+    Signature Verified Successfully
+
+  - backup & restore
+    leguin:sthsm% ./sthsm-provision pki backup
+    Enter password for the (backup) key:
+    Looking for authentication key...
+    Exporting salt...
+    Exporting keys...
+    Exporting certificates and data...
+    leguin:sthsm% ls -l backup.json
+    -rw-r--r--. 1 linus linus 5861 May 26 16:02 backup.json
+
+- using old 4k rsa ssh key on the YK-nano
+  - gpg-agent not running already?
+    gpg-agent --enable-ssh-support --daemon bash -
+  - else
+    - there are apparently seven keys picked up by gpg-agent, which is too much unless you're lucky enough to want to use one of the first five
+      SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) ssh-add -l | wc -l
+      7
+    - so either tell ssh which one to use (how?) or have gpg-agent filter them using the file ~/.gnupg/sshcontrol
+      - disabled four keys:
+	8811D89B5F17FFBEEF9E7386013578FC9F2967C4
+	CE8442AAC1F537D23A19B2893FAE5F1BA26AFAA0
+	A28681177A359CC07A1B5F76FDA8436AC010AC0D
+	030089BF8866E5D366FECEE8FBE60A7634131102
+  
 * April 2023
 ** <2023-04-30 Sun>
 - M testad för covid, negativt, 08:30
