@@ -823,10 +823,10 @@ Null prefix argument turns off the mode."
     (if auto-save-default
 	(auto-save-mode 1))))
 
-(add-to-list 'auto-mode-alist
- 	     (cons (concat (getenv "HOME") "/clown/") . ('inhibit-backup-minor-mode)))
-(add-to-list 'auto-mode-alist
- 	     (cons (concat (getenv "HOME") "/glasklar/nc/") . ('inhibit-backup-minor-mode)))
+;; (add-to-list 'auto-mode-alist
+;;  	     (cons (concat (getenv "HOME") "/clown/") . ('inhibit-backup-minor-mode)))
+;; (add-to-list 'auto-mode-alist
+;;  	     (cons (concat (getenv "HOME") "/glasklar/nc/") . ('inhibit-backup-minor-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; don't activate the debugger automagically when errors are
