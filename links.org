@@ -1,3 +1,8 @@
+onion search http://torch4st4l57l2u2vr5wqwvwyueucvnrao4xajqr2klmcmicrv7ccaad.onion/
+ai theaidilemma thesocialdilemma cht people:tristanharris people:azaraskin  https://www.youtube.com/watch?v=xoVJKj8lcNQ
+ai gpt-4 https://www.youtube.com/watch?v=DIU48QL5Cyk
+https://cateee.net/lkddb/web-lkddb/
+https://www.kernelconfig.io/index.html
 rubegoldberg video thistooshallpass https://www.youtube.com/watch?v=qybUFnY7Y8w
 https://theworld.com/~reinhold/diceware.html
 sd-boot systemd https://github.com/systemd/systemd/labels/sd-boot%2Fsd-stub%2Fbootctl

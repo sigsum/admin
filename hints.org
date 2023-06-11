@@ -41181,7 +41181,6 @@ Gateway=fd00:47:11::1
 GatewayOnLink=yes
 Table=1001
 
-
 ** adding a new peer on "server"
 *** sigwaitinfo
 # Finding the next free IP address
