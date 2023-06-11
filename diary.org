@@ -8,12 +8,300 @@
 follow = read email, irc, tickets, blog posts in order to follow the
 progress
 
-* May 2023
-Vacation: 2-5, 8-9 -- 6 days (5 of which are Glasklar days)
- Extra Glasklar on Fri 2023-05-12, so -1 Glasklar vacation days (4).
- Extra Glasklar on Fri 2023-05-19, so -1 Glasklar vacation days (3).
- Extra Glasklar on Fri 2023-05-26, so -1 Glasklar vacation days (2).
+* June 2023
+Vacation, carrying over from May: 2 Glasklar vacation days
+ Extra Glasklar day on Fri 2023-06-02, so -1 Glasklar vacation days (1).
 
+** <2023-06-11 Sun>
+- installed pdf2svg, pdf-tools and uninstalled them again -- they didn't help with opening PDF files in emacs
+  - turns out that it's PDF files in ~/clown/ that does not open properly, which seems to be due to inhibit-backup-minor-mode being set there
+  - disabled minor mode in .emacs and immediately:
+    (setq auto-mode-alist (delq (assoc "/home/linus/glasklar/nc/" auto-mode-alist) auto-mode-alist))
+    (setq auto-mode-alist (delq (assoc "/home/linus/clown/" auto-mode-alist) auto-mode-alist))
+- installed texlive-scheme-medium for writing a letter (in Swedish)
+- looked for formal letter templates
+  - https://www.latextemplates.com/cat/formal-letters
+  - https://sv.overleaf.com/gallery/tagged/swedish
+- need besk:~linus/verkligen since we seem to be missing invoice info in the data from git
+  [root@leguin ~]# borg list /mnt/borg/besk
+  [root@leguin ~]# borg mount /mnt/borg/besk::2023-04-21T17:44:38Z /mnt2
+  restored the whole directory
+- backed up leguin to the WD element
+
+** <2023-06-10 Sat>
+- switched to new bwauth
+  - on new carmeli
+    - new user bwauth created
+  - in bwauth jail on amnesia
+    - user and host used in ssh command changed in ~_bwauth/copybwscan.sh
+    - ran copybwscan.sh manually once, as user _bwauth
+  - [[file:notes/2023-06-10/10:15-bwauth-switch.txt][file:~/notes/2023-06-10/10:15-bwauth-switch.txt]]
+
+** <2023-06-09 Fri>
+- started looking into the pcap from fox with stboot dl'ing over flimsy link, see 
+
+** <2023-06-08 Thu>
+- is the signatures in /stprov.json (?) verified when stboot goes into provision mode? should they?
+- testing stprov on stime, v0.2.0-rc.1
+  stprov remote static -h myhost -i 192.168.67.10/24 -g 192.168.67.2 -A --url http://192.168.67.2/ospkg.json
+  - no good sigs for the ospkg, other than that fine
+  - new attempt
+- sthsm keeps being a headache
+  - /home/linus/notes/2023-06-08/10:38-not-a-typo
+  
+
+*** TODO [1/1]
+- [X] stprov (system-transparency main) tested on stime
+- [ ] stprov (system-transparency-0.2.0-rc.1) tested on stime
+
+** <2023-06-07 Wed>
+- reviewing sthsm
+  - backup + restore works fine
+    - nit: 'reset' should ask for confirmation before wiping
+  - unable to verify ca sign-csr without a CSR      
+
+- 11:00 Fredrik, Linus
+  - privat
+    - är i halmstad nu
+    - planerar att bygga ett hus i gbg, långedrag
+    - skatteverket i .nl har granskat F's ekonomi sedan aug -22
+    - ökat intuniv från 2-3 mg; ; intuniv är en selektiv alfa2-ports-agonist
+  - padden https://pad.sigsum.org/p/692wTHYhFu3t36tl2eIZ
+    - kfreds, rgdd, ln5 borde ha ett strategimöte snart
+      - risk för att ln5, philipp och kai blir frustrerade under hösten
+      - förväntningar på t.ex. kvalitet och testning måste göras tydligt
+    - rgdd och kfreds pratade för några månader sedan om sigsum
+      - ska nog frysa men har inte beslutat ännu pga rgdd vill vänta till hösten
+    - F: rgdd borde leda kai och nisse i arbetet med kryptografisk design i ST	
+    - F: hackathon hos tillitis var kul och bra men den kostade ganska mycket för ST, som du sade
+  - vi gör inga förändringar gällande 1-on-1 innan sommaren
+  - i framtiden kanske vi behöver ett stående möte, FS och LN, men vi har ca 7h mån och tis
+  - strategimöte med rgdd kanske vi kan ha på PETS
+    - kanske även diskussioner om Sigsum kan ske där
+
+- planerade augusti-meetup med rgdd https://pad.sigsum.org/p/RALYoGCebWrDZDhHu_r7
+  - AP@ln5 Kommuinicera agendan minus S1 & S2 & S3
+  - AP@ln5 Se till att alla vet att ons 12:00 till to 12:00 är viktigt
+  - AP@ln5 Skaffa ett timglas på 10m.
+
+- gpg-agent woes
+  - this doesn't show any keys, even though the yubikey is inserted
+    SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) ssh-add -l
+  - gpg-agent not running (newly started system), so start it
+    systemctl --user start gpg-agent
+  - gpgconf --list-dirs agent-ssh-socket prints the wrong file name:
+    leguin:~% ls -l $(gpgconf --list-dirs agent-ssh-socket)
+    ls: cannot access '/run/user/1000/gnupg/S.gpg-agent.ssh': No such file or directory
+  - close, but no cigar
+    leguin:~% ls -l /run/user/1000/gnupg/S.gpg-agent 
+    srw-------. 1 linus linus 0 Jun  7 16:58 /run/user/1000/gnupg/S.gpg-agent=
+  - so i guess we'll be doing this going forward:
+    SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent ssh-add -l
+
+*** TODO [4/4]
+- [X] rgdd meetup planning time decided
+- [X] sthsm first feedback
+- [X] ST weekly prepared
+  - releases, talk about them?
+    - why we fail on dates?
+    - new names -- numbers are devious
+    - process? what takes time? who can help with integration and testing? one linus is clearly not enough
+  - stauth, comment on
+  - what's up next? summer and all
+  - what are the ST contenders we should know about?
+    - platbox
+    - chipsec
+    - that MIT thing (see irc)
+    - binarly
+- [X] kfreds demoted on gl, bc lacking MFA  
+
+** <2023-06-05 Mon>
+- stime ubuntu root pw was set by zaolin, it's probably "testing"
+- stime booting stboot, kernel cmdline
+  - 5.15.112 from contrib/
+  | cmdline                                                    | qemu           |                | iKVM/HTML5         |       | hw     | hw       |
+  |                                                            | terminal       | window         | output             | input | screen | keyboard |
+  |------------------------------------------------------------+----------------+----------------+--------------------+-------+--------+----------|
+  | console=ttyS0,115200n8 console=ttyS1,115200n8 console=tty0 |                |                | full?              | no    | ?      | no       |
+  | console=ttyS1                                              |                |                | none               | ?     | none   | ?        |
+  | console=ttyS0                                              |                |                | none               | ?     | none   | ?        |
+  | <empty>                                                    | -              | full?          | full?              | no    | full?  | no       |
+  | console=tty0 console=ttyS1,115200n8                        | (ttyS1) stprov | one (?) kernel | one or two kernels |       |        |          |
+
+  - 5.15.112 with CONFIG_USB, and some
+  | cmdline                                                    | qemu       |        | iKVM/HTML5 |         | hw     | hw       |
+  |                                                            | ttyS0      | vga    | output     | input   | screen | keyboard |
+|------------------------------------------------------------+------------+--------+------------+---------+--------+----------|
+  | <empty>                                                    | -          | ok     | ok         | yes     | ok     | yes      |
+  | console=ttyS0,115200n8 console=ttyS1,115200n8 console=tty0 | kernel     | ok     | ok         | yes     |        |          |
+  | console=ttyS0,115200n8 console=tty0                        | kernel     | ok     |            |         |        |          |
+  | console=tty0 console=ttyS0,115200n8                        | ok         | kernel | kernel     | yes (!) |        |          |
+  | console=tty0 console=ttyS0,115200n8 console=ttyS1,115200n8 | kernel     | ok     | ok         | yes     |        |          |
+  | console=tty0 console=ttyS1,115200n8                        | (ttys1) ok |        | kernel     |         |        |          |
+
+
+- 13:00 fredrik
+  - fredrik har pratat med daniel om personalbehov
+  - fredrik kan inte vara med på dagens glasklar
+  
+- like this
+  task demo:ospkg iso qemu:iso
+  task demo:ospkg-defconsole iso-defconsole qemu:iso-vga
+
+- 17:05 fredrik
+  - daniel håller med om att glasklar behöver en go-programmerare som
+    kan boot m.m. ("en jens")
+  - vill ha P&K på heltid året ut
+    - linus sa att philipp indikerat sänkt taxa vid längre avtal
+    - vem ska leda vem? förslag linus: jens & philipp; rasmus: nisse & kai
+
+- gl update
+  https://about.gitlab.com/releases/2023/06/05/security-release-gitlab-16-0-2-released/
+  Upgrade: gitlab-ee:amd64 (15.11.3-ee.0, 16.0.2-ee.0)
+
+*** TODO [2/3]
+- [X] instructions for Joshua
+- [ ] rgdd meetup planning time decided
+- [X] glasklar meeting notes https://pad.sigsum.org/p/fqoE-u80i-PyLg-YBWW-EdAC-glasklar-2023-06-05  
+
+** <2023-06-04 Sun>
+- worked at least 6h on the console problem
+
+- built an image with host config in initramfs, using an stmgr and
+  kernel without default cmdline, see
+  [[file:usr/src/st/core/system-transparency/build.sh][file:~/usr/src/st/core/system-transparency/build.sh]]
+
+- talked to isa [[file:clown/Verkligendata/Uppdrag & projekt/Child protection/Meetings/2023-06-04 isa, linus.md][file:~/clown/Verkligendata/Uppdrag & projekt/Child protection/Meetings/2023-06-04 isa, linus.md]]
+
+- found a lead on why terminal is all fscked up after qemu -nograhpic
+  https://github.com/cirosantilli/linux-kernel-module-cheat/issues/110
+  leading to https://github.com/mattiase/wraptest and more, but
+  tset(1) seems to fix it (and if not, try `tput smam` too)
+  - documented in https://git.glasklar.is/system-transparency/core/system-transparency/-/issues/201
+
+- the console issue
+  - maybe useful? https://unix.stackexchange.com/questions/346090/disable-framebuffer-in-qemu-guests
+  - the trick richard mentioned a long time ago, of "slamming ctrl and
+    alt a few times" does not seem to do any difference, and the
+    keyboard has had no trouble when talking to GRUB or getty/login
+    from the Ubuntu installation on disk
+
+** <2023-06-03 Sat>
+- worked from 14:00 to 01:30 on getting console working on qemu with
+  graphics console, qemu w/o grahpics ie ttyS0 and stime with console
+  on ttyS1
+
+- linux/scripts/config can be used to enable/disable kernel config
+  flags from the command line, or figure out what's set and not in a
+  config
+
+- use make savedefconfig to generate a defconfig, with only the
+  options differing from the default config listed, like what we keep
+  in system-transparency/contrib/linuxboot.defconfig
+  https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do
+
+- stboot kernel config
+  - this is what we've changed when bumping the kernel, and making it work when netbooted
+
+@@ -242,10 +242,13 @@ CONFIG_FB_FOREIGN_ENDIAN=y
+ CONFIG_FB_MODE_HELPERS=y
+ CONFIG_FB_TILEBLITTING=y
+ CONFIG_FB_VESA=y
++CONFIG_FB_EFI=y
+ CONFIG_FB_SIMPLE=y
+ CONFIG_FRAMEBUFFER_CONSOLE=y
++CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION=y
+ CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY=y
+ CONFIG_FRAMEBUFFER_CONSOLE_ROTATION=y
++CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y
+ # CONFIG_USB_SUPPORT is not set
+ CONFIG_RTC_CLASS=y
+ CONFIG_SYNC_FILE=y
+
+  - using
+    [[file:usr/src/st/core/system-transparency/contrib/linuxboot.defconfig.3][file:~/usr/src/st/core/system-transparency/contrib/linuxboot.defconfig.3]],
+    disabling CONFIG_FB, did not make things any better
+
+- how we built the stboot.iso used for testing on stime
+  - task linux:kernel  # in ubuntu container, after changing kernel config
+  - task iso-provision, which boils down to building
+
+    - an stprov initramfs (stprov.cpio.gz) containing the stprov binary
+task: [demo:initramfs-stprov] GOPATH=/home/linus/usr/src/st/core/system-transparency/cache/go cache/go/bin/u-root -build=bb -uinitcmd="/bin/stprov help" -uroot-source ./cache/go/src/github.com/u-root/u-root -o out/artifacts/stprov.cpio -files cache/go/bin/stprov:/bin/stprov core
+task: [demo:initramfs-stprov] gzip -kf out/artifacts/stprov.cpio
+
+    - an stprov ospkg (stprov.zip) from the stprov initramfs, stboot.vmlinuz and a command line (BZZZZT!!!)
+task: [demo:ospkg-stprov] cache/go/bin/stmgr ospkg create -out 'out/ospkgs/stprov.zip' -label='Provisioning Tool' -kernel=out/artifacts/stboot.vmlinuz -initramfs=out/artifacts/stprov.cpio.gz -cmdline='console=ttyS0,115200n8' -url=http://10.0.2.2:8080/os-pkg-example-ubuntu20.zip
+task: [demo:ospkg-stprov] for i in {1..2}; do cache/go/bin/stmgr ospkg sign -key=out/keys/example_keys/signing-key-$i.key -cert=out/keys/example_keys/signing-key-$i.cert -ospkg out/ospkgs/stprov.zip; done
+
+    - an stboot initramfs (initramfs:provision.cpio.gz) containing the stprov ospkg
+task: [initramfs:build] GOPATH=/home/linus/usr/src/st/core/system-transparency/cache/go cache/go/bin/u-root -build=bb -uinitcmd="stboot -loglevel=d" -defaultsh="" -uroot-source ./cache/go/src/github.com/u-root/u-root -o out/artifacts/initramfs:provision.cpio.tmp -files out/keys/example_keys/root.cert:etc/trust_policy/ospkg_signing_root.pem -files contrib/initramfs-includes/isrgrootx1.pem:etc/ssl/certs/isrgrootx1.pem -files out/artifacts/trust_policy.json:etc/trust_policy/trust_policy.json -files out/ospkgs/stprov.json:ospkg/provision.json -files out/ospkgs/stprov.zip:ospkg/provision.zip  github.com/u-root/u-root/cmds/core/init system-transparency.org/stboot
+task: [initramfs:build] mv out/artifacts/initramfs:provision.cpio.tmp out/artifacts/initramfs:provision.cpio
+task: [initramfs:generic] gzip -kf out/artifacts/initramfs:provision.cpio
+
+   - an ISO (stboot.iso) from the stboot initramfs and stboot.vmlinuz
+task: [initramfs:generic] mv out/artifacts/initramfs:provision.cpio.gz out/artifacts/stboot.cpio.gz
+task: [iso-provision] cache/go/bin/stmgr uki create -format iso -out 'out/stboot.iso' -kernel=out/artifacts/stboot.vmlinuz -initramfs=out/artifacts/stboot.cpio.gz
+
+  - scp out/stboot.iso tee.sigsum.org:/var/lib/sambashares/iso/stboot-020-1.iso
+
+- booting in qemu, without -nographic
+  qemu-system-x86_64 -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.fd -drive if=pflash,format=raw,file=out/artifacts/OVMF_VARS.fd -enable-kvm -M q35 -net user,hostfwd=tcp::2222-:2222 -net nic -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 -rtc base=localtime -m 4G -drive file=out/stboot.iso,format=raw,if=none,media=cdrom,id=drive-cd1,readonly=on -device ahci,id=ahci0 -device ide-cd,bus=ahci0.0,drive=drive-cd1,id=cd1,bootindex=1
+
+- in order to see the commands that task invokes, redirect stderr to a
+  file and view it with less, more or an editor:
+    task mytask 2>log && less log
+  Use the arrow keys to view the end of the long lines.
+
+- with the following -cmdline to stmgr uki create, qemu with vga works
+  while qemu with -nographic shows nothing after /init is run
+  console=ttyS0,115200n8 console=ttyS1,115200n8 console=tty0
+
+- embedding git tag in go binary isn't really easy
+  - tried this in go:stmgr task but running git describe has to be done in checked out source tree
+            GO_LDFLAGS:
+            sh: |
+              v=$(git describe --tags --always)
+              echo "-X system-transparency.org/core/stmgr/version.Version=$v"
+
+- qemu and serial ports https://web.archive.org/web/20171221004914/http://nairobi-embedded.org/qemu_serial_terminal_redirection.html
+
+** <2023-06-02 Fri>
+- x
+  PEI IPMI Initialization...
+  PEI--Intel MRC Execution...
+  PEI--DXE Phase start ?
+  ...
+  DXE--AHCI Initialization...
+  DXE--SuperIO Initialization...
+  DXE--AHCI Initialization...
+- renewed certs for {imap,smtp}.adb-centralen.se
+  - we should really decommission smtp and move imap
+    - smtp
+      - [ ] lower DNS TTL
+      - [ ] wait, shut the jail down,
+- philipp
+  - uefi boats using uefi variables
+  - the BMC promotes a CDROM device, by emulating some CD/DVD device
+  - "Loaded initrd from LINUX_EFI_INITRD_MEDIA_GUID device path" indicates UKI
+  - might be missing network config in the UEFI
+
+- glasklar meetup planning
+  - filling in weekly pad
+  - historical and future meetups
+    - 2022-10 #1
+    - 2022-12 #2
+    - 2023-02 #3
+    - 2023-04 #4
+    - 2023-08 #5
+    - 2023-10 #6
+    - 2023-12 #7
+
+- seems like the ssh key for git.adb-centralen:verkligen/* is lost somewhere
+  - we can update gitolite-admin/keydir/verkligen.pub to contain
+    another key which is not lost (not an -sk key though because old
+    sshd)
+  - see /home/linus/notes/2023-06-02/15:08-gitolite for more about this
 ** <2023-06-01 Thu>
 - var på Christoffers seminarium [[file:notes/2023-06-01/08:41-ki conference.md][file:~/notes/2023-06-01/08:41-ki conference.md]]
 - pratade med Ulrika (?) på Childhood om att bygga Nox, påpekade att
@@ -30,7 +318,8 @@ Vacation: 2-5, 8-9 -- 6 days (5 of which are Glasklar days)
     - signing ST tags
       - update: let's sign with SSH keys instead https://docs.gitlab.com/ee/user/project/repository/ssh_signed_commits/
   - need ssh key for
-    - ~/p/tor/maatuska/maatuska-update-conf.sh 
+    - ~/p/tor/maatuska/maatuska-update-conf.sh (for ssh amnesia)
+    - git.adb-centralen.se (for git clone, pull, push)
 
 - setting git email in all ST and glasklar git repos
   cd ~/usr/src/st && find project core -name \*.git -type d | (while read -r fn; do dir=$(dirname $fn); git -C $dir config user.email linus@glasklarteknik.se; done)
@@ -44,8 +333,8 @@ echo "$(git config --get user.email) namespaces=\"git\" $(ssh-add -L | rg ' +lin
 
 cd ~/usr/src/glasklar/testing
 git config gpg.ssh.allowedSignersFile "~/usr/src/st/allowed_signers"
-git config user.email linus@glasklarteknik.se
-git config commit.gpgsign true
+git config user.email linus.nordberg@glasklarteknik.se
+git config commit.gpgSign true
 git config tag.gpgSign true
 
 - mejlade med godel lite till, gav dom en screenshot av den ej fungerande kontrakts-sajten
@@ -60,7 +349,31 @@ git config tag.gpgSign true
   - mer i https://pad.sigsum.org/p/692wTHYhFu3t36tl2eIZ
 
 - tried, and failed, to boot an SMB-mounted ISO on stime
-  
+  - should've tried UEFI boot, not LEGACY
+
+- branch master of repo git@git.sigsum.org:linus/linus was pushed to
+  https://git.glasklar.is/glasklar/services/bootlab/ and was public
+  for 57 minutes before it was removed by first setting the repo
+  private, then delete the master branch, then setting the repo public
+  again
+  - this happened because a clumsy git remote set-url command was issued [[file:notes/2023-06-01/21:32-git-push-fail][file:~/notes/2023-06-01/21:32-git-push-fail]]
+    - seems like the local clone of the bootlab repo had the url of ~/, but I don't understand why this mixup happened
+  - Seems like nobody pulled master during those 57 minutes [[file:notes/2023-06-01/21:32-git-push-fail-phew][file:~/notes/2023-06-01/21:32-git-push-fail-phew]]
+    - not sure if it was accessed via web though, so look into that if possible
+  - around 23:00 i found out, by accident again, that
+    https://git.glasklar.is/glasklar/services/bootlab/-/tree/c925a96be2cde8a5c081bed8e8570ecbfece6590/
+    was still accessible
+    - at 23:22 I pushed the "Prune unreachable objects" button in
+      gitlab's Settings -> General -> Advanced panel which made the
+      c925a blob disappear, as described in
+      https://git.glasklar.is/help/administration/housekeeping#prune-unreachable-objects
+
+* May 2023
+Vacation in May: 2-5, 8-9 -- 6 days (5 of which are Glasklar days)
+ Extra Glasklar day on Fri 2023-05-12, so -1 Glasklar vacation days (4).
+ Extra Glasklar day on Fri 2023-05-19, so -1 Glasklar vacation days (3).
+ Extra Glasklar day on Fri 2023-05-26, so -1 Glasklar vacation days (2).
+
 ** <2023-05-31 Wed>
 - drog ut en tand
 - flyttade ST weekly till 15:30
@@ -167,8 +480,7 @@ git config tag.gpgSign true
   - meeting notes in [[file:glasklar/Meeting notes/2023-05-30 Philipp.md][file:~/glasklar/Meeting notes/2023-05-30 Philipp.md]]
 - asked zaolin to attend to the bootlab issue (documenting netboot)
 
-
-** Friday
+** <2023-05-26 Fri>
 - [X] PETS flights booked
 - [X] lunch place at södermalm, for saturday
 - shitload of stuff related to R1 & R2 -- too much to keep the diary updated :/
