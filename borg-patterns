@@ -24,5 +24,8 @@ R /home/linus
 - home/linus/tor-browser
 - home/linus/tstick
 - home/linus/u
++ home/linus/usr/src/glasklar
++ home/linus/usr/src/sigsum
++ home/linus/usr/src/st
 - home/linus/usr
 - home/linus/.var/app
