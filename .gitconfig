@@ -1,6 +1,7 @@
 [user]
 	email = linus@nordberg.se
 	name = Linus Nordberg
+	signingkey = /home/linus/.ssh/linus:YK5C-31
 [status]
 	showUntrackedFiles = no
 [http]
@@ -35,3 +36,5 @@
      pushInsteadOf = https://gitlab.torproject.org/
 [url "ssh://git@git-rw.torproject.org/"]
      pushInsteadOf = https://git.torproject.org/
+[gpg]
+	format = ssh
