@@ -8,6 +8,10 @@ mkdir -p "$DIR"
 
 FILE="$DIR/$(date +%H:%M)"
 [[ $# -gt 0 ]] && FILE="${FILE}-$1"
-# TODO: if there's no controlling tty (?) append (!) stdin to $FILE instead of starting an editor
-vi "$FILE"		       # emacs keeps segfaulting at startup :(
+
+if [ -t 0 ]; then
+    emacs "$FILE"
+else
+    cat >> "$FILE"
+fi
 echo "$FILE"
