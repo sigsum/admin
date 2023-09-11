@@ -8,494 +8,2714 @@
 follow = read email, irc, tickets, blog posts in order to follow the
 progress
 
+* September 2023
+** <2023-09-11 Mon>
+- fixed rspamd role a bit
+- replied to amelia
+- built new kernel for vm86 and vmsplice
+- rebooted vm86 into ospkg-vdab-hypervisor-2023-09-11T11:08+02:00
+  - libvirt failing
+  - ansible-bootstrap failing
+    - mostly fixed, but sshd configuration fails bc /run/sshd is missing
+  - unable to log in over ssh, and console super buggy
+    printf "port 4722\npermitrootlogin prohibit-password\n" > /etc/ssh/sshd_config; systemctl start sshd
+- looked into failed SASL attempts at mx-01; worst week (out of four or so) max is 140 attempts (from a .br address)
+- st weekly https://pad.sigsum.org/p/ST-20230911
+  - gave feedback on hw for bootlab and SB options
+- got back to HPE reseller with questions about the DL320 system
+  
+*** weasel on snapshot.do
+- "could use some love"
+- slow for many requests
+- ratelimiting
+  - hitting the db has one ratelimit
+  -  separate from "fetching by sha1 name in the url"
+
+- how are files being stored on disk?
+  - a content-addressed filesystem
+
+- what could linus do?
+  - get a guest account
+  - "you could be the new snapshot maintainer"
+  - why no updates? something is broken, weasel will investigate
+  - look at the state of things
+    - db schema could be fixed
+      - postgresql
+      - https://salsa.debian.org/snapshot-team/snapshot
+
+- architecture -- web plus rubyscripts updating the db with new info after the run
+  - web/app: web part in python, used to be pylon but now something else
+  - ./snapshot: rubyscript doing the import
+
+- machine running it is a mirror
+  - mirror on the host itself, receiving new files like any mirror
+
+- hosted at
+  - leaseweb: 6 machines with SATA disks
+  - sanger: 2 hosts -- 1 new and one old
+
+- original argument for snapshot: curiosity
+
+- who are the people in the snapshot group?
+  - baptiste beuplat (nick lyknode?) has committed quite some
+  - julien cristau has committed some too
+  - #debian-admin is a reasonably good place for questions
+
+- AP linus: send weasel an email to (weasel@debian.org) with "access
+  to relevant machines for snapshot.do", and send reminder on signal
+  if need be
+
+- process for being debian people?
+  - going the packaging route is normal
+  - nm people == new maintainers https://nm.debian.org/
+    - not necessary to help out with this
+
+- maybe NIH behind RB wanting to build their own
+- weasel willing to help holger or linus to help snapshot
+  - ping him on signal if email doesn't result in anything
+
+- room for improvement
+  - writing a test suite is probably step 0
+  - rewriting the importer in python would be good
+  - node.last
+    - mirrrun table belongs to an archive (like security), has a timestamp
+      https://salsa.debian.org/snapshot-team/snapshot/-/blob/master/db/db-create.sql#L25  
+    - importing is expensive because updating node.last for every file
+    - solution could be to make node.last accept NUL meaning now
+  - sha256
+    - table file should have a sha256 too (in addition)
+      - sha1 is part of extzernal API
+
+- linus should become part of the snapshot team at salsa
+
+** <2023-09-10 Sun>
+- vagrant
+  - vagran up failing with
+    /usr/share/gems/gems/fog-libvirt-0.9.0/lib/fog/libvirt/requests/compute/vm_action.rb:7:in `create': Call to virDomainCreateWithFlags failed: /usr/libexec/qemu-bridge-helper --use-vnet --br=virbr0 --fd=29: failed to communicate with bridge helper: stderr=failed to get mtu of bridge `virbr0': No such device (Libvirt::Error)
+  - no virbr0 in ip link
+  - did virsh net-list and virsh net-info default as root, now virbr0 exists, wth?
+  - hanging?
+#+BEGIN_EXAMPLE
+leguin:~% cat ~/tmp/vagrant/Vagrantfile
+Vagrant.configure("2") do |config|
+  config.vm.define "cage-fedora" do |cage_fedora|
+    cage_fedora.vm.box = "fedora/38-cloud-base"
+    cage_fedora.vm.provider :libvirt do |cage_hw|
+      cage_hw.video_type = 'virtio'
+      cage_hw.video_vram = '262144'
+      cage_hw.graphics_type = 'spice'
+      cage_hw.memory = "2048"
+    end
+    #cage_fedora.vm.synced_folder "..", "/vagrant", type: "rsync", rsync__exclude: ".git/", "rsync__args": "-a"
+    cage_fedora.vm.provision "shell", inline: <<-SHELL
+      echo "execute in a shell, as root"
+      id
+    SHELL
+    # cage_fedora.vm.provision :ansible do |ansible|
+    #    ansible.playbook = "../ansible/playbooks/cage.yml"
+    #    ansible.config_file = "../ansible/ansible.cfg"
+    #    ansible.raw_arguments = ["--become"]
+    # end
+  end
+end
+
+$ vagrant up
+...
+Bringing machine 'cage-fedora' up with 'libvirt' provider...
+==> cage-fedora: Checking if box 'fedora/38-cloud-base' version '38.20230413.1' is up to date...
+==> cage-fedora: Starting domain.
+==> cage-fedora: Waiting for domain to get an IP address...
+==> cage-fedora: Waiting for machine to boot. This may take a few minutes...
+
+Sep 10 14:59:32 leguin kernel: Default drop INPUT: IN=virbr0 OUT= MAC=ff:ff:ff:ff:ff:ff:52:54:00:0e:2a:49:08:00 SRC=0.0.0.0 DST=255.255.255.255 LEN=304 TOS=0x00 PREC=0xC0 TTL=64 ID=0 DF PROTO=UDP SPT=68 DPT=67 LEN=284 
+
+nft INPUT rule added:
+                udp sport 68 udp dport 67               iifname virbr0 accept # dhcp from VM's
+nft OUTPUT rule amended with tap0:
+                oifname {lo, wg-vkg, virbr0, tap0} accept
+#+END_EXAMPLE
+
+** <2023-09-09 Sat>
+- decided to run rspamd (and redis) in separate Debian VM
+  - pros: https://rspamd.com/apt-stable/pool/main/r/rspamd/ has
+    up-to-date debs (3.6.2); debian rules are up to date if we want to
+    build our own; maintainer seems to like debian; Debian packages
+    3.4
+  - cons: selinux less likely to happen; need another VM (which can be
+    argued to be a plus)
+- created VM splice on vm86 and did ansible bootstrap
+
+** <2023-09-08 Fri>
+- borg backup and patterns
+  - changed /root/bup-borg.sh to make separate archives for separate DIRS, so one for root and one for linus
+- rspamd
+  - ticket asking for selinux policy found https://github.com/rspamd/rspamd/issues/4576
+  - building master with clang, inspired by rspamd/.drone.yml
+     # install dependencies, from https://github.com/rspamd/rspamd-build-docker/blob/master/fedora-build/Dockerfile:
+     sudo dnf --setopt install_weak_deps=False install clang compiler-rt lld cmake make pkgconf-pkg-config perl ragel file-devel glib2-devel libevent-devel libicu-devel luajit-devel openssl-devel sqlite-devel zlib-devel clang-devel llvm-devel libsodium-devel ninja-build
+     # creater a distfile
+     ./dist.sh ../rspamd-src-$(git describe).tar.xz
+     cd /tmp; tar xf ~/usr/src/rspamd/rspamd-src-3.6-94-gf4a6e61ef.tar.xz
+     mkdir rspamd.build; cd rspamd.build
+     # export ASAN_OPTIONS=detect_leaks=0 # from rspamd/.drone.yml, but asan makes the tests fail so removed `-DSANITIZE=address`
+     cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DENABLE_CLANG_PLUGIN=ON -DENABLE_HYPERSCAN=ON -DENABLE_LUAJIT=ON ../rspamd-src-3.6-94-gf4a6e61ef
+     make -j $(getconf _NPROCESSORS_ONLN)
+     make run-test
+  - found https://www.mankier.com/8/spamd_selinux
+  - fixed a format bug https://github.com/rspamd/rspamd/pull/4590
+    - building without hyperscan for now
+      cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DENABLE_CLANG_PLUGIN=ON -DENABLE_LUAJIT=ON ../rspamd-src-3.6-94-gf4a6e61ef
+  - enabling LTO/IPO (-DENABLE_LTO=ON), see https://en.wikipedia.org/wiki/Interprocedural_optimization
+    date; cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DENABLE_CLANG_PLUGIN=ON -DENABLE_LUAJIT=ON -DENABLE_LTO=ON ../rspamd-src-3.6-94-gf4a6e61ef && time make -j $(getconf _NPROCESSORS_ONLN) && make run-test; date
+  - using ~/src/build-rspamd.sh instead
+- betalade faktura från mailcow/servercow, struntade i betalningskod (belopp <150k SEK)
+- found https://github.com/Kloadut/dotfiles/blob/master/slack.py when looking for Kload (Yunohost)
+- foot has a server mode; try using the systemd unit mentioned in foot(1) to start it
+
+** <2023-09-07 Thu>
+- jitsi
+  - ca 09:02 frös linus i möte "st", sedan en gång till senare
+
+- st-möten
+  - ska vara inspirerande men också annat, t.ex. lösa blockers
+  - ordningen projektmöte och sedan glasklar ST är bra
+    - lite tid mellan mötena är bra
+  - fredriks förtroende
+- fakturerat, trixat med vlad's lön (formellt "andrei dome")
+- hittat https://github.com/netbox-community/netbox/ som kanske är en bra IPAM
+#+BEGIN_EXAMPLE
+[root@leguin ~]# dnf install netbox
+Last metadata expiration check: 3:47:27 ago on Thu Sep  7 15:54:37 2023.
+Error:
+ Problem: conflicting requests
+  - nothing provides python3dist(drf-yasg[validation]) needed by netbox-2.11.10-5.fc38.noarch from fedora
+(try to add '--skip-broken' to skip uninstallable packages)
+#+END_EXAMPLE
+
+*** rspamd
+- let's just cmake and skip the rpm for now
+#+BEGIN_EXAMPLE
+git clone rspamd; cd rspamd; git switch 3.6; ./dist.sh /tmp/rspamd-3.6.tar.xz
+cd /tmp; tar xf ./rspamd-3.6.tar.xz
+mkdir rspamd.build; cd rspamd.build
+cmake ../rspamd-3.6 --install-prefix /tmp/rspamd -DENABLE_HYPERSCAN=ON -DENABLE_LUAJIT=ON && make all run-test
+make install
+#+END_EXAMPLE
+- fixed the tests https://github.com/rspamd/rspamd/pull/4588    
+- in theory we could probably copy the installation to msgop but in
+  practice the install prefix /tmp/rspamd will be known by installed
+  artifacts, like solib runtime paths, so don't do this:
+    tar cf - -C /tmp/rspamd . | xz | ssh msgop.adb-centralen.se sudo sh -c "mkdir -p /usr/local && tar xJf - -C /usr/local"
+- in practice, skipping the --install-prefix and simply copying the
+  the whole of rspamd.build to target and make install there seems
+  best until we build a proper rpm
+- for inspiration, maybe look at what mailcow does; UPDATE: they use
+  debs from https://rspamd.com/apt-stable/ which seems to be up to
+  date https://rspamd.com/apt-stable/pool/main/r/rspamd/
+
+** <2023-09-06 Wed>
+- rspamd: why building our own?
+  - https://rspamd.com/rpm-stable/ (and https://rspamd.com/rpm/) seems utterly outdated for everything except centos
+- gamla anteckningar om fedora, tips från andreas
+  - pkg repos: "Rpm fusion är böset, finns free och non-free"
+  - selinux: Move user linus from unconfined_u to staff_u, check with id -Z
+- st weekly och eftermöten ang UTC mötestid och synk med rgdd
+
+*** leguin: dnf install rpm-build clang
+- one concern with the rpm spec: https://github.com/rspamd/rspamd/blob/master/rpm/rspamd.spec#L9C1-L9C8 says version 3.2 while there's a 3.6
+#+BEGIN_EXAMPLE
+  sudo dnf install -y cmake clang openssl-devel glib2-devel ragel-devel luajit-devel sqlite-devel file-devel libicu-devel pcre-devel hyperscan-devel zlib-devel
+  sudo dnf install -y jemalloc-devel lapack-devel libsodium-devel libunwind-devel lua-devel openblas-devel # may be needed only for building rpm package
+  git clone rspamd; cd rspamd; git switch 3.6; ./dist.sh /tmp/rspamd-3.6.tar.xz
+  cd /tmp; mkdir rspamd.build; cd rspamd.build; tar xf /tmp/rspamd-3.6.tar.xz; cd rspamd-3.6
+  rpmbuild -ba --build-in-place rpm/rspamd.spec
+#+END_EXAMPLE
+  - looking for files in ~/rpmbuild/SOURCES that we keep in rpm/
+#+BEGIN_EXAMPLE
+  (cd ~/rpmbuild/SOURCES/; ln -s /tmp/rspamd.build/rspamd-3.6/rpm/80-rspamd.preset .)
+  (cd ~/rpmbuild/SOURCES/; ln -s /tmp/rspamd.build/rspamd-3.6/rpm/rspamd.logrotate .)
+  rpmbuild -ba --build-in-place rpm/rspamd.spec
+  ...
+  error: Bad file: /home/linus/rpmbuild/SOURCES/rspamd-3.2.tar.gz: No such file or directory
+#+END_EXAMPLE
+  - so we've at least two problems: the spec is for 3.2 and rpmbuild is expecting a source tar ball
+  - found https://github.com/rspamd/rspamd-build-scripts but they didn't help any
+
+** <2023-09-05 Tue>
+- dovecot
+  - [ ] verify that we don't have imap principals or maildirs with
+    mixed case (we're changing auth_username_format to %Ln, where L
+    means lowercase)
+  - the command `doveadm -D user allan` should print five fields (user, uid, gid, home, mail) thanks to userdb args allow_all_users=yes but prints none
+    - setting first_valid_uid = 97 makes it work
+
+Sep 05 10:54:46 auth: Debug: master in: USER    5       linus@nordberg.se       service=lmtp
+Sep 05 10:54:46 auth: Debug: static(linus): Performing userdb lookup
+Sep 05 10:54:46 auth: Debug: static(linus): Finished userdb lookup
+Sep 05 10:54:46 auth: Debug: userdb out: USER   5       linus   uid=97  gid=97  home=/var/db/imap/linus
+Sep 05 10:54:46 lmtp(123625): Error: lmtp-server: conn unix:pid=123623,uid=89 [3]: rcpt linus@nordberg.se: Failed to initialize user: Mail access for users with UID 97 not permitted (see first_valid_uid in config file, uid from userdb lookup).
+
+  - doveadm -D auth test -x service=imap molgan@adb-centralen.se
+    - succeeds after manually installing /etc/krb5.keytab
+  - semanage fcontext -l | rg dovecot shows
+    /var/spool/dovecot(/.*)?                           all files          system_u:object_r:dovecot_spool_t:s0 
+    - so we move from /var/lib/imap to /var/spool/dovecot and did
+      restorecon -v -R /var/spool/dovecot/
+  - pushed mail_location down into mail/ to avoid potential trouble with lost+found
+
+- rspamd
+  - dependencies  
+    openssl - cryptography and SSL/TLS Toolkit
+    glib2 - common purposes library
+    ragel - state machine compiler.
+    LuaJIT - jit compiler for lua programming language. Plain Lua should work as well.
+    cmake - build system used to configure rspamd
+    sqlite3 - embedded database used to store some data by rspamd
+    libmagic - common library for detecting file types
+    libicu - unicode library
+    PCRE - regular expressions library
+    Hyperscan/Vectorscan - optional regexp performance boost library
+    zlib - compression library
+
+** <2023-09-04 Mon>
+- AP linus documents (1) Mullvad's painpoints, including a
+      bullet list with descriptions; (2) expectations that folks at Mullvad has
+      on us, be they realistic or not; (3) things that Linus thing Mullvad is
+      disappointed about; (4) Mullvad's wish list; (5) expectations that we have
+      on Mullvad.  So, five documents in total.  These documents should be
+      internal for us, but with the possibility of periodic RONLY sharing with
+      Mullvad.  Then we can likely copy-paste for IVPN.
+
+- philipp
+  - mullvad want: getting started, reference and howto's
+
+- leifj
+  - CRA -- cyber resiliant act -- kanske inte är orimligt att safespring kan/vill jobba med
+  - två spår: sw supply chain och wallet and revocation
+  - wallet and revocation
+    - AP leifj sätter upp möte med peter altman på digg och glasklar; nisse ska vara med, även rasmus
+    - leifj har ett gerilla-team för den stora politiska striden
+      - greker, yubico, sunet och lite annat folk
+    - vore mycket bra om sigsum var startklara när signalen går
+    - kan sigsum poc:a och labba?
+      - vara med som observatör/er i arbetsgrupp?
+      - noll commitment, medverkar i några möten och gör poc/lab
+    - hur ska leifj kunna committa VR och Sunet för loggar/vittnen?
+      - har fått en förfrågan från DIGG ang software supply chain för EIDAS som kan användas för detta
+  - sw supply chain
+    - sunet köper openstack av safespring
+    - fredric (wallsten, safespring) säljer redan idag "compliant kubernetes" https://www.safespring.com/en/services/compliant-kubernetes/
+      - levererar tillsmmans emd litet bolag
+    - trenden idag gällande forskning är att forskare producerar docker-containers att köra i k8s eller i en singularity-miljö (VMM för HPC?)
+      - forskare är i det här sammanhanget dom som behöver compute/storage, dvs HPC/användare
+    - finns behov av att slica upp HPC-miljö i mer isolerade enheter
+    - vilka driver HPC idag? NICE (SNIC 3.0) dvs LiU
+    - kommer antagligen att finnas en marknad för högsäkerhets-HPC
+    - ang ST VMM: netnod t.ex. har problemet att ha DNS-noder på ställen man inte får egen hårdvara på
+    - kortra perspektivet: har fått in en kubbe eller docker-container, vill veta om den finns i en translogg
+      - haka in i inventory-system
+      - testa i en nagios-modul
+      - verifiera vid deploy
+      - kushal blir nog point of contact, alt. ny kille från umeå micke frykholm 
+      - AP linus: vill sigsum/st göra poc på detta?
+
+- dovecot @ msgop
+  - bind tcp/10180
+Sep 04 12:24:58 msgop.adb-centralen.se dovecot[91423]: master: Error: bind(0.0.0.0, 10180) failed: Permission denied
+Sep 04 12:24:58 msgop.adb-centralen.se dovecot[91423]: master: Error: service(auth): listen(*, 10180) failed: Permission denied
+Sep 04 12:24:58 msgop.adb-centralen.se dovecot[91423]: master: Error: bind(::, 10180) failed: Permission denied
+Sep 04 12:24:58 msgop.adb-centralen.se dovecot[91423]: master: Error: service(auth): listen(::, 10180) failed: Permission denied
+Sep 04 12:24:58 msgop.adb-centralen.se dovecot[91423]: master: Panic: file service-process.c: line 359 (service_process_create): assertion failed: (hash_table_lookup(service_pids, POINTER_CAST(pid)) == NULL)
+Sep 04 12:24:58 msgop.adb-centralen.se dovecot[91423]: master: Error: Raw backtrace: /usr/lib64/dovecot/libdovecot.so.0(backtrace_append+0x49) [0x7f687e380439] -> /usr/lib64/dovecot/libdovecot.so.0(backtrace_get+0x23) [0x7f687e3805a3] -> >
+
+setroubleshoot suggests the following, so i did (in /root):
+# ausearch -c 'dovecot' --raw | audit2allow -M my-dovecot
+# semodule -X 300 -i my-dovecot.pp
+
+  - epoll
+Sep 04 12:32:08 msgop.adb-centralen.se dovecot[100107]: auth: Panic: epoll_ctl(add, 14) failed: Operation not permitted (fd doesn't support epoll)
+Sep 04 12:32:08 msgop.adb-centralen.se dovecot[100107]: auth: Error: Raw backtrace: /usr/lib64/dovecot/libdovecot.so.0(backtrace_append+0x49) [0x7f9f3e12e439] -> /usr/lib64/dovecot/libdovecot.so.0(backtrace_get+0x23) [0x7f9f3e12e5a3] -> />
+Sep 04 12:32:08 msgop.adb-centralen.se audit[100140]: ANOM_ABEND auid=4294967295 uid=97 gid=97 ses=4294967295 subj=system_u:system_r:dovecot_auth_t:s0 pid=100140 comm="auth" exe="/usr/libexec/dovecot/auth" sig=6 res=1
+
+lai:
+semodule -BD # recompile policy without "don't audit"
+test test test
+semodule -B # recompile policy with "don't audit"
+
+type=AVC msg=audit(1693836750.466:33815): avc:  denied  { noatsecure } for  pid=109082 comm="dovecot" scontext=system_u:system_r:dovecot_t:s0 tcontext=system_u:system_r:dovecot_auth_t:s0 tclass=process permissive=0
+type=AVC msg=audit(1693836750.466:33816): avc:  denied  { read write } for  pid=109082 comm="auth" path="socket:[544833]" dev="sockfs" ino=544833 scontext=system_u:system_r:dovecot_auth_t:s0 tcontext=system_u:system_r:init_t:s0 tclass=unix_stream_socket permissive=0
+type=AVC msg=audit(1693836750.467:33817): avc:  denied  { read write } for  pid=109082 comm="auth" path="socket:[544966]" dev="sockfs" ino=544966 scontext=system_u:system_r:dovecot_auth_t:s0 tcontext=system_u:system_r:dovecot_t:s0 tclass=tcp_socket permissive=0
+type=AVC msg=audit(1693836750.467:33818): avc:  denied  { read write } for  pid=109082 comm="auth" path="socket:[544967]" dev="sockfs" ino=544967 scontext=system_u:system_r:dovecot_auth_t:s0 tcontext=system_u:system_r:dovecot_t:s0 tclass=tcp_socket permissive=0
+type=AVC msg=audit(1693836750.467:33819): avc:  denied  { rlimitinh } for  pid=109082 comm="auth" scontext=system_u:system_r:dovecot_t:s0 tcontext=system_u:system_r:dovecot_auth_t:s0 tclass=process permissive=0
+type=AVC msg=audit(1693836750.467:33820): avc:  denied  { siginh } for  pid=109082 comm="auth" scontext=system_u:system_r:dovecot_t:s0 tcontext=system_u:system_r:dovecot_auth_t:s0 tclass=process permissive=0
+type=ANOM_ABEND msg=audit(1693836750.477:33821): auid=4294967295 uid=97 gid=97 ses=4294967295 subj=system_u:system_r:dovecot_auth_t:s0 pid=109082 comm="auth" exe="/usr/libexec/dovecot/auth" sig=6 res=1^]AUID="unset" UID="dovecot" GID="dove
+cot"
+
+did this and auth started:
+semanage permissive -a dovecot_auth_t
+
+TODO: consider removing the my-dovecot.pp policy and instead label the tcp port, if keeping it at all
+
+
+
+- ran glasklar weekly
+- archived meetup #5
+
+
+*** företagsförsäkring vdab
+Jim Lindström, LF, ringer.
+
+Paket
+- allmän ansvarsförsäkring; skador på kundens kontor och personer, även skador på eget kontor
+- ansvarsförsäkring förmögenhetsskador / kunsultansvarsförsäkring
+- egendomsförsäkring; dator, telefon, allrisk/drulle
+- avbrottsförsäkring; täcker fasta kostnader under avbrottet
+- tjänstereseförsäkring, grundläggande; upp till 150 resdagar per år
+- dataskydd/cyber upp till 300k SEK
+- rättsskydd
+
+Årspremie 3347:- ex moms.
+
+Skickar med sammanställning av villkor.
+
+Skickar offert till linus@verkligendata.se.
+
+[[gnus:nnimap+adbc:INBOX#35b76d03-7715-4e79-802c-b56c19b591a7@E75LAPWP1560V.lfad.lfnet.se][Email from jim lindstrom: Offert - Företagsförsäkring hos Länsförsäkringar]]
+
+** <2023-09-03 Sun>
+- snapshot.do, for reprobuilds
+  - set up meeting with weasel, 2023-09-11 17:00
+  - found new bug report from holger
+- nytt leveransdatum för pixel7-skalet är 2023-10-12 [[gnus:nnimap+adbc:INBOX#06703d$1n1qlu@ironport2.dustingroup.org][Email from Dustin: Ändrat leveransdatum på order 207160815.]]
+
+
+TASK [geerlingguy.certbot : Enable DNF module for CentOS 8+.] ******************
+
+  fatal: [msgop.adb-centralen.se]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (ansible.legacy.command) module: warn. Supported parameters include: _raw_params, _uses_shell, argv, chdir, creates, executable, removes, stdin, stdin_add_newline, strip_empty_ends."}
+
+** <2023-09-02 Sat>
+- st-booting and ansible
+  - realised we're creating a new host vault secret at every boot, so
+    i suppose we're not using host vault secrets (for anything we've
+    noticed) on vm86 and vmsplice
+- created ~/.gnupg/scdaemon.conf and added 'disable-ccid' to it, after reading https://ludovicrousseau.blogspot.com/2019/06/gnupg-and-pcsc-conflicts.html
+  - still seeing this though :(
+    Sep 03 00:10:24 leguin pcscd[166922]: 00008517 winscard.c:286:SCardConnect() Error Reader Exclusive
+
+** <2023-09-01 Fri>
+- fredrik vill vara med i beslut av typen "hur många HSM:er ska vi
+  ha?"
+- AP linus från meetup
+  - beställ arbetsplats till rgdd
+  - mullvad-listor, 4 st se https://pad.sigsum.org/p/ef31-aa55-dc00-cb23
+  - lokalen
+  - hitta 2 projekt med bra policy kring kvalitet på mjukvara; alt. lista på nyckelord
+
+* August 2023
+Vacation 100% 2023-07-31--08-04: 5 days effective vacation
+Vacation almost 100% 2023-07-07--08-11: 4 days effective vacation
+Vacation almost 100% 2023-07-14--08-18: 4 days effective vacation
+
+** <2023-08-30 Wed>
+*** notes
+- FS focuses on "user visible" interfaces, which needs to be defined
+  more closely; "internal" vs. "external" or "public" vs. "private" is
+  more useful; interfaces move from internal to external over time
+
+- ST interfaces moved to https://pad.sigsum.org/p/st-interfaces-draft
+
+*** notes from meeting with HPE
+richard mcquaide, openbmc PM
+paulina pirttisalo
+jeffrey volkert
+jim svensson
+ali "Fellow Jitster" (with a blue cap)
+philipp D
+
+quick intro
+- richard "linux coreboot"
+- philipp we need to set up
+- jeffrey volkert: part of richards team; business dev lead for europe, assisting sales team
+- jim svensson, sales manager for HPE sweden; account managment role
+- pualina, partner buisness manager
+- ali; working under jim as a presales something architect
+
+philipp
+- we're looking for a system with opembmc, first x86 and then arm
+- want one or two test systems
+- redudntant PSU, good single core performance
+- later on, boot loader early shipment
+- community members too
+- flexible and customizable
+- one or two test systems
+
+richard
+- normally we'd purchase a proliant system and put openbmc
+
+philipp
+- we are also experts on openbmc and do not need
+
+richard
+- arm rl300, very stable with openbmc
+- intel, can't share code but only an image; for you to kick the tires
+
+philipp
+- what are the benefits of direct sales or indirect sales?
+
+jim
+- recommends getting configuration from ali and then purchase from a reseller
+- for partnership you'd have to do <something> every year
+
+ali
+- a DL340 maybe
+
+richard
+- you'll get ILO on the system, so you get back to me
+
+jeffrey sums it up
+- ali sends BOM and via paulina doing pricing to philipp and linus
+- jim will hook us up with a reseller
+
+richard
+- don't forget TPM 2.0
+
+ali about spec
+- NIC 2 ports 10G/25G
+
+
+** <2023-08-31 Thu>
+- ST release cycle
+  - evaluate https://github.com/golang/go/wiki/Go-Release-Cycle
+  - compare with ubuntu or something else?
+    - https://tails.net/contribute/release_process/
+- worked on the mail_server ansible role, for msgop.adbc
+  - next up is to bootstrap msgop and then switch it over to branch imap
+
+** <2023-08-29 Tue>
+- uppdaterade https://pad.sigsum.org/p/Glasklar_Kocksgatan_Inredning med vad som sades förra veckan
+- talked to kai about that vmx.c patch for loading kvm_intel on the x11ssh-tf machines
+  - four cores means coreboot should initialize this something four times, which maybe it doesn't
+  - 1. read intel specs to learn what that bit is about; 2. read coreboot and kernel to learn more; 3. ask on the coreboot list
+
+** <2023-08-28 Mon>
+- pointed smtp.adbc to mx-01
+  - realised, a bit late, that adbc MX points at smtp, oops
+  - added missing relay domains
+  - added missing transport to imap.adbc
+- changed username for backup clients in sigsum (_bup -> bup)
+- realised adbc ansible had one commit changing wrapper to not use the
+  alias in ssh_config without pointing out which keyfile to use in the
+  same commit; we now need to do the following manually on all systems:
+  ansible-my-wrapper --private-key /root/.ssh/ansible_ed25519
+- sauterad.vdse needs more disk storage for / -- give it 10G /usr or reinstall
+- TIL about postgreyreport
+  root@mx-01:/etc/postfix# cat /var/log/mail.log.1 | postgreyreport --nosingle_line --check_sender=mx,a --separate_by_subnet=":==================\n"
+- what is this obexd that needrestart reports need restarting? seems like it's BT (/usr/libexec/bluetooth/obexd)
+  blueman-applet[2790], bwrap[7014, 6986], obexd[2903], wireplumber[2674]
+- meet.so upgraded and rebooted
+- städade kontoret och fyllde på inför meetup
+
+** <2023-08-27 Sun>
+- disabled OTP, FIDO U2F, OpenPGP and YubiHSM Auth on YK5C-31 using ykman-gui
+- vm86 ansible repo stuck at branch bookworm, because the remote had a fetch refspec like +refs/heads/bookworm:refs/remotes/origin/bookworm
+  - ended up cloning the repo again, getting +refs/heads/*:refs/remotes/origin/*
+- filesystem for backups on break
+  - bdflush carries 328G
+  - mkfs.ext4 with default settings =>
+    /dev/mapper/vg--bup1-break--bup  354G   28K  336G   1% /var/db/my_bup
+  - mkfs.ext4 -i 128000 -=>
+    /dev/mapper/vg--bup1-break--bup  359G   28K  341G   1% /var/db/my_bup
+  - after sync
+    /dev/mapper/vg--bup1-break--bup  359G  326G   15G  96% /var/db/my_bup
+  - so keep an eye on this
+- ssh-keygen -r $(hostname -s) | grep "SSHFP [134] 2" | while read -r name in type n1 n2 fpr; do echo $name 7200 SSHFP $n1 $n2 $fpr; done
+- echo "0 */4 * * *  df -h /var/db/my_bup | mail -s \"break disk\" linus@nordberg.se" | crontab
+
+** <2023-08-26 Sat>
+- updated dns settings for jonlar's domain
+- asked jonas gudmundsson about mobrules.nu, over email
+- asked pawal about tsig keys, over email
+- vm86 needed help with ansible git
+#+BEGIN_EXAMPLE
+2023-08-26 15:16:53,199 p=822531 u=root n=ansible | /bin/ansible-pull --inventory-file=/etc/ansible/hosts --full --checkout=master --directory=/var/cache/ansible --url=git@ansible-git:adbc/ansible --verify-commit --vault-id common@/usr/loc
+al/etc/vault/vault_common_secret --vault-id host@/usr/local/etc/vault/vm86_vault_secret site.yaml
+...
+2023-08-26 15:16:54,419 p=822534 u=root n=ansible | vm86.verkligendata.se | FAILED! => {
+    "changed": false,
+    "cmd": "/bin/git checkout --track -b master origin/master",
+    "msg": "Failed to checkout master",
+    "rc": 128,
+    "stderr": "fatal: 'origin/master' is not a commit and a branch 'master' cannot be created from it\n",
+    "stderr_lines": [
+        "fatal: 'origin/master' is not a commit and a branch 'master' cannot be created from it"
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+#+END_EXAMPLE
+  - a manual checkout helped but I don't know why this was necessary
+  root@vm86:~# git -C /var/cache/ansible checkout -b origin/master
+  - might have helped but not enough -- we're stuck at 635baad from april and this is why:
+#+BEGIN_EXAMPLE
+[remote "origin"]
+        url = git@ansible-git:adbc/ansible
+        fetch = +refs/heads/bookworm:refs/remotes/origin/bookworm
+[branch "bookworm"]
+        remote = origin
+        merge = refs/heads/bookworm
+[branch "master"]
+        remote = .
+        merge = refs/heads/origin/master
+#+END_EXAMPLE
+  - so we need something that 1) changes remote.orgin.fetch and 2) sets branch.master.remote = origin
+    - i think 2) can be achieved with git branch -u origin/master but i'm not sure
+
+** <2023-08-25 Fri>
+- worked with andreas on rig2hera
+  - replaced 3des with aes256-yada for mkey
+  - fixed a couple of other bad things
+- changed ssh key for gitolite on adbc
+  - using PIV key (2k RSA) to not have to bring out YK-nano all the
+    time (except for ansible which requires gpg signatures)
+  - when gitolite keyfiles are misformed (f.ex. >1 line), fixing
+    ~git/.ssh/authorized_keys by hand might become necessary
+- when PIV key doesn't work for SSH, remember to check if it's the
+  ssh-pkcs11-helper that is unhappy: systemctl --user status ssh-agent
+- on the topic of using libykcs11 or opensc-pkcs11
+  - previous notes in [[file:notes/2023-05-22/06:34 piv and ssh-agent][file:~/notes/2023-05-22/06:34 piv and ssh-agent]]
+  - using libykcs11 supposedly involves less code
+  - ssh-agent lists five keys when all we want is one
+- fixed so that we can pipe text to ~/bin/note and avoid the editor
+- tried to ansiblify new backup server break.adbc
+  - adbc repo is not ready for fedora, f.ex.
+    - nogroup -- see sigsum ansible 908d74a7a764e97860409c4813dad245375b11ec)
+    - python version -- see local fix in prod
+      
+** <2023-08-24 Thu>
+- möte med victor som har problem att följa guiden
+  - dels pga https://git.glasklar.is/system-transparency/core/system-transparency/-/issues/216
+  - stmgr trustpolicy could help with a default policy? what is required?
+  - se TODO i ~/usr/src/st/core/system-transparency/doc/guide.md
+  - jag förklarar att ST inte längre tillhandahåller "en binär som
+    genererar det som behövs för att köra ST" utan att vi
+    tillhandahåller verktyg för att bygga ihop det men att varje
+    användare måste klistra ihop det själva
+    - "björn var ju det här klistret som saknas men så försvann han,
+      så då måste fredrik kasta pengar på mullvad så att dom kan
+      anställa någon som kan sånt här"
+- 11:00 chatmöte med CR et al och "Fantasm" @ Neverland
+  - http://llxhfn5neym3dmsvdmu5so43lzp77i2tfoz2aasvcdjkzls3a6hz55qd.onion/g40sdf5g4dfs5/chat.php
+  - linus/SMtpsHJ6zrKQlXAZ1k
+  - fantasm email: indkwspzqeod@dnmx.org
+  - för briar, se [[file:notes/2023-08-24/11:24-KI-forum-meet][file:~/notes/2023-08-24/11:24-KI-forum-meet]]
+    - jag delade tydligen min briar med honom förra gången vi chattade, så han har lagt till mig
+    - har sagt att jag sparar hans länk för nödlägen
+- möte med fredrik
+  - LN går ner på 60%, FS ska jobba mindre => 
+  - ansvaret för det som victor önskar ligger hos jan
+    - det som bör ske är att FS reder ut saker med DB och Jan på måndag
+  - autonomi bland våra utvecklare
+    - konsulter behöver vara mer styrda än anställda
+    - feature på gång: measured boot
+    - scope begränsas när man definierar projektet närmare
+    - stora arkitekturbeslut gör FS
+  - viktor, grundare av iVPN
+  - ST lovar ingenting vad gäller bakåtkompabilitet -- det är tidigt
+- selinux and ports
+  Aug 24 20:50:41 break.adb-centralen.se setroubleshoot[1099]: SELinux is preventing sshd from name_bind access on the tcp_socket port 4722. For complete SELinux messages run: sealert -l 87d25307-3c9c-4dd6-8c58-c42c2e2db5a0
+  Aug 24 20:50:41 break.adb-centralen.se setroubleshoot[1099]: SELinux is preventing sshd from name_bind access on the tcp_socket port 4722.
+  semanage port -a -t ssh_port_t -p tcp 4722
+
+** <2023-08-23 Wed>
+- vm86 sshd binding to port 22 when started by systemd
+  - /usr/sbin/sshd -D binds to 4722, as /etc/ssh/sshd_config says it should
+  - it's because of systemd socket activation -- ssh.socket says port 22; disabled ssh.socket
+  - TIL that sshd -d handles only one connection; expensive knowledge
+- discussing ST versioning with jens https://pad.sigsum.org/p/9-HdXNdnAwkWaF9QhBdx
+- useful for bullseye -> bookworm: https://www.debian.org/releases/stable/i386/release-notes/ch-information.html  
+- talking to zaolin
+  - status HPE
+    - linus will ask richard @ hpe; done
+  - why do mullvad not want to let 9e port openbmc to supermicro X11?
+    - linus has no idea, suggest ask jens
+- more meeting with jens https://pad.sigsum.org/p/9-HdXNdnAwkWaF9QhBdx
+- agenda for meeting with kfreds
+  - meta, fråga: kommer vi att prata om nytt sätt att organisera oss nästa vecka? ja
+  - omorganisation
+  - "how to manage expectations": vad har vi lovat mullvad? hur bråttom har vi och med vad?
+  - vi ser ut att ha en klassisk devs vs. ops-situation på gång som vi måste göra något åt
+    - kai och jens (och troligen philipp) vill åka fort och sladda
+      runt för "we're still in early days" och får inte binda upp oss
+      med löften om bakåtkompabilitet
+    - mullvad kan inte ens bygga toolchain med befintlig dokumentation
+- ran the ST weekly
+  - kinda painful, no real conclusion on the way forward with the big
+    question of degrees of backward compatibility
+
+** <2023-08-22 Tue>
+- building ospkg
+  - -p option to patch is still wrong when patching kernel source from debian package
+- meeting with jens https://pad.sigsum.org/p/9-HdXNdnAwkWaF9QhBdx
+- talking to kfreds, who will stay in stockholm until sat morning next week
+- created vm break.adbc @ vmsplice from a fedora38 qcow2 and shut it down
+  - see [[file:doc/hosts.org::*break.adb-centralen.se (2023-08-22) -- VM @ vmpslice for backup server, replacing bdflush.adbc][break.adb-centralen.se (2023-08-22) -- VM @ vmpslice for backup server, replacing bdflush.adbc]]
+  - it's got 193.10.5.130 allocated
+
+** <2023-08-21 Mon>
+- mount.davfs dumping core, see /home/linus/notes/2023-08-21/13:42-davfs-segfault, possibly as a result of reading ~/glasklar/nc/lost+found
+- ran glasklar weekly
+- sorted the meetup pad
+- sent email to liberdade re table on the 30:th; UPDATE: confirmed, six people; TODO: on the 30:th, let them know how many we will be
+- invited leifj, bluecmd and jas to open mic and dinner
+- ordered a WD Elements Portable 5T to use for laptop backups; webhallen medis, order number 18792457
+- pratade med sassa om inredning; hon beställer soffa 218 x 90 cm, en låg fåtölj och två pallar
+  - planen är att använda den fina ryamattan *ovanpå* en större enfärgad enkel mörkare matta
+  - mejlade faktureringsuppgifter till sassa
+- styrde upp några fakturor och lite annan admin
+- fixade augustilönerna, inkl räknade ut semester (men inte semesterersättning och heller inte traktamente för två dagar gbg)
+- building ospkg
+
+  TODO: use -flavour and -config to name the package better
+  TODO: still huge (838M), bc the cpio is huge (837M) so fix that somehow
+- the backup saga using borg --patterns-from is not going well
+  combining two pattern files is too hard i think, come up with something simpler  
+  
+*** new vm86 os package
+- we're missing 2021-12-01-keys.tar for making vdab signatures; go hunt for keys on besk or nanosleep
+  - besk is a Lenovo X270 from 2018-07 installed 2020-02-28, property of VDAB
+    - is it possible that we can find a borg backup of besk on the WD at home?
+  - datan is a Lenovo X260 from 2017-05, property of Sunet, older than besk
+- ospkg on vm86 contains boot/config-6.1.20-vdse, yay
+  - using that config for rebuilding kernel on vm86 => 160M modules
+- system-transparency 20eb09b4636277c5149455e100052687fcf92c8b switched to stmanager from stboot
+- ok, stop the chase for RSA signing -- we're *not* using RSA! so just find the right keys and use modern stmgr as st-utils/build-os-pkg does it
+#+BEGIN_EXAMPLE
+root@vm86:/usr/src# cat /stdata/stboot/os_pkgs/local/ospkg-vdse-hypervisor-2023-04-02T16\:04+02\:00.json
+{
+  "version": 1,
+  "os_pkg_url": "http://10.0.2.2:8080/ospkg-vdse-hypervisor-2023-04-02T16:04+02:00.zip",
+  "certificates": [
+    "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSFFNSUdEb0FNQ0FRSUNFUURWcWprL1lwZXhoVmJhWS9MWWFDOTJNQVVHQXl0bGNEQUFNQjRYRFRJeE1USXcKTVRFeU1qVTBOVm9YRFRNeE1ERXhOVEF3TURBd01Gb3dBREFxTUFVR0F5dGxjQU1oQUorVllWdnlNMU9UTXY2dApyd1hiNFN1VGtNbllZbmhYWVVIZDlNRmlvQ1Erb3hJd0VEQU9CZ05WSFE4QkFmOEVCQU1DQjRBd0JRWURLMlZ3CkEwRUFiZkJuOFNaa2s3WkNVZlFjSFlPbGtMQkFvZExGWWp3YmFpWW9rZWlBZkxPZEFOVjZ1OWgzZFN0b0RySEgKMlRmUzMwVnhjVy9UN1pDRzE0SUY4V1lCQVE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+  ],
+  "signatures": [
+    "tTi3lCWIuWxuWqGq+06OdKTVfvjLO3KWMrziBsMr2TOlEVS+qYU43xTPLDcgvj2F36cSd2iuo+dy6onOUmQ/DQ=="
+  ]
+}root@vm86:/usr/src# base64 -d
+LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSFFNSUdEb0FNQ0FRSUNFUURWcWprL1lwZXhoVmJhWS9MWWFDOTJNQVVHQXl0bGNEQUFNQjRYRFRJeE1USXcKTVRFeU1qVTBOVm9YRFRNeE1ERXhOVEF3TURBd01Gb3dBREFxTUFVR0F5dGxjQU1oQUorVllWdnlNMU9UTXY2dApyd1hiNFN1VGtNbllZbmhYWVVIZDlNRmlvQ1Erb3hJd0VEQU9CZ05WSFE4QkFmOEVCQU1DQjRBd0JRWURLMlZ3CkEwRUFiZkJuOFNaa2s3WkNVZlFjSFlPbGtMQkFvZExGWWp3YmFpWW9rZWlBZkxPZEFOVjZ1OWgzZFN0b0RySEgKMlRmUzMwVnhjVy9UN1pDRzE0SUY4V1lCQVE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+-----BEGIN CERTIFICATE-----
+MIHQMIGDoAMCAQICEQDVqjk/YpexhVbaY/LYaC92MAUGAytlcDAAMB4XDTIxMTIw
+MTEyMjU0NVoXDTMxMDExNTAwMDAwMFowADAqMAUGAytlcAMhAJ+VYVvyM1OTMv6t
+rwXb4SuTkMnYYnhXYUHd9MFioCQ+oxIwEDAOBgNVHQ8BAf8EBAMCB4AwBQYDK2Vw
+A0EAbfBn8SZkk7ZCUfQcHYOlkLBAodLFYjwbaiYokeiAfLOdANV6u9h3dStoDrHH
+2TfS30VxcW/T7ZCG14IF8WYBAQ==
+-----END CERTIFICATE-----
+root@vm86:/usr/src# openssl x509 -text -noout
+-----BEGIN CERTIFICATE-----
+MIHQMIGDoAMCAQICEQDVqjk/YpexhVbaY/LYaC92MAUGAytlcDAAMB4XDTIxMTIw
+MTEyMjU0NVoXDTMxMDExNTAwMDAwMFowADAqMAUGAytlcAMhAJ+VYVvyM1OTMv6t
+rwXb4SuTkMnYYnhXYUHd9MFioCQ+oxIwEDAOBgNVHQ8BAf8EBAMCB4AwBQYDK2Vw
+A0EAbfBn8SZkk7ZCUfQcHYOlkLBAodLFYjwbaiYokeiAfLOdANV6u9h3dStoDrHH
+2TfS30VxcW/T7ZCG14IF8WYBAQ==
+-----END CERTIFICATE-----
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            d5:aa:39:3f:62:97:b1:85:56:da:63:f2:d8:68:2f:76
+        Signature Algorithm: ED25519
+        Issuer:
+        Validity
+            Not Before: Dec  1 12:25:45 2021 GMT
+            Not After : Jan 15 00:00:00 2031 GMT
+        Subject:
+        Subject Public Key Info:
+            Public Key Algorithm: ED25519
+                ED25519 Public-Key:
+                pub:
+                    9f:95:61:5b:f2:33:53:93:32:fe:ad:af:05:db:e1:
+                    2b:93:90:c9:d8:62:78:57:61:41:dd:f4:c1:62:a0:
+                    24:3e
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Digital Signature
+    Signature Algorithm: ED25519
+    Signature Value:
+        6d:f0:67:f1:26:64:93:b6:42:51:f4:1c:1d:83:a5:90:b0:40:
+        a1:d2:c5:62:3c:1b:6a:26:28:91:e8:80:7c:b3:9d:00:d5:7a:
+        bb:d8:77:75:2b:68:0e:b1:c7:d9:37:d2:df:45:71:71:6f:d3:
+        ed:90:86:d7:82:05:f1:66:01:01
+#+END_EXAMPLE
+  
+** <2023-08-20 Sun>
+- changing passphrase for gpg key 1E8BF34923291265/2D11AC8BFF2BC4A8 (on YK-nano / 04156811)
+  $ gpg --edit-key 1E8BF34923291265
+  gpg> passwd
+  - but again note that THIS KEY SITS ON DISK! (on ostick, but still)
+
+** <2023-08-19 Sat>
+- building debian kernel-6.1 on vm86
+  - NOTE: *probably* basing config on st-utils/kernel-config/config-5.10.0-19-amd64
+  - FIXME: patch -p0 is wrong
+  - way too many modules -- 321M -- need to find a better config
+    6.3M    work/linux/debian/linux-image/boot/vmlinuz-6.1.38
+    321M    work/linux/debian/linux-image/lib/modules/
+
+- building vanilla 6.1 kernel on vm86
+  - using kernel config for 5.10.127, will certainly be missing stuff both for vm86 and for qemu
+    - old notes from 2023-04-02 says we used to have a file config-6.1.20-slimmer
+  - 6.1.46
+  - modules weigh in at 270M
+#+BEGIN_EXAMPLE
+linus@vm86:~/st-utils$ du -sh out/*
+270M    out/kernel_modules
+13M     out/vmlinuz-g6c44e13dc284
+#+END_EXAMPLE
+
+- looking at currently booted on vm86 os-pkg, modules cost 160M there
+  leguin:ospkg-vdse-hypervisor-2023-04-02T16:04+02:00% du -sh usr/lib/modules/6.1.20-vdse
+  160M    usr/lib/modules/6.1.20-vdse
+
+#+BEGIN_EXAMPLE
+leguin:ospkg-vdse-hypervisor-2023-04-02T16:04+02:00% cat boot/debian-bookworm.cpio.gz | cpio -tv
+drwxr-xr-x   3 root     root            0 Apr  2 16:04 .
+drwxr-xr-x   3 root     root            0 Apr  2 16:04 kernel
+drwxr-xr-x   3 root     root            0 Apr  2 16:04 kernel/x86
+drwxr-xr-x   2 root     root            0 Apr  2 16:04 kernel/x86/microcode
+-rw-r--r--   1 root     root      5865472 Apr  2 16:04 kernel/x86/microcode/GenuineIntel.bin
+11458 blocks
+leguin:ospkg-vdse-hypervisor-2023-04-02T16:04+02:00% dd if=boot/debian-bookworm.cpio.gz bs=512 skip=11458 | zcat| cpio -tv | head
+drwxr-xr-x  19 root     root            0 Apr  2 16:03 .
+lrwxrwxrwx   1 root     root            7 Apr  2 16:01 bin -> usr/bin
+drwxr-xr-x   2 root     root            0 Apr  2 16:03 boot
+-rw-r--r--   1 root     root      3711577 Apr  2 12:01 boot/System.map-6.1.20-vdse
+-rw-r--r--   1 root     root       182060 Apr  2 12:01 boot/config-6.1.20-vdse
+drwxr-xr-x   4 root     root            0 Mar  2 14:55 dev
+crw-rw-rw-   1 root     root       5,   1 Apr  2 16:01 dev/console
+lrwxrwxrwx   1 root     root           13 Apr  2 16:01 dev/fd -> /proc/self/fd
+crw-rw-rw-   1 root     root       1,   7 Apr  2 16:01 dev/full
+crw-rw-rw-   1 root     root       1,   3 Apr  2 16:01 dev/null
+#+END_EXAMPLE
+
+*** unable to luksClose bup
+After restoring backups from the WD Elements 2T drive, cryptsetup
+close bup failed with "Device bup is still in use".
+
+dmsetup info /dev/dm-1 showed an open count of 1.
+
+lsof showed something about jbd2.
+
+The disk was acting up, like being partially broken, earlier
+(2023-07-08) when I tried to back up leguin, which might be related.
+**** details
+#+BEGIN_EXAMPLE
+[root@leguin ~]# lsof | rg dm-1
+jbd2/dm-1  2722                              root  cwd       DIR               0,39       166        256 /
+jbd2/dm-1  2722                              root  rtd       DIR               0,39       166        256 /
+jbd2/dm-1  2722                              root  txt   unknown                                         /proc/2722/exe
+[root@leguin ~]# ps --pid 2722 -F
+UID          PID    PPID  C    SZ   RSS PSR STIME TTY          TIME CMD
+root        2722       2  0     0     0   8 Aug18 ?        00:00:00 [jbd2/dm-1-8]
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+[root@leguin ~]# cryptsetup --debug close bup
+# cryptsetup 2.6.1 processing "cryptsetup --debug close bup"
+# Verifying parameters for command close.
+# Running command close.
+# Installing SIGINT/SIGTERM handler.
+# Unblocking interruption on signal.
+# Allocating crypt device context by device bup.
+# Initialising device-mapper backend library.
+# dm version   [ opencount flush ]   [16384] (*1)
+# dm versions   [ opencount flush ]   [16384] (*1)
+# Detected dm-ioctl version 4.48.0.
+# Detected dm-crypt version 1.24.0.
+# Detected dm-zero version 1.2.0.
+# Device-mapper backend running with UDEV support enabled.
+# dm status bup  [ opencount noflush ]   [16384] (*1)
+# Releasing device-mapper backend.
+# Trying to open and read device /dev/sda with direct-io.
+# Allocating context for crypt device /dev/sda.
+# Trying to open and read device /dev/sda with direct-io.
+# Initialising device-mapper backend library.
+# dm versions   [ opencount flush ]   [16384] (*1)
+# dm table bup  [ opencount flush securedata ]   [16384] (*1)
+# Trying to open and read device /dev/sda with direct-io.
+# dm versions   [ opencount flush ]   [16384] (*1)
+# dm deps bup  [ opencount flush ]   [16384] (*1)
+# Crypto backend (OpenSSL 3.0.9 30 May 2023 [default][legacy]) initialized in cryptsetup library version 2.6.1.
+# Detected kernel Linux 6.4.10-200.fc38.x86_64 x86_64.
+# PBKDF pbkdf2-sha256, time_ms 2000 (iterations 0).
+# Reading LUKS header of size 1024 from device /dev/sda
+# Key length 32, device size 3906963456 sectors, header size 2050 sectors.
+# Deactivating volume bup.
+# dm versions   [ opencount flush ]   [16384] (*1)
+# dm status bup  [ opencount noflush ]   [16384] (*1)
+# dm versions   [ opencount flush ]   [16384] (*1)
+# dm table bup  [ opencount flush securedata ]   [16384] (*1)
+# Trying to open and read device /dev/sda with direct-io.
+# dm info luks-07b91ef2-ebd5-4155-930b-5658ae8219e3  [ noopencount flush ]   [16384] (*1)
+# Replacing mountinfo device (0:37) with matching DM device luks-07b91ef2-ebd5-4155-930b-5658ae8219e3 (253:0).
+# dm info luks-07b91ef2-ebd5-4155-930b-5658ae8219e3  [ noopencount flush ]   [16384] (*1)
+# Replacing mountinfo device (0:37) with matching DM device luks-07b91ef2-ebd5-4155-930b-5658ae8219e3 (253:0).
+Device bup is still in use.
+# Releasing crypt device /dev/sda context.
+# Releasing device-mapper backend.
+# Closing read only fd for /dev/sda.
+Command failed with code -5 (device already exists or device is busy).
+#+END_EXAMPLE
+
+*** stray lvm devices
+vgs(8) was showing two lost lvm devices. Fixing it using lvmdevices --deldev.
+
+#+BEGIN_EXAMPLE
+[root@leguin ~]# lvmdevices
+  Devices file loop_file /home/linus/p/st/deployments/2020-10-13-vdse/st-utils/st-config.qcow2 PVID 9zO3Z6lfQQCk2iLxkqWDkIchzeRdlr0B last seen on /dev/loop2 not found.
+  Devices file loop_file /home/linus/p/st/deployments/2020-10-13-vdse/st-utils/vm-images.qcow2 PVID YgccCrmyYReJocn0fXaaJw6lKAg5Mwv3 last seen on /dev/loop2 not found.
+  Device none IDTYPE=loop_file IDNAME=/home/linus/p/st/deployments/2020-10-13-vdse/st-utils/st-config.qcow2 DEVNAME=/dev/loop2 PVID=9zO3Z6lfQQCk2iLxkqWDkIchzeRdlr0B
+  Device none IDTYPE=loop_file IDNAME=/home/linus/p/st/deployments/2020-10-13-vdse/st-utils/vm-images.qcow2 DEVNAME=/dev/loop2 PVID=YgccCrmyYReJocn0fXaaJw6lKAg5Mwv3
+[root@leguin ~]# lvmdevices --deldev /dev/loop2
+  Devices file loop_file /home/linus/p/st/deployments/2020-10-13-vdse/st-utils/st-config.qcow2 PVID 9zO3Z6lfQQCk2iLxkqWDkIchzeRdlr0B last seen on /dev/loop2 not found.
+  Devices file loop_file /home/linus/p/st/deployments/2020-10-13-vdse/st-utils/vm-images.qcow2 PVID YgccCrmyYReJocn0fXaaJw6lKAg5Mwv3 last seen on /dev/loop2 not found.
+[root@leguin ~]# lvmdevices --deldev /dev/loop2
+  Devices file loop_file /home/linus/p/st/deployments/2020-10-13-vdse/st-utils/vm-images.qcow2 PVID YgccCrmyYReJocn0fXaaJw6lKAg5Mwv3 last seen on /dev/loop2 not found.
+[root@leguin ~]# lvmdevices
+[root@leguin ~]#
+#+END_EXAMPLE
+
+** <2023-08-18 Fri>
+- what's the risk of vm86 not booting due to expired stboot certificate?
+  - according to ~/p/st/deployments/2020-10-13-vdse/README.md
+    - we flashed new coreboot on 2021-12-01
+      45a469139b630e0a22a250ddb0e92e05da5f7a238758217f719b1fe651883a6a  2021-12-01-coreboot.rom
+    - the os-pkg JSON file (st4.json) listed the same certificate that we use for the currently booted package on vm86:
+	    Not Before: Dec  1 12:25:45 2021 GMT
+            Not After : Jan 15 00:00:00 2031 GMT
+  - fun fact: the base64 in the JSON file is a PEM (!) file, lol
+  - so the answer is: none
+  - we're looking for a ROM file from 2021-12-01; no luck searching the backup of datan
+#+BEGIN_EXAMPLE
+root@vm86:/usr/src# cat /stdata/stboot/os_pkgs/local/ospkg-vdse-hypervisor-2023-04-02T16\:04+02\:00.json
+{
+  "version": 1,
+  "os_pkg_url": "http://10.0.2.2:8080/ospkg-vdse-hypervisor-2023-04-02T16:04+02:00.zip",
+  "certificates": [
+    "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSFFNSUdEb0FNQ0FRSUNFUURWcWprL1lwZXhoVmJhWS9MWWFDOTJNQVVHQXl0bGNEQUFNQjRYRFRJeE1USXcKTVRFeU1qVTBOVm9YRFRNeE1ERXhOVEF3TURBd01Gb3dBREFxTUFVR0F5dGxjQU1oQUorVllWdnlNMU9UTXY2dApyd1hiNFN1VGtNbllZbmhYWVVIZDlNRmlvQ1Erb3hJd0VEQU9CZ05WSFE4QkFmOEVCQU1DQjRBd0JRWURLMlZ3CkEwRUFiZkJuOFNaa2s3WkNVZlFjSFlPbGtMQkFvZExGWWp3YmFpWW9rZWlBZkxPZEFOVjZ1OWgzZFN0b0RySEgKMlRmUzMwVnhjVy9UN1pDRzE0SUY4V1lCQVE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+  ],
+  "signatures": [
+    "tTi3lCWIuWxuWqGq+06OdKTVfvjLO3KWMrziBsMr2TOlEVS+qYU43xTPLDcgvj2F36cSd2iuo+dy6onOUmQ/DQ=="
+  ]
+#+END_EXAMPLE
+- vmsplice has the same "certificates" field in its JSON file as vm86; phew
+- thinking about the state of adbc services, see [[file:p/adb-centralen/adbc-notes/2023-08 update.org][file:~/p/adb-centralen/adbc-notes/2023-08 update.org]]
+- 21:58:30 en hög smäll i farsta
+  22:05:15 en till; 7-9 tonåringar hängde vid trappan nedanför balkongen, sprang sedan in i området t.h.
+- started copying backed up datan:/home/linus to leguin:~linus/datan.tar.xz, which finished around 5 am
+  - file size: 47G
+
+** <2023-08-17 Thu>
+- while building os-pkg on vm86 i realised why one has password protection for sudo: scripts doing sudo
+
+** <2023-08-16 Wed>
+- andreas wants to proxy incoming authenticated HTTP requests to a go-gin program started by systemd
+  - wrote a go program accepting TCP connections and sending back info about the peer to connecting peers
+  - learned a bit more about systemd.socket(5) things
+- where to publish rig2hera?
+  - self-hosted gitolite + cgit or sourcehut?
+  - sourcehut.org? will require payment at some point later in time
+  - codeberg.org?
+  - gitlab.com?
+- reminder that dunst(1) is what creates the popups in the upper right corner of leguin
+  - use dunstctl history-pop to review old notifications
+  - use dunstctl close to close the last notification and close-all to, surprise, close all
+- learned that rpm -i installs to ~/rpmbuild
+  - dnf download --source dunst; rpm -i dunst-1.9.2-1.fc38.src.rpm; ls ~/rpmbuild
+- participated in ST weekly
+  - TPM as a backing store for (parts of) the trust policy, for avoid os-pkgs builders having to build their own stboot UKI
+  - kai suggests hiding everything ẃithin a single go binary
+  - jens' two aspects of ST
+    - complexity
+    - targeting two user groups: tinkerers and deployers
+  - linus adds that there might be trust issues
+  - kai adds that the unified tool needs a lot of switches to change the (sane) defaults
+- playing with block devices, ~/p/st/deployments/2020-10-13-vdse/st-utils/mktestdisks.sh
+  - sudo losetup --find --nooverlap --show stdata.qcow2 => /dev/loop2
+  - sudo fdisk shows a partition but there's no /dev/loop2p1 in the filesystem
+    /dev/loop2p1  2048 66142   64095 31.3M Linux filesystem
+  - adding --partscan to losetup fixes this issue
+- copied stboot.iso from an old build in ~/usr/src/st/mullvad/st-utils to ~/p/st/deployments/vdab/st-utils
+  - stboot looks for http://10.0.2.2:8080/os-pkg-example-ubuntu20.json
+  - can we use this for testing vm86 os-packages?
+    - obvious downsides: wrong root cert, not looking for hostconfig on disk
+
+** <2023-08-15 Tue>
+- mejlat christoffer och allison om "lobby"
+- pratat med christoffer om Nox
+- pratat med stuge om Nox
+- read sircmpwn's opinion on CLA's https://drewdevault.com/2023/07/04/Dont-sign-a-CLA-2.html
+- upgraded clown from 25.0.8 to 25.0.10
+- upgraded nextcloud-01.so from 25.0.9 to 25.0.10
+- kollade på g's sovljudgrej utan att förstå om den har fw som kan uppdateras
+  - https://www.ifixit.com/Guide/AcousticSheep+SleepPhones+Battery+Replacement/157049
+  - http://www.rayson.com/rayson/en/?pros=product&pros=product&b_cat_id=A01&m_cat_id=A0102&s_cat_id=A010203&prod_id=P0076&level=3
+  - http://www.rayson.com/rayson/en/upload/prod_file/NP0076_1.pdf
+- andreas wants me to work with him on keytabs encrypted in more than 3des
+  - approx 40h work
+  - motivation: fedora (?) requires more modern crypto
+
+** <2023-08-14 Mon>
+- leguin: dnf remove fprintd -- we don't need a fingerprint reader daemon
+- git.glasklar.is
+  - added dfri.se to list of allowed sign-up domains
+  - lowered min password characters from 22 to 14
+- talked to vlad and johannes, signed vlad's employment contract
+- talked to christoffer, he might want two months of lechat
+- figured out that the st-utils we're using for vm86 is git@git.dfri.se:st-utils -b ln5/bookworm
+  - added info to [[file:p/st/deployments/2020-10-13-vdse/README.md][file:~/p/st/deployments/2020-10-13-vdse/README.md]]
+
+** <2023-08-13 Sun>
+- unable to rm files under go/pkg/mod, debian 11 (tee.sigsum.org)
+  linus@tee:~/usr/src$ strace rm -f system-transparency/cache/go/pkg/mod/github.com/rivo/tview@v0.0.0-20230130130022-4a1b7a76c01c/ansi.go 
+  newfstatat(AT_FDCWD, "system-transparency/cache/go/pkg/mod/github.com/rivo/tview@v0.0.0-20230130130022-4a1b7a76c01c/ansi.go", {st_mode=S_IFREG|0444, st_size=7545, ...}, AT_SYMLINK_NOFOLLOW) = 0
+  unlinkat(AT_FDCWD, "system-transparency/cache/go/pkg/mod/github.com/rivo/tview@v0.0.0-20230130130022-4a1b7a76c01c/ansi.go", 0) = -1 EACCES (Permission denied)
+  - `chmod -R +w system-transparency` solved the issue so maybe I just didn't have write access to the directory?
+- filed https://git.glasklar.is/glasklar/services/gitlab/-/issues/50
+- merged ansible sshd stuff from remote adbc into master at remote sigsum
+- merged ansible bookworm stuff from remote adbc into master on leguin, not pushed yet
+- what's happened in a branch? git log HEAD..branch will tell, as will git diff HEAD...branch (note the number of dots)
+
+** <2023-08-12 Sat>
+- påstod i EU-US data privacy-gruppen att Matrix är krångligt
+  - matrix design
+    - client sends messages to room on its (home)server and server distributes to all servers with users in the room
+  - matrix spec
+    - https://spec.matrix.org/v1.7/
+    - https://github.com/matrix-org/matrix-spec
+  - matrix (home) server implementations
+    - synapse (Python)
+    - construct (C++ 155k LoC)
+    - dendrite (go, 106k LoC, 146 lines go.mod)
+    - ligase (go, 115k LoC, 44 lines go.mod)
+  - rocket.chat och mattermost both have a bridge, requiring a homeserver running
+- trying to authenticate with sshd @ git.adb-centralen.se but don't know the passphrase
+  leguin:~% SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) ssh-add -l
+  256 SHA256:D4PQEjkviBcsaxCHhlCyPv1R60UHr7pZ0c912+O118A adbc (ED25519)
+  leguin:~% SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) ssh -v git@git.adb-centralen.se # NOTE: old yubikey with pgp key not present
+  debug1: Server accepts key: adbc ED25519 SHA256:D4PQEjkviBcsaxCHhlCyPv1R60UHr7pZ0c912+O118A agent
+  - from ~/.gnupg/sshcontrol (/home/linus/ostick/keys/.gnupg/sshcontrol)
+    # Ed25519 key added on: 2019-09-05 21:36:47
+    # Fingerprints:  MD5:95:9e:54:19:4d:e0:0f:b7:33:f4:de:9d:5a:3e:0e:a8
+    #                SHA256:D4PQEjkviBcsaxCHhlCyPv1R60UHr7pZ0c912+O118A
+    4D558F9BBAB61FFEEAB86730B284C21A9D156DE5 0
+    # 256 SHA256:D4PQEjkviBcsaxCHhlCyPv1R60UHr7pZ0c912+O118A adbc (ED25519)
+  - the key material sits in a file on ostick
+    leguin:~% ls -l ~/.gnupg/private-keys-v1.d/4D558F9BBAB61FFEEAB86730B284C21A9D156DE5.key
+    -rw-------. 1 linus linus 349 Feb 18  2018 /home/linus/.gnupg/private-keys-v1.d/4D558F9BBAB61FFEEAB86730B284C21A9D156DE5.key
+  - judging from kcmp:/var/jail/getgid/home/linus/.ssh/authorized_keys that key should not be accepted
+    - UPDATE: we're trying user git, not linus
+  - trying with /usr/lib64/libykcs11.so.2 loaded into ssh-agent:
+    Received disconnect from 193.10.5.3 port 4722:2: Too many authentication failures
+  - trying with /usr/lib64/opensc-pkcs11.so:
+    git@git.adb-centralen.se: Permission denied (publickey).
+
+** <2023-08-11 Fri>
+- mejlade sassa
+- arkiverade några mötesanteckningar (många kvar, se pad-flikar i FF)
+- mejlade husbygårdsskolan om taxi den 25/8 och möte om läsning
+- mejlade sammanfattning av möte med Johannes (CarbonAct)
+- pratade 1,5h med anders om öppenhet i projektet
+  - han återkommer till att carbonact måste få in pengar till johannes
+    under de närmaste få månaderna, annars kanske johannes måste gå
+    någon annanstans och allt faller
+  - jag menar att frågan om pengar in borde (!) vara ortogonal mot
+    frågan om öppen källkod
+  - jag bad anders att prata med johannes om att släppa källkod bokstavligen imorgon
+- kollade mer på lechat och dom använder libsodium AES-256-GCM med statiskt IV för att kryptera db-poster
+  - gh issue https://github.com/DanWin/le-chat-php/issues/114
+  - php function being used https://www.php.net/manual/en/function.sodium-crypto-aead-aes256gcm-encrypt.php
+  - php library https://github.com/jedisct1/libsodium-php/blob/9f1ffbfe7b12bb895d4d03ae82d069848a0c56dd/libsodium.c#L2039C28-L2039C46
+  - TODO: asses the risk
+  - TODO: does sodium_crypto_aead_aes256gcm_decrypt() verify the authenticity of the message?
+- textade med andreas om att drifta en chat åt ANOVA
+  - ta betalt! 10k för 5/8 SLA plus 40h timpool per månad (25k för 14/5)
+
+*** pratade med christoffer om lechat
+- gäller BRIDGE
+- kommer in 4-5 personer per dygn varav minst 80% inte dyker upp till
+  första screening-intervjun; en värd/värdinna i en lobby skulle kunna
+  hjälpa
+  - de flesta kommer från ahmia's söktjänt
+- CR börjar med att prata med Fredrik på KI
+  - LN föreslår att CR skriver ner lite av kraven, som
+    - tillgänglighetskrav (inkl frågan om tidszoner)
+    - dagliga uppdateringar av le-chat-php, hela stacken (apache, php, mariadb) och grundsystem (libc, kernel)
+    - upskattning av
+      - totalt antal terapeuter
+      - totalt antal användare per dygn, inkl. terapeuter
+    - tillgänglig över HTTPS (via DNS-namn, aka "vanlig internetadress")
+    - tillgänglig över onion-adress
+      - TBD: one-hop onion (HiddenServiceSingleHopMode) eller ej?
+      - TBD: HTTPS-certifikat för .onion?
+
+** <2023-08-10 Thu>
+- karlakliniken ringde, bokat tid i september (21:a iirc)
+
+*** möte med johannes, carbonact
+Kontrakt mellan CarbonAct (CA) och ESA-BIC (ESA)  refereras nedan.
+- Beloppet är 50k EUR
+- "co-funder" är Vinova, står för 50% av pengarna.
+Linus bolag heter Verkligen Data AB (VDAB).
+
+## Grundläggande frågor
+- [ ] Vad är det som ska levereras? Affärsplan och mjukvara för ett fungerande system?
+- [ ] Har CA en affärsplan redan?
+- [ ] Hur ser "Business Activity Proposal" som refereras i 1.2 (e) ut?
+- [ ] Öppen källkod? Utan det deltar inte Linus och VDAB i projektet. OBS att IP kan fortfarande hållas av CA -- det är licensen som är intressant. Vad är Johannes syn på öppen källkod? Har Johannes pratat med ESA om detta?
+- [ ] Hur hanteras IP för insamlat data?
+- [ ] Kan Linus fortfarande bli styrelseledamot i CA om vi gör detta?
+
+## Administrativa detaljer om vi går vidare
+- [ ] Måste ha ett kontrakt upprättat mellan VDAB och CA som reglerar vad som händer om ESA kräver tillbaka pengarna, se 6.2 (c).
+- [ ] Var ska Vlad vara anställd? Relevant för hur Johannes ska sköta löneutbetalningar.
+- [ ] Moms på konsultarbete, hur hanterar vi det?
+
+## Mötesanteckningar
+
+- f.d. arb.givare, ett indiespelsbolag, fick 1.7M SEK i en 50/50-deal från EU ("kreativa europa")
+- kompis jens andersson, f.d. demoscenen
+
+- Genom UIC uppsala innovation center har CA en Joakim som är affärskonsult (?) och CA's kontakt med ESA
+- öppen källkod är en större fråga som vi inte kan svara på ännu
+  - ambitionen är att bygga upp ett företag som försöker sprida det vi bygger så vitt som möjligt
+  - måste samtidigt skydda det vi bygger för att få investeringar
+  - kommer att behöva investeringar
+- har hittat coest.se, en konsultfirma med hållbarhetskonsulter
+- hur ska vi sälja det här?
+  - 1. sälja analyser till svensk kolinlagring
+  - 2. ställa ut egna certifikat
+  - 3. sälja verifiering till jordbruksverket
+
+- kristian landgren, iteam, oss-förespråkare
+- estimat för att komma igång: 1M EUR
+- ska CA ställa ut egna certifikat eller endast göra verifiering?
+
+- Linus kan inte lägga ut lönehanteringen på Corrydor
+
+- vad är Sanjay Peters (CFO) syn på öppenhet?
+  - entreprenör, ekonomiprofessor @ Columbia University
+  - jämlikhet, tredje värden
+  - ekonomisk rådgivare till regeringen i Colombia
+
+- AP linus: kolla kontraktförslaget som anders skickade i mejl, VDAB - Vlad
+- AP johannes: kolla med ESA
+- Vlad behöver skicka ett anställningskontraktet inom dagar
+  - 20k per mån
+- Corrydor tar all risk, VDAB fakturerar CA (?)
+
+## Sammanfattning av mötet
+
+- LN stäler frågan om öppna system och källkod, vilket är en
+  förutsättning för medverkan.
+- CarbonAct har ambitionen att bygga upp ett företag som försöker
+  sprida sin teknik så vitt som möjligt samtidigt som man tänker
+  skydda sin teknik så mycket som behövs för att få dom investeringar
+  som krävs.
+- Öppen licensiering av källkod kan hjälpa till att skapa den marknad
+  som CarbonAct behöver samtidigt som riskerna förknippade med detta
+  är låg, i alla fall vad gäller stora spelare.
+- Diskussion om möjliga affärsmodeller. Inget klart ännu.
+- Diskussion om möjligt upplägg där Verkligen Data AB (VDAB) anställer
+  Vlad och fakturerar Corrydor AB (CAB) för kostnaderna för det. CAB
+  tar all ekonomisk risk, VDAB ingen. VDAB kan inte lägga ut 
+  löneadministrationen för Vlad på t.ex. CAB.
+- AP.1 JS: Kolla följande med ESA-BIC (ESA) ang. föreslaget upplägg:
+  - Ger det tillräckligt avstånd mellan ESA/Vinova och CarbonAct AB (CAAB)?
+  - Förhindrar det möjligheten att ta in LN i styrelsen för CAAB?
+  - Blir det något tokigt med moms, dvs riskerar 25% att försvinna i onödan?
+- AP.2 LN: Titta på förslaget till anställningskontrakt för Vlad som AW
+  skickade till LN per mejl häromdagen.
+- AP.3 JS: Ta fram ett förslag på kontrakt mellan VDABG och CAB som
+  reglerar finansiering av Vlad's anställning. (Text i mejl som vi
+  alla svarar "ja" på räcker för LN.)
+- Anställningskontrakt för Vlad mest tidskritiskt, behöver bli klart
+  under nästa vecka (v.33). LN behöver inte ha kontraktet med CAB
+  klart för att kunna teckna kontrakt med Vlad, bara det blir gjort
+  under augusti månad.
+
+** <2023-08-09 Wed>
+*** running the ST weekly
+- jens catch-up; he will be up to speed end of this week
+- docuthon wrap-up
+  - done: rendering shadocs
+  - ap jens: move the guide in doc/xxx to docs.sto
+- testing out moving the trust policy into the TPM, to avoid the need
+  for a signed SHIM (and avoid glasklar becoming a kind of a CA)
+  - if you don't want to use the TPM:
+    - you don't get RA and thus plainly give netbooting with SB
+    - two cases w/o tpm
+      - 
+      - 
+  - kai has some questions to jens
+- kai has been playing with measuring an id of some sort, like a hostname
+  - have been talking to richard @ mullvad about provisioning, wrt
+    stauth and the trust policy in the TPM
+  - AP ln: share the MPT documentation with kai
+- kai travelling tomorrow
+- zaolin has planned meetings with both hpe and supermicro re openbmc
+- zaolin has fixed the SHIM CI/CD
+- zaolin has feedback on his documentation (extra branch in the
+  documentation repo) from joel and richard @ mullvad
+
+** <2023-08-08 Tue>
+- the touchpad on the laptop is acting up now and again, more specific
+  the click function and the two finger scroll function
+  - seems like something is stuck in a weird mode, sometimes
+    doubleclicking on anything resolves it
+- implementing the simplex message queue, ie an SMP server, would be lots of fun
+- tetrinet
+  - short version of building, installing and running
+    sudo dnf install automake glib2-devel gtk3-devel popt-devel
+    git clone https://github.com/stump/gtetrinet; cd gtetrinet
+    ./autogen.sh
+    ./configure --enable-strict
+    make
+    sudo make install
+    /usr/local/games/gtetrinet
+  - building https://github.com/stump/gtetrinet
+    - ./autogen.sh
+      - missing autoreconf
+        - dnf install automake gettext-devel
+          autoconf-2.71-5.fc38.noarch automake-1.16.5-11.fc38.noarch
+          m4-1.4.19-5.fc38.x86_64 perl-Thread-Queue-3.14-490.fc38.noarch
+          perl-threads-1:2.27-490.fc38.x86_64
+          perl-threads-shared-1.64-490.fc38.x86_64
+      - autoreconf: running: autopoint --force
+        Can't exec "autopoint": No such file or directory at /usr/share/autoconf/Autom4te/FileUtils.pm line 293.
+        - dnf install gettext-devel
+    - ./configure --prefix $HOME/usr --enable-strict
+      - missing glib and gtk3
+	- dnf install glib2-devel gtk3-devel
+    - make
+      - Makefile:947: *** missing separator.  Stop.
+	- reran ./autogen.sh and ./configure --prefix $HOME/usr --enable-strict
+    - make
+      - gtetrinet.c:33:10: fatal error: popt.h: No such file or directory
+	- dnf install popt-devel
+    - make all install
+  - running installation under ~/usr
+    - ~/usr/games/gtetrinet
+      (gtetrinet:30728): GLib-GIO-CRITICAL **: 11:28:20.780: g_settings_schema_source_lookup: assertion 'source != NULL' failed
+      (gtetrinet:30728): GLib-GIO-ERROR **: 11:28:20.780: Settings schema 'gtetrinet' is not installed
+      - ls /home/linus/usr/share/glib-2.0/schemas/
+	gschemas.compiled  gtetrinet.gschema.xml
+    - GSETTINGS_SCHEMA_DIR=~/usr/share/glib-2.0/schemas ~/usr/games/gtetrinet
+      - annoying popup saying "Warning: theme does not have a name, reverting to default", reappears no matter how many times I press OK
+      - same result amending GSETTINGS_SCHEMA_DIR to become /usr/share/gettext/it:/usr/share/glib-2.0/schemas/:$HOME/usr/share/glib-2.0/schemas
+      - gtetrinet/src/config.c:156
+	triggered by any of
+          !g_key_file_load_from_file (keyfile, buf, 0, &err)
+          !g_key_file_get_string (keyfile, "Theme", "Name", &err);
+      - does it find theme.cfg?
+            GTET_O_STRCPY(buf, themedir);
+            GTET_O_STRCAT(buf, "theme.cfg");
+      - strace
+	openat(AT_FDCWD, "/usr/local/share/gtetrinet/themes/default/theme.cfg", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+   - gave up on $HOME/usr and installed to /usr/local
+     make distclean; ./configure --enable-strict; make; sudo make install
+     rm -r ~/usr/games/gtetrinet ~/usr/share/glib-2.0 ~/usr/share/gtetrinet ~/usr/share/man/man6 ~/usr/share/pixmaps
+- build-03 ansible failing
+  - dnf-automatic won't start
+    Aug 08 14:16:38 build-03.glasklarteknik.se dnf-automatic[391448]: Error: GPG check FAILED
+- reminder that we're currently building os packages for vm86 using
+  git clone -b ln5/stopen git.sigsum.org:linus/st-utils
+  mkdir st-utils/debian-config
+  git -C st-utils/debian-config clone -b networkd git@git.sigsum.org:linus/st-config vdse
+  ln -s vdse st-utils/debian-config/default
+  git -C st-utils/debian-config clone git@git.sigsum.org:adbc/ansible 
+  cd st-utils
+  - is the st-utils repo on git.so lacking branches? i can only see remotes/origin/ln5/stopen after git clone which is complaining that
+    warning: remote HEAD refers to nonexistent ref, unable to checkout
+    - branch ln5/stopen has a commit from 2023-05-17 which is quite recent
+    - [ ] check if checked-out copy of st-utils on datan (old laptop) has more
+    - UPDATE 2023-08-14: wrong st-utils, see [[file:p/st/deployments/2020-10-13-vdse/README.md][file:~/p/st/deployments/2020-10-13-vdse/README.md]]
+- i wonder where my nifty script for building kernel (and os-pkgs?) on vm86 is at; should check old laptop (datan)
+  - UPDATE 2023-08-14: wrong st-utils, see [[file:p/st/deployments/2020-10-13-vdse/README.md][file:~/p/st/deployments/2020-10-13-vdse/README.md]]
+
+** <2023-08-06 Sun>
+- https://github.com/esmil/dpkg-leaves
+- https://www.helpnetsecurity.com/2023/08/02/isabela-fernandes-tor-project-privacy/
+
+** <2023-08-04 Fri>
+- reminder that 'screenshot' is an alias for 'grimshot save area'
+- looking for how to get rid of these red windows displayed when some
+  program wants something, like when dnf update triggers a "Relogin or
+  restarts required!" text
+  - from /etc/needrestart/notify.d/400-notify-send it seems notify-send(1) is being used with `-u critical`
+  - https://specifications.freedesktop.org/notification-spec/latest/
+  - but what's the server on my system?
+
+** <2023-08-03 Thu>
+- sudo -iu user doesn't set up $XDG_RUNTIME_DIR nor
+  $DBUS_SESSION_BUS_ADDRESS, making it hard to run a systemd timer for
+  user cper on listen.so
+  - there are two things to make this work https://stackoverflow.com/questions/34167257/can-i-control-a-user-systemd-using-systemctl-user-after-sudo-su-myuser:
+    - Enable "user lingering" for user cper, to allow cper to run
+      programs even when not logged in by someone spawning a "user
+      manager", all according to LOGINCTL(1):
+      loginctl enable-linger cper
+    - Set up the environment variables in ~/.profile or likewise
+      cat >> ~/.profile <<'EOF'
+      XDG_RUNTIME_DIR="/run/user/$UID"; export XDG_RUNTIME_DIR
+      DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"; export DBUS_SESSION_BUS_ADDRESS
+      EOF
+  - see also USER@.SERVICE(5)
+- the laptop got a little wet today and now the screen is a bit crazy at the right edge
+
+** <2023-08-02 Wed>
+- the ~/ostick/.priv/pp2019.gpg file is encrypted in a key which
+  doesn't require the Yubikey to be present in order to decrypt:
+  2D11AC8BFF2BC4A8; why?
+- trying to use ssh-add -s /usr/lib64/libykcs11.so.2 rather than
+  /usr/lib64/opensc-pkcs11.so bc the latter kept failing to accept the
+  passphrase
+  - but now the ssh signing fails instead
+    sign_and_send_pubkey: signing failed for RSA "PIV AUTH pubkey" from agent: agent refused operation
+    linus@bounce.adb-centralen.se: Permission denied (publickey).
+    Aug 02 17:55:11 leguin ssh-pkcs11-helper[15754]: error: C_Sign failed: 5
+    Aug 02 17:55:11 leguin ssh-agent[13979]: process_sign_request2: sshkey_sign: error in libcrypto
+  - restarting ssh-agent fixed it
+    systemctl --user restart ssh-agent
+- laptop hot after being in backpack, log full of call traces
+  Aug 02 20:16:02 leguin systemd-sleep[54889]: Failed to put system to sleep. System resumed again: Device or resource busy
+- dropping outbound traffic on the bornhack network
+  - we're dropping some output ICMPv6 packets on the bornhack network
+    - The source is our link local fe80 address
+    - The destination is [MLDv2](https://en.wikipedia.org/wiki/Multicast_Listener_Discovery) reports
+    - The type is 143 -- [MLDv2](https://en.wikipedia.org/wiki/Multicast_Listener_Discovery)
+  - we're also dropping outbound dhcpv6-client (546/udp), which seems bad since we do want ipv6, but it looks like we get IPv6 addresses from avahi-daemon anyway
+  - then there's the 5353/udp drops we've seen for a long time, on other networks too; TODO: is this only when unbound is misbehaving?
+
+** <2023-08-01 Tue>
+*** renewing onion cert with HARIC
+There are two CSR's to submit. One for the X.509 cert and one for the
+onion key verification. The onion key was not being verified when
+renewing today.
+
+- Log in to HARICA's CertManager at https://cm.harica.gr/
+- Select the onion cert from the list
+- Choose the action "Request again" for the "www.sigsum.org" cert in the Expiring Certificates list
+- Click Next at the Certificate details screen
+- Select 1 year and click Next
+- Click Submit CSR manually
+- On listen.sigsum.org, run the following commands as root
+  cd /etc/apache2/certs
+  mkdir 2023; cd 2023
+  openssl req -new -key ../er3n3jnvoyj2t37yngvzr35b6f4ch5mgzl3i6qlkvyhzmaxo62nlqmqd.onion.key.pem -out csr.pem
+    <enter . on all except Common Name>
+    Common Name (e.g. server FQDN or YOUR name) []:er3n3jnvoyj2t37yngvzr35b6f4ch5mgzl3i6qlkvyhzmaxo62nlqmqd.onion
+  openssl req -noout -text < csr.pem # should show the following
+    Subject: CN = er3n3jnvoyj2t37yngvzr35b6f4ch5mgzl3i6qlkvyhzmaxo62nlqmqd.onion
+- Insert the output from cat csr.pem in the web browser and click Submit request
+- Confirm that you really want to use the same key again
+- Back at Ready Certificates, select action "Get your certificate"
+- Click the agree checkbox and then the Accept button
+- If you're in TB, you might need to switch to plain FF here if MasterCard ID Check is required by your bank
+  - Update: Seems like you don't need to enter anything in this dialogue, but TB won't show you anything
+- Enter payment stuff, requesting invoice (VAT number: SE559163363001) and click "Continue to payment"
+- Enter credit card info
+  - NOTE: The BankID app on my phone didn't do anything when I tried
+    this on 2023-08-01 around five pm. I was tethering, if that is
+    relevant. Or BankID was broken at the time? I'll pick up later,
+    when on proper internet or something.
+- Select PEM, download and scp to listen.so:/etc/apache2/certs/2023/
+- Symlink the new cert file to
+  /etc/apache2/certs/er3n3jnvoyj2t37yngvzr35b6f4ch5mgzl3i6qlkvyhzmaxo62nlqmqd.onion.cert.pem
+- Reload apache
+  systemctl reload apache2
+
+*** rebooting sigwaitinfo into new kernel
+09:56:17 reboot starting
+09:56:18 shutdown done
+09:56:46 starting up
+09:57:02 BIRD started
+09:57:02 sshd started
+09:57:02 unbound started
+09:57:04 wg0 started
+
+**** enp3s0.201 config not in good shape, had to fix manually
+Aug 01 09:57:01 sigwaitinfo systemd[1]: Started ifup for enp3s0.201.
+Aug 01 09:57:01 sigwaitinfo sh[1699]: ifup: waiting for lock on /run/network/ifstate.enp3s0
+Aug 01 09:57:01 sigwaitinfo ifup[439]: RTNETLINK answers: File exists
+Aug 01 09:57:01 sigwaitinfo ifup[439]: ifup: failed to bring up enp3s0.201
+Aug 01 09:57:01 sigwaitinfo sh[1699]: RTNETLINK answers: File exists
+Aug 01 09:57:01 sigwaitinfo sh[1699]: ifup: failed to bring up enp3s0.201
+Aug 01 09:57:01 sigwaitinfo systemd[1]: ifup@enp3s0.201.service: Main process exited, code=exited, status=1/FAILURE
+Aug 01 09:57:01 sigwaitinfo systemd[1]: ifup@enp3s0.201.service: Failed with result 'exit-code'.
+
+ip ad ad  2001:67c:8a4:0201::1/64 dev enp3s0.201
+ip r add 2001:67c:8a4:5000::/64 via 2001:67c:8a4:201::146
+
+* July 2023
+Vacation 50% 2023-07-03--04: 1 day effective vacation
+Vacation 100% 2023-07-17--21: 5 days effective vacation
+Vacation 100% 2023-07-27--28: 2 days
+
+** <2023-07-29 Sat>
+*** what stboot is running on vm86?
+From ~/p/st/deployments/2020-10-13-vdse/vm86/vm86.boot.20210913.txt:
+
+stboot: 2021/09/13 04:26:52 Host variables: {
+  "minimal_signatures_match": 1,
+  "fingerprints": [
+    "5fbba8f47f186f15fa992a60a9627bb638f264958223410851fe8e36ce31b551"
+  ],
+  "build_timestamp": 1602777665,
+  "boot_mode": "LocalStorage"
+}
+
+$ date -d @1602777665
+Thu Oct 15 18:01:05 CEST 2020
+
+** <2023-07-26 Wed>
+*** meeting with the nox group
+- SM: don't aim for the final version to start with -- aim for an MVP in the first round (this phase)
+- SM: requirement and project plan will change between these two phases
+- SM: are you seeking funding for research or for business?
+  - CR: childhood will be funding the first phase; christina stenbeck is open for both kinds
+- CR: are the stages forward to 1) write a job ad for a developper; help them understand; and 3) then make it happen (implementation)
+- CR: would 6 or 12 months be a good time to hire someone for?
+- SM: less than 18 months is challenging, at least in the UK; for a researcher at least
+- SM: a first version software implementation would be a good start; can somet things be stirpped out of the current platform and still be useful? to have something more than a document for researchers to work with and talk about
+- A: talking to companies
+- LN: research then commercialisation, are CR in on that?
+- SM: researchers want to publish papers
+- CR: can UX be a whole research subject?
+- CR: starting as a research project would be good since i've been doing that and we get all the support from KI; but if this means it will take much longer time, that's a negative
+- M: the research project could even look into the commercialisation of the program
+- CR: are there funding opportunities for this (technical) field too? i know nothing outside of my (psyciatrist) field
+  - SM: yes, usual funding like EU funding (horizon2020), UK science research council, ETSRI?
+  - CR: we have vinova och ?rtum
+  - SM: we can get funding for support for international colabortion our side, but youi'd have to find your own
+- CR: the end violence org has a lot of money
+- SM: how about the "refrain" research center; small amounts but lightweight process
+- links for funding orgs are being sent over zoom
+- CR: sounds interesting to make it a research project to start with
+- LN: i'm hnappy with our current arrangement and could do that again; mentions internetfonden; i have a KAU contact
+- M: there's another lightweight funder here (name?); they're open for informal discussions before application being sent in
+- CR: fair summary? we could apply for quick grant money for a developer and allison, and then later expand
+- SM: UK funders will only fund UK people
+- A: we've covered IP and time plan
+- A: MVP done by end of december realistic?
+
+** <2023-07-25 Tue>
+- in preparation for lunch meeting with richard: https://pad.sigsum.org/p/WyoPjXPMarrPQH8crCl8
+
+*** meeting
+- ap linus: link the sigsum ansible playbook
+- m247, datapacket, 100TB  
+
+** <2023-07-24 Mon>
+- ST docuthon day 1
+- parnas on types of documnetation of products
+  - description
+  - specification
+  - model, easier to study than the product
+  - prototype, early version of the product
+- gl complaints
+  === INFO ===
+You are currently running PostgreSQL 13.
+Note that PostgreSQL 14 will become the minimum required PostgreSQL version in GitLab 16.0 (May 2023).
+PostgreSQL 13 will be removed in GitLab 16.0. Please consider upgrading your PostgreSQL version soon.
+To upgrade, please see: https://docs.gitlab.com/omnibus/settings/database.html#upgrade-packaged-postgresql-server
+=== INFO ===
+
+** <2023-07-12 Wed>
+- laptop suspend, or rather not suspend
+  - laptop suspended with full battery yesterday night, too warm during the day, waking up around 15 today it had some 23% battery left
+  - kernel reports s2idle
+Jul 11 23:16:54 leguin systemd-sleep[21597]: Entering sleep state 'suspend'...
+Jul 11 23:16:54 leguin kernel: PM: suspend entry (s2idle)
+Jul 11 23:16:54 leguin wpa_supplicant[2480]: wlp0s20f3: CTRL-EVENT-DSCP-POLICY clear_all
+Jul 11 23:16:54 leguin wpa_supplicant[2480]: wlp0s20f3: CTRL-EVENT-DSCP-POLICY clear_all
+Jul 11 23:16:54 leguin wpa_supplicant[2480]: nl80211: deinit ifname=wlp0s20f3 disabled_11b_rates=0
+Jul 11 23:16:54 leguin kernel: Filesystems sync: 0.019 seconds
+Jul 11 23:16:54 leguin bluetoothd[12826]: src/profile.c:ext_io_disconnected() Unable to get io data for Hands-Free Voice gateway: getpeername: Transport endpoint is not connected (107)
+
+** <2023-07-11 Tue>
+- bokföring
+  - skatteverket 2022-12-09 ändrar aga för juni 22 från 17360 til
+    19144, diff 1784, men (!) det blir ju inga ändringar i 2022 års
+    bokföring eftersom betalningen sker först i januar
+  - bokade om resultatet från föregående år
+  - borde vara klart nu
+- failed talking to the captive portal at hotel, despite finding the DNS server
+  address using tcpdump -vvv port 67 or port 68
+- captive portal at UNIL
+  1. What resolver to used
+     tcpdump -vvv -ni wlp0s20f3 port 67 or port 68
+  2. Change resolver used, from 127.0.0.1 to what the DHCP server announces
+     vi /etc/resolv.conf
+  3. Allow all outgoing traffic
+     vi /etc/nftables/main.nft
+     systemctl reload nftables
+  4. Bring wireguard down
+     networkctl down wg-vkg
+  5. Talk to the captive portal until it likes you
+     firefox -p captive-portal
+  6. Quit Firefox
+  7. Disallow all outgoing traffic
+     vi /etc/nftables/main.nft
+     systemctl reload nftables
+  8. Change resolver used back to 127.0.0.1
+     vi /etc/resolv.conf
+  9. Bring wireguard up
+     networkctl up wg-vkg
+  10. Verify that we're using wg
+      curl https://wtfismyip.com/json
+  11. Start Firefox
+      firefox -p default-release &
+- vkg-net: the v6 5000 network is missing after reboot
+
+** <2023-07-10 Mon>
+*** UNIL captive portal
+[root@leguin ~]# tcpdump -ni wlp0s20f3 -vvv port 80
+...
+    1.1.1.1.http > 10.68.5.22.60312: Flags [P.], cksum 0xbaf5 (correct), seq 1:438, ack 71, win 128, options [nop,nop,TS val 3806852025 ecr 3069998382], length 437: HTTP, length: 437
+        HTTP/1.1 303 See Other
+        Content-Length: 0
+        Connection: close
+        location: https://pwlan.unil.ch/c/s/e7d6b4a3-8dc0-4e55-862f-9e3fd88a257c/?s=2f947250-25af-4b68-9381-2ef603f6092f&i=http%3A%2F%2F1.1.1.1%2F
+        expires: 0
+        cache-control: private, no-cache, no-store, must-revalidate
+        server: MPP by onway ag
+        date: Mon, 10 Jul 2023 07:58:26 GMT
+        X-MPP-Cache-Status: MISS
+        X-MPP-Response-Time: 0.000
+        X-MPP-System-Name: mpp-unil-master.unil.ch
+
+** <2023-07-08 Sat>
+*** DONE offboarding morten [6/6]
+- [X] shell access
+  - [X] ansible updated
+  - [X] all/most hosts checked
+  - [X] hosts where he'd root checked: poc, tee
+- [X] gitlab groups and projects
+  - new role: Developer
+  - https://git.glasklar.is/groups/glasklar/-/group_members
+  - https://git.glasklar.is/groups/sigsum/-/group_members
+  - https://git.glasklar.is/groups/system-transparency/-/group_members
+  - check https://git.glasklar.is/admin/users/foxboron/projects
+  - current login IP: 46.212.113.67
+  - morten will turn off email notifications for his account
+- [X] email account
+  - forward offered, not wanted
+  - https://mail.glasklarteknik.se/edit/mailbox/foxboron%40glasklarteknik.se set Inactive
+  - [X] deactivated one mailbox and three aliases
+- [X] nextcloud account
+  - [X] account disabled (but not deleted)
+- [X] matrix space
+  - he's an admin and can't be removed
+  - [X] morten left the space
+- [X] irc
+  - [X] Foxboron removed from group @glasklar
+
+*** TODO data innan resa [2/4]
+- [ ] bringing
+  - [ ] YKX
+  - [ ] YKX paper backup
+  - [ ] YK-nano
+  - [ ] leguin
+  - [ ] charger
+  - [ ] USB hub
+- [ ] not bringing
+  - [ ] all passphrases
+  - [ ] office keys
+  - [ ] 4 yubikeys on keychain
+- [X] sigwaitinfo
+  - [X] rebooted into new kernel
+- [X] leguin
+  - [X] backed up
+  - [X] passphrase for ostick.img changed to using a yuibkey we're not bringing along
+    luksChangeKey --key-slot 0 /dev/loop1
+  - [X] rebooted and verified ssh access to
+    - [X] bounce.adb-centralen.se
+    - [X] kcmp.adb-centralen.se
+    - [X] ioctl.adb-centrlalen.se
+    - [X] vmsplice.adb-centralen.se
+    - [X] vm86.verkligendata.se
+    - [X] sigwaitinfo.verkligendata.se
+    - [X] logsrv-01.sigsum.org
+    - [X] logsrv-02.sigsum.org
+- backup up leguin, failing the check [[file:notes/2023-07-08/18:32-borg-failing][file:~/notes/2023-07-08/18:32-borg-failing]]
+  - the disk is broken, and I did drop it on the floor earlier today, oops
+  - let's make a new backup on a stick for now, and don't forget to
+    back up the borg key (and the LUKS header) to "the small silver
+    stick" (lsusb says iSerial 1313360000009158)
+    - and lo and behold, the borg key for leguin is missing, oops; fixed now
+    - another thing: the LUKS header for the silver stick would be good to backup too, we do it to leguin:/root/
+  - stick chosen is a 128G one with serial E0D55E625BFFF5A1E8A608AF
+- found ioctl dead
+  [root@kcmp ~]# tail /var/vm/ioctl/vm-bhyve.log 
+  ...
+  Jul 08 04:17:36: bhyve exited with status 134
+  Jul 08 04:17:37: destroying network device tap0
+  Jul 08 04:17:38: stopped
+  - could it be OOM on kcmp? https://lists.freebsd.org/pipermail/freebsd-virtualization/2020-November/009015.html
+  - started ioctl at 21:56 CEST
+  - nordberg.se, adb-centralen.se have smtp.adbc, running on ioctl, as their only MX
+  - 4711.se has mx-01.vdse as a second MX, but how's mx-01 doing spam filtering? TODO: figure that out
+
+** <2023-07-07 Fri>
+- fwupdtool security
+  - what is csme
+  - intel boot guard
+    https://tianocore-docs.github.io/Understanding_UEFI_Secure_Boot_Chain/draft/secure_boot_chain_in_uefi/intel_boot_guard.html
+  - https://github.com/tianocore/edk2
+    https://github.com/tianocore/tianocore.github.io/wiki/EDK-II-Documents    
+- VKG crying for dhcp
+  - ac:1f:6b:03:a6:07
+
+- apu2
+  - minicom -D /dev/ttyUSB0
+  - AMD GX-412TC SOC; 1 GHz; 32K L1, 2M L2; 4G RAM DDR3-1333 (666 MHz); 16G SATA SSD
+  - running Memtest86+ 5.01 coreboot 001
+  - https://p5r.uk/blog/2020/instaling-debian-over-serial-console.html
+  - https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
+  - https://ftp.acc.umu.se/cdimage/archive/
+  - https://webcache.googleusercontent.com/search?q=cache:oOrjX4bAtfYJ:https://wiki.polaire.nl/doku.php%3Fid%3Dpc_engines_apu2_debian_bullseye&cd=9&hl=sv&ct=clnk&gl=se&client=firefox-b-d
+  - dmidecode -s bios-version
+    4.0.7
+  - flashrom -p internal:boardmismatch=force -w /media/SYSLINUX/apu2_v4.17.0.3.rom
+    - need boardmismatch=force bc "PC Engines:apu2" != "PC Engines:PCEngines apu2" [[file:notes/2023-07-07/17:13-apu2-flashrom-fail][file:~/notes/2023-07-07/17:13-apu2-flashrom-fail]]
+  - reboot
+    coreboot build 20220822
+    BIOS version v4.17.0.3
+  - h ENTER; F2; install vga=off console=ttyS0,115200n8
+  - root@maatuska:~# dmidecode -s bios-version
+    v4.17.0.3
+  - apt-get install selinux-basics selinux-policy-default auditd
+  - rootfs is at 2.9G
+    root@maatuska:~# df -h /
+    Filesystem      Size  Used Avail Use% Mounted on
+    /dev/sda1        14G  2.9G   11G  23% /
+  - selinux-activate # touching /.autorelabel, making the next boot do automatic relabeling (see selinux(8))
+    init 6	# rebooting
+  - enable selinux enforce: (kinda this:) sed -ie 's/^SELINUX=permissive/^SELINUX=enforcing/1' /etc/selinux/config
+  - root@maatuska:~# sesearch -A | egrep ssh
+  - tail /var/log/audit/audit.log                                                                                                                                                                      
+  - semanage user -l
+    id -Z
+  - rootfs is at 3.0G
+    root@maatuska:~# date; df -h / | tail -1
+    Fri Jul  7 22:32:12 CEST 2023
+    /dev/sda1        14G  3.0G   11G  23% /
+  - sesearch -A egrep 'allow tor_t'
+  - semanage port -l | egrep ^tor
+    tor_port_t                     tcp      6969, 9001, 9030, 9050, 9051
+    
+*** TODO new maatuska on apu2 [0/16]
+- [ ] "double sshd setup" to avoid setuid sudo or su
+  - [ ] first sshd binding to 0.0.0.0:4722, allowing only linus
+    - needs selinux policy change to allow tcp/4722 as well
+  - [ ] second sshd binding to 127.0.0.1:22, allowing only root
+- [ ] rm all setuid binaries, mount / -o nosuid
+- [ ] disable unused services
+- [ ] tor installed, maybe from source but maybe not
+  - see selinux policy for username and path to binary
+  - see systemd.exec(5) for NoNewPrivileges=, SELinuxContext=, Limit*=
+    and the whole SANDBOXING section (in particular Protect*=,
+    Private*) and the SYSTEM CALL FILTERING section
+  - systemd.resource-control(5) might be interesting too    
+- [ ] tor keys kept in LUKS container
+- [ ] bwauth fetcher set up
+  - systemd job with timer, separate user and isolated from everything using systemd hardening
+    - PrivateTmp=, see see systemd.exec(5)
+    - https://www.redhat.com/sysadmin/mastering-systemd has a list
+  - post-task kopierar -- ExecStopPost=
+  - use seccomp filter for limiting syscalls (f.ex. IoUring, see https://lwn.net/Articles/902466/)
+- [ ] unused kernel features disabled, with a sysctl if possible
+- [ ] network namespaces configured
+  - f.ex.: all services have their own?
+- [ ] nftables configured
+  - only root and tor (and the bwauth user) connect out, based on uid
+  - block forward chain
+- [ ] cron uninstalled, use systemd timers instead
+- [ ] check socket listeners (ss -tulpn)
+- [ ] SELinux
+  - [ ] remove any modules that's not needed, semodule -r
+  - [ ] fix unconfined processes, ps -eFZ | rg unconfined
+- [ ] run chrony, not ntpd
+- [ ] landlocked requires code changes
+  - [ ] feasible for tor?
+- [ ] TPM chip
+  - [ ] ordered https://teklager.se/en/products/router-components/APU2_TPM2_module_tpm1a
+  - [ ] installed
+  - [ ] provisioned
+- [ ] IMA, evm -- Integrity Measurement Architecture
+  - https://lwn.net/Articles/137306/
+  - [ ] can we seal the SSH host key?
+  - [ ] can we seal the LUKS passphrase for the LUKS container with tor's keys?
+
+** <2023-07-06 Thu>
+- shim signing cert
+  - backing up a bit
+    - MS will want to know what Glasklar Teknik AB is and recommends
+      using an EV cert, since they trust established CA's to do sane
+      vetting
+    - making MS trust Glasklar by other means will take some effort
+    - us not using Glasklar's official postal address will not make this easier
+- FS, LN 09:15-09:40 phone (signal)
+  - decided to not set up HSM's and generate certificates or key material today (2023-07-06)
+    - [X] AP LN: inform PD and the rest
+    - [X] AP LN: inform Mullvad
+    - de två huvudsakliga skälen är
+      - både mölndal- och stockholm-adressen är problematiska att använda för detta
+      - problemet med shim-signaturen som P&K jobbar med
+    - FS: en potentiell möjlighet om vi gör det här ordentligt och
+      väldokumenterat är att användare som inte vill lita på MS rot
+      istället kan lita på vår rot
+  - pick up the discussion next week when FS, LN, PD and also RD and NM meet in person
+    - AP LN: plan for this meeting
+  - LN eftertankar
+    - jag tror inte att det är så intressant att erbjuda andra vårt CA pga
+      - den som kan provisionera cert kan lika väl provisionera sitt eget
+	- möjligt undantag: de kan eller vill provisionera en gång,
+          inte fler, så de vill ha ut ett långlivat (intermediate)
+          CA-cert och har ingen intern CA
+      - vetting är svårt och jobbigt
+- mer om code signing cert
+  - linus tillägg efter mötet: sthsm-provision behöver mer granskning
+    - insåg igår kväll att Domain Admin kan skapa auth-nycklar == full access inkl export av nycklar
+  - saker som behöver göras som kan ha långa ledtider
+    - beställning kassaskåp
+    - ett ev. adressbyte för Glasklar
+  - saker att besluta vid omtag i augusti
+    - yubihsm?
+    - eget CA eller cert från Globalsign?
+- möte med rgdd och kfreds
+  - https://pad.sigsum.org/p/KGkgC9SIARLw93r4VDTP
+  - filippo
+    - kollade hans första faktura som hamnade fel -- han fakturerar 100k EUR per år för 50% av sin tid
+- fika för Foxboron
+- ssh keys in piv on yubikey failing with "agent refused operation"
+  sign_and_send_pubkey: signing failed for RSA "PIV AUTH pubkey" from agent: agent refused operation
+  - poking the yubikey with yubico-piv-tool -a status seem to "fix it"
+- submitted choice B for the PETS hike https://cryptpad.fr/form/#/2/form/view/XVSpMaoYigm0H6+6xzzeoZmkzu4e6krVD8nSJMgmtEQ/
+
+** <2023-07-05 Wed>
+- talked to zaolin about sthsm
+  - decided on hex for passphrase suggestions
+  - all done zaolins end by lunch today
+  - linus needs to be done with signing by eob thursday
+  - the shim signature has shown "to be fishy", there exist three
+    signature validation schemes, kai is helping with solving this
+  - the shim signing cert should have the validity of 1 year
+    - globalsign offers 1y and 3y, MS are used to be signing new certs every year
+
+- Fredrik har en tanke om rekrytering
+  - bluecmd är troligtvis en bra kandidat, givet vad Ron Minnich sade
+    till Fredrik för ett tag sedan (ang att bluecmd slutade från Ron's
+    team)
+  - AP FS kontaktar bluecmd
+- Konsultavtal med Kai & Philipp färdigt
+  - 80%
+  - pratat om vilka dagar m.m., kan ta det imorgon på mötet med rgdd
+  - stauth och stvmm är kandidater på projekt för Kai
+  - dokumentation för Philipp
+- sthsm
+  - building sthsm on kkbuild /home/linus/notes/2023-07-05/15:52-building-sthsm-on-target
+  - starting the connector on target
+    yubihsm-connector -c /etc/yubihsm-connector.yaml 2> yubihsm-connector.log &
+  - provisioning
+    sthsm-provision pki provisoin --config sthsm.config
+- certificate details
+  - fredrik is not sure that daniel wants to have his home address in any certificate
+  - daniel is not reachable, due to vacation
+  - linus said we can use the address of the office in stockholm
+
+*** TODO [0/4]
+- [ ] shared documentation framework
+  - WIP in project/documentation branch docs.sto
+- [-] sthsm provisioning laptop set up
+  - [-] sthsm ready for release
+    - [X] a solution to CA serial numbers https://git.glasklar.is/system-transparency/project/sthsm/-/issues/32#note_6609
+    - [ ] code reviewed
+  - [ ] add FDE to glasklar-keykeeper?
+    - against
+      - the only things worth protecting there is not stored on the SSD
+      - another passphrase to keep
+      - takes some time to set up and test (although we do have it for buildkk)
+    - for
+      - if a human or some code did something horrible there might be residue on the SSD after all
+      - if the computer is lost, there's less signs of its role available to the ones that find it
+  - [ ] installed
+- [-] HSM passaphrases, keys and devices
+  - [X] passphrases and keys enumerated
+    - Device Admin Passphrase (DAP) -- Export (wrapped), reset, import
+    - Device Wrap Key (DWK) -- Decrypt exported, export (wrapped), import
+    - Glasklar Admin Passphrase (GAP) -- All except export,reset,import
+    - Glasklar User Passphrase (GUP) -- Sign, generate key (CSR)
+  - full key compromise (copy) requires one device, the DAP and the DWK
+    - don't store devices together with DAP and DWK
+  - signing oracle powers requires one device and either of GAP or GUP
+    - don't store devices together with any of the passphrases
+  - [ ] generation of passphrases and keys
+    - passphrases and keys have the same format: 32 random octets
+      expressed as a hexadecimal string of 64 octets
+    - use two d6 dice to generate passphrases and keys by, in a room with no possibility of prying eyes, repeatedly do:
+      - throw two d6 dice in a way that one of them is clearly the left dice and the other the right dice
+      - treat a 6 as 0
+      - let the left dice be worth 6 times its value and add it to the right dice
+      - if the result is higher than 31, discard it and roll both dice again
+      - take the result modulo 16
+      - the result of that expressed in hexadecimal notation is the next characters in the passphrase/key
+      - if the passphrase/key does not contain 64 characters, go back and roll both dice again
+    - a few examples
+      - 1,6 => 6*1+0 = 6
+      - 5,1 => 6*5+1 = 31; 31%16 = 15
+      - 5,3 => 6*5+3 = 33; discarded
+      - 6,6 => 6*0+0 = 0
+  - [ ] storage of devices, passphrases and keys
+    - MS requirements https://techcommunity.microsoft.com/t5/hardware-dev-center/updated-uefi-signing-requirements/ba-p/1062916
+      Code signing keys must be backed up, stored, and recovered only
+      by personnel in trusted roles, using at least dual-factor
+      authorization in a physically secured environment.
+    - no less than two copies of each
+    - goals: availability, minimal target, detect compromise
+    - non-goals: prevent ln5,nisse,rgdd,kfreds from operating the HSM's alone
+    - note: possession of half of a passphrase or key => security level 64
+    - a third of                     security level 84
+    - splitting passphrases in two or three is meant to buy us time in
+      case of compromise -- instead of granting an attacker (with
+      access to a device) immediate access, a brute force attack of a
+      key space of at least 2^64, and for DWK 2^84, is required.
+
+    | YHSM1 | office                | x        | x       |
+    | YHSM2 | rgdd                  | x        | x       |
+    | DAP1  | ln5                   | nisse    | -       |
+    | DAP2  | rgdd                  | tillitis | -       |
+    | DAP3  | romab                 | mullvad  | -       |
+    | DWK1  | ln5                   | nisse    | rgdd    |
+    | DWK2  | romab                 | tillitis | mullvad |
+    | DWK3  | <someone sthlm based> | kfreds   | dbernt  |
+    | GAP1  | ln5                   | office   |         |
+    | GAP2  | nisse                 | rgdd     |         |
+    | GAP3  | kfreds                | dbernt   | mullvad |
+    | GUP1  | ln5                   | office   | -       |
+    | GUP2  | nisse                 | rgdd     | -       |
+    | GUP3  | kfreds                | dbernt   | mullvad |
+
+  - [ ] storage mediums decided
+    - pen and paper?
+    - split on several USB keys?
+  - [ ] labels on storage medium?
+- [ ] ST repos mirrored on GH
+
+** <2023-07-04 Tue>
+- thought about gitlab setup automation, good for setting up
+  - test instance for testing restore of backups, new features, risky configuration changes
+  - new instance for moving (when system rebuild is required), catastrophic events
+  - instances by other than Glasklar, for production or test or evaluation
+
+- kkbuild restarting build of 23cb.11
+  - the size is now at 712M
+
+- möte med allison, mark, steven, christoffer,
+  - 10:00-12:00
+  - zoom meeting 61160311928
+  - questions about project nox and the platform
+    - steven would like to see the platform and understand future plans
+  - the treatment program and the platform
+    - treatment modules
+      - short video and some text, and a worksheet
+      - participant sends in the worksheet and the therapist is notified
+      - nine modules, in nine weeks
+    - preventit 2 is broader than preventit in that it's targeting not
+      only active offenders but also "those who have urges"
+    - mark: q about the interview, how does it work for anonymous participant?
+      - the interview is done via chat, on the platform
+      - chat is being deleted after the interview
+      - can enable audio, if the participant is ok with that
+    - allison shows what it looks like from the therapist pov, by showing a test participant
+    - mark: is there any analytics running, to understand how users navigate and how long they stayed
+      - only overview like signup, login, finished module; no details for how long one stays on each page and such
+    - on therapist feedback
+      - looking at the charts (worksheets?)
+    - christoffer comments on the efficiency of this type of treatment
+      - 160 patients, all of them (?) new to therapy in a 2 month long therapy, treated by 1.2 staff including recruitement
+    - steven: new modules, can they be added to the platform easily
+      - allison explains that most of it can be done by a therapist, except she can not upload videos
+    - steven wonders if the platform is built on any existing platform
+      - linus says it's "home made" and christoffer adds more info
+      - steven: this cannot be used going forward? correct
+      - christoffer: we own the modules and they can be reused
+    - project BRIDGE is a self-help program and more of motivational interviewing, more like sessions with a therapist
+    - mark: how are you getting feedback?
+      - asking for feedback at the end of preventit1, but in preventit2 we ask after each module
+      - christoffer and allison explains what patients have experienced
+      - christoffer mentions requests by participants that they've not been able to fulfill
+      - javascript, onion link, downloadable videos and other
+      - christoffer thinks they're still collecting too much data,
+        which together with some external data could make it possible
+        to correlate participants in the dataset with real persons
+    - example: a extremely high risk person who offered to "program a new chat" which he would be comfortable sharing more over
+  - mark: when a child is at risk, what are your legal obligations?
+    - we do report to social services in sweden
+    - it's different in different countriues, and sweden is unique
+    in that research projects it's *illegal* to share any
+    historical (non ontoing, severe crimes, jail time > 1y or
+    producing CSAM that would render >2y jail in sweden)
+    information about a participant; this is attractive to the
+    clients
+    - we had a case recently with a person in north america who
+    said he was using his own children for producing CSAM, the
+    person mentioned his name, we made a police report together
+    with a KI lawyer; we're very transparent with patients about
+    our reporting, so that participants take the risk themselves
+    - christoffer: this is not a therapy to make feel better about
+    their criminal actions, but rather they will feel better if
+    they turn themselves in and take their punishment; we inform
+    about research showing that victims suffer from knowledge
+    about being present in CSAM spread in many copies is as
+    painful as the offense itself
+  - christoffer wants a function where participants can upload
+    CSAM to the platform, like [Arrachnid][] (who might be using
+    securedrop)
+  - the swedish reporting obligations is an ethical dilemma, that we're
+    - but note that this is for research, and in regular therapy
+    the laws stipulates a bit more reporting obligations, and
+    the question is if it's even possible to perform anonymous
+    treatment in standard healthcare
+  - christoffer: the payment question is interesting; steven explains
+    - there are anonymous payment methods, like zcash, but these solutions are not liked by many governments and banks
+    - collecting money from a group or organisation is a bit more straight forward
+    - there's some sw that can be run by the user to turn non-anonymous tokens into anonymous tokens
+    - what kind of organisations could these be? steven thinks of orgs that participants are already members of
+    - steven will send a link by MSR on this topic
+  - christoffer comes back to the topic of reporting operations, and wants to know what steven and mark thinks about it
+    - one reaction we had recently from a potential funder is that
+    there might be hard for f.ex. the health dept in Greece to
+    buy 200 treatments from Sweden, bc other laws around
+    reporting obligations exist there
+    - steven: prevention is probably wort a lot
+  - mark: measuring impact, how would an org paying for treatment know they get value for their money?
+    - christoffer: many companies buys services for treating personell for drinking, sleep problem and the like
+    - netclean is selling sw products for companies to install on
+      the company devices, detecting CSAM; tried to sell it based on
+      "protect children" and failed, and have now changed the
+      message to "for security, bc these individuals might be risk
+      people threatening company security"
+    - steven: talking to GCHQ, risk of blackmail is v. interesting
+  - christoffer on this model being applied to other problems like
+    f.ex. extremist violence ("lonely actors")
+    - mark: how about identity, community membership?
+    - allison: it's a huge part of it; the sense of belonging is
+      very important to many participants, sexuality being an
+      important type of identity
+    - allison: been discussing strategy around individualising certain modules
+  - mark: the length of the program, any plans on extending?
+    - leaving the research form, we can be more flexible
+    - incentivising later follow-ups would be valuable
+    - been thinking about "a booster session"
+  - mark: on commercialising, how comfortable are you with scaling this up?
+    - allison thinks there's potential for automation, and perhaps AI assisted, f.ex.
+      - the initial interview
+      - therapist feedback
+      - sorting patients into groups as well
+    - but the human touch is crucial, that the patient knows that there's a human being on the other side, not judging
+  - christoffer shares a slide about the profile of clients they get now
+    - mostly male, many have other dangerous paraphilic disorders
+      - 1/3 sexual sadism
+      - 1/3 sexual involving animals
+      - many have necrophilia
+      - often hypersexuality
+      - majoroity have suicidal
+      - most are neuro atypical
+    - there might be a high overlap with other dangers like "lonely actors"
+  - next steps
+    - want to be bulding a new platform
+    - anonymous payments?
+    - steven: coming from security, cryptography; interested in the research aspects of anonymous payments
+      - has to be research for us to be involved
+      - protecting the information better, e2e encryption
+    - mark: usability and human/computer interaction
+      - looking at usability both from participant and therapist pov
+    - allison thinks both are great things for us
+    - building up the platform
+      - steven: needs to get someone contracted
+    - linus thinks this needs one person driving this who has a lot of
+      computer system design but with access to
+      - mark, steven, allison + christoffer, someone with legal knowledge
+  - steven brings up password recovery without email, bc email is problematic
+  - allison wraps up, christoffer wonders about suggestions for a technical project leader
+    - steven thinks it has to be someone interested in new stuff, also someone who wants to be in it for the longer run
+    - linus wonders about what can be offered
+
+  [Arrachnid](https://projectarachnid.ca/en/)
+
+** <2023-07-03 Mon>
+- thought more about Glasklar CA setup
+- sigsum ansible witness config
+  - merged fox's MR, with changes
+  - created MR for v1.0.2
+- sthsm meeting
+  - linus' open questions
+    - entropy from the device
+      - can do, have not done yet
+    - FIPS mode?
+  - RSA2048 works
+  - what tool is failing?
+    - pesign (?), from the shim maintainers, says the signature is not valid
+  - kfreds
+    - that library? zaolin explains it's not yubico's lib
+  - long discussion on FIPS 140-2 
+    - FS: let's not enable FIPS mode
+  - entropy discussion
+    - decision: use device entropy
+  - compilation question
+    - how do we know that we send the right thing?
+  - shim compiling
+    - are we using the exact same build options as other projects?
+    - zaoling will check that
+  - opsec details
+    - ap linus: share written details with kfreds
+- updated https://pad.sigsum.org/p/hsm_passphrase_sharing and https://pad.sigsum.org/p/kbvQlgDdzkF79Q8dQJHs
+- nextcloud calendar updated
+- met with rgdd and kfreds about when to plan the fall; thu 13:15-14:00
+  - shared the ST roadmap and meeting notes with rgdd
+- tried to understand where and how waybar is being started, but failed
+- tried to understand why some gl runner jobs are failing with 137, sporadically; is it lack of memory?
+- updated the issue about setting up KVM on logsrv-02 https://git.glasklar.is/glasklar/services/misc/-/issues/3
+- working on kkbuild
+  - today emerge --sync worked and I have no idea why -- did something
+    change gentoo infra end, or on the path between vkg and it, or in
+    leguin?
+  - updated the portage tree
+    emerge --sync
+    emerge --oneshot sys-apps/portage
+    - i see many of these
+      !!! Failed to set new SELinux execution context. Is your current SELinux context allowed to run Portage?
+  - updated the catalyst snapshot cache
+    - tried downloading stage3 where I found it last time but didn't find hardend-nomultilib-selinux-openrc in mirror.bytemark.co.uk/gentoo/releases/amd64/autobuilds/current-install-amd64-minimal/
+    - tried to find via https://www.gentoo.org/downloads/
+    - i wonder if the selinux profile has disappeared since may 19
+    - did find hardened-nomultilib-openrc, so maybe we should use that? it's not like we're enjoying any selinux anyway
+      curl -LO https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230625T165009Z/stage3-amd64-hardened-nomultilib-openrc-20230625T165009Z.tar.xz
+      curl -LO https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230625T165009Z/stage3-amd64-hardened-nomultilib-openrc-20230625T165009Z.tar.xz.asc
+      gpg --verify stage3-amd64-hardened-nomultilib-openrc-20230625T165009Z.tar.xz.sha256 
+      sha256sum -c stage3-amd64-hardened-nomultilib-openrc-20230625T165009Z.tar.xz.sha256 
+      gpg --verify stage3-amd64-hardened-nomultilib-openrc-20230625T165009Z.tar.xz.asc 
+      scp stage3-amd64-hardened-nomultilib-openrc-20230625T165009Z.tar.xz kkbuild:
+    - And *then* I found hardened-nomultilib-selinux-openrc, hehe let's use it
+      https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230625T165009Z/stage3-amd64-hardened-nomultilib-selinux-openrc-20230625T165009Z.tar.xz
+    - on kkbuild, as root
+      mv ~linus/stage3-amd64-hardened-nomultilib-selinux-openrc-20230625T165009Z.tar.xz /var/tmp/catalyst/builds/
+      catalyst -c ~builder/keykeeper/catalyst/keykeeper/catalyst.conf --snapshot 20230625
+      - /var/tmp/catalyst/snapshots/gentoo-20230625.tar.bz2 was created
+    - update 'snapshot' and 'source_subpath' in stage4.spec
+  - build failed when there were no network /home/linus/notes/2023-07-03/21:08-kkbuild-catalyst-fail-when-no-network
+
 * June 2023
 Vacation, carrying over from May: 2 Glasklar vacation days
  Extra Glasklar day on Fri 2023-06-02, so -1 Glasklar vacation days (1).
+ Shitload of extra Glasklar hours June 2-4, so no Glasklar vacation after all.
+Vacation 50% 2023-06-26--29: 2 days effective vacation
 
-** <2023-06-11 Sun>
-- installed pdf2svg, pdf-tools and uninstalled them again -- they didn't help with opening PDF files in emacs
-  - turns out that it's PDF files in ~/clown/ that does not open properly, which seems to be due to inhibit-backup-minor-mode being set there
-  - disabled minor mode in .emacs and immediately:
-    (setq auto-mode-alist (delq (assoc "/home/linus/glasklar/nc/" auto-mode-alist) auto-mode-alist))
-    (setq auto-mode-alist (delq (assoc "/home/linus/clown/" auto-mode-alist) auto-mode-alist))
-- installed texlive-scheme-medium for writing a letter (in Swedish)
-- looked for formal letter templates
-  - https://www.latextemplates.com/cat/formal-letters
-  - https://sv.overleaf.com/gallery/tagged/swedish
-- need besk:~linus/verkligen since we seem to be missing invoice info in the data from git
-  [root@leguin ~]# borg list /mnt/borg/besk
-  [root@leguin ~]# borg mount /mnt/borg/besk::2023-04-21T17:44:38Z /mnt2
-  restored the whole directory
-- backed up leguin to the WD element
+** <2023-06-29 Thu>
+- bokat tåg och hotell för gbg i juli
+*** 08:00 möte med Richard @ mullvad
+- 08:00-09:18
 
-** <2023-06-10 Sat>
-- switched to new bwauth
-  - on new carmeli
-    - new user bwauth created
-  - in bwauth jail on amnesia
-    - user and host used in ssh command changed in ~_bwauth/copybwscan.sh
-    - ran copybwscan.sh manually once, as user _bwauth
-  - [[file:notes/2023-06-10/10:15-bwauth-switch.txt][file:~/notes/2023-06-10/10:15-bwauth-switch.txt]]
+Summary
+- R is looking forward to
+  1. "unified image", ie combined boot image, with provisioning and ospkg loading
+     - missing a way to force provisioning mode
+  2. parallel download of ospkg
+     - probably helping with slow ospkg download, when combined with increased network buffers
+  3. increased kernel network buffers, but Mullvad will fix that themselves
+- Feature request: Troubleshooting mode
 
-** <2023-06-09 Fri>
-- started looking into the pcap from fox with stboot dl'ing over flimsy link, see 
-
-** <2023-06-08 Thu>
-- is the signatures in /stprov.json (?) verified when stboot goes into provision mode? should they?
-- testing stprov on stime, v0.2.0-rc.1
-  stprov remote static -h myhost -i 192.168.67.10/24 -g 192.168.67.2 -A --url http://192.168.67.2/ospkg.json
-  - no good sigs for the ospkg, other than that fine
-  - new attempt
-- sthsm keeps being a headache
-  - /home/linus/notes/2023-06-08/10:38-not-a-typo
-  
-
-*** TODO [1/1]
-- [X] stprov (system-transparency main) tested on stime
-- [ ] stprov (system-transparency-0.2.0-rc.1) tested on stime
-
-** <2023-06-07 Wed>
-- reviewing sthsm
-  - backup + restore works fine
-    - nit: 'reset' should ask for confirmation before wiping
-  - unable to verify ca sign-csr without a CSR      
-
-- 11:00 Fredrik, Linus
-  - privat
-    - är i halmstad nu
-    - planerar att bygga ett hus i gbg, långedrag
-    - skatteverket i .nl har granskat F's ekonomi sedan aug -22
-    - ökat intuniv från 2-3 mg; ; intuniv är en selektiv alfa2-ports-agonist
-  - padden https://pad.sigsum.org/p/692wTHYhFu3t36tl2eIZ
-    - kfreds, rgdd, ln5 borde ha ett strategimöte snart
-      - risk för att ln5, philipp och kai blir frustrerade under hösten
-      - förväntningar på t.ex. kvalitet och testning måste göras tydligt
-    - rgdd och kfreds pratade för några månader sedan om sigsum
-      - ska nog frysa men har inte beslutat ännu pga rgdd vill vänta till hösten
-    - F: rgdd borde leda kai och nisse i arbetet med kryptografisk design i ST	
-    - F: hackathon hos tillitis var kul och bra men den kostade ganska mycket för ST, som du sade
-  - vi gör inga förändringar gällande 1-on-1 innan sommaren
-  - i framtiden kanske vi behöver ett stående möte, FS och LN, men vi har ca 7h mån och tis
-  - strategimöte med rgdd kanske vi kan ha på PETS
-    - kanske även diskussioner om Sigsum kan ske där
-
-- planerade augusti-meetup med rgdd https://pad.sigsum.org/p/RALYoGCebWrDZDhHu_r7
-  - AP@ln5 Kommuinicera agendan minus S1 & S2 & S3
-  - AP@ln5 Se till att alla vet att ons 12:00 till to 12:00 är viktigt
-  - AP@ln5 Skaffa ett timglas på 10m.
-
-- gpg-agent woes
-  - this doesn't show any keys, even though the yubikey is inserted
-    SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) ssh-add -l
-  - gpg-agent not running (newly started system), so start it
-    systemctl --user start gpg-agent
-  - gpgconf --list-dirs agent-ssh-socket prints the wrong file name:
-    leguin:~% ls -l $(gpgconf --list-dirs agent-ssh-socket)
-    ls: cannot access '/run/user/1000/gnupg/S.gpg-agent.ssh': No such file or directory
-  - close, but no cigar
-    leguin:~% ls -l /run/user/1000/gnupg/S.gpg-agent 
-    srw-------. 1 linus linus 0 Jun  7 16:58 /run/user/1000/gnupg/S.gpg-agent=
-  - so i guess we'll be doing this going forward:
-    SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent ssh-add -l
-
-*** TODO [4/4]
-- [X] rgdd meetup planning time decided
-- [X] sthsm first feedback
-- [X] ST weekly prepared
-  - releases, talk about them?
-    - why we fail on dates?
-    - new names -- numbers are devious
-    - process? what takes time? who can help with integration and testing? one linus is clearly not enough
-  - stauth, comment on
-  - what's up next? summer and all
-  - what are the ST contenders we should know about?
-    - platbox
-    - chipsec
-    - that MIT thing (see irc)
-    - binarly
-- [X] kfreds demoted on gl, bc lacking MFA  
-
-** <2023-06-05 Mon>
-- stime ubuntu root pw was set by zaolin, it's probably "testing"
-- stime booting stboot, kernel cmdline
-  - 5.15.112 from contrib/
-  | cmdline                                                    | qemu           |                | iKVM/HTML5         |       | hw     | hw       |
-  |                                                            | terminal       | window         | output             | input | screen | keyboard |
-  |------------------------------------------------------------+----------------+----------------+--------------------+-------+--------+----------|
-  | console=ttyS0,115200n8 console=ttyS1,115200n8 console=tty0 |                |                | full?              | no    | ?      | no       |
-  | console=ttyS1                                              |                |                | none               | ?     | none   | ?        |
-  | console=ttyS0                                              |                |                | none               | ?     | none   | ?        |
-  | <empty>                                                    | -              | full?          | full?              | no    | full?  | no       |
-  | console=tty0 console=ttyS1,115200n8                        | (ttyS1) stprov | one (?) kernel | one or two kernels |       |        |          |
-
-  - 5.15.112 with CONFIG_USB, and some
-  | cmdline                                                    | qemu       |        | iKVM/HTML5 |         | hw     | hw       |
-  |                                                            | ttyS0      | vga    | output     | input   | screen | keyboard |
-|------------------------------------------------------------+------------+--------+------------+---------+--------+----------|
-  | <empty>                                                    | -          | ok     | ok         | yes     | ok     | yes      |
-  | console=ttyS0,115200n8 console=ttyS1,115200n8 console=tty0 | kernel     | ok     | ok         | yes     |        |          |
-  | console=ttyS0,115200n8 console=tty0                        | kernel     | ok     |            |         |        |          |
-  | console=tty0 console=ttyS0,115200n8                        | ok         | kernel | kernel     | yes (!) |        |          |
-  | console=tty0 console=ttyS0,115200n8 console=ttyS1,115200n8 | kernel     | ok     | ok         | yes     |        |          |
-  | console=tty0 console=ttyS1,115200n8                        | (ttys1) ok |        | kernel     |         |        |          |
-
-
-- 13:00 fredrik
-  - fredrik har pratat med daniel om personalbehov
-  - fredrik kan inte vara med på dagens glasklar
-  
-- like this
-  task demo:ospkg iso qemu:iso
-  task demo:ospkg-defconsole iso-defconsole qemu:iso-vga
-
-- 17:05 fredrik
-  - daniel håller med om att glasklar behöver en go-programmerare som
-    kan boot m.m. ("en jens")
-  - vill ha P&K på heltid året ut
-    - linus sa att philipp indikerat sänkt taxa vid längre avtal
-    - vem ska leda vem? förslag linus: jens & philipp; rasmus: nisse & kai
-
-- gl update
-  https://about.gitlab.com/releases/2023/06/05/security-release-gitlab-16-0-2-released/
-  Upgrade: gitlab-ee:amd64 (15.11.3-ee.0, 16.0.2-ee.0)
-
-*** TODO [2/3]
-- [X] instructions for Joshua
-- [ ] rgdd meetup planning time decided
-- [X] glasklar meeting notes https://pad.sigsum.org/p/fqoE-u80i-PyLg-YBWW-EdAC-glasklar-2023-06-05  
-
-** <2023-06-04 Sun>
-- worked at least 6h on the console problem
-
-- built an image with host config in initramfs, using an stmgr and
-  kernel without default cmdline, see
-  [[file:usr/src/st/core/system-transparency/build.sh][file:~/usr/src/st/core/system-transparency/build.sh]]
-
-- talked to isa [[file:clown/Verkligendata/Uppdrag & projekt/Child protection/Meetings/2023-06-04 isa, linus.md][file:~/clown/Verkligendata/Uppdrag & projekt/Child protection/Meetings/2023-06-04 isa, linus.md]]
-
-- found a lead on why terminal is all fscked up after qemu -nograhpic
-  https://github.com/cirosantilli/linux-kernel-module-cheat/issues/110
-  leading to https://github.com/mattiase/wraptest and more, but
-  tset(1) seems to fix it (and if not, try `tput smam` too)
-  - documented in https://git.glasklar.is/system-transparency/core/system-transparency/-/issues/201
-
-- the console issue
-  - maybe useful? https://unix.stackexchange.com/questions/346090/disable-framebuffer-in-qemu-guests
-  - the trick richard mentioned a long time ago, of "slamming ctrl and
-    alt a few times" does not seem to do any difference, and the
-    keyboard has had no trouble when talking to GRUB or getty/login
-    from the Ubuntu installation on disk
-
-** <2023-06-03 Sat>
-- worked from 14:00 to 01:30 on getting console working on qemu with
-  graphics console, qemu w/o grahpics ie ttyS0 and stime with console
-  on ttyS1
-
-- linux/scripts/config can be used to enable/disable kernel config
-  flags from the command line, or figure out what's set and not in a
-  config
-
-- use make savedefconfig to generate a defconfig, with only the
-  options differing from the default config listed, like what we keep
-  in system-transparency/contrib/linuxboot.defconfig
-  https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do
-
-- stboot kernel config
-  - this is what we've changed when bumping the kernel, and making it work when netbooted
-
-@@ -242,10 +242,13 @@ CONFIG_FB_FOREIGN_ENDIAN=y
- CONFIG_FB_MODE_HELPERS=y
- CONFIG_FB_TILEBLITTING=y
- CONFIG_FB_VESA=y
-+CONFIG_FB_EFI=y
- CONFIG_FB_SIMPLE=y
- CONFIG_FRAMEBUFFER_CONSOLE=y
-+CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION=y
- CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY=y
- CONFIG_FRAMEBUFFER_CONSOLE_ROTATION=y
-+CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y
- # CONFIG_USB_SUPPORT is not set
- CONFIG_RTC_CLASS=y
- CONFIG_SYNC_FILE=y
-
-  - using
-    [[file:usr/src/st/core/system-transparency/contrib/linuxboot.defconfig.3][file:~/usr/src/st/core/system-transparency/contrib/linuxboot.defconfig.3]],
-    disabling CONFIG_FB, did not make things any better
-
-- how we built the stboot.iso used for testing on stime
-  - task linux:kernel  # in ubuntu container, after changing kernel config
-  - task iso-provision, which boils down to building
-
-    - an stprov initramfs (stprov.cpio.gz) containing the stprov binary
-task: [demo:initramfs-stprov] GOPATH=/home/linus/usr/src/st/core/system-transparency/cache/go cache/go/bin/u-root -build=bb -uinitcmd="/bin/stprov help" -uroot-source ./cache/go/src/github.com/u-root/u-root -o out/artifacts/stprov.cpio -files cache/go/bin/stprov:/bin/stprov core
-task: [demo:initramfs-stprov] gzip -kf out/artifacts/stprov.cpio
-
-    - an stprov ospkg (stprov.zip) from the stprov initramfs, stboot.vmlinuz and a command line (BZZZZT!!!)
-task: [demo:ospkg-stprov] cache/go/bin/stmgr ospkg create -out 'out/ospkgs/stprov.zip' -label='Provisioning Tool' -kernel=out/artifacts/stboot.vmlinuz -initramfs=out/artifacts/stprov.cpio.gz -cmdline='console=ttyS0,115200n8' -url=http://10.0.2.2:8080/os-pkg-example-ubuntu20.zip
-task: [demo:ospkg-stprov] for i in {1..2}; do cache/go/bin/stmgr ospkg sign -key=out/keys/example_keys/signing-key-$i.key -cert=out/keys/example_keys/signing-key-$i.cert -ospkg out/ospkgs/stprov.zip; done
-
-    - an stboot initramfs (initramfs:provision.cpio.gz) containing the stprov ospkg
-task: [initramfs:build] GOPATH=/home/linus/usr/src/st/core/system-transparency/cache/go cache/go/bin/u-root -build=bb -uinitcmd="stboot -loglevel=d" -defaultsh="" -uroot-source ./cache/go/src/github.com/u-root/u-root -o out/artifacts/initramfs:provision.cpio.tmp -files out/keys/example_keys/root.cert:etc/trust_policy/ospkg_signing_root.pem -files contrib/initramfs-includes/isrgrootx1.pem:etc/ssl/certs/isrgrootx1.pem -files out/artifacts/trust_policy.json:etc/trust_policy/trust_policy.json -files out/ospkgs/stprov.json:ospkg/provision.json -files out/ospkgs/stprov.zip:ospkg/provision.zip  github.com/u-root/u-root/cmds/core/init system-transparency.org/stboot
-task: [initramfs:build] mv out/artifacts/initramfs:provision.cpio.tmp out/artifacts/initramfs:provision.cpio
-task: [initramfs:generic] gzip -kf out/artifacts/initramfs:provision.cpio
-
-   - an ISO (stboot.iso) from the stboot initramfs and stboot.vmlinuz
-task: [initramfs:generic] mv out/artifacts/initramfs:provision.cpio.gz out/artifacts/stboot.cpio.gz
-task: [iso-provision] cache/go/bin/stmgr uki create -format iso -out 'out/stboot.iso' -kernel=out/artifacts/stboot.vmlinuz -initramfs=out/artifacts/stboot.cpio.gz
-
-  - scp out/stboot.iso tee.sigsum.org:/var/lib/sambashares/iso/stboot-020-1.iso
-
-- booting in qemu, without -nographic
-  qemu-system-x86_64 -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.fd -drive if=pflash,format=raw,file=out/artifacts/OVMF_VARS.fd -enable-kvm -M q35 -net user,hostfwd=tcp::2222-:2222 -net nic -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 -rtc base=localtime -m 4G -drive file=out/stboot.iso,format=raw,if=none,media=cdrom,id=drive-cd1,readonly=on -device ahci,id=ahci0 -device ide-cd,bus=ahci0.0,drive=drive-cd1,id=cd1,bootindex=1
-
-- in order to see the commands that task invokes, redirect stderr to a
-  file and view it with less, more or an editor:
-    task mytask 2>log && less log
-  Use the arrow keys to view the end of the long lines.
-
-- with the following -cmdline to stmgr uki create, qemu with vga works
-  while qemu with -nographic shows nothing after /init is run
-  console=ttyS0,115200n8 console=ttyS1,115200n8 console=tty0
-
-- embedding git tag in go binary isn't really easy
-  - tried this in go:stmgr task but running git describe has to be done in checked out source tree
-            GO_LDFLAGS:
-            sh: |
-              v=$(git describe --tags --always)
-              echo "-X system-transparency.org/core/stmgr/version.Version=$v"
-
-- qemu and serial ports https://web.archive.org/web/20171221004914/http://nairobi-embedded.org/qemu_serial_terminal_redirection.html
-
-** <2023-06-02 Fri>
-- x
-  PEI IPMI Initialization...
-  PEI--Intel MRC Execution...
-  PEI--DXE Phase start ?
-  ...
-  DXE--AHCI Initialization...
-  DXE--SuperIO Initialization...
-  DXE--AHCI Initialization...
-- renewed certs for {imap,smtp}.adb-centralen.se
-  - we should really decommission smtp and move imap
-    - smtp
-      - [ ] lower DNS TTL
-      - [ ] wait, shut the jail down,
-- philipp
-  - uefi boats using uefi variables
-  - the BMC promotes a CDROM device, by emulating some CD/DVD device
-  - "Loaded initrd from LINUX_EFI_INITRD_MEDIA_GUID device path" indicates UKI
-  - might be missing network config in the UEFI
-
-- glasklar meetup planning
-  - filling in weekly pad
-  - historical and future meetups
-    - 2022-10 #1
-    - 2022-12 #2
-    - 2023-02 #3
-    - 2023-04 #4
-    - 2023-08 #5
-    - 2023-10 #6
-    - 2023-12 #7
-
-- seems like the ssh key for git.adb-centralen:verkligen/* is lost somewhere
-  - we can update gitolite-admin/keydir/verkligen.pub to contain
-    another key which is not lost (not an -sk key though because old
-    sshd)
-  - see /home/linus/notes/2023-06-02/15:08-gitolite for more about this
-** <2023-06-01 Thu>
-- var på Christoffers seminarium [[file:notes/2023-06-01/08:41-ki conference.md][file:~/notes/2023-06-01/08:41-ki conference.md]]
-- pratade med Ulrika (?) på Childhood om att bygga Nox, påpekade att
-  öppet är en förutsättning för vissa (jag) att vilja engagera sig
-- åt lunch med Isa och Susanne, dom kom inte så långt men har nu träffats iaf
-
-- old credentials, how to go forward?
-  - using pgp key on leguin requires, apart from YK-neo being inserted
-    - ostick mounted
-  - using ssh key requires
-    - SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-  - need pgp key for
-    - pass-sigsum
-    - signing ST tags
-      - update: let's sign with SSH keys instead https://docs.gitlab.com/ee/user/project/repository/ssh_signed_commits/
-  - need ssh key for
-    - ~/p/tor/maatuska/maatuska-update-conf.sh (for ssh amnesia)
-    - git.adb-centralen.se (for git clone, pull, push)
-
-- setting git email in all ST and glasklar git repos
-  cd ~/usr/src/st && find project core -name \*.git -type d | (while read -r fn; do dir=$(dirname $fn); git -C $dir config user.email linus@glasklarteknik.se; done)
-  find ~/usr/src/glasklar -name \*.git -type d | (while read -r fn; do dir=$(dirname $fn); git -C $dir config user.email linus@glasklarteknik.se; done)
-
-- git signing using ssh, using gitlab
-
-git config --global gpg.format ssh
-git config --global user.signingkey ~/.ssh/linus:YK5C-31
-echo "$(git config --get user.email) namespaces=\"git\" $(ssh-add -L | rg ' +linus:YK5C-31$')" > ~/usr/src/st/allowed_signers
-
-cd ~/usr/src/glasklar/testing
-git config gpg.ssh.allowedSignersFile "~/usr/src/st/allowed_signers"
-git config user.email linus.nordberg@glasklarteknik.se
-git config commit.gpgSign true
-git config tag.gpgSign true
-
-- mejlade med godel lite till, gav dom en screenshot av den ej fungerande kontrakts-sajten
-
-- 15:12 fredrik
-  - philipp ringde och ville prata om immune
-    - fått erbjudande från binarly.io men binarly är en startup och
-      har inte pengar
-      - 1,5M USD, 24 anställda
-    - philipp & kai är intresserade av att fortsätta att jobba med ST
-  - trevor perrin
-  - mer i https://pad.sigsum.org/p/692wTHYhFu3t36tl2eIZ
-
-- tried, and failed, to boot an SMB-mounted ISO on stime
-  - should've tried UEFI boot, not LEGACY
-
-- branch master of repo git@git.sigsum.org:linus/linus was pushed to
-  https://git.glasklar.is/glasklar/services/bootlab/ and was public
-  for 57 minutes before it was removed by first setting the repo
-  private, then delete the master branch, then setting the repo public
-  again
-  - this happened because a clumsy git remote set-url command was issued [[file:notes/2023-06-01/21:32-git-push-fail][file:~/notes/2023-06-01/21:32-git-push-fail]]
-    - seems like the local clone of the bootlab repo had the url of ~/, but I don't understand why this mixup happened
-  - Seems like nobody pulled master during those 57 minutes [[file:notes/2023-06-01/21:32-git-push-fail-phew][file:~/notes/2023-06-01/21:32-git-push-fail-phew]]
-    - not sure if it was accessed via web though, so look into that if possible
-  - around 23:00 i found out, by accident again, that
-    https://git.glasklar.is/glasklar/services/bootlab/-/tree/c925a96be2cde8a5c081bed8e8570ecbfece6590/
-    was still accessible
-    - at 23:22 I pushed the "Prune unreachable objects" button in
-      gitlab's Settings -> General -> Advanced panel which made the
-      c925a blob disappear, as described in
-      https://git.glasklar.is/help/administration/housekeeping#prune-unreachable-objects
-
-* May 2023
-Vacation in May: 2-5, 8-9 -- 6 days (5 of which are Glasklar days)
- Extra Glasklar day on Fri 2023-05-12, so -1 Glasklar vacation days (4).
- Extra Glasklar day on Fri 2023-05-19, so -1 Glasklar vacation days (3).
- Extra Glasklar day on Fri 2023-05-26, so -1 Glasklar vacation days (2).
-
-** <2023-05-31 Wed>
-- drog ut en tand
-- flyttade ST weekly till 15:30
-- installerade inkscape och konverterade ST-loggan till PNG och använder den på GL
-- seems like the artefacts from the system-transparency ci/cd pipeline
-  does not contain anything bootable, but only the stmgr binary, the
-  signing keys and the os-pkg
-  - maybe we should change that in order to be able to test the very
-    same iso on real hw, or just to reproduce things we might spot in
-    the logs
-- talking to jens
-  - 60% currently
-  - availability 60% for the rest of 2023
- 
-*** TODO [1/3]
-- [X] keykeeper [2/2] (actually finished much earlier)
-  - [X] flashed mrchromebox "full ROM" on chromebook
-    - tried to disabled write protection (WP), CCD style
-      https://wiki.mrchromebox.tech/Firmware_Write_Protect#Hardware_Write_Protection
-      - log in as chronos
-        sudo gsctool -a -I  # CCD is reported to be in State: Locked
-        sudo gsctool -a -o  # Press the power button when prompted, many times over a time period of minutes
-      - the machine reboots, put it back in developer mode
-	- ESC+Refresh+Power (rebooting)
-	- Ctrl+D Enter Ctrl+D (rebooting)
-	- Ctrl+D Ctrl+Alt+F3
-      - sudo gsctool -a -I  # CCD is reported to be in State: Opened
-      - DONE up to here on <2023-05-16 Tue>
-      - use a "Suzy-Q" cable, but I don't have such a thing
-	- should we order one?
-    - [X] disabled write protection (WP) by removing the battery
-      - there are 10 screws underneath
-      - the bottom comes off with only mild violence
-    - did the CCD unlock dance once more, because it was backed in
-      state locked and i thought firmware-util.sh had warned about
-      that, but looking back at what it said this is unnecessary --
-      all it said was that it's wise to have the FlashAP capability
-      set to Always, and that was already the case
-    - [X] ran the mrchromebox shell script
-      - connect to a wifi network
-      - log in as chronos
-        curl -LO https://mrchromebox.tech/firmware-util.sh
-        echo b0af93081f73ca5d3a48d22851cd1dba6b5271290ac847855aee7c155cece516  firmware-util.sh | sha256sum -c -
-        sudo bash firmware-util.sh
-	: choose 2 to flash full ROM
-	: the USB stick for backing up stock fw needs to have no partitions and have a filesystem, because function list_usb_devices() in https://github.com/MrChromebox/scripts/blob/master/functions.sh doesn't deal with partitions
-  - [X] installed gentoo (stage4) on chromebook
-    - [[file:usr/src/st/project/keykeeper/catalyst/keykeeper/root_overlay/usr/local/keykeeper/doc/install-chromebook.txt][file:~/usr/src/st/project/keykeeper/catalyst/keykeeper/root_overlay/usr/local/keykeeper/doc/install-chromebook.txt]]
-    - 256M ESP, 6G swap
-    - grub unable to use root device, is mmc_block loaded?
-      - trying to make grub load mmc_block by adding to boot options fails, no such file .../efi.../mmc_block.mod iirc
-      - we want /lib/modules/VERSION/kernel/drivers/mmc/core and maybe host/SOMETHING, but do we need an UEFI driver too? no
-    - went back to kkbuild and made a new kernel config
-      cd /usr/src/linux
-      mv .config .config.BAK
-      make defconfig && make menuconfig # Enabling all under Device drivers -> MMC which were all disabled, made them built-in and not modules
-      vi stage4.spec # Pointing out the new kernel config
-    - we later had to add more MMC, see [[*][above]]
-  - FUTURE: trimmed the kernel down a bit
-  - FUTURE: some selinux usage, if time permits
-- [ ] stboot: made progress on reproducing the slow ospkg download
-  tc qdisc add dev DEV root netem delay 300ms
-  tc qdisc add dev DEV root netem loss 0.5%
+**** ospkg dl time
+- linus questions
   - https://git.glasklar.is/system-transparency/core/stboot/-/issues/123
-  - fox is looking into it this week <2023-05-31 Wed>
+  - would a timeout and a couple of retries be useful?
+  - would a progressbar be useful? https://paste.xinu.at/Ri65WO4idRYTZ/
+  - would an HTTP proxy be useful?
+  - can you provide more data on the failure conditions?
+    - high RTT vs. packet drop
+    - servers in the same DC have immensely different dl times? what is different between them?
 
-- [ ] st: mirrored on gh
+- notes
+  - 0. fixa buffrar i kärnan
+  - 1. after HEAD: print image size, server IP address, the URL being used, and other available info
+  - 2. can we add support for using parallel connections?
+    - https://github.com/axel-download-accelerator/axel
+    - https://aria2.github.io/
+    - use 10 or 20 parallel connections
+  - 3. parameterise timeout and retry count (this goes in hostconfig)
+  - 4. add a progress bar
+
+  - öka tcp window size och buffrar
+  - richard ökade alla buffrar -- socket, tcp rwin tcp win wmem
+  - progress meter trevligt
+
+  - planerar att ha 2-3 dl-servrar -- USA, Europa (Sweden or Amsterdam), Asien (singapore)
+    - latency < 100 ms (<40 ms within Europe, many will be <20 ms)
+
+  - 0. verifiera HTTP credentials! <-- kolla
+  - 1. gör HEAD för att få strlk
+    2. efter 30 min, testa igen
+    3. efter 5 försök, boota om
+
+  - kanske ny stboot-konfig i nvram med timeout och retries?
+  - timeout, retry; interrupt-funktion
+    - default 30 min
+  - http fail ska ha egen timeout
+  - progress bar värd mycket, inlcuding increased image size
+  - richard skickar kernel conf till linus
+
+  - har ca 60 locations med 1-3 managementservrar
+    - jobbigt
+    - uppdaterar dess med ansible idag
+
+**** any stprov feedback?
+  - inte testat
+
+  - att forcera provisioning mode är kritiskt för att deploya
+    - 10 sekunders timeout räcker
+    - "press any key" viktigt
+    - alternativ metod som styrs från ospkg userland (låg prio)
+
+  - en ide: kan vi lägga till ett till val i "menyn" som tillåter troubleshooting?
+    - 1. normal boot (default)
+    - 2. provisioning mode, med ospkg från initramfs
+    - 3. troubleshooting mode som hämtar alternativt ospkg, med URL
+      byggd från normal url i hostconfig, men med ngt extra i urlen
+
+  - hosting providers often ask if they can get root on a system to troublshoot networking and other issues
+  - troubleshooting mode would allow provider to get access in a specially made ospkg
+
+  - säg till när ni har provisioneringsknapp, innan dess kommer vi inte att köra stprov
+
+**** sigsum log operation
+- sigsum-servrar ska köras av infra (joshuas team) istället
+  - om inte st använder dom så har vi inget use case för dom
+  - kanske framöver: logga x509-cert för openvpn, wireguard-nycklar
+
+** <2023-06-28 Wed>
+- fixed my_bup.sh issues
+  - copied fixes to adbc/ansible too
+- pratade med andreas om step-ca
+  - https://smallstep.com/docs/step-ca/
+  - https://github.com/smallstep/certificates
+  - den kan Yubikey PIV https://smallstep.com/docs/step-ca/configuration/#yubikey-piv
+    - kan vi lägga till support för YubiHSM2? https://github.com/smallstep/step-kms-plugin
+  - den har ett REST-API och kan ACME
+    - vi skulle kunna använda den för SSH-cert och slippa nyckelhantering i Ansible
+- CA strategy
+  - i started implementing *provisioning* in bash, zaolin implemented a CA in golang
+  - we should not implement and support a full CA ourselves
+    - https://github.com/smallstep/cli
+    - https://github.com/iqlusioninc/tmkms
+    - https://developers.yubico.com/Software_Projects/YubiHSM/
+  - what are our needs for a CA?
+    - issuing glasklar's shim signing cert
+    - ST ospkg signing certs
+    - maybe issuing SSH certs for shell access to hosts
+    - maybe maybe something for an IDP, making webauthn practical?
+- made zaolin a gl maintainer of st/project, in order for him to set up a group runner
+  - it didn't work, so i created one and gave him the token
+  - should probably demote zaolin at some point
+- linus week in ST
+  - tested sthsm
+  - planned for CA setup
+- held the ST weekly
+- 14:53-15:39 pratade med FS efter ST weekly
+  https://pad.sigsum.org/p/OITfpd9i6C5diSZmpyCu kopierad till [[file:glasklar/Meeting notes/2023-06-28 Fredrik.md][file:~/glasklar/Meeting notes/2023-06-28 Fredrik.md]]
+  - vi har en plan för vad kai och philipp ska göra under juli och augusti, då det är tunnt med fredrik & linus
+- planned more CA things
+
+** <2023-06-27 Tue>
+- kollade mer på bokföring 2022 och frågan om 1681
+  - tror jag löste det i M25 genom K1681 D3590
+- mer bokföring, 2023
+- preparing for meeting with kfreds and zaolin about the sthsm deliverable
+  - focus on what is needed to get 1.0 out, avoid questions like what could've been done differently
+    - requirements for 1.0
+    - testing of 1.0 on target system
+  - motivation for sthsm and sthsm-tools
+    - glasklar need a signing key for UEFI shim signing
+      - RSA2048
+      - X.509 cert, not self-signed
+      - this cert will be signed by RH or MS (FIXME: which one?)
+      - glasklar need a CA cert and key to sign this cert
+        - wrt shim signing, the security of the CA signing the shim signing key is only indirectly sensitive
+      - the shim signing key material must not be exposed to a computer connected to (any) network, aka airgapped
+	- the yubihsm2 was chosen for HSM functionality
+      - shim signing must be possible to perform within five working days from when the HSM setup is detected broken
+	- two yubihsm2 devices was purchased
+  - shim signing goals
+    - sign stboot with a shim signing key, submit a shim review
+- sthsm meeting
+  - https://pad.sigsum.org/p/xUP8KNDeMw6RgJo72anT
+  - outstanding questions, linus
+    - CA cert expiration?
+    - shim signing cert expiration?
+    - what physical host(s) are we going to use for shim signing?
+      - YubiHSM2 with "Glasklar EFI shim" certificate
+      - the passphrase for the user "Glasklar Signer"
+      - sthsm-tools and its dependencies
+- created https://git.glasklar.is/glasklar/trust/glasklar-ca/
+  - created issue for CA validity https://git.glasklar.is/glasklar/trust/glasklar-ca/-/issues/1
+- asked in #system-transparency about validity for shim signing cert
+  - zaolin provided a link from MS named "UPDATED: UEFI Signing Requirements"
+    https://techcommunity.microsoft.com/t5/hardware-dev-center/updated-uefi-signing-requirements/ba-p/1062916
+    https://techcommunity.microsoft.com/t5/hardware-dev-center/new-uefi-ca-memory-mitigation-requirements-for-signing/ba-p/3608714
+- how should we protect the provisioning system?
+  - what needs protecting? residue from handling of keys and passphrases
+  - physical access: in a safe or similar; who has the keys to the safe?
+  - logical: ?
+- asked in #sigsum if the project would like to have its own CA
+- 1on1 med fredrik (FS)
+  - FS har pratat med rasmus, philipp och kai men inte jens
+  - "catch-all", 1on1
+  - tittar både bakåt och framåt
+  - vad har fungerat senaste tiden?
+    - folk verkar inte vara blockerade, såvitt jag kan se iaf
+    - kontoret verkar fungera
+  - vad har inte fungerat senaste tiden? eller vad behöver vi åtgärda och när?
+    - releaser har inte kommit ut i tid
+      - FS har uppfattat vårens förseningar som externa, inte interna
+        - LN: vår roadmap är publik
+    - svårt att hinna med allt jag tycker att jag borde göra
+      - varför? försöker göra mer än vad jag kan göra på 30-40 timmar per vecka
+      - både jens, morten och philipp har haft andra definitioner av "klart" än jag
+  - FS: fokusera på det här med tidsbrist
+    - LN skulle urpsrungligen jobba 60% men vi bestämde att det nog behövs 80% under ett tag (6 mån?)
+    - FS trots att du jobbar 100% så hinner du inte med allt; så kanske är det inte tiden som är lösningen
+    - när FS, db och Jan bestämde att göra två nya bolag
+      - så var ett av skälen att "hårdvaruprodukten", sigsum och st är
+        så olika mullvads verksamhet; gick även åt hållet att TCR's
+        personal (som rgdd, mc, björn) blev utlånad till Mullvad flera
+        ggr pga behövdes för verksamheten i Mullvad
+      - men också att FS systematiskt prioriterat Mullvad över bl.a. sin hälsa
+    - FS pratar om en triangel med i) ADHD, ii) fysisk hälsa och iii) engegemang i koncernen
+    - trodde balansen skulle bli bättre iom avknoppningen, men så blev det inte
+    - OBS hemligt: tror att Mullvads omsättning blir 200-250 MSEK i år
+    - insåg två saker förra veckan:
+      - när vi gjorde uppdelningen så togs ett styrelsebeslut om att i
+        en övergångsfas så skulle Glasklar leverera vissa features
+        till Mullvad medan Mullvad byggde upp sin förmåga att ta emot
+        och jobba med ST, även utveckling (av snabbare grejer); togs
+        inget styrelsebeslut och Jan menar att det inte är så tydligt;
+        men finns sedan ett år ett styrelsebeslut på att Mullvad ska
+        bygga upp ett team som kan bygga mjukvara till relän men det
+        finns nu en person (odd) i det teamet
+      - (vet inte vad det andra är)
+    - om shim och sthsm
+      - linus arbetsleder rullande tremånadersperiod
+      - pga behov från Mullvad så har linus & philipp designat nätverksbooten för att hjälpa Mullvad
+      - Mullvad har ju deployat stboot på i stort sett hela flottan medan FS sa gör inte det
+    - lösningen på X är att FS och LN pratar lite mer och sen får FS
+      prata med Jan och vidare till Richard och Joshua: övergången är
+      slut, nu måste Mullvad bära mer av ST själva
+  - hur relaterar LN tidsbrist till FS tidsbrist?
+    - FS hoppas att "du och jag och rgdd och andra kan jobba i ett
+      mindre team under en längre tid framöver, i ett litet separat
+      dotterbolag"
+    - behöver ha slack i systemet
+    - kanske behöver ha deadlines, men anpassa organisationen så att
+      den kan jobba lugnt och metodiskt (och effektivt)
+    - vare sig FS eller LN ska känna att tiden inte räcker till
+    - om LN säger att han vill jobba 60% så vill FS se till att det går att göra
+    - Mullvad är 40 personer, så dom kan allokera om
+  - rgdd, FS och LN borde sammanställa "vad glasklar är skyldig mullvad"
+  - vill att glasklar levererar kvalitet och inte drar ut på tiden,
+    dvs mindre inkrementella releaser
+- meeting with isa, pavel
+  https://pad.sigsum.org/p/R90-wxH0fJTvLBbxlRjr copied to [[file:p/tor/notes/2023-06-27 meeting with isa,pavel.txt][file:~/p/tor/notes/2023-06-27 meeting with isa,pavel.txt]]
+
+** <2023-06-26 Mon>
+- bokslutet 2022
+  - sparade några utdrag i [[file:clown/Verkligendata/Ekonomi/Bokföring/2022][file:~/clown/Verkligendata/Ekonomi/Bokföring/2022]]
+  - försökte reda ut de 10.500,00 på 1681 men ugh
+- mer bokföring, 2023
+  - bokade en del grejer, lite random sådär
+- held glasklar weekly
+- PETs applied to provision of psychological treatment
+  - Meeting ID: 496 126 9599
+  - I offered https://meet.sigsum.org/AcceptableRequestsBurnHow
+  - learned about +46 call in options in email from Steven
+    +46 850 539 728
+    +46 8 4468 2488
+    +46 8 5016 3827
+    +46 8 5050 0828
+    +46 8 5050 0829
+    +46 8 5052 0017 
+    https://ucl.zoom.us/zoomconference?m=NDk2MTI2OTU5OQ.N6XrR7bJQdkTznpIvoZfqCKTWQqK9KDj&_x_zm_rtaid=Y_WA9o5pS-eHS_i6Nmo5-Q.1687780359521.408ba91279876bb38c2061db8f9c8faf&_x_zm_rhtaid=528
+  - participants: mark, steven (SM), christoffer (CR), linus
+  - christoffer on next steps
+    - would like to create something for a sustainable solution for the programs i've developed and tested
+    - the platform i'm using is not a way forward
+    - the current minor-attracted persons as well as future new groups
+    - need colaborators for building something
+    - glad to see mark's been involved in a similar field
+  - mark explains
+    - mentioning prior work, with police and ?
+    - working on something not mature yet, about language and moderation systems
+    - human/computer interaction researcher
+    - interest is broader than security, like privacy and, again, user centric
+    - also online safety issues
+  - mark's questions
+    - on current platform only for research; can you expand on your mentions of independent commercial platform
+      - CR: needs to be an independent platform, for research; clients
+        are in my experience not willing to be patients on ordinary
+        e-health clinics; i also need anonymous treatments; also, i might
+        want to sell treatment services to health departments in order
+        finance the programs, and probably not to patients directly
+    - you mentioned self-treatment; are you envisioning an anonymous treatment all over the board?
+      - CR: some might be willing to deanonymize themselves but we'll
+        need the whole program to be available anonymously for other
+        participants; f.ex. next up are clergies and ? in the catholic church
+    - mark: what can i offer?
+      - my interest would be to provide advice on privacy and safety
+        from a user centric perspective; supporting users and stake
+        holders; usability testing; wrt the technology, i'd not be
+        able to provide, but perhaps steven is able to
+      - steven: i've done some usability but not near as much as mark
+	- created the tor browser many years ago
+	- interested in all the aspects of security and privacy, and more recently usability
+	- you mentioned payment which is something i'd be interested in
+      - CR: there is some interest from a big funding partner (wallenberg) for a 5-10 year long project
+    - mark asks about LE access and research data
+    - linus talked about 3 points: 1) a data model (lifetime, access,
+      more) and user promises, tying into 2) open source and lastly 3)
+      operations of the platform
+    - mark: not surprised by the availability for funding
+    - mark: what are the steps from here?
+      - CR: i will go back to allison, who is the one who will be
+        sitting by the keyboard developing a plan, and putting
+        together a funding application
+    - SM: small technical decisions can have great impacts
+    - next step: alison invites ppl to see the platform being
+      demonstrated
+- commented on the stboot progress bar MR https://git.glasklar.is/system-transparency/core/stboot/-/merge_requests/104#note_6837
+- tested the sigsum ansible MR
+  - resurrected my fix to a README
+  - tested on poc
+  - tested on logsrv-01 (still on 012, no witness config)
+  - tested on logsrv-02 (still on 012, no witness config)
+    - found a typo bug, hotfixed it in sigsum/ansible.git
+- bokade om möte med richard till tors f.m.
+
+** <2023-06-25 Sun>
+- updated mailcow
+- updated meet.so
+- updated a few mailcow issues and created a new one about rotating DKIM keys
+- updated nextcloud.gtso
+  - and updated missing db indices
+    (cd /var/nextcloud/www && sudo -u www-data php occ  db:add-missing-indices)
+- added an issue for upgrading to bookworm https://git.glasklar.is/glasklar/services/misc/-/issues/8
+- added an issue for keeping track of dependencies in gl repos
+  https://git.glasklar.is/glasklar/services/gitlab/-/issues/48
+- updated clown
+  - and updated missing db indices
+    (cd /var/nextcloud/www && sudo -u www-data php occ  db:add-missing-indices)
+- mail.gtse Fail2Ban parameter changes
+  - Ban time changed from 1h to 30m
+  - Max. ban time changed from 10000s (2.8h) to 86400s (24h)
+  - blocklisted 141.98.10.150/32 which has been hammering us since at least five days
+- bokföring 2022: [[file:verkligen/verkligen.org::*Inför bokslut 2022][Inför bokslut 2022]]
   
-** <2023-05-30 Tue>
-- updated nextcloud-01, and ran db:add-missing-indices
-  - updated all packages too, including libc and systemd, rebooted
-- updated clown (@nice), and ran db:add-missing-indices
-- inför R2-möte med jens
-  - what is left to do?
-    - tagging stmgr (jens)
-    - tagging system-transparency (jens)
-    - tagging project/documentation (linus)
-      - adding documentation regarding stprov (linus)
-    - testing in qemu (jens)
-    - testing on stime (linus)
-    - taring up the release
-    - writing an announcement
-    - posting announcment to system-transparency@lists.so
-- jens on a documentation effort in time before the aug/sep meetup
-  - jens could go to gbg for the two days 24-25/7 and linus could meet up there
-  - we'd have to check with tillitis or mullvad for office space
-  - AP linus: check with Fredrik if that's ok, cost wise
-    - 2 x 3 hotel nights
-    - 1 flight tickets gbg -> dusseldorf
-    - 1 train tickets karlstad or stockholm <-> gothenburg
-- inför R1-möte med philipp
-  - we push R1 to 
-  - why did we have to push the release from may 19 to 27 to 30 and still not make it?
-    - the scope of sthsm is bigger than what glasklar needs right now
-    - linus was too late with code review
-  - sthsm is not ready for release
-    - code review, fixes, documentation, tagging
-    - testing
-    - installation on provisioning system
-  - should we release sthsm-provision separately?
-    - won't have to get all of sthsm-keymgmt in order for release
-    - some code duplication (unless we split out common code to a third repo)
-    - we can sign the shim with unreleased code, but we can not install unreleased code on the provisioning system
-  - meeting notes in [[file:glasklar/Meeting notes/2023-05-30 Philipp.md][file:~/glasklar/Meeting notes/2023-05-30 Philipp.md]]
-- asked zaolin to attend to the bootlab issue (documenting netboot)
+** <2023-06-22 Thu>
+- Vårdrummet SMART https://patient.nu/portal/messages/cc215de3-4fe3-11e9-8804-fdea9f5df4ae
+- gpg --list-packets FILE
+- unlocking the yubikey with pgp key
+  echo foo | gpg -a -s --local-user 8C4CD511095E982EB0EFBFA21E8BF34923291265
+- but weirdly enough, using ~/bin/pp to grep through
+  ~/ostick/.priv/pp2019.gpg I realise that the encryption key
+  2D11AC8BFF2BC4A8 which that file is encrypted in has a separate
+  passphrase, ie not the PIN for the yubikey/card; hint: using YKH1
+  (1077263) second bank
 
-** <2023-05-26 Fri>
-- [X] PETS flights booked
-- [X] lunch place at södermalm, for saturday
-- shitload of stuff related to R1 & R2 -- too much to keep the diary updated :/
+** <2023-06-21 Wed>
+- tweaked the sthsm docs in https://git.glasklar.is/system-transparency/project/sthsm/-/merge_requests/10/diffs?commit_id=3a89b210abee74dc110ddaaf56e60b35807b1a47
+- built sthsm from branch release-1.0.0 and installed binary and example config into keykeeper
+- building stage4-amd64-keykeeper-23cb.9.tar.bz2 on keykeeper-2d9e7e0
+- what about the sthsm release?
+  - yesterday i decided to postpone and call in kai
+  - today i think we should release sthsm, after merging !10
+  - why? i think what's stopping us from move forward is me rather
+    than anything else and the reasons for yesterdays decision are
+    either sorted out or won't matter by replacing linus with kai
+    - PBKDF2 with known salt session keys: solved by using strong passphrases
+    - Argon2id for wrap keys: won't make it worse, only better
+    - testing on real hw: could in theory be done by kai but in practice it seems wasteful
+    - late changes: this was the last change, we'll use what we have now
+    - 24h deadline: i gave FS bad info on monday, f.ex. that we'd found critical bugs that same day
+  - disclaimer: if the tests on real hw fail miserably today, we will have to revisit
+- vad kan jag lära mig av de senaste 13h velande med ett beslut?
+  - när jag är trött och stressad så är det mycket känslor inblandade i mina beslut
+- passphrases for glasklar yubihsm
+  - they must all contain at least 128 real bits (16 bytes)
+  - let's use hexadecimal notation, requiring 32 octets
+  - let's throw three d6 per octet and sum them up, then
+    - let 1-9 mean 1-9
+    - let 10-15 mean a-f
+    - let 16 mean 0
+    - discard 17-18 and roll again
+  - we will need to make 36 rolls on average (32+4), per passphrase
+  - we need four passphrases: device admin, wrap key, glasklar admin, glasklar signer
+- 10:32 the shim reveiew requires RSA-2048 PKCSv1.5 SHA256 according to zaolin
+  - we have not tested RSA at all
+- 10:53 what about the sthsm release now?
+  - !10 still has issues
+  - i'd say we're not ready for 1.0
+  - we should postpone, but should we bring in kai or not?
+  - pros
+    - linus måste förmedla sin syn på design, review och testning
+    - linus kan koncentrera sig på annat
+  - cons
+    - kostnad för överlämning
+    - kai kan inte jobba på stauth (lika mycket)
+  - risks
+  - opportunities
+- 11:05 FS, signalsamtal
+  - linus pad som inte blev använd pga FS på promenad https://pad.sigsum.org/p/YXG2fxDNKdZfsFRTStFe 
+  - "du har stressat för att bli klar inför semestern"
+  - "jag känner igen det hos mig själv"
+  - "gör inte saker under tidspress, beslut eller problemlösning"
+  - "du kanske inte har stannat och tänkt så mycket som behövs"
+  - "jag kan hjälpa dig att ta beslut om vi sätter oss ner lite längre"
+  - "skicka allt underlag till mig så kan vi fatta beslut"
+  - möte tis med FS för att han ska förstå vad problemen består i
+  - angående att inte bli klar inför semestern
+    - mullvad leta är en ny produkt och FS har sagt att han vill slutgranska innan det blir en produkt
+    - FS pratar en stund om sina skatteproblem i .nl innan jag avbryter
+- Philipp, jitsi
+  - we will not release 1.0 today, so we should not break our back over that
+  - linus will bring hardware to summer house to be able to do some (!) testing over the next 10 days
+  - linus will not be able to start setting up the final PKI (with a key to use for signing the shim) until 2023-07-05
+  - philipp will let linus know if he runs empty of work to do, but that's not likely
+  - philipp is available for meeting with Fredrik on tue at 1300
+- philipp comments
+  - when talking about why we're late: "i'm still not able to focus full time" and also not been doing sw dev in a long time because mostly management
+  - the team, including rgdd and nisse, needs to define what "done" means
+- planned the next two weeks
+  - will be back in sthlm on 2023-07-05 (or day before?)
+- prepared the ST weekly https://pad.sigsum.org/p/ST-20230621
+- held ST weekly
+- invited Joel "doctor-love" to Glasklar August meetup open mic session and social dinner
+- updated ghost-shrimp primary (logsrv-02) from v0.9.0 to v0.12.0, by means of ansible
+  - found a scary log line https://git.glasklar.is/sigsum/core/log-go/-/issues/67
+  - also restarted trillian-{signer,server} who were running with updated libraries
+- "/home/linus/notes/2023-06-21/17:56-current sigsum log status"
+- found out that https://git.glasklar.is/sigsum/admin/ansible/-/merge_requests/5 is still broken
+  - i wish i had looked at it much earlier
+- fixed the issue on mail-01 with missing mount at startup
+- restarted logsrv-01 and all its VM's
+- upgraded gitlab-runner on build-03
+- cleaned up some space on build-03 (dnf clean all)
 
-** <2023-05-25 Thu>
-- sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
-- 11:00 talking to philipp
-  - immune might not get sold after all, and regardless it's likely that kai & philipp are available also after september
-  - R.1.
-    - thursday
-      - ln5 reviewing current sthsm code
-      - zaolin finishing sthsm MS https://git.glasklar.is/system-transparency/project/sthsm/-/milestones/1#tab-issues
-    - friday
-      - zaolin updating sthsm based on feedback, then tagging sthsm
-      - ln5 installing signing machine with sthsm
+** <2023-06-20 Tue>
+- found https://github.com/iqlusioninc/tmkms when looking for the number of PBKDF2 rounds done on the YubiHSM2
+  - BZZT no pkbdf2 done on the device, according to zaolin
+  - but then he changed his mind, or something
+- set host_uuid in /etc/libvirt/virtqemud.conf and restarted virtqemud
+  - after a reboot, i now think that the whole problem is that libvirtd (yes) is not running
+    systemctl enable --now libvirtd
+- kkbuild refresh
+  - start it using virt-manager, to get a console to enter the FDE passphrase
+  - after typing in the FDE passphrase to GRUB, it takes a looooong time before there's a response (38s)
+  - decrypting vda2 needs the same FDE passphrase again (takes about one second this time)
+  - if you enter certain key combinations on the console, and it turns black and unresponsive, select SendKey -> Ctrl+Alt+F1 in the virt-manager menu
+  - kkbuild is unable to set up TLS sessions with gentoo infrastructure when the wg-vkg tunnel is up
+    - this makes emerge --sync not work, hanging in refreshing of keys over WKD
+  - edit keykeeper files as user builder
+  - build keykeeper as root
+    - cd ~builder/keykeeper/catalyst/keykeeper/
+    - git describe --tags --always; git status
+    - time ./mkstage4.sh /var/tmp/catalyst/	# full build, should take ~12 minutes
+    - time catalyst -c catalyst.conf -f stage4.spec	# does not seem to be using a previous build and doesn't save any time
+  - keykeeper kernel config
+
+- keykeeper, the distro
+  - should the keykeeper be using FDE or not?
+  - needs sthsm-provision and yubihsm-connector (and configuration)
+  - sthsm-provision is built on kkbuild [[file:notes/2023-06-20/12:12-sthsm-on-keykeeper][file:~/notes/2023-06-20/12:12-sthsm-on-keykeeper]] and copied to /usr/local/keykeeper/bin
+  - the yubihsm-connector package is experimental and masked ~amd64 https://packages.gentoo.org/packages/app-crypt/yubihsm-connector
+    - so we unmask it
+      mkdir portage/package.accept_keywords
+      echo 'app-crypt/yubihsm-connector ~amd64' > portage/package.accept_keywords/yubihsm-connector
+  - the connector was unable to bind to localhost:1245 -- the kernel's missing TCP/IP support
+    - enabled TCP/IP support in the kernel, keykeeper-23cb.8
+  - we need a good sthsm config, and i've asked zaolin to write one (14:36)
+
+- keykeeper, the repo
+  - kkbuild:~builder/keykeeper is where we do the work, in branch 23cb (2023 ChromeBook)
+  - kkbuild:~linus/git/keykeeper is a bare repo, owned by linus and writable by builder
+  - git.glasklar.is/system-transparency/keykeeper is the public repo
+  - https://github.com/SUNET/keykeeper/ is the upstream repo
+       
+- stumbled over https://pre-commit.com/ when looking at https://developers.yubico.com/yubihsm-connector/
+
+- https://developers.yubico.com/YubiHSM2/Concepts/Session.html
+
+- talked to philipp about sthsm roles
+  - todo zaolin in sthsm
+    - merge backup and reset into "device admin"
+    - test it
+    - create MR
+    - tag sthsm
+    - adjust the the example config with domain admin and domain user
+  - wrap key generation
+    - alt 1: generate key on device (based on passphrase or not?)
+    - alt 2: generate key on host and "put" it to the device
+    - we use alt 2, deriving the key using argon2id (see below)
+  - yhsm2 session handling use PBKDF2 with 10k rounds with a known built-in salt ("Yubico")
+    - https://developers.yubico.com/YubiHSM2/Concepts/Session.html
+    - and that's what we're using through hsm.NewConnection ->
+      yubihsm.NewSessionManager -> manager.swapSession ->
+      securechannel.NewSecureChannel -> authkey.NewFromPassword()
+    - what does this mean for the possibility of brute forcing an authkey?
+      - password equivalents can be pre-computed, aka rainbowtables
+  - what salt are we putting in the backup file?
+    - it's the salt for the wrap key passphrase
+    - we use argon2id with
+      DefaultSaltSize         = 16
+      DefaultThreads          = 4
+      DefaultMemory           = 8 * 1024
+      DefaultIterations       = 1000
+    - we use a salt size of 128 bits (16 bytes), as recommended
+    - RFC9106 section 4 has recommendations on argon2 parameters https://datatracker.ietf.org/doc/html/rfc9106#name-parameter-choice
+      - i think we should use more memory
+      DefaultSaltSize         = 16
+      DefaultThreads          = 4
+      DefaultMemory           = 256 * 1024
+      DefaultIterations       = TBD
+  - "we use this in our company now"
+
+- 17:45 we will postpone the shim key generation (*again*)
+  - the decision is based on
+    - new questions about passphrases and key handling are popping up 24h before hard deadline
+      - session keys are derived from passphrase using 10k rounds of PBKDF2-HMAC-SHA256 with a known salt
+      - should we skip the KDF for wrap keys and simply let the user enter the (hex encoded) key?
+    - the tag has not been set, ie no release yet
+      - testing on real hardware was delayed and the full test has still not been performed
+      - linus wanted late changes to auth policy
+    - The 24h deadline Fredrik and Linus agreed upon yesterday (monday) has expired
+  - A new plan
+    - Let Kai take Linus place as project manager, reviewer and tester of sthsm and sthsm-tools
+    - Let the new deadline be set to Thu 2023-07-06
+    - What does Kai need from Linus?
+    - How should Linus communicate this to Kai and Philipp?
+      - Start by asking Kai if he thinks he could finish this?
+    - Does ST need to communicate this delay to Mullvad? To the world?
+  - What has gone wrong with this project?
+    - The complexity was underestimated
+    - The requirements kept changing
+  - What is the goal and what are the requirements?
+    - The goal is to produce tooling and documentation for configuring a YubiHSM2 for use as a PKI system
+    - With two YubiHSM2 devices available, make sure that it's possible to have
+      - Signing keys not being exposed to any other system than a YubiHSM2, except for a few minutes during backup/restore
+      - Signing keys always present in at least two separate physical places
+      - Failover time (when a device breaks) limited to the time it takes to get the other device online
+      - A dedicated air-gapped computer for initial setup and backup/restore
+    - Passphrases that can be used for exporting key material from the YubiHSM2
+      - Must be as hard to guess as the key(s) that they are protecting
+      - Must not be exposed to any other system than the air-gapped computer
+    - Passphrases that can be used for signing operations
+      - Must be as hard to guess as the key(s) that they are protecting
+
+- ta med till höjda
+  - M's orange badbrallor
+  - M's sovsäck
+  - M's medicin
+  - ett täcke
+
+- when git is to sign with gpg, we need to be explicit about that
+  git config gpg.format openpgp
+
+- ns.adbc updates
+  - added pawal's tset to two zones, and cleaned up some
+  - signed git commits with gpg key and pushed adbc ansible to git.sigsum.org
+
+- bokat möte med FS imorgon 09:00
+  - kai får ta över sthsm/sthsm-tools
+  - vilka risker har det?
+    - kai tar fram något som vi inte vill ha
+  - vilka möjligheter ger det?
+  - vad behöver kai för att lyckas?
+  - hur kommunicerar jag det här till kai & philipp?
+
+** <2023-06-19 Mon>
+- sthsm and philipp
+  - P merged [[https://git.glasklar.is/system-transparency/project/sthsm/-/merge_requests/7][sthsm!7]] without making it clear, to me or in any
+    documentation, that the serial number MUST equal the key id for
+    the key in the CSR/cert
+  - but even without --serial, setting csr.Serial=0, i don't see how
+    this could've worked -- a random serial will not match the key id
+    very often
+    - except it does work when using the JSON format, where
+      sthsm-tools provides the key (object) id as the serial and
+      `sthsm ca sign-csr` marshals that into the DER struct
+  - i don't want sthsm to have more than cosmetic bugs when we release
+    it and install it on the provisioning system (former chrome laptop)
+    - can we cut something out? what if we skipped the CA?
+      - shim review will probably not like to sign a self-signed cert
+  - wed 1700 is my deadline for doing anything with the provisioning system
+  - The shim review people will probably not accept a self-signed cert
+    - some reviews P has looked at do not use well known CA's but none use a self-signed (IIUC)
+- my problem with jens and philipp
+  - i experience jens not being focused on ST
+    - glasklar weekly presence: 3/8 since the april meetup, 4/6 mar-apr, 7/9 jan-feb
+    - ST weekly presence: 14/19, been missing at the two last meetings and two meetings in march
+  - philipp seems to not want to switch from a tactical to a strategic approach
+    - i will have to be more explicit and explain more
+    - it's also clearly not enough to agree on something in a call --
+      he will often forget or just not do it for some other reason
+  - en ide: philipp levererar till ngn annan än linus
+    - kai?
+- fredrik har pratat om intuniv med sin specialistssk på SMART
+  för barn: god effekt på hyperaktivitet och brist på impulskontroll; doser på upp till 7 mg
+- Fredrik & Linus 15:30-16:15
+  - linus förklarar lite av sitt problem med jens och philipp
+  - mål:
+    - FS och DB ser stor nytta med att "göra stora framsteg" i ST så snabbt som möjligt
+    - men inte genom att stressa sönder folk
+    - tar gärna chansen att göra snabba framsteg även om det kostar lite extra
+    - utgår från att jens, philipp och kai kan sina saker rent tekniskt
+    - FS pratade med K&P tidigare: vi vill inte ha
+      "specialistkonsulter" som blir matade med uppgifter, utan
+      "embeddade i projektet" och kan agera självständigt och komma
+      med förslag; "vill inte bara köpa deras kunskap om TPM:er"
+      - LN: isf behöver vi -- FS, RD och LN -- tydligt kommunicera
+        saker som kvalitetskrav
+  - FS har pratat med K&P
+    - K&P har startat ett handelsbolag och har inga anställda, tänker
+      göra det i några år; har fått ett erbjudande om uppdrag från 9e
+      men vill ge Glasklar chansen att boka dom först
+    - exklusivt, fram till slutet av året; cancelation period inte så viktigt
+    - ersättning?
+  - spridda anteckningar
+    - det är värt mycket för mullvad och st att ḱunna anlita J&P&K
+    - varför köpa dyra konsulter istf att anställa folk?
+    - förväntningar som är viktiga att förmedla
+      - arbetstider
+      - kvalitet
+  - praktisk fråga: hur gör vi med P&K
+    - FS tycker att vi ska anlita P&K fram till årsskiftet
+    - "vill köpa alla era timmar"
+    - cancelation period på ca en månad
+  - sthsm
+    - ska vi använda Kai på något vis?
+    - BESLUT: ge det ett dygn till (tis 2023-06-20 17:00)
+    - om fail: kalla in kai och fredrik, sätt förväntningar och nytt release-datum 2023-07-07, sista dagen innan PETS
+- gave gitlab-01 more RAM (12->16 GiB)
+- gave carmeli.adbc more ram (2-3 GiB)
+- looked at test coverage for sthsm, ~50%
+  - part of the library code is not being used by sthsm, but might be
+    important for 1.0 never the less; example: fetching a key for a
+    given cert (using the cert serial number as key id) -- if this
+    doesn't work as expected, signing will not work
+- kollade lite på vad som måste korrigeras i bokföringen, det ser lite svettigt ut
+  - fixade en enkel grej, tog ändå en stund
+- failed at logging in to kkbuild
+  - no ssh, no ping
+  - the qemu proces is hogging 100% too
+- failed at launching virt-admin -- hanging in "trying to connect"
+  possibly releated log entries:
+  Jun 20 00:05:44 leguin virtqemud[54563]: internal error: no monitor path
+  Jun 20 00:05:44 leguin virtqemud[54563]: Failed to load config for domain 'kkbuild'
+
+** <2023-06-16 Fri>
+- using the ssh key in PGP app on the Yubikey 04156811
+  - kill running gpg-agent (who starts this now that we've disabled the systemd unit for a gpg socket?)
+  - gpg-agent --enable-ssh-support --daemon bash -
+  - export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+- blocked PGP app by entering the wrong PIN three times
+  - unlocked with gpg --change-pin and
+    - choosing '2 - unblock PIN' and entering the admin PIN
+    - setting new PIN
+- updated dirauth blocks
+- found that the bwauth data maatuska is pulling from new carmeli is stale (since june 15)
+
+** <2023-06-15 Thu>
+- tested st-R.2.tar.xz https://git.glasklar.is/-/snippets/2
+- worked on the sthsm MR https://git.glasklar.is/system-transparency/project/sthsm/-/merge_requests/4
+- registered for PETS and registered a bank tranfser for the conference fee
+- wrote [[file:bin/git-config.sh][file:~/bin/git-config.sh]] for configuring git repos
+- sthsm
+  - decided on DER, exclusively
+  - decided on adding --serial to sign-csr and not let "serial store" in before v1.0
+  - merged parts of !4
+  - fixed a couple more things in code and documentation
+  - cleaned up issues
+- system-transparency
+  - added test scripts
+- discovered bootctl through https://discussion.fedoraproject.org/t/future-of-encryption-in-fedora-desktop-variants/80397/31
+
+** <2023-06-14 Wed>
+- jens
+  - was in transit, car broke down, can not attend today's meeting
+  - next MS: let's focus on R.3
+    - might help us with esp ospkg changes, to have it more specified
+    - let's aim for having the bulk done by the last day of the docuthon
+  - in prep for docuthon
+    - jens can do full mon and tue (arriving sun, leaving wed evening)
+  - releases
+    - how about a directory in core/system-transparency with a Makefile or mkrel.sh
+    - we're currently pushing a tag to each repo
+    - can probably have a pipeline doing the release work for us
+    - i'd like to make the release tar ball self-contained, usable without network access
+    - binary releases or not?
+    - any special cases apart from u-root?
+    - https://git.glasklar.is/help/user/project/releases/release_fields.md#release-assets
+- st weekly https://git.glasklar.is/system-transparency/project/documentation/-/blob/main/archive/2023-06-14-meeting-minutes.md
+- morten on slow dl https://git.glasklar.is/system-transparency/core/stboot/-/issues/123#note_6480
+- sthsm review https://git.glasklar.is/system-transparency/project/sthsm/-/merge_requests/4
+- ST release definition document
+  - put dl method, uri and potential version details in a separate document from the code doing the release work
+  - use make or shell and include/source the release definition document
+  - make -n is a nice feature we won't get from bash
+  - bash is always present, while make needs to be installed    
+- pratat länge med sassa (1,5h iaf) om möbler och färger till kontoret; hon kollar upp
+  - soffa plus 1-2 fåtöljer
+  - matta under det
+  - whiteboard; förslag 2,5x1,2 meter för 7-8kkr
+  - något ljuddämpande på väggen t.h. när man kommer in (bakom linus rygg)
+- tagged and made a gl release of core/system-transparency
+  - added a tar ball made on leguin, using the mkrel.sh script
+
+** <2023-06-13 Tue>
+- strategimöte med rgdd och kfreds https://pad.sigsum.org/p/HEN2bAj-Gloy9vSr4uWf
+- 14:30 strategimöte med kfreds
+  - vad ska rgdd göra på glasklar-tid
+    - säger att han vill göra
+      - dns-attacker mot tor och mullvad
+      - Sigsum
+      - kommersialisering av monitor
+    - att ställas mot
+      - Glasklar
+      - ST
+    - ang dns-attackerna: om vi försöker lösa detta åt tor och mullvad så tar vi dom resurserna från ST och Sigsum
+    - ang ct-monitoreringstjänst så skulle även det drabba ST och Sigsum
+    - ST var kanske unikt för sex år sedan men flera kommersiella aktörer pratar nu i liknande ordalag
+    - BESLUT: dns-attacker och kommersialisering av monitor ligger
+      inte inom glasklar och vi ska inte linda in detta utan rycka av
+      plåstret
+  - Glasklar, scope
+    - huvudverksamheten är att bygga transparenta system
+    - Tillitis är *inte* "hårdvarusidan av ST"
+    - det finns väldigt experimentella ideer (i fredrisk huvud) som inte kan läggas i tillitis
+    - yosys hq gör all reverse engineering av FPGA tooling
+- elräkningar
+  - hade missat maj månads faktura från energi2, 450 kr extra juni, ok
+  - fått påminnelse från ellevio också på 615:- och förfallodag 2023-06-01, men vilken period avses?
+    - troligtvis april: faktura från energi2 med datum 2023-05-09 har
+      en rad med "ellevio 1 apr tom 30 apr" och belopp 615:-, som inte
+      blivit betalad förrän 2023-06-14 (imorgon)
+- betalade fakturor, skickade faktura    
     - monday
       - ln5 testing, documenting
     - tuesday
@@ -2597,7 +4817,7 @@ EOF
     - drivers/media/pci/cx18/cx18-i2c.c:300:1: internal compiler error: Segmentation fault
 - snowflake-proxy has been silent since 2023/03/18 07:59:31 UTC; restarted 13:28 CET
   - The OOM killer took it (or something it needed). According to
-    https://forum.torproject.net/t/anyone-experiencing-problems-with-snowflake-proxy/6938/14
+    https://forum.torproject.net/t/anyone-experiencing-problems-with-snowflake-proxy/6938/14223
     this is not a bug but a feature and we should be setting `-capacity` to something like 200. (Done.)
 
 ** <2023-03-17 Fri>
