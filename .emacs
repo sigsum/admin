@@ -125,7 +125,7 @@
     ret))
 
 ;; org-mode
-(add-to-list 'auto-mode-alist '("\\.org" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (add-hook 'org-mode-hook 'turn-on-font-lock)
@@ -539,6 +539,7 @@
    '((OpenPGP
       (sign)
       (encrypt
+       ("jonas@larsson.eu.com" "53E66B777E443CF0A6A757FAA430747EAE2D9753")
        ("sus.andersson@farad.se" "5DFD974CE626111C1634C15162708A26DF29FF70")
        ("andreas@arrakis.se" "0BC9D806BF9E6D12CEC9D514E6B300BA2E5258E2")
        ("leifj@mnt.se" "8AA09281A412FC6BE50AEEE4D73AD6430AD478D6")
