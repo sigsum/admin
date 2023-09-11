@@ -46,23 +46,23 @@
 
 * Security keys
 
-| name      | iProduct                 | serial decimal | serial hex | bcdDevice | idProduct                       | ykman list                              |
-|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------|
-| YKII      | Yubico Yubikey II        |         509124 |    0x7C4C4 |           |                                 |                                         |
-| YKH1      | Yubico Yubikey II        |        1077263 |   0x10700F |           |                                 |                                         |
-| YKX       | Yubico Yubikey II        |        1077281 |   0x107021 |           |                                 |                                         |
-|           | Yubico Yubikey II        |        1077282 |            |      2.23 | 0x0010 Yubikey (v1 or v2)       | YubiKey Standard (2.2.3) [OTP]          |
-| YKIII     | Yubikey NEO OTP+CCID     |        1970350 |   0x1E10AE |           |                                 |                                         |
-| CT        | Yubikey NEO CCID         |              ? |            |      3.20 | 0x0112 Yubikey NEO(-N) CCID     | -                                       |
-|           |                          |        3035366 |            |           |                                 | YubiKey NEO (3.3.3) [OTP+CCID]          |
-| YK-neo    | Yubikey NEO OTP+U2F+CCID |        3037390 |   0x2E58CE |           |                                 |                                         |
-| YK-nano   | Yubikey 4 CCID           |        4156811 |   0x3F6D8B |           |                                 |                                         |
-|           |                          |        4156828 |            |      4.28 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 4 (4.2.8) [OTP+FIDO+CCID]       |
-| YK-orange |                          |        4539914 |            |           |                                 | YubiKey 4 (4.2.7) [OTP+FIDO+CCID]       |
-|           | YubiKey OTP+FIDO+CCID    |       10124574 |            |      5.12 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.1.2) [OTP+FIDO+CCID] |
-| YK5C-47   | YubiKey OTP+FIDO+CCID    |       15427547 |            |      5.27 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C NFC (5.2.7) [OTP+FIDO+CCID]  |
-| YK5C-31   | YubiKey OTP+FIDO+CCID    |       16383131 |   0xF9FC9B |      5.43 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.4.3) [OTP+FIDO+CCID] |
-|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------|
+| name      | iProduct                 | serial decimal | serial hex | bcdDevice | idProduct                       | ykman list                              |                    |
+|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------+--------------------|
+| YKII      | Yubico Yubikey II        |         509124 |    0x7C4C4 |           |                                 |                                         |                    |
+| YKH1      | Yubico Yubikey II        |        1077263 |   0x10700F |           |                                 |                                         |                    |
+| YKX       | Yubico Yubikey II        |        1077281 |   0x107021 |           |                                 |                                         |                    |
+|           | Yubico Yubikey II        |        1077282 |            |      2.23 | 0x0010 Yubikey (v1 or v2)       | YubiKey Standard (2.2.3) [OTP]          |                    |
+| YKIII     | Yubikey NEO OTP+CCID     |        1970350 |   0x1E10AE |           |                                 |                                         |                    |
+| CT        | Yubikey NEO CCID         |              ? |            |      3.20 | 0x0112 Yubikey NEO(-N) CCID     | -                                       |                    |
+|           |                          |        3035366 |            |           |                                 | YubiKey NEO (3.3.3) [OTP+CCID]          |                    |
+| YK-neo    | Yubikey NEO OTP+U2F+CCID |        3037390 |   0x2E58CE |           |                                 |                                         | most oath accounts |
+| YK-nano   | Yubikey 4 CCID           |        4156811 |   0x3F6D8B |           |                                 |                                         | the pgp key        |
+|           |                          |        4156828 |            |      4.28 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 4 (4.2.8) [OTP+FIDO+CCID]       |                    |
+| YK-orange |                          |        4539914 |            |           |                                 | YubiKey 4 (4.2.7) [OTP+FIDO+CCID]       |                    |
+|           | YubiKey OTP+FIDO+CCID    |       10124574 |            |      5.12 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.1.2) [OTP+FIDO+CCID] |                    |
+| YK5C-47   | YubiKey OTP+FIDO+CCID    |       15427547 |            |      5.27 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C NFC (5.2.7) [OTP+FIDO+CCID]  |                    |
+| YK5C-31   | YubiKey OTP+FIDO+CCID    |       16383131 |   0xF9FC9B |      5.43 | 0x0407 Yubikey 4/5 OTP+U2F+CCID | YubiKey 5C Nano (5.4.3) [OTP+FIDO+CCID] |                    |
+|-----------+--------------------------+----------------+------------+-----------+---------------------------------+-----------------------------------------+--------------------|
 
 * the april/may travel
 ** plan
