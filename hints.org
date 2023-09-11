@@ -33052,6 +33052,7 @@ lp -i <job#> -H restart
 - swaks -- swiss army knife smtp
   swaks -t ln@4711.se -f molgan@adb-centralen.se --protocol SSMTPA -au molgan -ap 'Allan tar Kakan i 1200 baud!' --server mx-01.verkligendata.se
   swaks -t ln@4711.se -f molgan@adb-centralen.se --protocol SSMTPA -tlsos -p 587 -au molgan -ap 'Allan tar Kakan i 1200 baud!' --server mx-01.verkligendata.se
+
 ** gnus losing IMAP flags
 <2013-06-11 Tue> early morning
 - up to "a couple of days" before 2013-06-07, all ticks (exclamation
@@ -43340,7 +43341,7 @@ note: Run with `RUST_BACKTRACE=1` for a backtrace.
 * ansible
 - ansible $(hostname -f) -m setup	   # list facts
 - ansible-inventory --host=$(hostname -f)  # list ansible variables
-- ansible-inventory --graph       # map of what groups nodes belong to
+- ansible-inventory --graph       	   # map of what groups nodes belong to
 - ansible-playbook --inventory /usr/local/etc/ansible/hosts --limit $(hostname) --vault-password-file /usr/local/etc/vault/vault_common_secret /var/cache/ansible/site.yaml
   ansible-playbook 
 
@@ -43585,6 +43586,8 @@ https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html
     - https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-06#section-4.1.3
     - solution for clown was to remove an old apacha Alias directive:
       Alias /nextcloud "/usr/local/www/nextcloud/"
+- disable a 2fa method for a given user with `occ twofactorauth:disable`
+  - example: (cd /var/nextcloud/www; sudo -u www-data php occ twofactorauth:disable grtrds totp)
 
 ** davfs mounting
 - Assuming SERVER=dns-name-for-nextcloud-server, MOUNTPOINT=local-path, USERNAME=nextcloud-username, do
@@ -46060,6 +46063,11 @@ ssh_port_t                     tcp      4722, 22
 ** dnf
 dnf rq -l PKG		# dpkg -L
 dnf rq -f $(which PKG)	# dpkg -S
+dnf download --source   # apt-get source
+
+Also see
+- https://docs.fedoraproject.org/en-US/quick-docs/dnf-vs-apt/
+- https://www.redhat.com/sysadmin/dnf-apt-users
 
 * borg backup
 ** restore
@@ -46139,6 +46147,7 @@ besk:~% alias tunnel-transmission='ssh -NfL 9091:localhost:9091 tkill.adb-centra
 besk:~% tunnel-transmission
 besk:~% transmission-remote localhost -ne -l | tail -1
 Sum:            140.8 GB               0.0     0.0
+
 * anti-censorship
 - https://forum.torproject.net/c/support/censorship-circumvention/15
 - https://snowflake.torproject.org
