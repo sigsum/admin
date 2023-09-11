@@ -3,10 +3,11 @@
 
 set -eu
 
-DIR="$HOME/notes/$(date +%Y-%m-%d)"
+#DIR="$HOME/notes/$(date +%Y-%m-%d)"
+DIR="$HOME/notes"
 mkdir -p "$DIR"
 
-FILE="$DIR/$(date +%H:%M)"
+FILE="$DIR/$(date +%Y-%m-%dT%H:%M)"
 [[ $# -gt 0 ]] && FILE="${FILE}-$1"
 
 if [ -t 0 ]; then
@@ -15,3 +16,4 @@ else
     cat >> "$FILE"
 fi
 echo "$FILE"
+
