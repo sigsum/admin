@@ -5,7 +5,6 @@
 ;; nice, but no thanks until there's https
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
-(require 'tls)
 (setq load-path (cons "/usr/share/emacs/site-lisp/erlang" load-path))
 ;(setq load-path (cons "~/.emacs.d/elpa/erlang-2.4.1" load-path))
 (require 'erlang-start)
