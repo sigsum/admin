@@ -11,10 +11,10 @@ alias accounting                accounting@torproject.org
 alias adam                      "Adam Lynn <lynna@rfa.org>"
 alias adbc-sys			hostmaster@adb-centralen.se
 alias adbc-users-all   		adbc-users-dns, adbc-users-mail, adbc-users-jabber, adbc-users-clown
-alias adbc-users-clown       	grtrd, kugg, larka, juni, lena, erik
-alias adbc-users-dns		iha, jl, bjorn.fahller, tege, staffan.ulfberg, dfri-noc, andol
+alias adbc-users-clown       	grtrd, larka, juni, lena, erik
+alias adbc-users-dns		iha, jl, bjorn.fahller, tege, staffan.ulfberg, dfri-noc, andol, pawal
 alias adbc-users-jabber		lai, tobbe, lena, juni, larka, hesse, peter.norin, froo, grtrd, jbn, jn, christian, tord, pjotr
-alias adbc-users-mail		erik.n, lise, fabbe, fia, fredrik, lena, marianne, micke, molgan, simon, sofia, larka, juni, jn, mobil@9999.se, jbn
+alias adbc-users-mail		erik.n, lise, fabbe, fia, fredde, lena, marianne, micke, molgan, simon, sofia, larka, juni, nadine, jn, mobil@9999.se, annika.nilsson@wessgren.se, jbn, rgdd.priv, peter@adb-centralen.se
 alias ade			adrian.bolero
 alias adminor	   		alexander.adminor
 alias adrian.bolero		adrian.bellini@bolero.se
@@ -447,6 +447,7 @@ alias ghudson			"Greg Hudson <ghudson@mit.edu>"
 alias gitta                     gitta.wilen@gmail.com
 alias gk                        geko
 alias glasklar			glasklar@lists.glasklarteknik.se
+alias glasklar-testing		glasklar-testing@lists.glasklarteknik.se
 alias gn			goran.loligo
 alias goran			goran.loligo
 alias goran.karlsson		"Göran Karlsson <goran.karlsson1@telia.com>"
@@ -468,6 +469,7 @@ alias gustav.obe                "Gustav Hoffmeister <gustav@obenetwork.com>"
 alias gusten			gusten.brodin@miljomatematik.se
 alias gv99c			gv99c@adb-centralen.se
 alias haidi			haidi.abdullah@vultus.se
+alias ham			learn-ham-xyzzy47@splice.adb-centralen.se
 alias hanna.blipp		"Hanna Larsson <hanna@blipp.com>"
 alias hanna			hanna.larsson
 alias hanna.larsson		"Hanna Larsson <dfri@hanna-larsson.se>"
@@ -558,7 +560,7 @@ alias jake			"Jacob Appelbaum <jacob@appelbaum.net>"
 alias jakob			"Jakob Schlyter <jakob@kirei.se>"
 alias jaltman                   jaltman@secure-endpoints.com
 alias james                     "James Losey <losey@newamerica.net>xo"
-alias jan.mullvad               jan@mullvad.net
+alias jan.mullvad               "Jan Jonsson <jan@mullvad.net>"
 alias jan.nitrokey              jan@nitrokey.com
 alias jan.klever                "Jan Klever <klever@dfn-cert.de>"
 alias jan.vcelak                "Jan Včelák <jan.vcelak@nic.cz>"
@@ -572,6 +574,7 @@ alias jari                      "Jari Arkko <jari.arkko@piuha.net>"
 alias jas			simon@josefsson.org
 alias jasmine                   Jasmine.isdrake@gmail.com
 alias jason			"Jason A. Donenfeld <Jason@zx2c4.com>"
+alias jb			joshua.mullvad
 alias jbn			jbn@klutt.se
 alias jbn.google                "Johan Berggren <jbn@google.com>"
 alias jbn.ndn			johan.berggren
@@ -624,8 +627,9 @@ alias joel.sr                   "Joel Westerholm <joel.westerholm@sverigesradio.
 alias johanna			johanna.latth.ki
 alias johanna.latth.ki		"Johanna Lätt <johanna.latth@ki.se>"
 alias johanna.latth.kv		"Johanna Lätth <Johanna.Latth@kriminalvarden.se>"
-alias johannes			johannes.soderberg
+alias johannes			johannes.soderberg.carbon
 alias johannes.soderberg	"Johannes Söderberg <johannes.soderberg@gmail.com>"
+alias johannes.soderberg.carbon	"Johannes from CarbonAct <johannes@carbonact.farm>"
 alias johan.berggren		"Johan Berggren <jbn@nordu.net>"
 alias johan.bolero		johan.sandberg@bolero.se
 alias johan.christiansson       johan.christiansson@stockholm.se
@@ -664,8 +668,10 @@ alias joe.cdt                   joe@cdt.org
 alias josef                     josef.ndn
 alias josef.ndn                 "Josef Gustafsson <josef@nordu.net>"
 alias josef.gmail               "Josef Gustafsson <josef.gson@gmail.com>"
+alias josh			josh.mullvad
 alias josh.aas                  "Josh Aas <josh@letsencrypt.org>"
 alias josh.howlett		"Josh Howlett <Josh.Howlett@JA.NET>"
+alias josh.mullvad		joshua@mullvad.net
 alias jbdatko                   joshua.crypt
 alias joshua.gmail              "Joshua Datko <jbdatko@gmail.com>"
 alias joshua.crypt              "Joshua Brian Datko <jbd@cryptotronix.com>"
@@ -740,6 +746,7 @@ alias krbdev			krbdev@mit.edu
 alias krb-wg			ietf-krb-wg@lists.anl.gov
 alias krillo			"Kristian Lang <langkristian@gmail.com>"
 alias kristine.whisper          zhuliana@inbox.lv
+alias kristoffer.el		"Kristoffer Klock <kristoffer@klockwork.se>"
 alias kugg                      kugg@fripost.org
 alias kugg.google               "Christoffer Jerkeby <kugghjul@gmail.com>"
 alias kupo                      kupo@damnfbi.tk
@@ -1143,7 +1150,7 @@ alias rene			"Rene Buch <rene.buch@nordu.net>"
 alias repeed			reePeed4@outlook.com
 alias revisor                   revisor@dfri.se
 alias rgdd			rasmus.dahlberg@glasklarteknik.se
-alias rgdd.mullvad		rasmus.mullvad
+alias rgdd.priv			rasmus@rgdd.se
 alias rgdd.sigsum		"Rasmus Dahlberg <rgdd@sigsum.org>"
 alias rhys			"Rhys Smith <smith@cardiff.ac.uk>"
 alias ricardo                   "Ricardo Noronha <ricardo.noronha@gmail.com>"
@@ -1259,6 +1266,7 @@ alias sofia             	sofia.nordberg
 alias solix                     sol-ix@lidendata.com
 alias solix.kontakt             kontakt@sol-ix.net
 alias spacedump			anders.olausson
+alias spam			learn-spam-xyzzy47@splice.adb-centralen.se
 alias sparvnastet               sparvnastet@lists.riseup.net
 alias sparvnastet.kassor        mathias.tervo
 alias spe                       stefan.petersen
@@ -1428,6 +1436,7 @@ alias victoria                  "Victoria Bull <victoria@digidemlab.org>"
 alias vidar                     "Vidar Bergan <vidar@stomneverkstader.se>"
 alias vistor			victor@mullvad.net
 alias vitabussen                vitabussen@lists.adb-centralen.se
+alias vlad			andreivlad.dome@gmail.com
 alias vmon                      vmon@riseup.net
 alias vr.hr			karmhed
 alias wallberg			"Hans Wallberg <hans.wallberg@umdac.umu.se>"
