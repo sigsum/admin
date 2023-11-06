@@ -1,9 +1,7 @@
 #! /bin/bash
 # -*- shell-script -*-
-
 set -eu
 
-#DIR="$HOME/notes/$(date +%Y-%m-%d)"
 DIR="$HOME/notes"
 mkdir -p "$DIR"
 
@@ -16,4 +14,3 @@ else
     cat >> "$FILE"
 fi
 echo "$FILE"
-
