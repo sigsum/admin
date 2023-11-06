@@ -73,16 +73,30 @@ Model apu2d
 RAM 2G
 SSD 16G
 
-Hostname OpenWrt
 Architecture AMD GX-412TC SOC
 
 http://192.168.1.1/
+
+*** 2020-03 installation
+OpenWrt 19.07.2 r10947-65030d81f3
+
+Hostname OpenWrt
+
+radio0
+ Qualcomm Atheros QCA9880 802.11bgnac
+ BSSID: 04:F0:21:56:00:39 | Encryption: WPA2 PSK (CCMP)
+ AC; ch 36 / 5180 Mhz; width 80 Mhz
+radio1
+ Qualcomm Atheros QCA9880 802.11bgnac
+ BSSID: 04:F0:21:54:37:CC | Encryption: WPA2 PSK (CCMP)
+ Legacy; 2.4 Ghz; ch 2 / 2417 Mhz
+
 
 Dropbear used to work but offers only ssh-rsa which I suppose modern ssh client's don't do.
 Tried installing openssh-server and succeeded but didn't manage to configure it in the web UI.
 Tried to go back to dropbear but still no config options (under System -> Administration where it used to reside).
 
-*** OS -- OpenWrt
+**** OS -- OpenWrt
 https://downloads.openwrt.org/releases/19.07.2/targets/x86/64/openwrt-19.07.2-x86-64-combined-ext4.img.gz
 87156fcc2f4f3c19829eae954885806472f7bed7ba8f094c1275279954fecb08
 Linux OpenWrt 4.14.171 #0 SMP Thu Feb 27 21:05:12 2020 x86_64 GNU/Linux
@@ -90,7 +104,7 @@ Linux OpenWrt 4.14.171 #0 SMP Thu Feb 27 21:05:12 2020 x86_64 GNU/Linux
 - https://openwrt.org/docs/guide-developer/security
 - https://oldwiki.archive.openwrt.org/doc/devel/security
 
-*** root@OpenWrt:/# dmesg
+**** root@OpenWrt:/# dmesg
 [    0.000000] Linux version 4.14.171 (builder@buildhost) (gcc version 7.5.0 (OpenWrt GCC 7.5.0 r10947-65030d81f3)) #0 SMP Thu Feb 27 21:05:12 2020
 [    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz root=PARTUUID=57113300-02 rootfstype=ext4 rootwait console=tty0 console=ttyS0,115200n8 noinitrd
 [    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
@@ -606,7 +620,7 @@ Linux OpenWrt 4.14.171 #0 SMP Thu Feb 27 21:05:12 2020 x86_64 GNU/Linux
 [   13.065737] br-lan: port 1(eth1) entered forwarding state
 [   13.071703] IPv6: ADDRCONF(NETDEV_CHANGE): br-lan: link becomes ready
 
-*** network config
+**** network config
 root@OpenWrt:~# ip ad
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -647,8 +661,36 @@ br-wan          7fff.000db95399c8       no              eth0
                                                         wlan1
                                                         wlan0
 
+*** 2023-10 installation
+teklager.se openwrt installer debapu-autoinstaller-2023-09-10.iso
+OpenWrt 22.03.5 r20134-5f15225c1e
+
+Hostname frst-wifi1
+
+ssh -NfL 7443:192.168.6.2:443 apuapu
+https://127.0.0.1:7443/
+ECDSA-256 pubkey 04:19:56:9D:2A:1F:E9:A0:E5:90:1A:C4:74:A0:B0:F6:5E:39:8E:43:08:7D:A3:D8:06:D6:C9:61:7C:25:AE:77:F1:6D:F7:8C:D8:C4:19:A3:0D:31:8D:B8:BA:A8:48:2C:7C:24:67:2D:B3:33:D8:E0:9F:8A:76:14:92:81:03:78:6C
+SHA-256 fpr F5:6A:E4:D2:B1:5A:96:1C:F0:F1:73:6E:C7:66:6A:13:6F:B0:04:23:1D:AC:C6:30:BB:28:B3:BA:80:31:EA:6F
+
+ssh -NfL 7022:192.168.6.2:4722 apuapu
+env SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) ssh -p 7022 -l root localhost
+ED25519 key fingerprint is SHA256:BT5cbWJawncKVdFr/Qr8L1SWWGYJuSBwfZgPXnExCrE.
+
+Bridging the wifi interfaces with br-lan.
+
+radio0
+ Qualcomm Atheros QCA9880 802.11bgnac
+ BSSID: 04:F0:21:56:00:39 | Encryption: WPA3 SAE (CCMP)
+ Mode AC; ch auto; width 40 Mhz
+
+radio1
+ Qualcomm Atheros QCA9880 802.11bgnac
+ BSSID: 04:F0:21:54:37:CC | Encryption: WPA3 SAE (CCMP)
+ Mode N; 2.4 GHz; chan auto; 40 Mhz
+
+
 *** upgrading software packages
-opkg update && opkg list-upgradable| awk '{print $1}'| tr '\n' ' '| xargs -r opkg upgrade
+opkg update && opkg list-upgradable | awk '{print $1}'| tr '\n' ' '| xargs -r opkg upgrade
 
 ** rpi2 B v1.1 2014, transparent case
 ** rpi2 B+ v1.2 2014, black case
@@ -1699,6 +1741,7 @@ subnet 192.168.7.0 netmask 255.255.255.0 {
   option domain-name-servers 192.168.7.1;
 }
 EOF
+
 
 ** lilleputt -- rpi2
 fbsd 11.0-CURRENT
@@ -5762,6 +5805,25 @@ snowfla+  674737  668928  0 292222 22768  0 10:41 pts/1    00:00:00 /home/snowfl
 snowflake-proxy@prctl:~/usr/src/snowflake/proxy$ echo 292222 1024/p | dc
 285
 : so 285 MiB allocated memory at startup
+
+**** 2023-09-14 upgrade snowflake proxy to 2.6.1
+cat > ~/build-proxy.sh <<'EOF'
+#! /bin/sh
+set -eu
+cd ~/usr/src/snowflake/proxy
+go get
+go build
+go install
+EOF
+chmod +x ~/build-proxy.sh
+
+git -C ~/usr/src/snowflake/proxy fetch
+git -C ~/usr/src/snowflake/proxy checkout v2.6.1
+~/build-proxy.sh
+killall proxy
+~/go/bin/proxy -version
+$HOME/go/bin/proxy --capacity 55 --log /home/snowflake-proxy/usr/log/snowflake-proxy.log --summary-interval 10m 2> /home/snowflake-proxy/usr/log/snowflake-proxy-stderr.log &
+
 *** keyctl.adb-centralen.se (2022-01-12) -- VM @ vmsplice for building keykeeper systems
 
 
@@ -6779,7 +6841,6 @@ GW: 2a0c:dd40:1:b::1
 
 ** sigwaitinfo.verkligendata.se (2020-11-19) -- red apu2 @ VKG
 APU2
-
 4G RAM
 16G SSD
 
@@ -6871,9 +6932,19 @@ for the .11 peer. This "fixed itself" after a reboot. Not sure if this
 will repeat for newly added peers. Please update.
 
 *** DHCP by dnsmasq
-Leases in /var/lib/misc/dnsmasq.leases
+Config in /etc/dnsmasq.d/.
+As of 2023-10-24 we're handing out addresses from two ranges on enp2s0:
+192.168.13.100-254 (6h)
+45.141.110.203-206 (2h)
 
-journalctl -u dnsmasq | awk '/DHCPACK/{print $8, $9}' | sort | uniq -c
+Active leases:
+cat /var/lib/misc/dnsmasq.leases
+
+Historical leases, aggregated to number of assignments per host:
+journalctl -u dnsmasq | awk '/DHCPACK/{print $8, $9}' | sort | uniq -c | sort -n
+
+Q: what about udhcpd? F.ex. /etc/udhcpd.enp2s0.conf
+A: old stuff, now renamed {}.OFF
 
 ** vm86.verkligendata.se (2020-10-15) -- Supermicro 1U with X11SSH-TF
 Long term loan from Mullvad.
@@ -8450,9 +8521,11 @@ unused devices: <none>
 - powered how?
 - serial console on logsrv-02.sigsum.org (screen /dev/ttyUSB0 115200)
 - debian bullseye
-- 46.227.66.163/29
+- 46.227.66.163/29 
 - hostname: getrandom
-- eth0 MAC b8:27:eb:5f:47:ad
+- eth0/enxb827eb5f47ad MAC b8:27:eb:5f:47:ad <-- 46.227.66.163/29 2a0c:dd40:1:2::163/64
+- the other NIC: inet 192.168.100.149/24 brd 192.168.100.255 scope global enx00e04c68b34b
+- wlan0:link/ether b8:27:eb:0a:12:f8 brd ff:ff:ff:ff:ff:ff
 - uuid(1): 80245f24-1a77-11ea-9dc7-fff0ab2a77b4
 - ?uid ff:eb:5f:47:ad:00:01:00:01:23:f7:fc:db:b8:27:eb:5f:47:ad;
 - blkid
@@ -9884,6 +9957,56 @@ https://support.huawei.com/enterprise/en/doc/EDOC1000141933/56fa680f/example-for
 [vkg-sw3]interface Eth-Trunk 1
 [vkg-sw3-Eth-Trunk1]port trunk allow-pass vlan 48
 
+** vkg-wifi1 -- APU2 (2023-10-24)
+
+Encryption WPA3-SAE
+SSID Glasklar
+Key riktigts4kert
+
+Admin on LAN port (closest to serial):
+192.168.13.2 (on leguin: bring down wg and allow all outgoing in /etc/nftables.conf)
+env SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) ssh -p 4722 -l root 192.168.13.2
+  ED25519 key fingerprint is SHA256:t6tl2LTnJiVkeDgzs6jyK7fTQTNtc7YzBAXRw4otez0.
+firefox https://192.168.13.2/
+
+Radio
+ radio0/wlan0 Qualcomm Atheros QCA9880 802.11acbgn
+  AC (5GHz implied) auto 40Mhz (since 80 does not work with all wifi cards)
+  BSSID: 04:F0:21:B2:51:59
+ radio1/wlan1 MAC80211 802.11abgn
+  N 2.4Hz auto 40Mhz
+  BSSID: 04:F0:21:B6:0A:84
+
+cat > /etc/rc.local <<'EOF'
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+# these services do not run on "dumb APs" https://openwrt.org/docs/guide-user/network/wifi/dumbap
+for i in firewall dnsmasq odhcpd openvpn; do
+  if /etc/init.d/"$i" enabled; then
+    /etc/init.d/"$i" disable
+    /etc/init.d/"$i" stop
+  fi
+done
+
+rm /usr/sbin/wpa_supplicant
+
+exit 0
+EOF
+
+** vkg-wifi2
+192.168.13.3
+
+env SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket) ssh -p 4722 -l root 192.168.13.3
+  ED25519 key fingerprint is SHA256:Hh3Erg9NSRqaVv6Tqx1UaPe/2Q9BFxqWdbi69Idn/4Y.
+firefox https://192.168.13.3/
+
+Radio
+ radio0/wlan0 Qualcomm Atheros QCA9880 802.11acbgn
+  BSSID: 04:F0:21:B2:61:CB
+ radio1/wlan1 MAC80211 802.11abgn
+  BSSID: 04:F0:21:B6:11:06
+
 ** next router
 https://mullet.se/product.html?product_id=347351
 ** DECOMMISSIONED
@@ -10020,6 +10143,14 @@ go get git.torproject.org/pluggable-transports/obfs4.git/obfs4proxy
 sudo cp ~linus/usr/go/bin/obfs4proxy /usr/local/bin/
 
 * Sigsum / Glasklar
+** bup-01.glasklarteknik (2023-09-29) -- VM @ logsrv-02
+logsrv-02# mkvm.sh bup-01.glasklarteknik.se 2 3092 20
+
+pvcreate /dev/vdb
+vgcreate bup-01-store /dev/vdb
+lvcreate -n vol1 -l 100%FREE bup-01-store
+mkfs.ext4 -i 131072 /dev/bup-01-store/vol1
+
 ** stime.verkligendata.se (2021-06-18) -- Supermicro X11SCL-F, Mullvad property
 Delivered 2021-03-18
 Racked VKG 2021-03-21
@@ -10081,7 +10212,7 @@ IPv6 address: 2a0c:dd40:1:2::162/64
 - https://www.supermicro.com/support/resources/results.aspx
 - https://www.supermicro.com/support/resources/getfile.php?SoftwareItemID=14075&type=releasenote ([[file:~/clown/Verkligendata/Datorhall/X11SCH-(LN4)F_BIOS_1.6_release_notes.pdf][copy]])
 
-Console: `screen /dev/ttyUSB0 9600` on getrandom (46.227.66.163)
+Console: `screen /dev/ttyUSB0 9600` on getrandom (46.227.66.163 2a0c:dd40:1:2::163)
 
 *** Boot
 No UEFI boot.
@@ -10219,9 +10350,69 @@ Number  Start   End    Size   Type     File system  Flags
  1      1049kB  960GB  960GB  primary               boot, raid
 ```
 
+**** Adding 2 x 1.7T SSD 2023-09-29
+apt install smartmontools
+smartctl -t short /dev/sdc
+smartctl -t short /dev/sdd
+mdadm --create /dev/md1 --name ssd --level 1 --raid-devices 2 /dev/sd[cd]
+pvcreate /dev/md1
+vgcreate logsrv-02-ssd /dev/md1
+lvcreate -n kvm-images -L 256G logsrv-02-ssd
+mkfs.ext4 /dev/logsrv-02-ssd/kvm-images
+blkid /dev/logsrv-02-ssd/kvm-images >> /etc/fstab && vi /etc/fstab
+apt install libvirt-daemon-system libvirt-clients virtinst
+mount -a
+df -h /var/lib/libvirt/images
+lvcreate -n bup-vol1 -L 512G logsrv-02-ssd
+
 *** Network
 46.227.66.160/29, gw: 161
 2a0c:dd40:1:2::/64, gw: ::1
+
+2023-09-29 set up br0 and enslave eno1
+apt install bridge-utils
+
+*** KVM
+**** network configuration
+cat > /etc/systemd/network/20-vm-bridge.netdev <<'EOF'
+[NetDev]
+Name = br0
+Kind = bridge
+
+[Bridge]
+STP = false
+EOF
+
+cat > /etc/systemd/network/20-vm-bridge.network <<'EOF'
+[Match]
+Name = br0
+
+[Network]
+Description = OBE Kista 46.227.66.160/29
+Address = 46.227.66.162/29
+Gateway = 46.227.66.161
+Address = 2a0c:dd40:1:2::162/64
+Gateway = 2a0c:dd40:1:2::1
+EOF
+
+systemctl restart systemd-networkd; sleep 2
+networkctl
+
+cp /etc/systemd/network/10-static-obe.network  /etc/systemd/network/10-static-obe.network.BAK
+cat > /etc/systemd/network/10-static-obe.network <<'EOF'
+[Match]
+Name = eno1
+
+[Network]
+Description = Serving br0
+Bridge = br0
+EOF
+
+systemctl restart systemd-networkd; sleep 2
+networkctl
+
+**** adding a volume to a VM
+virsh attach-disk bup-01.glasklarteknik.se /dev/logsrv-02-ssd/bup-vol1 vdb --config
 
 ** logsrv-01.sigsum.org
 Placement: VKG
