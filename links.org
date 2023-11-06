@@ -1,3 +1,11 @@
+banjo wl-250 https://svarenmusik.se/produkt/gold-tone-wl-250/
+jabber ru people:valdikss https://notes.valdikss.org.ru/jabber.ru-mitm/
+privacy 5eyes FVEY 9eyes 14eyes echelon https://restoreprivacy.com/5-eyes-9-eyes-14-eyes/
+snowflake ops https://gitlab.torproject.org/tpo/anti-censorship/team/-/wikis/Survival-Guides/Snowflake-Bridge-Installation-Guide
+fw security https://www.welivesecurity.com/2023/03/01/blacklotus-uefi-bootkit-myth-confirmed/
+fw security https://arxiv.org/pdf/2111.10167.pdf
+secure-boot sb https://www.rodsbooks.com/refind/index.html
+https://metasnap.debian.net/
 tillitis https://loup-vaillant.fr/articles/hsm-done-right
 https://github.com/stump/gtetrinet
 smart https://patient.nu/portal/start/cc215de3-4fe3-11e9-8804-fdea9f5df4ae
