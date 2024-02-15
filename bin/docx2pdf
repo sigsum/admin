@@ -1,0 +1,8 @@
+#! /bin/sh
+# (-*- shell-mode -*-)
+set -eu
+
+fn="$1"; shift
+
+bn=$(basename "$fn")
+pandoc --pdf-engine xelatex -o "$bn".pdf -f docx "$fn"
