@@ -103,16 +103,13 @@
 (setq gnus-message-archive-group
       '(lambda (group)
 	 "Return name of mailbox to store archive copy in.  Use GROUP, default to one at ADB-Centralen."
-	 (if (and nil message-news-p)	;disabled for now
-	     "misc-news"
-	   (format "%s:sent-mail.%s"
-		   (car (split-string
-			 (if (or (string= group "")
-				 (compare-strings group nil (length "nntp") "nntp" nil nil))
-			     "nnimap+adbc"
-			   group)
-			 (make-string 1 ?:)))
-		   (format-time-string "%Y-%m" (current-time))))))
+	 (format "%s:sent-mail.%s"
+		 (car (split-string
+		       (if (string= group "")
+			   "nnimap+adbc:"
+			 group)
+		       (make-string 1 ?:)))
+		 (format-time-string "%Y-%m" (current-time)))))
 
 ;; Drafts
 ;(setq nndraft-directory (concat nnml-directory 
