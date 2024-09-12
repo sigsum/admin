@@ -1,7 +1,7 @@
 [user]
 	email = linus@nordberg.se
 	name = Linus Nordberg
-	signingkey = /home/linus/.ssh/linus:YK5C-31
+	signingkey = /home/linus/.ssh/keys/linus:YK5C-31
 [status]
 	showUntrackedFiles = no
 [http]
