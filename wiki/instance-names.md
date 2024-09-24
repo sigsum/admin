@@ -9,7 +9,6 @@ Please remove names as they're being put to use.
 - Glasswing Butterfly
 - Crocodile Icefish
 - Tortoise Shell Beetle
-- Sea Salp
 - Transparent Sea Cucumber
 - Glass Squid
 - Big Skate
