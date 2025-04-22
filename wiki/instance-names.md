@@ -4,7 +4,6 @@ Taken from https://pulptastic.com/transparent-fish/
 
 Please remove names as they're being put to use.
 
-- Barreleye Fish
 - Glass Frog
 - Glasswing Butterfly
 - Crocodile Icefish
